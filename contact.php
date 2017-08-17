@@ -52,6 +52,8 @@ function test_input($data) {
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="keywords" content="jameson, lopp, bitcoin, crypto, cypherpunk" />
+<meta name="Robots" content="index,follow" />
 <title>Jameson Lopp :: Contact</title>
 
 <!-- Bootstrap -->
@@ -89,7 +91,7 @@ function MM_swapImage() { //v3.0
 }
 </script>
 
-<script type="text/javascript" language="JavaScript"><!--
+<script type="text/javascript"><!--
 function HideContent(d) {
 document.getElementById(d).style.display = "none";
 }
@@ -102,8 +104,17 @@ else { document.getElementById(d).style.display = "none"; }
 }
 //--></script>
 
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
+  ga('create', 'UA-2071667-1', 'auto');
+  ga('send', 'pageview');
 
+</script>
 
 </head>
 
@@ -249,7 +260,7 @@ if(isset($_POST['submit']) and (!empty($_POST["name"])) and (preg_match("/^[a-zA
     <div class="container">
    	  <div class="row">
 		<div class="col-sm-10 col-sm-offset-1 col-md-10 col-lg-10 col-xs-offset-0 col-xs-12">
-		  <p class="text-right"><strong><a href="pgpkey.html" target="_blank">PGP KEY</a></strong> <a href="https://www.facebook.com/jameson.lopp" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Facebook','','images/facebook-roll.gif',1)" target="_blank"><img src="images/facebook.gif" alt="Facebook" width="24" height="20" id="Facebook"></a> <a href="https://twitter.com/lopp?ref_src=twsrc%5Etfw&ref_url=http%3A%2F%2Flopp.net%2F" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Twitter','','images/twitter-roll.gif',1)" target="_blank"><img src="images/twitter.gif" alt="Twitter" width="20" height="17" id="Twitter"></a> <a href="https://www.linkedin.com/in/jamesonlopp/" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Linked In','','images/linked-roll.gif',1)" target="_blank"><img src="images/linked.gif" alt="Linked In" width="24" height="20" id="Linked In"></a> <a href="https://github.com/jlopp" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Github','','images/github-roll.gif',1)" target="_blank"><img src="images/github.gif" alt="Github" width="24" height="20" id="Github"></a> <a href="https://21.co/lopp/" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('21','','images/21-roll.gif',1)" target="_blank"><img src="images/21.gif" alt="21" width="24" height="20" id="21"></a> <a href="https://keybase.io/lopp" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Keybase','','images/keybase-roll.gif',1)" target="_blank"><img src="images/keybase.gif" alt="Keybase" width="24" height="20" id="Keybase"></a> <strong><a href="https://onename.com/lopp" target="_blank">ONENAME</a></strong> </p>
+		  <p class="text-right"><strong><a href="pgpkey.html" target="_blank">PGP KEY</a></strong> <a href="https://www.facebook.com/jameson.lopp" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Facebook','','images/facebook-roll.gif',1)" target="_blank"><img src="images/facebook.gif" alt="Facebook" width="24" height="20" id="Facebook"></a> <a href="https://twitter.com/lopp?ref_src=twsrc%5Etfw&ref_url=http%3A%2F%2Flopp.net%2F" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Twitter','','images/twitter-roll.gif',1)" target="_blank"><img src="images/twitter.gif" alt="Twitter" width="20" height="17" id="Twitter"></a> <a href="https://www.linkedin.com/in/jamesonlopp/" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('LinkedIn','','images/linked-roll.gif',1)" target="_blank"><img src="images/linked.gif" alt="LinkedIn" width="24" height="20" id="LinkedIn"></a> <a href="https://github.com/jlopp" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Github','','images/github-roll.gif',1)" target="_blank"><img src="images/github.gif" alt="Github" width="24" height="20" id="Github"></a> <a href="https://21.co/lopp/" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('21','','images/21-roll.gif',1)" target="_blank"><img src="images/21.gif" alt="21" width="24" height="20" id="21"></a> <a href="https://keybase.io/lopp" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Keybase','','images/keybase-roll.gif',1)" target="_blank"><img src="images/keybase.gif" alt="Keybase" width="24" height="20" id="Keybase"></a> <strong><a href="https://onename.com/lopp" target="_blank">ONENAME</a></strong> </p>
 		</div>
 </div>
     </div>
