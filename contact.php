@@ -128,7 +128,7 @@ else { document.getElementById(d).style.display = "none"; }
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="myDefaultNavbar1">
       <ul class="nav navbar-nav">
-		  <li><a href="articles.html">Articles</a></li>
+      <li><a href="articles.html">Articles</a></li>
         <li><a href="presentations.html">Presentations</a></li>
         <!-- Do not display this at the moment 
          <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">Dropdown <span class="caret"></span></a>
@@ -143,7 +143,7 @@ else { document.getElementById(d).style.display = "none"; }
           </ul>
         </li>
         -->
-		  <li><a href="interviews.html">Interviews</a></li>
+      <li><a href="interviews.html">Interviews</a></li>
         <li><a href="bitcoin.html">Bitcoin Resources</a></li>
         <li class="active"><a href="#">Contact<span class="sr-only">(current)</span></a></li>
       </ul>
@@ -184,36 +184,31 @@ else { document.getElementById(d).style.display = "none"; }
   </div>
 </section>
 <section>
-     <div class="container">
+    <div class="container">
     <div class="row">
       <div class="col-xs-12 text-left col-lg-offset-0 col-lg-12"> <br><br>
       </div>
       <div class="col-xs-12 col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10 col-sm-10 col-sm-offset-1">
         <h3>Presentation/Interview Request Form</h3>
-<p><span class="error">* required field.</span></p>
+        <p><span class="error">* required field.</span></p>
 
+        <form action="" method="post">    
+           <label for="name">Name </label><span class="error"> * <?php echo $nameErr;?></span>
 
+            <input type="text" id="name" name="name" placeholder="Your name...">
 
-<form action="" method="post">    
-   <label for="name">Name </label><span class="error"> * <?php echo $nameErr;?></span>
+            <label for="email">Email</label><span class="error"> * <?php echo $emailErr;?></span>
+            <input type="text" id="email" name="email" placeholder="Your email..." >
 
-    <input type="text" id="name" name="name" placeholder="Your name...">
+            <label for="subject">Subject</label><span class="error"> * <?php echo $subjectErr;?></span>
+            <input type="text" id="subject" name="subject" placeholder="Subject...">
+            
+            <label for="message">Message</label><span class="error"> * <?php echo $messageErr;?></span>
+            <textarea id="message" name="message" placeholder="Write something..." style="height:200px"></textarea>
 
-    <label for="email">Email</label><span class="error"> * <?php echo $emailErr;?></span>
-    <input type="text" id="email" name="email" placeholder="Your email..." >
+            <input type="submit" name="submit" value="Submit">
+        </form>
 
-    <label for="subject">Subject</label><span class="error"> * <?php echo $subjectErr;?></span>
-    <input type="text" id="subject" name="subject" placeholder="Subject...">
-    
-    <label for="message">Message</label><span class="error"> * <?php echo $messageErr;?></span>
-    <textarea id="message" name="message" placeholder="Write something..." style="height:200px"></textarea>
-
-    <input type="submit" name="submit" value="Submit">
-
-  </form>
-
-
-		  
   <?php 
 if(isset($_POST['submit']) and (!empty($_POST["name"])) and (preg_match("/^[a-zA-Z ]*$/",$name)) and (!empty($_POST["email"])) and  (filter_var($email, FILTER_VALIDATE_EMAIL)) and (!empty($_POST["subject"])) and (!empty($_POST["message"]))) {
     $to = "contactform@lopp.net";
@@ -229,43 +224,63 @@ if(isset($_POST['submit']) and (!empty($_POST["name"])) and (preg_match("/^[a-zA
     }
 ?>
   
-   <br><br>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-lg-offset-0 col-lg-4">
-       
-      </div>
-      <div class="col-lg-4">&nbsp;</div>
-    </div>
-<div class="row">
-      <div class="text-left col-lg-offset-1 col-lg-5 col-md-5 col-md-offset-1 col-sm-offset-1 col-sm-6 col-xs-12">
-        <h3>Open Source Projects</h3>
-        <h4><a href="https://github.com/jlopp/bitcoin-core-config-generator/" target="_blank">Bitcoin Core Config Generator</a></h4>
-     <h4><a href="https://github.com/jlopp/statoshi" target="_blank">Statoshi</a></h4>
-  <br><br>
-      </div>
-      <div class="col-lg-4 col-md-5 col-sm-5 col-xs-12"><h3>Other Email Requests</h3>
-        <p data_temp_dwid="1"><a href="https://21.co/lopp/" target="_blank">
-          <button type="button" class="btn btn-success">Get in touch</button>
-        </a></p><br><br></div>
-    </div>
+        <br>
+        <br>
+        </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-offset-0 col-lg-4">
+
+          </div>
+          <div class="col-lg-4">&nbsp;</div>
+        </div>
+        <div class="row">
+          <div class="text-left col-lg-offset-1 col-lg-5 col-md-5 col-md-offset-1 col-sm-offset-1 col-sm-6 col-xs-12">
+            <h3>Open Source Projects</h3>
+            <h4><a href="https://github.com/jlopp/bitcoin-core-config-generator/" target="_blank">Bitcoin Core Config Generator</a></h4>
+            <h4><a href="https://github.com/jlopp/statoshi" target="_blank">Statoshi</a></h4>
+            <br>
+            <br>
+          </div>
+          <div class="col-lg-4 col-md-5 col-sm-5 col-xs-12">
+            <h3>Other Email Requests</h3>
+            <p data_temp_dwid="1">
+              <a href="https://21.co/lopp/" target="_blank">
+                <button type="button" class="btn btn-success">Get in touch</button>
+              </a>
+            </p>
+            <br>
+            <br>
+          </div>
+        </div>
   </div>
 </section>
 <section>
-	<div class="container"> </div>
+  <div class="container"> </div>
 </section>
 <hr>
 <div class="section well">
-    <div class="container">
-   	  <div class="row">
-		<div class="col-sm-10 col-sm-offset-1 col-md-10 col-lg-10 col-xs-offset-0 col-xs-12">
-		  <p class="text-right"><strong><a href="pgpkey.html" target="_blank">PGP KEY</a></strong> <a href="https://www.facebook.com/jameson.lopp" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Facebook','','images/facebook-roll.gif',1)" target="_blank"><img src="images/facebook.gif" alt="Facebook" width="24" height="20" id="Facebook"></a> <a href="https://twitter.com/lopp?ref_src=twsrc%5Etfw&ref_url=http%3A%2F%2Flopp.net%2F" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Twitter','','images/twitter-roll.gif',1)" target="_blank"><img src="images/twitter.gif" alt="Twitter" width="20" height="17" id="Twitter"></a> <a href="https://www.linkedin.com/in/jamesonlopp/" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('LinkedIn','','images/linked-roll.gif',1)" target="_blank"><img src="images/linked.gif" alt="LinkedIn" width="24" height="20" id="LinkedIn"></a> <a href="https://github.com/jlopp" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Github','','images/github-roll.gif',1)" target="_blank"><img src="images/github.gif" alt="Github" width="24" height="20" id="Github"></a> <a href="https://21.co/lopp/" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('21','','images/21-roll.gif',1)" target="_blank"><img src="images/21.gif" alt="21" width="24" height="20" id="21"></a> <a href="https://keybase.io/lopp" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Keybase','','images/keybase-roll.gif',1)" target="_blank"><img src="images/keybase.gif" alt="Keybase" width="24" height="20" id="Keybase"></a> <strong><a href="https://onename.com/lopp" target="_blank">ONENAME</a></strong> </p>
-		</div>
-</div>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-10 col-sm-offset-1 col-md-10 col-lg-10 col-xs-offset-0 col-xs-12">
+        <p class="text-right"><strong><a href="pgpkey.html" target="_blank">PGP KEY</a></strong>
+          <a href="https://www.facebook.com/jameson.lopp" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Facebook','','images/facebook-roll.gif',1)" target="_blank"><img src="images/facebook.gif" alt="Facebook" width="24" height="20" id="Facebook">
+          </a>
+          <a href="https://twitter.com/lopp?ref_src=twsrc%5Etfw&ref_url=http%3A%2F%2Flopp.net%2F" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Twitter','','images/twitter-roll.gif',1)" target="_blank"><img src="images/twitter.gif" alt="Twitter" width="20" height="17" id="Twitter">
+          </a>
+          <a href="https://www.linkedin.com/in/jamesonlopp/" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('LinkedIn','','images/linked-roll.gif',1)" target="_blank"><img src="images/linked.gif" alt="LinkedIn" width="24" height="20" id="LinkedIn">
+          </a>
+          <a href="https://github.com/jlopp" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Github','','images/github-roll.gif',1)" target="_blank"><img src="images/github.gif" alt="Github" width="24" height="20" id="Github">
+          </a>
+          <a href="https://21.co/lopp/" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('21','','images/21-roll.gif',1)" target="_blank"><img src="images/21.gif" alt="21" width="24" height="20" id="21">
+          </a>
+          <a href="https://keybase.io/lopp" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Keybase','','images/keybase-roll.gif',1)" target="_blank"><img src="images/keybase.gif" alt="Keybase" width="24" height="20" id="Keybase">
+          </a> <strong><a href="https://onename.com/lopp" target="_blank">ONENAME</a></strong> </p>
+      </div>
     </div>
-	</div>
-    <footer class="text-center">
+  </div>
+</div>
+<footer class="text-center">
   <div class="container">
     <div class="row">
       <div class="col-xs-12">
@@ -274,9 +289,10 @@ if(isset($_POST['submit']) and (!empty($_POST["name"])) and (preg_match("/^[a-zA
     </div>
   </div>
 </footer>
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
-<script src="js/jquery-1.11.3.min.js"></script> 
-<!-- Include all compiled plugins (below), or include individual files as needed --> 
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="js/jquery-1.11.3.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="js/bootstrap.js"></script>
 </body>
+
 </html>
