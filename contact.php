@@ -171,7 +171,7 @@ else { document.getElementById(d).style.display = "none"; }
     <div class="row">
       <div class="col-xs-12 text-left col-lg-offset-1 col-lg-8 col-md-offset-1 col-md-10 col-sm-offset-1 col-sm-10">
         <h1>Contact</h1>
-        <p>Jameson's goal is to spread knowledge of crypto systems and liberating technologies. If you can offer an opportunity to reach a large audience, please use the form below. If you're seeking specific answers for your own understanding, please check the <a href="bitcoin.html">educational resources page.</a> For business opportunities or other requests, please use the contact form hosted at <a href="https://21.co/lopp/" target="_blank">21.co</a></p>
+        <p>Jameson's goal is to spread knowledge of crypto systems and liberating technologies. If you can offer an opportunity to reach a large audience, please use the form below. If you're seeking specific answers for your own understanding, please check the <a href="bitcoin.html">educational resources page.</a> For business opportunities or other requests, please use the contact form hosted at <a href="https://earn.com/lopp/" target="_blank">earn.com</a></p>
         <br>
       </div>
     </div>
@@ -245,7 +245,7 @@ if(isset($_POST['submit']) and (!empty($_POST["name"])) and (preg_match("/^[a-zA
           <div class="col-lg-4 col-md-5 col-sm-5 col-xs-12">
             <h3>Other Email Requests</h3>
             <p data_temp_dwid="1">
-              <a href="https://21.co/lopp/" target="_blank">
+              <a href="https://earn.com/lopp/" target="_blank">
                 <button type="button" class="btn btn-success">Get in touch</button>
               </a>
             </p>
