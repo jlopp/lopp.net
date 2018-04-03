@@ -169,20 +169,20 @@ else { document.getElementById(d).style.display = "none"; }
       </div>
       <div class="col-xs-12 col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10 col-sm-10 col-sm-offset-1">
         <h3>Presentation/Interview Request Form</h3>
-        <p><span class="error">* required field.</span></p>
+        <p><span class="error">Please do not contact me inquiring about paid promotions / press releases / reviews / social media marketing. My reputation is not for sale.</span></p>
 
         <form action="" method="post">    
-           <label for="name">Name </label><span class="error"> * <?php echo $nameErr;?></span>
+           <label for="name">Name </label><span class="error"> <?php echo $nameErr;?></span>
 
             <input type="text" id="name" name="name" placeholder="Your name...">
 
-            <label for="email">Email</label><span class="error"> * <?php echo $emailErr;?></span>
+            <label for="email">Email</label><span class="error"> <?php echo $emailErr;?></span>
             <input type="text" id="email" name="email" placeholder="Your email..." >
 
-            <label for="subject">Subject</label><span class="error"> * <?php echo $subjectErr;?></span>
+            <label for="subject">Subject</label><span class="error"> <?php echo $subjectErr;?></span>
             <input type="text" id="subject" name="subject" placeholder="Subject...">
             
-            <label for="message">Message</label><span class="error"> * <?php echo $messageErr;?></span>
+            <label for="message">Message</label><span class="error"> <?php echo $messageErr;?></span>
             <textarea id="message" name="message" placeholder="Write something..." style="height:200px"></textarea>
 
             <input type="submit" name="submit" value="Submit">
