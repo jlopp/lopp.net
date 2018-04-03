@@ -1,8 +1,8 @@
 <?php
 $nameErr = $emailErr = $subjectErr = $messageErr = "";
-$name = $email = $subject = $message = "";
+$name = $email = $subject = $emailBody = "";
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   if (empty($_POST["name"])) {
     $nameErr = "Name is required";
   } else {
@@ -27,16 +27,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $subjectErr = "Subject is required";
   } else {
     $subject = test_input($_POST["subject"]);
-    }
   }
 	
-  if (empty($_POST["message"])) {
+  if (empty($_POST["emailBody"])) {
     $messageErr = "Message is required";
   } else {
-    $message = test_input($_POST["message"]);
+    $emailBody = test_input($_POST["emailBody"]);
   }
-
-
+}
 
 function test_input($data) {
   $data = trim($data);
@@ -172,31 +170,31 @@ else { document.getElementById(d).style.display = "none"; }
         <p><span class="error">Please do not contact me inquiring about paid promotions / press releases / reviews / social media marketing. My reputation is not for sale.</span></p>
 
         <form action="" method="post">    
-           <label for="name">Name </label><span class="error"> <?php echo $nameErr;?></span>
+           <label for="name">Name </label><span class="error"> <?= $nameErr;?></span>
 
             <input type="text" id="name" name="name" placeholder="Your name...">
 
-            <label for="email">Email</label><span class="error"> <?php echo $emailErr;?></span>
+            <label for="email">Email</label><span class="error"> <?= $emailErr;?></span>
             <input type="text" id="email" name="email" placeholder="Your email..." >
 
-            <label for="subject">Subject</label><span class="error"> <?php echo $subjectErr;?></span>
+            <label for="subject">Subject</label><span class="error"> <?= $subjectErr;?></span>
             <input type="text" id="subject" name="subject" placeholder="Subject...">
             
-            <label for="message">Message</label><span class="error"> <?php echo $messageErr;?></span>
-            <textarea id="message" name="message" placeholder="Write something..." style="height:200px"></textarea>
+            <label for="message">Message</label><span class="error"> <?= $messageErr;?></span>
+            <textarea id="emailBody" name="emailBody" placeholder="Write something..." style="height:200px"></textarea>
 
             <input type="submit" name="submit" value="Submit">
         </form>
 
   <?php 
-if(isset($_POST['submit']) and (!empty($_POST["name"])) and (preg_match("/^[a-zA-Z ]*$/",$name)) and (!empty($_POST["email"])) and  (filter_var($email, FILTER_VALIDATE_EMAIL)) and (!empty($_POST["subject"])) and (!empty($_POST["message"]))) {
+if(isset($_POST['submit']) and (!empty($_POST["name"])) and (preg_match("/^[a-zA-Z ]*$/",$name)) and (!empty($_POST["email"])) and  (filter_var($email, FILTER_VALIDATE_EMAIL)) and (!empty($_POST["subject"])) and (!empty($_POST["emailBody"]))) {
     $to = "contactform@lopp.net";
     $from = $_POST['email'];
     $name = $_POST['name'];
     $subject = $_POST['subject'];
-    $message = "Jameson," . "\n\n" . $name . " from email: " . $email . " wrote the following:" . "\n\n" . $_POST['message'];
+    $emailBody = "Jameson," . "\n\n" . $name . " from email: " . $email . " wrote the following:" . "\n\n" . $_POST['emailBody'];
 	$headers = "From: $from\r\nReply-to: $email";
-    mail($to, $subject, $message, $headers);
+    mail($to, $subject, $emailBody, $headers);
 	echo '<META HTTP-EQUIV="Refresh" Content="0; URL=thank_you.html">';	
 
 	exit;
