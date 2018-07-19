@@ -167,7 +167,7 @@ else { document.getElementById(d).style.display = "none"; }
       </div>
       <div class="col-xs-12 col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10 col-sm-10 col-sm-offset-1">
         <h3>Presentation/Interview Request Form</h3>
-        <p><span class="error">Please do not contact me inquiring about paid promotions / press releases / reviews / social media marketing. My reputation is not for sale.</span></p>
+        <p><span class="error">Please do not contact me inquiring about paid promotions / press releases / reviews / social media marketing. My reputation is not for sale. Messages sent via this form are heavily filtered and may not be read, much less responded to - use the earn.com link if you want a guaranteed response.</span></p>
 
         <form action="" method="post">    
            <label for="name">Name </label><span class="error"> <?= $nameErr;?></span>
@@ -216,14 +216,15 @@ if(isset($_POST['submit']) and (!empty($_POST["name"])) and (preg_match("/^[a-zA
             <h3>Open Source Projects</h3>
             <h4><a href="https://github.com/jlopp/bitcoin-core-config-generator/" target="_blank">Bitcoin Core Config Generator</a></h4>
             <h4><a href="https://github.com/jlopp/statoshi" target="_blank">Statoshi</a></h4>
+            <h4><a href="https://github.com/jlopp/physical-bitcoin-attacks/blob/master/README.md" target="_blank">Physical Attack Log</a></h4>
             <br>
             <br>
           </div>
           <div class="col-lg-4 col-md-5 col-sm-5 col-xs-12">
-            <h3>Other Email Requests</h3>
+            <h3>Want a Guaranteed Response?</h3>
             <p data_temp_dwid="1">
               <a href="https://earn.com/lopp/" target="_blank">
-                <button type="button" class="btn btn-success">Get in touch</button>
+                <button type="button" class="btn btn-success">Get in touch on earn.com</button>
               </a>
             </p>
             <br>
