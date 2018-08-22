@@ -215,8 +215,9 @@ if(isset($_POST['submit']) and (!empty($_POST["name"])) and (preg_match("/^[a-zA
           <div class="text-left col-lg-offset-1 col-lg-5 col-md-5 col-md-offset-1 col-sm-offset-1 col-sm-6 col-xs-12">
             <h3>Open Source Projects</h3>
             <h4><a href="https://github.com/jlopp/bitcoin-core-config-generator/" target="_blank">Bitcoin Core Config Generator</a></h4>
-            <h4><a href="https://github.com/jlopp/statoshi" target="_blank">Statoshi</a></h4>
+            <h4><a href="https://github.com/jlopp/statoshi/" target="_blank">Statoshi</a></h4>
             <h4><a href="https://github.com/jlopp/physical-bitcoin-attacks/blob/master/README.md" target="_blank">Physical Attack Log</a></h4>
+            <h4><a href="https://github.com/jlopp/xpub-converter" target="_blank">Bitcoin xpub Converter</a></h4>
             <br>
             <br>
           </div>
