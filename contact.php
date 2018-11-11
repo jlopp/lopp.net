@@ -1,48 +1,4 @@
-<?php
-$nameErr = $emailErr = $subjectErr = $messageErr = "";
-$name = $email = $subject = $emailBody = "";
-
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-  if (empty($_POST["name"])) {
-    $nameErr = "Name is required";
-  } else {
-    $name = test_input($_POST["name"]);
-    // check if name only contains letters and whitespace
-    if (!preg_match("/^[a-zA-Z ]*$/",$name)) {
-      $nameErr = "Only letters and white space allowed";
-    }
-  }
-  
-  if (empty($_POST["email"])) {
-    $emailErr = "Email is required";
-  } else {
-    $email = test_input($_POST["email"]);
-    // check if e-mail address is well-formed
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-      $emailErr = "Invalid email format";
-    }
-  }
-    
-  if (empty($_POST["subject"])) {
-    $subjectErr = "Subject is required";
-  } else {
-    $subject = test_input($_POST["subject"]);
-  }
-	
-  if (empty($_POST["emailBody"])) {
-    $messageErr = "Message is required";
-  } else {
-    $emailBody = test_input($_POST["emailBody"]);
-  }
-}
-
-function test_input($data) {
-  $data = trim($data);
-  $data = stripslashes($data);
-  $data = htmlspecialchars($data);
-  return $data;
-}
-?>
+<?php include('contact_secrets.php'); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -127,10 +83,10 @@ else { document.getElementById(d).style.display = "none"; }
     <div class="collapse navbar-collapse" id="myDefaultNavbar1">
       <ul class="nav navbar-nav">
       <li><a href="articles.html">Articles</a></li>
-        <li><a href="presentations.html">Presentations</a></li>
+      <li><a href="presentations.html">Presentations</a></li>
       <li><a href="interviews.html">Interviews</a></li>
-        <li><a href="bitcoin.html">Bitcoin Resources</a></li>
-        <li class="active"><a href="#">Contact<span class="sr-only">(current)</span></a></li>
+      <li><a href="bitcoin.html">Bitcoin Resources</a></li>
+      <li class="active"><a href="#">Contact<span class="sr-only">(current)</span></a></li>
       </ul>
     </div>
     <!-- /.navbar-collapse --> 
@@ -170,37 +126,26 @@ else { document.getElementById(d).style.display = "none"; }
         <p><span class="error">Please do not contact me inquiring about paid promotions / press releases / reviews / social media marketing. My reputation is not for sale. Messages sent via this form are heavily filtered and may not be read, much less responded to - use the earn.com link if you want a guaranteed response.</span></p>
 
         <form action="" method="post">    
-           <label for="name">Name </label><span class="error"> <?= $nameErr;?></span>
+           <label for="name">Name </label><span class="error"> <?= $nameErr; ?></span>
 
-            <input type="text" id="name" name="name" placeholder="Your name...">
+            <input type="text" id="name" name="name" placeholder="Your name..." value="<?=$_POST["name"]?>">
 
-            <label for="email">Email</label><span class="error"> <?= $emailErr;?></span>
-            <input type="text" id="email" name="email" placeholder="Your email..." >
+            <label for="email">Email</label><span class="error"> <?= $emailErr; ?></span>
+            <input type="text" id="email" name="email" placeholder="Your email..." value="<?=$_POST["email"]?>">
 
-            <label for="subject">Subject</label><span class="error"> <?= $subjectErr;?></span>
-            <input type="text" id="subject" name="subject" placeholder="Subject...">
+            <label for="subject">Subject</label><span class="error"> <?= $subjectErr; ?></span>
+            <input type="text" id="subject" name="subject" placeholder="Subject..." value="<?=$_POST["subject"]?>">
             
-            <label for="message">Message</label><span class="error"> <?= $messageErr;?></span>
-            <textarea id="emailBody" name="emailBody" placeholder="Write something..." style="height:200px"></textarea>
+            <label for="message">Message</label><span class="error"> <?= $messageErr; ?></span>
+            <textarea id="emailBody" name="emailBody" placeholder="Write something..." style="height:200px"><?=$_POST["emailBody"]?></textarea>
 
-            <input type="submit" name="submit" value="Submit">
+            <script src="https://authedmine.com/lib/captcha.min.js" async></script>
+            <div class="coinhive-captcha" data-hashes="1024" data-key="41sPyVQG8rRE6XQAOCvIjkfsN90dSKXN">
+              <em>Loading Captcha...<br>
+              If it doesn't load, please disable Adblock!</em>
+            </div>
+            <input type="submit" name="submit" value="Submit"><span class="error"> <?= $captchaErr; ?></span>
         </form>
-
-  <?php 
-if(isset($_POST['submit']) and (!empty($_POST["name"])) and (preg_match("/^[a-zA-Z ]*$/",$name)) and (!empty($_POST["email"])) and  (filter_var($email, FILTER_VALIDATE_EMAIL)) and (!empty($_POST["subject"])) and (!empty($_POST["emailBody"]))) {
-    $to = "contactform@lopp.net";
-    $from = $_POST['email'];
-    $name = $_POST['name'];
-    $subject = $_POST['subject'];
-    $emailBody = "Jameson," . "\n\n" . $name . " from email: " . $email . " wrote the following:" . "\n\n" . $_POST['emailBody'];
-	$headers = "From: $from\r\nReply-to: $email";
-    mail($to, $subject, $emailBody, $headers);
-	echo '<META HTTP-EQUIV="Refresh" Content="0; URL=thank_you.html">';	
-
-	exit;
-    }
-?>
-  
         <br>
         <br>
         </div>
