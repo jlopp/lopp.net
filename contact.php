@@ -142,7 +142,7 @@ else { document.getElementById(d).style.display = "none"; }
             <script src="https://authedmine.com/lib/captcha.min.js" async></script>
             <div class="coinhive-captcha" data-hashes="1024" data-key="41sPyVQG8rRE6XQAOCvIjkfsN90dSKXN">
               <em>Loading Captcha...<br>
-              If it doesn't load, please disable Adblock!</em>
+              If you can read this, you need to disable your ad blocker!</em>
             </div>
             <input type="submit" name="submit" value="Submit"><span class="error"> <?= $captchaErr; ?></span>
         </form>
