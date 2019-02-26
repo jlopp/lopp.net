@@ -92,9 +92,14 @@
       document.body.className = currentClass == "dark" ? "" : "dark";
 
       if (document.body.className == "dark") {
+        $("#main-background-section").toggleClass('inner-background inner-background-dark');
         document.body.style.backgroundColor = "#000000";
         document.body.style.color = "#ffffff";
         document.querySelectorAll("div").forEach(function(element) {
+            element.style.backgroundColor = "#000000";
+            element.style.color = "#ffffff";
+        });
+        document.querySelectorAll("nav").forEach(function(element) {
             element.style.backgroundColor = "#000000";
             element.style.color = "#ffffff";
         });
@@ -104,9 +109,14 @@
             element.style.visitedColor = "#ff0000";
         });
       } else {
+        $("#main-background-section").toggleClass('inner-background-dark inner-background');
         document.body.style.backgroundColor = "#ffffff";
         document.body.style.color = "#000000";
         document.querySelectorAll("div").forEach(function(element) {
+            element.style.backgroundColor = "#ffffff";
+            element.style.color = "#000000";
+        });
+        document.querySelectorAll("nav").forEach(function(element) {
             element.style.backgroundColor = "#ffffff";
             element.style.color = "#000000";
         });
@@ -157,7 +167,7 @@
     </div>
     <!-- /.container-fluid -->
   </nav>
-  <section class="inner-background">
+  <section id="main-background-section" class="inner-background">
     <div class="container">
       <div class="row">
         <div class="col-xs-12 text-left col-lg-offset-0 col-lg-12">
