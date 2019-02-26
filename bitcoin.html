@@ -85,6 +85,33 @@
           document.getElementById(d).style.display = "none";
         }
       }
+
+    // Night mode toggle
+    function toggleDarkLight() {
+      var currentClass = document.body.className;
+      document.body.className = currentClass == "dark" ? "" : "dark";
+
+      if (document.body.className == "dark") {
+        document.body.style.backgroundColor = "#000000";
+        document.body.style.color = "#ffffff";
+        document.querySelectorAll("div").forEach(function(element) {
+            element.style.backgroundColor = "#000000";
+            element.style.color = "#ffffff";
+        });
+        document.querySelectorAll("a").forEach(function(element) {
+            element.style.color = "#deb903";
+            element.style.hoverColor = "#ffffff";
+            element.style.visitedColor = "#ff0000";
+        });
+      } else {
+        document.body.style.backgroundColor = "#ffffff";
+        document.body.style.color = "#000000";
+        document.querySelectorAll("div").forEach(function(element) {
+            element.style.backgroundColor = "#ffffff";
+            element.style.color = "#000000";
+        });
+      }
+    }
       //-->
   </script>
 
@@ -142,7 +169,7 @@
       <div class="row">
         <div class="col-xs-12 text-left col-lg-offset-1 col-lg-8 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1">
           <h1>Bitcoin Resources</h1>
-          <p>Bitcoin is a revolutionary system that is quite complex and has a steep learning curve. Make sure you have a decent grasp of the system before you store a significant amount of value in it. Note that this list is open source; please <a href="https://github.com/jlopp/lopp.net/blob/master/bitcoin.html">suggest additions on Github</a>!</p>
+          <p>Bitcoin is a revolutionary system that is quite complex and has a steep learning curve. Make sure you have a decent grasp of the system before you store a significant amount of value in it. Note that this list is open source; please <a href="https://github.com/jlopp/lopp.net/blob/master/bitcoin.html">suggest additions on Github</a>! Toggle dark mode here: <button type="button" name="dark_light" onclick="toggleDarkLight()" title="Toggle dark/light mode">🌓</button></p>
           <br>
         </div>
       </div>
