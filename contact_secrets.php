@@ -1,7 +1,7 @@
 <?php
 
 // set the following two values and the rest of the contact script should work
-const COINHIVE_SECRET_KEY = "";
+const HASHCASH_PRIVATE_KEY = "";
 const YOUR_EMAIL_ADDRESS = "";
 
 $nameErr = $emailErr = $subjectErr = $messageErr = "";
@@ -39,6 +39,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   } else {
     $emailBody = test_input($_POST["emailBody"]);
   }
+
+  if (! $_REQUEST['hashcashid']) {
+    $captchaErr = 'Please unlock the submit button!';
+  }
 }
 
 function test_input($data) {
@@ -48,27 +52,19 @@ function test_input($data) {
   return $data;
 }
 
-if(isset($_POST['submit']) and (!empty($_POST["name"])) and (preg_match("/^[a-zA-Z ]*$/",$name)) and (!empty($_POST["email"])) and  (filter_var($email, FILTER_VALIDATE_EMAIL)) and (!empty($_POST["subject"])) and (!empty($_POST["emailBody"]))) {
+if(isset($_POST['submit']) && isset($_POST['hashcashid']) && (!empty($_POST["name"])) && (preg_match("/^[a-zA-Z ]*$/",$name)) && (!empty($_POST["email"])) &&  (filter_var($email, FILTER_VALIDATE_EMAIL)) && (!empty($_POST["subject"])) && (!empty($_POST["emailBody"]))) {
     // validate that the client performed the proof of work for the captcha
-    $post_data = [
-      'secret' => COINHIVE_SECRET_KEY,
-      'token' => $_POST['coinhive-captcha-token'],
-      'hashes' => 1024
-    ];
+    $url = 'https://hashcash.io/api/checkwork/' . $_POST['hashcashid'] . '?apikey=' . HASHCASH_PRIVATE_KEY;
+    $response = json_decode(file_get_contents($url));
 
-    $post_context = stream_context_create([
-      'http' => [
-        'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
-        'method'  => 'POST',
-        'content' => http_build_query($post_data)
-      ]
-    ]);
-
-    $url = 'https://api.coinhive.com/token/verify';
-    $response = json_decode(file_get_contents($url, false, $post_context));
-
-    if ($response && $response->success) {
-      // All good. Token verified!
+    if (!$response) {
+      $captchaErr = 'Something went wrong; please try again.';
+    } else if ($response->verified) {
+      $captchaErr = 'This proof of work was already used. Nice try!';
+    } else if ($response->totalDone < 0.1) {
+      $captchaErr = 'Failed to complete enough proof of work for form CAPTCHA. Nice try!';
+    } else {
+      // All good
       $from = $_POST['email'];
       $name = $_POST['name'];
       $subject = $_POST['subject'];
@@ -77,10 +73,6 @@ if(isset($_POST['submit']) and (!empty($_POST["name"])) and (preg_match("/^[a-zA
       mail(YOUR_EMAIL_ADDRESS, $subject, $emailBody, $headers);
       echo '<META HTTP-EQUIV="Refresh" Content="0; URL=thank_you.html">';
       exit;
-    } else {
-      // user did not complete proof of work captcha!
-      $captchaErr = 'Failed to complete enough proof of work for form CAPTCHA. Nice try!';
     }
-
   }
 ?>

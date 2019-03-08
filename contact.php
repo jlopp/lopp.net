@@ -14,6 +14,10 @@
 <link rel="stylesheet" href="css/bootstrap.css">
 <link href="style.css" rel="stylesheet" type="text/css"> 
 <link href="https://fonts.googleapis.com/css?family=Overpass+Mono:300,400,600,700&amp;subset=latin-ext" rel="stylesheet"> 
+<script src="js/jquery-1.11.3.min.js"></script>
+<!-- PoW CAPTCHA -->
+<link type="text/css" rel="stylesheet" href="css/jquery.hashcash.io.min.css" media="all" />
+<script src="js/jquery.hashcash.io.min.js"></script>
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -139,12 +143,13 @@ else { document.getElementById(d).style.display = "none"; }
             <label for="message">Message</label><span class="error"> <?= $messageErr; ?></span>
             <textarea id="emailBody" name="emailBody" placeholder="Write something..." style="height:200px"><?=$_POST["emailBody"]?></textarea>
 
-            <script src="https://authedmine.com/lib/captcha.min.js" async></script>
-            <div class="coinhive-captcha" data-hashes="1024" data-key="41sPyVQG8rRE6XQAOCvIjkfsN90dSKXN">
-              <em>Loading Captcha...<br>
-              If you can read this, you need to disable your ad blocker!</em>
-            </div>
             <input type="submit" name="submit" value="Submit"><span class="error"> <?= $captchaErr; ?></span>
+            <script>
+              $("form input[type=submit]").hashcash({
+                key: "97517ff2-9167-4af1-afb0-779a67e395b3",
+                complexity: 0.1
+              });
+            </script>
         </form>
         <br>
         <br>
