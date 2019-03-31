@@ -9,6 +9,7 @@
 <meta name="keywords" content="jameson, lopp, bitcoin, crypto, cypherpunk" />
 <meta name="Robots" content="index,follow" />
 <title>Jameson Lopp :: Contact</title>
+<meta name="description" content="Contact form for reaching Jameson Lopp.">
 
 <!-- Bootstrap -->
 <link rel="stylesheet" href="css/bootstrap.css">
@@ -76,7 +77,7 @@ else { document.getElementById(d).style.display = "none"; }
 
 </head>
 
-<body onLoad="MM_preloadImages('images/twitter-roll.gif','images/github-roll.gif','images/21-roll.gif','images/keybase-roll.gif')">
+<body onLoad="MM_preloadImages('images/twitter-roll.gif','images/github-roll.gif','images/earn-roll.gif','images/keybase-roll.gif','images/pgp-roll.gif')">
 <nav class="navbar navbar-default col-sm-offset-0 col-sm-12 col-md-offset-0 col-md-12 col-lg-offset-0 col-lg-12">
   <div class="container"> 
     <!-- Brand and toggle get grouped for better mobile display -->
