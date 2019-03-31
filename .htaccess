@@ -6,3 +6,30 @@ RewriteRule ^[b|B][i|I][t|T][c|C][o|O][i|I][n|N]\.html$ /bitcoin-information.htm
 RewriteRule ^[b|B][i|I][t|T][c|C][o|O][i|I][n|N]$ /bitcoin-information.html [R=301]
 RewriteCond %{HTTPS} off
 RewriteRule ^(.*)$ https://lopp.net/$1 [R=301,L]
+
+<IfModule mod_expires.c>
+ExpiresActive On
+ExpiresByType image/jpg "access plus 1 month"
+ExpiresByType image/jpeg "access plus 1 month"
+ExpiresByType image/gif "access plus 1 month"
+ExpiresByType image/png "access plus 1 month"
+ExpiresByType text/css "access plus 1 month"
+ExpiresByType application/pdf "access plus 1 month"
+ExpiresByType text/x-javascript "access plus 1 month"
+ExpiresByType application/x-shockwave-flash "access plus 1 month"
+ExpiresByType image/x-icon "access plus 1 year"
+ExpiresDefault "access plus 2 days"
+</IfModule>
+
+<IfModule mod_deflate.c>
+AddOutputFilterByType DEFLATE text/plain
+AddOutputFilterByType DEFLATE text/html
+AddOutputFilterByType DEFLATE text/xml
+AddOutputFilterByType DEFLATE text/shtml
+AddOutputFilterByType DEFLATE text/css
+AddOutputFilterByType DEFLATE application/xml
+AddOutputFilterByType DEFLATE application/xhtml+xml
+AddOutputFilterByType DEFLATE application/rss+xml
+AddOutputFilterByType DEFLATE application/javascript
+AddOutputFilterByType DEFLATE application/x-javascript
+</IfModule> 
