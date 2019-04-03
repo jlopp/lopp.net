@@ -9,12 +9,16 @@ RewriteRule ^[l|L][i|I][g|G][h|H][t|T][n|N][i|I][n|N][g|G]\.html$ /lightning-inf
 RewriteCond %{HTTPS} off
 RewriteRule ^(.*)$ https://lopp.net/$1 [R=301,L]
 
+AddType image/x-icon .ico
+AddType 'text/html; charset=UTF-8' html
+
 <IfModule mod_expires.c>
 ExpiresActive On
 # Media: images, video, audio
 ExpiresByType image/jpg "access plus 1 month"
 ExpiresByType image/jpeg "access plus 1 month"
 ExpiresByType image/gif "access plus 1 month"
+ExpiresByType image/webp "access plus 1 month"
 ExpiresByType image/png "access plus 1 month"
 ExpiresByType image/x-icon "access plus 1 year"
 ExpiresByType application/pdf "access plus 1 month"
@@ -53,3 +57,8 @@ AddOutputFilterByType DEFLATE application/rss+xml
 AddOutputFilterByType DEFLATE application/javascript
 AddOutputFilterByType DEFLATE application/x-javascript
 </IfModule> 
+
+<IfModule mod_headers.c>
+Header set Content-Security-Policy "script-src 'self' https://lopp.net"
+Header always set X-FRAME-OPTIONS "DENY"
+</IfModule>
