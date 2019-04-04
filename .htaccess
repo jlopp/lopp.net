@@ -1,16 +1,27 @@
 Options +FollowSymlinks 
-AddType x-mapp-php5 .php
 Options -MultiViews
 RewriteEngine On
+RewriteBase /
+# Handle typos, redirect from old URLs
 RewriteRule ^[b|B][i|I][t|T][c|C][o|O][i|I][n|N]\.html$ /bitcoin-information.html [R=301]
 RewriteRule ^[b|B][i|I][t|T][c|C][o|O][i|I][n|N]$ /bitcoin-information.html [R=301]
 RewriteRule ^[l|L][i|I][g|G][h|H][t|T][n|N][i|I][n|N][g|G]$ /lightning-information.html [R=301]
 RewriteRule ^[l|L][i|I][g|G][h|H][t|T][n|N][i|I][n|N][g|G]\.html$ /lightning-information.html [R=301]
+
+# Redirect HTTP to HTTPS
 RewriteCond %{HTTPS} off
 RewriteRule ^(.*)$ https://lopp.net/$1 [R=301,L]
 
+# Hide file extensions
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.html -f
+RewriteRule ^(.*)$ $1\.html [R=301,L]
+
+AddType x-mapp-php5 .php
 AddType image/x-icon .ico
 AddType 'text/html; charset=UTF-8' html
+AddDefaultCharset utf-8 
 
 <IfModule mod_expires.c>
 ExpiresActive On
