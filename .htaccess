@@ -13,6 +13,7 @@ RewriteCond %{HTTPS} off
 RewriteRule ^(.*)$ https://lopp.net/$1 [R=301,L]
 
 # Hide file extensions
+RewriteRule ^contact$ /contact.php [R=301,L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}\.html -f
