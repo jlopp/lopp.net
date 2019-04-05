@@ -3,65 +3,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="keywords" content="jameson, lopp, bitcoin, crypto, cypherpunk" />
-<meta name="Robots" content="index,follow" />
-<title>Jameson Lopp :: Contact</title>
-<meta name="description" content="Contact form for reaching Jameson Lopp.">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="keywords" content="jameson, lopp, bitcoin, crypto, cypherpunk" />
+  <meta name="Robots" content="index,follow" />
+  <title>Jameson Lopp :: Contact</title>
+  <meta name="description" content="Contact form for reaching Jameson Lopp.">
 
-<!-- Bootstrap -->
-<link rel="stylesheet" href="css/bootstrap.css">
-<link href="style.css" rel="stylesheet" type="text/css"> 
-<link href="https://fonts.googleapis.com/css?family=Overpass+Mono:300,400,600,700&amp;subset=latin-ext" rel="stylesheet"> 
-<script src="js/jquery-1.11.3.min.js"></script>
-<!-- PoW CAPTCHA -->
-<link type="text/css" rel="stylesheet" href="css/jquery.hashcash.io.min.css" media="all" />
-<script src="js/jquery.hashcash.io.min.js"></script>
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link href="style.css" rel="stylesheet" type="text/css"> 
+  <link href="https://fonts.googleapis.com/css?family=Overpass+Mono:300,400,600,700&amp;subset=latin-ext" rel="stylesheet"> 
+  <script src="js/jquery-1.11.3.min.js"></script>
+  <!-- PoW CAPTCHA -->
+  <link type="text/css" rel="stylesheet" href="css/jquery.hashcash.io.min.css" media="all" />
+  <script src="js/jquery.hashcash.io.min.js"></script>
 
-<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-<script type="text/javascript">
-function MM_swapImgRestore() { //v3.0
-  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
-}
-function MM_preloadImages() { //v3.0
-  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
-    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
-    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
-}
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+      <![endif]-->
+  <script>
+  function MM_swapImgRestore() { //v3.0
+    var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+  }
+  function MM_preloadImages() { //v3.0
+    var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+      var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+      if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+  }
 
-function MM_findObj(n, d) { //v4.01
-  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
-    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
-  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
-  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
-  if(!x && d.getElementById) x=d.getElementById(n); return x;
-}
+  function MM_findObj(n, d) { //v4.01
+    var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+      d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+    if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+    for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+    if(!x && d.getElementById) x=d.getElementById(n); return x;
+  }
 
-function MM_swapImage() { //v3.0
-  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
-   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
-}
-</script>
+  function MM_swapImage() { //v3.0
+    var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+     if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+  }
 
-<script type="text/javascript"><!--
-function HideContent(d) {
-document.getElementById(d).style.display = "none";
-}
-function ShowContent(d) {
-document.getElementById(d).style.display = "block";
-}
-function ReverseDisplay(d) {
-if(document.getElementById(d).style.display == "none") { document.getElementById(d).style.display = "block"; }
-else { document.getElementById(d).style.display = "none"; }
-}
-//--></script>
+  function HideContent(d) {
+    document.getElementById(d).style.display = "none";
+  }
+  function ShowContent(d) {
+    document.getElementById(d).style.display = "block";
+  }
+  function ReverseDisplay(d) {
+    if(document.getElementById(d).style.display == "none") { document.getElementById(d).style.display = "block"; }
+    else { document.getElementById(d).style.display = "none"; }
+  }
+  </script>
 
   <!-- Google Analytics -->
   <script>
@@ -137,7 +135,7 @@ else { document.getElementById(d).style.display = "none"; }
         <h3>Presentation/Interview Request Form</h3>
         <p><span class="error">Please do not contact me inquiring about paid promotions / press releases / reviews / social media marketing. My reputation is not for sale. Messages sent via this form are heavily filtered and may not be read, much less responded to - use the earn.com link if you want a guaranteed response.</span></p>
 
-        <form action="" method="post">    
+        <form action="contact.php" method="post">    
            <label for="name">Name </label><span class="error"> <?= $nameErr; ?></span>
 
             <input type="text" id="name" name="name" placeholder="Your name..." value="<?=$_POST["name"]?>">
@@ -148,7 +146,7 @@ else { document.getElementById(d).style.display = "none"; }
             <label for="subject">Subject</label><span class="error"> <?= $subjectErr; ?></span>
             <input type="text" id="subject" name="subject" placeholder="Subject..." value="<?=$_POST["subject"]?>">
             
-            <label for="message">Message</label><span class="error"> <?= $messageErr; ?></span>
+            <label for="emailBody">Message</label><span class="error"> <?= $messageErr; ?></span>
             <textarea id="emailBody" name="emailBody" placeholder="Write something..." style="height:200px"><?=$_POST["emailBody"]?></textarea>
 
             <input type="submit" name="submit" value="Submit"><span class="error"> <?= $captchaErr; ?></span>
@@ -181,19 +179,14 @@ else { document.getElementById(d).style.display = "none"; }
           </div>
           <div class="col-lg-4 col-md-5 col-sm-5 col-xs-12">
             <h3>Want a Guaranteed Response?</h3>
-            <p data_temp_dwid="1">
-              <a href="https://earn.com/lopp/" target="_blank">
-                <button type="button" class="btn btn-success">Get in touch on earn.com</button>
-              </a>
+            <p>
+              <button type="button" class="btn btn-success" onclick="location.href='https://earn.com/lopp/'">Get in touch on earn.com</button>
             </p>
             <br>
             <br>
           </div>
         </div>
   </div>
-</section>
-<section>
-  <div class="container"> </div>
 </section>
 <hr>
 <div class="section well">
