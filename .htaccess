@@ -9,19 +9,19 @@ RewriteRule ^[l|L][i|I][g|G][h|H][t|T][n|N][i|I][n|N][g|G]$ /lightning-informati
 RewriteRule ^[l|L][i|I][g|G][h|H][t|T][n|N][i|I][n|N][g|G]\.html$ /lightning-information.html [R=301]
 
 # Redirect non-www to www subdomain to enable CDN
-#RewriteCond %{HTTP_HOST} !^www\. [NC]
-#RewriteRule ^(.*)$ https://www.%{HTTP_HOST}/$1 [R=301,L]
-
-# Redirect HTTP to HTTPS
-RewriteCond %{HTTPS} off
-RewriteRule ^(.*)$ https://www.lopp.net/$1 [R=301,L]
+RewriteCond %{HTTP_HOST} !^www\. [NC]
+RewriteRule ^(.*)$ https://www.%{HTTP_HOST}/$1 [R=301,L]
 
 # Hide file extensions
-RewriteRule ^contact$ /contact.php [R=301,L]
+RewriteRule ^contact$ https://%{HTTP_HOST}/contact.php [R=301,L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}\.html -f
-RewriteRule ^(.*)$ $1\.html [R=301,L]
+RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1\.html [R=301,L]
+
+# Redirect HTTP to HTTPS (breaks cloudflare)
+#RewriteCond %{HTTPS} off
+#RewriteRule ^(.*)$ https://www.lopp.net/$1 [R=301,L]
 
 AddType x-mapp-php5 .php
 AddType image/x-icon .ico
