@@ -12,6 +12,12 @@
   <meta name="Robots" content="index,follow" />
   <meta name="description" content="Contact form for reaching Jameson Lopp." />
 
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:description" content="Contact form for Jameson Lopp" />
+  <meta name="twitter:title" content="Jameson Lopp's Contact Information" />
+  <meta name="twitter:site" content="@lopp" />
+  <meta name="twitter:creator" content="@lopp" />
+
   <link rel="shortcut icon" href="/favicon.ico" />
   <link rel="stylesheet" href="css/bootstrap.css" />
   <link rel="stylesheet" href="css/style.css" />
