@@ -19,6 +19,7 @@
   <meta name="twitter:creator" content="@lopp" />
 
   <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
   <link rel="stylesheet" href="css/bootstrap.css" />
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/overpassmono.css" />
