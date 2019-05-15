@@ -13,10 +13,17 @@
   <meta name="description" content="Contact form for reaching Jameson Lopp." />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:description" content="Contact form for Jameson Lopp" />
+  <meta name="twitter:description" content="Contact Jameson Lopp" />
   <meta name="twitter:title" content="Jameson Lopp's Contact Information" />
   <meta name="twitter:site" content="@lopp" />
   <meta name="twitter:creator" content="@lopp" />
+  <meta name="twitter:image" content="https://www.lopp.net/images/avatar.jpg" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:description" content="Contact Jameson Lopp" />
+  <meta property="og:image" content="https://www.lopp.net/images/avatar.jpg" />
+  <meta property="og:url" content="https://www.lopp.net/contact.php" />
+  <meta property="og:site_name" content="Contact Jameson Lopp" />
 
   <link rel="shortcut icon" href="/favicon.ico" />
   <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
