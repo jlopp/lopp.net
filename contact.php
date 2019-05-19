@@ -35,6 +35,109 @@
   <!-- PoW CAPTCHA -->
   <link type="text/css" rel="stylesheet" href="css/jquery.hashcash.io.min.css" media="all" />
   <script src="js/jquery.hashcash.io.min.js"></script>
+  <!-- PGP encryption -->
+  <script src="js/openpgp.min.js"></script>
+  <script>
+    async function encrypt() {
+      if (window.crypto.getRandomValues) {
+        var pub_key = await openpgp.key.readArmored(
+`-----BEGIN PGP PUBLIC KEY BLOCK-----
+
+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
+NjT4rMUesCnjTVHVM9KXvMemwAhhYbM=
+=QGZJ
+-----END PGP PUBLIC KEY BLOCK-----`
+          );
+        var options = {
+            message: openpgp.message.fromText(document.getElementById("emailBody").value),       // input as Message object
+            publicKeys: pub_key.keys
+        }
+        var pgp_message = openpgp.encrypt(options).then(ciphertext => {
+          $('#emailBody').val(ciphertext.data);
+          return true;
+        });
+      } else {
+        $("#encryptbutton").val("Error");
+        window.alert("This browser isn't supported!");
+        return false;
+      }
+    }
+  </script>
 
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -164,7 +267,7 @@
             
             <label for="emailBody">Message</label><span class="error"> <?= $messageErr; ?></span>
             <textarea id="emailBody" name="emailBody" placeholder="Write something..." style="height:200px"><?=$_POST["emailBody"]?></textarea>
-
+            <button type="button" class="btn btn-success" id="encryptbutton" onClick="encrypt()">Encrypt Message (optional)</button>
             <input type="submit" name="submit" value="Submit"><span class="error"> <?= $captchaErr; ?></span>
             <script>
               $("form input[type=submit]").hashcash({
@@ -234,8 +337,6 @@
     </div>
   </div>
 </footer>
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="js/jquery-1.11.3.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="js/bootstrap.js"></script>
 </body>
