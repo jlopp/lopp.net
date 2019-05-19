@@ -251,7 +251,7 @@ NjT4rMUesCnjTVHVM9KXvMemwAhhYbM=
       <div class="col-xs-12 text-left col-lg-offset-0 col-lg-12"> <br><br>
       </div>
       <div class="col-xs-12 col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10 col-sm-10 col-sm-offset-1">
-        <h3>Presentation/Interview Request Form</h3>
+        <h3>Contact Form</h3>
         <p><span class="error">Please do not contact me inquiring about paid promotions / press releases / reviews / social media marketing. My reputation is not for sale. Messages sent via this form are heavily filtered and may not be read, much less responded to - use the earn.com link if you want a guaranteed response.</span></p>
 
         <form action="contact.php" method="post">    
@@ -266,8 +266,8 @@ NjT4rMUesCnjTVHVM9KXvMemwAhhYbM=
             <input type="text" id="subject" name="subject" placeholder="Subject..." value="<?=$_POST["subject"]?>">
             
             <label for="emailBody">Message</label><span class="error"> <?= $messageErr; ?></span>
-            <textarea id="emailBody" name="emailBody" placeholder="Write something..." style="height:200px"><?=$_POST["emailBody"]?></textarea>
-            <button type="button" class="btn btn-success" id="encryptbutton" onClick="encrypt()">Encrypt Message (optional)</button>
+            <textarea id="emailBody" name="emailBody" placeholder="Write your message here. If it contains sensitive information, click the Encrypt Message button before submitting." style="height:200px"><?=$_POST["emailBody"]?></textarea>
+            <button type="button" class="btn btn-success" id="encryptbutton" onClick="encrypt()">Encrypt Message</button>
             <input type="submit" name="submit" value="Submit"><span class="error"> <?= $captchaErr; ?></span>
             <script>
               $("form input[type=submit]").hashcash({
