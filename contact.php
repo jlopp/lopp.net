@@ -233,7 +233,7 @@ NjT4rMUesCnjTVHVM9KXvMemwAhhYbM=
     <div class="row">
       <div class="col-xs-12 text-left col-lg-offset-1 col-lg-8 col-md-offset-1 col-md-10 col-sm-offset-1 col-sm-10">
         <h1>Contact</h1>
-        <p>Jameson's goal is to spread knowledge of crypto systems and liberating technologies. If you can offer an opportunity to reach a large audience, please use the form below. If you're seeking specific answers for your own understanding, please check the <a href="bitcoin-information.html">educational resources page.</a> For business opportunities or other requests, please use the contact form hosted at <a href="https://earn.com/lopp/" target="_blank">earn.com</a></p>
+        <p>Jameson's goal is to spread knowledge of crypto systems and liberating technologies. If you can offer an opportunity to reach a large audience, please use the form below. If you're seeking specific answers for your own understanding, please check the <a href="/bitcoin-information">educational resources page.</a> For business opportunities or other requests, please use the contact form hosted at <a href="https://earn.com/lopp/" target="_blank">earn.com</a></p>
         <br>
       </div>
     </div>
