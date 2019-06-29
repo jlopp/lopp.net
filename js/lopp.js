@@ -103,7 +103,9 @@ function applyDarkLightMode() {
 }
 
 const toggle = document.querySelector('.toggle-input');
-toggle.addEventListener('change', function() {
-  toggleDarkLight();
-});
+if (toggle) {
+  toggle.addEventListener('change', function() {
+    toggleDarkLight();
+  });
+}
 applyDarkLightMode();
