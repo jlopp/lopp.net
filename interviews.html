@@ -36,77 +36,8 @@
 
 
   <link rel="stylesheet" href="css/bootstrap.css" />
-  <link rel="stylesheet" href="css/style.css" />
+  <link id="mystyle" rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/overpassmono.css" />
-
-  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  <script>
-    function MM_swapImgRestore() { //v3.0
-      var i, x, a = document.MM_sr;
-      for (i = 0; a && i < a.length && (x = a[i]) && x.oSrc; i++) x.src = x.oSrc;
-    }
-
-    function MM_preloadImages() { //v3.0
-      var d = document;
-      if (d.images) {
-        if (!d.MM_p) d.MM_p = new Array();
-        var i, j = d.MM_p.length,
-          a = MM_preloadImages.arguments;
-        for (i = 0; i < a.length; i++)
-          if (a[i].indexOf("#") != 0) {
-            d.MM_p[j] = new Image;
-            d.MM_p[j++].src = a[i];
-          }
-      }
-    }
-
-    function MM_findObj(n, d) { //v4.01
-      var p, i, x;
-      if (!d) d = document;
-      if ((p = n.indexOf("?")) > 0 && parent.frames.length) {
-        d = parent.frames[n.substring(p + 1)].document;
-        n = n.substring(0, p);
-      }
-      if (!(x = d[n]) && d.all) x = d.all[n];
-      for (i = 0; !x && i < d.forms.length; i++) x = d.forms[i][n];
-      for (i = 0; !x && d.layers && i < d.layers.length; i++) x = MM_findObj(n, d.layers[i].document);
-      if (!x && d.getElementById) x = d.getElementById(n);
-      return x;
-    }
-
-    function MM_swapImage() { //v3.0
-      var i, j = 0,
-        x, a = MM_swapImage.arguments;
-      document.MM_sr = new Array;
-      for (i = 0; i < (a.length - 2); i += 3)
-        if ((x = MM_findObj(a[i])) != null) {
-          document.MM_sr[j++] = x;
-          if (!x.oSrc) x.oSrc = x.src;
-          x.src = a[i + 2];
-        }
-    }
-
-    function HideContent(d) {
-      document.getElementById(d).style.display = "none";
-    }
-
-    function ShowContent(d) {
-      document.getElementById(d).style.display = "block";
-    }
-
-    function ReverseDisplay(d) {
-        if (document.getElementById(d).style.display == "none") {
-          document.getElementById(d).style.display = "block";
-        } else {
-          document.getElementById(d).style.display = "none";
-        }
-      }
-  </script>
 
   <!-- Google Analytics -->
   <script>
@@ -203,7 +134,7 @@
           <br>
           <br>
           <div class="videowrapper">
-            <iframe title="OPSEC" src="https://www.youtube.com/embed/7DuvppP2it8?rel=0" allowfullscreen="" class="video"></iframe>
+            <div class="youtube-player" data-id="7DuvppP2it8"></div>
           </div>
           <br>
           <br>
@@ -237,7 +168,7 @@
           <br>
           <br>
           <div class="videowrapper">
-            <iframe title="Erlay, Hyperloop, Statechains" src="https://www.youtube.com/embed/crUkIddgu3s?rel=0" allowfullscreen="" class="video"></iframe>
+            <div class="youtube-player" data-id="crUkIddgu3s"></div>
           </div>
           <br>
           <br>
@@ -247,7 +178,7 @@
           <br>
           <br>
           <div class="videowrapper">
-            <iframe title="Lightning Panel" src="https://www.youtube.com/embed/dHQhtSBAmMA?rel=0" allowfullscreen="" class="video"></iframe>
+            <div class="youtube-player" data-id="dHQhtSBAmMA"></div>
           </div>
           <br>
           <br>
@@ -327,7 +258,7 @@
           <br>
           <br>
           <div class="videowrapper">
-            <iframe title="Being a Professional Cypherpunk" src="https://www.youtube.com/embed/_VIKXg9kF3E?rel=0" allowfullscreen="" class="video"></iframe>
+            <div class="youtube-player" data-id="_VIKXg9kF3E"></div>
           </div>
           <br>
           <br>
@@ -337,7 +268,7 @@
           <br>
           <br>
           <div class="videowrapper">
-            <iframe title="Ethereum Scaling Challenges" src="https://www.youtube.com/embed/BgFXqVpGDNg?rel=0&ecver=1&start=3805" allowfullscreen="" class="video"></iframe>
+            <div class="youtube-player" data-id="BgFXqVpGDNg" data-start="3805"></div>
           </div>
           <br>
           <br>
@@ -371,7 +302,7 @@
           <br>
           <br>
           <div class="videowrapper">
-            <iframe title="Jameson &amp; Alena" src="https://www.youtube.com/embed/ksE8EPKENak?rel=0&ecver=1" allowfullscreen="" class="video"></iframe>
+            <div class="youtube-player" data-id="ksE8EPKENak"></div>
           </div>
           <br>
           <br>
@@ -381,7 +312,7 @@
           <br>
           <br>
           <div class="videowrapper">
-            <iframe title="Security, Privacy, Scaling" src="https://www.youtube.com/embed/NDleBWrnRsk?rel=0&ecver=1" allowfullscreen="" class="video"></iframe>
+            <div class="youtube-player" data-id="NDleBWrnRsk"></div>
           </div>
           <br>
           <br>
@@ -415,7 +346,7 @@
           <br>
           <br>
           <div class="videowrapper">
-            <iframe title="Crypto Insider" src="https://www.youtube.com/embed/8ynn2dZo_sw?rel=0&ecver=1" allowfullscreen="" class="video"></iframe>
+            <div class="youtube-player" data-id="8ynn2dZo_sw"></div>
           </div>
           <br>
           <br>
@@ -425,7 +356,7 @@
           <br>
           <br>
           <div class="videowrapper">
-            <iframe title="Casa" src="https://www.youtube.com/embed/BGBjwnzYW8k?rel=0&ecver=1" allowfullscreen="" class="video"></iframe>
+            <div class="youtube-player" data-id="BGBjwnzYW8k"></div>
           </div>
           <br>
           <br>
@@ -574,7 +505,7 @@
           <br>
           <br>
           <div class="videowrapper">
-            <iframe title="Quantum Nature of Bitcoin" src="https://www.youtube.com/embed/dqNgnQWwyxI?start=791&rel=0&ecver=1" allowfullscreen="" class="video"></iframe>
+            <div class="youtube-player" data-id="dqNgnQWwyxI" data-start="791"></div>
           </div>
           <br>
           <br>
@@ -584,7 +515,7 @@
           <br>
           <br>
           <div class="videowrapper">
-            <iframe title="The Rent is Too Damn High" src="https://www.youtube.com/embed/vOJl8Ix5e-M?start=796&rel=0?ecver=1" allowfullscreen="" class="video"></iframe>
+            <div class="youtube-player" data-id="vOJl8Ix5e-M" data-start="796"></div>
           </div>
           <br>
           <br>
@@ -710,7 +641,7 @@
           <br>
           <br>
           <div class="videowrapper">
-            <iframe title="Will Bitcoin Revive Gold" src="https://www.youtube.com/embed/UrettYxF8IQ?start=721&rel=0&ecver=1" allowfullscreen="" class="video"></iframe>
+            <div class="youtube-player" data-id="UrettYxF8IQ" data-start="721"></div>
           </div>
           <br>
           <br>
@@ -720,7 +651,7 @@
           <br>
           <br>
           <div class="videowrapper">
-            <iframe title="HyperBitcoinization" src="https://www.youtube.com/embed/sbJ44BLxjGo?start=714&rel=0?ecver=1" allowfullscreen="" class="video"></iframe>
+            <div class="youtube-player" data-id="sbJ44BLxjGo" data-start="714"></div>
           </div>
           <br>
           <br>
@@ -776,7 +707,7 @@
           <br>
           <br>
           <div class="videowrapper">
-            <iframe title="UASF" src="https://www.youtube.com/embed/fXxW5wyeGrk?rel=0" allowfullscreen="" class="video"></iframe>
+            <div class="youtube-player" data-id="fXxW5wyeGrk"></div>
           </div>
           <br>
           <br>
@@ -787,7 +718,7 @@
           <br>
           <br>
           <div class="videowrapper">
-            <iframe title="Is There a Tech Bubble" src="https://www.youtube.com/embed/WDlcHL7k9Go?rel=0?ecver=1&start=794" allowfullscreen="" class="video"></iframe>
+            <div class="youtube-player" data-id="WDlcHL7k9Go" data-start="794"></div>
           </div>
           <br>
           <br>
@@ -797,7 +728,7 @@
           <br>
           <br>
           <div class="videowrapper">
-            <iframe title="Liquidity Turbulence" src="https://www.youtube.com/embed/Jj9nDf3BqUM?rel=0&ecver=1&start=735" allowfullscreen="" class="video"></iframe>
+            <div class="youtube-player" data-id="Jj9nDf3BqUM" data-start="735"></div>
           </div>
           <br>
           <br>
@@ -831,7 +762,7 @@
           <br>
           <br>
           <div class="videowrapper">
-            <iframe title="Lightning Network" src="https://www.youtube.com/embed/UULNfNjlZ5w?rel=0&ecver=1" allowfullscreen="" class="video"></iframe>
+            <div class="youtube-player" data-id="UULNfNjlZ5w"></div>
           </div>
           <br>
           <br>
@@ -841,7 +772,7 @@
           <br>
           <br>
           <div class="videowrapper">
-            <iframe title="SegWit2X" src="https://www.youtube.com/embed/Nn9YIT_4ekU?rel=0&ecver=1" allowfullscreen="" class="video"></iframe>
+            <div class="youtube-player" data-id="Nn9YIT_4ekU"></div>
           </div>
           <br>
           <br>
@@ -852,7 +783,7 @@
           <br>
           <br>
           <div class="videowrapper">
-            <iframe title="Scaling Bitcoin Debate" src="https://www.youtube.com/embed/Fh8xNUj4VC8?rel=0&ecver=1" allowfullscreen="" class="video"></iframe>
+            <div class="youtube-player" data-id="Fh8xNUj4VC8"></div>
           </div>
           <br>
           <br>
@@ -862,7 +793,7 @@
           <br>
           <br>
           <div class="videowrapper">
-            <iframe title="The Future of Bitcoin" src="https://www.youtube.com/embed/pShPkpW8MHE?rel=0" allowfullscreen="" class="video"></iframe>
+            <div class="youtube-player" data-id="pShPkpW8MHE"></div>
           </div>
           <br>
           <br>
@@ -873,7 +804,7 @@
           <br>
           <br>
           <div class="videowrapper">
-            <iframe title="MintPress Interview" src="https://www.youtube.com/embed/g5PN2kntObc?rel=0&ecver=1" allowfullscreen="" class="video"></iframe>
+            <div class="youtube-player" data-id="g5PN2kntObc"></div>
           </div>
           <br>
           <br>
@@ -925,5 +856,6 @@
   <script src="js/jquery-1.11.3.min.js"></script>
   <!-- Include all compiled plugins (below), or include individual files as needed -->
   <script src="js/bootstrap.js"></script>
+  <script src="js/lopp.js"></script>
 </body>
 </html>
