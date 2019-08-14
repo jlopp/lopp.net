@@ -126,9 +126,11 @@ function applyDarkLightMode() {
     } else if (document.getElementById("mystyle").getAttribute("href") == "../css/style.css") {
       document.getElementById("mystyle").setAttribute("href", "../css/dark.css");
     }
-    // only important for setting state on initial page load
+    // only important for setting state on initial page load for pages with a toggle button
     const toggle = document.querySelector('.toggle-input');
-    toggle.checked = true;
+    if (toggle) {
+      toggle.checked = true;
+    }
   } else {
     if (document.getElementById("mystyle").getAttribute("href") == "css/dark.css") {
       document.getElementById("mystyle").setAttribute("href", "css/style.css");
