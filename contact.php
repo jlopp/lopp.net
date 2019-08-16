@@ -29,9 +29,7 @@
   <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
 
   <link rel="stylesheet" href="css/bootstrap.css" />
-  <link rel="stylesheet" href="css/overpassmono.css" />
   <link id="mystyle" rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="css/toggle.css" />
 
   <script src="js/jquery-1.11.3.min.js"></script>
   <!-- PoW CAPTCHA -->
@@ -298,7 +296,6 @@ NjT4rMUesCnjTVHVM9KXvMemwAhhYbM=
     </div>
   </div>
 </footer>
-<script src="js/jquery-1.11.3.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/lopp.js"></script>
 </body>
