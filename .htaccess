@@ -79,7 +79,8 @@ AddOutputFilterByType DEFLATE application/x-javascript
 </IfModule> 
 
 <IfModule mod_headers.c>
-Header set Content-Security-Policy "script-src 'self' https://platform.twitter.com https://cdn.syndication.twimg.com https://syndication.twitter.com 'unsafe-inline'"
+Header set X-UA-Compatible "IE=Edge"
+Header set Content-Security-Policy "script-src 'self' https://platform.twitter.com https://cdn.syndication.twimg.com https://syndication.twitter.com 'unsafe-inline'; base-uri 'self';"
 Header always set X-FRAME-OPTIONS "DENY"
 </IfModule>
 
