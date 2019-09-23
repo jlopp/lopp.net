@@ -28,10 +28,9 @@
   <link rel="stylesheet" href="css/bootstrap.css" />
   <link id="mystyle" rel="stylesheet" href="css/style.css" />
 
-  <script src="js/jquery-1.11.3.min.js"></script>
+  <script src="js/jquery-3.4.1.slim.min.js"></script>
   <!-- PoW CAPTCHA -->
   <link type="text/css" rel="stylesheet" href="css/jquery.hashcash.io.min.css" media="all" />
-  <script src="js/jquery.hashcash.io.min.js"></script>
   <!-- PGP encryption -->
   <script src="js/openpgp.min.js"></script>
   <script>
@@ -225,6 +224,8 @@ NjT4rMUesCnjTVHVM9KXvMemwAhhYbM=
             <textarea id="emailBody" name="emailBody" placeholder="Write your message here. If it contains sensitive information, click the Encrypt Message button before submitting." style="height:200px"><?=$_POST["emailBody"]?></textarea>
             <button type="button" class="btn btn-success" id="encryptbutton" onClick="encrypt()">Encrypt Message</button>
             <input type="submit" name="submit" value="Submit"><span class="error"> <?= $captchaErr; ?></span>
+            <!-- PoW CAPTCHA makes calls to body, so must be loaded after body exists in DOM -->
+            <script src="js/jquery.hashcash.io.min.js"></script>
             <script>
               $("form input[type=submit]").hashcash({
                 key: "97517ff2-9167-4af1-afb0-779a67e395b3",
