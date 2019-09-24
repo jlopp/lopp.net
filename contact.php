@@ -36,6 +36,10 @@
   <script>
     async function encrypt() {
       if (window.crypto.getRandomValues) {
+        // don't allow message to be encrypted multiple times
+        if (document.getElementById("emailBody").value.startsWith("-----BEGIN PGP MESSAGE-----")) {
+          return true;
+        }
         var pub_key = await openpgp.key.readArmored(
 `-----BEGIN PGP PUBLIC KEY BLOCK-----
 
