@@ -20,7 +20,7 @@
   <meta property="og:description" content="Contact Jameson Lopp" />
   <meta property="og:image" content="https://www.lopp.net/images/avatar.jpg" />
   <meta property="og:url" content="https://www.lopp.net/contact.php" />
-  <meta property="og:site_name" content="Contact Jameson Lopp" />
+  <meta property="og:title" content="Contact Jameson Lopp" />
 
   <link rel="shortcut icon" href="/favicon.ico" />
   <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
