@@ -30,7 +30,11 @@ RewriteRule ^index\.html$ / [R=301]
 AddType x-mapp-php5 .php
 AddType image/x-icon .ico
 AddType 'text/html; charset=UTF-8' html
-AddDefaultCharset utf-8 
+AddDefaultCharset utf-8
+AddType application/font-sfnt            otf ttf
+AddType application/font-woff            woff
+AddType application/font-woff2           woff2
+AddType application/vnd.ms-fontobject    eot
 
 <IfModule mod_expires.c>
 ExpiresActive On
@@ -47,7 +51,8 @@ ExpiresByType audio/mp3 "access plus 1 year"
 # Webfonts
 ExpiresByType font/truetype             "access plus 1 month"
 ExpiresByType font/opentype             "access plus 1 month"
-ExpiresByType application/x-font-woff   "access plus 1 month"
+ExpiresByType application/font-woff 	"access plus 1 month"
+ExpiresByType application/font-woff2 	"access plus 1 month"
 ExpiresByType image/svg+xml             "access plus 1 month"
 ExpiresByType application/vnd.ms-fontobject "access plus 1 month"
 
