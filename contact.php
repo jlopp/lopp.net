@@ -255,6 +255,7 @@ NjT4rMUesCnjTVHVM9KXvMemwAhhYbM=
             <h4><a href="https://github.com/jlopp/statoshi/" target="_blank">Statoshi</a></h4>
             <h4><a href="https://github.com/jlopp/physical-bitcoin-attacks/blob/master/README.md" target="_blank">Physical Attack Log</a></h4>
             <h4><a href="https://github.com/jlopp/xpub-converter" target="_blank">Bitcoin xpub Converter</a></h4>
+            <h4><a href="https://github.com/jlopp/bitcoin-savings-plan/" target="_blank">Bitcoin Savings Plan</a></h4>
             <br>
             <br>
           </div>
