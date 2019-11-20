@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded",
     });
 
 function labnolThumb(id) {
-    var thumb = '<img src="https://i.ytimg.com/vi/ID/hqdefault.jpg">',
+    var thumb = '<img data-src="https://i.ytimg.com/vi/ID/hqdefault.jpg" alt="thumbnail" class="lazyload">',
         play = '<div class="play"></div>';
     return thumb.replace("ID", id) + play;
 }
