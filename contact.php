@@ -32,11 +32,11 @@
   <link rel="preload" href="/fonts/overpassmono/_Xm3-H86tzKDdAPa-KPQZ-AC3pSRo_CXBg.woff2" as="font" type="font/woff2" crossorigin="anonymous">
   <link rel="preload" href="/fonts/overpassmono/_Xm3-H86tzKDdAPa-KPQZ-AC3vCQo_CXBg.woff2" as="font" type="font/woff2" crossorigin="anonymous">
 
-  <script src="js/jquery-3.4.1.slim.min.js"></script>
+  <script src="js/jquery-3.4.1.slim.min.js" async></script>
   <!-- PoW CAPTCHA -->
   <link type="text/css" rel="stylesheet" href="css/jquery.hashcash.io.min.css" media="all" />
   <!-- PGP encryption -->
-  <script src="js/openpgp.min.js"></script>
+  <script src="js/openpgp.min.js" async></script>
   <script>
     async function encrypt() {
       if (window.crypto.getRandomValues) {
