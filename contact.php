@@ -32,16 +32,26 @@
   <link rel="preload" href="/fonts/overpassmono/_Xm3-H86tzKDdAPa-KPQZ-AC3pSRo_CXBg.woff2" as="font" type="font/woff2" crossorigin="anonymous">
   <link rel="preload" href="/fonts/overpassmono/_Xm3-H86tzKDdAPa-KPQZ-AC3vCQo_CXBg.woff2" as="font" type="font/woff2" crossorigin="anonymous">
 
-  <script src="js/jquery-3.4.1.slim.min.js" async></script>
+  <script src="js/jquery-3.4.1.slim.min.js"></script>
   <!-- PoW CAPTCHA -->
   <link type="text/css" rel="stylesheet" href="css/jquery.hashcash.io.min.css" media="all" />
   <!-- PGP encryption -->
   <script src="js/openpgp.min.js" async></script>
   <script>
-    async function encrypt() {
+    function showFreeForm() {
+      document.getElementById("freeform").style.display = "block";
+      document.getElementById("paidform").style.display = "none";
+    }
+
+    function showPaidForm() {
+      document.getElementById("freeform").style.display = "none";
+      document.getElementById("paidform").style.display = "block";
+    }
+
+    async function encrypt(elementId) {
       if (window.crypto.getRandomValues) {
         // don't allow message to be encrypted multiple times
-        if (document.getElementById("emailBody").value.startsWith("-----BEGIN PGP MESSAGE-----")) {
+        if (document.getElementById(elementId).value.startsWith("-----BEGIN PGP MESSAGE-----")) {
           return true;
         }
         var pub_key = await openpgp.key.readArmored(
@@ -128,15 +138,16 @@ NjT4rMUesCnjTVHVM9KXvMemwAhhYbM=
 -----END PGP PUBLIC KEY BLOCK-----`
           );
         var options = {
-            message: openpgp.message.fromText(document.getElementById("emailBody").value),       // input as Message object
+            message: openpgp.message.fromText(document.getElementById(elementId).value),       // input as Message object
             publicKeys: pub_key.keys
         }
         var pgp_message = openpgp.encrypt(options).then(ciphertext => {
-          $('#emailBody').val(ciphertext.data);
+          $('#'+elementId).val(ciphertext.data);
           return true;
         });
       } else {
-        $("#encryptbutton").val("Error");
+        $("#freeencryptbutton").val("Error");
+        $("#paidencryptbutton").val("Error");
         window.alert("This browser isn't supported!");
         return false;
       }
@@ -196,7 +207,7 @@ NjT4rMUesCnjTVHVM9KXvMemwAhhYbM=
     <div class="row">
       <div class="col-xs-12 text-left col-lg-offset-1 col-lg-8 col-md-offset-1 col-md-10 col-sm-offset-1 col-sm-10">
         <h1>Contact</h1>
-        <p>Jameson's goal is to spread knowledge of crypto systems and liberating technologies. If you can offer an opportunity to reach a large audience, please use the form below. If you're seeking specific answers for your own understanding, please check the <a href="/bitcoin-information">educational resources page.</a> For business opportunities or other requests, please use the contact form hosted at <a href="https://earn.com/lopp/" target="_blank">earn.com</a></p>
+        <p>Jameson's goal is to spread knowledge of crypto systems and liberating technologies. If you can offer an opportunity to reach a large audience, please use the low priority form. If you're seeking specific answers for your own understanding, please check the <a href="/bitcoin-information">educational resources page.</a> For consulting questions or high priority requests, please use the paid form.</p>
         <br>
       </div>
     </div>
@@ -212,31 +223,44 @@ NjT4rMUesCnjTVHVM9KXvMemwAhhYbM=
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10 col-sm-10 col-sm-offset-1">
-        <p><span class="error">Please do not contact me inquiring about paid promotions / press releases / reviews / social media marketing. My reputation is not for sale. Messages sent via this form are heavily filtered and may not be read, much less responded to - use the earn.com link if you want a guaranteed response.</span></p>
+        <div style="margin: 20px;text-align:center"><button type="button" class="btn btn-success" onclick="showFreeForm()">Send Low Priority Message (Free)</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-success" onclick="showPaidForm()">Send High Priority Message ($100)</button></div>
 
-        <form action="contact.php" method="post">    
-           <label for="name">Name </label><span class="error"> <?= $nameErr; ?></span>
+        <form id="freeform" action="contact.php" method="post" <? if(!isset($_POST["formType"]) || $_POST["formType"] == "paid") echo 'style="display:none"';?>>
+          <p><span class="error">Please do not contact me inquiring about paid promotions / press releases / reviews / social media marketing. My reputation is not for sale. Messages sent via this form are heavily filtered and may not be read, much less responded to - use the paid form if you want a guaranteed response.</span></p>
+          <label for="freeName">Name </label><span class="error"> <?= $nameErr; ?></span>
+          <input type="text" id="freeName" name="name" placeholder="Your name..." value="<?=$_POST["name"]?>">
+          <label for="freeEmail">Email</label><span class="error"> <?= $emailErr; ?></span>
+          <input type="text" id="freeEmail" name="email" placeholder="Your email address..." value="<?=$_POST["email"]?>">
+          <label for="freeSubject">Subject</label><span class="error"> <?= $subjectErr; ?></span>
+          <input type="text" id="freeSubject" name="subject" placeholder="Subject..." value="<?=$_POST["subject"]?>">
+          <label for="freeEmailBody">Message</label><span class="error"> <?= $messageErr; ?></span>
+          <textarea id="freeEmailBody" name="emailBody" placeholder="Write your message here. If it contains sensitive information, click the Encrypt Message button before submitting." style="height:200px"><?=$_POST["emailBody"]?></textarea>
+          <input type="hidden" name="formType" value="free" />
+          <button type="button" class="btn btn-success" id="freeencryptbutton" onClick="encrypt('freeEmailBody')">Encrypt Message</button>
+          <input type="submit" name="submit" value="Submit"><span class="error"> <?= $captchaErr; ?></span>
+          <!-- PoW CAPTCHA makes calls to body, so must be loaded after body exists in DOM -->
+          <script src="js/jquery.hashcash.io.min.js"></script>
+          <script>
+            $("form input[type=submit]").hashcash({
+              key: "97517ff2-9167-4af1-afb0-779a67e395b3",
+              complexity: 0.1
+            });
+          </script>
+        </form>
 
-            <input type="text" id="name" name="name" placeholder="Your name..." value="<?=$_POST["name"]?>">
-
-            <label for="email">Email</label><span class="error"> <?= $emailErr; ?></span>
-            <input type="text" id="email" name="email" placeholder="Your email..." value="<?=$_POST["email"]?>">
-
-            <label for="subject">Subject</label><span class="error"> <?= $subjectErr; ?></span>
-            <input type="text" id="subject" name="subject" placeholder="Subject..." value="<?=$_POST["subject"]?>">
-            
-            <label for="emailBody">Message</label><span class="error"> <?= $messageErr; ?></span>
-            <textarea id="emailBody" name="emailBody" placeholder="Write your message here. If it contains sensitive information, click the Encrypt Message button before submitting." style="height:200px"><?=$_POST["emailBody"]?></textarea>
-            <button type="button" class="btn btn-success" id="encryptbutton" onClick="encrypt()">Encrypt Message</button>
-            <input type="submit" name="submit" value="Submit"><span class="error"> <?= $captchaErr; ?></span>
-            <!-- PoW CAPTCHA makes calls to body, so must be loaded after body exists in DOM -->
-            <script src="js/jquery.hashcash.io.min.js"></script>
-            <script>
-              $("form input[type=submit]").hashcash({
-                key: "97517ff2-9167-4af1-afb0-779a67e395b3",
-                complexity: 0.1
-              });
-            </script>
+        <form id="paidform" method="POST" action="contact.php" <? if(!isset($_POST["formType"]) || $_POST["formType"] == "free") echo 'style="display:none"';?>>
+          <p><span class="error">Upon submitting this form you will be directed to pay an invoice for $100 USD in BTC. <b>I will not receive your message until after the payment has been confirmed</b>. After receiving your message I will strive to respond to it within 24 hours.</span></p>
+          <label for="paidName">Name </label><span class="error"> <?= $nameErr; ?></span>
+          <input type="text" id="paidName" name="name" placeholder="Your name..." value="<?=$_POST["name"]?>">
+          <label for="paidEmail">Email</label><span class="error"> <?= $emailErr; ?></span>
+          <input type="text" id="paidEmail" name="email" placeholder="Your email address..." value="<?=$_POST["email"]?>">
+          <label for="paidSubject">Subject</label><span class="error"> <?= $subjectErr; ?></span>
+          <input type="text" id="paidSubject" name="subject" placeholder="Subject..." value="<?=$_POST["subject"]?>">
+          <label for="paidEmailBody">Message</label><span class="error"> <?= $messageErr; ?></span>
+          <textarea id="paidEmailBody" name="emailBody" placeholder="Write your message here. If it contains sensitive information, click the Encrypt Message button before submitting." style="height:200px"><?=$_POST["emailBody"]?></textarea>
+          <input type="hidden" name="formType" value="paid" />
+          <button type="button" class="btn btn-success" id="paidencryptbutton" onClick="encrypt('paidEmailBody')">Encrypt Message</button>
+          <input type="submit" name="submit" value="Submit">
         </form>
         <br>
         <br>
@@ -247,26 +271,6 @@ NjT4rMUesCnjTVHVM9KXvMemwAhhYbM=
 
           </div>
           <div class="col-lg-4">&nbsp;</div>
-        </div>
-        <div class="row">
-          <div class="text-left col-lg-offset-1 col-lg-5 col-md-5 col-md-offset-1 col-sm-offset-1 col-sm-6 col-xs-12">
-            <h3>Open Source Projects</h3>
-            <h4><a href="https://github.com/jlopp/bitcoin-core-config-generator/" target="_blank">Bitcoin Core Config Generator</a></h4>
-            <h4><a href="https://github.com/jlopp/statoshi/" target="_blank">Statoshi</a></h4>
-            <h4><a href="https://github.com/jlopp/physical-bitcoin-attacks/blob/master/README.md" target="_blank">Physical Attack Log</a></h4>
-            <h4><a href="https://github.com/jlopp/xpub-converter" target="_blank">Bitcoin xpub Converter</a></h4>
-            <h4><a href="https://github.com/jlopp/bitcoin-savings-plan/" target="_blank">Bitcoin Savings Plan</a></h4>
-            <br>
-            <br>
-          </div>
-          <div class="col-lg-4 col-md-5 col-sm-5 col-xs-12">
-            <h3>Want a Guaranteed Response?</h3>
-            <p>
-              <button type="button" class="btn btn-success" onclick="location.href='https://earn.com/lopp/'">Get in touch on earn.com</button>
-            </p>
-            <br>
-            <br>
-          </div>
         </div>
   </div>
 </section>
