@@ -303,7 +303,6 @@ NjT4rMUesCnjTVHVM9KXvMemwAhhYbM=
     </div>
   </div>
 </footer>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/lopp.js"></script>
+<script src="js/combined.js"></script>
 </body>
 </html>
