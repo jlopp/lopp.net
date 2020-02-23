@@ -213,7 +213,7 @@ NjT4rMUesCnjTVHVM9KXvMemwAhhYbM=
       </div>
     </div>
   </div>
-  <div class="container" style="background-color: #ffffff">
+  <div class="container">
     <div class="row">
       <div class="col-xs-12 text-left col-lg-offset-1 col-lg-8 col-md-offset-1 col-md-10 col-sm-offset-1 col-sm-10">
         <h1>Contact</h1>
