@@ -3,6 +3,10 @@
 // set the following two values and the rest of the contact script should work
 const HASHCASH_PRIVATE_KEY = "";
 const YOUR_EMAIL_ADDRESS = "";
+const BTCPAY_STORE_ID = "";
+const BTCPAY_CALLBACK_URL = "";
+const SUCCESS_URL = "";
+const BTCPAY_INVOICE_API_URL = "";
 
 $nameErr = $emailErr = $subjectErr = $messageErr = "";
 $name = $email = $subject = $emailBody = "";
@@ -84,9 +88,6 @@ if($formType == "free" && isset($_POST['submit']) && isset($_POST['hashcashid'])
 // Check conditions for submission of paid form
 if($formType == "paid" && isset($_POST['submit']) && (!empty($_POST["name"])) && (preg_match("/^[a-zA-Z ]*$/",$name)) && (!empty($_POST["email"])) &&  (filter_var($email, FILTER_VALIDATE_EMAIL)) && (!empty($_POST["subject"])) && (!empty($_POST["emailBody"]))) {
     $orderId = generateOrderId();
-    $storeId = "4ZXunyzM67oYpxQYrwAzpGDBYHGZMGFwgUxCpfNmpr1e";
-    $serverIpn = "https://www.lopp.net/btcpay_callback.php";
-    $browserRedirect = "https://www.lopp.net/thank_you.html";
     $price = "100";
     $currency = "USD";
     $name = $_POST['name'];
@@ -104,9 +105,9 @@ if($formType == "paid" && isset($_POST['submit']) && (!empty($_POST["name"])) &&
     // POST the data to BTCPay
     $params = [
               'orderId' => $orderId,
-              'storeId' => $storeId,
-              'serverIpn' => $serverIpn,
-              'browserRedirect' => $browserRedirect,
+              'storeId' => BTCPAY_STORE_ID,
+              'serverIpn' => BTCPAY_CALLBACK_URL,
+              'browserRedirect' => SUCCESS_URL,
               'price' => $price,
               'currency' => $currency,
               'buyerName' => $name,
@@ -115,7 +116,7 @@ if($formType == "paid" && isset($_POST['submit']) && (!empty($_POST["name"])) &&
               'submit' => "Submit"
             ];
     $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, "https://btcpay.lopp.net/api/v1/invoices");
+    curl_setopt($ch, CURLOPT_URL, BTCPAY_INVOICE_API_URL);
     curl_setopt($ch, CURLOPT_PORT, 443);
     curl_setopt($ch, CURLOPT_HEADER, FALSE);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);

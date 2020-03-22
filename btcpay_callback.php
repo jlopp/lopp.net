@@ -3,6 +3,7 @@
 // set the following two values and the rest of the callback script should work
 const BTCPAY_IP_ADDRESS = "";
 const YOUR_EMAIL_ADDRESS = "";
+const YOUR_DOMAIN = "";
 
 if ($_SERVER['REQUEST_METHOD'] != 'POST' || $_SERVER['REMOTE_ADDR'] != BTCPAY_IP_ADDRESS) {
   http_response_code(401);
@@ -17,7 +18,7 @@ if ($invoice->status == "complete") {
   $orderData = file_get_contents("./messages/" . $invoice->orderId);
   if (!$orderData) {
     $message = "Could not find message file for invoice " . $invoice->id . ", order " . $invoice->orderId;
-    $headers = "From: contact@lopp.net\r\nReply-to: contact@lopp.net";
+    $headers = "From: paidform@" . YOUR_DOMAIN . "\r\nReply-to: paidform@" . YOUR_DOMAIN;
     mail(YOUR_EMAIL_ADDRESS, "Paid Message ERROR", $message, $headers);
   } else {
     $message = json_decode($orderData);
