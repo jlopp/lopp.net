@@ -231,61 +231,59 @@ NjT4rMUesCnjTVHVM9KXvMemwAhhYbM=
     </div>
   </div>
 </section>
-<section>
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12 col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10 col-sm-10 col-sm-offset-1">
-        <div style="margin: 20px;text-align:center"><button type="button" class="btn btn-success" onclick="showFreeForm()">Send Low Priority Message (Free)</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-success" onclick="showPaidForm()">Send High Priority Message ($100)</button></div>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10 col-sm-10 col-sm-offset-1">
+      <div style="margin: 20px;text-align:center"><button type="button" class="btn btn-success" onclick="showFreeForm()">Send Low Priority Message (Free)</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-success" onclick="showPaidForm()">Send High Priority Message ($100)</button></div>
 
-        <form id="freeform" action="contact.php" method="post" <? if(!isset($_POST["formType"]) || $_POST["formType"] == "paid") echo 'style="display:none"';?>>
-          <p><span class="error">Please do not contact me inquiring about paid promotions / press releases / reviews / social media marketing. My reputation is not for sale. Messages sent via this form are heavily filtered and may not be read, much less responded to - use the paid form if you want a guaranteed response.</span></p>
-          <label for="freeName">Name </label><span class="error"> <?= $nameErr; ?></span>
-          <input type="text" id="freeName" name="name" placeholder="Your name..." value="<?=$_POST["name"]?>">
-          <label for="freeEmail">Email</label><span class="error"> <?= $emailErr; ?></span>
-          <input type="text" id="freeEmail" name="email" placeholder="Your email address..." value="<?=$_POST["email"]?>">
-          <label for="freeSubject">Subject</label><span class="error"> <?= $subjectErr; ?></span>
-          <input type="text" id="freeSubject" name="subject" placeholder="Subject..." value="<?=$_POST["subject"]?>">
-          <label for="freeEmailBody">Message</label><span class="error"> <?= $messageErr; ?></span>
-          <textarea id="freeEmailBody" name="emailBody" placeholder="Write your message here. If it contains sensitive information, click the Encrypt Message button before submitting." style="height:200px"><?=$_POST["emailBody"]?></textarea>
-          <input type="hidden" name="formType" value="free" />
-          <button type="button" class="btn btn-success" id="freeencryptbutton" onClick="encrypt('freeEmailBody')">Encrypt Message</button>
-          <input type="submit" name="submit" value="Submit"><span class="error"> <?= $captchaErr; ?></span>
-          <!-- PoW CAPTCHA makes calls to body, so must be loaded after body exists in DOM -->
-          <script src="js/jquery.hashcash.io.min.js"></script>
-          <script>
-            $("form input[type=submit]").hashcash({
-              key: "97517ff2-9167-4af1-afb0-779a67e395b3",
-              complexity: 0.1
-            });
-          </script>
-        </form>
+      <form id="freeform" action="contact.php" method="post" <? if(!isset($_POST["formType"]) || $_POST["formType"] == "paid") echo 'style="display:none"';?>>
+        <p><span class="error">Please do not contact me inquiring about paid promotions / press releases / reviews / social media marketing. My reputation is not for sale. Messages sent via this form are heavily filtered and may not be read, much less responded to - use the paid form if you want a guaranteed response.</span></p>
+        <label for="freeName">Name </label><span class="error"> <?= $nameErr; ?></span>
+        <input type="text" id="freeName" name="name" placeholder="Your name..." value="<?=$_POST["name"]?>">
+        <label for="freeEmail">Email</label><span class="error"> <?= $emailErr; ?></span>
+        <input type="text" id="freeEmail" name="email" placeholder="Your email address..." value="<?=$_POST["email"]?>">
+        <label for="freeSubject">Subject</label><span class="error"> <?= $subjectErr; ?></span>
+        <input type="text" id="freeSubject" name="subject" placeholder="Subject..." value="<?=$_POST["subject"]?>">
+        <label for="freeEmailBody">Message</label><span class="error"> <?= $messageErr; ?></span>
+        <textarea id="freeEmailBody" name="emailBody" placeholder="Write your message here. If it contains sensitive information, click the Encrypt Message button before submitting." style="height:200px"><?=$_POST["emailBody"]?></textarea>
+        <input type="hidden" name="formType" value="free" />
+        <button type="button" class="btn btn-success" id="freeencryptbutton" onClick="encrypt('freeEmailBody')">Encrypt Message</button>
+        <input type="submit" name="submit" value="Submit"><span class="error"> <?= $captchaErr; ?></span>
+        <!-- PoW CAPTCHA makes calls to body, so must be loaded after body exists in DOM -->
+        <script src="js/jquery.hashcash.io.min.js"></script>
+        <script>
+          $("form input[type=submit]").hashcash({
+            key: "97517ff2-9167-4af1-afb0-779a67e395b3",
+            complexity: 0.1
+          });
+        </script>
+      </form>
 
-        <form id="paidform" method="POST" action="contact.php" <? if(!isset($_POST["formType"]) || $_POST["formType"] == "free") echo 'style="display:none"';?>>
-          <p><span class="error">Upon submitting this form you will be directed to pay an invoice for $100 USD in BTC. <b>I will not receive your message until after the payment has been confirmed</b>. After receiving your message I will strive to respond to it within 24 hours.</span></p>
-          <label for="paidName">Name </label><span class="error"> <?= $nameErr; ?></span>
-          <input type="text" id="paidName" name="name" placeholder="Your name..." value="<?=$_POST["name"]?>">
-          <label for="paidEmail">Email</label><span class="error"> <?= $emailErr; ?></span>
-          <input type="text" id="paidEmail" name="email" placeholder="Your email address..." value="<?=$_POST["email"]?>">
-          <label for="paidSubject">Subject</label><span class="error"> <?= $subjectErr; ?></span>
-          <input type="text" id="paidSubject" name="subject" placeholder="Subject..." value="<?=$_POST["subject"]?>">
-          <label for="paidEmailBody">Message</label><span class="error"> <?= $messageErr; ?></span>
-          <textarea id="paidEmailBody" name="emailBody" placeholder="Write your message here. If it contains sensitive information, click the Encrypt Message button before submitting." style="height:200px"><?=$_POST["emailBody"]?></textarea>
-          <input type="hidden" name="formType" value="paid" />
-          <button type="button" class="btn btn-success" id="paidencryptbutton" onClick="encrypt('paidEmailBody')">Encrypt Message</button>
-          <input type="submit" name="submit" value="Submit">
-        </form>
-        <br>
-        <br>
-        </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-offset-0 col-lg-4">
+      <form id="paidform" method="POST" action="contact.php" <? if(!isset($_POST["formType"]) || $_POST["formType"] == "free") echo 'style="display:none"';?>>
+        <p><span class="error">Upon submitting this form you will be directed to pay an invoice for $100 USD in BTC. <b>I will not receive your message until after the payment has been confirmed</b>. After receiving your message I will strive to respond to it within 24 hours.</span></p>
+        <label for="paidName">Name </label><span class="error"> <?= $nameErr; ?></span>
+        <input type="text" id="paidName" name="name" placeholder="Your name..." value="<?=$_POST["name"]?>">
+        <label for="paidEmail">Email</label><span class="error"> <?= $emailErr; ?></span>
+        <input type="text" id="paidEmail" name="email" placeholder="Your email address..." value="<?=$_POST["email"]?>">
+        <label for="paidSubject">Subject</label><span class="error"> <?= $subjectErr; ?></span>
+        <input type="text" id="paidSubject" name="subject" placeholder="Subject..." value="<?=$_POST["subject"]?>">
+        <label for="paidEmailBody">Message</label><span class="error"> <?= $messageErr; ?></span>
+        <textarea id="paidEmailBody" name="emailBody" placeholder="Write your message here. If it contains sensitive information, click the Encrypt Message button before submitting." style="height:200px"><?=$_POST["emailBody"]?></textarea>
+        <input type="hidden" name="formType" value="paid" />
+        <button type="button" class="btn btn-success" id="paidencryptbutton" onClick="encrypt('paidEmailBody')">Encrypt Message</button>
+        <input type="submit" name="submit" value="Submit">
+      </form>
+      <br>
+      <br>
+      </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-offset-0 col-lg-4">
 
-          </div>
-          <div class="col-lg-4">&nbsp;</div>
         </div>
-  </div>
-</section>
+        <div class="col-lg-4">&nbsp;</div>
+      </div>
+</div>
 <hr>
 <div class="section well">
   <div class="container">
