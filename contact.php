@@ -209,24 +209,12 @@ NjT4rMUesCnjTVHVM9KXvMemwAhhYbM=
   <!-- /.container-fluid --> 
 </nav>
 <section class="inner-background">
-<div class="container">
-    <div class="row">
-      <div class="col-xs-12 text-left col-lg-offset-0 col-lg-12"> <br>
-      </div>
-    </div>
-  </div>
   <div class="container">
     <div class="row">
       <div class="col-xs-12 text-left col-lg-offset-1 col-lg-8 col-md-offset-1 col-md-10 col-sm-offset-1 col-sm-10">
         <h1>Contact</h1>
         <p>Jameson's goal is to spread knowledge of crypto systems and liberating technologies. If you can offer an opportunity to reach a large audience, please use the low priority form. If you're seeking specific answers for your own understanding, please check the <a href="/bitcoin-information">educational resources page.</a> For consulting questions or high priority requests, please use the paid form.</p>
         <br>
-      </div>
-    </div>
-  </div>
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12 text-left col-lg-offset-0 col-lg-12"> <br><br>
       </div>
     </div>
   </div>
