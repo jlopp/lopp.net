@@ -137,7 +137,6 @@ if($formType == "paid" && isset($_POST['submit']) && (!empty($_POST["name"])) &&
       $emailErr = "Something went wrong generating the bitcoin invoice. Please try again later.";
     } else { // Redirect the user to the invoice payment page
       echo '<META HTTP-EQUIV="Refresh" Content="0; URL=' . $redirect . '">';
-      exit;
     }
   }
 
