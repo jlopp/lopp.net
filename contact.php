@@ -180,6 +180,19 @@ NjT4rMUesCnjTVHVM9KXvMemwAhhYbM=
     else if (window.attachEvent) window.attachEvent("onload", atOnload);
     else window.onload = atOnload;
   </script>
+  <script type = "application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [{
+        "@type": "ListItem",
+        "position": "1",
+        "name": "Contact Jameson Lopp",
+        "item": "https://www.lopp.net/contact"
+      }
+    ]
+  }
+  </script>
 </head>
 
 <body>
