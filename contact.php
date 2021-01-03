@@ -173,6 +173,7 @@ NjT4rMUesCnjTVHVM9KXvMemwAhhYbM=
 
     ga('create', 'UA-2071667-1', 'auto');
     ga('send', 'pageview');
+    ga('set', 'anonymizeIp', true);
     function atOnload() {
         initAnalytics();
     }
