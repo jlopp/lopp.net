@@ -33,17 +33,186 @@
   <link rel="stylesheet" href="/css/bootstrap.css" />
   <link id="mystyle" rel="stylesheet" href="/css/style.css" />
 
-
-
   <script src="js/jquery-3.5.0.slim.min.js"></script>
-  <!-- PoW CAPTCHA -->
-  <link type="text/css" rel="stylesheet" href="css/jquery.hashcash.io.min.css" media="all" />
+  <script>
+
+    function sha256(ascii) {
+        function rightRotate(value, amount) {
+            return (value>>>amount) | (value<<(32 - amount));
+        };
+
+        var mathPow = Math.pow;
+        var maxWord = mathPow(2, 32);
+        var lengthProperty = 'length'
+        var i, j; // Used as a counter across the whole file
+        var result = ''
+
+        var words = [];
+        var asciiBitLength = ascii[lengthProperty]*8;
+
+        //* caching results is optional - remove/add slash from front of this line to toggle
+        // Initial hash value: first 32 bits of the fractional parts of the square roots of the first 8 primes
+        // (we actually calculate the first 64, but extra values are just ignored)
+        var hash = sha256.h = sha256.h || [];
+        // Round constants: first 32 bits of the fractional parts of the cube roots of the first 64 primes
+        var k = sha256.k = sha256.k || [];
+        var primeCounter = k[lengthProperty];
+
+        var isComposite = {};
+        for (var candidate = 2; primeCounter < 64; candidate++) {
+            if (!isComposite[candidate]) {
+                for (i = 0; i < 313; i += candidate) {
+                    isComposite[i] = candidate;
+                }
+                hash[primeCounter] = (mathPow(candidate, .5)*maxWord)|0;
+                k[primeCounter++] = (mathPow(candidate, 1/3)*maxWord)|0;
+            }
+        }
+
+        ascii += '\x80' // Append Ƈ' bit (plus zero padding)
+        while (ascii[lengthProperty]%64 - 56) ascii += '\x00' // More zero padding
+        for (i = 0; i < ascii[lengthProperty]; i++) {
+            j = ascii.charCodeAt(i);
+            if (j>>8) return; // ASCII check: only accept characters in range 0-255
+            words[i>>2] |= j << ((3 - i)%4)*8;
+        }
+        words[words[lengthProperty]] = ((asciiBitLength/maxWord)|0);
+        words[words[lengthProperty]] = (asciiBitLength)
+
+        // process each chunk
+        for (j = 0; j < words[lengthProperty];) {
+            var w = words.slice(j, j += 16); // The message is expanded into 64 words as part of the iteration
+            var oldHash = hash;
+            // This is now the undefinedworking hash", often labelled as variables a...g
+            // (we have to truncate as well, otherwise extra entries at the end accumulate
+            hash = hash.slice(0, 8);
+
+            for (i = 0; i < 64; i++) {
+                var i2 = i + j;
+                // Expand the message into 64 words
+                var w15 = w[i - 15], w2 = w[i - 2];
+
+                // Iterate
+                var a = hash[0], e = hash[4];
+                var temp1 = hash[7]
+                    + (rightRotate(e, 6) ^ rightRotate(e, 11) ^ rightRotate(e, 25)) // S1
+                    + ((e&hash[5])^((~e)&hash[6])) // ch
+                    + k[i]
+                    // Expand the message schedule if needed
+                    + (w[i] = (i < 16) ? w[i] : (
+                            w[i - 16]
+                            + (rightRotate(w15, 7) ^ rightRotate(w15, 18) ^ (w15>>>3)) // s0
+                            + w[i - 7]
+                            + (rightRotate(w2, 17) ^ rightRotate(w2, 19) ^ (w2>>>10)) // s1
+                        )|0
+                    );
+                // This is only used once, so *could* be moved below, but it only saves 4 bytes and makes things unreadble
+                var temp2 = (rightRotate(a, 2) ^ rightRotate(a, 13) ^ rightRotate(a, 22)) // S0
+                    + ((a&hash[1])^(a&hash[2])^(hash[1]&hash[2])); // maj
+
+                hash = [(temp1 + temp2)|0].concat(hash); // We don't bother trimming off the extra ones, they're harmless as long as we're truncating when we do the slice()
+                hash[4] = (hash[4] + temp1)|0;
+            }
+
+            for (i = 0; i < 8; i++) {
+                hash[i] = (hash[i] + oldHash[i])|0;
+            }
+        }
+
+        for (i = 0; i < 8; i++) {
+            for (j = 3; j + 1; j--) {
+                var b = (hash[i]>>(j*8))&255;
+                result += ((b < 16) ? 0 : '') + b.toString(16);
+            }
+        }
+        return result;
+    }
+
+    function hc_HashFunc(x) { return sha256(x); }
+
+    function hc_SetFormData(x, y)
+    {
+      var z = document.getElementById(x);
+      if(z) z.value = y;
+    }
+
+    function hc_GetFormData(x)
+    {
+      var z = document.getElementById(x);
+      if(z)
+        return z.value;
+      else
+        return '';
+    }
+
+    // convert hex numbers to binary strings
+    function hc_HexInBin(x)
+    {
+      var ret = '';
+      switch(x.toUpperCase())
+      { case '0': ret = '0000'; break; case '1': ret = '0001'; break;
+        case '2': ret = '0010'; break; case '3': ret = '0011'; break;
+        case '4': ret = '0100'; break; case '5': ret = '0101'; break;
+        case '6': ret = '0110'; break; case '7': ret = '0111'; break;
+        case '8': ret = '1000'; break; case '9': ret = '1001'; break;
+        case 'A': ret = '1010'; break; case 'B': ret = '1011'; break;
+        case 'C': ret = '1100'; break; case 'D': ret = '1101'; break;
+        case 'E': ret = '1110'; break; case 'F': ret = '1111'; break;
+        default : ret = '0000'; }
+      return ret;
+    }
+
+    function hc_ExtractBits(hex_string, num_bits)
+    {
+      var bit_string = "";
+      var num_chars = Math.ceil(num_bits / 4);
+      for(var i = 0; i < num_chars; i++)
+        bit_string = bit_string + "" + hc_HexInBin(hex_string.charAt(i));
+
+      bit_string = bit_string.substr(0, num_bits);
+      return bit_string;
+    }
+
+    function hc_CheckContract(difficulty, stamp, nonce)
+    {
+      var col_hash = hc_HashFunc(stamp + nonce);
+      var check_bits = hc_ExtractBits(col_hash, difficulty);
+      return (check_bits == 0);
+    }
+
+    function hc_findHash()
+    {
+      var hc_stamp = hc_GetFormData('hc_stamp');
+      var hc_difficulty = hc_GetFormData('hc_difficulty');
+
+      // check to see if we already found a solution
+      var form_nonce = hc_GetFormData('hc_nonce');
+      if (form_nonce && hc_CheckContract(hc_difficulty, hc_stamp, form_nonce)) {
+        document.getElementById('freesubmitbutton').disabled = false;
+        return true;
+      }
+
+      var nonce = 1;
+
+      while(!hc_CheckContract(hc_difficulty, hc_stamp, nonce))
+      {
+        nonce++;
+      }
+
+      hc_SetFormData('hc_nonce', nonce);
+      //alert("Found nonce: " + nonce);
+      document.getElementById('freesubmitbutton').disabled = false;
+
+      return true;
+    }
+  </script>
   <!-- PGP encryption -->
   <script src="js/openpgp.min.js" async></script>
   <script>
     function showFreeForm() {
       document.getElementById("freeform").style.display = "block";
       document.getElementById("paidform").style.display = "none";
+      setTimeout(hc_findHash, 3000); // start PoW
     }
 
     function showPaidForm() {
@@ -230,9 +399,9 @@ NjT4rMUesCnjTVHVM9KXvMemwAhhYbM=
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10 col-sm-10 col-sm-offset-1">
-      <div style="margin: 20px;text-align:center"><button type="button" class="btn btn-success" onclick="showFreeForm()">Send Low Priority Message (Free)</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-success" onclick="showPaidForm()">Send High Priority Message ($100)</button></div>
+      <div style="margin: 20px;text-align:center"><button style="margin-left: 20px; margin-top: 20px" type="button" class="btn btn-success" onclick="showFreeForm()">Send Low Priority Message (Free)</button><button style="margin-left: 20px; margin-top: 20px" type="button" class="btn btn-success" onclick="showPaidForm()">Send High Priority Message ($100)</button></div>
 
-      <form id="freeform" action="contact.php" method="post" <? if(!isset($_POST["formType"]) || $_POST["formType"] == "paid") echo 'style="display:none"';?>>
+      <form id="freeform" action="contact.php" method="POST" <? if(!isset($_POST["formType"]) || $_POST["formType"] == "paid") echo 'style="display:none"';?>>
         <p><span class="error">Do not contact me regarding <bold>paid promotions / press releases / reviews / social media marketing</bold>. My reputation is not for sale. Messages sent via this form are heavily filtered and may not be read, much less responded to - use the paid form if you want a guaranteed response.</span></p>
         <label for="freeName">Name </label><span class="error"> <?= $nameErr; ?></span>
         <input type="text" id="freeName" name="name" placeholder="Your name..." value="<?=$_POST["name"]?>">
@@ -243,15 +412,12 @@ NjT4rMUesCnjTVHVM9KXvMemwAhhYbM=
         <label for="freeEmailBody">Message</label><span class="error"> <?= $messageErr; ?></span>
         <textarea id="freeEmailBody" name="emailBody" placeholder="Write your message here. If it contains sensitive information, click the Encrypt Message button before submitting." style="height:200px"><?=$_POST["emailBody"]?></textarea>
         <input type="hidden" name="formType" value="free" />
+        <? hc_CreateStamp(); ?>
         <button type="button" class="btn btn-success" id="freeencryptbutton" onClick="encrypt('freeEmailBody')">Encrypt Message</button>
-        <input type="submit" name="submit" value="Submit"><span class="error"> <?= $captchaErr; ?></span>
-        <!-- PoW CAPTCHA makes calls to body, so must be loaded after body exists in DOM -->
-        <script src="js/jquery.hashcash.io.min.js"></script>
+        <input type="submit" name="submit" value="Submit" id="freesubmitbutton" disabled><span class="error"> <?= $captchaErr; ?></span>
         <script>
-          $("form input[type=submit]").hashcash({
-            key: "97517ff2-9167-4af1-afb0-779a67e395b3",
-            complexity: 0.1
-          });
+          if(document.getElementById("freeform").style.display != "none")
+            setTimeout(hc_findHash, 3000); // start PoW
         </script>
       </form>
 
