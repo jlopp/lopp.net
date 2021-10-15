@@ -402,7 +402,7 @@ NjT4rMUesCnjTVHVM9KXvMemwAhhYbM=
       <div style="margin: 20px;text-align:center"><button style="margin-left: 20px; margin-top: 20px" type="button" class="btn btn-success" onclick="showFreeForm()">Send Low Priority Message (Free)</button><button style="margin-left: 20px; margin-top: 20px" type="button" class="btn btn-success" onclick="showPaidForm()">Send High Priority Message ($100)</button></div>
 
       <form id="freeform" action="contact.php" method="POST" <? if(!isset($_POST["formType"]) || $_POST["formType"] == "paid") echo 'style="display:none"';?>>
-        <p><span class="error">Do not contact me regarding <bold>paid promotions / press releases / reviews / social media marketing</bold>. My reputation is not for sale. Messages sent via this form are heavily filtered and may not be read, much less responded to - use the paid form if you want a guaranteed response.</span></p>
+        <p><span class="error">Do not contact me regarding paid promotions / press releases / reviews / social media marketing. My reputation is not for sale. Messages sent via this form are heavily filtered and may not be read, much less responded to - use the paid form if you want a guaranteed response.</span></p>
         <label for="freeName">Name </label><span class="error"> <?= $nameErr; ?></span>
         <input type="text" id="freeName" name="name" placeholder="Your name..." value="<?=$_POST["name"]?>">
         <label for="freeEmail">Email</label><span class="error"> <?= $emailErr; ?></span>
