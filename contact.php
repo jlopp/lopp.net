@@ -180,7 +180,11 @@
       return (check_bits == 0);
     }
 
-    function hc_findHash()
+    function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    async function hc_findHash()
     {
       var hc_stamp = hc_GetFormData('hc_stamp');
       var hc_difficulty = hc_GetFormData('hc_difficulty');
@@ -197,10 +201,17 @@
       while(!hc_CheckContract(hc_difficulty, hc_stamp, nonce))
       {
         nonce++;
+        if (nonce % 10000 == 0)
+        {
+            let remaining = Math.round((Math.pow(2, hc_difficulty) - nonce) / 10000) * 2;
+            document.getElementById('countdown').innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;Approximately " + remaining + " work remaining before form unlocks.";
+            await sleep(100); // don't peg the CPU and prevent the browser from rendering these updates
+        }
       }
 
       hc_SetFormData('hc_nonce', nonce);
       //alert("Found nonce: " + nonce);
+      document.getElementById('countdown').innerHTML = "";
       document.getElementById('freesubmitbutton').disabled = false;
 
       return true;
@@ -414,7 +425,7 @@ NjT4rMUesCnjTVHVM9KXvMemwAhhYbM=
         <input type="hidden" name="formType" value="free" />
         <? hc_CreateStamp(); ?>
         <button type="button" class="btn btn-success" id="freeencryptbutton" onClick="encrypt('freeEmailBody')">Encrypt Message</button>
-        <input type="submit" name="submit" value="Submit" id="freesubmitbutton" disabled><span class="error"> <?= $captchaErr; ?></span>
+        <input type="submit" name="submit" value="Submit" id="freesubmitbutton" disabled><span id="countdown" class="error"> <?= $captchaErr; ?></span>
         <script>
           if(document.getElementById("freeform").style.display != "none")
             setTimeout(hc_findHash, 3000); // start PoW
