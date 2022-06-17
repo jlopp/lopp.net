@@ -257,27 +257,6 @@ iframe {
   }
 }
 
-/* sprites for footer icons */
-.github, .keybase, .pgp, .twitter, .earn {
-  display: inline-block; background: url('https://www.lopp.net/images/icons.png') no-repeat;
-  overflow: hidden;
-  text-indent: -9999px;
-  text-align: left;
-  padding-left: 20px;
-  padding-right: 20px;
-}
-
-.github { background-position: -0px -20px; width: 24px; height: 20px; }
-.github:hover { background-position: -0px -0px; width: 24px; height: 20px; }
-.keybase { background-position: -0px -60px; width: 24px; height: 20px; }
-.keybase:hover { background-position: -0px -40px; width: 24px; height: 20px; }
-.pgp { background-position: -0px -100px; width: 24px; height: 20px; }
-.pgp:hover { background-position: -0px -80px; width: 24px; height: 20px; }
-.twitter { background-position: -0px -140px; width: 24px; height: 20px; }
-.twitter:hover { background-position: -0px -120px; width: 24px; height: 20px; }
-.earn { background-position: -0px -180px; width: 20px; height: 20px; }
-.earn:hover { background-position: -0px -160px; width: 20px; height: 20px; }
-
 .youtube-player {
     position: relative;
     padding-bottom: 56.23%;
@@ -516,4 +495,58 @@ FCFCFC - stars
 
 .toggle-input:checked ~ .toggle-switch .toggle-switch-figureAlt {
   transform: scale(1);
+}
+
+@font-face {
+  font-family: 'icomoon';
+  src:  url('/fonts/icomoon.eot?qv41pc');
+  src:  url('/fonts/icomoon.eot?qv41pc#iefix') format('embedded-opentype'),
+    url('/fonts/icomoon.woff?qv41pc') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  font-size: 20px;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-mastodon:before {
+  content: "\e901";
+}
+.icon-keybase:before {
+  content: "\e900";
+}
+.icon-envelope-o:before {
+  content: "\f003";
+}
+.icon-twitter:before {
+  content: "\f099";
+}
+.icon-github:before {
+  content: "\f09b";
+}
+.icon-paper-plane:before {
+  content: "\f1d8";
+}
+.icon-send:before {
+  content: "\f1d8";
+}
+.icon-expeditedssl:before {
+  content: "\f23e";
+}
+.icon-reddit-alien:before {
+  content: "\f281";
 }
