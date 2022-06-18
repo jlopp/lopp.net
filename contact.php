@@ -459,7 +459,7 @@ NjT4rMUesCnjTVHVM9KXvMemwAhhYbM=
             &nbsp;
             <a href="https://twitter.com/lopp" target="_blank" rel="noopener" aria-label="Jameson's Twitter Account" class="icon-twitter"></a>
             &nbsp;
-            <a href="https://www.lopp.social/" target="_blank" rel="noopener" aria-label="Jameson's Mastodon Account" class="icon-mastodon"></a>
+            <a href="https://lopp.social/" target="_blank" rel="noopener" aria-label="Jameson's Mastodon Account" class="icon-mastodon"></a>
             &nbsp;
             <a href="https://www.reddit.com/user/statoshi/" target="_blank" rel="noopener" aria-label="Jameson's Reddit Account" class="icon-reddit-alien"></a>
           </p>
