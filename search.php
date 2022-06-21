@@ -1,28 +1,28 @@
+<?php include ("ls/livesearch.class.php");?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <title>Other Bitcoin Resources</title>
+  <title>Jameson Lopp :: Search</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="keywords" content="bitcoin, info, resources, lists" />
+  <meta name="keywords" content="jameson, lopp, bitcoin, crypto, cypherpunk" />
   <meta name="Robots" content="index,follow" />
-  <meta name="description" content="Other lists of Bitcoin information &amp; resources." />
+  <meta name="description" content="Search form for lopp.net." />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:description" content="Other lists of Bitcoin information &amp; resources." />
-  <meta name="twitter:title" content="Other Bitcoin Resources" />
+  <meta name="twitter:description" content="Search form for lopp.net" />
+  <meta name="twitter:title" content="Jameson Lopp's Resource Search" />
   <meta name="twitter:site" content="@lopp" />
   <meta name="twitter:creator" content="@lopp" />
   <meta name="twitter:image" content="https://www.lopp.net/images/avatar.jpg" />
 
   <meta property="og:type" content="website" />
-  <meta property="og:description" content="Other lists of Bitcoin information &amp; resources." />
+  <meta property="og:description" content="Search form for lopp.net" />
   <meta property="og:image" content="https://www.lopp.net/images/avatar.jpg" />
-  <meta property="og:url" content="https://www.lopp.net/bitcoin-information/other-resources.html" />
-  <meta property="og:title" content="Other Bitcoin Resources" />
+  <meta property="og:url" content="https://www.lopp.net/contact.php" />
+  <meta property="og:title" content="Search form for lopp.net" />
 
-  <link rel="shortcut icon" href="../favicon.ico" />
-  <link rel="apple-touch-icon" href="../images/apple-touch-icon.png" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
   <link href="https://www.google-analytics.com" rel="preconnect" crossorigin />
   <link href="https://stats.g.doubleclick.net" rel="preconnect" crossorigin />
 
@@ -32,6 +32,8 @@
   <link rel="stylesheet" href="/css/bootstrap.css" />
   <link id="mystyle" rel="stylesheet" href="/css/style.css" />
 
+  <script src="js/jquery-3.5.0.slim.min.js"></script>
+
   <script async src="/js/ga4.js"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -40,111 +42,78 @@
 
     gtag('config', 'G-V9T1MNTG7V');
   </script>
-  <script type="application/ld+json">
+  <script type = "application/ld+json">
   {
-    "@context": "https://schema.org/",
+    "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": [{
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Bitcoin Information & Educational Resources",
-      "item": "https://www.lopp.net/bitcoin-information"
-    },{
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Other Bitcoin Resources",
-      "item": "https://www.lopp.net/bitcoin-information/other-resources.html"
-    }]
+        "@type": "ListItem",
+        "position": "1",
+        "name": "Contact Jameson Lopp",
+        "item": "https://www.lopp.net/search"
+      }
+    ]
   }
   </script>
 </head>
 
 <body>
-  <nav class="navbar navbar-default col-sm-offset-0 col-sm-12 col-md-offset-0 col-md-12 col-lg-offset-0 col-lg-12">
-    <div class="container">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#myDefaultNavbar1" aria-expanded="false"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-        <a class="navbar-brand" href="/">Jameson Lopp</a>
-      </div>
+<nav class="navbar navbar-default col-sm-offset-0 col-sm-12 col-md-offset-0 col-md-12 col-lg-offset-0 col-lg-12">
+  <div class="container"> 
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#myDefaultNavbar1" aria-expanded="false"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+      <a class="navbar-brand" href="/">Jameson Lopp</a> </div>
       <div class="collapse navbar-collapse" id="myDefaultNavbar1">
         <ul class="nav navbar-nav">
-          <li><a href="../articles" title="articles">Articles</a></li>
-          <li><a href="../presentations" title="presentations">Presentations</a></li>
-          <li><a href="../interviews" title="interviews">Interviews</a></li>
-          <li class="active"><a href="../bitcoin-information" title="bitcoin info">Bitcoin Resources<span class="sr-only">(current)</span></a></li>
-          <li><a href="../lightning-information" title="lightning info">Lightning Resources</a></li>
-          <li><a href="../contact" title="contact">Contact</a></li>
+          <li><a href="articles" title="articles">Articles</a></li>
+          <li><a href="presentations" title="presentations">Presentations</a></li>
+          <li><a href="interviews" title="interviews">Interviews</a></li>
+          <li><a href="bitcoin-information" title="bitcoin info">Bitcoin Resources</a></li>
+          <li><a href="lightning-information" title="lightning info">Lightning Resources</a></li>
+          <li><a href="contact" title="contact">Contact</a></li>
         </ul>
       </div>
+  </div>
+  <!-- /.container-fluid --> 
+</nav>
+<section class="inner-background">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 text-left col-lg-offset-1 col-lg-8 col-md-offset-1 col-md-10 col-sm-offset-1 col-sm-10">
+        <h1>Search</h1>
+        <p>Since there are thousands of linked resources on this web site, using the search engine may be the easiest way to find what you're looking for!</p>
+        <br>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10 col-sm-10 col-sm-offset-1">
+      <form action="search.php" method="post">
+        <input type="text" name="q" value="<?php echo htmlentities($_REQUEST["q"], ENT_QUOTES); ?>" placeholder="Search lopp.net ..." class='input-block-level' required style="width: 50%" />
+        &nbsp;&nbsp;
+        <input type='submit' value="Search" class="btn btn-large btn-success" />
+      </form>
+    </div>
+  </div>
+  <div class="row">      
+    <div class="col-xs-12 col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10 col-sm-10 col-sm-offset-1">
+        <h2>Search Results</h2>
+        <?php
+          $LiveSearch = new LiveSearch();
+          $search_results = $LiveSearch->search($_REQUEST["q"],$_REQUEST["p"]);
 
-    </div>
-    <!-- /.container-fluid -->
-  </nav>
-  <section id="main-background-section" class="inner-background">
-    <div class="container">
-      <div class="row">
-        <div class="col-xs-12 text-left col-lg-offset-1 col-lg-8 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1">
-          <h1>Additional Lists of Bitcoin Information &amp; Resources</h1>
-          <p>While this site attempts to be as comprehensive as possible, you may find other resources compiled by the maintainers of these other lists.</p>
-          <br />
-        </div>
+            echo $LiveSearch->drawSearchresults();    
+        ?>
       </div>
-    </div>
-  </section>
-  <section>
-    <div class="container">
-      <div class="row" style="font-weight:bold">
-        <div class="text-left col-xs-12 col-sm-6 col-lg-6 col-md-6">
-          <h2 id="bitcoin"><a href="#bitcoin">Bitcoin Resources:</a></h2>
-          <ul>
-            <li><a href="https://github.com/igorbarinov/awesome-bitcoin" title="Awesome Resources" target="_blank" rel="noopener">Awesome Bitcoin Resources</a></li>
-            <li><a href="https://bitcoinmagazine.com/best-of-bitcoin-magazine" title="Magazine" target="_blank" rel="noopener">Best of Bitcoin Magazine</a></li>
-            <li><a href="https://bitcoinwallets.com/21.html" title="Bitcoin Basics" target="_blank" rel="noopener">Bitcoin History &amp; Fundamentals</a></li>
-            <li><a href="https://bitcoinminds.org/" title="Bitcoin Minds" target="_blank" rel="noopener">Bitcoin Minds</a></li>
-            <li><a href="https://bitcoin-only.com/" title="Bitcoin Only" target="_blank" rel="noopener">Bitcoin Only Resources</a></li>
-            <li><a href="http://bitcoinrabbithole.org/" title="Rabbit Hole" target="_blank" rel="noopener">Bitcoin Rabbit Hole</a></li>
-            <li><a href="https://dergigi.com/bitcoin/resources/" title="Der Gigi" target="_blank" rel="noopener">Gigi's Bitcoin Resources</a></li>
-            <li><a href="https://docs.google.com/spreadsheets/d/1Z3Ofa4P8097VWV70Z_bMqIMladngvm-Ck24ot9TDNmw/edit#gid=0" title="Practical Info" target="_blank" rel="noopener">Practical Bitcoin Info</a></li>
-          </ul>
-        </div>
-        <!-- RIGHT COLUMN -->
-        <div class="text-left col-xs-12 col-sm-6 col-lg-6 col-md-6">
-          <h2 id="languages"><a href="#languages">Other Languages:</a></h2>
-          <ul>
-            <li><a href="https://bitcoin.org/en/bitcoin-paper" title="Translations" target="_blank" rel="noopener">36+ Translations of the Whitepaper</a></li>
-            <li><a href="https://exonumia.africa/" title="African Bitcoin resources" target="_blank" rel="noopener">African language resources</a></li>
-            <li><a href="https://bitcoinarabic.org/" title="bitcoin resources in arabic" target="_blank" rel="noopener">موارد البيتكوين بالعربية</a></li>
-            <li><a href="https://saifedean.com/Arabic/" title="bitcoin resources in arabic" target="_blank" rel="noopener">موارد البيتكوين بالعربية</a></li>
-            <li><a href="https://aprycot.media/thek" title="bitcoin resources in german" target="_blank" rel="noopener">Bitcoin-Ressourcen auf Deutsch</a></li>
-            <li><a href="https://bitcoinst.art/" title="Bitcoin Resources in Dutch" target="_blank" rel="noopener">bitcoin-bronnen in het Nederlands</a></li>
-            <li><a href="https://btcwiki.nl/wiki/Hoofdpagina" title="Bitcoin Resources in Dutch" target="_blank" rel="noopener">bitcoin-bronnen in het Nederlands</a></li>
-            <li><a href="https://weacceptbitcoin.gr/" title="Bitcoin Resources in Greek" target="_blank" rel="noopener">πόροι bitcoin στα ελληνικά</a></li>
-            <li><a href="https://github.com/mirserena/risorsebitcoin/blob/main/README.md" title="bitcoin resources in Italian" target="_blank" rel="noopener">Risorse Bitcoin in Italiano</a></li>
-            <li><a href="https://pindol.medium.com/premessa-1e5254a52475" title="bitcoin resources in Italian" target="_blank" rel="noopener">Risorse Bitcoin in Italiano</a></li>
-            <li><a href="https://bitcoinheiros.com/intro-bitcoin/" title="Bitcoin Resources in Portuguese" target="_blank" rel="noopener">Recursos Bitcoin em Português</a></li>
-            <li><a href="https://academy.bit2me.com/pt/funda%C3%A7%C3%B5es/" title="Bitcoin Resources in Portuguese" target="_blank" rel="noopener">Recursos Bitcoin em Português</a></li>
-            <li><a href="https://estudiobitcoin.com/" title="Bitcoin resources in Spanish" target="_blank" rel="noopener">Recursos Bitcoin en Español</a></li>
-            <li><a href="https://bgeometrics.github.io/bitcoin_bookmarks_es.html" title="Bitcoin resources in Spanish" target="_blank" rel="noopener">Recursos Bitcoin en Español</a></li>
-            <li><a href="https://www.bitcointec.cl/" title="Bitcoin resources in Spanish" target="_blank" rel="noopener">Recursos Bitcoin Chilenos en Español</a></li>
-            <li><a href="https://bitcoin.cipix.eu/" title="Bitcoin Guides in Spanish" target="_blank" rel="noopener">Guias Bitcoin en Español</a></li>
-            <li><a href="https://www.bitcoinsverige.org/" title="Bitcoin resources in Swedish" target="_blank" rel="noopener">Bitcoin -resurser på Svenska</a></li>
-            <li><a href="https://www.21ideas.org/" title="Bitcoin resources in Russian" target="_blank" rel="noopener">Биткоин-ресурсы на русском языке</a></li>
-          </ul>
-          <h2 id="blockchain"><a href="#blockchain">Blockchain &amp; Crypto Resources:</a></h2>
-          <ul>
-            <li><a href="https://github.com/Xel/Blockchain-stuff" title="Blockchain Stuff" target="_blank" rel="noopener">Blockchain Stuff</a></li>
-            <li><a href="https://github.com/coinpride/CryptoList" title="CoinPride" target="_blank" rel="noopener">CoinPride's CryptoList</a></li>
-            <li><a href="https://cryptolinks.com/" title="Crypto Links" target="_blank" rel="noopener">Crypto Links</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-  <hr>
-  <div class="section well">
-    <div class="container">
-      <div class="row">
+  </div>
+</div>
+<hr>
+<div class="section well">
+  <div class="container">
+    <div class="row">
         <div class="col-sm-10 col-sm-offset-1 col-md-10 col-lg-10 col-xs-offset-0 col-xs-12">
           <form action="search.php" method="post" style="float:left">
             <input type="text" name="q" value="" placeholder=" Search lopp.net" size="25" class='input-block-level' required style="height:20px;padding:0px" />
@@ -167,18 +136,18 @@
             <a href="https://www.reddit.com/user/statoshi/" target="_blank" rel="noopener" aria-label="Jameson's Reddit Account" class="icon-reddit-alien"></a>
           </p>
         </div>
+    </div>
+  </div>
+</div>
+<footer class="text-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <p class="footer">No copyright ever. No rights reserved.</p>
       </div>
     </div>
   </div>
-  <footer class="text-center">
-    <div class="container">
-      <div class="row">
-        <div class="col-xs-12">
-          <p class="footer">No copyright ever. No rights reserved.</p>
-        </div>
-      </div>
-    </div>
-  </footer>
-  <script src="../js/combined.js"></script>
+</footer>
+<script src="js/combined.js"></script>
 </body>
 </html>
