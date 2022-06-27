@@ -28,26 +28,202 @@
   <link href="https://stats.g.doubleclick.net" rel="preconnect" crossorigin />
 
   <style>
-  html{font-family:sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}body{margin:0}footer,nav,section{display:block}a{background-color:transparent}h1{margin:.67em 0;font-size:2em}hr{height:0;-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box}button,input{margin:0;font:inherit;color:inherit}button{overflow:visible}button{text-transform:none}button{-webkit-appearance:button}button::-moz-focus-inner,input::-moz-focus-inner{padding:0;border:0}input{line-height:normal}input[type=checkbox]{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;padding:0}*{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}*:before,*:after{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}html{font-size:10px}body{font-family:helvetica neue,Helvetica,Arial,sans-serif;font-size:14px;line-height:1.42857143;color:#333;background-color:#fff}input,button{font-family:inherit;font-size:inherit;line-height:inherit}a{color:#337ab7;text-decoration:none}hr{margin-top:20px;margin-bottom:20px;border:0;border-top:1px solid #eee}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}h1,h2{font-family:inherit;font-weight:500;line-height:1.1;color:inherit}h1,h2{margin-top:20px;margin-bottom:10px}h1{font-size:36px}h2{font-size:30px}p{margin:0 0 10px}.text-left{text-align:left}.text-right{text-align:right}.text-center{text-align:center}ul{margin-top:0;margin-bottom:10px}.container{padding-right:15px;padding-left:15px;margin-right:auto;margin-left:auto}@media (min-width:768px){.container{width:750px}}@media (min-width:992px){.container{width:970px}}@media (min-width:1200px){.container{width:1170px}}.row{margin-right:-15px;margin-left:-15px}.col-sm-6,.col-md-6,.col-lg-6,.col-lg-8,.col-sm-10,.col-md-10,.col-lg-10,.col-xs-12,.col-sm-12,.col-md-12,.col-lg-12{position:relative;min-height:1px;padding-right:15px;padding-left:15px}.col-xs-12{float:left}.col-xs-12{width:100%}.col-xs-offset-0{margin-left:0}@media (min-width:768px){.col-sm-6,.col-sm-10,.col-sm-12{float:left}.col-sm-12{width:100%}.col-sm-10{width:83.33333333%}.col-sm-6{width:50%}.col-sm-offset-1{margin-left:8.33333333%}.col-sm-offset-0{margin-left:0}}@media (min-width:992px){.col-md-6,.col-md-10,.col-md-12{float:left}.col-md-12{width:100%}.col-md-10{width:83.33333333%}.col-md-6{width:50%}.col-md-offset-1{margin-left:8.33333333%}.col-md-offset-0{margin-left:0}}@media (min-width:1200px){.col-lg-6,.col-lg-8,.col-lg-10,.col-lg-12{float:left}.col-lg-12{width:100%}.col-lg-10{width:83.33333333%}.col-lg-8{width:66.66666667%}.col-lg-6{width:50%}.col-lg-offset-1{margin-left:8.33333333%}.col-lg-offset-0{margin-left:0}}input[type=checkbox]{margin:4px 0 0;margin-top:1px \9;line-height:normal}.collapse{display:none}.nav{padding-left:0;margin-bottom:0;list-style:none}.nav>li{position:relative;display:block}.nav>li>a{position:relative;display:block;padding:10px 15px}.navbar{position:relative;min-height:50px;margin-bottom:20px;border:1px solid transparent;padding-left:30px;padding-right:30px}@media (min-width:768px){.navbar{border-radius:4px}}@media (min-width:768px){.navbar-header{float:left}}.navbar-collapse{padding-right:30px;padding-left:30px;overflow-x:visible;-webkit-overflow-scrolling:touch;border-top:1px solid transparent;-webkit-box-shadow:inset 0 1px 0 rgba(255,255,255,.1);box-shadow:inset 0 1px 0 rgba(255,255,255,.1)}@media (min-width:768px){.navbar-collapse{width:auto;border-top:0;-webkit-box-shadow:none;box-shadow:none}.navbar-collapse.collapse{display:block!important;height:auto!important;padding-bottom:0;overflow:visible!important}}.container>.navbar-header,.container>.navbar-collapse{margin-right:-15px;margin-left:-15px}@media (min-width:768px){.container>.navbar-header,.container>.navbar-collapse{margin-right:0;margin-left:0}}.navbar-brand{float:left;height:50px;padding:15px;font-size:20px;line-height:20px}@media (min-width:768px){.navbar>.container .navbar-brand{margin-left:45px}}.navbar-toggle{position:relative;float:right;padding:9px 10px;margin-top:8px;margin-right:15px;margin-bottom:8px;background-color:transparent;background-image:none;border:1px solid transparent;border-radius:4px}.navbar-toggle .icon-bar{display:block;width:22px;height:2px;border-radius:1px}.navbar-toggle .icon-bar+.icon-bar{margin-top:4px}@media (min-width:768px){.navbar-toggle{display:none}}.navbar-nav{margin:7.5px -15px}.navbar-nav>li>a{padding-top:10px;padding-bottom:10px;line-height:20px}@media (min-width:768px){.navbar-nav{float:left;margin:0}.navbar-nav>li{float:left}.navbar-nav>li>a{padding-top:15px;padding-bottom:15px}}.navbar-default{background-color:#fff;border-color:#fff;text-align:center}.navbar-default .navbar-brand{color:#000;font-weight:500}.navbar-default .navbar-nav>li>a{color:#000}.navbar-default .navbar-nav>.active>a{color:#deb903;background-color:rgba(0,0,0,.05);font-weight:700}.navbar-default .navbar-toggle{border-color:#ddd}.navbar-default .navbar-toggle .icon-bar{background-color:#888}.navbar-default .navbar-collapse{border-color:#fff}.well{min-height:20px;padding:19px;margin-bottom:20px;background-color:#f5f5f5;border:1px solid #e3e3e3;border-radius:4px;-webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,.05);box-shadow:inset 0 1px 1px rgba(0,0,0,.05)}.container:before,.container:after,.row:before,.row:after,.nav:before,.nav:after,.navbar:before,.navbar:after,.navbar-header:before,.navbar-header:after,.navbar-collapse:before,.navbar-collapse:after{display:table;content:" "}.container:after,.row:after,.nav:after,.navbar:after,.navbar-header:after,.navbar-collapse:after{clear:both}body{font-family:overpass mono,monospace;text-align:left}.navbar{font-weight:300;text-transform:uppercase}.navbar-brand{padding-left:0}#myDefaultNavbar1 a:link{font-weight:400}#myDefaultNavbar1 .active a:link{font-weight:700}h1{font-weight:600;text-transform:uppercase;border-bottom:solid 4px}.footer{font-size:10px}.inner-background{width:100%;height:auto;background-image:url(https://www.lopp.net/images/bkg-1.webp)}.well{font-size:11px}li a{line-height:1.8}@media (min-width:60em){li a{line-height:1.2}}a:link{color:#deb903;text-decoration:none;font-weight:700}a:visited{color:red;text-decoration:none}.github,.keybase,.pgp,.twitter{display:inline-block;background:url(https://www.lopp.net/images/icons.png) no-repeat;overflow:hidden;text-indent:-9999px;text-align:left}.github{background-position:0 -20px;width:24px;height:20px}.keybase{background-position:0 -60px;width:24px;height:20px}.pgp{background-position:0 -100px;width:24px;height:20px}.twitter{background-position:0 -140px;width:24px;height:20px}@font-face{font-family:overpass mono;font-display:swap;font-style:normal;font-weight:300;src:local('Overpass Mono Light'),local('OverpassMono-Light'),url(https://www.lopp.net/fonts/overpassmono/_Xm3-H86tzKDdAPa-KPQZ-AC3oSWo_6XBkZf.woff2) format('woff2');unicode-range:U+0100-024F,U+0259,U+1E00-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:overpass mono;font-display:swap;font-style:normal;font-weight:300;src:local('Overpass Mono Light'),local('OverpassMono-Light'),url(https://www.lopp.net/fonts/overpassmono/_Xm3-H86tzKDdAPa-KPQZ-AC3oSWo_CXBg.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:overpass mono;font-display:swap;font-style:normal;font-weight:400;src:local('Overpass Mono Regular'),local('OverpassMono-Regular'),url(https://www.lopp.net/fonts/overpassmono/_Xmq-H86tzKDdAPa-KPQZ-AC1iG0ts-2.woff2) format('woff2');unicode-range:U+0100-024F,U+0259,U+1E00-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:overpass mono;font-display:swap;font-style:normal;font-weight:400;src:local('Overpass Mono Regular'),local('OverpassMono-Regular'),url(https://www.lopp.net/fonts/overpassmono/_Xmq-H86tzKDdAPa-KPQZ-AC1i-0tg.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:overpass mono;font-display:swap;font-style:normal;font-weight:600;src:local('Overpass Mono SemiBold'),local('OverpassMono-SemiBold'),url(https://www.lopp.net/fonts/overpassmono/_Xm3-H86tzKDdAPa-KPQZ-AC3vCQo_6XBkZf.woff2) format('woff2');unicode-range:U+0100-024F,U+0259,U+1E00-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:overpass mono;font-display:swap;font-style:normal;font-weight:600;src:local('Overpass Mono SemiBold'),local('OverpassMono-SemiBold'),url(https://www.lopp.net/fonts/overpassmono/_Xm3-H86tzKDdAPa-KPQZ-AC3vCQo_CXBg.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:overpass mono;font-display:swap;font-style:normal;font-weight:700;src:local('Overpass Mono Bold'),local('OverpassMono-Bold'),url(https://www.lopp.net/fonts/overpassmono/_Xm3-H86tzKDdAPa-KPQZ-AC3pSRo_6XBkZf.woff2) format('woff2');unicode-range:U+0100-024F,U+0259,U+1E00-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:overpass mono;font-display:swap;font-style:normal;font-weight:700;src:local('Overpass Mono Bold'),local('OverpassMono-Bold'),url(https://www.lopp.net/fonts/overpassmono/_Xm3-H86tzKDdAPa-KPQZ-AC3pSRo_CXBg.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}.wrapper{text-align:center}.toggle{position:relative;display:inline-block;width:120px;height:60px;margin-left:100px;padding:4px;border-radius:40px}.toggle:before,.toggle:after{content:'';display:table}.toggle:after{clear:both}.toggle-bg{position:absolute;top:-4px;left:-4px;width:100%;height:100%;background-color:#c0e6f6;border-radius:40px;border:4px solid #81c0d5}.toggle-input{position:absolute;top:0;left:0;width:100%;height:100%;border:1px solid red;border-radius:40px;z-index:2;opacity:0}.toggle-switch{position:relative;width:40px;height:40px;margin-left:60px;background-color:#f5eb42;border:4px solid #e4c74d;border-radius:50%}.toggle-switch-figure{position:absolute;bottom:-14px;left:-50px;display:block;width:80px;height:40px;border:8px solid #d4d4d2;border-radius:20px;background-color:#fff;transform:scale(.6)}.toggle-switch-figure:after{content:'';display:block;position:relative;top:-45px;right:-32px;width:25px;height:15px;border:8px solid #d4d4d2;border-radius:100%;border-right-color:transparent;border-bottom-color:transparent;transform:rotateZ(50deg);background-color:#fff}.toggle-switch-figure:before{content:'';display:block;position:relative;top:-20px;right:-5px;width:35px;height:30px;border:8px solid #d4d4d2;border-radius:100%;border-right-color:transparent;border-bottom-color:transparent;transform:rotateZ(30deg);background-color:#fff}.toggle-switch-figureAlt{content:'';position:absolute;top:5px;left:2px;width:2px;height:2px;background-color:#efeeda;border-radius:100%;border:4px solid #dee1c5;box-shadow:42px -7px 0 -2px #fcfcfc,75px -10px 0 -2px #fcfcfc,54px 4px 0 -3px #fcfcfc,83px 7px 0 -1px #fcfcfc,63px 18px 0 -3px #fcfcfc,44px 28px 0 -1px #fcfcfc,78px 23px 0 -2px #fcfcfc;transform:scale(0)}.toggle-switch-figureAlt:before{content:'';position:absolute;top:-6px;left:18px;width:7px;height:7px;background-color:#efeeda;border-radius:100%;border:4px solid #dee1c5}.toggle-switch-figureAlt:after{content:'';position:absolute;top:19px;left:15px;width:2px;height:2px;background-color:#efeeda;border-radius:100%;border:4px solid #dee1c5}
+  html{font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",Helvetica,"Apple Color Emoji",Arial,sans-serif,"Segoe UI Emoji","Segoe UI Symbol";-webkit-font-smoothing: subpixel-antialiased;-ms-text-size-adjust:100%}body{margin:0}footer,nav,section{display:block}a{background-color:transparent}h1{margin:.67em 0;font-size:2em}hr{height:0;-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box}button,input{margin:0;font:inherit;color:inherit}button{overflow:visible}button{text-transform:none}button{-webkit-appearance:button}button::-moz-focus-inner,input::-moz-focus-inner{padding:0;border:0}input{line-height:normal}input[type=checkbox]{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;padding:0}*{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}*:before,*:after{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}html{font-size:10px}body{font-family:helvetica neue,Helvetica,Arial,sans-serif;font-size:14px;line-height:1.42857143;color:#333;background-color:#fff}input,button{font-family:inherit;font-size:inherit;line-height:inherit}a{color:#337ab7;text-decoration:none}hr{margin-top:20px;margin-bottom:20px;border:0;border-top:1px solid #eee}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}h1,h2{font-family:inherit;font-weight:500;line-height:1.1;color:inherit}h1,h2{margin-top:20px;margin-bottom:10px}h1{font-size:36px}h2{font-size:30px}p{margin:0 0 10px}.text-left{text-align:left}.text-right{text-align:right}.text-center{text-align:center}ul{margin-top:0;margin-bottom:10px}.container{padding-right:15px;padding-left:15px;margin-right:auto;margin-left:auto}@media (min-width:768px){.container{width:750px}}@media (min-width:992px){.container{width:970px}}@media (min-width:1200px){.container{width:1170px}}.row{margin-right:-15px;margin-left:-15px}.col-sm-6,.col-md-6,.col-lg-6,.col-lg-8,.col-sm-10,.col-md-10,.col-lg-10,.col-xs-12,.col-sm-12,.col-md-12,.col-lg-12{position:relative;min-height:1px;padding-right:15px;padding-left:15px}.col-xs-12{float:left}.col-xs-12{width:100%}.col-xs-offset-0{margin-left:0}@media (min-width:768px){.col-sm-6,.col-sm-10,.col-sm-12{float:left}.col-sm-12{width:100%}.col-sm-10{width:83.33333333%}.col-sm-6{width:50%}.col-sm-offset-1{margin-left:8.33333333%}.col-sm-offset-0{margin-left:0}}@media (min-width:992px){.col-md-6,.col-md-10,.col-md-12{float:left}.col-md-12{width:100%}.col-md-10{width:83.33333333%}.col-md-6{width:50%}.col-md-offset-1{margin-left:8.33333333%}.col-md-offset-0{margin-left:0}}@media (min-width:1200px){.col-lg-6,.col-lg-8,.col-lg-10,.col-lg-12{float:left}.col-lg-12{width:100%}.col-lg-10{width:83.33333333%}.col-lg-8{width:66.66666667%}.col-lg-6{width:50%}.col-lg-offset-1{margin-left:8.33333333%}.col-lg-offset-0{margin-left:0}}input[type=checkbox]{margin:4px 0 0;margin-top:1px;line-height:normal}.collapse{display:none}.nav{padding-left:0;margin-bottom:0;list-style:none}.nav>li{position:relative;display:block}.nav>li>a{position:relative;display:block;padding:10px 15px}.navbar{position:relative;min-height:50px;margin-bottom:20px;border:1px solid transparent;padding-left:30px;padding-right:30px}@media (min-width:768px){.navbar{border-radius:4px}}@media (min-width:768px){.navbar-header{float:left}}.navbar-collapse{padding-right:30px;padding-left:30px;overflow-x:visible;-webkit-overflow-scrolling:touch;border-top:1px solid transparent;-webkit-box-shadow:inset 0 1px 0 rgba(255,255,255,.1);box-shadow:inset 0 1px 0 rgba(255,255,255,.1)}@media (min-width:768px){.navbar-collapse{width:auto;border-top:0;-webkit-box-shadow:none;box-shadow:none}.navbar-collapse.collapse{display:block!important;height:auto!important;padding-bottom:0;overflow:visible!important}}.container>.navbar-header,.container>.navbar-collapse{margin-right:-15px;margin-left:-15px}@media (min-width:768px){.container>.navbar-header,.container>.navbar-collapse{margin-right:0;margin-left:0}}.navbar-brand{float:left;height:50px;padding:15px;font-size:20px;line-height:20px}@media (min-width:768px){.navbar>.container .navbar-brand{margin-left:45px}}.navbar-toggle{position:relative;float:right;padding:9px 10px;margin-top:8px;margin-right:15px;margin-bottom:8px;background-color:transparent;background-image:none;border:1px solid transparent;border-radius:4px}.navbar-toggle .icon-bar{display:block;width:22px;height:2px;border-radius:1px}.navbar-toggle .icon-bar+.icon-bar{margin-top:4px}@media (min-width:768px){.navbar-toggle{display:none}}.navbar-nav{margin:7.5px -15px}.navbar-nav>li>a{padding-top:10px;padding-bottom:10px;line-height:20px}@media (min-width:768px){.navbar-nav{float:left;margin:0}.navbar-nav>li{float:left}.navbar-nav>li>a{padding-top:15px;padding-bottom:15px}}.navbar-default{background-color:#fff;border-color:#fff;text-align:center}.navbar-default .navbar-brand{color:#000;font-weight:500}.navbar-default .navbar-nav>li>a{color:#000}.navbar-default .navbar-nav>.active>a{color:#CC4C00;background-color:rgba(0,0,0,.05);font-weight:700}.navbar-default .navbar-toggle{border-color:#ddd}.navbar-default .navbar-toggle .icon-bar{background-color:#888}.navbar-default .navbar-collapse{border-color:#fff}.well{min-height:20px;padding:19px;margin-bottom:20px;background-color:#f5f5f5;border:1px solid #e3e3e3;border-radius:4px;-webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,.05);box-shadow:inset 0 1px 1px rgba(0,0,0,.05)}.container:before,.container:after,.row:before,.row:after,.nav:before,.nav:after,.navbar:before,.navbar:after,.navbar-header:before,.navbar-header:after,.navbar-collapse:before,.navbar-collapse:after{display:table;content:" "}.container:after,.row:after,.nav:after,.navbar:after,.navbar-header:after,.navbar-collapse:after{clear:both}.navbar{font-weight:300;text-transform:uppercase}.navbar-brand{padding-left:0}#myDefaultNavbar1 a:link{font-weight:400}#myDefaultNavbar1 .active a:link{font-weight:700}h1{font-weight:600;text-transform:uppercase;border-bottom:solid 4px}.footer{font-size:10px}.inner-background{width:100%;height:auto;background-image:url(https://www.lopp.net/images/bkg-1.webp)}.well{font-size:11px}li a{line-height:1.8}@media (min-width:60em){li a{line-height:1.2}}a:link{color:#CC4C00;text-decoration:none;font-weight:700}a:visited{color:red;text-decoration:none}.wrapper{text-align:center}.toggle{position:relative;display:inline-block;width:120px;height:60px;margin-left:100px;padding:4px;border-radius:40px}.toggle:before,.toggle:after{content:'';display:table}.toggle:after{clear:both}.toggle-bg{position:absolute;top:-4px;left:-4px;width:100%;height:100%;background-color:#c0e6f6;border-radius:40px;border:4px solid #81c0d5}.toggle-input{position:absolute;top:0;left:0;width:100%;height:100%;border:1px solid red;border-radius:40px;z-index:2;opacity:0}.toggle-switch{position:relative;width:40px;height:40px;margin-left:60px;background-color:#f5eb42;border:4px solid #e4c74d;border-radius:50%}.toggle-switch-figure{position:absolute;bottom:-14px;left:-50px;display:block;width:80px;height:40px;border:8px solid #d4d4d2;border-radius:20px;background-color:#fff;transform:scale(.6)}.toggle-switch-figure:after{content:'';display:block;position:relative;top:-45px;right:-32px;width:25px;height:15px;border:8px solid #d4d4d2;border-radius:100%;border-right-color:transparent;border-bottom-color:transparent;transform:rotateZ(50deg);background-color:#fff}.toggle-switch-figure:before{content:'';display:block;position:relative;top:-20px;right:-5px;width:35px;height:30px;border:8px solid #d4d4d2;border-radius:100%;border-right-color:transparent;border-bottom-color:transparent;transform:rotateZ(30deg);background-color:#fff}.toggle-switch-figureAlt{content:'';position:absolute;top:5px;left:2px;width:2px;height:2px;background-color:#efeeda;border-radius:100%;border:4px solid #dee1c5;box-shadow:42px -7px 0 -2px #fcfcfc,75px -10px 0 -2px #fcfcfc,54px 4px 0 -3px #fcfcfc,83px 7px 0 -1px #fcfcfc,63px 18px 0 -3px #fcfcfc,44px 28px 0 -1px #fcfcfc,78px 23px 0 -2px #fcfcfc;transform:scale(0)}.toggle-switch-figureAlt:before{content:'';position:absolute;top:-6px;left:18px;width:7px;height:7px;background-color:#efeeda;border-radius:100%;border:4px solid #dee1c5}.toggle-switch-figureAlt:after{content:'';position:absolute;top:19px;left:15px;width:2px;height:2px;background-color:#efeeda;border-radius:100%;border:4px solid #dee1c5}
   </style>
-  <link rel='preload' href='css/bootstrap.css' as='style' onload="this.onload=null;this.rel='stylesheet'" />
-  <noscript><link rel="stylesheet" href="css/bootstrap.css" /></noscript>
-  <link id="mystyle" rel='preload' href='css/style.css' as='style' onload="this.onload=null;this.rel='stylesheet'" />
-  <noscript><link rel="stylesheet" href="css/style.css" /></noscript>
-
-  <link rel="preload" href="/fonts/overpassmono/_Xmq-H86tzKDdAPa-KPQZ-AC1i-0tg.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
-  <link rel="preload" href="/fonts/overpassmono/_Xm3-H86tzKDdAPa-KPQZ-AC3pSRo_CXBg.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
-  <link rel="preload" href="/fonts/overpassmono/_Xm3-H86tzKDdAPa-KPQZ-AC3vCQo_CXBg.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+  <link rel="stylesheet" href="/css/bootstrap.css" />
+  <link id="mystyle" rel="stylesheet" href="/css/style.css" />
 
   <script src="js/jquery-3.5.0.slim.min.js"></script>
-  <!-- PoW CAPTCHA -->
-  <link type="text/css" rel="stylesheet" href="css/jquery.hashcash.io.min.css" media="all" />
+  <script>
+
+    function sha256(ascii) {
+        function rightRotate(value, amount) {
+            return (value>>>amount) | (value<<(32 - amount));
+        };
+
+        var mathPow = Math.pow;
+        var maxWord = mathPow(2, 32);
+        var lengthProperty = 'length'
+        var i, j; // Used as a counter across the whole file
+        var result = ''
+
+        var words = [];
+        var asciiBitLength = ascii[lengthProperty]*8;
+
+        //* caching results is optional - remove/add slash from front of this line to toggle
+        // Initial hash value: first 32 bits of the fractional parts of the square roots of the first 8 primes
+        // (we actually calculate the first 64, but extra values are just ignored)
+        var hash = sha256.h = sha256.h || [];
+        // Round constants: first 32 bits of the fractional parts of the cube roots of the first 64 primes
+        var k = sha256.k = sha256.k || [];
+        var primeCounter = k[lengthProperty];
+
+        var isComposite = {};
+        for (var candidate = 2; primeCounter < 64; candidate++) {
+            if (!isComposite[candidate]) {
+                for (i = 0; i < 313; i += candidate) {
+                    isComposite[i] = candidate;
+                }
+                hash[primeCounter] = (mathPow(candidate, .5)*maxWord)|0;
+                k[primeCounter++] = (mathPow(candidate, 1/3)*maxWord)|0;
+            }
+        }
+
+        ascii += '\x80' // Append Ƈ' bit (plus zero padding)
+        while (ascii[lengthProperty]%64 - 56) ascii += '\x00' // More zero padding
+        for (i = 0; i < ascii[lengthProperty]; i++) {
+            j = ascii.charCodeAt(i);
+            if (j>>8) return; // ASCII check: only accept characters in range 0-255
+            words[i>>2] |= j << ((3 - i)%4)*8;
+        }
+        words[words[lengthProperty]] = ((asciiBitLength/maxWord)|0);
+        words[words[lengthProperty]] = (asciiBitLength)
+
+        // process each chunk
+        for (j = 0; j < words[lengthProperty];) {
+            var w = words.slice(j, j += 16); // The message is expanded into 64 words as part of the iteration
+            var oldHash = hash;
+            // This is now the undefinedworking hash", often labelled as variables a...g
+            // (we have to truncate as well, otherwise extra entries at the end accumulate
+            hash = hash.slice(0, 8);
+
+            for (i = 0; i < 64; i++) {
+                var i2 = i + j;
+                // Expand the message into 64 words
+                var w15 = w[i - 15], w2 = w[i - 2];
+
+                // Iterate
+                var a = hash[0], e = hash[4];
+                var temp1 = hash[7]
+                    + (rightRotate(e, 6) ^ rightRotate(e, 11) ^ rightRotate(e, 25)) // S1
+                    + ((e&hash[5])^((~e)&hash[6])) // ch
+                    + k[i]
+                    // Expand the message schedule if needed
+                    + (w[i] = (i < 16) ? w[i] : (
+                            w[i - 16]
+                            + (rightRotate(w15, 7) ^ rightRotate(w15, 18) ^ (w15>>>3)) // s0
+                            + w[i - 7]
+                            + (rightRotate(w2, 17) ^ rightRotate(w2, 19) ^ (w2>>>10)) // s1
+                        )|0
+                    );
+                // This is only used once, so *could* be moved below, but it only saves 4 bytes and makes things unreadble
+                var temp2 = (rightRotate(a, 2) ^ rightRotate(a, 13) ^ rightRotate(a, 22)) // S0
+                    + ((a&hash[1])^(a&hash[2])^(hash[1]&hash[2])); // maj
+
+                hash = [(temp1 + temp2)|0].concat(hash); // We don't bother trimming off the extra ones, they're harmless as long as we're truncating when we do the slice()
+                hash[4] = (hash[4] + temp1)|0;
+            }
+
+            for (i = 0; i < 8; i++) {
+                hash[i] = (hash[i] + oldHash[i])|0;
+            }
+        }
+
+        for (i = 0; i < 8; i++) {
+            for (j = 3; j + 1; j--) {
+                var b = (hash[i]>>(j*8))&255;
+                result += ((b < 16) ? 0 : '') + b.toString(16);
+            }
+        }
+        return result;
+    }
+
+    function hc_HashFunc(x) { return sha256(x); }
+
+    function hc_SetFormData(x, y)
+    {
+      var z = document.getElementById(x);
+      if(z) z.value = y;
+    }
+
+    function hc_GetFormData(x)
+    {
+      var z = document.getElementById(x);
+      if(z)
+        return z.value;
+      else
+        return '';
+    }
+
+    // convert hex numbers to binary strings
+    function hc_HexInBin(x)
+    {
+      var ret = '';
+      switch(x.toUpperCase())
+      { case '0': ret = '0000'; break; case '1': ret = '0001'; break;
+        case '2': ret = '0010'; break; case '3': ret = '0011'; break;
+        case '4': ret = '0100'; break; case '5': ret = '0101'; break;
+        case '6': ret = '0110'; break; case '7': ret = '0111'; break;
+        case '8': ret = '1000'; break; case '9': ret = '1001'; break;
+        case 'A': ret = '1010'; break; case 'B': ret = '1011'; break;
+        case 'C': ret = '1100'; break; case 'D': ret = '1101'; break;
+        case 'E': ret = '1110'; break; case 'F': ret = '1111'; break;
+        default : ret = '0000'; }
+      return ret;
+    }
+
+    function hc_ExtractBits(hex_string, num_bits)
+    {
+      var bit_string = "";
+      var num_chars = Math.ceil(num_bits / 4);
+      for(var i = 0; i < num_chars; i++)
+        bit_string = bit_string + "" + hc_HexInBin(hex_string.charAt(i));
+
+      bit_string = bit_string.substr(0, num_bits);
+      return bit_string;
+    }
+
+    function hc_CheckContract(difficulty, stamp, nonce)
+    {
+      var col_hash = hc_HashFunc(stamp + nonce);
+      var check_bits = hc_ExtractBits(col_hash, difficulty);
+      return (check_bits == 0);
+    }
+
+    function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    async function hc_findHash()
+    {
+      var hc_stamp = hc_GetFormData('hc_stamp');
+      var hc_difficulty = hc_GetFormData('hc_difficulty');
+
+      // check to see if we already found a solution
+      var form_nonce = hc_GetFormData('hc_nonce');
+      if (form_nonce && hc_CheckContract(hc_difficulty, hc_stamp, form_nonce)) {
+        document.getElementById('freesubmitbutton').disabled = false;
+        return true;
+      }
+
+      var nonce = 1;
+
+      while(!hc_CheckContract(hc_difficulty, hc_stamp, nonce))
+      {
+        nonce++;
+        if (nonce % 10000 == 0)
+        {
+            let remaining = Math.round((Math.pow(2, hc_difficulty) - nonce) / 10000) * 2;
+            document.getElementById('countdown').innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;Approximately " + remaining + " work remaining before form unlocks.";
+            await sleep(100); // don't peg the CPU and prevent the browser from rendering these updates
+        }
+      }
+
+      hc_SetFormData('hc_nonce', nonce);
+      //alert("Found nonce: " + nonce);
+      document.getElementById('countdown').innerHTML = "";
+      document.getElementById('freesubmitbutton').disabled = false;
+
+      return true;
+    }
+  </script>
   <!-- PGP encryption -->
   <script src="js/openpgp.min.js" async></script>
   <script>
     function showFreeForm() {
       document.getElementById("freeform").style.display = "block";
       document.getElementById("paidform").style.display = "none";
+      setTimeout(hc_findHash, 3000); // start PoW
     }
 
     function showPaidForm() {
@@ -161,28 +337,26 @@ NjT4rMUesCnjTVHVM9KXvMemwAhhYbM=
     }
   </script>
 
+  <script async src="/js/ga4.js"></script>
   <script>
-    (function(i, s, o, g, r, a, m) {
-      i['GoogleAnalyticsObject'] = r;
-      i[r] = i[r] || function() {
-        (i[r].q = i[r].q || []).push(arguments)
-      }, i[r].l = 1 * new Date();
-      i.initAnalytics = function() {
-          a = s.createElement(o), m = s.getElementsByTagName(o)[0];
-          a.async = 1;
-          a.src = g;
-          m.parentNode.insertBefore(a, m)
-      }
-    })(window, document, 'script', 'js/gastats.js', 'ga');
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-    ga('create', 'UA-2071667-1', 'auto');
-    ga('send', 'pageview');
-    function atOnload() {
-        initAnalytics();
-    }
-    if (window.addEventListener) window.addEventListener("load", atOnload, false);
-    else if (window.attachEvent) window.attachEvent("onload", atOnload);
-    else window.onload = atOnload;
+    gtag('config', 'G-V9T1MNTG7V');
+  </script>
+  <script type = "application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [{
+        "@type": "ListItem",
+        "position": "1",
+        "name": "Contact Jameson Lopp",
+        "item": "https://www.lopp.net/contact"
+      }
+    ]
+  }
   </script>
 </head>
 
@@ -193,18 +367,16 @@ NjT4rMUesCnjTVHVM9KXvMemwAhhYbM=
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#myDefaultNavbar1" aria-expanded="false"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
       <a class="navbar-brand" href="/">Jameson Lopp</a> </div>
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="myDefaultNavbar1">
-      <ul class="nav navbar-nav">
-      <li><a href="articles">Articles</a></li>
-      <li><a href="presentations">Presentations</a></li>
-      <li><a href="interviews">Interviews</a></li>
-      <li><a href="bitcoin-information">Bitcoin Resources</a></li>
-      <li><a href="lightning-information">Lightning Resources</a></li>
-      <li class="active"><a href="#">Contact<span class="sr-only">(current)</span></a></li>
-      </ul>
-    </div>
-    <!-- /.navbar-collapse --> 
+      <div class="collapse navbar-collapse" id="myDefaultNavbar1">
+        <ul class="nav navbar-nav">
+          <li><a href="articles" title="articles">Articles</a></li>
+          <li><a href="presentations" title="presentations">Presentations</a></li>
+          <li><a href="interviews" title="interviews">Interviews</a></li>
+          <li><a href="bitcoin-information" title="bitcoin info">Bitcoin Resources</a></li>
+          <li><a href="lightning-information" title="lightning info">Lightning Resources</a></li>
+          <li class="active"><a href="#" title="contact">Contact<span class="sr-only">(current)</span></a></li>
+        </ul>
+      </div>
   </div>
   <!-- /.container-fluid --> 
 </nav>
@@ -222,10 +394,10 @@ NjT4rMUesCnjTVHVM9KXvMemwAhhYbM=
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10 col-sm-10 col-sm-offset-1">
-      <div style="margin: 20px;text-align:center"><button type="button" class="btn btn-success" onclick="showFreeForm()">Send Low Priority Message (Free)</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-success" onclick="showPaidForm()">Send High Priority Message ($100)</button></div>
+      <div style="margin: 20px;text-align:center"><button style="margin-left: 20px; margin-top: 20px" type="button" class="btn btn-success" onclick="showFreeForm()">Send Low Priority Message (Free)</button><button style="margin-left: 20px; margin-top: 20px" type="button" class="btn btn-success" onclick="showPaidForm()">Send High Priority Message ($100)</button></div>
 
-      <form id="freeform" action="contact.php" method="post" <? if(!isset($_POST["formType"]) || $_POST["formType"] == "paid") echo 'style="display:none"';?>>
-        <p><span class="error">Please do not contact me inquiring about paid promotions / press releases / reviews / social media marketing. My reputation is not for sale. Messages sent via this form are heavily filtered and may not be read, much less responded to - use the paid form if you want a guaranteed response.</span></p>
+      <form id="freeform" action="contact.php" method="POST" <? if(!isset($_POST["formType"]) || $_POST["formType"] == "paid") echo 'style="display:none"';?>>
+        <p><span class="error">Do not contact me regarding paid promotions / press releases / reviews / social media marketing. My reputation is not for sale. Messages sent via this form are heavily filtered and may not be read, much less responded to - use the paid form if you want a guaranteed response.</span></p>
         <label for="freeName">Name </label><span class="error"> <?= $nameErr; ?></span>
         <input type="text" id="freeName" name="name" placeholder="Your name..." value="<?=$_POST["name"]?>">
         <label for="freeEmail">Email</label><span class="error"> <?= $emailErr; ?></span>
@@ -235,15 +407,12 @@ NjT4rMUesCnjTVHVM9KXvMemwAhhYbM=
         <label for="freeEmailBody">Message</label><span class="error"> <?= $messageErr; ?></span>
         <textarea id="freeEmailBody" name="emailBody" placeholder="Write your message here. If it contains sensitive information, click the Encrypt Message button before submitting." style="height:200px"><?=$_POST["emailBody"]?></textarea>
         <input type="hidden" name="formType" value="free" />
+        <? hc_CreateStamp(); ?>
         <button type="button" class="btn btn-success" id="freeencryptbutton" onClick="encrypt('freeEmailBody')">Encrypt Message</button>
-        <input type="submit" name="submit" value="Submit"><span class="error"> <?= $captchaErr; ?></span>
-        <!-- PoW CAPTCHA makes calls to body, so must be loaded after body exists in DOM -->
-        <script src="js/jquery.hashcash.io.min.js"></script>
+        <input type="submit" name="submit" value="Submit" id="freesubmitbutton" disabled><span id="countdown" class="error"> <?= $captchaErr; ?></span>
         <script>
-          $("form input[type=submit]").hashcash({
-            key: "97517ff2-9167-4af1-afb0-779a67e395b3",
-            complexity: 0.1
-          });
+          if(document.getElementById("freeform").style.display != "none")
+            setTimeout(hc_findHash, 3000); // start PoW
         </script>
       </form>
 
@@ -277,11 +446,25 @@ NjT4rMUesCnjTVHVM9KXvMemwAhhYbM=
   <div class="container">
     <div class="row">
         <div class="col-sm-10 col-sm-offset-1 col-md-10 col-lg-10 col-xs-offset-0 col-xs-12">
-          <p class="text-right">
-            <a href="/pgpkey" class="pgp" target="_blank" aria-label="Jameson's PGP Key"></a>
-            <a href="https://twitter.com/lopp" class="twitter" target="_blank" rel="noopener" aria-label="Jameson's Twitter Account"></a>
-            <a href="https://github.com/jlopp" class="github" target="_blank" rel="noopener" aria-label="Jameson's Github Account"></a>
-            <a href="https://keybase.io/lopp" class="keybase" target="_blank" rel="noopener" aria-label="Jameson's Keybase Account"></a>
+          <form action="/search.php" method="post" style="float:left">
+            <input type="text" name="q" value="" placeholder=" Search lopp.net" size="25" class='input-block-level' required style="height:20px;padding:0px" />
+          </form>
+          <p class="text-right" style="margin:top:6px;">
+            <a href="/contact" aria-label="Contact Jameson" class="icon-envelope-o"></a>
+            &nbsp;
+            <a href="/pgpkey" target="_blank" rel="noopener" aria-label="Jameson's PGP Key" class="icon-expeditedssl"></a>
+            &nbsp;
+            <a href="https://t.me/statoshi" target="_blank" rel="noopener" aria-label="Jameson's Telegram Account" class="icon-paper-plane"></a>
+            &nbsp;
+            <a href="https://keybase.io/lopp" target="_blank" rel="noopener" aria-label="Jameson's Keybase Account" class="icon-keybase"></a>
+            &nbsp;
+            <a href="https://github.com/jlopp" target="_blank" rel="noopener" aria-label="Jameson's Github Account" class="icon-github"></a>
+            &nbsp;
+            <a href="https://twitter.com/lopp" target="_blank" rel="noopener" aria-label="Jameson's Twitter Account" class="icon-twitter"></a>
+            &nbsp;
+            <a href="https://lopp.social/" target="_blank" rel="noopener" aria-label="Jameson's Mastodon Account" class="icon-mastodon"></a>
+            &nbsp;
+            <a href="https://www.reddit.com/user/statoshi/" target="_blank" rel="noopener" aria-label="Jameson's Reddit Account" class="icon-reddit-alien"></a>
           </p>
         </div>
     </div>
