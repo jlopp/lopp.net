@@ -5,6 +5,8 @@ const BTCPAY_STORE_ID = "";
 const BTCPAY_CALLBACK_URL = "";
 const SUCCESS_URL = "";
 const BTCPAY_INVOICE_API_URL = "";
+// set this to a path and file name to store recently submitted stamps
+const STAMP_LOG = "";
 
 // user-configurable random string
 $hc_salt = "";
@@ -92,6 +94,9 @@ if($formType == "free" && isset($_POST['submit']) && (!empty($_POST["name"])) &&
       $captchaErr = 'Invalid proof of work submitted! Please try again.';
       return;
     }
+    // log that this puzzle has been used
+    file_put_contents(STAMP_LOG, $_POST['hc_stamp'] . "\n", FILE_APPEND | LOCK_EX);
+
     // All good
     $name = $_POST['name'];
     $subject = $_POST['subject'];
@@ -326,6 +331,21 @@ function hc_CheckStamp()
   if(!hc_CheckProofOfWork($hc_difficulty, $stamp, $nonce)) return false;
   DEBUG_OUT("Difficulty threshold met.");
 
+  // check if this puzzle has already been used to submit a message
+  $savedStamps = 0;
+  if (($handle = fopen(STAMP_LOG, "r")) !== FALSE) {
+    while (($data = fgetcsv($handle, 1000, "\n")) !== FALSE) {
+      if ($data === $stamp)
+        return false;
+      $savedStamps++;
+    }
+    fclose($handle);
+  }
+
+  // truncate the log if it starts getting long
+  if ($savedStamps > 1000) {
+    file_put_contents(STAMP_LOG, "$stamp\n");
+  }
   return true;
 }
 ?>
