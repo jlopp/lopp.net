@@ -25,7 +25,7 @@ if ($invoice->status == "complete" || $invoice->status == "confirmed") {
     $headers = "From: " . $message->email . "\r\nReply-to: " . $message->email;
     mail(YOUR_EMAIL_ADDRESS, "Paid Message: " . $message->subject, $message->emailBody, $headers);
   }
-} else if (!$orderData) {
+} else if (!$orderData && $invoice->status != "expired") {
   $message = "Could not find message file for invoice " . print_r($invoice, true);
   $headers = "From: paidform@" . YOUR_DOMAIN . "\r\nReply-to: paidform@" . YOUR_DOMAIN;
   mail(YOUR_EMAIL_ADDRESS, "Paid Message ERROR. invoice status: " . $invoice->status, $message, $headers);
