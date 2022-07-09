@@ -441,7 +441,7 @@ NjT4rMUesCnjTVHVM9KXvMemwAhhYbM=
         <div class="col-lg-4">&nbsp;</div>
       </div>
 </div>
-<hr>
+
 <div class="section well">
   <div class="container">
     <div class="row">
@@ -449,7 +449,7 @@ NjT4rMUesCnjTVHVM9KXvMemwAhhYbM=
           <form action="/search.php" method="post" style="float:left">
             <input type="text" name="q" value="" placeholder=" Search lopp.net" size="25" class='input-block-level' required style="height:20px;padding:0px" />
           </form>
-          <p class="text-right" style="margin:top:6px;">
+          <p class="text-right">
             <a href="/contact" aria-label="Contact Jameson" class="icon-envelope-o"></a>
             &nbsp;
             <a href="/pgpkey" target="_blank" rel="noopener" aria-label="Jameson's PGP Key" class="icon-expeditedssl"></a>
