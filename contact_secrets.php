@@ -89,7 +89,7 @@ function generateOrderId() {
 }
 
 // Check conditions for submission of free form
-if($formType == "free" && isset($_POST['submit']) && (!empty($_POST["name"])) && (preg_match("/^[a-zA-Z ]*$/",$name)) && (!empty($_POST["email"])) &&  (filter_var($email, FILTER_VALIDATE_EMAIL)) && (!empty($_POST["subject"])) && (!empty($_POST["emailBody"]))) {
+if($formType == "free" && (!empty($_POST["name"])) && (preg_match("/^[a-zA-Z ]*$/",$name)) && (!empty($_POST["email"])) &&  (filter_var($email, FILTER_VALIDATE_EMAIL)) && (!empty($_POST["subject"])) && (!empty($_POST["emailBody"]))) {
     if (!hc_CheckStamp()) {
       $captchaErr = 'Invalid proof of work submitted! Please try again.';
       return;
@@ -108,7 +108,7 @@ if($formType == "free" && isset($_POST['submit']) && (!empty($_POST["name"])) &&
   }
 
 // Check conditions for submission of paid form
-if($formType == "paid" && isset($_POST['submit']) && (!empty($_POST["name"])) && (preg_match("/^[a-zA-Z ]*$/",$name)) && (!empty($_POST["email"])) &&  (filter_var($email, FILTER_VALIDATE_EMAIL)) && (!empty($_POST["subject"])) && (!empty($_POST["emailBody"]))) {
+if($formType == "paid" && (!empty($_POST["name"])) && (preg_match("/^[a-zA-Z ]*$/",$name)) && (!empty($_POST["email"])) &&  (filter_var($email, FILTER_VALIDATE_EMAIL)) && (!empty($_POST["subject"])) && (!empty($_POST["emailBody"]))) {
     $orderId = generateOrderId();
     $price = "100";
     $currency = "USD";

@@ -186,13 +186,15 @@
 
     async function hc_findHash()
     {
+      document.getElementById('freesubmitbutton').disabled = true;
+      document.getElementById('freeencryptbutton').disabled = true;
       var hc_stamp = hc_GetFormData('hc_stamp');
       var hc_difficulty = hc_GetFormData('hc_difficulty');
 
       // check to see if we already found a solution
       var form_nonce = hc_GetFormData('hc_nonce');
       if (form_nonce && hc_CheckContract(hc_difficulty, hc_stamp, form_nonce)) {
-        document.getElementById('freesubmitbutton').disabled = false;
+        document.getElementById('freeform').submit();
         return true;
       }
 
@@ -204,15 +206,14 @@
         if (nonce % 10000 == 0)
         {
             let remaining = Math.round((Math.pow(2, hc_difficulty) - nonce) / 10000) * 2;
-            document.getElementById('countdown').innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;Approximately " + remaining + " work remaining before form unlocks.";
+            document.getElementById('countdown').innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;Please wait... form submits after ~" + remaining + " work units.";
             await sleep(100); // don't peg the CPU and prevent the browser from rendering these updates
         }
       }
 
       hc_SetFormData('hc_nonce', nonce);
-      //alert("Found nonce: " + nonce);
       document.getElementById('countdown').innerHTML = "";
-      document.getElementById('freesubmitbutton').disabled = false;
+      document.getElementById('freeform').submit();
 
       return true;
     }
@@ -223,7 +224,6 @@
     function showFreeForm() {
       document.getElementById("freeform").style.display = "block";
       document.getElementById("paidform").style.display = "none";
-      setTimeout(hc_findHash, 3000); // start PoW
     }
 
     function showPaidForm() {
@@ -409,11 +409,7 @@ NjT4rMUesCnjTVHVM9KXvMemwAhhYbM=
         <input type="hidden" name="formType" value="free" />
         <? hc_CreateStamp(); ?>
         <button type="button" class="btn btn-success" id="freeencryptbutton" onClick="encrypt('freeEmailBody')">Encrypt Message</button>
-        <input type="submit" name="submit" value="Submit" id="freesubmitbutton" disabled><span id="countdown" class="error"> <?= $captchaErr; ?></span>
-        <script>
-          if(document.getElementById("freeform").style.display != "none")
-            setTimeout(hc_findHash, 3000); // start PoW
-        </script>
+        <input type="submit" value="Submit" id="freesubmitbutton" onClick="hc_findHash();return false;"><span id="countdown" class="error"> <?= $captchaErr; ?></span>
       </form>
 
       <form id="paidform" method="POST" action="contact.php" <? if(!isset($_POST["formType"]) || $_POST["formType"] == "free") echo 'style="display:none"';?>>
@@ -428,7 +424,7 @@ NjT4rMUesCnjTVHVM9KXvMemwAhhYbM=
         <textarea id="paidEmailBody" name="emailBody" placeholder="Write your message here. If it contains sensitive information, click the Encrypt Message button before submitting." style="height:200px"><?=$_POST["emailBody"]?></textarea>
         <input type="hidden" name="formType" value="paid" />
         <button type="button" class="btn btn-success" id="paidencryptbutton" onClick="encrypt('paidEmailBody')">Encrypt Message</button>
-        <input type="submit" name="submit" value="Submit">
+        <input type="submit" value="Submit">
       </form>
       <br>
       <br>
