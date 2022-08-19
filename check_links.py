@@ -10,7 +10,15 @@ from random import shuffle
 import validators
 
 # Create a list of all the HTML files in lopp.net
+<<<<<<< HEAD
 all_html_files = []
+=======
+website_directory = pyip.inputFilepath(
+    prompt="Enter the path to the website directory: "
+)
+all_html_files = []
+os.chdir(website_directory)
+>>>>>>> 815efec (Add Python script to check website for dead links)
 for root, dirs, files in os.walk(os.getcwd()):
     for file in files:
         if fnmatch(file, "*.html"):
@@ -77,6 +85,10 @@ for link in tqdm(failed_links):
 print("Finished checking links with a timeout of 10 seconds")
 print(f"Number of failed links: {len(failed_links)}")
 
+<<<<<<< HEAD
+=======
+print(failed_links)
+>>>>>>> 815efec (Add Python script to check website for dead links)
 really_failed_links = []
 
 for link in failed_links:
@@ -95,6 +107,10 @@ for html_file in all_html_files:
                 break
 
 # Finally, output a list of the really broken links and their associated HTML files to a text file
+<<<<<<< HEAD
+=======
+os.chdir("..")
+>>>>>>> 815efec (Add Python script to check website for dead links)
 try:
     f = open("broken_links.txt", "x")
 except:
