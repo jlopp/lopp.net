@@ -375,6 +375,7 @@ NjT4rMUesCnjTVHVM9KXvMemwAhhYbM=
           <li><a href="bitcoin-information" title="bitcoin info">Bitcoin Resources</a></li>
           <li><a href="lightning-information" title="lightning info">Lightning Resources</a></li>
           <li class="active"><a href="#" title="contact">Contact<span class="sr-only">(current)</span></a></li>
+          <li><input class="toggle-input" type="checkbox" aria-label="toggle dark mode" id="permanent"/><label for="permanent"></label></li>
         </ul>
       </div>
   </div>
