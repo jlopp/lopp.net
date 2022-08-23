@@ -42,6 +42,9 @@ for i in range(5):
         elif link.find("lopp.net") != -1:
             # Ignores the link if it points to one of the other pages in lopp.net or blog.lopp.net
             all_links.remove(link)
+        elif link.find(".onion") != -1:
+            # Ignores the link if it is a tor address
+            all_links.remove(link)
 
 print(f"Total number of links after processing: {len(all_links)}")
 
@@ -82,6 +85,7 @@ really_failed_links = []
 
 for link in failed_links:
     webbrowser.open_new_tab(link)
+    print(link)
     if input("Is this link working?[y]/n ") == "n":
         really_failed_links.append(link)
 
