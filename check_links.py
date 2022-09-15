@@ -101,12 +101,6 @@ for html_file in all_html_files:
 
 # Finally, output a list of the really broken links and their associated HTML files to a text file
 os.chdir("..")
-try:
-    f = open("broken_links.txt", "x")
-except:
-    f = open("broken_links.txt", "w")
-
-for link in files_with_failed_links:
-    f.write(link + "\n")
-
-f.close()
+with open("broken_links.txt", "w+") as f:
+    for link in files_with_failed_links:
+        f.write(link + "\n")
