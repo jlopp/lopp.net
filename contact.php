@@ -205,7 +205,7 @@
         nonce++;
         if (nonce % 10000 == 0)
         {
-            let remaining = Math.round((Math.pow(2, hc_difficulty) - nonce) / 10000) * 2;
+            let remaining = Math.round((Math.pow(2, hc_difficulty) - nonce) / 10000) * 3;
             document.getElementById('countdown').innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;Please wait... form submits after ~" + remaining + " work units.";
             await sleep(100); // don't peg the CPU and prevent the browser from rendering these updates
         }
