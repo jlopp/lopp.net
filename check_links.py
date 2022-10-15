@@ -1,15 +1,34 @@
+import argparse
 import os
-from fnmatch import fnmatch
-import bs4
-from requests import get
-from tqdm import tqdm
 import webbrowser
-from fake_headers import Headers
+from fnmatch import fnmatch
 from random import shuffle
+import requests
+
+import bs4
+from fake_headers import Headers
+from requests import get
+from tqdm.asyncio import tqdm
+
+
+parser = argparse.ArgumentParser(description="Check links in a directory")
+parser.add_argument(
+    "-d",
+    "--directory",
+    help="Directory to check",
+    default=os.path.dirname(os.path.realpath(__file__)),
+)
+parser.add_argument(
+    "-f",
+    "--fast",
+    action="store_true",
+    help="Fast async mode (may get blocked by sites)",
+)
+
+args = parser.parse_args()
 
 # Gets script location. Assumes the script is in the lopp.net folder.
-website_directory = os.path.dirname(os.path.realpath(__file__))
-os.chdir(website_directory)
+os.chdir(args.directory)
 
 # Create a list of all the HTML files in lopp.net
 all_html_files = []
@@ -31,7 +50,7 @@ print(f"Total number of links before processing: {len(all_links)}")
 all_links = list(set(all_links))  # Removes duplicate links
 shuffle(
     all_links
-)  # We don't want to visit the same page twice in a row, so shuffle the list
+)  # Shuffles the list so we don't hit the same website twice in a row and get blocked
 
 # For some reason, not all the links are removed in one pass so we keep doing it until we've actually removed all the unwanted links
 for i in range(5):
@@ -48,37 +67,48 @@ for i in range(5):
 
 print(f"Total number of links after processing: {len(all_links)}")
 
-# Iterate over each link and download the page with requests
+# Iterate over each link and download the page
 failed_links = []
 headers = Headers(headers=True).generate()
 
-# For this first iteration, the timeout is set to 3 seconds
-for link in tqdm(all_links):
-    try:
-        r = get(link, timeout=3, headers=headers)
+if args.fast:
+    import asyncio
+    import aiohttp
 
-        if r.status_code != 200:
+    async def get_resp(session, url):
+        try:
+            async with session.get(url) as response:
+                print(url)
+                if response.status != 200:
+                    failed_links.append(url)
+                await response.text()
+        except Exception as e:
+            print(e)
+            failed_links.append(url)
+
+    # Convert download section above to async
+    async def download_links():
+        timeout = aiohttp.ClientTimeout(total=10)
+
+        async with aiohttp.ClientSession(headers=headers, timeout=timeout) as session:
+            tasks = []
+            for link in all_links:
+                task = asyncio.create_task(get_resp(session, link))
+                tasks.append(task)
+            await asyncio.gather(*tasks)
+
+    # Run the async function
+    asyncio.run(download_links())
+else:
+    for link in tqdm(all_links):
+        try:
+            r = get(link, headers=headers, timeout=10)
+            if r.status_code != 200:
+                failed_links.append(link)
+        except Exception as e:
+            print(e)
             failed_links.append(link)
 
-    except:
-        failed_links.append(link)
-
-print("Finished checking links with a timeout of 3 seconds")
-print(f"Number of failed links: {len(failed_links)}")
-print("Retrying the failed links with a timeout of 10 seconds")
-
-# Retries the failed links with a longer timeout
-for link in tqdm(failed_links):
-    try:
-        r = get(link, timeout=10, headers=headers)
-
-        if r.status_code == 200:
-            failed_links.remove(link)
-
-    except:
-        pass
-
-print("Finished checking links with a timeout of 10 seconds")
 print(f"Number of failed links: {len(failed_links)}")
 
 really_failed_links = []
