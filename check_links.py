@@ -3,13 +3,14 @@ import os
 import webbrowser
 from fnmatch import fnmatch
 from random import shuffle
-import requests
+from time import sleep
+from typing import Dict
+from urllib.parse import urlparse
 
 import bs4
 from fake_headers import Headers
 from requests import get
 from tqdm.asyncio import tqdm
-
 
 parser = argparse.ArgumentParser(description="Check links in a directory")
 parser.add_argument(
@@ -22,7 +23,13 @@ parser.add_argument(
     "-f",
     "--fast",
     action="store_true",
-    help="Fast async mode (may get blocked by sites)",
+    help="Fast async mode",
+)
+parser.add_argument(
+    "-ff",
+    "--superfast",
+    action="store_true",
+    help="Super fast mode (may get blocked by sites)",
 )
 
 args = parser.parse_args()
@@ -71,34 +78,79 @@ print(f"Total number of links after processing: {len(all_links)}")
 failed_links = []
 headers = Headers(headers=True).generate()
 
-if args.fast:
+if args.fast or args.superfast:
     import asyncio
+
     import aiohttp
 
-    async def get_resp(session, url):
-        try:
-            async with session.get(url) as response:
-                print(url)
-                if response.status != 200:
-                    failed_links.append(url)
-                await response.text()
-        except Exception as e:
-            print(e)
-            failed_links.append(url)
+    sorted_links: Dict = {}
 
-    # Convert download section above to async
-    async def download_links():
-        timeout = aiohttp.ClientTimeout(total=10)
+    # Create the top level domain list
+    for link in all_links:
+        domain = urlparse(link).netloc
 
-        async with aiohttp.ClientSession(headers=headers, timeout=timeout) as session:
-            tasks = []
-            for link in all_links:
-                task = asyncio.create_task(get_resp(session, link))
-                tasks.append(task)
-            await asyncio.gather(*tasks)
+        if domain not in sorted_links:
+            sorted_links[domain] = []
 
-    # Run the async function
-    asyncio.run(download_links())
+    # Add the links to the sorted_links dict
+    for link in all_links:
+        domain = urlparse(link).netloc
+        sorted_links[domain].append(link)
+
+    # Find the length of the longest list
+    length = 0
+    for domain, links in sorted_links.items():
+        length = len(links) if len(links) > length else length  # I❤️ oneliners
+
+    # Get the first link from each domain
+    set_of_links = []
+    counter = 0
+    for i in range(length):
+        print(f"Counter: {counter}")
+        for domain in sorted_links:
+            if counter < len(sorted_links[domain]):
+                if (
+                    sorted_links[domain][counter] not in set_of_links
+                    and sorted_links[domain][counter][:4] == "http"
+                ):
+                    set_of_links.append(sorted_links[domain][counter])
+        counter += 1
+
+        # print(set_of_links)
+
+        async def get_resp(session, url):
+            try:
+                async with session.get(url) as response:
+                    print(url)
+                    if response.status != 200:
+                        failed_links.append(url)
+                    await response.text()
+            except Exception as e:
+                print(e)
+                failed_links.append(url)
+
+        async def download_links():
+            timeout = aiohttp.ClientTimeout(total=10)
+
+            async with aiohttp.ClientSession(
+                headers=headers, timeout=timeout
+            ) as session:
+                tasks = []
+                for link in set_of_links:
+                    task = asyncio.create_task(get_resp(session, link))
+                    tasks.append(task)
+                await asyncio.gather(*tasks)
+
+        # Run the async function
+        asyncio.run(download_links())
+
+        # Clear the set of links
+        set_of_links = []
+
+        # Pause for 3 seconds
+        if not args.superfast:
+            sleep(3)
+
 else:
     for link in tqdm(all_links):
         try:
