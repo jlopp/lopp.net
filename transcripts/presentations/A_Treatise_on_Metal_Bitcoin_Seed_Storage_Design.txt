@@ -1,0 +1,338 @@
+Hello, I'm Jameson Lopp, the CTO and co-founder of CASA, and today you're gonna get a brain
+dump from the past four years of experience that I've had while researching and stress
+testing over 70 different metal seed phrase backup devices.
+I've come across quite a few different variations of designs for these things, and after putting
+them all through the wringer, I've come to a number of different conclusions about which
+ones are in fact the best for you in terms of robustness and in terms of user experience.
+So Satoshi Nakamoto had an excellent quote many years ago, where they made the point
+that if you lose your coins by which you lose your private keys, and of course there's a
+million ways to do that, then you're essentially making a donation to everyone else in the
+ecosystem who has not lost their money.
+This is of course something that I've heard from a few people is in their plan to do when
+they pass away to essentially let that value go out to the rest of the ecosystem, but I
+suspect the vast majority of people do not want this to happen to their bitcoin.
+So we're gonna go into some of the things that you should think about if you're trying
+to prevent that from happening.
+We should be specific here, and we're not gonna cover absolutely everything that could
+go wrong with managing your private keys, but rather we're going to talk about how
+to best store a backup of your private keys, your seed phrase, so that if something happens
+to your regular wallets, whether it's software wallet, hardware wallet, whatever, you can
+reconstitute that wallet from the backup.
+And this of course means that if your device is destroyed, bricked, whatever, you'll be
+able to load the seed phrase into a new wallet.
+We're not gonna be talking about issues of physical attacks, it's a very different type
+of problem set, and I have presentations and extensive writing about that, but rather what
+we're worried about is the more common form of loss.
+Some sort of disaster that can result in destruction of data, and we want to be able to store our
+data in a way that is essentially disaster proof.
+Most commonly of course, as you can see here, fire, flood, earthquake perhaps, causing collapse
+of your house, these threats of course will vary depending upon your own living situation.
+So I'm trying to be as general and widely practical as possible here.
+So what am I specifically gonna be focusing on?
+We're gonna talk about fire, house fires are actually quite common around the world.
+We're gonna talk about corrosion.
+This can usually be a result of flood or some sort of water leak, or in some cases there
+may be various chemical agents that can cause that.
+And of course we'll talk about crushing, which could happen as a result of perhaps a building
+collapse in which your device is stored.
+So if we're looking at the threat of house fires, this is a pretty well understood problem.
+And we can very safely say that a house fire is probably not going to get hotter than about
+1500 degrees Fahrenheit.
+And so the stress tests that I do generally are going to aim for about 2000 degrees Fahrenheit
+because if your device can survive that, it's gonna survive any natural house fire.
+There may of course be other things that could happen like if you have jet fuel laying around
+that may burn at a hotter temperature, but I don't think that's a common threat that
+the average person needs to worry about.
+Now if we're looking at the different material design and the best materials that we should
+be using to protect ourselves from common threats, this is also a fairly well understood
+issue.
+Metals have been vigorously tested for all the different properties throughout the course
+of human history.
+And if we're looking at melting point, which is of course what we would be worried about
+if we have some piece of metal with some data imprinted upon it and we want to make sure
+that can survive a house fire, we of course want something with a melting point higher
+than the average house fire and probably even higher than that, you know, you want a nice
+safety margin.
+So if we're looking for something with more than 2000 degree Fahrenheit melting point,
+you might be able to get away with copper or gold.
+Of course gold is going to be incredibly expensive.
+Nickel does really well, steel does really well, tungsten does extremely well, though
+tungsten is not something that you're going to come across very frequently and probably
+has other properties that would be less interesting to us.
+So what if we then look at corrosion resistance?
+Well, there's something called the Galvanic scale, which gives us a pretty good idea of
+which materials are more likely to react with chemicals or corrode as a result of water
+or other liquids being passed over them.
+Once again, gold does pretty well here, but probably not something you want to use due
+to the other material properties, similar with graphite and silver, they tend not to
+be as resistant to crushing and pressure.
+So we see that stainless steel actually does quite well when it comes to being resistant
+to corrosion.
+So that's another good point for stainless steel on that factor.
+Finally, what if we're looking at crush resistance?
+Well, there are actually a number of different ways that you can measure hardness or flexibility
+or whatnot, but in general I would go with something like the Rockwell scale.
+We can see here if we're looking for something that's particularly durable, at the high end
+of the scale we've got cast iron, we've got stainless steel, we've got titanium.
+And cast iron is probably not something you're going to want to use because I believe it's
+not very corrosion resistant.
+So once again, stainless steel keeps popping up in all of these categories.
+If we really want to narrow it down, the best material choices that you're going to be left
+with are stainless steel and titanium also works really well.
+Both of these materials have very high melting points, have high corrosion resistance, high
+tensile strength, and high hardness.
+Now you can start going down a rabbit hole because there are dozens of different types
+of stainless steel and types of titanium that have slightly better corrosion resistance.
+If you really want to get into it, I would recommend getting a marine grade of stainless
+steel.
+But in general, these are going to be far better than almost any other common metal
+that you might come across.
+So how did I get to the conclusions that we'll be coming to throughout the rest of this presentation?
+Well I did a lot of independent testing.
+And one of the first things that I have done is this heat and fire testing.
+Basically use a very large propane blow torch that was creating a flame that was probably
+five, six inches in diameter and would be able to heat up over 2,000 degrees Fahrenheit
+based upon the temperature probe that I got and used to once again test even my testing
+equipment.
+So here you can see a couple of examples just to show you these stainless steel devices
+getting red hot as a result of me putting them directly in this fire for about 10 minutes
+or so based upon my experience.
+If one of these devices can last more than 10 minutes in 2,000 degrees, it's going to
+last basically indefinite amount of time at that level of heat.
+But while a lot of these devices performed well, a number of them, I would say probably
+30% in fact failed.
+So what happens when you have a device that starts to fail, these devices that I'll show
+you the photos of, they only lasted a couple of minutes and then I saw them starting to
+fail and thus pulled them out so that there was at least something left for me to get
+a photo of, otherwise it would have been just a heaping pile of slag.
+So here we have a device that claimed to be durable to house fires, but upon stress testing
+and closer inspection, we can see it's not made of stainless steel.
+In fact, the reason this device was so cheap, I think it was only $30 or $40, is that it
+was made out of aluminum, which is a more common, cheaper metal that's easier to manufacture.
+But the flip side is its melting point I think is only around 1,300, 1,400 degrees.
+It's less than your average house fire temperature, not something that you would want to put all
+of your life savings on.
+Here's another one that actually claimed to be stainless steel, and it was half right
+in the sense that the tiles were made out of stainless steel, however, the device itself
+was once again made out of aluminum, the whole thing melts into slag and you can very easily
+lose all of your data as it sort of disperses.
+Now here is a device that's actually 100% stainless steel, however, there's just a problem
+and this is a very common design that you've probably seen, but there's a problem in the
+way that the data is secured, and you're basically sliding these tiles into some racks that are
+sandwiched into the device, and the problem arises due to the fact that the heat of course
+can cause metal to expand and contract, and one of the things I do on the stress test
+is in fact I dump it into a bucket of water at the end to simulate a firefighter coming
+in with a fire hose to make sure we get the full experience, and this expansion contraction
+can cause the device to loosen up and create gaps, and if it's a tile device, the tiles
+may in fact fall out and you essentially have data loss, even though the data itself is
+not technically destroyed, it's just moved around and you can no longer necessarily tell
+what it is.
+Here's another example of a similar design, really I think I've seen a half a dozen different
+designs of these tile based products and only one or two of them managed to survive all
+of my tests and what it basically came down to was the tightness and tolerances of the
+tiles and the rails they were going into.
+If it's not extremely tight with almost no give and no area for there to be expansion
+and contraction, you may have problems if it's not extremely tight.
+So what's the next set of tests I did?
+Well, corrosion, which you would normally think of as rust or oxidation or whatever,
+but I don't have time to be waiting weeks or months to see how long it will take for
+rust to oxidize or destroy these devices.
+So I actually use muriatic acid, which is a common concrete etcher and pool cleaning
+supply to basically do an accelerated corrosion test.
+This is extreme, but once again, for doing stress tests, we want to know, can this device
+tolerate an extreme environment?
+If we know it can tolerate extreme environments, then it's going to do fine in any more common
+scenarios.
+So what's some of the issues that happened here?
+This particular device actually survived the heat test fairly well, but upon corrosion
+testing, I discovered all of the screws and the fasteners in the device were not made
+out of the same type of stainless steel.
+So all the stainless steel pieces survived.
+Unfortunately, the fasteners dissolved and the device, as a result, completely fell apart
+and all the data was scattered.
+So you have to worry about every piece of the device, making sure all the materials
+are the same level of robustness.
+Here was another one.
+This was aluminum device again.
+Once again, I kind of fished it out, otherwise it would have been completely consumed by
+the acid.
+It was already and mostly consumed here.
+So aluminum, once again, not very good on the galvanic scale.
+This is the same aluminum device that I showed a few slides earlier where, once again, did
+not do well on this test either.
+So aluminum is a very bad choice overall.
+Here is a stainless steel grid plate design.
+And in general, the grid plate designs, of which there are quite a few out there, tend
+to do the best on my test due to their simplicity and robustness.
+However, one thing that's worth noting here is that while the data itself, which is this
+center punched divots, which I'm also a big fan of, the data is still there.
+However, the problem, as you can see, is that the template that is etched on the device
+is fading away.
+And so you also have to be very careful that even if the device itself survives and the
+data survives, you need to be able to actually read and interpret the data.
+You need to have that template that's on the device also be legible.
+So yet another issue that you need to worry about when you're looking at these devices
+and trying to decide the best one to use.
+Finally, I do a crush test.
+This is, once again, fairly extreme.
+I use a 20-ton hydraulic press, a shop press, and just try to figure out what's the weakest
+point or which way can I potentially deform it to cause some sort of data loss.
+Here's an example of a device that actually did quite well.
+Even though you can see it deformed, the data itself is still quite legible.
+So if we're looking at devices that don't do well, once again, the rail and tile-based
+devices, if you deform them, they are most likely going to separate and you're going
+to have data loss.
+Finally, here's a device that performed extremely well, and there was no technical data loss.
+But what happened was that I realized that you actually also, from a usability standpoint,
+need to worry about how do you read the data from the device after it's deformed.
+And so this is a tube, and you basically have a rail that you slide into the tube and it
+screws in.
+Well, if it's deformed in this way, you can imagine you can no longer unscrew that cap
+because the rail goes all the way down the length of the device and it essentially gets
+completely seized up.
+So data is still there, but you can't open the device without power tools.
+You need some sort of vise and extremely high-end saw that would be able to very delicately
+saw through this capsule so that you could pry it open and actually get the rails of
+tiles out of the device without destroying them.
+So yet another consideration that should go into your thought process.
+So what are some of my takeaways?
+Well, size and form factor certainly seem to be one of the things that you should be
+concerned about.
+Particularly, it's not like the total volume or total size, but a smaller, more compact
+size does seem to be less likely to deform.
+But it's not just about the total size.
+It's about sort of the thinness.
+Look at the width versus the height versus the thickness.
+And the wider and higher the device is, the thicker you're going to need it to be so that
+it's less flexible, less likely to be deformed.
+And if you're doing a device out of stainless steel or titanium, what I found is you probably
+want a minimum of five millimeters of thickness for the most robust metal that is not going
+to deform.
+Here, I have one of the best performing devices I've ever come across, though I think it was
+over 300 euros.
+This is a very large, hefty stainless steel pipe that gets sealed on both ends.
+And this thing did not even flinch when I put it under 20 tons of pressure.
+So cylinders and rods tend to do very well in general.
+Also, just a single really, really thick plate of metal will do quite well.
+Even if it deforms some, you'll be able to read the data off of it.
+Also, as you saw in one of the acid tests, the fasteners, if this is a device that's
+comprised of many different pieces, you're probably going to have some sort of fastener
+that keeps the pieces together.
+People need to worry about what are they made of and what are their various properties.
+If they dissolve, will the whole thing fall apart?
+I've also seen fasteners that will melt or fuse to the device because they're made of
+cheaper different materials.
+Really most commonly, what I've seen is just the fasteners completely seize up on the device
+and prevent you from reopening it and being able to read the data.
+That's more of just a usability issue.
+But I would say the best practice is to avoid devices that require fasteners.
+If you want to follow the KISS principle, which is keep it simple, stupid, then you
+should not have fasteners at all.
+But if you do need them, use fasteners that are just a screw rather than a screw on one
+end and a nut on the other end.
+It's definitely better if you have drilled threaded holes that go directly into the device
+that the fasteners screw into rather than having yet a second piece on the other end
+that could fail.
+There's also some dilemmas when it comes to the material choice for fasteners.
+For example, titanium will gall with itself and potentially seize up, like I mentioned
+earlier.
+Steel fasteners are more likely to galvanically corrode over time if they are mixed with a
+different material like titanium.
+You generally don't want to mix different types of metals if they have different corrosion
+resistance.
+Also, if you're using a threaded fastener, then I would recommend using one of a hardened
+material where the head of the screw is as large as possible.
+And the reason for this is that I've seen many dainty fasteners end up just getting
+stripped when you try to open it back up.
+I've seen this happen for Phillips screws, hex screws, star screws, pretty much everything.
+So if you really, really have to use a screw, I would recommend using a flat head and making
+sure that the head of that flat head screw, like the groove in it, is extremely deep so
+that you'll still have something to grab onto even if it experiences some melting or corrosion.
+So another issue to worry about, as you've seen in some of the photos, is just the total
+number of pieces.
+More pieces means more potential points of failure.
+We want to keep it simple.
+So you have to think, how bad would it be if this device was damaged in a way that the
+data itself got jumbled up or separated?
+And this is sort of a combinatoric issue.
+So think about it in terms of the number of tiles you have.
+If you have 24 tiles that are just the seed words and you lose the ordering, then you're
+going to have potentially up to six times 10 to the 23rd combinations of seed phrases
+that you might have to try to brute force in order to find your actual seed phrase.
+That's if you don't know the ordering.
+If you do know the ordering but you have lost tiles, then for every tile that you've lost,
+you'll have to try 2,000 combinations.
+And of course, for each one, you're going to have to multiply that.
+So if you've lost half a dozen tiles, then that becomes so computationally challenging
+that you're probably never going to be able to brute force it and find the words that
+were lost.
+On the other hand, if you're using one tile per letter, which is a more common thing,
+and those get jumbled up so you'd have like 96 tiles total for 24 words, that's 9.9 times
+10 to the 149 possible combinations.
+It's pretty much impossible for you to ever brute force all of that to find your actual
+data.
+So long story short, if you're using many metal tiles, then you probably only want to
+use one tile per seed word, and preferably you want to have the words order number on
+the tile itself.
+In case they get jumbled up, you can easily put them back in order.
+Now what about all the different ways that we can inscribe or store data onto metal?
+I've tried quite a few different ones.
+This order is in terms of usability.
+So you can, of course, get the manufacturer to engrave stuff.
+I would certainly not recommend that just due to a security and trust issue.
+These pre-engraved tiles are quite common.
+They're very easy to slide in and out, but on the flip side, they're very easy to come
+apart.
+Same thing with the tiles that are stamped.
+My two favorite methods are electrolysis, which you can see on the right here, which
+is basically using a saltwater solution with a battery to etch your data into a block of
+metal.
+It's very easy to do and kind of fun, though I've only ever come across one kit that does
+that.
+Of course, you can always create your own if you know what you're doing.
+The center punch method, which is commonly used for the grid type devices, is also very
+easy to do and tends to hold up quite well.
+Then there's also different types of electric engraving.
+It's kind of annoying and loud to do and it's hard to get it etched in particularly deeply.
+And then a really common form of data inscription that you see is stamping.
+And I really hate stamping.
+It hurts your ears, your hands, there's potential to injure yourself while you're doing it.
+It's not user friendly because if you don't have the stamp aligned perfectly and strike
+it perfectly, you can end up with light strikes or double strikes or stamp bits flying across
+the room or even in some cases, just I've had the stamp bit aligned incorrectly and
+had a stamp, a letter that ends up being on its side or upside down or something.
+So stamping is not user friendly.
+If you do it right, it can be very robust, but I do not recommend it for the average
+person.
+Now in terms of legibility as well, one thing that we're seeing is shrinkage in these devices
+to make them more compact and easier to hide.
+But you have to be aware that in some cases, such as this device, it can be difficult to
+inscribe the data because you have a very small target that you're trying to hit.
+And it can also be very hard to read the data back if you don't have great eyesight.
+One conclusion that I came to in my recent round of tests with this particularly compact
+data was that the result of corrosion can actually cause those divots to enlarge slightly.
+And on the vast majority of devices, that's fine because you have plenty of margin around
+the grid where you're putting these divots in with your center punch.
+But once you start to cluster your data points so closely together, you can see that there's
+actually some ambiguity if the holes enlarge and they start overlapping and taking up multiple
+possible data points.
+So this is, once again, creating a situation where you may have to brute force a number
+of different possible combinations of your seed phrase if you get into this situation,
+which would not be fun.
+So if you want full results of all 70 tests, I have them at seedstoragereviews.bitcoin.page.
+The vast majority of the devices I've tested have done quite well, but as we can see here,
+there are a number that have had catastrophic failures and you would not want to entrust
+your life savings to.
+So what are my TLDR conclusions to this half hour presentation?
+Well, you want to go with either stainless steel or titanium device.
+You want a small but thick form factor that will resist deformation, preferably a single
+solid piece of metal so you don't have to worry about fasteners dissolving or melting
+or coming apart and having data get strewn all over the place.
+And you either want to use a straight punch or electrolysis etching method to inscribe
+the data on the device.
+And in the case where you need a template to decode the device, you need to make sure
+that that template is similarly inscribed deeply into the device so that it won't get
+erased if something happens to it.
+So that's my takeaways from quite a few hours of testing various backup devices and I hope
+that you will find that helpful when you're looking to devise your own backup solution.
+Thanks for listening.

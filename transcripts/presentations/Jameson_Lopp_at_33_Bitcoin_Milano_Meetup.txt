@@ -1,0 +1,773 @@
+We would not be able to get into too many details of the not-destroying stuff, but I
+guess that about strictly technical aspect of the, and not undercover aspect of the accident
+he can give some insight and some interesting answer about that.
+So thank you very much to Jameson to be here.
+While I'm unable to give any specifics about the DitchConnex hack, other than what's already
+been publicly disclosed, if you pay really close attention you might pick up a few clues
+throughout the presentation.
+I'll basically start off with a bunch of security stuff, because that's of course what we focus
+on, but then I'll go into more depth of things that I've personally learned over the past
+year and a half working full-time on Bitcoin wallet.
+Technical issues that come into play when you're managing a high-volume, high-security
+Bitcoin service.
+As he said, my name is Jameson Lopp, I became interested in Bitcoin in 2012, and after a
+few years created Stotoshi, which is a fork of Bitcoin Core, only about 300 lines of code
+on top of Bitcoin Core, and all that it really does is it outputs a lot of metrics from internal
+node operations, which you can then visualize with various software, which you can check
+out here at the Stotoshi.info.
+I was basically trying to bring a DevOps mindset to the operation of Bitcoin nodes, and I think
+it's gone pretty well.
+Stotoshi has been referenced by a number of Bitcoin Core developers like Gavin Andresen
+and Mark Friedenbach, and I think it's helped some of their own research in trying to better
+understand how the network operates at the node level.
+So for the past 18 months I've been employed by BitGo, and we are a Bitcoin multi-signature
+wallet.
+We power a lot of the Bitcoin exchanges.
+So we'll start talking about security, and as you're probably well aware, Bitcoin is
+very difficult to secure, and this is because Bitcoin is a bearer instrument.
+Essentially it means the bearer of the private keys is essentially the owner, and they have
+the right to transact on the network, and of course there's also the irreversible aspect
+of it, where unlike what you see with the Federal Wire transfer system or a number of
+other traditional banking systems, you can't undo a transaction once it has been confirmed.
+So this results in some interesting problems, but the result for the way that we like to
+describe it is that Bitcoin is one of the most slippery substances in existence, because
+it can be taken from you in a matter of milliseconds by a remote attacker, and you have little
+to no hope of recovering it once it's gone.
+So cold storage is arguably one of the most secure ways to keep your Bitcoin from taking
+away from you, and this, if you're not familiar, means that you generate the keys offline on
+a computer that never touches the internet, so it's not even possible for a hacker to
+get the private keys and steal your Bitcoins.
+And you could argue that the only truly secure key is a cold key, there's a good argument
+for that position, though you could even take it a step further and say maybe really the
+only truly secure Bitcoin or secure key is one that you have to leave, because even cold
+storage has to exist somewhere physically, there has to be a way for someone to get to
+it.
+Of course, physical security can be a lot more difficult than internet security for
+someone to compromise.
+Now the biggest benefit of cold storage is that it eliminates an entire class of online
+threat vectors, and it brings us back to the realm of physical security, which is something
+that humans have been dealing with for thousands of years now, so it's been pretty well-owned.
+But relying on physical security is not perfect either, you still have jewelry heists, the
+occasional physical bank robbery, there's really no such thing as perfect security unless
+you have locked down an asset to the point that no one can access it.
+And being able to access assets, of course, is what makes them have utility.
+So there's this old saying that a ship in port is safe, but that's not what ships are
+designed for.
+So is Bitcoin really best suited to be stored locked away in a vault where no one ever accesses
+it?
+Some people might argue that it is, that it is essentially a digital gold.
+It's definitely debatable, but I think that in order for the Bitcoins that are sitting
+locked away in these vaults, we have to have a bunch of other people who are using Bitcoins
+in hot wallets for a number of different purposes, whether that's buying, selling, trading, or
+doing other things like timestamping other types of data services on the blockchain.
+And so as a result, it means that we need to have a way for Bitcoins to be secure and
+accessible.
+So we at BitGo believe that Bitcoins need to be moving around.
+We facilitate a lot of exchanges like Kraken and Bitstamp and Bitfinex, and probably dozens
+of smaller ones that I'm not even familiar with.
+So as a result, these exchanges generally have a hot wallet, cold wallet setup.
+The hot wallet is really what is kept online, handles the deposits and withdrawals, and
+is a tiny fraction of what their total Bitcoins are.
+Moving funds from the hot wallet to the cold wallet is very easy, just make a Bitcoin transaction.
+But moving from the cold wallet to the hot wallet is much more difficult because you
+generally add layers of physical security that require human interaction, tend to be
+much costlier from a time or resource standpoint, because they're meant to be much harder for
+anyone to access.
+This is all good and well.
+It reduces the amount of exposure that you have, but it still has some downsides.
+So if you're running a hot, cold wallet, one issue, for example, is that you're pooling
+the customer funds together.
+This could be a problem if you want to use the blockchain to segregate the ownership
+of your funds.
+There are a lot of different use cases.
+Some services want this, others are fine with a pooled wallet.
+Second, the hot wallet itself may still be quite large.
+So if you have hundreds of thousands of Bitcoins, even if you're only keeping a small one or
+two percent, that hot wallet is still a fairly significant amount of money.
+So you want to be able to secure it as well as possible.
+Even if the hot wallet is small, it can be a matter of really the flows of the Bitcoins
+in and out.
+For example, if you have a hot wallet that gets compromised, and I think this happened
+to Bitstamp a year or so ago, you have mitigated the loss to a small percentage of your existing
+Bitcoins that you held.
+However, all of those addresses in the hot wallet whose private keys have been compromised,
+now the attacker continues to drain money as unsuspecting users continue depositing
+into those same addresses.
+So the actual hack can continue for many hours, if not days, before everyone learns that they
+need to stop using anything related to that hot wallet.
+Cold storage wallets also have just more complexity to them.
+There is still insider risk.
+So you're creating a lot of initial obscurity by creating security processes that are internal
+to your company, but you're also generally having to trust certain people, usually operations
+or C-level executives, to managing that cold storage.
+So going back to cold storage versus multi-save, we definitely believe that there's still a
+large role for cold storage, but that it's actually best used in conjunction with multi-save.
+So these are two orthogonal security techniques, and the more security that you can apply,
+of course, the better off you're going to be.
+So instead of just using one or the other, we actually prefer using both at the same
+time.
+So multi-save improves cold storage and many of the ways that it also helps you secure
+your hot wallet funds.
+Because of the flexibility of how you can set up multi-save and how you can set up cold
+storage, it's really hard to say that there's one specific solution that's the best solution.
+You really have to tailor it for your business needs.
+So if you're not familiar, here's a simple chart of two out of three multi-save, which
+is essentially what Bitcoin does, or BitGo does.
+You can consider us assigning Oracle down here, and these are the three different keys.
+The user will have one key in some sort of hot wallet software, and then a backup key
+that could be held by them or by a third party, and then the Oracle has the third key.
+So you need two out of those three keys in our particular setup in order to construct
+a valid Bitcoin transaction.
+The difficulty with Bitcoin security is that with your standard pay-to-public key hash
+transactions, you have one key, and that's your single point of failure.
+It's kind of like using Gmail without two-factor authentication.
+You only have one password, and if anybody gets that one password, they now have all
+of your information in your email account.
+So we can kind of think of having a second key as a form of two-factor authentication.
+But as I mentioned earlier, multi-sig is not just a box to check, it's not a silver bullet.
+If you, and listen carefully here, if you implement multi-sig badly, you can actually
+increase your attack surface as opposed to decreasing it, which is of course what we're
+trying to do.
+So it's just another type of technology, and it's all about how you use it.
+If you're using it incorrectly, it can actually be a detriment, terrible for you in the long
+run.
+So yes, the question is, how should we do it?
+Well, we recommend looking at risk rewards.
+We can sort of start off with some of the different risks in general.
+For example, if the user holds the key, security risk is malware.
+We've actually seen a fairly large amount of customized malware that is being specifically
+created to target their coin users to get their private keys.
+So of course that means if you have private keys on your computer and any type of malware
+that's looking for them gets on there, you've lost everything.
+There's also the problem of weak passwords, and humans are very, very bad at creating
+passwords.
+Of course there's LastPass, KeePass, and other password managers out there, but from me asking
+my friends, I really don't think that many people outside of this type of security crypto
+community use that type of management software.
+Then of course there is coercion, which I'm not aware of any big thefts that have been
+caused by coercion, but it is of course still a risk that does exist.
+Ralph will agree.
+Yeah, that's a good point, that's a good point.
+Something that a lot of Bitcoin users don't think about is what happens if you die.
+Coming up with a proper way to ensure non-technical heirs can access your crypto assets without
+increasing your own risk of loss can be very challenging, and Multisig can help with this.
+Of course data loss, there have probably been hundreds of thousands of Bitcoins lost from
+data loss.
+The downside, the forgotten password.
+So if a user does create a really strong password and they're not using the password management
+software, they can very easily forget it, and once again lock themselves out of their
+own assets.
+I've heard quite a few stories of people that have had that happen to them.
+So what happens if we have a remote service that holds private keys?
+Well, it could be a shared wallet, it could be like a Coinbase or a Circle, some sort
+of custodial service.
+So malware is still a factor, possibly not as much because you would assume that they
+would have competent people who are managing their servers.
+Attacks are a much bigger attack vector than individuals because you're pooling lots of
+money together on a small number of machines.
+Actually insider theft, which we saw recently, was shape-shift, and there have probably been
+several others that weren't ever told to us that were insider theft.
+This can also either purposefully or accidentally turn into fractional reserves due to theft
+or other malfeasance, and of course government seizure.
+So you actually have to worry about what country the servers or the company is domiciled in
+and figure out whether or not you trust the government, not to screw with that.
+So there could also potentially be data loss if they're not a competent business, and if
+anything happens to the service, they might be DDoS, they might have some sort of terrible
+technical failure that causes them to go down when they don't have backups, then they could
+even lose access to your private keys.
+And then finally, we have phishing, which seems to be getting worse and worse over time
+just for all tech companies in general.
+Even if you just have data that is interesting to hackers, they will be social engineering
+attempts against your own company's employees to try to get it.
+I know that we get sphere phished on a pretty regular basis, and of course we have training
+to help guard against that.
+So what happens if we change the or here to an and, where the user holds the key and the
+service holds the key.
+This would be a two of two scenario, I believe this is a green address model.
+So in this case, both the user and the service have to sign the transaction in order for
+it to be invalid.
+On the user side, we completely eliminate a whole host of threat vectors, because if
+any of these happen, then the service will hopefully refuse to counter sign.
+This is of course assuming that the service is requiring some sort of two vector authentication
+and additional requirements before counter signing a transaction.
+On the service side, we eliminate a whole class of vectors here, because the user is
+not going to sign off on a transaction if any of these things occur.
+If a user suddenly gets asked to create a transaction when they're not wanting to, they're
+just hopefully not going to sign off on it, and that will prevent theft from occurring.
+The nice thing is that fractional reserve is also impossible, because the funds can
+no longer be pooled into one big pool, they have to be kept segregated.
+And of course, if you're afraid of government seizure, then unless the government also comes
+to your house, then you're probably going to be fine.
+But notice that on both sides, we still got a few issues left that could result in loss
+of funds.
+So what do we do about that?
+We found that adding a third key to this will actually allow you to get rid of some of these
+additional vectors.
+So leaving aside for a moment the question of who holds the third key.
+On the service side, we get rid of all the problems on the user side, because now you
+have a backup third key somewhere, which of course, hopefully, you're securing correctly.
+On the service side, we eliminate all of these except for phishing.
+And phishing is particularly tricky, because it ultimately comes down to attacking the
+weakest part of this entire ecosystem, which is the humans.
+And I guess that's kind of what security is all about, is trying to get the humans out
+of the equation as much as you possibly can, because they can be fouled.
+So as noted, though, it's complicated.
+And there is no single best solution to any of this.
+For us, we actually tend to consult with the companies that we bring on to help tailor
+their solutions to them as much as possible.
+For moving on past security, though, one thing that I've been working on for pretty much
+the entire time I've been at BitGo is our low-level blockchain indexing service.
+This is basically how we keep all of our databases in sync with the current state of the Bitcoin
+legend.
+And this would be, for example, noticing which transactions belong to BitGo users, updating
+balances.
+And we found that we'd have to do this all with our own custom software, because trying
+to use a Bitcoin node to manage hundreds of thousands of wallets does not scale.
+And there are a lot of queries that we want to be able to slice and dice the data in different
+ways, which requires additional indexes that are not supported at the native Bitcoin level.
+So this is really what all of the blockchain services out there are doing, is they're running
+their own software that's using MySQL or a distributed key value store, HBase, Mongo,
+Redis.
+Any number of these, we've actually found that non-relational databases work pretty
+well, because almost everything is single hash lookups.
+And I've come to find that while processing a static blockchain, which you've got your
+blockchain, and each block has a transaction, and it refers back to other transactions,
+processing a blockchain on its own is pretty simple.
+But trying to process a blockchain very quickly, if you want to do the entire history of the
+processor, you run into performance issues, and also trying to keep it up to date with
+all the unconfirmed transactions poses a number of additional challenges, because people are
+trying to do bad things on the network.
+You're probably very familiar with this type of data setup, so I don't have to go into
+too much detail with that.
+So when you're processing a blockchain, you want to start from the beginning and work
+your way linear to the end to make sure that all of the inputs and outputs connect.
+It's simple to code, but if you want to do it quickly and you want to parallelize it,
+you run into a lot of problems, because you very quickly sort of branch out into these
+huge trees of workers that right now we have 150 million transactions in the Bitcoin blockchain.
+The best that I've been able to get, like a single beefy machine to process this entire
+blockchain into our own database, which has dozens of indexes, I'm constantly battling
+with a 24-hour period, and it's getting worse and worse, and I'm always having to find more
+and more performance improvements.
+I have some ideas for sort of drastic overhaul of that, but it would require a complete rewrite
+of our service.
+So the problem with parallelizing it is that you get workers that start getting really,
+really far ahead of the block that you're currently processing.
+So we generally process one block at a time and parallelize transactions within the block,
+but even within a block, you can have many, many transactions that are dependent upon
+each other.
+So you get a lot of blocking operations going on.
+Now with the indexing of the real-time unconfirmed transactions, some of the biggest problems
+that I've run into are what you see here.
+Reorganizations are definitely a major event on the blockchain.
+When you see a reorganization happen, you basically have to stop what you're doing,
+roll back all the transactions in reverse sequential order back to wherever the common
+block of the fork in the chain is, and then you have to roll back forward on the new chain fork.
+So while you only really see about one reord per day on the main Bitcoin blockchain,
+and it's usually only one block, so a few thousand transactions is not a big deal,
+I've seen block storms on testnet that have had tens of thousands of blocks,
+as you can kind of see in the spikes here.
+So this is a big issue if you're running on testnet, which everyone should be doing,
+because a lot of the software out there, like BitcoinJ for example,
+only keeps track of like the past 100 blocks or so, and if you're on testnet
+and you get a thousand long block reord, it will just break BitcoinJ
+and your service will stall out and you'll have to go in and manually fix things.
+So the first time that these block storms started happening, it actually broke half
+of the public testnet blockchain explorers, probably because most of them were using
+BitcoinJ or some other derivative that had this particular problem.
+The reasoning behind why this can happen is actually really obscure,
+but there's a special rule on testnet where the difficulty will reset to one
+if there isn't a block for 10 minutes, and if you do that at the same time
+that the difficulty adjustment happens, then you can permanently set the difficulty back to one,
+then people are off to the races and mining like 10 blocks per second,
+and of course everybody on testnet is doing that and you get the crazy reorders going on.
+I think that BlockTrail had a really interesting write-up about how that particular issue happens.
+Double spins are also easy to check for, but if you come across a confirmed transaction
+in a block that conflicts with an unconfirmed that you already have indexed in your database,
+now you have to go unwind all of the ancestors of that before you can apply the new changes.
+Once again, you get into this issue of lots of trees, which is very bad when there are spam attacks
+on the network, which I'll show you some graphs of in a little bit.
+Lastly, some issues are that some transactions actually never get confirmed,
+so we have clean-up operations that go and find weak old transactions and prove them automatically,
+because otherwise we can have customers that end up with unspendable bitcoins
+because of the way that this works.
+If you're familiar with the unspent transaction output set, this is the bitcoin.
+There's no such thing as a bitcoin. There are only unconfirmed transaction outputs,
+and they have values on them, and basically what I'm trying to show here is this tree structure.
+When you're running an indexer, it has to be bulletproof, it has to be perfect.
+If you miss a single transaction, then it will very quickly corrupt your data.
+If something happened and you dropped the ball and you didn't finish indexing this one, for example,
+then all of these transactions afterwards are going to be either wrong or non-existent
+because you think that they're invalid because you couldn't find the inputs for them.
+Basically, I spent probably six months just working on writing test suites
+that used the regression test mode of bitcoin, so I would school up a lot of local bitcoin nodes,
+create the crazy blockchain forking situations, and make sure that my service
+didn't drop any of the transactions and that it did roll back the ones that it was supposed to,
+because whenever you run into that problem in production,
+all of a sudden you're scrambling to figure out how you repair your corrupt database.
+In your worst-case scenario, you fail over to a different database
+that was hopefully running a slightly different version of your code
+that didn't have the same bug or didn't have the same hardware hiccup
+or any number of other things that can cause a database write not to occur.
+I'm pretty happy with the current state of our indexer service.
+More scalability issues are looming, but the idea that I'm playing around with right now
+is instead of rolling through all of these blocks and transactions sequentially,
+instead we could use a sort of MapReduce style processing
+where we would actually be able to do multiple phases of checking all of the inputs of the transactions
+and then a secondary phase of adding up all of the balances,
+because unfortunately there's no fees in the actual blockchain data.
+You have to figure them out yourself.
+This is why you can't just process a block in the middle of the blockchain.
+You have to know what the values of all of the ancestors were to figure out what the fees were.
+But by doing a MapReduce multiple-phase parallel processing of blockchain data,
+that would give us true horizontal scaling where you can just throw more machines at it.
+If you want to pay enough money, you can probably process the whole blockchain in 10 minutes or 20 minutes
+if you have hundreds or thousands of workers that are parallelizing.
+Related to unspent outputs, once you have a service that's actually keeping track of them all correctly,
+if you're operating as a wallet and helping people spend the unspent outputs,
+then you have to write an algorithm to decide how to choose which ones to spend.
+We've actually expended a lot of our engineering resources continually fine-tuning this particular part of our wallet.
+It's due to the flexibility of how you can choose the unspent outputs.
+You want it to be really easy for the user where they're just saying you send X bitcoins to address Y,
+and all of this happens under the hood.
+But what you have to do as a service is look at the user's history, how they're using their wallet,
+look at a number of different attributes of the unspent outputs in their wallet,
+and figure out what the best way to optimize the current state of the outputs in their wallet
+so that it won't get them in a bad state in the future.
+Some examples, the naive approach, which wallets did very early on,
+is you simply look for the smallest output that exists in the wallet that is larger than the value they want to send,
+and then spend that.
+Otherwise, you can start adding up the next largest outputs until you have enough money.
+This seems like a straightforward way of doing it,
+but what it results in is a fracturing of all of the outputs in the wallet
+until you have this wallet that has thousands of tiny little dust values of outputs,
+which are essentially unspendable because, of course, you have to add fees to your transactions as you add more inputs.
+SegWit will help with this a little bit.
+Bitcoin can contain hundreds of inputs and outputs.
+We make people spend a fee sort of as an anti-span measure
+so that the more block space they're using with transactions, the more they have to pay.
+These are only three of many different ways of looking at a wallet.
+I would say most wallets probably try to minimize transaction fees.
+Number one is not particularly great for the user, but it's sort of being a good custodian of using a blockchain.
+Number two, there are a couple of wallets that focus on privacy,
+and there's actually an open blockchain privacy project that I participated in a little bit.
+Privacy becomes a very complicated issue onto itself,
+but the problem with any of these is that if you choose one, you're making trade-offs with any of the other ones.
+If you're really going to offer a wallet that keeps users happy,
+then probably the best thing to do would be to let the user decide how to optimize spending from their own wallet,
+because some users care more about transaction fees, some care more about privacy, etc.
+That was the spam attacks that I was referring to.
+This is the total aggregate sum of all the bitcoins in the UTXO set.
+As you can see, it's a constant uptrend, which is why I also try to tell people to be good stewards of the blockchain
+and try to prevent blockchain bloat.
+Because the implementation choices are up to engineers,
+whenever I talk to engineers, I say, this is a shared resource.
+Everyone that's running Bitcoin has to use this hard drive space and then other computational resources.
+Last I checked, there are 41 million UTXOs and about 1.3 gigabytes of compressed, serialized data.
+If you're trying to hold all of those in memory, which miners prefer to do,
+then it balloons to four to five times that size.
+If we can be thoughtful blockchain engineers, then we can at least prevent this from growing faster than it needs to grow.
+Of course, as Bitcoin becomes more popular, it's necessarily going to continue to grow.
+Robustness. I already mentioned Testnet.
+If you can run your application on Testnet for several months without breaking, it's probably going to be fine on Mainnet.
+People are attacking Testnet all the time. They're forking it.
+The hash rate is so low that anyone can point miners at it and start doing crazy things.
+It's, of course, preferable to have to put out fires in Testnet and production.
+If you screw up and you lose Bitcoins, definitely preferable to lose Testnet coins, since they're valueless.
+I already mentioned the block storms, the reorganization storms on Testnet.
+Even just being able to process 10 blocks per second, which never happens on Mainnet.
+If you can do that on Testnet, you'll be fine.
+Also, I have to talk about DDoS.
+In Bitcoin, if you haven't been DDoS attacked, you probably just haven't become popular enough.
+There's actually at least one or two groups out there that specifically DDoS crypto companies for Bitcoin ransom.
+Unfortunately, some of them pay the ransom.
+I think that most of us, especially the larger, more well-funded companies, are able to resist the attacks, though it's usually a major annoyance to us.
+BitGo got DDoS'd most recently, I want to say two or three months ago.
+It happened on a Saturday morning, so it wasn't happy for any of us.
+They specifically attacked us in the wee hours of a Saturday morning.
+They asked us for, I forget how many Bitcoins of ransom, which we refused to pay.
+Finally, transaction malleability, which hopefully will stop being an issue soon, is still an issue.
+You need to make sure your service is not vulnerable to it.
+The easiest thing to check here is to make sure that you're not using transaction IDs as a unique identifier.
+That can get changed out from underneath you and potentially result in bad things.
+I know that Mt. Gox blamed a large number of their withdrawals on malleability back in the day.
+If it was malleability, it was an additional issue of their withdrawal system not checking for that.
+A lot of us are interested in Bitcoin because of the trustless aspects of it.
+The primary purpose of it is that we disintermediate the need for any trusted third parties.
+Many Bitcoin users and especially businesses are throwing this feature out the window.
+I prefer for businesses to understand that the cost of running nodes and verifying the blockchain on their own
+is actually trivial in comparison to the value of their business overall.
+I know for a Satoshi, I'd pay maybe $40 or $50 a month to have a dedicated BPS.
+That's running things on top of Bitcoin.
+I would hope that any business, even a tiny startup, would be able to afford that.
+One particular example is some miners, I think this was last year,
+they lost a number of block rewards because they were not running their full nodes and validating the blocks.
+They essentially started creating an invalid chain after a soft fork occurred.
+Then there was also an issue not long after that with blockchain.info,
+where people thought that Satoshi was moving its coins.
+This was quickly shown to be false by anyone who had a full node because they would just check to see that the transaction didn't actually exist.
+That particular issue was a bug in the push transaction API,
+where blockchain.info was not fully validating the transactions before indexing them in their own service.
+For businesses, I think it's not so much an issue of the resources of running a node.
+It's really, as I mentioned before, an issue with the indexing options.
+If you're running a service, you need to be able to look up data by a number of different attributes that are not indexed by a node.
+I would mention that there are some out-of-the-box solutions like Toshi and Insight that give you a little more flexibility.
+But even those do not have sufficient customization for our needs.
+We have to roll our own when it comes to indexing all of the data.
+Of course, depending on the query volume and latency requirements for your business,
+it may not make sense to bother administrating Bitcoin instances in addition to indexing software and databases.
+A number of smaller startups may just use a third-party API with extreme centralization and a trusted setup, which could go wrong.
+But I think that even if there are companies that are using these third-party APIs like BlockCypher, blockchain.info, what have you,
+the least that we can do is to ensure that the third-party APIs are running their own full nodes and only providing data directly from a Bitcoin instance.
+BitGo is a member of the Cryptocurrency Security Standards Steering Committee,
+and we're working with an overlying organization, the Cryptocurrency Certification Consortium, to help further develop standards around all of this,
+around how blockchain businesses should validate their data, how they should secure their data and their private keys.
+It's definitely clear that the highest level of security certification is going to require you to run your own nodes.
+So, might as well get a head start and run the full nodes from the start.
+So, Bitcoin is this completely new paradigm. It throws a lot of users for a loop because it's so different from the traditional financial system.
+Users, I've found, are generally conditioned to expect that if they do something wrong,
+central administrators will be able to swoop in and unlock their account or undo a transaction that they didn't mean to make.
+We have probably a decent percentage of our own support cases are due to people who are asking us to undo things that they have done or recover lost information,
+recover their backup keys, for example. The average user will not read the manual.
+They will not make a sufficient effort to secure their own passwords and their own keys.
+We can force people to jump through security hoops.
+For example, one thing that we do is if you choose to download your own backup key to secure it yourself,
+we can force you to verify a code from that PDF that is generated before we allow you to start using the wallet.
+But we still have quite a few people who download it, put in the security code, and then a few months later,
+they have no idea what this backup recovery key is that we're talking about because they never downloaded it.
+As a result, for that particular example though, what we've done is we've created a key recovery service
+where you can choose to have your backup key held by a trusted third party.
+It's not BitGo and it's not you.
+And if you screw up and lose your password or other credentials or your primary key,
+then you can take a hit, pay a fee to the key recovery service, and they will go into their vault
+and get the third key and sign the transaction to recover your funds for you.
+I've also found that users are not used to two-factor authentication.
+We get a lot of very low-level questions of what is Authy or what is Google Authenticator.
+A lot of people are not using particularly secure passwords, though we do force at least a sufficient level of complexity there.
+We even have a lot of users that come to us and assume that we're an exchange and they ask,
+how do I send my dollars to you?
+So that's just a good case of people not reading any of the documents.
+And of course, we have a number of users that their primary language is not English
+and we don't have translations for our site, so that can result in a number of communication issues.
+We've also found over the past year, the full blocks creating this new fee market
+has created a number of initial complexities for us as a wallet
+to ensure that our users are getting their transactions confirmed in a timely manner.
+You can only get about 3,000 transactions into a one-megabyte block,
+and basically what we've seen happen is that you get big spikes, especially on Mondays.
+Mondays are when everybody, I guess, gets back to work and starts sending Bitcoin transactions
+and because everybody's bottlenecked in there, you have to have a responsive fee algorithm
+that will figure out how you can get to the head of the line if you're willing to pay for it.
+The transaction fee market has a number of issues that I've seen.
+Of course, the average user cannot be expected to know what the state of the unconfirmed transaction memory pool is.
+Dynamic fees, I think, are a step in the right direction, and they're not a silver bullet.
+We are on our third version of dynamic fee algorithm,
+and there's still an issue because we can't predict the future.
+So we can be really close, but we can still have major upticks in transactions on the network
+that will get your transactions stuck for anywhere from an hour to several days, depending upon how long it lasts.
+Replace by fee is a new way of working with the fee market,
+but it actually poses a challenge to us as a multi-sig provider
+because we would have to either go back to the user and ask them to send a new signed transaction with higher fees
+or get them to pre-sign a lot of transactions up front.
+It's definitely possible. We just haven't felt the crunch yet that it needs to be a necessary thing.
+In fact, we're hopeful that child pays for parent, which should be landing, I think, in point 13, will help us automatically
+because when our users are creating long chains of transactions that get stuck,
+we're already bumping up the fees on those to match the current fee market,
+and hopefully that will get the entire chain of a user's transactions prioritized and mined faster.
+So we are currently at this state where Bitcoin can only really do about two or three transactions per second.
+A lot of us are just holding our breath, waiting for SegWit and Lightning Network to come around.
+Even with SegWit and Lightning Network, it's only a matter of time before we need to increase the block size
+because the blockchain is essentially the anchor layer for all of these second-layer transactions.
+One way to look at it is going back to the terms of the UTXO set.
+While not every transaction should be on the blockchain, we want to be able to get Bitcoins to as many people as possible.
+If you want to get a Bitcoin to a billion people, that's one UTXO per person.
+That's seven billion UTXOs, and we have 40 million now.
+I don't even know how many decades it would take from a technical standpoint to get that to everybody.
+I'm in favor of both on-chain scaling and off-chain scaling.
+We need all the scaling that we can get.
+I think the more capacity the network has, the more people are going to use it.
+It's kind of like computer hardware in general.
+I've been using computers since the late 90s, and computers are never fast enough.
+The faster the hardware becomes, the more the software engineers use the hardware.
+We're always on this teetering point, trying to maximize whatever is available to us.
+I think the more scaling Bitcoin has, the more usage it's going to get.
+The more use cases it will be able to support.
+Then I touched on privacy.
+Privacy is a fundamental tenet of Bitcoin.
+If you're familiar with the cypherpunk movement, they really spawned cryptocurrency,
+and a number of cryptocurrencies before Bitcoin failed.
+I think the problem with privacy is that users generally don't care about it.
+They're not going to go to any additional steps to ensure their privacy.
+When we're developing applications, we need to make privacy the default.
+It shouldn't be a choice, it should just be the default.
+Rather than a series of complex hoops that users have to jump through.
+I've participated in the OpenBitcoin Privacy Project to help better understand things that Bitco can do.
+This results in a number of different attack vectors,
+which you can spend a number of hours, if not days, learning about.
+Potential attackers could be blockchain observers who are looking at the blockchain itself,
+network observers who are listening to the transactions on the network,
+even the transaction participants themselves.
+Some particular attacks send tiny amounts of Bitcoins to different addresses to help trace where they get spent.
+Then there's physical adversaries who try to gain access to your devices.
+Even wallet providers themselves, if you want to be exceptionally paranoid,
+really care about your privacy, then you have to worry about the software provider of the wallet,
+because they may be collecting or leaking personally identifiable information about you and your activities.
+One quick note about Ethereum, because I've spent the past few months working with building a blockchain indexer for Ethereum.
+Ethereum is a completely new beast.
+The biggest thing that really threw us for a loop was the 256-bit math.
+While math in and of itself is pretty simple, most operating systems, databases, CPUs, I think max out at 64 bits.
+You may be running database software that doesn't actually support native 256-bit integer math.
+If you were trying to, for example, keep track of balance updates and other operations,
+you may very well end up needing to custom code a solution for performing the math
+or at very least storing these huge numbers in a format that works for your service.
+From what I've seen, I think that a number of the services out there,
+I know that EthereumJ, for example, doesn't really try to store these numbers as 256-bit.
+They just store the raw bytes for everything, which makes it easy for storage and retrieval,
+but not so much for manipulation and indexing if you're trying to build a wallet service for high transaction volumes.
+You may have also noticed that a number of Ethereum wallets or services don't support deposits from contracts.
+This is because it's a lot more complicated to do so.
+Essentially, you have to execute the contract locally and parse all of the resulting internal transactions
+to see what the balance deltas were from that,
+to see if any of them resulted in a deposit to an address that belongs to your service.
+I think I saw something recently where people were having issues with Coinbase accepting contracts, deposits.
+Of course, we've seen the DAO disaster. We've seen the resulting hard fork.
+I would say if the Bitcoin core developers, even in the code itself,
+it says Bitcoin is experimental beta software, if Bitcoin is beta software, then Ethereum is alpha software.
+We've just had so many issues trying to use the tools in the Ethereum ecosystem.
+The good news is that we've seen a lot of progress where we ping the developers and say,
+hey, we need to be able to do this, and then a few days or weeks later, hey, now we have that ability.
+It's just a lot younger. It's a lot less mature.
+It's definitely in the Wild West from a number of different perspectives.
+Lastly, the community. Bitgo has had a number of issues over the years.
+We're not perfect. We had an issue with a legacy wallet recovery tool
+that resulted in an 80 Bitcoin transaction fee due to integer overflow in a library
+that we had updated in our main code base, but not in our deprecated code base.
+Thankfully, we ended up managing to get that back by coordinating with Antpool, who graciously returned it.
+Then we additionally paid that user a 25 Bitcoin value for uncovering the bug.
+This was one of several other issues that resulted in big blowups on Reddit.
+When someone found a patent application that we had a year or so ago, we ended up getting trolled
+really, really hard on Reddit by someone who managed to convince a lot of people that we were trying to patent multisig.
+After reading the patent, I could understand how you would come to think of that,
+because there was so much lead to leave, it's hard to even understand what's going on.
+To clarify, though, the patent was for a specific process of setting up three disparate machines
+and then generating the keys to the two out of three key wallet on these three disparate machines.
+Also, it's not even a patent. It's a patent application which may never be granted,
+though we very quickly afterwards mentioned that we were adopting the Twitter patent innovators agreement.
+Essentially, we're not going to be patent trolling anybody for this or any other Bitcoin related stuff.
+We're not interested in patents. In fact, we hate patents.
+Our CEO has written a number of blog posts over the years about why patents are terrible,
+but unfortunately the world is what it is.
+Let's see, there was also an issue uncovered with change output privacy,
+and we're now randomizing the change outputs, but even now this is an imperfect solution
+because P2SH is only about 10% to 20% of Bitcoin transactions.
+A lot of our users who are going in between the P2 public key hash and P2 script hash,
+it's blatantly obvious which outputs are the change outputs
+because you look for the ones that start with a three versus addresses that start with a one.
+Unfortunately, that's a privacy issue that we can't get around at the moment.
+Of course, the Bitfinex hack, which unfortunately because we still have not published
+a full post-mortem of the incident, and I've actually been on vacation for the entire thing.
+I haven't had much input or really been roped into all of that.
+Of course, the initial assumption from everyone was, oh, BitGo screwed up big time,
+and if their service failed, we were blindly signing transactions.
+While I can't say anything additionally, I can say it should be clear from the fact
+that none of our other thousands of clients had this issue happen to them.
+It was something very specific to Bitfinex and their integration that created a security flaw.
+As you can see, this is how I feel a lot of times when I go onto Reddit.
+For the first eight years that I was a software engineer,
+I actually worked for an email marketing company, which is basically legal spamming.
+I would receive the occasional angry email from someone who received marketing emails
+that they didn't want to get, and usually they didn't know how to hit the unsubscribe like.
+While I would only get one or two angry emails a day from sending 100 million emails a day
+out to the world on behalf of customers, with Bitcoin, it's a very different beast.
+There's a lot of people in the community with very strong views, and they're happy to let you know them.
+I've definitely received more vitriol in the past year or so as a Bitcoin ecosystem developer
+than I did in almost a decade of being a professional spammer.
+You've just got to have a really thick skin, especially as you're building these services.
+Things are going to go wrong.
+Hopefully, they won't be catastrophic for your service,
+but you're going to end up with a lot of pissed off people, and you have to develop a very thick skin,
+because a lot of trolls are going to descend upon you.
+I've been a Bitcoin enthusiast for about five years now, a Bitcoin engineer for 18 months.
+It's been a wild ride, and I think that we're just getting started.
+Thank you for hosting me, and I'll try to answer any questions that I'm able to.
+Before we start with the questions, I have to interrupt Bitcoin Magic just for one minute, because we are probably much more than we expected.
+I will ask for a poll for ordering some food.
+We had a lot of people recently, so we will order some Chinese food.
+Who is in for some randomly selected, centrally and trust-based, Chinese food?
+1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18.
+So, 18, raise your hands for pizzas. Are you sure you cannot give some?
+Okay. So, 19 Chinese-led sushi portions.
+The ones that didn't raise any hand will not eat anything, right?
+Okay. So, we will order for custom aggregates of some kind of food.
+Can you ask for beer?
+Beer. Chinese and beer. We will ask you for cash after we will pay in a centralized way.
+Okay. So, let's say 19 portions of Chinese food. I will do that.
+And let's say 20 food portions and then I will start to ask for...
+So, we have some questions from home, from Lawrence.
+Lawrence, do you want me to read it or do you want to get some voice on Skype?
+Okay. I will ask it. So, the first one regards the patent issue.
+So, after you say that Bitcoin is not going to use the patent for patent trolling or for offensive strategy,
+Lawrence wanted to ask you if BitGo can somehow guarantee that in eventuality of new acquisition of the company or failure or whatever,
+the patents could not get in the hands of patent trolling.
+And I will add, since Lawrence is asking, I recently knew about the Blockstream defensive patent strategy
+and I am curious if you discussed it internally, if adopted or not or a different one.
+So, my understanding of the agreement that we have adopted is that regardless of what happens to the company,
+the patent will retain ownership by Mike Belshoot, who is the creator of it.
+That's right.
+Now, I know that we were discussing defensive patent pools back a year ago and they sounded fairly receptive to it.
+I don't know, I guess the Blockstream news just happened in the past, what, month or two?
+Yeah.
+So, while I was on vacation.
+But I believe that we would be receptive to it.
+Of course, I would have to ask Mike.
+You know, he is the creator, inventor, but once again, the whole thing is that it's not even a patent.
+It's a patent application and I don't know if it will ever become a patent.
+So, if it became a patent, then we could start talking about, yeah, we should put it into a pool.
+I think that the pledge to not use it aggressively could be signed also for applications.
+But maybe, since you answered that, we could try to propose to Mike some kind of strides.
+Oh yeah, I mean, like I said, he hates patents.
+I've talked to him personally about it.
+So, I have no reason to believe that we wouldn't be receptive to such, like, more legally structured defensive patent.
+Very cool. Thank you.
+Other questions?
+From what I understood, you don't want to say more about the big things that happen.
+Right, right.
+So, but what do you think? Is it going to be made public?
+What happens there?
+Are we going to be aware?
+What is your opinion?
+Because I think it should be published for other people.
+Other things protect themselves.
+It should go to the community for a role.
+Oh yeah, I mean, I think that your good security protocol, especially for an open community,
+is that you publish a post-mortem.
+So, I think I've pinged them a few times about it.
+And basically, the response that I get is that while there is an investigation ongoing,
+they're not going to publish the post-mortem.
+Unfortunately, I have no idea how long it will be ongoing.
+So, I will tell you that as soon as I know the investigation is concluded,
+I'll definitely be pushing for a post-mortem.
+I think everyone deserves to know.
+Cool.
+Also, I am getting back to the slide about privacy.
+You said that you joined a privacy-oriented group, a research group.
+Can you disclose some more details about this project, if it's still running,
+if other companies can join?
+Yeah, so it's open for anyone.
+The Open Bitcoin Privacy Project is headed by Christoph Atlas,
+Justice Ranvier, I think a few other guys.
+If you Google it, it should come up.
+I think generally they're trying to do a round of wallet reviews at least once a year,
+and they have a whole slew of exhaustive criteria.
+So, anyone who wants to, especially if you run a Bitcoin wallet,
+if you want to get judged or get on the next round of reviews,
+they do a very simple participatory model where you become a reviewer
+and you review another wallet, and they will have several people that review your wallet.
+So, I did this last year.
+I would say it takes maybe two hours to go through the entire process.
+It's a checklist of probably 50 different things where you're looking at the wallet,
+seeing what the features are, and then you're actually testing them.
+You're creating Bitcoin transactions,
+figuring out certain aspects of how the wallet operates with regard to the network and UTXO set.
+So, it's a legal entity or is it just an open source project?
+It's just an open source project as far as I know.
+It's a private project.
+Does the same apply to the security standard group that you mentioned in the slides?
+So, it's not just US-based in the global security standard community?
+As far as I know, it's also fairly open.
+There is a technical steering committee that has, I want to say,
+a half dozen or so different companies on it.
+It's an attempt at creating a standard.
+There's no legal force behind it or anything.
+I'm hopeful that it will become something that services aspire to have certification,
+level 1, 2, 3, 4, what have you, just to give more ease of mind to their users.
+Can you talk a little about the state of Bitcoin core development?
+Can you feel that it's moving at a sufficient pace for BitGo?
+Yeah.
+Can you repeat the question?
+Yeah, the question was talking about the pace, the progress of Bitcoin core development.
+It's never going to be fast enough to make everybody happy.
+There are a number of challenges.
+I think the biggest challenge is that it takes a lot of experience
+to get to the point where you can be a competent Bitcoin core developer.
+It was great to see Matt Geraldo.
+I think he's going to be going to New York and trying to bootstrap some more people
+to get them into the knowledge of the expertise.
+Up until now, I don't think we haven't really had that type of outreach,
+but now Bitcoin is growing to the point where we have more money,
+more venture capital in the system to hopefully help us try to bootstrap ourselves.
+From an industry standpoint, of course, there's a lot of contention
+because you have very different viewpoints and needs and use cases.
+You have this one fairly small team of mostly volunteers,
+and they have their vision for Bitcoin, and then you have the rest of the world,
+and everyone has their own vision for Bitcoin or their own use cases
+that they're trying to facilitate.
+Do you guys fund or participate at the level of supporting the core development?
+I've asked in the past, would we ever want to hire a core developer,
+and generally the answer that I get is when we're a little bit larger,
+because we've still only got about 15 employees.
+Though, as I mentioned, we've spent a lot of time on our dynamic fee algorithms,
+and those, as a large part of the algorithm, use the dynamic fees from Bitcoin core.
+But we've actually found, and I've had some conversations with Alex Morcos,
+who is the primary dev for the fee algorithms,
+we found that much like the UTXO selection issue,
+you're trying to optimize for different things.
+So there was a change in 0.12 to the fee estimate algorithm
+that we found was actually not good for us.
+So we actually have a slightly tweaked version of Bitcoin core
+that we found works better for us.
+And in fact, I think if I've done a little bit of dabbling with Satoshi
+and had like a few minor documentation and testing changes,
+pull requests into Bitcoin core,
+but I think that if I get to the point where I'm going to start contributing,
+I'll probably be working on the fee estimate algorithm stuff
+and making it more flexible.
+I'm really hopeful that I can get into that by the end of the year.
+But that kind of comes back to the fact that you've got the cypherpunks
+and then you've got industry.
+I see those as two major different viewpoints.
+And it's really hard to get the cypherpunks, I guess,
+to see some of the pressure that industry has.
+So I think the more industry needs to go in
+and start trying to make our own contributions.
+And hopefully we'll be able to accept it.
+Nick?
+About the future of Bitcoin like the dynamic fee
+and also blockchain indexing that we've got developed,
+how much is open source?
+How much will be open source?
+So I believe we open source most, if not all, of our front-end code and our SDK.
+I believe we open source pretty much everything except for our key server signing stuff
+and the indexer and the back-end platform logic, like what actually powers our API.
+I believe the justification there is that the SDK and the front-end stuff
+is what is actually using your private keys to sign stuff and then ask us to countersign it.
+So that sort of gives more trust that we're not trying to do anything nefarious.
+Even if we did, if we open sourced our indexer or our platform code,
+I'm not sure it would be very helpful to many people.
+It's highly customized for our specific solution.
+But we are always looking for more, I guess, SDK languages.
+I think we just put out a PHP version of the SDK because there was so much demand for it.
+Are there some other places we can go in the natural workshops?
+Are you going?
+So I was in Hong Kong and then I should be back here in October.
+I'm not sure if anyone else is going to be joining me though.
+Which kind of database are you using?
+You mentioned MySQL or I mean NoSQL solution, which is specific to Google?
+So we use a couple of, they're all key value stores, but our primary, most of our setup is module.
+So that allows us to scale pretty easily.
+It's been interesting for me from the scaling standpoint,
+because before this I was working with really large HBase and MapReduce HDFS clusters,
+thousands of machines, because we were sending hundreds of millions of transactions, emails.
+But Bitcoin is just so tiny, when the entire network can only do two or three transactions per second,
+scaling your local stuff is pretty trivial.
+We throw a few machines at it and unless you get DDoSed or something, you're going to be fine.
+So you have a private infrastructure, not an Amazon or Google or something like that?
+No, most of our stuff is geographically dispersed AWS.
+We end up having to use other protections for DDoS attacks, but it makes it a lot more flexible.
+We don't need to have private secure standalone metal boxes that we build stuff on,
+because we don't keep any private, like unencrypted private keys on.
+We do have a special hardware key signing device for our own keys,
+but the entire idea behind our infrastructure is that even if our keys got compromised,
+then the other keys are elsewhere.
+Other questions?
+No more questions?
+Okay, so thank you very much.
+So we will ask you to let us 20 euros. I know it's a little expensive, but it's a random bench.

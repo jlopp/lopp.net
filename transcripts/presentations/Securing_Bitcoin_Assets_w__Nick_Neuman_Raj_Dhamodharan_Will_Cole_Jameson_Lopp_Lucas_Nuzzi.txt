@@ -1,0 +1,706 @@
+All right. Good afternoon, everyone, and welcome to our panel on securing Bitcoin assets.
+I'm really excited to have a conversation with these folks here today.
+My name is Lucas Nuzzi. I am the head of R&D at Coinmetrics.
+I've been working in various areas related to Bitcoin custody over the years,
+and we put together a really fun panel to discuss some key items on that front.
+So I'll have the panelists introduce themselves,
+and we'll get started, maybe starting with you, Will.
+Yeah. Will Cole. I'm the chief product officer at Unchained Capital.
+We do Bitcoin-native financial services, custody, lending, trade execution, that sort of thing.
+I'm Jameson Lopp, and I'm the CTO and co-founder of CASA.
+I've been helping people secure their Bitcoin for going on seven years now.
+Great. Raj Thamotsran from MasterCard.
+We've been working on crypto for a number of years, helping people experience crypto in a safe and secure manner.
+I look forward to talking with the colleagues.
+I'm Nick Newman, CEO at CASA.
+We make it really easy for people to secure their Bitcoin and hold their own keys.
+Excellent. So to kick things off,
+I will have you guys talk about the process of securing Bitcoin assets from a user perspective, right?
+Because MasterCard now has been doing some really interesting initiatives, getting into crypto assets and Bitcoin.
+And that maybe is a big funnel to users getting better educated around custody
+and perhaps moving to a system where they're securing their own assets
+and making some more solid decisions around the security of their keys.
+How do you guys envision that workflow of adoption?
+And how are you educating new users coming into the system?
+Yeah, it's a great question, and it's really about û we were talking, actually, but offstage about this as well.
+This is really about bringing the next billion users into crypto.
+Obviously, there is a lot of energy here about serving people who are already in crypto that should continue to be the focus.
+As a person coming in newly into crypto, they're looking for bringing their existing assets in there.
+They may use, for example, a card to buy their first Bitcoin.
+They may decide to do it in self-custody, which some of the colleagues are going to talk about.
+All of that process, when you bring in whatever jurisdiction you have, you need to identify yourself.
+You need to prove that you own the other side of the wallet as well.
+So we have security and identity products throughout that lifecycle,
+starting with just verifying your identity or verifying where the address is,
+or more recently about a company called Cypher Trace,
+which talks a little bit about the analytics behind many networks, including Bitcoin,
+where the wallets are, where the money is flowing,
+and to provide the people who are bringing the fiat into the ecosystem
+a risk score about how those wallets are done.
+And the point of this is really about securing and making the rest of the ecosystem feel comfortable about the crypto as well,
+and to just go through that process in a compliant manner.
+And I think we believe it brings the next billion users a lot more assets into crypto.
+It is doing really well, as you can see from the energy in this conference,
+but I think we can bring it to even the next million or billion users
+if we really open up that flow between the crypto and the fiat world.
+I think it's interesting that you asked about the process, because there will be many processes.
+People will come into the space from a variety of different perspectives,
+and to date, I would say the primary process is, as Raj explained,
+that people are going to some sort of exchange or custodian, basically a financial institution
+that's sort of straddling the lines between traditional finance and the new crypto ecosystem.
+And since they're going through these more regulated on-ramps,
+in many cases, they are going to have to go through these other processes.
+Now, maybe that won't always be the case.
+Maybe we will see certain smaller ecosystems kind of leapfrog that,
+especially people who are in ecosystems that don't have any banking infrastructure,
+any traditional finance, and thus may not have access to any of these crypto exchanges
+that are straddling the two.
+So for certain ecosystems where people are coming in full native
+and are just performing services or selling goods directly in exchange for their Bitcoin,
+then it may be more sensible for them to immediately jump into self-custody,
+because they aren't being presented with a custodial product.
+But it's not just that.
+Like, I hope that what we can build is that, you know,
+right now, while most Bitcoin might be held in self-custody and not in a custodial manner,
+the vast majority of people are onboarding in a custodial manner.
+And a lot of us have scars ourselves and friends with scars around what that means.
+The trusted third parties are security holes.
+And how do we make sure that the next billion people, several hundred million of them,
+have the option to skip that step altogether?
+A lot of businesses are having to make critical decisions right now,
+either because they want to start accepting Bitcoin
+or offering it to their users using an omnibus model.
+And a lot of clients from back in the day have called me to ask questions about
+this emergence of MPC as a custody technology.
+I think it's very relevant to some of the folks in this room who are having to make some of these decisions.
+You know, a native multi-SIG scheme,
+which is related to the products that Unchain and Casa offer.
+Or do we go a more generalized MPC route with some other solutions that have just come out?
+Do you guys have any thoughts around the differences around those two
+and what are the trade-offs at play here?
+Sure. Yeah, I'll kick it off.
+I would make the argument that when you're making a decision on how to custody your Bitcoin,
+you should be thinking about what jurisdiction you're in, what the laws are,
+how you're going to deal with physical secure locations,
+but also the technology that you're using in order to secure it.
+What I see confusing Bitcoiners right now is that we have a lot of crypto companies
+talking about MPC and comparing it directly or even saying that it is multi-SIG,
+where in reality, there's a really big difference.
+One, the MPC is not native to Bitcoin.
+Bitcoin's multi-SIG is native to Bitcoin,
+and that most implementations still leave you in a single point of failure
+with a single cryptographic signature at the end of the day.
+I would say that the number one reason someone might use MPC over multi-SIG
+would be because they need to secure more than just Bitcoin.
+So, yeah, if you do have Bitcoin and a certain number of altcoins,
+sure, MPC might be better, but for Bitcoin specifically, you can't beat multi-SIG.
+Yeah, and I think I would just add that there are other trade-offs
+when you're thinking about using something like MPC,
+so MPC generally can't be used with hardware wallets, for example,
+and so are you getting true cold storage?
+Maybe there's a question there or not,
+and I think really it boils down to what's your use case
+and what are you trying to use this for.
+If you're a business that is putting something on your balance sheet
+to help fight against inflation over time,
+well, Bitcoin's going to be your best bet for that,
+and in that scenario, you're going to be much safer
+using something like a multi-SIG to secure those assets than using MPC.
+And then you go one other layer, and it's, you know, as a business,
+do you actually want to be self-custodying your Bitcoin?
+I know that there's some businesses that are big enough
+where they have fiduciary duty that they feel like they need to use a custodian,
+and that's something that hopefully we can work businesses over time
+to get to the point where they feel,
+any business feels comfortable holding their own keys
+because that's truly the most secure way to do it,
+but that's another question that we run into
+when we're talking to businesses today.
+Well, also, I mean, Nick, you know,
+the Bitcoin multi-SIG wallets that are compatible with it,
+they're purpose-made for multi-SIG and for Bitcoin signatures.
+How many times have we seen MPC setups
+where the HSM devices are iPhones, you know,
+with Wi-Fi and Bluetooth and all of those things combined?
+The Bitcoin wallets generally are built really well
+for being error-gapped if you want, you know, that sort of thing.
+Yeah, I think the short version is MPC can get you a lot more flexibility,
+but you're building these constructions that are not a standard for Bitcoin,
+and there are a lot of trade-offs there,
+but it may make sense if you need flexibility and speed,
+and you may not care as much about, I don't know, auditability, for example.
+Yeah, absolutely, and in making those decisions,
+there's a lot that is baked into that, right?
+Treasury management, for example,
+understanding if you're processing the payments
+for users that are withdrawing from your platform
+and your holder Bitcoin, which balances are you going to be using,
+where are those stored?
+Has the tooling around Treasury management,
+had that improved over the years?
+How do you guys see the spectrum of security
+where you have, on one end, keys that are extremely cold, error-gapped,
+and on the other hand, keys that are online
+and processing these withdrawals at all times?
+Has the tooling around that improved over the years
+for new businesses that are getting into the space
+and trying to answer those questions?
+I mean, this is an area that we've focused on a lot,
+not necessarily around Treasury management,
+but around the range of keys that you may want to use for different situations.
+So, within CASA, you can have a really simple key on your phone.
+That's just your mobile wallet.
+All you need is that phone to spend funds.
+You could have three keys protecting your funds,
+where you need a phone and a hardware wallet to spend,
+and then CASA's got a backup key for you.
+Or you could have five keys, and that's your super secure cold storage.
+And we really take this approach where it's like a portfolio
+from a security perspective.
+And I think that this is, you know, we're on the enterprise stage.
+This is applicable to how businesses will start to manage
+their Bitcoin Treasuries as well,
+because let's say you're making an international payment
+to an international contractor twice a month.
+You maybe want to do that out of a wallet that is a little bit easier to access.
+It doesn't take as long to actually send funds,
+so it's a little bit less secure.
+But it also has a smaller amount of Bitcoin in it
+than your big core Treasury that you're holding for five-plus years
+without really moving things out of.
+And then we start to see people build more of a portfolio
+in terms of ease of access and security level to protect their funds.
+And that goes into that Treasury management side of things.
+Yeah, I think one other flow on this,
+and I know you're talking about potentially enterprises using
+and moving the value from one place to another,
+I think it's also important to see how they see the other side
+and where it is going.
+Enterprises, by definition, are regulators.
+They're a registered entity somewhere.
+And it goes back to what we were talking about earlier
+about knowing who the person is on the other side.
+And knowing that and facilitating that transaction
+is also, I think, quite important.
+We believe, actually, this clarity of wallets
+and what the risk score is, where the jurisdiction has been,
+actually can bring more people into the crypto,
+more flow of transaction, even if, let's say,
+one enterprise has a self-custody solution with you,
+and they want to send it to another person
+also having a self-custody wallet,
+or not maybe an enterprise custody with some other company.
+That kind of flow, when you make that flow very easy to do,
+risk-free or risk-reduced way to do,
+I think we're going to bring more crypto into the ecosystem.
+And that's part of this as well.
+So it's about finding that integration points,
+not just for the consumers,
+but also businesses to move value from one to the other,
+I think, would be a very critical way to scale this.
+I would speculate that the majority of corporate,
+treasury, Bitcoin management tools
+has, unfortunately, been happening at the custodian level
+for multiple reasons.
+First of all, I think it's easier to provide
+a smoother user experience if you're a custodian.
+You get to hide a whole lot of technical complexity
+of what you're actually doing with the keys under the hood.
+Also, I would expect that a lot of companies,
+especially large companies,
+don't want to take on that responsibility
+of figuring out how to delegate keys amongst themselves,
+and it's so much easier to just be able to point the finger
+at a provider and say,
+okay, well, we trusted them to handle
+our corporate treasury solution
+if something goes terribly wrong.
+And also, I'm sure that on the B2B side,
+there's a lot of great sales and marketing tactics
+around pitching corporate treasury management.
+The thing that kind of irks me is especially hearing
+about insurance around a lot of these custodial products,
+because normally you'll see
+a very large insurance figure get thrown at you
+and you aren't told what the fine details are,
+which is usually that that figure covers
+the aggregate of all of the clients of that custodian,
+and if there was some catastrophic issue
+with that custodian, in many cases,
+their total loss is going to be orders of magnitude
+more than the total insurance.
+And it doesn't insure you against the most common ways
+that your funds could be...
+Actually, I find that most corporate clients,
+when you explain Bitcoin Multisig at a base layer,
+that it's kind of intuitive to them.
+They're used to complex financial controls
+in handling their treasury
+or even any type of transaction that they do.
+So they have a lot of advantages.
+One, they're already used to sort of this complex
+financial control and permissioning for sending money.
+The other is they usually typically have access
+to secure locations, which is really important
+in the physical world if you're trying to hold your own keys.
+So Bitcoin Multisig layered on top of network security
+and permissioning is actually something
+that can look very familiar to your business
+if you're looking to do something like
+host your own treasury and hold your own keys while you do it.
+It is important, too, because it's something that I worry about
+where you think about, okay, everybody's excited
+about the institutions are coming to Bitcoin, right?
+But the more institutions that come to Bitcoin
+and decide not to self-custody,
+which it's like as Jameson was saying,
+it can be really easy to just say,
+I'm going to trust this custodian.
+The more companies that make that decision,
+each one adds more risk from a custodial perspective
+to the systemic Bitcoin network.
+And then the amount of Bitcoin that Coinbase Custody is holding
+does what it did in the last year,
+which is go from 1.5 million Bitcoin to 2.5 million Bitcoin
+out of the whole 21.
+And so I think it is important for institutions
+to be thinking about their own use case
+and hopefully to as much as possible be choosing self-custody,
+which probably comes down to some of the smaller businesses, too.
+Small to medium-sized businesses are maybe much better suited,
+or it's just easier for them to decide to self-custody their funds
+than it is for MicroStrategy as a publicly traded company
+to decide to self-custody their funds.
+Well, I want everyone to imagine
+a million Bitcoin sitting on a custodian,
+like Coinbase or something like that.
+Just imagine there's a million Bitcoin.
+They might have a dozen keys,
+maybe two dozen if we're being generous
+protecting that million Bitcoin.
+That same million Bitcoin split very evenly
+between Unchain and CASA,
+that might be tens of thousands of keys.
+The security posture that you're getting personally
+and that the Bitcoin network is getting out of that is immense.
+It's hard to downplay, I think,
+the severity of the risk.
+People don't really think about it.
+We don't want to think about it.
+It's quite frankly concerning,
+especially for those of us who are around,
+especially for Mt. Gox
+and some of the other major catastrophes.
+And exchanges and custodians
+are still suffering from losses on a regular basis.
+I think you just don't hear about it
+quite as much these days,
+probably because in terms of total scale,
+I think we're seeing more losses happen in DeFi land.
+What I would love to figure out,
+what looks like is the right panel here
+to figure this out and maybe onstage or offstage,
+is really how we can,
+the people who want to self-custody,
+whether it's the enterprise or individuals
+using one of your tools,
+and they want to bring value from outside.
+How can we make that happen in a simple way?
+I'd love to hear your thoughts on this as well,
+because people do want to put,
+people buying Bitcoin with our cards today,
+and I want to make sure that that experience is smooth
+from a safety and security perspective,
+and they have an option.
+They don't always have to end up
+in one of the institutional custody solutions
+or custody directly.
+They should be able to do it.
+I think some of the self-custody wallets
+are turning on card payments today,
+and I think that's a great way to do,
+and some players in the industry are starting to do.
+Love to hear your views on that,
+because that's what will bring more demand to this
+and more players who are normally not used to,
+you know, holding Bitcoin themselves.
+Well, I think the tech and being able to use your card
+and all that kind of stuff is an important piece of it,
+but actually the thing that we come back to
+all the time at CASA as the core piece
+is why should I care about self-custody?
+I don't even know what this thing is.
+I've been using a bank for my entire life
+where somebody, the bank has my money, and that's fine.
+Why doesn't that work with Bitcoin?
+And so, and explaining that
+and explaining how this is actually empowering
+to be your own bank, and you now have access
+to a permissionless, open, global financial system
+that is Bitcoin, and you don't have to ask your bank
+or your card holder or anybody to spend that money,
+to use your money.
+That's super important,
+and helping to get that message out there
+helps people understand why they would want to
+hold their own keys in the first place,
+and then you can bring them in
+with really simple integrations
+with buying Bitcoin with your card
+and having it go straight to your wallet
+where you hold the keys.
+No, I think you have a great point there,
+and different people want to do this for different reasons.
+Some of them maybe,
+because they believe that's the financial system,
+some of them want to hold Bitcoin
+purely as an investment thing,
+and buy and hold, right?
+That's all they are thinking about as one of their,
+and whether they are doing it
+because they are banked or unbanked.
+I'm talking about people who have assets elsewhere in fiat
+want to bring in there.
+Motivations may vary from different people.
+That's about choice.
+We're enabling choice, not passing judgment
+on why people want to do this,
+and that's the process, making it, I think,
+we as an industry can work together,
+and you would see a lot more people coming into it,
+not just enterprises who want to self-custody,
+which is a great use case, of course,
+if that's what they want to choose,
+but also making that process seamless.
+I think I see some of the wallets
+starting to do it on other networks,
+and I think we should work together
+to bring that as well here.
+We might be approaching the golden age of payments, right?
+The reclaim of the payments use case
+with technologies like Lightning,
+seeing an explosion in terms of capacity,
+as well as a number of channels that are being opened.
+We heard from Strike yesterday
+their integration with the Lightning network.
+Do you think that would be a big factor in self-custoding,
+because purely from a cost perspective,
+if you think about a Lightning payment
+relative to the status quo,
+merchants could be saving billions of dollars
+on an annualized basis
+if they were to adopt a technology like this,
+purely from a cost perspective,
+and use as an incentive mechanism
+maybe a system of rebates,
+where they're giving back,
+they're paying on average 2% in transaction fees,
+they're giving back 1%,
+and essentially use that as a carrot for users
+to use this new payment system.
+How do you guys think about that as being one of the ways
+where self-custody will increase?
+Has MasterCard considered that as these developments
+on the payments front, not so much on the investment front?
+Look, we've been in payments for a while,
+and we know what works in payments.
+The payments, it comes down to the reach and simplicity.
+The consumer experience being the same thing.
+You get a card today from your bank,
+tomorrow you walk into some place in Africa,
+a merchant got wired up just yesterday,
+and the card just works.
+Simple tap, that consumer experience work.
+We take it of all of the behind-the-scenes activity
+that makes that happen.
+So why is that working that well?
+First thing is consumer experience,
+the simplicity of what you're taking and using.
+I think it's very, very important.
+You talked about rewards.
+That is also, in a sense, people on which card they bring.
+The way that we are thinking about bridging the crypto world
+with the card world,
+and which is we have great products in there,
+whether the wallet is self-custodied or not,
+we can point the card basically to pull the balance
+from either the Bitcoin or whatever assets that you have.
+Most of them happen to be Bitcoin.
+And people can use the cards.
+This is existing experience.
+Merchants are used to that experience,
+and they're looking for moving people fast
+through whatever the checkout line,
+whether it's online or here.
+The simplicity of consumer experience
+matters quite a bit.
+And we're providing this bridge access.
+And basically what we call as a crypto card
+that allows access to many of the wallets out there,
+and people use it.
+Most people, like I was talking earlier,
+most people want to use it as an investment vehicle,
+but people do want to access it, have a choice.
+We believe in this choice in a big way
+that people have alternatives.
+I'm going to take a possibly unpopular pessimistic view,
+but I believe that Lightning suffers
+from some of the same problems that I mentioned earlier,
+where the user experience that you can provide
+to Lightning Network users
+when you're offering a custodial version of it,
+it's a lot easier, once again,
+to provide a smoother user experience,
+because, once again, there's a lot of complexity
+that you can shove under the hood.
+And it's different types of complexity
+instead of all the key management and UTXO stuff,
+it's liquidity management and channel-related issues.
+So we're already seeing in the Lightning Network wallet
+and sort of payment processor space,
+I think, a lot of custodial options being very popular,
+because there aren't as many rough edges
+for people to run into on the user experience side.
+So, I mean, that's fine.
+I'm a technologist. Give me a good challenge.
+I've been building self-custody wallets for seven years,
+and that's because it's not easy,
+and there's no one simple solution to this.
+It is an ongoing war of convenience versus security,
+convenience versus privacy.
+There are always fundamental trade-offs
+where we need to keep fighting to improve the user experience
+for people to be self-sovereign,
+because much like with privacy and security in general,
+the defaults tend to be towards extreme convenience,
+because, you're right, people want convenience.
+They tend to value convenience and usability
+over everything else.
+And as much as I love going out
+and talking about various educational aspects
+of why you should care about self-sovereignty
+and security and privacy and stuff,
+I also recognize that a lot of people
+read the manual, read the fine lines,
+and so it's important for us as technologists
+to try to offer better and better user experience
+that comes with improved privacy and security.
+It's good for us to have a sense of proportion, though, right?
+Like, in terms of spending and using Lightning Network
+and using custodial models, it's not necessarily a bad thing
+if you're talking about smaller sums of money,
+but you don't want your life savings
+or your entire treasury in that type of environment, right?
+Is it already clich̠to talk about, you know, Canadian truckers?
+Like, how many times has that been brought up here?
+But, like, seriously, is that going to get better or worse?
+For your business, as an individual, like...
+We see the trend.
+Having a sense of proportion here is like,
+sure, custodial isn't an evil thing.
+Like, if you're doing payments, if you're paying for, you know,
+lunch, if you're paying for dinner,
+but, like, for your life savings, for your treasury,
+keep it in self-custody.
+Yeah, I mean, that's the flip side.
+You know, on one side, you keep trying to lower the bar,
+make the user experience better,
+make it fewer hoops that people have to jump through.
+The flip side is, you know,
+we see the trend from various authoritarian figures.
+You know, they're going to keep finding the choke points
+and applying pressure,
+whatever allows them to exert the most power over people.
+And as certain people, segments of the population,
+find themselves under that pressure,
+that will be a forcing function
+for them to be willing to jump through more hoops,
+to see, like, what are the other options out there.
+I'd make one more argument, too.
+For everyone here, you know,
+the enterprise stage for your businesses,
+I would make the argument that holding your own keys
+through, you know, a product like Unchained or CASA
+is not that hard.
+It's not harder than driving a car
+or learning how to drive a car.
+I think a lot of people get spooked by it
+because of, you know, the meme that, you know,
+oh, man, you know, holding your own keys is super difficult.
+We've made it a lot easier.
+There's a long way to go, for sure,
+but you shouldn't be, you know, scared off by it.
+One thing that I wanted to make sure that we covered
+is another trend that's happening and affecting custodians,
+which is the emergence of lending products around Bitcoin
+and the desire of even users of omnibus systems
+to lender Bitcoins and receive yield as a return.
+Do you guys think this trend is at odds with self-custody?
+How are you positioning yourself out of that?
+No, not necessarily.
+There was actually a great talk on the stage a few hours ago
+about Bitcoin as pristine collateral.
+Most of the products, as far as I'm aware,
+the ones that are coming out tend to be custodial,
+but we're seeing hybrids come out,
+so you don't necessarily have to put yourself up
+at the rehypothecation risk in order to use Bitcoin as collateral.
+Yeah, I mean, Bitcoin is great collateral,
+and, you know, you can still have a key cryptographic relationship
+with your customer as a lender.
+At Unchained, what we do is when you take out a loan from us,
+you can have a private key.
+You can't have unilateral control over the collateral,
+but you can prove that your key signs for this address
+and that the collateral is not being rehypothecated like we promise.
+I think the key is that it comes down to user choice.
+So we're all building for this self-sovereign world.
+Well, in that world, you should be able to choose
+if you want to lend out your Bitcoin in a custodial way
+to earn some yield or borrow against your Bitcoin
+because you don't want to sell it, but you want to go buy something,
+or you can keep it in fully cold storage
+and not touch it and not participate in that.
+That's different than the major fiat financial system,
+in which case when you put your money in a bank,
+it's getting lent out and you have no choice.
+You can't keep all... generally can't keep all of your money
+under your mattress to keep from having to do that,
+but with Bitcoin in self-custody, you actually have a legitimate choice
+where it's not that difficult to hold your own keys
+because it's digital money.
+And so the convenience of that is much closer
+to the convenience of using a custodian.
+And so when you talk about how that affects the entire system
+at a systemic level, that choice and that ability for anybody
+who wants to kind of go down all the way to the base layer
+where they are holding their own keys is important.
+And then if they want to do things like lend out their Bitcoin
+in order to earn yield, that's their choice.
+And it doesn't affect my choice with what I want to do with my Bitcoin.
+But it also allows us to take an enormous amount of risk
+out of our Bitcoin financial system, right?
+Which is not a choice you have with fiat.
+We get to reduce systemic risk because we have the choice
+of private key relationships with our financial service providers.
+Yeah, this started with a topic that we were again talking
+a bit offstage about this identity, decentralized identity
+and how you could use that for some of that executing your choices, right?
+And people may want to do different things.
+I think this is an important topic in terms of wherever your identities are tested,
+whoever is the authority does it or there are a range of people,
+whether it is a government does it or an institution does it
+or somebody else who is trusted by a third party.
+How do you bring that information to self-custody Bitcoin wallets
+would be a great thing for the industry to work on as well.
+There are things emerging on other chains like the DID and so forth.
+I think that notion and the concept of self-sovereign identities
+is a great one to apply here as well.
+But you need external validators and incentives set up for them
+to come and provide that attestation so that you can scale that.
+I think that will be a good thing, again, bringing the next level of scale into this.
+Yeah, I mean, I think that we, especially as self-custody providers,
+we're not just here about self-custody.
+We're looking at the long game and believe that private keys
+are going to become a way for people to empower themselves
+in a variety of different aspects of their life.
+But one of the big missing pieces is identity.
+But I see it from a technological perspective of if you can authenticate yourself
+with other parties throughout the world
+and you can authenticate yourself cryptographically
+rather than having user names and passwords
+and other really, really sensitive information
+that you're literally spewing all over the internet
+and then it's getting leaked and used against you
+and you're having your identity stolen.
+That is just yet another way that we can apply these self-custody models
+to securing things other than just Bitcoin.
+100%.
+The transparency of it does entail greater responsibility on service providers
+because transparency and privacy at times can be at odds.
+How do you guys see privacy as service providers
+and how you're positioning your products in light of that trade-off?
+I mean, offering a...
+That is one of the trade-offs that you make with a lot of the service providers right now.
+If you choose Unchained right now, you're sovereign over your Bitcoin,
+but Unchained does know your balance.
+But in the Bitcoin ecosystem, there's loads of ways to both be sovereign and be private.
+There's really not a way to do a custodial solution with privacy
+unless there was some sort of decentralized identification method.
+It would benefit us all to have that.
+Even if it is centralized identity, it is about...
+You talked about choice. It's about where a specific consumer or an entity
+deciding to disclose that identity for what purpose,
+and it is actually done through authentication and so forth.
+This is one of our core principles.
+When we are looking at crypto as well,
+as we support some of the crypto transactions and onboarding and offboarding and all that,
+this is a core principle of how we operate consumer protections and privacies
+is in everything, informs everything that we do.
+It's almost like a governing principle of what we get involved and what we don't get involved in.
+I think this is about curating the space so that people can come in
+with very minimal requirements and making the access simple.
+Consumer experience, again, is part of it.
+This identity is a big part of it with privacy protection.
+Privacy, there's a million different variables and knobs and levers
+and where on the spectrum do you want to be.
+If you want the ultimate extreme privacy,
+if you're going to be a hardcore cypherpunk,
+then the downside to that is you literally have to do everything yourself.
+As soon as you start reaching out and asking for help from service providers,
+you're going to be leaking some sort of information.
+That's the basis of knowledge sharing.
+CASA tries to strike a balance there.
+It's possible to be on the fairly private side,
+but if you want our consultation services,
+we need to get to know certain aspects of your life and help you make certain decisions,
+especially if you're talking about architecting self-custody
+for potentially life-changing sum of money.
+There's a lot of very personal decisions that go into that.
+It's possible always to be on the ultimate security or ultimate privacy side,
+but it takes a lot more resources and effort
+because you're not able to leverage other people's knowledge.
+Part of privacy, too, is just the number of counterparties that you have.
+If you can reduce that down to just one or just two,
+instead of in the fiat world having four, five, six
+that you have to divulge yourself to,
+thinking about if you need to store Bitcoin, if you need to buy Bitcoin,
+if you need to transact in Bitcoin and you have different providers
+or you're disclosing to multiple counterparties at every type of transaction that you can do,
+then you're leaking more private information.
+If you can do that in one place, potentially a better outcome for you.
+There's a lot of complexity here, and we're close to time,
+but as a final question, I'd love to hear from you guys.
+Given the scope of knowledge that's required to make solid decisions around security,
+what is the one thing that you see as crucial for your users to understand
+from an educational perspective as they're getting onboarded into your products?
+I think for us, it all boils down to knowing that you are holding the keys,
+and we try to build the experience in such a way that you don't need to know everything from the start
+the second you get started with the product.
+If we're doing our job well, you know you're holding the keys and that CASA knows what we're doing,
+and then we are going to present the things that you need to know as they are relevant for you
+based on how much Bitcoin you're storing or what you are doing with the keys that you have.
+That kind of bread-crumbing is something that we don't always do well as a Bitcoin industry.
+Sometimes people ask you, they're very new to Bitcoin, and they're like,
+what should I do? And they just get vomited.
+Firehose.
+Yes. And that turns a lot of people off.
+You've got to make it approachable and present them with the information they need when they need it.
+And that makes them much more likely to act on that in the right way.
+And so that's how we think about it.
+Yeah, for us, it's simplicity of consumer experience and really bringing a simple,
+trustable consumer experience so that people can repeatedly understand how this works as well as bringing that.
+And part of that is the ecosystem.
+So, for example, we had a different part of the ecosystem when somebody wants to use their card to buy Bitcoin,
+for example. There is another end of that spectrum is an issuer of the card.
+They need to understand that the person charging is crypto and why they are doing it, what is the risk,
+what is the level of the entity, whether it's self-custodied wallet or it is an enterprise on the other side.
+What is their risk rating on that? And that's the product that we offer as well.
+All of this does û this is my long way of saying that bringing trust into the ecosystem and educating people,
+bringing simple consumer experience was what brings the next set of people.
+And we are putting a lot of people on that education as well, both on the overall kind of the marketing consumer side,
+but more importantly, we as a B2B2C company, educating the ecosystem as well in terms of how that can have that safe experiences.
+Excellent insights. Gentlemen, thank you for your time. Very fun panel.
+Thank you.
+Thank you all for being here with us.
+Thank you for your time.

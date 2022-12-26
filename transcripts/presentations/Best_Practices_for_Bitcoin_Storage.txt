@@ -1,0 +1,251 @@
+The next talk is the man here, Jameson Loop, talking about the best practice of Bitcoin storage, please.
+All right.
+I'm Jameson Lopp, co-founder, CTO of CASA, which is a self-custody cold storage solution.
+I've been focused on self-custody and multi-signature wallets for about six years now.
+And this is the great challenge that I've been given, is only 20 minutes to discuss Bitcoin security,
+because we could talk about this for hours or days.
+But let's get started with the basics.
+Why are we here?
+Well, hopefully you at least understand that Bitcoin, if you hold it yourself,
+allows you to have money that cannot be confiscated from me.
+It allows you to have money that cannot be censored.
+No one can tell you how you're using your Bitcoin if you hold the keys yourself.
+Now, the flip side to this is that if you screw up, there is no authority that you can go to that can get your money back.
+So, at the very high level, all of these wallets have public keys, they have private keys.
+We're very interested in keeping those private keys safe.
+If you have the private keys, you can do what you want.
+If someone else gets the private keys, unfortunately, they can do what they want with your funds.
+And when we're talking about wallets, there's a number of different ways you can categorize them,
+from hot wallets to cold wallets, single signature to multi-signature.
+The vast majority of wallets only require a single signature,
+which means there is one key that needs to be used,
+and whoever has that key can decide where the Bitcoin moves to.
+A multi-signature wallet is one where you have to have several different keys,
+and you have to have signatures created that essentially authorize that the Bitcoin can move.
+So, this is a bit more complicated, but also can be a lot more robust.
+And we can also decide to describe these different wallets from a perspective of self-custody,
+which is where you have the keys, or custodial, which is where someone else has them.
+The best way to think of custodial is that it's like a bank.
+And with a bank, they have the money, and you have to ask for permission to use that money.
+If they want to, they can shut down your account for any reason.
+The funds can be seized. There's a lot of additional risks here.
+When it comes to self-custody wallets, generally, you can break those down into two different types.
+One is the software wallet, where you're running some application on your phone or on a computer,
+and the keys are also on that machine.
+This can be very convenient, but it means that they are exposed to the internet
+and to a number of different risks, such as malware, hackers, and such.
+If you have a dedicated hardware device, however,
+it will still need to use a software wallet to manage different aspects of your funds,
+but the keys will never be on an internet-connected device.
+The keys are kept offline. They are very safe from hackers and malware.
+It protects you from a lot of different attacks.
+So we can look at history, and if we look at what has happened in the Bitcoin space over the past decade,
+we can make some good estimates. We can't know for sure, but from looking at the blockchain,
+there is a pretty good reason to believe that nearly 20% of all Bitcoins have been lost,
+because they have not been moved in many years.
+We can also look at the headlines from a lot of the large exchange hacks
+and other major losses at big companies over the years, that over 2 million Bitcoins have been stolen.
+The number is actually probably higher than that,
+because we don't hear about all of the individuals who have money stolen from them.
+And I could spend hours just talking about some of these threats.
+Many Bitcoin have been lost due to any number of things on this list,
+which are trying to get to those private keys, which is very important information.
+But since we don't have time to go into every specific attack,
+we can talk about just the higher-level categories of what most of these attacks fall into,
+and therefore, some of the high-level security steps that you can take to protect yourself from it.
+Of course, not your keys, not your coins. This is the reason to have self-custody.
+This is just a few large hacks of exchanges, I think, in 2017 or 2018.
+The list, of course, is much longer, can't even fit it all on the page.
+Why is this an issue that we have to keep talking about over and over again?
+It's because Bitcoin is different from any other system.
+Generally, people are used to having a service provider with a support service that they can call up.
+If something goes wrong, you call up your bank, your credit card, whatever institution that you're working with,
+and they help fix your problem.
+But that doesn't really exist in Bitcoin, especially if you're holding your own keys.
+People are not used to thinking about preventative measures, about essentially buying insurance upfront.
+The fact that this is a digital bearer asset, where if someone can steal it from you,
+there's no way to get it back, it changes the incentives for attackers.
+And even if you may not have what you consider to be a lot of money in Bitcoin,
+it is still probably a very attractive target to somebody else out there in the world
+who wants to get into your setup and steal your money.
+Also, just from a very high level, if we fail at a general perspective to be able to self-custody
+and be able to be our own bank and be confident about it without being a highly technical, deep Bitcoin person,
+I don't see how this space is going to be mainstream.
+We may end up falling back to a worse security model where we're once again trusting third parties.
+And I believe that it's our mission to make that not required.
+It is one of the fundamental reasons for this space existing.
+If we look at some of the high level categories of loss and attacks,
+a very simple one to think about, of course, is physical theft.
+This is something that humans have been dealing with for all of history.
+And so we have a pretty good idea of how to physically secure things.
+You can have safes. You can hire guards.
+This is what banks and other high security institutions tend to do.
+When it comes to self-custody, you may think about putting your keys in a hiding place that is not an obvious target.
+If someone breaks into your house, just a crime of opportunity, and they're not looking for Bitcoin related stuff,
+then they may not find something that you have reasonably well hidden.
+I'm more of a proponent of the distributed key model.
+This is a bit more technically complicated.
+But that's one of the great things that this space allows us to do, is to actually distribute keys into multiple different locations
+so that even if one location is compromised, you're not going to lose your money.
+Digital theft, of course, is also fairly simple to think about how to resolve.
+And that's what we need the hardware devices for.
+We get those keys off your phone, off of your laptop,
+and make sure that someone can't just hack into a device and steal everything.
+Physical disaster is actually a very boring data management problem.
+You have to have backups.
+And I think even highly technical people like myself tend to be lax about backing up their data.
+It's not an attractive thing to think about.
+It's basically like doing household cleaning.
+It's just something that you have to do.
+Otherwise, after a very long period of time, you may end up regretting it.
+I think one of the most difficult things to resolve in this space,
+which we certainly won't be able to resolve in this talk, is the social engineering aspect.
+Over the years, I've seen the technical security aspects of Bitcoin wallets and key management improve
+to the point that now it seems instead of as many hacks at the big exchanges happening
+or many hacks of people who are keeping large amounts of money on their computer happening,
+it's instead turned into spearfishing of very specific targeted individuals,
+basically crafting campaigns to do what I consider to be hacking your brain.
+And I believe that unfortunately there is no technical way to protect against this.
+You can put as many different security and authentication protocols in place,
+but if someone has been tricked and their brain has been hacked
+into going through all of the technical precautions to sign off on spending the coins,
+there's not much you can do.
+So this is why we need education.
+We need people just to be more cautious when you're doing things related to Bitcoin.
+Slow down, think about what you're doing, because once you click those buttons, there's no going back.
+And finally, with collusion, this is related to custodial providers.
+If you're not using a custodian provider, you don't have to worry about it so much.
+But in other cases, you may have issues of inheritance or groups of people who are collectively owning things.
+And this is less of a technical issue and more of a sort of game theory problem.
+You have to think about who has access to keys
+and how can you ensure that no single person can essentially run away with all of the money.
+So what are we trying to do?
+Obviously, protect people from third parties.
+That's the entire point.
+I think a lot of people tend to believe that protecting from attackers should be the next one.
+But just based on the statistics, based upon my own knowledge, what I've seen happen over the years,
+I do believe that if you are self-custodian, you are more likely to screw up and lose access to your own money
+than you are to have someone attack you and steal that money from you.
+This is a natural consequence, I believe, of pushing the security further away from the centralized exchanges
+and distributing it out amongst the individual users on the network.
+So what happens when you go and you create a Bitcoin wallet, even if it's a hardware wallet, software wallet, whatever,
+the first thing it says is, write down this seed phrase and put it somewhere safe.
+Unfortunately, there's an entire iceberg of security knowledge under that phrase, put it somewhere safe.
+So you have to think of this key phrase, it's like dynamite, it's like toxic waste.
+It is incredibly important, it's incredibly dangerous.
+You don't want to be handling seed material at all.
+You want to minimize how much you're touching your seed phrases.
+And here's an example, is that there are many malicious websites out there that will pretend to be a wallet.
+And what this one here is doing, and even from a technical standpoint, it's hard to tell that it's fake,
+it looks like a Trezor web interface, but what will happen is they will try to scare you,
+they will try to trick you and hack your brain into thinking that something is wrong
+and you need to type in your seed phrase.
+And you should never ever type in your seed phrase, especially if you're nervous about something.
+If you do that on a website like this, all of your money will be gone in a matter of seconds.
+How do we protect these seed phrases and back them up?
+You may have heard of something called paper wallets.
+This was fairly common, I would say, in the 2014 era.
+As of today, paper wallets are not recommended.
+There are many problems that can happen with them, they can be stolen,
+they, of course, can burn or water can damage them,
+but there are also other technical issues where a lot of people have lost money
+because the actual process of spending money from a single key paper wallet can result in you losing it.
+I won't go into the technical details, but unless you really know what you're doing,
+this is not something that I recommend anyone using.
+Metal backups for your seed phrases are better, but you still have to be careful.
+In many cases, people are still putting their seed phrases on there unencrypted,
+so if someone finds it, they can still take the money.
+You may believe that it is going to survive a house fire or a flood or a collapse of a building,
+but you should not assume that, and that's why I recommend that you go to my website here,
+which is a project dedicated to stress testing every one of these devices on the market,
+because about half of them do not hold up as well as I believe that they should.
+What are the best practices?
+I believe that if you have more than a small amount of money, you should be using a hardware device.
+Probably more than a few hundred dollars, it starts to make sense to pay 50 to 100 dollars
+to get one of these dedicated devices.
+And if you are at that level, then you should also be worrying about
+how do I back up the seed phrase for that device.
+And of all of the devices, the metal backups that I've tested,
+what it really comes down to is keeping it simple,
+and the simplest things that you're going to find is a single steel plate
+that you use a center punch to essentially put the dots of the letters for the words into.
+It's very, very difficult to destroy one of these devices.
+If you're going to the extreme, if you have a life-changing amount of wealth
+that it would be terrible for you to lose access to or to have someone take,
+this is when you want to start looking into a more complex setup.
+This is where the multi-signature distributed key setup is what I believe
+allows Bitcoiners to get better than bank level security.
+Because even at a bank, even if, say, you take your seed phrase from your individual
+treasurer, ledger, whatever, and you put it in a safety deposit box at a bank,
+which is highly physically secure, that is still a single location
+that could be compromised.
+It could be compromised by environmental disaster.
+It could be compromised by a government agent coming in.
+It could be compromised by an employee at the bank going rogue.
+You never know.
+And really what I have focused the past six years on is trying to figure out
+how do we eliminate single points of failure from systems like this.
+So if you have keys, they are on multiple different devices,
+they are geographically spread out, then this will give you a level of protection
+not only against theft, because if an attacker gets into your house
+or one other location, they won't have enough keys to spend your money,
+but it also automatically gets you that redundancy, that backup level,
+so that if a disaster happens, you don't even have to plan for a specific one.
+If the keys are separated, then most likely you lose one key, that's okay.
+You can still recover, you can move forward, you can replace it,
+and you can basically have more of a self-healing type of setup.
+So there are a number of different wallet softwares that you can do this with,
+CASA on the left, Electrum in the middle, Spectre on the right,
+and then there are also several others, and generally these all support the ability
+to also use the hardware key management devices in conjunction with them.
+So you can essentially travel around and add signatures to a transaction
+with your hardware devices whenever you need to move those funds.
+But of course, this is very inconvenient.
+It is inconvenient by design, because this is supposed to be for funds
+that you almost never move.
+This is if you have a level of wealth where you are really storing
+a significant portion of your total savings,
+and you want to make sure that nothing can possibly go wrong.
+This is the level of security and the convenience trade-off
+that I think you need to make.
+So once you get through all of these hoops,
+and you're fairly confident that your keys can't really be lost or stolen,
+there's one final thing you have to worry about, inheritance.
+And inheritance is actually a friction when you try to introduce it
+into your own system, because when you are self-custodying,
+the goal is to ensure that only you have access to the keys to spend your money.
+The goal with inheritance is to ensure that someone other than you
+has access to the keys to spend your money,
+preferably only after you have passed away.
+So this is where it can get even more complex.
+Entire books have been written about this subject.
+I do recommend Pamela Morgan's Cryptoasset Planning Guide,
+because it talks not only about the technical issues,
+but some of the social issues with inheritance.
+And what we found is if you want to thread the needle
+in between these very different objectives,
+then you probably want some sort of multi-key setup,
+where there are some keys that can be accessed by both you and someone else,
+but never enough keys that can be accessed by someone else, of course,
+that they can spend the funds.
+So the final thing, which is not really technical at all,
+is operational security.
+And the first rule of Bitcoin is to talk about Bitcoin
+to as many people as you feel comfortable doing so.
+But the second rule is to not talk about your Bitcoin specifically.
+And this is just one example, possibly hard to read,
+but someone, a Coinbase user, is posting about they lost all of their money
+because someone hacked into their Coinbase account and cleaned it out.
+And then on Twitter, this person says,
+oh, this is terrible because I have all of my money on Coinbase,
+and it would be terrible if that happened to me.
+Within 24 hours, that person on Twitter got attacked.
+Their cell phone number was swapped out to an attacker,
+and all of their Bitcoin was withdrawn from their Coinbase account.
+So this is why you don't talk about the specifics
+of how you are storing your Bitcoin,
+how you acquired it, how much you have, so on and so forth.
+And this can be a scary subject, but you can do it.
+You can be your own bank.
+You can be safe and sovereign if you're willing to put in the effort.
+Thank you.

@@ -1,0 +1,544 @@
+Our next speaker probably does not need much of an introduction, but because he's one of
+the coolest, I'm going to talk him up a little bit.
+Jameson Lopp has been building multi-signature Bitcoin wallets for the past four years, started
+out at BitGo and now is the Chief Technology Officer at CASA.
+He's a regular on crypto Twitter and Medium, where he distills these complex issues and
+complex mechanisms for a wider audience.
+I know this conference is a technical conference.
+I know the last session was a lot.
+I know he has memes in his presentation, so this is going to be a little bit fun, so just
+sit tight and please help me welcome Jameson Lopp.
+All right, so to get started, for those of you who might want to play around a little
+bit, I would recommend, well, we'll have a quick demonstration about halfway through
+where we're going to be playing around with the Electrum wallet.
+If you have a laptop available, then feel free to go to Electrum.org, download the wallet,
+and then the only tricky part will be figuring out how to run it on testnet.
+If you're running on Linux or Mac, it should be pretty easy to just pass a dash dash testnet.
+I think if you're running on Windows, you might have to either get on the command line
+and run it there or create a shortcut to where you're passing those additional arguments
+into it.
+I imagine you'd be able to figure out how to do it by the time we get to that point.
+Why are we here?
+Well, I've been doing Bitcoin full-time for about five years now.
+I've been building infrastructure for multi-sig wallets, both in the enterprise setting and
+in the individual setting.
+I've seen people screw up in more ways than I could ever really imagine.
+It's simply because there are so many foot guns available in this really complex protocol
+and in all of the applications that are being built on top of it that people can lose money
+in a variety of different ways, probably countless ways.
+I've seen people manage to turn multi-signature wallets into what are effectively single-signature
+wallets.
+I've seen people get frustrated by inconvenient security features and turn them off and then
+get hacked.
+I've met countless individuals over the years who have chosen to leave their crypto assets
+with a trusted third-party custodian because they simply don't trust themselves to set
+up a hardware wallet or to set up cold storage that is sufficiently robust.
+The main thing that I've really learned over the years is that users need guardrails.
+We need to build software in a way that has a lot of the best practices that are a part
+of the software itself, that try to basically save the user from these foot guns.
+One example for what I've seen, especially on the enterprise side of completely new companies
+getting into Bitcoin, is we make APIs available to them for enterprise wallets.
+I've lost count of how many new companies I've seen start up their API and then just
+start sending 100 transactions per second because they simply didn't know the throughput
+limits that the Bitcoin blockchain makes available to them.
+I've seen plenty of other examples of developers basically hard-coding fees to a 0.0001 per
+transaction amount because they didn't know anything about weight.
+They didn't know anything about fee management.
+I've also seen that users not even understand anything about UTXOs and end up getting themselves
+in bad situations and we'll talk about a number of these things in more depth.
+From a security standpoint, it's very easy to achieve a high level of security for your
+private keys.
+All you have to do is throw them away so that nobody can access them.
+Of course, there are some trade-offs here.
+It's also very easy to achieve a high degree of usability for your private keys.
+You just create a web page and anyone who accesses that web page can spend the private
+keys.
+Of course, it's not great from a security standpoint.
+Now, non-custodial wallets give up a lot of control over the wallet operation itself and
+hand that control, that freedom to the user and they do that in order to provide a stronger
+security model for the user.
+They're basically trying to help fulfill the promise of Bitcoin that anyone can be their
+own bank.
+But of course, the trade-off is now the user needs to have more knowledge, needs to understand
+the best practices of both security and privacy and a number of other things in order to prevent
+themselves from basically shooting themselves in the foot.
+If we're just thinking about private keys, for example, I'm specifically looking at single
+key versus multi-signature wallets.
+There's a number of different risks that you have to worry about.
+So if you're just doing a simple single signature wallet, you're basically putting all of your
+eggs in one basket.
+There's a number of things that can go wrong.
+Malware could get on that machine, steal everything.
+Someone could hack it.
+There might be a weak password securing it that gets brute forced.
+There are issues with inheritance and death and basically who can access that wallet if
+the primary accessor is no longer able to.
+There's plenty of issues, of course, ultimately with coercion of that wallet owner.
+But then if there's a single key and it's held by a third party service, say some sort
+of enterprise API provider, then you have a lot of the same issues, but you also have
+to worry about insider theft.
+You have to worry about any number of things that could go wrong with the company, such
+as lying to you about how solvent they are or potentially becoming an attack from some
+greater authority such as law enforcement.
+What we ended up doing over the years is figuring out how do we separate these concerns and
+end up with a more robust system and we basically ended up with something like this where the
+user themselves has multiple keys in a multisig arrangement and then the service only holds
+one key.
+So the service cannot really be a bad actor in and of themselves.
+They no longer have the ability to fully create or fully block a transaction if the user really
+wants to.
+But by holding one key, they can help facilitate certain things.
+By separating these risks, we can get rid of a lot of problems like malware or a single
+insider who goes bad or gets coerced because you basically need to have sign off now from
+multiple people who have different interests at heart.
+And ultimately with a system like this, the only things that are still left are some sort
+of coercion or some sort of phishing.
+Basically phishing, I best describe that as like brain hacking.
+And I think at the end of the day, no type of technological security system will ever
+make you full proof against the hacking of the brains of the people who are ultimately
+controlling the technical system.
+That's something that's always going to be ongoing in a battle that never really ends.
+But if you are doing some sort of management where there are hot keys involved, for example,
+BitGo is a system where it's two of three.
+BitGo has one key themselves, but those keys are kind of online because they are being
+used to essentially decide whether or not to co-sign on transactions by applying arbitrary
+policies that the user sets to basically lock down their system from a security standpoint.
+If you are setting up a system like that, preferably you should once again use dedicated
+hardware.
+So HSMs, you can get HSMs from a number of different providers like Jamalto, I believe
+Ledger has an HSM.
+There are also virtualized HSMs that providers like Amazon Web Services make available where
+at the very least you can put one more level of security between a hacker and the private
+keys.
+That's not foolproof because there must be some way to access that HSM and sign off on
+transactions.
+But digging a little bit more deeper into just the way that wallets work, hopefully
+you are at least aware that in Bitcoin there is no such thing as an actual Bitcoin.
+All you have are transaction outputs, and those transaction outputs are either spent
+or unspent, and it's the unspent transaction outputs that have the value that contain the
+quote unquote Bitcoins.
+So it turns out that when you are doing an enterprise level wallet, you are going to
+have potentially a lot of UTXOs to manage.
+Your average individual, even if they are making a transaction a day, they are probably
+not going to end up with a ton of UTXOs.
+But a payment processor or an exchange or some service that may have hundreds of thousands
+of users, they can potentially have a wallet fill up with a large number of UTXOs, far
+more UTXOs than can be spent in a single transaction.
+In many cases, far more UTXOs than can even be spent in a single block or in a number
+of blocks back to back, like you are starting to run up against these global throughput
+issues once again.
+But there is also a variety of considerations that you have to take when it comes to figuring
+out how are you going to spend these UTXOs.
+And this is a problem that has no single specific solution because it depends on what you as
+a service are trying to optimize for.
+You might be trying to optimize for privacy and trying to keep UTXOs unlinked.
+You might be optimizing for minimizing the amount of data that you are creating with
+your transactions and basically spending the fewest number of UTXOs as possible.
+You also might be trying to minimize your transaction fees of what is the actual amount
+and level of money that has to be spent to get these transactions confirmed.
+And there are a number of other considerations that also might have to go into.
+It really comes down to what the spending patterns, the spend and receive patterns of
+these wallets are going to be.
+And if you are creating an enterprise level wallet that is just for you as one company,
+then hopefully you can analyze what those spending patterns are and optimize for them.
+A company that is like BitGo, which is actually providing enterprise services to a variety
+of other companies, gets even more complicated because each of those users has their own
+unique spending patterns and as a result, specific things that they need to be worried
+about over the long term with regard to managing these UTXOs.
+So the actual UTXO selection problem in computer science is referred to as the knapsack problem
+simply because there's usually multiple solutions to how do you construct a transaction that
+selects enough UTXOs to get the target value.
+And we've seen some pretty in-depth research occur in this space.
+For example, Mark Erhart, who is now an engineer at BitGo, did an entire master's thesis on
+how to optimize UTXO selection and specifically has worked that towards trying to minimize
+creating change outputs, which is good both for the UTXO like blockchain bloat and good
+for privacy.
+So there's something that I basically refer to as the Goldilocks zone and this is once
+again coming down to like the spending and receiving patterns of any given Bitcoin wallet.
+And one problem that we saw quite often was having far too many UTXOs.
+Often this would occur with payment processors who were receiving, you know, 5, 10, $20 payments
+for retail level items.
+And the problem that these payment processors would run into is that eventually they would
+want to go make a withdrawal from the wallet and due to the sheer number of UTXOs, they
+would find it could potentially cost them a significant portion of the value in those
+UTXOs, depending upon things like the fee market and basically how many other people
+were trying to create Bitcoin transactions at that time.
+So one thing that we recommended to these providers is that they start to look at like
+the actual economics behind UTXOs, understanding that it is going to cost some range to respend
+that money and making some predictions around, you know, what is the minimum amount that's
+probably going to cost?
+What is the maximum amount?
+And therefore, what do we think an economically spendable or economically viable UTXO will
+even be?
+If it doesn't make sense or if it's going to cost you, you know, around a dollar to
+spend a UTXO, then does it even make sense to be accepting deposits for less than a few
+dollars or even $10?
+You know, what is your own margin?
+What is your profit margin and what can you actually afford?
+You should really be building that into your own business model with regard to accepting
+Bitcoin.
+Thankfully of course these days we have other options like lightning, which we can point
+people towards if they want to accept smaller value payments.
+There's also the issue of not having enough UTXOs.
+Normally this would happen with newer customers who they would create their wallet, they would
+fund it with like one transaction from an old wallet, and then they would just go to
+town and start spending, you know, allowing withdrawals, sending money over and over again.
+And ultimately what would happen is they would start creating these long chains of unconfirmed
+transactions.
+Now that becomes a problem because once you get to a certain point, Bitcoin nodes on the
+network consider these long unconfirmed transaction chains to be kind of spammy and they will
+stop relaying those transactions around the network.
+And so what we actually ended up doing was adding in some additional logic to our SDKs
+and to our wallets to basically figure out, you know, what is the target number of good
+healthy UTXOs for this wallet given its spending patterns.
+And if we're well under that target, we actually create multiple change outputs when you create
+a transaction to try to get the number of confirmed UTXOs back to a decent number because
+we want to avoid having a ton of unconfirmed change UTXOs in your wallet.
+That just leads you down the path of creating those chains and that's when you end up with
+people trying to withdraw money and send transactions and then they'll often get a success message
+that the transaction was created but then they go look on block explorers, they look
+on their wallet and it doesn't show up.
+And that ends up creating a lot of support burden for us as an organization.
+So if you have just the right number of UTXOs, then you should be able to spend almost the
+entire value of your wallet at any given time but also be able to spend smaller amounts
+of value without basically creating a huge change output that could make it tricky for
+you to spend a larger value during the same time period before your current unconfirmed
+transactions get confirmed.
+So transaction fee estimation is a pretty complicated, crazy thing in and of itself.
+A lot of us spent I think a decent portion of 2017 and early 2018 kind of trying to put
+out fires with regard to transaction fee estimates.
+This is a chart not of recommended transaction fee estimates but of divergence of recommended
+transaction fee estimates between different APIs.
+And the main point being that I think the green line is like next block or two blocks
+and then the other ones are further out like three, four, five, six block estimates.
+And you can see that at least when we're talking about transaction fee estimates for one or
+two blocks from now, it's all over the place as to what different estimate algorithms are
+going to provide.
+And that basically kind of shows the immaturity of this fee estimate algorithm at a global
+scale.
+So there's at least I want to say eight, maybe a dozen different publicly available fee estimate
+APIs out there.
+Recommend making use of multiple ones of them because sometimes one or two will just go
+completely haywire.
+And I think the best way to look at it is if you're not going to dig into the weeds
+and build your own fee estimate from scratch, you should use at minimum at least three fee
+estimate algorithms.
+That way you know if one goes completely haywire, you can basically have some sort of consensus
+going on within fee estimates.
+Even like looking at this is really more looking at the patterns of demand for block space.
+If you get really deep into the weeds of fee estimates and you want to start getting past
+the being reactive and being proactive, then you start to look at things like day of week
+and time of day of when there's going to be more demand for block space because people
+are awake, people are making transactions.
+While I did not get to the point of trying to bake that into my like real time fee estimate
+algorithms, we did use the sort of off peak demand hours to recommend that our clients
+who had way too many UTXOs basically run UTXO consolidation functions and be able to put
+out these transactions with very, very low fee rates because they didn't really care
+how long it took for them to get confirmed because all they were trying to do was to
+get their UTXOs back into a healthy spendable number within their wallet.
+There is no perfect way of doing fee estimates because you're basically trying to predict
+the future based upon trailing data, possibly if you're more sophisticated based on current
+mempool unconfirmed transaction data, but you still don't know what's going to happen
+with the mempool over the next block or so.
+So the simplest way to solve this, if it's possible for your wallet, is to use replace
+by fee.
+That way if there is some sudden spike in demand and your unconfirmed transactions look
+like they're not going to get confirmed for a long time, then you can just bump them.
+You basically re-sign them with a slightly higher fee and you can actually adjust them
+as the demand for block space changes.
+Unfortunately, RBF is not really very easy to do with multisig because you have to do
+one of two things.
+You have to either pre-sign a lot of transactions upfront and then hold them in reserve and
+broadcast them as needed, or you need to keep going back and bugging someone or some user
+to sign new updated versions of the transaction with a bumped fee.
+If you want to get a little more efficient, then you can actually take RBF to the next
+level and if you have multiple transactions that are unconfirmed, you can actually repackage
+them into one, which will give you even greater fee savings because you'll be having fewer
+number of inputs and signatures you're putting out there.
+But my biggest takeaway from fee estimates in general that I think a lot of developers
+in the space have made kind of a tactical error is that default values for anything
+are very sticky and to my knowledge, pretty much every wallet out there has default fee
+estimate values that are very aggressive, that are like in the next two or three blocks.
+I think that a lot of the software out there is not even asking the users, you know, do
+you really care how long it takes to get this transaction confirmed?
+I think that developers are often assuming that users are impatient and that is resulting
+in us actually creating these kind of feedback effects with the fee market because a lot
+of people are just blasting transactions out there without even thinking about do I really
+want to pay this much, do I really care if it gets confirmed in the next X number of
+blocks.
+So just making dialogues more in the user's face where we get a little more human input
+into these markets I think will make the markets more organic and less spiky due to being kind
+of artificially changed via strong sticky defaults from developers.
+And so I talked for a second about SYNQ management and how you might use something like replace
+by fee to repackage your unconfirmed, but there are a number of issues with sending
+Bitcoin transactions that are not obvious at first.
+And that's because a valid Bitcoin transaction is not necessarily going to make its way around
+the network.
+I tried to kind of show a graph here where it's very easy to check whether or not a transaction
+like a signed Bitcoin transaction is valid once you have signed it.
+There are libraries that will check for that, very easy.
+However, the next question is, is this transaction considered standard by the policies of most
+of the nodes on the network?
+And there are things that can result in a transaction being considered nonstandard such
+as the size.
+For example, if it's larger than 100 kilobytes or whatever the corresponding transaction
+weight to that is, then it's going to get rejected by pretty much every node out there.
+And so if that happens, you're going to end up with a valid transaction that your software
+thinks is good and the wallet is just sitting there saying, yeah, everything's good, we're
+just waiting for it to be confirmed.
+But then after some period of time when it doesn't get confirmed, the user is inevitably
+going to go start looking at block explorers and they're not going to see the transaction
+in any block explorers and they're going to start freaking out.
+And then you once again have to get support involved and have to figure out, you know,
+why is this Bitcoin transaction not existing on the network?
+Even taking it one step further, it's possible to have a transaction that is standard and
+conforms to most of these policies but still does not get relayed around the network.
+One example for that would actually be due to the minimum relay fee on nodes.
+And nodes protect themselves in a variety of different ways from what they consider
+to be denial of service attacks.
+One of those being the fact that a node is a machine that has a limited amount of memory
+and if the mempool gets too full of too many transactions, the node will actually start
+dropping and refuse to relay transactions that are below a certain threshold.
+Because the assumption is basically, well, these transactions aren't going to get confirmed
+anytime soon anyways because there's so many more basically in the queue ahead of it.
+And so this actually throws another wrench in the loop of understanding whether or not
+a transaction is able to get relayed across the network.
+So this is basically a dynamically changing value.
+The vast majority of the time, the value is set at, you know, like one Satoshi per byte
+or whatever, but during extreme times of congestion, this value can go all over the place.
+So what are you going to do?
+The main point with all of this is that you need to be proactively monitoring the state
+of unconfirmed transactions in your send queue by querying a variety of different nodes to
+make sure those nodes have received and relayed that transaction.
+And you may even want to take it a step further and try to be more proactive understanding
+what these various policies are so that you can check for them before you even try to
+broadcast a transaction in the first place.
+Another issue with the enterprise wallets is being able to support querying the data
+in these wallets, you know, whether that is wallet balances and address balances, transaction
+history, UTXOs, the needs change significantly between an individual wallet where it's probably
+okay for you to just scan through the blockchain via SPV one time and you're good because once
+you get to the tip, you just keep asking other nodes once in a while if anything new has
+happened.
+But with enterprise wallets, you're going to end up with a lot more data, potentially
+with a lot of data put into single buckets.
+Like you might have an address that's getting reused a ton of times and has a ton of other
+data associated with it.
+This is actually one of the reasons why a lot of enterprises will end up using a third
+party API provider like BitGo is because they actually find it's just too challenging to
+set up all of the infrastructure to be able to serve queries quickly whereas a company
+that specializes in this like BitGo already has a ton of infrastructure set up and they
+can basically respond to any arbitrary query in a matter of milliseconds due to all of
+the indexes that are slicing and dicing this data up.
+So one fun fact is that I actually crashed the entire BitGo infrastructure one time because
+I made a bad call.
+I made a single API call against a single address that had something like tens of thousands
+of transactions and addresses associated with it and that just resulted in a cascading failure
+of like database timeouts and then web server timeouts and ultimately like all the threads
+in the web server locked up and BitGo as a platform just went completely unresponsive
+until we figured that out.
+And so like this is the type of thing that can happen if you aren't properly indexing
+data and you're running complex queries against it.
+And indexing blockchains can actually be a bit trickier than most other data that's like
+less structured and that's just due to the dependencies in all of it.
+You know you've got inputs and outputs going through the entire chain of transactions and
+I spent several years enhancing and then completely rewriting the indexing services at BitGo and
+you know there was always more room to like squeeze performance out of it.
+Ultimately this is a problem for a number of reasons because the blockchain only continues
+increasing in size which means that your indexing service is probably going to get slower and
+slower and slower with regard to doing the initial build.
+So you're probably going to want to have multiple indexing services running simultaneously so
+that if one gets corrupted something goes wrong you can fail over and then slowly rebuild
+the corrupt service.
+In reality like UTXOs and stuff end up being a lot more complicated and a more naive indexing
+service that is trying to be performant or trying to do things in parallel can very easily
+run into deadlock style situations.
+That was one of the biggest issues that I dealt with during my time at BitGo was trying
+to balance parallelizing ingestion of blockchain transactions versus the inevitable like deadlock
+independency issues that they could cause.
+So ultimately I ended up having a service that would process one block at a time and
+then it would look at all of the transactions in that block, find all of the dependent transactions,
+kind of put them each in their own queue to work on separately and then throw all of the
+other transactions at a multi threaded executor that would just run through them as quickly
+as possible.
+And while there is a lot of challenge of doing that and doing the initial sync because it
+just takes so long, what I found from a complexity standpoint and where most of my code was spent
+was actually with dealing with the real time stuff, with indexing unconfirmed transactions
+or with indexing the tip of the chain which then might get reorganized and might result
+in having to revert a lot of data and then reindex it and sometimes having conflicts
+between the previous state and the new state.
+And reorganizations are a pretty major event on a blockchain.
+You basically, you have to stop everything that you're doing, roll back all of the transactions
+to a certain point and then reapply a bunch of new transactions and then figure out which
+transactions are left over that are now unconfirmed but still valid and not invalidated.
+What I found from a robustness standpoint was that running on the Bitcoin test net
+was a great stress test.
+From time to time we would have these what I call block storms where a new block would
+come in almost every second and then sometimes we would have blockchain reorganizations that
+work 500 or 1000 blocks long and that type of activity would very quickly find any problems
+in the indexer, often either causing it to completely lock up or crash by running out
+of memory if there was some inefficiency going on.
+So if you can survive on test net, you'll do really well on main net.
+From an address management standpoint, you know, there are privacy issues with reusing
+addresses.
+It's very hard to prevent people from reusing it.
+But more importantly, I think that there should be a cost associated with creating addresses.
+This is mainly due to issues with hierarchical derivation and the problems that arise when
+you have large gaps between funded and unfunded addresses in your wallet.
+If possible, it would be nice for your users to basically be able to take stale unused
+addresses and put them back in a queue to kind of make them available for not really
+for reuse but for use in the first place.
+This becomes a big issue when we're talking about wallet recovery.
+Walletsrecovery.org actually was a new project that just came out a week or so ago which
+will help you understand how despite the fact that we have a lot of quote unquote standards
+in this space, the way that a lot of wallets work is not the same.
+That has basically resulted in us now having to document a lot of the differences.
+It is very difficult if you have a wallet that stops working to then just go import
+it into another wallet.
+There may be very subtle differences that cause them not to be compatible with each
+other, usually around things like derivation and scripts.
+Now one thing that I've run into a lot actually is something that I think is worth trying
+to show to you today.
+If anyone has an Electrum wallet open, you can go to the tiny URL here, tinyurl.com slash
+y5frxlxy, and that basically has this VPUB which is an extended public key for a test
+net wallet.
+What you can do if you set up a new Electrum wallet, and let me see if I can actually show
+this to you.
+Say we want to create a new wallet over here, and this is asking what type of wallet do
+we want.
+Well, I don't know if that is legible, but we want the standard wallet which is the first
+option, and then the next question will say, what do you want to do with your seed?
+Well, it's kind of oddly named, but we want the third option that is use a master key.
+Once you select use a master key, then it's going to ask for you to basically paste this
+extended public key in, and once you do that, it's going to start searching for the funds
+that are related to that public key.
+What you're probably going to see, and hopefully this is readable, is something like this.
+You see two different transactions, and we're currently finding a balance of something like
+almost 51 test net bitcoin on there, but what if I told you there's actually a lot more
+bitcoin in this wallet, so what happened to it?
+Where did it go?
+This is the problem with the address gap limit, which is a standard in one of the BIPs.
+I believe the default address gap is something like 20 derivations for your receive addresses,
+and maybe only about five for your change addresses, but what we found is that real
+world spending patterns for a variety of businesses don't really conform to that limit.
+There are a number of reasons why exchanges or payment processors may end up creating
+large gaps of addresses.
+Basically they might be creating a lot of users, and those users never make a deposit.
+They might be creating a bunch of invoices, and the users never pay those invoices, and
+so you end up with a lot of unfunded addresses, which can be fine as long as you keep using
+that same wallet and you have all of that data, but if you then have something go wrong
+and you need to recover using some other software, or even using the same software in the first
+place, if it needs to scan through the blockchain and find all of those addresses, then you're
+going to have a problem if it's not conforming to the defaults.
+What we end up actually having to do, and I've had to do this in a variety of cases,
+is go in to something like Electrum and basically force it to create a ton of addresses.
+We can run a little command here, it's basically a for loop, and we're going to say, generate
+like a thousand addresses, and Electrum will automatically start searching through all
+of those addresses.
+We can hear the fan going, and once it generates all of those addresses, it's going to start
+querying the Electrum servers and say, hey, do you know what's going on?
+Do any of these addresses have activity?
+So you see it's synchronizing, synchronizing, hopefully the Electrum servers are playing
+nice today on testnet.
+I think in this particular case, I had it generate a thousand addresses.
+What I had run into in the past was actually personally with a wallet on testnet, which
+ended up having a gap of something like 20 addresses, and that occurred as a result of
+those long chain reorgs that I was talking about.
+There was basically a chain reorg of like a thousand blocks or so, and somehow a bunch
+of my transactions became invalidated, or at the very least they should have still been
+invalid, but they became unconfirmed and then never got reconfirmed, and then I had other
+transactions related to addresses that were derived later on that then became confirmed.
+But of course, with our luck, something is going wrong with the internet.
+Has anyone else been able to do this?
+Have you managed?
+All right.
+What if I told you there's more?
+There we go.
+Yeah, so it looks like we found another 50 in there.
+So the problem though is that this command, you may have noticed that there is a false
+that was passed into it.
+Well, that's because it's telling Electrum to look and only drive down one specific path.
+So you can actually do the same thing and pass a true, at least I hope that worked.
+It's hard for me to tell.
+We'll try it again.
+And that's because it was looking on the receive path, but you also have a change address path.
+So I think false basically means don't do the receive address, do the change address
+path.
+So because it turns out there were also funds on the change address path that were derived
+further along, it was not looking for those either.
+And I won't bore you sitting here looking at it, just chug along.
+But after a while, it's going to derive those addresses and it's going to continue to find
+the rest of the funds.
+And this is an issue that I think not many people have really talked about.
+One thing that I did notice recently is that BTC Pay Server changed their default to generate
+I think 10,000 addresses.
+And I'm sure that's because a lot of people were using BTC Pay Server and ended up with
+very large address gaps.
+We've had people come along to our store and generate dozens of addresses, probably just
+to screw with us.
+They were generating dozens of invoices that they never paid.
+So I knew that that was going to become a problem eventually.
+So like I said, use testnet.
+Lots of bad things happen on testnet.
+And that's actually good.
+If you can handle testnet, you can handle anything.
+There's like I said, plenty of privacy issues you can also worry about.
+We won't get into all of those, but there are things that you can do both at the network
+level to protect privacy, to try to protect like the transaction broadcasting that you're
+doing from network peers that may be observing you, and of course from the actual management
+of UTXOs.
+Data management is a big issue.
+How do you prevent people from losing data?
+That's a tough problem.
+At least from the password standpoint, we can set really complex password requirements
+so that we know that they're probably using a generator.
+You can try to disperse some of the trust required by having various key recovery services
+that keep backups of things.
+I think sending health checks and periodic reminders can help.
+I ended up doing a lot of manual work at BitGo, basically looking at wallet UTXOs and emailing
+our users, telling them about best practices, but a lot of those things could actually be
+automated and basically send notifications to folks.
+I also had a number of things here around Bitcoin fork handling, which is something
+that I think almost no enterprises saw coming a few years ago.
+The various forks that came along placed a large load on the enterprises, both philosophically
+and technically.
+We had issues with replay protection, we had issues worrying about wipeout protection,
+had a lot of address formatting issues of people sending to addresses on the wrong network
+because they were compatible with each other when preferably they shouldn't have been.
+Ultimately, people who got confused between the different coins would create a large load
+on us having to basically manually recover funds from them.
+We ended up having to duplicate a lot of our infrastructure to be able to support these
+other fork coins, and then there were just a lot of WTFs going on.
+It really kept us on our toes, but that's the way that environments like this can go.
+There's no single person making decisions, so crazy stuff can happen.
+You have to have resources that are available to work on things that come up at the last
+minute.
+I also had fun with Bitcoin Gold because their node simply wasn't working at first.
+They were also changing addresses retroactively, so we had to run these scripts across our
+entire infrastructure to convert addresses over when we wanted to basically allow people
+to access their air drops.
+There was of course the 2X, which resulted in us expending a lot of technical energy
+on something that ended up not happening at all, so that was fun.
+And then upgrades in general.
+Upgrades at the network and protocol level for them to be backwards compatible is great.
+People can take their time, but upgrades with our own SDKs became an interesting issue where
+we would add SegWit support and we would add better fee estimation stuff, but our users
+would not, in many cases, would not go out and upgrade.
+We would actually have to start running our own reports internally so that we could then
+go bug our customers, and in many cases they still wouldn't really listen to us.
+We had to take it even a step further and actually write scripts that would explain
+to our customers how much money they would save if they spend a few hours upgrading their
+SDKs to take advantage of efficiencies and optimizations that we had made available.
+In general, there's a lot of other issues just with users being stupid.
+There's only so much that you can do to save people from themselves, though one thing that
+I did like that we did at BitGo was we went out and we observed a bunch of malware and
+we took all those malware author addresses and we put them into our own database and
+basically would refuse to co-assign transactions that were going to the malware author addresses.
+We saved tens of thousands of dollars worth of Bitcoin going to those authors.
+And of course, complexity being the enemy of security, you want to take as much of this
+complexity as possible, shove it under the hood, have it happen automatically so that
+you don't have to then go bug your users to do the best practices.
+So I think we're right on time.
+And I'll be here for the rest of the conference, so feel free to bounce any ideas or questions
+off of me.
+Thank you very much for your time, and I'll see you in the next one.
+Thanks.

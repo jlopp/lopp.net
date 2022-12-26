@@ -1,0 +1,1227 @@
+Hey, everyone. Welcome to the podcast. I'm your host, JP Baric, and this is Digital Gold.
+Known to many as the Bitcoin Kid, I started mining cryptocurrency out of my parents'
+basement back in 2013. The goal of this show is to simplify the crypto world and explore
+how it changes the way the world thinks about money through conversations with thought leaders
+in this space.
+JP Baric is the founder and CEO of Orem Capital Ventures. All opinions expressed by JP and
+podcast guests are solely their own and do not reflect the opinions of Orem Capital Ventures.
+This podcast is intended for informational purposes only and should not be relied upon
+for investment decisions.
+Today I'm joined by Jameson Lopp, who is the co-founder and CTO of CASA, a Bitcoin philosopher
+and a professional cyberpunk. He has been actually building the Bitcoin space since
+2015 and has become one of the most respected voices in the Bitcoin developer community.
+He was previously an engineer at BitGo, developing its high-grade multi-sig custody service before
+co-founding CASA, a company providing secure wallets and plug and play infrastructure solutions
+for Bitcoin. His mission is to use his skills as a technologist to build tools that empower
+individuals, and he works to achieve this by making it easier for people to take custody
+of their Bitcoin and manage their private keys. Jameson, welcome to the show.
+Thanks for having me. Long time, no see.
+Can you explain to me how you became a cyberpunk, Jameson? What does that even look like? How
+do you become a professional cyberpunk?
+Goes back to the white paper. I was not familiar with the cyberpunk movement or any of the
+decades of development leading up to Bitcoin. It wasn't until several years after I'd been
+immersed in Bitcoin that I started looking into the history and realizing this was not
+just something that appeared out of thin air, but rather was the culmination of efforts
+of many people around the world for decades of trying and failing other attempts at digital
+currency. As I was looking into that, reading the historical posts and getting a better
+understanding of the mindset that those people were in, then I realized that I generally
+agreed with it, and I wanted to further the cause.
+You mentioned before Bitcoin, I think that's one of the potential flaws people have with
+Bitcoin. It's like the first one. How do we know what's going to be the one that everyone
+uses? It's slow, the 10 minute block time. Those are the normal, I think, excuses we
+get from people why they don't want to adopt or learn more about Bitcoin. Because like
+you mentioned, previously there was some other coins or other tries at Bitcoin. Are you able
+to talk further on how that research went and maybe what other projects might have failed
+and for what reasons?
+It's hard for me to even say how many attempts there were because most of them didn't even
+really make it out of the gate. I think DigiCash with David Chom was probably the one that
+made it the furthest. I don't know how many years they operated. I know they raised some
+funds and they had a working network, but eventually it just didn't get enough adoption
+and they shut down. There were other notable projects like Halfany had something called
+reusable proofs of work, which had some similarities with Bitcoin, but basically each coin carried
+its own proof of work along with it. It didn't have a blockchain though. There were still
+some missing pieces. I think it hadn't really solved the double spending problem. Ultimately,
+the reason all of these things failed was because they were still centralized. That
+was the unique innovation that Satoshi figured out was how do you create a system like this
+without a central authority? From that standpoint, Bitcoin is the first to be able to do it without
+central authorities, but there's plenty of other reasons why you would believe that given
+the level of adoption that Bitcoin has gotten, it's going to be very difficult to overcome
+the network effect that it has gained so far. Because it is software, it can continue to
+evolve though. It will, of course, not evolve at anywhere near the pace that, for example,
+a web app or a single company's software project might change because by design, it's very
+difficult to gain consensus across all of the participants to make any non-backwards
+compatible changes. When you're referring to these non-backwards compatible changes and
+Bitcoin doesn't have a central authority and you are working on and you develop, or I believe
+you have pushed code to Bitcoin Core, have you ever committed to the normal, I guess
+not the normal, but the main Bitcoin client? How does that work from a developer standpoint?
+Because I myself have been focused on the mining, but I've never actually written code
+for really any Bitcoin clients like you have.
+Yeah. I am not a protocol developer. The first project that I actually started and still
+maintain is a fork of the Bitcoin Core client. It's not a network fork or a protocol fork.
+It is still running the Bitcoin node. Basically, I just added in a bunch of metrics and instrumentation
+and built some cool DevOps style dashboards that I put up on a website, which you can
+find at setoshi.info. It's like setoshi.info, but with an extra T after the first S. As
+a result of that, I'm not a C++ developer. I really don't like C++, but I do have some
+trivial commits in the Bitcoin Core repository, generally just things that I ran into when
+I was mucking around in my own fork. No notable functionality really, usually just like improvements
+of documentation or RPC calls or things that only really the developers would care about.
+It's not challenging if you're familiar with open source development, if you're familiar
+with GitHub. Basically, if you find something that you think could be improved, then you
+write the code and you submit a pull request and then people review it and you respond
+to their feedback. If you can make almost everybody happy, if you can get an overwhelming
+agreement without any notable objections that other people find reasonable objections, then
+your code is going to get merged in. For me, because the stuff I have implemented, it was
+all really trivial. It would generally get merged in pretty quickly within a matter of
+days or weeks. If you were doing some massive functionality change with a ton of logic that
+could be potentially dangerous, if it was buggy, then you could very easily be spending
+months if not years trying to get that code merged in.
+Wow. I think that was one of the things I want to talk farther on, which is you mentioned
+there's a client code base, which is something that you forked over and you're working on.
+Then you have the protocol code, which is the main Bitcoin protocol, which is decentralized
+and you just went through the process of really committing code to that, depending on the
+complexity of it. Are there any upcoming protocol changes or even merge requests that you're
+interested in or you're following at the protocol level? Because I think that's something that
+no one really talks about.
+We actually did get the Taproot logic has been merged into Bitcoin Core, the client.
+However, that only really means that you're going to be able to use it on your own private
+network. There's still outstanding issues around how it's actually going to get activated
+on the main network. Fingers crossed that will happen next year. The main reason why
+I'm following that is that it will be directly applicable for us at CASA. The ability to
+do aggregated signatures off chain that look like a single signature on chain is going
+to be a boon to anyone using multi-signature wallets, which is what CASA's primary focus
+is. The reason for that is it's going to, A, improve the privacy because there's no
+more fingerprints that you're using the special multi-sig setup. Then it's also going to improve
+your fees that you have to pay. Your transaction sizes will be a lot smaller. You'll have to
+pay lower fees.
+I expect that we're going to see a number of improvements and new applications come
+along that leverage both the aggregated signature functionality, hopefully making mixers more
+private, and then leveraging this tap script, Merkleized Abstract Syntax Tree functionality,
+which is really hard to explain in simple terms, but basically it will enable developers
+to create much more complex Bitcoin scripts without having to put the entire script on
+the blockchain. Once again, improving the privacy and the scalability of doing these
+more complex operations.
+That is as I appreciate you walking me through that because tap route, I was like, okay,
+what is this thing he's talking about? You mentioned multi-sig wallets and I would say
+normal wallets. On a high level for the viewers who don't know, can you explain the difference
+and why you see this evolution of multi-sig wallets and why they're just inherently better?
+The easiest way to think of Bitcoin security is it's like a lockbox. When you send Bitcoin
+to a certain address, the address is just a human readable format. Behind that address,
+it's actually a fingerprint for a more complex redeem script, which this script describes
+the spending conditions for what data you need to post to the network in order for the
+nodes to accept that you are the rightful owner and should be able to spend that value.
+The most common way to store your Bitcoin is in a single signature address. That basically
+means there's one private key and in order to spend that Bitcoin, you use that private
+key to create a cryptographic signature that covers all the details of the transaction
+and then you post it to the network and the network validates it and it propagates around
+and if you pay an appropriate mining fee, then eventually it gets put into the blockchain
+in a block. Now, that's simple, it's straightforward, but you have an obvious single point of failure.
+If you lose that key, if an adversary gets that key, then it's game over. They take the
+Bitcoin or you can't access the Bitcoin and there's nobody who can get that money back
+for you. What we are aiming to do with CASA is to create a self-custody storage setup
+that eliminates single points of failure and the way that we do that is both on the technical
+side and on the customer service, helping people make decisions about their setup side.
+On the technical side, the way that we eliminate single points of failure is by using multiple
+keys. Our flagship product is a three out of five multi-sig setup, which means there
+are five different devices with five different key sets on them and these get geographically
+distributed by you into different locations and in order to spend from your wallet, you
+have to add signatures from three different devices. You have to physically travel around
+and access these devices and that makes it so that if any one device gets lost or compromised,
+you're fine. There's no catastrophic loss. You can replace the device and just keep moving
+on with your life. If there is any sort of disaster, then once again, you don't have
+to worry about having all kinds of crazy backup schemes or anything like the architecture
+of the wallet itself is the backup scheme. It has robustness and resilience built into
+it and if we're getting attacked by someone, whether digitally or physically, it's going
+to be the bar gets raised to such a level that the attacker would have to be extremely
+motivated and basically be willing to take you hostage for a lengthy period of time and
+go through multiple different physical locations, which of course is going to be very risky
+for them and increase the chance that they get caught. We could spend hours just talking
+about the security model and all the different threats that we try to protect against, but
+we've got all of those on our website and people can spend hours looking through them.
+The whole idea is that being your own bank, it comes with a lot of responsibility and
+few people are going to put in the time to think through everything that could go wrong.
+What we want to do is leverage the five years of experience that I have, learning a lot
+of hard lessons, seeing a lot of people lose their money in a lot of different ways and
+build all of these best practices into a very simple piece of software so that people just
+follow the directions in the app and they'll be in a very good position from a security
+standpoint.
+As people are following the directions in the app, as you mentioned, there's trade-offs
+I think with expanding the crypto ecosystem and regarding custody more specifically because
+with these apps like Robinhood and Cash App, you don't actually own the coins, but with
+CASA, you are costing them yourself, correct?
+Exactly. We believe that this is important for a variety of reasons. It's important for
+the individual because if you're just giving all your keys to a third party, then you've
+just thrown out one of the most important aspects of this system, which is getting rid
+of centralized middlemen and trusted third parties. If you're leaving your money with
+a custodian, then you may feel safer, but you have no way of actually knowing because
+the security that is going on in that custodian is a complete black box to you. You have no
+insight into what it is. You're just blindly trusting that they're following the best practices.
+If you were following best practices yourself, then you don't have to trust anyone. You're
+verifying that you're doing it the right way yourself. Also, there's this issue of systemic
+risk. At a higher level, thinking outside of just the individual risks that you expose
+yourself to if you're giving your money to a third party, they can exit scam, they can
+be running a fractional reserve. There's just a million ways that they can still lose the
+money. At a higher level, it is unhealthy for the Bitcoin ecosystem as a whole if a
+huge amount of the value in the system is being held by a small number of entities.
+That's because you start to get into potential governance style attacks, where the reason
+that this system is robust and resilient against even theoretical nation state attacks is because
+there are so many doors that would have to be kicked down, so to speak, in order to force
+people to change the rules of the system that they are enforcing with their client software.
+If you get to the point where there's only half a dozen or a dozen or a small enough
+number of entities that they can start to coordinate with each other and collude with
+each other, then the system itself has become a lot more fragile and prone to malicious
+changes being instituted by a small number of entities that may benefit them and be to
+the detriment of everyone else in the system. You're essentially just recreating a central
+banking cartel again. We're trying to fight against this inevitable onslaught of tantalizing
+convenience that people are falling into because they're willing to trade their security for
+convenience. This is a common theme in a number of different aspects of people's lives. We
+trade a lot of things for convenience, unfortunately, because our time is precious to us.
+We do trade a lot of things for convenience. I feel like that's one of the number one,
+not problems, but one of the reasons why people use these central authorities or central wallets
+like Robinhood, Cash App, Coinbase. Is there anything that's going to make people feel
+like they have the same security as a bank using a self-custody multi-sig product? Do
+you think we're already there? Or do you think that there are more things that need to be
+done to get people comfortable enough using products like CASA and have the same comfortability
+of storing that money in a bank or that asset in the bank where they know it's not going
+to get stolen and at least they believe it's not going to get stolen?
+There's still a lot of education that needs to be done. Still can be very difficult to
+explain to someone that their Bitcoin don't exist on any single device because this is
+simply a paradigm that has never existed before. Physical things, really any other assets that
+you own, you can always point somewhere and say, yep, this is where the asset actually
+exists or this is the custodian that is securing that asset. But when you start to create these
+models where it's actually comprised of this amorphous set of things, then it breaks a
+lot of people's minds and it's difficult to explain to them why this is a better security
+model because it's just a completely different security model and people don't even think
+about security models when they're going about their day to day lives.
+So I think that in the short to medium term, there's a lot of education to be done. In
+the long term, to get to real mainstream acceptance, it'll become like any other technology where
+people, once again, they won't know how it works, but it will be the fact that so many
+other people use it, that it just becomes a sort of de facto thing that you don't even
+question.
+Orem provides a bridge to the digital currency mining world for individual investors, financial
+institutions and energy companies. By combining over seven years of mining experience, 24-7
+management and directly aligned incentives, Orem's managed mining program is the simplest
+way to enter the digital currency mining market. To learn more, please visit OremCapitalVentures.com.
+Right off of convenience over self custody throughout the space, as I mentioned, on Robinhood,
+on Coinbase, and I hope that people are moving to a solution where they are in control of
+their own Bitcoins.
+I found it very interesting, Jameson, how you explain the fact that Bitcoin's not necessarily
+on one device. It's on this ledger that we all believe to be true. And I think that was
+one of the things that I realized back in 2013 when I was coming into blockchain and
+space was that there was this one truth and you could believe it. And it was backed by
+these computers, which were using energy to mine Bitcoin. So now, Jameson, we met back
+in maybe 2013, 2015, I think probably 2015, because we were both local components of the
+Bitcoin industry here in the Southeast and just decided that this was the future.
+When you got into Bitcoin in the beginning, how did people react to that? And did it affect
+your perception of it? How has that conversation with some of those people that are closer
+to you changed over the years about maybe their perception of Bitcoin and what you're
+doing in this space and all the work you're putting into? Can you talk a little bit farther
+on how that attitude has changed, mainly maybe because the price has risen or just because
+the technology has gotten more awareness?
+Yeah, I was the crazy guy who would happily spend hours explaining the system to people.
+And I don't know, even if they got it from a technical standpoint, I think there was
+generally just so much skepticism and a million reasons of why it might not get significant
+adoption. Why it could fail even from a non-technical standpoint that most people just discounted
+it. I would say it could probably count on one hand the number of people who actually
+ended up sharing my belief back then in the early days and then for the course of several
+hype cycles, bubbles, booms, crashes, a few more people have come along and realized that
+this is not a flash in the pan fad that's going to be disappearing, but it's actually
+here to stay. And I think that is going to be how it continues to grow. It'll be a little
+bit at a time though, of course, the growth will happen in spurts and it'll be like any
+other technology that once it becomes readily adopted and essentially ubiquitous, then people
+will just take it for granted. And I think we've got a long way to go until we get to
+that point. There's still a ton of things to be done on the usability side, the security
+side, the privacy side. I believe that Bitcoin is a project that is aiming to be the fairest
+and optimal form of money. And we certainly have a number of weaknesses, things that could
+be improved from a technical standpoint that I believe that I'm going to be continuing
+to focus my time for the foreseeable future on improving this system. If we ever get to
+the point where I feel like Bitcoin is done, has met all of its goals, then hopefully I
+will be able to pivot and work on other technologies that will also empower individuals in different
+ways.
+So you talk about this empowerment. I think that's one of the things that a lot of the
+early Bitcoiners like myself and you really had in their DNA. It was this currency, this
+money that was just true and fair and backed by math and really, in my opinion, for the
+people. And obviously with getting Bitcoin growth, we've seen a lot of institutions coming
+in just because of the nature of the industry and the nature of the asset class. But over
+the past five years of being in this space, this idea that Bitcoin is the people's money,
+do you still think it resonates with you today and with the community today? Or do you think
+it's become more commercialized?
+I guess the downside to being open to everyone is that it also means, of course, that it's
+open to institutions and larger players who may not care about the ideology and may only
+really care about using it for financial hedging and speculation purchases. But that is part
+of what you have to deal with. Any tool can be used in a variety of different ways and
+you may not agree with all of the ways that they're being used for, but that's fine.
+I think one of the things that we have fallen short on is we're a long ways away from being
+able to be a ubiquitous form of money that can be used by anyone, including people in
+third world countries that don't have access to great financial infrastructure. There have
+been some small, good adoption cases, but for a variety of reasons, usability and scalability
+being the primary ones, we're still a long way, I think, from having less well-off people
+be able to adopt and benefit from this technology. We're still at the point where the people
+who are going to be benefiting from it the most are the ones who have the resources and
+the time to invest into scaling the learning curve required to get into it.
+Chain as a tool, and I think for me, I look at Bitcoin as one of the best tools for society
+for scaling trust across a decentralized network. But one of the things I wanted to touch on,
+which came out, I believe, two days ago, was that USDC, which is a Coinbase's stablecoin,
+with the U.S. government permission, they partnered with the exiled government of Venezuela
+and distributed aid to people and healthcare workers in Venezuela. What I saw with that
+is now stablecoins are being used as a tool of U.S. foreign policy. This is, I think,
+one of the first real public use cases of a nation-state intervening with another nation-state
+citizens giving direct aid to the people through a stablecoin or through a blockchain network.
+How do you see nation-states and central banks using blockchains as a tool in either a good
+or a bad way?
+Cryptography in general is a double-edged sword. It can be used for two primary purposes.
+One is to obfuscate or to encrypt things to keep them private so that only the intended
+recipients can see the data. The other is almost the exact opposite, which is identification
+and authentication, basically using cryptography to publicly sign messages to essentially attest
+that information has been created or authenticated by no one other than you. I would expect that
+institutions, nation-states, whatever, are going to be using these distributed ledgers
+for the latter. They certainly could build some privacy functionality into it, but I
+don't think that it really is going to be of much benefit for them to do. Rather, I
+expect that this type of blockchain or distributed ledger like central bank technology is going
+to be used as a tool of control and surveillance.
+Now, there certainly are some potential good use cases for it where it would, for example,
+be really easy for entities to air drop money on people, for example, but it's also going
+to become a lot easier for them to track people's money and I would expect to censor their money
+as well. We'll generally expect that cons will probably outweigh the pros, at least
+from my perspective, but that's not to say that they'll be 100% complete bad. I'm sure
+that they will be able to help some people.
+As we see these competing currencies or competing networks show up and really come to scale
+over the next 10 years, how do you see the media changing their perspective on Bitcoin
+or just the narrative in general to the public either in the United States or across the
+globe? Because I feel like the media now has almost looked at Bitcoin, oh, it's too small,
+it's still functioning very slowly, it doesn't really work, it's volatile. Do you think that
+media story is going to change to where it's more of trying to get consumers to use these
+stable backed or the central backed currencies or blockchain networks over Bitcoin almost
+like shunning it? Or how do you see that narrative potentially playing out with these two, two
+or three or four or five different competing blockchain interests?
+I think that in general, the media is just going to echo back to people what they think
+they want to hear and that a lot of that is influenced by powerful or reputable people.
+What we've seen happen and what I expect happens with a lot of technologies is that early on,
+pretty much everyone is skeptical and believes that the new technology is never going to
+take off. As these new waves of adopters come in, the people who adopt it, as the total
+size of the adopter pool grows, then there will be more and more people who are reputable
+for other things outside of that technology that will come in and they will start to essentially
+lend their own credibility to the credibility of the new technology.
+That's what we've really been seeing happen this past year. We've seen some big heavyweights
+from software and finance and other spheres publicly come out and say Bitcoin is an amazing
+technology and these are the reasons why you should care about it and why it's important
+and why we're investing in it and so on and so forth.
+I expect that's going to continue to play out both with Bitcoin and any of these other
+technologies. It'll just come down to who are the most powerful and reputable people
+behind them and how are they able to influence the media and other narratives.
+I think that narrative message has been changing just with, I would say, Michael Saylor coming
+on and doing the micro strategy purchasing $500 million worth of Bitcoin on the balance
+sheet. It was the first public company to do that publicly and go out and I think that's
+created a ton of news and we've seen that cycle of people like Paul Tudor Jones attaching
+their name to Bitcoin. I definitely agree with you there, Jameson. I see that continuing
+and I think that'll help build the legitimacy in the eyes of, I would say, that 40 to maybe
+30 to 50 year old crowd and hopefully that pushes them to continue to learn and be educated
+about the technology.
+Do you remember the first time you heard about Bitcoin, Jameson? Was your initial thought,
+this is going to be something I'm going to look into and potentially work on for years
+or did you initially disregard it or think it was too complicated to buy and use?
+I believe that the vast majority of people you'll talk to will say that they discounted
+Bitcoin the first time, perhaps the first several times they heard about it. I know
+that I did and that's why I'll never remember the exact first time that I heard about it
+because I know I heard about it two or three times at least on various nerd news websites.
+I basically laughed and said, oh, this nerd money is going to get hacked and everybody
+is going to go broke and it'll all end in tears. It was probably at least six months
+if not longer until some Slashdot article, I believe, came along with some development
+in the space and I was like, oh, this thing is still around and so that's when I actually
+read the white paper and my computer science background kicked in. I was like, oh, wow,
+this is actually really an interesting, elegant solution to a problem that I never even thought
+about and that's really when it was off to the races. I started going down the rabbit
+hole and learning about money in general, which very few people ever bothered to do.
+I think there's very few people who just hear a crazy idea and immediately latch on to it
+and dive head first. That's why the staying power of this system is something that will
+continue to change people's minds as they eventually realize it may take them six months
+like me, it may take them years, it may take them decades, but eventually they'll realize
+that this thing is not going away and there's probably some good reasons why it hasn't gone
+away.
+Why it has not fallen away. I think that's one of the biggest things in my life and over
+the years because when I got into crypto, I was only like 15 years old and just kept
+preaching and preaching. This Bitcoin thing, it's $70, it's $60, it's $50. It's not going
+away, guys. It's going to change the world. As a young, naive kid, I was just running
+around preaching this new internet money that people were like, okay, yeah, sure. It's this
+digital currency. It's going to lose all of its value. It's too volatile.
+I think that's one of the things I want to talk about, which is how do you build a good
+position in Bitcoin as a safe haven asset or as an investment? What I mean by that is
+what I've been telling people now is you want to be buying Bitcoin consistently on a weekly
+or monthly basis. You mentioned on another podcast about how you maintain your lower
+overhead, but really, how do you know when to hold Bitcoin? Maybe when to sell some for
+profits, when to secure more Bitcoins. Obviously, you have to be detailed in the market and
+being paying attention, but how do you hold or even tell people or advise people on managing
+their Bitcoin position or really growing it and not FOMOing or not selling it when it
+goes up by 100% and leaving a huge upside on the table because of just the logarithmic
+nature of how Bitcoin grows and how it doesn't scale linearly, like normal stocks and bonds
+and other things like that?
+I am not a good poster child for the dollar cost averaging because that wasn't even really
+a thing back when I got in. There were no tools to do that. I actually bought most of
+my Bitcoin in three different major events. There was my initial, oh, I got to get some
+of this to play around with it. Then there was a few years later when I was like, oh,
+it sounds like there's going to be ETFs and all these other things, so maybe I can front
+run it.
+I went through this whole process to convert my IRA into a self-directed IRA and then turn
+that all into Bitcoin in a matter of a few months. I was dollar cost averaging at that
+point because that was after the Mt. Gox crash and the price kept going down and down. At
+one point, I'd actually lost half of my retirement because it had gone down so much. Eventually,
+the long-term play worked out there. It's just really hard to give general financial
+advice. It's because everybody's situation is different. The reason why I was able to
+put a decent amount of money into Bitcoin is because I had been diligently following
+personal finance forums and the fire style financial investment and budgeting and living
+advice for a number of years and had been able to build up a nice savings.
+I had multi-month cash savings emergency supply and I was maxing out my 401K. I was able to
+allocate money beyond that was just discretionary budget and I was like, I might as well put
+it into this Bitcoin thing because I feel like it's going to be a good savings vehicle
+and an asset that's not like anything else.
+For the average person, I think it comes down to how well off you are. You shouldn't be
+like going into debt to buy this speculative asset. You should treat it like a different
+type of savings account really and you don't want to put yourself into a position where
+you're harming your normal financial budget.
+Other than that, it's really just going to come down to conviction and what things you
+may be willing to sacrifice because you've lowered your time preference. There's plenty
+of things that I could have bought or there are plenty of times when I could have sold
+Bitcoin and bought something else and I just never did because I don't know, most like
+physical things like Lambos and stuff are not worth it to me. Maybe they will be someday,
+but I drove...
+I don't know if you know this detail, but obviously I drove the Lotus Elise for a few
+years and I had the Bitcoin license plate on it and I considered that kind of an investment
+in advertising for Bitcoin, but the Lotus that I bought was actually a salvage title
+vehicle that I bought on eBay for really cheap. It looked really expensive, but it was actually
+far more affordable than people would have imagined. Even then, I was trying to keep
+a low time preference and not spend a lot of money on a flashy car.
+I remember that car. It was always something where I was like, that's such a cool car,
+Jameson. It definitely did work. I think people thought it was more expensive than it actually
+was. The Bitcoin license plate just had that final touch on it, which really nailed it
+in the coffin, especially when Bitcoin was rising at that time. I felt like everyone
+was like, oh, look, an expensive Lotus, but really you mentioned a great point, which
+is lowering your time preference. I feel like that's one of the biggest things about Bitcoin
+is you have to have that longer time preference and view this as almost an investment in your
+future self. One of the things you also mentioned is how you seem like you prepare for the edge
+case really well, not only with CASA, but also in your personal life. Are you able to
+talk a little bit more about how you maybe have prepared for this edge case after you
+sold the Lotus and you moved off the grid and why you maybe went that route and made
+those decisions?
+Yeah, and I guess to back up a little bit to one of your earlier questions, it helps
+to put your Bitcoin into a high security setup that is difficult to access. Now, that helps
+you protect against loss and theft, but it also helps protect you against yourself because
+if it takes a lot of effort for you to send your Bitcoin out of your self custody to an
+exchange to sell it, then, and we've heard this from a number of CASA clients as well,
+it's just less likely that you're going to panic sell. So that can be a good thing as
+well over the long run. Now, remind me what the point we were getting towards was.
+No worries. That was a great answer on the time preference. Really, how you've transitioned
+from going to going off the grid and maybe why you decided to make that move in the first
+place and yeah.
+Yeah, it's a very long story, but even have several articles and full length presentations
+about privacy and all the things that I've learned. But the short version is that the
+internet and the communication age, of course, is a double edged sword in the sense that
+while it helps us be able to communicate with all types of people now, you reaching out
+and making new connections and engaging in all types of interactions, which can be very
+productive. The inverse is also true. You can engage in unproductive harmful interactions
+and it's also not just you being able to reach out to the world, but now the world can reach
+back at you. Especially what happens here with social media phenomenon is that you can
+go from being a nobody to having 100,000, if not millions of people all of a sudden
+in the blink of an eye looking at you. That can be due to anything like just a single
+viral post, for example, that you might make or somebody might make about you. When that
+much attention gets cast upon you, your threat level goes through the roof because it's just
+a matter of numbers that some small fraction of a percent of people are downright malicious
+and will seek to do you harm in order to help themselves. That's really what happened to
+me is I went from being a nobody to having hundreds of thousands of people paying attention
+to me on Twitter and then eventually some random guy comes along and decides he wants
+to try to extort me. That's how I ended up with my whole neighborhood being shut down
+by a SWAT team, getting called out to a false bomb and hostage situation at my residence.
+That exposed me to this, what I consider to be a sort of asymmetric attack that is a flaw
+in our law enforcement system. It can be exploited by anyone who's technically sophisticated
+enough. The only defense against that, there are two defenses against that. One is you
+continue living your life normally and you just tell, you go to all of your local law
+enforcement people and get yourself put on a special watch list so that if any calls
+come in, they get flagged as being potential false type of call. Or since I didn't want
+to do that, the only other way around it is to essentially change your whole life so that
+it's not possible for someone to find your physical address. It's not possible for someone
+to then attack you either on their own or by sending other people to your address that
+they may even be good intention people like the police, but essentially misusing those
+resources. That was a very long journey. It also costs a lot of time and money. And in
+the couple of years since I did that, some very good resources have come out so that
+I feel like now I can just send people to buy a book that actually has everything that
+I wish I had known when I set out on that journey.
+And talking about that journey that you went on, I read your New York Times article where
+you talked about how to vanish in 15 steps. Can you share a brief summary of maybe some
+of those steps or the most important steps for our listeners?
+The lowest bar that almost anyone can do is to just use software on your computer to hide
+what you're doing, whether it's ad blockers, VPN, Tor, et cetera. Because whenever your
+computer talks to another computer, it exchanges your IP address and IP address can be used
+to geolocate you. And there's also a ton of other data that gets sent by your browser
+that it's preferable to block and things that can be used to track your activity all over.
+Something more extreme though, and the thing where few people are going to do this is that
+if you want to own any property, you need for that property not to be in your name.
+So that means creating some sort of other legal entity like a trust or a corporation
+that essentially owns the various property and then you are privately listed as a member
+of that corporation and not publicly listed anywhere. Because basically any property that
+you pay property taxes on is going into some public database that can be queried by really
+anybody. Going a step beyond that is making sure that your name and other personal information
+goes into as few private databases as possible. And this is where a lot of overhead comes
+in of using pseudonyms, using physical remailer boxes, not getting mail sent in your name
+to your home address but rather to other places. It can become complicated. It can become as
+complicated as you want because the more layers of obscurity that you use, the more privacy
+you theoretically have. And so the short version of all these different techniques is essentially
+what you're doing is you're creating proxies. You are shielding yourself from directly interacting
+with other things and other people and other legal entities and other organizations. And
+every type of interaction that you have, whether it's digital or physical or legal or financial,
+there is going to be a way to put a proxy in between you and whatever you're interacting
+with. But some cases, it's easy and cheap. Other cases, it's really complicated and expensive.
+So it requires a very different perspective on your life and the willingness to put in
+a decent amount of effort and think about these things.
+And as we know how hard that is, people aren't really thinking about the custody solutions
+or even the privacy, just the amount of data that everyone I think gives up and the openness.
+I find it interesting back in middle school when I was growing up, they would teach us
+never to put your real information online, never to meet in a stranger online. And then
+now in this world, today we live in 2020, everyone is uploading everything they do online
+to TikTok or to Instagram. And everyone is talking to everyone else online and meeting
+strangers online. So it's crazy how far that message has changed to the majority in the
+general public.
+Talking about Bitcoin, you tweeted yesterday that Bitcoin is a financial escape pod, camouflage
+as a bubble protecting its occupants from the relentless sucking vacuum of fiat. I agree
+with you completely. But can you explain a little bit more about what you meant by that
+statement and expound on it for our listeners?
+So one of the problems with Bitcoin and trying to explain it to people is everybody comes
+in with their own perspective. Bitcoin is a multifaceted system. So you may approach
+it like I did originally from a technical perspective, you may approach it from a philosophical
+political perspective, you may approach it from a financial or economic perspective.
+This is what makes it difficult to talk to any one new person because you have to figure
+out what their perspective is and how they're approaching it. And in terms of Bitcoin narratives,
+I think it's really helpful to just come up with more simple metaphors like that, that
+don't require a lot of complicated explanation, but rather just are trying at a very high
+level to describe what the purpose of the system is. And there are certain narratives
+and perspectives of Bitcoin that I'm not a fan of, but I can't stop people from perpetuating
+them. In particular, I really don't like people coming in and just viewing it as like a short
+term speculative asset. I've never considered it to be a sort of get rich quick scheme,
+but rather to be a don't get poor slowly scheme, because what you're doing is you're getting
+rid of the ability for your money, the value of your money to be inflated away over a long
+period of time. That was the original reason that I bought some, it was more on a multi
+decade investment timeframe, rather than a, oh, this thing is going to go 1000X in the
+next few years type of idea. But speaking back to the metaphor though, is that a lot
+of people, especially the financial and economist people will just look at it and all they're
+looking at is the price charts. And so obviously what they see is a bubble. But bubble phenomenon
+occur all over the place, especially when you're talking about the creation and adoption
+of new networks. And a network doesn't necessarily even mean like a digital technical network.
+It can be any kind of networks. Networks can be biological, for example. And the ebbs and
+flows of this, the price and the adoption or whatever will turn some people off because
+they don't understand what organic adoption and growth looks like. And they consider it
+to be a failure because they, for whatever reason, believe that Bitcoin should have some
+sort of predictable steady growth curve in order to be a widely adoptable thing. But
+that is not one of the goals of Bitcoin. The goal of Bitcoin is to allow people to interact
+with this system that is resilient against change and manipulation by small cabals or
+third parties, powerful entities or whatever. Everything else that happens, there are side
+effects that it would be nice if there wasn't crazy volatility up and down and people panicking
+and losing their money. But those side effects, those are a result of having a truly free
+market. And there are not many truly free markets out there. And so this confounds a
+lot of economists and other financial types, which is fine. Either they'll eventually get
+it or they won't. Sub tweeted a guy just the other day who apparently has been a Bitcoin
+skeptic since 2013. And I don't think his skepticism has worked out for him as well
+as it would have if he had opened his mind a bit more to it.
+You mentioned that people are always looking for that 10%, 20%, 15% return per year and
+they expect Bitcoin. We saw the price drop by $2,000 yesterday, last night, and everyone
+freaked out. I'm like, no, but it's up. It's all the news media is like Bitcoin is down
+$2,000, but it's up insane amounts. It went from 9K to this 19K just in the past 30 to
+40 days. People have this assumption that they should be able to get, as you mentioned,
+those 10% returns. So why do you think that? Is it because we're just comparing it to the
+US dollar? Is it because that's the linear growth that stocks have? Why do you think
+people expect this need for Bitcoin to grow at a determined growth rate or determined
+value over the next five years or 10 years for it to be an actual currency or for it
+to work in the day to day marketplace? Not understanding that what they're comparing
+it to is the US dollar, which is being printed in the trillions and has been losing relative
+value for the past 70, 80, 100 years. It's just a lack of sophistication and lack
+of putting time and effort into actually analyzing the thing. If you want to, there are hundreds
+of different metrics that you can track regarding Bitcoin. I think that a lot of people only
+track the price because it's easy. It's on all the websites. It's theoretically, if you
+believe in free markets, then the price is theoretically the aggregation of all of these
+other hundreds of metrics. But because Bitcoin is still so tiny, there's a lot of noise.
+I think the signal that we're given from the price is really only applicable at an order
+of magnitude level. If you're looking at these changes of single digit percentage changes
+per day, that's noise. It's froth. A single billionaire can step in there and move the
+price by leaps and bounds if they want to, which is actually, if you've listened to Michael
+Saylor talk about how they acquired the Bitcoin, it was actually quite sophisticated that they
+were able to absorb hundreds of millions of dollars worth of Bitcoin without even moving
+the price. That takes some real dedication and hats off to him. Obviously, that's good
+for him. If you're acquiring that much, you don't want to move the market because you're
+essentially shooting yourself in the foot. But if someone wanted to, they certainly could
+move the market with that level of money. While hundreds of millions of dollars sounds
+like a lot of money, there are tons of entities out there that that's a drop in the bucket
+for them to play around with.
+I think that adoption trend is only going to continue as these entities grow and see
+the real value of Bitcoin. I, myself, was, when I read about how they got the Bitcoins
+through micro strategy, through their strategies, was amazed by just how liquid the market was
+and able to absorb $500 million without really putting a dent in the price of Bitcoin. I
+think that helps show me that the fact that this market is huge and will continue to grow.
+So, James, I have a quick rapid, a few rapid fire questions. Let me start that again. James,
+I have a few rapid fire questions for you. And then I think it's, okay, let me say it
+one more time. James, I have a few rapid fire questions for you that I want to run through
+and then we'll be done for the day. So real quick, what advice would you give your 18
+year old self?
+Oh my, I've had plenty of good and bad things happen over the past decade or so, but I don't
+really regret them. Everything that happened was learning experiences and got me to where
+I am today. I don't know, I think the only real advice would be to remain inquisitive
+and keep learning new things. That's how I ended up where I am. I would say some things
+happened to me over the years where I probably took a step back from that and was distracted
+by other things. But the culmination of all human knowledge is at our fingertips now.
+And it's a huge waste for people to be spending a significant portion of their time just dawdling
+around and watching cat videos.
+They should be learning about Bitcoin instead of doing watching cat videos. What is the
+best tip for making the world a better place in your eyes and...
+See your own business. I think it's the opposite of your question, but I think one of the things
+that makes the world a worse place is when people start trying to meddle in other people's
+affairs because they consider it to be the right thing to do. Whatever they decide is
+going to be the best for everyone. But this sort of goes back to the free market principles.
+I do generally believe that looking out for yourself and not trying to trample on other
+people for what you consider to be their own good is just the clearest way to go forward.
+And how long is your beard at the moment?
+That's a good question. I don't really regularly measure it. It's definitely at least seven
+or eight inches long. It's been growing pretty well during the pandemic, though I have not
+been taking quite as good care of it because I haven't really had it to go out and be presentable.
+Any beard products that you use when you want to be presentable with your 12 inch beard
+that you would suggest our listeners check out?
+I have to use the products on a regular basis. Otherwise, it'll get all tangled and whatever.
+I'm a daily user of Beardsley conditioner. I'm like a weekly user of their shampoo. And
+then I use the oil a couple times a week too, though I don't have really a preference for
+either one. And then when you're really going out and need to keep everything manageable,
+you got to have a nice firm hold wax to use as well. And I think I use, it's called like
+Amish something beard balm for that. I think it's honest Amish beard balm.
+I love it. So the last question I have for you today is what problem do you face every
+day that nobody has solved yet and that you think is possible to solve?
+I'm sure there's a multitude of them, but I'm all over the place these days. It's, I
+would say one of the most fundamental problems comes down to simple communication issues.
+And I think this really manifests itself well on social media. I get to see this because
+I have this outsized following. And basically what I, the phenomenon that I get to observe
+is that when you have enough followers, you start to realize that no matter what you say,
+it's practically impossible. And I don't know if this is a limitation of our English language
+or something more fundamental, but it seems to be practically impossible to say something,
+even if it's just like a very simple, like one sentence opinion or statement or whatever
+and not have that be misinterpreted. It seems like there's always a way that people manage
+to misinterpret even like the simplest thing that you say. And that's a fascinating thing
+is one of the things that keeps social media interesting because it results in conflict
+and strife and then you trying to hone your craft and be more precise in what you're saying.
+But I think that this is an interesting, this general phenomenon of communication that it's
+still very challenging to say exactly what you mean and ensure that everyone interprets
+it the way that you mean it.
+I can't agree with you more. The social media train that we all live on and that we interact
+with really breeds that confrontation or even a simple statement like 21 million bitcoins.
+Jameson, I appreciate you coming on to the podcast. I appreciate everything you've done
+for the Bitcoin community over the years, the work you've done on the clients, the work
+you've done on multi-sig wallets with Casa. I appreciate really just being not an influencer,
+but a someone I could look up to in this space and have looked up to over the past years
+and knowing you growing up and meeting in person and talking through meetups. I really
+relish those moments of building this community and building bitcoins. So I appreciate that
+a lot. Where can our listeners connect with you online after the show?
+Very easy to find me on Twitter. My handle is just lop and my website, lop.net has thousands
+of different resources that will easily consume a year of your time if you want to dedicate
+it to diving down the Bitcoin rabbit hole. The website for Casa is just keys.casa, K-E-Y-S.C-A-S-A,
+and we've got a ton of educational resources on there as to why we believe that we've built
+a superior security and usable self custody product.
+Thanks again, Jameson for that. Appreciate it. And remember to mine on.
+Full time as of early 2015, hobbyist for a few years before. Thanks for having me. Long
+time no see. Goes back to the white paper. I was not familiar with the cypherpunk movement
+or any of the decades of development leading up to Bitcoin. It wasn't until several years
+after I'd been immersed in Bitcoin that I started looking into the history and realizing
+this was not just something that appeared out of thin air, but rather was the culmination
+of efforts of many people around the world for decades of trying and failing other attempts
+at digital currency. As I was looking into that, reading the historical posts and getting
+a better understanding of the mindset that those people were in, then I realized that
+I generally agreed with it and I wanted to further the cause.
+It's hard for me to even say how many attempts there were because most of them didn't even
+really make it out of the gate. I think DigiCash with David Chom was probably the one that
+made it the furthest and I don't know how many years they operated. I know they raised
+some funds and they had a working network, but eventually it just didn't get enough adoption
+and they shut down. There were other notable projects like Halfany had something called
+reusable proofs of work, which had some similarities with Bitcoin, but basically each coin carried
+its own proof of work along with it. It didn't have a blockchain though. There were still
+some missing pieces. I think it hadn't really solved the double spending problem. Ultimately,
+the reason all of these things failed was because they were still centralized. That
+was the unique innovation that Satoshi figured out was how do you create a system like this
+without a central authority? From that standpoint, Bitcoin is the first to be able to do it without
+central authorities, but there's plenty of other reasons why you would believe that given
+the level of adoption that Bitcoin has gotten, it's going to be very difficult to overcome
+the network effect that it has gained so far. Because it is software, it can continue to
+evolve though. It will, of course, not evolve at anywhere near the pace that, for example,
+a web app or a single company software project might change because by design, it's very
+difficult to gain consensus across all of the participants to make any non-backwards
+compatible changes.
+Yeah, so I am not a protocol developer. The first project that I actually started and
+still maintain is a fork of the Bitcoin core client. It's not a network fork or a protocol
+fork. It is still running the Bitcoin node. Basically, I just added in a bunch of metrics
+and instrumentation and built some cool DevOps style dashboards that I put up on a website,
+which you can find at Satoshi.info. It's like Satoshi.info, but with an extra T after the
+first S. And as a result of that, I'm not a C++ developer. I really don't like C++,
+but I do have some trivial commits in the Bitcoin core repository. Generally, just things that
+I ran into when I was mucking around in my own fork. No notable functionality really,
+usually just like improvements of documentation or RPC calls or things that only really the
+developers would care about. So it's not challenging if you're familiar with open source development.
+If you're familiar with GitHub, basically, if you find something that you think could
+be improved, then you write the code and you submit a pull request and then people review
+it and you respond to their feedback. And if you can make almost everybody happy, if
+you can get an overwhelming agreement without any notable objections that other people find
+reasonable objections, then your code is going to get merged in. For me, because the stuff
+I have implemented, it was all really trivial. It would generally get merged in pretty quickly
+within a matter of days or weeks. If you were doing some massive functionality change with
+a ton of logic that could be potentially dangerous, if it was buggy, then you could very easily
+be spending months, if not years, trying to get that code merged in.
+Yeah. So we actually did get the Taproot logic has been merged into Bitcoin Core, the client.
+However, that only really means that you're going to be able to use it on your own private
+network. There's still outstanding issues around how it's actually going to get activated
+on the main network. So fingers crossed that will happen next year. The main reason why
+I'm following that is that it will be directly applicable for us at CASA. The ability to
+do aggregated signatures off chain that look like a single signature on chain is going
+to be a boon to anyone using multi-signature wallets, which is what CASA's primary focus
+is. And the reason for that is it's going to improve the privacy because there's no
+more fingerprints that you're using the special multi-sig setup. And then it's also going
+to improve your fees that you have to pay. Your transaction sizes will be a lot smaller.
+You'll have to pay lower fees. And I expect that we're going to see a number of improvements
+and new applications come along that leverage both aggregated signature functionality, hopefully
+making mixers more private, and then leveraging this tap script, Merkleized Abstract Syntax
+Tree functionality, which is really hard to explain in simple terms, but basically it
+will enable developers to create much more complex Bitcoin scripts without having to
+put the entire script on the blockchain. Once again, improving the privacy and the scalability
+of doing these more complex operations. Yeah. So the easiest way to think of, I guess, Bitcoin
+security is it's like a lockbox. So when you send Bitcoin to a certain address, the address
+is just a human readable format. Behind that address, it's actually a fingerprint for a
+more complex redeem script, which this script describes the spending conditions for what
+data you need to post to the network in order for the nodes to accept that you are the rightful
+owner and should be able to spend that value. So the most common way to store your Bitcoin
+is in a single signature address. And that basically means there's one private key. And
+in order to spend that Bitcoin, you use that private key to create a cryptographic signature
+that covers all the details of the transaction. And then you post it to the network and the
+network validates it and it propagates around. And if you pay an appropriate mining fee,
+then eventually it gets put into the blockchain in a block. Now, that's simple. It's straightforward.
+But you have an obvious single point of failure. If you lose that key, if an adversary gets
+that key, then it's game over. They take the Bitcoin or you can't access the Bitcoin and
+there's nobody who can get that money back for you.
+So what we are aiming to do with CASA is to create a self-custody storage setup that eliminates
+single points of failure. And the way that we do that is both on the technical side and
+on the sort of customer service, helping people make decisions about their setup side. On
+the technical side, the way that we eliminate single points of failure is by using multiple
+keys. So our sort of flagship product is a three out of five multi-sig setup, which means
+there are five different devices with five different key sets on them. And these get
+geographically distributed by you into different locations. And in order to spend from your
+wallet, you have to add signatures from three different devices. So you have to physically
+travel around and access these devices. And that makes it so that if any one device gets
+lost or compromised, you're fine. There's no catastrophic loss. You can replace the
+device and just keep moving on with your life.
+If there is any sort of disaster, then once again, you don't have to worry about having
+all kinds of crazy backup schemes or anything like the architecture of the wallet itself
+is the backup scheme. It has robustness and resilience built into it. And if we're getting
+attacked by someone, whether digitally or physically, it's going to be the bar gets
+raised to such a level that the attacker would have to be extremely motivated and basically
+be willing to take you hostage for a lengthy period of time and go through multiple different
+physical locations, which of course is going to be very risky for them and increase the
+chance that they get caught.
+I could spend hours just talking about the security model and all the different threats
+that we try to protect against, but we've got all of those on our website and people
+can spend hours looking through them. But the whole idea is that being your own bank,
+it comes with a lot of responsibility and few people are going to put in the time to
+think through everything that could go wrong.
+So what we want to do is leverage the five years of experience that I have, learning
+a lot of hard lessons, seeing a lot of people lose their money in a lot of different ways
+and build all of these best practices into a very simple piece of software so that people
+just follow the directions in the app and they'll be in a very good position from a
+security standpoint.
+Exactly. And we believe that this is important for a variety of reasons. It's important for
+the individual because if you're just giving all your keys to a third party, then you've
+just thrown out one of the most important aspects of this system, which is getting rid
+of centralized middlemen and trusted third parties. If you're leaving your money with
+a custodian, then you may feel safer, but you have no way of actually knowing because
+the security that is going on in that custodian is a complete black box to you. You have no
+insight into what it is. You're just blindly trusting that they're following the best practices.
+If you were following best practices yourself, then you don't have to trust anyone. You're
+verifying that you're doing it the right way yourself. And also, there's this issue of
+systemic risk. At a higher level, thinking outside of just the individual risks that
+you expose yourself to if you're giving your money to a third party, they can exit scam,
+they can be running a fractional reserve. There's just a million ways that they can
+still lose the money. At a higher level, it is unhealthy for the Bitcoin ecosystem as
+a whole if a huge amount of the value in the system is being held by a small number of
+entities. And that's because you start to get into potential governance style attacks,
+where the reason that this system is robust and resilient against even theoretical nation
+state attacks is because there are so many doors that would have to be kicked down, so
+to speak, in order to force people to change the rules of the system that they are enforcing
+with their client software. So if you get to the point where there's only half a dozen
+or a dozen or enough, a small enough number of entities that they can start to coordinate
+with each other and collude with each other, then the system itself has become a lot more
+fragile and prone to malicious changes being instituted by a small number of entities that
+may benefit them and be to the detriment of everyone else in the system. You're essentially
+just recreating a central banking cartel again. So we're trying to fight against this inevitable
+onslaught of tantalizing convenience that people are falling into because they're willing
+to trade their security for convenience. And this is a common theme in a number of different
+aspects of people's lives. We trade a lot of things for convenience, unfortunately, because
+our time is precious to us. There's still a lot of education that needs to be done.
+Still can be very difficult to explain to someone that their Bitcoin don't exist on
+any single device because this is simply a paradigm that has never existed before. Physical
+things, really any other assets that you own, you can always point somewhere and say, yep,
+this is where the asset actually exists or this is the custodian that is securing that
+asset. But when you start to create these models where it's actually comprised of this
+amorphous set of things, then it breaks a lot of people's minds. And it's difficult
+to explain to them why this is a better security model because it's just a completely different
+security model and people don't even think about security models when they're going about
+their day to day lives. So I think that in the short to medium term, there's a lot of
+education to be done. In the long term, to get to real mainstream acceptance, it'll become
+like any other technology where people, once again, they won't know how it works, but it
+will be the fact that so many other people use it that it just becomes a sort of de facto
+thing that you don't even question.
+Yeah, I mean, I was the crazy guy who would happily spend hours explaining the system
+to people. And I don't know, you know, even if they got it from a technical standpoint,
+I think there was generally just so much skepticism and a million reasons of why it might not
+get significant adoption, why it could fail even from a non-technical standpoint that
+most people just discounted it. I would say, you know, it could probably count on one hand
+the number of people who actually ended up sharing my belief back then in the early days.
+And then, over the course of several hype cycles, bubbles, booms, crashes, a few more
+people have come along and realized that this is not a flash in the pan fad that's going
+to be disappearing, but it's actually here to stay. And I think that that is going to
+be how it continues to grow. It'll be a little bit at a time, though, of course, the growth
+will happen in spurts. And it'll be like any other technology that once it becomes readily
+adopted and essentially ubiquitous, then people will just take it for granted. And I think
+we've got a long way to go until we get to that point. There's still a ton of things
+to be done on the usability side, the security side, the privacy side. I believe that Bitcoin
+is a project that is aiming to be the fairest and optimal form of money. And we certainly
+have a number of weaknesses, things that could be improved from a technical standpoint, that
+I believe that I'm going to be continuing to focus my time for the foreseeable future
+on improving this system. If we ever get to the point where I feel like Bitcoin is done,
+has met all of its goals, then hopefully I will be able to pivot and work on other technologies
+that will also empower individuals in different ways. I guess the downside to being open to
+everyone is that it also means, of course, that it's open to institutions and larger
+players who may not care about the ideology and may only really care about using it for
+financial hedging and speculation purchases. But that is part of what you have to deal
+with. Any tool can be used in a variety of different ways, and you may not agree with
+all of the ways that they're being used for, but that's fine. I think one of the things
+that we have fallen short on is we're a long ways away from being able to be a ubiquitous
+form of money that can be used by anyone, including people in third world countries
+that don't have access to great financial infrastructure. There have been some small
+good adoption cases, but for a variety of reasons, usability and scalability being the
+primary ones, we're still a long way, I think, from having less well-off people be able to
+adopt and benefit from this technology. We're still at the point where the people who are
+going to be benefiting from it the most are the ones who have the resources and the time
+to invest into scaling the learning curve required to get into it.
+Cryptography in general is a double-edged sword. It can be used for two primary purposes.
+One is to obfuscate or to encrypt things to keep them private so that only the intended
+recipients can see the data. The other is almost the exact opposite, which is identification
+and authentication, basically using cryptography to publicly sign messages to essentially attest
+that information has been created or authenticated by no one other than you. I would expect that
+institutions, nations, states, whatever, are going to be using these distributed ledgers
+for the latter. They certainly could build some privacy functionality into it, but I
+don't think that it really is going to be of much benefit for them to do. Rather, I
+expect that this type of blockchain or distributed ledger like central bank technology is going
+to be used as a tool of control and surveillance. Now, there certainly are some potential good
+use cases for it where it would, for example, be really easy for, I think, entities to kind
+of airdrop money on people, for example, but it's also going to become a lot easier for
+them to track people's money and I would expect to censor their money as well. We'll generally
+expect that cons will probably outweigh the pros, at least from my perspective, but that's
+not to say that they'll be 100% complete bad. I'm sure that they will be able to help some
+people. I think that in general, the media is just going to echo back to people what
+they think they want to hear and that a lot of that is influenced by powerful or reputable
+people and what we've seen happen and what I expect happens with a lot of technologies
+is that early on, pretty much everyone is skeptical and believes that the new technology
+is never going to take off and as these new waves of adopters come in, the people who
+adopt it as the sort of total size of the adopter pool grows, then there will be more
+and more people who are reputable for other things outside of that technology that will
+come in and they will start to essentially lend their own credibility to the credibility
+of the new technology and that's what we've really been seeing happen this past year.
+We've seen some big heavyweights from software and then finance and other spheres publicly
+come out and say Bitcoin is an amazing technology and these are the reasons why you should care
+about it and why it's important and why we're investing in it and so on and so forth. So
+I expect that's going to continue to play out both with Bitcoin and any of these other
+technologies is it'll just come down to who are the most powerful and reputable people
+behind them and how are they able to influence the media and other narratives.
+I believe that the vast majority of people you'll talk to will say that they discounted
+Bitcoin the first time, perhaps the first several times they heard about it. I know
+that I did and that's why I'll never remember the exact first time that I heard about it
+because I know I heard about it two or three times at least on various nerd news websites
+and I basically laughed and said oh this nerd money is going to get hacked and everybody
+is going to go broke and it'll all end in tears. It was probably at least six months
+if not longer until some slash dot article I believe came along with some development
+in the space and I was like oh this thing is still around and so that's when I actually
+read the white paper and my computer science background kicked in I was like oh wow this
+is actually really an interesting elegant solution to a problem that I never even thought
+about and that's really when it was off to the races I started going down the rabbit
+hole and learning about money in general which very few people ever bothered to do. I think
+there's very few people who just hear a crazy idea and immediately latch on to it and dive
+head first. That's why the staying power of this system is something that will continue
+to change people's minds as they eventually realize it may take them six months like me,
+it may take them years, it may take them decades but eventually they'll realize that this thing
+is not going away and there's probably some good reasons why it hasn't gone away. I'm
+not a good poster child for the like dollar cost averaging because that wasn't even really
+a thing back when I got in like there were no tools to do that so I actually bought most
+of my Bitcoin in three different major events. There was like my initial oh I got to get
+some of this to play around with it and then there was a few years later when I was like
+oh it sounds like there's going to be ETFs and all these other things so maybe I can
+front run it and I went through this whole process to convert my IRA into a self-directed
+IRA and then turn that all into Bitcoin in a matter of a few months. I was dollar cost
+averaging at that point because that was after the Mt. Gox crash and the price kept going
+down and down and at one point I had actually lost half of my retirement because it had
+gone down so much. Eventually the long-term play worked out there and it's just really
+hard to give general financial advice and it's because everybody's situation is different.
+The reason why I was able to put a decent amount of money into Bitcoin is because I
+had been diligently following personal finance forums and the like fire style financial investment
+and budgeting and living advice for a number of years and had been able to build up a nice
+savings and so I had multi-month cash savings emergency supply and I was maxing out my 401k
+savings. I was able to allocate money and beyond that was just discretionary budget
+and I was like I might as well put it into this Bitcoin thing because I feel like it's
+going to be a good savings vehicle and an asset that's not like anything else. For the
+average person I think it comes down to how well off you are. You shouldn't be like going
+into debt to buy this speculative asset. You should treat it like a different type of savings
+account really and you don't want to put yourself into a position where you're harming your
+normal financial budget. Other than that it's really just going to come down to conviction
+and what things you may be willing to sacrifice because you've lowered your time preference.
+There's plenty of things that I could have bought or there are plenty of times when I
+could have sold Bitcoin and bought something else and I just never did because I don't
+know. Most physical things like Lambos and stuff are not worth it to me. Maybe they will
+be someday but I drove. I don't know if you know this detail but obviously I drove the
+Lotus Elise for a few years and I had the Bitcoin license plate on it and I considered
+that kind of an investment in advertising for Bitcoin but the Lotus that I bought was
+actually a salvage title vehicle that I bought on eBay for really cheap. So it looked really
+expensive but it was actually far more affordable than people would have imagined. Even then
+I was trying to keep a low time preference and not spend a lot of money on a flashy car.
+And I guess to back up a little bit to one of your earlier questions, it helps to put
+your Bitcoin into a high security setup that is difficult to access. Now it helps you protect
+against loss and theft but it also helps protect you against yourself because if it takes a
+lot of effort for you to send your Bitcoin out of your self custody to an exchange to
+sell it then, and we've heard this from a number of Cossack clients as well, it's just
+less likely that you're going to panic sell. So that can be a good thing as well over the
+long run. Now remind me what the point we were getting towards was. Yeah, it's a very
+long story but even have several articles and full length presentations about privacy
+and all the things that I've learned. But the short version is that the internet and
+the communication age, of course, is a double edged sword in the sense that while it helps
+us be able to communicate with all types of people now, you reaching out and making new
+connections and engaging in all types of interactions, which can be very productive. The inverse
+is also true. You can engage in unproductive harmful interactions and it's also not just
+you being able to reach out to the world but now the world can reach back at you. And especially
+what happens here with social media phenomenon is that you can go from being a nobody to
+having 100,000 if not millions of people all of a sudden in the blink of an eye looking
+at you. And that can be due to anything like just a single viral post, for example, that
+you might make or somebody might make about you. And when that much attention gets cast
+upon you, your threat level goes through the roof because it's just a matter of numbers
+that some small fraction of a percent of people are downright malicious and will seek to do
+you harm in order to help themselves. That's really what happened to me is I went from
+being a nobody to having hundreds of thousands of people paying attention to me on Twitter
+and then eventually some random guy comes along and decides he wants to try to extort
+me. And so that's how I ended up with my whole neighborhood being shut down by a SWAT team
+getting called out to a false bomb and hostage situation at my residence. And that exposed
+me to this, what I consider to be a sort of asymmetric attack that is a flaw in our law
+enforcement system that can be exploited by anyone who's technically sophisticated enough.
+The only defense against that, there are two defenses against that. One is you continue
+living your life normally and you just tell, you go to all of your local law enforcement
+people and get yourself put on a special watch list so that if any calls come in, they get
+flagged as being potential false type of call. Or since I didn't want to do that, the only
+other way around it is to essentially change your whole life so that it's not possible
+for someone to find your physical address. It's not possible for someone to then attack
+you either on their own or by sending other people to your address that they may even
+be good intention people like the police, but essentially misusing those resources.
+That was a very long journey. It also costs a lot of time and money. And in the couple
+years since I did that, some very good resources have come out so that I feel like now I can
+just send people to buy a book that actually has everything that I wish I had known when
+I set out on that journey.
+The lowest bar that almost anyone can do is to just use software on your computer to hide
+what you're doing, whether it's ad blockers, VPN, Tor, et cetera. Because whenever your
+computer talks to another computer, it exchanges your IP address and IP address can be used
+to geolocate you. And there's also a ton of other data that gets sent by your browser
+that it's preferable to block and things that can be used to track your activity all over.
+Going more extreme though, and the thing where few people are going to do this is that if
+you want to own any property, you need for that property not to be in your name. So that
+means creating some sort of other legal entity like a trust or a corporation that essentially
+owns the various property and then you are privately listed as a member of that corporation
+and not publicly listed anywhere.
+Because basically any property that you pay property taxes on is going into some public
+database that can be queried by really anybody. Going a step beyond that is making sure that
+your name and other personal information goes into as few private databases as possible.
+And this is where a lot of overhead comes in of using pseudonyms, using physical remailer
+boxes, not getting mail sent in your name to your home address, but rather to other
+places. It can become complicated. It can become as complicated as you want because
+the more layers of obscurity that you use, the more privacy you theoretically have.
+And so the short version of all these different techniques is essentially what you're doing
+is you're creating proxies. You are shielding yourself from directly interacting with other
+things and other people and other legal entities and other organizations. And every type of
+interaction that you have, whether it's digital or physical or legal or financial, there is
+going to be a way to put a proxy in between you and whatever you're interacting with.
+But some cases it's easy and cheap. Other cases it's really complicated and expensive.
+So it requires a very different perspective on your life and the willingness to put in
+a decent amount of effort and think about these things.
+So one of the problems with Bitcoin and trying to explain it to people is everybody comes
+in with their own perspective. Bitcoin is a multifaceted system. So you may approach
+it like I did originally from a technical perspective. You may approach it from a philosophical,
+political perspective. You may approach it from a financial or economic perspective.
+This is what makes it difficult to talk to any one new person because you have to figure
+out what their perspective is and how they're approaching it. And in terms of Bitcoin narratives,
+I think it's really helpful to just come up with more simple metaphors like that that
+don't require a lot of complicated explanation, but rather just are trying at a very high
+level to describe what the purpose of the system is. And there are certain narratives
+and perspectives of Bitcoin that I'm not a fan of, but I can't stop people from perpetuating
+them. In particular, I really don't like people coming in and just viewing it as like a short
+term speculative asset. I've never considered it to be a sort of get rich quick scheme,
+but rather to be a don't get poor slowly scheme because what you're doing is you're getting
+rid of the ability for your money, the value of your money to be inflated away over a long
+period of time. That was the original reason that I bought some. It was more on a multi-decade
+investment timeframe rather than a, oh, this thing is going to go 1000X in the next few
+years type of idea. But speaking back to the metaphor though, is that a lot of people,
+especially the financial and economist people will just look at it and all they're looking
+at is the price charts. And so obviously what they see is a bubble. But bubble phenomenon
+occur all over the place, especially when you're talking about the creation and adoption
+of new networks. And a network doesn't necessarily even mean like a digital technical network.
+It can be any kind of networks. Networks can be biological, for example. And the ebbs and
+flows of this, the price and the adoption or whatever will turn some people off because
+they don't understand what organic adoption and growth looks like. And they consider it
+to be a failure because they, for whatever reason, believe that Bitcoin should have some
+sort of predictable steady growth curve in order to be a widely adoptable thing. But
+that is not one of the goals of Bitcoin. The goal of Bitcoin is to allow people to interact
+with this system that is resilient against change and manipulation by small cabals or
+third parties, powerful entities or whatever. Everything else that happens, there are side
+effects that it would be nice if there wasn't crazy volatility up and down and people panicking
+and losing their money. But those side effects, those are a result of having a truly free
+market. And there are not many truly free markets out there. And so this confounds a
+lot of economists and other financial types, which is fine. Either they'll eventually get
+it or they won't. Sub tweeted a guy just the other day who apparently has been a Bitcoin
+skeptic since 2013. And I don't think his skepticism has worked out for him as well
+as it would have if he had opened his mind a bit more to it. It's just a lack of sophistication
+and lack of putting time and effort into actually analyzing the thing. If you want to. There
+are hundreds of different metrics that you can track regarding Bitcoin. I think that
+a lot of people only track the price because it's easy. It's like it's on all the websites.
+It's theoretically, if you believe in free markets, then the price is theoretically the
+sort of aggregation of all of these other hundreds of metrics. But because Bitcoin is
+still so tiny, there's a lot of noise. I think the signal that we're given from the price
+is really only applicable at an order of magnitude level. If you're looking at these changes
+of single digit percentage changes per day, that's noise. It's froth. A single billionaire
+can step in there and move the price by leaps and bounds if they want to. Which is actually,
+if you've listened to Michael Saylor talk about how they acquired the Bitcoin, it was
+actually quite sophisticated that they were able to absorb hundreds of millions of dollars
+with the Bitcoin without even moving the price. That takes some real dedication. Hats off
+to him. Obviously, that's good for him. If you're acquiring that much, you don't want
+to move the market because you're essentially shooting yourself in the foot. But if someone
+wanted to, they certainly could move the market with that level of money.
+While hundreds of millions of dollars sounds like a lot of money, there are tons of entities
+out there that that's a drop in the bucket for them to play around with. Oh my. I've
+had plenty of good and bad things happen over the past decade or so, but I don't really
+regret them. Everything that happened was learning experiences and got me to where I
+am today. I don't know. I think the only real advice would be to remain inquisitive and
+keep learning new things. That's how I ended up where I am. I would say some things happened
+to me over the years where I probably took a step back from that and was distracted by
+other things. But the culmination of all human knowledge is at our fingertips now, and it's
+a huge waste for people to be spending a significant portion of their time just dawdling around
+and watching cat videos.
+Minding your own business. I think it's the opposite of your question, but I think one
+of the things that makes the world a worse place is when people start trying to meddle
+in other people's affairs because they consider it to be the right thing to do. Whatever they
+decide is going to be the best for everyone. But this goes back to the free market principles.
+I do generally believe that looking out for yourself and not trying to trample on other
+people for what you consider to be their own good is just the clearest way to go forward.
+That's a good question. I don't really regularly measure it. It's definitely at least seven
+or eight inches long. It's been growing pretty well during the pandemic, though I have not
+been taking quite as good care of it because I haven't really had to go out and be that
+presentable.
+I have to use the products on a regular basis. Otherwise, it'll get all tangled and whatever.
+I'm a daily user of Beardsley conditioner. I'm like a weekly user of their shampoo and
+then I use the oil a couple times a week, too, though I don't have really a preference
+for either one. And then when you're really going out and need to keep everything manageable,
+you got to have a nice firm hold wax to use as well. And I think I use, it's called like
+Amish something beard balm for that. I think it's honest Amish beard balm.
+I'm sure there's a multitude of them, but I'm all over the place these days. I would
+say one of the most fundamental problems comes down to simple communication issues. And I
+think this really manifests itself well on social media. I get to see this because I
+have this outsized following. And basically, the phenomenon that I get to observe is that
+when you have enough followers, you start to realize that no matter what you say, it's
+practically impossible. And I don't know if this is a limitation of our English language
+or something more fundamental, but it seems to be practically impossible to say something,
+even if it's just like a very simple like one sentence opinion or statement or whatever
+and not have that be misinterpreted. It seems like there's always a way that people manage
+to misinterpret even like the simplest thing that you say. And that's a fascinating thing.
+It's one of the things that keeps social media interesting because it results in conflict
+and strife and then you trying to hone your craft and be more precise in what you're saying.
+But I think that this is an interesting general phenomenon of communication, that it is still
+very challenging to say exactly what you mean and ensure that everyone interprets it the
+way that you mean it. Very easy to find me on Twitter. My handle is just lop and my website
+lop.net has thousands of different resources that will easily consume a year of your time
+if you want to dedicate it to diving down the Bitcoin rabbit hole. The website for CASA
+is just keys.casa. And we've got a ton of educational resources on there as to why we
+believe that we've built a superior security and usable self custody product.
+Today I'm joined by Jamison Lopp, who is the co founder and CTO of CASA, a Bitcoin
+philosopher and professional cypherpunk. He's been actively building in the Bitcoin space
+since 2015. Is that earlier than 2015? You've been building the Bitcoin space? I feel like
+it has been. Okay, I'll start that again. Today I'm joined by Jamison Lopp, who is the
+co founder and CTO of CASA, a Bitcoin philosopher and a professional cyberpunk. He has been
+actively building the Bitcoin space since 2015 and has become one of the most respected
+voices in the Bitcoin developer community. He was previously an engineer at BitGo developing
+its high grade multi-sig custody service before co founding CASA, a company providing secure
+wallets and plug and play infrastructure solutions for Bitcoin. His mission is to use his skills
+as a technologist to build tools that empower individuals. And he works to achieve this
+by making it easier for people to take custody of their Bitcoin and manage their private
+keys. Jamison, welcome to the show. Long time no see. So can you explain to me how I guess
+you started, how you became a cyberpunk, Jamison? What does that even look like? How do you
+become a professional cyberpunk? So you mentioned before Bitcoin, I think that's one of the
+potential flaws people have with Bitcoin. Like it's like the first one. How do we know
+what's going to be the one that everyone uses? It's slow, the 10 minute blog time. Those
+are the normal, I think, excuses we get from people why they don't want to adopt or learn
+more about Bitcoin. Because like you mentioned, previously, there was some other coins or
+other tries at Bitcoin. Are you able to talk further on how that research went? And maybe
+what other projects might have failed? And for what reasons? So when you're referring
+to these non backwards compatible changes, and Bitcoin doesn't have essential authority
+and you are working on and you develop, or I believe you have pushed code to Bitcoin
+core. Have you ever committed to the normal, I guess not the normal, but the main Bitcoin
+client? Or how does that work from a developer standpoint? Because I myself have been focused
+on the mining, but I've never actually written code for really any Bitcoin clients like you
+have. Wow. And I think that was one of the things I want to talk farther on, which is,
+so you mentioned there's a client code base, which is something that you forked over and
+you're working on. Then you have the protocol code, which is the main Bitcoin protocol,
+which is decentralized. And you just went through the process of really committing code
+to that, depending on the complexity of it. Are there any upcoming protocol changes or
+even merge requests that you're interested in or you're following at the protocol level?
+Because I think that's something that no one really talks about. That is, as I appreciate
+you walking me through that, because Taproot, I was like, okay, what is this thing he's
+talking about? So you mentioned multi-sig wallets and I would say normal wallets. On
+a high level for the viewers who don't know, can you explain the difference and why you
+see this evolution of multi-sig wallets and why they're just inherently better? And as
+people are following the directions in the app, as you mentioned, there's trade-offs,
+I think, with expanding the crypto ecosystem and regarding custody more specifically. Because
+with these apps like Robinhood and Cash App, you don't actually own the coins. But with
+Kasa, you are costing them yourself, correct? We do trade a lot of things for convenience.
+I feel like that's one of the number one, not problems, but one of the reasons why people
+use these central authorities or central wallets like Robinhood, Cash App, Coinbase. So is
+there anything that's going to make people feel like they have the same security as a
+bank using a self-custody multi-sig product? Do you think we're already there? Or do you
+think that there are more things that need to be done to get people comfortable enough
+using products like Kasa and have the same comfortability of storing that money in a
+bank or that asset in the bank where they know it's not going to get stolen and at least
+they believe it's not going to get stolen? It's a trade-off of convenience over self-custody
+throughout the space, as I mentioned, on Robinhood, on Coinbase. And I hope that people are moving
+to a solution where they are in control of their own bitcoins. I found it very interesting,
+James, in how you explain the fact that bitcoin's not necessarily on one device. It's on this
+ledger that we all believe to be true. And I think that was one of the things that I
+realized back in 2013 when I was coming into blockchain and bitcoin space was that there
+was this one truth, and you could believe it, and it was backed by these computers which
+were using energy to mine bitcoins. So now, James, we met back in maybe 2013, 2015, I
+think probably 2015, because we were both local components of the bitcoin industry here
+in the Southeast and just decided that this was the future. When you got into bitcoin
+in the beginning, how did people react to that? And did it affect your perception of
+bitcoin? How has that conversation with some of those people that are closer to you changed
+over the years about maybe their perception of bitcoin and what you're doing in this space
+and all the work you're putting into? Can you talk a little bit farther on how that
+attitude has changed, mainly maybe because the price has risen or just because the technology
+has gotten more awareness?
+So you talk about this empowerment. I think that's one of the things that a lot of the
+early bitcoiners like myself and you really had in their DNA. It was this currency, this
+money that was just true and fair and backed by math and really, in my opinion, for the
+people. Obviously, with getting bitcoin growth, we've seen a lot of institutions coming in
+just because of the nature of the industry and the nature of the asset class. But over
+the past five years of being in this space, this idea that bitcoin is the people's money,
+do you still think it resonates with you today and with the community today or do you think
+it's become more commercialized?
+Bitcoin as a tool and I think for me, I look at bitcoin as one of the best tools for society
+for scaling trust across a decentralized network. But one of the things I wanted to touch on,
+which came out, I believe two days ago, was that USDC, which is Coinbase's stablecoin,
+with the US government permission, they partnered with the exiled government of Venezuela and
+distributed aid to people and healthcare workers in Venezuela. What I saw with that is now
+stablecoins are being used as a tool of US foreign policy. This is, I think, one of the
+first real public use cases of a nation state intervening with another nation state's citizens
+giving direct aid to the people through a stablecoin or through a blockchain network.
+How do you see nation states and central banks using blockchains as a tool in either a good
+or a bad way?
+As we see, I guess, these competing currencies or competing networks show up and really come
+to scale over the next 10 years, how do you see the media changing their perspective on
+Bitcoin or just the narrative in general to the public, either in the United States or
+across the globe? Because I feel like the media now has almost looked at Bitcoin, oh,
+it's too small, it's still functioning very slowly, it doesn't really work, it's volatile.
+Do you think that media story is going to change to where it's more of trying to get
+consumers to use these stable-backed or the central-backed currencies or blockchain networks
+over Bitcoin, almost shunning it? Or how do you see that narrative potentially playing
+out with these two, two or three or four or five different competing blockchain interests?
+I think that narrative message has been changing just with, I would say, Michael Saylor coming
+on and doing the micro strategy, purchasing $500 million worth of Bitcoin on the balance
+sheet. It was the first public company to do that publicly and go out and I think that's
+created a ton of news. And we've seen that cycle of people like Paul Tudor Jones attaching
+their name to Bitcoin. So I definitely agree with you there, James, and I see that continuing
+and I think that'll help build the legitimacy in the eyes of, I would say, that 40 to maybe
+30 to 50 year old kind of crowd. And hopefully that pushes them to continue to learn and
+be educated about the technology. Do you remember the first time you heard about Bitcoin, James?
+Was your initial thought, this is something I'm going to look into and potentially work
+on for years? Or did you initially disregard it or think it was too complicated to buy
+and use? Why it has not fallen away. I think that's one of the biggest things in my life
+and over the years, because when I got into crypto, I was only like 15 years old and just
+kept preaching and preaching. This Bitcoin thing, it's $70, it's $60, it's $50. It's
+not going away, guys. It's going to change the world. And as a young, naive kid, I was
+just running around preaching this new internet money that people were like, oh, okay, yeah,
+sure. This digital currency is going to lose all of its value. It's too volatile. And I
+think that's one of the things I want to talk about, which is how do you build a good position
+in Bitcoin as a safe haven asset or as an investment? And what I mean by that is what
+I've been telling people now is you want to be buying Bitcoin consistently on a weekly
+or monthly basis.
+You mentioned on another podcast about how you maintain your lower overhead. But really,
+how do you know when to hold Bitcoin? Maybe when to sell some for profits, when to secure
+more Bitcoins. Obviously, you have to be detailed in the market and being paying attention.
+But how do you hold or even tell people or advise people on managing their Bitcoin position
+or really growing it and not FOMO-ing or not selling it when it goes up by 100% and leaving
+a huge upside on the table because of just the logarithmic nature of how Bitcoin grows
+and how it doesn't scale linearly, like normal stocks and bonds and other things like that.
+This is R though. I remember that car. It was always something where I was like, oh,
+that's such a cool car, Jameson. And it definitely did work. I think people thought it was more
+expensive than it actually was. And the Bitcoin license plate just had that final touch on
+it, which really nailed it in the coffin, especially if Bitcoin was rising at that time.
+So I felt like I was like, oh, look, an expensive Lotus. But really, you mentioned a great point,
+which is lowering your time preference. And I feel like that's one of the biggest things
+about Bitcoin is you have to have that longer time preference and view this as almost an
+investment in your future self.
+And one of the things you also mentioned is how you seem like you prepare for the edge
+case really well, not only with Casa, but also in your personal life. Are you able to
+talk a little bit more about how you maybe have prepared for this edge case after you
+sold the Lotus and you moved off the grid and why you maybe went that route and made
+those decisions?
+No worries. That was a great answer on the time preference. Really how you've transitioned
+from going to going off the grid and maybe why you decided to make that move in the first
+place. And yeah.
+And talking about that journey that you went on, I read your New York Times article. You
+talked about how to vanish in 15 steps. Can you share a brief summary of maybe some of
+those steps or the most important steps for our listeners?
+And as we know how hard that is, people aren't really thinking about the custody solutions
+or even the privacy, just the amount of data that everyone I think gives up and the openness.
+I find it interesting back in middle school when I was growing up, they would teach us
+never to put your real information online, never to meet in a stranger online. And then
+now in this world, today we live in 2020, everyone is uploading everything they do online
+to TikTok or to Instagram and everyone is talking to everyone else online and meeting
+strangers online. So it's crazy how far that message has changed to the majority in the
+general public.
+Talking about Bitcoin, you tweeted yesterday that Bitcoin is a financial escape pod, camouflage
+as a bubble, protecting its occupants from the relentless sucking vacuum of fiat. I agree
+with you completely, but can you explain a little bit more about what you meant by that
+statement and expound on it for our listeners?
+You mentioned that people are always looking for that 10%, 20%, 15% return per year and
+they expect Bitcoin. We saw the price drop by $2,000 yesterday last night and everyone
+freaked out. I'm like, no, but it's up. It's all the news media is like Bitcoin is down
+to $2,000, but it's up insane amounts. It went from 9K to this 19K just in the past
+30 to 40 days. People have this assumption that they should be able to get, as you mentioned,
+those 10% returns. So why do you think that? Is it because we're just comparing it to the
+US dollar? Is it because that's the linear growth that stocks have? Why do you think
+people expect this need for Bitcoin to grow at a determined growth rate or determined
+value over the next five years or 10 years for it to be an actual currency or for it
+to work in the day-to-day marketplace, not understanding that what they're comparing
+it to is the US dollar, which is being printed in the trillions and is losing relative value
+over, has been losing relative value for the past 70, 80, 100 years.
+I think that adoption trend is only going to continue as these entities grow and see
+the real value of Bitcoin. I, myself, was when I read about how they got the Bitcoins
+through the strategies, was amazed by just how liquid the market was and able to absorb
+$500 million without really putting a dent in the price of Bitcoin. I think that helps
+show me that the fact that this market is huge and will continue to grow.
+So, James, I have a quick rapid, a few rapid-fire questions. Let me start again. James, I have
+a few rapid-fire questions for you. And then I think it's one more time. James, I have
+a few rapid-fire questions for you that I want to run through and then we'll be done
+for the day.
+So, real quick, what advice would you give your 18-year-old self? They should be learning
+about Bitcoin instead of doing watching cat videos. What is the best tip for making the
+world a better place in your eyes? And how long is your beard at the moment? Any beard
+products that you use when you want to be presentable with your 12-inch beard that you
+would suggest our listeners check out? I love it. So, the last question I have for you today
+is what problem do you face every day that nobody has solved yet and that you think is
+possible to solve?
+I can't agree with you more. The social media train that we all live on and that we interact
+with really breeds that confrontation or even a simple statement like 21 million Bitcoins.
+Jameson, I appreciate you coming on to the podcast. I appreciate everything you've done
+for the Bitcoin community over the years, the work you've done on the clients, the work
+you've done on multi-sig wallets with CASA. I appreciate really just being not an influencer,
+but someone I could look up to in this space and have looked up to over the past years
+and knowing you growing up and meeting in person and talking through meetups. I really
+relish those moments of building this community and building Bitcoin. So, I appreciate that
+a lot. Where can our listeners connect with you online after the show? Thanks again, Jameson,
+for that. I appreciate it. And remember to mine on.
+I hope you enjoyed today's episode of Digital Gold. Be sure to subscribe so you're notified
+when the new episode drops. Don't forget to leave us a five-star review to support our
+journey to become the number one crypto podcast. Thanks so much for listening and until next
+time, mine on.

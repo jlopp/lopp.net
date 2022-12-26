@@ -1,0 +1,691 @@
+You're listening to the DYOR Podcast, where your host, Tom Bonning Country, helps simplify
+blockchain and cryptocurrency for investors and crypto enthusiasts.
+If you're looking to learn about blockchain, bitcoin, and cryptocurrency without all the
+hype, you're in the right place.
+All opinions expressed by Tom or his guests on this podcast are their own, and do not
+reflect the opinions of any organization they are associated with.
+This podcast is for informational purposes only, and is not investment, legal, or tax
+advice.
+Be sure to always do your own research.
+Now here's your host, Tom Bonning Country.
+Hey guys, welcome to episode 2 of DYOR.
+I'm your host, Tom Bonning Country, and in this episode, we have the one and only Jameson
+Lopp, Chief Technology Officer of CASA, come on and just kind of discuss some of the things
+that he's been seeing around on the space and his viewpoints on the Lightning Network
+as well.
+If you don't know Jameson, he is one of the largest figureheads in the cryptocurrency
+and bitcoin space, incredible technologist, and just an extremely brilliant guy.
+It was an awesome conversation just chatting with him, seeing what he thinks he's going
+to play out over the next couple of years, and also learning about his work at CASA as
+well.
+So make sure you stick around and listen to the whole thing, and yeah, let's get into
+it.
+Alright guys, today I have the honor of sitting down with Jameson Lopp, the CTO at CASA.
+Jameson, I cannot thank you enough for showing up for the show today.
+Happy to be here.
+It's my honor.
+I know you're one of the most respected guys in the bitcoin space, so your input is going
+to make a huge difference for the audience.
+I'm expecting my audience to be more on the beginner side of things, so if they don't
+know too much about you, can you give a little bit of introduction about your background
+and how you fell down the bitcoin rabbit hole?
+Sure.
+So I really started getting interested in bitcoin around 2012.
+Of course, this is not when I first heard about it.
+As most of us do, we hear about it and dismiss it, and then it just keeps coming back and
+coming back, and then eventually we get hooked into it.
+But once I did start reading the white paper and reading forums and participating in some
+of the conversations, I realized that it was a very elegant computer science problem.
+And at the time, I had been a software engineer for five or six years and had been working
+on online marketing software that wasn't really that interesting to me, it just had some technical
+scaling challenges that kept me busy.
+And so once I started thinking about money, which most people don't ever really think
+about other than your immediate needs, I realized that money is this abstract concept that really
+belongs to humanity at large.
+And so it made a lot of sense to me that money should be an open source collaborative project
+rather than something that just gets decided upon by a small group of people behind closed
+doors.
+So I was interested in it both from the technical aspect and more of a philosophical aspect
+at the time.
+This led me to create a fork of Bitcoin core and try to apply some of my own software engineering
+and development skills to this primary Bitcoin implementation to try to help some of the
+other engineers better understand what was actually going on inside of the Bitcoin nodes
+that they were running.
+I felt like that project was fairly successful.
+It got referenced by a number of Bitcoin core developers over the years to make arguments
+about various technical changes to the protocol.
+And yeah, I mean, I was just a hobbyist doing a few side projects and tweeting and talking
+to people on social media about Bitcoin for three or four years until it got to the point
+that 2015, a lot of venture capital was rolling in and I decided that there was probably enough
+opportunity in the space for me to go full time.
+And that's when I became an infrastructure engineer at BitGo.
+They're a multi-signature enterprise wallet platform.
+They basically power a lot of exchanges and payment processors and such.
+And that led me to learn a lot more about the day to day operations of actually running
+web infrastructure that sits on top of blockchain platforms, did that for about three years.
+And then transitioned slightly to another multi-sig security provider called CASA.
+The main difference being that instead of focusing on helping enterprises secure their
+private keys, we're more focused on helping individuals.
+And our primary focus at CASA is to help empower people to make self sovereignty a more feasible
+thing for the average person and really to lower the technical bar that is required to
+achieve this promise of being your own bank.
+It's always been possible to be your own bank in Bitcoin.
+It's just required a lot of technical expertise and a lot of dedication to doing really mundane
+IT data practices.
+And so we want to build those best practices into the software to provide a better user
+experience so that the average person can get into this and actually benefit from the
+level of security that Bitcoin promises.
+I think that's super important because back in 2013, if the average Joe was trying to
+get into Bitcoin, I think it was a huge hassle for them if they didn't have any type of technical
+background to set up your wallet and make sure that you're securing your keys the right
+way and everything like that.
+Yeah.
+I mean, we still have a long way to go.
+I see three main things that Bitcoin needs if we really want to continue evolving.
+There's the scalability side in order to actually be able to process enough data for more and
+more people to use the system.
+There's the security side of the fact that people quite honestly don't want to be their
+own bank.
+They don't want to have to go through all of the hoops and think about all of the edge
+cases to protect their private keys, to protect their money.
+And then finally, you know, just usability in general is that as you become a part of
+this system that really has very few safety rails, we have unfortunately not done a good
+job of building safety rails into the software.
+And so it's still very easy for users to shoot themselves on the foot and basically have
+financial catastrophes just due to the result of not being knowledgeable about something
+or just making a simple careless mistake.
+Yeah.
+I was actually having a conversation with someone yesterday and they said that they
+lost their private keys to about 40,000 stellar lumens and they're trying to figure out how
+to recover that and everything.
+But it's a huge importance for people that are trying to get into the space, private
+keys and securing them, because if that's gone, you can't call like 1-800-SATOSHI and
+ask them to refund your private keys for you.
+Yep.
+That's the pros and the cons is that you have a lot more freedom, but the result of more
+freedom is you have a lot more responsibility.
+Of course.
+So let's break that down a little bit more.
+So you mentioned scalability, security and usability.
+Scalability obviously you believe more so in the Lightning Network more than you do
+for the Bitcoin Cash segue, correct?
+Yeah.
+So on chain scaling, it's an interesting way to describe what I would call vertical scaling.
+In computer science, when we're talking about the technical scalability of a system, what
+we're really saying is we want the system to be able to process more data, to process
+more events and do more things without increasing the cost of running the system faster than
+the amount of things that it's processing.
+So you start talking about things like linear scaling or quadratic scaling or what have
+you basically saying, as we put this amount more data into the system or have it process
+this amount more things, either the cost goes up at the same rate of the data and events
+or the cost may go up even faster or the cost may go up slower.
+And the best type of scaling is where the cost of running the system goes up a lot slower
+than the amount of things that it's able to process.
+And there are two very high level ways to scale any system.
+You can call it vertical scaling versus horizontal scaling, or some people call it scaling up
+versus scaling out.
+And basically what that means is that you can either just buy much faster hardware and
+have that hardware continue to do the same thing, but it's able to do more of it because
+it's faster.
+And of course, this hardware is going to be a lot more expensive, or you can try to find
+ways to offload onto other hardware.
+One way to think of this is the way that Google does it where basically they were the first
+ones to invent this idea of cloud computing where they just buy a ton of really cheap
+computers and use software to turn them into one large, effective supercomputer.
+That is a horizontal scaling or a scaling out where you're spreading the data out across
+many different things and the cost of processing it does not go up nearly as quickly as it
+would if you were trying to buy one single supercomputer.
+What we're trying to do in the Bitcoin space is to offload as much of the data processing
+onto other networks or specifically if we're talking about lightning network, we're trying
+to create layers of other networks on top of Bitcoin where they are leveraging the security
+of the Bitcoin blockchain, but they are doing most of the data processing off of the actual
+chain and doing it in a more private way so that only the minimum number of participants
+even need to know about it in the first place.
+And the way that I've described this is it's actually very similar to the internet itself
+and the way that the internet was scaled where the internet is actually a seven layer stack
+of technologies and the very lowest layer of the internet is called ethernet.
+It's a very dumb pipe network basically where you put data onto the wire and it goes out
+and gets propagated to everyone else on your local network.
+And this is really the way that Bitcoin works where you put data onto the Bitcoin network,
+it gets propagated out to all of the other nodes, they all have to process it, validate
+it and relay it.
+And of course, this does not scale like if the internet worked like that, then you and
+I would not be able to have this conversation right now because everyone else who was having
+a conversation on the internet would also have to send their data through our computers
+and our computers would have to process it and relay it and whatever.
+And there's just not enough computational power to do that.
+So how do we make the internet be able to do these things?
+Well, we build other layers on top of it, which include layers like TCP IP, which route
+the data through the minimum number of other participants on the network.
+And this creates a much more efficient way of sending data around because we're able
+to limit the hardware requirements of who needs to process it.
+And it's the same thing with the lightning network, where when we want to send a transaction
+on the lightning network, instead of broadcasting it to everyone on the lightning network, we
+actually use routing and pathfinding to find the minimum number of lightning nodes that
+are necessary to actually do the data passing between one another.
+And so I think it's a fairly tried and true way of scaling distributed, decentralized
+permissionless networks, but of course it has its own interesting new quirks that are
+providing plenty of unique challenges.
+Of course, I think that's anything with the developing technology there.
+I think it's interesting because from my understanding, the main argument is that at some point in
+time, the block sizes are going to get full or it's going to be, as you mentioned, driving
+up the price to actually make these transactions occur on chain.
+That's kind of where the huge division happened between Segwit and lightning network.
+Is that correct?
+Segwit is actually a technology that was implemented on Bitcoin and helped enable the lightning
+network.
+It also helped enable a little bit of on-chain increase of capacity, but only about double
+the amount, which is still pretty low, going from maybe seven transactions per second to
+like 15.
+Of course, there's many variables that take place that can change that.
+And even talking about transaction throughput on these networks is a complicated thing because
+in Bitcoin, it's not necessarily that one transaction is just one person to one other
+person.
+A single transaction could be from one entity to a thousand other entities.
+It just depends on what data you're actually looking at.
+And of course, when we're talking about the scalability of off-chain protocols like lightning,
+then the privacy features that are a part of these protocols actually make it so difficult
+that you can't even really know how many transactions are happening on those networks.
+You can only make some even rougher educated guesses.
+But I would say that the primary contention between what some people call small blockers
+versus big blockers or on-chain scaling proponents versus off-chain scaling proponents is an
+argument between the cost and the people who are proponents of just putting more data on
+the blockchain.
+They tend to prioritize a low cost of transacting.
+And by that, I mean a low minor fee that is attached to a transaction.
+They want there to be a very good guarantee that if you put a transaction out onto the
+network with the minimum minor fee that it will get confirmed basically in the next block.
+Now the trade off to this is that you end up creating nearly unlimited block space and
+somebody has to pay for that block space because somebody has to process all those transactions,
+validate them, store them, relay them, and ultimately it means that if you're providing
+practically free block space, people are going to use it.
+This is basically a common good.
+You can end up suffering from a tragedy of the commons where people put really silly
+things like entire movies on the blockchain or something like that.
+We've seen this happen on some of the other Bitcoin forks where people are just putting
+a ton of data on there.
+And the result is that it makes it impractical for the average enthusiast to run a fully
+validating node on those networks.
+The storage requirements and bandwidth and computation requirements will just go through
+the roof.
+The flip side of this, like the people like myself who have spent many years running nodes
+on these networks, we tend to prioritize having a low cost of validating the state of the
+entire network, basically a lower cost of storing and validating and relaying all of
+that blockchain data.
+And this is kind of a more conservative position because the trade off is that we're not entirely
+sure what the cost of transacting will be.
+We only know where we're setting these limits of how much data can be processed by the network.
+And the general assumption is that if too many people start putting a lot of data on
+there, it creates a market for the transaction fees.
+And ultimately, those fees will fluctuate.
+They may even go pretty crazy for periods of time.
+I think we've seen short periods of time where fees are in the tens of dollars for a transaction.
+And what that does is it economically incentivizes people to be more judicious about their use
+of block space.
+And ultimately, you know, the more valuable types of economic transactions will be the
+ones that get put on the blockchain.
+The response to this and the fact that it could potentially make it uneconomic for people
+to send small amounts of value to each other is what led to the creation of lightning network
+and off chain protocols.
+Because then you can create a transaction on the blockchain to essentially anchor into
+it and then send basically as many transactions as quickly as your computer can process them
+for a negligible amount of fee on this other network because it's not being processed by
+everyone on the network anymore.
+And what we're seeing on lightning is that you're able to make transactions more in the
+range of like one satoshi fee as opposed to many thousands of satoshis of fees for transacting
+on the blockchain.
+My understanding of it is kind of like a private channel.
+So if me and you wanted to transact, we would open up a channel, we would upload a certain
+amount of Bitcoin to the network or upload it into the channel.
+And then we can transact as many times as we want until one of us wants to settle out.
+And at that point, the records will get reconciled and uploaded onto the blockchain.
+Is that correct?
+Yeah, pretty much.
+I mean, you can think of the blockchain itself as being the record of truth, the the sort
+of the judge, jury and executioner for what has actually happened.
+So you can engage in these other private transactions off the chain.
+But what you're really doing is you're just exchanging real valid Bitcoin transactions
+privately between different parties, the parties that are operating these channels.
+And at any given time, you can just take one, you can take like the most recent of those
+transactions and post it to the Bitcoin network and and settle out as you were saying, there
+is, of course, a lot more game theory involved to cover various edge cases and and to improve
+the robustness of of being able to get your money back and make sure that nobody is cheating
+you privately.
+But that that is the long and short of it is that you're exchanging perfectly valid
+Bitcoin transactions, you're just choosing to defer the posting of them to the entire
+network because you know that you'll be able to transact a lot faster and save a lot of
+money on fees, the longer you can defer settling onto the chain.
+Thanks for clarifying that for me.
+The one piece that I really don't understand too much is I guess the aspect of watch towers.
+They're supposed to be the players in the space or in the network that are essentially
+making sure that there's no bad actors, correct?
+Yes and no.
+They're not the only ones doing that.
+There are a number of trade offs with lightning that that have to be made in order to get
+this you know, higher speeds and lower transactions and lightning from a pure like theoretical
+security model is less secure than a transacting Bitcoin purely on chain like you can never
+make a protocol that is more secure than the base protocol that it is reliant upon.
+Now one of the trade offs is that when you're operating these lightning wallets, you are
+required to be more vigilant.
+Because like I said, what you're doing is you're passing Bitcoin transactions privately
+between different parties.
+And therefore you're creating the potential for situations where a channel counterparty
+may try to cheat you by posting an old version of a Bitcoin transaction where they had more
+money on their side of the channel than they have in the more recent version.
+And the way that you protect against this is that when you're updating your channel
+state and you're basically creating new private Bitcoin transactions, you're actually signing
+a variety of different transactions, some of which are what are called, I believe it's
+like recovery transactions or clawback transactions, where if your counterparty tries to cheat
+you by posting an old invalid transaction that would give them more money, you can actually
+take all of the money away from them because they are required to have already signed a
+transaction that that spends those outputs and sends them back to you.
+But of course, in order to be able to take advantage of that, you have to be online and
+listening for them to potentially try to cheat you by posting that invalid transaction.
+And if you're not online, then they could post that transaction.
+And if enough time goes by, there are various time locks involved.
+But if enough time goes by, then you would not be able to claw that money back.
+And so what the watchtowers are doing is that they can listen on your behalf.
+I would say, you know, preferably you should be online listening 24 seven, you know, if
+you have your own computer that is running your lightning software, you can essentially
+be your own watchtower.
+But if for some reason you're only using a mobile wallet, and you're not necessarily
+going to be online all the time, then you can actually delegate responsibility to an
+arbitrary number of third party watchtowers and you can incentivize them to do this by
+offering them fees, you know, to say, you know, if you save me from being defrauded,
+then I'll pay you, you know, some small fee as a result of that.
+And so this is all just another way of trying to improve the robustness of the network against
+various adversaries.
+And watchtowers are still in the very early stages.
+I think the first real like production ready code for it just got merged recently.
+And it may they may have gone out in the most recent L and D release past week.
+But it's it's so early that it's not even something that I've played around with yet.
+So what do you think the major hurdles are for the lightning network right now?
+And how long do you think it's going to be until it's going to be user friendly?
+The fun thing about, you know, asking for timelines on any of these types of networks
+is it's tricky because the work is so decentralized.
+You know, there are many different teams that are working on different aspects of the network.
+And so, you know, at CASA, we have a team of engineers that are working on several lightning
+related products.
+But you know, we are not lightning protocol engineers, we are reliant upon changes coming
+from the the lightning labs, folks, because we are building software on top of their software.
+And as a result, you know, I don't know exactly what the timelines are going to be for for
+all the things that they're trying to work on.
+I'm only really concerned with what we are able to do right now.
+And then as more functionality comes from the lightning developers, you know, we will
+try to make that as user friendly as possible for the people that are on our products.
+So it's it's one of those things where software is never done.
+There's no magic threshold to be crossed, where, you know, suddenly we will be mainstream
+adoption ready.
+I think that, you know, we have made great strides even over the past year.
+There will be plenty of challenges ahead, not only on the usability side, but also on
+the understanding of how the liquidity on the lightning network even operates.
+That's one of the bigger unknowns.
+And we're going to be playing around with a number of different ways to try to onboard
+users onto the lightning network and then offer them a variety of different security
+models and kind of have to play it by ear, you know, see, see what things actually get
+people engaged.
+Because if you can't provide some real value for people to spend some time to learn how
+this system works and actually use it, then it's going to be pretty much relegated to
+the, you know, techie enthusiast types who are interested in it more for like ideological
+reasons.
+So I think that it's not just about the software.
+It's also about, you know, what are the different use cases that are going to come along, you
+know, things like try lolly, for example, is a interesting, you know, cash back, but
+in Bitcoin type of of user experience, you know, stuff like that, where we can actually
+incentivize people to use these networks.
+That's also going to be an important piece of getting them into the door.
+That's interesting.
+So can you talk a little bit more about the liquidity issue that you were just mentioning?
+Yeah, so the way that the the lightning network works, you know, is that you are opening channels
+with different providers.
+And these channels have certain amounts of value in them.
+And you know, there will be a certain amount of value on one end of the channel and a certain
+amount on the other end.
+And when you're quote unquote, sending money, all you're really doing is you're updating
+the values on each end of the channel, you know, subtract x, y, y, y, y, y, y, y, y,
+x from one end and add x to the other end.
+Now, this gets really complicated when you're sending through routes that are many different
+hops, it creates a more complicated routing problem of you, you know, having to find a
+path where there's enough liquidity to be pushed all the way through that path to make
+that full payment.
+One way that this is being addressed is through something called atomic multipath routing,
+which will actually be able to split up the payment across, I don't even know if there's
+a limit, but an arbitrary number of different paths, so that you don't necessarily need
+to have one single path with all the liquidity, but can instead branch out through many and
+then reconverge from a variety of different kind of angles of attack with the net within
+the network to your final target.
+But then that's kind of like the micro scale liquidity problems.
+I think there's also going to be more macro level issues that need to be dealt with.
+Interestingly enough, I spoke or I wrote about these in a coin desk article over three years
+ago, maybe even maybe even four years ago now, where I talked about the liquidity challenges
+that I felt were going to be needed to address.
+And I'm sure there will be different types of liquidity attacks that could happen where,
+you know, you try to push too much value from like one portion of the network to another
+portion of the network.
+Because if the channels get too imbalanced, you know, if all of the value gets pushed
+from one side of the channel to another side of the channel, then it effectively becomes
+unusable in one direction.
+So then if you want that channel to be usable for sending value in both directions, you
+need to figure out how can I rebalance the liquidity inside of this channel.
+There has been some work done on this already.
+There are there's at least one piece of open software that I'm aware of that is actively
+doing channel rebalance logic.
+I'm aware of one other team that is working on that because they presented at Scaling
+Bitcoin in Tokyo.
+And then there are other functionalities that are being released.
+Something called loop out was released by lightning labs recently, which is a way to
+allow you to rebalance channels, I guess, with on chain transactions.
+And then I also expect that this issue is going to get more interesting when we start
+seeing both dual funded channels become a thing, which those, as far as I'm aware, still
+are theoretical and none of the software supports them yet.
+And also, there are folks I think it's a block stream with their L2 software is working on
+multi party channel management, which basically means, you know, the ability to have 10s if
+not hundreds of people or entities that share a single channel.
+So I mean, this is all going to get very complicated.
+But these protocols and I mean, networking protocols in general are complicated.
+And so you know, if the average person is having to worry about all of this, then we
+will have failed, but I don't think that's the way that it's going to go.
+Almost nobody has podcasts these days where they talk about the intricacies of HTTP two,
+which was finalized, I think, just in the past year, all of these various networking
+technologies, they just work under the hood.
+And they get abstracted away by many layers of software to the point that all an end user
+is doing is pointing and clicking and you're following instructions on their screen.
+So while people like myself are very worried about all of the intricacies of this, because
+we're basically building the infrastructure for what we hope to eventually become a mainstream
+usable system.
+It's not something that the end user is going to have to worry about.
+And thankfully, we have very intelligent people like you to build the infrastructure for people
+like myself that aren't all that technical.
+I think working on that, it's going to be huge to make it easier for people like myself.
+But I think that's a good segue into the second issue that you mentioned before was security.
+And that's your main focus over at CASA right now, correct?
+Yeah, it's fairly evenly balanced between our different products.
+I mean, we have two main products, the first one, the original one that we were working
+on when I joined is a multi signature key management product, which is trying to get
+people to basically have better than bank level security and robustness on their private
+keys in a very user friendly like mobile apps style interface.
+And then of course, we also have our lightning product sort of Bitcoin light lightning node
+in a box plug and play product, and then we're building a few other things around that.
+But you know, the all of the the lightning related stuff is still fairly experimental.
+It's still fairly reckless to be using like we don't recommend anyone put substantial
+amounts of value into lightning software at this point.
+But you need to be able to secure your larger amount of wealth that you have in Bitcoin.
+If you want to be able to take advantage of these things in the future, you know, otherwise
+you, well, you're really more likely to just lose access to it than even you are to have
+someone hack into your computer and steal your money from you.
+So we're we're trying to build a system that is robust enough that you know, people don't
+have to do all of these really complicated IT data practices to continually ensure that
+like the integrity of their backup systems are are still functional and that you know,
+if they run into some sort of catastrophe that it won't result in them losing access
+to all their private keys.
+And that's the cost of key master and the cost of node respectively, correct?
+Yes.
+So the the key master, we have a couple of different levels or tiers on that are sort
+of premium solution.
+The first one that we came out with is a three out of five multi SIG.
+And then just in the past month or so, we've started to announce new tiers with two of
+three multi SIG for the masses, if you will.
+And that's going to get paired with anyone who's also buying a node.
+But the three of five multi SIG is the product that I think kind of stands in a class on
+its own, because we've created a system where the user has four out of aha.
+Let's see, my problem is that I was looking at my other thing here that I was recording
+on.
+You were asking about the key master, right?
+All right.
+So our key master is essentially a private key management solution.
+And we have a couple of different tiers on the key master, the flagship product, the
+one that we first came out with a year or so ago is a three out of five multi SIG.
+And this is a setup where the user has one key on their mobile device, and then three
+keys on geographically separated hardware devices like treasures and ledgers.
+We support off the shelf hardware, we're not trying to be like a hardware security company.
+And then the last key is held by CASA offline as a disaster recovery scenario.
+But what we're trying to do to make this a more user friendly solution is a couple of
+different things.
+First of all, we totally got rid of the need for people to store their recovery seed phrases.
+We believe that that's a very user unfriendly thing that very few users understand how to
+properly secure and back up those seed phrases.
+And those seed phrases are essentially all of your private keys.
+And so it's kind of weird that as a ecosystem, we have developed really excellent hardware
+for securing private keys.
+But if you go by a treasurer ledger, the first thing it does is it shows you the seed phrase
+and it says, you know, write this down and keep it safe.
+And there's just like an iceberg of security and data practice information that is laying
+underneath those simple words of, you know, keep it safe.
+And we think it's unreasonable to expect the average person to really understand everything
+that is involved in that.
+And so as a result, we decided to try to get rid of the need for seed phrases.
+And the way that we've done that is that, like I said, we have these multisig wallet
+products where if you lose one of your devices or really if anything happens to one of your
+devices and you can no longer access it, we have actually built the key rotation functionality
+into the mobile app itself.
+So all you have to do is go in and click on that device and say, Hey, I need to replace
+this device, you go buy a new treasurer ledger, what have you, and plug it in and we walk
+you through the basically recreation of that key set and creation of a transaction to rotate
+you over to the new key set.
+And then you're back at full integrity in a matter of minutes without having to go around
+and like try to find your seed phrases and hope that they haven't been lost and all this
+other stuff.
+It's just a more flexible and dynamic way of approaching multisig security.
+And so, you know, there's a three of five product.
+We've also got the two of three products that we announced recently, it's going to be more
+available to the masses at a lower cost where I think anyone who buys a node actually will
+get that gold level membership as well.
+And so what we're trying to do is offer a product that we want it to be, you know, one
+of the most user friendly on the market, but we also want to be able to provide a level
+of service that is not really seen in the crypto security space.
+And merging that all together with a more like full fledged suite of products where,
+you know, the node is also becoming a part of this whole self sovereignty package is
+that we want people to be able to have a level of independence where they feel comfortable.
+They are in full control of their assets.
+But if something does go wrong, they can reach out to us and get some professional services
+to help them out, but not in a way where we actually have any influencer or control over
+their assets.
+Can you talk a little bit more about the node and what a node is and why it's so important?
+So a node or more specifically a full node or fully validating node is, in my opinion,
+one of the most important aspects of these decentralized distributed networks.
+It really plays into both the security of the individual that's using the network and
+the security of the network as a whole.
+You could even make an argument that it has a lot to do with the quote unquote governance
+or lack thereof within these networks.
+Essentially what it means is that we have created a protocol and this protocol allows
+us to talk to each other and say, Hey, I'm going to make an update to this ledger and
+I'm going to move this value from one address to another address.
+But there's a whole lot of stuff going on underneath that various rules and validations.
+And there are different levels of validation that you as an end user can be participating
+in on these networks.
+You could be using these networks with essentially no validation whatsoever by using a like custodial
+web based wallet, for example, where all you're really doing is manipulating IOUs in somebody
+else's database and you're trusting that they're not going to do anything bad or screw up.
+There's a level of validation on the networks called SPV or simplified payment verification
+where you can be running software on your computer or on your mobile phone, whatever
+that does reach out to the nodes on this network.
+And all it really does is it asks for a very simple cryptographic proof of inclusion.
+It looks for certain addresses in the blockchain and then asks nodes to prove that a transaction
+that was related to one of those addresses actually happened in some specific block.
+This is basically a proof of existence that that thing happened, but you're still susceptible
+to things such as a node lying by omission and just not giving you any proof or anything.
+You're also susceptible to the fact that there are dozens if not hundreds of other rules
+within the protocol that could be broken and the full node could lie to you about that.
+The highest level of security and validation on these networks is the full node or the
+fully validating node, and that is where you're running a piece of software, preferably 24-7-365,
+that is listening to all the transactions and blocks on the network and for every piece
+of data that it gets, it validates the entirety of the rule set of the protocol and decides
+whether or not to accept or reject that transaction, that block, what have you.
+And when you're running a fully validating node, you are no longer having to trust anyone
+else on the network.
+I have a very lengthy blog post from a few years ago on CoinDesk entitled Bitcoin Security
+Model where I go into all the details around this, but the security model is essentially
+such that you only need to have one single honest peer talking to you on the network.
+Even if all of the other peers are lying to you, as long as you have one honest peer giving
+you the real data, you can validate that that's the real data and everything else is a lie.
+As far as I'm aware, this is one of the strongest levels of security on the internet in general
+that you can get with regard to not being lied to by anyone.
+And so if you're running a fully validating node, then you can validate that the money
+that you're receiving is real, you're not being defrauded with fake transactions or
+double-span transactions or what have you.
+But you can also participate in a way in the governance of the network of saying, I'm running
+this rule set and if you or other people on the network decide you want to change the
+rules, then I'm not going to follow along with your rule changes unless I explicitly
+agree to them and I change the software that I'm running to basically change the rules
+that I'm validating.
+And this, in my opinion, is also a fascinating thing because it inverts traditional governance.
+Traditional governance is hierarchical, you know, top-down command and control where you
+have a small number of people who are making the decisions and they may be dictators or
+autocrats, they may be democratically elected, they may be founders or owners of a company
+or on the board or whatever, it doesn't really matter.
+Pretty much all traditional governance concentrates power in the hands of a few people because
+that's a more efficient and effective way to get things done.
+But now this is flipping that all on its head and we have bottom-up governance where it's
+not democracy.
+There's no way for anyone or even any set of entities on the network to compel anyone
+else on the network to do anything.
+It is, I believe, the purest form of anarchy where every single individual gets to decide
+for themselves what rules they want to agree to and what they want the governance of the
+network to be.
+And so that has resulted in some very fascinating dramas and forks and other governance debates
+over the years, but it's just one other interesting aspect of all this network and the evolution
+of these protocols and I do believe that it is very important that as many people as possible
+have the ability to run these nodes because it will make it more difficult for any centralization
+of power to try to change the network in a way that most people disagree with.
+That was really insightful.
+So you guys are trying to essentially make the CASA node so it's more like a plug and
+play type thing and it's very user-friendly so people have the sovereignty and can protect
+themselves.
+Yes.
+So when you have the CASA node, you're running a fully validating Bitcoin node and then you're
+also running a Lightning node side by side and the Lightning node is talking to the Bitcoin
+node.
+That is increasing the security of your Lightning wallet and all of the things that you're doing
+on the Lightning network.
+You guys also have a health check on the website.
+Yeah, I believe that's just like our general security guidance that we're doing.
+Okay, cool.
+I'm interested.
+I know we're running out of time.
+I'm just interested to get your opinion on what do you think that the main driver of
+Bitcoin adoption will be?
+I have speculated for a while now because I spent my first several years in the Bitcoin
+space, kind of evangelizing it to all my friends and family and it was only probably single
+digit percentages of people who actually believed in me or thought I wasn't completely insane
+and listened to me and bought into the ideology behind it.
+As a result of that, I stopped really trying to reach out to people who are comfortable
+in first world countries that have pretty decent financial infrastructure.
+I suspect that the people who will be most incentivized to adopt these technologies will
+be the ones who do not have access to traditional banking infrastructure.
+Despite the fact that we have seen many failures in traditional banking infrastructure.
+In my experience, not many people give it a second thought.
+It's almost like the people like myself who are worried about that or, you know, we're
+worried about long term inflation or, you know, the things that central banks may do.
+We are generally dismissed as being overly paranoid, at least by the other folks in the
+first world countries that I've talked into.
+But the people who are in countries that actually suffer from hyperinflation or who have very
+limited access to banking networks, the disparity is so great for them that I think that it's
+sufficient incentive for them to adopt this new technology that may be too challenging
+or too much of a learning curve for someone in the first world.
+But for someone who doesn't have the ability to send or store money very well at all, I
+think that they would be more likely to learn how this new technology works and actually
+try it out and benefit from it.
+So it would be very interesting to see if that is the way that it plays out where basically
+third world countries end up with faster adoption than first world countries.
+But it depends on efforts from a lot of different people because for whatever reason, I think
+technology in general is still very first world and English focused.
+So I'm very happy whenever I see new efforts on the translation side of trying to make
+things more clarified for people who don't speak English.
+Cool.
+What are you looking forward to the most?
+What excites you the most about the space right now?
+Well we've got a number of interesting things happening both on the privacy front and the
+scalability front.
+And interestingly enough, they actually tend to go hand in hand.
+Things like aggregate signatures, for example, will continue to decrease the size of on-chain
+transactions but also increase the privacy by essentially obscuring who the participants
+and the transactions are in the first place.
+And that level of scalability can then even be additionally applied to lightning channels
+themselves.
+So it all goes hand in hand.
+I am definitely interested in seeing improved privacy on the Bitcoin network because I think
+it's been lagging behind for a number of years and it actually ends up affecting the fungibility
+of the money itself, which is one of the most important properties.
+So until we get to the point where it's not even possible for someone to look at a Bitcoin
+transaction and say, oh, you know, that money came from these addresses or these entities
+with these wallet clusters and we still have a fair amount of work to do to make Bitcoin
+more fungible.
+What are some of the myths or misconceptions around Bitcoin or blockchain specifically
+that you'd want to help clear up?
+There's so many.
+I mean, it's hard to even keep track of which ones are the most popular these days.
+I was actually at a conference recently, it was a traditional financial conference, and
+I was asked about some things of like, well, Warren Buffett and Charlie Munger say things
+like Bitcoin is rat poison and Bitcoin has lots of criminals and scam artists and whatnot.
+And I actually tend to agree with some of those statements in the sense that Bitcoin
+is rat poison for anyone who wants to control how money works.
+And it does attract a lot of scam artists.
+Any new technology tends to attract criminals and scam artists because they know that law
+enforcement hasn't yet caught up to the way that the technology works.
+We have already seen various cases come out where law enforcement is showing that they
+are catching up with how the technology works and are able to incorporate different tools
+into their investigations where looking at like the analysis of funds flow on Bitcoin,
+for example, is still only one part of the investigation.
+I don't think that it is a single conclusive thing in and of itself.
+I mean, any money or at least any sound money that is censorship resistant is going to be
+used for illegal things.
+And of course, cash is the best example of that.
+And it's probably controversial, but I say that the way that we know that Bitcoin is
+working well is if it is used for more illegal things.
+If anything, I think despite all of the hype around like terrorists using crypto for funding,
+I think there have been several reports that have shown that that's generally not true,
+that they much prefer to use cash or gold or, you know, things that are even less traceable
+than Bitcoin is.
+You recently tweeted that you have an article coming out probably around next week or so
+regarding Craig Wright.
+Is it safe to say that you don't believe he's the real Satoshi?
+It is a very long and complicated story, and I'm not sure that many people even know everything.
+Even I only still have theories around Craig's whole life and what led him to get to where
+he is today.
+I have not really found any of the attributes of Satoshi that I would expect when I look
+into the things that he's done or what he's said.
+I'm not even sure that he knows how to write very much code or he really has the level
+of expertise that he claims to have from all of his academic credentials.
+There's just a lot of really questionable things in his history that I have found.
+And while my article will not have all of the questionable things, what I really tried
+to focus on was a lot of the contradictions.
+And I think that there is pretty conclusive evidence that he has made a lot of things
+up over the years.
+And so for me, it's less about whether or not he is Satoshi or was connected to the
+creators of Bitcoin.
+It's more about whether or not he's a credible person.
+Gotcha.
+Well, I'll definitely make sure to link to that article in the show notes when it does
+come out.
+Final question, what's one piece of advice that you'd give to someone who's just starting
+out and looking to invest in the space?
+Well, that it is still the Wild West.
+There are a lot of things that can go wrong if you get in over your head.
+I would suspect that almost everyone who has been in the space long enough has lost some
+money at one point or another due to various screw ups.
+I have plenty of incidents that I could come up with myself off the top of my head of times
+that I have screwed up.
+So it's really just that you have to be careful.
+When people ask me whether or not they should invest in Bitcoin, I tell them that if they
+have to ask, then the answer is no.
+What I basically mean is that you should invest in education yourself.
+I have some pretty good educational resources on my website that you can easily spend months
+going through, and it's not until you have convinced yourself that it is a system worth
+supporting that you should actually put any money into it.
+So if the listeners want to learn a little bit more about the resources that you have
+or even the cost of KeyMaster and Node, how can they do so?
+So my educational resources are at bitcoin.page and lightning.how.
+And then CASA's website is keys.casa.
+That's keys.casa.
+Awesome.
+Again, Jameson, thank you so much for taking the time to be on the show.
+We'll have to do this again sometime soon just to catch up, see what else you're working
+on over at CASA and maybe some other just general Bitcoin questions.
+Sounds good.
+Thanks for having me.
+That's all for this episode.
+If you haven't already, please subscribe, share, and leave a five-star review for the
+show.
+Visit www.dyorpodcast.com for access to previous episodes and other useful content that will
+help you along your cryptocurrency journey.
+See you in the next episode.

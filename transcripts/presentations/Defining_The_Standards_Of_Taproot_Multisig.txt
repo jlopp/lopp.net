@@ -1,0 +1,544 @@
+We're here to talk about defining the standards of Taproot and Multisig.
+Why don't we start by doing a quick introduction for everybody across the stage.
+Let's start with Keith.
+All right.
+My name is Keith Mukai.
+I'm a contributor to the SeedSigner DIY hardware wallet and the Spectre desktop open source
+Bitcoin wallet software.
+I'm Jamison Lopp, co-founder and CTO of CASA.
+We help people be their own bank using multi-signature aspects of the protocol.
+Hello, everybody.
+I'm Stik.
+I'm co-founder of Satoshi Labs, the creators of Trezor.
+And I occasionally contribute to Bitcoin Core as well.
+Hi.
+I'm Polly.
+I work at Lightning Labs on infrastructure stuff.
+And I'm Afshin.
+I'm the VP of engineering at Unchain Capital, a collaborative custody financial services
+firm.
+All right.
+So the reason we're here today is that all of us separately have an individual need for
+Multisig in the products that we offer to customers and to software users.
+But all of our needs are a little bit different.
+And before Taproot, there was a pretty standard way for implementing Multisig using OPCheck
+Multisig and OPCheck Multisig Verify.
+Now that BIP 340, 341, 342 have been activated and Taproot and Tapscript are live, there's
+a sort of new way of doing things.
+Actually, there's several new ways of doing things.
+And there's no real hard standard to find.
+There's a bunch of different recommended paths.
+And as all of us were evaluating which path to go forward with, each of us encountered
+a different set of tradeoffs.
+And we want to talk through the tradeoffs that we experienced, that we ran into, and
+how we all came to a sort of consensus, if you will, on the way forward for implementing
+Multisig on Taproot in the absence of a standard.
+Actually, let's talk about that for a bit, the absence of a standard.
+There's, like I said, three BIPs, 340, 341, 342, that govern the Taproot and Tapscript
+upgrade.
+There's nothing in there per se that draws a line in the sense that this is the Taproot
+way of implementing Multisig.
+Do you think that was an error or an omission?
+Does it make sense to have a BIP?
+Does it not make sense to have a BIP?
+What are the pros and cons there?
+Keith?
+The only way to go is the BIP approach is for when everyone needs to agree for this
+thing to work.
+But in the Taproot world, we're adding so much flexibility that it doesn't make sense
+to say this is the one and only or one of the three only ways that you can go.
+You know, without getting too technical, it's like the old world was it's a train.
+You get on at a stop, you get off at a stop, but it's on rails.
+And we all know where it's going and how it works.
+And now in the Taproot world, it's more like if you flip to the public transit tab of Google
+Maps, you know, and it's like, oh, you can walk a mile, take bus 10, hop on this train,
+and get to your destination, or you can ride a bike three miles, get on this bus.
+There's so many different ways that you can go.
+And there's no way for any of us or the core developers to say this is the one way that
+you need to go.
+And so all we can do is figure out, you know, for each of our individual use cases, what's
+the best way to go and make sure that we don't lock people in to a dead end path they can't
+escape from.
+I mean, this is the reason why we're here, I think, is because we're seeing parallels,
+at least I am, with our users where if you were around and you were building during the
+SegWit activation period, there was a rallying cry from a lot of users like, win SegWit,
+win SegWit, win SegWit, win SegWit, and that was fine because I've seen developer teams
+at multiple different multisig companies implement SegWit version of multisig with a handful
+of developers in maybe one or two weeks.
+And it's straightforward.
+Really, it's like from a script perspective, it's pretty much the same as doing old school
+legacy P2SH.
+And so now what we're seeing, of course, is users with the rallying cry, win Taproot,
+win Taproot, win Taproot, and unfortunately it's just not the same straightforward path
+as we'll get into with a deeper dive here.
+This additional flexibility that Taproot gives us is great, but whenever you have additional
+flexibility, take, for example, extreme example of like EVM smart contract style languages,
+that extreme level of flexibility creates a huge design space, and when you have a huge
+design space, that means there's also going to be a lot of foot guns and ways to implement
+things poorly.
+So we want to prevent people from running into too many pitfalls.
+Right.
+I think you captured that very nicely, Keith, and why I'm here is that we had this discussion
+earlier with Jameson and other people from ancient capital that we want to get into the
+room together and try to figure out what are the best options for everybody.
+I mean, the organizations that need MoptiSeq for their businesses to thrive and other of
+its creators so they can be used in this complex setup.
+It wasn't very straightforward to see which options to choose, and what I really like
+about Bitcoin in general, that there is this, not this approach of design by committee and
+everybody's just, you know, using what the committee came up with, but there are these
+discussions, and one of these discussions is happening right now.
+So, yeah.
+Yeah, and the result will probably be just a list of new BIPs and proposals, and yeah,
+so it will just grow.
+Yeah, and I think I'll add to Keith's statement.
+It would be nice to have a BIP in theory, in practice, just the process of going through
+drafting a BIP and getting consensus from all the different stakeholders.
+We've taken a tremendous amount of time with no clear path forward.
+I think any BIP that we would all come together on, even if we were all in unanimous agreement,
+would be status informational.
+There are several different ways to skin this cat, and I want to dive into that now, actually.
+I'm thinking first off the trade-offs that Jameson and you must have been thinking through
+at CASA versus Ali with Lightning.
+For those of you, I mean, it's easy to think of Lightning as payment channels in a gossip
+network, but at its heart, it's multisig.
+It's a construct between yourself and your counterparty.
+CASA is the same way.
+You've got your customers and you've got CASA.
+I'm interested in talking through the different trade-offs that you encountered and the migration
+path, because you both have existing products and existing customers using multisig.
+How do you envision the path forward for them and enabling tap root for your users?
+Yeah, so, you know, Lightning, you're essentially getting a two-of-two multisig smart contract,
+and these are generally between two different parties, obviously.
+One party on each end of the channel, and it's a highly interactive type of protocol.
+You're generally expecting the other end of that channel to be available and communicative,
+and so, you know, you can send messages back and forth with each other.
+However, in a vaulting solution, you know, something that's more cold storage where you're
+going for an extreme level of security at the expense of convenience, then you can't
+really have the same high level of interactivity.
+Basically, when you have more interactivity, that means you're probably going to have to
+be going back and forth and back and forth between either the different entities or just
+the different key holders in that particular vault.
+So, one example of a problem that we would run into with interactivity and a larger multisig
+quorum, say something like a three out of five or higher, is you may not know when you
+start to sign a given transaction which of the other keys are going to be participating
+in that transaction.
+And if you don't know which keys are participating, then if you start going down one of the
+potential design paths for tap script, which is trying to be more efficient and more private
+and creating all of these other logical branches, you have to know exactly which one of those
+leafs, like all the way down that logical path you're going to be going because you
+need to be signing that data and all of the keys need to be signing that exact same data.
+So, if you change your mind after signing with two of the keys, now you're in a lot
+of trouble because you now have a partially signed transaction that's not going to become
+valid.
+You have to go back, start all over, and get that different tap script path and sign with
+however many keys that quorum requires.
+So, that's just one of the potential considerations, which it's not going to be a problem for
+something like lightning because if you have to start over again, it's not a big deal.
+We're talking milliseconds, maybe seconds, of lag time.
+Yeah, exactly, as you already mentioned, the situation is pretty given in lightning that
+you have these two parties that communicate anyway.
+They're supposed to be online to establish the channel.
+So, you can just add this nonce exchange, a few new messages, or maybe not even new
+messages, but just new data in existing messages and you can come up with music, multi-signature
+pretty easily.
+In fact, there are already quite concrete proposals out there, either mailing list posts
+or even pull requests to the Bolt.
+Oh, sorry.
+Yeah, okay.
+So, there are pull requests to the Bolt spec, and basically the decision to go with music
+tool was an easy one.
+So, there are a few places in lightning where this can be applied.
+The most obvious one is the two of two multisig for the funding transaction, but there are
+other signatures in the protocol for the gossip, for example, and also some of the revocation
+paths could be music tool set up.
+And there, I guess, the main goal is to get some additional privacy because you no longer
+have to reveal what keys were participating, and you also get a nice benefit in the size.
+So, for example, in gossip, there are currently four ECDSA signatures that could potentially
+be cut down to two or even a single one, depending on the use case.
+So, what I'm hearing from you, Jameson, is the liveness and availability and coordination
+issues made music not the preferred option for you, whereas since these aren't an issue
+necessarily for lightning counterparties, music made a bit more sense, right?
+Yes, exactly.
+I had a whole thing about how the other consideration went to music that hadn't been standardized
+yet, and this morning, a music tool draft dip was submitted, so that's out the window.
+I guess we'll have to review it after we get off the stage.
+Yeah, and that's basically how the lightning development stage looks like.
+It's basically waiting for music to be finalized, waiting for music to be implemented, and then,
+I guess, things will move forward from there, yeah.
+And I'm curious, Pablo and Keith, did music factor into your software development or hardware
+development plans at all, and from the start, did you decide to take a different route when
+you were evaluating things?
+Yeah, maybe I can start.
+We had this discussion with Jameson, and he already hinted at it, that the main problem
+with more complex schemes is interactivity, and the problem with the hardware wallet is
+usually offline, and it can be connected for a limited amount of time, and if something
+goes wrong with the setup, maybe you just change your mind and you want to use a different
+set, then you need to start again.
+And especially if your hardware wallets are not located in one location, but they are
+spread around the world, then this might become a problem.
+So the most straightforward option is to use the simplest OP check sync app using K of
+M keys, which is a straightforward upgrade from what we've been using earlier, and the
+other option is to use the second option described in the VIP 332 document, which describes how
+to use several K of K multisigs, but then you have to choose which K of K setup you
+want to use, and then there are a lot of user experience challenges, so if the setup is
+too complex, you need to present it in a way that the user understands what they are choosing
+from, and also, again, if you change your mind, you need to start from the beginning,
+and there are also ways how to use music, and there were other implementations of music
+that uses deterministic analysis, and this also was an option, but it seems the world
+is getting into music 2 option, which still can be used with hardware wallets, but under
+certain conditions, for example, if the hardware world is the last signer in the chain, so
+it sees everybody else commitments and signatures that it can participate, but that's not probably
+the use case for businesses like Casa, where somebody needs to start the chain of signatures,
+so yeah, these are the considerations.
+Well, I think at the end of the day, the hardware wallets are going to have to support all the
+options. We may be able to prioritize on the easiest, which is replicating the K of N world
+in the Tapscript world, but that's the least satisfying option, and that's just taking
+what we already have and just doing it a slightly different way, but not really getting any
+of the benefits that we were all excited about for Taproot.
+For seed signer, the goal is always optionality, so we don't have a single user in mind, we
+don't have a single use case in mind, and I think that's probably likely for all the
+hardware wallets, so while we will have to prioritize which approaches we support first,
+I think in the long road, we just have to support all of them, and there's no free lunch.
+If we want some of the benefits, there's going to be a part of the user experience that's
+just worse, just because of the nature of it.
+Between seed signer and Spectre wallet, with this discussion of picking the right K of
+K path for this option two, we could have the wallet software send all the paths that
+you participate in, and you just sign all those paths, but if that takes two minutes
+for your little $50 device to sign, and then on seed signer, you have to hold it up to
+the camera, because it communicates over QR codes, so if I need to show 500 QR codes back
+to my laptop, I'm going to get a tired shoulder, but if that's the way to do it, that's going
+to be the pain, but it will be up to the user to decide that level of pain is worth it for
+them.
+Then the same thing with music, where if your seeds are buried in different countries, and
+you need to do three rounds, I either get a lot of frequent flyer miles, or that's not
+the best use case for that approach.
+You touched on something there that I want to dig into, if you don't mind.
+Theoretically, seed signer and Trezor, they're both hardware wallet devices, hardware signing
+devices, but under the hood, you're running on top of a Raspberry X86, and you've got
+a PCB and a build materials to worry about.
+What's the difference between the software development lifecycle and hardware development
+lifecycle, and what impact did that have on your implementation of multisig on Taproot?
+At first, we thought that the CPU power might be the limiting factor, but it seems that's
+not really the case.
+We use USB communication, so we don't have to deal with the problems like you mentioned
+with the stability of the QR code transmission.
+That's why we can focus mostly on the usability side of things, how to present it on the computer.
+I got lost in the train of thought.
+Can you please repeat the question?
+Sure.
+Keith gets to run his code on X86 standard software.
+You actually have to get printed circuit boards and bake your code into silicon and deal with
+the supply chain that Keith doesn't have to worry about.
+I'm wondering about the tradeoffs that both of you had to deal with when choosing what
+method of multisig on Taproot to implement and the shift time between when you made the
+decision and getting it into the heads of your customers.
+Like I said, we initially thought that this might be an issue, but in the end, it turned
+out that that's an on issue.
+Even our processor that is maybe 10 times slower than the Raspberry Pi still have plenty
+of power to do that.
+This doesn't require an addition to the hardware itself.
+It's also just a firmware that music can just be implemented on top of the existing hardware
+then.
+Also, we have this advantage that we can ask for the data again and again and again.
+The memory limitation is probably not that big of an issue because we can stream the
+data, hash it, maybe compute the Merkle tree, and then if we need it again, then we ask
+for it again and compute the Merkle tree if we reserve the same data.
+So we can circumvent that problem by asking it again, which is not a problem since we
+are using fast connection.
+On the other hand, you at SeedSigner don't have the problem with RAM because you have
+plenty of RAM, so you have other things to worry about.
+Yeah, we're running on what used to be a $5 Raspberry Pi Zero, and now they're impossible
+to find in the market, so sky's the limit for what they cost on eBay now.
+But we're also looking to expand to alternate hardware profiles because if you can't source
+a Raspberry Pi Zero, you can't build a SeedSigner, so all the work I'm putting into it isn't
+helping anyone.
+And I don't think our approach to Taproot would affect our hardware choices.
+I think it's more that the hardware that we end up supporting will affect the user experience.
+And if you're a user that can only source a really weak chip that we support, then you'll
+just have a bad experience.
+You'll be waiting a long time for computation, but it'll work.
+And I think it's just, like I said, optionality.
+If you can buy the Cadillac processor, good for you.
+If you can't, it'll be spinning a little while longer.
+I guess kind of related to hardware, have you played around with or are you familiar
+with, like, what are the actual bandwidth limitations when it comes to the animated
+QR codes?
+I'm sure, like, the quality of the screen, the quality of the camera.
+I mean, a screen is only going to be able to refresh so often.
+Yeah.
+And it goes in two directions.
+So, so far, the Raspberry Pi camera has proven to be really good.
+So, in Spectre, for a big PSVT, it shows an animated QR code, and however many frames
+it takes, it reads in the animation.
+But to prepare for doing demos today, I printed out the QR code as a single static image,
+and so it's much bigger.
+You know, I don't even know how many, you know, QR blocks across it was.
+And the Raspberry Pi camera could still scan it in.
+You know, it was like a one of two spend to three recipients with change coming back
+and two self-transfers in this PSVT, and it could scan it.
+But then the problem is crappy laptop cameras.
+The built-in cameras are garbage.
+And so we hold up this little one-inch screen to the laptop camera, and, you know, people
+are just like trying to find the right focus distance.
+And before we had a brightness adjustment, the only way I could get my brother-in-law
+to scan the screen was to hold a pair of sunglasses in front of it to cut down on the glare,
+and that finally worked.
+I took a picture of that and tweeted that out as kind of a, at least we got it to work.
+I remember we had the same issue when we were trying to show the QR code on Trezor,
+that the contrast of OLED display is just so high that these crappy cameras,
+they just can't focus on it because everything is just so blurred.
+So one of the ways how to fix that is actually increase the brightness.
+So I assume we were doing the same thing.
+I mean, the solution was instead of rendering white and black QR codes, we render shades of gray and black,
+so that's a lower contrast.
+Oh, yeah, it's a similar approach, yeah.
+Yeah, so I mean, you know, multi-SIG is obviously more complex than single signature.
+A couple years ago, I did a number of tests on different hardware to see how well it could handle
+not only just multi-SIG, but like really, really absurdly large multi-SIG setups and transactions
+with many inputs and so on and so forth.
+And now what we're talking about today is just ramping up the complexity, you know,
+potentially even by orders of magnitude if people start to get more creative.
+So you can only imagine where we're going to start to see bottlenecks,
+where we're going to see parts of the user experience start to kind of crumble under, you know,
+larger data payloads, you know, more computational complexity.
+And it's actually kind of funny because in the grand scheme of things,
+we're still talking about fairly tiny Bitcoin transactions.
+Like compared to most other computing, you know, general Internet-related computing stuff,
+this is a drop in the bucket, but it's still, it's reliant upon so many other moving pieces
+that something is probably going to break.
+You just touched on something that I want to dig into with both you and Ali actually,
+which is that multi-SIG, one of the great benefits of it is that it provides users with peace of mind.
+You remove a single key from being a single point of failure.
+So the thing is, if you've got a working multi-SIG setup, if it's not broke, why fix it?
+I know a lot of your users are asking you, when Taproot?
+I'm sure you're asking yourself, why Taproot?
+And what's the path forward? How do you get from here to there?
+Let's talk through how you work through those decisions.
+Yeah. So, you know, we've been evaluating.
+And in the perfect world, our users would have access to using, you know,
+using and basically have aggregated signatures so that from an on-chain perspective,
+you would have the best level of privacy.
+You would also have the smallest on-chain footprint, which is also going to have lower transaction fees.
+You know, that aggregated signatures is like the Holy Grail, I think, for any multi-SIG type of setup.
+But because of some of the aforementioned reasons, we don't really see a straightforward path,
+at least in the near future, that is going to allow us to retain the same user experience
+and be able to add all of these other benefits.
+So, you know, we prioritize security, of course, above pretty much everything else.
+And then we're generally prioritizing user experience.
+And then, you know, the things like better privacy or smaller on-chain footprints,
+they're nice to have, but, you know, it's more important that people can be confident
+that their money is going to be there and is going to be accessible
+than that they might be able to save a little bit on fees
+or have, you know, better privacy against certain surveillance actors on the network.
+So I think it's most likely we're going to be going forward with the naive way of basically re-implementing
+the current M of N, you know, check SIG type of functionality just because of simplicity.
+And simplicity, you know, the KISS principle, keep it simple, stupid.
+That's how we prevent as many foot guns from getting introduced.
+And I, as a wallet engineer who have seen many people shoot themselves in the foot over the past decade,
+that is what I'm generally more afraid of than I am of various types of attacks
+and, you know, people stealing Bitcoin.
+Yeah, I actually have a huge respect for the challenge of doing that in a hardware wallet setup.
+So I see how much complexity that adds.
+So on the lightning side, it's comparatively easy.
+And as I mentioned before, the plan is more or less laid out.
+There are many, many steps to go to a fully taproot music, PTLC-enabled lightning network.
+But the main challenge there is probably that because there are so many steps,
+I indeed touched the same code so many times it will take a long time to get there.
+And these upgrade processes with compatibility, backward-forward compatibility,
+will just be a lot of effort.
+But the advantage is that the user experience doesn't really necessarily have to change
+because, as I said, the communication is already there between the peers.
+So the user basically gets free upgrade in terms of better privacy.
+You can't actually see the public keys anymore.
+Cheaper transactions because signatures are smaller and also less traffic on your node
+because, yeah, fewer signatures are sent on the Galsit network.
+But, yeah, to get there, it will be a multi-year journey
+and we'll probably learn a lot of things on the way
+and maybe something that we think now we'll do in a certain way, we'll do completely different
+because, yeah, we're just collecting experience with these new protocols.
+And, yeah, the design space with taproot and music, too, is so huge and large.
+And, yeah, I mean, that's why we're here.
+Fortunately, yeah, as I said in Lightning, the plan is more or less there
+and I just need to attack it and actually start implementing.
+That's a pretty exciting phase, to be honest.
+Yeah, I mean, I think in general you should expect that all Bitcoin development,
+not necessarily just protocol-level development, but even people building on top of it,
+they're going to take a measured and conservative approach
+because this is financial engineering.
+You should really approach it similar to something like aerospace engineering
+where it's a mission-critical system
+and it's more important that you are methodical in how you go forward evolving,
+whether it's the protocol or the wallet software or even other layers on top of that
+because one mistake can be catastrophic and we want to avoid catastrophe.
+Okay, I want to talk through how Powerball coordinated with everyone
+on different options for how multi-sig would be implemented on Trezor
+and what the pros and cons for each of us would be.
+But before we do that, you've raised some of the games that I'd like to dig in with everyone,
+which is foot guns, potential gotchas or booby traps with the new implementation.
+Was there anything that jumped out at you when you were reviewing the BIPS
+and talking to the standards that you were wary of or were concerned with,
+whether it's, let's say, seed phrase recovery or whether PSVTs and descriptors
+were adequate to handle the new multi-sig construct,
+anything at all that jumped out and said,
+hey, I have to think about this, there will be dragons here?
+Well, I gave a whole talk at MIT a few years ago,
+which I believe was focused on what I considered to be one of the bigger foot guns
+in the design space, which has to do with recovering wallets.
+More specifically, it has to do with how do we describe the spending conditions for a wallet.
+And I think everyone in the room is probably familiar that you have a seed phrase,
+you keep that backed up, and you can always recover from it.
+That's all you need, right?
+Maybe a derivation path, maybe a script type.
+But really, if you have the seed phrase, you should be okay.
+You should be able to figure out some of the other parameters
+and essentially even have to semi-brute force recovering your wallet.
+I've done that for countless people.
+It's not too difficult to do.
+However, if you start creating non-deterministic script locking conditions,
+by which I mean putting random or semi-random numbers or other data,
+the most specific example of this would be time lock related data into your scripts.
+How are you going to be able to recover that?
+It's no longer data that can be deterministically re-derived from a seed phrase
+or really anything else or at least nothing that we have a standard for.
+So wallet descriptors, I think, are a great path forward
+and a standard that I hope that all wallets will eventually adopt.
+I think only a handful of them currently support importing and exporting those descriptors.
+But wallet descriptors are not necessarily enough
+unless we all agree to only use the current wallet descriptor language
+and we never evolve it any further.
+So while we hear, I think, fairly often from customers asking for things like,
+can you help me time lock my coins?
+I want to do a 20-year trust or whatever,
+make sure that I'm never ever going to be able to be afraid and panic sell or anything like that.
+And it's an interesting idea.
+However, I think when you start analyzing it from a security perspective,
+it actually has a number of downsides.
+And one of those downsides is how do you recover those funds
+if you don't know the exact locking conditions?
+So maybe we even need another V2 of wallet descriptors
+or a way to describe semi-deterministic data.
+Maybe you could have some sort of script template that says,
+OK, I'm going to do time locks, but I'm going to minimize the design space.
+I'm going to minimize the potential values of those time locks
+so that you could kind of grind all of the possible values in a few seconds on a CPU
+and be able to find, I guess, the right path to recover your coins.
+But this is a whole potential area of exploration that I haven't really heard anybody even talking much about.
+Yeah, so first let me talk about how we implemented the protocol in Trezor.
+Obviously, if you want a hardware wallet, you want to connect it to a computer.
+And Trezor was created in 2013.
+And we came up with our own protocol because it was years before there was such things as wallet descriptors or PSBT.
+And part of the protocol was also multi-seq protocol, which worked out for us.
+But then the other hardware wallets came out, and they came up with their own protocols for single-seq and multi-seq.
+And for single-seq, it's probably not that official.
+But for multi-seq, you don't really want to have a multi-seq wallet that has to speak like four different languages
+if it wants to communicate with four different hardware wallets.
+So then when Andrew implemented PSBT to create Esperanto of these hardware wallet languages,
+and slowly it got improved by the PSBT version 2, which removed some of the flaws that PSBT version 1 had.
+And when the top route got activated, I just had this urge to talk with people at CASA and Ancient Capital.
+Let's get into the same room and try to figure out how to do multi-seq so everybody can use it.
+And we don't repeat the same mistakes that we did in the past that everybody invented their own protocol
+and their own ways how to use multi-seq.
+So that's when the discussion started last year.
+And we came up with the idea that already we have mentioned that first let's start with this naive way,
+then consider implementing K of K, but then you would need to share which subtree do you want to work with.
+And fortunately, PSBT version 2 has a way how to communicate and share that.
+And I think that's really the way forward.
+Of course, we would need to improve the scripted language as well.
+And there has been some unofficial extensions as well.
+But I think it really makes sense to have a lot of discussions in that area as well,
+because ultimately we are balancing this security, usability, and privacy things.
+And we cannot compromise on each other if we are going forward.
+I think that also that is a good example of why standards are helpful, at least from a developer standpoint.
+Any of us who are building wallets and also want to support as many of the hardware key management devices as possible,
+it was a lot more effort for our engineers to integrate the Trezor's own API and Ledger's own API and so on and so forth.
+And these days, with new hardware devices coming out that already support PSBT,
+that already support the animated, the UR spec, we have already done it.
+So there is almost no work for us to do when we are going to add a new device now if they are supporting those standards.
+And that makes it a much more tenable proposition for us as a company to add support for these things,
+because we no longer have to ask ourselves the business question of, well, are enough people going to use it,
+that it is worth the engineering hours, and so on and so forth.
+So I think it is great for all companies in the space.
+You adhere to the standard, you are more likely to get adopted.
+Yeah, so maybe we have a chance to actually get adoption across a lot of devices faster, because we already have something like PSBT and PSBT version 2,
+which is now need to find out how we call these new fields, what they contain, and find consensus on that.
+But at least like the main transport protocol you could call PSBT is there and is in use and shouldn't really fundamentally need to change.
+And also the libraries are there, so I hope at least on that front we have some head starts.
+Yeah, and from the software side for like Spectre Desktop, it would be great to initially offer the different flavors,
+these three approaches we have been talking about today.
+It is not the full-fledged madness flexibility of a full tap tree, but we could say, hey, do you want flavor one, flavor two, flavor three?
+And at least in the beginning phases of this, like we all know what that means.
+We will have, you know, most or all the hardware wallets can support those different flavors.
+But then beyond that, if we want to support fully flexible, you know, decide your own complex script however you like,
+as a Bitcoiner, it is hard for me to say this open source Bitcoin project should put limits on what you are able to do.
+That just sounds wrong. That is not how we do things.
+But if we want to throw open the doors to full flexibility, it is going to be foot guns 80 percent of the time.
+So I don't know how to solve that problem.
+Yeah, I mean, CASA is kind of the opposite in that term because we intentionally do not expose quite a few aspects of the Bitcoin protocol to our users
+because we decided that there is too much potential for something to go wrong.
+So I kind of see it from a software development standpoint. I see it as what we need to do.
+First, we have to decide on standards. We have to figure out what best practices are for various things.
+And then we need to build those into the software.
+And I see it as actually building the user experience as like guide rails of like we because we're so deep into this like we see all the pitfalls.
+But the average user there they haven't been in the space that long or they just don't have the time to get that nerdy to think of everything that you're wrong.
+So instead we build the software so that they can't veer off in one way or another.
+And like that is I think is the best way that we as developers can protect people even in a system like this that values freedom and along with your freedom comes responsibility and comes the potential for screwing up.
+There's a lot that we can do to guide users on at least somewhat safer paths.
+I think you can do that as a company offering a service right and you're trying to offer certain guarantees that you can support.
+But like I said I think it's it's difficult for something like Spectre wallets something like Sparrow blue wallet.
+If Bitcoin is wanted to happen it's open source right if we say no fork the project somebody else makes it happen you know so it like I said I don't I don't know what what's going to happen in the next couple years.
+Yeah someone mentioned this this morning in the context of lightning that there's always some the face of a lot of new possibilities so the design space grows expands people are trying out stuff.
+You can see OK what are people actually using what what what works what doesn't work and then you have this contraction and back to defining new standards and it seems like we're in this expansion now because we have this
+of new possibilities toolkit we can just do whatever but of course if you already have some ideas what we we definitely should and should not do that help as well.
+So one of the things we've been talking about and talking around is the importance of building open source and building for our users and building towards a standard in the absence of a bit I'd like to actually talk through the nuts and bolts.
+That process was with with tablet multisig because I think it will be instructional for the corners in the future this is not going to be the last time that we run into this issue where there's something that all these different stakeholders need to coordinate on and provide value to the users with in the absence of official firm technical guidance.
+For me at least it started with reviewing if 3.42 going through it and wrapping my head around task is the same. Well, OK, I'll be checked multisig and I'll be checked multisig there if I are out and I think about that time I got a GitHub notification from Pablo so take it away from their problem.
+Yeah, you mean to their recap what was happening from sure just do it from the top. Well, what were you thinking what were your concerns and talk to you exactly so. So first I had the discussion within my team because there are people that are much better with cryptography is as I am so I was like telling them we should.
+We should have a look at how this music works and how these different different schemes work. What are the implications. And at that point we realized that the music there are several music standards and we were a little bit confused because I always assumed that just one thing.
+And then we realized that there are different caveats to each other and some of them were not being developed anymore and then the music to was seemed like it's the weight forward but it was not finalized at the time it was just finalized yesterday.
+I thought drafted sorry sorry. So as you can see there were a lot of moving parts and we didn't want to be the one to say all right we are going to go this path forward because we ironically we don't even have the multisig in our product.
+I mean the treasure suite. We just support multisig devices because we want treasure to be used in institutional organizations. And that's when we realized we should we should have a discussion with Jameson from Casa and technical guys from from mansion capital because ultimately this is or these are the environments where treasures are being used in multisig.
+And we wanted to know what were your thoughts about it. And we already had this hunch that interactivity might be a huge problem. But at the same time we wanted to hear if there is there is any solutions we are not seeing that.
+At that point I think it was on Jameson's desk Jameson take it from there.
+Yeah well you know whenever we get pinged by hardware manufacturers about potential changes you always just freeze up for a second.
+Especially because as a multi vendor multisig wallet software we have a lot of different dependencies. And you know as I alluded to earlier about now it being a lot easier to add support for new hardware if they're supporting the standards.
+There are still additional complexities where once you're taking on the maintenance and support of that hardware.
+If anything changes about how it just operates on a regular basis then you may need to make changes just you know to remain in compatibility with it. So we were wanting to make sure that we're all on the same page and hopefully you know a worst case scenario would be like if Trezor decided to go down one standard and ledger did another and cold card did another.
+Because then we would be kind of reverting back to now having all of this conditionalized logic on our end that's going to be even harder to maintain.
+So always happy to work with people just to try to keep some semblance of sanity.
+I feel like this is a little bit of an easier challenge to tackle you know you said like what can we learn from this for for future coordination issues.
+I feel like if you put 20 Bitcoin engineers in a room. It'll be fairly straightforward to agree like hey these these three options make sense.
+This level of priority makes sense okay maybe the priorities are different for the lightning case but it just doesn't seem like there's anything hugely controversial about you know putting putting your your your flag in the ground.
+Yeah I mean also I think there may have been some questions early on of like do we need to actually do a bit do we need to write something formal and I don't think this really rises to the complexity that's required for something formal what we're almost really more talking about may turn into something in the future.
+Maybe like sort of like script templates or you know best practices for common use cases common Bitcoin scripts I can see that becoming a thing if we start to see a lot more crazy experimentation where.
+It's only a matter of time before you know some people do some really awesome but ultimately stupid things and lose coins either they get stolen or more likely they get locked up in perpetuity because of some poorly constructed script and.
+That's great because we're going to learn from those experiences and hopefully they'll get incorporated into our kind of common knowledge and best practices and then perhaps if this space this design space continues to evolve then we'll get to the point where it will make sense to.
+To have maybe a better version of wallet descriptors or or just a sort of library of recommended scripts templates I mean it's kind of kind of like harkening back to the whole like EVM smart contract space you know they have standardized some of their like more common.
+Types of smart contracts there because their design space is so hugely complex that there have been innumerable catastrophes and if you're you know if you're going to roll your own smart contract that's almost as risky as rolling your own crypto and that's kind of what we're talking about here when you're constructing more complex scripts.
+Yeah almost have like a taxonomy classification like here's our here's our basic script maybe you fiddle around the edges with it but we kind of understand that species of it and then have the other species documented and at least to give a kind of a common language in a starting point.
+Yeah, I really like the idea of sharing this you know best practices because there is a lot of a lot of work being done, but not shared, I would say, and a lot of experience didn't just somehow you know that die somewhere.
+I think this is something that should be really done.
+So we have less than four minutes left on the stage which is a shame because I really want to grill Ali on music one music to music DN just for my own benefit while I hadn't cornered, but instead I thought why don't we go around and share what you're most excited about
+about taproom multisig and what you're most, I don't want to say concerned about that when you got your eye on the good the bad and the ugly.
+I think that's one of the things that we really wanted to do.
+So I think that's one of the things that we really wanted to do.
+We went ahead, Lalo went ahead and actually implemented the whole taproot validation in btcd which we use as a library in in L and D. And then he also created the PR for the music to which was our draft now.
+And then we went ahead and end to end integrated these functionalize into L and D and offer them as an RPC to to the developers so with L and D or 15 it will be possible to use tab scripts sign for tab scripts and also music to.
+This took it into as many developers hands as possible so they can also try out and then help formulate these standards because yeah we might just not know yet what these standards all will look like.
+So yeah, and so that's why I'm very excited about taproot because we can actually give it to a lot of deaths in a very hopefully touchable manner soon.
+Well, one potential construction that I've been thinking about for a while is kind of building escape patches. So, like we said, you can create this arbitrarily complex tree of logical branches that you can go down to figure out how you want to spend your coins.
+Well, you can that that means that now you're no longer locked into a single security model or architecture that is just like these are the keys.
+Instead, you can you can put in conditions that will you know only activate and other conditions so like like a relative time lock this like you know if several years have gone by and these coins haven't been spent then perhaps will activate some other spending conditions.
+And it's both exciting and scary of you know how you might be able to screw that up or you know make your security worse but I think that there there probably is a safe path to go down there to to give people some additional peace of mind and you know other ways for them to be able to recover from certain catastrophes.
+I'm going to piggyback onto that for my one good thing one bad thing. The good thing. I think is what I'm looking forward to is increased privacy right now. It's a little bit too easy to look on chain and differentiate a open lightning connection or a casa multisig or an unshamed multisig.
+The idea of having the happy path being completely indistinguishable from any other transaction and the escape hatches you called it being more visible at least for now when sister.
+That's really what's most exciting to me what's concerning to me is the same thing you raise this is aerospace engineering if it's not broke why fix it we have a tremendous duty of care to our customers to make sure that funds aren't lost that they're not just getting the most benefit out of the latest technology
+upgrades but that they they have the same peace of mind and security stability that they were able to depend on for a movie chip multisig verify.
+What I really like about what's happening right now is that this this opens so many new options like you said design space is so much great so so great that a lot of people are now thinking out all right so if the design space is so great so how do we work in that new field
+because earlier when this updates were incremental it was like all right so I just changed this little small thing here and now it works out for example we had this xbox which didn't encode how you should derive from them so we came up with different prefixes.
+But now it doesn't really make sense because it's so much more complex so the wall descriptors were created and
+we can't afford to do this small steps anymore and we just want to need to hold back a little bit back to the drawing board and design new standards how we could effectively operate in this new options that we are
+working on and peace between two is one of one of such things as well because we have to start doing things right because the monkey patching is not helping us anymore.
+I'm just looking forward to the UI challenges. You know I spent the last three months, trying to explain Bitcoin to potential new user on a one inch seat center screen right like what information do I need to convey what can I hide.
+How do I explain it and I think the complexities that we've all been talking about both you know having the UI on something like the specter desktop side and then how that talks to and what you see on screen on your hardware device.
+I think it's going to be incredibly difficult and just tons of fun.
+All right, and that is well over the time we have I want to thank all of our panelists Keith Jameson, Pavel Ali and I want to thank you the audience you've been great.

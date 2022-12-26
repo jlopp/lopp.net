@@ -1,0 +1,1120 @@
+Hi, how are you all? I hope you've all had a good week. Welcome to the What Bitcoin Did
+podcast. This week I have my first ever returning guest, which is Jameson Lopp, who if you've
+heard it was the third guest I had on the podcast, and that still remains the most downloaded
+episode to date. I still get emails and I still see tweets where people have listened
+to the show and they tell me how much they enjoy it. So I was really glad to get Jameson
+back on the show and he agreed to meet up with me when we were both in New York for
+consensus to record this. And there is also a video of the episode, which is up on my
+YouTube page, which is youtube.com forward slash what bitcoin did. So you can head over
+there if you just want to watch us and listen to us at the same time. I do want to say a
+massive thanks to Jameson as well because he has been a huge support for the show. He
+was, like I said, he was the third ever guest and replied to me after I'd only ever recorded
+one episode. I emailed him and asked if he would come on and he did. I went over to Rayleigh
+and saw him in North Carolina. We did the podcast. He also took me to shoot guns for
+the first time and you know, it was just really hospitable. And also since then he's helped
+me with a whole bunch of other things. You know, I drop him an email every now and again
+with some help I might want with an interview or some questions and he always gets back
+to me. So yeah, he's been, he's probably had more of an influence on the show than
+he realizes. And yeah, just a massive thanks to him. And since we last spoke, Jameson has
+also left BitGo and he's now working at CASA, which is a custody solution for people who
+hold serious amounts of crypto. So yes, we talk about that a lot. He explains how it
+works. He explains his role at the company and the different kinds of things that keep
+him awake at night that he has to worry about. And it's very, very interesting. We also,
+with the interviews I've been doing recently, we do cover more stuff on scaling and talk
+about Lightning Network. And the way Jameson asks things and replies to things is very
+different from everyone else. Whilst he has a personal opinion, he does tend to be quite
+impartial or quite fair to the other side and respect why people may have a different
+opinion. So it's really interesting to hear him talk about this. And I think it's a lesson
+probably for me and myself trying to do these interviews on how I should consider things.
+So yeah, I hope you enjoy it. It's, I think it's a really cool interview. You know, I
+do this every week. I ask you to support the show and it's important because I do want
+to increase downloads. I do want to get regular sponsors at some point and that will help
+continue to pay for the show and allow me to do these interviews. So please don't just
+skip over this. Please do help me out here. There's just a few things that you can do.
+You can go onto iTunes and leave a review. And if you think it deserves five star, obviously
+that's very cool because that will help in the search results when people are searching
+for Bitcoin podcasts. Also, you can follow me on social. I am on everything as at what
+Bitcoin did. So it doesn't matter whether you go to Twitter, Medium, Steemit, YouTube,
+which I mentioned earlier, Instagram, I am at what Bitcoin did at all of them. And if
+you reach out to me, I will pretty much reply to any of you. And you can check out my website.
+I do have a website and I have a newsletter. You can go to www.whatbitcoindid.com and check
+that out. And also please share the show out on social media with your friends and family
+because it really does help. Okay, so over to Jameson. I hope you enjoy this show. We
+recorded this in a pro studio in New York. So the sound quality is probably one of the
+best I've had. And as I've mentioned, it's also up on YouTube. So you can go over there
+and watch it too. As ever, if you have any questions, do reach out to me. You can email
+me on hello at whatbitcoindid.com and I do try and respond to everyone. So yeah, please
+reach out. Okay, hope you enjoy the show.
+Jameson, hi. Hello, good to be back. My first repeat guest. Our first interview was probably
+one of the most popular I've had. So thank you for that. And it's probably set up a lot
+of the other things I've done. So thank you. A few changes for you since I've seen you
+last. A little bit. So I think whilst I do want to talk to you a bit about scaling and
+all those things that happen, actually, it'd be good to hear about. You've moved from Bitgo
+to Casa Hoddle. Yes, just Casa. We're trying to get the Casa Twitter handle since somebody
+is squatting it and not using it. Casa Hoddle on Twitter for now, but Casa pretty much everywhere
+else. So how did that come about? What happened? Well, I was approached by Jeremy Welch late
+last year and just cold email said, Hey, want to grab a drink? Talk about Bitcoin. And we
+hit it off. It was pretty clear that we both had a similar perspective on these systems.
+And we both agreed that just general private key management is a problem that has not yet
+been solved for the average person. And this is why I've been at Bitgo for three years.
+And despite all of the really cool innovations and stuff that's happening in this space,
+I'm still pretty focused on plain old boring private key management stuff. I just think
+that there's a lot of issues that the average person still has to overcome if they want
+to be their own bank. And this is something that Bitcoin has really fallen short on its
+promise. And I'm hoping that we can fill in the gap here and really lower the learning
+curve for people and what they have to actually do in order to be sovereign unto themselves
+and hold their own money. So what are the main issues you identify with being your own
+bank and holding your private keys? It really mostly comes down to it stuff like boring
+data practices, which pretty much nobody actually wants to do like even technical people like
+myself often are just too lazy to actually go through routine maintenance type stuff
+and making sure that that you have basically decent redundancy and that you think through
+and can cover all kinds of different disaster scenarios. And really what we want to do at
+Casa is provide software and hardware solution that has already thought through all of these
+different edge cases. And then we'll also provide support services if the user gets
+into certain edge cases where they do need help from us.
+And Bitgo are also working on their own custody solution, right?
+Well, so yeah, this is sort of two sides of the same coin where Bitgo is working on
+a institutional custody solution, but Casa is going the other direction and we are specifically
+building non-custodial multisig. So it's a three of five multisig. Casa will hold one
+of those keys as a recovery service for certain disaster scenarios. But in general, the user
+is going to have custody of their own keys and of their money. And we want to facilitate
+that because I'm just looking at the ecosystem in general, I feel like it is moving in a
+direction that I don't really like towards more people putting their funds in trusted
+third parties, which is really, that's why we're here in the first place is try to avoid
+doing that and avoid the systemic issues that result from that.
+So where did the other four keys go? If it's five keys on a multi, it's three or five on
+a multisig, right?
+Yes.
+So where did the other four go to me?
+So yes, so the default setup will be that you'll have one key on your phone in the secure
+element and then you will have three other hardware devices. Now you can either bring
+your own or we'll probably be a reseller for the popular ones as well. So Trezor, Ledger,
+eventually maybe KeepKey. Really, we want to support any popular key hardware device
+because what we're trying to do is pull in and merge the ease of use of a mobile app,
+but also have the security properties that you get from these hardware key management
+solutions.
+So the CASA app is currently iOS. We're going to have an Android version and that's how
+the user is generally going to interface with the wallet. But all of the high security stuff,
+the actual key management storage and signing is going to be done by your various hardware
+signing devices.
+Okay. So if I had four Trezors, sorry, I would have three Trezors or three Ledgers. What
+would be the recommendations for where I would store them? Because if I just keep all three
+at home, it's not really...
+Yes, that would be terrible. And we're also going to recommend a diversity of devices.
+We want to eliminate every possible single point of failure, which includes if you're
+being super paranoid, potentially hardware issues. I mean, we're still in such early
+days that Trezor and Ledger are having vulnerabilities found within their own firmware and hardware.
+And so you would hopefully have like a Trezor, a Ledger and a KeepKey, for example. But we're
+recommending that you have one hardware device at home, perhaps one at an office or a friend's
+house or some other semi access control place. And then a third one at perhaps an even higher
+access control place, like perhaps a bank vault or something.
+And so the idea is that you already get great security by just using a single SIG hardware
+wallet. That makes it really hard for someone to actually hack you and steal your money.
+But there's still other types of loss, of course, natural disasters, your house burns
+down.
+Gun to your head.
+Yeah, you lose it. So then physical attackers. So the idea of taking this hardware key security
+to the next level by having multiple geographically distributed keys just makes it that much more
+difficult to lose enough private key data or to have enough private key data rounded
+up and stolen and taken from you.
+So if you followed the best advice and best practice, your maximum exposure probably in
+any single location is two keys with your phone and your hardware device, say if you're
+at home.
+Right.
+And if you wanted to go and move some funds, you would have to go to one of the other locations.
+That sounds sensible. And you would probably also then want another device for you as almost
+like a hot version of your cold wallet in that if you had significant savings, you would
+keep them in the CASA wallet. You know, you don't want to be going to work or to your
+bank every time you want to move, you know, half a Bitcoin or something.
+Yeah. So, you know, it may even be a poor description to call CASA a wallet. It's probably
+more accurate to call it a vaulting solution. Okay, because we are intentionally making
+it very difficult to spend money out of this particular set of keys.
+Okay. Is there a scenario whereby, say they lose two keys, is that a disaster scenario
+or is there a recovery option?
+Yeah. So if you lost two keys, then you would end up having to go through a CASA aided recovery
+where you would have to go get your other two keys and then reach out to CASA, have
+us get the key that we're holding for you. And, you know, we'll basically walk you through
+an authentication process to make sure that it's actually you and then sign a transaction
+with our key that you can sign with your other keys and then basically rebuild your wallet.
+So the interesting thing that's fairly unique to what we've designed at CASA is that we're
+actually telling the user not to store their recovery seeds. And the reason for this is
+that we have a thesis that requiring users to keep any digital information secure is
+basically a nightmare scenario unto itself. And we go back to the whole IT best practices
+thing where it's not reasonable to expect users to do that. And so by removing the need
+for them to secure this data and encrypt it and back it up and basically manage it, we
+get a couple of interesting things, one of which is that now we're only dealing with
+really physical devices, which are, you know, tangible. They're much easier to reason about
+about, you know, where they are located and what the access control to them is. And also
+now if you lose one or more of your hardware devices, we have basically a key rotation
+mechanism in the software app. So you can basically go into your app and say, you know,
+I lost this device or it's compromised or I don't know what happened to it. I need to
+replace it. And we will basically have a wizard in the app that walks you through recreating
+your wallet with the new, the existing four set of public keys and then a new one from
+your new device and then transferring your money to that. And we want to make that a
+seamless experience. And we're really just trying to build other best practices into
+the software as well, such as reminders of saying, you know, on on every every so often,
+we're going to actually ask you to prove that you still have these keys and basically do
+health checkups. And this is kind of coming back to the whole IT practices again, is that
+we need to do what we can to ensure that the user is keeping track of their keys and that
+they're safe. And so really the main thing that you're going to see in the CASA app is
+what we call the key shield. And it's really going to basically show you a health status
+check of what's going on. And you know, if if that security starts to degrade, we're
+going to annoy you more and more and more. And and this is one of the learning experiences
+that I think is what we're really going to be working on figuring out over the coming
+year or so is how much of these best practices and sort of guide rails can we build into
+the software itself in order to prevent the user from shooting themselves in the foot
+and getting into backed into a corner. And also just to try to reduce the level of touch
+that the user has to come and basically get hand holding from us the experts. So it sounds
+like to me the biggest risk is the user themselves following best practices and not signing up
+to your service and then taking all keys and putting all their hardware devices in a drawer
+home. Yeah. And you know, we can't obviously we can't force the user to do anything, but
+we can do stuff like with regard to that. What I want to and I have an open ticket for
+this is for the app itself to to actually make note locally of like general area of
+you know, where the signing is done with a given device and like if the radius is too
+close together, then we might throw up a warning for that and be like, you know, we've detected
+you might be keeping your keys too closely together and you should probably spread them
+out more stuff like that. Wow. So and what is your role within all this? Are you heading
+up the engineering? Are you part of a team? Yeah, so there's there's at the moment, we've
+got like three different engineers. My role is primarily back end infrastructure and just
+general security practices, thinking about the architecture of the application. So I'm
+kind of all over the place. I am helping out to do some low level technical stuff. But
+I'm also just trying to think both adversarially of what all the failure conditions are and
+think about just best practices and how we can help the user in an automated fashion.
+And what keeps you up at night? What are your deep fears with this? Because I remember seeing
+a tweet you put out actually to do with a theorem smart contracts that need to think
+more like aerospace engineers because they are disaster scenarios when things go wrong.
+You know, the parity multi SIG wallet was obviously a quite a scary thing. What kind
+of keeps you up at night? What worries you? Well, that is something that I'm worried about
+once again, because, you know, we've already received a ton of interest in, you know, having
+this type of vault solution for Ethereum ERC 20. And, you know, everything under the sun.
+And so I wrote a blog post about this about my journey of helping build the Ethereum infrastructure
+at BitGo. And it really was a nightmare because whenever you're trying to do multi signature
+functionality on one of these blockchain protocols that does not natively support multi SIG and
+Ethereum is the main case I can think of. Monero didn't have multi SIG until recently.
+But most of the other popular chains do have it. So when when it's not a native function
+to the protocol, you have to basically write your own. So you have to write a smart contract
+that simulates multi signature multi signature operations. And so this is not that far removed
+from your quote unquote, rolling your own crypto. And that is like the worst thing that
+you can do and like the cryptographic space, because now you have to go through audits
+and rigorous processes to basically stress test it and do as much as you can to ensure
+that the code is actually doing what you think it's doing. And we found, you know, having
+three different audits on our multi SIG smart contract, they just kept finding more things
+and finding more things. And interestingly, like you referenced the parody bug, the first
+version of the BitGo multi SIG smart contract had that same bug. And it got caught in an
+audit and we fixed it. And then when it happened to parody, like six months later, we were
+like, oh, smack, you know, this, this is actually a really common mistake that's easy to make.
+And I'm sure there are plenty of other mistakes that are easy to make. And that's one of the
+problems with solidity is that, you know, it's very developer developer friendly, but
+it's also easy to make a script that looks perfectly innocuous. But because you miss
+like one little declaration, or because you don't understand how the solidity code is
+getting compiled down and then interpreted by the Ethereum virtual machine, something
+might be actually going on on the back end that it's not obvious from just looking at
+the code. So it's a smart contract development is kind of in a scary place right now from
+a security perspective. Wow. Okay, so who's this target? What kind of is it? Is it a retail
+customer? Or is it institutional? Or is it high net worth individuals? Where are you
+talking? Initially, this is going to be targeted high net worth individuals, we're starting
+out as a very like boutique solution. And entry price point is around $10,000 a year.
+Okay, so you can extrapolate from that, you know, unless you've probably got a few million
+dollars worth of crypto, it's not worth it. It may or may not be worth it. It depends
+on what you value your time at. So one example I use like with my own solution, and I basically
+put a calendar event in on an annual basis, I reevaluate my own cold storage solutions,
+update them and whatnot. And I end up spending at least a full day each year going through
+and updating all my stuff and geographically distributing data around the world basically,
+to make it robust. And and so that is a pain. And I don't enjoy doing that. But I guess,
+you know, I'm so far on like the edge of paranoia with regards to security that that I am willing
+to do that. And I don't know that many other people are willing to put like a full day
+every year into doing like a comprehensive evaluation and refresh of their security setup.
+I've also seen your guns that are part of the process. Okay, so what is the onboarding
+process then for a customer say I was to sign up, how do you onboard? Is it a an experience
+where they come to you? Or is it experience they set up back at say their home or office
+or something?
+Yeah, so we'll definitely support anyone who wants to come to us and over the long term,
+you know, we hope to have locations all over the place where people can get face to face
+support. But otherwise, you know, we're happy to do video or audio conference to help walk
+people through it. The more technically sophisticated people I anticipate will not need hand holding
+and actually setting it up. It'll just be, you know, a more manual account opening process
+of us actually creating your account and getting some authentication information from you.
+Because you know, we are going to be very security conscious and not allow you to do
+a number of standard things that most web apps do, like change your password or change
+your email address or stuff like that, like any of those sensitive operations, we're actually
+going to require some sort of like video authentication for us to allow that type of thing to happen
+simply because that's where you know, a lot of the social engineering and phishing and
+stuff happens in the crypto space and we want to avoid that as well.
+And even at the point of onboarding, I'm guessing you wouldn't be recommending they set all
+four of their keys up at the same time because then they are at that point, that's a single
+point of failure then because they have them, would you set up one, go and distribute it,
+set up the second, go and distribute it?
+That would be preferable, yes, for each step you're moving around and this is another reason
+why I think it's great that this is a mobile app is because then you know, you can have
+the software itself be moving around to the different locations where your offline keys
+are being stored on hardware.
+And if a customer did do something stupid and they lost their three hardware devices
+and they only had their mobile and you, is that a...
+Yeah, that would be a game over scenario.
+Game over.
+Are there any kind of insurance scenarios that you guys are looking at?
+No, the thing about insurance is that we actually did that at BitGo and what you basically end
+up doing is buying a cyber insurance policy and we just found that the amount of money
+that you have to pay for it does not meet the like demand that you get from customers.
+Right, okay, I understand.
+And there are a number of competitors in this space, Coinbase, they've got their vault,
+you've got the Zappo vault.
+Though actually, Coinbase is deprecating their vault solution last time.
+Are they really?
+Mm-hmm.
+I think they were telling everyone to move their funds out of it.
+Interesting.
+I actually don't mind their vault because even though you are entrusting custody to
+them, I thought it was a very good solution and for some people, that is better than managing
+your own funds and I trust them quite a bit.
+I didn't know about that, but Ledger are doing a vault.
+So there's a lot of competition in this space.
+Is what you're doing unique?
+Is anybody approaching it similar ways to you?
+I am not aware of any others that are doing multi-sig with off-the-shelf consumer key
+signing devices.
+Okay.
+Well, that's pretty cool.
+Are there any internal attack vectors you have to look at, like considerations for
+your team?
+What are you doing with regards to that?
+Yeah, thankfully not from the private key standpoint since CASA will only ever have one of five.
+The main thing that we have to worry about is making sure that when a transaction is
+initially constructed, that nobody goes in and tries to swap out addresses or anything.
+Now this is actually an easier problem to solve with a cold storage solution than with
+hot wallets because you have so much time between each step of the process.
+So basically what we do is then each step of the process when you are re-signing, we
+re-display the details of the transaction to you.
+And so without getting too deep into the protocol, once you construct a Bitcoin transaction and
+sign it once, it's not possible for someone to modify aspects of it and then ask you to
+sign it a second time.
+It would break because the signature covers the whole transaction and all the details.
+What about a bad actor who's not interested in theft, but more interested in creating
+some kind of technical time bomb that just destroys the infrastructure?
+Is that a possibility that you guys are looking at?
+Is it something that's under consideration?
+Yeah, so I guess a worst case scenario would be if CASA servers got completely blown up.
+And in that case, you would get some failures from actually trying to communicate with our
+server.
+And your wallet would still be safe, you just wouldn't be able to spend out of it.
+And that is a scenario where we're going to have to develop basically an offline recovery
+tool that uses other open APIs.
+And I'm pretty sure that the work has already started on that.
+BitGo has a tool like that where it's just hosted on GitHub.
+That's a lot to think about.
+But that is just one of those very edge case scenarios.
+And the nice thing is that just due to the key distribution, it's not a safety or security
+issue, it's a convenience issue.
+And if that did happen, then even if CASA, say all of the CASA employees had something
+terrible happen to them, they could no longer work on CASA anymore for whatever reason,
+you could still hire another developer to then write and basically simulate the transaction
+signing and collection process.
+And are your servers distributed as well?
+So there's no single point of failure on say the data center or anything?
+So we're using Amazon Web Services, which is, they have some levels of redundancy there.
+A lot of other big services use various virtualized cloud services.
+And you can argue about how decentralized it is.
+Obviously it is controlled by one company.
+But what I found over the years is that the downtime on these big providers is extremely
+minimal.
+And also, I think I heard you say you can build, sometimes you have to build centralized
+things on top of decentralized infrastructures.
+It doesn't work the other way.
+Right.
+Yeah.
+How much?
+So we are basically ready right now.
+We've got HD support, SegWit support, fee estimates, pretty much all of the basic stuff
+that you want from a decent Bitcoin wallet.
+And so I expect us to start slowly onboarding.
+We've got a very long list of interested people.
+We're going to start onboarding a few early customers, get feedback from them, see what
+we need to tweak to improve the experience before we really just go head first into it.
+And you're launching with just Bitcoin?
+Yes.
+And we are a Bitcoin first company, so we are prioritizing Bitcoin generally.
+But like I said, we've already had so much interest in basically any other valuable chain
+that it's just a matter of time, I think, before we add others.
+But doing the Ethereum stuff is tricky because I want to avoid doing smart contracts.
+We actually just hired a guy, Nick Newman, who was in the, I think, ETH Denver hackathon
+and won some awards for his key splitting stuff.
+So that's what I would like to see is actually a sort of Shamir secret sharing type of more
+flexible off-chain multisig where you're still doing single sig on chain for Ethereum ERC-20.
+The only downside is that the hardware key signing stuff doesn't seem to support that.
+That's to be determined.
+We are talking with hardware vendors about that, but I'm not sure it's going to work
+out.
+I completed the form on the website and it asked you which other ones you wanted because
+you listed the ones.
+So that kind of gave me an idea of your roadmap and I think I added Monero and Dash.
+Yeah.
+Cool.
+Sounds very cool.
+Very interesting.
+So you're obviously aware of the interviews I've been doing recently.
+I met with Craig Wright, very interesting experience.
+I went over to Tokyo to see Roger.
+I've interviewed Samson, I've interviewed yourself and Charlie.
+And whilst I have my own bias, I'm starting to try and take more of an impartial view
+because of the toxicity around even my choice of interviewing guests.
+Sure.
+Yeah.
+I've been told you're given a platform to a scammer or a criminal and I don't agree
+with it, but I think it's better to try and look neutrally impartially to try and understand
+everything that's going on.
+And I've got a bunch of questions for you.
+I've listened to your interview with Roger, the debate, I think four times now, because
+it is a real eye-opener on both sides.
+But I'm going to go through a few kind of steps on this.
+So I asked, I listened to a really interesting interview with Adam back the other day and
+he was asked a question which I asked Samson, but I think it would be a good one to ask
+you.
+I can't even remember he covered this in our first interview, but what is Bitcoin to you?
+Well to me, Bitcoin is an open collaborative project where we are trying to organically
+determine what the optimal form of money is or at least subjectively amongst anyone who
+is interested enough in participating in the discussion of what money should be like, we
+now have this new form of basically automating consensus now with machine algorithms.
+So it is this result of cypherpunk ethos and ideology and now kind of moving into a crypto
+anarchy or voluntary society.
+And so there's a lot of different things that are going on with it, which is what makes
+it so confusing for people, especially just the fact that there is no authority can be
+very confusing for people who are trying to seek the source of truth.
+And that's a really good point.
+So as I've tried to, you know, I've got limited technical experience, but if we're trying
+to create a new form of money, it's for everybody and everyone's encouraged to do their research.
+There's a lot of people like me who don't understand the technical details.
+There's so much, but they're encouraged to do their own research and there sometimes
+is some elitism with trying to find the truth.
+And my fear is for a new user who might come to Coinbase, they will see Bitcoin and Bitcoin
+Cash and might not know what they are.
+And one friend might say Bitcoin Cash is the real Bitcoin because it's X, Y, Z, and others
+will say, no, that's bullshit, it's Bitcoin.
+And then you can go onto Reddit and suddenly, I have really struggled to find an impartial
+source to say, this is A, this is B, these are the pros and the cons.
+And it's very tribal and very toxic.
+So I think the technical stuff is really important.
+Yeah.
+And the thing is, though, that when we're creating this voluntary network, that truth
+becomes subjective because it is you, if you are operating from the standpoint of running
+a fully validating node, which means that you are checking all of the rules and checking
+all of the data that's coming in and making sure nobody's breaking the rules, this becomes
+tricky because then you have to ask, what are the rules?
+Well, the rules are the rules that you decide that you agree to and you want to verify.
+And so what you're trying to do is check all of these rules to ensure that the data on
+your machine is a verified source of truth.
+But that truth is now subjective based upon what you agree to.
+So that's why if someone believes that Bitcoin cash is the real Bitcoin, it doesn't so much
+matter that they say that.
+What matters is that they are using software and basically using the protocol that is enforcing
+the rules that they have decided is the real Bitcoin.
+So from their perspective, this is the real Bitcoin because they're validating this particular
+set of rules.
+And you, you are a big proponent of full nodes and we did discuss that before, but not everyone's
+going to have heard the first interview.
+So tell me why you find full nodes are so important for what is being done with Bitcoin.
+It's the only way that you can get the strongest available security model and the strongest
+available privacy within Bitcoin.
+And that's because you are receiving and ingesting all of the data from a variety of other nodes
+on the network and then you are checking it yourself.
+So this means that if anyone out on the network is trying to send you invalid data and fool
+you, they can't do that.
+You cannot be defrauded in the sense that someone is breaking the rules to which you
+are agreeing.
+And also from the privacy standpoint, because you are not going out onto the network and
+querying for like specific addresses or specific transactions, but rather you're getting everything
+and then looking at it locally and determining which ones are relevant to your wallet and
+your activity.
+There's no way that, you know, network observers who are out on the network and then there
+are plenty of them, believe me, there are plenty of companies out there that are observing
+this activity because you're just not making those specific queries, they can't possibly
+know what you're interested in, therefore makes it more private because people don't
+know specifically which parts of the blockchain may be related to your own transactions.
+But not everybody does create a full node, right, but you encourage people to look into
+it.
+So I think I'm going to try this, right?
+I'm thinking I'm going to have a go as just part of my experience.
+Where would somebody stop?
+I have a number of blog posts that I've written that outline how to do this.
+It really depends on your level of technical expertise.
+And so if you're comfortable with downloading software and running it, there are a lot of
+good guys out there.
+Bitcoin.org has a whole guide on how to run a full node.
+It also talks about more advanced stuff like network configuration of if you want to help
+the network and allow extra connections to come in so that you can help propagate data.
+That's one way to do it that's a little bit more involved because you have to decide what
+machine do I want to run this on and preferably it's going to be a machine that's connected
+to the internet and online most of the time.
+From an easier standpoint that requires less work, plug and play nodes are the way to go.
+Though the only one that I'm aware of that's still shipping on a regular basis is the bit
+seed.
+And so that's, I want to say a few hundred dollars and you plug it in, it turns on, it
+automatically boots up all the software and everything.
+And then all you would really need to do to take advantage of it is to figure out which
+wallet you want to use because there are not all wallets support connecting directly to
+your own trusted node.
+But I cover all that in some of my articles.
+So I'll take some of that and put that into the show notes and as I've researched things
+and I've been trying to get my head around everything, it seems to me that it's the argument
+about this scaling debate is really about two different views on what Bitcoin should
+be today, not what it should be in the future, what it should be today and the trade-offs
+which are associated with that.
+It feels like some people, one side said this is money and it should operate like money
+in peer-to-peer, quick, fast payments.
+And the other side is a belief that that can come in the future, but right now it's digital
+gold and there are trade-offs with that.
+I've heard you talk about these trade-offs, but I think it'd be really nice for you to
+talk about it here.
+Well, yeah, I mean, I think a very simple way to put it is we're talking about some
+people who are prioritizing the current user experience versus some other group of people
+that are prioritizing a long-term view of the security of the network itself and the
+ability for people to maintain their autonomy within the system.
+And to get more specific and technical, what we're really talking about is prioritizing
+low transaction fees at the expense of potentially high cost of full node operation, which means
+high cost of validating the entire history of the blockchain versus people who are prioritizing
+low cost of full validation and node operation at the expense of potentially high transaction
+fees.
+There's no common ground in this debate today, which kind of feels like to me actually, therefore,
+this is kind of a fair split test we're seeing.
+Yeah, I think so.
+And I can't see that either side can, with 100% certainty, say where they're going to
+be in 10 years.
+So therefore, what are your overriding thoughts about the existence of Bitcoin Cash?
+You know, it's interesting.
+We're sitting here today and I think about two hours from now Bitcoin Cash is doing another
+hard fork to increase their block size to 32.
+Yeah, even though the average Bitcoin Cash block size is about 50 kilobytes.
+So they're not even anywhere close to the eight megabyte block size they currently have.
+But you know, this is just, you know, their perspective and their narrative of wanting
+to have as much headroom as possible in order to avoid creating a fee market and avoid ever
+having backlogs on the network.
+And I guess the weird thing is that a lot of the stuff that Bitcoin fans will say, you
+know, against Bitcoin Cash in terms of like long term costs of operating nodes and being
+self-sufficient within the system, that can't possibly come true unless Bitcoin Cash actually
+becomes popular.
+It's this kind of weird paradox and like as long as Bitcoin Cash is less popular than
+Bitcoin, then it's never going to even have a chance to test the changes that it's made
+to its own network.
+And we're not ever going to actually see what happens when you have a popular blockchain
+with very large blocks.
+Do you have any fundamental issues with it existing though?
+No, I mean, not from a perspective of like, this is a permissionless system, and anyone
+should be allowed to create forks and change whatever they want to.
+You can get into the argument of well, you know, some of those people that are saying,
+you know, Bitcoin Cash is the real Bitcoin, or they're just saying, oh, Bitcoin, and they
+mean Bitcoin Cash.
+And sometimes they put BCH in parentheses, you know, there's definitely some questionable
+marketing stuff.
+Back when I was actually a big proponent of Bitcoin XT, I really I felt like it is certainly
+possible for a protocol blockchain, whatever network to to change and for the new version
+of it to become that same name, and that my current project, my current Gavin Andreson.
+Yeah.
+But you know, we saw that happen with Ethereum is the Ethereum protocol is no longer compatible
+with the original Ethereum protocol.
+There's actually a very strong argument to be made that Ethereum classic is the original
+Ethereum.
+But due to the events around the Dow and all that, the consensus changed to say, you know,
+what, we are going to abandon the current protocol and all migrate to the new protocol.
+And this is now Ethereum.
+And I think that that could have happened theoretically with Bitcoin Cash.
+They could have gotten enough consensus to say, you know, this is the real Bitcoin.
+And the old thing is like Bitcoin Classic or whatever.
+But it didn't.
+And now we're like seven or eight months later, and they're still just repeating the same
+thing.
+They're still trying to cover that gap where the consensus just isn't there.
+And you know, I question whether or not it's possible to pivot an entire network many months
+after the fact.
+I think it's definitely possible if you have an inflection point at which, you know, the
+sort of the shelling point of consensus pivots and says, you know, this is the new one and
+there's consensus and it's obvious, I really think that that type of thing has to happen
+within a matter of hours or days in order for an entire network to change like that.
+And so I'm I'm highly skeptical that it's something that you can do months or years
+after the fact, though the Bitcoin Cash folks are definitely trying.
+So why were you a proponent of XT?
+What was it about it you liked at the time?
+And why has your position changed on that?
+Well, it was for many of the same reasons that people are in favor of Bitcoin Cash,
+which was that, you know, transactions started getting slower, fees started going up and
+the user experience was degrading.
+And that was actually right around the time when I went full time Bitcoin.
+So before then, I had just been an enthusiast and had some side projects.
+And so I was a user, I felt like the user experience was degrading.
+And from my own experience working with big data cloud computing type stuff, I was looking
+at it from a capacity planning standpoint.
+And in capacity planning for large scale systems, you always want to have a lot of room, headroom
+for growth.
+You never want to be running at like 90% or 100% capacity.
+You want to be running at like 60 70% capacity so that you can handle spikes, ebbs and flows
+and whatnot.
+And I basically changed my mind that capacity planning was the correct perspective for this
+type of system.
+I think I was I was taking a very centralized, like authoritarian top down view of capacity
+and planning the future of a system.
+But instead, once I actually got to BitGo, and I started doing backend infrastructure,
+basically indexing and ingesting information from these blockchains over and over and over
+again, I mean, I indexed the Bitcoin blockchain, probably hundreds of times during my tenure
+at BitGo.
+And it was a constant struggle to continually try to squeeze more performance out of my
+software so that I could index the blockchain in the same amount of time because, you know,
+these blockchains only add data, they only get larger and larger, it becomes a greater
+and greater challenge to then start from nothing and ingest the whole set of blockchain data.
+So what I was spending a lot of my time doing was saying, oh, crap, it takes a whole day
+for me to index the Bitcoin blockchain.
+And then, you know, a few months later, it might take two days.
+And a few months after that might take three days, and then get to the point where it takes
+a whole week to run this indexing service.
+And so it was a constant battle for me to try to find more performance that I could
+squeeze out of it to get it back down.
+That was when I started realizing that, yeah, you know, the Bitcoin blockchain is still
+only like 100 to 150 gigabytes back then.
+Now it's like 170 or 180.
+And that doesn't sound like a lot.
+But when you're having to actually ingest and validate the whole thing, it is a lot.
+And so if you are taking a extremely long term view of these systems like I am, I'm
+trying to think, you know, extrapolate, you know, 10 years from now, what's it going to
+be like if someone is just getting into Bitcoin and they want to ingest and analyze and validate
+the whole Bitcoin blockchain?
+You know, if it's a few hundred gigs, then I think it should be doable.
+But if it's terabytes, then it's going to be a real nightmare.
+And so that's why I ended up kind of flipping and becoming a lot more conservative about
+how much data we allow to go into this shared resource.
+And that's a hell of a journey to go through.
+I mean, that's a lot of practical steps you've had to go through to realize that.
+So does that make, does that give you a little bit more empathy to people therefore who do
+support Bitcoin?
+I get it.
+I've been there.
+I fully understand it.
+I feel the pain.
+I've had to deal with support tickets of many users over the years who don't understand,
+you know, why is my transaction not confirming or why is the fee so much higher today than
+it was on Sunday?
+Yeah, the user experience, we have a lot of work to do.
+And I am very optimistic that second layer networks are going to allow us to fix a lot
+of those things.
+So what would be a better way to educate this to people than the, what seems to me the toxic
+shaming and tribalist insults, which by the way, I put a post up yesterday on Bitcoin
+and our BTC and our Bitcoin, I don't like Reddit, by the way, I think it's horrible.
+But I put it up on both just to both sides say, I'm interviewing people from both sides.
+I'm trying to be impartial.
+This is the journey I'm going.
+So I'm trying to learn.
+This is my audience, just to put it out for both sides.
+And there's a handful of people on both sides who would say, yeah, support your thing.
+That's great.
+And then you've got, you're a fucking idiot.
+You know what you're doing?
+Have you set up a node?
+Have you read the white paper?
+And each side, you just get tribal insults.
+What do you think is a good way then to try and educate people on the best way for us
+to get away from this war that's not doing anyone any good?
+Well, we can't stop anyone from doing that.
+I mean, you can't stop people from trolling or being negative and pessimistic and what
+have you.
+You can only control yourself.
+And so that's why I just try to be optimistic and educational and answer as many people's
+questions as I can with my limited time.
+But this is all part of the experiment.
+So the experiment is not only technical, I think it's also social.
+And it also is tricky.
+And it gets tricky, though, because so many people seem to believe that Reddit is the
+Bitcoin community.
+And that could not be further from the truth.
+I think it's, you know, when Roger made the offer to buy, I wish someone would make the
+offer just to close it down.
+Yeah, yeah.
+I think it doesn't do any purpose.
+It's interesting you say it's a social experiment as well.
+What do you mean by that?
+Well, I mean, in terms of the like the governance aspects, you know, this crypto anarchy, voluntary
+network, what we see happen as a result of it is that people get frustrated because Bitcoin
+is not doing what they expected Bitcoin to be doing.
+And because there is no like real definition or authoritative roadmap for what Bitcoin
+is, people come in with different perspectives, and they they have different visions.
+And then sometimes the user experience changes.
+And they're like, oh, Bitcoin is not Bitcoin anymore, and they get really frustrated and
+they try to change Bitcoin.
+And like like I said, I was in that camp.
+I did that, been there, done that.
+It was it was a learning experience and it was very frustrating.
+And I was a very negative person for probably close to a year, you know, around like the
+2015 time.
+I was very frustrated.
+Did you get involved in the battles?
+Yeah, some of it.
+So you know, actually, I was a moderator of the Bitcoin XT subreddit.
+Wow.
+And and this is why our BTC is so funny to me, how they're they're like, oh, we don't
+censor or do anything like that.
+I did that before our BTC.
+I was I got so fed up with like the most and and and people getting silenced on the Bitcoin
+subreddit that I I didn't create it.
+It already existed, but I basically directed a bunch of people to go to our Bitcoin XT.
+And I was like, you know what?
+I'm going to be the moderator of this and I'm not going to do anything.
+And so we'll have, you know, no censorship on there.
+And you know what?
+Within a few months, it devolved into just complete crap.
+And then a few months after that, Roger came along and he pulled a bunch of people and
+said, you know what, we're going to do our BTC.
+And and then he has moderators and and you know, he keeps activity going on that.
+And so that's where the sort of one of the shelling points for Bitcoin cash is now on
+our BTC.
+And Bitcoin XT is pretty much dead.
+There's just like spam posts every once in a while.
+So what happened to Bitcoin XT?
+It's because I read a post by Mike Kern, essentially his departure.
+Yeah, he I felt quite sad reading it.
+I felt sorry for him.
+Yeah, technically, it still exists.
+I think there are one or two developers.
+But last I checked, there's only a few dozen Bitcoin XT nodes that are running.
+So I mean, it exists.
+And what do you think when people say, Pete, you shouldn't interview Roger, you're given
+a platform to a scammer.
+What's your opinion on that?
+That is a very hard thing to evaluate, because, you know, scam can be in the eye of the beholder.
+Now Roger is a businessman, he's an entrepreneur, and, and he's definitely a marketer.
+And you know, he was one of the earliest marketers for Bitcoin.
+And so now, you know, he has changed what he thinks Bitcoin should be like.
+So he's marketing a different network, a different brand.
+And you know, he definitely does things on the marketing side that piss a lot of people
+off and may have resulted in confusion happening.
+Of course, it's really hard to actually get a gauge on how good or bad that has been.
+I mean, it is what it is.
+I personally don't like hold any ill will against him.
+I completely understand where he's coming from and what he's trying to do.
+It's just, I think that he's fighting an uphill battle.
+And so it's really hard on him to do this because, and once again, it's hard to get
+metrics, but my like general gauge of consensus amongst these different networks is that like
+around 80% of people are, are pro Bitcoin and the conservative sort of vision for its
+future and doing scaling on other layers.
+And then maybe 10 to 20% are more on the Bitcoin cash, like large blocks, you good user experience
+now, low fees, don't worry about cost and validation type of thing.
+And so it gets especially odd when the minority group makes arguments like, well, most people
+would actually be on our side if it wasn't for censorship.
+And that could make sense if Reddit was the only place where discussions around these
+protocols happen.
+But there's so many other places where there isn't moderation, especially like on Twitter.
+There's also, you know, telegrams and Slack groups and IRC and, and WeChat.
+And so it's, there's such a diversity of discussion in the ecosystem that I don't think the censorship
+argument really works anymore.
+But what about the view that Roger shouldn't, people shouldn't interview him and he shouldn't
+be talked to?
+I mean, that's freedom of association.
+It's like you, you should, nobody should be telling any, anybody else like who they can
+associate with.
+I thought you'd say that.
+I think I agree with you in that there does seem to be a lot more people on supporting
+the Bitcoin route, I'm not going to call it Bitcoin call, of course.
+But there does also, there is a certain amount of coercion and shaming if you ever question
+block size.
+And I've experienced that there's almost, there was almost the times I feared having
+an opinion on or having some empathy towards what Bitcoin Cash is doing for fear of shame.
+Yeah.
+And I think, are you, are you aware of this?
+Oh, yeah.
+This kind of goes once again back to the fact that like you can't police people within this
+type of community.
+And so some people basically devolve into making fallacious arguments or just trying
+to make others feel bad, like rather than spending time to make a rational long drawn
+out arguments, because this is a very sophisticated argument.
+And it's also, it's not a, it's not a black and white thing.
+I mean, it's about trade offs.
+And so it's an opinion and it's almost ideological.
+So I think one of the things I've noticed, and I'm probably a hypocrite, and people could
+find examples, but when Roger makes the point about dying babies is we all, a lot of us
+would agree it's ridiculous, but I believe in some ways he believes that's right.
+I think he needs a connection.
+But when almost every, well, a large number of opinion leaders will say, go on Twitter
+and take a photo of the bitcoin.com booth and say, can't find any dying babies here.
+Right.
+You're almost being, you're almost being taken into a tribe where if you exit from it, you
+will be humiliated.
+And I wonder how useful that is.
+Because I, what I'm finding is actually by being impartial, I'm learning a lot more and
+I'm definitely swaying more swayed towards what bitcoin is trying to achieve off chain,
+but I have some empathy for what's trying to be achieved on chain as well.
+And well, by being impartial, you will get attacked by both sides.
+And I was like that.
+And attacked for being impartial and told you're not impartial.
+I think in 20, so like I said, like around 2015, I was very pro Bitcoin XT and then I
+think around 2016, I was neutral and I was being impartial and saying, you know what,
+I see both sides and I got attacked probably the most during that period.
+And you know, I had a lot of, I guess, high profile people in the community attacking
+me for like going too easy on this person or that person or whatever.
+And then these days I'm more defensive, I guess, of my own perspective.
+And well, I guess I don't really try to come out and say that like the Bitcoin cash perspective
+is wrong.
+I just say, you know, I disagree with it and for a variety of reasons.
+And a lot of people I think say stuff like, oh, it won't work.
+And that's also kind of loaded term is like, I think that it'll definitely work if you're
+willing to make the right trade offs.
+That's what we're all talking about here is trade offs.
+So in some ways, could it be good that it exists because I've heard you say that a block
+size increase on Bitcoin is inevitable at some point if the network expands enough.
+Therefore, if it's inevitable at some point, is it quite good that Bitcoin cash happens
+because you can observe from far the challenges they're facing?
+If they actually get popular enough that we can observe it.
+Yeah, yeah.
+So that is, I guess, one sort of Bitcoin maximalist view of, you know, all other networks are
+test networks for us to observe and then potentially make changes as a result of though.
+If I recall correctly, there have been very few cases where Bitcoin has implemented changes
+as a result of something that it saw on another network.
+Remind me, do you consider yourself a Bitcoin maximalist?
+Actually, that's mostly from an economic standpoint of, you know, if we really are trying to create
+the best form of money, then it makes sense to converge on one form because that's the
+whole point of money is to get rid of having to hop through all kinds of other assets.
+And it's kind of weird though, now with the tokenize all the things perspectives and the
+blossoming of many blockchains is that I don't think that it's possible to have thousands
+and thousands of tokens or a world where like everyone has their own token that they issue
+because there's a level of mental friction that is involved just in trying to keep all
+track of all this stuff like personally, I don't want to keep track of more than maybe
+10 different assets because it becomes like a technical nightmare.
+But on the flip side, I'm starting to wonder if the advent of second layer networks could
+actually swing us back in the other direction of being able to support both a diversity
+of thousands of crypto tokens, but get rid of that friction by being able to use the
+second layer networks to seamlessly switch between them.
+So if I could foresee a future where if someone wants to get paid in basic attention token
+and you only have litecoin, but we've abstracted away all the complexities of decentralized
+exchange like permissionless peer to peer exchange, and so you can open up your litecoin
+wallet and pay somebody in basic attention token, I could potentially see that being
+a scenario where crypto becomes like one sort of amorphous thing because we just abstracted
+all away.
+Whether or not that actually ends up happening, I don't know.
+I'm just saying I could potentially see that as a future.
+So let's talk about second layer and you talk about it in plural.
+Most people are aware of obviously lightning network.
+Are there any other second layer technologies that you're interested in at the moment or
+you primarily focus on lightning?
+Primarily lightning though, I think the sort of semi equivalent on Ethereum is Raiden.
+I'm not sure how far along that is.
+Lightning seems to be well in the lead and has the most adoption, most development behind
+it.
+What exposure do you have to yourself and is it something you have to be aware of working
+on CASA?
+So, you know, since CASA is a cold basically vaulting solution, I don't foresee us having
+any lightning implementation.
+So you just have a personal interest then because of what it means?
+Yeah, yeah.
+I'm just, you know, I'm trying to keep track of the developer activity and the general
+adoption.
+Okay, so how would you, I've read a lot about lightning network.
+How would you explain it and what the benefit of it is and why that is the root scale Bitcoin?
+So the easiest way that I've been able to describe lightning network is actually by
+looking at the internet itself.
+And if you look at the infrastructure of the internet itself, it's actually this seven
+layer model.
+The very low level like layer zero is the ethernet layer and that is the actual physical
+wires that are connected together and you put electrons onto those wires and that's
+how the data then gets sent over them and people are able to get the packets.
+Now the thing about the ethernet layer is it is a global like broadcast to the entire
+network type of mechanism.
+So if the entire internet was only the ethernet layer, we wouldn't be able to stream this
+podcast, for example, because everyone else who is streaming a podcast would also have
+to go through our computer and it very quickly blows up and gets well past the like even
+like 100 gigabit bandwidth speeds that most computer internet hardware is able to handle.
+So what did they do to make the internet scale?
+Well they built layers and the really important layers are the TCPIP layers which are these
+routing layers and they basically say, okay, we're going to connect all of these wires
+together but instead of broadcasting and flooding the entire network, now we're going to use
+another protocol to basically find the shortest route so that the data only has to go through
+the fewest number of people on the network in order to get to the final destination.
+Now you can make an argument that this quote unquote like centralizes the usage of the
+protocol but it's still censorship resistant because you can very easily route around any
+nodes on the network that decide not to forward your data.
+So this is why the internet was developed by governments because they wanted a communications
+network where you could have nuclear bombs drop and take out large portions of the network
+and still be able to route data around.
+Basically self-repairing, self-healing type of network.
+Now how does this relate to Bitcoin?
+Well Bitcoin and really every other blockchain protocol right now, if you create a transaction
+and then it goes out globally and floods the entire network and gets stored by every computer
+that's on that network.
+This once again is totally not scalable if you want to do anything more than a few transactions
+per second.
+Everybody's hard drive is going to fill up if you're pumping gigabytes of data through
+it on like a minute or hourly basis.
+So what do we do to fix that?
+Well we actually do the same type of thing.
+We build routing layers on top of the base protocol.
+So what Lightning does is it allows you to anchor into a blockchain.
+It could be Bitcoin, Litecoin, any blockchain protocol that has some basic primitive attributes
+around multi-signature and time locking.
+And once you anchor in and you get that transaction in the chain, now you've basically established
+a channel, a route between yourself and one other person on that network.
+And this payment channel technology has existed since I want to say 2012 or 2013, but only
+been used by a few different pieces of software.
+Lightning takes that idea of payment channels and turns it into a whole network by adding
+routing capabilities so that now you can push value to the other person at the end of your
+channel and then they can actually route it through other channels to eventually get to
+the final destination, much like how the internet itself works, though it is a bit more complicated
+and there's a lot of game theory involved.
+I've read there's still issues with routing, problems to be solved.
+There's plenty of problems to be solved, yeah.
+Do you ever foresee, is this just a time thing?
+Is it just going to take time to get it done or are there real challenges that might not
+be able to be solved?
+I really think that it is a time and resources and the fact that no one has done this particular
+type of network before that there are unknown unknowns.
+So we can't positively 100% say these are all the capabilities of what we'll be able
+to do on date X.
+It's also why I push back against there's a lot of people are like, well, when is the
+lightning network going to be active and I'm like, well, it's not a binary thing.
+Technically it already is active.
+It's just in a beta state where you probably don't want to commit much money to it because
+there are almost assuredly some edge case bugs that are still out there that could cause
+you to lose money.
+So over time, confidence will grow as?
+As there's more activity, as there's more value in it with these adversarial networks,
+you can never be 100% sure how strong they are from a security standpoint until you commit
+real value to them.
+So that's how we know that the Bitcoin blockchain, it has at least 100 something billion dollars
+worth of security behind it because there is a huge bug bounty if anyone can completely
+break the protocol, then they're a billionaire and believe me, there are plenty of people
+who have tried.
+I never thought of it like that as a bug bounty, but yeah, it is like all of these things are
+bug bounties and that's why doing security in this space is so crazy because once you
+start to put real value behind things, that's when the real test begins.
+Like you can write all the unit tests you want and do all the code audits you want,
+but it's not until there's real value sitting out there waiting to be attacked and stolen.
+Quite interestingly, as it grows, there's a whole honey pot of Bitcoin that's essentially
+taken off chain and put into the Lightning Network.
+Does that worry you at all in some ways?
+It's just going to open up new types of attacks that they're going to have to defend against.
+So it'll be a new form of antifragility, it's like a whole another layer of antifragility
+for the network.
+Yeah, and so there's also there's multiple ways to look at it, but there are multiple
+types of attacks and of course, Lightning Network is going to be less secure than having
+your funds stored on chain, preferably in a cold wallet if we're talking about a lot
+of money, because it's not possible to build a more secure layer on top of a given layer.
+You can only have the same or less security when you're building layers on top of each
+other.
+Right.
+Okay.
+So when I've looked at it, I initially had a bunch of questions and thoughts and I kind
+of honed them down to a couple of things that stand out for me.
+I'm not too worried about the tech, you know, give it time to see what happens.
+Yes, it seems to be taking a long time, which is obviously frustrating.
+I'm sure frustrating everyone involved, but I understand it's hard.
+You saw a tweet I put out about the private keys are essentially exposed.
+And you rightfully said, treat it like a hot wallet, like a wallet you carry around with
+you don't have more than you should.
+My slight concern with that is your Lightning wallet will still need to have a relationship
+with the main chain.
+If you are from a, I don't know, say you're in Venezuela, which has a great use case of
+Bitcoin at the moment.
+Say you're in Venezuela, say you're only putting 10 pound, $10 a month into of Bitcoin.
+That's all you can afford.
+If the fees on the main chain are too high, you're going to have to keep all your funds
+in the Lightning network and for what might be $10 for them might be $10,000 for us.
+It feels like potentially the main chain will become a tool of the wealthy.
+So in terms of the on chain transactions that are required for opening and closing channels,
+there's actually also a lot of work being done there because now basically what you're
+saying is there's going to be a huge incentive to try to figure out how to make it cheaper
+to get into and out of the Lightning network, especially if fees end up plateauing at a
+high level.
+And this is actually something that I then I put a tweet out I think a day or two ago
+about some of the technologies that are being developed around here.
+And one of them was channel factories, which I was actually just talking about right here.
+Yeah, I was just talking to Christian Decker Sunday and he was like, oh, channel factories
+are actually deprecated.
+Now, if you look at L2 ELTOO software, what they've actually built in there is kind of
+like channel factories on steroids.
+But the idea is making it possible for a multitude of parties to come together and share in the
+opening and closing of these lightning channels.
+Now, it's also possible that not everyone is going to be using lightning in like their
+own device wallet.
+They can still actually be using lightning from a custodial solution.
+Like a lot of these people at Coinbase, for example, they already have their private keys
+with a trusted third party.
+Coinbase could very easily facilitate lightning transactions and let people make their Bitcoin
+transactions but over the lightning network.
+And Coinbase would handle all of the complexities on the back end with regard to channel opening
+and closing and maintenance.
+But that's almost certainly not going to happen from what I've read about the KYC AML issues
+with lightning network.
+It won't be possible for regulated exchanges to be able to use lightning network.
+I don't know if you know about this.
+I mean, I've heard these arguments and I'm not sure whether or not that's actually going
+to hold up.
+I think it's actually very important for exchanges to support lightning network.
+This article I wrote two or three years ago actually showed some simulations around like
+general channel rebalancing stuff.
+And I think that exchanges are going to play a pretty key role in that.
+Now, maybe it won't end up being centralized exchanges.
+Maybe it'll end up being decentralized exchanges.
+There are certainly a lot of questions that are going to be around that.
+But I know that like BitGo, for example, when I was leaving, they had already started working
+on lightning support and BitGo provides back in for a lot of Bitcoin exchanges.
+So I don't think that BitGo would be going to that trouble unless they thought that their
+customers were going to be wanting to use it.
+I guess we'll have to wait and see.
+I read quite an interesting article from Andreas where he said it's very unlikely that the
+likes of Coinbase will be able to because of the KYC issues.
+But I guess we'll have to see.
+I mean, people also thought it was unlikely we would ever see regulated exchange trade
+Zcash.
+But then just yesterday, Jim and I announced it.
+Why do you think that?
+I assume because it's got optional privacy?
+Yeah, maybe they're only going to support the non-shielded transactions.
+I don't think it really matters.
+So that would be bad for Zcash then because that would just increase the number of non-shielded
+transactions and make it less secure.
+Yeah.
+I was on the privacy panel at the conference and we talked about this and I made the argument
+that even if you're making a shielded transaction deposit to Jim and I, they still know who
+you are.
+They're being protected against other people on the network, maybe not knowing that.
+But privacy issues are a whole other fun thing.
+I am interested in Lightning not just from the scalability but also from the privacy
+standpoint.
+Okay.
+So I just want to get back to one point.
+Going back to the main chain, with a very busy network, a very successful network and
+still small block sizes, is there a fee for using the main chain that would concern you?
+Or do you just don't care if it was $100, if it got to $1,000?
+Is that no issue?
+I think it's more about sustained fees.
+So we did see some spikes due to a variety of different issues at the end of last year
+where fees were going up pretty insane amounts.
+It's a complex thing, both with how fee estimation works across the system and with the incentives
+for customers, users and large enterprises and wallets in general to be better at how
+they use a block space.
+So I'm in favor of high fees happening when people are using block space inefficiently.
+And this becomes an incentive for companies to do better to optimize their software.
+If we get to the point where we see SegWit adoption is pretty much maxed out, like right
+now we're around 40%, if it got up well past 50%, and so pretty much everyone was using
+that.
+And it looked like we had pretty much maxed out what we could do with Lightning Network
+and we were getting sustained high fees.
+That's when I think it's worth talking about maybe we are at the point where we should
+look into increasing block size because there's not much more efficiency that we can gain.
+Now you're going to get some pushback from people.
+So they're going to tell you, well, we can still do like Schnorr signatures and other
+aggregation stuff and do more efficiency improvements.
+And I expect that to happen over the next year or so.
+I think the real question comes down to if we get to the point where no one has any more
+proposals for how to squeeze more efficiency out of the system.
+And there's so much demand that the fees are higher than they need to be to sustain miners
+and keep the security of the system intact, then that seems to be like your back's against
+the wall.
+You should really start to seriously talking about solutions for increasing block size
+at a rate that is manageable.
+Okay, because the interesting thing there is the block size down to fees at that point
+or because a fee market is like a standard open economy, right?
+And if we had a successful lightning network, then people have a choice whether to pay the
+fees or not.
+My worry is that the main chain will become a tool of the wealthy.
+And I think I looked at something like if that $10, it eliminates something like a fifth
+of the global population, I'm guessing, but I'll try and get the accurate figures to share.
+But at $100, it's something like the majority of the world would not be able to use the
+main chain.
+And is that something that would bother you or do you think Bitcoin is...
+Well, I guess what I'm saying is I'm not asking us to be socialists, but do you think Bitcoin
+should be developed in a way that it should be open to anyone and everyone to use?
+Or should it be just follow what happens with the economy and just be an open economic fair
+value system?
+Well, yeah, I mean, I think that the ultimate goal is for everyone to be able to use Bitcoin.
+The problem you run into is then whether or not you're willing to make security tradeoffs.
+So if we really get to a mainstream adoption level, and there's no other obvious path forward
+than allowing more data to go into the blockchain, then people start having arguments about costs.
+And once again, it's like cost of transaction fee versus cost of node operation.
+And there is no number that you can definitively settle on to say, this is too high or this
+is too low.
+It's all subjective.
+Yeah, of course.
+Yeah.
+Okay.
+Well, I think we've done a lot.
+I know you've had a few interviews this week, so thanks again, Jameson.
+Any closing thoughts you want to add?
+What do you got going on the rest of this week?
+Well, you know, I'm at consensus and yet I'm not at consensus.
+There's a lot of us like that.
+Yeah.
+It's...
+The space has changed so much in the past few months.
+One of the main differences that's happened for me is that I am getting contacted by like
+wealth management companies and institutional investors and stuff.
+And that's actually what I'm spending a lot of my time here doing is speaking to people
+who, you know, they have a lot of money and they're trying to figure out whether or not
+they want to participate in these new systems.
+So I'm just kind of continuing my educational quest.
+But now I have a slightly different audience.
+And I do think that this could very well be the year of the like institutional money coming
+into Bitcoin.
+I know there have been various projects and interests over the past few years, and I'm
+hoping that some of those are starting to come to fruition.
+It's funny because I'm starting just, I don't know if this has happened to you, or it probably
+has, but I'm just starting to see natural use cases that work for me.
+I was using Medium the other day, and it's, do you want to sign up and you can get paid
+for your content?
+I looked and then it asked me to put my bank account in, I was like, I can't be bothered.
+But if it had been Bitcoin based, it would have been, here's my wallet, it would have
+been a lot easier.
+I'm starting to feel like in all different directions, we are very much approaching a
+real tipping point that isn't just about speculation.
+You have that feeling?
+It is, it's all about the use cases and getting more companies to start making it an option.
+But I am, you know, once again, really more excited about lightning.
+And once I see that started to be integrated at places, I think that'll potentially get
+me actually like spending Bitcoin on a regular basis, because I very rarely touch any of
+my like hardware devices.
+And that's mostly because the first world financial system is pretty good for me.
+I have very few cases where I need a level of privacy that I would want to use crypto
+assets for.
+That's a whole other conversation and something that I've been working on for a few months
+with regard to like my privacy in the real world and from a legal standpoint, you know,
+due to me becoming more high profile figure who's getting new types of attacks against
+myself.
+Right.
+Okay.
+All right.
+Well, listen, look, tell people how to get hold of you.
+It's lop.net.
+You'll find everything you need lop.net.
+And do you want to say any final thing about CASA?
+Well, CASA, we are starting out, you know, really high tier boutique solution.
+But I am hopeful that, you know, as we learn a lot over the next year or two, that we will
+be able to lower our price point, make ourselves more available to the common person.
+And really, the ultimate goal is to help the average person be their own bank without having
+to go through all the hassle that you have to do today.
+Excellent.
+I hope one day I will have enough money to be able to use it.
+Thanks again.
+Always a pleasure.
+Enjoy the rest of your week.
+Thanks.
+So what did you make of that?
+I hope you enjoyed it.
+It was a good second interview following the first one we did a few months back.
+Always great to catch up with Jameson.
+Like I said, I just, I really like the guy.
+I really like the way he approaches things.
+I love his Twitter.
+His tweets are always helpful, always informative.
+So if you don't follow him, I suggest you follow him.
+And yeah, I just really enjoyed catching up with him.
+And I always feel like when I'm with him, I learn a bunch more.
+And I also leave those interviews, you know, really thinking about some of the things he's
+said and yeah, they just ponder them for a while.
+So I hope you all enjoyed it as much as I do.
+Please do support the show.
+Please do leave us a review on iTunes.
+Follow me on social media and share this out with your friends and please do check out
+my website.
+It all really, really helps.
+In other news, I've got a few other interviews also in the bag.
+I've got the interview I recorded with Alejandro Mercado about what's going on in Venezuela.
+We did record that a few weeks back, but that's going to be coming out next week.
+So hope you enjoy that.
+And I also have an interview with Trevor Koverko from Polymath.
+And I also recently recorded with Jill Carson while she was here in London.
+So all those are coming soon.
+If anyone's in London and they want to do an interview, it does save me a trip.
+So yeah, do feel free to reach out if you think it's something that will suit the show.
+Okay, well listen, I hope you all have a great week.
+Feel free to get in touch and yeah, hope to see you soon.

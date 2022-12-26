@@ -1,0 +1,479 @@
+We're all very punctual people and we won't have any stragglers, right, so we can go ahead and get started on time.
+Don't want to waste anybody's time. It's a very precious resource.
+If you're not familiar with me, my name is Jameson Lopp.
+I became fascinated with Bitcoin a number of years ago and started falling down the rabbit hole.
+Basically started with me forking the Bitcoin Core repository, creating something I called Satoshi,
+where I was basically trying to take a DevOps perspective to a node operation,
+and really just added a bunch of instrumentation into Bitcoin Core itself,
+added some additional layers of graphing and eye candy, and you can check that out at Satoshi.info
+to see some neat charts of what's going on on the Bitcoin network and what's going on inside of the nodes that I'm running.
+I've been working at BitGo for about three years now and have gotten to the point
+where I am leading a team of engineers who focus on our low-level infrastructure.
+At BitGo, we started off supporting Bitcoin and then over the years have added support for other assets
+like Litecoin, Ripple, Ethereum.
+Then, as we'll be seeing in today's talk, some of the different Bitcoin forks that have arisen over the past year.
+With the focus on infrastructure, that means I'm mainly doing stuff like running services that index the blockchain data
+as new transactions and blocks come in and provide APIs for the rest of our developers and our platform
+to be able to get that data and construct transactions, figure out where the UTXOs are that are spendable,
+what the balances are. I do stuff with fee estimation, transaction signing, and transaction broadcasting.
+If you're not familiar with blockchain forks, it's slightly different from the idea of a software fork,
+but there is a lot of similarities. With a fork, you're basically making a copy of software or of blockchain
+at a certain point in time. Then, you take that copy and start modifying it however you please.
+The standard definition for a blockchain fork for technically minded folks is that we've got a couple of different types.
+You generally hear about hard forks and you hear about soft forks.
+A hard fork, as you can see with the circles here on the left, is that a soft fork is a constriction of the rules.
+It means the new rule set, all of them are valid under the original rule set, whereas a hard fork is an expansion of the rule set.
+You're adding new rules that were not previously valid.
+There are various trade-offs that you get between these two different types of forks.
+Over the past few years, we've seen a number of different groups in the Bitcoin ecosystem rally around each other,
+trying to get soft forks or hard forks passed.
+You could be rallying around certain sets of developers or miners or enterprises or users.
+It's interesting to see how the political power and governance structure has been unfolding over the years.
+Some more trade-offs of what you see between hard forks and soft forks are that hard forks are easier to program from a coding standpoint.
+They allow you to make pretty drastic protocol changes, basically anything that you can imagine.
+The downside is that you have to get all of the nodes on the network to change their software to accept these new rules.
+Otherwise, you end up with a chain split.
+For the hard fork example here, anyone who does not change the rules or their code that they're running on their nodes,
+they're going to keep going following the old rule set, while the people who have upgraded at the point in time when the fork activates,
+they fork off and are now on a completely separate network with different rules,
+and those two networks are no longer compatible with each other.
+Whereas a soft fork, because the new rules are still valid under the old rule set,
+it allows for you to have a more graceful upgrade period.
+That means that anyone who is not paying attention or is lazy or just has other things that they're busy with doing,
+if they don't change their code, they don't upgrade, it's okay,
+because they still remain in consensus with the rest of the network that is working on these new rule sets.
+In a decentralized ecosystem where nobody really has control over anything,
+it's a lot different from running a web software stack where you control all the servers and you just deploy the code and everything is okay.
+When you deploy code out onto one of these decentralized networks,
+it's very, very difficult to revert problems or roll back or make hasty changes.
+You want to be very careful in how you go about making changes to the code, especially the consensus code,
+because you don't want people to fall out of consensus with each other.
+It actually gets a lot more complicated than hard forks and soft forks. We won't go into all the details here.
+In fact, Paul Stork, who was one of the speakers earlier, he has a very lengthy post
+where he further categorizes different characteristics of forks.
+I think he came up with four, five, or six different characteristics.
+You can even see over here on the right that Bitcoin itself has had a number of forks over the years.
+Most of them have been soft forks, though some of them are possibly considered hard forks.
+In fact, there's a lot of debate over some of them which were hard forks.
+There was a slight emergency back in 2013 where there was actually a low-level issue
+in some of the database code that Bitcoin Core was using that caused a chain split.
+There's actually a little bit of argument over whether or not that was a hard fork or soft fork.
+It actually got the chain reorganized because people came together and got the miners
+to basically wipe out the inadvertent chain that was created.
+Then a really interesting one, though, which you see even Paul says is kind of up in the air,
+is one of the first consensus changes that Satoshi ever made, probably back in 2009 or early 2010 at the latest,
+was changing the consensus rule for what the best chain is from being the longest,
+aka the one with the most blocks, to being the one with the most proof of work.
+Technically, you could say that is a hard fork change because those two rules are not compatible with each other.
+However, because the longest chain was the chain with the most proof of work on the network,
+it did not cause a chain split.
+You wouldn't even notice that this rule got changed unless they were like a developer
+who was paying really close attention to what was happening.
+Number seven.
+Not exactly.
+The way that Bitcoin works with adding new blocks to a given chain is that miners are basically chugging away,
+trying to create another block that is valid and can be added to the chain.
+At any given time, miners can always agree to go back in time and start creating a new chain fork from a specific point in time.
+However, the further back in time you go, the more computationally expensive it becomes to do.
+The only reason that this was able to happen was because people noticed very quickly and it was fixed within a matter of hours.
+What happened was you had a fork where you had two different sets of miners.
+Different pools were using slightly different software and those pools diverged.
+You had some pools working on fork A, some pools working on fork B.
+When the developers got together with the miners and other enterprises at the time,
+they said, okay, we're going to say that fork A is the correct fork and the other one was a mistake.
+All of the miners that were working on fork B were like, okay, we'll stop.
+We'll give up and no longer work on that and we'll switch back.
+They reverted to the original software and continued on fork A.
+That is an interesting property of these blockchains and that's why immutability itself can be a tricky term
+because it's not so much that there is a guarantee that data will never change,
+but rather there is a mathematically provable expense to changing the data.
+The further you go back in time, the more expensive it becomes.
+Here's just a quick graphic that some folks came up with of what happened last year where we got the Bitcoin chain
+and then we had a fork in August 1st of the Bitcoin Cash chain,
+which later in October there was another fork of the Bitcoin Gold chain,
+and then SegWit2X, which we actually thought was going to be the first ever contentious hard fork in the Bitcoin ecosystem,
+ended up getting called off at the last second.
+It never happened.
+We'll get more into the details there,
+but as you can see, because this is a permissionless system,
+anyone who wants to can fork anything at any time if they can get enough people together,
+enough resources, and so even the Bitcoin Cash chain,
+there was another fork where they changed their difficulty adjustment algorithm
+and some people remained on the original Bitcoin Cash fork and called that Bitcoin Clashic.
+I'm actually not sure if that fork is still going.
+I haven't checked in on it lately, but even if it's not,
+there was another fork of Bitcoin Cash that a mining pool called ViaBTC announced recently,
+and they're calling it Bitcoin Candy.
+I don't know what the properties are of that or why anybody would be interested in it,
+but this just sort of goes to show the permissionless nature of the ecosystem.
+It can get pretty crazy.
+How crazy can it get?
+It has been speculated that in 2018 as many as 50 Bitcoin forks may happen,
+and this seems pretty crazy, but from my perspective, being in this ecosystem for so many years,
+this is history repeating itself.
+If you were paying attention to Bitcoin in the 2012-2013 era,
+there was something called the altcoin craze at the time,
+where we had Litecoin got really interesting and popular,
+and then a number of other software forks of Bitcoin popping up out of nowhere.
+I can't even remember all of them.
+There was like a Peercoin, and Namecoin was one of the first ones,
+and it kind of ballooned because it became very, very easy to create these forks.
+Some of the parallels that I'm seeing from four or five years ago
+and what seems to be happening today is that the first few of these things that come out,
+they're very novel.
+They manage to capture a fair amount of interest from various groups,
+and they're able to create utility, create value,
+and have a decent amount of trading on the markets and probably have some staying power.
+But very quickly what happens is that those first few networks that show up
+grab a lot of the attention, and it becomes harder and harder for these new folks
+to differentiate themselves, to get very much attention from people,
+to gain traction in the markets, and you end up with a very long tail distribution
+in the markets of a bunch of shitcoins is basically what we generally call them,
+because they have no interesting utility or value.
+And so the same thing is going to happen here.
+At BitGo, we added support for Bitcoin Cash,
+and we were tentative about adding support for Bitcoin Gold,
+but we did because we had some clients with a lot of money that really wanted to access it.
+But I do not see us adding support for probably any of the other ones on here,
+unless something really unique happens and one of them manages to shoot up in the rankings on the coin market caps.
+So this is permissionless innovation.
+It becomes easier for people to create these because new tools come out to make it easier.
+So one of the reasons those first few altcoins in 2012 and 2013 got a lot of traction was
+you had to be a hardcore developer to be able to create a new genesis block
+and create new protocol and bootstrap a network.
+But then by the time we got to 2014 or so,
+because Matt Corolla, who was a Bitcoin core developer and went on to found Dockstream,
+he created a tool called CoinGen.io,
+and he literally made a web form where you just fill out a few parameters and click go,
+and it would create your executable binaries and all of your bootstrapping materials
+and a nice easy to use package that you could then just put on your website.
+Anybody could download their node network.
+And so by the time it got to be that easy, there's really nothing interesting about it anymore.
+And that same phenomenon happened here where actually within a couple of months of the Bitcoin cash fork,
+maybe even before the Bitcoin gold fork, somebody created a coin blockchain fork generating tool.
+I think it's called ForkGen, probably the same type of thing.
+And so now anybody can go to this website, fill out a form, and now you've got an altcoin airdrop.
+So not really interesting because you're not doing anything unique or adding much value to the system.
+So here we can see that there are a number of issues from a user perspective with these forks
+that popped up because we've never seen anything like it before.
+One of them is replay protection.
+And what that means is that if you have Bitcoin A and Bitcoin B and you're making a transaction on Bitcoin A,
+you don't want that transaction to also happen on Bitcoin B and spend your money twice.
+And of course, multiply that by however many forks are out there and that gets even worse and worse.
+And it can become even worse if the price difference between the two is like 10x
+and you're spending one Bitcoin B, but Bitcoin A is worth 10x more.
+And so now you've spent like 11x the original amount that you wanted to transfer.
+So replay protection basically means making these transactions incompatible across the different networks.
+And there are different types of replay protection,
+which are generally classified as a strong two-way replay protection,
+which means there's no way for a transaction on one network to get to the other.
+And then there's a one-way opt-in replay protection where you have to go to a little bit of extra effort
+to change something about the transaction on one network to make sure it gets rejected on the second network.
+And then, of course, there's no replay protection at all,
+which is a complete nightmare for wallet developers such as myself.
+I'll talk a little bit more about that later.
+So address format compatibility became a big issue.
+Now, at BitGo, we had seen a little bit of this early last year,
+and that was primarily when we added Litecoin support.
+And we quickly found that Litecoin did not change their address format for P2SH,
+which is the multi-signature version of addresses, which BitGo is a multi-signature wallet.
+So basically what happened was if you create a multi-sig address on Litecoin,
+then you get something that looks like this.
+If you create a multi-sig address on Bitcoin, you get something that looks like this.
+Can you tell the difference? Neither can wallet software.
+So what happens is that naive users who aren't paying attention to what they're doing
+get out their Litecoin wallet and then are pointing it at a Bitcoin address,
+send the Litecoin to a Bitcoin address, and the recipient never gets it.
+And this results in not completely lost money,
+because there's somebody who has a private key somewhere that can enable you to access it,
+but the recipient wallet is not looking for incoming funds on that blockchain,
+because they sent it on the completely wrong network.
+And this has become a real bane for us, especially when Bitcoin forked into Bitcoin Cash,
+because now you also have brand confusion on top of this format compatibility problem,
+and you have people sending their Bitcoin to Bitcoin Cash wallets
+and sending Bitcoin Cash to Bitcoin wallets, and port tickets go through the roof.
+You're sending all of these issues of people saying,
+why did my money never arrive?
+Or I sent my money and the seller says he never got it, now he's claiming that I'm defrauding him.
+And just a lot of people get really upset.
+And this is why it's, from my perspective, very important whenever you're creating a new network,
+you also try to break this address format so that you don't have different wallets trying to speak to each other.
+And then, as we already said, there's the brand confusion,
+and that comes into play with sending address format compatibility issues,
+but also just general talking to other people and trying to do transactions creates problems,
+because some people might go into a service and they see two different Bitcoins,
+and one of them is a lot cheaper than the other one,
+and so they're just like, oh, I'll buy the cheaper one because it looks like a better deal.
+So just naive users can create a number of issues.
+From the developer standpoint and business standpoint,
+you have to worry about replay protection, as we said, mainly because it creates a lot of support load,
+but we also have to deal with something called wipeout protection.
+And that basically means that you're ensuring that when this fork happens,
+that there's no way for the fork to get reorganized by the miners,
+like what we were talking about earlier, the way that that 2013 database bug got fixed,
+where the miners agreed to stop working on the chain and work more on the original one.
+It's possible, if you're not careful, that you have two chains that are using the same type of proof of work consensus,
+and if one of them gets ahead of the other one,
+then the minority chain can actually get overwritten and reorganized by the original fork software.
+This was a potential issue with the SegWit 2X fork, but they did end up adding wipeout protection.
+They did that by requiring that the fork, the block at the fork height be greater than one megabyte,
+which was a completely breaking rule that the old clients would say, no, that's invalid.
+We'll never be able to reorganize the chain.
+But the main reason for this is that if you have services like exchanges, or really anyone who is accepting money on this new fork,
+if there's any wipeout risk, that means that there's always in the back of your head some semblance of doubt
+that all the money you've ever received on that fork could just disappear in a puff of smoke.
+And most people do not want to have that type of doubt.
+So we talked a fair amount about addresses and wrong chain deposits.
+That mainly results in a lot of the support tickets and then additional developer workload,
+because you have to build new tools to import the private keys from one chain to another chain,
+from one wallet to another wallet, and get that money to basically be recovered.
+Then on a kind of related note with that, when you have two forks that are using the same type of addresses
+and you're generating new addresses in your wallet,
+we've also found that you can help prevent some of those needs for manual recovery
+if you're keeping all of the addresses in the wallets in sync with each other.
+So if someone creates a new address on the Bitcoin wallet,
+you then mirror that over to create a new address on the Bitcoin cash wallet or what have you.
+And that way the Bitcoin cash wallet is looking for new addresses or new deposits that are received on there.
+And there's even more of this resource cost and almost a moral or philosophical question
+from a business standpoint of how do we determine which of these assets should be added.
+And the naive answer is, oh, well, you just add whichever ones have a lot of market value, right?
+Well, this becomes a dilemma, especially for services such as BitGo,
+where we're not a consumer-facing wallet, we're an enterprise wallet.
+So we are actually powering a lot of the exchanges.
+We're powering the marketplaces that are deciding whether or not these things are worth adding support for.
+It's a bit of a chicken and egg problem there.
+And so I have not seen any real standardization in the community to decide
+how does anybody know whether or not this fork or that fork is actually worth the effort.
+What I would like to see is a standard built around futures markets.
+And we have seen a fair amount of activity in futures markets related to these forks.
+I know Bitfinex and maybe Bitrex and some of the other big exchanges had futures markets for these different forks.
+And some people made a lot of money, some people lost a lot of money on them.
+The main reason I think that they haven't been used for these business decisions is that
+there was still a lot of question around whether or not the futures were accurate,
+whether they were manipulated, whether they had sufficient volume, whatever.
+But once again I think Paul Stortz's talk that he gave in this room a couple hours ago about prediction markets,
+that could potentially come into play as well.
+Especially if his Truthcoin hive mine project ends up going into production use and gaining sufficient reputation.
+Maybe we can use projects like that to help standardize these decisions.
+Finally, from the sort of moral responsibility question,
+what happens when you fork assets and anyone who owns Bitcoin at that time now has this new asset as well,
+which may or may not have some value on the market.
+If it has any non-negligible value, you're going to have customers coming to you saying,
+I demand access to my money. You can't withhold your money from me.
+This becomes a possibly legal dilemma, but I'm not a lawyer.
+Thankfully BitGo has a bit of an out in this situation because we are non-custodial.
+So we can always tell a customer, hey, you have enough of your private key data
+that you can go build your own software or pay somebody else to build the software if you really want to access that value.
+However, for a lot of the other companies in this space, your custodial exchanges and brokerages like Coinbase and BitFenix and Bitstamp and Kraken and whatnot,
+they're just holding on to it and they have to make a much even tougher call than BitGo has to make.
+Because for every asset that they're not adding support for,
+you can potentially make a moral argument that they're stealing money from people or withholding money from people.
+We won't get too deep into the weeds on that.
+As far as I know, or at least I'm not aware of any lawsuits around it,
+but there were definitely a lot of lawsuits threatened against some of these custodial providers for not making the new assets accessible.
+So from the infrastructure standpoint, every web service has many, many layers of hardware and software and its infrastructure.
+And when we're having to add support for a fork, we have to touch every layer of our infrastructure.
+At BitGo, we have SDKs that our clients run on their own servers to do transaction creation and signing.
+So we have to add support for all of that for each new asset.
+We then have to also add new API calls on our web servers that can recognize the different types of assets.
+On the key management standpoint, we have to copy over all of the private keys at that certain point in time and associate them with the new assets.
+We also have to support new formats of transaction signing on our hardware security modules.
+And then finally, the tricky part that I have to deal with is actually spooling up entire new indexing infrastructure
+that is keeping track of the address balances and the unspent transaction outputs so that we actually know what can you spend on this given chain.
+And that takes a fair amount of time. The first one took a lot of time with Bitcoin Cash.
+The second one with Bitcoin Gold took a little less time.
+But we're finding that we're increasing the complexity of our infrastructure.
+And once you add support for one of these, you've basically made a promise to support that for the foreseeable future.
+So our infrastructure complexity has really ballooned in size over the past six months or so.
+And I ended up having to spend a lot more of my time just doing operational management, keeping all of the services running smoothly.
+That has definitely slowed down our pace of development and innovation because we're more worried about just keeping all the servers from catching on fire.
+So to get more specific about some of these different forks and their unique aspects,
+Bitcoin Cash was interesting because it was actually announced, I want to say, in June or so.
+I was in the Netherlands at the conference where it was announced.
+But when it was announced, it was announced as a backup plan in case SegWit2x fell through.
+But then, and I believe it was on July 22nd, the Bitcoin ABC developers just came out and said,
+you know what, we're going to do it in a couple of weeks on August 1st.
+That was a big surprise and disrupted our development plans because we knew SegWit2x was about to get activated on Bitcoin.
+And we were planning on getting that ready so that people could use it as soon as it was available.
+Instead, we had to pivot and basically it was all hands on deck trying to spool up new infrastructure and add all the support for Bitcoin Cash.
+We then, of course, very quickly found out about the address format issues when our users started complaining that their money was going missing.
+Even though it was still there, it was just on a different blockchain.
+We already had experience with this because of the Litecoin issue that I mentioned earlier, but there was an additional wrinkle.
+So three or four weeks after Bitcoin Cash came out, we then released our segregated witness compatibility.
+And our users started doing SegWit address creation and sending money to SegWit addresses.
+Well, it wasn't long after that that we had some users start sending Bitcoin Cash to Bitcoin SegWit addresses.
+This posed a particularly unique problem because Bitcoin Cash does not understand the segregated witness functionality.
+If you send to a segregated witness address on Bitcoin Cash, you can't spend from it.
+It becomes essentially a black hole because if you try to spend using the SegWit rules, the Bitcoin Cash network rejects it.
+Now, it is possible to recover this money and we have recovered some people's money, but it requires direct involvement of a miner.
+You have to carefully craft the transaction, send it to a miner, the miner has to directly include it in a block.
+But not only that, but once you send the transaction to the miner, you're actually trusting them because they could just steal all the money from you.
+And this is because on the Bitcoin Cash network, segregated witness output is seen as an anyone can spend.
+So they can just take that out and send it to themselves if they want to.
+Thankfully, our recoveries so far have gone through just fine.
+But there was at least one incident on the Bitcoin Cash network where some miner was going around and just scooping up all of the money out of SegWit addresses
+and kind of ransoming it and saying, you know, I'll give you your money back, but I'm only going to give you like 70% of it.
+Not sure how well that ended for those people.
+Also, Bitcoin Cash actually ended up affecting Bitcoin because Bitcoin Cash had this new difficulty adjustment algorithm
+that it incentivized a lot of miners to swoop in and mine Bitcoin Cash at certain times because it became insanely profitable to do so.
+And that actually resulted in the inflation rate of Bitcoin Cash for a couple of months to shoot through the roof.
+They were creating blocks every 30 seconds to 60 seconds rather than every 10 minutes during some of those periods.
+And that actually resulted in bigger backlogs on the Bitcoin network.
+Our fee estimates went crazy during those times.
+Then Bitcoin Gold, it didn't have as many issues.
+But the first time that I tried nodes on the Bitcoin Gold network, nothing happened.
+They didn't download a single block.
+And after doing a little bit of investigation, I realized that they were not finding any peers to connect to.
+And normally, a node on Bitcoin has a fairly complex bootstrapping process for the very first time you ever turn it on.
+It uses something called DNS seeds where there are people out on the network, developers really, who are running DNS servers
+that return lists of IP addresses for well-known, well-connected nodes.
+The Bitcoin Gold developers forgot to do that part.
+And this might have changed since then, but at that time, the only way I was able to fix this was I had to go onto the Bitcoin Talk forums
+for the announcement page for Bitcoin Gold and find lists of IP addresses of people who were running nodes
+and manually copy and paste those into the configuration files.
+And then it worked after that point.
+And then, interestingly enough, Bitcoin Gold was good in the fact that they changed their address formats.
+So we did not have the same type of cross-chain sending issues that we had with Bitcoin Cash.
+However, this actually caused additional complexity for our infrastructure,
+because when they changed the address formats, they did it retroactively for every address that was on the network.
+So when we were querying our node to sync it up to get all of the historical transactions and deposits into these mirrored wallets
+for the older Bitcoin history, it was returning addresses to us that were starting with a Q rather than a 3.
+And so basically, those were not the addresses that we were looking for from our original database.
+So we had to change our migration of all of these chain addresses to actually copy them over,
+but also change the format so that then when we were doing that initial sync to figure out what the balances of the wallets were,
+they were actually able to find the right addresses.
+And then SegWit2x was probably one of the most fun of all, both from a technical standpoint and just human standpoint,
+mainly because they were intentionally trying to become Bitcoin and take over Bitcoin, kill Bitcoin, wear the new Bitcoin.
+So as a result, they refused to do strong replay protection.
+They did have some opt-in replay protection for a couple of days,
+but it was actually so terrible that I was protesting against it because it would have resulted in a lot of spam on the Bitcoin network.
+They then removed that and said, you know what, no replay protection whatsoever.
+So as a result, we had to spend a lot of engineering time at BitGo saying, OK,
+how can we allow our users to safely use SegWit2x without also spending their regular Bitcoin money?
+And really what we ended up having to do was adding logic that tagged every single unspent transaction output on each fork
+as being protected against being replayed on the other forks.
+And then we would propagate that flag through all the grandchild transactions because UTXO sets kind of fan out over time.
+Now, the idea here being that at the time of the fork, BitGo, we have our own company wallet.
+We were planning on trying to double spend our own money across these two different forks using various protocol features that already existed,
+such as in lock time and RBF, but basically using features that would allow us to make a transaction on one fork that was not valid on the other.
+And once one of those got confirmed, we would then be able to go into the database and say, OK, this is now safe or these outputs are safe.
+You can't spend them on the other network because they don't exist on the other network.
+And then once we have this like taint pool of unspent transaction outputs, we can then start to insert them into all of our other clients transactions.
+So whenever one of our users would want to make a transaction, they would select their UTXOs. If none of them had that protection flag,
+we would then just shove one of our own in there. And then from that point on, all of the rest of the descendants of those transactions would be protected.
+And of course, this is not simple. Thankfully, we never actually had to try it out in production.
+But there's a somewhat unanswered question that is still unanswered.
+And that is, how do you determine which fork wins in a situation where a new fork is contentious and is claiming that it's going to become the real Bitcoin?
+We argued amongst ourselves for many hours about different metrics to use like hash rate or exchange rate or a number of people on Twitter yelling about it.
+But my ultimate conclusion was that any metrics could be gamed, at least in the short term.
+And especially if we announced to the world that we were going to be making a decision on any metrics,
+we could be damn sure that those metrics were going to get gamed by people possibly on both sides who were then going to be competing to be the real Bitcoin.
+So we figured that the only responsible way to go forward was to go with our gut.
+And that would have to be after waiting for a sufficient period of time. Even a few days might not be enough.
+I was thinking possibly in the timeframe of weeks because it is completely possible for miners or other entities on the network
+to be irrational for short to medium periods of time.
+But the main thing that I was trying to impress upon the rest of the people at the company is that if the fundamental aspects of the network were not sane,
+then something was wrong and we should leave it at status quo.
+And what I mean by that is there's always been an argument about whether price follows hash rate or hash rate follows price.
+It doesn't really matter. In the long term, hash rate and price should be generally in sync.
+And so my argument was that if the mining hash rate is not generally in sync with the exchange rate, then something's fishy.
+And we can probably make a pretty good bet that somebody is out there screwing around with the network and we should not make any rash changes.
+So a few best practices for protocol devs who want to do one of these altcoin air drops, just various technical things.
+Generally, the idea here is that you want to hit every possible aspect of the protocol to make sure you get a nice clean split from the old network.
+You don't want any of the nodes on the old network talking to the new network.
+You don't want people sending from addresses on the old network to the new network.
+And you want to make sure that your fork doesn't disappear in the thin air.
+And you want to make sure that, of course, the network can get up and running without requiring complicated configuration.
+And you want all of this to be done in a transparent fashion.
+You don't want to surprise anybody when you surprise developers.
+They can get a little bit angry because we do not like having additional workloads thrown at us that push all of the rest of our plans back.
+So the main thing, I guess, to come across is that these are permissionless systems.
+Anybody can do whatever they want.
+I can't prevent anybody from doing really stupid stuff.
+We've seen a lot of really stupid stuff happen.
+And I can assure you that even more stupid stuff is going to continue to happen.
+So really, all we can do is nicely ask for certain standards and procedures to be followed.
+And if people don't want to follow them, we can ignore them.
+That is kind of the most powerful aspect of these systems is the power of saying no or saying nothing at all.
+A lot of people get really angry and argue at each other and try to be aggressive.
+But these networks are so defensive focused that generally doing nothing is the strongest action that you can take.
+So there were even some other interesting things going on.
+There was a fork called United Bitcoin recently that I was particularly unhappy with
+because they're actually confiscating all of the coins from quote unquote inactive addresses like Satoshi's addresses.
+And then they're redistributing these coins to the developers of United Bitcoin.
+I think that's kind of shady.
+I also think it's kind of shaded that they were requiring one who wanted to claim the money on the fork to have to move their money within a few weeks of the fork happening.
+That is a huge privacy problem.
+So I am not touching any coins on the United Bitcoin fork.
+You could even complain about the Bitcoin gold fork if you're not aware.
+Those developers Instamined 8,000 blocks and have paid themselves 100,000 Bitcoin gold tokens.
+So you might have a problem with that.
+Or you might think that's an interesting way to fuel the development of Bitcoin gold and its protocol.
+Also, as I slightly mentioned earlier, you can do replay protection in really stupid ways.
+For example, Segwit2x was proposing having a specific well-known address be this opt-in replay protection where if you add an output to that address, then it would not get replayed.
+If you did that on the Bitcoin network, it would not get replayed on the Segwit2x network.
+However, the private key to this address was well known.
+And the claim was that miners would just scoop up that dust as fees.
+But I'm quite sure that if that had happened, that everybody on the network who knew how would be trying to collect that money.
+And they'd be spamming the network, the transactions trying to get their free dust.
+A little extra credit. And some of these may be terrible ideas. I haven't really vetted them.
+But the thing about doing a hard fork is you have a lot of leeway. You can change anything you want to.
+So why are people going to all the trouble of doing a hard fork and just changing the block size?
+We can do so many better things. There are, in fact, an entire list of improvements on this wiki page that people have been adding to for five or six years now.
+Also, I question whether or not you really want to make a direct copy of the now nine-year-old Bitcoin blockchain, which is like 160 gigabytes and 50 million UTXOs,
+when you could easily run some scripts to clean up the UTXO set, consolidate it down significantly and even get rid of the nine years of blockchain history.
+I mean, what we're doing with a lot of these hard forks is they're just using them as a new distribution scheme for new crypto assets.
+So why do you need that entire history if we all agree we're just going to take a snapshot at a certain point in time?
+Well, just take the snapshot of the UTXO set, start a new Genesis block that has that UTXO set.
+This is actually kind of how Ethereum worked. If you look at the Genesis block in Ethereum, there's something like 10,000 addresses in there
+with various values that correspond to the people who participated in the Ethereum ICO way back in the day.
+So that's most of the stuff of what I've got for you. End on a little philosophy here, but happy to take questions. Yes?
+It's anarchy. Anarchy, I tell you.
+Yeah, a lot of it does come down to marketing, but there's also a fascinating sociological experiment that is going on with these networks.
+And so the reason why Bitcoin Cash is so successful is because it has a three plus year long history of a certain group of people
+who are like minded in their view of how to move the Bitcoin protocol forward.
+These people have become incredibly frustrated over the years and are feeling disenfranchised.
+And they don't like the way that Bitcoin has been changing from a user experience standpoint.
+And so I mentioned, you know, I was at the Future of Bitcoin conference in the Netherlands early last year.
+And this was a conference that was primarily focused around people of that mindset.
+And that's where Bitcoin ABC was actually announced as an implementation.
+So they have, you know, a large mind share and pretty significant amount of Bitcoin investors and enthusiasts spread across the entire ecosystem.
+So they were able to get sufficient traction and convince sufficient mining hash power.
+Really like Bitmain was one of the primary drivers behind Bitcoin ABC.
+And so eventually, you know, after several years of frustration, they were like, you know what, the protocol allows us to fork off.
+And so we're going to do it.
+And, you know, there was, I guess, probably a lot of trepidation to doing that.
+But then once they did it and showed that it could be done, then you saw this whole onslaught of other people are like, oh, me too, me too.
+And so Bitcoin Cash, of course, being much more interesting than most of these other copycats.
+But yeah, the sociological aspect is amazing.
+That's why I'm very active on Twitter.
+I think that there's a lot of interesting interaction going on there.
+And then there are many other forums and social media sites.
+And I talk often about like, what is Bitcoin?
+And I have an article on CoinDesk from a year ago entitled Nobody Understands Bitcoin.
+And that's OK.
+I highly recommend everybody read that because that's both a historical and sort of philosophical deep dive into the organic creation of this thing.
+But while I'm very technical and I talk about code a lot, the underpinning of these systems is not code.
+It's not hardware. It's people.
+And we're just writing code to describe how we see the world and how we want to create a new system.
+So anybody who has a specific ideology or viewpoint of what they want money to be or what they want any of these permissionless systems to be,
+all they have to do is get enough other like-minded people together and find the ones that have the skill set to write the code in a secure manner,
+find the people to run the nodes, find the people to secure it with hash power or some other consensus mechanism, and you've got a network.
+And now you've got the network. All you need to do is grow the network and grow it and grow it until you hit your saturation.
+Yes.
+Yeah, so it's a little bit of both. I have sold some of my fork coins.
+But A, there's a lot of these fork coins that are actually going to be straight up scams and are just going to try to steal your private keys.
+So you have to be very careful about how you try to claim your fork coins.
+I personally would not recommend trying to claim fork coins using anything other than like a well-known hardware vendor that has added support for transaction signing.
+And even then, yeah, well, you're taking the risk.
+If you're just downloading their node software and putting your private keys into it, unless you did a full audit of their software, you're taking a risk.
+They might just be stealing your keys and then steal all your bitcoins as well.
+But also, if you are going to do that, you can be a little more careful and move your bitcoins to a new address that's under a different private key.
+But like personally, I think that the vast majority of these things are going to go to zero.
+And so it probably might it might be worth your time doing it.
+But even just from an exchange rate standpoint, I think I claim to my Bitcoin cash and my Bitcoin gold, but all the other ones after that, it's like less than 1% dividend.
+And when we're talking about crypto assets that move 10% every day, me going to the trouble of like getting cold storage out and doing all that stuff just for like 0.01%.
+Yes.
+Yeah. Well, Bitcoin gold forked off of Bitcoin. But if you had that Bitcoin on October 20 something, then yes.
+Yeah. So btcdiv.com is a pretty good resource for like figuring out how to claim these things.
+But I guess that pretty much does it for me. But you can catch me later. I'll be here for at least a few more hours.

@@ -1,0 +1,114 @@
+Hi, I'm Jameson Lopp, and I'm going to give you a crash course on some of the fundamental
+building blocks used to create cryptocurrencies. Let's begin at the beginning. What is Bitcoin?
+It's a system that automates the continual discovery of consensus amongst its participants.
+It's machine consensus that ultimately enforces human consensus. Bitcoin is designed to be peer
+to peer electronic cash that is more valuable than legacy systems because of the monetary
+autonomy it brings to its users via decentralization. Bitcoin seeks to address the root problem with
+conventional currency, which is all the trust that's required to make it work. Not that justified
+trust is a bad thing, but trust makes systems brittle, opaque, and costly to operate. Trust
+failures result in systemic collapses, trust curation creates inequality in monopolies,
+and naturally arising trust choke points can be abused to deny people access to systems.
+Through the use of cryptographic proofs and decentralized networks,
+Bitcoin minimizes and replaces these trust costs. But how does Bitcoin minimize trust?
+It does it with the properties afforded to us by cryptography. With the available technology,
+there are fundamental trade-offs between scale and decentralization. If the system is too costly,
+then people will be forced to trust third parties rather than independently enforcing
+the system's rules. If the Bitcoin blockchain's resource usage relative to the available technology
+is too great, then Bitcoin loses its competitive advantages compared to legacy systems because
+validation will be too costly, thus forcing trust back into the legacy system. As such,
+efficient use of resources is important so that as many people as possible can afford to verify the
+state of the system independently. So what are some of the building blocks we use in Bitcoin?
+One of them is chains of cryptographic hashes. A hash function is a function that deterministically
+maps an arbitrarily large input space into a fixed output space. That's a pretty complicated
+description. So instead, I like to imagine a hash function as a fingerprinting machine. It takes an
+input, which is generally a bunch of characters, and returns a corresponding cryptographic
+fingerprint for that input, which is another string of characters. The first requirement of
+a cryptographic hash function is that it should be one-way. That means that given a hash,
+it should be computationally impossible to invert the hash function and compute its input. The
+second requirement is that a cryptographic hash function should have an avalanche effect. This
+means that if a single bit changes in the input, it should trigger an avalanche that jumbles the
+output bits. That is, two very similar inputs that differ by only one bit of information should have
+no discernible relationship between their output hashes. The last function that a cryptographic
+hash function needs is collision resistance. Hashes are used throughout the Bitcoin protocol. Every
+transaction has a unique hash that covers all of its details. When a transaction spins funds,
+it does so by referring to the hashes of previous transactions, thus creating a chain of hashes
+for spent outputs that covers every Satoshi that has ever existed. Also, every block has a hash
+that covers all of its details, including all of the transactions inside it. And quite importantly,
+the blockchain is a chain of blocks due to each block containing the hash of the previous block,
+thus making the previous block incorporated into the current block's hash. These chains of hashes
+give us an important attribute known as tamper evidence. By checking the integrity of a chain
+of hashes, we can be sure that no one has tampered with any of the historical data,
+as doing so would break the links in the hash chain. From the fundamental building block of
+hashes, we can then build something called a Merkle tree. Merkle trees are a kind of
+cryptographic accumulator, and accumulators allow you to compact many pieces of data into a constant
+amount of space. Merkle trees are also known as hash trees because they hash data upwards
+into a tree shape. How do you build a Merkle tree? Well, first, you get all of your pieces
+of data that you want to represent. Then you hash each piece of data separately and line up all of
+the hashes in the order that you want. Then you gather those hashes into pairs. For each pair,
+you concatenate the two hashes and take the hash of that in order to create the parent hash. As such,
+the parent of this hash tree commits to both of its child hashes. You then line up all of the parent
+hashes you've created and repeat that process. And you continue repeating this process until
+only one parent hash remains. This is the root hash, and it's at the top of the Merkle tree,
+which commits to all of the hashes below it. Think about it. If there were some other way to
+produce this exact same root hash, then that would imply the existence of a hash collision,
+which should be impossible for a strong cryptographic hash function. Thus, the root of
+this hash tree, known as the Merkle root, must be a unique identifier for this exact tree.
+So how are Merkle trees used in Bitcoin? One of the operations that you can perform with
+a cryptographic accumulator is an inclusion proof. This is a small proof that decisively
+attests that an item exists in the accumulator. They are used extensively in Bitcoin Lite clients,
+also known as SPV, or Simple Payment Verification nodes. In Bitcoin, all the transactions that took
+place in the last block are bundled together and transmitted to everyone in the network. These blocks
+can become quite large since they can potentially have thousands of transactions. To save on
+bandwidth, Bitcoin has a clever trick. Instead of transmitting all of the transactions, you can
+instead transmit the 80-byte block header that includes a Merkle root of all of that block's transactions.
+A full node can then prove to a Lite client that a specific transaction was included in a block
+by providing the minimum number of nodes in the Merkle tree that follow the path down from
+the Merkle root to the leaf node for that specific transaction. The Lite client
+verifies that this chain of hashes is valid, thus proving that the transaction data does
+exist in that block. Soon, we'll also be using Merkle trees in Redeem scripts with something
+called MAST, which stands for Merkleized Abstract Syntax Trees. So instead of just having a huge
+blob of a Redeem script that has to be put onto the blockchain in order to describe all of the
+spending conditions for a given address, we can break it up into logical branches and then only
+reveal the minimum number of nodes in that Merkle tree to prove that the spending conditions being
+used are actually valid and are included in the overall set of possible spending conditions.
+This is great for both privacy and scalability because we're able to withhold more information
+from the global network. Another common primitive used in Bitcoin is public key cryptography.
+An accrued but useful analogy is to think of your public key like a username. You can share it with
+anyone, and people can use it to identify you. Your private key, then, is kind of like your password.
+If it's leaked, it lets anyone impersonate you. In Bitcoin, your key pair is your identity. There
+is no other form of identity beyond these cryptographic keys. And at the same time,
+this also means that generating an identity is as easy as generating a new key pair.
+When you want to receive Bitcoin, you display an address that is created from your public key.
+When you want to spend that Bitcoin later, you use the corresponding private key to generate a
+cryptographic signature that proves that you are the owner of the public key to which the Bitcoin
+was sent. You might wonder, if a person is just their key pair, what's to stop you from generating
+someone else's keys and impersonating them, or stealing all of their Bitcoin? In order to have
+even a 50% likelihood of anyone colliding with someone else's Bitcoin key pair, you'd need
+2 to the 128 keys registered before you're even likely to see a single collision in one of those
+public keys. To get a sense of scale of how large 2 to the 128th is, that's one key for every carbon
+atom in every human being that has ever existed. This is precisely what makes public key
+cryptography feasible as a form of identity. As long as you're generating keys correctly,
+the key space is so large that every single identity anyone generates is pretty much guaranteed
+to be unique. Cypherpunks were entranced by this idea. With public keys as identities,
+you could be identified not by your name or your email address, but by your public key. This,
+they believed, would make surveillance and censorship a thing of the past. It would also
+be impossible to create forgeries or frame someone, because if someone shared a message
+that was signed by your private key, there could be no doubt that it was authentic.
+These cryptographic data structures allow us to create a blockchain that is easily auditable and
+tamper evident. But we need more than just tamper evidence. We also want it to be extremely difficult
+to rewrite history. This is where proof of work and the distribution of data in a peer-to-peer
+fashion come in. Proof of work once again uses hashes and the knowledge that finding a hash
+with specific properties, such as a certain number of leading zeros, can only be done by
+brute force and guessing many different possible inputs. By requiring a certain number of leading
+zeros for a block's hash, we achieve provable expenditure of computational and energy resources.
+Now we take all of these data structures used to build a blockchain and we put them onto a
+peer-to-peer network in which nodes gossip with each other about any new valid data they receive.
+When a node creates a new block or transaction, it asks all of its peers if they know about the
+hash of that block or transaction. If the peers don't, they request the data and then validate it
+independently. Upon successful validation, they repeat that process and ask all of their peers
+if they know about the data with that hash. This results in a globally flooding message system that
+is highly inefficient, but the trade-off is that it is highly robust. Nick Szabo stated it well by
+saying, when we can secure the most important aspects of a financial network by computer science
+rather than by accountants, regulators, investigators, police, and lawyers, we go from
+a system that is manual, local, and of inconsistent security to one that is automated, global, and much
+more secure.

@@ -1,0 +1,697 @@
+You're listening to the Stefan Livera Podcast, focused on Bitcoin and Austrian economics.
+Listen in and learn alongside me as I interview some of the sharpest minds ranging from economists,
+software developers, investors, entrepreneurs and writers.
+Hey guys, welcome to the show.
+This is your host, Stefan, and today my guest is the great Jameson Lopp.
+He is a very well-known cypherpunk within the Bitcoin community.
+He is also the CTO of CASA, one of the best key management companies that is out there
+today.
+And he is also the creator of statoshi.info, a Bitcoin statistics website.
+And he's also the curator of one of the best known Bitcoin resource pages.
+So first of all, thank you very much for coming on the show, Jameson.
+Pleasure to be here.
+Thanks for having me.
+Yeah.
+So look, I think basically everyone, most of the people listening to this probably already
+know you.
+So maybe we can start with a bit of discussion on, you know, what are the things that you're
+thinking about lately from a Bitcoin point of view you're thinking about and working
+on?
+Yeah.
+I mean, I'm basically continuing the security focus that I've had for the past three years
+with our vault product, the CASA Key Master, which we're currently targeting for high net
+worth individuals, but of course, eventually want to make available to as many people as
+possible.
+And simultaneously, I've started thinking a lot more about Lightning as we've been working
+on this plug and play node product.
+So I've actually been in the trenches doing a lot of one-on-one customer support over
+the holidays recently, trying to take some load off of our engineers backs.
+And I've learned quite a bit about Lightning and, you know, realized that it definitely
+still has a number of rough edges to be worked out.
+It's definitely still, you know, hashtag reckless to be operating a Lightning node with real
+money behind it.
+But I definitely see a bright future ahead and there's a lot of potential and we just
+need to keep on building.
+Yeah, fantastic.
+Actually, on that topic, what are some of the rough edges you speak of around Lightning
+and what are some of the common pain points?
+Well, so there are security issues with regard to the fact that you're basically running
+a hot wallet.
+The stuff that we're running into more often with our users is trying to figure out how
+to make it as seamless as possible for a Lightning node operator to maximize the use of their
+node.
+And so that basically means giving them a better understanding of kind of their economic
+position within the network and how they might be able to tweak different things in order
+to maximize their connections or their routing of money flowing through the node that they're
+operating.
+And these are, you know, some of the big unanswered questions is more on the economic side of
+things is how will the liquidity of this network eventually be managed?
+And of course, we hope that it will mostly be managed by software and done on a sort
+of autopilot basis.
+But the autopilot functionality that is out there right now is definitely very early stage.
+And from what we've been seeing, it has not yet reached the point where it can actually
+surpass what a dedicated human operator can do if they actually understand how to config
+their channels.
+Yes, I've understood.
+As I understand, there is a fair bit of skill that goes into the channel management component
+of it, and that can make the difference between, you know, really having people route through
+you versus being one of the, let's say, nodes that doesn't really route many payments.
+Yeah, so there's actually a fair amount of, I guess, inefficient use of capacity on the
+network right now.
+And probably one of the best examples of that is actually the largest liquidity provider
+on the network, Lnbig, whoever they are.
+They have opened up, I don't even know how many hundred, if not thousand channels with
+various nodes on the network.
+And I'm pretty sure that the vast majority of them are actually not getting used.
+And they seem to have just kind of gone with the spray and pray approach.
+But hopefully, they'll continue to refine their own logic.
+Right, right.
+Yeah, that makes sense.
+I mean, yeah, from the discussions I've heard of in the community, you know, guys like Alex
+Bosworth has a very, he has a very, you know, well connected node, and he's getting a lot
+of, you know, routing fees for that.
+So I think maybe that's just a learning journey that we all go on.
+Yeah, there's that.
+And also, you know, just trying to take this to the next level where we don't want it to
+require someone to be, you know, technically proficient or a nerd who is going to be willing
+to spend a lot of time to actually understand the protocol or how the network works.
+We're really trying to build plug and play solutions that are usable for your average
+millennial.
+And that's going to be one of the biggest challenges, I think, is just continuing to
+build layers of abstraction to have a better user interface and user experience to get
+as much of the complicated day to day stuff hidden under the hood so that we can just
+present, you know, some nice graphs and charts and maybe some buttons for people to click.
+But they shouldn't actually have to understand things like payment channel liquidity or channel
+timeout configurations and all the various game theory that's actually going on behind
+the scenes.
+Yeah, excellent points.
+Okay.
+And something I've seen you write recently was a really great article, I think it was
+very illuminating, which was around back more on the Bitcoin side, it was Who Controls Bitcoin
+Core.
+So Jameson, do you want to talk through a little bit of the background of why did you
+write this article?
+Well, like a number of things that I write, it's usually self serving.
+It's usually something where I've had so many arguments about a specific topic or specific
+point within the ecosystem.
+And I'm tired of repeating myself and tired of like constantly forgetting a lot of the
+nuances behind some of these very complex ideas is that just sit down and write everything
+out and, you know, get some peer review input from other people in the community and try
+to build what is as close to I guess, an authoritative response or resource when it comes to a question
+about like how Bitcoin actually operates.
+And so the question of, you know, who controls Bitcoin or who controls Bitcoin Core as a
+repository comes up on a regular basis, usually by people who look at one specific group,
+or look at, you know, one specific piece of software and jump to a conclusion.
+And it's very easy to do because there's a lot of complexities that are going on here.
+And so I basically tried to go through point by point and explain to people how, you know,
+not only does Bitcoin Core as a repository have no control over the network because it
+doesn't push out updates to any nodes, node operators have to go and get the software
+and install it voluntarily.
+But even within Bitcoin Core as a process of software development, there are a ton of
+checks and balances that are happening to minimize the trust and minimize the power
+of anyone who is operating in that repository, including the fairly short list of maintainers
+who have the ability to actually merge code into the repository.
+Right.
+And so that is, I suppose, just to call out the specific role that is in relation to the
+maintainer accounts that can merge code.
+But then as you explained in the article, that's really more like a janitorial function
+than a position of power.
+Yes, for a number of reasons.
+But the biggest one being that everyone is watching everyone else within the repository.
+And because at the end of the day, this is all voluntary and nobody can really force
+anyone to do anything.
+If someone abuses the small amount of power that they do have, if the rest of the organization
+decides that they can't strip that power away, then they can always just leave.
+Right.
+This is a kind of voice and exit issue.
+And that kind of plays out at many different levels, not just within software repositories,
+but within the entire crypto ecosystem is that at the end of the day, anyone who has
+power in one of these public permissionless systems only has the illusion of power from
+some perspectives.
+Because if enough people disagree with their decisions and the way that they're trying
+to change or not change the system, then they can always just go create their own new network,
+their own protocol, and basically form a new focal point of consensus.
+Fantastic.
+And then I like how in this article, you actually went into the detail and you really sort of
+spelled out each of who knows, this may not even be fully comprehensive, but there are
+just numerous controls that exist from a pull request security point of view and a release
+security point of view that each of these different points could catch a change or an
+unwanted change.
+Could you outline a little bit on some of those and then how you went about just identifying
+each of those?
+Was it just discussion?
+Was it just your own knowledge?
+Yeah.
+I mean, a lot of it was reading the documentation.
+I already had a pretty general idea of how the build and release system happened, though
+I had never read it line by line and tried to look at the software that was being used.
+But it really is all there on the repository.
+You just have to dig through and find the documentation.
+And I learned a few things along the way.
+For example, there are scripts that you can run to verify all of the cryptographic signatures
+by the maintainers on every commit that they have merged into the repository.
+And they started doing that back in December 2015.
+So there's thousands of commits that this script will go through and verify.
+And I had never run that before and I decided that I wanted to better understand it.
+So I tried to run it and I ran into a few issues and I actually ended up contributing
+some new documentation and new code to the Bitcoin Core repository as a result of that.
+And that's, I think, a great example of how this software and how open source in general
+works is that somebody becomes interested in a project, they start learning about it,
+they start trying to use it, and they might find a pain point and figure that if it's
+a pain point for them, it will probably be a pain point for other people.
+And so they can save future people that same pain by going through the process to update
+code or update documentation.
+And that's how we make these incremental small improvements that over many years end up creating
+extremely high quality software.
+Fantastic.
+Yeah, I love the explanation there.
+Also I think a related piece of news that came out was around the BTCP or BTC Private.
+They had a covert inflationary pre-mine.
+Now people who are newer to crypto might fear that such a similar thing could happen with
+Bitcoin.
+But how realistic or unrealistic is such a fear?
+Would you suggest that Bitcoin Core has a much greater level of review and eyes on the
+code?
+The timing on that coming out just a few weeks after I published this in-depth explanation
+of how to do secure open source engineering was very fortuitous.
+And this was actually a question that I got, of course, after I published the post.
+Several people asked, well, do any other projects out there in the cryptocurrency space have
+anything similar to this process?
+And my honest answer is I have no idea.
+I don't have the time to go and look at all of the development processes of all the different
+projects.
+And I would hope that the larger projects have similar processes.
+But we can see very clearly that these really small projects that only have a handful of
+developers behind them, they simply don't have the manpower and possibly even the expertise
+with this type of engineering, which I have often said is probably closest to something
+like an aerospace engineering mindset, where you have to be extremely security conscious
+and extremely low tolerance with what is allowed to happen, because the smallest little error
+can be a critical system vulnerability that results in massive harm.
+So that's one of the reasons why I think that Bitcoin Core as a project is extremely conservative
+and why it's very easy for other, I guess, naive, less experienced developers to just
+look at it as, oh, it's just a piece of software.
+I can fork it and make changes to it, but without the necessary infrastructure around
+the development process, without enough eyes on the project and enough people watching
+each other to be the checks and balances, then it's very easy for either a malicious
+person to get in and make bad changes or just for someone to screw up and have one bad line
+of code that makes it through review.
+And I think we'll probably talk about it later.
+Even a project like Bitcoin Core, which has some of the highest level of quality assurance
+and engineering, mistakes can still happen.
+Exactly, and I suppose that's the perfect opportunity then to ask my next question,
+which was around in the case of mistakes, such as the recent CVE 2018 17144, which was
+the couple of months ago, which was the inflationary bug.
+Now obviously, at the time, there was a lot of news around that.
+And I think some of this comes to that concept of consensus as well.
+So let's hypothetically say it had been exploited on the main chain rather than on the test
+net where it was.
+Do you think there would have been sufficient consensus to roll back to the non-inflationary
+chain?
+Yeah.
+So this is where you can get really philosophical, I guess, and start going down an infinite
+number of paths of what could have happened.
+And so the question kind of becomes, A, what would the severity of it be?
+And B, how long or how much time would pass before it was noticed?
+And people would start talking about trying to fix it somehow.
+Now with an inflation bug, I imagine that would be noticed within an hour or two because
+there are so many people who are running various dashboards and statistic sites and have alarms
+set that it would probably not be able to go for more than a few blocks without somebody
+noticing simply because you'd have the change to the UTXO set would increase more than it's
+supposed to.
+So then the question is, well, how badly do they exploit it?
+So if someone created a billion bitcoins, I think there would be no question that just
+like what happened back in 2010 when someone created something like a billion bitcoins
+that it was rolled back, that the chain was rolled back, I think, a matter of hours worth
+and they proceeded forward.
+Now then the question comes, well, what if it was exploited but not in a way that caused
+a ton of harm?
+Like what if someone only created one Bitcoin or a few thousand Satoshi's?
+They just exploited it to prove that it could be done.
+That would be much more difficult, I guess, and there would be a lot more contentious
+discussion about how drastic of a change should be made.
+And how much time would it be worth basically reorganizing the chain to fix that?
+So it's very difficult to predict all the different possible outcomes because I think
+it's really more of this like multivariable spectrum of things that could happen.
+And if it's something that caused a lot of harm, then it's not going to be particularly
+controversial to try to fix it.
+But if it was less harmful and more of just like egg on your face, we've exploited the
+bug, then we might just have to roll forward and fix it from that point on.
+That's a very illustrative example, and it does come to some of this discussion around
+what is Bitcoin and what exactly makes Bitcoin.
+And so there was some recent discussion by Alex Morkos of ChainCode Labs, where he commented
+that some bugs are quirks of Bitcoin, some are just bugs that get fixed.
+In quotations, the code is the spec is misleading.
+Code is the best guideline we have to what defines Bitcoin, but common sense and social
+consensus are required too.
+So I think that's an interesting way to explain it.
+And some of that goes to this question of comprehending Bitcoin as a system.
+And I think in your article, you make an analogy to language.
+So there are dictionaries, but the language is still spontaneous.
+The language is not defined by the dictionary.
+Can you talk a little bit on that?
+I hate to use the word social contract because that is so loaded and it may be the closest
+thing that we have to describe it.
+So there are a few aspects of Bitcoin that are fairly uncontroversial that I think that
+there is consensus around them.
+And one of those, of course, is the 21 million Bitcoin limit.
+And one of the best examples I think that I can make about that is that with regard
+to what Alex was saying of the code not being the spec, there was in fact, up until just
+a couple of years ago, the Bitcoin core had a bug in the code where it would actually
+create 21 million Bitcoins like every couple hundred years.
+And Peter Willa actually fixed this with BIP 42, which he posted on April Fool's Day a
+few years ago.
+But it was actually not a joke.
+It was a serious Bitcoin improvement proposal where if the code had not been changed, then
+several hundred years from now, it may have been 800 years from now, this overflow operation
+would have happened and 50 Bitcoins every block would have started being rewarded to
+the miners.
+And that's one of those things where I think everyone agreed that that was obviously a
+bug because we had this social consensus around the 21 million limit.
+And so it was completely uncontroversial to change the code and, quote unquote, change
+consensus or at least change machine consensus.
+Because the issue was that the machine consensus was not in line with human consensus.
+But of course, when we start talking about human consensus and what is the human consensus
+for this idea of this thing that we call Bitcoin, that's when it gets really gnarly.
+And a lot of people tend to want to revert to some other traditional system like democracy,
+some sort of voting system where some set of people vote or some technocrats get to
+decide or create an oligopoly even where only a few people get to decide because we think
+that they're the best.
+And of course, as I've argued on a number of different articles and presentations, this
+is crypto anarchy.
+We don't really have any other type of system of governance that can really be equated to
+this.
+And that I think the best thing that you can equate it to is stuff like language, which
+is this sort of organically emerging consensus that is constantly evolving.
+And there really are no foolproof guarantees about an aspect of a language other than that
+it is probably going to change over a long period of time.
+Yeah, for me, it really brings analogies in the ways that even from an anarcho-capitalist
+Austrian point of view, people make arguments around what would the law be in such a society.
+And similar analogies there are actually drawn of, well, you see, there's lawyers and there's
+judges, but in the same way that dictionaries don't fully define the law, they might codify
+the law.
+And in some sense, the comments you were making there is similar to that idea of, and I love
+the distinction there between machine versus human consensus.
+I hadn't heard that terminology before, but it makes a lot of sense to me as well.
+Basically, the way that I describe it is that the awesome thing that we've created with
+these protocols is a way to automate human consensus.
+And in fact, the most recent presentation that I've gone around and given a few times
+is something that I call using blockchains to automate bureaucracy and invert bureaucracy.
+And I basically make the argument that what we're doing is we're creating basically a
+sentinel that is sitting out there on the network and it is checking all the rules for
+us.
+But we as humans have to agree to the rules first in order to actually run this guardian
+program that is checking them for us.
+And sometimes, because it's software and because software is written by humans who are fallible,
+sometimes that software will have a bug or it will not be enforcing the rules that we
+think it is.
+And that is when the machine consensus may fail and we have to fall back to the human
+consensus, which I think is the kind of foundational layer of all of this cool crypto stuff that
+we're building on top of it.
+Yeah, that's an excellent way to put it.
+Human consensus is the foundational layer on which we build the machine consensus.
+Okay, so we've had a fantastic year coming to the end of 2018.
+We've had so many developments in Bitcoin, ranging from Lightning Network on the main
+net.
+We've got Liquid Network going.
+We've got further developments in Blockstream Satellite.
+We've got Lightning Wallets.
+We've got payment processes.
+There's been developments in the mainstream financial world.
+What were some of the highlights for you?
+Well, I think the most interesting development has been watching the Lightning Network continue
+to mature and grow and starting to see some more real commerce start to happen on there.
+There's I think going to be a similar level, if not even greater level of development and
+expansion over the next year on the Lightning Network, as more developers start hopping
+on and building more applications on there.
+But as it becomes safer for the average user.
+Right.
+And we've also seen, I think relevant to you very much so, is the multi-signature services.
+So we've seen the rise of that.
+So obviously at Casa, you're heavily involved with this.
+And there are other providers such as Unchained Capital who are coming out with this idea
+of collaborative custody as well.
+So that is a big development for the year, I think.
+And do you have any thoughts on what we'll see over the next coming year or two from
+a multi-signature point of view?
+Yeah.
+So it's actually been interesting just this past week, we've actually seen a number of
+fairly large security vulnerabilities get exposed like in Electro and several different
+hardware wallets.
+It's going to continue, I think, to push the boundaries of what the average user needs
+to do.
+And I'm still very strong belief that anyone who has a non-trivial amount of crypto assets
+needs to have them in a multi-sig wallet.
+And that we need to build tools that allow people to leverage the hardware devices that
+are already out there, but to disperse their keys so that they're not having any single
+points of failure.
+And so we're trying to do that at Casa.
+It is and always has been possible for people to do that, but we need to make it a lot easier.
+So I think that Ledger and Trezor and these hardware wallets have made it a lot easier
+for people to get to that first step of decent security.
+But there's still a lot of things that can go wrong, especially from user error or ignorance
+or negligence or just not understanding all of the possible loss scenarios where that,
+in my opinion, is the next level that we need to get to is creating wallet software and
+wallet best practices that basically protect the user from themselves.
+That's a great point because over time, obviously, individuals who have a high level of Bitcoin
+will obviously, they can use the premium services.
+But perhaps what we'll see over the next few years is a lot of people trying to do their
+own roll your own multi-signature and make mistakes and lose Bitcoin in the process,
+similar to how people saw exchange hacks in the past and so on.
+And the ecosystem might have hardened itself a little bit against people losing money on
+exchanges and so on.
+But what now with multi-signature for individuals who are at the more, let's say, retail level?
+Yeah, I mean, there have always been a number of possible pitfalls.
+In fact, I was just talking to someone earlier this week who told me that they almost lost
+a lot of money on a paper wallet.
+And that was due to this issue that not many people talk about where you may redeem money
+from a paper wallet.
+And if you don't send all of it to a specific address, then the rest of it will go to a
+change address.
+And you may not actually be keeping the private key for that change address.
+So that's an example of just one of the many possible pitfalls where if you're not highly
+sophisticated in how these protocols work, then you can accidentally send your money
+into the ether, as it were.
+So I mean, part of it is definitely user education.
+But I think if we're really trying to get to mainstream usage, then we need to kind
+of bake the user education into the actual software and hardware.
+Really make it idiot proof and have the guide rails of the best practices built into these
+products in a way that it's very difficult for you to shoot yourself in the foot.
+Well, speaking of doing your own cold storage, do you have any thoughts on in terms of what
+your favorite options are?
+Is it Glacier Protocol?
+Is it some form of roll your own multi-signature?
+Yeah, I mean, Glacier Protocol is so insane that really nobody should be doing that unless
+you're operating like an enterprise level operation or something.
+But I generally tell people that the biggest improvement that you can get is just buying
+a hardware wallet.
+Like that is the best usability and security that anyone can get at like an affordable
+retail level.
+And then if you're thinking about more long term stuff, especially around inheritance
+planning, then it gets a lot more complicated because you have to figure out how you're
+going to split up your seeds and your keys and whatnot and have them available to people
+who you somewhat trust in case you get hit by a truck or something.
+And so that's where it gets more complicated.
+And I have a blog post that I think I wrote a few months ago about my solution that I
+used where I basically took all of my private key data, all the instructions for recovering
+everything from all the wallets and created a encrypted data blob with Veracrypt.
+And then I use Shamir secret sharing on this really long random passphrase, which was used
+to decrypt that.
+And then I basically took those different shards of the decryption passphrase and handed
+them out to my heirs and executors and basically had a setup such that, you know, a certain
+number of them would have to get together and basically collude against me if they wanted
+to be able to unlock everything.
+And some delicate balances and trade offs that you have to think about because while
+at the end of the day, the system allows you to operate trustlessly if you want your assets
+to be able to be passed down, if you cease to exist, then someone else or some other
+group of people needs to somehow be able to gain access to.
+Yeah, that's yeah, it's a difficult.
+It's a difficult problem.
+And I think it'll it'll just take time for easy solutions to come out for the on the
+market for individuals.
+I think the other thing that would be interesting to just talk through in terms of what's happened
+over 2018 is some of the statistics.
+And now you recently came out with some of them as well.
+So I thought it might be interesting to just talk about the implications of some of these.
+So SegWit use has gone from 10 percent to 40 percent.
+Do you see any implications of that?
+Well, I think that has been one of several factors that has led to the on chain transaction
+fees going a lot lower, you know, demand in general has gone down.
+But in addition to batching of transactions and the use of segregated witness that has
+taken a lot of the strain off of like running into the block size or blocks block weight
+limit, which then creates the crazy fee market.
+Also a lot of improvement has happened in different services with regard to their fee
+estimation.
+I think that people are better understanding that if they're patient, they can save a lot
+of money in certain cases.
+One reason why I'm OK with the fact that it's not, you know, 100 percent or even 50 percent
+is I think that this gives us some breathing room.
+And I kind of see it as this natural oscillation with regard to adoption and hitting the on
+chain block space limit is that if we're only at 40 percent adoption now and we start hitting
+another big adoption curve and start running into the block space limits, that means that
+we actually still have a lot of room for people to start using segregated witness and further
+increase the amount of on chain volume.
+So there are several large services that are still not doing it yet.
+And if we get to the point where the on chain fees are getting really high, then I think
+some social pressure against those services to actually roll out their segregated witness
+functionality would actually result in us oscillating back down for a while and giving
+us kind of a relief valve for adoption.
+And this is, of course, all going on at the same time that lightning network adoption
+is increasing.
+And you know, hopefully in the long term, that will be able to orders of magnitude greater
+effect of improving the efficiency of people's use of the Bitcoin network.
+Yeah, right.
+And then also the number of nodes is, well, reachable is sitting around 9600.
+And I think, as you mentioned, per Luke-JR's stats, that the unreachable nodes has gone
+from about 98,000 down to 65,000 or so.
+Do you have any comments on the number of nodes or maybe we'll see more of those come
+online with lightning and you know, more people buying, you know, the caster node product?
+Yeah, so I think that that has definitely declined along with the interest where probably
+what was happening is a lot of people were just getting into Bitcoin and they were downloading
+Bitcoin Core and running the full node, possibly even as their primary wallet.
+And that the majority of the stability of nodes that have kept on running are probably
+the ones that are actually being used for economic purposes or being used by the more
+hardcore OG Bitcoiner types, and they're not really going to be going anywhere.
+Now, like you said, with lightning, at least today, it's recommended that you run your
+own full node next to your lightning node.
+You know, that will change a bit in the future with lightweight clients.
+But I think that's actually a great incentive for more people to start running full nodes
+so that they're able to operate trustlessly within this new network, especially now that
+running one of these nodes actually has more of an economic impact where you're able to
+collect some fees, you're able to actually help improve the liquidity of this new network,
+which I think will ultimately increase the utility of Bitcoin and hopefully make the
+value go up as well.
+Yeah, precisely.
+And another good statistic is block propagation has come down to about half a second.
+So if I was a total newbie, how would you explain to me why does block propagation matter?
+Well, it primarily matters in terms of preventing blockchain forks.
+And what you want is for the network to all come to a consensus as quickly as possible
+about the latest update to the state of the blockchain.
+So if that takes several seconds or 30 seconds or a minute, then that means that miners who
+are working on the next block, they may not be mining on top of the same block.
+So they may actually end up creating these competing forks, which then of course result
+in reorganizations and in general that decreases the reliability of a confirmation for your
+transactions.
+If lots of chain reorganizations are happening, then people have less confidence in the network
+and in accepting a transaction with only a few confirmations.
+There have been a few extreme examples on some other networks, especially like Bitcoin
+Cash and the Bitcoin Satoshi Vision fork, which I think created something like a 40
+or 50 megabyte block that took something like 40 minutes to propagate around the network.
+And I think they were having a whole lot of orphaned blocks happen in the meantime.
+And I think in general, some of the stress tests that have happened on the Bitcoin Cash
+network as they've been trying to get their blocks up like around the 20 and 30 megabyte
+range have really pushed the limits there of what the current level of technology for
+propagating data can really do on these decentralized networks.
+Yeah, exactly.
+And I think there's also another implication just around for miners as well, because they
+don't necessarily want to be playing this game of having to constantly shuffle and juggle
+between the different blocks.
+Well, yeah, I mean, it ultimately comes down to reliability.
+They would prefer that what they're working on is as stable as possible and they don't
+want to mint a block and put it out there on the network and basically have the reward
+yanked away from them because some other miner got a block within a minute or so and the
+rest of the network decided to follow that miner instead.
+Yeah, it's a bit sort of unjust.
+And then also from a mining point of view, the hash rate.
+So the hash rate has gone from 19 extra hashes per second to 38.
+Do you have any comments around what the implications of that are in terms of Bitcoin's security?
+Yeah, I mean, it's continuing to increase the thermodynamic security of the network.
+There was some interesting kind of fud going around recently of saying, you know, so much
+hash rate has been taken offline.
+Now there's enough offline hash rate that could be used to basically 51% attack the
+network.
+You know, that may be true on paper, but I think in the real world, it would be extremely
+challenging to even find those machines, assuming they're still operational and then be actually
+coordinate them to do that and see, you know, still pay for the electricity required to
+do that.
+But I think the more interesting question around this is why has the hash rate continued
+to increase so much if the exchange rate has dropped so much?
+And maybe that's because miners are still continuing to get more and more efficient
+and find cheaper and cheaper sources of power, or perhaps they're really in it for the long
+run.
+And a number of them may have been operating at like a negative profitability for a while
+under the assumption that eventually the exchange rate will go back up and that they will be
+profitable in the long term.
+Yeah, exactly.
+So it could be that they've been very speculative and thought, like many of us, we got really
+bullish during the 2017 bull run and they may have over purchased or overbought and
+sort of overestimated the price growth that would come to them.
+And then now as the price has come down, they've had that reality check.
+But this is just the nature of mining, right, is that there are extreme volatility in a
+number of the different variables of mining and that results in some pretty fierce competition
+that ends up pushing a lot of the less efficient people out of the market.
+Yeah, no, I think you're right.
+It's very much a game of who can survive and who can speculate well over into that multi
+year cycle as it comes.
+And who knows what will happen with the next cycle?
+Maybe the next cycle, we get another Bitmain coming out of it and it's another big, huge
+mining company.
+Yeah, I mean, I'm still waiting for the really big chipmakers to start ramping up and seeing
+some real industrial competition.
+Yeah.
+Do you think it's not at that level now?
+No, no.
+I think that we're still in the Bitcoin enthusiast's industrial mining era.
+I fully expect that over the long term, this will change as Bitcoin becomes more mainstream.
+We will see the larger, more traditional tech companies start to get in there and try to
+compete.
+Okay.
+And we've seen a lot of lightning channel growth.
+So I think we've spoken a little bit about lightning and then also the liquid side chain.
+So that launched this year as well.
+And there is, I think you mentioned there are 25 BTC loaded into the liquid side chain.
+Yeah, it's been pretty quiet.
+My understanding is that they're still ramping up.
+So I think 2019 will be much more interesting for liquid and seeing exactly how much pressure
+they can take off of the Bitcoin main chain and help out the exchanges and traders so
+that they're not having to flood the network whenever they're trying to rush for the exits
+or rush for the entrances.
+Fantastic.
+Okay.
+So now I've just got a couple of questions that are a bit more just random.
+One of the questions was around, again, coming back to this idea of jurisdictional competition.
+So do you think Bitcoin may enable a future of many states that are more open to individual
+sovereignty?
+And could we see new and improved forms of social organization that are not as dystopic
+as modern nation states?
+Yeah.
+I mean, in the long run, this is kind of one of my great hopes is that going back to what
+I was talking about with inverting bureaucracy and automating bureaucracy is that I believe
+that Bitcoin is a very interesting experiment that if is successful in the long run, could
+not only revolutionize money, but revolutionize like how we think about governance.
+And of course, this is going more into the anarcho-capitalistic philosophies and whatnot.
+But if we get to the point where we have created a type of technology that allows people to
+be more sovereign and we can duplicate that to not only allow you to be sovereign about
+your money, but also be sovereign about many other aspects of your life, whether that's
+ownership of assets or ownership of your data or ownership of the fundamental things that
+make you you, then that is where we start to get to the point where I think that an
+anarcho-capitalistic society might actually be doable.
+And this is because one of the reasons why these hierarchical command and control governance
+systems have evolved and become so pervasive throughout human history is because they're
+very efficient ways of organizing society and organizing people's skills and abilities
+and allowing for you to basically specialize in certain things.
+And the downside to that, of course, is that now the average human who lives in a first
+world country probably can't take care of themselves very well, right?
+Like we don't grow our own food.
+We probably don't even know how to maintain most of the things that we own.
+Rather, we have specialists who take care of those.
+And so trying to transition from this type of society to a more self-sovereign anarcho-capitalist
+society, that transition is going to be very tricky.
+And I think that an integral part of being able to do that transition is basically being
+able to have all these autonomous agents that are working on your behalf in the background.
+And so you would have your autonomous agents that are working on behalf of your money and
+your other assets and keeping track of other property and things that you have to maintain
+and basically maintaining contractual relationships with third parties who would be helping you
+with those various aspects.
+And so this kind of boils down to the who will build the roads arguments, who will maintain
+the roads, how will you have various services that are currently highly socialized like
+health care, law enforcement, fire protection, et cetera, et cetera, is that it's perfectly
+possible for any of these things to be privatized.
+But one of the main reasons that they are is that it's just a huge cognitive overhead
+for you to maintain all of those relationships yourself.
+It's a lot easier for a government or some other third party to maintain those relationships
+on your behalf.
+So I think the short version of the long-winded answer is that we continue to create these
+software agents that can basically start to replace pieces of government functionality.
+So piece by piece, we can basically deprecate the state.
+Yeah, that's a fantastic answer.
+In examples of that, even as you mentioned, maintaining your contractual relationships.
+On the question of who will build the roads, well, maybe we'll have lightning channels
+and you will stream payments for your use of the roads and it will be based on how much
+of it you use and it's like a per user basis.
+Yeah, I mean, I think the possibilities are endless.
+We just have to build the technology and hope that it is a sufficiently good improvement
+that people will want to voluntarily adopt it and the first step I think is Bitcoin and
+then if that's successful enough, then we can start talking about next steps.
+Fantastic.
+And also just had a question around Grin and Beam as Mimble Wimble implementations.
+Do you have any thoughts on those?
+Yeah, I mean, I'm keeping my eye on them.
+I believe they're both looking at doing main net launches just in the next few weeks here.
+So hopefully that goes smoothly.
+They've both gone through a number of test nets.
+I was actually looking at trying to mine Grin because I bought my first gaming computer
+in probably at least five or six years.
+So I've got a nice new GPU and unfortunately, that's a Windows gaming computer and it appears
+that Grin is the miner is only really working on Linux right now.
+So I need to decide whether or not I want to take the time to try to dual boot Linux
+and get that all set up or I don't know, it's never enough time to do everything you want
+to do.
+Okay, and then lastly, what's the most private way to have Bitcoin without for an average
+person to buy some Bitcoin without anyone knowing or the least number of people knowing?
+Do you have any ideas on if it's like you do like a local transaction and maybe use
+BISC, take it into a wallet and put that through a coin join and then out into some kind of
+device?
+Yeah, well, I mean, it mainly comes down to a real world privacy problem.
+So the most private way that you can acquire any type of crypto asset or really probably
+any type of asset is of course to buy it with cash because cash has some of the best privacy
+of any monetary payment systems out there.
+So if you can use some sort of platform like LocalBitcoins or BISC or Mycelium LocalTrader,
+any of these things that allows you to meet face to face with somebody and do a cash transfer,
+then you have successfully onboarded yourself into the system without tying your identity
+to those UTXOs.
+Then the question becomes how do you remain private while you're using the system?
+And that turns into a whole big mess, which in today's standards, you'd have to be an
+extreme expert into all the different types of privacy leaks and stuff.
+But the easiest thing, I guess, for a user who is going to be transacting and basically
+leaving trails by interacting with various third parties would be to learn about using
+some of the privacy tools that are out there like the Wasabi Wall or JoinMarket or even
+looking at some of the different decentralized exchanges to basically allow you to hop between
+different cryptocurrencies because that's probably one of the better ways to fully break
+the link between which UTXOs or which accounts are owned by you since it's not really possible
+to do cross blockchain analysis if you're doing a swap that isn't recorded by a party
+that's doing AML KYC.
+Right.
+Yeah, that makes a lot of sense.
+Okay, so I think that's pretty much all we've got time for.
+So listeners, if you want to find Jameson, obviously check out his Twitter.
+His handle is at LOP, L-O-P-P, his website and well-known resources page, lop.net slash
+bitcoin.html.
+And I'll also include the link for Who Controls Bitcoin Core, which was the article we spoke
+over.
+Jameson, did you have anything else that you wanted to tell the listeners or any parting
+comments?
+I think that from looking at a lot of the statistics I've been posting of the sort of
+2018 roundup, the one thing that people don't seem to be investing in as much as they should
+is education.
+So whenever anybody asks me financial questions, especially about the crypto space, I generally
+say if you have to ask those financial questions, then it just means that you haven't invested
+in education enough because you're not able to answer them for yourself.
+So do your own research, and this is still the Wild West.
+Yeah, no, I think that's a great way to finish it up.
+I think you have to make that first investment in education.
+And thanks very much, Jameson.
+It's been an illuminating conversation.
+Thanks for having me.
+So that's a wrap on my conversation with Jameson Lop.
+Let me know what you think.
+He's got a great security and privacy conscious perspective, so it's definitely worth following
+what he does, whether that's with CASA or his efforts under his own name.
+Because this is the final episode for the year, let's turn now to my own thoughts on
+the year in review with this podcast.
+I've been going for about five months now, having started in late July 2018.
+I'm really pleased with how it's gone so far.
+43 episodes in, I've interviewed many highly talented people within Bitcoin and I've steadily
+grown my listeners, followers, subscribers.
+And I just wanted to say a big thanks to everyone who has helped me, particularly guests of
+the show and Patreon and Bitcoin donators and people who share the podcast and all the
+people who gave it fantastic reviews.
+Last I checked, I'm sitting at about 86 iTunes reviews globally with an average of 4.9 stars.
+I really appreciate all the support I've received from fellow Bitcoiners.
+If you'd like to support me, my Patreon is patreon.com slash Stefan Lavera.
+Patreon supporters get access to a private Telegram chat group for me and my supporters.
+In that group, I share some inside goss on what guests are upcoming and we bounce around
+ideas in there.
+If you understandably have concerns with Patreon, you can alternatively support me on Tallycoin,
+that's Tallyco.in slash Stefan Lavera.
+Payments there can be done using BTC or Lightning Payment also.
+At the moment, my preference is Patreon just because it has subscription, but I totally
+understand the concerns that many have with Patreon.
+Otherwise, if you haven't already, please do subscribe, thumbs up on YouTube or five
+star rate and review it on iTunes and tell your friends about the podcast.
+That's it from me.
+I hope you've had a great 2018 and I wish you all the best for 2019.
+Check out the show notes for this episode on my website, StefanLavera.com.
+If you enjoyed it, remember to subscribe so you don't miss out on the next episode and
+please share the podcast with your friends.
+You can also follow me on Twitter, my handle is at Stefan Livera.
+Thanks for listening.

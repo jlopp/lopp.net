@@ -1,0 +1,223 @@
+Welcome to Almost Here, around the corner future technology podcasts with Richard Jacobs.
+Future technologies voice to transform our lives, for better or worse, are the focus
+of this podcast.
+Almost Here means these technologies are now here and starting to be used, or just around
+the corner, from Bitcoin to artificial intelligence, 3D printing, blockchain, virtual reality and
+more.
+Hey, this is Richard Jacobs with Future Tech Podcast.
+My guest today is Jameson Lopp, head of the infrastructure team at BitGo, B-I-T-G-O.
+Jameson, how are you doing?
+Doing well.
+Thanks for having me.
+Yeah, when I hear your name, I picture a bottle of, I believe, whiskey, so it's a good association.
+Yes, I do have a fair amount of Irish in my blood.
+Excellent.
+All right, well, tell me a little bit about your background and then let's talk about
+BitGo, what you guys do there.
+Sure.
+So, I'm a computer science major, been working for about 10 years now and for the first part
+of my career was mainly working in big data, like cloud analytics type stuff for online
+marketing and ended up getting interested in Bitcoin and crypto assets.
+And after I had been just sort of piddling around as an enthusiast and doing some open
+source projects, just trying to better understand the space, eventually it grew large enough
+that I realized that I could just go ahead and do it full time since I was already spending
+so much of my time trying to understand it better and working on it.
+So I've been at BitGo for about two and a half years now and we started out mainly servicing
+Bitcoin wallets at the enterprise level, exchanges and remittance providers and really anyone
+who is processing large amounts of Bitcoin.
+And after doing that for a few years, started diversifying out and these days we support
+all kinds of things from Litecoin to Ethereum, Ripple and then even most recently we have
+our own permission to blockchain that we developed with the British Royal Mint and Chicago Mercantile
+Exchange which is going to be used as a gold trading platform.
+Tell me about that.
+So it's a private permission blockchain and it's going to be used to digitize, tokenize
+trading of gold all over the US or all over the world?
+Yeah, it should be all over the world.
+There's a number of different institutions that are playing parts in this but the idea
+being that people have been trading gold in various ways for really all of human history
+and then in the recent 20th century I guess the paper gold trading products came online
+and a lot of them have been digitized but while some people are trading the real quote
+unquote paper assets like the gold ETFs, there are other people who want to trade the actual
+physical gold and be able to call in their ownership of that gold to get physical delivery
+of it.
+They want to be sure that whatever they're trading is actually backed by real gold somewhere.
+And there have been products where people can do that but there's still some trust issues
+going on where you have to be trusting the auditability of the physical gold wherever
+it's being vaulted.
+So the main idea here is that we're just using a blockchain to replace the very low level
+layer of the auditability so that the gold will be in the vault at the British Royal
+Mint.
+So there is some trust there but the British Royal Mint is a thousand year old institution
+so it's really hard to get much more trustworthy than that and once the British Royal Mint
+has their own audits conducted and published they then allocate a certain amount of gold
+onto this blockchain and at that point the auditability really becomes automated.
+And you can then use the various features of a blockchain such as running your own node
+to verify the entire history of all of the transactions that occur on it.
+One of the additional value adds that you get now is that trying to trade these gold
+based products currently is kind of tricky because you have to be at a centralized exchange
+with other people that are trading that same product.
+But now when you're on a blockchain that is more of this global decentralized ledger you
+have a new sort of peer to peer trading aspect.
+So you're getting a number of different features really added at the low level layer though
+of course fundamentally you still are going to have a fair amount of trust with the actual
+vaulting institution.
+Well in addition to trusting the vaulting institution are they going to do things like
+stamp a serial number on each piece of gold and then you can hash that and you can record
+the existence of a given piece of gold on the blockchain or is it just going to be depending
+on their audits and the blockchain will be used to just make sure that the audit is public
+or at least semi public?
+Yeah it's really for the latter because once you get it onto the blockchain you can then
+subdivide these actual digitized gold into like 10 to the negative 8 or whatever pieces.
+So it would be very hard to then just keep track of it with physical serial numbers because
+the subdivision and recombination can happen on the blockchain very easily though there
+will be you know minimum size amounts if you actually want to call in for a physical delivery
+of the asset.
+Are you going to try to pull in other players in the gold industry like I talked to Vault
+Oro for instance you know they have a vault of gold and they want to digitize it I mean
+I'm sure besides the British World Mint there's a lot of other players that they want to come
+on board or is it going to be just a project with them to start?
+Yeah you know I'm not entirely sure how it would end up working like if other institutions
+wanted to get on the same blockchain then we'd have to figure out how we would share
+the sort of administrative level permissions I mean I'm sure it's possible you know we're
+basically building open source software to enable anyone to do this so actually you can
+go to provachain.com to see more about the actual software that we built and it's basically
+a fork of Bitcoin and then we added in various administrator permissioning systems to allow
+the administrator of the system to do things like allocate and deallocate assets or provision
+and deprovision validators on the network or provision and deprovision wallets on the
+network stuff like that.
+All right well tell me about the other projects that BigGo has going you touched on them very
+briefly but let's return to them.
+Yeah I mean our primary stuff is all in the you know public permission list crypto assets
+space really just trying to service the most valuable most heavily traded crypto assets
+out there since really most of our really large customers end up being exchanges we
+have you know big incentive to then support whatever assets are being traded the most
+and so BigGo's sort of bread and butter if you will is hot wallet security and so like
+we all know crypto asset security can be a nightmare because if you get hacked you lose
+everything and there's no recourse like there's no you know central administrator to revert
+the transaction and give you your money back so you have to be very very careful and paranoid
+really with your security so if you want the ultimate security it's very simple all you
+do is take your private keys and take them off of the internet you know this cold storage
+solution which you probably hear about fairly often and that's great I mean you're taking
+cyber security and pulling it into the physical realm that makes it a very solvable problem
+because physical security is well known like humans have been dealing with this forever
+but the problem becomes then when that's not a solution because you need to be able to
+create transactions and you need to be able to you know send these assets back and forth
+in an automated fashion in order to make it efficient and make people happy so then you
+need to have a hot wallet where these private keys are exposed to the internet and that's
+where you know a lot of the disasters throughout the history of bitcoin and crypto assets have
+happened where these exchanges have you know millions if not hundreds of millions of dollars
+just sitting on servers that are open to the internet so really what we do is we we provide
+a multi-signature software product where we're splitting up the keys we use a two out of
+three key solution and so we we split these keys up and amongst multiple different computers
+so that bit go has one piece of the key the user has one key and then they keep another
+recovery key offline as a sort of disaster recovery insurance so this gives us some very
+interesting it's still two out of three yeah get into right yeah in order to actually create
+a valid transaction in any of these wallets from valid from a network perspective you
+have to have two different signatures from two of the three keys which gives you a very
+interesting set of properties one of which is bit go is not custodial we only ever have
+one key so we cannot unilaterally freeze anyone's money nor can we unilaterally spend anyone's
+money and then if you think about like the different situations of you know what hackers
+could do if the hacker hacks our user they only get one key so they can't steal the money
+if they hack bit go they don't have enough data to be able to steal the money but even
+better if bit goes ceases to exist for any reason the user can still go get their recovery
+key you have two out of three keys and then completely route around us just use software
+to create a transaction to move to a new wallet without ever having to talk to our servers
+well that's pretty smart where does the where does the third key the insurance key tend
+to be stored well historically the user would always create that themselves but we have
+a number of different options we have an offline generation tool or there you can actually
+use any number of options to create your own backup key offline you can create it in the
+browser which is one of the less secure methods but it's easier for a lot of people and then
+of course hold it yourself and then we have a new option that we brought online about
+a year ago because we found that you know a lot of users are not technically sophisticated
+and do not follow very good IT practices with regards to backing up their data so one of
+our default options these days for your standard user is that the key actually gets created
+by and stored by a third-party key recovery service that BitGo has no control over so
+in that case like if BitGo cease to exist or if we got compromised those recovery keys
+are inaccessible to us okay well very good is this this three key setup is this for any
+user you know what do enterprise companies tend to do and how do they do it differently
+with the key manager yes so we we require two out of three key setup for absolutely
+everyone whether it's an individual wallet or an enterprise wallet and then you know
+one of the first questions that usually comes up is well what if I want to have you know
+multiple signatories you know within my own institution and we actually believe that the
+two out of three key solution is best from a cryptographic standpoint because it essentially
+allows us to create this model where BitGo is like a co-signer or like an oracle and
+so we are in a position where we can then apply any number of arbitrary security rules
+or checks on our end so we actually have the ability to then much more flexibly be able
+to say you know add a rule that says well you actually need to have like three different
+administrators at your institution sign off before BitGo will then sign off so we are
+able to add like more arbitrary levels of security for enterprises if they need to do
+that it's just not done at the protocol level it's done at the like the BitGo level I got
+you and what so what kind of wallets have you you guys have created your own wallets
+or I mean I guess you wouldn't be using third-party ones so you've created your own what what
+tokens do you support so right now it is Bitcoin Litecoin Ripple Ethereum the Royal Mint and
+Gold and then we are currently adding support for ERC 20 tokens like generally and I'm not
+entirely sure you know which tokens will end up adding that's you know more of a business
+decision but once we have like general token support it'll you know only be a few lines
+of code to add each new token after that right especially in the ERC 20 line it should be
+pretty easy yep all right so what's going to be happening what projects are going on
+to you guys in the next six months or a year what's on the roadmap well there's the interesting
+thing about roadmaps in this space is that they tend to get disrupted a lot so for the
+past year we were rewriting a lot of our infrastructure to make it easier for us to be able to add
+support for new blockchains and you know all of those other non Bitcoin blockchains that
+I talked about we just have added on over this current year and you know the token thing
+I have no idea where that might lead but also just we've had to deal with all of these forking
+situations so you know Bitcoin Cash which actually really coincided with like the segregated
+witness support and now the whole segwit 2x fork and these are constantly providing innovative
+new challenges for us to overcome for us basically to be able to service the demand of our customers
+who want to be able to access these new assets that have basically been airdropped onto them
+but you know the the onus is on us to be able to provide software to allow them to do that
+in a safe manner so we've we've had to actually expend a fair amount of time dealing with
+these completely unanticipated forks yeah definitely do you think atomic swaps are going
+to play a role in helping you so you don't have to try to accommodate every coin under
+the sun in terms of a wallet yeah someday so like we we just started internally working
+on you know payment channel support at a very basic level and then that will also be a multi-stage
+process that I expect will take you know a year if not longer but the the final goal
+will be that BitGo wallets that are using protocols that can support it will be able
+to you know get onto lightning networks and hopefully eventually also be able to then
+be able to very easily perform atomic swaps so I know that we get a lot of customer support
+requests from people who assume that we're some type of exchange or offer exchange services
+and we always have to tell them you know well we recommend going here or there but it would
+be great if in the future if we can just have you know a button in the wallet that says
+hey do you want to exchange this crypto asset for that crypto asset and then all they have
+to do is click a button and put in their password and their two-factor authentication and the
+exchange can happen basically instantly without ever having to you know trust a third party
+to broker it yeah that's why I asked I'm sure a lot of people are getting more and more
+interested in that so it'd be nice to have a wallet of the future where you just you
+know whatever is in there you can pick whatever final token you want it to be used as a payment
+method and it swaps it internally yeah I mean I think that these payment channel solutions
+have a ton of promise of what they will be able to do though they've probably been over
+promised a bit by some people you know there's going to be a lot of work at the very low
+levels the engineers are going to have to do to make sure that these networks are robust
+and then you know the sort of user interface designer folks are going to have to come in
+and figure out how to then make it a user friendly experience once the stuff on all
+the technology under the hood is robust enough that we can say that you know we're willing
+to put this into a production environment and put real money on it all right so what
+other project you guys working on we haven't talked about either now or um let's see well
+I'm not on the forefront of all the the business deals and stuff that are going on but you
+know like I said we are diversifying we diversified amongst the various blockchains that are out
+there but one of the major things that we did was diversify into starting to provide
+services to build you know custom blockchains for other people so I think that you know
+getting the Royal Mint Gold product out there and getting the the Prova open source software
+out is kind of another first step where we will continue to be pitching you know various
+custom built blockchain solutions generally like for institutions that want some sort
+of permissioned based chain so I doubt that Royal Mint Gold will be the last is certainly
+not the intention for it to be a one-off thing just really anticipating it becoming
+another uh service offering that we add is there are you guys going to take the Royal
+Mint's blockchain make a template out of it and can it be used for any ancillary industries
+that are similar or even different but just use the same kind of implementation so you
+can move on basically and and I would then anticipate that you know as other institutions
+come to us and say well we like this but we also want features x y and z that we would
+then build those features into the open source Prova software and continue to improve that
+make it better over the years make it you know even more feature-rich.
+All right well Jameson tell us tell listeners how they can get in touch with BigGo if they
+have a you know wanting you guys to work on their own blockchain you know their own private
+permission blockchain or if they want to experience your wallets what's the best way to get in
+touch?
+Yeah if you generally have a need for securing and transacting in large amounts of crypto
+asset value and need to protect it from getting hacked definitely check out our website at
+bitgo.com and we we do offer individual wallets but we are primarily enterprise focused business
+and so we offer some robust easy to use API's and SDK's such that once you integrate with
+us to support one crypto asset it then becomes very very easy for you to support many different
+crypto assets usually just changing a few lines of code in your API calls.
+Okay very good well Jameson thanks for coming on the podcast I appreciate it.
+My pleasure.

@@ -1,0 +1,614 @@
+The hyper-connected world allows people to really screw around with your life if all
+they really need to know is some of your personal information and they can start screwing with
+a lot of different pieces of your life that you're taking for granted.
+I'm Tor Bear from Enigma, and welcome to Decentralize This.
+Hello hello and welcome to another episode of Decentralize This presented by Enigma.
+I'm Tor Bear, I'm the head of growth for Enigma, and on today's episode I am speaking
+with Jameson Lopp.
+Jameson is an experienced engineer, he's been working full-time in the bitcoin and cryptocurrency
+space since 2015, and he's contributed to a number of different projects.
+He's currently the CTO of CASA, which builds best-in-class key management solutions, as
+well as CASA Node, which is a bitcoin and lightning node that can be used in your home.
+He's also the creator of Statoshi, a fork of bitcoin core that aims to analyze statistics
+of bitcoin nodes.
+Jameson writes very frequently on bitcoin, on personal privacy, security, and a lot of
+other topics.
+On this episode he's going to talk with me about what it means to be a cypherpunk, how
+his own extreme experiences have shaped his perspective on privacy and security, how individuals
+can be better incentivized to solve systemic issues, and how CASA in particular is empowering
+users and enabling a more decentralized ecosystem.
+Jameson has faced down some really difficult challenges, sometimes on the technical side,
+sometimes on the personal side, but he's always persevered and he's been an incredible
+advocate for bitcoin and for decentralization, as well as individual privacy.
+I hope his story and his vision inspires you like it inspires me.
+So without any further introduction, here is Jameson Lopp.
+Jameson, thank you so much for joining me on Decentralize This.
+I'm thrilled to have you, man.
+Pleasure to be here.
+So every episode starts the same way, just quickly, professionally, personally.
+Who is Jameson Lopp?
+Well, I am a computer science guy, a technologist who got interested in bitcoin a number of
+years ago, started some projects of my own to try to better understand it, and eventually
+found myself working on private key security full time for Bitgo.
+Did that for about three years and now am doing a similar thing, but even more broadly
+trying to increase personal sovereignty for people who are operating in this space at
+a company called CASA, where I am the CTO working on managing a number of different
+initiatives where we're trying to find the parts of the ecosystem where there's a lot
+of potential, but it's still too technically complicated for most people to fully realize
+this thing that bitcoin and public permissionless crypto has offered to the world.
+I want to talk about all of that.
+I want to talk about the idea of personal sovereignty.
+I want to talk about bitcoin and keys.
+I want to talk about CASA specifically.
+But I want to start at least by saying you're a self-described cypherpunk, and I want to
+know what you think that means in your own words.
+What's the definition?
+And then I want to know if this was something you think that was nature or nurture.
+Were you born this way or have things happened to you that have solidified this worldview
+and identity?
+Sure, it's an interesting topic, and I actually find it kind of amusing when various media
+publications put quotations around, you know, self-proclaimed cypherpunk.
+I've actually spoken about this a little bit because there is no set of credentials for
+being a cypherpunk.
+You do have to self-proclaim that this is a philosophy that you believe in because a
+cypherpunk is just someone who advocates for privacy-enhancing technologies because they
+believe that greater adoption of privacy-enhancing technologies will lead to social change that
+will make the world a better place for people.
+That's the very high-level gist of it is trying to empower people against corporate surveillance,
+against nation-state surveillance, against any type of privacy-harming technologies that
+have come about with the rise in the internet age and communication era.
+It's been very, very easy for us to give up our privacy in return for some convenience,
+and so it's a very difficult thing to push back against that.
+It requires some conscious effort, but also there are cypherpunks out there who are trying
+to make technologies that are more user-friendly so that we can hopefully move towards a world
+where privacy is the default rather than the exception.
+As for myself, I definitely was not a cypherpunk until I really got into Bitcoin.
+In fact, I was kind of an anti-cypherpunk.
+As much as I hate to admit it, the first eight years of my career, I worked for an online
+marketing company.
+They were primarily focused on email marketing, but suffice to say that my job was to perform
+large-scale data analysis using distributed data clusters, actual Google technology with
+the Hadoop and MapReduce system of distributed data to process, I don't even know how many
+petabytes worth of data on a daily basis, in order to figure out various actions that
+people were taking as a result of these 100 million plus emails a day that people were
+sending out through our system.
+I was spending a lot of my time on an industry that I was never particularly interested in.
+It just happened to provide me with some interesting computer science challenges.
+Once I got into Bitcoin and the privacy space and I found myself able to actually transition
+to this industry, it's been a lot more fulfilling since then.
+It's incredible to see the journey of people who worked in these legacy spaces, because
+that's all there was.
+There wasn't a Bitcoin space to discover, it had to be made.
+So many of the people who are behind so many of these high-profile projects like Casa
+is now, they've gone through these sort of similar transitions where the reason they're
+working so hard on the solutions is because they deeply understand the problems having
+not necessarily caused them, but they certainly were part of the system that perpetuated them.
+For a lot of people, it seems like that was a big piece of the journey, is being so close
+to the problem that they felt even more compelled to seek out the solutions and Bitcoin provided
+a path for them to do so.
+Yeah, I mean, I think that it's a lot more interesting to be around people who are more
+ideologically motivated than necessarily financially motivated.
+It's especially important for this type of nascent space that goes through so many volatile
+hype cycles is that if most of us were here just because we thought we could make a quick
+buck then we would probably give up after a 90 plus percent downturn and it seems like
+crypto is dead and everybody is tired of talking about it.
+But it's the ideological motivation that gives us the drive to push through the volatile
+swings.
+Yeah, I love that in a space that's trying to decentralize trust, it seems like so much
+of what gets built is the result of this trust that people do have in the motivations of
+people who have been in this space for years and who have weathered some of these market
+downturns and stayed committed to the core principles behind their project.
+And for somebody like you, who's worked on multiple projects, all connected, I think,
+by this same cypherpunk ideology, I think it's fair to say that nobody really questions
+your commitment to the space and to the technologies at this point.
+Just the trolls on Twitter.
+Yeah, I've met some and that's fair to say.
+But let's talk a little bit about that.
+So you have been, you know, the victim of some really vicious stuff and it's coming
+into the news cycle again, you know, people who have been doxed or harassed and all these
+other things.
+It's a symptom, I guess, of the age that we find ourselves in, this hyper-connected age.
+And we're all potential victims in this case, you know.
+So I want to talk about a piece you wrote, it was a great piece.
+It's so long, but so good, a modest privacy protection proposal from last year.
+And it was full of actionable, you know, calls to action, very thorough.
+What made you decide to write that piece at that time about personal privacy and steps
+we can all take to protect ourselves?
+Well, I refused to be a victim.
+That's pretty much what it comes down to.
+I mean, after the incident when my whole neighborhood got shut down by police and it actually went
+about as well as it could have, it could have ended a lot worse for sure.
+And I talk about that in another blog post where I basically go through all the details
+of what happened that day.
+But I realized that there is this imbalance.
+It's the result of the internet age and people being able to communicate anonymously with
+law enforcement, at least in the United States, people are able to expend a very large amount
+of public resources and basically direct it as an attack at other people simply by saying
+the right things.
+You know, simply by using trigger words like hostage or bomb or gun or what have you.
+And if they hit the right trigger words, then they're basically performing a successful
+social engineering attack on our law enforcement departments, which have opened themselves
+up to this type of social engineering attack.
+So that's one thing that I talked about in my kind of reminiscing post is that, yeah,
+I definitely blame the person who made that call and harassed me and tried to extort me.
+But you know, my root cause analysis actually takes it a step further and says, you know,
+it's actually law enforcement that is creating this exploitable vulnerability.
+So we shouldn't be surprised that people are exploiting it.
+Oh yeah.
+So the modest privacy protection proposal seems to focus mostly on, like, despite the
+fact that the weaknesses are with the system itself, it wasn't so much prescriptive as
+to, like, how do we change these systems?
+That one was more focused on what can we do as individuals to not become victims.
+Yeah, and the reason why the post was so long is because I was trying to cover as many different
+threat vectors as possible.
+And of course, some of these threat vectors are more common.
+It's just browsing around on the internet and having all of your data hoovered up by
+a hundred different advertising analytics systems.
+Like that's a very common thing that people can fairly easily protect themselves against.
+And then the other extreme end is what I've done, which is setting up all of these protective
+legal entities to basically act as proxies to shroud my true ownership and physical location
+and things that could be used to basically direct law enforcement or other physical attacks
+at myself.
+So why is it so important for the average person, and I think it's safe to say you're
+not the average person, even though in some ways you are, like you're deeper into some
+spaces that I think have maybe some more bad actors than others, but why is it so important
+for all of us to be protecting our privacy and concerned about our privacy, even for
+people who feel like, you know, and this is in quotes, they have nothing to hide?
+It's quite simply because you can't predict the future and the combination of that with
+this hyper-connected world that we have created.
+I think I give an example or two in my post of just normal people who, you know, weren't
+particularly extreme in their views or their actions, who could make a single poorly thought
+out post on social media and have a resulting backlash of, you know, millions of outraged
+people and, you know, once you start looking at the large numbers of people that you can
+easily reach these days with a few keystrokes, then you start doing the math and realizing,
+you know, even if only one in a thousand or one in 10,000 people out there has some sort
+of mental issue that could cause them to try to attack a complete stranger because of something
+that they read, then you realize that you're actually, you're creating a very large attack
+surface just by using the internet to publicly broadcast your own opinions.
+And, you know, some I guess more recent examples around that are really if you look at almost
+anything in the political space these days, we're even seeing instances of, you know,
+fairly young children, teenagers, activists who were at various protests and other political
+actions who are either doing something that gets taken out of context or they're just
+in the wrong place at the wrong time and something blows up on social media, whether it's a photo
+or a quick video clip or whatever, and that instantly triggers and outrages millions of
+people.
+And that is this triggering action that can result in you accidentally, unintentionally
+finding yourself at risk of physical harm, of financial harm, and any number of digital
+attacks and sabotages because of, once again, the hyper-connected world that allows people
+to really screw around with your life if all they really need to know is some of your personal
+information and they can start screwing with a lot of different pieces of your life that
+you're taking for granted.
+The way I refer to it is with leverage, like we've created a lot of leverage in these hyper-connected
+systems where a single person can have an outsized impact on another single person or
+like a network of people with just a little bit of social engineering or misinformation.
+You know, there are so many, like SIM swapping is another example of something that's happening
+a lot, specifically in the crypto space.
+It might happen less often outside it, but inside it, it's not just, you know, it's
+a threat to your data, but it's also a threat to your livelihood because people are using
+this to, you know, steal private keys and access exchange accounts and there's a lot
+of stories of people who have been victimized by this and really the attack vector there
+is just, if you've got somebody who works at an AT&T store on your side, that might
+be all it takes to get into somebody's account if they haven't gone through these steps
+and taken the proper precautions in advance of the attack.
+Yeah, you know, this is just another problem with trusted third parties and so, you know,
+the only way that I've found to really guard yourself against that type of attack where
+you have some sort of account, some sort of system that is administered by a trusted third
+party, then if you want to take it to the extreme, you have to assume that that trusted
+third party may get socially engineered, therefore the only way to use them and still be protected
+is to use them anonymously so that, you know, even if someone does attack that trusted third
+party, they don't know which account actually belongs to you.
+Yeah, there's a lot of actionable suggestions like that that you made in this very long
+post as I said, but one thing that you note at the beginning of the article is that you're
+looking sometimes at thousands of dollars in costs for putting in these protections
+for something that's, you know, not certain to happen to you.
+It's a very expensive form of insurance against yourself.
+So it's clear that when it comes to privacy, as individuals, we're bearing the costs in
+more ways than one.
+There's the cost of, as you're saying, like the data being hovered around the internet
+by whomever, pretty much everybody at this point, and then there's all of these prescriptions
+that you're laying out in this article which can be effective but expensive.
+What can we do to, you know, bring some of these costs down for the individual while
+still preserving the efficacy of the solutions and do you see any promising solutions that
+are arising now?
+I think it's going to be a pretty long road to actually get to like mainstream improvement
+of all of this.
+Like ultimately, I think that what needs to happen is we need to break up the data silos.
+We need, so if you look at Bitcoin and what some of the other public permissionless crypto
+assets have done is they have managed to strip a lot of power out of the hands of trusted
+third parties and intermediaries and put them into the hands of the individual.
+And so Bitcoin did that with money, but if we want to do that for other sectors, then
+we're going to have to build similar systems whose functionality is meant to do that except
+for other data, for other important aspects of our lives.
+And that's going to be a really long road not just to build the technology but to transition
+to that sort of system because there's so many problems that are hindering adoption,
+not just like technical scalability problems but usability problems, security problems.
+This is why I've been working in this space for four years and there are a lot of amazing
+people who are doing a lot of really cool cutting edge technology that it's really pushing
+the envelope of what's even technically possible, but I'm still sitting here after four years
+just doing private key security and management because I think that this is a fundamental
+problem that has not really been fully solved in a way that is usable for the average person.
+Yeah, I mean a big focus of our project like at Enigma is this whole data privacy issue
+and building the technologies around it, but the point of having a podcast, the point of
+having this opportunity is to kind of tell this story about how hard it actually is to
+make this stuff get mainstream adoption, and that's not just on a cost basis like making
+this stuff cost effective for the end user, but just getting into the hands of as many
+people as possible, making it usable and so on, like that is such a difficult process.
+And as you said, as we go through these various hype cycles, people not only overestimate
+the value of some of these technologies or maybe they overestimate the speculative value
+of these technologies and they're underestimating the amount of time it takes to build things
+the right way, things that don't have so many attack vectors, things that work, right?
+And it's like such a crazy position to say like I want these things faster when all that's
+going to do is make them less secure.
+Well there's also, there's this fundamental problem that, well, we're trying to solve
+systemic issues and it's really hard to sell an individual user on solving a systemic issue.
+And whether that's solving money by creating sound digital money or whether it's by solving
+ownership of various data so that they don't have to keep it in the cloud.
+And that's because a lot of the time when these things fail, it's somebody else who
+gets hurt.
+It's almost like it's hard to sell someone on it unless you're fear-mongering and you
+don't really want to take that type of approach when it comes to like sales and marketing.
+Not generally, but if the problem is terrifying enough, it's really sometimes hard to avoid.
+In the sense that, I'm not going to go down this road very far, but in the sense of climate
+change, if you want people to act on a systemic issue, sometimes you have to talk about the
+catastrophic potential of ignoring it less so than about the incremental gains to be
+made for the individual by putting some of their own resources toward the solution.
+We are facing, I would say, some real existential threats based on the erosion of privacy.
+But also just based on, like you're saying, these systems that people are learning to
+exploit in a systemic way.
+So what do you think is the role of the people who do create and maintain all these systems
+that we use?
+And this could be anyone, right?
+What's the role of technologists building these systems?
+What's the role of business people marketing these systems?
+And what is going to end up being the role of people in government who are designing and
+enforcing these systems?
+Who fixes the police?
+That is a very broad and hard to forecast type of issue.
+Certainly when we start getting towards that type of discussion, I've had this conversation
+with a few different people about crypto-anarchy and my beliefs and my goal of how we can use
+this technology to create a more voluntary society.
+Because basically I see that various social services and goods that are provided by nation
+states, technically there's no reason why pretty much all of them can't be privatized.
+But there is a huge gap between how we get from this hierarchical command and control
+structure that has been built up over millennia to a more sovereign structure where you can
+actually manage these goods and services that you want yourself.
+That's because what governments have done is they have offloaded quite a substantial
+amount of cognitive load from the individual to have to worry about those things.
+So the individual, they just have to pay their taxes and follow the guidelines that the government
+imposes upon them and they get all of these services in return.
+But if we're going to move to a system where you're really only paying for things that
+you want to use that you're interested in, now you have a huge coordination problem.
+And that's one of the areas that I think this type of technology needs to be built up in
+order to help people with that.
+Otherwise, there's going to be too much work for people to find much value in it.
+So there's a lot that needs to be done in order to make these solutions actually attractive
+to people.
+Because people are lazy.
+If it involves much more effort on their part, then they're more likely to stick with whatever
+the incumbent thing is, even if there is a lot of good reasons of why the incumbent thing
+is harmful to them in various ways.
+There's substantial switching costs, and I guess one of the costs to all of this is
+the risk that you try to change things and you make them much worse in the meantime.
+And I guess one of my personal worries is that we get to these tipping points along
+the way, as we're transitioning from, as you're saying, this very hierarchical world
+to a more decentralized, self-sovereign world, and along the way we do something that actually
+tips us all into total anarchy, and everything breaks.
+Is that a concern that you have, or is it relative to your other concerns?
+It seems like a silly thing to worry about.
+I guess I kind of take a somewhat fatalistic view on it.
+Kind of like with the climate change stuff as well, right, is that we have these very
+huge problems, and some of them are like tragedy of the commons type of problems.
+And if humanity can't figure out how to solve it, then humanity deserves to become extinct.
+So from that standpoint, it is kind of up to all of us.
+But I'm generally optimistic that even like with climate change, that there are a number
+of technologists that are working on trying to reverse climate change, and it may not
+be as simple as we need to all stop using carbon-based fuels within X number of years.
+We may even see some technological breakthroughs that allow us to revert some of the harm that
+we are doing by being so slow at switching over to more renewable and eco-friendly type
+of power sources.
+So engineering society, on the other hand, I guess I also take just more of a market-driven
+approach of like ultimately this is all people deciding what it is that they really want,
+like how they want to interact with other humans in their society.
+And so whether that's through governments or through some sort of other technologically
+constructed mechanism, I mean we need to experiment, and hopefully it doesn't blow up in our faces
+and destroy the world.
+But if you want to start thinking about catastrophic scenarios, there are so many ways that we
+could use our power today to accidentally destroy everything, not just by accidentally
+creating World War III and a nuclear holocaust, but there's, from a technological standpoint,
+so many things that could go wrong with, for example, biological engineering creating something
+that wipes out all of humanity or even nanotechnology.
+I would say I'm actually most afraid of nanotechnology.
+Have you ever heard of the Grey Goose scenario?
+Oh yes, and the nanobots, oh yes.
+So it's just there's so many different ways that humanity could screw up and just completely
+destroy our entire civilization that I'm not sure it's worth spending too much time worrying
+about either we're going to make it or we're not.
+But on that standpoint, I do think that the folks like Elon Musk have a pretty good idea
+that we need to further distribute humanity across multiple planets so then even if we
+do screw up Earth, there's a little bit of hope that some humans will survive.
+The ultimate decentralization project.
+Exactly.
+So this is a good transition because now we can talk specifically about the relationship
+between decentralized technologies and all of these kinds of risks that we're talking
+about.
+You know, I want to talk about specifically Bitcoin, you know, what is the relationship
+between a decentralized technology like Bitcoin and everything we've kind of talked about
+so far?
+To what extent do decentralized technologies contribute to solutions?
+Is it just that they're an alternative to current systems or are they a valuable form
+of experimentation or are we currently building the foundation for a new type of society where
+self-sovereignty is possible for individuals?
+I mean, I think it's all of the above, you know, different people who are using the system
+or interacting with it are basically viewing it from different angles.
+And so not everyone in the Bitcoin space is trying to build a new society.
+Some of them are just there because, you know, they can trade numbers on exchanges and make
+larger numbers or, you know, some of them are there because they see a slightly more
+efficient payment rail or some of them are actually using Bitcoin for various like data
+anchoring, data integrity type of services.
+But this much more like long term view, I think, is only held by a subset of people
+in the space.
+And everyone's going to keep working on whatever interests them the most.
+And you know, sometimes that will result in clashes.
+It's I think the nature of having a system that no one controls is that because there
+are such a diverse set of perspectives of people who are using the system and want to
+see it evolve in different ways, that that's ultimately why we see so many arguments and
+toxicity and drama in this space.
+But that's I think the nature of, you know, anarchy or lack of governance or whatever
+you want to call it.
+So that's that's my next question is, you know, is this diversity of motivations, the
+diversity of opinions about the purpose of Bitcoin or the nature of Bitcoin?
+Is that part of how Bitcoin is decentralized?
+And as a broader question, right, to what extent is Bitcoin decentralized versus still
+an example of a centralized system?
+It's very hard to quantify decentralization.
+You know, a lot of people tend to just use it as like a binary attribute.
+But you know, I think that if we're looking at one of these systems, they're extremely
+complex and talking about centralization or decentralization is this like multivariable
+set of spectrums.
+And so, you know, you can say that, you know, along certain attributes, it's more decentralized
+than some other system or whatever.
+But well, give me an example of like one way in which you can definitively say it's more
+decentralized and then maybe one one dimension, because I completely agree with you that this
+is a spectrum and it's and it's multivariate.
+So but but I want to be specific about like, in what ways do you think like it is decentralized
+to its benefit and other ways in which it might be like one specific attribute where
+there there are still centralized elements?
+Well, the one of the most decentralized attributes is just the the node ownership.
+And that is fairly obvious to look at on various graphs where we can see geographic distribution.
+But of course, even that distribution is it's not, you know, equal across all countries
+or even like equally distributed across populations or what have you.
+But it is certainly decentralized, at least in the sense of like legal jurisdictions,
+which is, I think, one of the most important components if we're talking about general
+security, because the ultimate level of security is against basically nation state attacks.
+You know, if the most powerful country in the world can't take down your system, then
+it's pretty secure.
+And so, you know, that's like internet level security.
+You know, we've created a system that even if large swaths of it are taken down and censored
+or whatever, you can route around those affected regions.
+That's a really that's a really interesting perspective.
+And it sounds like your argument would be that's one of the most important elements
+of a system to decentralize if you want it to be sustainable, if you want it to be resilient.
+And that is, you know, assuming that all of these nodes are individual actors and not
+coordinated by some central organization.
+That is, you know, the important part there.
+Right.
+But there's mining.
+So what is a mining pool, right?
+We don't have to like put value judgments on any of this.
+It's just like we're describing the structure of a system.
+We're describing the collective motivations of individual actors and also coalitions of
+those actors.
+Yeah.
+So, you know, from a different perspective, one of the more centralized aspects of Bitcoin
+is the collection of hash power, though, interestingly enough, I just tweeted something about that
+earlier today where you can actually look over time and see that, you know, there have
+been swings in hash power concentration across mining pools.
+Generally, the level of increasing concentration of hash power has occurred while technological
+changes have happened.
+So when we went from the CPU to the GPU era, GPU to FPGA era, and then I think finally
+the ASIC era, there were, you know, a few different tiers in there.
+But over the past year or two, the advancement of ASICs in mining technology has really plateaued.
+And so miners have had to compete over other variables, such as electricity costs and ability
+to get like favorable contracts, both with data centers and power creation facilities
+and in some cases, even local governments getting tax breaks and stuff.
+And so we've actually seen that from that aspect, it has, at least from looking at the
+mining pool, hash rates has become more distributed, but, you know, still a long ways to go from,
+you know, a miner in every house type of distributed.
+I think I wrote an article in 2015 called The Future of Bitcoin Mining in which I was
+really hoping that we get to the point where we have tiny little embedded miners, kind
+of like the 21 computer project a few years ago, where, you know, you might even have
+a tiny little miner like in your water heater or something where, you know, it's the excess
+heat is actually getting used for other purposes.
+And you're essentially buying your Bitcoin through your power bill, but in very tiny
+increments.
+So, you know, ultimately, the fact that like mining has become industrialized is not great,
+because that does tend to create a smaller number of entities that are operating at large
+scales and therefore can be targeted by nation states.
+I think the biggest example of targeting has actually been happening in Venezuela, where
+from what I've heard, like a number of agents of the state have come in and actually seized
+mining equipment and not just destroyed it, but actually confiscated it and started mining
+on their own to their own benefit.
+And so we would definitely hope that that doesn't happen in China, for example, because
+that could create some problems.
+Though I've heard various arguments about, you know, even in China, how decentralized
+the mining farms are and that, you know, a lot of them are like out in the middle of
+nowhere would be really hard to get to all of them.
+But it's a lot harder to quantify that type of thing.
+But you know, suffice to say that, kind of like with full nodes, the ultimate level of
+decentralization would be a node in every home.
+And that, by the way, is actually something that we're trying to do at CASA.
+But the same thing with miners.
+The same thing with miners is a miner in every home would be the ultimate level of decentralization,
+because ultimately what we're talking about is we want it, we want there to be so many
+doors that, quote unquote, have to be kicked down that even powerful nation states don't
+have the manpower to do that.
+Yeah, this is where I really wanted to get to, which is CASA.
+And we talked about, like, specifically, like, what are we doing to bring the cost for individuals
+down in terms of, like, how they participate in some of these systems that help us all
+in protecting privacy and creating decentralized systems and so on and so forth.
+So what is CASA?
+Why are you building it?
+And what do you think CASA is contributing primarily to this space?
+So our mission at CASA very broadly is to help increase personal sovereignty.
+And the first product that we put out was a key management product.
+It's our key master.
+It's basically a vault, this three of five multi-sig product.
+And it's meant to be the most user-friendly and most high-security cold storage wallet
+that is available on the market.
+So basically, the way this works is you have an iOS app or an Android app.
+So it's as simple as using a mobile app.
+And it visualizes your key set on the app.
+And when you want to actually interact with your wallet to create a transaction or check
+the health of your various keys or whatever, then you have to go and find your hardware
+devices that are used to actually secure the keys and plug them in and cryptographically
+sign messages or transactions.
+Now what we've done with that product is, like I said, it's a multi-sig wallet.
+There are other multi-sig wallets out there, but it is also a hardware-based wallet.
+So we're talking about multiple treasurers, ledgers.
+We want to support any well-vetted hardware key management devices.
+And then finally, it's meant to be multi-location.
+So the idea that you never have multiple keys, multiple devices in the same location.
+And really, what we're trying to do is we're trying to be the experts who think through
+all of the edge cases and all of the different attack vectors and loss vectors so that the
+user doesn't have to, so that all the user has to do is follow the directions on the
+screen and the app, and that will get them to a level of security and self-sovereignty
+that is possible to do on your own but requires a lot more technical knowledge.
+So one thing that I try to stress to people is that, yes, we're protecting you against
+attack, but in my own experience and in some of the reports that have been done by companies
+like Chainalysis, it's actually far more likely that you lose access to your private keys
+than someone takes them from you.
+And so we're trying to make this a system that is also robust against loss.
+And one of the ways that we do that is we actually have gotten rid of the need for the
+user to have the recovery seed phrases.
+And this is a much more dynamic type of wallet where if you lose a device or a device gets
+stolen or whatever, all you have to do is go buy a new Trezor or Ledger, plug it into
+your app, and we actually have key rotation mechanism built into the software itself so
+you don't even have to call us up and talk to us.
+It's a much more flexible type of vault product.
+It's such an interesting thing to be building for this space just because it seems, and
+I want to stress that I don't believe that it is, but it seems contradictory in that
+you've built a product that's helping people become more self-sovereign as long as they
+trust CASA to have told them how to do this all correctly.
+And at the same time, it's like I said, I'm stressing that I agree with you.
+Reducing the cognitive load on the user is the only way in which we get these technologies
+into as many different hands as possible.
+There's just also this other component where, again, it's not completely trustless.
+So how do you communicate when you're thinking about your building these products?
+How do you communicate to the user that they can trust essentially what you've built?
+Yeah.
+So there's multiple parts to this problem, and ultimately what we are aiming to be is
+a service provider and a support provider.
+We are making this software available to our clients, but it's not just the software.
+We're also bundling in almost like concierge level service where you have a personal account
+manager who is available for you to call at any time.
+But from the trust aspect, there are multiple components where, for example, one important
+thing is that we are not creating our own hardware key management devices.
+We are using other common off-the-shelf ones like Trezor and Ledger.
+And so we are at least distributing the trust around.
+So when you set up a vault wallet with us, we recommend that you get a Ledger Nano S,
+a Trezor Model 1, and a Trezor Model T. It's things like that to reduce any single point
+of failure and further distribute trust across multiple reputable brands and entities.
+So that, like you said, it's not trustless, but we're minimizing trust as much as possible.
+And then we take this trust minimization idea and build it into the app as well, where we're
+trying to offload as many queries as possible from our server so that it's not a single
+point of failure.
+Right now, the server is basically acting as a coordinator for doing the multisig transactions,
+applying one signature at a time.
+And it's also acting as a balance and lookup mechanism.
+But that's actually where the CASA node starts to come into play, is that we're trying to
+create complementary products, such that if someone who is a premium tier user at CASA
+with our vault product, they're going to automatically get any other products that we're also creating.
+And if you have a node at home, then we're going to support you pointing your wallet
+at the node so that you don't even have to trust us for balance and lookup stuff.
+And ultimately, I also want the node to be able to act as the multisig transaction coordinator.
+But there's a lot of different ways you can take this.
+And ultimately, it's trying to reduce the need for our central server as much as possible.
+And so at least from the security standpoint, you don't have to trust CASA with regard to
+keeping your keys safe, because we only have one out of the five sets of keys.
+And we do provide, when you come on with us as a user, we actually provide you with the
+mechanism for what we call the sovereign recovery process, which is a set of open source software
+and guidelines for how you can completely route around CASA server and basically sweep
+your wallet and move it to another wallet without ever talking to our servers.
+This is all so cool, man.
+It's so cool to think about all these things that are being built now.
+And as a final topic of conversation, it sounds like all of these things are going back to,
+as you said, CASA's mission and maybe your personal mission about increasing this self-sovereignness,
+like giving users the way that I heard Zuko describe it was consent.
+Consenting to how data is used is a big piece of self-sovereignty, but consenting to the
+systems that you use to protect your privacy and your sovereignty, you're providing people
+with more choice in how and who they trust.
+So my final question would be, whether it's on CASA's roadmap or not, what do you think
+is the most valuable thing that you're not already building that somebody could be building
+right now that gets us to this future that you want to see, where people have more agency
+and more control?
+Well, ultimately, and I think there are a few people who are working on it, but the
+internet itself needs to be re-architected.
+We still have far too many gatekeepers with regard to actual internet access.
+And so as long as we're reliant upon one or two gatekeepers for internet access, anything
+else that we're building on top of the internet is potentially compromised, at least at an
+individual level, not necessarily at a global level.
+And so a true mesh network internet is something that I really hope to see in my lifetime.
+And I know there are a few projects that are working on it.
+That's really cool and completely essential.
+I think it shows that you have a very strong understanding of systems and how they're layered
+and how they're interconnected.
+And while most people in this space may not agree on what necessarily needs to be built
+when and how, the one thing everybody kind of agrees on is that the whole thing is very
+complex and the worst thing you can do is nothing.
+That we all need to be trying these new technologies.
+If we're not qualified to build them, we at least need to be adopting them and helping
+test them in the wild so that we can get to this future that you're describing, where
+each of us is safer, has more agency, and hopefully happier.
+I see the connection, of course, very strongly between increasing self-sovereignty and just
+being fully realized, happy individuals that have a real place in the world instead of
+feeling as though we're just sort of at the mercy of whatever attack vector is in vogue,
+right?
+Yeah.
+And I mean, I consider myself to be very fortunate that I am well off enough that I can worry
+about these type of problems.
+I mean, the vast majority of people out there have many more pressing issues, just day-to-day
+survival, paying the bills and all of that, that they're not even thinking about any of
+this stuff because it is the very, very bottom of their priority list.
+So it's great to be able to even think about these somewhat trivial problems.
+They're somewhat trivial to most people, but I think from the sort of 50,000-foot view
+and over a long enough timeframe, I think that it will have a very large impact upon
+society.
+Well, I feel very fortunate that people like yourself are thinking deeply about these issues
+and have the ability to do so and have the ability to build what they want instead of,
+as you were, working for insert email marketing firm here.
+I'm glad you've ended up doing what I believe that you and people like you were meant to
+do.
+And I'm glad that you have such an ethical and humble perspective toward the space.
+So I'm thankful to you for that.
+And as ways of closing, can you tell listeners anywhere they might want to go to learn more
+about you or learn more about CASA, use the technologies?
+What's the next step?
+Yeah.
+I mean, generally, people are asking me, how do I know what I should be investing in this
+space or whatnot?
+And I almost always say, invest in education.
+Don't ask me what crypto assets you should buy.
+If you have to ask me, then you shouldn't buy anything at all.
+So that's why I have a Bitcoin resources page on my website, which is lop.net, L-O-P-P.net.
+And as for CASA, our web page is keys.casa, that's keys.C-A-S-A. And this space is constantly
+evolving and it is a full time job for me to even try to keep up with a small fraction
+of it anymore.
+It has grown beyond, I think, the capability of any single one of us to try to keep up
+with.
+But you and other people who are trying to distill this information in a podcast is
+providing a useful service for a lot of people.
+Well, I appreciate that.
+We do try to bring on a diversity of perspectives, but the one thing I try to keep in common
+with my guests is that they are trying to build meaningful solutions to all of these
+problems that we've described and find ways in which all of these different people, as
+you said, with different perspectives, different motivations, can collaborate, can work together.
+And I think the shared focus on, at the very least, education and advocacy is a useful
+one.
+We can always teach more and learn more.
+So for all you do there, I thank you.
+Our listeners, thank you as well.
+I'll add those links to the description of the podcast so they can look into yourself
+and CASA and all those resources you mentioned.
+But Jameson, again, thank you so much for joining me.
+I look forward to another conversation soon.
+Thanks for having me.

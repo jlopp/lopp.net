@@ -1,0 +1,1142 @@
+Hello and welcome to what I hope will be the first in several interviews about cryptocurrency.
+And for those of you who already know me, of course, these are intended for a technical
+audience.
+So we're not really going to be talking about cryptocurrency at a high level.
+We're going to be talking about the nitty gritty.
+And hopefully this will sort of resolve some of the confusions that people like myself
+have or maybe some of you out there have about what exactly crypto actually does at a technological
+level or at least what people claim it does versus what it actually does and issues like
+that.
+So my name is Casey Miratori and my guest today is Jameson Lopp.
+Nice to be here.
+Thanks for joining me today.
+Jameson, can you give the audience a little bit of a quick background on your experience
+with cryptocurrency, why you're just kind of how you got into it and why you agreed
+to come talk to me today about it?
+Yeah, I'll never remember exactly what the point was that really got me looking into
+Bitcoin.
+I think it was a Slashdot article around 10 years ago.
+I'm pretty sure I had heard of it several times and dismissed it several times as a
+silly project that was going to get hacked and everybody was going to lose their money
+and it would end in tears.
+And so it was probably the third or fourth time that it came back up.
+I was like, okay, maybe I should look into this thing because it's not dying.
+Read the white paper, started going down the rabbit hole and ended up going full time in
+early 2015 working for a security company where I was basically building infrastructure
+that was being used to help large institutional wallets, specifically exchanges, payment providers,
+other type of major players that were facilitating a lot of transactions and holding a lot of
+money so that they would hopefully not get hacked as often as we had seen prior to that.
+And spent about three years working at that company.
+And then I made a small pivot to instead of focus on enterprise, private key management,
+to focus on individuals.
+I felt like there was still a big cap in the market there for people who, if they had been
+in the space for a number of years, were probably sitting on a large quantity of value in this
+digital bearer asset.
+And a lot of people, I think, were just kind of scared to even touch it because it can
+be very fragile.
+It can be very easy to have a catastrophic mistake happen.
+And so that's what I've been doing for the past three years, trying to take a lot of
+the best practices that we've learned over the past decade from a lot of hard lessons
+and a lot of horror stories and build those best practices into the latest hardware and
+software so that we can make a better user experience for people.
+Because I believe that being your own bank was one of the original promises of Bitcoin.
+And we still have yet to really get there for a mainstream audience.
+So effectively what you're trying to do is give individuals the tools they need to stop
+relying on these sort of intermediary exchanges, which I assume is how almost everyone does
+their crypto banking right now, which of course, as you just said, is sort of opposite the
+entire point that it was originally sold on because you're right back to the credit card
+processor or the whatever model of doing business.
+Exactly.
+I mean, there are some benefits that you can get from still using third party services
+if they're all still using this Bitcoin protocol.
+But there's a level of systemic risk where if you're just recreating the old system,
+but on top of a new protocol, I want to avoid it.
+And it's one of those uphill battles.
+It's like any type of security, any type of privacy where the defaults tend to be towards
+highly convenient, but also highly brittle and insecure and not private.
+And so we as technologists need to continue improving the user experience to fight that
+uphill battle.
+So I guess that that dovetails nicely into, I guess, some of the first things I wanted
+to ask about.
+So just to get like a common framework here, I was wondering if you could perhaps give
+in your opinion, what do you think and you can also say none if you want.
+But what do you think are the important technological aspects of cryptocurrency that make it something
+worth doing or worth talking about as separate from, for example, the social aspects of cryptocurrency?
+Because one thing that I should get out, you know, early, because I've never really talked
+about cryptocurrency before, obviously, I don't think anything anyone's ever said about
+cryptocurrency is false in terms of what you might be able to achieve with a social movement.
+In other words, we know that with social movements, we could achieve almost any random idea we
+wanted if somehow you were able to get enough people to buy into it, because at the end
+of the day, what happens with the currency is just what we all kind of agree happens
+with the currency.
+So separate from what might happen socially with something, if you had enough momentum,
+I'm curious, what do you think are if you think there are any, what do you think are
+the important technological aspects of cryptocurrency?
+And what do you think those important technological aspects give us that we wouldn't have if we
+didn't start adopting them?
+Well the term that you hear a lot in this space is self sovereignty.
+Really what it means is that you can voluntarily opt into a new set of rules, not only opt
+into it, but actually enforce those rules by running the software yourself.
+And this overlaps a lot with what you were talking about social movements, because it's
+a new way of codifying social movements.
+Instead of them being more abstract and having rules that fluctuate wildly as memes and other
+narratives change over time, many of the rules that we're talking about, they still get shaped
+by those narratives, they still evolves over time.
+But at the lowest level, there is an actual codified set of rules that you can read, you
+can write, you can run.
+And so that's interesting to me because I think it's a new path of evolution for these
+type of networks and social movements and what have you.
+It's confusing to a lot of people because I think it's a blend of so many different
+things that at the end of the day, it's much like the fact that just the world in general
+continues to get weirder and weirder at an accelerated pace.
+And this is just another way that technology is accelerating the weirdness evolution and
+creating essentially whole new worlds, whole new networks, whole new sets of rules that
+some people may opt into and the vast majority of the rest of the populace may not know about
+it, may dismiss it, and they're free to ignore it if they don't care about it.
+So I guess following up on that, can you go a little bit more into detail about why you
+think or I mean, maybe it's time to get concrete here.
+So can you give an example of an existing cryptocurrency that you think exhibits this
+property, meaning it has technology or I mean, technology is a broad term, but it has baked
+into its operation algorithms which provide the self-sovereignty you're talking about
+just so we can start talking about specifically whether it does that or doesn't do that.
+Yeah, well, Bitcoin is the one that I've been focused on.
+I have built on top of and played around with a number of the other protocols that are out
+there and really the whole space has become so large that it's not even possible for anyone
+to keep up with all of the different protocols and networks and things that are happening
+at this point.
+But I do believe that Bitcoin manages to maintain a lot of the properties that are more important
+to what we would call self-sovereignty and there are very many different aspects to that.
+I would say different levels of sovereignty of what you're enforcing or what you're at
+least keeping out of the hands of manipulation of third parties.
+There's of course the actual control of these assets via the private keys, but then there's
+a much higher level issue of like what is the actual rules of the network or how is
+it governed?
+How does it evolve over time?
+And that's where things can get really complicated and sometimes nasty on social media if we're
+talking about quote unquote governance or lack thereof.
+It is I think best described in many cases as crypto-anarchy.
+Like we said, anarchy has a very bad rap and that's because governments hate anarchy.
+It's the natural predator or the natural antithesis of governance.
+Government is anarchy.
+But anarchy does not mean chaos.
+It means rules.
+The real difference that we're talking about is who enforces the rules.
+Is it some centralized body or is it some new sort of amorphous collective that's a
+lot harder to quantify?
+So I wonder to parse out that sentence before, or sentence I shouldn't say, to parse out
+that explanation before I go into detail on either side of it, it sounds like you're sort
+of saying, well, OK, so there are technological things going on.
+But are you sort of saying before we even get to the technology that that's not really
+actually what's happening, meaning it's not so much about technology anyway.
+It's just about the amorphous collective model and really the technology.
+I mean, what emphasis, I guess, are you placing on the technology?
+Is the technology just there because we kind of need something to agree on?
+Or do you think the technology actually does anything?
+Does that make sense?
+Yes.
+So I have an entire hour long presentation, I think, that really touches on this topic.
+We can link to that in the description as well.
+The short version, or at least what I entitled that presentation, I called it inverting bureaucracy
+with blockchains.
+And the short version of describing it is what this technology, I believe, has done
+at a fundamental level.
+It has changed the nature of how humans can organize.
+And if you look at the way that humans have organized throughout history, it's very obvious
+how society has evolved.
+And it's been through a hierarchical top down command and control type of pattern.
+And the reason why that makes sense is because it allows for your specialization in different
+things.
+When you specialize in one specific thing, you can be a lot more productive and efficient
+at it.
+And then when you build command and control hierarchies, then you have people who specialize
+at managing other people who are specializing in other things.
+And it compounds.
+And that allows us to build the level of civilization that we've gotten to today.
+Now the downside to that is that it becomes a lot more brittle.
+You have more points of failure in this hierarchy.
+Even if it's not points of failure, you have points of power where it becomes so consolidated
+that now you have to worry about the fact that power corrupts.
+And humans in general are very bad at not abusing power when it's given to them.
+And so what this technology has done, the blockchain data structure plus the peer to
+peer distributed networks plus forms of consensus around proof of work, proof of stake, whatever
+you want to plug into that, it allows you to invert that where instead of having one
+centralized entity that is deciding things, it's actually a bottom up type of mechanism
+where instead you have organic consensus that forms by all of the individual actors deciding
+what rules they want to run and basically running that code, running the protocols that
+are compatible with each other and therefore creating these mesh networks that self organize
+and eventually evolve over time.
+So I think that's a great framework to continue to discussion because I think if that's the
+way you think about it, I think all of my questions that I would have will slot very
+nicely into that framework.
+So I don't think we even have to discuss that any further.
+So let's just take that as a given because again, I really don't want to talk about the
+social parts of things because I fundamentally agree just across the board that anything
+may be achievable in human history socially.
+We just don't know.
+So anything could be possible exactly what you're saying could easily be possible.
+So what I'd like to focus on in that description is the again technology part.
+So I guess almost all of my interest in these interviews in particular could be summarized
+as saying why do we need blockchain at all for the thing that you're describing?
+So what it sounded like you described to me is basically a form of for lack of a better
+term algorithm democracy.
+In other words, I have a all of the people who are citizens of this new entity that's
+being formed who are participants in it are effectively voting in some way as to what
+algorithm they wish to live under in a sense.
+You could think of, for example, the idea of in any of these systems, which IP address
+list you choose to broadcast to is effectively your vote in who is part of your collective.
+In other words, at some level, all of these systems require you to start by saying who
+are you participating with?
+Is that a fair assessment?
+Because I mean, that's just the nature of a network.
+Yeah.
+I mean, it's an opt in type of thing.
+It's really tricky, though, when people start using words like democracy and voting, because
+those tend not to be like one to one mappable to these systems.
+And the reason for that is that we don't have a real standard for digital identity.
+And as long as you don't really have that, then you have to worry about civil attacks
+and people using computational resources to pretend to be other people.
+I suppose I shouldn't say democracy then perhaps.
+I should simply say for anything that you wish to connect to this network, you are effectively
+casting a vote with that thing.
+And yes, it's not individual people who are the citizens in this sense, because like you
+said, there's no way to guarantee that one particular person is exactly corresponding
+to one particular node in the network.
+But otherwise, would you agree with that assessment that basically, at some level, we are choosing
+to participate by that initial selection of who do we broadcast to, basically?
+Yeah.
+So in the sense that you can self-organize and write protocols that it's essentially
+a new type of language for you to communicate with other people, that in and of itself does
+not require a blockchain.
+And there are plenty of examples of that.
+Well, I mean, any internet protocol, email servers, BitTorrent, these things do not require
+blockchains.
+I would say the blockchain is really more about the history.
+This is the authoritative record of what has happened in the system.
+And so if you're doing some sort of economic exchange, then it's important to have the
+history of who owned what.
+OK.
+So assuming that we're on the same page there, roughly, that's the part I'd like to talk
+about.
+So if you could, can you give me how you think about which pieces of this are necessary for
+achieving the social goals that you stated?
+If we think about blockchain, let's talk about it as being broken up into three rough parts.
+The first part is one that any technology would, in theory, provide.
+And that is that there is simply a block of data that we all pass around.
+Now at the barest level, that would not give you anything in particular other than the
+fact that anyone you communicate with would send back some data and you would send them
+some data, right?
+Part two would be the literal part, the literal description of a blockchain, meaning that
+data is sequentially signed in some way, meaning that the blocks are not effectively random
+access where they are all equivalent.
+But each incremental block at some level, some stride, is then encrypted or signed in
+some way that lets you know that it came after some other block.
+It's a linked list.
+Yes.
+Which I guess is how I would define it.
+Well, it's a depend-only ledger.
+A linked list can insert things.
+This cannot.
+Sure.
+But if we're talking about block, you could talk about linked lists too if you think they're
+better or different or something, right, or if they were an improvement over blockchain.
+And then finally, there's proof blockchain.
+I don't know a term for this, but to encompass all the possible proof of X things where it's
+expected that nodes have also adopted an algorithm whereby they all agree that there is some
+kind of work that has to be done by somebody or some kind of bearer.
+I don't know how you want to define proof of stake, but basically some kind of a token
+that we all agree comes from somewhere or some computation that says who it is to distinguish
+that from, say, proof of work or something.
+Can you talk about those three levels and why you think going all the way to the third
+one is necessary to accomplish what you were talking about, because Bitcoin goes all the
+way to the third one, at least.
+If you count Lightning Network, there's a whole bunch of other stuff.
+Yeah.
+So blockchain as a data structure in and of itself is not that particularly interesting.
+It really predated Bitcoin, though it may not have been called blockchain.
+There were definitely some papers, I think, in the 90s that talked about these hashed
+linked lists or whatever you want to call them.
+The creation and passing around of data is not an interesting problem.
+The internet has solved that with many different protocols.
+The interesting novel thing is if we want to talk from a computer science standpoint,
+everybody talks about, well, Bitcoin was interesting because it solved the Byzantine generals
+problem, which is how do you coordinate amongst a group of random actors who, in this example,
+you want to plan and coordinate an attack against a given target?
+And how do you do that even if there are malicious messengers that are going between these generals
+and trying to screw up their coordination?
+And that's where the blockchain plus the proof of work comes in, because what all of these
+proof algorithms are doing is all they're really doing is they're adding a known quantifiable
+cost to creating these new blocks of data, which means that you can't just have a random
+actor spool up a script and generate a bunch of data that is otherwise valid and could
+otherwise rewrite the history of the blockchain and pass it around to people and get that
+propagated.
+So it's really an anti-spam mechanism, and that is what allows us to have better denial
+of service resistance and anti-civil resistance in these systems so that we can say, okay,
+we know that there are a theoretically nearly infinite number of possibilities of different
+permutations of how this blockchain could exist and how the data in it could be structured,
+but this is the one that we all consider the true authoritative history, because there
+is no authority that we can ask.
+We have to have some sort of algorithm that is deterministic that we can all settle.
+So would you say in general that the...
+Do you then have an opinion further on that or not really?
+Is it just that, look, anything that we could use that would be able to specifically pick
+which broadcast piece of data we will append is fine, meaning proof of work is just a solution
+to a consensus problem and we don't need it for any other reason, or do you think there
+is a reason to prefer, say, proof of work over proof of stake, over just a magic oracle
+that floats around somehow and just we all know the number, who's the node who comes
+next?
+Oh, yeah, for sure.
+And countless hours have been spent arguing the pros and cons of different proof mechanisms.
+And I would say in a lot of cases, people's problems with some of these other, especially
+proof of stake, is more from an economic perspective, as you could easily argue that it creates
+more of the rich get richer type of setup, because basically with proof of stake, the
+people who have the most money and value in the system are the ones who are getting rewarded
+for quote unquote securing it by signing these blocks.
+Now the reason that I think you find people will say proof of work is better is because
+it takes an external resource from the network.
+Proof of stake uses internal resources, the tokens that are already in the network to
+secure itself.
+I kind of see it as a snake eating its own tail, but that's my biased opinion.
+That's a bit of a feedback loop, no matter what you think, because it is by definition
+looking backwards to see what has already happened in the network to decide what will
+happen in the network.
+Correct.
+From a technical perspective, proof of stake is not a new thing.
+It's existed since probably 2013, but many of the early iterations and networks that
+use proof of stake found that it was susceptible to things like long range attacks, where this
+specifically means if at any point in time in the network, some attacker gains a sufficient
+threshold of ownership of tokens, they can essentially rewrite the whole blockchain because
+they essentially own enough tokens for everyone to agree that they can do that.
+Whereas with proof of work, this is taking an external mechanism.
+It's taking electricity, energy, mining hardware, and at any point in time, the free market
+is at work where more people can come in and start competing against the existing entrenched
+miners.
+This is what we've seen happen over the past decade is that miners tend not to stick around
+for many, many years because it is a fierce competition really to the bottom of you mining
+to the point of barely being profitable or sometimes in some cases, miners actually will
+mine unprofitably for short periods of time because they're kind of speculating on stuff.
+The point being like the hardware keeps getting better, miners are incentivized to keep finding
+cheaper and cheaper energy, which actually tends to be renewable energy.
+That's a whole other ESG debate.
+That I don't care about at all.
+I mean, not that I don't care about it philosophically, obviously, energy consumption is an issue.
+But what I mean to say is that's someone else's argument and is largely based more on factual
+research than technology at some level.
+The technology is what it is either way.
+So yeah, put that aside.
+Let's just assume that the electricity comes from things that don't harm the planet for
+now because that would be the best case, right?
+Yeah.
+From that perspective, also the miners, there's a lot of misconceptions around what miners
+actually do, but miners do not have the ability to arbitrarily change the rules of the protocol.
+Miners are getting paid to follow the rules of the protocol and if they try to break it,
+then they're essentially creating an invalid block that all of the nodes will reject and
+thus they will not get paid.
+So there is another perspective that miners are essentially glorified timestampers.
+Well that's actually what they were sort of called a little bit in the original paper,
+right?
+It was talked about first as like, let's talk about a timestamp mechanism, right?
+Then it proceeds to follow on.
+Okay, so focusing on that part and in fact, exactly what you just said is where I'd want
+to go with this next.
+I'd like to talk about Lightning Network at some point because I think there's a very
+big difference to me between Bitcoin without Lightning Network and Bitcoin with Lightning
+Network for a number of reasons, but setting that aside for one second, even with the original
+Bitcoin.
+So can you elaborate on again, trying to focus in on whether blockchain actually does anything
+useful for us as far as achieving the sorts of goals that you stated at the beginning?
+If we already know that in general, we are a network and we are sending data to each
+other and as you just said, people inspect the data already because they need to be able
+to reject blocks that are clearly invalid because like you said, it really can't be
+allowed to just have people putting whatever on there because other nodes wouldn't even
+know what to do with the thing that's on it, right?
+We have to have a level of consensus above the proof of work stage anyway because after
+we agree on who did the work, we also have to agree that the thing is something we can
+actually understand.
+Why did we need the proof of work part?
+If in general, we are already expecting people to take a look at an incoming block and validate
+that it actually makes some sense, why couldn't that be the entire protocol?
+Why do we need the proof of work part?
+You could think of something like, for example, a Git repository in general, it's just expected
+that any valid thing that comes through that nobody has contested will simply be merged
+into the final product and it would be relatively straightforward to see how you would do that
+with Bitcoin.
+There are some issues you would have to work out, but I'm assuming you have an opinion
+on why that is not what you would do.
+Yeah, I mean, the first two things that come to mind are denial of service resistance and
+also just convergence.
+Denial of service resistance, if you look at the way that these nodes are written, they
+are written from a very adversarial perspective.
+Before the code actually does many calculations, especially anything that's using disk resources,
+it tries to throw away and reject as many messages as possible.
+For an example here, if we're talking about the way that a block gets validated when it
+comes into a node, instead of requesting all of the block data and starting to parse it
+and look at the transactions, the first thing that the node actually does is it only requests
+the 80 byte block header.
+By doing that, it can actually inspect that proof of work.
+If the proof of work is not sufficient for the current required difficulty target, then
+you can immediately close the connection on that other node, throw it away, say, you're
+trying to feed me bad data and you're not going to be able to waste my computational
+resources by feeding me data that I already know is invalid.
+The result that you get from all of the nodes on the network being able to do that means
+that they're not going to be accepting arbitrarily valid data that may conflict with other arbitrarily
+valid data.
+Like I said, there's a theoretically infinite number of permutations of valid blockchain,
+but instead, you know that you're only going to be getting and processing data that has
+had enough work applied to it that you know it's not just some random spammer who's trying
+to fool you.
+I think you said two things come to mind, so I'd like to do the second one as well.
+Just to make sure I understand you, because this seems like a totally reasonable thing,
+in a sense, proof of work in that example is literally just your rate limiter.
+It's a thing that tries to rate limit how many block updates any particular node could
+possibly issue in this network over a certain period of time, because since we know that
+unless they get incredibly, incredibly, incredibly probabilistically, infinitesimally unlikely
+scenario, or lucky, I should say, they really can't send out very many blocks in any period
+of time because they would need just too many computing resources.
+Is that a correct statement of basically what you said?
+That's correct, and there are so many other implications as a result of it.
+For example, the actual timestamps themselves, there are many timestamp-related aspects of
+the Bitcoin protocol, also economic aspects, of course, with the inflation rate and so
+on and so forth.
+Did you have a second one?
+I thought you said two, and before I would talk about that one, could we talk about the
+..
+Oh yeah, it was convergence, basically, being that it's much more likely that all of the
+nodes are going to be on the same page.
+This is also somewhat probabilistic.
+It is still possible, and from time to time, it happens that two miners find a block within
+a few seconds, and we end up with blockchain tips that are not the same, and then usually
+within the next block, that gets resolved.
+That's why when we talk about requiring block confirmations for transactions, that's why
+you usually want to wait for a few, because there can be issues where not all of the nodes
+on the network are on the same page.
+Would you say that's... I mean, is that basically it, meaning the... I guess, can we even elevate
+that one further?
+Could we say that in general, blockchain with a proof of something, where that something
+is presumably not capable of being done too often, the primary goal is just slowing it
+down in a sense, meaning it doesn't really provide anything else, it just is there to
+make sure that the network runs slowly enough that we don't run into the kinds of problems
+that we would expect to run into if people could simply flood the network, and mostly
+adversarial.
+Though for convergence, like you said, even with only good actors, it's theoretically
+the case that you could have convergence problems with a congested enough system.
+Although in theory, if everyone's a good actor, no one's double spending, no one's doing it,
+so who cares, I guess, how you converge, but even with mostly good actors, let's say, convergence
+becomes an issue there.
+Yeah.
+Like I said, there are many implications as a result of it, but proof of work, for example,
+was actually based upon the hash-cash algorithm, which was developed in the 90s, and hash-cash
+was developed as an anti-spam email mechanism.
+I have actually implemented hash-cash in other projects as anti-spam mechanisms.
+I use it on my own website, on my contact form, so requiring some sort of computational
+resources to be expended is a great way to stop spammers, because they're looking just
+to be able to send out as much data as quickly as possible.
+Okay.
+So I don't want to keep you for too long, so at any time, feel free to tell me that
+you're out of time.
+Let me open up into a small window of that, because that actually gets at something that
+I think is a very interesting question that I'd like to explore further.
+So it seems to me that that aspect, the rate limiting, which I agree for distributed consensus
+protocols, I haven't spent that long thinking about them, so I guess I'm not prepared to
+say I 100% agree, but let's just say that my intuition would tend to agree with you,
+which is that if we are going to make a distributed consensus protocol, having it go slower rather
+than faster is going to make it more likely to be stable, not less likely, to say the
+least.
+Can you talk about the tension, though, that comes with the fact that we also are trying
+to make this thing scale up to a large number of transactions, because these two things
+are sort of opposed to each other in terms of what you are asking the technology to do,
+and so can you kind of elaborate on is that slowdown really something that ever can sort
+of persist throughout the entire system anyway?
+Yes, and this is definitely the crux of one of the greatest periods of contention in the
+network history.
+And it's somewhat a technological issue, but I would say it's also an economic and philosophical
+issue, and that is what has resulted in there being splits, you know, forks in the protocol
+and thus forks in the actual blockchains and networks themselves.
+And so like I said, there are many implications to slowing this down.
+One of them is the ability for the average person to be able to sync the entire history
+of the blockchain, you know, starting from scratch.
+One of I think the values that is held dear on the Bitcoin network is that not only today,
+but preferably 10 years, 20 years, 100 years from now, we would like it to be accessible
+for people to be able to audit and validate the entire history of the network themselves
+on a fairly affordable level of machine, whatever that machine may be at the time.
+And so in order to be able to do that, you have to understand that this is an append
+only blockchain and whatever you put in it for the rest of time, as long as people are
+using that protocol, someone is going to have to download it and verify it if they want
+to get to the current tip of the blockchain in what we would call like a self-sovereign
+state where they're not just like using a checkpoint from some other source that they
+got.
+So that has been, I think-
+Just to clarify that for some folks who may not be familiar with it, and also just to
+make sure that I understand, because since I don't work with these things, you know,
+it's always good to check my assumptions.
+That process is required specifically because, and I guess I should say, that process involves
+more than simply, for example, checking the headers to see that they're assigned.
+Because if I understand correctly, the way that they originally designed Bitcoin, and
+to my knowledge, I guess the way it still works today, is that is based on a transaction
+model, which means that in order to verify the final block, whatever the latest block
+is, you kind of need to know the state of all transaction, all Bitcoins, what their
+transaction status was going into that block, which means that you sort of have an inductive
+proof of just, you have to start at the beginning and track every Bitcoin's transactions to
+see that they were all signed correctly in each signed block after you check the signature
+of the block rolling forwards.
+Because some Bitcoin that the last time it was traded was 10,000 blocks ago, you need
+to know that state going into the current block.
+Is that a correct statement?
+In order to be sure that it hasn't been double spent, yes.
+And so, you know, we talk about the blockchain a lot, and then other people will say, well,
+it's a distributed accounting ledger.
+Really, when we're talking about the quote unquote ledger of what the current state of
+Bitcoins are, then what we're talking about is called the UTXO set, which is the unspent
+transaction output set.
+And like you said, the only way to know what transaction outputs have not been spent is
+to iterate through every transaction that has ever happened and build that mapping up.
+Now, what we're talking about here is what I consider to be the most robust security
+model that the Bitcoin system has to offer.
+There are many other security models that you can operate in.
+One of them is called simplified payment verification, where all you do is look at the headers.
+And then when you want to know about specific transactions, you can query nodes and get
+specific proofs that are much more efficient and can prove to you that a transaction happened
+in a given block without you having to download the whole block.
+There is a lot of tradeoffs to that.
+And then, of course, a lot of other people are just using centralized providers who are
+just keeping their own internal database and they're not validating anything at all and
+just completely trusting that.
+So yeah, so most of the time, what we end up talking about is this ultimate level of
+self-sovereignty and self-validation.
+Some people call it trustless.
+Basically, you're not trusting that anyone else on the network is being honest with you.
+And the only way that you can do that is by going out on the network and asking for all
+this data and checking that every bit of data over the entire history that you receive is
+following the rules to which you agree.
+So I guess I kind of want to go two ways with this here.
+So it's a little bit difficult.
+But let's just finish up this one.
+So again, can you finish talking about because I kind of interrupted you there just to clarify
+that one point.
+Can you finish talking about that tension between needing to process a lot of transactions
+and wanting to have what you're talking about?
+So as you said, there's an issue with large transaction volume right away, separate from
+the fact that the Bitcoin protocol can't really do it at its base level because of its proof
+of work requirement and how hard it is, at least for today's computers.
+But you were saying that there's a space issue there too, which is totally true.
+If anyone in particular wants to be able to really validate the entire blockchain from
+start to finish, then presumably they would want to be able to download the whole thing,
+which if you have a rate limit on it is much more plausible.
+But keep going from there because I don't think you're done yet.
+Oh, not by any means.
+So yeah, the problem with this, if you start raising that limit even only linearly, then
+over time, you can end up with a geometric, if not exponential, increase in the total
+amount of data that needs to be downloaded and verified.
+This is something that I'm very fascinated in, other than just the fact that I participated
+in a lot of those scaling debates.
+One of the projects that I do on an annual basis is I actually run nodes for many of
+the popular networks that are out there on the same machine that I've been using for
+four or five years now as my benchmark machine.
+And I see how long does it actually take to fully validate the state of this system from
+genesis without using any tricks like checkpoints, which most of them are doing these days.
+And for most of the really popular networks, you can look at my posts year after year.
+It's taking longer and longer and not just linearly longer, but most of the Ethereum
+nodes out there, for example, are taking my computer over a month to completely sync.
+And that's on a really fast solid state machine.
+It's usually disk IO is what is the throughput bottleneck on most of these things.
+And I'm doing this on a fairly top of the line into NVMe drive, which has several gigabits
+per second of disk IO.
+But it's an interesting thing to ask, I think, as a question, because you then have to ask
+yourself, well, now, what in many cases they're doing is they're optimizing for cheaper transaction
+fees because if there's less congestion, then there's less economic contention to get your
+transaction into a block.
+But the natural trade off and conflict that you have here is you can either have really
+cheap block space and a lot of block space and have it cheap to transact.
+But as a result on popular networks, it will be very expensive to verify everything or
+the flip side, which is what Bitcoin tends to optimize for, which is we're actually going
+to let the economic side float.
+And you may have really expensive transaction fees.
+But on the other hand, you know that the cost of doing full verification of the entire system
+is going to remain sane.
+And so this is the major economic and philosophical conflict that really I think any public permissionless
+network is going to have to deal with.
+And so getting back, first of all, yeah, I mean, that makes perfect sense.
+I hadn't really thought much previously because it's perhaps the kind of thing that an implementer
+thinks about quite early, but that if you haven't actually gotten in there to do something
+with you wouldn't necessarily consider, which is just like, yeah, like if something's in
+theory, auditable, that's one thing, but if it's not actually in practice, auditable,
+then that means that it's no longer auditable, right?
+And so yeah, makes perfect sense to to push that a little bit further, though, separate
+from even just within Bitcoin.
+We still have to process the transactions.
+So if you want to scale this up to something that's like more than the one megabyte every
+seven seconds or whatever, I don't know what the current estimate is for like how much
+throughput a Bitcoin network does these days, probably higher than that.
+But if you want to push your transaction rate up above that, which it seems like you have
+to do if you want to actually use this to create any kind of an economic system of any
+appreciable size, what what's the answer?
+Because if if we're saying that all of these things, you know, we went through like why
+we need each of these pieces of technology for the block for, you know, why do we need
+the signing?
+Why do we need proof of something or rather why do we need a rate limiter?
+Because it kind of sounded like we don't really care about proof of something so much as we
+just need a rate limiter.
+And that's just the way we have to do it right now.
+How do we move past that? Because, you know, if those things are necessary and they fundamentally
+limit the number of transactions, does that mean it's dead in the water?
+How do we get past that?
+Because it sounds kind of like you can't write.
+So so could you talk a little about that?
+Yeah.
+So in actually, I think the first few months of Bitcoin's existence, people were theorizing.
+I mean, it was already obvious that you could only do a handful of transactions per second
+on the network, given the block limit, which was also another denial of service, you know,
+anti-spam mechanism.
+Actually, the very first version of Bitcoin didn't even have one.
+I think it was added maybe after six months or so when someone realized that a gigabyte
+block coming through would be very bad.
+Oh, the original inflation of the protocol, just like the blocks as big as you want to
+be.
+Yeah, I mean, I think there was an implicit limit of maybe 32 megabytes because of like
+32 bit system or something like that.
+But it was there was no codified at the time.
+So yeah, what do you do?
+Well, at the time way back then, some people theorized, well, Bitcoin is just going to
+become like gold and it's going to be stored in centralized vaults.
+And people are just going to be passing around IOUs like they do with like paper gold certificates
+and so on.
+And, you know, that's not the optimal outcome, because then, you know, it's probably a small
+number of custodians who end up controlling most of the value.
+And you could argue you're essentially recreating the existing system in a sense.
+Also, you know, you run into potential governance issues if the vast majority of the network
+is controlled by a small number of actors.
+So what happened?
+Well, actually, Satoshi Nakamoto came up with a concept called payment channels, and not
+much was done with them for a number of years.
+There was some very early payment channel work done around 2013, 2014 in the Bitcoin
+J project.
+And a few like crowdfunding mechanisms and other stuff happened.
+But these payment channels were very limited in what they can do.
+And what a payment channel is, is essentially, instead of creating a Bitcoin transaction
+and broadcasting it out on the network, and then it gets mined, it goes into a block,
+and so on and so forth, you can put your funds into a multi-signature contract on chain.
+And then after that point, you and your counterparty, who both put funds into this contract, can
+start passing Bitcoin transactions that spend those funds privately between each other without
+having to broadcast into the whole network.
+And then if you get to the point where you decide you no longer want to economically
+interact with each other, you can broadcast the final state of that, those series of transactions
+that you've been privately broadcasting back and forth.
+It goes out onto the network, it goes into a block, and that you would consider your
+settlement of funds.
+You can see why this creates a lot more efficiency if you have another actor that you are trading
+with on a regular basis.
+But it's not that great.
+It only helps it if you and one counterparty are constantly doing some sort of activity.
+So for example, there was a video streaming service that allowed you to do this for micropayments.
+And then once you were done streaming the video and paying for it a few kilobytes at
+a time, you could close your transaction.
+And just to be clear, I assume this was implemented similarly to Lightning Network, where when
+you post back to the root blockchain, to the actual Bitcoin blockchain, whatever you want
+to call that blockchain, there's a time lock of some kind so that you know that you're
+not broadcasting old information or something like this.
+So is it still a contended, it's an adversarial broadcast system just like Lightning Network
+was?
+Yeah.
+Yeah.
+No, I'm oversimplifying it.
+So what you're doing, you're actually creating some game theory and there's some other logical
+branches to these transactions where if someone tries to screw you over by posting a previous
+state, you can steal all of their money.
+Okay.
+So it's like a penalty based adversarial thing, much like Lightning Network is, I assume,
+or rough, with some differences, I would assume, because Lightning Network must be different
+or they wouldn't have called it Lightning Network.
+Yeah.
+So this system was far simpler.
+Lightning Network is far more complicated, but also far more useful and far more robust.
+So like those old forms of payment channels have not been in use for at least six years,
+I think, at this point.
+Lightning Network kind of supercharges the idea of payment channels by creating a network
+of payment channels so that you no longer have to be directly connected to your counterparty
+that you want to send or receive funds with, rather it uses a sort of onion routing mechanism
+to be able to securely and privately have those payments forwarded through an arbitrary
+number of other hops along the network and eventually reach the final destination.
+And so this allows you to have that same level of efficiency, but with far greater reach.
+Now there's a lot of other tradeoffs involved, and Lightning by no means will ever have the
+same security model as on-chain Bitcoin for a variety of reasons.
+The additional complexity, the fact that your keys are probably going to be hot rather than
+cold, though it is possible to do some cold payment channels, but they end up being a
+lot more limited because you can't actively route funds through them.
+But Lightning Network was originally, I think the whitepaper was in late 2015 or early 2016.
+Early testnet versions of it went online, I think.
+Can I just clarify one thing, by the way, because I just realized I was assuming something
+with what you said.
+Hot versus cold keys, could you just, I'm assuming you mean whether or not they're easily
+accessible or not, but elaborate.
+Well, yeah, so we tend to say a hot key is a private key that is on some sort of internet
+connected device.
+And this is risky because hackers can get in, malware can get in, so on and so forth.
+So yeah.
+I just wanted to make sure I wasn't misinterpreting what you said, because I was like, well, I
+don't think I've ever heard that term before, but all right, because yeah, one of the things
+also, I should say before we continue, it just occurred to me, thank you for not using
+too much terminology.
+This has been very acronym free, which I think will be great for everybody, including myself,
+obviously, who doesn't spend a lot of time in this world.
+People can easily just use things, you're like, wait, okay, go back.
+What is that term?
+Okay, sorry.
+Absolutely.
+So continue.
+So you said that it does not seem security, the hot versus cold keys, and then, sorry,
+continue.
+Yeah, because really this is optimizing for a different use case.
+This is optimizing for fast, convenient payments, probably small payments.
+If you're going to buy a house or a car, you probably aren't going to be using Lightning
+Network.
+This is really meant to be more of a mainstream consumer retail type of network.
+So putting tens or hundreds of thousands of dollars into it is certainly not recommended.
+So if we assume then that that is what most transactions have to go through, and only
+very large, I guess, infrequent transactions would go through the main channel, haven't
+we sort of kicked the can down the road a little bit?
+If we're willing to accept all of the lesser sort of, like obviously, it's going to have
+all of the problems that you were worried about if you get rid of the rate limiting
+that we talked about before, or if you don't have the things that were supposedly necessary
+at the root blockchain on the one that people are actually doing most of their transactions
+on, what was the point of the root blockchain part?
+So the main chain, as we call it, is the settlement layer.
+You can think of it as, from an economic standpoint, this is not a new thing.
+There are already high frequency, fast payment networks, whether it's credit cards, PayPal,
+what have you.
+And those things don't settle instantly.
+In some cases, their settlement assurance is on the order of weeks or months.
+And the settlement is when you have finality that your money isn't going to get taken away
+from you.
+So if you think of it from a validation standpoint, why should my grandchild have to validate
+that somebody bought a cup of coffee 50 years ago?
+What does that matter to them?
+All that you really care about in a system like this is you just want to have an assurance
+of who owns what now.
+You don't necessarily care about all the nitty-gritty details of every economic transaction that
+ever happened.
+Gotcha.
+Okay.
+So I think most of that architecture stuff is pretty well sussed out based on what we've
+talked about so far.
+So now I'd just like to go back to the original question, which is, assuming that that technology
+stack...
+I mean, I guess I should ask you first.
+So is that technology stack, meaning we have a root blockchain with a rate limiter on it
+and a consensus protocol?
+In this case, they're sort of one of the same, but we satisfy those two things.
+We have a limited rate of clearing transactions and we have some arbitrary system, doesn't
+matter what it is, for deciding how we pick which broadcasts we actually retire on any
+particular node so that they can reach consensus or convergence.
+We have that as our root system.
+We then have a sort of wilder, faster system as a second layer down, which will just use
+the original system to...
+I guess one way we might say is conflict detection.
+So if somebody starts to try and do anything particularly weird, when we go to clear it,
+we will know that there was something bad in the system.
+How does this technology achieve, going forward, the goals that you set out at the beginning?
+So the self-sovereignty, to the extent, however you wanted to define it, why does this accomplish
+that goal?
+Well, as the complexity of the system continues to increase, people will have more and more
+options of how they're interacting with it.
+So the premise of at least Bitcoin mainchain plus this new second layer technology, Lightning
+Network, is still being built with all of the same value propositions imbued into it.
+So if you want to, you can run your own Bitcoin mainchain node and on top of it, you can slap
+one of these Lightning Network nodes and they're talking to each other, they're interacting.
+The Lightning node is actually using the Bitcoin node to determine and get the settlement assurances.
+And from that perspective, you still maintain that self-sovereignty.
+Not everybody is going to do that.
+You can use third party services, you can use lightweight clients that make other tradeoffs
+around the security and the convenience of what you're doing.
+But I think the important thing is that you have the optionality and it's still feasible
+for someone who puts in a little bit of time to do it, to do so.
+It's not necessarily going to be a push button type of, just jump right in, though there
+are people who work on products like that.
+My company actually had a-
+Such as yourself.
+It sounds like-
+Yeah.
+So I've dealt a lot with trying to thread the needle of those usability challenges and
+being self-sovereign and helping other people be self-sovereign rather than just taking
+everything and saying, look, I'm going to do it and you're going to trust me.
+It can be very, very compelling to want to do that because it makes it easier for everyone
+but it creates a more fragile system.
+And I guess for people who may think that this system of increasing complexity is daunting
+or may not make sense, I actually liken it to the internet itself, the OSI model.
+If you look at the way the Bitcoin blockchain works, it is a global flood fill broadcast
+mechanism.
+It has some similarities to the lowest layer of the internet.
+You put some data out there and it goes out to everything on the network.
+And if you think about trying to scale up ethernet, you and I would not be able to be
+having this conversation the way that we're doing right now streaming audio and video
+if we only had ethernet because the other billion people on the internet would also
+have to be processing this data at the same time.
+So that's why we need routing layers.
+That's why we need to create more efficiency.
+It is a bit more fragile.
+It is a bit more complex but it gives us orders of magnitude more efficiency from a resource
+usage standpoint.
+So not to keep you too much longer, I'll try to now wrap up with the, I guess, the crux
+of the whole thing because I feel like I understand everything you just said and what your perspectives
+are and what you think the technology is and what you think it does.
+Can you walk me through an example of how this self sovereignty would actually do something
+in practice?
+So I'd like to give you a hypothetical.
+Maybe you can modify my hypothetical if you think we need some extra things in it.
+But simplest example, I think you already said buying a cup of coffee.
+So I am a person in the world, just an average person.
+I have no special connection to banking or anything.
+And I want to buy a cup of coffee from someplace that is also presumably going to use Bitcoin.
+So I'm going to use Bitcoin and they're going to use Bitcoin.
+How would self sovereignty help me do something with this transaction that I can't already
+do in the real world?
+In other words, what is it, and you can pick multiple or just one, what is a scenario where
+realistically during a real transaction that a person would actually care about, the self
+sovereignty does something or is that the wrong way to look at it?
+Well, yeah, I mean, I think it's a very privileged Western perspective of looking at it because
+you and I, we have access to great financial infrastructure and I'm not the best person
+to talk about this.
+There are some great people at the Human Rights Foundation who work with people in countries
+who do have much better use for censorship resistant payments.
+I do not find myself being censored very often, it's probably only a handful of times throughout
+my life when I found my transactions being censored.
+But that's a very privileged position that I found myself in.
+I don't mean that, actually.
+I mean, assuming no privilege.
+So tell me, give me the unprivileged scenario.
+And if you'd rather, if cup of coffee is probably, I only use that because you used it, let's
+use something that would be more likely to be deprivileged, bread, something to feed
+my family.
+Give me the scenario where this helps me.
+Possibly, but really, when you're talking about self sovereignty or censorship resistance,
+what is generally more interesting is what are the transactions that authorities don't
+want you to make?
+So this tends to be things more in legal gray areas, whether that is like sex work, pornography,
+drugs, that may be gray market, black market, highly regulated things, a lot of people end
+up finding...
+Could we just pause one second though?
+Okay.
+So I'm not sure I understand that leap then.
+So in one case we were talking about, you were saying that looking at the other way
+was a privileged view.
+Certainly sex work is not a privileged view, meaning we wouldn't normally consider, well,
+I think it's great to enable as many people to do as many types of thing as possible.
+Surely we're not talking about access to sex work being censored as the primary thing that
+a person living in a third world country without access to financial services is concerned
+about.
+So can you clarify that a little bit?
+Because gray market doesn't sound to me like privilege versus umbra.
+So the two things you just said didn't really line up.
+Oh no, these are very many different types of people and I can't speak to any one specific
+thing.
+People in third world countries, it's more likely that they don't have access to banking
+and payment infrastructure.
+So they're more likely to be using physical cash for things.
+They're more likely to be in a country that is more susceptible to high inflation rates.
+So they may prefer to opt out of that system because it's also being oppressive from a
+purchasing power of their income perspective.
+That's the thing about this space.
+This is a neutral tool.
+People can use it however they like and if they're able to economically interact with
+other people without meddling from third parties, I think that level of freedom is generally
+going to be good for everyone to prosper, except for of course the people who are trying
+to control what we're doing.
+Okay.
+So that is, that's what I'm trying to get to.
+So can you give me an example of where the self sovereignty, so it's like a concrete
+thing of like, here is an example of a transaction that would currently be censored and here
+is how this system would accomplish that in a way that another system wouldn't, right?
+So like given all the technologies said, so proof of work and all these sorts of things,
+what is an example transaction that is what we're trying to enable with the self sovereignty?
+Well there's transactions that would be censored for any number of usually political or regulated
+type of reasons.
+And then there are other transactions that may just not happen because you don't have
+the infrastructure.
+So let's, I mean, take the internet for example, we have this amazing network now that billions
+of people can connect to and they can start interacting and communicating with people
+regardless of geographic boundaries, jurisdictions, what have you.
+And yet a lot of our payment infrastructure still has really weird rules and blocks that
+are based upon jurisdictions and regulations of nation states.
+So it should be possible or why can't a random person in a third world country who only has
+a cheap Android phone and a kind of crappy mobile connection to be able to get onto this
+network and start earning money by using their own intelligence and being able to perform
+actions which may not be worth a lot of money to people in Western society, but may earn
+them enough pennies or equivalent thereof in a new cryptocurrency that they can now
+receive and hold and use themselves without having to go through banking infrastructure
+that it probably won't even be available to them because there's just not enough overhead
+to make it profitable for banks to do that.
+And so drilling down on that, what is it about this technology that enables that that the
+current banking system doesn't?
+So for example, if we're taking this person to a third world country, I'm not sure I quite
+get the hypothetical, but you're saying they are doing some kind of work on the internet
+to make it a little more concrete, they're proofreading, start translating something
+into their native language because they happen to have learned to speak English and they
+take an English thing in and translate to their native language, which is providing
+a service that someone will pay for.
+Is that is that kind of what we're talking about?
+Sure.
+I mean, you could you could even just say like mechanical Turk type of work.
+I don't know.
+Yes.
+So something they're able to perform on their Android phone, they are getting paid in this
+system.
+And the what I'm trying to get is, OK, so tell me an example of why this doesn't work
+with the current system and why it will work with the new system.
+Well, I think one of the most common reasons that it doesn't work is that there are no
+banking providers that even offer them the ability to create accounts that can receive
+or send money.
+And that may be for any number of reasons, whether regulatory or I think it's probably
+more just profit motivated.
+If someone's only earning a couple of dollars a month, why is a bank going to want to dedicate
+the resources to setting up all the infrastructure required to maintain that account?
+You know, they're not going to be able to extract much value from it.
+OK, so there are two things you said there.
+One was regulatory and one was the fact that a bank might just elect not to provide this.
+Right.
+So question for the first one, if regulatory was the concern, how will this system help?
+Because surely if this became common enough that a government wanted to stop it, how does
+regulatory issues not just stop it?
+Right.
+So when I was thinking more of regulations that create a bunch of paperwork and overhead
+and compliance, that raises the cost of opening and maintaining accounts and traditional infrastructure.
+So that, I think, turns a lot of banks off to servicing lower tier people.
+Though regulatory from a how is government may crack down on its type of thing.
+That's an interesting question, which we can look to China to see how that has been going.
+China has been cracking down on Bitcoin since probably 2014 or so.
+And there's always going to be the issue of government has a monopoly on physical violence
+within its jurisdiction.
+Government will always be able to say, look, if I catch you doing this thing, I put you
+in a box or I find you or some sort of other punishment.
+And technology won't be able to stop that.
+But I guess the cypherpunk side of me says that, look, governments have been passing
+regulations on technology for a long time and we've seen them fail.
+Just look at piracy, for example.
+People do illegal stuff offline and online all of the time.
+And governments and their law enforcement systems, they don't have nearly as much resources
+as they would like you to believe.
+So they can't actually enforce things as well as some people might think.
+But that's also true of the current banking sector.
+So I'm not sure why that's an argument in favor of cryptography.
+So for example, if you believe that the government isn't capable of creating regulatory burdens
+to something, then why do you think the current banking sector has those burdens?
+Well, it's a matter of pressure points, right?
+Is that if you're doing things through large regulated companies, you have sufficiently
+centralized that system that the regulators and law enforcement, they have a small number
+of entities that they can go to and put pressure on to say, you need to comply with this.
+Now, and this kind of goes back to, I guess, any sort of social movement or whatever.
+If you have a sufficiently distributed enough system or sufficiently distributed enough
+group of people, you can't shut it down.
+You can't stop it.
+I mean, you can make threats and you can put some token people in jail and whatnot.
+But that is, I think, one of the underlying premises of the cypherpunk movement and a
+lot of the cryptographic technologies that spawned off of it is that a sufficiently distributed
+system cannot be shut down.
+So it's hard to stop software is really what I'm saying.
+It's because it's hard to stop the flow of information now that we have the internet.
+So I guess I'm not quite sure I understand that argument.
+How many nodes do you imagine there to be, I guess, in the root blockchain of Bitcoin
+operating in the end game, meaning where do you think that number?
+What is the cardinality of that number, if you will?
+What order do you think that number is?
+I mean, it's been fairly flat for a number of years.
+So there's currently around 10,000 publicly reachable nodes and somewhere between 50 and
+100,000 extrapolated total nodes.
+They're not all reachable.
+They may be behind a NAT.
+And it's hard to say from a percentage of users how many people bother to go to the
+extreme of running it.
+But there's also an argument that it's not necessarily about whether people are running
+those nodes today, but if they have the optionality to do so and if it's possible for them to
+afford to be able to do so if something in their situation changes and they feel like
+they need to take on that additional level of security.
+So preferably, I would want to see everybody running their own.
+But I know that it's going to be a small minority of people who bother to do that.
+And if so, if I may, sorry if this is going too long.
+Is this too long?
+No, no, we're good.
+Okay.
+So if I may still don't quite understand how that really works.
+So the reason everybody isn't their own bank today is not really because they wouldn't
+like to be able to do the things that a bank can do.
+It's because of the regulation.
+So why do you think a government couldn't simply prohibit people from running Bitcoin
+nodes, thereby limiting the number?
+Because even the number you just said was very low, 10,000.
+There's probably 10,000 banks.
+Any government can pass pretty much any type of law that it wants to, right?
+It is the supreme rule of its own land.
+Part of this, from a geopolitical standpoint, it's a global game.
+And at least so far, while we do see some cooperation between some superpowers and other
+nation states, it's highly unlikely that they're all going to get on the same page and agree
+to unilaterally ban all Bitcoin usage or all usage of some technology.
+I think that at least the smarter politicians know that even if you do ban something like
+that, you just create a black market.
+Now the number of nodes would drop, the number of users would drop, but it would still continue
+to exist.
+Not ban.
+Not ban.
+Just regulate.
+Because I think that's also a thing that I've seen before, and I don't necessarily think
+it's very compelling, which is to say governments, if they see people using something, they don't
+tend to ban that thing.
+What they tend to do is regulate it so that they can control it.
+And I think it's a much harder argument to say that they won't do that or can't do that
+because, especially as you see already with cryptocurrency, there are large players.
+And the incentives for those large players to comply with the government, if the regulation
+isn't particularly burdensome, are quite high.
+So I believe that every agency within a government is going to do the most that it can to corral
+this technology and try to get as much of it under its purview and say, we should be
+able to regulate it from aspects X, Y, and Z as much as possible.
+Yes.
+EPA, IRS, DOJ, they all will want something.
+Yes.
+Yep.
+It's going to be interesting to see how that plays out.
+They certainly will regulate any large centralized actors, especially any that are handling other
+people's money because that falls under various financial regulations.
+It's nothing really new there.
+They're going to be grandfathered into all of the money transmission and custodial issues.
+But just from a technology standpoint, I think at least in the United States, there's a very
+strong argument that the use of open source technology is basically a freedom of speech
+issue.
+That what we're doing is we're interacting with each other voluntarily.
+We're communicating with each other over the internet.
+And that is not something that the government can regulate unless they decide to somehow
+repeal the First Amendment.
+I guess that I don't follow at all.
+The First Amendment is really not implicated very heavily in banking regulation, though,
+at least from what we've seen.
+So I guess I'm not sure why, if that were a useful defense, surely it would have been
+raised already by a bank at some point.
+I don't think really banks would care enough to raise that as a defense.
+But I'm not the lawyer, but I am repeating something that some of my crypto legal friends
+on Twitter have definitely said a number of times.
+So I'm not the constitutional law expert.
+But I think that from the premise of the fact that this system, it was not created by the
+government, wasn't created by the Fed or the Treasury or anything like that.
+I think if we're talking about the banking system, which really does all flow from those
+original entities and they get to say, well, you're just further down the hierarchy.
+So you have to comply with all this stuff.
+That's probably how they would make a legal standpoint of we get to regulate all of these
+activities.
+Whereas we're talking about a communication system that was created by an anonymous entity
+and is run by thousands of people all over the world from a voluntary standpoint.
+So that's good.
+I'll put that on my list for interviews.
+Maybe afterwards you could recommend a person to talk to since I love First Amendment law.
+So I would love to have a conversation about that.
+And then for the regulation point, we'll just keep brief because like I said, I'll be doing
+more interviews so I can also ask other people to elaborate on some of those.
+The flip side of that, just to finish up, you said is making it worthwhile to do was
+another reason that people might not have access to these banking services.
+So how does this help?
+Meaning we already see that there's a lot of fees associated with things like using
+Bitcoin and that sort of stuff.
+How does this technology help reduce the cost of interacting with the banking system if
+that is a key aspect of self sovereignty?
+Right, well, I mean, I don't think it's necessarily going to help with using the traditional banking
+system.
+It's more of a question of, can we create a closed loop economy that is more efficient
+and able to work inside of?
+Because right now, even if you get into Bitcoin or you're using lightning or whatever, I think
+most people because of how new it is, it's not a closed loop system and they end up having
+to use on ramps and off ramps.
+Those on ramps and off ramps are probably going to be charging fees.
+They also tend to be regulated.
+They tend to be choke points.
+There's a lot of bad things that tend to happen at on ramps and off ramps.
+Like we said, with exchanges getting hacked or exit scanning, so on and so forth.
+So from that perspective, I think it's still very early days because I want to see native
+internet currencies be able to be fully closed loop systems where you're not only buying
+stuff with them or storing your wealth with them, but you're also earning with them and
+being able to complete that full life cycle.
+It also means that businesses need to be able to pay other businesses with these currencies
+in order to be able to facilitate that.
+All right.
+Well, thank you very much for talking with me today.
+I think we got through a lot.
+It actually sounds like we probably don't disagree on very much actually based on your
+answers.
+I would suspect that probably other cryptography people might disagree with me more because
+it sounds like you had a pretty realistic picture of what actually is or isn't possible
+that didn't sound particularly fanciful to me.
+Presumably it also doesn't sound very fanciful to you, but it does sound also, tell me if
+this is an unfair summary, it does sound like at the end of the day, it does lean pretty
+heavily more towards the social aspect than the technology aspect since it didn't really
+sound like you were actually that...
+It didn't sound like you actually thought there was that much of the technology implicated.
+In a sense, you were like, if we have the bare minimum for rate limiting and selection,
+then that's the technology.
+That's the extent to which we really care about this technology.
+Most of the other things are about, like you said, hoping that government can't intrude
+too much because it happens to be something that can be multinational, hoping that people
+adopt it so that business could pay each other without having to go through on-ramps.
+Is that an unfair characterization or not?
+This is really hitting, I think, on the complexity of the system.
+It's so multifaceted.
+The technology is important, but there's also the game theory, there's the economics, there's
+the regulatory aspects.
+You can get into, like I said, the geopolitical implications of what happens with nation states
+if they start competing more directly against each other with regard to crypto.
+We've seen legalization of Bitcoin in some countries, and some believe that this is just
+the beginning of dominoes falling.
+Is that good or bad, by the way?
+Do we know if it's good or bad?
+Good for who?
+Bad for who?
+It's going to be good for some people, it's going to be bad for some people.
+This complexity that we just barely scratched the surface of is why I've been so fascinated
+with it for a decade and why it continues to fascinate me.
+I just try to soak up as much of the information of what's happening as I can, and I certainly
+have fanciful, optimistic hopes for what we may see the world look like in a few decades
+if this progression of technology results in social changes, results in economic changes,
+but that is getting more like Nostradamus.
+I guess as a final thing, one thing that I think about with crypto, and I'll just end
+on this, is sometimes it's unfortunate for technology people because you hear a lot of
+claims about crypto and you're like, well, the technology doesn't really do that thing.
+You're talking about something that you're just hoping happens because we use this thing
+or something like that.
+We did touch on a little bit of that, but like I said, thank you for being refreshingly
+clear on a lot of this stuff.
+You didn't say a lot of things like that.
+You weren't like, oh, and then technology is X and then magically we get unicorns that
+ride through the sky, which sometimes it sounds like.
+Tell me your reaction to this as the closing thought.
+Is there a certain degree to which the overoptimistic or fanciful flying unicorn nature of the discourse
+around crypto?
+Is that also somewhat of a strength?
+Which is a weird thing for me to say because it annoys me that it occurs, but since there
+is so much of a social component to it, is having a fanciful notion of what it will achieve,
+even if we know full well that that's mostly a lie technologically, is the lie perhaps
+a necessary motivation to get the social part to occur, which, if it occurred, would actually
+accomplish the thing, even though the technology itself does not guarantee it that outcome.
+Yes, it's a feedback loop of memes and narratives, and I also have a whole article that I wrote
+about this.
+You can make the argument that we're memeing certain things into reality, and that has
+become literally true in the case of some of these meme crypto tokens, though I tend
+to think that those are going to be more flash in the pan, but regardless of which of these
+protocols or networks you look at, that is also kind of the dark side of it is that we
+have incentivized people to pump their bags, and so some people who are in it for a get-rich-quick
+type of thing will make all the promises in the world and they don't care.
+They just want to get enough other people to come in and invest money in the system,
+and then they're going to dump it.
+On the other hand, it creates some interesting incentives for the people who are in it for
+the long term and who care about building the technology, and I do believe I'm one
+of those people where I don't have to keep building this stuff if I didn't want to, but
+as you've seen, I think I'm fairly realistic about where we are right now, and I think
+I'm going to be working on this for the foreseeable future because there's still so much left
+to do.
+This is not mainstream adoption.
+While we are at a mainstream level of at least, I think, people being cognizant that the technology
+exists, very few truly understand what it's capable of doing or why they should care about
+it.
+All right.
+Well, thank you very much for joining me today.
+It's my pleasure talking with you, and for anyone out there who wants to find you or
+follow you, what's the best place to look you up online?
+You can check out my website at lop.net, L-O-P-P dot net.
+If it's easier to remember, bitcoin.page will take you directly to my resources that has
+about 1,500 different links to various educational sites about Bitcoin.
+Awesome.
+Well, thanks very much.
+Thank you.
+Have a good one.
+Thank you very much for joining me today, and I'll see you in the next one.

@@ -1,0 +1,560 @@
+You're listening to Bottom Shelf Bitcoin, Episode 27.
+Hey everybody, welcome back to another episode of Bottom Shelf Bitcoin, the podcast that
+puts Bitcoin knowledge within everyone's reach.
+As always, I'm your host Josh Humphrey and today with me is Infrastructure Engineer at
+CASA, among other things, Jameson Lopp.
+Jameson, welcome to the show.
+Great to be here.
+So I kind of want to talk to you.
+I saw your recent article about your swatting and I know you've got the project on physical
+Bitcoin attacks.
+And so I'd like to kind of talk about that stuff today.
+But before we get into that, can you kind of share your background of how you got into
+Bitcoin and maybe what you do or what you did prior to Bitcoin and then kind of what
+you've done since then?
+Sure.
+I mean, my background before Bitcoin was pretty boring.
+I was a backend engineer doing large scale data analytics for an email marketing company.
+So basically using a lot of distributed technologies back in the day when cloud was something that
+most people had never heard of just to process terabytes and petabytes of information so
+that people could better target their marketing efforts online to get you the spam emails
+that you were most likely to click on and buy stuff from.
+So I was never particularly passionate about that as a career.
+It just happened to provide a lot of interesting computer science problems from a scalability
+standpoint and somewhere along the way I saw a Slashdot article or a Hacker News article
+or something where it was talking about Bitcoin and this was not the first time that I had
+heard about it.
+It was just for some reason I realized that this Bitcoin thing was coming back and coming
+back over and over again and it was not dying off like I had expected.
+So that's when I really started looking into it and going down the rabbit hole and just
+trying to understand how it was working and that resulted in me forking Bitcoin Core so
+that I could add a bunch of metrics and I called that project Satoshi and created operational
+dashboards which were basically reminiscent of some of the stuff that I had been doing
+during my day job and it just kind of kept going from there.
+I kept spending more and more time digging into the technicals and doing a couple of
+open source projects and then eventually the ecosystem grew large enough that I realized
+I could probably be getting paid to do this full-time and so I've been a full-time wallet
+engineer for about three and a half years now.
+You were previously at BitGo but you're currently at Casas.
+You want to just kind of give us a brief overview of what Casas does?
+Sure, so there's a lot of overlap in a similar wallet technologies I guess in that BitGo
+and Casa are both non-custodial multi-sig wallets meaning that these sets of public-private
+key pairs are distributed across multiple entities so that you never have a single set
+of keys or enough sets of keys on a single machine that a hacker could get into and then
+just you know steal all of your crypto assets.
+So BitGo is very enterprise focused.
+They're powering a lot of exchanges and other large payment processors basically working
+as an automated solution to try to allow these entities to have hot wallets that can do deposits
+and withdrawals in an automated fashion while still having a better level of security than
+just having all of your keys on that server because after all I think pretty much everybody
+is aware of the exchanges that keep getting hacked over and over and over again.
+They're huge targets because they have so much money and we did a lot of great work
+there at BitGo.
+You know it wasn't perfect.
+Sometimes customers still manage to shoot themselves in the foot despite our best efforts
+but I think you know we did help secure the ecosystem pretty well from a high level and
+eventually though I felt like the enterprise side of things was coming along very nicely
+and maturing but I felt like the personal individual side was still fairly lacking and
+so started working at CASA earlier this year and CASA is more like a vault product where
+it's a 305 multi-sig setup but this wallet is backed by multiple hardware key management
+devices like Ledger and Trezor and the idea being that you as an individual will have
+multiple hardware devices that you distribute geographically and this gives you a level
+of redundancy and security that the vast majority of people in the crypto world don't have especially
+if they're trying to quote unquote be their own bank and really what we're just trying
+to do is make really high security key management attainable for the average individual that
+isn't a super nerd and so the whole thing about the you know be your own bank in Bitcoin
+is that it's always been possible to do but in the early days it usually required you
+to use like a lot of command line tools and figure out how to generate private keys manually
+and print them out on a piece of paper and it just takes a lot of work.
+Even these days you know the best thing that the average person can do is probably buy
+a Ledger or Trezor and that gets you pretty good usability and great security but we want
+to take a step further and also basically help the user with all of the best practices
+both like IT practices and general security practices that we're trying to bake into the
+software so that they can just follow the instructions on the screen and have really
+good security without having to do a lot of education and like regular maintenance to
+be sure that their wallet is in a good state.
+I think the more that everyone can make things user-friendly and I don't mean like water
+things down or dumb them down but being able to make things simple while still being secure
+is always a good thing.
+So okay so let's kind of talk about I don't know what if you would rather talk about your
+article and the experience first or your physical Bitcoin attacks project I mean I can only
+assume that this project on GitHub this list comes out of somewhat your personal experience
+as well.
+Yeah I mean it's all related I think that it's really more related to what I've been
+doing you know from the career standpoint while you know the incidents with the law
+enforcement showing up at my house was it seemed like it was probably related to someone
+trying to extort me due to the messages I received that was not really I think the primary
+motivation I think it was really more to someone try to screw around with me because I made
+them mad but it really did show that there is this physical side of the operational security
+that you need to be worried about and it's not just related to like how much money you
+have but it can be related to if you're a controversial figure on the internet and you
+know once I started looking into like swaddings in general and a lot of the people who have
+had to go through this most of the time when it happens it's just because you made somebody
+angry and they want to hurt you but they don't want to put in the time and resources and
+risk their own life to come and physically attack you they want to you know basically
+leverage resources of the government to point them at you and target you.
+Yeah and for anybody who's listening who doesn't know what swadding is basically somebody calls
+and makes fake threats or whatever as you or some other way gets law enforcement called
+out to your residence is that a good way of summing that up?
+Yeah pretty much is that they come up with a reason to make it seem like there's an emergency
+at your residence so of course the tricky thing is first they have to find out where
+you live but for a lot of people that's probably very easy to do and so that that has led me
+to look more into the privacy side of things as well and you know I'll be releasing more
+information about you know what I've learned from that and how difficult it really is to
+maintain your privacy in the real world these days.
+Yeah that's something I've been thinking about especially since reading your article it's
+like you know every time you buy something online maybe with the exception of buying
+with Bitcoin right but if you buy something with physical I mean with with fiat especially
+if you're using some kind of credit card online then you've got to put or anything that you
+have to have shipped to your house it's you know you're putting your physical address
+in there and then any of those places that get hacked can list your you know someone
+can get access to your address.
+I'm sure there's other ways that I haven't even thought of that we're putting our physical
+address out there as well.
+Yeah I mean it's not even clear how many different ways your data can leak but you know you can
+go to various websites that that's all they do is they compile data from as many sources
+as they can get their hands on and then you pay them like fifty bucks and you can get
+a full data dump on basically anybody that you want and that's just at the you know really
+easy level of like people who know how to use Google and then if you start extending
+past that to like darknet stuff you know you can find all kinds of data dumps from all
+kinds of different merchants and other service providers and so it pretty much comes down
+to you know any data that you put out on the internet even if it's through like an encrypted
+secure connection that's going into some database somewhere which in all likelihood over a long
+enough time frame is eventually going to get leaked out onto the internet.
+It's interesting to me I wouldn't think you're a controversial figure.
+Well at least within the crypto circles you know things can get very controversial especially
+when you're talking about like the future direction of the protocol and of course this
+is a system where we're talking about the future of money and there is a lot of money
+on the line and you know a lot of the people who got into it in the early days and hopefully
+even today were very ideologically motivated and so as a result they can get very heated
+when you start talking about even if you're talking about technical changes it often comes
+down to ideals and perspectives that are very deeply rooted in the individual themself and
+so the technical arguments can very easily devolve into ideological arguments and I think
+that that's what ends up creating like some of the splits and forks that we've seen happening
+is because eventually one group of people gets so frustrated and feels like you know
+the other side isn't compromising with them then they end up having to use their only
+other option which is to basically leave and create their own new system.
+I'll have your article in the show notes for everybody listening and I think you guys should
+go listen.
+I mean go read the article but walk me through like what goes through your head when you
+pull up in your neighborhood and you know they've got the whole thing blocked off.
+Well I certainly was not thinking oh this is related to me I figured oh somebody is
+in trouble you know they've pissed off the police and now the whole neighborhood is locked
+down you know it probably took like another 10 minutes or so before we finally figured
+out that you know it was me and that was the point at which I ended up going and talking
+to them and you know the very first thing that they asked me was if I had any enemies
+and I was like well I could probably you know think of a few or at least a few anonymous
+online people who might want to screw with me like this.
+Yeah you know and see this is what's I guess scary to me is that there have been incidents
+where let's say the law enforcement in that area is a little more trigger happy and you
+know people end up hurt or are dead.
+Definitely and that's why it's something where well when you look into the laws there are
+various states I think that have enacted more strict punishment for this type of thing and
+it's all on the Wikipedia for swatting by the way and I think that like California was
+one of them that did that and the actual representative or the legislator who like proposed the bill
+that made the punishments more severe she ended up getting swatted like within a few
+days it was kind of weird but you know just looking through all of the different publicly
+cataloged as incidences it's very interesting how much similarity there is and how it seems
+like there's still nothing that law enforcement has really done to try to counter any of this.
+I guess that it simply hasn't happened at a volume and scale that law enforcement has
+been forced by you know the public to have to deal with it better.
+And I'm sure some of that is that it's distributed across the country right I mean like for there
+to be any kind of real like I'm sure that some place like California or whatever if
+they're seeing it enough then they're going to do something about it but if it's not taking
+place enough in your municipality or your state then they're not going to do it and
+so as these things are more spread up you know spread out across the country we see
+it by nature of social media or whatever and so we might get a conglomerate of it across
+the nation but you know our local law enforcement or whatever doesn't see it enough to really
+do something about it.
+And the other side is it's difficult to trace back you know the person who initiates this
+isn't it?
+If they did it correctly yes I mean sometimes it is just like a stupid kid who doesn't have
+any sophistication whatever and they actually use their real phone and of course they get
+caught very quickly but I suspect you know there are some people out there who know how
+to hide their tracks and they probably do this on a regular basis whenever somebody
+anchors them and I just I think that people haven't quite extrapolated how this might
+evolve in the future and I think I had a tweet where I was basically saying that it's not
+hard to imagine in the near future just with a few more tools and we're already getting
+there where you can you know simulate a very believable human voice and you know artificial
+intelligence that's at least smart enough to pass the Turing test for you know maybe
+a minute or two especially if it's a highly specialized thing and I could very easily
+imagine people just spooling up thousands of instances of specially engineered very
+narrow artificial intelligence bots that are designed for you know swatting type attacks
+and they're just calling up all of the emergency centers all over the country or all over the
+world and basically creating a denial of service attack that costs very very little from an
+engineering standpoint and yet they'd be able to pull it off with very low risk of actually
+getting caught themselves.
+Yeah it's very asymmetric because then the what it costs to deal with it is much much
+more for all these different cities and states and whatever.
+So maybe once that happens law enforcement will actually make some changes because they'll
+be forced to deal with it they simply won't be able to ignore it at that point.
+Yeah does that say something more about just the nature of how fast a big response like
+a SWAT team or something comes out?
+I guess you mean in terms of how quickly those resources get deployed by local law enforcement?
+Yeah and how fast they escalate I mean I know I mean thank God yours didn't end in anybody
+getting hurt or killed but I mean I've read of other things that did and it's like you
+know they were very quick to to fire and it seems like there's not much repercussions
+on either individual officers or the agencies that employ them when when things go south
+and it was all you know nobody was actually committing a crime.
+Right because you know law enforcement officers have this degree of protection from the state
+like the state wants to protect its agents that are doing the will of the state and so
+even when there is you know injury or even death caused by an agent of the state if there's
+even a slight degree of like you know plausibility that that agent had a right to believe that
+they were in danger and you know in a case like this it can be simply that you know they
+received a call that made them believe there was a very high risk threat in the area that
+you know the the agent was basically doing what they had been trained to do and so you
+know it really requires a very I guess outlandish degree of gross negligence in order for agents
+of the state usually to end up with penalties because they have such a shield of protection
+around them you know in a lot of cases even if they did obviously make a very wrong decision
+at the time what you see with with a lot of these officers is that they will get basically
+you know discharged from their local agency but just get picked up by some other agency
+in the nearby vicinity with within a pretty short time frame and that you know there are
+some folks like this who basically repeat offenders and just hop around throughout their
+entire career possibly until they do something so bad that they actually end up in prison
+I'm just trying to think like what what can you do specifically to this like what can
+you do to kind of protect yourself from such a scenario and I don't know I mean unfortunately
+it really requires starting your life over the the vast majority of people at least in
+the United States because that's what I'm familiar with are already in so many databases
+that if someone wants to find you especially if it's someone who knows how to search through
+information online then they will probably be able to find your physical address and
+once that's done it's not hard to find the like non-emergency phone number to your local
+law enforcement and then make a call that gets escalated to the emergency department
+and so really the the only defense is is a level of protection on your privacy that takes
+a lot of effort a lot of time and money and and I've spent quite a bit of time and money
+this year figuring out how to do that and I'll be giving a presentation at the let's
+see what's the the conference in Latvia the the Baltic honey badger conference okay cool
+will that be will that be streamed or recorded or something for those of us who can't make
+it yeah I'm sure it will be recorded and then I'm also I'll have a very very long detailed
+blog post that's currently at like 5,000 words of every single possible like data leak that
+you would have to worry about if you want to be extremely paranoid about your operational
+security and your privacy awesome very cool okay well well then let's let's kind of transition
+then into just general like what are some basic whether digital or physical like opsec
+things that that most people just don't do or would be a good basis to start on yeah
+so while I was doing all of this research and setting up all these new like privacy
+protections for various aspects of my life I noticed a few different patterns that were
+coming up one pattern is the the proxy pattern where basically instead of doing something
+yourself you have a proxy you know a third party who's actually undertaking those actions
+and so if you're technical you're probably thinking of a network proxy right now and
+most technical people are familiar with things like VPNs virtual private networks or TOR
+which is the onion routing network and and those are things that give you additional
+privacy while you're browsing on the internet because basically you're routing all of your
+traffic through some other server so that the the end server that you're talking to
+whatever website or other service does not see your real IP address they only see the
+IP address of whatever you're being routing your traffic through and that type of of strategy
+is actually applicable to a number of things in life and so I have ended up using proxies
+for a lot of other things that I've been doing like anything that is creating a public record
+basically so for example it in America at least you're you have something called real
+property which is things like houses and automobiles these are things that you have to pay property
+tax on and they're registered with different government entities and so I use proxies now
+for my ownership of real property none of my property is owned by me in my name but
+rather by other entities that I've set up that can't be tracked to me that don't have
+my name on them and then also I've I've been using proxies like lawyers to interact with
+other third parties that are you know providing services for me so that you know if I have
+a service provider I'm not directly interacting with them they don't know that they're providing
+a service for me they only know that they're interacting with my attorney or some other
+proxy for example and you know there's countless other examples that I'll go into more detail
+but then another strategy is the like hide in the crowd strategy the you know don't do
+anything out of the ordinary make yourself blend in and and so you know one example of
+that is you know if you're walking around or driving around you're not going to find
+me unless I'm at a conference or some special event I'm not going to be wearing like crypto
+branded clothing I don't want to have like a bitcoin bumper sticker or license plate
+on my car anymore which by the way I did for about five years I had the bitcoin license
+plate and so I was doing that from a like a marketing perspective it was obviously bad
+operational security but it was a trade-off that I was making and it you know it started
+a lot of interesting conversations and and so it's just like something to think about
+like as the environment continues to change and this is one of the reasons I started you
+know cataloging those physical bitcoin attacks is because I felt like we were getting to
+the point where you're more ordinary criminals we're starting to understand that crypto owners
+might be very juicy targets because they're in some cases they can basically be like banks
+that are walking around but they don't have bank level security yeah so this is an interesting
+thing and I and I did kind of want to get your perspective on this but like because
+I've heard some people talk about like oh it's not something we should be ashamed of
+putting you know wearing bitcoin shirts or hats or whatever because you know if we if
+enough people do it then we normalize it and it doesn't mean anything in the in the same
+way that you know if somebody walks around with a shirt with the dollar sign on it it
+doesn't necessarily mean that they have a lot of money what are your thoughts on that
+well I mean and hopefully we do get to that point someday but right now we're in a much
+riskier early adopter phase and and it's kind of like you said like once it becomes normal
+then like people aren't going to be walking around with it emblazoned logos unless you
+know unless they're part of a subculture that glorifies money I guess yeah it's you know
+if crypto does get to the point that it's mainstream you know that is probably when
+it's going to be boring and just like now like up before crypto like the only people
+who really talked about money or usually like economists or potentially like financial instrument
+traders you know just general like finance types but like pretty much everybody else
+in the world would never talk about hey let's talk about the dollar or the yen or the pace
+or whatever it's like it's not that interesting it's just a tool and you use it and you go
+about your lives and you know hopefully hopefully bitcoin will get to that point eventually
+yeah so you don't wear your uasf hat when you when you go out to the store I guess well
+that one you can get away with because most people just think you're like dyslexic and
+that it's an air force hat do you ever get thanked for your service I definitely had
+a number of people ask me if I wanted the military discount oh man that's funny okay
+so you mentioned your your physical bitcoin attacks project now how many okay so briefly
+for those who haven't seen it you've you've got a kind of a chronological list with links
+to articles about known physical attacks on people for the purpose of stealing bitcoin
+or other cryptocurrencies and when did you start this um I think it was just a few months
+ago yeah it was like late spring of 2018 gotcha so and how many let me see I had it pulled
+up a minute ago how many cases do we do you have on there right now last I checked I thought
+it was approaching 40 it was like 30 to 40 now like one of the reasons that I sat down
+and actually started cataloging it was because I had been saying for a while that I felt
+like the number of physical incidents in this space was accelerating but of course the you
+know having a feeling isn't really good enough so I wanted to actually get some hard metrics
+on it I will say it seems like they've died off over the past month or two at least I
+haven't heard of anything of course that doesn't mean that they are stopping or slowing down
+some of these things we don't hear about until a lot later and also I think that the ones
+that I've cataloged are you know probably just a small minority of the ones that have
+actually happened like these are the ones that received news coverage or got some sort
+of publicity but you know I am aware of you know through the grapevine a number of other
+incidents where people just haven't publicized it usually because they're too embarrassed
+to talk about it or because they don't want to make themselves even bigger targets and
+so I think especially if you start looking at the local bitcoins forums for example there
+are a lot of physical robberies that happen using these various face-to-face peer-to-peer
+trading platforms and that's because it's a way for you to anonymously meet with someone
+who is going to be bringing a lot of money with them and so you know it's a very easy
+way to find new targets and I think there's a lot of robbery stories that are posted on
+there that I simply could not verify and so you know did not add to my list but I suspect
+that there's probably quite a few more that have happened out there that no one has even
+spoken about.
+Yeah so and I haven't used local bitcoins myself mostly because I don't live in a big
+city where there's really much of an option there so I don't know maybe you've used local
+bitcoins like and if you have like what do you think what's what are what are good things
+to do if you're going to I guess on either side of the sale whether you're the one bringing
+cash to buy bitcoin or you're the one selling bitcoin for large sums of cash like what are
+things you can do to help protect yourself?
+Yeah I've actually never done like face-to-face transaction I never really had the need to
+but you should just follow like some general safety guidelines and in fact like a lot of
+law enforcement departments they post information though generally they're going to say you
+know if you're doing a Craigslist transaction or whatever but the same the same concepts
+generally apply and so one thing for example is you could actually check to see if your
+local police department has a quote-unquote like safe purchase zone where I've seen especially
+in the bigger cities the the headquarters of the police department will have like a
+place where you can go meet up with someone and do your your transaction right there you
+know at to the headquarters of the police department or you know you could potentially
+do it in a bank or some other place that's public that has you know surveillance cameras
+you know so that you you may not be able to stop someone from robbing you but you would
+at least have enough information to help investigators try to track them down after the fact you
+know and then finally of course you know if it's applicable to you you you should probably
+know how to defend yourself be able to defend yourself if something goes sideways but that
+that gets into you know more philosophical quandaries where some people don't want to
+go down that path.
+Oh you mean like carrying or knowing martial arts or something like that?
+Absolutely and of course it gets really interesting when you if you start looking at how over
+the counter trades happen sometimes where I've heard some stories of you know trying
+to do a 100 million dollar bitcoin trade like how do you how do you do a trade for that
+much money with someone that you don't know and don't trust and I've seen some very complicated
+protocols get set up from where you know you have you know like 10 different people involved
+and you're like renting out hotel rooms and you're doing these swaps of like briefcases
+of money like you know a little bit at a time but I think the average person won't have
+to deal with that but you know it kind of does come up with deciding upon a certain
+protocol of how to interact with each other.
+Yeah I saw I think you had tweeted out at one point and had your training mannequin
+posted for your what do you you Krav Maga or something like that?
+That's right.
+So you're you're prepared clearly.
+I try to be.
+Yeah so and I guess this kind of depends on your where you live too and what the local
+laws are as far as as you know concealed carry or something along those lines.
+I live in Texas so you know they're pretty.
+You're set.
+Yeah so and and kind of that's nice in the sense that like everybody just if you're intelligent
+you should assume that anybody could be carrying but kind of going back to the signaling and
+and just you know trying to be the gray man and not stand out in a crowd I had talked
+to Ansel Linder about this one time but we were talking about you know being and you've
+run into this like being I guess having your name out there at some point kind of also
+puts a certain risk on your family as well and how do you deal with that?
+Yeah I mean it's just kind of a paradox where as as soon as you start talking publicly about
+crypto then you kind of become a target and of course if you've been talking about crypto
+for quite a few years then the immediate assumption that potential attackers are going to have
+are that oh you know you bought a ton of it right when you started talking about it and
+you never sold any of it and so you've probably got millions and millions of dollars and you're
+a juicy target.
+So I think the smartest people are the ones that have remained anonymous you know.
+I interact with pseudonyms on a daily basis and I would say there's a number of pseudonyms
+who I trust more than a lot of people who I know they're like real registered government
+identity.
+It's kind of interesting how that works out and I've even gotten to meet a number of them
+face to face and you know I actually know what some of them look like but I still don't
+know who they are but it doesn't matter.
+Yeah if you're going to be more public and especially if you're going to be more like
+outspoken and controversial then you do have to think about potential ripple effects of
+how your own actions might result in you know more stress on your family.
+This kind of brings it full circle but you know I guess the other thing is making it
+difficult you know God forbid you should be in a situation where somebody you know has
+a physical advantage over you and wants your you know wants to get your Bitcoin or your
+crypto or whatever you know you kind of talked to at the beginning about what you guys are
+working on at CASA and so what are some things you can do should you find yourself in that
+situation.
+What are things you can do ahead of time to prepare to make it more difficult in that
+situation for someone to be able to get your crypto.
+Right I mean ultimately you have to set up your vault per se so that you don't have
+direct access to it very easily.
+Like that's the only way to prevent an attacker from you know using the $5 wrench attack or
+rubber hose attack or whatever you want to call it on you is that if you can't physically
+comply with that.
+And of course there's no perfect answer to this.
+You start going down a lot of different like logical forks of how situations like that
+might play out with well you know the attacker is not going to be happy if you say I have
+nothing for you so maybe you should have a small kind of token wallet to you know give
+them a little bit of a bribe to make them go away.
+And you know there's no guarantees I mean obviously what you want to do is prevent yourself
+from ever getting into that situation in the first place.
+So then you know starting to talk about decoy wallets or whatever I don't have a lot of
+faith in those because I've never been in that type of like life or death situation
+but I suspect that it would be very difficult for you to like remember other pins or other
+passwords or whatever to like open up decoy wallets and appease your attacker.
+So I think it's just a lot simpler to say okay you know we're going to set up the wallet
+in a way that you just you don't have enough key material to access it without jumping
+through a lot of hoops and you know traveling around geographically and going into multiple
+access controlled locations.
+Yeah so the thing with decoy wallets also kind of going back to what we talked about
+about being a public figure you know with that same assumption that you talked about
+earlier that they might have made that like oh you're a public figure and you've been
+in this for a while so I'm assuming you have you know hundreds of thousands or millions
+of dollars in crypto.
+I just don't see somebody buying that like oh well you've only got a hundred or two hundred
+dollars in this you know other wallet that you're giving me.
+So I just I think maybe for like a random mugger maybe they you know and I guess that
+goes back to like you know if you're wearing a shirt that says Bitcoin on it and a random
+mugger comes up then they might be fooled but an informed attacker I just I don't see
+being fooled by that.
+Yeah and that's the thing though is that you know in most cases we have no idea how much
+money other people in the space have but I'm aware of a few very well-known folks in the
+space who have been in it a lot longer than I have who have very little crypto because
+they basically were living on it and so you know they had to liquidate a lot of what they
+got over the years.
+I guess the most famous example of that was Andreas Antonopoulos where someone I guess
+well I guess yeah it was like Roger Ver.
+It was Roger yeah.
+I was accusing him of like not investing enough in Bitcoin early on and fortunately slash
+unfortunately for Andreas he ended up getting gifted like a million dollars worth of Bitcoin
+so now I guess he really is more of a target so that's kind of a weird gift now he has
+to deal with the you know repercussions of everybody knowing that.
+Or although I guess depending when was that that was like November or something like that
+so it may have gone down some since then so yeah yeah.
+So should all of us podcasters like go back and start our life over you know secret life
+and just delete everything that we've done up till now.
+It's another one of those paradoxes I guess of like it's not worth doing until you have
+so much attention that people are going to try to attack you but how do you know that
+you have generated enough attention that people are going to attack you until it actually
+happens and so like I've had people ask me things like well have you considered hiring
+you know bodyguards to protect you and I'm like well yeah I mean I've considered it but
+I really don't think I'm at that level.
+I know a number of people who are but I think that you know just putting in the time and
+effort to improve my privacy should be sufficient whereas you know there are some people in
+the space who are very very outspoken almost like braggart style billionaires who you know
+go out of their way to get a lot of publicity about you know making very expensive purchases
+and you know living flamboyant lifestyles and so I would I would expect that those people
+would be more likely to get you know physically attacked than I would be but you just never
+know.
+Yeah I think if you're I think you could probably afford security if you're going full billionaire
+mode if that's what you're referring to.
+Yeah well you know the folks who like to buy yachts and basically entire tops of buildings
+that they then get press releases basically saying that oh I just bought this huge amount
+of real estate.
+This is a very different way of going about things and actually if you're familiar with
+I think it was Forbes where they had a like top 10 or top something crypto wealthy list
+that came out last year.
+Oh really.
+The people who are on that they had to agree to have their name listed on there because
+I know several people who said no like do not put my name on that list but the people
+who are on there were contacted and gave permission and in some cases like gave headshots and
+bios and all kinds of other stuff and I think I had a kind of pithy tweet about that where
+I was like you know some people see this as like a list of very successful people and
+I was like well I just see a list of targets you know they just made themselves targets
+it's kind of weird and antithetical to what I've been doing.
+Okay well let's kind of transition from that into your other projects real quick before
+we wrap up but you've got a ton of resources at lop.net and I know like when I first got
+into Bitcoin Ansel Lenders from Bitcoin and Market his resources was what I kind of went
+through and I know that he said that his were based on yours and then I went back to yours
+and read through it so if anybody hasn't been there they should check your resources out
+and personally thank you for that list because it's good stuff to go through.
+Yeah that's probably what most people who come up to me are thanking me for and it was
+really a very self-serving thing it was you know I was getting tired of having to go back
+and find resources to answer these really common questions that I got from people and
+so over time I eventually just started compiling the links that I was handing out the most
+often to the most common questions and that turned into a different web page and then
+I redesigned my whole website to make it look nicer and as of today it's pretty active and
+actually gets contributions on a regular basis.
+I'm probably updating it at least like once or twice a week either with stuff that I have
+found or with other material that has been contributed by people.
+Cool and then you also have Statoshi which you kind of mentioned earlier and that's like
+statistics on the network itself correct?
+Yeah so it's basically a Bitcoin Core node that I have added about 500 lines of instrumentation
+code to so it's just emitting a lot of metrics whenever any sort of interesting event happens
+and then those metrics are all getting aggregated by other software and then I've got this nice
+eye candy dashboard called Grafana that is taking those databases of metrics and spinning
+out very pretty graphs that basically show you like what has been going on.
+Some of it you know is like network wide metrics and then some of it is very specific to my
+node itself but should be generally applicable to most other full nodes on the network and
+that's really like I said that was my first project where I felt like one of the great
+aspects of Bitcoin was just how open and transparent it was however I felt like what the internal
+operations of what the nodes themselves were doing was very opaque and so my whole goal
+was to add a new level of transparency to running a Bitcoin node and I was approaching
+it from this DevOps perspective of like what I had been doing at my day job and I just
+wanted to make it easier for the Bitcoin developers themselves to make educated decisions about
+things that might need to be changed to make the nodes even better and I think that I succeeded
+there.
+There were a number of developers who have included graphs from Satoshi over the years
+to make arguments about different changes to Bitcoin.
+Oh nice.
+It's always nice to see your work be used by other people.
+Yeah so it seems like both of those kind of came out of this scratch your own itch kind
+of mentality.
+Yeah and then also I have this Bitcoin Core config generator which was also fairly self
+serving because I run a lot of nodes and also I get a lot of questions about you know how
+should I configure my node if I want to do X Y or Z and last I checked there's something
+like 150 or maybe even 170 configuration options in Bitcoin Core which is of course an insanely
+high amount to have to dig through all the documentation for and so I actually I ripped
+that off of a parity project so the parity node implementation for Ethereum they had
+created this very nice WYSIWYG graphical config generator and I basically forked that and
+changed it and tweaked all of the options and you know added in all of the Bitcoin config
+stuff and seems to be working pretty well.
+Awesome.
+I'm gonna have to check that out.
+I didn't realize that.
+I assume you took out the part where you can send contracts into the void.
+Oh yeah it's I mean it took me a few days to basically rip out all of the Ethereum specific
+stuff but you know the general gist of it was the same of you know you're gonna have
+a form and it's gonna spit out a bunch of text that is your config file so all I had
+to do is like change the actual options and values and descriptions and then the final
+like format of the file itself.
+Very cool like I said I'm gonna have to check that out and I didn't realize you had that
+so yeah it is kind of a pain to when you want to change something on your configuration
+if you're not a you know a day-to-day coder which I'm not to go in okay what is this option
+okay what are the argument or you know what's the what's the string that I've got to put
+in here and then reboot everything so yeah that's that's nice I'm gonna I'm gonna go
+do that for myself here okay well where can people keep up with you I pretty much live
+on Twitter though you know these days a lot of us are also testing out Mastodon but I'm
+on Twitter my handle is just lop l-o-p-p and I'm also on the mastodon dot social instance
+with the same handle however the whoever got my handle on the Bitcoin hackers instance
+is not me so I don't know if they're planning on doing some scamming there or if they're
+just squatting on it and hoping that I'll have to buy it from them oh good to know good
+to also put out there for everyone to know that that's not him so okay so and I'll put
+links to both of those as well as your all your stuff on github and lop.net and Satoshi
+and all that on the show notes bottom shelf bitcoin.com slash 27 is where the show notes
+will be everybody and Jameson anything anything else you wanted to go over or put out there
+for anybody before we say goodbye um well I usually just close by saying you know I'm
+not an expert and I don't think that anybody is an expert at this we're all just kind of
+stumbling along head first into this crazy new world that we're trying to build and you
+know I'm just trying to help other people understand as much as I have been able to
+ingest but a lot of other people out there understand things in this ecosystem that I
+don't and you know we're all just building off of each other's work and trying to collaborate
+and that's what it's really all about is trying to come to a consensus about like the best
+way to reshape the financial world awesome well said all right it was a pleasure having
+you on I really appreciate it no problem anytime all right that's going to do it for this show
+remember all the show notes will be at bottom shelf bitcoin.com slash 27 you guys go check
+out all that stuff from Jameson Lopp and I totally forgot my brain was fried during this
+interview not because of anything I intentionally did to my body I just was sleep deprived at
+that point so big thanks to Jameson Lopp for putting up with me during that process so
+anyways but I totally forgot to ask him about the casa does certified sales of both ledger
+and trezor hardware wallets so you guys check out their store there as well as well as their
+multi sig security setup thing anyways you listen to the episode he explained it better
+than I did so go check out their stuff go check out his physical bitcoin attacks project
+as well as his quick bitcoin configuration generator and all the other stuff like I said
+listed in the show notes and you guys know you can support the show here at patreon.com
+slash bottom shelf bitcoin or you can buy Tuttle Twins books bottom shelf bitcoin.com
+slash kids book or I've got bitcoin donation at bottom shelf bitcoin.com slash donate you
+can check out all those links and share the show give us a good review check me out on
+social media twitter instagram and the bitcoin hackers instance of mastodon bottom at bottom
+shelf btc alright for bottom shelf bitcoin I'm Josh Humphrey thanks for listening.
+I'm still recovering friday night we had a youth event at our church and literally
+stayed up all night so it well get some rest yeah I need to.

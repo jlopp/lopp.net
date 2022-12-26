@@ -1,0 +1,1142 @@
+We're helping people protect a few hundred bytes of information.
+That's all this really is.
+But this few hundred bytes is now the keys to the kingdom that some people have the majority
+of their life savings in.
+Hello and welcome back to the Coin Stories podcast.
+I'm your host, Natalie Brunel, and we are talking to some of the leading voices in Bitcoin.
+Their backstories, how they were first introduced to Bitcoin, and their take on what the cryptocurrency
+offers.
+This podcast does not provide financial advice.
+This episode is brought to you by the Bitcoin Conference 2022.
+It's going to be held in Miami next year, April 6th through 9th, and it is going to
+be a four-day amazing festival with two general admission days, an industry day and sound
+fest.
+Tens of thousands of people will make their way to Miami, and I wanted to share some photos
+from the 2021 conference because that event is one of the reasons Coin Stories took off
+and I was able to secure such amazing interviews with legends like Michael Saylor.
+Now you want to get your ticket pretty soon because hotels are booking up fast.
+I know I recently just booked, so head to b.tc slash conference to get your pass and
+use Coin Stories as the code for 10% off.
+This episode is also brought to you by OKCoin, one of my favorite new places to buy Bitcoin.
+OKCoin is the fastest growing exchange, serving over 190 countries globally with the easiest
+onboarding and lowest fees around.
+They're on a mission to make learning about and buying Bitcoin easier than ever, and they're
+all about bringing more financial literacy to everyone, which is something I really care
+about as well.
+From being the only exchange to integrate Lightning to contributing over a million dollars
+to Bitcoin core devs, they are doing incredible work to further the Bitcoin ecosystem.
+You can head to go.okcoin.com slash Natalie for $50 in Bitcoin when you sign up.
+I'm super excited to share my guest today is Bitcoin security and privacy expert Jameson
+Lopp.
+Jameson is a professional cypherpunk, a business advisor, and the co-founder and CTO of Kaza.
+His mission is to use his skills as a technologist to build tools that empower individuals.
+And one way he's striving for that is by making it easier for people to take custody of their
+Bitcoin and manage their private keys.
+If you follow Jameson, you know that he went on a several year journey to reorganize his
+online identity and achieve ultra privacy after a very scary swatting incident, which
+we'll get into.
+Here's Jameson.
+All right.
+Jameson, super excited to have you on Coin Stories.
+Thanks so much for joining me today.
+My pleasure.
+All right.
+Let's start at the very beginning.
+I know that we have to keep some aspects of your identity private, so I'm going to try
+to ask you questions that are maybe a little bit more general, but I want to hear just
+about your background, your early life.
+Where are you from?
+North Carolina?
+That's right.
+I'm a native North Carolinian, and I think my ancestry in North Carolina was actually
+traced back to the late 1700s by my grandfather.
+Wow.
+Well, so what do you know about them?
+What do you know about your ancestors?
+Well, that they came over from the Lapland region, which I think is near Germany, Austria,
+and like our original last name was Lap, but at some point it got Americanized into Lop.
+And I think we came in through New York, very New England area.
+A number of Lops ended up settling in Pennsylvania, but fairly early my branch of the family tree
+came down to North Carolina and had been in that area since I think the early 1800s.
+So other than that, I think they fed, they were living fairly normal lives.
+Most of my detailed understanding of our history only really begins with my great grandfather.
+And then my grandfather was a fairly regular old Joe who ended up fighting in the second
+war and he was in B-14 flying fortress, I believe, basically ran like 40 or 50 missions
+over Germany right at the very end of the war.
+I actually, he died five or six years ago and we found his personal journal that he
+never told anybody that he had.
+And we learned a lot about his missions and how many of his friends he lost basically
+saw going down in flames all around him.
+And yeah, he was a pretty tough guy and taught me a lot.
+That's amazing.
+And so for people who are wondering, Jameson Lopp is your real name, right?
+That's correct.
+Okay, wait.
+So tell me a little bit more about just your upbringing.
+What did your parents do?
+Did you grow up kind of interested in technology, privacy?
+Well, I was definitely nerdy.
+Only child.
+My parents were very focused on my education and I always did well in school, had plenty
+of good opportunities from an academic standpoint, never really did much in terms of athletics.
+I was more of a band geek.
+And it was kind of weird though, because despite all of my parents' focus on academics, they
+really hated technology.
+And so I didn't get a computer until I think sixth or seventh grade.
+And I think that was mostly a pity purchase because we had moved all the way across the
+state and I lost all my friends and I think my parents felt bad for me.
+So they finally caved to getting me a computer and that was mid 1990s.
+So it was basically still dial-up only at the time, very early days of the internet.
+And I just spent a ton of time on there so much so that my parents were always telling
+me to go outside and play or go meet up with people.
+They didn't understand that I was having interactions with other people all the time, just through
+the computer.
+They saw it more as like a video game type of thing.
+And of course I was playing plenty of games too.
+But it got to the point where they would literally take the power cords away so I couldn't turn
+it on and so then I would go to various thrift stores and just buy tons of power cables that
+I would keep as backups, learning the lessons of having redundancies and preventing single
+points of failure.
+What did you think about money back then?
+Do you remember?
+Money was never really a concept that I delved into until I read the Bitcoin white paper
+in 2012.
+So before that, I think I just used money like anybody else.
+I didn't really know much about how it worked at a fundamental level.
+And the Bitcoin white paper was interesting because I ended up getting a computer science
+degree and was working as a software engineer.
+And when I read the white paper, I realized that this was solving an interesting problem
+that I had never even thought about.
+But the way that it solved it was interesting because it kind of flipped it on its head
+as opposed to like a naive way you might go trying to implement some sort of online monetary
+system.
+So that got me interested from a technical standpoint, it got me interested also from
+a philosophical standpoint.
+And that was what triggered my interest in learning more about finance and economics
+and how money actually works.
+Well, I'm just curious before we talk a little bit about how you got into Bitcoin and even
+discovering the white paper, when you were growing up, what did you want to be when you
+grew up?
+And did your family feel comfortable with money?
+Did you guys have money?
+Yeah.
+So I would say I grew up fairly privileged, standard middle class household.
+We were well off enough that my mother could stay at home and take care of the household
+and my father had, I guess, a pretty well paying white collar job doing marketing for
+insurance companies, nothing that was ever that interesting to me, but kept him busy.
+And we never really talked much about money.
+In fact, I would say my parents were very private about it.
+They never talked to me about budgeting or income or really anything like that.
+I would say that I didn't even start really looking into personal finance stuff until
+I graduated from college and I was finally cut free on my own, had to worry about things
+like budgeting and long term planning for my own finances.
+It's interesting.
+I always ask that question because my upbringing was so different.
+I always heard about money because we immigrated here, we didn't have money, so it was like
+a constant conversation.
+So you went to school to study computer science.
+Why?
+What did you want to be?
+Why computer science?
+Yeah.
+So I'm sure when I was really young, I wanted to be cool things like an astronaut or firefighter
+or whatever.
+But when I graduated from high school and I looked at all of the possible majors at
+the university, I didn't know what I wanted to be.
+I got out the list of all several hundred majors, I guess, started going through it
+alphabetically and crossing things off that just sounded terribly boring.
+And by the time I got through it, the only thing I had not crossed off was computer science.
+So it was a fairly straightforward decision for me.
+I knew that I loved pretty much everything about computers.
+I didn't know what I was going to do with them over the long run.
+But even by the time that I graduated high school, I had already been building websites,
+writing some code by hand and had taken a programming class at my local university during
+summer school.
+That's how nerdy I was.
+I went to college when I was still in high school during the summer instead of...
+Wow.
+Okay.
+Well, so what was your early career like?
+Were you working while you were in college or what were your first jobs afterwards?
+Yeah.
+So it was kind of part of, I guess, my interest in being independent was that once I moved
+off to college, I never went back, not even during summer.
+And of course, I had to sustain myself in order to do that.
+So I got multiple jobs when I was a student.
+I was fortunate enough that my parents were paying for my tuition, but they wanted me
+to come home.
+So they were not interested in paying for me to have room and board during the summer.
+So in order to cover that, I became a resident advisor during the summers.
+And then during the school year, so that I would just have money to pay for extra stuff,
+I probably spent most of it on computer hardware, to be honest.
+I had like a crazy level of storage for the time because I was a huge...
+I guess I can admit it now, I'm sure it's beyond the statute of limitations, but I was
+pirating stuff like crazy because I had no money, but I loved games and movies and TV
+shows and stuff.
+And so I probably had one of the biggest peer-to-peer file sharing services on any university campus
+back in the day.
+It was actually in the early days of Internet2, and there were some new file sharing apps
+that came out that only allowed Internet2 college university IP addresses to get on
+them.
+And you could share files at like 10 megabytes a second at the time, which was insanely fast
+compared to speeds that most people had.
+But yeah, so I was doing other things.
+Actually pretty much all of those jobs were through universities.
+So one of the first computer science classes I took was a computer ethics class.
+It was also one of my favorite and most interesting.
+And immediately after the semester, after taking that, I reached out to the professor
+and I said, you know, I want to work for you.
+So for the rest of my time at university, I was also a teaching assistant for this computer
+ethics class.
+Also by my sophomore year, I was doing tech support at the UNC hospital.
+So I also for the rest of my time at university was doing sort of part-time in between classes,
+just like taking a bus down to the other end of campus where the medical campus was and
+going through the hospital, basically fixing all the doctors, computers who were interestingly
+enough, mostly tech illiterate, despite how well educated and intelligent that they were.
+And then I also at some point started doing some programming jobs for information library
+science on campus.
+So I think at one point I actually had three, possibly four jobs simultaneously all through
+the university, which was fun because then I must have hit some sort of edge case with
+the payroll program and they were drastically underpaying me for a little while.
+And then they drastically overpaid me for a little while and I got into this whole situation
+where it got to where I was within.
+I was in my last semester at university and I started getting all these threatening letters
+from the finance department at the university that I owed them several thousand dollars
+because of their accounting mistakes and overpaying me over the past year or so.
+And they threatened not to give me my diploma until I repay all of that.
+And I was like, look, you screwed this up for over a year, so you have to give me some
+time to fix up your mistakes.
+So that was fun.
+Okay, wait.
+So what was your first job out of college and at what point did you read the white paper?
+What were you doing then?
+So my first job was at a small startup.
+It was called Bronto, sort of like the Brontosaurus.
+And it was an email marketing web application, software as a service type of setup.
+Started there.
+There were only about 15 employees and I actually managed to stay there for almost 10 years.
+However, I was changing jobs within the organization every 18 to 24 months.
+And that seems to be a fairly standard thing.
+I think with computer science folks fresh out of school, they tend to change jobs every
+two or three years, usually because you get bored of whatever you're working on or because
+you realized you've kind of upped your game, your skills, and you're more marketable.
+And it's really, really hard to get massive pay raises while staying at the same company.
+So I managed to do that, but it wasn't easy.
+It was definitely adversarial.
+On three or four different occasions over the years, I went out to the market because
+I realized how underpaid I was and I got competing job offers and brought them back to my employer.
+And thankfully, the employer always decided that they would prefer to keep me on and they
+would match those job offers until it got to the point where after about 10 years and
+I had been a Bitcoin enthusiast for a number of years just doing some side projects in
+my free time that I decided that I might as well work on it full time because it was the
+only thing that I could really even focus on.
+I'm sure it was negatively affecting my work as it was already at the time.
+And there was really no amount of money that they could offer me to stay on doing marketing
+related like statistical analysis stuff.
+Well, OK, so tell me about that Bitcoin journey.
+Obviously, it seems like you were predisposed to it just with your computer background.
+But what really sent you down the rabbit hole?
+Tell me about that, picking up the white paper for the first time and just did you buy a
+bunch?
+What happened?
+Right.
+So there's the theory of Bitcoin, which I thankfully already had enough skills, I think,
+to grasp why I felt like the system had the potential to work from a technical standpoint.
+But then there's the reality of Bitcoin.
+So it wasn't until some months after reading the white paper and actually acquiring some
+Bitcoin and using it and realizing that you could exchange it for other things of value.
+That's when it became real to me.
+And it was actually a real pain at the time.
+I had to go to my bank and fill out several pages of paperwork to send an international
+wire transfer to some random bank in Japan in order to get myself some Bitcoin, because
+there were not many exchanges at the time.
+And this, of course, was Mount Gox, which everyone is familiar with.
+And it was a scary experience.
+First of all, I had never sent any wire transfer before.
+Second of all, the bank were very upfront about telling me that this was a very high
+risk thing, that once the money was sent, they couldn't get it back for me.
+And so I had to be like, look, I understand this is basically like a new experiment and
+I need to get some of this so I can play around with it.
+And I'm willing to completely lose all the money that I'm sending over there.
+So yeah, I got some of the Bitcoin, started playing around with it.
+How much was it then and how much were you willing to send in that manner?
+It wasn't a lot.
+It was less than a week's salary, basically.
+I wasn't risking.
+I wasn't treating it like an investment.
+And Bitcoin cost how much, a couple hundred?
+Well, at the time, it was still in the high single digits.
+So it was around $10 or so at the time.
+And thankfully, that's when there was, it was probably not the first bubble.
+The first bubble really went from, I think, like $2 to $30.
+And that had already happened and had crashed down.
+And I think the first bubble that I really got to experience was up to like $100 or so
+before it crashed back down.
+So that was the wild ride.
+But I wasn't treating it like an investment, at least not a short-term investment.
+I figured that this was really just a hedge against long-term inflation.
+So it wasn't until after I basically went all in with my career that I also decided
+to go all in with my finances.
+And that was actually the first article that I ever wrote about Bitcoin.
+It was in 2015, it was right after the Mt. Gox crash and liquidation where tons of people
+lost their money.
+But that was when I figured that I wanted to turn my retirement into Bitcoin.
+And so the first article that I ever wrote about Bitcoin on my blog was how to set up
+a self-directed IRA.
+Because I found that if you set up a self-directed IRA, you could actually invest it in pretty
+much anything.
+There's only a few rules around things that you can't invest in, usually things that are
+like tied to you personally.
+So that required a ton of conviction because I started buying in a high volume from a personal
+standpoint of converting most of my net worth.
+I started buying when I think the exchange rate was around $700 or $800 because it had
+gone up to $1,000 or $1,200 before it started correcting.
+And then it went all the way down to I think around $300.
+And I was buying the entire way down.
+And at one point, I lost half of my retirement value.
+So I think my dollar cost average ended up in the high $400 range.
+But then it was like a multi-year bear market.
+And so there was certainly a while where people were like, oh, you lost all your retirement
+money.
+And I was like, maybe, but thankfully, I held out for the long term.
+OK, wait.
+Two questions.
+Number one, did you lose anything at Mt.
+Gox?
+And number two, what changed your mind that you decided to go full in?
+What was it?
+Because back then compared to today, arguably, inflation wasn't as bad of a crisis or threat.
+So what was it where you just had this total shift and you're ready to go all in on something
+that most people would say is extraordinarily risky?
+Yeah.
+So thankfully, I understood not your keys, not your coins before I think Andreas even
+coined that phrase.
+So all that I ever did with Mt.
+Gox is I wired them dollars, immediately bought the Bitcoin, and immediately withdrew it to
+self-custody.
+Smart.
+And self-custody at the time, that was also, I would say, a big change.
+It's more complicated than what you can do today.
+There were no hardware devices.
+There was no Trezor.
+There was only really software wallets.
+So I was basically running this Bitcoin Core software.
+The full node is a very heavyweight application to run on a laptop.
+And I was basically keeping those keys on the laptop.
+I don't think at the time I even really knew about air-gapped computer stuff.
+So that's basically what I was keeping my life savings on for several years before I
+really started going more down the security rabbit hole.
+And especially once Trezors came out, obviously switched over to that.
+But what made me so convicted?
+I think that I just started realizing that the system was so widely distributed from
+so many different aspects of how it was operating that I became more and more convinced that
+it was like the internet itself, that it could not be shut down, regardless of what any individual
+actor might do to screw up.
+So while this was actually my very first interview about Bitcoin was in I think February of 2014.
+And there was a local bakery in Durham, North Carolina, started accepting Bitcoin.
+I think they may have been one of the first brick and mortar shops in North Carolina
+to accept Bitcoin.
+And I learned about it somehow that they were going to start accepting it on a certain day.
+And I went and I showed up, I was like first or second person in line.
+There was only a couple other nerds there who were doing the same thing.
+And the local news station showed up and they interviewed me about it.
+And they were asking, the only thing they were interested in was like, well, isn't this
+Bitcoin thing dying?
+Because Mt. Gox crashed, everybody lost all their money.
+And I was explaining to them that Mt. Gox is basically just one user on the network.
+And this is a system that has no bailouts.
+So they made a mistake, people will have to pay for it.
+But eventually the system will recover.
+And over the long run, I was proven right, but definitely that was one of those moments
+where everybody was saying that Bitcoin was dead.
+And my conviction was telling me basically the opposite, because this was not the first
+time and I've had a number of other experiences throughout my life where I've had people telling
+me that whatever I believed in was completely a fad that was over and done.
+And the first one that really happened to me was actually when I was going to college.
+Like I told you, I decided on computer science.
+Well, this was very early 2000s.
+And a lot of people that I told that I was doing computer science major said, oh, that's
+a shame because the internet was a fad and the bubble popped and it's all over.
+And I was like, you know, I think this internet thing is going to be around for a while.
+So I'm not too worried about it.
+And so while at the time, it was actually kind of tough to get a job in the software
+engineering space.
+By the time I graduated from college, we were back in very bullish times.
+And then it was actually just a year or so after that, there was the great crash of 2008
+that thankfully I had only just started investing in doing retirement planning at the time.
+And even though my portfolio got cut in half, it was only like a year's worth of investment.
+And I got to ride the bull market after that.
+That's amazing.
+You know, I love watching the early videos of when the internet came out, even news programs
+that talked about what is this at symbol and what is the internet.
+And I remember watching Katie Couric talking about it on the Today show.
+And she's like, I don't think I'm going to use it.
+I think it's just going to be something that some people decide to use and not others.
+And just in not a long amount of time, I mean, it's transformed all of our lives.
+So I kind of equate it to Bitcoin.
+And I'm sure you've heard the comparisons of just the adoption rate, right?
+We're adopting faster than the internet.
+Is that right?
+Well, yeah, I think this is what's happening generally over time is that the adoption curves
+for technology are becoming steeper.
+That is, people are adopting new technologies faster and faster.
+So just as other things like technology in general is accelerating, supply chains have
+continued to become more and more efficient and faster, though, of course, at the expense
+of robustness, that's a whole other set of issues we can talk about.
+But the world is becoming a smaller place.
+And I still am just constantly amazed by the acceleration of technology.
+And when we say technology, it doesn't have to be the internet and computer stuff.
+I just made a remark last night where I just got a high end flashlight.
+It was a few hundred dollars.
+But what I hadn't realized is the state of flashlight technology and the electronics,
+not just the bulbs, of course, the bulbs are one part, but the entire hardware stack that
+constitutes a handheld flashlight is actually improved in terms of performance and durability
+over the past decade.
+It's gotten at least an order of magnitude better.
+And so I got this flashlight that I've been testing out and you can literally illuminate
+an entire football field with a handheld flashlight now for a few hundred dollars.
+And this is just one example.
+I mean, other people also commented on even hair dryers are like 10 times better than
+they were 10 years ago.
+I bought a hairdryer recently that it's instantly as hot as you want.
+It blows as hard as you want, but it's not insanely loud.
+They've managed to do that while also reducing the decibel level and improving the acoustics.
+So it's, I think, great to be a technologist because it's really easy to be an optimist
+if you just extrapolate going back a decade or two decades.
+Yeah, no, that's so true.
+Well, so what was your first kind of job in Bitcoin?
+You leave your job, you're working in Bitcoin full time.
+How did you get from sort of that, I guess, that point of the journey to all of a sudden
+now, people know who you are and you have this squatting incident that has taken up
+so much of the last several years of your life?
+Yeah.
+So I started looking around.
+I was in North Carolina.
+I was going to Bitcoin meetups.
+I ended up founding a more technical Bitcoin meetup, but I think that was after I started
+full time, so probably 2015 or so.
+So it was early 2015.
+I saw a bunch of venture capital coming into the space.
+I saw a lot of job openings, but nothing in North Carolina.
+It was all happening in Silicon Valley.
+So I start looking around and I forget why, but I was not interested in moving to Silicon
+Valley.
+I think it was probably mostly politics and the fact that I was aware of the high taxes
+and the fact that several of the firearms that I owned were illegal in California.
+So I wanted to continue staying in North Carolina, but work for Bitcoin, which that cut down
+my opportunities quite a bit.
+There were only a couple of companies that were hiring engineering jobs that were even
+open to the possibility of having a remote worker.
+So I ended up accepting a position at BitGo.
+I was their first remote worker and we ended up bringing on quite a few remote workers
+in the years after that.
+But at the time, it actually reminded me of my first company at Bronto, because once again,
+there were only about a dozen or so people working there, but ended up being a very high
+growth startup.
+So Bronto, in the 10 years I was there, went from 15 to 300 employees and then ended up
+having an acquisition a few years after I left BitGo.
+I worked there for three years and we went from a dozen to probably 60 or 70 employees.
+And then I think today, three years later, they have several hundred employees.
+So it's been interesting to ride these startup waves.
+One thing that I've learned though is that I do a lot better in startups that have under
+50 employees, because you start creating all these hierarchies and bureaucracies that slow
+things down.
+And I like the freedom.
+I like to be able to move quickly and not have to ask permission from too many people.
+So how did this squatting event happen?
+Bitcoin was targeting you and obviously we'll get to the discovery of who it was and maybe
+the surprise when it came to that person's identity.
+But how did that happen?
+Yeah.
+Well, as soon as I learned about Bitcoin, I started occasionally just tweeting my thoughts
+on it.
+And at the time in 2012, 2013, before that bubble up to $1,000 or so, nobody was really
+paying attention to me.
+I had maybe a couple of hundred followers.
+And from my perspective, I just kept doing the same thing.
+Whenever something interesting came up that was Bitcoin related, I would tweet it out.
+And I kind of see it as kind of like the quote that you hear from a lot of people regarding
+startups and IPOs and stuff that they were an overnight success of 10 years of hard work.
+And so I think it was just sort of me consistently writing tweets and blog posts and other pieces,
+sometimes publishing software as well, that over about a 10 year period, eventually that
+just created larger and larger audience.
+So by the time the 2017 bull market cycle was really ramping up, I think by then I had
+over 100,000 followers.
+It would be interesting to see, I think, how my following chart went over time, but I'm
+pretty sure it was hockey stick that basically got triggered during the various bull markets.
+And this happened to coincide with the great scaling debate it had been building up for
+several years in Bitcoin.
+And there had been a lot of heated discussions.
+And at some point, there were some people who saw me arguing on Twitter and decided
+that I would be a good target to prank and to try to extort.
+And so that's when someone essentially, they swatted me, which means that they made a phone
+call to my local law enforcement and they said the right keywords to trigger a tactical
+response team.
+So swatting is this phenomenon that has been happening since the late 2000s.
+It originated in the video gaming and streaming community where someone would be playing video
+games and having a camera on them.
+And if they pissed somebody off or perhaps a rival of some sort, the goal would be to
+try to capture them on their own camera on their live stream with a SWAT team coming
+through the door and screwing everything.
+So this has morphed over the years as Bitcoin has changed some of the incentives and essentially
+swatting can now be used as a harassment and extortion technique.
+Because what you're really doing is you're directing your physical force and potentially
+deadly violent people at an arbitrary target if you just say the right words.
+So basically, you have to find that person's address and then claim that there's some
+sort of incident going on at that address that is a life or death violent situation.
+And what did they say about you?
+It was like hostage?
+Yeah.
+So in my case, they said that they were me and that I had killed someone and had a hostage
+and had a bomb in the house.
+They basically said all the things that you know are going to get a SWAT team triggered.
+And so this resulted in my whole neighborhood being shut down and it was a somewhat traumatic
+experience.
+You realize how vulnerable you really are.
+And it kicked off about a year of me using my own resources to better understand what
+high privacy options are, you know, how to really hide where you are and what you're
+doing while following the law, you know, using completely legal techniques.
+And once I had moved away from my address, basically cut ties with everything that was
+creating a link between me and my location.
+That's when I went on the offensive and I started trying to track down the person who
+did that to me.
+Yeah.
+So let's talk a little bit about that journey because I know you spent a lot of money.
+And I read this really interesting New York Times article about just all the ways in which
+you decided to change your identity or, you know, not change your identity, but make it
+difficult for someone to track you down and really hone in on privacy.
+And it's just so many aspects that you'd never even think about.
+Like you have to find a state, first of all, that allows you to not use a name when you
+file for an LLC, right?
+And then there's like a DMV situation for you to buy a car.
+Can you just like walk us through all the things that you did, maybe how much it cost
+you and why you decided to go to such lengths?
+Yeah, so when it comes to privacy, one reason it can be overwhelming is that there's just
+so many different aspects of your life that you can try to make private.
+And there are plenty of things that someone can do just by spending a weekend, you know,
+improving your online privacy, installing ad blockers, setting up VPNs to protect your
+real IP address from being leaked, setting up more private email addresses and setting
+up password managers so that you're not reusing information across different websites.
+After that, you can look into financial privacy.
+There are various options where you can essentially set up throw away virtual credit cards or
+you're not reusing once again, the same information everywhere.
+But the extreme level of privacy, if you're trying to protect yourself and your physical
+location so that you can't be targeted and swatted and have physical violence be threatened
+against you, that's the really hard thing.
+A lot of that is really a result, I think, of corporate surveillance.
+There's also some government aspects in there.
+The tricky thing from a corporate surveillance standpoint is you have to realize that every
+time you have any sort of economic interaction with someone these days, you're providing
+an address, even if you're not having something physically shipped to you.
+So setting up private mailboxes that are not your residence and using them for receiving
+everything or even as your billing address on credit cards, just so you don't have your
+home address as credit card, that's a fairly simple, straightforward way to protect most
+of that stuff.
+But then the really hard part is the government-related identity stuff, especially things around taxes,
+around DMV, around any publicly registered assets.
+So usually that means house and car, maybe boat, things that are registered in your name
+that you pay property tax on.
+Those tend to be the things that create links between you and your residence.
+And in order to sever those links, you have to use other legal structures such as trusts
+and LLCs to own that property in the first place and essentially have the names of those
+trusts and LLCs on the publicly registered forms and documents so that your name isn't
+even on them.
+But this creates a lot more complexity.
+You're basically creating this whole legal framework that is acting as a firewall between
+you and the rest of the world that can see these publicly registered assets.
+But I mean, you do interviews, right?
+So people in your community must know who you are and can't someone just see where you
+drive home?
+I mean, how much of a secret have you been able to keep with your identity?
+Right.
+So no one in my physical neighborhood knows my real identity.
+They know my pseudonym that I give to them.
+And obviously, I have a backstory and I'll tell them I work in cybersecurity.
+But I know enough about cybersecurity that I can talk about other aspects of cybersecurity
+unrelated to crypto.
+And even if someone who did recognize me saw me out in public, and even then if they saw
+me getting into my car, and even then if they looked at the license plate and somehow were
+able to look up information for that, that would not tie me back to my actual address
+because the car is owned by an LLC and the LLC is registered with a registered agent
+at a completely different address.
+So that's like what I said at the very beginning, there's so many different aspects of it.
+Now, it could very well be that we get to the point where facial recognition is so ubiquitous
+that any average person can basically use facial recognition software to try to look
+you up.
+We're not at that point yet.
+But this is a dynamic environment and I'll just have to adjust as needed going forward.
+What was the most surprising part of this journey to make yourself so, so private that
+maybe people would benefit from learning?
+So there's pros and cons.
+So is that I'm in the United States and the United States affords you to use some things
+like some jurisdictional arbitrage where some states have better privacy than others and
+you can set up these trusts and LLCs in other states and then use them wherever you need
+them.
+One of the cons, of course, is it's expensive.
+You're basically retaining attorneys and accountants and then other specialists, registered agents
+and whatnot, to set up and then maintain these legal structures.
+But it is better than a lot of other countries.
+So my understanding is it's very difficult, if not nearly impossible, to set up stuff
+similar to this in a lot of European countries, for example, because even if you create the
+same legal structures, you're basically still forced to expose a lot of the internal ownership
+of the legal structures to the public.
+So you basically you're losing the privacy aspects of them.
+Also things like with phones in the US, it's more difficult than it used to be, but it's
+still possible to get a phone or specifically a SIM card anonymously without providing your
+identification, whereas in a lot of other countries, it's kind of like the DMV requirements
+where they're not going to give you anything unless you basically do AML KYC.
+DMV stuff in the US is one of the most onerous.
+Depends on the state, but generally we'll ask for two, if not three or four really strong
+proofs of not only your identity, but of your living at the address where you're giving
+for your vehicle registration and driver license and whatnot.
+And the only way I've really found around that is to actually have a real residence
+and address somewhere that you just simply don't hang out at that often.
+Wow.
+Okay.
+I have more specific questions about this, but I want to zoom out for a second and just
+ask why do you feel privacy is so important?
+I mean, in this increasingly digital world where companies and corporations are collecting
+our data and there's surveillance technology, why should we care about privacy, in your
+opinion?
+Well, I could spend an hour talking about all of the things that could go wrong.
+And obviously I have this extreme example of having a SWAT team come to my house.
+I think the extreme example is that you might have some sort of physical violence directed
+at you.
+This is generally not something that people need to be worried about unless they are a
+really public figure with a large audience or they are doing something that is basically
+creating enemies that would go to that extreme of wanting to perpetrate violence against
+you.
+But I think the bigger thing is that you just don't know what might happen in the future.
+And while this type of swatting, stalking, harassment stuff pre-internet age was generally
+relegated to your superstar celebrities who had hundreds of millions of fans and therefore
+just due to the law of large numbers, there's going to be a few nut jobs in there.
+You're going to have somebody who's going to do something that is potentially dangerous
+for whatever reason.
+And what I think the internet has done is it's really lowered the bar.
+It's made it so much easier for people to perpetrate crimes and potentially violence
+against you that you might think that nobody is ever going to care or do anything like
+that against you.
+But because of the internet, you can go overnight from being a nobody to being someone who has
+the attention and potentially the ire of tens or hundreds of millions of people.
+And good examples of that, one that I often give is Justine Sacco, who was a marketing
+manager at some marketing firm in New York.
+And she had family, I think, in South Africa or something.
+And she was flying there for the holidays.
+And before she got on the plane, she tweeted some sort of racially insensitive thing about
+like hoping she didn't get AIDS when she went to South Africa.
+And that blew up.
+It became viral.
+She had like 200 followers on Twitter.
+But that tweet went so viral that I think hundreds of millions of people saw it.
+And so some of them were sufficiently enraged that they started harassing her family, her
+employer.
+Some of them even showed up at the airport to see her get off the plane when she landed.
+I think she ended up getting fired and having a lot of other consequences just due to one
+really bad joke that she made.
+So you never know when something crazy like that could happen because it's so much easier
+for it to happen today.
+And this is also kind of what happened to me over a longer period of time, over a matter
+of years.
+I went from being a nobody to having hundreds of thousands of people pay attention to me.
+And eventually, one of them who had the skills and the poor enough judgment decided that
+they wanted to perpetrate this against me.
+Yeah, and how hard was it to figure out who that person was and what's the result of that
+investigation?
+Because you recently got an update, right?
+Oh, yeah.
+It was difficult because they, unlike me, they were already operating from a highly
+privacy conscious setup.
+I think this was because they had been doing a number of illegal things, and so they knew
+that they needed that level of protection.
+So it took four years to get to a conclusion in the case.
+There are many points at which it could have fallen apart.
+The whole investigation could have stopped.
+But it cost me over, I think, $10,000 just in terms of legal fees, paying for attorneys,
+private investigators, whatnot.
+One of the big triggers, I think, that helped even get the investigation started was putting
+a very large $100,000 bounty out on this person.
+And so that's what helped get some of those tips to come in.
+But then I also, I had to have some luck on top of everything else.
+It was really hard to find lawyers who would work with someone who is interested in prosecuting
+rather than defending.
+I think the vast majority of private legal practices are for defense rather than offense.
+Usually it's the state that does the prosecuting.
+But I did not have a lot of success whenever I tried to reach out to law enforcement and
+state officials.
+And after about a year of trying to contact someone with the FBI, I finally got in contact
+with someone only because I made sort of happenstance connection at a Bitcoin related event.
+So it's hard.
+It's really hard to get justice, especially if it's not what would be considered a high
+priority, high threat to life type of crime.
+Well, so who was it?
+It was some punk teenager who, oddly enough, I am not at liberty to discuss their details
+because they're a juvenile.
+And so we ended up going through the juvenile justice system.
+And you're basically supposed to protect these juveniles until they're adults.
+And once they're adults, if they screw up, then everything becomes publicized.
+Well, so what was your reaction to finding out this person's age?
+And if you could have a conversation with this person, what would you say?
+Yeah, it wasn't completely surprising.
+It made sense because teenagers, they tend to understand technology even better than
+the older folks who might be in their 30s and beyond.
+And also, it's more likely that you don't understand the consequences of doing stuff
+like that.
+So I think it was a perfect storm of skills and ability and lack of understanding consequences
+that resulted in that.
+And I did actually get to meet and talk to this person.
+And I basically flew to one of the hearings at the juvenile court and basically spoke
+my piece, gave my perspective on the whole situation.
+And I tended to believe their story that they, at the time, did not realize the seriousness
+of it.
+And they were kind of thinking it was like a prank phone call.
+Wow.
+OK.
+So obviously, you had the means to go into this journey to privacy that a lot of people
+probably would not take the way that you did.
+What's one thing that the average person can do?
+What's one very important thing that someone can do to protect themselves as we're transacting
+online, especially for people who have Bitcoin?
+Yeah, most important thing, I think, is just taking a few minutes to install a bunch of
+ad blockers on your browsers.
+That'll save you from a lot of the corporate surveillance that happens.
+Like I said, I worked for an online marketing company for 10 years.
+My job was actually to ingest all of this raw tracking data that gets picked up from
+pixels in your emails, tracking cookies, and other code that's on every website that you
+load, and then basically pull that all together and write tools for marketers to then be able
+to better sell stuff to you based on your profile that we build up.
+So I certainly understood very early on how poor privacy experience was for the average
+person just browsing the internet.
+Next step you can do after that, like I said, was get a VPN because that's how you hide
+your IP address, which also hides your rough geolocation.
+From then on, for less than $50 a month, you can get a PO box or some sort of private mailbox
+so that you can disassociate your shipping and billing address with your actual residence.
+I would say if you're willing to spend a couple hundred dollars a month, you can get 90, 95%
+of the way there.
+It's that last 5% to 10%, especially with the government related stuff, the legal related
+stuff, that the cost and the amount of time and resources just goes exponential.
+So I'm assuming we should always say no to the accept cookies prompt that comes up on
+all these websites, right?
+What are the ad blockers that you recommend?
+What are the companies?
+I have multiple installed.
+I recommend installing uBlock Origin.
+That's a free one you can load a bunch of lists into.
+I would also install all of the stuff from the Electronic Frontier Foundation.
+I think they have one called Privacy Badger.
+They also have an extension that's called, I think, something like SSL always or HTTPS
+always, which will basically force as many of your website connections as possible to
+go over SSL.
+So everything's encrypted, just providing with more privacy there.
+That's going to cover the vast majority of it, but even this will create inconvenience.
+From time to time, you will find yourself trying to use a website and it won't work.
+That's because your privacy ad blocker stuff will be preventing some code from running
+that it turns out is critical for some of the functionality on that website.
+So there's always some sort of trade-off between convenience and privacy and security.
+That's so true.
+Well, before I start to wrap up, because I want to hear a little bit about CASA and your
+current updates, but just all of this makes me very curious about Satoshi and just how
+much Satoshi, whoever that person or group is, knew about security and privacy.
+So basically, there's no way to track where those initial notes and emails and blog posts
+came from.
+Why was it so hard to track down Satoshi?
+They were just that good at OPSEC?
+Yeah.
+From what we can tell, Satoshi certainly seemed to be a cypherpunk.
+From the potential trails or breadcrumbs that they could have left, they were pretty much
+always using some sort of privacy preserving service.
+So for example, I think Satoshi was using GMX and possibly Vestomail.
+They were using some email services that were known to be better privacy preserving.
+I think there may have been a few places where people thought that they got some IP addresses,
+but it looked like Satoshi was probably using VPN.
+They also registered the bitcoin.org domain, and I think they used a privacy preserving
+service for that where they likely mailed an envelope of cash to that service basically
+to pay for it because this was before there were any real private cryptocurrencies or
+any other options.
+So from what we can tell, a lot of people tried to track down Satoshi for years, but
+it seems like they did a good enough job preserving their privacy.
+Part of that, I think, was the fact that they were doing this back when nobody cared who
+Satoshi was because bitcoin was some silly little experimental project.
+I think that the fact that Satoshi left very early on and did not continue creating more
+potential breadcrumbs that could be used to track them, that was also helpful because
+when you're trying to go back in time and find information to track people down, it
+can become a lot harder because things tend to get deleted and lost.
+Yeah.
+Do you think about the identity and why do you think that the person disappeared?
+Well, all we know is that they said that they moved on to other things.
+I would be incredibly interested to know what those things were, though there are various
+theories that Satoshi was someone who is now a deceased, so it may be that they were dealing
+with their own health problems.
+It may have just been that they saw the writing on the wall.
+I mean, they did make a reference, I think, to one of the early bitcoin developers going
+and giving a talk at the CIA.
+I think that freaked them out.
+They realized that it was becoming too big of a deal and they probably would not be able
+to continue being unobserved.
+Do any of those early developers that were communicating with Satoshi, does anyone or
+does the government do you think know Satoshi's real identity?
+Do you think there's someone who knows who Satoshi is?
+I think there has to be someone out there who knows, but no one who has ever claimed
+to be Satoshi or claimed to know Satoshi has ever been able to provide sufficient proof
+of that.
+If folks at the government know, they're certainly not talking.
+All right.
+So tell me a little bit about CASA.
+Tell me about your position and how all that came about.
+Yeah, so I spent three years building infrastructure at BitGo.
+That's where I learned a lot about private key security and also just became interested
+in this non-custodial idea of being able to build Bitcoin wallets where the service may
+hold one key to help in certain situations, but never has enough keys to spend other people's
+money or stop them from being able to spend other people's money.
+So CASA was really a small pivot for me to go from using this technology to help people
+be their own banks, mainly for enterprises, to switching to helping individuals.
+So this was the result of many years of hard-learned lessons.
+A lot of people lost a lot of money over the first decade or so in Bitcoin, and so we've
+learned a lot of things not to do.
+Now the problem with all of this is that it's a lot of knowledge.
+It's a high barrier for newcomers to scale in order to absorb all of the information
+that I have over the years.
+So in order to help people bypass that and to lower the bar, make it a better user experience,
+we basically have to build the software to guide people down the right path.
+And so that's what we've really been doing at CASA where we've been using this multi-signature
+technology.
+We're building on top of hardware key management devices that are produced by a number of different
+companies other than us by design.
+We don't want to be a single point of failure who is creating too many of the internal aspects
+of the system.
+And we're basically providing an easy way for someone to get onboarded into what I consider
+to be a better than bank level self-custody setup, where if you spend an hour onboarding
+yourself into CASA, you end up with a system protecting your Bitcoin that is highly distributed
+and has no single points of failure by a design.
+And all you have to do is follow the instructions in the app to get set up.
+So by putting people into a highly defensible, robust position just by following the guidance
+in the app, we can prevent them from being a victim of many different types of both attacks
+and loss due to negligence and you're shooting yourself in the foot and so on and so forth.
+So it's about creating robustness and redundancy.
+And the crazy thing is this whole industry of self-custody is built around the idea that
+we're helping people protect a few hundred bytes of information.
+That's all this really is.
+But this few hundred bytes is now the keys to the kingdom that some people have the majority
+of their life savings in.
+So we need to make sure that people can be comfortable and confident that they can hold
+that themselves.
+So is this essentially holding someone's hand to be their own bank and they're still very
+much responsible?
+Or is this taking some of that pressure off of them because you have this distributed
+network that will be sort of a backup and help them through that aspect of safety and
+custody?
+Yeah.
+So there's, I would say several aspects of CASA that are an important focus for us.
+The first one is user experience, so having a really well-designed app that you run on
+your phone that guides you through the setup and the maintenance of this under-the-hood
+complex multi-signature wallet that uses multiple keys on multiple devices in multiple geographic
+locations.
+The next one is service, where there are very few self-custody Bitcoin wallets out there
+that are a company that provides a high level of customer service.
+A lot of the wallets out there, it's free software where you download it, you run it,
+and you figure out how to do it.
+It's sort of a caveat and story or use it at your own risk, but you're responsible for
+figuring it out.
+So we also provide a high level of service, depending on your tier, our higher level tiers,
+you get dedicated client advisors that you can literally schedule phone calls with and
+talk about whatever you want.
+We also find it important to give people the peace of mind that they need.
+That's really one of the most common pieces of feedback that we get.
+I would say one of them is that people tend to be surprised at how easy it is to get onboarded
+because it is a complex system under the hood, but like I said, it only takes an hour or
+so to get onboarded.
+And then the next one is just the ability to get feedback and feel comfortable that
+you have a setup that is not going to get lost or hacked or whatever.
+So a lot of people come to us, they might have had their money still in the exchange
+where they bought it.
+They might have had it on a single hardware device that was in a safe and they were just
+super worried about what might happen to that hardware device.
+But once they get into a system where they know that they have sufficiently dispersed
+the risk, such that it's unlikely that any single event was going to cause a catastrophe,
+then it's a lot easier for them to have peace of mind and go about their life without even
+worrying about what's going to happen to their Bitcoin.
+Yeah, I think that's such an important point and it's so critical because I think if we're
+going to get to mass adoption, the majority of people are not going to feel safe just
+putting something on essentially what they consider a hard drive and putting it in a
+safe or keeping it maybe on an exchange that potentially they heard accounts got hacked
+or something or a SIM swap happened.
+So I think that this is such an important area so that people can feel comfortable finally
+getting in the space.
+Do you agree?
+I think this is what we need for mass adoption.
+Yeah.
+So I did this originally, it was so much a self-serving thing.
+Like I said, I had been at Bitco for about three years building infrastructure.
+And with my own personal holdings, I found myself spending an entire weekend every year
+just as an annual refresher to basically update my cold storage and redistribute the data
+for that because also I was worried about inheritance issues, getting hit by a truck
+and nobody knowing how to actually get to those private keys.
+And I was just like, this is insane.
+I'm supposed to be one of the most preeminent experts on Bitcoin security.
+And this is a huge hassle for me and I do it because it's a substantial portion of my
+net worth.
+I can only imagine what the average person who doesn't have this, they might not be as
+incentivized, they probably don't have the same level of skill set.
+And I wanted something that I also could be more confident in that people would be able
+to recover for inheritance and that I didn't have to spend a day or two every year updating.
+Rather, it was just already automatically redundant.
+And that's sort of the individual focus, but when you step back and you take the 10,000
+foot view of what this means and why it's important that the average person has this
+type of access to being their own bank and doing so without a lot of effort, it's actually
+important for, I believe, the structural integrity of the entire Bitcoin ecosystem.
+Because if people aren't confident and comfortable in being their own bank, then they are going
+to end up falling back to what they consider to be the trusted experts.
+And essentially what we end up with, again, is just a lot of highly centralized custodians
+was kind of recreating the original system that we were trying to get away from.
+So what are your competitors in this space?
+Well, from a really high level of view, you could say our competitors are any sort of
+Bitcoin system for custodying funds.
+So it depends on how you break things up.
+You could say that self-custody is competing against custody.
+So we're competing against a lot of the exchanges and other like professional custody
+services that really just act like banks.
+Within the self-custody space, you could say we're competing against all of the free services
+that don't have great quality of support because you're not paying for support, it's just sort
+of an add on that's baked into perhaps if you like buy a hardware device, they probably
+have some additional margin that helps cover support there.
+Otherwise you're really only getting community support and you're hoping that somebody on
+some forum might respond to you.
+Within the paid self-custody space, there are even fewer options.
+One of the only ones that really comes to mind is Unchained where they also have a multi-sig
+self-custody plus service and consulting.
+So it's kind of like a niche within a niche.
+But my thesis on that is that this type of self-custody setup is actually incredibly
+important and a lot of people either don't even know that self-custody is a thing or
+they don't understand why they should value it or if they are in a self-custody setup,
+they may have set it up a long time ago and have just kind of forgot about it or in many
+cases what we found are they are afraid to touch it because every time you mess with
+your private keys, there's a potential that something might go wrong.
+Well, so for anyone that's wondering this in the audience, if you have a Ledger or Trasor,
+would you also get CASA or is it an either or situation?
+Yeah, you can do both.
+So we have a basically $10 a month lowest tier plan where if you already have a hardware
+device, you can basically bring that device, create your two of three CASA wallet and that
+hardware device you plug in and we take the public keys off of that hardware device and
+use it to create a multi-sig and then it would be very easy for you to essentially do a withdrawal
+from the only Trasor or only Ledger funds to the multi-sig, which is then still using
+the Trasor or Ledger, but it's only one out of three different keys that are on there.
+And this can be, I think, kind of complicated for people to understand what is multi-sig,
+what is a multi-key setup.
+The best way to think about it, I think, is in terms of a lockbox.
+So whenever you generate a Bitcoin address, what's behind that address is actually something
+called a redeem script, which is a set of code that describes the spending conditions
+for what is required in order to be able to move the funds at that address.
+And for most people, this is a single signature address that says, you know, I need one signature
+from one private key that matches the public key that is embedded inside of this redeem
+script.
+With multi-sig, we're taking that to the next level, where it's essentially a piece of code
+that says in order to spend these funds, you have to add two signatures that match any
+two of these three private keys, or you have to add three signatures that match any three
+of these five public keys.
+And so this is very similar to like having a lockbox in a bank, where if you've ever
+had one, you may realize that at least the good ones, they don't have only one key.
+They actually have two different keys that have to be inserted and turned in order to
+open that up.
+And that's because it gives you a better trust model so that you're more confident that the
+employee with the key can't just go in and open it on their own, whereas if someone stole
+the key from you and went in on their own, they wouldn't be able to do that without an
+employee who's also doing other authentication.
+And so this is why I say you get to be better than bank level security, because you can
+have a setup that is even more distributed and more robust in terms of the authentication
+than you would have to get inside of a high security bank vault.
+Yeah.
+I think this is such great information, because I do believe that as we get to that maybe
+$1 million per coin, or I think it's going to go even higher, this is going to be huge.
+This is going to be so, so, so important, because I think that the people that are coming
+in late, there's going to be threats to the people who have Bitcoin and have had it for
+a very long time.
+So I think getting that information out is just so paramount.
+I just wanted to ask you very quickly, you don't have to go in the weeds, but I think
+there are people who wonder the inheritance issue.
+Like if something were to happen to me, how does that all work?
+Is this a very emerging space where people are dealing with wills and how to actually
+pass on their Bitcoin?
+Because I would imagine people just want to hold it to give to their children, right?
+How does that work?
+Right.
+So if this is something that you are worried about, the only really in-depth guide that
+I'm aware of is Pamela Morgan's crypto asset planning guide, which you can order on Amazon.
+Highly recommend it.
+I learned a number of things from it, because it's not just about the technical aspects.
+It's also about legal and social aspects to think about.
+From a technical perspective, Bitcoin, the network, the protocol, it doesn't know anything
+about you, your identity or your beneficiaries or anything like that.
+All it knows is whether or not a sufficient number of signatures have been put on a transaction
+to spend funds from an address.
+So what it boils down to is you putting the keys in some sort of storage where you can
+access them while you're alive, but other people can't.
+But if you pass on a certain subset of beneficiaries that you have designated that can access them.
+And to do this, within multisig, the reason we like this setup is that you can create
+say a three of five multisig setup where you have a key on your phone that is always accessible
+by you.
+You then have three different hardware devices that you distribute around.
+And then you have a key that is held offline by CASA.
+And so what we set people up with for a three of five inheritance setup is we recommend
+that they put one of those hardware devices in a safety deposit box that has beneficiary
+information listed on it.
+And this is safe to do even if you consider something like an insider attack by that safety
+deposit box company because it's only one out of the five keys.
+We then recommend having a key that is accessible by either your state attorney or an executor
+to your will that they know where it is, perhaps you make a copy of that key and give them
+a copy of it, or they just know how to access it and unlock it.
+And once again, this is safe because even if they try to collude against you, they can
+only get that one key.
+And then the CASA key that we hold is similar to the safety deposit box key in the sense
+that we will take down beneficiary information and essentially require the same type of proof
+of death process that the safety deposit box would.
+So at any given time, you have access to four out of the five keys and you can request,
+of course, signatures from CASA.
+However, if you die, the CASA key, the friend or executor key, and then the beneficiary
+key and the safety deposit box can all be accessed through fairly standard processes.
+And that's what's great about distributing all of this information around is the level
+of robustness.
+And what you're really doing is you're also minimizing trust.
+So it's hard for people to collude against you because they probably don't even know
+who the other people they'd have to collude with are.
+If you're not doing a multisig and you're worried about inheritance, then you either
+have to do what I did in the early days, which requires a really high level of technical
+sophistication basically taking these single seed phrases, these private keys, and putting
+them in some sort of encrypted file volume, which you then take the decryption passphrase
+to and split that up in multiple ways and then hand out those splits to different people
+in order to make it difficult for them to collude against you.
+But I have a whole write up about that on a blog I made a few years ago, but it's not
+something that I would recommend.
+It's still fairly brittle and requires technical sophistication for these beneficiaries to
+be able to set up and recover.
+Or for people who aren't that technically sophisticated, what we often see is what we
+call the treasure map.
+And someone will generally bang out their seed phrase onto a piece of metal and then
+maybe go hide that somewhere and then have a treasure map of how to go find that.
+That can certainly work, but if it doesn't work, if at some point that treasure map gets
+lost or destroyed or the people just don't understand how to follow the treasure map,
+then the money becomes irrecoverable.
+This is also fascinating.
+Thank you so much.
+Before I ask my last question, is there just anything else you wanted to talk about or
+share you think people should know?
+There's more than we could ever possibly cover.
+I mean, the main thing, I think, when it comes to Bitcoin and all of its complexities is
+that I'm focused on security, which is a fairly straightforward, simple thing.
+There are so many people out there who are working on much more crazy, pushing the envelope
+type of stuff in this space.
+And also the fact that this system is so multifaceted, you don't have to be technical to be interested
+in it.
+There are plenty of people who are interested in Bitcoin for other reasons.
+It's their economic or philosophical or whatnot.
+And so it's such a complex, multifaceted space, you can spend your time focusing on whatever
+is most interesting to you.
+And that's why if you want to figure out how to go further down the rabbit hole, you should
+just go to bitcoin.page, which is my educational resources site that has, I can't even keep
+track, probably like 1,500 links with dozens of different subsections.
+So you can spend as much or as little time as you want learning more about this space.
+Awesome.
+I love it.
+I will link that in the description of this episode.
+And my last question is just, where do you see Bitcoin in 10 years?
+I think the next 10 will just be so pivotal.
+We've already moved in the direction of mass adoption.
+It's growing very quickly, but I think there are also these major challenges ahead of us,
+right?
+There are these big names like Hillary Clinton coming out saying that this type of currency
+or technology threatens nation states.
+I think there are some really scary narratives out there that are going to discourage the
+majority of people who still have their assets in cash or cash equivalents from entering.
+So how do you think this is going to play out in 10 years?
+And where do you see Bitcoin in 10 years?
+I am not as worried about nation state level issues.
+We already weathered something like six years of China FUD and crackdowns to the point that
+they almost effectively completely banned Bitcoin.
+And yet, as I said earlier, my conviction, my thesis from very early on is that this
+thing cannot be stopped.
+And if some of the most powerful nation states in the world decide to crack down on it, it's
+going to continue to survive.
+Now, there's no guarantees about what its value or exchange rate will be, but from a
+purely technical perspective, the network is going to continue.
+So I'm especially less worried about politicians in America.
+I think we're already at the point, and this is one of my many Bitcoin projects, bitcoinpoliticians.org,
+I think is the website I set up for that, where now I'm tracking which politicians actually
+own Bitcoin.
+I think this is important from an incentive standpoint.
+We should want as many politicians as possible to own Bitcoin.
+Unfortunately, there's far fewer who own it than who even talk optimistically about it.
+So I'm somewhat skeptical about the people who are always talking really nicely about
+it and then don't actually own any, because how can they really understand it if they
+never even used it?
+But I think that the ownership of Bitcoin is already so dispersed and so many powerful
+and influential people own it that they're going to be applying their own pressure against
+politicians who then hopefully will also become owners who will then be incentivized to not
+do anything stupid regarding Bitcoin.
+So I'm less worried about that from a macro perspective, even though there's certainly
+going to be folks who are doing the ESG arguments and basically wailing about different things
+that they're unhappy about.
+But they can complain all they want.
+I don't think the Bitcoin network really cares.
+From a macro perspective, I'm more interested in seeing what's happening with El Salvador
+for example, and that being the first domino.
+I think that this is not going to be a one off event, it's just the first in a series
+of many, because while the individual is incentivized to opt out of fiat and into sound money, which
+is my thesis that I entered into many years ago, this same thesis holds true for corporations,
+the same thesis holds true for many institutions, all the way up to the nation state level,
+especially for nation states that don't have their own monetary sovereignty and they're
+currently at the whim of other nation states and the central banks and treasurers of those
+other nation states.
+So I think this is why El Salvador was the first mover when it comes to nation state
+adoption because they're smart enough to realize what the first mover advantage is at this
+scale.
+Yeah, and actually, I don't know if you have time to share, but you just came back from
+El Salvador, right?
+So you were there for that massive announcement, Bitcoin city, pretty much no taxes except
+sales tax, right?
+No capital gains, no property tax.
+How was your trip and what's your response to that announcement?
+Yeah, it was interesting.
+El Salvador is still a fairly tense place.
+It's probably one of the rougher countries that I've ever visited, still plenty of security
+threats and issues in the country.
+And there's a lot of skepticism.
+I can understand it because I would be skeptical of any government telling me, hey, you should
+do this because it's good for you.
+Also, just the history of El Salvador and their previous generations of governments.
+I think a number of them were basically highly corrupt and exit scammed and stole a bunch
+of money from the citizens and basically left without using it to actually help the citizens.
+And so there are plenty of people who are skeptical and afraid that the same thing may
+be happening now.
+And basically what I just said last night is that this is a very interesting experiment.
+There are plenty of ways that it could fail and we certainly as Bitcoiners want to see
+it succeed so that I hope as many people as possible who have the resources and the time
+can find some way to contribute to helping the efforts in El Salvador.
+It's going to be a very important test case and there are lots of other countries who
+are going to be watching and they're going to make decisions based upon the outcome of
+what happens in El Salvador.
+But even if it does fail, I think we should be focused on helping the citizens of El Salvador
+to understand Bitcoin and its value proposition because my hope is that they will then understand
+the value of self-custody so that even if the government does screw up, if something
+goes horribly wrong with like Chivo, with the government run Bitcoin banking services,
+that if the situation is such that a lot of El Salvadorans are self-custodying, then they
+won't be as exposed to those risks even if there is a massive catastrophe at the government
+level.
+They will still be able to continue being sovereign Bitcoin users.
+Yeah, no, totally.
+So in 10 years, you would guess probably more nation states, right?
+What do you think the market cap will be?
+Absolutely.
+So I have no idea.
+One thing that I say commonly is that I don't necessarily believe that the value of Bitcoin
+will continue going up, but I am 100% convinced that the value of fiat will continue going
+down.
+So make of that what you will.
+Got it.
+One Bitcoin equals one Bitcoin.
+Got it.
+Well, thank you so much, Jameson, for joining me.
+I really appreciate it.
+My pleasure.
+Thanks for having me.
+Thanks so much for listening to this episode of Coin Stories.
+I'd love to connect with you if you have questions or guest requests, so feel free to get in
+touch on Twitter at Nat Brunel or Instagram at Natalie Brunel.
+Take care until next time.

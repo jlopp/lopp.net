@@ -1,0 +1,454 @@
+Hi everybody.
+Welcome to the last of the series of developers' deals.
+We're going to get started.
+So tonight we have James in the lobby talking about the challenges of implementing a multi-state wallet in the series.
+First, I'd like to say thanks to Ali and Kirby and the rest of the team for hosting us.
+Thank you for coming. My name is Kirby and I'm a Programming Manager here at Ali. Ali, for those of you who don't know, is a co-working operator here in this Verizon building.
+Ali is a partner with Verizon in this facility to operate the co-working space with Sara Community.
+Their powerful Verizon technology, their thought leadership, as well as their vast networks in their professional world.
+Our collaboration with Verizon allows us to develop our next-level ecosystem for the Sara Community.
+If you want to know more about Ali and Verizon, you can come see me at the end.
+We want to explain more about what we do here and what we're about, as well as the new tours.
+So we hope that you have a great time here and find great value here to produce your own events.
+And before we get started, I also wanted to say that you were here at the last meetup and saw the voting gap tutorial by Mahesh.
+He has a new tutorial on his site. It's for building a decentralized eBay.
+His site is Gatsbyrn.com. This is E-A-S-T-R-I-N. So check it out.
+All right. So thanks for the introduction. I'm James Salop.
+I've been doing Bitcoin and crypto assets stuff for fun since 2012.
+I've been doing it full-time as a software engineer for BitGo for about two and a half years now.
+And it's been a while since I arrived.
+I had never imagined that we would see such a proliferation of technologies happen so quickly in this space.
+And as Ethereum has risen to become a very popular crypto asset,
+BitGo as a company that is really focused on securing any crypto asset of value,
+its theft, seizure, loss, what have you,
+it eventually got to the point where we decided that it would be a profitable endeavor for us to offer our services for this asset.
+So I guess you could say I know a little bit about Bitcoin.
+But to be perfectly honest, this is my first ever presentation about Ethereum.
+It's the first time I've really talked about anything other than Bitcoin at a blockchain-type meta.
+So I will definitely hear a biased and skewed perspective from that point.
+But I think that it may be interesting to see a sort of old-school Bitcoiner approaching Ethereum
+as such a vastly different technology from what we're used to.
+So I just wanted to start off and give a little bit of background about BitGo and what we do.
+One of the reasons BitGo exists is because crypto assets are very difficult to secure.
+So you can think of Ether as a bearer instrument.
+Whoever has the keys can control what happens with that Ether.
+And there's a reason why you see bearer bonds show up in movies and stuff.
+It's because they make for very compact and untraceable high-value targets for theft.
+Now, if you think about Ether, it is incredibly valued dense.
+It can be stolen remotely, and you don't have to go into a bank or any other target with physical security
+that might currently throw you in jail if you screw up.
+This is really a thief's dream.
+And also, the transactions on Ethereum and generally most crypto asset networks are irreversible.
+So if you manage to get in, if you manage to find one little flaw, one hole,
+that allows you to get those private keys and move them to an address that you control, that's it.
+Game over. We win.
+Now, you could say that this is one of Ethereum's greatest strengths,
+since payments can be considered high-value recipient.
+But it's also one of the most challenging attributes to deal with from a security perspective.
+We have some other semi-irreversible systems and traditional payments, such as FedLine,
+but they're rarely completely irreversible because there's usually a small number of parties that are controlling that network.
+They usually have some sort of agreements with each other where they can reverse erroneous transfers in many cases.
+So what does that end result in?
+Well, crypto assets are the most slippery substance that we've ever seen since Teflon,
+and that's because it can be taken in a matter of milliseconds, remotely, by an attacker with little to no recovery.
+And so what you see most of the time in crypto assets is a single key securing of that asset.
+Maybe you have a user, they have a key, and with that key you can create your Bitcoin or Ethereum or whatever transaction.
+And once that transaction is out on the network, it's confirmed and there is no going back.
+So the best way to get really high security for crypto assets is to take it offline.
+Use a cold storage offline wallet, print out a piece of paper, put it in a vault, put it in a physical bin vault.
+Physical security is a very well-known and well-understood problem.
+When you can bring crypto or cybersecurity back into the realm of physical security, you're in pretty good hands.
+But unfortunately, in order for these types of assets to really have utility and have value, we have to be able to move them around.
+We have to be able to suspend them.
+And so you see sort of hybrid solutions come out, especially with the big exchanges and any of these big,
+large amounts of value where they will have a hot wallet and a cold wallet.
+And a hot wallet will have a little bit of the money, and a cold wallet will have most of the money.
+And this is good because it reduces the aftermath of what happens if you do get hacked, as well as a percentage of your money.
+But there are some downsides.
+And generally that means that you've got all of your customer funds pooled together into a single target that if it gets hacked,
+you then lose that percentage of all your money.
+And then you also basically deal with a lot of operational issues by moving money from the hot wallet to the cold wallet,
+or even worse, moving money from the cold wallet to the hot wallet, which is going to be a much bigger pain from an operational security perspective.
+So what we do at BitGo is we try to offer a secure hot wallet so that you don't necessarily need a large cold storage hot wallet.
+So how do we do that?
+We use a technology called multisignature transactions and interactions, a fairly easy concept to understand.
+It just means that you say, okay, we have a group of this many people, and this percentage of them needs to sign off in order for any of them transactions to be invalid.
+So if you're not really familiar with this type of map, what it does is it eliminates single points of failure.
+You see that from single key to multi key.
+So in this case, you've got your user, and BitGo likes to do two out of three for a number of reasons I won't go into.
+But we then have three keys.
+The user has to, they keep one of them offline as their recovery mechanism, and then BitGo is the moral of the game with the third key.
+And when the user wants to create a transaction, they use their online key to sign, half sign of the transaction, they send it to BitGo.
+Then we can go through any number of arbitrary security policies and other security mechanisms that the client has set up beforehand and then decide whether or not to co-sign the transaction.
+If any of the security mechanisms fail, if any of the bars go off, BitGo refuses to sign, we then alert the customer, hey, something's wrong.
+We might need to have a human face-to-face chat or whatever is going on.
+Prevents erroneous transfers because we can't stop them.
+But we cannot unilaterally freeze someone's wallet because BitGo only has one key.
+So from a regulatory standpoint, BitGo is not custodian, we are just a software service.
+If the user ever wants to go around without using BitGo, they can just go get their other key, create a transaction without ever touching our service.
+So it creates a very interesting business model that we've been able to capitalize on.
+First with Bitcoin, and now with many other technologies, Ethereum, Ripple, Litecoin, Moirainful, which is our overwatch chain that we've been developing.
+And we can quickly go through some of the risks of these different models here.
+Basically, if the user holds the key, then there's a number of things that can go wrong.
+Basically, anything that goes wrong on the user side, whether intentional or unintentional, they lose their money.
+They might not lose it to someone else, they might just lose it to the blockchain for all eternity.
+Users are not going to be security experts, users are not going to be tech experts that have good IT practices and have multiple redundant backups in various locations to protect from catastrophic loss.
+But on the other hand, when you have a third party provider, like Coinbase or any number of exchanges or services that you make deposits into, they have the keys.
+And that means you've got pretty much all of the same type of risks that that third party could have, but you also have to worry about it potentially lying to you.
+They're probably a bigger target for hacking because they're a public loaned entity, they could have their regulatory problems, they could still have data loss.
+And of course, phishing, the human element, really is one of the biggest problems that we find in this space.
+But if we switch this to a man, we're going to say you have a two out of two holding state solution where the user has to keep the service as a key, this starts changing the model, and we can actually get rid of a number of different things here.
+Basically, because if anything gets screwed up on the user's side, then the service can stop bad transactions from happening.
+If anything screws up on the services side, then the user can say, no, I don't consent to that, I'm not going to sign off on the transaction.
+I mean, it prevents that from happening.
+But you've still got data loss problems. If anyone on your side loses the data, then you lose the lives of blockchain for all eternity.
+But what if we change this to a two out of three model?
+Well, you can actually get rid of some of these data loss problems because now you have a redundant third key floating around out there.
+You can go over to that key, and really, now you've eliminated everything except the human problem.
+And so I would say these days, BitGo's biggest thing that we are trying to work on is the same thing that anyone in any security space is working on, which is the human problem.
+And humans are always going to be a problem, so I think anyone who is in the security space has got pretty good job guarantee.
+So what do I do?
+This is basically what I have in my brain most of the days, or at least before I started getting into Ethereum.
+And this is just a sort of graph of what Bitcoin transactions look like.
+In Bitcoin, we don't have count balances, we just have transaction inputs and transaction outputs.
+And then you have to sum up all of the addresses on all the different outputs in order to find the balance, keep everything up to date.
+So basically, I am responsible for running the infrastructure team at BitGo.
+We are responsible for indexing all the various blockchains, keeping all our databases up to date with the current status of transactions and blocks.
+And basically, we provide the services that the wallet engineers at BitGo then hook into to get their data to figure out what is the current state while they get their wallet.
+But, it gets a lot more interesting when we start using a theory.
+So, BitGo has actually tried not once, but twice to build a multi-signature Ethereum wallet.
+The first time around was a little over a year ago, and we ran into some software stability issues.
+Basically, our first attempt at doing an infrastructure for Ethereum wallet, we decided to use EthereumJ.
+And the reason that we did that is because we were using BitcoinJ for our indexing solution, our original Bitcoin wallet.
+And EthereumJ is basically a fully functional node that runs the Ethereum virtual machine.
+It parses every transaction that's out on the network, parses all the contracts.
+And this ended up being a disaster for us mainly because it wasn't production quality.
+At least it wasn't in 2016. I don't think it's that much better unless I've checked on it.
+I think some of the lead devs actually left, and it's not really getting as well maintained as a lot of people would probably like.
+But suffice to say, we were experiencing the crashes and consensus failures left or right, poor documentation, not very good developer support from the EthereumJ folks.
+And so we never really even got out of the test net situation because our entire EthereumJ node and indexing service would continually get stuck or get corrupted.
+And the solution that was often presented to us was, oh, delete everything and just re-sync from the beginning.
+Turn it off and turn it on again.
+And that was not something that we were really willing to go into a production environment with where people have real money at risk.
+So we ended up kind of shelving the version 1 of the Ethereum product right around the time when there were a lot of network attacks going on.
+We basically figured that the entire hardware was not quite stable enough for us to be able to seal over Google.
+Now, our second attempt at building Ethereum infrastructure, which we really started at the beginning of this year,
+we completely changed around pretty much everything that we were doing at a low level.
+So instead, what we're doing now is we're using Parity as our full node,
+which from everything that we can tell is the most robust, most reliable, and most performant node that is out there for Ethereum,
+and it is written in Rust.
+And instead of having the EPM running inside of our service,
+we're then just running it standalone and we're using the JSONRTC API to talk to a Parity node and suck the data out of it,
+which we can then parse inside our indexing service.
+This has worked a lot better for us from a performance standpoint.
+Though it's not been completely foolproof, I will say that Parity has crashed a few times,
+but only about one-hundredth as often as Ethereum JSON is crashing on us.
+And this was mainly happening with like 1.6.3 version,
+and I actually had one of these crashes happen today and noticed that 1.7 is out,
+so I upgraded to 1.7 and I had my fingers crossed that they both really fixed this particular crash bar,
+but it ended up running easily.
+Next very interesting problem is Ethereum uses 256-bit numbers, so 256-bit arithmetic.
+Let's see, here is the explanation I think from one of the Ethereum wikis on why they chose that.
+Suffice to say you won't have to upgrade that for a very long time,
+but it causes some issues when you're trying to actually store and parse and perform operations on this numeric data.
+So if you're hoping to store a professional quality database,
+numeric types that you can query in an interesting way,
+basically with mathematical operators greater than the left-hand range, whatever,
+you're going to have some problems if you're taking these huge numbers and just dumping them into the database.
+So what I've got here, these are a few Mongo queries, which is a database that uses a lot of things.
+And so here, everything in Ether is actually in units of way,
+which is quite a few digits of data and precision.
+And so when you're sending a one Ether transaction, you're actually sending, I think this is 8.2 Ether,
+so you're actually sending like one, and in this phase, euros worth of value at the network level.
+So you can see here, we inserted the data, but unfortunately, Mongo only supports like someone having to position it.
+We've actually covered off like two, three, and lost a little bit of precision.
+So then when you want to start having other transactions coming in,
+updating balances, you know, add another one Ether to it that has an election decision,
+well, we just complicated that, too, and we're going to round it up to four.
+And that might not seem so bad in one transaction, but what we found very quickly
+is that when you're parsing thousands and tens of thousands of transactions,
+those little rounding errors start to add up, and the balances in the wallet start to get off by noticeable amounts.
+So the first time around, we tried to do something a little bit novel and crazy,
+because while we found that Mongo and a lot of other production databases support 128-bit precision numbers usually,
+their largest number formats, with Mongo, actually, the Node.js driver that a lot of our applications use,
+which is called Mongoes, it has another limitation to it, where it actually only supports 32 bits.
+And so that's, you know, a much smaller amount of data that you can actually reliably transport back and forth.
+So what we ended up doing was creating this library that we all went to VidGo, VidModder library,
+and shunt up each 32 bits of data into its own object and then store that in separate fields.
+And then we could perform atomic operations on it, because our indexers tend to be multi-threaded.
+We want to be able to get through the work as quickly as possible and update everybody's balances
+within a matter of milliseconds so that they don't have any complaints about lag time.
+That ended up being pretty complex, and we actually ended up ditching it on our second time around,
+just because the complexity tends to be the innovative security and reliability.
+So the second time around that we implemented the infrastructure, what we decided to do instead is
+we changed our indexer to only be single-threaded instead of multi-threaded.
+And we were able to do this because we were no longer actually running the EVM and the indexer.
+We were running the full node of all the parts.
+And then we found out some novel ways that we could basically,
+as we were sucking the transaction data out of the node, throw away 99% of it.
+We essentially were looking for fingerprints of the Ethereum smart contract events
+that our multi-threaded smart contract was doing and saying,
+there's none of these events in this transaction, we don't care about it, throw it away and try to parse it.
+So that gave us several orders of magnitude of speed-up on our indexer,
+even though we went from a multi-threaded operation to a single-threaded operation.
+The additional thing that this allowed us to do is that because we're not doing multi-threaded inserts
+and updates on the database, we no longer need to have atomic operations.
+So what we'll do instead, which sounds kind of dumb, but it works, is we just store these as strings.
+So we put the string in the database.
+If we need to update it, you read the string back out, turn it into a big integer, manipulate it, and put it back in.
+And you can do that very quickly if you're not having to do this at high rates,
+and you don't have to worry about multi-threading.
+Your different threads basically stack on each other and string them on top of each other.
+So the downside to that is that now that there are string values,
+you can't really query on them as if they were in their values.
+You can't do ranges or greater than that.
+But we've managed to avoid having to do that just by keeping those limitations in mind
+while we were building the wall itself.
+And of course, as a security company, we were very worried about the low-level security of the smart contract itself.
+Here's actually the link to our smart contract.
+It's a little source.
+If there are any split-b developers out here, please feel free to give it a look.
+Here are some of the wall features that you can actually find listed on that GitHub.
+Some of the various things that it supports.
+And one of the biggest differences between Bitcoin and Ethereum,
+or really simple crypto asset security versus smart contract security,
+is that this multi-stake stuff is not native.
+It's not part of the protocol itself.
+We have to build the multi-stake operations using the solidity functionality and protocol.
+So it's a lot more open and prone to problems,
+because rather than having an entire ecosystem of developers who have been looking at this and auditing it,
+trying to break it, it's really only us on our small team,
+and then the various other companies that we have do audits on contracts.
+So it was a main point of contention for us that we've been working on this smart contract for over a year now.
+This continual iteration of three different official paid audits,
+and I don't even know how many unofficial volunteer audits that have come in.
+So just wanted to highlight one of the interesting pieces that came up here.
+Do we have any solidity developers in the house?
+Okay, so you're all up front, so you can read it.
+So this is one function from the multi-stake contracts that they go dry.
+And I just put this down here so that you can see that the recent SQLite audits and the signers and stuff
+are the local variables in the smart contract itself.
+So, and I'm not a solidity developer, so I'm not an expert on this,
+but do you see any problems with this?
+Don't worry, I'll tell you the answer.
+So there are, in fact, several different problems.
+This is the original version of this trying to sort of see what's happening.
+So if you're so much familiar with Ethereum, you may be aware that instead of having an input and output like Bitcoin,
+instead you have an account, and you have an office.
+And that's the way that you kind of keep track of the ordering of those transactions from an account,
+is that you have an office and you increment it every time you make a transaction.
+So within the multi-stake smart contract, we have our other type of offices with sequence IDs,
+just to keep an order of the transactions and events that are happening in that wall.
+Now, there are two different problems with this function,
+which is basically trying to find the next good sequence ID that the wall can use.
+The biggest flaw is that a compromised signer can actually call this function with almost any value that they like.
+So you see it says only signer, but what it is missing is that it doesn't have a private declaration on it.
+And this, if you heard about the parity in multi-stake contract problem,
+that was the same problem that the parity had, where they were not properly protecting it.
+And so it turns out, I guess, that functions and splitting contracts are public by default.
+Yeah, they don't look like it's secure.
+And then you have to refactor something out of a higher-level function.
+All you have is just public, and it's exposed, so it's poor that way to show a point.
+Yeah, so this is one potential thing I think would be really easy for Ethereum as an ecosystem to make this better,
+is to default all of your functions to private scope.
+Because really, any default in any type of computer system is going to be one that 80 or 90% of people end up using.
+So if you default everything to public, that's probably going to not adjust the security practice.
+The main problem that this results in, though, is that you see there's all these various checks of sequence IDs
+to make sure that we're not reusing the sequence ID, and that we're not going backwards lower than a previously used sequence ID.
+That's the check right there, or lower than.
+What it's missing is it doesn't have a sanity check for the highest possible sequence ID.
+So what we found was that while this is a multi-stake contract,
+at least when you're trying to create a transaction, this particular event only requires a single signer on it.
+Because the original person who's creating the transaction, which is going to be the client,
+in the case of BitGo, is going to be needing to figure out what the sequence ID is
+before they even have a half signed transaction and send it over to us.
+So the problem becomes, now, if any client of BitGo who was using this got compromised
+and the hacker got into their system, they could actually broadcast this event with a max int value of sequence ID.
+And while the hacker would not be able to steal money from the wallet, they have now locked the wallet for all eternity.
+Because you can never create another transaction with a higher sequence ID.
+These checks right here, make sure you can't do that.
+So what we ended up doing was we now have a few extra lines of code right here that say,
+you cannot create or use a sequence ID that is more than 10,000 higher than the most recently used sequence ID.
+And that should be fine for pretty much the foreseeable future, because the maximum integer value is on the incentive.
+You would bring some sand over the beach, add it to the universe, that would be safe.
+So now we have prevented the ability for a single compromised signer to completely lock the wallet for all eternity.
+Question? Sure.
+What is this function supposed to return? What is it supposed to return? Is it new? Where does that come from?
+Yeah, so it should be returning, well, let's see.
+It does say return in a few minutes. Maybe I left something out.
+But I would imagine it should be returning the sequence ID. That should be the new event.
+It gets returned though. Yes.
+So I might have truncated something, but it should definitely be returning the sequence ID.
+And what we have here is now going up a level. This is really more of an IC on a day-to-day basis.
+This is the JSONRPC command for asking for transaction receipts for a specific transaction in Ethereum.
+And so the service that I run is basically pulling these transaction receipts,
+looking at all the logs, looking at the topics of the logs, which are essentially unique fingerprints,
+unique hashes of the contract events.
+And so, you know, is this a hash of an event that might be a big old one?
+If so, let's dig into it, analyze it a little bit deeper, figure out what about something we actually need to update our database with.
+And while it's relatively easy to write the apps in Solidity,
+I found that parsing the events that these apps are uploading is not quite as easy.
+So my first approach, even in the second go-round where we had basically gotten rid of Ethereum for our indexer,
+was I tried to use EthereumJ to parse the contract's API, which is basically the description of the contract of these events.
+And then I wanted to basically use that functionality in EthereumJ to hand it the transaction receipts
+and then have it give me the values that were resulting from it.
+Because if you look at what we're getting back from the JSONRPC, these are the values that are being out-of-order from our contract events,
+which, you know, it's hexadecimal encoded data, which has no meaning really to anyone other than the people who wrote the contract and don't have to parse it.
+Or they have the API, which describes how to parse it.
+But unfortunately, I found that for some reason, and I never really got a clear answer on this,
+whenever the EthereumJ functionality was trying to parse the integer numbers, it just continually mangled them in the scrutiny model.
+So after many frustrating hours of experimenting and trying to get EthereumJ to parse it to work,
+what I actually ended up doing is also sounds really dumb, but I am now parsing the 32 byte word chunks manually.
+And I'm saying, okay, John, by getting the first 32 bytes of this data and then you transform it into a number,
+I guess that number represents this, get the next 32 byte chunk, and that number represents the value that we sent out.
+And it's kind of formulating, it's hard-coded and messy.
+I really would have preferred to use something that was actually ingesting the contract API, but that's the only way that I've gotten it to work so far, which is unfortunate.
+But if it works, it works.
+Additionally, what we found is that it's very easy in Bitcoin to say, okay, the money came from this address.
+You look at the inputs of the transaction and say, okay, these are the addresses that sent the money, these are the addresses that received the money.
+All you have to do is look at the inputs and outputs.
+But in Ethereum, this is actually simpler than Ethereum for standard transactions. A standard transaction in Ethereum has a super big problem, address, and that's that.
+Not really anything interesting to parse.
+However, when you start doing smart contract stuff, it gets really insidious, especially if your contracts are really complex.
+And so the Bingo multi-state contracts have a function called the forward address function.
+And basically what we have at forward is because our various exchanges and other clients, they have who knows how many users that they need to assign a distinct deposit address to.
+And just having one deposit address is going to cause mass confusion for them because they won't know who is sending them the money.
+So we have an event that you can do, which will create a contract address, which you can then assign to the user.
+The user sends to that forward address.
+And then the smart contract says, okay, I received the money from the forward address, and I'm going to actually send it into the main wallet contract address to pool all the money in.
+But now that means you have two different events, if not more, that are getting committed, and you have to start being able to trace the money back to the original transaction that didn't cause it.
+It gets even crazier when you realize that it's possible for attackers to go out on the network and start creating their own versions of the contract that put out similar events that could potentially confuse your service.
+If you're not being really careful about parsing it, you can even have people sending forward addresses to other forward addresses.
+And essentially, we have to spend a lot of time figuring out how to lock that element to make sure that people couldn't confuse our service and make us think that we got a double deposit,
+which is going to be difficult because then, because the money goes into a pooled hot wallet, they might be able to convince an exchange to allow them to double withdraw.
+And that would be no good. We don't want anybody lying on our watch.
+So while I don't really work at the smart contract level itself, I've also been told that actually debugging a smart contract can be pretty tricky because most of the time,
+when our developers go and look at the errors that are coming out on blockchain, they just see something like a bad jump destination.
+And I guess we've seen that as well, where the debugging of the celebrity contracts is like a whole new world.
+And don't ask me for help with that because I will be up there all day.
+So Ethereum has become very popular. And because every blockchain-based system sucks at scaling, when it gets really popular, you end up with a lot of backlogs on the network.
+So Bitcoin has been popular beyond its capacity for a year or two now.
+We have become very well versed in how to deal with that. One of my other responsibilities is actually the de-estimation of algorithms.
+That's a particularly interesting problem we're trying to predict in the future.
+And the backlogs on Ethereum, however, are very new, which means it's a lot more painful because people are having to figure out how to navigate this new environment.
+Now, one of the differences between Bitcoin and Ethereum is that when you have a backlog on Bitcoin, you can do a few different tricks.
+You can change your UTXO selections and not select on confirmed outputs.
+You can start doing stuff like child-age repair to increase the priority of the outstanding transactions that are unconfirmed.
+But on Ethereum, when you're having to do smart contracts that are posting events to the blockchain, now you can potentially get a new type of backlog that can cause your users to actually at least temporarily lose some of their money.
+So one of the biggest problems that we ended up having to deal with early on is that when a user initially created a wallet, that actual creation has to go out onto the network as a contract creation transaction.
+Normally, Ethereum block times are only like 17, 18, 20 seconds, whatever. That's not a big deal. But when you have some ICO going on that is giving you a six-hour backlog on the network if you're not paying really high gas prices,
+then you've now got a uninitialized wallet that's just sitting there for potentially hours.
+And what we found happens is that if you then display the wallet to the user, they immediately start depositing money into it.
+But if they're doing that, then they're actually sending money to an address that, as far as the Ethereum network is concerned, has no smart contract behind it. It's just going into some happiness.
+The Ethereum network isn't parsing that. There is no smart contract that exists to then fire the equivalent events that our service would then say, okay, you just got a deposit or whatever.
+While our contract does have the ability to flush these funds once it finally gets initialized, what happens is that the indexer service, the other low-lying stuff, did not receive any events and did not parse any of those transactions.
+And so you now have an incorrect balance where you have more money in the wallet than our application is actually displaying to you.
+So what we then do is add extra logic that basically prevents the user from being able to even see the deposit addresses until we receive a confirmation that that particular large contract has been confirmed on the blockchain and will now start filling the appropriate events.
+There's also the nonce issues. We have to be a lot more careful about making sure that we're not skipping nonces.
+If you have one transaction that's stuck out there for a really long time, then it may eventually time out and then we don't want to continue trying to create higher and higher losses, fixing the constant that got screwed up.
+And this is actually very similar to Bitcoin in the sense of you can create long chains of unconfirmed transactions that are spinning each other and eventually you get a limit where the Bitcoin network just rejects everything.
+So similar type of headache on both of those values.
+But really it's like the address generation is one of the very different things where with most dumb crypto asset networks where you're generating addresses, you can generate a million addresses very quickly, like in a matter of seconds.
+You do it completely offline. The blockchain doesn't even know about them.
+And if you never use them, that's fine. No network resources get consumed. It's very private operation. It doesn't really cost anything other than a little bit of senior view time.
+However, when you're generating an address with a forward address functionality like I was talking about, you have to put a transaction out there.
+You have to wait for it to get confirmed before you can then allow people to safely do the same thing. And it's not just that this takes time.
+It takes network resources. It takes real money.
+I think the last time I checked, it costs you like a dollar fifty or something to create one of these addresses.
+Whereas in Bitcoin, it literally creates nothing or costs nothing other than a few whole seconds of CPU cycles.
+It also has a similar problem where the user can't send to it or if they send to it, they won't be able to handle the wallet.
+Completely correct. So just another sort of blocking issue where you have to hold the user's hand, prevent them from shooting themselves in the foot because they don't necessarily know that all this additional work is happening in the background.
+And this is kind of a high level recommendation that I would say I've really come to appreciate. And we have a few solid people in here.
+I would say we should definitely review our contracts. And if you find any problems with this, we'll pay you. Because if we don't, and this just goes across the board with computer security in general, especially crypto assets,
+if you're not operating a bug bounty program, you just don't know that you're offering a bug bounty program.
+As soon as you start putting money into these things, you're basically saying I'm making a bet that the security level of my entire application is able to secure this level of value.
+If you get to millions of dollars in value, you start attracting a lot of attention. You start attracting the really smart people out there.
+You might even start attracting the other Ethereum developers who are better at solidity programming than you are.
+So it's better to find those people ahead of time, offer a table of money to look at your code and tell you that you screwed everything up.
+I only talked about a few of the many, many issues that were discovered in our solidity contracts. If you find any others that you think could be used to either lock or take possession of funds, I guess some will,
+shoot me in an email, and I've actually, what I've done is I've used the overtime stamp service to put a hash of all of our audits to our contracts into the Bitcoin blockchain,
+so that I can prove that these are the things that have already been discovered, and if you discover something that's not already in that list, we will most certainly be willing to pay you for that distortion.
+So there's a number of different things, but most of these are general good computer programming, cybersecurity practices.
+A few things simple, the more complexity you add, you might feel like, oh, solidity is such an easy programming language, I could do all this cool functionality, but the more functionality you add, the greater the potential attack surface, the greater the number of potential vulnerabilities,
+where, like I said, someone only has to find one exploit, and then you might lose everything. So, on all things, user test networks, test networks tend to be even crazier than main networks.
+Though, in terms of the pre-issued stuff, the timing issue stuff, actually, the main networks end up being a better test there, you're generally not going to see on transaction backlogs on the various test networks, so it's good to take a little bit of value in testing the main network before you do a full-fledged release.
+And if anyone finds a better way to do this numeric value manipulation, you're probably willing to pay to tell us how to do that too, because it would save us a lot of headache.
+So, if you have any questions, I'm willing to do my best to take them, like I said, I'm not a low-level theory expert, but definitely if it's security-related stuff, or general control stuff, otherwise I'm ready to socialize.
+How do you find a good audit?
+Well, there are, I know we have at least three different audits, and looking, it really comes down to reputation, right? But I would say that every audit that we've had done, it's been, there are people with different perspectives, they've had things that the others didn't find.
+I'm a big fan of the guys that looked us up, they did a very thorough review, and I know we've actually gotten a lot closer to drafts of the audit itself, which hopefully will get released before too long.
+And you know, Sergio Berger also took a look at our stuff, and found one or two things. In general, I think the best auditors are probably the level of Ethereum developers and stability programmers.
+You're probably not going to be able to get Vitality out of your code, but I know the Micat hacker group will also be interesting. If we could somehow get them to offer audit services, I would really like to see that.
+I've tried feeling around through the community to see if I can get it out to them, but that would be something that I would be interested in seeing.
+When you are developing an algorithm, how do you kind of foresee these kinds of education specialities? It's not due to bugs in the code, but just scenarios that you didn't foresee, and now your code's out there, how do you catch it, how do you think about, oh gee, this is the next thing?
+Yeah, so I think that there is a concept of versioning built into our particular Ethereum smart contract. I will say it has a safe mode feature.
+People have been writing more and more solidity in the apps and storing and protecting more and more value, especially over the past year and a half, two years.
+A number of best practices have come out of that. One of the things, I think, is to not use the call function, for example. Another thing is, of course, the scoping.
+But from a more general standpoint, coding defensively and giving your smart contract an out, a way to stop executing everything except one safely known code path, has become one of the more important things.
+So the Neko smart contract has a safe mode where I think basically all you have to do is have one side transaction that executes the safe event, and what that does is it locks out every function on the smart contract except withdrawal to an address of one of the owners of the contract.
+So that's kind of the, you know, mash the red button if something is going terribly wrong, that type of thing. I really think every smart contract needs to have some sort of record, if you will, just a way to safely stop operating in case of those unforeseen scenarios.
+Then, at least at that point, the only thing that you're still vulnerable to, I guess, would be a really, really low-level Selenium bug that worked, a confirmation that hasn't been deployed in your Selenium, at which point you're talking more of a, like, we're upgrading the whole theory Neko system.
+Okay.
+Yeah.
+Also, and I'm not a big expert on the gas pricing mechanisms, but sort of like, each of these blockchain networks has to have different ways to essentially protect itself from denial of service attacks.
+And that can be, of course, any number of things, but the specific denial of service attack here that we're worried about is just transaction spam. We don't want someone to just be able to fill out all of the data like block space available on a network and not pay anything to do it.
+So, in Bitcoin, you have transaction keys, and they compete with each other in a sort of free-floating fuel market to get, you know, hot priority confirmation from the miners. And in Ethereum, you're paying gas, which is going to be related to the various computational steps that you're executing.
+And so, when someone fires that create forward address event, that has to do a certain number of units of computation, and those get priced a certain way, and the gas itself is set in the protocol, but then the price of the gas is kind of its own fee market.
+And so, the more and more people are buying to get their transactions confirmed in Ethereum, they're then going to be competing on what the price of the gas is that they're willing to pay.
+And I know, like, we haven't done a whole lot of key estimation work yet for Ethereum that's probably, you know, going to become an eventual thing that we also have to deal with. These days, I think we're just trying to set fairly competitive fees because we want, due to all the reasons I've
+just gone through, we want these events and these contracts to get confirmed as quickly as possible so that they're then usable by the people that make deposits and start doing other things.
+So, generally, like, the question is, like, what is the cost to get to ram through all the current network congestion to get yourself near the top of the line so that you get confirmed and then block it?
+You mentioned that the amount of pay would be the most significant. Did you get it after the goal of seeing this?
+The gas implementation?
+Yeah. And so, you know, GAT, I think, is the gold standard for the nodes. On the last subject, I think 80% or so of Ethereum nodes were running GAT.
+And I think it's stable and it's pretty good, but from just the chatter that I've been hearing in various, like, slacks and communications channels for Ethereum developers and services that are running Ethereum, especially when all the transaction network backlog happens,
+I've been hearing a lot more complaints from people about their death nodes becoming really slow, crashing in some occasions, usually, like, flooding out with random type situations.
+I mean, I think it would be fine in general. Most of the problems that I've heard of seem to be related to the SYN queue in GAT, where if you are a high transaction quality service and you're sending tens of thousands of transactions a day
+and they all get backed up in your local gas queue, I think you can have some problems there. But we have not yet ramped up anywhere near that volume.
+So, I can't say for certain that the narrative doesn't also have significant problems, but so far so good. I think we only really have a few customers that have deployed their theory blocks.
+But stay tuned. I mean, this is a fast-moving, exciting space, especially in Ethereum, where we're really pushing the envelope pretty often, breaking stuff, fixing it, breaking and fixing it.
+There are a number of service providers, especially the ones who have to deal with various ICO stuff, who have been under a lot of workload, both physically, mentally, and emotionally over the past six months or so.
+Yeah, I was wondering why you chose Mongo for your testing business. Mostly legacy. The same reason is why a lot of startups, they start off with the mean stack, because it's easy to get off-the-rack.
+But really, we found over the years that even while I think a lot of developers might laugh at the idea of having production-quality JavaScript, it's actually possible.
+You just have to have really, really good testing, full test coverage. The performance has been scalable for our needs.
+Mongo has scaled well for our needs, especially the indexer stuff, and with the account-based theory of indexing, where we're not putting the entire blockchain into Mongo, it's become really, really well.
+We are kind of pushing some of the limits of single-instance Mongos with Bitcoin, and it's more full-watching, where we're putting every single transaction into it. But we also have some of the sharded Mongo clusters that are looked at, and those have become really well.
+I think Mongo actually has a bad rap, because it was really crappy for a number of years. But three or four years ago, I think they actually fixed the vast majority of their issues.
+As of the 3.0 and especially 2.2 releases, they completely re-architected the low-level database function, and the WiredTiger stuff was lazy fast.
+I want to corner on my Mac-produced jobs across Mongo, but for small to medium workloads, it's good. Like I said before, I was doing more big data computing.
+I was using HBase and raw HEFS stuff. We were doing 100, 10-byte type analytics jobs. That would definitely be the way to go. If we ever have a blockchain that big, we'll definitely have to look into better horizontal scaling like that.
+First, a couple quick questions. Can I understand two-factor authentication as one kind of multi-sector?
+It could be. Two-factor authentication is something that we require pretty much any sensitive operation, but we consider that as separate from multi-sector. We see it more as authenticating that you can now do one signature.
+Just make it harder for an attacker to be able to do the one signature and then request us to co-sign. Another thing is one of the things we can't solve in terms of reflections, like the last one is phishing.
+Long exchanges remind people to avoid this type of thing. Is two-factor authentication actually solving phishing problems?
+Not really. Two-factor authentication will solve a number of issues of, say, if an attacker somehow gets your password, or if the attacker cracks your email account and manages to reset your password.
+It's bringing it back into the realm of physical security, especially if you're using a hardware 2FA. Yeah, a cyber attacker out there can screw around with my accounts and try to get into them.
+But if I physically get my unikey or my phone or my time-based one-time password generator, then they're still not going to be able to get in. We're just authenticating that you are you more than it is doing anything of the multi-sector problem.
+So basically the 2FA is more related to the physical security part, right? Yeah, so you can still get phished in malware, so users will get tricked.
+We've still seen accounts of users who log in and put in their 2FA, and then either they send the money to a measuring scanner, or in really crappy cases, there is a type of Windows malware that will actively listen for your copy-paste buffer.
+And if it sees a crypto address in your copy-paste buffer, it'll switch that out on you. So you then paste in the attacker's address, send to them, and you don't notice until the original counterparty says, hey, where's my money?
+Now, we've actually been able to have a little bit of success against that particular problem, and what we've done there is we have analyzed the malware that does the copy-paste buffer switcheroo, and we extracted all of their addresses, and we put that into our own crypto policy that says, oh, you're trying to send it to one of these addresses?
+You might have gotten hacked, so we're going to stop you from sending that and alert you that you've got an issue you're probably dealing with.
+And I think we've, last I checked, we haven't run the analytics on it, but we've saved tens of thousands of dollars worth of crypto assets from being sent to those malware companies.
+Thank you.
+All right. Was there somebody in the back that I missed?
+Everybody's happy? All right. Go ahead and show them.
+Thanks, Jameson.
+So one quick announcement. We are working on a workshop where you can learn some of the different regulations and compliance issues around blotching an ICO, and we're going to help you implement a token.
+So if you're interested in that, join the decentralized process side, and we'll be closing more programs. Besides that, we're going to be editing data lists, I think it's called.
+It's a bar right around the corner.
+All right.
+All right.
+All right.
+All right.
+All right.
+All right.
+All right.
+All right.
+All right.
+All right.
+All right.
+Yeah.
+All right.
+All right.
+All right.

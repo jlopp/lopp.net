@@ -1,0 +1,284 @@
+Hi everybody. So this is a panel on preventing attacks on Bitcoin and we have a nice group
+of people here with us. Luke Jr., the infamous core dev, Brian Bishop, the former CTO of
+the bank, as he calls it, and Jameson Lopp from CASA.
+The real Peter Todd.
+No, okay, okay. We'll stick with Peter Todd. Infamous troll. So I guess, you know, to start,
+we're going to talk a little bit about the development process of Bitcoin core, obviously
+as the foundation keeping all of this running and working. There is potential for shenanigans
+there and arguably past examples with things like Gavin Andreessen, Mike Kern, and the
+whole Bitcoin XT block size wars that culminated in 2017. So I guess to start, I guess go this
+way and what are each of your thoughts on a way where you could see somebody involved
+in the development process kind of trying to pull a fast one and, you know, make things
+go wrong?
+We saw it last year when the Bitcoin community had decided to go with BitBake to deploy TapRoot
+and then some developers decided, no, we're going to do a speedy trial instead and basically
+ignore what the community had come to consensus on.
+So if that wasn't clearly audible to anybody, you're talking about the speedy trial deployment
+with TapRoot last year and the complete refusal to consider BIP aid in the deployment?
+So kind of like arguably developers stepping away from community consensus arguably and
+kind of doing their own thing in defiance of that?
+Brian, what's your best brainstorm on how to kill Bitcoin?
+Well in the development process specifically, I'm quite interested in deterministic builds
+and build signing and things like that. I think that's a really interesting area for
+preventing some attacks on Bitcoin, certainly not all, but essentially the idea is that
+if you are a user of Bitcoin, you have to download the Bitcoin software somewhere.
+How do you verify that you're actually getting the real Bitcoin software?
+How do you verify that this is the one that everyone else is using?
+If you just download something from the first ad you see on Google, you might be getting
+something quite different from what everyone else is getting.
+So with both deterministic builds and also build signing, and specifically it's multi-party
+build signing, you're able to verify through techniques such as Web of Trust and others
+whether the code you are running is actually the one that you think you are running.
+I think that's a really interesting method. If you don't do that, there are all sorts
+of interesting attacks that can be done against you.
+For example, you travel to a country, not the United States, you have a hotel, you have
+Wi-Fi, and you're downloading Bitcoin software.
+Well, if you are not using HTTPS, if you are not verifying hashes and signatures on the
+binaries that you're downloading, it is possible for attackers to intercept your connection
+and replace it with a version of Bitcoin that maybe steals your coins or does other nefarious
+things such as spy on you or something less drastic than stealing your coins, which are
+still problems.
+So that's one of the attacks I find on the development process particularly interesting.
+Yeah, and the whole point of deterministic builds is just you have each developer independently
+build from the source code what they assert is the latest build, and everybody just cross-compares
+that and signs it so that you have all the independent machines used to build that software
+cross-compare.
+And if anybody has a result that deviates or something, it's not just trusting one
+source or claim to something.
+The fun part about that is knocking out areas of non-determinism in your build process because
+if you have something that changes based off of the environment that you're building on,
+for example, a different operating system or something, then the binary that you're
+going to generate at the end of the build process is going to be different.
+So you need to eliminate all the sources of variability in the build environment.
+Peter Todd, how would you kill Bitcoin?
+Well, I'll tell you how I'd kill Bitcoin.
+I'm so discontent throughout the community, throughout the GitHub repositories.
+I would be so angry about every little thing that I would make people afraid to suggest
+even the slightest change.
+And then we would have to ossify, and we could no longer upgrade any of the protocols.
+So it would take a very long time, but Bitcoin would not be able to improve anymore.
+And therefore, it would become stagnant, and people would move on.
+Ossification, good or bad.
+But that's defending Bitcoin.
+That's not attacking Bitcoin, Peter, that's defending it.
+No.
+That is why it's the perfect attack, is because many people consider it to be a defense.
+That kind of ties into Luke's concerns with Speedy Trial last year with the entire Tap
+Read activation.
+How do you really ascertain in a situation where you have dissents, disagreement, and
+confrontation in the development process?
+The difference between an attack on Bitcoin and just legitimate disagreement.
+Where do you draw that line?
+How do you assess that?
+And more importantly, how do you react to that?
+If you can't really ascertain whether something is an intentionally malicious action, then
+you're kind of stuck in a rock and a hard place.
+You engage in good faith and try to settle something that could be a dispute, or in your
+reaction, maybe actually inadvertently become the attacker yourself.
+Can you steel man why you're saying Speedy Trial was an attack for Luke?
+Well, I mean, Luke, if you want to take that one, I'm just supposed to be moderating.
+For the first part, it gives miners the ability to veto a software, which has presumably already
+come to consensus within the community.
+And secondly, the community had already decided to move forward with Taproot with a 58 deployment.
+And the developers who were pushing Speedy Trial decided to essentially disregard what
+the community had already determined and come to consensus on and just go forward with something
+else without even getting the community buying it.
+That's right.
+We didn't actually start with a debate for Taproot, did we?
+No.
+No, I mean, that's the entire process was really just arguing over activation once everything
+was finalized and nobody could agree.
+And I mean, you know, to kind of throw the idea out here and how to mitigate that, if
+you view something like Speedy Trial as an attack, the potential for user-activated soft
+works and the viability of actually coordinating that and hitting enough of a level of adoption
+that that's actually going to affect something.
+It's not just going to be a few people in the corner that everyone ignores.
+What are your guys' thoughts on that going forward versus what happened in 2017?
+Well, I mean, from your perspective, does an attack require malicious intent?
+Because I think in hindsight, you can certainly say that certain things were attacks on various
+principles that most of us hold dear when it comes to Bitcoin.
+But really, the problem was that just some of those attackers simply didn't hold those
+same principles.
+Well, I mean, that's a sticky question.
+Look at Gavin Andresen.
+I mean, was he an intentionally malicious actor or just had a very different idea of
+where Bitcoin should go?
+Well, has he disavowed the signature that he claimed was real?
+Has that happened or not?
+I'm actually not sure.
+A lot of people just kind of quietly stopped mentioning that and didn't really come out
+and say they were wrong.
+Well, that was an interesting attack.
+And if you take the story at face value, the attack here was someone said that, hey, I
+can produce the signature for a certain key, and I'm going to prove it to you.
+And we're going to go to the store first and buy some hardware, and we're going to pick
+out a box on the shelf, and you're going to help there.
+Actually, I think part of the attack was that he was not there.
+It was just, hey, here's a new box of a new computer, a new laptop, and we're going to
+put in some software to do signature verification, and this is going to prove that I am in control
+of this key.
+Now, apparently, what happened was there was software that was installed on the laptop
+that actually, I believe it had a bug, a very subtle bug that when you look at the code
+and you're glancing at it, you're like, yeah, this is signature verification.
+But anyway, because of the way the bug in this code worked, the signature verification
+was always going to say, yes, it is about signature.
+And so that was a very interesting attack, and we haven't heard much since from that
+particular individual.
+Yeah, I mean, I do believe that Thomas from Electrum actually checked the download bugs
+from his server and found no downloads of genuine Electrum software when Craig supposedly
+showed the signature to Gavin.
+Interesting.
+I didn't know he kept logs.
+Good to know.
+Yeah.
+But I don't know, I think from a class of attack standpoint, it seems like social slash
+mimetic slash narrative have much greater potential, or at the very least, it's more
+difficult for me to reason about how to defend against them.
+It's a much bigger gray area, whereas we can talk about all types of technical attacks,
+and usually the defenses against various technical attacks are very logical and straightforward,
+but this much more fuzzy social attack vector is something you just sort of have to deal
+with as it comes.
+I was recently in Austin, Texas, going to some Bitcoin conferences related to South
+by and everything, and I have to say, I was really impressed by the number of new developers
+that I met there that introduced themselves to me as anonymous developers.
+They gave me their pseudonym, and I asked them, oh, do you just use that?
+And they said, yeah, and the reason for that is as a Bitcoin developer, maybe that's the
+optimal strategy.
+If people don't really know who you are and maybe you don't even attend conferences, maybe
+that helps protect you, maybe that helps protect Bitcoin.
+Yeah.
+That is something I hope to see a lot more of going forward.
+I mean, I know you wanted to kind of touch on this, but the insane litigation from people
+like Craig Wright, directed at a bunch of core developers, and the legal defense fund
+that Jack graciously set up recently, that is without some kind of mechanism to finance
+legal defense against things like that, that could very easily just burn out and push developers
+out of this space, because are you going to want to be here and contribute to Bitcoin
+if you just have to burn money constantly to defend yourself against ridiculous litigation?
+That's an interesting point, because I think the litigation against COBRA shows that even
+being anonymous is not necessarily protection against a legal attack.
+Well, I suppose COBRA could have stayed out of the whole thing, never touched any of the
+court orders or hearings or whatever, but at some point, I guess because they're operating
+a website, that is a property that could be seized or otherwise confiscated.
+There's a name tied to it somewhere in the registrar, even if it's not public.
+That is a huge way that I think you could slowly erode Bitcoin's ability to deal with
+the shortcomings that it has, like actually solve problems like privacy scalability if
+developers don't want to work on it because you have to worry about the crazy egomaniac
+just throwing millions of dollars at you in court, that's by a thousand cuts.
+That's partly the conundrum, which is Bitcoin.org is someone's property, and it's where people
+go to learn about Bitcoin, but at the same time though, maybe there shouldn't be a single
+place called Bitcoin.org where people can go learn about Bitcoin.
+But when you do that, the conundrum is suddenly there's all this room for fraudsters to attack
+people by saying, no, my website's the main Bitcoin one.
+Maybe I call it Bitcoin.com, for example.
+All I know is Bitcoin.page is the one and only official Bitcoin website.
+Is that yours?
+Could be anybody's.
+I mean, all of this just keeps slowly sliding in the direction of the social mimetic attack.
+Let's wild card this and just shake things up.
+I'm gonna ask you guys a question and hear your thoughts on whether or not this constitutes
+an attack, and if it does, how do you think it should be dealt with?
+This growing narrative over maybe the last two, three years of Bitcoin isn't money.
+It's not competing with the dollar.
+It's just a financial asset or a collateral, and that's how people should look at it instead
+of looking at it as money.
+Is pushing a narrative like that an attack on Bitcoin?
+Trying to just push and brainwash people into not directly using it as a native value transfer
+network and trying to just keep framing this narrative and get people thinking, no, no,
+you just park this somewhere with a custodian and get a loan against it in dollars, or don't
+think about competing directly as a money or a payment rail.
+Just think of it purely as number go up and that's it.
+Is that an attack?
+I don't think I would classify it as an attack.
+Even if you look at Bitcoin as money, that's just how these people are deciding to use
+or not use their money.
+Yeah.
+I think it makes more sense if you're positive rather than negative about the narratives.
+If you want yield generating asset or whatever and that's your use case, then go for it.
+But if you start being negative and you're saying, no, you can't use it as a currency
+or as a money or whatever, the rest of the users on the network who do want that are
+just going to ignore you or perhaps swarm upon you on Twitter depending on if you're
+in the small minority.
+This is, I guess, the mimetic warfare and why social media can be a very negative place
+to hang out if you're trying to push views that are controversial, and they're going
+to be controversial if you're trying to tell people how they should be using Bitcoin.
+So I won't answer your question, but I would say that Bitcoin has a very impressive social
+immune system that has been developed, and if you try to coerce Bitcoiners, try to change
+the protocol unilaterally, the immune system will spit you out and reject you, and that's
+just a really fascinating social phenomenon.
+It's just really interesting to see that in process.
+It might actually be one of Bitcoin's great assets really is this layer, this immune system
+of people that defend Bitcoin voluntarily, and they're not coordinated at all.
+And it's all people who believe in Bitcoin.
+Is it an attack on Bitcoin to donate $5 million to Greenpeace with stipulations of exactly
+how it must be spent in performing a social narrative?
+Yes, I would say so.
+That's actually, if you want to get into that real quick, the last couple minutes, I see
+the potential for that very quickly to spiral into government lobbying, legal bills, regulations,
+and that kind of gets into a sticky territory of mining isn't just a couple GPUs on a rack
+somewhere or a laptop.
+If jurisdictions really just start dominoing and say the West and enforcing heavy regulation
+or attempting to outright ban mining, it's not that simple to just take that off grid
+and disappear, to do that in secret.
+I think it was a Chinese group of researchers, but I actually saw a paper last year.
+We're just looking at the modulation along the power lines from the grid to your house.
+They can see that you're running an ASIC just based on the unique signature of that over
+the wire.
+So how would we react in that type of situation?
+I mean, does anyone up here on stage actually think we could pull off a proof of work change,
+get consensus on that?
+If the situation was dire enough, I think we could do a proof of work change.
+If the whole chain is halted, if there's some sort of catastrophe, if SHA-256 is broken,
+I think we could come together to figure out a solution, but it's hard, and it's very
+unlikely that that would happen.
+I mean, you have the problem of even if we wind up with consensus that something's wrong
+with SHA-256, then what do we replace it with?
+That's the whole next can of worms.
+Obviously a quantum proof algorithm that will make everybody happy.
+There's going to be challenges over the long term.
+I'm sure there will be some insane attacks or just weaknesses that become uncovered over
+the decades.
+I was joking about the quantum computing stuff, but it is likely that at some point in the
+far future we will have to have discussions around what to do with the really, really
+early pay-to-pub-key coins, and whether or not they should be somehow protected, or whether
+we should just consider it to be a new form of mining if people start to be able to crack
+them.
+It's an interesting long-term issue.
+I might also note that it's not just the very old pay-to-pub-key coins anymore, all of the
+captured coins are also similarly affected.
+Honestly, I don't think that should be looked at any differently than an exchange hack.
+If somebody gets those coins and they're able to confirm them in a block, that's really
+a fundamental quality of Bitcoin to go tinkering with just because of being nervous that these
+many coins were just acquired by some nefarious actor.
+That's fine.
+I think when they start publishing their rap videos about how gangster they are, seriously,
+check them out.
+They're awesome.
+That's why it's relevant that it also affects Tapered coins, is that this could potentially
+be nearly all the coins on Bitcoin at some point.
+Back during the discussion on Tapered design, I was very hesitant when that first got pitched
+just the raw pub key, but the reality is when you look at on-chain address reuse and then
+also think about the fact that any kind of light wallet, even if you have a wallet you're
+connecting to your own full node, there's still some network communication that could
+get played with that's just passing the master pub key back and forth in most wallets cases.
+In some way or another, most coins already do have their public key exposed, either through
+address reuse or just the balance fetching mechanism on the back end.
+It's fundamentally different from an exchange hack where it's just a minority of coins.
+If you still have your coins in a raw pub key output from 2009, 2010, and you're not
+moving them at some point, those coins are lost.
+Those people don't have the keys anymore.
+Possibly, though you never know what assumptions you may make.
+Kind of going back to classes of attacks on Bitcoin and related to this, is it an attack
+on Bitcoin if you build a wallet that intentionally does not follow good practices?
+There are still wallets out there that are only one single address.
+They won't even do deterministic address generations, and thus all the money keeps coming in and
+out of the same address, thus exposing the users to this issue.
+I would say yeah.
+Well, it's definitely an attack on Bitcoin users.
+Yeah.
+But didn't we decide backstage though, attacking Bitcoin users is attacking Bitcoin?
+All right, so I guess we're down to the last 20 seconds.
+Anybody have some smart ass comments?
+Your one trick to guarantee Bitcoin's invincibility?
+Bitcoin is the greatest bug bounty program of all time.
+Good luck.
+Thank you, everyone!

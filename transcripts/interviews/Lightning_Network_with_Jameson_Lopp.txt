@@ -1,0 +1,532 @@
+Okay, guys, we're live. This is the Future Gravy Channel with Rod Rojas, and our guest
+today is Jameson Lopp. He's the infrastructure team lead at Bitgo. Can you tell us a little
+bit more about yourself, Jameson?
+Sure. So I've been interested in Bitcoin and crypto assets for a number of years and
+have been fortunate enough to be doing it full time for about two and a half years now,
+and run a variety of meetup groups and online discussion groups and have been doing a little
+bit of dabbling in open source, have a few projects in this space. The first one that
+I really got up and running was Toshii, which is a fork of Bitcoin core and is basically
+just providing a lot of metrics to give you some insight into what's actually happening
+inside of a Bitcoin node on the network.
+Excellent. Is there a GitHub repository that you would like to plug or invite people to
+check out?
+Also, you can see the main dashboards at statoshi.info. It's S-T-A-S-I. Let's see. It's just Satoshi
+with an extra T. So it's like statoshi.info.
+Okay, awesome. Awesome. So today we're going to be talking about the Lightning Network.
+Could you give us a rundown of what the Lightning Network is?
+So basically a second layer network where we're trying to use some of the base level
+functionality of Bitcoin itself to then create ways of doing faster and higher speed, higher
+transaction volume interactions or transactions on this new network.
+So Bitcoin itself is fairly slow. It can take anywhere from minutes to hours to actually
+get a transaction that is confirmed to the point that you're sure that it's not going
+to be reversed. And that makes it hard to do a lot of things like internet of things,
+micro payments, and even just like brick and mortar retail transactions, accepting unconfirmed
+transactions carries a whole set of new risks.
+And so these second layer networks kind of provide additional cryptographic guarantees
+that allow you to accept instant transactions. And then they also provide some new levels
+of scalability regarding transaction volume simply because instead of doing a broadcast
+to the entire world of your transaction, you're only really sending the transaction information
+through a minimal set of network participants. So it's actually very much like the architecture
+of the internet itself, where the internet is generally considered to be comprised of
+this like seven layer stack of different hardware and software technologies. And at the very,
+very low level, it's doing broadcast all broadcasting data to everyone on your local network. But
+if you were trying to scale that up to the internet, as we know it today, that would
+never work. The reason that the internet as we know it today works is because we have
+lots of routing technologies that allow the data that you are sending and receiving to
+only go through a small set of other network participants.
+Interesting. So a lot of people are scared of the off chain part of the lightning network.
+But what you're saying is that actually we may be improving the security of the transactions
+by making them instant and not depending on confirmations. Is that what you're saying?
+Yes. So the people are scared of anything that's new and they tend to be scared of additional
+complexities and actually talking about the low level architecture of lightning network
+technology is even more difficult than talking about Bitcoin because it is based upon Bitcoin.
+And now you have an additional set of game theory and cryptography that gets added on
+top of that. So in a sense, you still have the same base security that the Bitcoin blockchain
+itself gives you. But you are using some additional locking and game theoretic transaction ability
+to then create these off chain transactions. And so you're essentially creating data and
+swapping data with people in a very real time and low latency fashion. But the data that
+you're swapping back and forth is all valid like Bitcoin on chain transaction data. It's
+just instead of broadcasting it out on the main Bitcoin network and putting it into the
+blockchain, you're only sending it back and forth between a few people that really care
+about it. Sounds great. So basically you're taking a regular Bitcoin transaction and making
+it do more things in between before it gets confirmed at the end.
+Yeah. And so we can still harness the same security of Bitcoin itself. We're not losing
+anything that you would normally have from doing traditional on chain payments. We're
+just adding additional functionality that gives us some better speed and better scale.
+Is it decentralized?
+And that's a loaded question because there is no black and white way to describe centralized
+versus decentralized. It's always this matter of a spectrum. And then people will argue
+about whether it's on one end of the spectrum or the other. And it is especially hard to
+argue about this type of stuff considering that the Lightning Network doesn't actually
+exist yet. So you're basically speculating. And the speculation that I basically settled
+on after doing a lot of research and ended up writing an article on CoinDesk a year or
+so ago was that it seems like the most likely topographical shape of a Lightning Network
+is going to be something that's called scale-free. And this means that it will have both centralized
+and decentralized aspects. And so yes, there likely will be some well-connected, well-capitalized
+nodes on the Lightning Network that have lots of channels coming into them. And they are
+handling a large amount of traffic. But that will be like this tight cluster in the middle
+of the more well-connected part of the network. And then you'll see this mesh expanding out
+from that of slightly less well-connected nodes. And then at the very edges of it will
+just be single participants here and there that are only connecting at one or two places
+into the network. So I think it will be both centralized and decentralized depending upon
+how you're looking at it. And of course, we want it to be as decentralized as possible
+just to make it more robust against different types of failures.
+If I made a comparison to our viewers, let me know if you think that would be a good
+comparison. Could it be said like, for example, email where you have a few participants that
+are very dominant like Google and Hotmail and so on. But at any time you can roll up
+your own email server. You can choose to patronize a privacy-centric email. You have all those
+options but you still have market dominance. Yes, that's I think a very good metaphor is
+probably going to look something like that. Okay, awesome. And so there's no possibility
+that we know of a monopoly of somebody just taking over the entire thing. I mean, you
+can always roll up your own hub, your own Lightning Network node. Nobody can prevent
+you from doing so, right? Yeah, I mean, it would be very hard to maintain
+a monopoly on a permissionless network where anyone else can join the network and compete.
+And so basically, I think the reason why someone would of course want a monopoly is so that
+they can then control the fees and control the flows of data and money on the network.
+And as soon as someone got to the point that they were able to raise the fees, then that's
+going to create an environment where competition can come in and undercut. And so I think there
+will be a natural free market equilibrium there. There are going to be costs to running
+a Lightning Network node that is routing money. You are going to be putting capital at risk.
+It's going to be online and potentially hackable. And then the potential payoffs is that you
+will be able to collect tiny transaction fees that should add up over time if you're able
+to do high transaction volumes. I'll touch on that later, but on the node
+running and why you need to have Bitcoins in order to run a hub and so on. But for now,
+how high a volume of transactions can we have on the Lightning Network? I mean, are there
+limits? So it also depends on what you are considering
+a transaction. So within the context of a single payment channel, you can update the
+state of single payment channel and you're basically only going to be limited by the
+latency of your network connection between those two participants. So you could theoretically
+be updating the payment channel every few milliseconds if you want to look at a sort
+of naive way of saying this is the theoretical limit of transaction volume.
+On the other hand, there will be limitations in terms of liquidity. There may be times
+at which you want to send so much value that you may not be able to find a route through
+the network. That's going to be one of the challenges to building out this network. And
+there are especially at the beginning, right? Oh, yeah. And you know, at the beginning,
+most of the payment channels, I think, are going to be very small in value simply because
+we don't want anybody to risk too much money while it's still in an experimental phase.
+But then on the other hand, if you're looking at more of a macro view of the network, the
+payment channels are not necessarily going to be able to be sustained forever because
+the act of taking fees when you're routing payments kind of degrades the payment channel
+and that fee that you're taking is no longer available for being routed around the network.
+So, you know, eventually payment channels will be closed out, on chain transaction will
+be created, but then they may be immediately reopened as well if that person just wants
+to reinvest their profits back into routing more liquidity around the network.
+When you're talking about losing money, you're talking about the Lightning Network node operators,
+right? Not the actual consumer. Right, right. So, you know, as the node operator
+is taking fees while they're routing the payments, my understanding is that those fees
+cannot then be routed on. They're basically holding them on to their end of the payment
+channel and eventually will have to close and reopen the channel.
+I see. Great. How low is the cost of transactions expected to be? Has anybody made any calculations?
+So the kind of crazy thing from the research that I did and just talking to the Lightning
+developers is that there's actually going to be a range of fees and in some cases they
+actually may be negative fees. So, suffice to say that I think in general they're going
+to be extremely low. You know, whether that means it's just like a few satoshis or, you
+know, 100 satoshis, I think that one of the differences that you will see right off the
+bat is that the fees will probably not be based on the same type of mechanism that we
+see in Bitcoin where a Bitcoin transaction fee, you're basically bidding for policies.
+Like that's the limited resource. So you end up paying fees that are related to the data
+size of your transaction. That's not really the case on Lightning Network. There is no
+scarce space other than I guess bandwidth, but the bandwidth use is going to be negligible.
+So the fees are probably either... Sorry, Jimson. I think we dropped a few packets there and
+we lost you. Okay. So suffice to say that the fee situation is going to be different
+from what you see in Bitcoin. They're probably either going to be flat fees of like so many
+satoshis for doing a single channel update or maybe, you know, really, really, really
+low percentage of value fees. But like I said with the negative fee situation, if there
+are cases where payment channels are incredibly unbalanced, then it would make sense for a
+node operator to actually offer a negative fee if you are able to rebalance the channel
+because you will be saving the node operator money by preventing them from having to do
+the on-chain transaction, which is going to have a much higher fee. So basically an unbalanced
+node would be a node that is only sending transactions in one direction as opposed to
+having bi-directional activity. Is that right? Yeah. You know, wherever they've had a lot
+more activity in one direction on the channels than the other. Right. So basically you would
+have a monetary imbalance towards one side that would force you to eventually settle
+the transaction on-chain, which is the expensive part, right? Yeah. And to avoid this settlement
+and to keep that channel running, sometimes the node operators might be incentivized to
+give out free transactions or negative transactions, negative transaction fees in order to even
+out the other side of their channel. Exactly. And that's assuming that they don't have other
+channels open where they could rebalance themselves. It gets the potential operations theory gets
+pretty complicated, but there could also be cases where if you have a very well-connected
+node with lots of channels, then you might just be sending out of one and putting it
+back into another, basically routing around back into yourself. I see. And people are
+concerned that there won't be enough on-chain fees for miners. Is that a reasonable concern?
+So I think the concerns here are overblown for a few reasons. One of which is that miners
+are actually some of the most well-capitalized people in the industry. And if for some reason
+miners were no longer able to make a lot of money by mining blocks, which I highly doubt,
+they could always take some of the bitcoins that they have accrued and actually use them
+to start running lightning nodes and making more money by competing on the lightning network.
+But apart from that, the major things are that, like we said, payment channels cannot
+stay open indefinitely. So they will have to close them out, which means they will have
+to make on-chain transactions and they will have to pay fees for those on-chain transactions.
+Then the speculation basically comes down to how does that fee situation work? And I
+think that it'll basically be like a trickle-down type of effect. So if we think about this
+network, what would happen if lightning network really becomes extremely popular? Then from
+a user point of view, if the lightning network allows you to reduce your on-chain transactions
+by a factor of X, say like 100, then it makes economic sense for a user to be willing to
+pay any fee that is less than the average on-chain transaction fee times X minus the
+average lightning transaction fee times X. So as a result, I think you'll see that within
+that differential that with a popular network, the on-chain transaction fees could actually
+go up significantly. Because if you're saving 100 times of your fees by doing all the stuff
+on the lightning network, then you would be more than happy to pay 2X or 3X multiple times
+more in on-chain transaction fees than you were before the lightning network even existed.
+Because you can do so much more on lightning that it would be worth it.
+Yeah. So essentially, it's lightning network creating a lot of utility, creating a lot
+of value. And as a result, the base layer, the blockchain also becomes more valuable.
+So I think it's a win-win situation for everybody.
+And ultimately, miners can refuse to put a transaction into a block if it doesn't have
+a fee. Am I right? So there could be a competition there.
+Oh, yeah. I mean, miners can always choose any number of attributes of what type of transactions
+they want to put into blocks.
+Another concern of people is they think, do I have to open a channel with everybody, with
+my friends or things like that? I think people have not really understood the routing system,
+how things will hop, how transactions will hop. Can you explain a little bit?
+So I think you'll probably see the average wallet under the hood. It should be doing
+this without the user needing to worry about it. But I would expect the average wallet
+will probably open three or four payment channels. That should be plenty. Once you get connected
+to different parts of the network mesh, you would then be able to find paths with sufficient
+liquidity to be able to route your money around. You definitely don't have to connect to the
+entire network or even 100 people. It's really going to come down to what the distribution
+of the liquidity around the network looks like.
+And it is conceivable that you could just connect to one very well-connected hub and
+that's it, right?
+Yeah. And the main reasons that you would want to avoid that are just for redundancy.
+Because you can never be sure that any of those nodes out there are going to remain
+online indefinitely. I think over time, various nodes will basically gain reputations for
+how reliable they are. But at least at first, you should basically assume that the other
+end of that payment channel might disappear. So you'll want to have multiple different
+liquidity paths that you can use.
+And what you said just now, I think is very important. So the user will probably not even
+know that this is happening. So could we expect that a Lightning wallet will look just like
+a regular wallet where you just send and nothing else?
+Definitely. I think that's one of the main goals that all of us who are working on software
+in this space should be going for is the security aspects first and then second, the usability
+aspects where you want to push as much of the details and complexity under the hood
+as possible. Just provide a nice clean interface so that people can push a button and have
+things work.
+Awesome. And the transactions would be instant.
+That's right.
+Excellent. Give me just a second. What does it mean that the payments are atomic?
+So when you're doing an update of a channel, basically you're creating your new Bitcoin.
+It is a Bitcoin transaction, which you are then using what's called the hash time lock
+contract, basically encrypting this data that you're sending, sending it only along a simple
+path between you and your final destination counterparty, which then receives that data
+and then sends message back along that path all the way to you that is proving that they
+did receive your data and your money. This entire process is able to happen in a matter
+of milliseconds, basically based upon the network latency.
+Once your message has gone all the way and come back, then both of the parties now have
+new updated states of their payment channel at the same time. That's really the atomic
+aspect of it, where you're both updating your payment channel space.
+That has to do with the latency of the network. That's what it is. Thank you. Can users lose
+their money? Do they have to trust the node operators?
+So the way that it's set up is that the intermediaries that are routing the money cannot actually
+take it. The routed hash time like contract has to go all the way from the initial creator
+to the recipient, and then the initial creator gets kind of the acknowledgement that it went
+through before everybody updates their channel state. But in terms of can people lose money?
+That's where sort of the game theory aspects of this come into play, and it's one of the
+reasons why lightning network is a lot more complicated just to think about. But essentially
+these transactions that are getting created and updated within the payment channel have
+a number of different logical paths of what could happen, of what the recipients could
+be spending the outputs of the transactions. And they're using various things like time
+locks using the check sequence verify functionality of a Bitcoin. And that basically allows you
+to, if your counterparty tries to close a transaction or close a payment channel and
+take money out of the payment channel, like using a previous state of the payment channel
+where they had more money at that time, then it is possible for you to then detect that
+by seeing that they spent that specific output and put it out on the main Bitcoin network.
+And then there is actually another transaction that you can broadcast, which is called the
+breach remedy transaction, which basically says, no, I'm overriding you. Now that you
+tried to spend that and you were no longer allowed to do that, I can actually take that
+money back in a different transaction. And it gets kind of complicated, like the different
+logical branches of what could happen in a adversarial situation. But suffice to say
+that in a cooperative situation where both of the counterparties on the payment channel
+are cooperating with each other and doing the optimal set of steps back and forth, everything
+is really fast and is basically limited by network latency. If you get into some of the
+adversarial scenarios where someone is trying to steal money from another person, then basically
+things slow down a lot and you start having to basically drop back onto the Bitcoin blockchain
+and wait for confirmations to happen before you can be sure that your money is safe again.
+So what you're saying is basically they cannot take your coins, but if there is some sort
+of an attack, you may have to wait. Yeah. Like the worst case scenario is if your counterparty
+on the other end of the payment channel tries to steal money from you by broadcasting in
+a no longer valid state and you're not paying attention for like several days, then they
+could steal money from you. So like one of the things that is required in order for the
+game theory of the Lightning Network to work is that you need to be listening for attempts
+of theft or fraud. And it doesn't even necessarily need to be you. Like you can actually outsource
+this service to other entities and have them listen for those transactions on the network.
+But basically someone has to be listening. You just have to be checking each other's
+work. So, and this would be done automatically by the wallets probably. I imagine so. Yeah.
+If it had to be a manual effort, then I don't think many people would do it. Exactly. How
+about the use case scenario for point of sale terminals? Would this be compatible? Yeah.
+I mean, I think this is really one of the first cases where point of sale actually becomes
+feasible. You know, we had some point of sale attempts in previous years and those were
+trying to use, you know, sort of analytics of the network itself to try to guard against
+double spending. And they could get a pretty high degree of certainty, but it was never,
+you know, like cryptographically provable that an unconfirmed transaction received at
+point of sale would not be double spent. So this is actually providing much better security,
+I would say, for instant transactions at brick and mortar businesses. And how about machine
+to machine payments like subscriptions and things like that? Yeah. And in fact, you know,
+it's sort of internet of things and machine to machine payments is one of the more interesting
+aspects, I guess, from an economic theory point of view of like, we can actually unlock
+this entire new economy that never really existed before. And it's interesting to hear
+some people theorize about, you know, what that might look like. We have already seen
+some attempts at doing that with like 21 and their micropayment network that uses payment
+channels, but not lightning network yet, though, I'm sure they will eventually add lightning
+network support. And we even see other entities with other technologies like hyperledger I
+know is, is very keen on internet of things interactions. And I've seen a number of talks
+from their folks about, you know, the type of like new economies that you can create where, for example,
+you have millions of very dumb sensors, you know, situated around the world that are collecting
+data where each individual sensor on its own is not particularly valuable. But once you
+figure out a way to, you know, combine them all and and make that available in mass, such
+that you can sell data using, you know, smart contracts, essentially, you know, time based
+or data based contracts, then now you can have other machines that would like to ingest
+that data, they can actually just go back, go out onto the internet. And, you know, basically
+to look at what would be a new type of information market and buy the information that they want,
+ingest it, and if they like it, you know, set up a contract to continue buying it, whatnot.
+It's really, it's like the internet itself, where we, we managed to create a new way of
+communicating with each other, which has resulted in the creation of a great deal of value.
+And now we're instead building new types of networks that enable us to communicate economically
+with each other. So I think it's just unlocking more value that has just been laying dormant.
+And part of this that you're talking about has to do with how small the transactions
+can be, right? Yeah. And so, you know, if, if you're trying
+to sell data or access to something where you're, you're basically metering it, it,
+the current payment networks where, you know, they might have an overhead of five or 10
+cents to do a transaction, that that actually makes it infeasible to do transactions where
+the value is for something that is far less than a penny. And now that we get onto these
+new types of networks, actually, the, the value of what you can be transacting can,
+can even be far below one Satoshi. You could basically subdivide it out to be as small
+as you want. Interesting. So sub-Satoshi transactions.
+That's very, very cool. Can channels stay opened indefinitely, theoretically speaking?
+Yeah, well, between two parties, you, you could do that. You mainly have to be worrying
+more about the fee situation, degrading channels of that, that are routing value. I think for
+a number of different reasons, including channel rebalancing stuff. The, the average channel
+is not going to stay open for that long. It'll be interesting to see how long they stay open.
+But I don't know. I would be surprised if, if channels are able to stay open for longer
+than like weeks or months at a time. And is there anybody controlling lightning?
+Like there are conspiracy theories about blockstream. Are there any, are there competing implementations?
+Well, there are competing implementations on the same protocol. Last I checked, there
+were five or six different implementations. And only one of them is being developed by
+blockstream developers. There is, let's see, there's the, the lightning team, which is
+like, let's see, Elizabeth Stark and Olalu and maybe a couple of other people. And then
+there's the blockstream team with, I think, Christian Decker and Rusty Russell. And there
+are some European teams as well. And we've even, we've even got a, a developer at BitGo
+who is working on his own lightning wallet. So I think there's, you know, more and more
+people are getting interested in the technology and creating their own open source projects.
+So there's, there's not going to be, I think, any type of monopoly over the software or
+over the operations of the network.
+That's excellent. And are we, when we're using the lightning network, are we delegating ownership
+of our Bitcoins to anybody?
+No, so it's, it's completely non-custodial. And that's really the, the kind of magical
+part about the way that the, the hash time lock contracts allow you to like route this
+value securely through third parties. Like you are routing it through third parties,
+but the third parties don't actually take custody of that money until the entire channel
+update has happened until, you know, both of the ends of the sender and the receiver
+on the channel are satisfied with it.
+Now you're talking about routing payments hopping around. Now, can I prove to somebody
+that I made a payment or can they, can they say, Oh, I never received it?
+Yeah. So you can, you can almost think of it as like the, the same way that low level
+internet like packets are sent when, when you're like opening a connection on the internet
+and you're, you're sending some packets, you actually have to get a response back before
+you're going to send any more packets. And it's the same type of thing with the lightning
+network where if you just try to send, you know, route some money across the network
+to somebody and you don't get the correct response back that proves that they received
+the data, then you don't update your channel state and you consider that, you know, a failed
+send and then you might try to route around in a different way.
+So even if you, if we used an anonymizing technique, like an, a type of onion routing
+to obfuscate transactions, you would still have some sort of a proof that you made a
+payment.
+Oh yeah, definitely. So each, each time that you make a payment and you update that channel
+state, you will keep track of some of the values that were used to update it.
+That is, that is, you know, one of the additional things that's required of a lightning wallet
+or a lightning node is that you do need to keep like a local copy of some of that data
+around. And that's, you know, slightly different from Bitcoin where because you're broadcasting
+it all on the network and it's going into a block on everybody's computer, you don't
+necessarily have to keep redundant copies of it around.
+Sounds great. Now some people are saying that now with the lightning network, Bitcoin will
+no longer be peer to peer. My thoughts on that was that, you know, in the regular Bitcoin
+network, it's not, I'm not sending money straight to you. Like it's going, the transactions
+are being, you know, put into the blocks by the miners. They're being relayed by the,
+by the nodes and SPV wallet operators are also involved. It is still peer to peer, but
+you have, you know, different participants participating in the maintenance of the running
+of the network. Is lightning any different?
+I would argue that lightning is more peer to peer than what we're seeing currently in
+Bitcoin, where, you know, the vast majority of Bitcoin users are not using Bitcoin in
+a peer to peer way. They're, they're probably using a centralized service like Coinbase
+or an exchange. And, you know, just using a web interface or, or using a mobile wallet
+that uses a centralized API. And, you know, only really the users that are running their
+own nodes or running a SPV client, I guess would be considered to be using the peer to
+peer Bitcoin. You know, even, even, you know, a lot of BitGo users, for example, are just
+using our API. And then they're basically, you know, relying upon our nodes to do, to
+do the peer to peer aspects. There are ways where you can, you know, still be running
+your own Bitcoin node and using a centralized API and then having that, you know, double
+check to make sure that you're not trusting anybody. But if you're using the lightning
+network, then you really are having to get onto the peer to peer network. Though I suspect
+there will still, that's if you're using a lightning wallet, though there will be people
+who, I guess, unintentionally use the lightning network. For example, I expect that a lot
+of these exchanges will end up hopping onto the lightning network themselves. And so there
+will be users of centralized services that are doing stuff on the centralized service.
+And then the centralized service actually sends out, you know, transactions via the
+lightning network, if it's deemed possible to do so.
+Awesome. And another fear that people have is that their Bitcoins will be locked, you
+know, for a certain amount of time. Can a channel be closed at any time or can you pull
+out sort of an agreement with a channel, with a hub?
+Yeah. So kind of like we mentioned earlier, there are multiple paths for closing channels.
+There's the cooperative way of doing a channel closure, and then there's uncooperative, like
+fraudulent ways. But at any given time, if your counterparty of the channel is online
+and responding to you, then you can cooperatively close the channel instantly and basically
+create that closing Bitcoin transaction that you broadcast out. And then you just have
+to wait for it to get confirmed on the network. But like regarding the sort of view of Bitcoins
+being locked into lightning channels, there's two different ways where you can look at this.
+And one of them is that you're locking up your Bitcoins on the lightning network. Another
+way of looking at it is you're freeing up your Bitcoins to be available on the lightning
+network. In the early days, it will probably feel more like you're locking them up because
+there may not be as much value and utility and the network effect of the lightning network
+is probably going to be a lot smaller than Bitcoin itself. But eventually, if lightning
+becomes as well accepted and as popular as we hope, then in fact, the lightning network
+should have greater utility and value. And so you'll actually be freeing up your Bitcoins
+to be more useful by putting them into payment channels.
+And when you pull them out of lightning, you'll be locking them up or putting them in cold
+storage or something like that. Exactly. Okay, cool. Now talking about privacy a little bit.
+How will lightning improve privacy? Specifically, we've seen that chain analysis is selling
+data to the IRS and things like that. And some people are concerned about that.
+Yeah. So there will still be the same type of on-chain privacy problems where you will
+have services that are trying to analyze what's happening on-chain. There are a couple different
+potential things we can speculate about is that, first of all, when you're doing a lightning
+network transaction, you aren't telling the entire world about it. You're only telling
+a small subset of maybe 3 to 5 to 10 users on the network. But even those hops along
+the network that are routing the money for you, they don't know the original destination
+or the origination and the final destination. Each hop that is routing money only knows
+the previous hop and the next hop. So that's where the onion routing comes into play with
+encrypting that data. But there will also be some new potential in terms of privacy
+for cross-chain atomic swaps. So if you could do an atomic swap between Bitcoin and Monero
+or Zcash or Litecoin or whatever, then there's not really going to be any way that I'm aware
+of that a third-party global surveillance actor would be able to detect that unless
+they were the counterparty that was doing the swap with you. So I think there will be
+some interesting new technologies. We may even see new types of mixers pop up or new
+types of atomic swap mixers pop up. It will be interesting to see how it evolves.
+So for those viewers that don't know, an atomic swap is when you can do a currency swap without
+an exchange, right?
+Yes. It's completely cryptographic-based swap without any third-party required.
+That's really exciting. Could that be done in the background? You just choose to patronize
+a privacy-centric lightning wallet and your payments get routed and obfuscated that way?
+Yeah. I don't know how much you would want to automate the actual atomic swaps across
+chains. I would think that in general, it would be more of a one-time or occasional
+thing where you might want to swap into a cryptocurrency that has better privacy on
+chain, potentially move around some there and then eventually come back to Bitcoin or
+whatever.
+Cool. And how about we briefly touched on it, but how about onion routing?
+Yeah. So that's basically one of the strong privacy aspects that were built into the low-level
+lightning network.
+So it's built in already?
+Yeah. I forget. I think it's based upon Sphinx, if I recall correctly, which is this other
+onion routing protocol. It's basically how we're encrypting the data inside of each transaction
+and it's getting forwarded along that routed chain of nodes that is hop-by-hop sending
+it closer to your final destination, but it's using some secret values so that along the
+way, each hop only knows the previous hop before and the next hop, but not the entire
+full path of the chain itself. So much more harder for an actor that is sitting on the
+network and trying to listen to data to be able to tell what the full flow of money is
+on the network.
+And would this type of routing be potentially vulnerable to like, I don't know if you remember
+that hack. I don't remember if it was the CIA or the FBI that owned a bunch of Tor nodes
+and then they were able to unmask certain traffic.
+So I don't think it would be as bad because I think that the issue with Tor is that if
+you had enough exit nodes, then you could help. You could basically de-anonymize a lot
+of traffic, but because there isn't that really that concept of entry into the network and
+exit from the network, I don't think that particular type of attack would be true. However,
+if an attacker, I guess, was running the vast majority of routing nodes on the network,
+then they could potentially start to figure out more of the paths by trying to fill in
+the gaps, I guess, of the flow of money. But I think that would require running quite a
+few nodes, not just exit nodes, but basically taking over the entire network.
+I see. And you touched upon the atomic swaps. Does that mean that you could actually make
+payments in altcoins to third parties?
+Yeah. I don't think that anyone has actually written that quite yet to be fully
+automated. We're still at the stage where a lot of the atomic swaps are being very
+manually constructed. But I think it's only a matter of time before we see that type of
+payment processor. I know there are already some on-chain payment processors that accept
+like any altcoin and will automatically convert it for you. I think ShapeShift may even do
+payment processing like that. And it would not be a stretch of the imagination for them
+or other payment processors to offer the same type of service, but through Lightning Network
+instead.
+Cool. And in general, how far along in development are we? When can we expect to see a live Lightning
+wallet?
+Yeah. Well, there are already live Lightning wallets on testnet. So we're pretty far along
+in that regard. I would expect that we'll start to see people playing around with them
+on the main network within the next few months. But then the real question is, when is Lightning
+going to be ready for mainstream consumer day-to-day use? And that is a more difficult
+question to answer. From that perspective, I think it's very early. I would be surprised
+if Lightning Network is extremely popular and well-used in less than a year. We're talking
+more along the year, two-year, multi-year time frame, simply because we're building
+a new network and there's going to be problems and we're going to have to fix problems and
+just incrementally improve it until everyone is comfortable enough with both the cryptography
+and the game theory and the operational aspects of it that we're confident that it's a production-ready
+network.
+Yeah. It seems like people want to hear a date, but it seems like it's going to be more
+of a gradual thing, just like with Bitcoin, right? That it was hard to use at the beginning
+and then slowly things become easier to use. But there are already testnet wallets that
+we can use, right?
+Yeah. It'll be easy to make it work in the optimal scenarios, but it's the edge cases
+where you see hardware or software failures and being able to gracefully handle those
+failures. That's the hard part where I think most of the engineering effort will end up
+being is to make sure that we can have graceful degradation of the network and make automatic
+maintenance to fix problems with the network.
+Bitcoin itself, it has not grown and matured on its own automatically. There's been a lot
+of engineering effort over the years to improve Bitcoin to get where we are today. I know
+that a lot of people are dissatisfied with the current state of Bitcoin because of high
+fees or full blocks, slow confirmations, whatever. But if we had not had the massive amount of
+effort that had been put into it over the past few years, it would actually be a lot
+worse than it is right now. We're going to see that same type of thing happen with Lightning
+Network where over the years, more and more engineers manage to basically button up all
+of the edge cases to make sure that it's really a production quality, reliable network.
+Well, I really hope that we end up having success problems like in Bitcoin. The problems
+that we're having in Bitcoin have to do with the success that it has had. That's my personal
+reference, right? When it comes to implementing the Lightning Project, do we need consensus?
+Are we going to need any sort of Bitcoin network consensus into a soft fork or hard fork to
+achieve this?
+It was using the payment channels on the Lightning Network were using various functionality like
+check sequence, verify, lock time functionality where that got activated over a year ago,
+I believe. And then the only thing that it was waiting on was for segregated witness
+to get activated so that we had the third party transaction malleability fix. So at
+this time, all of the functionality that is required at the Bitcoin blockchain level is
+there. We don't need any more changes to Bitcoin itself in order for a Lightning Network to
+function as intended.
+Cool. And why would you need to have capital like BTC in order to run a Lightning node?
+Well, because essentially what you're doing is you are creating this channel that has
+a value at two different ends of the channel. And it can start out with zero at one end
+and a lot at the other end. But I think preferably you're going to want to see it more like a
+50-50 weight. And then as you're making these transactions over time, what you're really
+doing is you're updating the channel and saying, I'm moving this amount of value over here
+or I'm moving this amount of value back over here. And so all you're really doing is moving
+value back and forth between two different points. And this type of technology has been
+around since like 2011, I think, when it was implemented in BitcoinJ. And it's not that
+particularly interesting. But what's interesting about Lightning Network is it takes that low-level
+concept and then creates other channels that are connected. And so now you have this whole
+network of channels that are doing that same very simple updating back and forth, back
+and forth, but in a way that you can say, update this and then update this and route
+it all the way around. So it's just a requirement at a very low level for the network to be
+able to have a flow of value.
+I see. And how about let's say that you have all your money in a Bitcoin wallet, sorry,
+in a Lightning wallet. And for some reason, you need to make an on-chain transaction.
+Would there be a way with a third-party service to generate such a transaction where it settles
+actually on-chain?
+Yeah. So there's multiple different things that you could do. I think the most obvious
+one would be that we'll probably see services where they will accept a Lightning payment
+and then create an on-chain transaction for you. They may, you know, I could envision
+someone running a service that is well-connected, accepts all kinds of Lightning transactions
+and then creates like a bulk, you know, many output on-chain transaction. And then, you
+know, they'll probably take a fee for the ability to do so. There's also more complicated
+ways that are more theoretical that I've only heard about recently of ideas of ways that
+you might be able to shave off some value from the payment channel itself and create
+an on-chain transaction.
+And would you need a certain level of trust, just like we do with Coinbase or ShapeShift
+or whatever, in order to achieve this?
+So for the first one, I would say so, yes, because essentially what you would be doing
+is sending your money to a custodian with the expectation that they would then create
+the on-chain transaction. With the second one, which is going to be more complicated,
+you would just be doing it yourself. So that would be trustless.
+Cool. Well, Jemison, I don't know if there's anything else you wanted to add to this interview.
+I thoroughly enjoyed it. I think there's a lot of misinformation about Lightning and
+it's great that you have come on to clarify a lot of these things. Is there anything
+else you want to add?
+No, I mean, it pretty much comes down to what we were just talking about. This is an ongoing
+project. You hear a lot of fear and pessimistic, worst-case scenario type of situations that
+are highly speculative. But I think that those of us who are going to be working on this
+technology are going to be aware of those worst-case scenarios and actively working
+to prevent them from happening.
+Sounds great. Well, again, thank you so much for participating. Take care.
+Thank you. Bye.

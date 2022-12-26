@@ -1,0 +1,445 @@
+We Bitcoiners do our best to self-custody our Bitcoin. We use hardware
+wallets, we create our own entropy, we store them in metal, we multisig. But how do we
+protect our sats from a $5 wrench attack? To talk about that, I sit down today with
+Jameson Lopp, co-founder and CTO of Casa, the company that makes it easy to buy and
+secure Bitcoin without wondering whether you're doing it right.
+With Jameson, we talk about what is this kind of attack, what should we consider to protect
+our sats, what are his thoughts on the coil wallets, multisig, locktimes and covenants
+to protect them, and also some advices for beginners that want to start in the self-custody
+path.
+Before jumping into the show, let me have a second for my sponsors. All of them amazing
+Bitcoin companies that support privacy and KYC-free sats. Take a look. First, HODL HODL
+and LEN, both amazing peer-to-peer site where you can. First, exchange Bitcoin and second,
+borrow and lend it. All peer-to-peer enabling KYC-free sats purchases and finance.
+Second, Bidrofit, the website that allows Bitcoiners to buy almost anything with sats.
+I use it weekly and thanks to them, I can live the Bitcoin economy in Europe.
+Third, Brains, the good guys of Bitcoin mining. If you're into mining, Brains is the place
+to go. They created the oldest pool, also co-creators of Stratum V2, they have an amazing
+firmware for ASIC miners, and a great blog and dashboard to be 100% updated on how is
+the hash rate network right now. And last but not least, IVPN, the VPN that I use because
+they are privacy freaks as me. They don't ask me for personal data and I can pay it
+with Bitcoin. You can have a look at their services following the links in the description
+below. With this said, te dejo con el pod.
+Good afternoon, Jameson.
+Hi, great to be here.
+Thanks for joining. You are Jameson Lopp, a cypherpunk, CTO and co-founder of Casa,
+the leading provider of Bitcoin self-custody solutions. I'm really excited to have you
+here because recently there has been a lot of talk in the Spanish Bitcoin Twitter community
+about how to protect yourself from a $5 branch attack. Because yeah, when you fall down the
+Bitcoin rabbit hole, you become like a little bit congenious. You learn things like creating
+your own entropy with a coin, dice or something like that. You learn using top-notch hardware
+wallet, using passphrase, at least 12 characters long with numbers, symbols and so on. And
+also you write your seat in metal and yeah, you feel you are really becoming a master
+in security. But then it comes this moment that somebody asks you, okay, but how do you
+protect yourself from a $5 branch attack? First of all, could you explain what is this
+kind of attack and why it's so often commented in Bitcoin communities?
+Sure. So this actually goes back to really a meme, which was popularized by the XKCD
+comic a number of years ago. And I think everyone who has heard the term wrench attack has probably
+seen that comic, but essentially it means coercion. It means someone is using either
+threat of violence against you or someone you care about, or they're actually straight
+up torturing you, holding you hostage, using some sort of aggravating factor to try to
+coerce you into handing over your money or handing over, in this case, the keys to the
+kingdom. And this is a type of attack that people generally haven't had to worry about
+in recent years because most people's assets are intangible and not directly controlled
+by them. If your money is in the bank or on the stock exchange or one of my favorite sayings
+that I heard somewhere was that billionaires don't have to worry about getting attacked
+because it's very difficult to steal a baseball team. So it's like when your assets are that
+type of asset, it's very difficult for you to simply just hand it over to someone. But
+now with Bitcoin being a digital bearer asset, it's once again like gold or cash or something
+that you can just simply physically hand a large amount of value over to. So we have
+kind of come full circle again back to the days when people would hold their money in
+gold under the floorboards or whatever. So now you have to worry once again about the
+physical security aspects of being your own bank.
+So let's say that the main problem is to have access to a lot of funds with just a few clicks,
+yes, it's the problem that it's highly liquid, it's highly portable and you can basically
+lose it in an instant and then there's no way to recover it, of course. So the ability
+to protect yourself against this type of attack means that you actually have to consider yourself
+a potential point of failure.
+The worst nightmare for anybody, but especially for a Bitcoiner, is a home kidnap. Do you
+have some information on how people normally react in relation to Bitcoin holdings when
+together with their family, they are home kidnapped? Do they lie or fight or do they
+want to give all the Bitcoin away to finish that suffering?
+It's a difficult topic to discuss because I think or at least my guess is that the majority
+of incidents we don't hear about. When someone ends up having some sort of physical threat
+or violence against them, unless it somehow gets leaked out by newspapers or something,
+in most cases, I think people are very unwilling to talk about this because they are afraid
+that it will make them an even bigger target for future criminals to attack them like this.
+So we can only really talk about, of course, the cases we know about. I do have a project
+where I try to keep track of all the ones that have been made public and I think we're
+somewhere around 80 or 90 different incidents over the past decade.
+And just offhand, from what we know, it seems like the vast majority of cases when these
+people find themselves being physically threatened, taken hostage, tortured, whatnot, they almost
+always comply very quickly. People obviously don't want to be hurt or see other people
+they care about hurt. I'm only aware of maybe one or two incidents where people managed
+to successfully defend themselves against an attacker. And I think there were maybe
+a few other incidents where they didn't really do anything and the attacker gave up quickly
+and left. But it seems like most of the incidents, at least that we hear about, the attackers
+are successful in getting some, if not all, of the keys that that person was holding.
+That's not very optimistic for us holders, I have to say. But I wonder from a security
+planner point of view, how do you evaluate when to give them away or when to risk your
+life for your sats? It's very hard. And later I want to ask you about different solutions.
+But this is something that constantly comes to my head. Okay, if I want to create a strategy,
+here we're talking about my life and probably my family security. So it's hard to find
+the point that the evaluation, where to put the line, where is the limit in like, no,
+my sats are so important or, or, and then I will protect with all kinds of techniques
+or I don't know, let's have like a spare wallet that they can get away with.
+Right. So there's a number of different questions and trade offs that need to be made here.
+I would start off by saying that I don't think that anyone should value their Bitcoin more
+than their life or the life of their loved ones. And that, you know, if you are in a
+situation where you're being coerced, then you should probably comply. You know, obviously
+there, there's a million different variables of what an attacker could be like, or could
+be doing. And, you know, maybe it's an attacker who does not seem like they would actually
+be willing to go through with the threats. For example, there was an attack in Amsterdam
+just a few months ago, where the guy basically told the attackers to stop bothering him and
+they ended up leaving without doing anything. Now, you know, that ended very well, but there
+have been other attacks where the attackers did use physical violence when there was resistance
+put up. But I think there's the, the first question is what are you even capable of giving
+the attacker? So my stance is that if you're trying to protect a life-changing amount of
+money that you're storing with cryptographic keys, then you shouldn't even have direct
+access to it. You know, it should be similar to trying to go to the bank and, and completely
+clean out your account of your life savings. It shouldn't be as simple as just pushing
+a few buttons. There should be multiple different types of authentication and, you know, physical
+movement required and time constraints. You want to make that process onerous. You want
+to make it slow. And the reason for that is that you really shouldn't need to have instantaneous
+convenient access to your life savings. Generally, if you're going to be moving large amounts
+of money around, it's for some major purchase or large trade that you've been planning ahead
+of time for quite a while. So that the, the inconvenience around that, it really shouldn't
+be a major inconvenience. And the, the security that you can get as a trade-off with that
+inconvenience, it's, well, it's, it's hard to even put a price on it because if you put
+yourself in a situation where you don't even have access to the money, then it becomes
+a kind of a non-issue of like, you know, there's nothing you can do no matter what type of
+coercion is being used against you. Now, you know, this, of course, gets us to the next
+question of, well, what is the attacker going to do once, once you start explaining to them
+that you can't give them anything. And, and this is where it gets really tricky because
+what we're really doing now, this is getting out of the realm of talking about technical
+security measures and it's getting into the realm of speculative psychology. And we, you
+know, you, you have no idea what your attacker's motivation and situation is going to be like.
+And, you know, it may be that they get to the point where they eventually believe you
+and then either they do nothing and leave, or maybe they hurt you or, or kill you out
+of frustration. I, I would hope, but of course this really depends on the number of variables,
+but generally a rational human doesn't kill another human if it's, you know, not going
+to get them anything, you know, it's all, all that's doing is creating more risk for
+them and having law enforcement expend more resources to track them down. And, you know,
+with my own experience with different law enforcement cases, you know, the, the amount
+of resources that law enforcement will put into tracking down a thief or a robber is
+very small in comparison to what they will put into tracking down a murderer.
+Maybe that takes me to somewhere else that is, okay, maybe the attacker gets some information
+in that attack and he gets to know that you have, let's say 10 Bitcoins, but you cannot
+access them right now. That puts you in another position after the attack. Maybe they leave,
+but now they have a very important information. They knew maybe you had some Bitcoin, but
+they didn't know how much and 10 Bitcoins is good enough for them to, to try it again.
+I suppose that there is a before and an after. This podcast is more about how to protect
+before there is a first attack, no, but the situation afterwards, I can imagine that you
+fall into full psychosis.
+Yeah. So, you know, we may have gotten a little bit ahead of ourselves because whenever we're
+talking about security, you know, this is a multi-layered setup that you want to have.
+Like I think people probably focus on the actual key management and you know, how am
+I storing and backing up my keys? And you know, what's the actual authentication process
+required for spending the money? But you don't want the technical security measures around
+your keys to be the only layer of security. Just like when you're designing any type of
+security system, you want there to be multiple layers of barriers in place. And the reason
+for this is, is several fold. One, you, you want to have like your, your outermost layer
+of security to make you less likely to even ever be attempted to have someone attack you
+in the first place. And so a couple of ways to do that. The first one, and what I consider
+the most outer layer of security is actually your privacy. So if you have good, strong
+privacy, then very few people should even know that you have Bitcoin or a significant
+amount of Bitcoin in the first place. The fewer people who even know that you have this
+digital bearer asset, the fewer who can even entertain the idea of trying to plan an attack
+against you. The next layer of security that I consider is really just your, your day to
+day physical and operational security. You know, how do you go about your day? What is
+your, your home security system look like? Is it possible for someone to just walk up
+to your front door and kick it in? You know, that's a, I would say probably the level of
+security that the vast majority of people have, at least in the United States. I know
+some other countries tend to have better fortifications around their homes by default. In many cases,
+for example, thefts and robberies in the United States are crimes of opportunity where someone's
+just walking around and they see a house and they're like, Oh, that looks like it'll be
+easy to get into. They walk up to the front door, kick it in and take whatever they can
+in the first few minutes. So if you have some additional layers of security, like some sort
+of fence or gate or, you know, other things that kind of push out the perimeter of wherever
+you're physically residing, that's just one more thing than an attacker has to get through
+in order to get to the good stuff. And so what happens is for a crime of opportunity,
+if they're looking and surveying a whole bunch of homes, they're going to say, Oh, you know,
+this house has a fence or a wall or this house has a dog and the dog may try to bite me.
+Whereas that one doesn't appear to have anything. So I'm going to go for the easier looking
+target. You want to portray yourself as a hard target just to disincentivize people
+from even trying. And then of course, going on further from that, there's the question
+of, well, you know, what are you capable of doing and defending yourself or what type
+of alarms and other things do you have in place that would alert you if someone was
+trying to break in? And if you become aware that someone is trying to attack you, what
+are your defense mechanisms? And of course, there's a whole lot of different things that
+you can do. And of course, some of them are going to be jurisdiction specific based upon
+the laws in your area.
+Some more passive systems like how fortified is your home and also some active like sensors
+and so on. This is a very interesting because I'm from Spain. I don't live now in Spain.
+I live now in the north of Europe and I see a huge difference in Spain. Everything is
+more fortified. Privacy is more important and you would never have transparent fence
+nor a transparent window that people can see easy. How do you live in your home? And here
+in the north is the opposite, probably because of the need of light, of more light. But it's
+crazy how transparent is everything. I could study easily the life of my neighbor and learn
+their routines. So that's a very interesting point that maybe I should start applying now
+that I live in the north.
+But you touched on something that this was spoken on Twitter the other day about privacy.
+I use a pseudonym. I don't appear in public with my face. So I believe that privacy is
+a feature, not a bug. But some people say, yeah, but you know, in security, this is security
+through obscurity. And that shouldn't be the case. You should be ready to be full transparent.
+And nevertheless, your Bitcoin should stay safe. Is in this situation as bad to plan
+a security through obscurity system? Or you think that no, that in some cases is a good
+strategy.
+So if your only layer of defense is privacy, then I would agree that you could call that
+security through obscurity. You know, if, if all you're doing is hiding a bunch of information,
+and anyone who finds where and how you've hidden that can can now attack you and get
+your money, then that is what I would consider security through obscurity. Obviously, I'm
+a big proponent of self custody and setting up distributed key systems that are very difficult
+to attack both physically and digitally. But you, you still want to have privacy because
+that can reduce the chance that someone even tries to attack you in the first place. So,
+you know, it's, it's good to think of this as you want to have a diversity of different
+protections in place. And that's how we get strength, strength through diversity in having
+different types of security and authentication mechanisms, and, and privacy around as many
+different aspects of your life as possible. Because what I think you'll find whenever
+I talk about CASA and the way that we think about architecting solutions is that our,
+our primary focus is to prevent and eliminate single points of failure. And the way that
+you do that is through diversity and you're having redundancy in as many things as possible.
+And, and not using the same exact types of security mechanisms multiple times.
+Do you think about having this, what I mentioned before, a secondary wallet, let's say if you
+have 10 Bitcoins, so you have, you have one Bitcoin there and you just convince them that
+that's good enough to live. Like if you think about thieves as an entrepreneur, no, not
+the legal one, not maybe not a moral one, but if you think about it, maybe it's good
+enough to take a Bitcoin away. So maybe it's a good time for you to leave and let me alone.
+What do you think about that?
+And so, yeah, whenever you're thinking about your own setup, if you're thinking adversely,
+you think like an attacker, then what we're really wanting to try to understand is risk
+and reward because any attacker is going to have that same type of mindset of, you know,
+what are the risks that I'm taking to try to pull off this attack and what's the potential
+reward if I can pull it off. And, and this is where we once again get into this speculative
+aspect of it because you don't know how sophisticated your attacker is going to be. You don't know
+how desperate they're going to be. They basically your attacker's risk reward mindset could
+be all over the place. They could be willing to take a really big risk for a really small
+reward. Whereas we would expect a more rational person would only want to take a small risk
+for a larger award, but you never know. And of course, you know, it could be a simple
+crime of opportunity of someone who is otherwise destitute or, you know, maybe has some huge
+death that they have to pay off very quickly. Otherwise something bad is going to happen
+to them. You know, you never know what someone's particular situation is going to be. So along
+that, that same mindset, you know, if we're talking about, you know, should we have a
+decoy wallet, then what, what we're really saying is we're speculating around, you know,
+what the payoff that this person will be satisfied with. And I have no way of speculating that
+because once again, we have no idea of what the attacker's profile is going to be. So
+I generally assume, you know, the worst case scenario is that they, like you said before,
+they may have gained some information that gives them an expectation of a certain amount
+of value that you have. And if you offer them a small fraction of that, they may only get
+angrier and do, you know, worse things out of sort of retaliation. So I am, I'm not a
+fan of decoy wallets, but also I don't have any real world information because as far
+as I'm aware from all of these physical attacks that I have cataloged, I have never heard
+of a situation where someone said, Oh, I had a decoy wallet and I gave them that and they
+left. And it's possible that that has happened. And the person just didn't want to admit that
+later because it would have made them a target again. But we just don't know. We there's
+first of all, there's so few data points as it is, like I said, less than 100 data points
+that we're aware of. I'm sure there are far more incidents we're not aware of, but if
+we're just doing this, you know, based upon the facts of what we know, the short version
+is I have no idea and I don't like speculating. I like being conservative.
+Well, it doesn't matter what is your choice. It feels like you will always get beaten.
+And even if you try to convince them that you only have one Bitcoin, you can try to
+lie to them. Like this is all what I have, but you will probably get beaten. You can
+always, you can try to be reasonable and tell them I have 10, but I'm only able to give
+you right now one. You probably will get beaten. So I think that if, if they, if they, yeah,
+at least there is a maybe, you know, but once they are in and once they have this purpose
+to attack you, I think that they will harm you. So it's a, then this takes me to another
+place that is another possibility that is, okay, you can make it impossible to access
+the Bitcoin. And here you have different systems. Here is possible. I yeah, probably where,
+where Casa comes in, you can create a multisig, for example, and one key, you have it with
+Casa and the other two, you can access them, but not immediately. You have them somewhere
+else. You have even, even one can be in a, in a, in a bank. There are other possibilities.
+You can trust the custody of your funds to a third party. What do you think about that
+of locking all your funds somewhere?
+So there's a couple of ways to look at this, of course. I think we're kind of focusing
+on the immediate issue of harm and trying to just, you know, pay someone off essentially
+by your safety back, at least temporarily. That's one way of looking at it. My way, I
+guess, first of all, I, I hate even the idea of potentially being a victim. And I guess
+I would, I would rather go down with the ship as it were, and, and die knowing that my attacker
+got nothing. I think that would, you know, please me more because I just, I hate the
+idea of having someone successfully pull off an attack against me. But you know, even putting
+those like individual perspectives aside, because neither, neither perspective is right
+or wrong. It's just, you know, your own opinions on, you know, what you're willing to have
+happen. The, I think the broader issue is one of the entire ecosystem. And like one
+of the reasons why I'm such a big proponent of, of really strong self custody is that
+like we said, this is a risk reward type of situation that criminals are evaluating. And
+at a really high level, you know, as Bitcoin adoption continues to increase, this is a
+constantly changing risk reward profile where Bitcoin goes more mainstream. The result of
+that is that more people adopt Bitcoin. The secondary result of that is that more criminals
+or more people who are willing to hurt people start thinking about Bitcoin holders and how
+to attack them and what they might get out of them. And if we as Bitcoin holders want
+to discourage attacks against us, then we don't want to essentially set precedents.
+We don't want to create a default system that is easy for these wrench attacks to happen.
+So, you know, if wrench attacks start becoming more and more common, and the criminals are
+essentially getting more and more money as a result of them, then that's going to create
+a trend I believe that will be very hard to push back against. I think it's much better
+if we have the vast majority of self custody Bitcoin people in a situation where they are
+able to repel these attacks. And as a result, the criminal element starts to see the risk
+reward as being a higher risk with a lower chance of success. This is kind of, you know,
+a hand wavy, it's not a quantifiable thing. It's more of a trying to steer the whole direction
+of the security of the ecosystem.
+And in those lines, there is also another theory in the community that is not privacy,
+but the opposite, to be completely open about how are you storing your Bitcoin. Imagine
+that I say, no, no, no, I don't have access to my keys. And to move any Bitcoin, I have
+to have a call with CASA and they have to see that everything is okay, let's say, or
+I have to request and it's 24 hour delay. And I'm completely clear on it. So that nobody
+thinks that I'm a candidate for an attack. What do you think about that?
+Yeah. So I don't know if this is just an American thing, but have you ever been in a store or
+at least in America, it's usually gas stations or stores that are open 24 hours a day, you
+know, and at higher risk of like a nighttime robbery. But there's a number of these type
+of stores where they will have signs that say, you know, cashier only has $50 and all
+the money gets put into the safe, you know, every 12 hours and the safe is on a timer
+that can only be open like once a week with the right key. And they put that sign at the
+very front. So, you know, this as a, like you said, a sort of transparent security mechanism,
+there is good precedent for this, there is reason to believe that that will dissuade
+a lot of people. And so, you know, saying, if you're going to go the route of saying
+being like a publicly known Bitcoin holder, which, you know, there are reasons to do that,
+if you want to help the adoption of the ecosystem, then you're saying, you know, this Bitcoin
+holder does not have access or does not have direct access to their keys, to their funds.
+It's the same type of thing. And that ought to dissuade most people. You know, maybe someone
+will choose not to believe you and try anyways. But I think putting that type of security
+statement upfront, I don't really see any downsides from it if you're already open about
+being a Bitcoin holder.
+This is a very interesting point. And then also another topic that we spoke a lot was
+about lock times. Some members were saying that they believe lock times are the way because
+even and even to publish it, not like, hey, my funds are under lock time, so that an attacker
+doesn't want to attack them. In my opinion, I'm not a very big fan, but I wanted to know
+what's your opinion on lock times.
+Yeah, I'm not a fan for multiple reasons. The first reason is there simply are not many
+Bitcoin wallets that make that a user friendly feature. The next reason is that if you do
+put your funds into a lock time address, then you have to have some mechanism to keep renewing
+that. So it becomes a question of, are you locking them for a month, six months, a year,
+10 years? And then if so, how do you ensure that you relock them as soon as they become
+unlocked? There's also issues around recovery of these wallets. Whenever you start putting
+lock times into the redeem scripts of a Bitcoin address, you're creating non-deterministic
+data, which means you can no longer recover your money with only the seed phrase. So you're
+now going to have to start creating backups with other data. And once again, and I've
+played around with this a little bit, and I'm just not aware of any wallets that make
+it very easy for you to reconstruct lock time addresses, especially if there's multiple
+different lock times on your different addresses. And then, I mean, I'm sure it could come up
+with a lot of things, but the one final thing is, okay, let's assume a situation where you
+have your keys, your seed, all the stuff you need to recreate your wallet, and you get
+wrench attacked and they take all of it. What happens when that lock time gets surpassed?
+Well now, if the attacker took the only copy of your stuff, they just sweep the funds once
+it becomes unlocked. If you had multiple copies, and you load up and reconstitute your wallet,
+and they've reconstituted your wallet, then at the time that it becomes unlocked, both
+of you essentially enter into a race to try to sweep those funds. And it sort of becomes
+a race to the bottom. So effectively, what you could see happen from a technical standpoint
+is both you and the attacker basically creating, replaced by fee transactions that are offering
+higher and higher or minor fees to get a fast confirmation on those funds. And think of
+it of the attacker really has nothing to lose. So they would be willing to spend 99% of your
+money in fees if it meant they got 1%. So it doesn't hold up very well, I think, in
+adversarial situations. It also makes, I believe, the chance of loss due to just user error
+a lot higher. And that's, you know, we're spending this entire episode, of course, talking
+about physical attackers, but I do want to make it very clear that in the grand scheme
+of things, you're far more likely to screw up and just simply lock yourself out of your
+own money than you are to have someone physically attack you for your keys.
+Yeah, I said that I'm not a big fan of lock times, basically because of a fee race. I
+believe that if you don't include the lock time inside the redeem script, then it's public
+to everyone when is the lock time finishing, no? Am I right in this?
+Well, I mean, there's multiple, okay, so there's multiple ways to do lock times. And I'm assuming
+that you're going to use the check lock time verify way, which means that you basically
+have a redeem script that has either the block height or the timestamp in, I think, milliseconds
+or seconds in the redeem script. So that, you know, the address, the Bitcoin address
+that gets seen publicly on the blockchain where you deposit into it, you know, that's
+a hash of the redeem script. So nobody knows what that actual block height or timestamp
+is until you spend from that address. So that means, of course, you have to be storing that
+information somewhere yourself if you want to be able to reconstitute and spend from
+the wallet.
+Yeah. And if not, because this is what was coming to my mind, there is this in every
+transaction, there is this parameter of lock time, I think is the last four bytes of every
+transaction normally set to 0000. But I suppose that that can be that could be used outside
+the redeem script, but then...
+So that is the in lock time parameter, which has been around for quite a long time. However,
+it may be that people get confused because, like I said, there's three different types
+of time locks in Bitcoin and they all do different things. The in lock time that is public on
+every transaction, that means that the transaction is not valid to be published, broadcast and
+confirmed before that specific time. So if you're using that type of lock on your transaction,
+it's not actually...
+It doesn't even propagate.
+Well, yeah. So the way that you would have to do that type of lock time is what you're
+really doing. It only really works if you're creating a pre-signed transaction that is
+spending money to go somewhere. And there are a lot of cool things that you can do with
+that. You can start creating these different transaction chains that move money around
+and basically creating a vaulting protocol. But I believe that is generally not what people
+are thinking about when they say, I want to lock time all of my money. And what they really
+want in that case is the check lock time verify functionality, which goes into the redeem
+script.
+Are you excited about covenants?
+I mean, covenants are something people have been talking about for many years and it's
+still kind of vague and hand wavy. And so for me, it's all about practicality. One of
+the potential downsides, of course, is just more complexity. Whenever you're introducing
+more complexity, there's more things that can potentially go wrong. But I'm keeping
+track of these different projects. I think there's the revolt project. And then you can
+do Jeremy Rubin is doing some interesting things with his SAPO project. And I guess
+it's the check template verify opcode that he's trying to get more support for. But at
+the end of the day, it's going to come down to what can we kind of standardize around?
+What makes sense? What's robust and simple enough that doesn't introduce complexity and
+foot guns where people can shoot themselves in the foot? That's one of the things at CASA
+where we have purposefully avoided adding a lot of the more advanced functionality into
+CASA because there's generally a lot of ways that it can be, I would say misused to the
+user's detriment. So that's why, for example, we don't have lock time stuff in CASA because
+it would end up creating a lot more complexity around managing the UTXOs, managing the time
+locks, managing backups, and being able to recreate wallets outside of CASA. In general,
+I think that the potential downsides outweigh the upsides.
+And now that you mentioned CASA, how does a CASA user benefit in the case of a $5 branch
+attack?
+Well, so we've had actually a handful of users who have been robbed in different ways over
+the years, and CASA has successfully prevented funds from being lost from their CASA setup.
+We have had users that have essentially been coerced into opening up their exchange wallets
+and withdrawing all the money from there. But what it really comes down to is the fact
+that the client does not have enough keys on them at the time that they're attacked.
+And I don't know specific, or at least most of these situations, I think, robberies occurred
+when they were not home. And of course, there's just not enough key material in the home for
+the wallet to be spent from.
+But in one case where we had a client who was actually physically drugged and coerced
+into moving their money, the fact that they didn't have the keys on them, I think, was
+what really was their saving grace. And that even though the attacker got the phone and
+was able to withdraw all the money from the different apps that they had on their phone,
+they couldn't do it from CASA because they only had the mobile key. They only had one
+of the five keys for that client.
+As a final question, I wanted to ask you, if somebody asked you what would be the most
+important advice when you want to self-custody your life-saving Bitcoin, what would you
+tell them?
+Well, there are many different forms of both attack and loss that you have to be worried
+about. And like I said, you should be more worried about losing access to your keys than
+you should about having them stolen from you. As soon as you get to the point where you're
+keeping your keys offline on hardware devices, you're pretty safe against the common forms
+of hacking. And then it comes down to, well, what happens if some sort of disaster occurs
+where we start losing access to keys?
+So you then have to just think about what is every possible thing that could go wrong?
+What if the house burns down? What if there is a flood? You should assume that any given
+location that you're keeping key material in can be destroyed or compromised. And so
+you just want to have multiple redundant backups of that key material that are distributed
+widely enough that you're comfortable that no single incident will wipe enough of them
+out.
+And then once you get to that level of robustness, the final thing that I think a lot of people
+don't consider because I think a lot of the adopters in this space are still fairly young
+is that you also need to worry about yourself being a point of failure. None of us know
+how long we're going to be around. You could get hit by a truck crossing the street. What
+happens in a situation like that where you are incapacitated or coerced like we've spent
+a lot of time talking about, but really incapacitated is far more likely, can your loved ones then
+access your money?
+And that is where things can get a lot more complicated because you start having to balance
+a very fine line between assuring that only you have access to your keys, but also assuring
+that specific other people have access to them if you're no longer able to access them
+yourself. And so that's where you want to think about inheritance. Generally, I recommend
+people read Pamela Morgan's Cryptoasset Inheritance Planning Guide. I'm not sure if it's been
+translated.
+It's about to be published in Spanish. So Andreas, yesterday, doing a tweet about it.
+Perfect. So once that gets published, definitely read that. I myself learned a lot from that
+book when I was thinking through it, simply because I wasn't familiar with a lot of the
+edge cases around estate planning and things that can go wrong there. But over the past
+year or two, that's also something that we've spent a lot of time at CASA thinking about
+both from a technical standpoint and a legal standpoint of how do you build key and wallet
+recovery into the estate planning process and how do you make sure that it's bulletproof
+because you don't want to create a fragile system that you never test. And then once
+you're gone, your family gets together and tries to figure out how to follow your instructions
+and finds that they don't know how and they essentially can't recover your money.
+They are not pirates and they don't want to be looking for the treasure for many years.
+No, I did a podcast about that book and I covered it quite deeply. And yeah, it's great.
+It's great. It will be a great opportunity to have it in Spanish.
+Jameson, thank you very much for this talk. Hope that this clarifies a lot of the questions
+that I have been reading lately and that maybe pushes some people to think about CASA or
+to think about other security measures that will keep their Bitcoin safe. Thank you for
+joining.
+Thanks for having me.

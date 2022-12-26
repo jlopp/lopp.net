@@ -1,0 +1,180 @@
+I'm Jameson Lopp, CTO of CASA, and I've been in the Bitcoin space for a number of years now as an enthusiast and now working for four years on the security side of things.
+I spent three years at Bitgo and working on their infrastructure, and that was an enterprise multi-sig wallet that helped exchanges and other payment processors to keep their wallets safe.
+Learned a number of things there that I'll be covering today, and now I work at CASA where we're just trying to help people improve their personal sovereignty, which is a very broad goal, but we're taking a multifaceted approach of key management and helping people run Bitcoin and Lightning nodes.
+And of course, we have a number of interesting other projects that are currently in the pipeline.
+But what I want to talk about today is about how terrible Bitcoin has been for the past 10 years.
+We have not gotten to where we are today without going through a lot of catastrophes, and yet somehow we have survived them.
+The thing that I think is really important is that people understand this history so that they don't repeat the mistakes of the past, and we've certainly done that in some cases.
+But in other cases, we're still seeing the same things happen over and over again with large custodians and other providers losing large amounts of money, either to hacks, thefts, or sometimes just plain negligence.
+We're going to be going over a number of things that have happened over the years so that hopefully you have a better understanding of just how much risk there is in this space, especially when we're dealing with digital programmable bearer assets.
+So this is some estimates from Chainalysis in a report that they created recently, which it correlates to what I've seen over the years as well, that if you're in this space, you're probably about twice as likely to lose access to your coins, your private keys, than you are to have them hacked and stolen from you.
+There's so many different ways that you can screw up in this space, it's kind of mind-boggling, and there's a lot of things that keep me up at night.
+So let's begin at the beginning. If you've only been in Bitcoin for five or six years, then you're probably used to only using deterministic wallets.
+By which I mean, you have this single master seed phrase where as long as you keep that safe and backed up, you can always recover your private keys, because it is used to generate a nearly infinite number of public-private key pairs from this small piece of data.
+However, we didn't always have deterministic wallets.
+In fact, wallets in the early days would just create random public-private key pairs and cycle through them as they got used, creating more essentially out of thin air.
+So if you didn't take backups on a regular basis, you would start generating these new private-public key pairs that you didn't have backed up anywhere.
+So inevitably, what happened was some services such as this one stoneman service were operating, getting pretty busy, and creating lots of addresses, but were neglecting to take regular backups.
+So when they got into a situation where they had hardware failure, they had data loss, and they went to go recover their wallet, they determined at that time that quite a few of their public-private key pairs that they had been using no longer existed anywhere.
+And that resulted in nearly 9,000 Bitcoins being permanently lost.
+Thankfully, that was only worth about $544 at the time, and these days it's much easier for us to keep good backups because we only need to take one backup at the very beginning of creating a wallet rather than taking them on a regular basis.
+Transaction fees are another big gotcha, at least in the Bitcoin and Bitcoin derivative space, because the fee is actually not a piece of data inside of the transaction itself.
+When you create a transaction, you don't say, oh, I'm going to pay 500 satoshis in fees, but rather you have these inputs and outputs, and the fee is inferred by the difference in the value between the inputs and outputs.
+So if you make a very simple math error, if there's something wrong with that software that's constructing the transaction, you can very easily overflow and accidentally send the majority of the value of the transaction to the miners as a fee.
+So we can see on this chart over the years, a number of people have made mistakes in the $1,000 range, a few people have even made mistakes in the $10,000 transaction fee range, and we even see one single outlier that paid over $100,000 for a transaction fee.
+In fact, this is an issue that we hit at BitGo a number of years ago, where we had this obscure recovery library that was deprecated and we did not intend for our users to actually run it anymore.
+But one of our users came along and decided to use it to try to recover over 100 bitcoins, and they found out the hard way that the Bitcoin JS library that we were using in that recovery tool had an overflow error.
+And this resulted in something like 80 or 90 bitcoin being sent to the miners as a fee.
+On the bright side, that story had a happy ending because we were able to determine which mining pool mined the block containing that transaction, and we were able to verify with the mining pool which of our clients it belonged to, and the miners were gracious enough to return it to that person.
+One of the nice things about the segregated witness functionality is that it improves this issue a little bit by making the signatures actually cover the value of the transaction itself.
+So it's still possible to screw up, but it's more difficult because it's a bit more explicit now.
+Now this is getting pretty low level and deep into the weeds of the cryptography, but I'm trying to impart upon you just how many things can go wrong due to the complexity of Bitcoin transaction construction.
+When you're creating cryptographic signatures in general, you use various sources of entropy and randomness.
+I'm not a cryptographer myself, so I won't try to explain the intricacies of all of the issues inherent to this.
+But point being several different wallets and even in the early days actually the entire Android operating system had issues with their random number generator, and they would actually reuse the same quote unquote random numbers across different wallets and as a result we had
+multiple people that were reusing these R values and savvy blockchain analysis technicians could look at the blockchain and find what was being reused and essentially work backwards to reconstruct the private keys, thereby being able to steal the money out of these addresses that were being generated.
+One of my favorite exploits which is a bit simpler to explain is that back around 2012 or 2013 I believe someone came up with this idea of a brain wallet, and the idea itself is pretty straightforward.
+It's essentially, wouldn't it be amazing if all you needed to have in order to reconstruct a full Bitcoin wallet is just some sentence or phrase, you know set of words.
+This is a very interesting idea from the standpoint of censorship resistance and capital controls. Essentially think of it as all you need to do to escape from a country and cross arbitrary nation state borders undetected with large amounts of money is to memorize a short sentence.
+The ramifications of this are pretty huge for people who are trying to escape from authoritarian regimes.
+But on the flip side, kind of related to the last slide that we were talking about, is that you need to be able to generate highly random pieces of entropy, and it turns out that humans are not very good at doing that.
+So somebody came up with a way to turn an arbitrary sentence into a public private key pair, and what we found is that people would use fairly common phrases.
+Of course it was only a matter of time before some smart hacker starts analyzing the blockchain and thinks to himself, you know what, I bet I could create an attack.
+And so he set up this big pool of GPU servers that he created a large dictionary of common phrases for, and he just, you know, ran through billions of different permutations.
+So how much wood would a woodchuck chuck if a woodchuck could chuck wood? Turns out it's 250 bitcoins.
+The researcher was pretty baffled when he found this private key that gave him access to 250 bitcoins, and a very interesting and lengthy story ensued from that, where he tried to figure out how to contact this person, but of course there is no identity tied to it on the blockchain.
+And it had a good ending as well, where he was able to figure out the mining pool that the bitcoins came from, contact that mining pool, and the mining pool reached out and contacted the person, and they were able to get those coins back.
+But I think in the vast majority of cases, Bitcoin wallets got hacked and taken by savvy attackers.
+As we can see on here, there were a few other high value brain wallets that this attacker found, and I think my favorite was that blank string had 50 bitcoins deposited into it in 2014, and that was stolen in several seconds.
+Essentially, this was the default brain wallet, I think, if you just went to brainwallet.org or whatever the popular site was and hit enter.
+So as we can see, a lot of users did not really understand the ramifications of these brain wallets.
+Now, malware is not a new thing. There have been plenty of people out there writing naughty software over the years, but the existence of these highly liquid bearer crypto assets have changed the name of the game.
+And so now there's a lot of malware out there that is specifically looking for private key and seed phrase data that is trying to steal whatever it can find off of your hard drive because it could potentially be a huge payday.
+Even more specific than that, we've seen something called clipboard malware pop up, which is basically a virus that runs on your computer.
+And all it does is listen for what's going through your copy paste buffer. And if you paste something in there that looks like a crypto address, then it's going to go up into its library of pregenerated addresses.
+Find one that has a similar looking prefix and basically swap out that address from the one that you own or the one that your recipient owns to the one that is actually owned by the malware creators.
+I think this is an attack that works fairly often because a lot of people only check the first few letters of the address when they're sending.
+Now at BitGo, we actually went out and we found as many security reports about these malware payloads as possible, got all of the addresses that belonged to the malware authors that we could find and put them into a blacklist on our servers so that if one of our users tried to send to that address, we would refuse to co-sign the transaction.
+And we saved people from sending tens of thousands of dollars to these malware authors, which unfortunately is only a drop in the bucket, but it's better than nothing.
+Now, ransomware is also something that's not particularly new, but once again, the game got changed with Bitcoin. Essentially, this is software that will make your computer unusable and encrypt all the data and make it inaccessible unless you pay Bitcoin to a certain address by a certain time.
+This has affected a lot of people around the world, including law enforcement agencies, hospital networks, and other large infrastructure providers and has resulted in untold amounts of damage to IT infrastructure.
+Reused passwords are once again more of a human problem where not many people are using strong password generators. And so what happens is that people use a username and password on one service and then that service may get hacked and may not be
+faulting and hashing the passwords very well. And that results in attackers who get a hold of these leaked databases, then retrying all of the usernames and passwords on other popular Bitcoin services.
+Basically, whenever one of these large database leaks happened at BitGo, we would see basically denial of service attacks start to happen of people going through the list of usernames and passwords alphabetically and hoping that they would find a hit on our service.
+Transaction malleability is also another tricky issue that involves some low-level changes to transactions that essentially allow the transaction to remain the same but changes the hash or the fingerprint of the transaction.
+Long story short, if you're building any services in this space, you should not use a transaction hash as a unique identifier because there's almost always going to be a way for someone to be able to modify that transaction to change its hash.
+Once again, SegWit is something that helps in this area because it takes all of the signature data out of the hashing of the transaction.
+And while this tends to remove the third-party malleability vectors, there are still some first-party malleability vectors that could be exploited.
+Now, Mt. Gox was a terrible place for a variety of reasons, but one of those is that this was in the very early days of Bitcoin and the developers didn't fully understand transaction construction.
+At one point in 2011, about 2,600 Bitcoin got sent to transaction outputs that had no possible way of spending from them.
+And if you don't understand how Bitcoin transactions work, it's actually a little bit scary because you're essentially consuming your current UTXOs and destroying your existing money.
+And then you're recreating the money and locking it up in new UTXOs that have a script, and that script has conditions that will need to be met in order for you to be able to unlock it and spend from it.
+And if you do it incorrectly, you can create a UTXO where it's not possible to provide the data to the network in order to unlock it.
+And if you look on this screen on the right, you can see on the top a regular UTXO that is saying, you know, check the signature and make sure that it's equivalent to the string.
+But then if you look at the bottom UTXO in this example, it's saying, you know, check the signature and make sure it's equal to OP0 and OP0 is actually null or blank. And so it's not mathematically possible to create a blank signature.
+Therefore, these 2,600 Bitcoin can never be spent.
+Now, when Bitcoin Cash and a lot of the other Bitcoin forks started happening in 2017, we encountered an issue that was not completely new.
+It had happened in years past, but essentially you could have different crypto asset networks with the same address format where it's impossible for a wallet to differentiate between these different networks.
+And therefore, a user can accidentally send Litecoin to Bitcoin address or a Bitcoin to Bitcoin Cash address or Litecoin to Dogecoin address or so on and so forth.
+In the early days, Litecoin and Bitcoin actually shared the same address format for their P2SH multisig transactions. And so from time to time, we would have users accidentally send their Litecoin to our multisig BitGo Bitcoin wallets.
+And this would be a real pain for us. We had to write specific tools to recover from it, but it was possible to recover.
+Now, when Bitcoin Cash forked off from Bitcoin, they added a bit of extra complexity to this problem because they decided they did not want the segregated witness functionality.
+So if you sent your Bitcoin Cash to a Bitcoin Segwit address, it became a bigger nightmare to try to recover because even if you manage to build a tool to create a transaction that was validly spending from it, the network itself would not propagate this transaction.
+And you would have to get direct help from miners in order to get that transaction into the blockchain and recover your money.
+Now, data loss is just another human problem, and we try to help people with this at CASA by creating a level of redundancy that makes it very difficult to lose a sufficient amount of information such that your wallet is not recoverable.
+And, you know, we saw this happen a lot, especially in the early days, because even technically sophisticated people like myself do not really want to deal with this very boring IT issue, and I find myself having to set calendar events just to make sure that I don't forget to do it.
+I would say that many prominent members of the community from the early days have lost private keys due to simple negligence.
+We even saw Stefan Thomas in the early days made multiple backups of his wallet and still managed to lose about 7000 Bitcoins.
+There was also an interesting example from a editor of Wired Magazine, where he got a hardware wallet, wrote down the recovery seed and wrote down the PIN, but he put them on the same piece of paper and his housekeeper came through and thought it was trash and threw it away.
+And then he ended up going on, I think, a six or nine month epic adventure of getting help from Bitcoin experts to try to break into the hardware wallet and extract that recovery seed.
+And of course, a lot of people are familiar with a fellow in the UK who threw away what is now, I think, $100 million or so worth of Bitcoin, and he has actually been petitioning his local government to perform an excavation of the landfill.
+And I think there have been investors that have shown interest in actually contributing to such a plan, but it seems pretty unlikely at this point that it's ever going to happen.
+Also, in the early days, there was one, I think it was an exchange called Bitomat, and they were running their server on AWS instance where they were actually running the database on an ephemeral data store, and they simply didn't understand that restarting that server would make all the data go away.
+So once they restarted it to perform maintenance at one point, they learned the hard way that they didn't have any backups and all their data was gone, and so that was about 17,000 Bitcoin out the window.
+And in fact, you can have too many backups.
+There was an exchange called Bitfloor back in the day where they were keeping lots of backups, but unfortunately they were putting unencrypted backups on all of their servers, and eventually a hacker got onto one of them and was able to steal not only their hot wallet, but also their cold wallet because the cold wallet actually had its recovery seeds on these internet connected servers.
+A lot of people are also familiar with Ian Bellina who famously lost a lot of his wealth because he was keeping his private keys in Evernote, which is just an online note taking service from my understanding.
+Insider theft is less common but still happens from time to time.
+In the early days, Linode was a virtual private server company that had about eight different Bitcoin services that were running on it.
+And I don't think we ever really found out what happened but the suspicion was that an administrator at Linode actually got onto these machines and basically stole all of their private keys from their hot wallets.
+After this happened, pretty much everybody migrated away from Linode because they could no longer be trusted.
+And then in 2016, Shapeshift had a really epic story that they were very diligent about doing a postmortem that explained how it happened.
+And essentially they had an employee with production access that stole hundreds of Bitcoin from their hot wallet, but then even after he left and Shapeshift tore down all their infrastructure and rebuilt it, the employee was able to get back in.
+And I believe he actually sold his access to some other hacker because he had put malware on a number of his co-workers' computers and of course those co-workers still had production access.
+So this just goes to show how custodial services are black boxes and you don't really know what best practices they may or may not be following.
+This is something that we dealt with at BitGo and something we're dealing with at CASA to try to make sure that no single person has all the keys to the kingdom.
+But of course it's still not possible for us to prove that to any external parties.
+In a particularly ingenious hack, someone who I believe was never caught managed to hack into a Canadian ISP and reroute a bunch of internet traffic with a border gateway protocol hack.
+Basically what they did was they set up their own mining pool and in effect found a bunch of Bitcoin miners that were operating and redirected their traffic from the real mining pool to the attacker's mining pool.
+And, you know, this is a really hard thing to trace because they're essentially getting fresh untainted Bitcoins out of thin air.
+SIM swapping is an issue that has become a lot more prevalent in the past few years.
+I think tens of millions of dollars have been stolen and we have seen a number of the SIM swappers start to get taken down.
+But really what we've found is that once again these are not new vulnerabilities.
+These telecommunications companies have always had these vulnerabilities.
+There's just never been the incentive to exploit them at the level that there is now.
+And so we're finding that it is incredibly easy for people to socially engineer these companies and trick them into transferring ownership of the phone number to the attacker,
+where the attacker then uses that ownership to prove their identity, as it were, to these online crypto custodial wallets.
+And once they get in, they can then drain them usually in a matter of minutes.
+Another social engineering event happened to the firm Canadian Bitcoins and caused them to lose about 150 Bitcoins.
+I think that one of the reasons that we're seeing social engineering happen is that a lot of our other security has continued to improve over the years,
+but the human brain is always going to continue to be hackable.
+So this one particular exchange lost money when their data center allowed some hacker to access it.
+There was also social engineering in Atlanta in 2014.
+It was rather sophisticated because it was a multi-hop social engineering attack,
+where someone took over the email account of the Y Bitcoin editor and then sent malware to the Bitpay CFO to take over their account
+and then use the email account of the CFO to send a request to the Bitpay CEO to do a transfer that was supposedly for a customer.
+And then in a series of transactions, they got nearly 5,000 Bitcoins, which was worth nearly $2 million.
+Interestingly, after this happened, Bitpay filed a claim with their insurance provider for nearly $1 million,
+but the insurance provider denied it because apparently social engineering was not covered under the terms of the contract,
+and they had essentially voluntarily sent that money. They just got tricked into doing so.
+Phishing has also been an ongoing issue in this space where if you search for popular services on many search engines,
+you'll see phishing sites pop up in the paid advertising section where the URLs look very similar to the real thing.
+And in fact, if you click on it, it'll take you to a nearly perfect clone of that site
+where they'll happily take your login information and then steal all your money from you.
+In another highly sophisticated attack, which we believe was DNS poisoning,
+you could actually go to wallet.trezor.io, and unless you noticed that the SSL certificate did not actually match Trezor's certificate,
+a number of people displayed this screen where it says, oh, your wallet screwed up. We need you to put your recovery seed in here.
+And I think they got a few hundred Bitcoin during that attack, even though it only lasted a few hours.
+Right now, we're also dealing with a number of issues with Lightning,
+where there are several things that need to be done to make it more robust.
+I and a number of other people have lost small amounts of money while testing with Lightning
+because it still doesn't have good deterministic backup solution for the funds that are in the channels.
+And handling crypto seeds in general is a highly sensitive operation, and unfortunately, we don't have time to go through all of the intricacies here,
+but we created a seedless system at CASA so that users don't have to worry about things like paper wallets and all the ways that they can fail or get attacked.
+Even metal wallets, which are obviously more robust than paper wallets,
+but are still often susceptible to physical attackers because they're usually not encrypting the seeds.
+And also something that not many people think about, probably because a lot of the people in our space are fairly young,
+but inheritance planning is an important aspect to quote unquote being your own bank,
+because it's fairly certain that most of us are going to die and it's probably going to be unexpected.
+So you want to make sure that your friends, family, loved ones, and your trusted heirs know how to recover your crypto assets
+if you're no longer around to explain to them how it works.
+Now, there's also an increase in physical attacks in this space that seems to be correlated to the price,
+which makes sense because increases in price tend to result in more news and more people knowing about it.
+And there's kind of a catch-22 here because we, being in this space, are incentivized to talk about crypto.
+But as soon as we start talking about crypto, you become a target,
+especially as you have public records of you talking about crypto several years ago.
+So people will start doing the math and expecting that you have millions of dollars worth,
+and thus that you're probably a juicy target.
+Cody Brown made the problem for himself by tweeting that he traded all his coins on Coinbase.
+And within 48 hours, he was sim-swapped and his Coinbase account was completely wiped out.
+Now, this really sucks because you're enthusiastic about something, you talk about it, and then you lose everything.
+So how do we prevent things like that from happening?
+Well, we need to eliminate single points of failure.
+You need to make sure you don't keep all of your crypto on one device or in one physical location
+and use various parts of the protocol to make sure that it requires multiple authorizations in order to move your wealth.
+And we won't have time to show you here, but this is the key shield that we have at CASA where
+we make it very easy for you to replace lost devices and essentially have a more flexible wallet model
+that is also robust against loss and failure because you have multiple geographically separated sets of keys
+that are on dedicated hardware wallets.
+So summing it all up, hodling is a game of attrition.
+Those whose hands weaken and they leave the game, they may have a small profit or loss.
+And those who fail to keep their hodling secure against both theft and loss are going to exit the game
+with a 100% loss, which essentially makes everybody else's coins more valuable.
+Finally, those who hodl successfully will be the ones who win their financial freedom.
+It's rather fascinating that we've managed to get this far with so many different losses,
+so many people who have had a catastrophic loss of their wealth that those losses have still been localized
+rather than systemic and have not deterred the rest of us from continuing to work on making this system
+even better for people to be self-sovereign.
+This is the anti-fragile nature of Bitcoin where these losses are essentially learning lessons for the rest of us
+where we can take that small catastrophe and turn it into a new strength for the rest of the system.
+So as a result, we have a decade of failures, but the end result is that Bitcoin is even stronger than it was before.

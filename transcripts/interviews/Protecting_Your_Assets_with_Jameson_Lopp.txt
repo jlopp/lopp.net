@@ -1,0 +1,624 @@
+What is up, everybody? I'm Scott Melker and you're listening to the Wolf of All Streets
+podcast. Today's guest is an original cypherpunk. Jameson discovered Bitcoin early and has done
+extensive work advocating for its privacy and protection from governments and other threats.
+He's the founder of one of my favorite companies who I use, Casa, where Bitcoin holders can protect
+their assets like never before. Jameson Lottman, thanks so much for taking the time to come on the
+show. It's great to be here. I've actually been a Scott Melker fan since the early days. I was
+actually looking back on my tweets and I found one from 2014 where I was telling Nick Carey at
+blockchain to listen to your stuff. When we first connected, that blew my mind.
+Absolutely. Because I've been obviously quietly following you for such a long time in the Bitcoin
+space. And then I found out that you had been blasting ball of notes in your car. That was
+pretty cool. So before we get into the questions, once again, everyone, you're listening to the Wolf
+of All Streets podcast. We're twice a week. I talk to your favorite personalities from the worlds of
+Bitcoin, finance, trading, art, music, sports, politics. This show is powered by Blockworks Group,
+a media company with over 20 podcasts in their network. You can check them out at
+blockworksgroup.io. If you like the podcast, you follow me on Twitter. You need to check out my
+website and join the newsletter. You can do both those things at thewolfofallstreets.io. So now
+that we're done with that part, let's get into what's actually interesting here. So obviously,
+you were a very early adopter. You've been in this space. People know that you've been an advocate
+for Bitcoin for a very long time. How did your Bitcoin journey sort of start?
+Both from the technical perspective and philosophical. I mean, I have been a programmer
+my entire career, got a computer science degree. And so I hung out on a lot of the nerd sites.
+I'm pretty sure that the time that I finally actually decided to look into Bitcoin was from
+a Slashdot article. I know I had heard of it a few times before then on other geeky tech sites
+and generally dismissed it. But that third or fourth time I heard about it is when I actually
+went and read the white paper. And that's when the technical side of me was like, oh, snap,
+this is actually a very elegant solution. And I don't think that it's gonna get hacked and
+cause everybody to lose their money. It's actually much more robust than I assumed that it was going
+to be because nothing like that had ever existed before. So that got me intrigued from the technical
+side. And then on the philosophical side, once I really started thinking about what is money,
+because most people don't go that deep, they just use what's given to them, then I realized that
+money as this abstract concept is something that should not be controlled by any single group.
+It's something that it really ought to be a consensus driven project where anyone who cares
+can chip in and say, I think the ideal money should work like this. So money as an open source
+project, I thought was a really fascinating concept. And basically decided at that point that
+I wanted to understand this Bitcoin thing as much as possible. And after doing some
+side projects for a few years, I was eventually lucky enough that Venture Capital flowed into
+the space and I was able to just work on it full time.
+And what year was that? And what did that look like when Venture Capital first came into the
+space? Was it Casa? Was it something else? What were you working on at that point?
+Yeah. So when I realized that I was already spending most of my waking hours thinking about
+Bitcoin and shirking my regular job duties, it was like late 2014 when I started doing
+my routine when I started looking at jobs. I actually applied to Coinbase and a few other
+places. And I, however, did not want to move to Silicon Valley. So that made it a little
+bit trickier. And I ended up actually getting a job building infrastructure at BitGo doing
+multi-sig enterprise, hot wallet handling for exchanges and other payment processors.
+So that's where I really got to learn a lot more about the cyber security aspects of the
+space. And we had a wild ride from 2015 through 2017, just trying to keep up with everything.
+And then it was early 2018 when I basically decided to pivot very slightly. And instead
+of focusing on enterprise Bitcoin security and crypto key management, instead now I'm focusing
+on individual key management, trying to help normal people be their own bank and really
+attain the promise that Bitcoin has always made it technically possible, but has usually been
+out of reach for most people. That's interesting. You and I have discussed this before separately,
+but it's sort of like the evolutionary chart of security for people, right? You come into Bitcoin,
+you buy some Bitcoin on an exchange. Okay, fine. It's safe. Then you see a story about a hack and
+you move on to maybe self-custody. You buy a ledger or something like that. And then
+it grows and you start to worry about yourself as your single point of failure. If I die,
+if I forget it, if I bump my head, all these things. And then I think you eventually land
+at multi-sig. So what is it that drove you to focus more on retail? And why do you think that
+people should be that concerned about their security and securing their assets?
+Well, I felt like we had done a pretty good job progressing enterprise security. And really,
+as of today, there are a lot of best practices. There's even the cryptocurrency security standard,
+which if exchanges and other enterprises adhere to the recommendations of even tier one of that
+standard, then it's pretty unlikely that they're going to get hacked. Now, we still see hacks
+happen all the time because new companies come into the space, new exchanges pop up, and they
+don't know jack about Bitcoin security or crypto security. And they make the same mistakes that a
+lot of people have made before. And so that's why we're going to keep seeing those types of hacks.
+But I believe that the best practices already exist. So if you actually care enough to look
+into it, then a dedicated team of experts can secure private key material pretty well. However,
+for the individual to do that, it's still a really high learning curve. It can take days, weeks,
+months of education to learn not just the basics, but then like kind of what you were talking about,
+you get into more and more edge cases of things that are less likely to happen. But still,
+when we're talking about something where a single catastrophic mistake can cause you to lose
+everything, then you want to have all the bases covered. So I realized that even after working
+full time doing Bitcoin key management for three years, my own personal setup was still a huge pain
+to actually keep updated. I was spending basically a weekend every year. At the turn of the year,
+I would have a little calendar reminder that said, okay, update all your cold storage. This is going
+to be a really boring pain in the ass, but you've got to do it because a lot of your net worth is
+tied up in this stuff. So I realized if it was that big of a pain for me, then the vast majority
+of people were not going to follow many of the best practices. And at the micro level, that means
+that these individuals are going to be less secure. They might end up losing their money. But at the
+macro level, it's even more concerning because I think that that means that more people are going
+to just be lazy and leave their money with third party custodians. And then we're just right back
+where we started with, or we just reinvented the banking system all over again. And that creates
+a systemic risk. And I am concerned about where we might end up decades from now. Because if you
+really want Bitcoin to be like the world reserve currency, you have to think of this in terms of
+generations. And if we keep sliding in the direction that it seems like we're going,
+then having the vast majority of keys held by a small number of entities creates new types of
+attack vectors. And I don't want us to ever have to worry about that. So there's the security side,
+obviously, and then you have to think ahead of the security side. But there's also the philosophical
+side that you just touched on, which is if everything's just going to become another bank
+for Bitcoin, what was the point, right? You know, the whole appeal for people who get it, I guess,
+is to be your own bank and somewhat opt out of the system, right?
+Yeah. So it's funny because when you get really deep into it, it seems like almost everything
+that there is to talk about Bitcoin has already been talked about. Like if you go trawling through
+the early 2009, 2010 Bitcoin talk posts, and it was actually Hal Finney, who originally was
+envisioning Bitcoin as ending up like that, where the vast majority of Bitcoin was held by
+some sort of custodians. And he seemed to think that, you know, that was the natural way for the
+system to scale. But I think that there's still plenty of opportunity for us to try to prevent
+a future like that from happening. So the argument was kind of, you know, sure, you'd still have a
+lot of people that were sort of voluntarily trusting third parties, but at least you wouldn't have a
+single central bank that could then easily debase the currency. So even if we got into that situation,
+there's an argument that at least maybe the 21 million, you know, total supply would stay
+the same. But I would argue that the guarantees around that become a lot weaker as the number
+of coins that are held by different entities, you know, continues to consolidate.
+It's interesting, though, because like, the community in general, and myself included,
+like, if you're talking about the price of Bitcoin, you see a lot of these,
+the big news is very bullish, right? The OCC saying that banks can custody Bitcoin,
+Kraken becoming a bank in Wyoming, you know, PayPal, Venmo, Square, these huge things. But,
+I mean, to your point, maybe that's good for price, but not good for Bitcoin long term.
+Is that I mean, is that somewhat accurate? It kind of comes down to coordination costs,
+right? Is that the whole point of Bitcoin as a protocol is to create this machine consensus
+that essentially automates the coordination of the auditing of the financial system.
+And that is great. Like, that's where the real value of this system is. It's actually efficient
+from a global coordination mechanism, even though we're burning a ton of energy to secure it.
+It's arguably more efficient than having a lot of human auditors trying to come to consensus,
+you know, on a daily basis. But then at the human level, the problem is that the machine consensus,
+while that is a very low level of like the Bitcoin network and the Bitcoin protocol,
+beneath that there is always the human consensus level. It's like humans can always theoretically
+come to a new consensus to change the rules of the system if they update the code that they're
+running. And then the question becomes, how could that potentially be weaponized and become an
+attack vector if the number of humans who have to coordinate that are, you know, small enough that
+they can actually come to an agreement about something that perhaps the wider ecosystem does
+not agree about? And of course, that's where you get into all the scaling war stuff, the, you know,
+2X and Bitcoin cash hard fork and all the other stuff of like, who actually decides the changes?
+And are they able to like pull along the rest of the majority of the system, even if they
+are in disagreement?
+We also hear that mining is highly centralized, right? I mean, that it's four or five companies,
+whatever, are doing the bulk of, you know, all are controlling bulk of the hashrate. So is that
+another concern, you know, similar to what you're discussing, or is that something separate?
+You know, it's kind of related, but it's got its own complexities. I actually wrote a blog post a
+couple of months ago, entitled like, does China's mining power pose a threat to Bitcoin? And that,
+that, I think, becomes an issue if you're talking about nation state attacks, like what could a
+nation state that like nationalize all the miners within their borders possibly do? And the nice
+thing about mining is that it doesn't allow you to change the rules of the system. It only allows
+you to decide, you know, which blocks are going into the blockchain, and they still have to be
+valid. So the biggest attack, well, two different attacks that could really happen. One is that if
+a miner already has a lot of money, they can double spend their own money, and they would most
+likely be attacking exchanges. And from a nation state standpoint, if like China was going to do
+that, then I would like start attacking the American exchanges and the European exchanges,
+and you know, try to steal all the as many coins as possible from them. The sort of nuclear option
+that a nation state could do is to just censor everything, you know, only create empty blocks,
+don't allow any transactions to go into the blockchain. And you know, that could cause a
+massive loss of confidence. But then there's a question like, how long do they sustain that
+because it's not cheap to do. So there's always other counters to this, like you can go through
+all possible different paths of what could happen. And, and ultimately, like the network and the
+global community, as it were, would notice very quickly if these type of shenanigans happen.
+And so then, like I said, we would know that something funky was going on at the machine
+consensus level, we fall back to the human consensus level, and then we have to decide
+what do we do. The nuclear option there is you could potentially nullify all of the miners
+hardware by changing the algorithm for mining. And you know, that would kind of be like a massive
+reset and probably like, push us back to GPU mining for a while. But it's something we want to
+avoid. And the nice thing is that I think from a mining standpoint, it seems like it's becoming
+more competitive. It seems like we're seeing more miners that are using like renewables and things
+like captured like excess natural gas and stuff. And they're basically dispersing throughout the
+world. So it's not all just going to be like Chinese hydro mining, but rather a diversity
+of different cheap renewable energy sources all over the world.
+Yeah, I'm blanking on the company level something, but they're in Texas. And I know that they're
+selling a ton of electricity back to the grid to offset the costs and make sure that reuse.
+I mean, there's going to be novel solutions for the electricity problem, you have to imagine,
+I mean, in a world where we have this many smart people who are working on it, you know,
+I don't think that that's going to be a huge issue. So you touched on definitely the nation state,
+I guess, threat to Bitcoin. What are the other threats to the future of Bitcoin or at least the
+future that you the ideal future of Bitcoin in your mind? Are the biggest threats governments?
+Is it companies? Is it hacks? What is it? Well, I've said for I think quite a few years
+that I felt like the biggest threat to Bitcoin was apathy. So that basically means that, you know,
+we get stuck where we are right now, we stop growing, and it remains a fairly niche thing.
+Now, you know, with the news just in the recent weeks and months, and you know, all the crazy
+stuff going on this year, from a macro standpoint, it seems highly unlikely, you know, it seems like
+we are trending in the right direction there, where as an asset, Bitcoin is actually becoming
+more and more accepted, that it's not going away, that it is actually something that you can depend
+upon. So I'm fairly confident there that, you know, the momentum and the network effect is already
+high enough that it's not going anywhere. And I'm even somewhat optimistic that the nation state
+threat is less of an issue, because I believe we've heard a number of reports that there are
+plenty of politicians who are already invested, like the politicians aren't stupid, they know how
+the game works. And they want to opt out of the current system as well. So that, of course,
+changes the incentives of it's unlikely that nation states are going to try to ban Bitcoin
+if a lot of the politicians already own it. I mean, they must rather capitalize it than kill
+it, right? Like anything else. Bitcoin works because, you know, the incentives are aligned
+and greed is good. And it makes people predictable. And as you said, you know, they know better than
+anyone else the hazards of policy, right? I mean, your average politician in Washington has to be
+aware of the effects of endless money printing in QE and failed. So you talked about apathy as being
+the biggest threat, which I think is really interesting. And I agree with you. I think that's
+not a threat anymore. If that was going to happen, wouldn't it have happened when, you know,
+we saw the bubble pop in 2018-19? I mean, you've been in this for almost 10 years, you know,
+almost a decade. Isn't this like the maximalist wet dream scenario right now? I mean, that's...
+It's what you guys have been saying was going to happen, the money printing and the sort of
+all of these issues with monetary policy. Isn't it here? I mean, isn't this the time?
+Yeah, you know, it's hard not to have like the Schadenfreude or whatever.
+I tell some people that, you know, what's really better than, you know, the price going up orders
+of magnitude, what is really more comforting to me is being right. It's like, basically being proven
+that I wasn't crazy for so many years. You know, so many people looked down on me and said that I was,
+you know, the crazy libertarian nutjob who was talking about things that were never going to
+happen. And, you know, there was never any guarantee that it was going to happen this quickly.
+That was really, I would say the biggest surprise is that when I first bought Bitcoin as an asset,
+I did so as a hedge. I didn't think, oh, this thing is going to make me rich. I was rather that, you
+know, I knew that over the course of my life that my dollars were going to become worth less. And so
+I was going to put them into a system that seemed like it was less likely to decrease in value.
+And I am not an investor or really, I'm not, I'm a terrible trader. Oh my goodness. I would say
+the vast majority of my trades over the years have been losers. There haven't been many of them.
+Like the only, the only really good trades that I would say I've done over the past decade,
+I've had a couple of good stock trades like Netflix and Amazon. On the crypto side, obviously
+dollars to Bitcoin has been good. I've lost money on most of my other like crypto to crypto trades,
+but the only crypto to crypto trade that has turned out really well for me is selling
+off all my Bitcoin forks for more Bitcoin. But even then I would have done better if I had sold
+them for Fiat and then, you know, waited for the market to crash and then bought more Bitcoin.
+But you know, it's perfect. I mean, traders lose money. That's the way it is. And I mean,
+you know, wealth is accumulated by certainly in a space like this, by just being early and believing
+and buying and forgetting about it. And I'm assuming that's largely what you've done. I mean,
+they say 95% of traders lose everything. So yeah. And you know, it's hard to put a number on it,
+but I would say that the vast majority of people who got in really early did not hold through
+multiple bubbles. And the only reason why I have held through multiple bubbles is because I've
+always considered this to be a multi-generational asset. I was not trying to, you know, flip it
+into something else. I didn't need the money to sell, to buy other things. Like I've always
+been privileged enough to have the skills to, you know, have high paying software engineering jobs.
+So this entire time, I've just continued living, basically tried to continue living like I'm only
+earning like 50 or $60,000 a year and not inflating my lifestyle. And you know, perhaps someday I'll
+go buy a private island or something, but I don't feel the need to do that because we still have so
+much work to do. And this really has always been more of an ideological mission for me rather than
+a profit driven thing. So interesting because you hear the criticism all the time, I'll call it a
+criticism that people who were early and got rich were lucky, right? And you hear it all the time,
+like, oh, they just happen to buy it, but you touched on the most important point, buying it
+is nothing. Holding it through all of that requires just hands of steel, right? So I mean,
+there's no luck. I would say there is also luck in the sense that there are always novel types
+of attacks and forms of loss that are being discovered. And so I've had my fair share of
+close calls where I almost lost a lot of money. And this actually, you'll probably find this funny,
+but because of what a terrible trader I am, and just like not really understanding trading very
+much, I lost a decent amount of money by accidentally crashing the Litecoin market on Coinbase.
+Was it like a fat finger? You put too many zeros?
+No, I just did not understand how illiquid Litecoin was at the time. And I was used to
+making six figure trades in Bitcoin and just market order, done. And so I made, and it was
+maybe a $30,000 or $40,000 Litecoin sale, and it crashed the Litecoin market. And so I basically
+ended up losing half of that to slippage, but live and learn.
+Yeah. And I think that a lot of people have experienced that sort of in the
+altcoin market. Certainly if you were early, but still, I mean, we have DeFi and Uniswap and stuff
+where you can press the wrong button and send something literally to zero in a matter of
+moments. So I want to talk about security basics, but I don't obviously, I don't often have the
+opportunity to have someone on the show who really understands or can explain from the lowest to the
+highest level what people should be doing. So I guess we have people that are coming into the
+space for the first time. As I touched on before, they're buying and just leaving it on an exchange.
+What are the most basic steps that every person who's in crypto or just every person in general
+for their privacy should be taking at least to maintain some privacy and security?
+Privacy is a lot harder than security. And that is because it mainly comes down to what are the
+on-ramps and off-ramps that you're using. So I suspect the vast majority of people are going to
+be using your standard centralized exchanges, the vast majority of which are doing AML, KYC,
+at least if you're doing anything more than trivial amounts. So if you want to get in and out of
+the space through Fiat rails, and you don't want to give up all of your identity information, then
+you either need to do face-to-face trades, which are actually a security risk. And that's where
+the vast majority of armed robberies happen in this space is meeting people with large amounts of
+cash. And I actually have a whole repository dedicated to keeping track of those types of
+attacks. Otherwise, it gets more technically challenging because you can acquire and dispose
+of the assets through AML, KYC, but then use various technical methods on these networks to
+either mix the funds or try to hop between different chains. Of course, there are costs
+associated with that and the additional risks of potentially losing everything. And that's
+where we're at right now. And really, the way that I approach most of the privacy stuff is that I'm
+waiting for better privacy. I'm waiting for improved coin join, improved aggregated signature
+stuff so that the mixing software is a lot stronger than it currently is. And that's probably
+another reason why I don't really move a lot of money around is that every time that you do that,
+every time you transact with someone else, you're potentially giving away a lot of the details of
+your entire assets. So privacy is actually, I would say, one of the latter things that you
+should worry about because privacy doesn't matter at all if you have terrible security and lose
+everything. So from a security perspective, I would recommend keeping as little assets as possible
+with third parties. Obviously, you've got a lot of people who are probably actively trading and
+watching your show and they need to have something available in order to make trades on short notice.
+But that should be only a small part of your stack. And if you have the vast majority of
+your funds on exchanges, even if they're dispersed between multiple different exchanges,
+you're at much higher risk than if you have a robust self-custody setup. And this is actually
+something that I've heard fairly frequently is people believing that because they have their
+funds in many different places that they're safer. And it's an interesting conundrum,
+because what you're doing is you're pushing the risk around. You're spreading the risk out
+that you have a single catastrophic event that causes you to lose everything. So you are safer
+from that perspective. However, on the flip side, what you're also doing is you're increasing the
+risk that something goes wrong and you lose some portion of your assets. So that's some other
+like mental math that people need to be aware of. So what I focus on is how do you create one
+single robust setup that is essentially impermeable and is flexible enough that we
+understand that humans make mistakes and we want to make sure that those mistakes, those accidents,
+those acts of God, nature, whatever, are not catastrophic, but rather are just minor annoyances
+that you can then recover from. So there's multiple different, I would say, tiers or levels of what
+you can do with your holdings. If all your stuff is on an exchange, you don't actually own any
+crypto. You have crypto IOUs and you're hoping that that exchange doesn't go bust.
+And there are arguments to be made that you're essentially a creditor to that exchange,
+but you don't even have creditors' rights. I think if there's a liquidation event,
+you're going to be the last in line to get any money. I mean, just look at what happened with
+Mt. Gox. How many years has it been? Six years ago. Yeah. And there are still people waiting.
+There's 150,000, 200,000 Bitcoin that are still just sitting with some trust guy in Japan who's
+trying to figure out what the hell he's going to do with it. And that's a good outcome because
+at least they have something that eventually should get paid off. But going from there,
+the next step is just taking control of your own keys. You can put them into a software wallet
+that's not great. There's still, you know, a ton of technical hacks and attacks that can happen
+there. Going to a hardware wallet is really the great next step and it's fairly easy. Ledger,
+treasure, cold card, what have you. And that will protect you from the vast majority of remote
+like technical attacks. You're then still going to be open to social attacks like phishing type
+stuff is what we're seeing a lot more these days, because now the weak point is the brain. It's the
+human getting them to press the button to authorize the money to go out. And then the other thing that
+a lot of people don't spend a lot of time thinking about is just yourself. It's like you are one of
+your biggest weaknesses and not having a robust setup. You could lose all of your money due to a
+house fire if you don't have geographically distributed backups, for example. And I would say
+that that is really the bread and butter and value add of our setup at CASA is putting the user into
+an architecture where they don't have to think about it. They don't have to spend a lot of time
+thinking through everything that could go wrong because we've already done that. And then we've
+created software so that you're just following the instructions in the app, but you also have a client
+advisor that you can reach out to if you have any questions. And by just following what we have told
+you to do in the software, you put yourself into a position that I would argue is even more resilient,
+more robust than a traditional bank setup. Because even if you're putting your gold bars into a vault
+in a bank, there could be some sort of disaster that causes that building to blow up or fall down
+or fall into a hole if there's a giant earthquake that opens up the ground. You never know. But when
+you have multiple different sets of keys that all come together to secure one stash of crypto, and
+you can put those in geographically secured locations, then it's like unless the entire side
+of the country gets nuked or something, you can be rest assured that even if you lose one or two of
+those keys, you're still going to be able to recover your funds. So that is where multi-sig is
+kind of what I consider to be the final technical step. But multi-sig is not a silver bullet. It
+really depends how you set it up. And if you set it up the wrong way, it can effectively be the same
+as single sig. And that's what we had some sort of hard lessons over the years when we were in the
+early days of doing multi-sig setup is finding out how people could screw it up and turn it into
+single sig. Are you sick of paying ridiculous fees to trade crypto? It's time you try Voyager. It's
+hands down my favorite place to buy and trade crypto, and it's 100% commission free. Voyager
+gives you easy access to more than 30 top crypto assets, and you can instantly transfer cash from
+your bank account so you never miss a trading opportunity. Even better, you can now automatically
+earn interest on your crypto holdings. Currently, they're offering 5% interest on Bitcoin and 6%
+on USDC. Yes, you heard that correctly, 6%. And there are no limits or lockups, which means your
+funds always stay liquid. Find out why so many people are making the switch to Voyager. Visit
+investvoyager.com or search for Voyager on the iTunes or Google Play Store and get $25 in free
+Bitcoin when you use the promo code Scott25. That's investvoyager.com, promo code Scott25 for
+$25 in free Bitcoin and start trading today. Hey guys, I want to take a moment to talk about our
+sponsor, Electroneum and their amazing new platform, AnyTask.com, a place for freelancers
+can finally be paid for their work without needing a bank. Freelancers match directly with
+potential clients and receive ETN as payment. Even better, ETN can be spent in over 2,000
+physical and online locations worldwide. A lot of companies talk the talk of mainstream adoption,
+but Electroneum is truly walking the walk. They're banking the unbanked worldwide and
+offering opportunity to those who lack access to the resources that many of us take for granted.
+In the next few months, they're also adding more in-app purchases, including local food and supplies,
+paid TV, gaming, gift cards, and much more. If you'd like to learn more, head on over to
+Electroneum.com. That's E-L-E-C-T-R-O-N-E-U-M.com. Yeah, I think that the real light bulb moment for
+me, well, light bulb moment one was getting SIM swapped, obviously, and having people attack me
+and multiple times and trying to hack me and realizing that this was a real threat and that
+I couldn't take it casually. But then when you actually start to secure yourself from that,
+you realize and the real light bulb moment, as you said, is realizing what a point of vulnerability
+you are. And for me, that was the biggest one. If I die, if my house comes on fire, if anything,
+like you said, we all, if you're in ERC 20 coins and stuff, you probably have coins in 5, 6, 10
+different places. How's my wife going to find that? How are my kids going to find that if we're both
+going? It sends you down the trap hole. That's what led me largely to you guys. We've discussed
+this at length. I was extremely impressed at how easy the process was because it seems very daunting
+at first to even make the decision to go multi-sig because three of five, you're going to have to set
+up five wallets and you're going to have to disperse them. But you guys, like you said,
+I mean, you have someone who holds your hand literally the entire way. I mean, I feel like
+the people at your company are my friends who check in on me once a week to make sure that I
+haven't done anything stupid. It's amazing. I mean, so you have gotten to that point, right? I mean,
+you feel like now you have the product.
+Yeah. I mean, we try to strive for like a private banking experience. If you have a
+high net worth that you need to secure, traditionally high net worth individuals,
+they have private bankers who manage all the aspects of their financial life.
+And we wanted to provide the same type of experience from a service perspective,
+but do better than that because we don't want to actually control your money. We don't want
+to be a single point of failure where we could be coerced or we could screw up or even have
+an internal employee attack. There have been exchanges and other providers that have
+had rogue employees that have ended up stealing lots of money. So this is, it's a high stakes game
+and we just want to help people help themselves. That makes sense. And so, I mean, I've obviously
+I said I've been simswapped and hacked, but you've really, really gotten a big taste of the worst of
+the worst in this, right? I mean, I remember reading the New York Times article about how
+you took yourself completely off the grid. I know that the SWAT team came to your house
+a few years ago. I mean, can you talk about those experiences, what happened and then how they sort
+of shaped your view, I guess, why, I mean, I think it'll tell, show people why you're so serious about
+privacy and security.
+Yeah. And, you know, unfortunately I did not really like walk the walk when it came to privacy
+until I had, you know, the massive jarring event that made me realize how exposed that I was.
+You know, essentially rising to prominence during one of the bull runs, it results in
+more people paying attention to you. And this is a common celebrity problem, of course,
+traditional celebrities who have millions of people paying attention to them. It's just a
+law of large numbers where eventually there are going to be some unhinged people who are willing
+to do things that you wouldn't have considered. And so that's when, you know, eventually someone
+figured, Hey, this guy's been in Bitcoin for a long time. Maybe I can screw with him enough to
+extort him. And, you know, they had the technical ability to anonymously place a phone call to my
+local police department and pretend to be me, say I had killed people and was, you know, holed up
+in my house, you know, like barricade situation with explosives and all this other stuff. So
+essentially they hacked the system, not only from a technical level, but they understood that it's
+actually very easy if you say the right words to get a large amount of lethal force targeted at
+really anyone you want, at least in the United States, this is easy to do.
+Scary.
+Yeah. And it's really an asymmetric type of attack where, you know, the person who did this probably
+spent less than a hundred dollars on like the technical aspects to be able to get away with it.
+And in exchange, you know, they were essentially able to probably use hundreds of thousands of
+dollars of public resources to shut down my entire neighborhood for the morning. And then,
+you know, subsequently, who knows how much in like investigation, man hours got spent trying
+to find them and failing. And, you know, that's when I realized that if you're in the space,
+then you are a target, you know, not only digitally for some swapping stuff, but potentially also
+physically. And while the project where I keep track of physical attacks, I think there have
+only been three or four dozen documented. I know there have been plenty of other undocumented
+because most people, and like after this happened to me, I had several people reach out to me
+privately and tell me the same thing had happened to them. And I was like, well, why the hell
+didn't you tell anybody? Yeah, they're scared. They don't want to become a target again. And
+the other issue is that, of course, you know, I didn't go into all the details of what happened
+until a year later after I had burned down my entire life and moved to a new secure location
+where I felt like, okay, now I can actually talk about it. And for a variety of reasons, of course,
+that's not an option for a lot of people. So unless you start out, you know, in the crypto
+space with really strong operational security, then you're going to end up having to spend a lot
+more on the back end. If you want to put yourself into a really good standpoint, I guess, it really
+depends on what you're trying to protect yourself against. And I've written a number of articles on
+this and it gets expensive. So it really depends on how much you think it's worth to you. It's
+a new type of insurance. And this is really what I consider, you know, security and privacy,
+both different types of insurance. There are a number of people who ask CASA, you know,
+do you offer insurance on the Bitcoin that I store with you? And my response is, well,
+you're obviously asking about traditional insurance, which is some sort of legal contract
+where you hope that they will pay out. And, you know, if you follow along anything in the
+insurance world, then you know that the insurer will do the most that they possibly can to not
+pay you out if something happens to you. So insurance itself is not necessarily a great
+insurance because the guarantees are often pretty flimsy. So instead, I think it's better to
+insure yourself. And the way that you create guaranteed insurance is by setting up a strong
+privacy, setting up strong security in a way that you're not relying upon, once again, a third
+party. You know, if you're relying upon a third party for insurance payouts, then they might let
+you down. And that would be pretty, pretty terrible to happen like in your time of need.
+You were able to completely remove yourself from the system effectively, right? I mean,
+you, you know, if I recall, like, you know, you started an anonymous company, basically,
+and did everything through the company, you moved, you went as far as to buy a burner house,
+right? I mean, you bought a separate house to have a different address just so the mail could
+go there and people wouldn't know where you were. I mean, was that sort of an experiment to see if
+you could do it? Or was it were you at the level where you were saying, I need to do this or
+I need to do this or somebody's gonna get me? Yeah, it was both. You know, first of all,
+you know, the, the attack happened near, it was like as the 2017 bull run was really taking off.
+And so that's when a lot more people were paying attention, including criminals. So I felt like,
+you know, I had a few years after that of bear market where they were, I assumed there would be
+less of an issue, but it's always about preparing for the next bull market. Whether that's a
+personal thing or a company thing. It's like, you know, this is my second full cycle working
+in Bitcoin full time. And I can, I can see a lot of parallels. And so, you know, one of the things
+that we've spent a lot of time in the past couple of years at the company doing is basically me
+telling everybody all the shit that went wrong last cycle and how we need to prepare for it
+so that we don't get completely overwhelmed, you know, when demand goes through the roof
+on the next cycle. And so that is going to continue to happen from a security perspective
+is, you know, if, if there's a 10 X move in the market, then the entire world is going to
+be going crazy. But also what that means that criminals and people who are willing to cause
+harm to others are going to get more interested in it. And they are going to be experimenting too.
+So the stuff that I did, it was an experiment to try to push the envelope. And, you know,
+there were some things that went wrong. And I actually, I went through a whole other cycle
+more recently to basically do it all over again and fix the things that went wrong the first time.
+And, and so then, you know, eventually, hopefully in the next year or two, there'll be another
+major bull run and we're going to see another new swath of criminal element come in, try to figure
+out what are the risks and rewards of different types of attacks against people in the crypto
+space. And I, I know I'm going to be a big target. So I want to have, you know, an order of magnitude,
+more security and privacy than I think I need so that I can weather those attacks.
+So it's interesting. There's kind of Bitcoin and everything else when it comes to security.
+So I know that you guys, you know, multisig is a great is a great strategy for people to secure
+their Bitcoin. But what about everything else? So it depends from protocol to protocol, right?
+Right. Any of the Bitcoin based protocols will have the same multisig stuff. It will then just
+be a question of whether or not your wallet software and hardware supports it. The completely
+different things like Ethereum does not have native multisig. You basically have to use a
+multisig smart contract. I have blog posts about my experience with that. It does seem like the
+Gnosis safe multisig smart contract has been well vetted. And I've not heard of any exploits against
+it. And I think it's been out there for a couple of years now. So that's probably the best option
+for Ethereum folks. You know, Monero technically has multisig, but as far as I'm still aware,
+there's not really any good interfaces into it. It's more of a command line thing. And you know,
+the further down you get in the list, you know, the smaller the community, the smaller the number
+of developers, the less likely there is going to be some sort of robust multisig even offered to
+you. So what we've seen instead is some companies and projects have used other types of things that
+are similar to multisig, but they're not actually like on blockchain multisig. So you can do things
+like Shamir secret sharing. It has its own set of gotchas, but it essentially allows you to split up
+keys. I think there are some companies that are doing multi-party computation systems that can
+allow you to do the same thing. The tricky things about both of those is they're novel. And I think
+like with the multi-party computation stuff, I think a lot of it's not even open source. So
+it's hard to evaluate, you know, as time goes by. Yeah. As time goes by, we'll be able to gain more
+confidence in them if they don't get exploited. But you know, there have been exploits. I think
+there was a Shamir secret sharing in some Bitcoin wallet recently. They were doing this like
+they were doing this like social key recovery thing. And basically an attacker, somebody,
+a researcher figured out how to turn it from a like two out of three, basically into a single
+sig once again. So it's, it's hard to say, you know, this, we obviously get people asking us
+all the time, like, when are you going to add support for X, Y or Z? And it's just, it's such
+a heavy lift both to evaluate and then to build on top of is that I still feel like we have so
+much work left to do improving the Bitcoin experience that I wouldn't want to, you know,
+start working on something else until I felt like I was finished and had the perfect polished Bitcoin
+vault available for people. That makes sense. And we talked about, I guess, exchange security a bit
+earlier, but at least it's encouraging, I think, I'm not saying it's certainly not the end all be
+all, but that they've added things like whitelisting and, you know, hardware, you know, like a Ubico
+key to be able to, I mean, do you think that the exchanges now are becoming far more secure,
+at least than they were before? Or do you still think that there are huge points of failure?
+I think the exchanges that have been around for a long time are getting more secure, you know,
+Kraken, Gemini, Coinbase. Though I last I checked Coinbase still had like SMS account recovery and
+2FA and like there are still plenty of people who are getting SIM swapped and losing their Coinbase
+funds. And I don't know why the hell they still even allow that. Every SIM swap that I've heard
+of, people that I've talked to myself included, and I didn't even have money on Coinbase, but the
+first reset email I got was from Coinbase. That's definitely the one that hackers are going for
+immediately when they SIM swap. Yeah, I don't know why Coinbase still even offers that. Like as soon
+as SIM swapping started to become a thing, it was in 2015, I believe, Bitgo had SMS options on our
+accounts and we completely removed them. We said, you know what, no more SMS. And we wrote a blog
+post about it. And here we are five years later, and there's still huge companies that are
+protecting money with accounts that can be reset via SIM swapping. So that is kind of ridiculous.
+I can only assume that Coinbase like evaluated the risks versus I guess how much trouble it would be.
+And they're like, well, you know, we'll have like 0.0, whatever percent of our users get hacked and
+lose everything, but everybody else should be fine. So yeah, the exchanges,
+it's security is always a cat and mouse game, right? It's never over. I think even Binance
+lost like what 4,000 or 40, I think it was 4,000 at a coin last year. And the exchanges at least
+understand the risks better. And you know, they keep the vast majority of their funds in cold
+storage. So I do believe we're going to continue to see exchanges, hot wallets get hacked. But if,
+you know, this is a risk that any exchange needs to take into account and basically have insurance
+fund for, right? So you understand that over a long enough timeframe, there's probably going to
+be an exploit. And you just want to make sure that that risk is compartmentalized and that
+you can essentially pay out on that catastrophe so that none of your users get directly affected.
+Yeah, I know it's at the point on Binance, at least for a consumer where like you can have
+like an encrypted email, proton mail account, and to be able to withdraw funds, you need to,
+you know, press your Ubico, use a 2FA code and also do an email code. So that's a lot more than
+I remember from before. But like you said, the exchange can still get hacked and your funds can
+disappear. So that's just a matter of someone hacking your individual account as opposed to
+the exchange itself. I just tweeted out, I think yesterday, maybe the day before, a picture of the
+Gox Ubiquis. They were branded for like higher volume traders. And, you know, there were 8,000
+or so users who had those. And I don't think the Ubiqui helped them at all when it came down to it.
+Right. Because if it's the exchange and that, I mean, yeah, that's from the other side,
+unfortunately. So and just to get back to it, like at a very basic level,
+what should people be doing sensibly? Is it VPN? Is it to get to a hardware wallet? And
+at what point do you have enough, I guess, it's person to person, but accumulated wealth or
+accumulated Bitcoin that you really need to start considering multisig? Yeah. So this is the other
+tricky thing about security. And it's actually is one of the reasons why we also have a high level
+of client services for our premium tiers is because security is not a one size fits all thing. It's
+like everybody has their own particular threat model they're worried about, their own family
+and friends situation. You know, we have clients who are globetrotters and they don't stay in one
+place for more than a month or two. You know, everybody has different variables that have to
+go into consideration for their own setup. So it's not possible for me to say, you know,
+if you have more than X amount of this, then you need this setup. But rather, the easiest way that
+I try to describe it to people is you need to have an order of magnitude more security than you
+think you need. And by that, I mean, if you have a thousand dollars in crypto, then you should act
+like it's $10,000 and secure it appropriately. If you have a hundred thousand, you should act
+like it's a million and so on. And you know, that is going to lead different people to different
+conclusions. And the really tough thing about security, especially when we're talking about
+like the different loss vectors due to mistakes or natural disaster or whatever, is that I think
+people have a hard time doing the like mental math of how likely it actually is. Like
+it's the default human condition to say, oh, I'm doing fine now. Nothing's going to happen to me.
+And a good example of that for people. Right. And, you know, and I think, you know, that is probably
+why a lot of governments have mandatory insurance requirements. You know, if you're going to get on
+the road or whatever, you have to have insurance for these things, even though it's probably never
+going to happen to you. They know that it's going to happen to somebody. And so we can't, you know,
+we can't mandate insurance. We can't mandate high security for anyone in the space. All we can hope
+is that sort of organically over time, the sort of attack and defense story will continue to
+force people to understand that if they're not in a good position, they're going to lose everything.
+But that's more of a macro perspective. You know, at the micro perspective, if you end up losing
+everything, then you're probably not going to get back into the game, or at least not at any
+substantial level that you then need the same amount of security that you needed before,
+because you're no longer that big of a target. So putting numbers on things is hard. It's
+it's something where you say, I guess, trying to remember the exact saying, but it's like a penny
+worth an ounce of prevention is worth a pound of solution or whatever. I'm sure I'm screwing that
+up. But the point being that it's better to put in a little bit of effort upfront than it is to
+have a huge catastrophe on your hands. Yeah, it's it's the old argument is like,
+well, why am I going to buy $100 wallet if I only have $150 in crypto? Because you believe
+it's going to be worth the hard 1500, like you said, or 15,000 or 150,000. I'm curious,
+after going through all of this, I mean, there's very few people who are doxed in this space who
+are not anonymous. I mean, do you regret not just throwing up an avatar on Twitter and fake name
+and going about life that way? I mean, No. And the main reason for that is that it allows me to do
+in person events. And while that's been less of an issue this year, you know, I would say,
+you know, I was traveling and going to various conferences and meetings, you know, almost every
+month when when things were still happened. So I do expect that, you know, eventually,
+I will just go completely dark, you know, if if I feel that, you know, it's mission accomplished,
+and there's I don't have much more to contribute, then there's not much point in me continuing to
+expose myself. So that is a long term goal of mine is, you know, the final step of privacy is to
+really wipe myself off the internet. In fact, like that would have been the easy thing for me to do
+after I was attacked is that I could have just deleted all my accounts and shut up,
+stop making myself a target. But I took the hard path because I still feel motivated enough
+that I need to contribute publicly. And I need to use the reputation that I have built over many
+years to continue to try to educate people and bring more people into the space, because we're
+not there yet. The network effect is not yet strong enough that we are going to achieve world
+domination. So you're doing it for everyone else. I mean, at the end of the day, it's a public service.
+It's pretty cool. I know we touched on Coinbase before, and I know we're going to run out of time
+pretty soon. But I'm curious as to your take on, you know, the recent controversy with Brian
+Armstrong and politics in the workplace, because I know that you obviously are self-described
+libertarian and that they're kind of the biggest name in this space. And it's been big news. So
+I'm curious how you feel about it. It's weird, right? Because
+keeping track of like the social justice warriors and then the, whatever you want to call them,
+anti-SJW folks, I've actually started like getting annoyed by everyone. Basically, anyone who gets
+triggered by stuff is like, there are better ways to go about trying to achieve your goals. And
+admittedly, I say a lot of things that trigger a lot of people too, but that's also just kind of
+like my marketing goal is, that's how you get engagement, right? Is that you say and do
+controversial things. And, you know, from a company perspective, because, you know, I've been running
+a company for several years now, I completely understand Brian's point that he doesn't want
+people, you know, wasting cycles arguing about politics when they could be working on Coinbase
+goals or whatever. At CASA, we don't have anything like that. I mean, we have a chat room called
+random where you're free to put whatever the hell you want in there. But we have not really had
+anything to evolve into, you know, political arguments or anything. So I haven't directly
+had to deal with that. Of course, we're a much, much smaller company. And I'm sure not as diverse
+as Coinbase. So it's, ultimately, it's up to the executives of any company to decide because, you
+know, they are at the top of the pyramid. This is a hierarchical command and control structure
+within traditional companies. So, you know, he's the dictator, like it or not, he gets to decide
+what people do because he's the one paying them. I don't think it's like a freedom of speech issue
+or whatever, because this is a voluntary agreement between the employees and the employers. And at
+any time, an employer can say, you know, if you don't agree to these conditions, you know, at
+least in America, most states are at will employment and you can get terminated for any select
+few reasons. So I felt that, you know, his, what is it, four to six months of severance and like
+seven year option exercise was extremely generous from that standpoint. And I was actually more
+surprised that only 5% of people took it. But on the flip side, perhaps people feel some of the
+employees there may feel incentivized to stay on because, you know, Coinbase is, you know,
+because, you know, Coinbase is pretty obviously going to IPO soon. And so there might be a huge
+payoff for them to just shut up and go with the flow until they can exit.
+So on the one hand, there's my beliefs, but that on the other hand, that heavy scale of
+future earnings, basically. So last question, do you have any idea or ideas who Satoshi is?
+There have been so many theories over the years. There's no concrete ones that I land on. I am
+100% convinced that it's not Craig Wright. And I've written extensively on that point. But,
+you know, I've, I've heard theories, everything from, it was an elderly woman at the NSA to it
+was some like Asian teenager whiz kid. Personally, my favorite and, and what I hope is that it's
+actually an AI from the future that sent itself back to, you know, create its own monetary system
+that it'll use to take over the world when the time is right. SkyNet. But, you know,
+I don't, I don't really care, of course, who Satoshi is. I do care about Satoshi's motivations.
+And so I have been doing some more research over the past year into the Potoshe pattern and early,
+uh, possible Satoshi mining stuff. I do find that interesting. If you've been reading any of Sergio
+Lerner's writings, it's a really technical stuff, but what it seems to be pointing to
+is more and more evidence that Satoshi's early mining was not done out of greed, but was in fact
+done just to keep the Bitcoin network alive as it was bootstrapping the Bitcoin network.
+There's actually reason to believe that Satoshi mined purposefully slower than they could have.
+And they were just trying to keep the heartbeat of blocks going at a fairly predictable pace
+until enough other miners came on board and then they slowly ramped down their own hash power.
+So that, I think that that is interesting because it, you know, it provides some evidence
+that perhaps Satoshi is not planning on spending those early Bitcoin,
+whether or not they kept them, who knows, but it seems like they certainly were not
+in it to try to enrich themselves. It's a, yeah, it'd be nice to believe that,
+uh, actually believed everything in the white paper and it was more of an altruistic,
+uh, you know, earth shattering technology than a get rich, you know,
+quick scheme. Certainly. So, um, where can everybody follow you guys? Um,
+check out what CASA is doing most importantly, and, uh, you know, consider your services and,
+and follow you personally after this. Yeah, you can learn all about CASA at keys.casa.
+It's keys.casa. And on Twitter, I am lop l-o-p-p and CASA's Twitter is CASA HODL.
+Yeah, dude, having a four letter Twitter name is epic. There's like value. There's a lot of value
+in that. I wish I got in early on the Twitter game too, but I haven't gotten any tokens from that.
+I think I was ahead of Bitcoin on Twitter. Actually, I think I was like 2008 or 2009 on
+Twitter. It's crazy that it's been that long. Well, thank you, man, so much. I really appreciate it.
+I think, um, there's a lot of really good information here that people hopefully will
+take seriously and start to consider, um, privacy and security. Cause I still think that most people
+don't, I think they just think it's like their Schwab account or something. And they're just
+going to buy a little Bitcoin and whatever, and even beyond crypto, just, you know, protecting
+your protecting yourself. Unfortunately, yes. Uh, you know, this is the privacy versus convenience
+issue where we seem to be trending towards convenience and away from privacy. So it's more
+work, but I honestly believe that putting the work in upfront is going to pay off over the long run.
+Awesome, man. Well, I hope you don't go completely dark before we get to have a
+follow-up conversation down the road. Thanks again for being here. Thanks.

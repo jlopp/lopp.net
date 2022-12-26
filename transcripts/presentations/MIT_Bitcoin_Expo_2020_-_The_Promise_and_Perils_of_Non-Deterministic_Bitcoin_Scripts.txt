@@ -1,0 +1,303 @@
+Okay, so finally, Jameson Lopp.
+All right.
+Kudos to all of you brave souls who are still here in meat space with us.
+Hello to everyone out there in the digital realm on the live stream and a special welcome
+to those of you currently in virtual reality.
+I'll be meeting up with you shortly after.
+My name is Jameson Lopp.
+I am the co-founder and CTO of CASA, and I have been doing Bitcoin security wallet infrastructure
+for about five years now full time.
+It's not particularly glamorous work.
+It's not cutting edge stuff.
+I generally tend to steer clear of most of the really cool stuff that you've seen throughout
+this conference, and that's really what this presentation is about.
+It's the promises that we're seeing in all of these new complex features and functions
+that are being developed for Bitcoin and other crypto protocols, and then the balance that
+we as application developers have to worry about with regard to usability and security.
+So we'll start somewhat near the beginning.
+I'm trying not to make too many assumptions about your level of understanding of Bitcoin,
+but as many of us probably know, there is no such thing as a Bitcoin.
+There are just transaction outputs, and those outputs can be either spent or unspent, and
+the way that we control the spending or spendability of these outputs is with scripts, and Bitcoin
+has a scripting language.
+It's fairly limited.
+It's not quite as easy to work with as some more full featured languages like you see on
+other networks like Ethereum, but it generally gets the job done, and for most interactions
+on the Bitcoin network, you're using fairly simple scripts that just say, I need to have
+one single signature in order to redeem this output, and without going too deeply into
+it, this is basically how the operation of a single signature script works.
+You've got a signature, a pub key, and you're essentially performing operations that eventually
+result in you actually doing a check of the signature against the hash of the pub key
+that actually gets placed on the blockchain when you're creating that UTXO.
+Now this isn't a great diagram, but just to show you, it gets a little more complex when
+we start doing multiple signature outputs.
+Essentially we have more data that's going into these scripts that's saying, I need M
+out of N, different signatures, and then we are verifying by seeing, do we have the correct
+threshold of signatures in the redeemed script at the point in time when someone tries to
+actually spend that output.
+If we're actually looking at how these scripts are set up, you can see that a single signature
+script is fairly simple and straightforward.
+Multi-sig script, about the same, but then you have up to N number of pub keys, but it
+doesn't stop there.
+You can actually have a wide variety of different conditionals, and you can start creating much
+more complex scripts, but a simple next step, for example, from a multi-sig escrow type
+of script would be some sort of escape hatch, basically saying, I'm going to put my money
+into an escrow between three people, and if for some reason they can't come to an agreement
+to spend from it, then after a certain amount of time, the original owner of that money
+can just have a single signature to get their money back.
+Throughout some of these slides, I'm putting what I believe are some of the more important
+op codes in green, and some of the potentially dangerous op codes in red, which we'll get
+into later.
+One interesting thing that has been theorized, I'm not aware of this actually being used
+yet, but for example, in mixing operations, there's often an issue when you're creating
+a completely decentralized, trustless mixing markets where a surveiller could come in essentially
+acting like a whale and try to mix with everyone else who is trying to improve their privacy
+on the network.
+This is a similar type of problem that you actually run into with Bitcoin and creating
+blocks.
+If there's no cost to doing the operation, or they're very low cost to doing the operation,
+then you can be subject to civil attacks and other malfeasance.
+One thing that has been theorized is, well, someone who is trying to act as a market maker
+could essentially say, hey, I've also set aside a lot of other Bitcoins that I'm provably
+locking up for a long period of time just to show you that I'm really dedicated to this.
+I've put a provable high cost onto it.
+That might be a way for you to gain a bit more trust that your counterparty is not just
+trying to de-anonymize everyone in the mixing software.
+This is actually from Arwen.
+One of the interesting things that we also start to get into is when we chain lots of
+transactions together, you'll mainly see things like escrow, multisig, and then various time
+locking operations go on.
+Just a few presentations ago, we actually had an in-depth discussion of how Arwen works,
+how it allows you to create a protocol where two people can have an atomic swap that they
+are both confident they won't get their funds stolen by the counterparty.
+I don't think it's obvious from this particular diagram, but there are multiple time locking
+operations that are going into this.
+Also you're getting some puzzle data with some hashes and pre-image that are going on.
+We're putting in some other data that is just come up with on the fly at the time that we're
+engaging in this operation.
+It gets even more complex.
+This was actually from Jeremy Rubin on UTXOs.org where we can create incredibly complex control
+flows of value via a variety of different UTXOs that have different levels of security,
+single sig versus multisig.
+We may even have pre-signed transactions that only go to certain well-known white listed
+addresses in deep storage, cold storage, and essentially the point that we're getting to
+here is you're only really limited by your creativity when it comes to the constructions
+that you can create even from this very limited scripting language.
+We won't even try to delve into HTLCs if you can even read any of that, but this is the
+fundamental underpinning of Lightning Network.
+It is creating a fairly complex game theory via a number of time locked transactions and
+various escape hatches that allow people to assure themselves that if the counterparty
+tries to cheat them that they can actually have the final say and get all of their money
+back.
+I think someone said it earlier in the conference, but it may have just been a side conversation,
+but essentially one way to look at public blockchain networks is that what we're trying
+to do is to guarantee that cheaters never win.
+While I was creating this presentation, Jimmy Song actually put out a question of why can't
+I just get a multisig time lock wallet that works with hardware?
+Apologies to Jimmy for my snarky and not very insightful reply because I didn't want to
+spill the beans on anything, but this is in fact something that I have wanted to do for
+a long time, but we'll go into some details as to why I ended up deciding against implementing
+it at least with the current tools that are available.
+So we talked a little bit about multisig, fairly straightforward from a scripting standpoint.
+So what happens if you want to have an additional time lock on your multisig funds?
+Well you just have the same script and then you throw in an additional time locking operation
+into that script, and with check lock time verify I think you can either put in a block
+height or you can put in a time stamp.
+Basically the number gets interpreted in different ways depending on the range of the value you
+put in there.
+And this is the type of thing that I would like to see.
+There's a couple different ways you could do it where essentially you start off with
+your regular best case threshold, say three out of five, and then you have some conditionals
+that basically say, well, okay, if for some reason these funds don't get spent for some
+long time period, say a year, then we can turn that from a three out of five to maybe
+a two out of five.
+Maybe you lost some keys, maybe something went wrong and you don't have that threshold
+anymore.
+And then maybe at the extreme case after several years we say, okay, we're actually going to
+make it a single SIG operation because something has obviously gone terribly wrong and we can't
+successfully get to the threshold of keys that we need to spend from our wallet.
+You could also go the other way where you start out at a threshold and then you just
+add more pub keys.
+So you could turn it into a three out of six or three out of seven and basically have more
+redundant keys geographically dispersed around the world.
+And I don't know if there's any particular appreciable difference between these two things.
+I mean, the total script size on the first one would be a little bit smaller.
+Maybe you could discuss some game theory implications around them.
+But you get essentially the same level of degradation.
+And as you can see, these scripts start to become really complex.
+One of the reasons I didn't like the idea of implementing them was because it would
+use a lot more data on the blockchain.
+It would make every single transaction in that wallet a lot more expensive.
+Also there's privacy implications.
+It would be a fairly unique script.
+And the nice thing, though, is that hopefully before too long we'll have a solution for
+some of those privacy and scalability issues and we'll be able to have much more complex
+scripts and logical branches of scripts that are essentially hidden through Taproot.
+Now that solves a lot of the scalability and privacy problems, but it doesn't solve one
+final problem that I'm still going to go into now.
+And that is essentially disaster recovery for a wallet.
+What happens if all of the hardware and software that you are using on a regular basis to run
+your wallet disappears?
+Say you have some sort of catastrophic loss due to any number of different reasons.
+How do you reconstitute that wallet from initial data?
+And usually this means you go, you get your 24-word seed, you load it into some common
+wallet software, and it just magically finds all your Bitcoins.
+Well unfortunately in reality it tends not to work that well.
+And this is in fact why we now have a repository that you can check out on walletsrecovery.org.
+This is run by Rodolfo Novak and Janine because they were running into this issue all the
+time.
+The problem is that we have many different standards and even though a lot of wallets
+will follow one of those standards, many wallets don't follow any standard at all.
+And the even worse part is that in many cases they don't very well document what they have
+done and so you get into a lot of cases where a user may have had a catastrophic loss, they
+have their recovery seed phrase, and then they start plugging it into other software
+and they have no Bitcoin.
+And the reason for that is actually due to the way that Bitcoin wallets discover addresses.
+If you are familiar with BIP32, this is, to my knowledge, pretty much every wallet out
+there does follow BIP32, but even if it follows a lot of the standard pass that are generally
+expected and will be searched by wallet software when it's initializing a new wallet, one of
+the final points that I want to get to is that it's not as simple as you might see here
+where oh, you just get to the end of all of your derivation pass and then poof, you've
+got an address.
+The problem is that that is true for a simple single SIG address, but once you start creating
+arbitrarily complex scripts, the entire script itself is actually going to become a part
+of this address.
+And there's different address formats out there and the addresses themselves are more
+for humans than for the software, but the point being in order to find where your funds
+may be, you have to have some idea of what that script actually looks like.
+So we saw the HTLCs and how complex they are and that in fact, most of the things on this
+screen never even get broadcast to the blockchain, they're just privately sent back and forth
+between different nodes on the network.
+And if you've ever gone and tried to do a disaster recovery on a lightning wallet, which
+I've unfortunately had to do a number of times, both for myself and other people, a lot of
+people who were longtime Bitcoiners, they had their seed phrase and so they felt like
+they were safe, but then they loaded it up into the wallet software and let it scan the
+blockchain and then they discovered that not all of their funds were actually there.
+This is because the seed phrase is only able to discover the funds that are on chain in
+the addresses that are managed by that single SIG wallet, the funds that are actually in
+channels that are being sent to outputs that are in these HTLCs that aren't broadcast to
+the blockchain.
+They are created with more complex scripts that have time locks and have new values for
+the UTXOs that nobody knows about other than those two people.
+So the only way to really ensure a 100% recovery of your funds, both on chain and off chain
+with lightning, is to back up every single HTLC, every single transaction, even the ones
+that you're not broadcasting out onto the network.
+And that's why we have the concept of watchtowers, the idea that we will have redundant backups
+and in fact incentivize other parties to be looking out for anyone who's trying to cheat
+us and would also be able to help us recover if for some reason we lost that data.
+So what do we want to do if we want to leverage all of these awesome new features but we don't
+want to get into a situation where users are not able to have disaster recovery very easily?
+The easy thing is just to use sane scripts that are very predictable so that you can
+have a very simple guide or a template.
+But if you need to put arbitrary data, which is usually going to be like time locks or
+something like that, into these transactions, then you need to have a guide.
+Whether that is your own special recovery software or your own mechanism for backing
+up the data, it's really going to be up to you.
+I think this is one of the things where over time we're going to discover what the best
+ways to do this are and perhaps we'll get some standards, perhaps not.
+But there are at least some ways that we are able to describe scripts well.
+I don't know a lot about descriptors which have been worked on and have been added to
+core.
+I'm not sure how well we can perhaps extend those and have templates that make it more
+obvious of how we might be putting arbitrary data into these scripts.
+But I think the most important thing that there's really no excuse for any wallet not
+to do is to have a well documented and tested recovery process.
+And so if there are any wallets that are not documented on walletsrecovery.org, I think
+that's the absolute minimum that we should be expecting from them.
+And what I really want to get to the point that we can do recoveries as well as Electrum
+does right now for multisig, the optimal way I think that we should be able to allow someone
+to completely recover a wallet from nothing but their original seed data is via a GUI
+that is essentially creating a wizard that anyone can just click through a few different
+options that should be very well documented or obvious to them if they understand how
+their wallet works so that under the hood, the wallet can then generate all of those
+scripts and do the address derivation, do the discovery of UTXOs and then allow you
+to once again spin them.
+So it's not a particularly fun topic to talk about, but losing money is a lot less fun
+I think than putting in a lot of good work ahead of time.
+So this is one of the things that is always in the back of my mind, I think whenever someone
+who is building software in this space is looking towards leveraging amazing new functionality,
+they also need to think about how do I ensure that I'm not creating a foot gun where users
+who are excited about using this functionality end up losing money because of some edge case
+disaster scenario.
+Questions?
+Hello, so one of the things I've thought about just a little bit, and I'm wondering if you've
+thought about it more, is giving users a unique seed if they set up a multisig and then encoding
+all your derivation requirements into the seed, so instead of 12 words, maybe you have
+14.
+I think the AEZ, for example, is like one step in a similar direction.
+I think the AEZ only really encodes the birth date of the wallet, but having other standards,
+we have to have the data somewhere.
+It does seem like it would make more sense to just encode it all in one big package.
+And of course, we get to have a lot of arguments about another standard for all of this.
+But that is ultimately what I would like to see is you just have one data blob, and you
+tell the user this is the important data blob, store it in as many redundant locations as
+possible, and then the optimal thing is they can just load that into standard wallet software
+and click a button, and it works.
+But yeah, I would love to see that.
+The only problem, of course, is backwards compatibility, and I know that even in some
+of my own experience of working on wallets that were very long lived, and as things develop
+as standards change, you can have one wallet that started out as a legacy wallet, and then
+you don't want to change all the seeds around, so you start just adding a bunch of other
+derivation paths for SegWit or whatever.
+It can get a little nasty over the long term.
+Thank you.
+I just wanted to comment further on that, if I can.
+I think at least if you think about the slightly more advanced cases than just single user
+single key situations, you probably want to separate the actual key material, the seed
+or private key, from the information on derivation on the wallet.
+One particular reason is I might have one hardware wallet, which I want to have the
+seed backed up somewhere, but simultaneously I want to participate with that device in
+some multisig setup.
+If you want to use the device for multiple things, you don't want every backup for every
+application to include the private key material.
+This is a complication to users because you now have two levels of things, but one is
+like the actual secret thing, and the other is if you leak it, it's just a privacy issue,
+which you can back up on anywhere.
+I hope work around descriptor wallets and Miniscript will help with that.
+Fair enough.
+What we're doing at CASA right now is our users keep most of their keys on hardware
+devices, and CASA never even knows anything about those.
+We just generate a guide that's personalized for each wallet that says, you know, this
+is all the pub key and derivation path data, but unfortunately it's still probably more
+complicated than we would like it to see because I have to go through and write like a three-page
+document that says, click this in Electrum and then click that in Electrum.
+It's doable, but we can definitely improve upon it.
+Thanks for helping to build these things so people can actually keep their keys safe.
+You mentioned that all these different wallets have created their own different standards
+for HD.
+Do you know if there's any particular reason why they might have done that, or if anyone
+could be better than anyone other, or if anyone has said this is definitely the standard that
+they should all move to in the future?
+I think part of it is just the nature of the freedom of the protocol.
+We can say this is the best practice, but developers may not be familiar with the standards.
+There are a lot of bips out there.
+Very few people even know all of the bips, and they may just start developing without
+reading everything.
+There can also be issues, I guess, with some confusion, especially when you start getting
+down into some of the different address formats and then what the recommendations are between
+things like different formats of extended public keys versus different derivation paths
+versus segwit versus non-segwit.
+It can actually get kind of confusing.
+Part I think of the problem is that you can make almost anything work.
+The protocol generally doesn't care how you're deriving stuff, and so it's very easy to create
+a non-standard wallet, and nobody really even knows what you've done until they try to load
+it into some other software and all of a sudden nothing works.
+There is no great overseeing maintainer of the entire ecosystem.
+It's not until people like Rodolfo come together and start actually centralizing a single source
+of information of how different all of these things are that it's not even obvious to a
+lot of us.
+I think you really would have to go and ask each of these teams of developers why you
+chose a certain thing.
+For us, for example, we had to make some decisions around the fact that we only have one out
+of N private keys for the wallets that we're creating for users.
+We actually went into, from my understanding, a non-standard path in the sense that we actually
+have this concept of device and key rotation built into our wallets, and so that actually
+results in us incrementing the derivation paths, I think, at a rate that you generally
+don't see happen in most wallets, and that can also result in the derivation paths between
+some of the different devices actually being different.
+It's pretty weird, but we were creating a situation that I don't think any other wallet
+provider out there had tried to do before.
+Great.
+Thank you, Jason.
+Thanks.
+Thanks for having me.

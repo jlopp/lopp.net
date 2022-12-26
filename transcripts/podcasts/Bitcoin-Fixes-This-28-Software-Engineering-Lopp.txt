@@ -1,0 +1,288 @@
+Welcome to Bitcoin Fixes This, where we explore the impact that Bitcoin will have in all aspects of society.
+Today's guest is Jamison Law, Cypherpunk, Bitcoiner, and CTO of CASA.
+We talk about software engineering, how it's different than computer science, and what makes software engineers good at their craft.
+Jamison also tells us about how Ethereum has a different development philosophy,
+why adversarial thinking is important, and what he looks for in developers.
+Jamison is a Bitcoin OG and someone that's been doing Bitcoin development for a long time.
+He's forgotten more Bitcoin technical details than most of us ever learned.
+In this episode, we talk about software engineering as a discipline and how Bitcoin development in particular differs.
+I hope you learn something from this interview.
+Jamison Law, how's it going?
+Crazy busy. We've had a little bit of a reprieve here since it seems like a lot of folks are focusing on the Wall Street shenanigans rather than crypto at the moment.
+So I've got a bit of a breather.
+That's great. And I know you have like your location is secret and everything else.
+But is it kind of crazy for you or is it easy for you with all the lockdown stuff?
+Yeah, so I have mentioned that I've been on the move a bit.
+As many people are probably aware, I prioritize my freedom and my privacy.
+And so I've actually I've kind of meandered around the United States throughout the pandemic.
+And it's been interesting.
+Naturally, the highly dense urban environments have been the worst, so I try to steer clear of them.
+But no, I've been doing well. I am in a location that I wouldn't mind staying at for a while because it feels pretty normal here.
+That's great. That's great.
+So I wanted to talk on this episode about software engineering.
+So just to give our listeners a background, can you describe for us what your experience was pre-Bitcoin, post-Bitcoin and so on in software engineering?
+Yeah, so I got a degree in computer science a while back from the University of North Carolina.
+Interestingly enough, computer science was not exactly what I expected.
+It really is the theoretical evolution of the branch of mathematics that deals with logic and constructing what eventually turns into machine code.
+But I didn't understand until later in my computer science studies that computer science is actually not really the same thing as software engineering.
+And I think that a lot of computer science programs in academic institutions actually spend very little time relatively telling you what entails process of good software engineering.
+Hopefully, these institutions are catching up with it since I was there way back in the day.
+But I only actually had one semester, like one class of actual software engineering when I was in school.
+And the vast majority of the stuff that I learned was after I got out of academia.
+And really what software engineering is, is I think it really it is based upon the assumption that you have good computer science skills, good programming skills, the ability to reason and write code.
+But then it's all of the other stuff around. Well, OK, how do you go from just being able to write code to actually being able to architect a complex application that has many, many different moving pieces and you know is going to evolve quite a bit over a long period of time.
+How do you start to build a maintainable piece of code which becomes many pieces of code and do that in a way that can scale that you can have a variety of different people who are contributing to it.
+And you want to be able to do it in a way that it can continue to evolve without being a huge pain because there's a number of different I think metaphors that people use.
+But when you're in the software space, especially Internet based software, this code can be really high turnover and you can essentially end up rewriting everything while still having to keep all of the logic running.
+So some people use metaphors like, well, you're basically flying an airplane and you're replacing the engines while the airplane is still going.
+So that's kind of the way that I think of building Internet software. And right out of the gate, the first job that I had was actually working at an email marketing company.
+And I'm not that interested in email marketing, but it just so happened to come with a lot of very interesting scalability challenges.
+We went from being 10 employees to 300 employees over the time I was there going from sending out maybe 20,000 emails a day through our system to sending out 100 million emails a day through the system.
+And then all of the resulting pieces of this complex architecture that had to be scaled, you have to find the bottlenecks.
+You have to continually rewrite them using whatever the latest new technology is that's an order of magnitude better.
+And you have to be able to keep doing that in ways that you can onboard new employees and try not to run into the mythical man months problem that can inevitably slow you down.
+So it's a complicated space to be in. It's exciting.
+And I have learned orders of magnitude more in my time working in the industry than I did when I was actually in school.
+But school was very helpful to get that base foundation that then you can start to build everything else on top of.
+Yeah, touched on a lot of things there. And we can send this off in a variety of directions.
+But the first one that I want to talk about a little bit is the difference between software engineering and computer science, because a lot of people think, OK, I just need a computer science degree and now I'll know what to do.
+But as you were saying, that's not the case at all.
+Can you talk a little bit more about that?
+Yeah. So computer science is really about algorithms and data structures and how those relate.
+If you have a very specific problem and you have a good grasp of computer science fundamentals, then there's probably a data structure that is most optimal, most efficient for storing that type of data, depending on how you're reading and writing it.
+And then depending on the other operations you're performing on that data, there's probably certain well-known algorithms that are used all over the place and have basically become standards.
+And even if there isn't something that meets your exact use case, you can probably use those fundamentals as building blocks to build something that will do exactly what you need.
+And so this is really looking very specifically at one specific small piece of one problem. And that can work very well in a narrow mindset. If it's just you, you're just writing one thing that's going to only run on your computer a few times.
+But then when you start trying to solve much more challenging problems that are usually, it's a superset of solving many other smaller problems at once and sort of wrapping them under a nice user interface to make a piece of software that you can sell to people because you're saving them so much time and resources.
+That's when you start to have to worry more about the interactivity between potentially many different pieces of software and hardware. And then, of course, with the internet, all of the problems that come with internet and reliability.
+And it becomes not just the issue of being able to write some code that will work in the specific use case that you want it for, but being able to write code, build code, deploy code, and do it in a way that is reliable, repeatable, and scalable.
+That's where the real engineering comes in, is constructing these frameworks so that you can not only create much more complex applications, but make sure that they don't crash every five minutes, which is ruin the user experience and probably lose you a lot of money if you're trying to sell a service to someone.
+Yeah, that reminds me of something. A lot of people that come out of college, and I'm sure you've managed new grads or people that just come out of school, they don't understand that part that well, unless they have maybe some internship experience at a big company or something like that.
+They don't really understand the actual art of software engineering. They really only know the theoretical computer science component. And while they can build something that works once, like to make it so that it's easy for other people to read, for it to generalize a little bit more, to not make weird abstractions that don't make any sense.
+That tends to be something that a lot of people don't get. Can you speak a little bit as to how long it takes for you to disabuse them of that notion and get them to actually be good engineers?
+Yeah, it's a very simple explanation for why that is the case. And that's because when you're in school, you don't have the greatest adversary working against you. And what is the greatest adversary? It's the user.
+And so it's not until you get out into the real world and you have actual users who are being stupid and doing stupid things that are so dumb that you can never imagine that anybody could try something that stupid, that you start to realize that you have to write your code defensively.
+And that basically means you have to validate your inputs. You don't trust anything that the user is doing and you protect your logic like it's a Bitcoin private key basically.
+You can't imagine all of the bad things that go wrong. So instead you have to figure out what is the exact happy path of what data I want to accept for this given operation and then what are the transformations I'm going to do on it.
+And then anything that is outside of that scope of stuff, I'm just going to immediately throw away, throw back an error and say you're doing something stupid and whatever it is, I don't want any part of it.
+So that's the major difference I think in mindset. And it's once you get into the real world and you have your feet to the fire and you have to actually deal with things like support requests, whether it's from a user directly or whether it's being proxied through the client services department that is talking to the users.
+One way or another, if your code does not handle edge case as well, you're going to find out very quickly. And so you become incentivized to prevent that from happening by writing the code well in the first place.
+And this is going to take different people, different amounts of time. The more pressure that you have, the more bad things that are happening, hopefully the faster you'll learn.
+Yeah, that's a great point. And it is always kind of intriguing to me how many new grads come in with this idea that they know something and then you show them how to use Git, for example.
+And they're like, what? I don't understand what this is or anything like that. And it takes them a while to understand how to create good software.
+And it is interesting that it's so much of it. It has to be sort of taught on the job, which you would think that a lot of these colleges would get you.
+But I want to talk a little bit about something that you mentioned, which is sort of this idea of defensive coding.
+And that comes through this idea of like, you know, software as sort of like an interaction in the broader scope of things, especially with the Internet and a network.
+So, you know, defensive coding, like if you're doing like a one-off script or something like that, that's obviously not something you have to worry so much about.
+But what's something that you see as an effective way to encourage that sort of mindset, that adversarial thinking and getting people to understand, you know, why software has to be that way?
+Because especially when you talk to product managers or whatever, they tend to discount this, don't they?
+Yeah, well, it really comes down to who are you giving access to a given thing.
+The more tightly controlled the access to a given piece of software is, the less defensive you arguably need to be.
+So, for example, if you're writing a script on your computer and you're literally the only person that's going to be running it, then you know you're not going to be trying to destroy your own computer or doing anything stupid.
+You don't need to put in a whole bunch of sanity checks.
+The opposite end of that spectrum is you're putting some sort of app or API out on the open Internet.
+And now anybody who has Internet access can just do a drive by and start trying to screw with you and figure out if they can either break your application or break into your application and get some sort of juicy goodies that you might have on the back end.
+So this is really where, like I said, the putting your feet to the fire happens if you're going into the industry because you're probably going to be writing something that at some point is customer facing.
+And even if those customers, they may be paying customers, they may be some sort of gatekeeping or limitation on the access to it, but eventually some customer, whether intentional or otherwise, is going to click into something or paste in some data or do something that you simply did not conceive of possibly happening.
+And there are just so many different crazy scenarios we've seen over the years.
+You never know when someone might accidentally drop, I don't know, like a 10 gigabyte file into some upload mechanism you created and crash your servers.
+The possibilities are endless.
+And so that's why instead of trying to think of everything that could go wrong, it's much easier to think of exactly what is the scope of what I want to allow in the first place.
+You know, think of it as allow listing rather than deny listing type of logic.
+Yeah, and we can see a lot of those examples on the Bitcoin blockchain, right?
+Some of the crazy things that I've heard are people using like a transaction hash as a private key and then using that to sign over stuff.
+I think there have been lots of analysis in that regard.
+So which brings me to another question, what's your evaluation of Ethereum and, you know, from a software engineering standpoint?
+Ooh, so, you know, the reason that Ethereum has gotten so much adoption is that they made it much more developer friendly and they did that by putting a virtual machine on to the network that could essentially use a language that was, you know, somewhat
+like a JavaScript or a Python or, you know, an interpreted web language that is very easy for people to pick up.
+And so the result of that is, you know, you can, as a coder, very easily get into Ethereum development and write smart contracts that they work.
+You know, this is what I consider to be one of my biggest red flags or dangerous things when I'm interviewing an engineer, for example, is if I'm trying to understand the depth of their knowledge and the way that they portray themselves as well.
+I don't know everything, but I can get things to work.
+And the reason that that is a very dangerous mindset is because it goes back to what we were talking about earlier of being a computer science student writing an assignment on your computer and being able to get the script to work.
+The problem is when you take that mindset and now you're putting it out onto the internet, especially if you're putting it into this decentralized permissionless network where you have to assume that pretty much everybody is an adversary because there's a lot of money on the line.
+If you are taking a sort of coder perspective on it rather than a more nuanced software engineering adversarial perspective, then you can very easily overlook things.
+So from a security standpoint, I think that this is one of the big reasons that Ethereum and DApps, it seems on almost a weekly basis, have some sort of hack or exploit is because people are leveraging the strengths of Ethereum to create interesting apps that are running on this virtual machine that is very hard to stop.
+But they're not putting in enough time and resources up front to perform an evaluation of that logic that holds up.
+And in some cases, even if they are, there have been some hacks of platforms that got even multiple audits in the space.
+It's just the result of how new this technology is that even some of the very reputable auditing firms can overlook things.
+I'm not a super duper expert at the low level Ethereum programming language, but just some of the things that I've read through in the postmortems, it seems like unless you are an actual Ethereum protocol developer, it would be very easy to overlook.
+So the result of that is that I think Ethereum is going to need a lot more time for it to build up the best practices and the tools and everything that's required for them to be able to confidently create secure apps.
+We're still in this stage where people can create dApps for Ethereum, but I would not be confident that they are secure unless they have been running for many months and have many, many millions of dollars in them basically as a bug bounty.
+So that's just the sort of dApp development side of things. At an even lower level, just the fact that Ethereum is putting so much data onto their blockchain and having every node perform extreme amounts of computation as really part of the consensus mechanism.
+It's just adding a lot of complexity, and I think that is one of the reasons why we've seen Ethereum's scaling challenges be so high and their scaling roadmap, it seems like, keeps getting pushed back years and years and years.
+And I think that a lot of this is really just due to the complexity, the trade-offs that they made to make it really simple and developer friendly at the high level, but at the low level, it is not as efficient as something like Bitcoin, which is really taking the opposite of approach of trying to keep as much of the logic, as much of the computation off of the actual blockchain and off of the network of nodes.
+So this is going to be the fun thing to see how it plays out over the long run of which of these designs is going to be the most scalable.
+Yeah, the thing about Ethereum that's always sort of bothered me was, you had a guy, Vitalik, who was like 19 years old when he started conceiving of it. And he's kind of like that junior programmer right out of school. And he kind of, at least as far as I can tell on his technical choices, he made it kind of like a new grad out of school would.
+He's sort of using, you know, I want to make everything new and forget about all the wisdom of standards that exist. I'm going to do my own thing and I'm going to make it super friendly for what I wanted and things like that.
+Now, that level of confidence is sometimes okay, but I mean, this is money and it seemed very kind of dumb to add that level, that much complexity into a product like this. Like, what's your view on the level of complexity that they have and what level of complexity software should have, you know, when you're trying to guard against adversarial adversaries that are trying to hack at you?
+Well, it's hard to say whether or not they made the right decision because clearly they just made different trade-offs. If they had tried to do things the right way, then I assume that Ethereum would not have launched until probably many years later.
+And who knows how the environment as a whole would have ended up. So now it seems like a lot of their work has been more on trying to clean up a lot of that technical debt, right?
+So one of the things that I do on an annual basis is I sync like all of the popular network nodes to see how they're faring in terms of scalability and resource requirements and whatnot.
+And the Ethereum nodes have not been doing that great, though if I recall correctly, I mean, it seems like actually most of the Ethereum node implementations have just fallen into disrepair.
+And I think that these days it's mostly geth. And, you know, I will say that like the geth developers have made a lot of performance enhancements and improvements in their node syncing logic over the years. But then, you know, they also do other kind of hacky things that I'm not a big fan of.
+Like with the warp sync stuff, basically, which essentially just skips validating everything until like the past few weeks of history on the network.
+So this is why it's really interesting to even compare Bitcoin and Ethereum because they're so different. They're trying to do different things. They make completely different tradeoffs from a security model perspective.
+You could make an argument that Ethereum nodes are more of the like ask a friend security model. You know, as long as we get some checkpoints from a few other nodes, then we can reasonably assume that we're not being Sybil attacked type of stuff.
+Whereas, you know, in Bitcoin, it's trying to be more self-sufficient and less trusting of outside data sources. But I think that the goal of taking Ethereum's current level of complexity and now exploding it out into even greater complexity with all of the sharding stuff,
+it's kind of mind boggling to me as to how well that is going to work. I mean, and once again, it may work for the good cases, but it seems like it's probably going to come up with a lot of other tradeoffs that I can't even envision at this point.
+Other than I know like there will be some issues of like shard locality and like what happens if you need to transition data from one shard to another, et cetera, et cetera. And, you know, that seems like the stuff that you would want to be abstracted away from users.
+So hopefully, I mean, hopefully users won't even have to know that shards are a thing in Ethereum, but somehow I doubt that that's going to be the case.
+Indeed. You bring up an interesting concept that I want you to explain to the audience, and that's technical debt. You're talking about how Ethereum 2.0 is essentially trying to pay off the technical debt of Ethereum 1.0. Can you explain to our audience what technical debt is?
+So technical debt is basically the result of you making a lot of decisions which go along the lines of, well, we have a choice to make here, and we can either do the easy thing that gets us into a working state and, you know, meets the requirements of today that we know is kind of hacking.
+Or we can take the longer, less tread path and engineer a solution that will work not only today, but also in the distant future and be able to handle all of these other issues that we believe are likely going to crop up over that time.
+And that's kind of, I think, the story of Ethereum since the beginning, of that it's been, it is the Silicon Valley mindset of move fast, break things, you know, get stuff working, and if something breaks, then we'll just fix it and keep moving.
+And that's certainly a mindset, and it certainly does work for certain things, but this is, you know, when you get into the more philosophical question of, well, should we be doing that for something that is supposed to be a financial system?
+And that's where I think a lot of people would say no, but then probably a lot of Ethereum proponents would be like, look, we're still, this is still an experiment and it's okay if we do some kind of janky stuff now because we're working on fixing it.
+And, you know, it's less of a technical argument at this point and more of a philosophical and ideological thing because despite all of its problems, Ethereum does still work in many use cases.
+People are using it. We cannot, we can't claim otherwise. It is certainly being used. This is, of course, a marathon, not a sprint. So it's going to continue to be a wait and see how things go, you know, over the matter of decades.
+Yeah, it's interesting to me though that they decided instead of like fixing things small bits at a time, they're fixing, they're sort of starting from scratch. And this again is a common sort of thing that a lot of new grads and, you know, younger software engineers tend to favor, which is we're just going to rewrite the whole thing because, you know, the previous ones crap.
+They're tense and usually that doesn't end so well. Can you talk about that a little bit?
+On complete rewrites?
+Yeah.
+Well, it depends on the system, right? Is if you're in an internet type of environment, as soon as you deploy a system, it's live and your users are going to have 24-7-365 uptime expectations. You know, the five nines of uptime is something that every internet company is always shooting for.
+Because even if you just have a few minutes of downtime, you're going to get plenty of complaints and basically lose people's respect and trust. So if you're going to rewrite everything from scratch, then a couple of things are going to happen.
+First of all, it means you're dropping what you're doing and you're not making any improvements or patches to the current system. So the current system is probably going to languish for a very long time. And depending on how long that rewrite actually takes, then you're most likely going to have to do some sort of migration.
+Migrations, especially for large complex systems, can be quite onerous. This was actually a fun time in my early days. This was back when Agile and Scrum type of development was still in its early days.
+When I first started at the e-mail marketing company, even though we were a software as a service based application, we only did quarterly releases of our software.
+Wow.
+Yeah. So you know what that means. It means that once a quarter, we would have a weekend of downtime during which the engineers were basically drinking Red Bull for 48 hours straight and doing SQL database migrations.
+And then you're trying to get the app to come up on completely new servers running completely new software. And it was hell. And the opposite of that is doing a completely Agile type of environment where you can deploy within a few hours or deploy on a daily basis type of thing with a click of a button.
+And in order to get from A to B, you have to institute all of these other software engineering practices basically to maintain a quality assurance.
+And the reason that our quarterly releases were such a nightmare is that even though we had a QA team that was constantly testing things on the new software, they weren't able to actually test the actual migration many times to make sure that that part would go smooth.
+Everything that you aren't highly testing is a potential point of failure, a potential blind spot, and you don't want to run into one of those blind spots when you're in the middle of doing your production migration.
+And so when we look at the way that software engineering today is happening in a much more Agile type of environment, by the time an engineer has written their code and gotten it peer reviewed and merged into whatever your development code base is,
+that should kick off a whole bunch of build and test processes that are performing QA at a level and a rate of speed that humans wouldn't even be able to keep up with.
+So there's a lot that you can do to save yourself a lot of time and effort and pain just by putting in the time up front. But this means that you have to allocate resources to those operations.
+So you can either pay the piper in production and potentially lose money, data, customer satisfaction, et cetera, or you can bake into your development timeframes and process that you need to spend a decent chunk of time,
+not just writing the code, but writing testing frameworks and writing other adversarial software that is trying to break your own code. And that's how you get stronger.
+That's how you try to build in things that prevent fragility.
+And that's an important part of software engineering that I think a lot of people have a bad notion of. They think that most code spend most of their time coding. Actually, at least in my experience, I'm spending maybe a quarter of my time coding,
+another quarter of my time testing, another quarter of my time documenting, and another quarter of my time in meetings or doing administrative stuff or getting user requirements or something like that.
+Yeah, yeah, definitely is that if you're spending the majority of your time writing the actual code and logic, then you're probably neglecting other things.
+Yeah, and that's an important part of engineering that a lot of people don't get. And something that I don't know, at least as far as when I look at some of these projects in the space, they don't spend anywhere near that much time like doing stuff like what you're talking about,
+like testing and making sure things work and making sure that things are solid and not going to be exploitable and so on. Why is that? Why do you think so many projects seem to neglect that part?
+Hmm. Well, I think the easy answer is incentives. It's so easy for you to write a few hundred lines of code.
+And then if you market it correctly, you can get millions of dollars of funds starting to flow through this smart contract in a matter of hours.
+If you're doing it right, it's somewhat reminiscent of like the 2017 ICOs, except now it seems like you don't even have to have a white paper or a website.
+It has been interesting to watch the evolution of that space. And I guess it's just like there's just so much demand. There's so much capital that's sitting around in Ethereum. And I guess a lot of them don't have the hold mindset because Ethereum, like we said, is more of the Silicon Valley mindset of like,
+we want to try crazy new things. If you put a crazy new thing in front of me, I will throw some money at it. And if I lose it, no big deal. I've got more. But if things go well, then maybe this is my next unicorn.
+So I think that's why, at least on the DeFi side of things, that's why you hear people talking about the DeFi degens. Maybe these are people who are just like retired and don't have anything better to do than to play around with their ETH and hope that they hit another jackpot with some new smart contract.
+We're seeing that sort of mentality bleed into the stock market with what's going on right now.
+All right. So let's talk about scaling a little bit, because this is a topic that unfortunately doesn't get enough teaching or there's not that much really that you learn in school.
+And if you do learn it, it's like in big terms and so on. But this is something that if your application gets used at all, you run into real fast. So can you talk about sort of the engineering challenges around scaling and how you handle that as a software engineer?
+Well, there's many different layers to it. So I think the first layer of scaling is just remembering your computer science fundamentals and understanding not only how to write software, but understanding how the software actually gets run by hardware.
+So when you're trying to write code that is performant, then you want to use the fewest amount of computational resources possible.
+And you want to use the fastest computational resources possible. So that means you need to understand things like the orders of magnitude of latency for different operations.
+So if at all possible, you want to avoid doing anything over a network because that could take milliseconds, potentially even hundreds of milliseconds.
+The next worst thing you want to avoid doing is having to read off of a hard drive, especially a spinning disk hard drive, because that could take potentially 10 milliseconds, if not more, for a spinning disk hard drive.
+And then you get into stuff like RAM access, CPU, cache. This is another one of those rabbit holes of if you're trying to optimize code.
+You even get to the point of understanding how the specific programming language you're using might get compiled or interpreted and used by the different pieces of hardware in your server.
+So being able to minimize the resources that you're using for whatever logic you're trying to do is very important.
+That, I guess, goes back to big O notation, right, is that you want to avoid doing unnecessary work or unnecessary loops or checking.
+This is where computer science really comes into play by being able to select the data structure and the algorithm that is most optimal for whatever you're doing so that you're not needlessly scanning or sorting for data.
+And that means you need to understand how that data is going to be used, whether it's read intensive or write intensive.
+And this is still only at the single operation level that I'm talking about.
+You then, as you're starting to aggregate into a multi-user application, you start having to worry about how the interactions of many different users making many different requests against many different resources simultaneously are going to scale.
+And that's when you have to start thinking at an even higher level of how is my specific database able to scale against certain read requests and write requests?
+And do I have my data indexed in the best ways?
+And these are the points at which a company may have grown to the point that you actually want to start hiring specific engineers for specific things.
+You might want to hire database specific administrators who know the ins and outs of your specific database infrastructure so well that they can spot the bottlenecks as soon as they happen
+and either tweak configs or talk to the engineers about things that they might need to change with their queries or data structures.
+And then even beyond that, the final frontier of scaling is if you get to become a really public giant application where your company is going bananas in terms of user growth.
+And how do you build your infrastructure in a way that can actually automagically scale up to meet sudden surges in demand even if you're asleep in bed at night and you have a million new users sign up?
+So that's when you start getting into infrastructure automation and load balancing type stuff.
+But yeah, there's no one single point of scaling. You have to optimize everything you can at every level because especially the lower the levels you optimize stuff at, the compounded rewards you'll gain at higher levels in terms of resources.
+And resources cost money. So you're saving your company a lot of money, which it can then use to scale even more.
+Yeah. And this is all sort of relevant to Bitcoin because we went through a giant scaling debate for a few years over back in 2016, 2017 and so on.
+Can you speak to that and sort of what the issues were specifically with scaling and Bitcoin and why the decision for SegWit was a significant part of it?
+Yeah. And so as a backend engineer who was actually working in the cloud computing NoSQL space as that was coming to prominence in the late 2000s, I was all about scaling.
+That's what I had been doing for a number of years. And so the way that I approached scaling at the time was from my own employment experience, which was that when you're scaling an application, you never really want to get to more than about 80 or 90% resource usage of whatever you're able to provide.
+Because once you start bumping up against that 100% resource usage, that's when the user experience is going to suffer and you're going to start getting a lot of complaints.
+And so I was looking at it from a standpoint of you always need to have buffer. Otherwise, things are going to go wrong.
+And that's how a lot of other people in the space were also looking at it, especially Mike Hearn. He famously wrote a number of posts that basically said the same thing that if we run out of this buffer space, then everything is going to go bad and people aren't going to want to use Bitcoin anymore.
+Unfortunately, that scaling perspective, while it makes sense for an individual company that is selling a specific service, it does not make sense for a decentralized network that is essentially a public resource.
+And the reason for that is that we have to worry about this like tragedy of the commons situation where you have a single scarce public resource and nobody is going to respect that resource unless there's a real cost associated with using it.
+So if we had taken the perspective of whenever we get to 80% full on the blocks, we're just going to raise the limit a bit more, then we'd very easily get to the point where we're raising the block size every week or every day possibly as more users come into the system.
+And then some malicious actors are just going to write some scripts that keep spamming stupid transactions that aren't actually economically valuable and use that to basically game whatever adaptive block size system we come up with.
+And eventually the block size would blow up to a point that it was just unsustainable for anyone, but probably the largest most profitable enterprises to even run a node in the first place.
+So that was the main reason that I think there's a lot of pushback against any sort of block size increase simply as a result of perceived demand.
+So instead what we ended up with was a fairly novel sort of compromise solution where the block size wasn't increased per se, but rather it was realized that the signature data, which was taking up a significant fraction of the block size, did not necessarily have to be in the block itself.
+Or at least in the block as it was seen by nodes running older versions of the software.
+So what we ended up with was this segregation where we could instead provide a sort of proof of the signature to the old nodes.
+But they would basically ignore having to validate their signatures and just consider them as valid. And instead now the newly upgraded nodes recognize the new format of these blocks.
+And they can say, OK, well, this signature data is actually over here and I can still validate it.
+We can go forward. There I think were a few magic numbers thrown in there with regard to some of the weight calculations and stuff.
+And it did get a little bit more complicated from that standpoint.
+But what we ended up with was a throughput increase that it was backwards compatible, which was I think what most people were interested in going for is not breaking people's nodes who were not paying attention to what was going on with this debate.
+Yeah, great summary. And the thing about that debate that I still remember was just all these people that felt like it needed to stay the way it was before in order for it to succeed.
+Which to me was a little bit of a different expectation for sort of like an Internet service like Gmail or something like that.
+That's a very good thing because that's what a user kind of expects out of it.
+But for something like Bitcoin, where we're trying to make this into sort of like a global store of value or something like that, it shouldn't stay the same.
+There needs to be some expectation change. And that's kind of what increases the price.
+Anyway, let's talk about the backwards compatibility piece, because for me, this is one of the most brilliant things about Bitcoin from a software engineering perspective.
+Can you tell us what that is and explain its significance?
+Well, because what we're talking about here is not just a single piece of standalone software or even a software as a service type of setup, but rather it is its own infrastructure.
+You know, it is its own network is that you have to worry about the consensus of the different actors on the network.
+And that basically means if you are changing the language that these actors on the network are using to talk to each other,
+you know, if you're changing the protocol, which is essentially the messages that are passed back and forth between these nodes,
+and you do that in a way that someone running an old version of the software doesn't understand, then they're most likely just going to stop talking to you.
+And what that means from a network perspective is you can easily end up with a split of the network where essentially all the people running the old versions of the software are talking to each other
+and then all of the people running the new versions of the software talking to each other and nary the twain shall meet, as it were.
+And this becomes a problem when you then have miners who are on the old version and miners who are on the new version.
+They start producing blocks that may not be compatible with each other or at the very least the blocks do not get relayed from that one network split to the other network split.
+And you essentially end up with two different blockchains.
+And what you've done is you've completely lost global consensus of what the state of Bitcoin is.
+What is the state of the unspent transaction outputs and who actually owns the different Bitcoin as it were.
+So the reason that you want to do things in a backwards compatible way is to avoid that type of scenario.
+If you have to make a change that is not backwards compatible, then you have to understand that either you get almost everybody to upgrade, which is pretty hard to do because there's no central control mechanism even to notify people that there is an upgrade.
+Or you have to be willing to live with the potential consequences of some chaos on the network.
+And we have seen a number of forks happen over the years and interesting fallout as a result of them.
+So this continues to be a fun experiment in that regard, though it seems like a lot of people have gotten a bit tired of the forking idea at this point, but who knows it may still it may come back around again in another cycle.
+So, you know, it's a matter of once again, how much effort are you willing to put in?
+You can either put in that effort upfront and try to engineer things that will save you a lot of pain in the future.
+Or you can just say we're going to do the naive engineering thing and rip off the Band-Aid and hope everybody follows along.
+And that seems to be the strategy for a lot of coins is to just sort of hard fork and say, take it or leave it, which to me is just a very centralized system, which isn't bad for software applications.
+It's not great if you're claiming that you're decentralized.
+All right. So in what way do you think Bitcoin changes software engineering in general?
+What do you think Bitcoin's impact on software engineering has been and will be?
+Well, for a while, I felt like it was kind of difficult to explain Bitcoin engineering.
+But these days, I basically describe it as mission critical infrastructure and the best I think comparison would be something like either aerospace or medical engineering.
+And the reason for that is that we're talking about software engineering in a space with very low tolerance for failure.
+So it's actually it's almost paradoxical, maybe even ironic that the Bitcoin network,
+which is often touted as one of the strongest, most robust anti-fragile things in existence, you know, on par with the Internet itself.
+When you get down to the actual software development layer of the protocol and the nodes that are talking to each other, it's actually the opposite.
+And this is because consensus, machine consensus is so brittle.
+If there is a single bite that for whatever reason, two different implementations don't agree on, then boom, you fall out of consensus and potentially have chaos on the network.
+And we've seen a few historical incidents happen with that.
+And even just in the past couple of years, there have been a few sort of narrow escapes from bugs that could have caused something like that to happen.
+So it requires an extreme level of vigilance on not only the people who are writing the code,
+but everyone who is reviewing the code as well, thinking adversely about it, because if they don't think adversely about it, then somebody else will.
+And this is a system now that it is its own bug bounty, and the bounty is in the many billions of dollars, you know, if someone could potentially exploit Bitcoin at a protocol level at this point.
+So that's why it's mission critical. It's also somewhat like developing aerospace type of hardware and software. If you're off by even a millimeter,
+then you're talking about potentially deadly catastrophic consequences for everyone involved.
+So, you know, will that trickle down, I guess, into other engineering disciplines? That's hard to say. I think it's still probably too early for that.
+You know, the amount of engineers who are working on Bitcoin related stuff is still quite small, I think, compared to the entire software industry, since software is eating the world.
+But there certainly are plenty of lessons to be had. And at least I think in the security community, crypto and crypto related products are at the forefront of engineering and security practices simply because there is so much on the line.
+Yeah, there's something about, you know, this whole decentralized application, the idea that, you know, there's no central point of failure or central point where you can just sort of like change things as you need them.
+It sort of takes out this final safety net or whatever and it makes, you know, the software have to be that much better, which in a sense causes you to think adversarially more and to invest a little more in security, which I personally appreciate.
+And, you know, as we go on towards the Lightning Network and things like that, this seems like something that more people are paying attention to.
+I would love, for example, to be able to run my own mail server, like using some sort of like, you know, hardware device and not have to depend on Google or something like that who can always read my email or whatever.
+So it seems to me that the world is changing at least a little bit and hopefully will in the future. So with that in mind, how do you think software itself or the art of software engineering changes over the next five years?
+Hmm.
+You know, I haven't heard too much, at least in terms of managing developer pipelines and sort of like project management.
+Things like that stuff has been pretty well cemented at this point of, you know, what are the handful of different well vetted ways of managing like a specific project.
+The really nice thing that keeps improving, I think, is just the ability to automate more of your building and testing systems. And, you know, there's a number of different services that can help out with that.
+And really, I think many of the tasks that for the past couple decades have been more manual and been more reliant upon humans performing them, they continue to get automated away.
+And so, you know, we're seeing more types of services that are doing things like automating different, you know, penetration testing from the outside of your infrastructure that are automating.
+You know, code analysis for against, you know, database of maybe a hundred thousand different well-known coding vulnerabilities or, you know, stupid coding practices that tend to get put in by naive developers.
+You know, these are the type of things that you would use to have to have like a really senior engineer basically pouring over every aspect of your system and really applying their decades of expertise to it.
+So, I do think that, you know, we continue to accelerate forward in what we're capable of doing, you know, doing more with less from that standpoint so that, you know, a smaller software shop can essentially leverage the experience of what would otherwise cost them, you know, hundreds of thousands of dollars worth of salary in order to get that expertise.
+So, that's nice. Definitely want to see that continuing. But, of course, there's still going to be a need for people who have decades of expertise and know especially how to keep learning.
+You know, if you're on the forefront of things, that's where I think the really senior folks come in handy because this is a dynamic environment and you need to be a constant learner if you want to stay on top of things.
+There's always some new practice to learn from or some horrible new exploit that has been found or it's kind of the result of the increasing complexity of the world, right, is that the world continues to get weirder and we have to figure out how to weather that.
+Yeah, excellent point and it does feel like so many things are changing continually and this is one of the challenges of being a software engineer is that if you don't know some of the stuff that's coming down, you might be doing things in a horribly inefficient way that was solved by a new service that you never heard of and that can be challenging as well.
+All right, so let's wrap this up. Where can people find you, Jameson?
+Well, you can find me on Twitter. My handle is lop l-o-p-p. You can also check out my website at lop.net where I have every Bitcoin educational resource under the sun.
+Thank you so much. It was a pleasure hanging out with you.
+You bet. Thanks for having me.
+Well, that wraps it up for this episode of Bitcoin Fixes This. Jameson can be found at @lopp on Twitter and lop dot net. Until next time, fiat, the lendest.

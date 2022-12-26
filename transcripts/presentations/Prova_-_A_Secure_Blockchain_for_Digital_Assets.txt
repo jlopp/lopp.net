@@ -1,0 +1,617 @@
+Thanks everybody for showing up, interested to give you a little overview of one of the
+many projects that BitGo has been working on over the past year.
+And Prova is basically our first foray into a custom permissioned blockchain.
+This is something that came about after several years of talking with enterprises who wanted
+to get into this space but did not necessarily want your fully fledged permissionless open
+blockchain that is very difficult to control.
+So after doing a lot of research and evaluating different technologies, we dove in and after
+about a year of work both on the protocol side and our own infrastructure side, we've
+got an interesting new system that is going into production use right now, it should actually
+be starting to get used by real customers in the next couple of months.
+So what is Bitcoin?
+That's kind of where we have to start with a lot of these things, hopefully don't need
+to explain to most of the people here because we certainly do not have time for all of that.
+Of course we're here because back in 2009 this new technology appeared on an obscure
+mailing list for cryptographers and cypherpunks and ever since then we've all been kind of
+stumbling forward trying to figure out what it is that we've actually got here and what
+can we actually do with it.
+So we of course began this journey because the current financial infrastructure has a
+lot of deficiencies, a lot of inefficiencies, a lot of vulnerabilities and as I'm sure all
+of us are aware there are a number of different problems that can result in, shall we say,
+unfair practices, unfair advantages by different players in the system who can take advantage
+of the way that the infrastructure is currently set up.
+So just due to the nature of centralization and concentration of power within these various
+hierarchical systems we find that people manage to get themselves in positions of power, positions
+of trust where they can then take advantage of really the infrastructure of the system
+itself in order to make changes or convince people to do things that are actually against
+their own best interests.
+So as we are aware of the way that traditional ledgers and databases work generally you're
+going to have one master copy of your database that is the source of truth and that is generally
+quite efficient from a technical standpoint because you don't have to worry about replication
+errors or reconciling multiple different sources of data but the downside is what you're doing
+is you're putting all of your data under the trust of one entity and usually this is in
+a very obscure format where it's not open, only a few trusted people within an organization
+might have the ability to actually do an audit on the database or the ledger and this can
+result in issues that grow out as the network around this ledger grows where you end up
+creating systemic problems due to the trust and due to the lack of visibility.
+So as a result this can create a very powerful single point of failure which can result in
+the entire system potentially collapsing or becoming unstable if tiny little things go
+wrong at the main point of your source of truth.
+So that of course can be anything like hacks or fractional reserve banking that results
+in bank runs or of course really like what we saw in 2008 is just sort of this extreme
+like layering of complexity upon complexity to the point that basically nobody actually
+understands what's going on in the system anymore and eventually enough people figure
+out what is going on and the whole thing kind of falls over and a lot of trust gets lost.
+So then comes along this completely different concept of distributed ledgers where we're
+really inverting the entire system where instead of having a single trusted source of truth
+we then say okay everybody checks everybody else's work right so we are basically copying
+replicating data all around a network of entities that is participating and they are all checking
+each other's work and if anybody finds anything that has gone wrong they reject the changes
+and as a result we have this new sort of automated consensus system but of course the tricky
+part is you have to build a protocol that can basically automate whatever it is that
+you want to come to a consensus about amongst your entities to then have the machines basically
+do the auditing for you automatically and throw a red alert through a lot of alarms
+if the consensus logic itself finds any problems with the activity that is happening on the
+network.
+This results in a much more robust system because we no longer have single points of
+failure if something happens you know at one particular node that's going to be a localized
+failure rather than a systemic failure that can cascade across the entire ecosystem.
+It also just creates a much more open type of model where you could argue that it's
+easier for people to build on top of the system because they have a better idea of what's
+actually going on on the layers that they're building on top of as an infrastructure.
+So for your standard like marketing checklist here of why would you want blockchains versus
+traditional databases of course we've got transparency we've got what you often hear
+called immutability but I would say a better description is just tamper evidence.
+Tamper evidence is really what comes along with any type of blockchain record because
+you're really you're creating this cryptographically chained history or audit log of everything
+that has ever happened within the system and while of course it is possible for like a
+hacker to go in and change data they cannot change the data in a way that is not easily
+evident because they're going to be breaking one of those links in the cryptograph chain
+somewhere so at the very least you have this tamper evidence where you can easily tell
+your computer you know go back and audit all of the data and if anything goes wrong we
+know that we need to get some human auditors in and check what happened right here you
+know maybe it was a software failure maybe it was actual you know malfeasance by some
+actor within the system.
+Immutability I would say is tamper evidence plus some sort of extreme cost to tampering
+with the system so within Bitcoin of course that is the proof of work within other systems
+you might have some sort of proof of stake or federated consensus.
+The actual consensus algorithm for creating that high cost of tampering is less important
+if you're talking about a permissioned system where most of the actors who are operating
+the network somewhat trust each other and we'll talk a little bit about that later with
+Prova and then of course with regards to the actual the trust nature of it you're no longer
+relying upon one entity to be telling you the truth about what the state of the system
+is because you validated everything yourself and with regard to costs I would say it's
+less efficient from a technical like database standpoint of you know actual queries and
+updates but what you really find is like you're potentially lowering a lot of costs if you
+can get the sort of human auditors out of the equation as much as possible.
+So really what we're trying to do is automate away a lot of the compliance costs within
+a particular system so that you know you can still have some human auditors that check
+on it every once in a while but the vast majority of the auditing gets automated so that it's
+happening 24 7 365 without necessarily needing oversight of a human and of course we believe
+that these systems are much more robust for a number of reasons one of which of course
+is just the fact that we're now using public private key cryptography so that instead of
+having like all of your secrets or all of your private data once again in one database
+that needs to be highly guarded instead what we're doing is we're spreading out the actual
+keys to the system amongst all of the users so you can think of it instead of having like
+a single highly vulnerable honey pot of valuable data that is going to get attacked we instead
+have sort of edge security so that instead we have hundreds if not thousands or tens
+of thousands of users that are actually controlling their own private keys that allow them to
+access the system so then once again any one of those people of course can be hacked and
+might have their their assets stolen from them but that is a localized problem rather
+than a systemic problem it results in a much less fragile system you could even say anti
+fragile system in some cases.
+So if you want to use a how do you actually figure out like what kind of blockchain or
+what kind of distributed ledger do you want do you want a permissionless ledger do you
+want permission does it need to be public private what's the simplest way to build it
+what's the most robust technology available can the technology scale to meet whatever
+your throughput requirements or latency requirements or other technical needs are there's a lot
+of questions that need to be asked before you just go off and start building on some
+sort of blockchain or distributed ledger technology.
+So what is Prova well Prova is open source blockchain protocol we specifically designed
+it for digitizing physical assets the the goals that we're going for here is transparency
+in ownership and transfer of ownership reduced cost of auditing the database and just general
+global access to this network now unlike Bitcoin it it is permissioned it will have you know
+governance and administrators but it will also have some additional safety rails that
+you don't see in Bitcoin itself and a lot of this stuff that we built was directly as
+a result of speaking to traditional financial institutions talking about what their needs
+are from regulatory requirements and from you know investor requirements.
+So in terms of you know what type of blockchain is Prova on this spectrum it is a public permissioned
+blockchain and public permissionless blockchains are like Bitcoin, Ethereum, Litecoin, whatever
+private blockchains you can probably say I guess hyper ledger is is much more private
+it is definitely also permissioned blockchain I believe yeah so yeah you can do either with
+hyper ledger right yeah so that has even more flexibility and from a technical specification
+Prova is a fork of BTCD which is one of the older Bitcoin implementations specifically
+written in Go and it is using the UTXO style accounting model as opposed to accounting
+style which is really more what like Ethereum and Ripple use.
+One of the differences though is that because at BitGo we are a multi-signature wallet provider
+and we require all of our blockchains to support two out of three multi-sig for our security
+model we actually set up Prova to be a multi-sig only blockchain so all addresses all wallets
+all transactions within Prova are two out of three multi-sig and this actually gives
+us some interesting properties one of those is this concept of the safe address and what
+that basically means is that in Bitcoin or in any public permissionless blockchain all
+you need to do to create an address is generate a private key with a little bit of entropy
+and then you've got your your public key and you can drive an address from that then you
+can send money to it and then you can throw that private key away or lose it or some act
+of nature causes you to not be able to recover it once that private key is gone nobody in
+the entire world has the ability to recover that money or those digital assets for you
+so we wanted to prevent that from ever being able to happen within our own system and the
+way that we do that is that whenever you are generating an address in the system it has
+to be two out of three key set up and one of those keys has to be provisioned by an
+administrator to a wallet service provider and one of the the third keys has to be provisioned
+to a key recovery service so basically long story short the user can generate any key
+that they want and screw up and lose it but there are always two other entities within
+the system who will have the other two of those three keys for that address and will
+thus be able to recover you know given if the user goes through their recovery process
+with their AML KYC process and will thus be able to recover any any funds that they manage
+to lose from their own ignorance or bad luck or what have you now we do use proof of work
+for our consensus algorithm but it is not quite the same as Bitcoin I believe we're
+using the Keckac algorithm which is related to Ethereum I believe but yes so we you still
+need miners but for example you could basically have just a single CPU on on each miner that's
+really what we're expecting to happen with the Royal Mint Gold when it rolls out there
+will be you know maybe like a dozen miners on the network but these miners aren't going
+to be using ASICs they're probably not even going to be using GPUs they're just going
+to be using GPUs so very low electrical costs and the reason why that is okay is because
+we added some additional logic which is the throttling that we're talking about which
+is basically that amongst all of the other stuff within the system that is permissioned
+the miners are permissioned so in order to be a miner on this system you actually have
+to get a special key provision to you from the administrator of the system so that's
+going to keep a lot of bad actors out and then on top of that it's not going to be possible
+for anyone with a single mining key to 51% attack the system because we have some throttling
+built in that basically says like if three out of the past ten blocks were created by
+you know this provisioned miner key and they try to create another block reject it so question.
+Yeah why did we use proof of work versus like proof of stake or anything else or proof of
+elapsed time or whatever yeah basically simplicity it doesn't really really matter because it's
+all permission in the first place we could have just used some sort of like federated
+round robin signing but I mean it's all essentially going to end up with the same security model
+because you will have some super administrator sitting on top of these miners and if they
+start causing havoc then the administrator is just going to whip out their key and deprovision
+that miners ability to create blocks at all so yeah we could we could swap out any type
+of consensus algorithm and probably will long term one of the other reasons why we did keep
+it proof of work though is that that potentially gives the flexibility for this to turn into
+a more of an open permissionless mining system basically all that would be required to turn
+it into that is that the administrator releases the keys into the public for mining and says
+okay have at it you know we're going to try to make this a fully fledged proof of work
+system where anybody who wants to can join in it's flexibility but because this whole
+system is permissioned and I think you're going to find that like the Royal Mint and
+CME and and companies that end up using it they're going to be tweaking stuff as they
+go forward experimenting basically well yes so so that is another thing at least within
+the Royal Mint gold there is no subsidy transaction fees so that incentive but we expect that
+at least in the beginning as we're bootstrapping the Royal Mint gold network it's only going
+to be you know the companies that partner together in the first place they're already
+highly incentivized to keep the system up and running because they've spent who knows
+how many millions of dollars getting it built in the first place then long term it may eventually
+transition over to something where you know we're at they're actually paying for hash
+power if they feel they they want to change that.
+So yeah so there's a lot of permissioning that we'll also go into we've got multiple
+layers of stuff going on yeah yeah so you account modeling there are I'm not aware of
+like any legal issues or reasons why you might prefer one over the other I mean the reason
+why we preferred UTXO over account model is that it provides a stronger history of the
+flow of that money like you you have you have not only a blockchain of blocks with you know
+the stamp transactions you have a chain a historical chain of inputs and outputs so
+input output input output it just it seems to be more robust and you know the as a result
+of building of going through that whole blockchain and and processing all the transactions you
+then you end up with you know the UTXO set which is like your your current snap of your
+state of the system.
+Accounts can also work well too but now we ended up going with the UTXO model mainly
+because we felt like Bitcoin had a better longer more proven track record and I'll also
+talk about like why we didn't do any smart contract stuff for any of that in a bit but
+this this system gives you a number of features mainly you know related around the the asset
+issuance and the enabling and disabling of various actors within the system so we have
+permissioning basically you have your administrators who own the system for from multiple perspectives
+and then they give permission to wallets they give permission to validators or miners and
+then the the wallets are generally going to be like the AML KYC type entities that then
+give permission to the individual users who get into the system and start using it as
+a you know peer to peer digital asset.
+So to kind of take a look at how that works we've got here you can see the the wallet
+service provider they're always going to have one of those three keys the user is always
+going to have one of their three keys and then there's going to be a key recovery service
+that is a completely third party that will keep recovery key you know just in case somebody
+manages to lose one of their keys and we need to go and reconstitute enough data to be able
+to recover somebody's assets and so if a user comes in and they pass through the KYC
+AML compliance stuff with the wallet service provider they get into the system now they
+can basically act the same as any user acts once they get into Bitcoin or Ethereum or
+Litecoin or whatever and they will use their key to half sign a transaction they will then
+send that half sign transaction to their wallet and the wallet will decide based upon any
+number of security parameters whether or not to co-sign the transaction if they do co-sign
+the transaction then it becomes valid from a protocol standpoint gets broadcast out on
+the network the miners confirm it it gets into the blockchain and now you have your
+tamper evidence audit log that will remain as such for all time from a kind of higher
+level similar type of stuff happens with the administrator where you have you'll have multiple
+administrators with multiple keys and we have some sort of offline signing software that
+we've developed to basically think of it as like when your guys who are manning the minute
+man missiles for the army and they have to put in their keys at the same time and you
+know turn them synchronously in order to initiate a rocket launcher what have you similar type
+of stuff with making administrative level changes to a prova based system where we have
+to get you know X out of Y administrators to come together and assign a administrator
+transaction which can do any number of things such as create or destroy assets in the system
+provision or deprovision the wallet service providers or provision or deprovision the
+validators or miners on the system and once enough administrators come together and create
+that transaction just like any other transaction it gets broadcast out on the network it's
+confirmed in a block and at that point some aspect of the system gets changed.
+So we are like I said we're focused on narrowing here we're not trying to be everything for
+everybody we're trying to be highly secure and highly specific in what the system is
+trying to do I think I've already really talked about all the stuff on here and come again
+right so this is its own blockchain right so the UTXO is the asset like there's nothing
+complicated about you know using like op returns to color assets or really anything else it's
+one asset for the entire blockchain so this is yeah it's not like we're I mean if you
+wanted to have multiple digital assets you would need to have multiple different networks
+like we're not trying to support you know multiple assets on the same network let's
+see so yeah so in Prova the UTXO is the asset I'll talk a little bit about like how that
+works with Royal Mint and Gold in just a second Prova of course is open source I think there's
+a URL on here somewhere Provachain.com I believe but it's on our github just github.com slash
+bitgo you'll find Prova there and of course all the instructions you need to get it up
+and running it's pretty easy to get a Go project compiled and running and with the one of the
+reasons that we chose Go as opposed to like the Bitcoin Core implementation which is C++
+is that we just felt like Go was the most developer friendly because we wanted this
+to be an implementation that the vast majority of developers would be able to get into and
+start you know playing around with and I found I haven't written much Go myself but found
+that it wasn't particularly challenging I'm still terrible at C++ so I don't contribute
+to Bitcoin Core very much who uses Prova at the moment this was really like for the Royal
+Mint and Chicago Mercantile Exchange and the idea there being that Royal Mint is this thousand
+year old institution that has been vaulting gold bullion and basically they are probably
+one of the most trustworthy entities in the entire world at this point and what they wanted
+to do was just kind of upgrade their own infrastructure and be able to enable new types of functionality
+for their own users so the ability to have like a peer-to-peer and auditable digital
+asset was appealing to them they're able to offer a number of things that most like physical
+gold vaulting institutions have not been able to offer up to this point let's see a little
+marketing material yeah so so Royal Mint and gold is the first like production use of this
+yeah we've been I mean we've been in testing phases for at least like six months now and
+at this point like the only thing stopping them from turning it on and having you know
+real users sign up I believe is just like their own internal bureaucracy like trying
+to plan stuff last I heard it was supposed to be you know yeah it's supposed to be before
+the end of the year so we're coming up on the end of the year should it should be going
+live yeah yes everyone the blockchain transactions yes yeah so that's the public and permissioned
+you could I'm sure it would be possible to create you know a private closed source version
+of it yeah yeah so they're at least within RMG and now of course because it's open source
+and you can fork off and add whatever you want anything is possible but at least within
+RMG there while the the blockchain data itself is pseudonymous every actor within the system
+is going to be identified so so every user has to go through AML KYC and you know you
+won't be able to look at the blockchain and say oh that was Bob and you know sending a
+hundred grams of gold to Jill or whatever but the administrators of the system would
+be able to figure that out it's the same as Bitcoin right yeah yeah so you know if you're
+running a full node for for Prova or RMG or whatever you would be downloading validating
+on the transactions of course you could perform the same type of chain analytics that a number
+of people perform on the public blockchains that are already out there but you would not
+be able to really identify who's behind it unless you were in one of the systems like
+they have that mapping private keys that have been handed out to the users yes yeah yeah
+if there was some sort of breach if there was some sort of breach and of course you
+know you could you could from from the top down you know the system is controlled by
+a set of like root administrator keys these got stolen the whole system could get screwed
+up so that's why we built you know additional offline signing software and have additional
+security practices for how we believe the administrators should go about creating those
+transactions so they will never be creating any of those administrator transactions on
+any device that is you know touching the internet for example like those keys will remain on
+specific hardware that never touches the internet oh yeah initial values hey if if anybody wants
+to add that functionality or I guess maybe is it in these projects yeah pull in well
+elements of course is the c++ so you have to port it but yeah I mean if there's demand
+for that it would be great you know this is an open source project and we're trying to
+get people interested you know contributing new features and whatever there's demand for
+hopefully will get added in you know I doubt that the Royal Mint would want that but who
+knows somebody else might want it yeah so to be specific the at least the normal trades
+the normal gold trades that happen are still going to happen on like a centralized exchange
+in most cases now you can you can use the peer-to-peer aspects of this to send the digital
+assets to other people who are in the network but we expect that most of the trades are
+still going to happen at a like traditional centralized trade exchange and in fact we'll
+get to that in a second where they're one of the partners in this project is Alpha Point
+which I believe is one of the trading engines so since I am like way on the back end of
+doing infrastructure stuff I have no idea what the customers think yeah I mean we would
+expect that a lot of the trading will still happen in the centralized exchanges and then
+you know they're going to withdraw into their own wallets and then you know they could potentially
+send back and forth with other users and other wallets in the system but you know that would
+be up to them if somebody ended up building some like peer-to-peer you know decentralized
+trading exchange then that would be a possibility let's see so some of the the reasons why the
+Royal Mint wanted this basically trying to you know get out of the very old-school traditional
+physical assets and start to bridge the gap into digital assets and really because they
+have so much gold in their vaults they saw this as an opportunity actually to to offer
+a a no vault fee solution for the customer so like one of the the driving reasons why
+people might want to get in and use this system is that you will have a cryptographically
+verifiable proof of ownership or at least proof of IOU to physical gold and you can
+call in of course that IOU and get delivery of the physical gold but the difference between
+this and other physical gold IOU systems is that they will not be charging you any vaulting
+fees so you can keep your your digital gold assets as long as you want and they're not
+going to be you know chipping away the the amount that you have held in their platform
+I guess got a whole bunch of stuff if that's even readable so yes
+Yeah, I have a question. Take for instance, you know, you have your vault in Singapore
+the Royal Mint is not going to be charging the customers that use this Royal Mint gold
+platform they're not going to be charging them ongoing vaulting fees so if you have
+you know a kilogram of digital gold a lot of vaulting services would be charging you
+some sort of ongoing maintenance costs just to keep it in their vaults but the Royal
+Mint has I guess they're just large enough and have been around long enough that they
+are able to offer a no vault fee solution just probably because they just already have
+so much gold on hand that's going to be sitting there one way or another I forget how much
+we're talking about but it's probably hundreds of millions if not billions there's a lot
+of gold in there and actually in the top right here we have noted that their their gold in
+their vault gets reconciled daily and is fully audited every six months so it would also
+be interesting to see like how accessible those audits are they must be posted somewhere
+because they have garnered quite a bit of trust over the past thousand years let's
+see so you know this is still a trusted solution of course you know you you have a trusted
+centralized third party that is holding the actual asset and basically we're building
+a decentralized layer that just gives us more auditability of like what's actually going
+on within the system and gives you some new abilities you know to to send this money in
+a more efficient type of format like because we're now offering a network that is running
+like 24 7 365 it's not like a lot of the traditional financial services that are only going to
+be operating in set hours on set days of the week you are going to have a lot more freedom
+to move around these digital IOUs for the digitized assets I know you someone was asking
+like can you actually see the transactions that happen and let's see explore.rmgchain.info
+should be up and running and you're not going to find a lot of transactions on there of
+course because I don't I don't think they've actually taken the system live with their
+users yet but we are creating blocks we you know have issued some gold into the system
+and at this point it's just spinning away waiting for actual users to start getting
+into the system so what is the rmg you can basically replace most of you know these instances
+of rmg with bitcoin or litecoin or whatever it's using the same type of wallet platform
+that we have used and expanded to support a number of different crypto assets over the
+years and the like I said the onboarding process is going to be like AML KYC that is just required
+you know from a regulatory standpoint but once you get into the system you can then
+send the money around send the assets around to anyone else with inside the system without
+having to go and you know ask ask your favorite banker or ask your favorite administrator
+for permission to do that also we had the questions about trading and there is you know
+fully fledged trading platform that is baked into this whole royal mint gold system I believe
+yeah this was alpha point and their trading engine and so you know the trader folks market
+makers I think are going to find this interesting in comparison to I guess like normal spot
+gold like day traders this don't want to make any claims off hand but this might be one
+of the first systems where it really is going to be like 24 7 365 gold trading at least
+most other markets that I'm aware of you know are only open during specific hours no no
+so so the trades the trades are not going to happen on the blockchain it's just going
+to be like other assets where you can deposit into the exchange trade around and then withdraw
+back into your wallet or or whoever else transaction performance so I'm trying to even remember
+I believe we set our block times to be like two minutes or two and a half minutes and
+I think we set our block sizes to be a couple of megabytes but we haven't done like a full
+stress test of the system because it doesn't have any volume and it's going to be really
+easy to hard fork so you know if we ever get anywhere near you know capacity and and you
+know folks are actually using it so well I guess to actually answer your question that
+would put us at what like eight or ten times Bitcoin transaction capacity so that would
+be like what 30 transactions per second yeah so 30 transactions per second not bad we're
+just gonna have to wait and see how it goes yeah so this is specifically for RMG but but
+this is alpha points trading platform so alpha point makes their trading engine available
+for anyone who wants to basically I guess pay them for like a white label solution
+yes yes in this case yeah
+you have the user key so yeah it's all two out of three multi-sig but like once you get
+your RMG and it's deposited into your wallet that you have created you're now you're in
+a two out of three key setup where you have one key the wallet provider has one key and
+then a third party recovery service has the third key let's see we right so this is specifically
+using like bit 32 key derivation I we do not support the bit for the like 12 12 word recovery
+phrase we have we create like when you create your wallet you get a PDF basically with your
+encrypted recovery data on it it's just like blobs of JSON basically but then we have recovery
+tools and recovery processes and the key recovery service is its own type of protocol that we
+developed year year and a half ago but at the at the beginning of like RMG launch the
+only wallet is going to be bit go we are a web wallet but we also have API's and SDK's
+so really the vast majority of people that use bit go do not use us as a web wallet they
+actually have our SDK running on their own servers and they're doing all their key signing
+and stuff on their own computers and sending a half signed transaction to our server and
+then we then you know decide whether or not to co-sign yeah yeah so so this is specifically
+gold trading with RMG but you know from a sort of stepping back at a higher level you
+could potentially do this with any physical asset that you want to digitize using Prova
+software to you know create a new blockchain a new network for whatever digital asset it
+is that you want to use so this is kind of just like going more into the specifics about
+you know the first production use case of RMG these are some of the partners that came
+together to do this basically bit go which is my employer we were the ones who actually
+developed the protocol and we were able to reuse a lot of work that we've done over the
+years with regards to key signing and key recovery type of technologies and then Alpha
+Point came in with their trading software CME is of course on the financial side and
+the Royal Mint is really the the gold vaulting side and they're the primary drivers of all
+of this and so you know bit go we have a long track record we've been used by a lot of different
+digital asset related companies and that basically covers all of it so if we have more questions
+looks like we've got one back there yep that is a good question I don't as far as I'm
+aware that no I believe Alpha Point is going to be the one actually managing the trading
+aspect of it and of course long term we don't want that to be the only exchange like because
+because this is a blockchain protocol that is very very very similar to Bitcoin we expect
+that if this system gains significant adoption then you will see a lot of other like crypto
+exchanges out there that may want to add support for it so long term RMG will hopefully get
+traded on many different exchanges yeah if there is you know sufficient demand and volume
+then any number of trading pairs could get created and I think you know I think that
+there have been like one or two attempts at like crypto tokens that are supposedly backed
+by gold over the years and that they've all really fallen apart and I think that most
+of that is due to the fact that none of the vaulting institutions had really anywhere
+near the level of trust that the Royal Mint has it's always been sort of like fly-by-night
+companies that you know pop up out of nowhere and like you're not even really sure if they're
+being honest with you so hopefully you know this particular system will be able to to
+do a lot better and go a lot further than the previous tries at a gold token yeah.
+So is Royal Mint actually a royalty?
+Well I believe it was Her Majesty's Royal Mint so I believe there is some you know lineage
+that goes back to royalty basically saying you know we need to have a mint for the crown
+basically right the crown mint and then we will issue our money from that so I believe
+that there is a lineage that you know goes back with royalty but like the Royal Bank
+of Scotland for instance you know is it a derivative of some actual physical mint but
+you say that it's kind of dispersed over time?
+Yeah well I'm not actually you know completely familiar with the like the history of you
+know ownership and management of the mint.
+You'd have to ask our CEO that because he's the one who does the business side I'm just
+the tech guy.
+So is there a take at some point to be able to do payments across this between like the
+user and sort of self-service transfer role to me as payment?
+Yeah I mean there's no reason why you couldn't yeah there's no reason why you couldn't use
+it as a payment rail.
+Of course.
+Do you think that's their intent?
+Well you know this is definitely starting with like store of value.
+This is like this is next generation technology for gold bugs right.
+When you invest in this you're basically buying some portion of the gold they maintain right.
+They sell it anyway so I mean.
+Yeah so.
+So you can use this.
+So I can see this becoming a real value a gold backed cryptocurrency base with what
+it looks like.
+Is there a do they do anything with NASDAQ when they get along?
+Are they associated with that?
+Not that I'm aware of but I'm not sure.
+In the consensus I thought that they were talking about some kind of association with
+that.
+Yeah but no I don't know but no the so yeah so the like one RMG which is like the same
+unit as one Bitcoin one RMG is equivalent and will always be equivalent to one gram
+of gold and I don't I don't remember what the minimum limitation is but whatever when
+you have these tokens these IOUs you can send them to the Royal Mint and cash in you know
+for physical delivery of that amount of gold.
+I'm sure they have some minimum order there.
+I'm not sure what it is and there's probably a fee associated but that is I think you know
+why this system has a lot more promise than previous like gold cryptocurrencies.
+This one you know nothing is a hundred yeah exactly yeah so I mean we could you can feasibly
+use this network to build a new type of payment system or you know you could integrate it
+into your current crypto payment systems and say hey do you want to send Bitcoin or Litecoin
+or Ethereum or RMG or what have you and of course we certainly hope that does happen
+and that we get to the point where we have to start worrying about on-chain scalability
+problems.
+Are there any implementations other than RMG kind of coming out of the pipe of Croma or
+anything you've considered maybe have used before?
+So the way that I think this is going to play out is that we are constantly in talks with
+all kinds of traditional financial institutions and that inevitably some of them will have
+you know a similar need to a system like this but it won't be exactly the same and so they're
+going to I guess this is kind of one of one of the the new business avenues that Midgo
+is going down is you know custom blockchain type of service and so you know when we talk
+to these various institutions if they have a need for their own permissioned blockchain
+and we believe that you know Prova is a good fit for that but might need a little tweaking
+then it would probably come down to you know us working on some new specifications for
+new features that they would want in their protocol and we roll it into Prova and of
+course it gets open source to use at that point but that would be kind of my ultimate
+hope is that a lot of these institutions end up with Midgo to write open source software
+that can be used by anybody else who wants to use it.
+Yeah so you know it's going to use the exact same type of probably level DB data store
+well at the node level you know whatever BTCD uses which is probably level DB but then you
+know no you can't build enterprise infrastructure on level DB and really this is what has happened
+in the entire blockchain ecosystem but so like you can build you can build nodes and
+consensus systems that use like level DB type stuff but if you're then if you then want
+an enterprise grade like we're doing you know hundred thousand queries every you know few
+seconds type of thing then you're going to want to have probably some more scalable type
+of database so like what we do this is really what my job is at BitGo is to build these
+backend infrastructure and really what I do is I build services that connect to the nodes
+that are running on level DB or BDB or whatever and just suck all the data out of them and
+then put them into a more scalable data structure like you know Hadoop or HBase or even Mongo
+works pretty well for a lot of small medium sized stuff.
+Yeah so it's we've tried not to stray too far from like what the standard technology
+is that technology stack that has been used and no no so all of the permissions happen
+like at a protocol level well you could argue I mean there is data in the data store that
+says you know who has permission to do what and that is the the administrator you know
+chain of actions throughout the history of the Prova blockchain basically says you know
+we're changing this permission setting or that permission setting or what have you and
+so from that you build sort of administrative UTXO set that is like what is the current
+settings of the system from a permissioning standpoint.
+Yes.
+They say they have a hundred million times more with it so it's something that's not
+going to happen in the future but it's something that's not going to happen in the future.
+Yeah so you know unlike a lot of the paper ETFs I think the auditing requirements are
+a lot higher and so Toilment does audits twice a year they say they reconcile their reserves
+daily into a full audit twice a year I I imagine those audits are available publicly they if
+they're not then that would be kind of worthless it would be particularly yeah yeah they've
+been doing that for who knows how long.
+A thousand years yeah yeah definitely yes so this this is not meant to be the like record
+of their gold R&D is actually only a tiny tiny fraction of their vaulted gold product
+so percentage but basically as they onboard new users they will allocate more of their
+vaulted gold to be RMG gold and as they do that they will that will get reflected in
+their audits and it will get reflected in the system as they provision or allocate and
+deallocate the digital assets within RMG yeah yeah yeah so of course amongst the ability
+to provision and deprovision the the validator keys and the wallet keys there has to also
+be a way to provision and deprovision the administrator keys and these of course there
+these will be like initialization parameters that need to get decided by the creators of
+the system when they originally create it I forget I'm not even sure like what RMG settled
+on it was probably something like five out of seven or five out of ten or something like
+that so you know you want to have both redundancy and requirement of you know multiple trusted
+people that you not going to all collude against you at the same time right
+well at the end of the day like the whole system can get changed in any way that the
+owners want so it's not it's not a it's not a like permanent security concern there are
+of course basically if enough administrator keys got compromised someone could really
+screw with the system for a short period of time but people would notice pretty quickly
+and then you know the rest of the administrators would come in and say no we need to fix this
+you mean for like trying to detect compromised keys
+or something yeah it wasn't I guess too much of a concern at least for RMG yeah so that's
+what like what we're really trying to do in this system is create automated logic that
+can find you know anything that's going wrong in the system it's a lot more important to
+have that like fully fledged 100% coverage when you're talking about a public permissionless
+system you can be a little bit more lax when you're talking about like a system that is
+controlled by a number of companies or entities or what have you so yeah I mean it's certainly
+possible it might it might not be worth it you know the risk reward like it I imagine
+they might think the risk is so low and the payoff like you know saving numbers of downtime
+or something might not be worth like the effort that would require to go into that
+yeah they they must be saving some money somewhere right it's also as good good marketing I guess
+you know get in on on the blockchain craze while it's it's still really hot sector
+yeah just like performance issues of having too many transactions yeah you know we we
+hope that that is a problem that we will have to deal with but like I said like at the finding
+the bottlenecks and whatnot yeah yeah we hope that that is a problem that we have to deal
+with and you know then have to spend more engineering time solving scalability issues
+but as for right now we're just waiting for them to actually turn the system on and and
+then you know we'll adjust as things go I'm sure Bicco has some sort of contract like
+in place already you know with the Royal Mint that basically says you know we're going to
+be monitoring and making adjustments as necessary you know as the system grows and has growing
+pains it's pretty much inevitable yeah
+scalability is really going to depend on a number of different things like we we don't
+have Segwit support in Prova because I don't think BTCD has Segwit support I'm pretty sure
+the the beat most of the BTC developers don't work on it anymore I think they work on Decred
+mostly they've created their own cryptocurrency and like with regard to lightning payment
+channel stuff maybe of course you would need Segwit first that's that would be a really
+really good problem to have like if we got to the point where we needed a second layer
+network but then we've talked about this a little bit creating second layer networks
+could potentially cause regulatory compliance issues maybe you then you start getting into
+you start enabling all these really cool cypherpunk things like you know cross-chain atomic swaps
+and all that stuff and so then the question becomes you know what happens if if someone
+is you know using or owning or trading RMG and they're actually an unidentified person
+you know what actors within this regulated system might be in like legal trouble if there
+are people who are doing that I don't know I'm not a lawyer it sounds cool to me but
+I think it is like some sort of potential regulatory issue I mean it's a brave new world
+and we're creating these and completely new systems that have never enabled this type
+of stuff before yeah
+You mean like if if the administrators or the wallets were to like feign ignorance
+and say you know we can't we can't let you you know claim your physical delivery of the
+gold anymore I mean just I mean in a world where the regular societal rules are present
+you have the court system you have ways to sort of fight your battles but if some of
+that stuff falls apart especially when you're talking about gold which is a durable physical
+asset and if they're able to keep it there's not really if you have no record of what you
+own that verifiable outside of the blockchain itself they could just keep all that gold
+right?
+Yeah so this would not be the most ideal system for like a doomsday prepper gold investor
+so I would say like really like your best recourse of
+Yeah but or or they're buying gold because they know other people are buying gold because
+that doesn't mean all these people buying these gold ETF products like they're never
+going to be able to get the gold
+Yeah so that's what happened I mean when people started trying to buy physical gold they cold
+up the Royal Mint or anybody else and said hey I want to buy some gold and they found
+out it was pretty hard to do to figure out if they could have it but the Royal Mint said
+well okay I don't want to lose that customer I'll just give them something like this so
+I think that's what they're doing
+Yeah so I would say that like your best recourse in that type of adversarial situation would
+have to be the courts and the legal system and there's actually a strong precedent there
+of you know cryptographic signatures and and and chains of history you know we had a we
+actually had a lawyer speak here last year and she talked about how like there's already
+a number of court cases with precedence of of you know proving ownership of cryptographic
+assets so
+So there's a record of outside of their interest system that you'd be able to save somehow
+Well there's the blockchain itself so anyone who wants to can run the software download
+and verify the entire history of the blockchain and have a copy of it and then be able to
+show you know I have the private cryptographic key that unlocks the funds in these addresses
+and so you know you would probably have to pull in an expert witness in the court but
+my understanding is that this has already been done a number of times for other cases
+Have you seen this one the blockchain, the lawyers in Switzerland for the you know you
+sign up I mean to monetize and everything it's a blockchain for lawyers for the goal
+and the lawyers have designed that you know saying you have to sign up that just in case
+anything happens you know it's I mean they've designed that then you sign up first with
+them and then for them to go if anything goes wrong with that the lawyers already have the
+blockchain for that and they can prove to them that it's already been set up for that
+and my one is pulled out and all that stuff Switzerland is already been up and running
+now you know what I'm saying for that you know what I'm saying
+No I mean there's so many of these you know blockchains and various crypto token products
+You already have one which is up and running right now with things like trading and all
+that stuff it's up and running and all that stuff just in case anything you know to prove
+and everything and all that stuff
+Yeah I think you know there is going to be well a lot of industries are going to have
+to adapt you know the legal industry is already adapting you know to incorporate this technology
+into their day to day use it's just another tool to add to the toolbox whatever it is
+that you're doing
+Yeah
+What inside the vault?
+What inside the vault?
+So the problem with I guess blockchains in general is the same problem of any database
+is garbage in garbage out right?
+So at the end of the day some human is going to be putting those numbers in until we get
+like some you know now I've been hearing rumblings of like blockchain plus AI which I don't even
+really know what that means yet but you know if we get to the point where you can have
+like trustless robots you know that they've been programmed to do their task and they're
+set up in such a way that you can be 100% sure that they're only doing the exact thing
+that they were programmed to do and then they can go like those robots can go audit the
+gold you know maybe you can start to create some sort of new you know trust chain from
+that standpoint
+Yeah yeah so that's definitely one of the primary differences even though we have we
+can be comparing two different systems that have administrators your traditional database
+system the administrator if they really know what they're doing can probably go in there
+and delete stuff and basically cover their tracks but while the administrators in this
+system can technically screw you over and delete your money out of the system they have
+to do that in a transparent way that everybody else in the system has a record of
+Go call for a bus man that's a new ICO
+Yeah yeah I think healthcare is also gonna get revolutionized by all this
+Thank you very much

@@ -1,0 +1,860 @@
+Today's episode is dedicated to my first son, Alexander Samuel Rochard. He was
+born on February 12th 2018 at 9.08 p.m. 7 pounds 19.2 inches.
+Welcome to the Noted podcast. This is episode 0.9.0 and today I'm joined with
+Jameson Lopp. Unfortunately our co-host Michael Goldstein was not able to make
+it today. And Jameson, how are you? Not bad. Been keeping pretty busy. I spent
+most of this week actually at Satoshi Roundtable. Fantastic. And usually I start
+these interviews by going into the beginning like when you first got into
+Bitcoin. But I actually want to start with the opposite now which because I
+just saw that you had tweeted out about a new rig that you've got and you were
+able to sync your full node and how long was it? I believe it was 152 minutes.
+That's astounding because I think that I now granted I've never messed with
+increasing the DB cache but just like on my own computer I think when I did it it
+took me a few days at least. So at this point what would you say is
+the bottleneck? Yeah so you know I was testing a few things. Now it's important
+to note that like I'm on gigabit fiber so a lot of people might be bottlenecked
+by their bandwidth and their ISP. I am not really bottled by that anymore. It's
+probably the the CPU and the actual disk storage that are going to be the
+bottleneck. So I maxed out and got like a new six core i7 CPU but I think the
+more important thing is that I got one of those NVMe you know like pure RAM
+solid-state drives that are like 10,000 IOPS per second or maybe a 100,000 I
+don't even know but they're screaming fast. So I think that plus jacking up the
+DB cache I put 32 gigs of RAM in it and jacked up the DB cache to like 24 gigs
+but even once you get all the way through the whole sync it's only using
+maybe around 12 or 13 gigs. So that's I think about as fast as you can probably
+sync on consumer hardware right now. And what is it storing in the RAM when it's
+doing that initial sync? Should be pretty much just the UTXO set so you know that's
+what pretty much all of the the database intensive write operations are just you
+know deleting UTXOs as they get spent and adding new ones. Gotcha and so I
+think that the you know this is the noted podcast so obviously this subject
+is very apropos and one of the contentions we saw last year with the
+scaling debate is on the subject of the initial sync time for nodes and that the
+fact that technology is advancing so quickly that really we should be
+increasing the block size limit to keep up with these advances in technology and
+what you're presenting to us here is a solid case in that direction. Kind of.
+This is the you know optimal best case scenario and so I'm fortunate to live in
+an area with gigabit speed internet and I you know have the financial ability to
+buy a $2,500 computer but you know on the the exact opposite end of that there's
+gonna be people who are still on pretty slow broadband and are not gonna be able
+to afford anything much more than like a mobile phone or Raspberry Pi so I run
+both and the the Raspberry Pi nodes are struggling right now so it's good to
+you know get a better idea of the entire spectrum. Right and it's interesting that
+I mean you got a cutting-edge rig for $2,500 I think we we heard some people
+saying that you would need to spend ten thousand dollars on a rig for having
+your gigabyte blocks it's unclear to me where that ten thousand dollars is going.
+Well and then the other thing is when when people say stuff like that most of
+the time they're talking about what would be required to stay synced at the
+tip of the blockchain they don't think at all about the initial sync time of
+what happens once you have a year worth of gigabyte blocks like it's gonna take
+you a long time to chew through that even if you have you know crazy like
+industrial server that cost you a hundred thousand dollars and uses you
+know highly parallelized CPUs and disks and everything so. Maybe the vision is
+like Amazon has a service where they ship via shipping container all of the
+data rather than over the public internet so maybe that's the vision for
+spinning up a new node is that you get a container delivered. Oh yeah I mean if you
+want to get really creative any sort of transportation mechanism for data is
+possible here it doesn't have to be over the internet and in some cases it is
+faster to ship via truck or I think that like Google had like a carrier pigeon
+parody thing they were doing or they were showing like how much bandwidth you
+could get like strap a USB stick to a carrier pigeon or something so you can
+get pretty creative with it you can even set up a satellite and beam it down from
+space if you want. That's right all right so let's rewind and I think that we've
+known each other on Twitter since like 2013 and this is our first time talking
+with each other we haven't met in person yet I'm sure we will at some point but
+yeah so did you initially get into Bitcoin in 2013 or before then? It was
+like summer fall of 2012. Okay and what initially like were you interested in
+it from the libertarian angle or the technology angle what attracted you to
+Bitcoin? It was about 50-50 on the libertarian philosophy and computer
+science stuff and you know I'm sure that I had heard of it a few times before
+then and just dismissed it and for some reason I think it was a Slashdot article
+I realized oh this thing keeps coming back and so I started looking into it
+more and read the white paper and realized that like it was just a very
+different system from anything I'd ever seen before and that it was pretty
+elegant in the way it was designed so that was kind of what hooked me and got
+me started running nodes and you know sending my first wire transfer to MT
+Gox and eventually led to forking Bitcoin core creating Satoshi and you
+know trying to offer operational insights to the developers with that.
+Yeah you want to get into Satoshi because I think it's a really interesting
+project and and shows how much one developer can can do in this space. Yeah
+well and I think it's interesting because I don't really spend much time
+on it you know I maybe spent a few dozen probably less than a hundred hours total
+on it and most of that was in those first few months where I was just trying
+to figure out how Bitcoin core worked. So Satoshi is pretty simple from a
+technical standpoint it's Bitcoin core plus about 500 lines of instrumentation
+code and a few hundred of those are the actual stats D library and then the rest
+is just scattered throughout the code base whenever an interesting event
+happens maybe a transaction comes in a block comes in a peer to peer message
+comes in or goes out tracking all of the different events and activities within
+the node then I just emit some statistics to stats D which is a local
+daemon that runs and aggregates all of those stats up and then those get stored
+in database that is hooked up to a very pretty Grafana dashboard on Satoshi.info
+so you get some nice eye candy and basically the idea was that you know
+Bitcoin crypto assets it's all about openness and transparency and while the
+code was very open and a lot of the other metrics of like the the network
+itself like the coins and whatnot were were fairly transparent through other
+block explorers and other projects the actual internal operations of the nodes
+and what they were doing was very opaque and so I wanted to understand it better
+I figured that other developers also wanted to understand it better and I
+think it's been fairly successful because a number of Bitcoin developers
+over the years have referenced stats and graphs from Satoshi and I think it's
+helped them make more informed decisions about what needs to be done to the nodes
+it's interesting to me that you mentioned that it's taken up so little
+of your time to maintain because like once you set up a piece of software
+correctly oftentimes you can just let it run and it'll keep doing its thing for a
+long time but the challenge that like I would imagine in this case is if this is
+a patch set on top of Bitcoin core and they are constantly refactoring the
+underlying code has it been a challenge to keep up with that and rebase
+essentially yes that is where the majority of my time comes in I haven't
+really been spending a lot of time you know trying to add more metrics recently
+unless someone comes to me and says hey we really need to have this and it's
+easy for me to figure out because quite honestly I'm not a C++ developer
+before I started tinkering with Bitcoin core I hadn't done any C++ development
+in ten years you know since I was in college and even today very rusty on it
+so it's still a bit of a pain for me to get in there and make changes and then
+you know allow them to actually compile and get the test to pass but yeah I
+would say you know each major release that comes out I merge all of the
+changes since the last release and you know sometimes it takes me an hour to
+fix those conflicts sometimes it takes me an entire afternoon I think for the
+point 15 release it was more like an entire afternoon because they've been
+refactoring so much and like splitting out the main dot CPP file and moving
+just code around to make it more modular that it was a real pain so you know from
+that standpoint like if you want to talk about like altcoins and their
+maintainability you can go out there and look like the vast majority of altcoins
+are pretty much stuck at the point where they forked off years ago unless they
+have a very experienced maintainer who stays on top of it and keeps pulling
+those changes down and of course the more changes you make locally the harder
+it becomes as those code bases diverge right and so really though if if these
+altcoins had their consensus critical code that was what differentiated them
+from Bitcoin in an isolated manner then they could much more easily keep up but
+that would also prevent them from making their own changes that really like
+what's the point of having an altcoin if you're going if you're not going to make
+your own architectural changes or whatever adding features like Zcash does
+which involves touching a lot of different parts of the code base and
+making those merge conflicts increasingly challenging to reconcile so
+then the other let's see I lost my train of thought oh I wanted to get into your
+your background as you said that you weren't very familiar with C++ so what
+was your development background before getting into the wild world of Bitcoin
+so I've been a web developer of sorts ever since I got out of college and I
+really started more on the front end with design HTML C++ JavaScript type
+of stuff more user-facing and over the years moved further and further back so
+after a couple years I started doing more lamp stack development and then a
+few years after that moved even further back into doing cloud computing like
+large data scale processing with Hadoop clusters and other highly parallelized
+type of software because I was working for email marketing company that was
+sending out a hundred million emails a day and then ingesting just a ton of
+analytics that you know the customers wanted to get analyzed in as close to
+real-time as possible and it it was never really a passion of mine but it
+provided a lot of interesting technical scaling challenges and so that led to me
+to be a primarily Java developer and then once I went full-time at BitGo
+three years ago I was lucky enough that their infrastructure indexing services
+were also Java and Bitcoin J based and so I've pretty much stuck to Java for
+the past three years as well they'll also been doing a bit of Node.js and a
+little bit of Go. Awesome so you mentioned you joined BitGo three years
+ago and do you want to describe like what BitGo does and what the vision for
+the company is in broad terms? Yeah so BitGo doesn't get a ton of press or
+recognition in the sort of mainstream consumer crypto space and that's because
+we're really an enterprise focused company so our our customers tend to be
+large services that have to operate hot wallets so that tends to be exchanges
+and payment processors and anyone who is receiving or sending fairly
+significant volumes of crypto that have to be automated because security of
+course is one of the top concerns in this space if you screw up there's nobody
+to save you and if you need the ultimate security it's very simple you just take
+all your private keys and take them off the internet you've got your cold
+storage so you've now pulled all of your security concerns into the realm of
+physical security which is a fairly well understood problem but if you have to
+have automated withdrawals then you've got a hot wallet that is running code
+somewhere on the internet that some hacker could potentially get into and
+screw with the code and cause you to automatically send a transaction to them
+and now all your money is gone so the way that BitGo operates we provide a
+multi-signature security model where instead of just having a single private
+key on your computer that's signing the transactions there's instead three
+different keys and you have one key on your server BitGo has one key on our
+servers and then you keep a third key either stored offline yourself or stored
+offline with another third party which is basically a recovery mechanism now
+when you want to make a transaction you're gonna create the transaction and
+half sign it on your end and then send it to BitGo and BitGo will have to look
+at all of your recent activity look at various security policies that we've
+set up that you set up and decide whether or not to co-sign that
+transaction and until we co-sign the transaction it's not valid because all
+of the wallets are two out of three multi-sig so if anything is wrong then
+all we do is nothing and we alert the user and say hey you need to go check
+your wallet you might have a policy violation but if everything's fine we
+co-sign it it becomes a valid transaction and we broadcast it out onto
+the network and hopefully it gets confirmed in a timely manner if our fee
+estimation and UTXO selection and all the other stuff worked out well
+fascinating and so does does a BitGo customer they have their UTXOs are
+essentially segregated right it's not like yeah Coinbase where all you know
+it's kind of a layer above yeah so BitGo is non-custodial so each time someone
+creates a wallet they have their own UTXO set for that wallet and nobody can
+mess with those UTXOs unless you know you use two out of the three private
+keys in that setup and it's it's an interesting model from a regulatory
+perspective as well because it means that we're not a financial services
+provider we are just a software service provider and it's also interesting in
+the sense that if a hacker gets into the user's computer then there's not enough
+private key data for them to steal the money if a hacker gets into BitGo
+servers there's not enough private key data for them to steal from our users
+and even better if BitGo ceases to exist for any reason you don't lose anything
+you just go get your recovery key and we have open source software that you can
+use to create a transaction without ever talking to our servers so you can just
+route around us and does this use the standard Bitcoin networks multi-sig
+feature or is this something else yeah this is a two out of three P2SH and so
+that's interesting because essentially the the customer is not custodial you
+know assuming that their backup is put away and you're not and I think that it's
+funny because it just reminds me of the Bitcoin network in terms of
+decentralization where because it's decentralized no single entity is a
+money transmitter you know like some people might argue that like oh the
+miners are money transmitters and thus should be regulated kind of saw like
+crazy statements like that and we even now we're hearing this about lightning
+right where people are like oh lightning nodes are money transmitters but it it
+gets to the fact that like one of the cynical views on Bitcoin is that it's a
+form of regulatory arbitrage by being decentralized you can avoid these labels
+that come with a lot of government imposed regulations and Bitcoin like
+you know people you'll see politicians going hey we need to regulate Bitcoin
+and then they realize oh wait it's not so simple but you'll learn eventually
+you mentioned though that you know your software company and yet recently we saw
+that you guys acquired a financial services company do you want to describe
+that transaction and I don't know if there was kind of a public like vision
+put out for why why that transaction occurred or if you're allowed to speak
+to that but curious um I don't think that we've done any huge like press
+releases regarding the long-term vision but I mean it's pretty obvious you know
+we raised a series B of something like 43 million dollars and we then use some
+amount of that I don't even know how much to purchase Kingdom Trust and
+Kingdom Trust is actually one of our larger customers we've been working with
+them for a number of years they run the Bitcoin IRA and they have something like
+12 billion dollars worth of crypto assets that they are a custodian of on
+behalf of people who want to hold various crypto assets inside of their
+tax advantaged retirement account and the the main reason for this is that you
+know we do see a shift in interest in the ecosystem where a lot of
+institutional investors are becoming more interested in crypto assets but and
+this is highly ironic I believe I don't know if the irony is lost on them but due
+to various regulations around like financial compliance in the way that
+these institutional investors and various funds operate is that there has
+to be a qualified custodian of assets in order for the investors to hold the
+assets or more specifically the custodian holds the assets for the
+investors and so basically we were having to pass up a lot of deals from
+these type of institutions and clients because we were not a custodian and even
+if we were technically a custodian we were not you know falling under the like
+financially compliant you know regulated custodian model and I know we looked into
+a number of different things and like trying to set up trusts and all of that
+and at the end of the day the most efficient way for us to be able to
+acquire that status was to just acquire Kingdom Trust or some other entity that
+was already you know reputable and licensed and basically performing
+those services so we're just folding them under the arm of BitGo and we're
+gonna continue to expand our offerings into the custodial front but we are by
+no means becoming a like fully custodial company we'll continue to operate you
+know hot wallets for people in a non-custodial fashion. That's really
+interesting yeah and I think that it's it speaks to the increasing
+realization that crypto but even Bitcoin specifically is a long-term investment
+and it's kind of it's caused I think a bit of a philosophical rift within the
+community because whenever people talk about Bitcoin as an investment there's
+always at least one comment that's like guys this can't grow this Bitcoin can't
+you know appeal to more people if people are not spending their bitcoins and you
+know using their bitcoins so that they can buy goods and services. What's your
+view on that like tension between hodling and using quote-unquote Bitcoin?
+Yeah I mean well first of all hodling is using so that's one of the big
+disconnects but it's been interesting especially you know as we've had so many
+bubbles over the years and the exchange rate keeps going up by orders of
+magnitude and and sometimes I try to look back on it and think like why do I
+still have almost all of my coins like I didn't I didn't sell any crypto assets
+before this past year in 2017 and the only ones I sold were all these altcoin
+air drops so that I could just buy you know get more bitcoins from those of
+course that resulted in me having a big tax bill which is not fun but I I can
+see why you know some people are in situations where they need to have a
+censorship resistant form of money or they need to be able to make payments
+globally quickly without going through traditional systems but I think the vast
+majority of people that I meet and talk to don't really fall into that camp like
+almost everybody I know and talk to has credit cards and they can do wire
+transfers and use Venmo and PayPal and blah blah blah and you know for the vast
+majority of their day-to-day transactions it's fine for them to use
+those systems like I I don't think I need to worry about you know Visa
+canceling my payment to Amazon for buying some books or software or
+whatever so like personally I see the majority of the utility and value in
+these systems is in holding my wealth in a fashion that is not confiscatable by
+anyone and this has actually become even more clear to me over the past few
+months as I was going through the process of selling these forks and
+converting them into bitcoins and converting a fair amount into dollars to
+pay the tax bill because I ended up spending well over several days in
+aggregate in December trying to get dollars from all these different
+exchanges into my bank accounts so that I could pay the IRS and I had problems
+at Coinbase and G Dax and Kraken and Gemini is like every exchange as soon as
+I started to try to use the traditional financial system again was just screwing
+with me and made my life a lot harder it would been and I hate to say this but my
+life would have been much easier if I could have just sent a crypto asset to
+the IRS and you know I think that the person who would hate to hear that is
+Roger Ver who is essentially through through his activism providing more
+funds to the IRS's people have to pay taxes on on his quote-unquote airdrop
+so all right and so I I think that we've heard of other companies trying to get
+into the like institutional custodian game like I think the Coinbase launched
+a product where to sign up you have to pay a hundred grand which to me is just
+that's the market right if that and that indicates how much demand there is for
+this for this kind of product and so but at the same time like back in 2014 I
+feel like I would always hear this is the year of Wall Street this is the year
+that like you know big institutions are going to start buying or this is the
+year that an ETF comes out and those narratives always seem to get pushed
+back six months or a year and the flip side is that I've these are concrete
+steps towards that and it seems to be getting more and more realistic yeah I
+think that you know 2018 really will be the year of the institutional investor
+getting in and the main reason that I say that is that anecdotally I have
+started to get contacted by wealth management firms and and all kinds of
+institutional investors who they they want basically to fast forward on the
+Bitcoin crypto education you know and so they're willing to pay me a premium for
+my knowledge dump to help them get a better understanding of this without
+spending months and months trying to understand you know the entire history
+of how we got here and it's funny to me that you know it's so political right
+because if they ask you for a knowledge dump it's going to be a very different
+knowledge dump than if they asked someone who works at R3 or you know
+who's really like in the oh it's blockchain technology not Bitcoin or
+distributed ledger technology and I was listening to a podcast put out by
+Goldman Sachs this morning and the lady was saying that oh Bitcoin and the
+current generation of crypto currencies they're inherently flawed because they're
+too volatile and they are not mediums of exchange they're not stores of value
+because they just went down by 60% and no one's using them as a unit of
+account and so you know we're we think that the value is going to drift towards
+zero over the long run and I like obviously you know I was raging but it
+did provoke some of my own tweeting and so someone who has that let's call it an
+economic ideology they're going to have like a very hard time having a
+conversation with people who are in our camp yeah and well a lot of these calls
+that I've been having are interesting because they're basically blind calls
+where it's myself and a coordinator who understands the space somewhat well
+enough to come up with some good questions and and we basically have a
+conversation and I don't even know who the various investors are you know
+there's like a hundred people just listening passively to this conversation
+so you know I'm sure that they are getting a diverse set of opinions and
+doing these type of listening conference calls with all kinds of different
+perspectives but you know if we can get at least a few of them to understand our
+perspective I think we'll capture their attention and I think that the most
+interesting question that gets posed by investor types is what do you see as the
+biggest weakness for Bitcoin like what is Bitcoin's Achilles heel and I would
+be really interested in hearing your answer for that one well I mean the the
+biggest weakness is apathy if if people lose interest that is how Bitcoin dies
+and that's also why I think that it's incredibly difficult if not impossible
+to kill a crypto asset that is decentralized by any fashion I mean you
+only need to have a handful of people that are interested enough in one of
+these protocols to run the nodes and secure them in some manner of consensus
+and and you have a quote-unquote working crypto asset now then you know the sort
+of range of what working really means can vary widely but as it as long as
+there are a sufficient number of people who are devoting their resources to
+continually maintaining and improving the systems I don't see how it can die
+if a problem comes up then we fix it and move on and that's where a lot of the
+anti-fragility of these systems comes into play where the system it could
+crash you could have a market crash it could have a technical crash where the
+network goes down but the anti-fragility is due to all the different actors who
+make up the system who then come together and say okay we we make this
+tweak and we bring it back online and that's something where I think I said
+recently if you know the network might take a nap for a little while but
+eventually it's gonna come back and the the heartbeat of you know blocks and
+transactions coming in will resume right all right and I I think that when I got
+this question my answer was that it really would be I was you you're
+thinking of it at a meta level which I think is the right approach to to
+reasoning about what would actually be a problem for Bitcoin and I was kind of
+thinking of it a little too concretely in that my answer was there well if if a
+government controls their internet then they could conceivably block Bitcoin and
+have a firewall of sorts that prevents Bitcoin from you know being a viable
+like granted someone could always use a satellite dish although even that I was
+thinking like couldn't a government be flying drones over and making sure that
+your satellite dish is not pointed at block stream satellite I mean I'm sure
+they can jam you know signals at different frequencies you know there
+probably is a decent point to be made that you know the Bitcoin protocol
+itself like the message passing is not encrypted it is you know clear text I
+mean technically it's like highly compressed you know binary but it could
+be very easily you know sniffed and filtered and blocked and that's why I
+guess you can make a strong argument for you know small blocks and compact
+blockchain size because that makes it easier to use other forms of more
+privacy available communication you know like a tour so if you wanted to you know
+run a blockchain with hundred megabyte blocks or gigabyte blocks over tour
+that's probably not going to be feasible but at least now with the current block
+size and block weight you can still do that right and on that note like what
+what do you see as what excites you about Bitcoin in 2018 I think it's it's
+all gonna be about lightning and lapse and actually like connecting all of
+these decentralized networks together so you know the the ecosystem has grown
+significantly over the past few years there's far more crypto assets than
+anyone can even possibly keep track of but we still have some systemic issues
+mainly you know these centralized exchanges which we had a pretty good run
+for a little while where there weren't any major exchange hacks but now we
+seem to have another wave of exchange hacks coming in probably just as more
+new entrants are coming into crypto starting exchanges and failing to learn
+from their predecessors so I'm interested in you know decentralized
+exchange protocols and atomic swapping for privacy reasons and also for like
+health of the crypto ecosystem basically because if you're just using software
+and a protocol to have economic exchanges and changing assets and
+trading with other people peer-to-peer then you've removed these honey pots
+that you know everybody puts their money into and attracts all the attention from
+hackers and results in a lot of people losing money due to one really stupid
+exploit that you know somebody accidentally put in and if you're just
+doing it in a decentralized fashion sure you might get hacked but if you get
+hacked it's not like everybody else also gets hacked so I think it makes things
+more robust and it also is just kind of smooth the process of exchanging so even
+from a not a security level but just a scalability level a lot of exchanges
+have had problems with their multiple orders of magnitude of growth and the
+exchanges have been falling over or just been so slow that they're unusable and
+you can't even trade on them and that's just once again because they're
+centralized and everybody is going into one little point so I think that you'll
+also see you know fewer types of congestion there if you're able to
+actually do your trades across a more decentralized network yeah my hang up
+with decentralized exchanges has always been the fiat interface which seems to
+rely on like me giving my bank info to someone so that they can go deposit cash
+and in my account which and that aspect of it doesn't seem particularly
+scalable to me but in terms of crypto to crypto there I can see that that's
+definitely much more robust yeah and maybe we'll see a rise of a stable coin
+that can be used on these networks you know tether has been a hot topic
+recently there's there's no reason I guess why you couldn't have a lightning
+network compatible tether now of course like any of these stable coins that are
+you know ultimately backed by fiat are gonna have a trusted third party single
+point of failure at some point but you could at least you know create this
+gateway where people can use that single trusted point to get into a crypto
+system where you have you know more liquidity and you're just able to move
+around a lot faster without permission from everyone so when I saw you tweet
+about decentralized exchanges I thought to myself well is that's interesting
+because aren't bit goes most you know most of their customers are exchanges
+like I don't want to get you into hot water or anything but it seems like
+you're you're suggesting that big go would be obsoleted somehow because now
+we don't need these big honey pots with a bunch of coins that need to be
+secured yeah I mean I think the ecosystem is going to continue to change
+in a number of different ways and people are gonna adapt and you know some of
+these exchanges are going to innovate and they're going to find out ways to
+to pull these technologies in and make their exchange even better and you know
+probably offer hybrid models but you know bit go we have been pretty good
+about staying on the forefront of innovation in this space we got you know
+segwit active on our platform within a few weeks of it being activated on the
+network and you know we are big fans of payment channel technology so we've got
+a team of guys that are are working on various ways that we could use payment
+channels both internal to bit go and eventually of course external with a
+lightning network compatibility so the the general idea I guess of bit go is
+that we're going to serve whatever market demand there is and so while you
+know bitco did start out as a Bitcoin only thing you know as we got a lot of
+exchanges coming on to our platform and then the exchanges were basically saying
+hey we we want this same security model for coins X Y & Z we were like okay you
+know we'll do the work and we'll add those and that's a lot of how we got to
+where we are today and now it's more turned into like aetherium and you know
+adding support for all these different tokens and you know hopefully in 2018
+it'll be lightning network and adding support for various types of
+applications on there so it's going to be a fast-moving space yeah and it's a
+lightning network use case that I've heard of that rang as being
+particularly useful to me is the inter exchange arbitrage where you would be
+able to instantly send bitcoins from one exchange to another whereas currently
+it's kind of a it can be a haphazard process especially when the mempool gets
+backed up you don't really know how long you're going to be in limbo for yeah
+there's been a number of products you know just targeting nothing more than
+arbitrage you know we've that's really what blockstreams liquid sidechain is
+about and I learned at Satoshi roundtable that is the main reason why
+tether came about is that it was well tether was created you know on master
+coin slash Omni and it was then actually a bit Phoenix that was like you know
+what we have a lot of traders who would love to use some sort of dollar backed
+coin in order to be able to arbitrage between exchanges because we're having a
+lot of banking problems and you can see if you read any of these things about
+tether that it was in fact serving a very big market and the market grew to
+be so big that there's something like two billion dollars worth of tether now
+that have been issued Wow that's it and so they're like everyone obviously is
+concerned about I think that the going theory is that tethers get printed to
+pump up the price of Bitcoin yeah kind of like I think back in 2013 well we
+only found out about it after the fact but this thing called Willie bought on
+Mount Gox that supposedly was pumping up the price and so there's always kind of
+a manipulation narrative in every Bitcoin run-up that we see and so I guess
+like what are your thoughts on that and I know that things were said at the
+Satoshi roundtable that seemed to be reassuring in that regard yeah so the
+the simple explanation for why so many tethers came about was like I said they
+were being used for arbitrage and basically the process is that traders
+on Bitfinex who want to arbitrage will sell their bitcoins for the USDT the
+tether and then send that to another exchange and then buy crypto on that
+exchange and actually you know benefit from the arbitrage when they do that
+they're sending tether out of Bitfinex's tether wallet to the tether wallet on
+another exchange so the balance and Bitfinex's tether wallet goes down and
+as more and more traders do that eventually the balance reaches a
+critical level where they're not going to be able to do any more withdrawals and
+so at that point Bitfinex sends actual dollars to the bank account of Tether
+Inc and Tether Inc then goes through a process to issue more tethers at which
+point they send those to Bitfinex's tether wallet and the process repeats so
+basically like as those tethers move out and spread through the exchange
+ecosystem more of them end up getting issued so that Bitfinex can continue to
+offer the ability to arbitrage with them what raises my eyebrow though is that
+the exchange who which is receiving the UST is then it seems as though it's not
+going to Tether Inc to get US dollars they seem to just be holding on to it
+which seems unusual from like a risk management perspective yeah so it was
+asked you know like what is your normal level of you know tethers that you want
+to hold and you know why why is it just growing and growing and actually they
+were saying you know after the recent correction that they were actually
+expecting to decommission to you know deissue a fair number of tethers because
+a lot of that demand has dropped off for now so hopefully we will see it
+fluctuating some as the markets fluctuate as well yeah and then the
+other aspect of it is just like the regulatory like KYC AML aspect of it
+where you know this this would make sense to me if it was an actual bank
+issuing this although even there like they they would need to know who the
+tethers are being sent to right and if tethers they use the same kind of
+blockchain the Bitcoin does right so it's it's pseudonymous and I I don't I
+don't want to drag on this conversation for too long but that's that was on my
+mind as well yeah that question came up as well and I think the response was
+that well there's AML KYC coming in and going out and no one controls what's
+going on in once you're in just inside the system itself but yeah I mean that
+makes sense from a technical standpoint from a regulatory and financial
+compliance standpoint I have no idea yeah I am NOT a lawyer it's interesting
+well okay so what would you say other interesting conversations you had at
+this Toshi roundtable really caught your attention I know there's been a couple
+of write-ups now about it but I'd be curious to hear your thoughts um let's
+see which ones can I actually talk about though um so we there was a lot of talk
+about security especially physical security and you know I got to hear some
+specific examples from some of the more prominent people in the space and stuff
+that they do and you know some of them have you know armed guards and armored
+vehicles and you know really go all out because they're in a position where a
+they can afford to spend the money on that type of thing but B it makes sense
+for them to do that this is especially the the people who live in countries
+that have you know higher rates of crime so you know it's nice in America I think
+we we don't have as many you know kidnappings and extortions and like
+organized crime of that nature so I'm hopeful that I don't have to worry about
+that at least anytime soon but you know as this whole ecosystem continues to
+grow if there's there are more like orders of magnitude price appreciation
+then that's just going to make people bigger and bigger targets and the the
+more interesting thing that I think we talked about was the difference between
+like the traditionally wealthy people and the crypto wealthy people because you
+don't really hear about you know billionaires or folks on the Forbes top
+500 you don't hear about them you know getting kidnaps and extortions and other
+types of stuff like this and I think the main reason for that is that their
+assets are not liquid and you can't really steal large percentages of their
+wealth because they're just tied up in all types of different things that can't
+really be stolen so I think that we should actually learn a lesson from that
+and figure out you know how to make our own crypto wealth almost impossible to
+be stolen you know even under duress you know if a gun is pointed at your head
+you should not be able to transfer 100% of your assets or even a significant
+portion of your assets right reducing the liquidity of your bitcoins suddenly
+becomes an important aspect which generally people think of it in the
+reverse yeah that is troublesome and I think that we are fortunate here in the
+US and at the same time we can't be too lackadaisical in that regard
+thankfully I'm still crypto poor so I don't have but the problem is that
+someone doesn't even necessarily know that right like they just see oh Pierre
+comments on Bitcoin a lot he must be like Brock Pierce I'm like no I'm nowhere
+near Brock Pierce okay have you tried tweeting out that you're not a crypto
+millionaire yeah I had too much student loan debt to pay off to be in that league
+but they did in their minds it's not really it's not really relevant to the
+crime right and these people might not even be necessarily the most
+intelligent people around and then the other thing too though I I try to make
+this point as often as possible because I saw it firsthand when I was working at
+BitPay and now this is sensitive information but it's public too because
+BitPay decided to sue their insurer and so all of this information became
+public but social engineering is a lot less risky than actually physically
+physically engineering with a wrench or a rubber hose I think is the the common
+trope because at the end of the day if you can be sitting you know in your
+basement in Eastern Europe sending out phishing emails and trying to get
+people to click on things and at BitPay specifically you know they lost a
+couple million dollars worth of bitcoins in 2014 which today obviously is orders
+magnitude more and likewise so that's kind of like the the easy like social
+engineering phishing attack but then there's I think there's more
+sophisticated ones which I broadly call scams where basically someone is a sold
+on an ICO or something else like that and they voluntarily part with their
+money without ever having a gun put to their head instead they have a dollar
+sign put in front of them you know it's it's kind of the carrot and stick in in
+the nefarious way that's a it's the angler fish I think but yeah I mean a
+couple thoughts on that that's why you know you can't just protect your your
+crypto assets and your private keys you have to protect your phone you have to
+protect your email you have to put two-factor hardware authentication on
+every online account that is associated with your identity that supports it and
+especially from the phone standpoint at least in America apparently there's
+something stupid about America that makes it so that it's easy for someone to
+just walk into a phone store and claim to be you with a few pieces of
+information and and take over your phone numbers steal your identity and and now
+you know be able to use like 2FA reset functionality to get into a lot of your
+accounts so I actually recommend Google Fi for phone service because they
+literally have no stores that anyone can walk into to reset that they require a
+pin in order to do any phone porting so I had that exact thing happen to me with
+Verizon where my phone got ported thankfully like as you said I had
+everything on Google authenticator so there wasn't really any SMS things for
+them to get to and what was really intriguing was the conversation I had a
+couple of months later with the guy at Verizon who was like the forensic
+investigator into it because you know you were saying you know someone walked
+into a store and that was the initial story I got from Verizon when when I
+called them about this and the investigator was like that is not what
+happened and probably just called the phone number right well he's he didn't
+say it directly but it seemed to imply that this was an inside job by a Verizon
+employee who had a list and was just working the list and you know that's the
+other concern is that even with Google Fi now I'm sure like this is much lower
+risk at Google Fi than anywhere else and my my concern were not my concern my
+issue with Google Fi is that I'm an ample Apple fanboy and they only have
+Android so that disqualifies me from being more secure but yeah the inside
+job issue is real and it's kind of like that's part of crypto anarchy that we
+live in yeah and I guess going back to the scams and ICOs and tokens and
+whatnot I think one of the more fascinating things of this seeing how it
+all plays out is and obviously there's a lot of easy money in the system mainly
+because the the hodlers who have been around who have more money than they
+thought they ever would are now looking to you know get on the next thing and
+then also just mainstream media coverage has brought in new entrants who want to
+get in on the next thing that has resulted in these you know crazy
+valuations and people throwing money at projects that there's like there's no
+sane reason that you should entrust the people behind them with that much money
+and I think that what we're gonna see happen is a starvation due to lack of
+of technical skills where another thing that I talked about in my Satoshi
+roundtable post was the general lack of developer supply in the crypto
+ecosystem and so as a result like all this money has come into the crypto
+ecosystem and there's a lag time for developers to get up to speed so as a
+result we've got the you know salaries and consulting rates and everything for
+experienced developers basically in a bubble right now and that will
+eventually correct but not until enough supply of talented developers comes into
+the space and I think that the various ICOs and projects that are nothing more
+than a white paper but have tens of millions of dollars are gonna find that
+tens of millions of dollars are not helpful when there's literally no one
+with the skills available to give the money to to get them to build what you
+want and I think that there's an additional like piece to this which is
+that there's a difference between someone who's working with an existing
+blockchain and who is you know whether it's maintaining a node or writing
+implementing a node and really just trying to work with existing networks
+and then someone who's being tasked with architecting and building an entirely
+new network which was sold in a white paper and it doesn't exist yet and so
+that that level of developer talent I would argue like so you've got your like
+standard web developer and then you've got your blockchain developer who you
+know they could contribute to Bitcoin core and then you've got someone 10x
+that who could build Bitcoin core from scratch without reference to anything
+else right like and so that person's basically on the level of Satoshi if if
+what they're trying to accomplish is that innovative which or you know that
+that seems far-fetched to me that any more than like six of those people
+exist within the foreseeable future but maybe maybe I'm too skeptical about that
+yeah I mean I think it takes many years of experience building these types of
+protocols to get a knack for it and be able to do it in a conservative way
+where you're not opening up any exploits and of course it's it's not a single
+developer either like every developer is gonna make mistakes you have to have a
+team of developers that are watching each other's backs and preventing them
+from you know getting the mistakes any further than the initial code commit you
+know preventing that from getting merged and deployed into the production
+software because once it gets out there in the wild you can't take it back so
+yeah those those level of protocol developers are really far in a few
+between and have probably been in the crypto space for so long that they don't
+need a salary and so you you're not gonna be able to convince them to work
+for you probably for any level of money it's it's gonna be more ideological you
+have to capture their interest right and so for these ICOs that are like
+healthcare records on the blockchain I mean good luck finding a cypherpunk
+who's ideologically motivated to create a system that it you know advertises
+itself as being decentralized but at the end of the day it's probably unlikely to
+be and is it would probably be an anti pattern if it were so it's really
+like dentocoin like I don't know who's excited about improving the world of
+dentistry but they got to find a developer and pay them to at least put
+up some effort some level of effort and make it appear as though they're trying
+to deliver on on these promises that they sold investors on but yeah I I
+think that your your your argument about this being death by starvation is
+probably accurate if they even get to that right like if they even intended to
+ever hire anyone rather than just walking away and you know taking the
+money with them which I think is it's got to be at least a third of the ICOs
+the intent was just marketing and then we ghost yeah you know or pump and dump
+scams or who knows what but you know I can't even keep up with them anymore so
+I'm focusing on on Bitcoin and you know trying to build on it as a platform
+rather than trying to make the crypto universe even more complicated so I are
+you are do you have some lap ideas in mind that what kind of side projects do
+you have in the pipeline side projects I mean the last project that I did was the
+Bitcoin core config generator and that was mainly because I was keeping track
+of how many different configuration options there are and it keeps going up
+and up and I kept having to answer questions for people of like how do I
+set up a node that can run on a Raspberry Pi or they can run on tour or
+whatever I do have another project that I started and has language languished
+for many months and that actually is a throwback it combines some of my earlier
+skills with cloud computing and MapReduce job writing where I would like
+to create a MapReduce framework where you can throw the raw block data files
+into this MapReduce job and have it basically build the entire UTXO set and
+build a fully indexed you know Bitcoin database because that's what I've been
+working on for the past few years at BitGo is you know indexing services and
+and those there are ways to make it multi-threaded but you still basically
+have to start from the beginning and go the way to the end so that you're
+tracking all of the UTXOs in and out but I believe that it would be possible to
+create a multi-phase MapReduce job where with some of my initial testing that I
+was doing a few months ago I think that you could get it to a point where you
+could build an entire indexed perspective of the Bitcoin blockchain in
+less than 20 minutes and you could just throw more mappers and reducers at the
+job as the blockchain gets larger and larger and so you know we're at the
+point now where the blockchain is around like 170 gigs and so it's still
+manageable but if we're looking at this from a very long-term perspective then
+we are going to want to have ways to destroy and rebuild you know fully
+indexed perspectives of the blockchain in a much more rapid pace Wow so okay so
+let's let's dig into that because you know currently Bitcoin Core you there's
+a flag for a transaction index right to have that index be built and so
+essentially for our audience out there what that entails is that you can then
+query Bitcoin Core for a specific transaction ID and it will bring back
+the data for that and are you what you're talking about is an address index
+yes I'm talking about slicing and dicing it up in as many different ways as
+possible you know UTXO age you know the date fields size attributes fees like
+every aspect of a transaction that you can figure out programatically and
+then have that indexed and easily queryable okay awesome and so this but
+this is a right now you've got a proof of concept for that and then would you
+be able to create a like I know Satoshi uses Grafana but what kind of interface
+then would you be able to use for the UI yeah well I mean if you were doing an
+interface it would probably be similar to any block explorer but I think that
+this type of project would be more interesting to anyone who runs a large
+scale wallet or other service or block explorer like really anyone who needs to
+have the ability to query for Bitcoin data by things that are more interesting
+than just the hash of a block or a transaction and that happens a lot if
+you're running a wallet so for example at Bicco we have a lot of different
+indexes on UTXOs and that's because we have fairly complex UTXO selection
+algorithms and they're looking at a number of different things this reminds
+me of the block side project which I think was built by the guys out of
+Princeton and they they presented on this at scaling Bitcoin but basically
+doing that with the Python library called pandas to allow scientists to dig
+into the blockchain and query things differently so this sounds like a and I
+think they're using a graph database for that if I'm correct so so yeah my my my
+my I guess idea is even more on the like the first stage of that where then you
+could plug and play like what type of database you want to actually put the
+data into the hard part is just ingesting the the data quickly and then
+constructing all the transactions and UTXOs and then once you get to that like
+current state of the Bitcoin system then you can say okay I want to store this in
+a graph database or my sequel or Mongo or H base or you know whatever floats
+your boat for your particular application and I okay so now just when
+you were describing at the beginning of the episode that you were able to get
+your node to sync in what was that like 20 minutes not quite that fast 152
+minutes of okay sorry yeah so two hours let's call it two and a half hours it
+couldn't it also during those two and a half hours be making calls to a database
+and dumping the data as it's working through it and doing things in real time
+like that or would that slow it down way too much yeah well I mean there's
+there's two different ways I guess to think about it of like would you want
+the node itself to be throwing data out somewhere or do you want something else
+to be ingesting the data and so all of the indexer services that we have at
+BitGo and we have a couple different versions that we've written over the
+years they're all you know listening to nodes and and querying them for data and
+pulling data out of them though you can you know set up a node where every time
+a block or a transaction comes in it you know makes a call out to some other
+script so you know you can trigger or you can listen and ingest either way
+like that's that's still a fairly linear progression though where Bitcoin core
+will go out and and grab blocks asynchronously and sort of cue them up
+but it still has to go through each block and each transaction in order in
+order to actually make sure that all of the rules have been followed so I don't
+think that Bitcoin core or any of the nodes like at the that particular level
+would would ever really be fully parallelized it just becomes a very
+different problem gotcha because so the reason you can do out of order is
+because you're not doing validation at the same time you're you're assuming
+valid okay very interesting and so you're operating a wide variety of nodes
+at big go how many different altcoins are you guys supporting is that public
+let's see so Bitcoin the only forks that we have are be cash and be gold we we do
+have litecoin which was easy and then ripple and then aetherium and various
+ERC 20 tokens and the bulk of my time recently has actually been spent
+babysitting the aetherium nodes they have been just stalling and and falling
+over and having a lot of operational issues and I think I wrote about that
+recently some of the infrastructure issues there I've also had a number of
+issues with ripple nose like just from a performance standpoint but both ripple
+and aetherium on an operational standpoint tend to have issues with disk
+IO and you know you could say well that's because they're getting popular
+right so there there is a good argument to be made for having these like global
+limits on the networks because at the end of the day it turns into like real
+resource consumption for someone who is running the nodes and it just seems from
+my experience that amongst all of these really popular networks that are having
+scaling issues the only one that isn't you know having suffered from like
+performance degradation at the node level is Bitcoin so well let's let's get
+political then I mean wouldn't it be the case that everyone can just run an SPV
+wallet and we only need very few services that will have well a twenty
+five hundred dollar piece of hardware with a solid-state drive that's cutting
+edge and we'll just connect our SPV well I mean that'll that'll get you you know
+maybe 10x growth but I do have an article I wrote last year where I did a
+lot of the math and let's see that article was called like can SPV scale
+Bitcoin to a billion users and what I was basically showing there is that one
+the the math that most of people gloss over when they're saying that SPV can
+scale is they're only doing the math from the perspective of the SPV client
+itself and yes those are highly efficient you know they've used on the
+order of you know kilobytes of bandwidth and and you know hundreds of CPU cycles
+which is basically nothing you know in order to verify a transaction but if you
+switch around and you look at it from the nodes perspective that has to serve
+those SPV requests it's actually having to go through and read all of the data
+in the blocks in the blockchain that the SPV clients are requesting and saying
+hey do I have any transactions here do I have any transactions here do I have any
+transactions here and so it's a very you know asymmetric performance where it
+scales very well on the SPV client end it scales very terribly on the node slash
+server end gotcha and so the the point there then is that either you need to
+have web wallets where you've got a trusted third party right or that there
+would be another way to scale where you just sidestep that issue and you just
+have coinbase run one node and you rely on that but that doesn't what would be
+your problem with that solution yeah I mean it's pretty easy to you know scale
+up web applications we've we've had you know decades of experience doing that
+and there's a lot of technologies that are built for that but you're kind of
+you know you're regressing the model once again where like we were talking
+about earlier the centralized exchanges are creating systemic risk both from a
+security standpoint and just from a usability standpoint of you know
+everybody going trying to get through you know one little bottleneck that
+you've created so we want to see these systems be as dispersed as possible we
+also want people to be able to get the best security model that Bitcoin can
+offer if they want it sure I mean the vast majority of people are not going to
+run full nodes and may not even ever know what a full node is if we especially
+if we go mainstream I mean they may not even be understanding that they're using
+Bitcoin in certain cases it'll it'll be shoved so far down under the hood but we
+want the the technology to be accessible to as many people as possible and give
+them the option to run a node and to have the best security model if that's
+really what interests them right and the security model in terms of verifying
+transactions coming in that that they are valid per the consensus rules that
+you are a subscriber to right essentially and so in that regard if
+Coinbase was the one running their own node they get to decide what
+Bitcoin is for you on your behalf with that you really ever having a say in it
+whereas if you're running your own full node you are a member of the consensus
+that you want to be a member of which hopefully is called Bitcoin but I have
+nothing against people who want to call it be cash or bit gold or whatever so I
+wanted to jump back actually as my last question you mentioned that you're
+running these different nodes and you have to run a node for each erc20 token
+no actually we don't and we we managed to set up our indexer for aetherium in
+such a way where it's it's pretty efficient on the indexer side of things
+where we were ingesting every transaction that comes into an aetherium
+block but we're just looking for fingerprints basically we're looking for
+fingerprints of bit goes multi-sig smart contract we're looking for fingerprints
+of erc20 tokens and then if we see something that looks like it might be
+interesting it might belong to a bit go wallet then we're actually making
+various API calls to our own service to say hey is this actually a bit go wallet
+but from the token standpoint we have the erc20 functionality built into the
+bit go multi-sig smart contract so it's it's all like technically in the same
+wallet you know same private keys it's just using different functionality
+within the aetherium protocol so as a result we use the same indexer and we
+just you know set a new balance that says you know this token balances X got
+it and is it the case that like it's having all of these erc20 tokens inside
+of aetherium is that contributing to the performance issues for the aetherium
+node definitely just from the standpoint that the aetherium network is a lot
+busier now and you know I don't I don't know the protocol quite at the level to
+say like what the performance of you know running and validating an erc20
+smart contract is versus other stuff though my understanding is that like our
+multi-sig smart contract in general is pretty heavyweight and we are looking at
+a few ways to to try to make it you know less pricey from gas terms you know in
+order to execute various functionality within it but the the nodes themselves
+they've just been having a lot of performance issues and part of that you
+know is because we are running like full archive nodes we're not doing the like
+warp sync or anything else like that you know we want to make sure that we're
+doing full validation and and also it's just that the aetherium nodes they're
+updating so much state you know blocks are coming in every 17 seconds or so in
+in these full blocks have you know a hundred plus transactions and they're
+they're just doing so much reads and writes from the the disk that you know
+spinning disk doesn't really cut it anymore you need to have preferably
+solid-state disk so that you have enough IOPS on it and it becomes kind of
+ironically a problem because IOPS are cheap at a consumer level where you can
+just buy a solid-state disk and get a lot of IOPS but at the the virtual
+private server level which is what a lot of enterprises are going to be using
+their you know cloud computing disk IOPS are insanely expensive and I'm not
+entirely sure why that is but you know as a result we end up spending like
+thousands of dollars a month to run an aetherium node that is performant on like
+Amazon Web Services for example yeah maybe they price it like a restaurant
+prices alcohol you know it's like they're where they make their money but
+they make everything else look a little less expensive so yeah you're gonna have
+to be running your own bare metal if you want to do that be an aetherium full
+node in a cost-effective manner all right this has been a lot of fun Lopp thanks
+for coming on where can people reach you where can people find you on the
+internet well I'm most prolific on Twitter and my handle is Lopp L-O-P-P and
+once you get there you can easily get to my other various properties but I have a
+website at Lopp.net where I have all of the content I've ever created videos
+interviews presentations and also educational resources of basically
+everything that I think is interesting and worth reading within the ecosystem
+yeah so if you go to Lopp.net slash Bitcoin I think it is and you are you
+might be a developer or honestly you might even just you might not even be a
+developer yet but you want to learn how to program go on Codecademy learn some
+programming languages go to Lopp.net slash Bitcoin start reading as much as
+you can because there is a real developer shortage out there so I would
+highly encourage people to start getting involved and you got to start somewhere
+granted you know the the best time to start is yesterday second best time is
+today by by no means is it too late I think that people might have like this
+misconception that it's quote-unquote too late like crypto is gonna continue
+growing the the fundamentals haven't changed even if the price is down 60%
+over the past month or whatever it may be it's still a very strong wave that's
+occurring so anyway thanks Jameson it was a lot of fun and I hope to have you
+back on at some point great thanks for having me chairman Giancarlo thank you
+chairman Crapo ranking member Brown and distinguished members of the committee
+I've submitted a written statement for the record that details the CFTC's work
+and authority over virtual currencies but with your permission I'd like to get
+begin briefly with a slightly different perspective and that is as a dad I'm the
+father of three college-aged children a senior a junior and a freshman during
+their high school years we tried to interest them in financial markets my
+wife and I set up small brokerage accounts with a few hundred dollars that
+they could use to buy stocks yet other than my youngest son who owned shares
+in a video game company we haven't been able to pique their interest in the
+stock market I guess they're not much different than most kids their age well
+something changed in the last year suddenly they were all talking about
+Bitcoin they were asking me what I thought and should they buy it one of
+their older cousins who owns Bitcoin was telling them about it and they got all
+excited and I imagine that maybe members of this committee may have some had some
+similar experiences in your own families of late it strikes me that we owe it to
+this new generation to respect their enthusiasm about virtual currencies
+with a thoughtful and balanced response not a dismissive one thank you chairman
+Giancarlo and I'll begin the questioning first I will say I've had
+those dinner conversations with my own children and you're right this is an
+incredibly interesting but growing new area of financial challenge particularly
+among our least my children and yours

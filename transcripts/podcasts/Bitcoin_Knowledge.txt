@@ -1,0 +1,345 @@
+Open your cerebral cortex and shift your lobes into upper beta phase because you are going
+to have Bitcoin knowledge transmitted directly into your vestibulo cochlear.
+Your host at Bitcoin Knowledge is Trace Mayer, an early Bitcoin advocate since it cost a
+quarter but this is not intended to be investment advice, a doctor of jurisprudence but this
+is definitely not legal advice, and an investor in core cryptocurrency infrastructure including
+Armory, Bitpay, Kraken, and Mitagio but this is not a recommendation of those services.
+Here you get fed via direct mind download with pure and free Bitcoin Knowledge.
+Welcome back to the Bitcoin Knowledge podcast.
+We have with us Jamison Lopp.
+He's the creator of statoshi.info, coindesk contributor, contributes to Medium, very prolific
+on Twitter, has lots of friends there, software engineer, crypto influencer, and you spent
+three years at BitGo and now you're at CASA.
+So welcome to the podcast Jamison.
+Thanks for having me.
+So what exactly is your role at CASA?
+Technically my title is infrastructure engineer but I'm really doing high level architectural
+decisions mostly around security and a little bit around usability.
+Yeah, and I love the Twitter handle at CASA HODL so you guys are helping people secure
+institutional size money in Bitcoin, right?
+Yes.
+This is really more of a vaulting product than a wallet product because it is intentionally
+very, very difficult to spend out of.
+Yeah.
+How did you, like what was your background before you got into Bitcoin?
+Well, I was a computer science major but I've always worked in the internet sphere, spent
+my first 10 years at an email marketing company and I was mainly doing backend stuff there.
+By the end of it, we kind of rode the wave of cloud computing in 2008, 2009 and I was
+really managing large scale infrastructure with I don't even know how many petabytes
+of data where you would have to run large MapReduce jobs to crunch all of this data
+that was coming in from sending out 100 million emails a day and getting a ton of analytics
+back that the marketers wanted to analyze so that they could fine tune their marketing
+machines.
+Nice.
+So, you know, one of the things that really ties Bitcoin together is the ideology, you
+know, and it's born out of this cypherpunk, don't trust, verify, cypherpunks write code.
+Would you say that you align with that at all?
+Pretty much, so much so that I somewhat ironically call myself a professional cypherpunk and
+there really is no such thing.
+One of the more interesting things I find about this cypherpunk ideology as people see
+it from the outside is you actually see a lot of times people refer to me or others
+as quote unquote self-proclaimed cypherpunks or self-professed cypherpunks and I'm like,
+well, yes.
+Wow.
+That's what you do.
+That's how you do it because you are saying, you know, I am a privacy advocate and it's
+not a title that is bestowed upon you by someone else, it is something that you put yourself
+out there.
+Yeah.
+It's kind of like you're signing the Declaration of Independence, you know, I mean, you're
+like a lot of people are slaves and I'm declaring myself free and that's what we're doing with
+the code.
+Exactly.
+We're claiming, you know, different rights in this digital age, whether it's privacy
+rights with things like PGP, whether it's monetary rights instead of article one, section
+10 clause one with monetary rights in the constitution, we've got Bitcoin.
+So why is it Bitcoin that you've honed in on in this whole cypherpunk area?
+Yeah.
+I mean, it was really more that Bitcoin brought me into the cypherpunk ideology and while
+I have been exposed to a lot of the other crypto assets, especially while working at
+BitGo, unlike some people, those have actually turned me off to a lot of these other ideas
+and made me see Bitcoin as, I guess, a more pure or more stable form of crypto asset.
+It's not let me down nearly as often as a lot of these other projects.
+Could perhaps you have an example of how one of these other projects has let you down?
+Usually around changes that were unanticipated and caused problems for me as an application
+developer that was running on the infrastructure.
+So a lot of people understand that Bitcoin is interesting because it gives you like a
+more predictable monetary policy.
+Yeah, the 21 million and the emission schedule.
+Yes.
+But I think it's more predictable than a lot of other systems in multiple ways, especially
+as just a platform.
+So are you talking about like backwards compatibility and an aversion towards hard forks and a preference
+for soft forks?
+It is both that and what I ran into a lot with other projects like Ethereum and Ripple
+and some of the other more popular projects is that the resource consumption was not bounded
+as well.
+And so we actually ran into a lot of issues multiple times with these networks where we
+would just have problems with our infrastructure falling over.
+What do you mean?
+32 megabyte blocks don't take more than a couple of gigabytes of RAM to fully validate?
+Or even, and I don't even know what the relevant comparison is with like the Ripple ledgers,
+but they allow so much transaction throughput and they claim it as a great thing.
+But once you actually start running some of these and building on top of them, then there
+are times when the only way that you can actually stay in sync is to go out and like talk to
+the developers and ask like, which nodes should I be connecting to right now?
+Because the ones that I'm connected to are stalled.
+The government's nodes or this other centralized entities nodes so that we can know exactly
+what's going on, right?
+What is your favorite part of Bitcoin then?
+I mean, like if you came in for this cypherpunk ideology, like, I mean, is it just that you're
+kind of able to express yourself through Bitcoin?
+As a user, my favorite part is the freedom to move my money as I wish.
+Even just a few weeks ago, I had an issue trying to make about a $5,000 purchase through
+my credit card and it just kept getting declined and declined, declined.
+Even when I got the bank on the phone and they were like, yeah, we're increasing your
+temporary limit and we tried it again, declined and contrasting that with any of the times
+when I've moved value in these crypto networks, I pushed the button, I checked to make sure
+that the value and the address is what I expect and I confirm it and then within a matter
+of seconds, it is done.
+I don't have to do anything else and it's just that frictionlessness.
+So is that what brought you into Bitcoin?
+Because it sounds like you weren't necessarily on the cypherpunk email list, so that didn't
+bring you in.
+I mean, what brought you into Bitcoin?
+It was both the libertarian leaning ideology around a lot of it and also the computer science
+side.
+So I was originally, as most people, I think very skeptical.
+I read about it and I was like, oh, this is going to get hacked, everybody is going to
+lose their money type of thing and then of course, as that did not happen and it kept
+sticking around, eventually I realized, you know, there might be something that I'm missing
+here because it seems a lot more robust than I originally anticipated and due to the ideology
+around it, maybe this is something that's worth putting my time into.
+So now being a professional cypherpunk, allocating significant amounts of your personal time
+and professional time into it, what code are you actually writing now?
+Like, what are you actually doing there at Caso?
+Mostly more of the backend stuff.
+So like my specialty is generally around running nodes and writing interfaces for wallet platforms
+to then talk to.
+So at BitGo, I was writing multiple different indexing services to ingest all of this data
+and basically put it in databases in a highly indexed format so that the wallet could get
+to the data and I'm basically doing the same type of stuff at CASA, though I would say,
+if anything, I've stepped back like a level higher in doing more high level architecture
+stuff.
+So basically trying to make CASA as trust-minimized as possible.
+Now this is like one of the trade-offs, of course, whenever we talk about centralization
+and the pros and cons is that we are centralizing the services as a company because we're getting
+a lot of specialists together and we're able to work better as a team and build something
+that would be hard to do if we were all individually writing pieces of it.
+And so the result though is that people are using this service that could potentially
+be a single point of failure if our infrastructure goes away or collapses or get attacked or
+whatever.
+And so I want to allow people to leverage our services so that we can provide bank-like
+services, financial services without actually being a bank, without actually having the
+ability to freeze someone's money or take it away from them.
+So is this looking at...
+Who's the target market then?
+Is it individuals, family offices, hedge funds?
+Well, really most interested in individuals, the larger enterprises that need more of a
+treasury management solution are probably not going to be as interested in what we're
+offering because we are not offering a solution where you have a whole group of people that
+come in and you set up complex rules where you're auditing each other.
+We're trying to leverage multi-SIG and hardware devices so that a single person can have the
+most secure but also easy to use setup.
+And so right now we are targeting high net worth individuals simply because if you get
+into the consumer market of wallets, the floor for prices is zero.
+So most consumers are expecting to get a free wallet and it's very hard to make any money
+providing that type of service without selling personal information or something a little
+more unscrupulous.
+Yeah, exactly.
+Yeah.
+Who knows what blockchain.info does with all that data they collect.
+So like me, you're a prolific Bitcoin writer and educator and things like that.
+It's fun.
+I got admitted.
+It's definitely a lot of fun.
+It can be very rewarding being in the battlefield of ideas, but it also has its downside.
+You were slotted.
+What exactly happened here?
+And how has that kind of changed your calculus in terms of kind of giving people free information
+in this area?
+Well, this was something that I always knew in the back of my mind was possible because
+we had heard of it, especially happening in the video gaming community.
+And it did happen to a few other folks in the Bitcoin community, though I don't think
+they were particularly public about it.
+Now...
+Well, how Finney got slotted.
+Right.
+I mean, really, you're going to swat a guy in a wheelchair with Lou Gehrig's?
+Yeah.
+And it led to his early death too, because it was during the winter and he was out on
+the driveway for a significant period of time.
+And so, I mean, kind of in my opinion, swatting somebody should be considered attempted murder
+because it's the deployment of lethal force, but you know, anyways, not to usurp your answer
+here.
+Yeah.
+Well, you know, it was obviously it came out of nowhere.
+It's not like I was expecting it to happen.
+And once it actually did happen, and thankfully it went about as well as it could have because
+my local law enforcement did a little bit of research and realized that the phone call
+was not actually even coming from my state.
+They didn't even, you know, bust down the door or anything.
+So, you know, after talking to them and, you know, they realized that I was a public fairly
+controversial figure.
+They left pretty quickly after that.
+They did, they politely asked if they could search my house, but I politely declined.
+Like, you have no reasonable cause.
+But, you know, once that was actually over, I definitely started reevaluating a lot of
+things and being more careful about my online privacy and posting, you know, location related
+stuff, giving any hints about what I might be up to.
+But then, you know, over the next few months, I started researching like how to actually
+start my life over to, you know, sever all my ties because I had been living in the same
+house for 10 years and like, you can basically Google my address and, you know, public tax
+records and all this other stuff comes up.
+So I have spent a considerable amount of time and resources over the past six months basically
+setting up legal entities and new types of proxies, both technical proxies and human
+proxies and legal proxies.
+And I'm at the point now where I'm ready to stress test it.
+So over the next few weeksà
+So are you inviting another one?
+Well, so it'll be multiple levels of stress tests.
+The first level will be just getting some private investigators to see what they can
+dig up.
+And if that goes well, I am considering putting a bounty out there for like, if you're a
+professional, you know, data sifter digger guy and you can find me, then I'm willing
+to pay for you to tell me, you know, where the leaks are to see if I can close them up.
+Well, that might be a little bit nicer way than inviting the NAD's ghoul to come and
+claim you, right?
+So would this potentially become a service offering at CASA?
+Because I could see this being something people would appreciate.
+Yeah, we've talked about it mainly because, you know, just the education level is the
+bar is so high to actually understand it's a very multifaceted problem, you know.
+You're leaking data all over the place.
+I am very well acquainted with this, you know, running the blog How to Vanish for several
+years with many millions of visitors.
+We looked at lots of the different facets and I mean, we had little guides on financial
+privacy or personal privacy or electronic privacy or financial privacy and like our
+main book and I mean, and then you've got like state income tax ramifications to get
+tied in with this and you've got second citizenships and residencies and I mean, there's a lot
+of, I mean, kind of just the general five or six five theory that you can implement.
+So I mean, there's really a lot in this whole arena and Bitcoin enables people to
+be so much more mobile.
+Most people don't really appreciate the amount of risk that comes from the externalities
+that get created by the government's requirement for the collection of so much of this data.
+You know, all this AML, KYC, healthcare regulations, all this stuff, taxes, driver's licenses,
+I mean, all of these things create tremendous potential attack surfaces and attack vectors
+to personal safety.
+And I think a lot of people just kind of take it for granted and don't do anything about
+it.
+And so there might be a service, you know, we found it at how to vanish, you know, there
+was definitely a market, but you know, over the years we noticed that like search traffic
+for basically these privacy related keywords, it's down 90%.
+So people seem to be getting less interested in the privacy even though it's getting more
+important.
+People think that they're not important enough or they're not going to be targets or whatever.
+And I think the most important way to look at it is that you don't know what might happen
+that might make you suddenly important.
+One of my favorite examples actually is the lady who was, she boarded a flight to go to
+Africa or something and she tweeted some terrible joke about hoping she didn't get AIDS.
+By the time she landed, her life was over, it was upside down.
+And so just like the power of the internet is the ability to suddenly make yourself a
+target of harassment by millions of people in 140 characters in 30 seconds.
+And some people are just really crazy, you know, they're just Looney Tunes.
+Right.
+And I mean, and that's basically what happened to me is that I went from, you know, in the
+matter of- You definitely like beat the Bcash community
+with a stick.
+So there's no hard evidence that the swatting was due to that because the person who did
+it didn't specifically say that.
+So they caught the person.
+No, no, but they tried to extort me.
+They sent me some direct threatening voicemails and whatnot.
+And so they never went into any specifics, but they obviously were more enraged after
+my tweet after it happened when I was like, you're going to have to try harder than this.
+That pissed them off even more.
+And they actually, they threatened a lot to do a lot worse things, but nothing else ever
+happened after that.
+And so, you know, I'm pretty sure that that was just some dude in his mom's basement.
+It sounded like a 20 something year old guy with a Southern accent, but it's not about
+him.
+It's about that when you get to the level that you have hundreds of thousands of people
+who are focused on you, then there's probably going to be at least one or two nut jobs.
+And it's those few people that you have to worry about.
+Yeah.
+And you have no idea whether it's like collateral damage because you're in a picture with a
+friend who says some stupid thing that then blows up and goes viral, you know, and like,
+oh, this person in the picture, you know.
+So and would you say like just a Bitcoin security in general, this is where an ounce of prevention
+is worth a pound of cure?
+That's the idea.
+Now, for me, this has turned into, you know, tens of thousands of dollars of prevention
+and changing my life significantly.
+And maybe I've overdone it.
+But the problem is that when I look at what has happened over the past five years or so,
+and if I take that and extrapolate it, then it gets really scary.
+And so I just want to be better safe than sorry type of situation.
+Well, being in the battlefield of ideas is not for the faint of heart.
+You know, and this is a field where we don't know what five or 10 years out looks like
+in terms of government coercion, in terms of, you know, financial resources and price
+and just all the many different factors that Bitcoin touches.
+It could go a million different ways.
+You know, it could end up with the Bitcoin barons and their crypto citadels or I think
+a best case scenario is that it just it becomes so pervasive and mainstream that I don't have
+to talk about it anymore.
+Like when Bitcoin and crypto becomes boring, you know, that's when I think our work is
+done.
+But until then.
+But then we might have additional layers like you're lightning network and you got additional
+layers that might even get built clear up on top of that.
+So I mean, looking at like the crypto citadels, I can just see Jamison like up on top of like
+57.1, right?
+Like you're on the 104 New York City just perched up in your dragon's den.
+What are you most excited about looking out over the next, you know, let's say two to
+three years?
+Yeah, it is really these next layers.
+I think that the the level of development is actually going to continue to accelerate
+because it should be easier for for developers to start creating entirely new classes of
+applications where, you know, they don't have to get a consensus from from any implementations
+to like add features to the low level protocol.
+And this is because they're interacting on the second layer.
+Like in lightning is that, you know, we're once again, we're talking about Bitcoin as
+a platform of, you know, we have this very stable platform and now slowly but surely
+people are starting to build on top of it as that stability is becoming more obvious.
+The fifth network effect of developers.
+And you know, you can speculate about all the different ways that this can go, but just
+the ability to unlock economic activity that hasn't been possible before on traditional
+financial networks, I think is one of the more interesting aspects of of what we can
+do here.
+Well, it's been a wonderful interview so far.
+Let's end with one question.
+What would be like one or two pieces of advice that you want to leave for everybody?
+Well, the one thing that I've harped on a lot is that nobody understands Bitcoin.
+And that's what that's really saying is that, you know, it's this underlying human consensus
+is like, yeah, we have code, we have infrastructure, we have technical things you can understand.
+But you know, what one of the things that we're trying to do here is to really figure
+out like what is the human consensus for the optimal or most fair form of money.
+And so you have to be flexible is that I've I've changed my mind over the years of like
+how I view Bitcoin.
+And I think that most of that is because I've done a better job reaching out and trying
+to ingest everybody else's perspective so that I can just get a more global view of
+the whole system.
+So, you know, when you're starting out, you can't possibly have that view.
+And you may end up getting surprised because your understanding of Bitcoin changes.
+Other than that, invest in education more than more than just like investing in the
+actual assets themselves, because if you have the education, then you should be able to
+make better informed decisions and hopefully actually be able to navigate through this
+future of crypto anarchy, which is going to look a lot different than for the recent few
+generations even.
+Well, I think those are two excellent pieces of advice.
+Be humble and invest in yourself, like can't really get much better than that.
+We've had a tremendous interview today with Jameson Lopp, founder at Casa, BitGo, security
+engineer, Bitcoin thought leader, neckbeard extraordinaire, and, you know, cypherpunk,
+who's out there writing code and building the future that we're going to that we're
+going to have.
+Thanks so much for being with us, Jameson.
+My pleasure.
+Be sure to get a copy of the free Bitcoin guide at FreeBitcoinGuide.com.
+Got a question or suggestion?
+Record your voice at Bitcoin.KN.
+Don't be shy.
+To help the show, share Bitcoin.KN with friends, post about it on Reddit, and otherwise, spam
+the interwebs.
+Your iTunes comments and five-star reviews are very important to us.
+Please continue tuning into the Bitcoin Knowledge Podcast, where we release interviews with
+the top people in the Bitcoin world.
+Now take some choline and let that Bitcoin knowledge consolidate.

@@ -1,0 +1,586 @@
+Cryptocurrency security is a concern to anyone who has a significant amount of money in the form of Bitcoin,
+Ethereum, or other crypto assets. Most Bitcoin is held in either a Bitcoin wallet or a Bitcoin bank.
+Your Bitcoin holdings are recorded on a public ledger. You access these holdings by authenticating with your private key.
+A Bitcoin wallet could be described more accurately as a Bitcoin key ring.
+Securing your Bitcoin wallet is about securing that private key.
+And just as there are many different ways to secure any individual piece of text,
+there are many ways to secure a Bitcoin private key.
+A Bitcoin bank is a term that can be used to describe institutions such as Coinbase.
+Coinbase takes the technology of the Bitcoin wallet and wraps it in additional layers of security,
+identity, and failover that we associate with banks and large technology companies.
+By using a Bitcoin bank, you sacrifice the autonomy of managing your own private key.
+On the bright side, you don't have to manage your own private key because private key management is annoying.
+But of course, by giving up that private key management, you are giving up some autonomy.
+A Bitcoin bank gives you the downsides and the upsides of working with a centralized service provider.
+Jameson Lopp is a cypherpunk and a cryptocurrency engineer at CASA.
+Jameson was previously on the show in another popular episode relating to cryptocurrencies.
+CASA, the company where he works, is a company that is building long-term cryptocurrency storage and secure key infrastructure.
+In this episode, we explore how Bitcoin wallets work, how to secure them, the common threats,
+the scams and the hacking attempts of Bitcoin, and what he's working on at CASA.
+Jameson Lopp, you are a professional cypherpunk and an engineer at CASA, which is a platform
+aimed at cryptocurrency holders. Welcome back to Software Engineering Daily.
+Great to be back.
+I want to talk to you today about cryptocurrency security, specifically wallet security. Let's
+start with the discussion of wallets. What is a Bitcoin wallet and why does a Bitcoin holder need
+one? Well, a wallet is not the best name thing. It's probably better to call one of these things
+a key ring or a key management service. But basically what you're doing is you're creating
+software that helps you manage both the private keys that unlock your crypto assets, allow you
+to spend them, and allows you to manage other aspects of your actual money. So in Bitcoin,
+that basically means managing the unspent transaction outputs, which are the real
+quote unquote Bitcoins. Those unspent transaction outputs, are they held in the wallet or are these
+publicly accessible? Let's just do a little bit of review on the interaction between a Bitcoin
+wallet and the public ledger. Yeah, so the UTXOs are basically the database of currently available
+spendable Bitcoins that you get from parsing the blockchain itself and looking at the entire
+history of the blockchain. And so the blockchain is just this series of inputs and outputs. Every
+transaction is spending some inputs and then it's creating new outputs. And by following along the
+entire history from the very beginning, the Genesis block, we are able to delete the transaction
+outputs that get spent, create the new ones that the new transactions get created when they're
+creating the transaction and broadcasting out onto the network and then getting into the blockchain.
+And eventually we arrive at the current state. So if you could actually think of transaction
+on the Bitcoin network as a state transition function, where you're consuming some transaction
+outputs and then creating new ones. And eventually we have the current state at the current tip of
+the blockchain. When I initialize a Bitcoin wallet, what do I need to do? Well, all you're really doing
+is creating those private keys. And there's a lot of different ways to do that, but there is a
+standard now for what they call hierarchical deterministic wallets, where you're really just
+creating this root master key pair. And then you're deriving all of your public private keys
+from that master key pair. And that is good for a number of reasons, but especially because it
+means that you only really need to back up that master key pair. And in fact, there are other
+standards around that that allow you to just back up a 12 or 24 word seed phrase that is then used
+to derive the master key pair itself. So when you create a new wallet, there's nothing in there
+except for some public and private keys. But of course, there's not going to be any value in the
+wallet if you've never used that set of public and private keys before, because nothing will
+have been sent to those addresses. So you do not need to scan the entire blockchain in that case
+and find all of the transactions that are associated with this wallet because you know that
+it's unique. Yeah, if this is the first time that you've ever used the wallet. Now, if you are
+importing a seed phrase or a bunch of key pairs that are from a wallet that you used previously,
+then you will need to go back and do some sort of scanning so that you can pick up those unspent
+transaction outputs. What you're describing there, if I'm already a Bitcoin user, I've got one wallet
+that I want to leave at home at all times. And then maybe I've got another wallet that I can
+walk around with and use occasionally. And I want them to be copies of the same account structure.
+If I was setting up that new wallet that was a copy of the same address schema as the first wallet,
+what do I need to do in that case? Well, in that case, what's going to happen is the wallet
+software is going to either from the very beginning point in time, or in some cases,
+you can tell it to only start from a certain date if you know when you first started using the
+wallet. But that wallet is then going to have to go out onto the network. Or you could, of course,
+have it connect to your own node, but it's going to have to connect to some full Bitcoin node
+somewhere out on the network, and then start querying that node. And it'll basically walk
+through every block that has ever been put into the blockchain. And it will send a query to the
+node saying, you know, here's a sort of fuzzy filter. I'm looking for any transactions that
+are related to any addresses that match this fuzzy filter. If anything matches, send it back to me,
+and I'll, you know, inspect those transactions more closely locally. And so you can do this
+pretty quickly because you can, this is actually called SPV, the simplified payment verification,
+which was actually described in the Satoshi white paper many years ago. And by using the the Merkle
+tree route that is in each block header, you can actually get a strong cryptographic proof from the
+node that specific transactions existed in specific blocks without having to download
+all of the transactions that ever happened. Now, without getting too deep into the details,
+there are some privacy issues here. There are some potential censorship issues,
+but it works pretty well most of the time. And of course, there are a number of proposals out there
+to improve upon this and make it even more censorship resistant and more private.
+Let's save the SPV versus full node discussion for a little bit later in the conversation.
+Sure.
+Focusing just on the wallets for now, what's the spec for hardware that I need? Can I just run this
+on my MacBook or on my phone? What are the requirements for secure Bitcoin wallet software?
+Well, that is quite a broad question. And if you know anything about computer security,
+you know that nothing is really 100% secure. So you really want to try to do is to minimize
+the attack surface of whatever wallet you're using. And of course, there's always going to be
+performance trade-offs and convenience trade-offs. And so generally, the more secure your setup is,
+the less convenient it's going to be or possibly less performant.
+So when it comes to running a wallet on regular hardware, like a laptop, a desktop,
+a mobile phone, what have you, those are always going to have more potential attack vectors
+because you're running a full-fledged operating system. There could be malware that gets on it.
+It's just like a million different things that could go wrong and could result in you potentially
+losing your private keys to some attacker or the attacker basically spoofing addresses,
+swapping them out when you're not looking and you accidentally end up sending money
+to an address that belongs to an attacker rather than your intended recipient.
+So for the average user who has more than probably $1,000 in crypto assets,
+I recommend going out and getting one of these hardware devices, whether it's a ledger,
+Trezor, KeepKey, ColdCard, what have you, because those are going to give you
+basically the highest level of security that you can get while still having a pretty good user
+experience. And in fact, we're building on that at my current company, trying to merge the user
+experience you can get with a mobile app wallet with the security that you can get with these
+hardware key management devices. And those devices are generally more secure because
+they're custom-built hardware that does basically nothing except managing the private keys and a
+secure element and doing the transaction signing operations for various cryptocurrencies. So it's
+basically impossible to get malware and other bad things onto those devices because they simply
+don't support other operations. That is, unless there's some kind of supply chain interloper,
+one thing I saw recently was that you have a store, the Kasa store, where because you're a
+dedicated security company, I think there's an argument to be made that it would be more secure
+to buy a Trezor wallet from your Kasa store than from, I don't know, eBay. You probably don't want
+to buy a Bitcoin wallet on eBay. You probably don't want to buy one from a random person. Now,
+the types of attacks that we're seeing when people buy a hardware wallet off of eBay or some other
+or some other more peer-to-peer marketplace, it's not that those people are actually going and
+tampering with the hardware itself. It's usually much less sophisticated where these people are
+buying a hardware device. They're then opening it up and putting a wallet seed phrase on there
+that they know the seed phrase. And then they're shipping it off to other people and basically
+giving them instructions telling them, oh, don't reset the device. Just keep using the seed phrase.
+Here's your seed phrase. And then of course they wait for someone to deposit money on it and then
+they steal it all. Now, I'm not a hardware expert, but if you go onto the Trezor and Ledger websites,
+you should be able to find more material where they actually have a number of tamper-proof
+mechanisms built into the hardware itself that make it very, very difficult for someone to
+open up the hardware and tamper with it without the hardware itself noticing. It's like the
+firmware basically checks the integrity of the hardware every time the device turns on. And
+while of course anything is possible with enough resources, like I think if you go to some
+three-letter agency that has like electron microscopes and all kinds of other equipment,
+they might be able to tamper with this type of stuff. But in general, you get a really,
+really high level of security that the device itself has not been tampered with.
+This is the Bitcoin wallet that we have now thoroughly discussed. There's also a term that
+is commonly used, Bitcoin bank. I think this might be what you could describe Coinbase as.
+What is the stack for a Bitcoin bank? How does a Bitcoin bank account compare to a Bitcoin wallet?
+Well, normally what we're talking about when we call something a bank, it's a large custodial
+service. And so they are managing Bitcoin and crypto assets for a large number of people.
+So that basically means they have to keep all of these private keys safe on behalf of others.
+And that means they're going to have much more sophisticated multi-layer storage solutions.
+When you're talking about Coinbase, for example, which last I heard they probably are holding at
+least like 5% of all the Bitcoins in existence, you can go onto their engineering blog and they
+have a post from a year or two ago where they talk about some of the security mechanisms they use.
+That basically means that the vast majority of these private keys are going to be held offline
+in a highly secured vault where you have to have multiple humans that are going in at the same time
+to open up the vault and get into it. And it's basically this huge Faraday cage with air-gapped
+computers on it. And whenever they want to send money from this cold storage into their hot wallets,
+then it's a very long convoluted process that has many, many checks and balances to ensure that
+they're safe, you know, not only from hackers and external threats, but even from insiders who might
+be incentivized to try to steal the private keys and, you know, jet off to some non-extradition
+country. In this description, you've outlined a difference between cold storage and hot storage.
+You've given some examples and I know cold storage and hot storage are extreme characterizations that
+there's actually a lot of granularity between what is cold and what is hot storage. Can you describe
+the types of accounts that would be classified as cold storage or hot storage and what falls in between?
+Yeah, so generally when we say cold and hot, we're basically saying it's connected to the internet
+or it's not connected to the internet. Obviously, when you disconnect a device from the internet,
+you are creating this moat or this air gap so that hackers cannot get to it. Like, that's the
+safest you can possibly be from hackers is just pull the plug. Now, when people think of cold storage,
+they usually think of a paper wallet. I actually don't recommend that people use paper wallets
+unless they're extremely advanced because there's just so many things that can go wrong with them.
+But I generally say that a hardware key management device is cold storage because the device itself,
+while you still plug it into a computer or even a phone in some cases, the way that these devices
+are set up is that the private keys can never actually leave the device even though there is
+a cable connecting the device to another computer. The data that is transmitted between that cable
+is very limited and the keys never get transmitted off the device. So, the other side of things,
+of course, is a hot wallet where you actually have these private keys on a machine that is either
+constantly connected to the internet or sometimes connected to the internet, but it's just a piece
+of software that is managing the private keys on a general purpose computer. And the problem that
+you have there is that even though a good wallet is going to keep those keys encrypted in a file
+on disk at rest, at some point in time, you're going to have to access those private keys.
+You're going to have to decrypt that blob of data in order to be able to sign a transaction with it.
+And even if that's only for a matter of milliseconds, if there's some malware or
+something else sitting on the computer waiting for you to do that, then it can swipe your private
+keys and steal all of your crypto assets. And that's the primary problem that we run into with hot
+wallets. And that's why exchanges get hacked all the time is because they have to be running
+hot wallets in order to be able to do automated withdrawals.
+Failure is unpredictable. You don't know when your system will break,
+but you know it will happen. Gremlin prepares for these outages. Gremlin provides resilience
+as a service using chaos engineering techniques pioneered at Netflix and Amazon. Prepare your
+team for disaster by proactively testing failure scenarios. Max out CPU, black hole or slow down
+network traffic to a dependency, terminate processes and hosts. Each of these shows how
+your system reacts, allowing you to harden things before a production incident. Check out Gremlin
+and get a free demo by going to gremlin.com slash S E daily. That's gremlin.com slash S E daily to
+get your free demo of how Gremlin can help you prepare with resilience as a service.
+Do you have prescriptive or proscriptive protocols for who should have what kinds of wallets?
+Cause I assume, you know, somebody who's completely unsophisticated with cryptocurrency,
+you would recommend one type of wallet set up for them versus somebody who is a security expert.
+And there's probably also the dimension of how much you are storing, what percentage of your net
+worth you're storing. What are the different combinations of wallets and configurations
+that you recommend for different types of people? Yeah, I've, I've written about this a little bit
+in general. I kind of broke it down into like three different categories that probably require
+different levels of paranoia. And so your, your very entry level category is just spending money,
+you know, a hundred dollars, couple hundred dollars, basically whatever level of cash that
+you might normally be walking around with in your pocket. That is an amount that would be fine to
+just keep on a regular hot wallet on your mobile phone or, or any other device, because it's
+probably not going to ruin your life if something happens and you lose that. Now the, the next level
+of storage when you start getting more intermediate level is, is more like a small investment. So
+if we're talking about like a month salary or, or more, you know, getting into the thousands of
+dollars range, then that's when it starts to make sense to invest 50 or a hundred dollars into one
+of these hardware devices. And that's going to give you the best security without having a huge
+investment of time or money. But then the third level is when we start talking about like life
+changing amounts of money, like hundreds of thousands or millions of dollars worth of crypto
+assets. And that's when you're probably going to want to devote more time and resources and money
+into a more complex and more redundant system, because you're going to be worrying about not
+only loss due to hackers and external attackers, but even more commonly, most of the loss seems
+to happen just due to user ignorance or negligence, not having a sufficient level of redundancy and
+robustness against any type of natural disasters. And so that's really the type of level wallet that
+I've been working on this year with Casa. And we think that there's a pretty big niche for that,
+where a lot of people started out with that first or second level. And then as these bubbles keep
+happening in cryptocurrency, they wake up one day and now they have a level of wealth that they
+never thought they would have to worry about managing before. So what are some of the,
+I want to ask about the scams and the thefts and stuff, but maybe we should first cover that the
+user level incompetency. What kinds of mistakes do people make? Particularly, you already mentioned
+paper wallets and obviously with paper wallets, you could just lose the paper wallet or spill
+water on it. You can have a computer hard drive where you've got your private keys stored somewhere
+and then you accidentally lose the computer. We've heard many stories about that. What are
+the common scenarios where people just make mistakes? Yeah, I mean, I think it's usually
+someone either not creating a backup in the first place and they're just running a hot wallet on
+a computer and then there's some sort of hardware failure, or they have one backup somewhere and
+something happens to that. So we've even heard, there was a really good story. I think it was a
+Wired journalist or someone a year or so ago where he had a backup of his seed phrase, but it was
+just written on a piece of paper in his desk and apparently the maid came through and thought it
+was a scrap piece of paper and threw it out. And so it's usually just not having good IT practices
+and not having multiple offsite redundant backups. And then even if you do have good backup
+practices, then a lot of times people won't actually test them. And so they might have
+some flaw in their backup and recovery mechanism where, sure, they have backups, but then when
+something happens and they go to try to recover it, they find that flaw and now it's too late.
+And so we're just, we're trying to think through all of these different possible failure scenarios
+because I think most people just think about, oh, my house might burn down or there might be a flood
+or something. And so all I really need is one of those, you know, metal storage devices where I
+etch the seed into that. And I think those are good against a lot of common threats, but I actually
+had a stress test blog post that I wrote recently where I showed that there are a number of things
+that can go wrong that can even make those metal devices sufficiently unreadable, even if the metal
+itself isn't completely destroyed. And then even more recently, we've been hearing things of, for
+example, bank safety deposit boxes getting opened and thrown out without the owner necessarily even
+knowing what's going on. And so I think there's also a lot of people who are just putting their
+a single backup recovery phrase into a bank safety deposit box and not thinking that, oh, there are
+actually potential failure scenarios for that as well. And the scams, the Bitcoin theft scenarios,
+the tricks that people can wage against each other. We've seen so many of these over the years.
+What are the most common types of scams and Bitcoin theft scenarios that you've seen? Well,
+the most pervasive right now, and I don't know how successful they are, but there sure are a lot of
+them on Twitter with the various giveaway scams. I think that's getting some of the more naive folks
+to send their money off thinking that they're going to get more money back as a result.
+There's also a lot of exit scams from seemingly legitimate businesses. And this is why having a
+long history and reputation is also pretty important. If you're going off and using some
+exchange or other service that's only existed for a few days or weeks, then you never know.
+They might just amass a lot of deposits and then disappear off into the ether. But in general,
+you just have to go with your gut of, you know, if this sounds too good to be true, it probably is.
+There's just such a much higher reward for scammers in the crypto space because these
+are bearer assets. And so once you send them, there's no way to call them back.
+And so I think that's why more and more scammers keep flooding into the space.
+Okay, let's start to talk about how to build a more secure wallet and money management system,
+since that's what you're focused on at Casa. So when Casa was getting started, what were the
+predominant mechanisms for storing cryptocurrency? And what made you think that there was some gap
+and there was some set of remedies that you could provide that would be a sweet spot in terms of
+security? Well, over the past few years, these hardware wallets have become more popular.
+But we were just hearing a lot of horror stories of people having millions and millions of dollars
+on this one single device that even though it's incredibly secure against various types of attacks
+against the device itself, just the fact that you have a single device creates, of course,
+a single point of failure. And we kind of came to the conclusion that there's a bit of a usability
+flaw even with these high security devices, because if you buy one of them, the first thing
+that it's going to do is it's going to display this 12 or 24 word recovery phrase to you.
+And then it just says, keep this in a safe place. And while that seems simple enough,
+it's actually a huge ask, I think, of average person to understand all of the ramifications
+of security and good IT practices of keeping 12 words safe against all kinds of different
+possible loss scenarios. And loss, of course, doesn't necessarily mean attack and loss to
+some other person. It can just mean data loss that makes the thing unrecoverable.
+And so what we found when we started asking around is that there were a lot of OG crypto folks out
+there who were just petrified to be responsible for storing their private keys. And so a lot of
+them were just leaving them with custodians, because they had this thought process of, well,
+if I leave all my bitcoins at Coinbase or some other exchange that's pretty reputable, then
+they might actually be more safe there, because there's whole teams of people that are devoted
+to the security of the cold storage that is being managed by these companies. And I think that's a
+pretty logical line of thinking for yourself that very well may be more secure and more robust
+against certain failure scenarios. But of course, it kind of goes against the whole ethos of the
+system, because now you're just creating more single points of failure where we're now putting
+billions and billions of dollars into these Bitcoin banks, and that is creating systemic risk.
+So we wanted to try to kind of push back against this centralization of this aspect of the ecosystem
+and make it easier for people to be their own banks and still be able to sleep at night without
+having to spend a large portion of their life actually thinking and worrying about all of the
+stuff that's required to be a good bank. To the point of centralization, let's talk about
+centralization for a little bit. This is slightly off topic, but I think it's important to think
+this is slightly off topic, but I heard recently that Bitmain, which is the company that mines
+most of the Bitcoin in the world, I think they control at least enough hash power to have a 51%
+attack if they wanted to. Is that problematic? Is that fundamentally problematic to the health
+of Bitcoin? Yeah, I mean, it's hard to actually measure their level of hash power
+because they also have all of these other business connections. Now, they definitely
+build the vast majority of the machines with the hash power as to who controls the specific machines.
+It gets a bit murkier, but it's not good in the first place. I mean, it's not optimal. It would
+certainly be better if we had like four, five, six or more companies that are actually producing
+these ASICs and then distributing them more widely than they are distributed at the moment.
+Now, the main thing when it comes to 51% attacks, you kind of get into the game theory behind it,
+is that I'm not worried that Bitmain itself will try to 51% attack the network because they would
+be shooting themselves in the foot. They would cause such a massive loss of confidence in Bitcoin
+if that happened that the price would plummet and however many billions of dollars worth of Bitcoin
+that Bitmain has and of course, their probably future revenue would be severely impacted.
+Now, it is more concerning from the fact that, well, this is a single company and they could then
+become a target of nation state and some nation state might come in and seize all of their
+operations and then say, okay, well, we want to try to kill Bitcoin now, so we're going to put a gun
+to your head and force you to 51% attack the network. Of course, it's hard to kind of put a
+level of risk on what that scenario might actually be, but we don't want that to be possible, if at
+all. If that occurred, you've probably run this scenario out in your head a couple of times,
+would there just be a fork and Bitcoin would figure out how to deal with it?
+Yeah, and this is kind of the fundamental strength of Bitcoin is that while we have
+this great machine consensus protocol that is automating the consensus of the current
+state of the network, if that fails and it has failed a few times in the past, then you have
+a layer of consensus below that, which is the human consensus. So, if machine consensus starts
+screwing up, if the network ceases to operate, then all of the major players on the network and
+really anyone who's paying attention and cares enough is going to start conversing and saying,
+you know, this is bad, we need to fix it. What's the best way to fix it? So, if for example,
+there were some 51% attack that was ongoing and it looked like there was no reason to believe it
+was going to stop, then you would see people come together and say, okay, what protocol change needs
+to be made in order to stop this attack? And so, the extreme example, of course, would be a proof
+of work algorithm change, which would make all of those ASICs essentially worthless.
+Thanks for describing that and going there with me. And one reason I took that slight deviation is
+because there are some people who listen to the show that are still not completely convinced that
+Bitcoin is a thing worth paying attention to. And so, I like to occasionally revisit some
+fundamentals, particularly the kind of thing that you just described, which is essentially a
+really strong durability guarantee of the network, which makes it so beautiful. And I hesitate to use
+the word indestructible, but it's hard to imagine something that will destroy it at this point. I
+mean, you've had the best security experts in the world try to think of a way to destroy this thing
+or to disrupt it forever. And I haven't heard one yet. So, it's pretty strong, strong durability
+guarantees. Yeah. Well, I mean, it kind of goes back to the cypherpunk manifesto and some of the
+ideas around what they were doing. And if you read that manifesto, I believe there is one section
+that says, we believe that sufficiently widely distributed software cannot be stopped. And so,
+this system, while it does have its points of centralization that could be used to attack,
+it's fundamentally driven by all of the humans who are interested enough in maintaining and
+improving the system. And those people are so distributed around the world. And this is why
+I've been doing so much global travel over the past few years is because they're in jurisdictions
+that are very diverse and composed of individuals with wide diversity of perspectives. And so,
+it's just the issue of like, there's not enough people or attackers out there who can kick down
+all of the doors of all of the people who are helping to maintain this network. It's just,
+it's too distributed. It's like trying to attack a swarm.
+Coming back to the discussion of Bitcoin bank centralization, now that we have absolved ourselves
+of the question of Bitcoin centralization globally, you've described some fallibilities
+of the Bitcoin bank model as it exists in something like Coinbase. And Coinbase is a
+paragon of the community. I love Coinbase. I've done several shows about it. I have used Coinbase
+in the past, but we can agree that there is some centralization. It's a victim of its own success,
+essentially. And you look at that and you see something, you see an opportunity, perhaps a
+more decentralized Coinbase model is what I'm hearing you kind of allude to. What's the solution
+there? What's the way to build a Coinbase-like entity where you have security guarantees
+that are in some sense associated with the reputation of this large organization,
+but you don't have the failure scenarios inherent in a large organization?
+Well, this is one of the reasons why I'm so excited about the developments in the decentralized
+exchange space. And so there are already a few decentralized exchanges out there like BISC,
+but these are basically software that are creating their own peer-to-peer network
+and creating order books and allowing you to find other people that you trade with directly.
+And so this once again means that you're taking on a little more risk and responsibility yourself
+because you're having to manage the private keys and run the software. But it means that we're
+no longer creating these large honeypots with enormous amounts of value where an attacker
+only has to get into one door in order to sweep up a lot of money and harm a lot of people.
+And so by further distributing that value around and once again creating more doors that attackers
+have to get through, then it's decreasing the systemic risk in the system. But of course right
+now the software is a bit clunkier. It's not going to be as user-friendly and it's probably
+going to be a number of years before that type of software is able to compete on the usability
+front with something as centralized as Coinbase. So does this relate to what you're building at
+CASA or do you see this as a different question? Well with regard to exchanges it's definitely
+different. Now the thing is Coinbase is both an exchange and a wallet. So they're kind of doing
+multiple things. At CASA we're more focused on the secure store of value side. But you know
+there's definitely some overlap there where we want people to be pulling their value out of
+third-party custodians who could make any number of mistakes or even be coerced by other larger
+entities that are more powerful and you know result in loss. But it's a multi-prong I think type of
+evolution that we see a lot of different teams working on a number of different projects in
+order to try to further decentralize the various aspects of the space. So the problem that you are
+focused on specifically right now is long-term store of value. Correct. Okay and can you contrast
+how you're thinking about solving that problem with the solutions that we've already discussed
+so far? Well one of the the big differences that if you want to take on the responsibility
+and be your own bank as it were in the crypto space then right now you have a lot of education
+that you need to take on in order to do it correctly. And what we're trying to do at CASA
+is to facilitate the technical side but also provide a lot of support just on the human side
+where you know we are providing more of a boutique experience helping people set up and maintain the
+wallets themselves but without us actually having control over more than one out of the five keys
+to their vault. Okay and how far along are you in the development of the long-term storage software
+that you're building? On the bitcoin side it is up and running and we've already onboarded a number
+of clients and of course learning more as we do that every time we onboard something you know we
+find a little small other thing that should probably be tweaked and we're really focused
+on scaling up the onboarding and then scaling out towards supporting all of the other popular crypto
+assets that our clients are demanding to have the same level of security around. What are some
+examples of design decisions and implementation decisions that you've tweaked over time with
+customer interactions? Most of it is going to come down to figuring out like the simplest way to
+describe you know a series of actions that they need to go through so we're trying to shove as
+much of the technical complexities under the hood as possible but there are times when customer
+might hit an edge case where you need to give them a warning or give them a choice some sort of
+decision to make so you know instead of you know if they have a wallet that's full of dust for
+example instead of saying something like oh you have too many UTXOs and you're trying to send a
+value of this and it's not possible to compute you know figuring out what a more human readable
+message could be so that they have an easier decision to make and so you know giving them some
+options of saying like well if you want to send this level of value you may need to wait this many
+hours in order for your transaction to complete type of thing. By the way when you say a wallet
+full of dust you're talking about fractions of bitcoin that are so low that they're beyond
+beyond a nomination of anything that would be of value in the real world? Well yeah so it you can
+get into both technical and economic edge cases when you're dealing with wallets and I actually
+I wrote an article I think two years ago called the challenge of unspent transaction output
+selection and it's just all of these edge cases that users can get into because they don't
+understand what's going on over the hood and they can basically fill up a wallet with a lot
+of UTXOs that in certain situations if the fee market goes up to a certain point you actually
+have to build in some logic that we've been calling economically unspendable transaction outputs
+where you then need to figure out how to kind of guide the user in the right direction to help
+clean up their wallet without having to expose them to all of the complexities of what's actually
+going on inside of the wallet. Digital Ocean is a reliable easy to use cloud provider. I've used
+Digital Ocean for years whenever I want to get an application off the ground quickly and I've always
+loved the focus on user experience, the great documentation, and the simple user interface.
+More and more people are finding out about Digital Ocean and realizing that Digital Ocean
+is perfect for their application workloads. This year Digital Ocean is making that even easier
+with new node types. A $15 flexible droplet that can mix and match different configurations of
+CPU and RAM to get the perfect amount of resources for your application. There are also CPU optimized
+droplets perfect for highly active front-end servers or CI-CD workloads and running on the
+cloud can get expensive which is why Digital Ocean makes it easy to choose the right size
+instance and the prices on standard instances have gone down too. You can check out all their new
+deals by going to do.co.se daily and as a bonus to our listeners you will get $100 in credit to use
+over 60 days. That's a lot of money to experiment with. You can make $100 go pretty far on Digital
+Ocean. You can use the credit for hosting or infrastructure and that includes load balancers,
+object storage. Digital Ocean Spaces is a great new product that provides object storage
+and of course computation. Get your free $100 credit at do.co.se daily and thanks to Digital
+Ocean for being a sponsor. The co-founder of Digital Ocean Moisey Oretzky was one of the first
+people I interviewed and his interview was really inspirational for me so I've always thought of
+Digital Ocean as a pretty inspirational company. So thank you Digital Ocean.
+So since you are building wallet management software there are these trade-offs that you
+need to make between how easy you make it for somebody to transact with that money versus
+keeping it secure because if you expose the user to some vulnerability through two-factor authentication
+of a cell phone provider that makes them vulnerable to a cell phone takeover attack then that might be
+more convenient than something that is a more stringent security protocol such as perhaps
+Google Authenticator. It's not a great example because Google Authenticator is just about as
+convenient as going through a cell phone based transaction provider but I think the thrust of
+my point stands. You know you've got these trade-offs between security and convenience that you've
+discussed a little bit earlier. Tell me where you're trying to play in that that set of
+trade-offs or what's what are some specific trade-offs in that security versus convenience
+that you've made. Well we're definitely prioritizing security because if you fail on the security
+front there's no going back. The general mantra that we have is that it's better for the user
+to lose access to their wallet for some period of time than it is for an attacker to gain access
+for even a few milliseconds and so there certainly are situations where a user might trip over some
+security alert that causes their wallet to become unusable for a little while or they they might
+you know misplace some of their hardware devices and then require a CASA assisted recovery for
+example and you know that process could take hours or days to actually go through and then
+go through but we think that the trade-offs there when we're talking about you know vault type
+products that are potentially this person's you know life savings that you usually you don't need
+to access your life savings on a very short notice and so that's an acceptable level of
+inconvenience. I want to revisit the discussion of SPVs and full nodes. I'm not sure if it relates
+to product that you're building at CASA does it? Does the decision to validate or build a wallet
+through an SPV versus a full node does that impact your customers at all or does that impact you or
+do you think of this as just a completely disjoint concern? It is all related and so one of our
+primary tenets I guess at CASA is to help maximize user sovereignty and safety and so so far we've
+mostly been talking about safety but the sovereignty aspect is important and that definitely comes in
+when we're talking about running a full node you know validating that the money you received is
+in fact you know abiding the rules of the network that you are agreeing to and it also comes down
+to trying to minimize the trust between the user and our own service and so you know right now
+by any number of measures CASA itself is fairly centralized but we're going to continue to work
+on pushing as much of the security and trust out to the edges so that the clients themselves
+are performing more of the the validation and not relying upon any data that CASA servers are
+giving to them in response to a query so that's more of a medium to long-term vision but it's
+definitely all related. Speaking more generally for people who are managing their own wallets or they
+have different solutions for managing their currencies than CASA how should they think about
+SPVs and full nodes? Why do you have some you know strong opinions about the costs of using SPVs?
+So the the trade-offs of using the simplified payment verification is that you are making an
+assumption that the the blockchain with the most hash power is the correct blockchain and a lot of
+people are fine with that assumption and it works well in the vast majority of cases but there are
+a ton of things that miners could do for example to to start creating a blockchain that does really
+screwy things but still has the most hash power so it's you know one of the reasons I'm not a fan
+of that is because I don't think that we should be trusting the miners you know they have a job
+which is to basically time stamp transactions as part of the global consensus but I think that the
+onus is on the rest of us to provide checks and balances and make sure that we're not trusting them
+to be doing that job we should be you know verifying all of the work that they're doing.
+There's also some major privacy issues where I believe Matt Corallo and Jonas Nick have shown
+that the the bloom filter mechanisms that get used by SPV they were originally thought to be fairly
+private but over the years we've come to determine that they're actually not they're they're terrible
+at privacy and and it's very easy for someone who's running nodes out on the network if they
+wanted to actually figure out which addresses belong to you by inspecting those bloom filters
+and so you know once again it comes down to this convenience of you know it's really easy to start
+up a wallet on your desktop or your mobile device and the SPV consumes very few resources on the
+client side and it's it's pretty fast to to get synced with the network but you are making these
+privacy and security in a way trade-offs so that's why there are some improvement proposals out there
+for better client-side filtering where I believe it was Lalu Roast Beef has this
+mechanism that he has proposed where the client would basically be downloading the data but
+filtering it locally so that no one actually knows what data you're interested in which should give
+you more privacy on on that standpoint let's talk more about casa and building a business around
+cryptocurrency I have a number of questions about security so casa has I'm guessing what 10 or 15
+engineers how big is the company at this point uh yeah we've got around a dozen or so employees
+so that's a big organization I mean it's a sizable organization it's not tremendously big
+when you have your your security product set up your your cryptocurrency provenance product set up
+do you get it routinely audited by external security people do you get it audited by people
+who can help you understand how to that you're secure against natural disasters for example the
+tail risk questions how do you make sure that your cryptocurrency holding product is resilient
+beyond all of the tail scenarios absolutely so yeah we we get you know regular external third
+party audits of our whole code base and infrastructure the trickier thing though is when
+we're talking about the the robustness of like any given client's wallet is that because we are
+giving more sovereignty more control to the user we can't force them you know to follow best
+practices we can certainly advise them and try to build features into the software itself to
+try to guide them in the right direction but so for example when you create a wallet with casa
+it's going to create one key pair on your phone that gets secured by apple's like secure element
+key ring encryption functionality and then it will create one key pair that are kept offline by casa
+for disaster recovery but then you're going to have three different hardware key management
+devices so like treasurers and ledgers that you have purchased and then initialize and set up
+and so as a three out of five multi-sig solution now obviously the point here is that you want the
+wallet to be multi-sig requiring multiple signatures in order to spend from the wallet
+you want it to be multi-device you know with preferably diversity of different devices to
+once again prevent single points of failure and then one of the most important things for redundancy
+is you want it to be multi-location you want these keys and devices to all be geographically
+spread out and while we're certainly going to tell this to our clients we can't force them you know
+not to keep all of their hardware devices in a drawer in their desk at their office or at their
+house or something and that's just like one of the the trade-offs that comes with giving more
+control and more responsibility to the end user. Tell me about the product roadmap for casa let's
+say you get this cryptocurrency holding problem solved to a great degree where you're just getting
+lots and lots of customer balances that are putting their money into long-term storage
+what's the next product that you build and what are the guiding principles for the longer-term
+product development strategy? Well the extremely high level view from casa is that we want to be
+the best personal key system that is available for people and so right now of course that means
+crypto assets but we believe that if the world keeps going in the direction that it is where
+it becomes less about having you know centralized authentication and identity and more about having
+your own public private key pairs that prove that you should be able to access certain things
+that having robust key management solution is going to be important not only for your financial
+life but for many other aspects of your daily life so we want to continue building out you know
+secure but usable key management software so you know obviously we're going to be supporting
+any of the the popular crypto assets that our clients want to support but we think that long
+term it's going to go a lot further than that and i think that one way to make this more clear is if
+you actually know the history of casa and casa the guys who really started working on what became casa
+were originally about a year and a half ago working on a block stack app called bedkin and
+it was basically a decentralized airbnb on the block stack platform and they had started working
+on this for a few months and eventually realized that there was no really good key management
+solution and they they weren't sure how they were going to get people to use this app if they
+weren't going to be able to easily secure and manage the keys to control access to the app itself
+and so that's where they pivoted and they decided to go a layer deeper into the problem as it were
+and then perhaps someday be able to pop out and and start building and facilitating other things
+that are using this type of distributed infrastructure but that is kind of the the
+high level vision of you know you could call it crypto anarchy if you will building many many
+different things on a more distributed platform that requires public private key cryptography to
+use on a day-to-day basis there's a product called keybase that we've done several different shows on
+and i feel like keybase was pretty prescient in realizing that key management is going to be
+something that consumers are going to have to deal with and it's an open question as to what level of
+technical detail the consumer is going to want to get into what do you think of the keybase solution
+how does that compare to your ultimate vision of what casa would provide with key management
+well i do like keybase especially just from the way that they have that key tree where you know
+you can authenticate new devices and new accounts and they're basically signed off by your existing
+keys to add them and i think that that type of thing is great in terms of the flexibility
+of having sort of a digital cryptographic identity i guess the the only thing is i'm not sure that
+keybase is supporting any you know hardware specific key managers it seems to be all in the
+software right now so it's still somewhat vulnerable from that standpoint okay do you see yourself
+becoming something like a bank in some regard because if you have all these balances that
+customers are depositing with you do you see that as something to be lent against i don't know that
+we would have you know that type of financial service because we're not custodial so we don't
+actually have control of the asset now there are a number of services out there like unchained
+capital or block fi or salt or what have you where you can do these you know crypto backed
+loans and i've actually used them myself and they work pretty well but i don't think it would be
+possible for casa to do that because we wouldn't have the ability to actually like you know freeze
+someone's money and and prevent them from taking it away if if they were trying to to back you know
+some other loan or service with their assets and and i don't think that casa wants to be responsible
+for actually custodying any of these assets you get into a whole new level of like regulations and
+issues with the traditional financial industry when you start custodying assets so that's the
+nice thing of you know spending three years working at bitgo and now working at casa is that while we
+are providing financial services we are only really regulated from the sense that we are a software
+as a service company and it just gets rid of a lot of headaches and it might even make more sense for
+a company like that to be built on top of casa like i would love if if i'm using block fi which
+by the way i don't know anything about that sounds like a company i should inspect more closely in
+that other one you mentioned i think unchained capital sounds interesting too but those sound
+like companies that could use casa i mean they probably don't want to have to build the security
+that you're building yeah what other i guess just to wrap up what are the other platforms that you
+think could be built on top of a company like casa i mean obviously today it's more for individuals
+but are there other services that you think people could build on top of casa it's tricky because you
+know we really are more focused on individuals at least at this point in time you can get more
+complicated if you start building like enterprise treasury management logic into the software
+and a better example of that is bitgo and and the software that they have built where there's a lot
+more permissioning and multi-user management around it and and so you know it's certainly
+possible for casa to go into that direction but you know for now we we kind of figure there's
+already enough enterprise focus companies out there and not necessarily enough individual focused
+ones so anything is possible especially when you start talking about some of the more complex
+scripting operations that are going to get built into the bitcoin protocol over the coming years
+you know we already have some ideas of stuff that we would like to implement around there to make
+the vaults themselves even more secure and robust for now i think we're going to be busy enough just
+uh trying to to build a user-friendly vault product and so where it goes from there let's just say we
+have some ideas but they won't be public for at least a few months okay well jameson thanks for
+coming back on the show and sharing your time i really enjoyed talking to you thanks for having me
+cloud computing can get expensive if you're spending too much money on your cloud infrastructure
+check out do it international do it international helps startups optimize the costs of their
+workloads across google cloud and aws so that the startups can spend more time building their new
+software and less time reducing their cost do it international helps clients optimize their costs
+and if your cloud bill is over ten thousand dollars per month you can get a free cost
+optimization assessment by going to d o i t dash i n t l dot com slash s e daily that's d o i t dash
+i n t l dot com slash s e daily this assessment will show you how you can save money on your cloud
+and do it international is offering it to our listeners for free they normally charge five
+thousand dollars for this assessment but do it international is offering it free to listeners of
+the show with more than ten thousand dollars in monthly spend and if you don't know whether or
+not you're spending ten thousand dollars if your company is that big there's a good chance you're
+spending ten thousand dollars so maybe go ask somebody else in the finance department
+do it international is a company that's made up of experts in cloud engineering and optimization
+they can help you run your infrastructure more efficiently by helping you use commitments spot
+instances right sizing and unique purchasing techniques this to me sounds extremely domain
+specific so it makes sense to me from that perspective to hire a team of people who can
+help you figure out how to implement these techniques do it international can help you
+write more efficient code they can help you build more efficient infrastructure they also have their
+own custom software that they've written which is a complete cost optimization platform for google
+cloud and that's available at reoptimize.io is a free service if you want to check out what
+do it international is capable of building do it international are experts in cloud cost optimization
+and if you're spending more than ten thousand dollars you can get a free assessment by going
+to doit-intl.com slash se daily and see how much money you can save on your cloud deployment wow
+so

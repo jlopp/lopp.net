@@ -1,0 +1,344 @@
+All right. Good morning once again. Our second talk of the computers and society
+session here at the 50th anniversary symposium. So for those of you who just came in, I'm
+Tessa Joseph-Nicholas. I'm a faculty here. This is Jameson Lopp. He received his BA or
+sorry BS here from the department in 2007, right? And he's been working on
+Bitcoin since 2012. Apparently now he is a software engineer, which is amazing. I
+knew him as an undergraduate when he was an RA for Jeannie Walsh, who some of you
+might remember was teaching computers and society-styled courses here in the
+department for many years. He is actually the founder of Mensa's Bitcoin
+Special Interest Group now, has created a Satoshi, a Bitcoin cork that analyzes
+statistics from Bitcoin nodes and he is a recurring guest on TechCrunch's
+Bitcoin podcast. So all kind of very active in this area and he is now
+employed by BitGo, which is an enterprise Bitcoin security service. So he's very
+much immersed in this field and is going to talk to us today about the future of
+trustless computing. So again in about 20 minutes I will wave at you if you're not
+done and we'll move to the Q&A then. Thanks very much.
+Alright, thanks everyone. Just wanted to get a quick show of hands, like how many
+of you think you know what Bitcoin is, have a general understanding? Great. How
+many of you know anything about the underlying data structures and
+algorithms of the Bitcoin protocol? Alright, so unfortunately I have nowhere
+near enough time to give you a complete understanding of Bitcoin, but I will give
+you some high-level points that hopefully will pique your interests and
+we'll sort of dig into what I think the future of this technology is. Now six
+years ago the first version of the Bitcoin software was released by an
+anonymous entity using the pseudonym Satoshi Nakamoto on an obscure
+cryptography mailing list. Today it has nearly become a household word as the
+mainstream media covers the spectacular booms and busts that take place in the
+industry that's growing around it. However, while the media mainly portrays
+Bitcoin as a volatile virtual commodity, it's also a transformative addition to
+internet communication protocols. Now at a fundamental level Bitcoin is just a
+public accounting ledger. It happens to be a ledger with unique properties in
+the sense that it exists on tens of thousands of machines around the world
+and these machines form a mesh network that is constantly propagating new
+information, checking each other's work, and coming to a consensus about the
+current state of the ledger. Before the Bitcoin protocol was invented most
+people thought that systems like this were impossible because of a famous
+problem in computer science called the Byzantine generals problem. The problem
+in a nutshell is how to coordinate among distributed nodes to come up with a
+consensus that is resistant to attackers who are trying to undermine the system.
+Now Satoshi solved this problem by designing a blockchain data structure,
+developing a peer-to-peer protocol for propagating data through the mesh of
+nodes, and tying it all together with a proof-of-work mechanism based off of
+Adam Back's hash-cash algorithm. At the moment the most widespread use of Bitcoin
+is as a currency, which was Satoshi's original goal. People have recognized
+that there is utility and value in a system that allows you to prove and
+transfer ownership of entries in a public ledger and the perceived value
+results in a free-floating exchange rate of a unit of Bitcoin. Now here it's
+probably hard for you to read. This is just sort of a high-level overview of
+what Bitcoin looks like to a person who's using it. Basically if you want to
+pay for anything, all you have to do is get out your phone or your computer, scan
+someone else's QR code with their public receiving address. That transaction gets
+broadcast out on the network and then the miners on the network validate the
+transaction, publish a new block that proves the transaction is legitimate. Then
+the person on the receiving end gets the confirmation and they say, okay you sent
+me the transaction, I'll give you whatever good and service we have
+arranged for this transaction to be for. Now I could spend all day talking about
+the protocol, but I'm just going to touch on a few data structures that are
+relevant to what I want to talk about the the future of blockchains. So in
+Bitcoin there's no concept of account balances. There are only transaction
+inputs and outputs and the unused outputs can be summed up in order to
+find a balance and a node that hosts a blockchain with all these transactions
+actually stores every transaction that has ever been sent on the network. Now
+that's because this is necessary to verify the current state of the network
+and of the blockchain. You have to roll through all the transactions and figure
+out the deltas until you arrive to our current state, our current time. This is
+an aspect of blockchains that enables us to achieve a trustless network. By
+keeping the history you can verify the data yourself and you don't need to
+rely upon any third parties. Now by using inputs and outputs we create this chain
+of dependencies which is much more robust in comparison to simply
+transmitting events that say add X to balance Y and subtract X from balance Z.
+This is one of the mechanisms that prevents double spending which is tantamount
+to fraud. Now by verifying cryptographic signatures on a transaction that's how
+we prove that only the true owner could have created it. To verify that the
+sender is actually has the money to spend we have to check that the inputs
+to the transaction have not been used before. Now this results in a large
+security hole that makes the unspent transaction check unreliable. This is
+because of ordering of transactions. So considering that transactions are passed
+from node to node through a distributed network there's no guarantee on the
+order in which you receive them. There's no guarantee that represents the order
+in which they were created and of course you should not trust a time stamp on a
+distributed network because someone could just make it up. So therefore you
+have no way to tell which transaction comes before another. This opens up the
+potential for fraud. A malicious user Alice could send a transaction to Bob
+wait for Bob to send the product or perform the service then send another
+transaction that actually respends that money back to herself. Because of
+differences in propagation times and distributed networks some nodes would
+see and receive the second double spending transaction before the first
+one and then when the first one that was supposed to go to Bob arrives they
+would consider that one invalid because it was trying to reuse an input. So Bob
+would have lost both his money and his product or service. Overall there would
+be disagreement across the network about whether Bob or Alice had the money
+because there's no way to prove which transaction came first. In light of this
+we need a way to have the entire network come to an agreement about the order of
+transactions and Bitcoin solution is a clever way to both determine and
+safeguard the ordering through a computational race known as proof of
+work. Unfortunately we don't have enough time to get into the mechanisms of
+proof of work but the Bitcoin system orders transactions by placing them in
+groups batches called blocks and then linking these blocks together into what
+we call a block chain. Now this is different from the transaction chain we
+discussed earlier. The blockchain is used to order transactions. The transaction
+chain keeps track of how ownership changes in the system. So the blockchain
+data structure is an ordered backlinked list of batches of transactions. The
+blockchain is often visualized as a vertical stack with blocks layered on
+top of each other. This visualization results in terms that we use called
+height to refer to the distance from the first block and top or tip to refer to
+whatever the most recent block is. Each block within the blockchain is identified
+by a hash which is generated through the SHA-256 cryptographic hash algorithm and
+that's hashing all of the fields in the header of the block there. In other words
+each block contains the hash of its parent inside its own header and the
+sequence of hashes linking each block to its parent creates this chain that goes
+all the way back to the first block which is called the genesis block. Now
+although a block only has one parent it can temporarily have multiple children.
+Each of the children refers to the same parent block and contains the same
+parent hash and multiple children arise during a situation called a blockchain
+fork which is what happens when different miners solve blocks at almost
+the exact same time and publish them onto the network. But eventually only one
+child becomes part of the main blockchain when future blocks are
+published and the fork is resolved. Now this previous block hash field inside
+the block header affects the current block's hash. Thus a child block's
+identity changes if the parents identity changes. Now when the parent is modified
+in any way the parents hash changes. The parents change hash necessitates a
+change in the previous block hash pointer to the child and this in turn
+causes the child's hash change and basically it's a cascading event that
+ensures that a single block cannot be changed without forcing a recalculation
+of all subsequent blocks. And because this recalculation would require
+enormous computational power the existence of a long chain of blocks
+makes the blockchain's deep history essentially immutable which is a key
+feature to Bitcoin security. One way to think about this from a non techie
+standpoint is like geological layers. The surface layers might change with the
+seasons they might even get blown away before they have time to settle but
+once you go a few inches deep geological layers become more and more stable. By
+the time you look a few hundred feet down you're looking at a snapshot of the
+past that has remained undisturbed for millions of years. In the blockchain the
+most recent few blocks might get revised during a fork but once you go down the
+further and further you go the less and less likely they are to change. And while
+the protocol allows for a chain to be undone it becomes essentially
+infinitesimal as you go further back in history. Now one recent innovation in the
+Bitcoin protocol is the support of multi-signature addresses and
+transactions. Multi-signature opens a dramatically new set of possibilities
+for security and custody models for cryptographic based assets. With multiple
+keys, applications, users, and signing oracles there's a combinatorial
+explosion of ways to organize the keys and participants in the system. And to
+complicate matters further multi-sig models may incorporate arbitrary off
+blockchain policies regarding who is allowed to perform a given action. So in
+these models we have U the user, K which is a private cryptographic key, and B is
+a fully formed Bitcoin transaction. Now single key usage is the original way
+that all Bitcoin transactions were set up still quite prevalent however there's
+an inherent danger to it because if an attacker gains access to your only key
+they'll steal your bitcoins you'll have no way to get them back. There have been a
+large number of Bitcoin hacks and thefts and heists throughout the years that
+have given a fair amount of notoriety to Bitcoin. So when we talk about multi-sig
+models they're described as M of N meaning that M out of a total of N keys
+are required to sign a transaction before the Bitcoin network will accept
+it. The simplest multi-sig model is a two of two setup where the two different
+keys are controlled by separate users and in order to transact both users must
+apply signatures with their respective keys. You can actually create
+transactions like this with wallet software such as copay. Now next we have
+a single user two of three key model which uses a cosigning service called an
+oracle. In this situation the user controls two keys one of which they keep
+completely offline and thus safe from hackers. By controlling two keys only the
+user ever has the ability to transact and thus has complete custody of their
+cryptocurrency. The job of the oracle is to determine under what circumstances it
+should or should not apply a co-signature to a transaction. The oracle
+can apply arbitrary authorization requirements on the user and force
+spending policies basically do whatever the user sets up. This is the model
+that's actually pioneered by my employer BitGo and that's what we use today in
+our multi-sig wallet and we think it's quite flexible and allows for both
+security and ease of use. This one I'm just putting up here to display the
+potential complexity of these multi-sig models. This is a diagram you could use
+to set up a segregated account at a Bitcoin exchange in a trustless manner
+where you don't control the key but the exchange controls the key but they can
+only send to a designated white listed wallet. But this only scratches the
+surface of multi-sig and what I'm trying to get at here is that the Bitcoin
+protocol currently supports creating transactions that are as high as M out
+of 15 signatures and so far we've only gotten up to three signatures here but
+moving on from multi-sig what this purpose of this talk is really about is
+the future of blockchain technology and the blockchain does not just enable the
+trustless exchange of bitcoins these cryptographic tokens it enables the
+trustless exchange of any type of digital asset that you want to tie to
+the underlying cryptographic tokens. These could be digital titles to physical
+property like cars and houses. You can even attach conditional logic to these
+assets that are stored in the blockchain creating concepts that we're calling
+smart contracts and smart property. Point being this is not just digital money it
+is programmable money. Decentralized ledger systems are nowhere near as fast
+or efficient as centralized systems. By one rough estimate they're about ten
+thousand times slower and more costly or about the same as it costs to run a
+program on a desktop computer in 1985. So for this reason we only run on a
+blockchain the portion of an application that needs to be reliable and secure
+what some of us are calling fiduciary code. So the name of the game here is
+disintermediation. If you can think of any type of economic interaction that
+occurs between two or more individuals that currently requires a trusted third
+party to broker then a blockchain system may be able to provide a solution that
+enables those people to transact without the need for the trusted third party.
+So here I have a list of some of the unique services that are being built on
+top of blockchains and in fact pretty much all of these are usable down to
+this line right here though they're in various stages of beta or production
+usage. So the service some of these services are built on top of the
+Bitcoin blockchain and those are making use of a protocol feature that allows
+you to post up to 80 bytes of arbitrary data in a Bitcoin transaction. Other
+services are running completely different blockchains that have their
+own sets of features. Proof of existence for example allows you to upload any
+document to their service it then takes a hash of that entire document and posts
+a Bitcoin transaction with the document hash. Once you do that you have a
+permanent time stamped record that you created this unique document at this
+time and you can prove cryptographically that you're the one who owns it. Namecoin
+is also a notable system because it was the first fork of Bitcoin. It's
+essentially a decentralized domain name system so you spend name coin tokens to
+register a domain name under the dot bit extension. The main impediment to the
+usage here is that you need to run special client software in order to
+resolve the dot bit domains. OpenBazaar is also notable. It was a response to the
+inevitable shutdown and general untrustworthiness of darknet markets
+such as Silk Road. OpenBazaar on the other hand cannot be shut down because
+it actually runs as a peer-to-peer network like BitTorrent, like Bitcoin. It
+also has a number of safety features built in around escrow and reputation
+management. Finally noteworthy to me is the decentralized cloud storage project
+HiveDrive and IBM's Adept system which are both being developed right here in
+Research Triangle Park. So the Bitcoin protocol could simplify complex asset
+transfers revolutionizing the services that support this industry. Currently the
+transfer of large assets requires significant time and resources. For
+example to purchase a car from an individual seller you have to engage a
+third party to transfer the title. Additionally you have to use other
+services to learn about the car's accident and inspection history. Who
+doesn't like having to go to the DMV to update their car registration? Now the
+blockchain could potentially change all of this. Bitcoins or other blockchain
+cryptographic tokens can be qualified in such a way that they represent real
+world assets. Bitcoin entrepreneurs at companies like colored coin are already
+working on ways to use small portions of bitcoins to denote physical property. So
+this tiny fraction of a Bitcoin could publicly identify who owns property and
+that could include also a record of past ownership and other history about the
+property. So when purchasing a car you could verify its history and inspections
+on the blockchain and simultaneously transfer the title on site. Similarly
+real estate and financial instrument transactions could be executed on
+Bitcoin or other similar protocols. So this could create efficiencies and reduce
+friction by allowing individuals to directly transfer property without the
+use of a broker, lawyer, or notary to sign off on the transfer. Bitcoin could also
+be used to structure contracts bringing new efficiency and transparency to
+those processes. Contracts are typically developed by lawyers on a case-by-case
+basis with significant time and resources devoted to negotiation,
+development, and enforcement. Additionally markets based upon contracts including
+certain financial derivatives markets lack transparency which complicates
+regulation. Traditional contracts could be replaced by code that self executes
+when a triggering event occurs. In a simple example a financial instrument
+such as an option could be developed and executed over a blockchain. In addition
+to reducing legal fees this could bring new transparency to financial markets as
+regulators could use the public ledger to understand the market without forcing
+individual actors to reveal their specific positions. There are currently
+several groups that are working on this problem notably Patrick Byrne the CEO
+and founder of Overstock.com who is currently developing a blockchain based
+stock exchange he's calling Medici. Blockchains could also transform identity
+management. Much of identity management including passports still operates on
+paper-based systems. These documents are often forged and stolen. Interpol's
+database currently lists 39 million stolen travel documents. What if there was
+a way to create a unique verifiable key that was impossible to forge?
+Cryptographic network such as Bitcoin could be used to verify individuals
+identities and keep track of their movement across borders. When a person
+travels through a checkpoint at a border crossing instead of showing and scanning
+a paper passport he or she could present their private cryptographic key. Now a
+network maintained by a government a contractor or other entity could verify
+the key register the entry into their ledger and this system based upon
+cryptography instead of paper documents could simultaneously increase mobility
+and security. If blockchains could be used for travel documents we could also
+see them being used for other forms of identity management like social security
+numbers tax identification or drivers licenses. Now while there's a great deal
+of innovation occurring in this space at the moment there are two projects that I
+think have the most potential. Those are Ethereum and side chains. From a
+technical standpoint the ledger of a cryptocurrency such as Bitcoin can be
+thought of as a state transition system whereas the state consists of the
+ownership status of all existing bitcoins and the state transition
+function takes the state and a transaction and outputs the new state
+which is a result of the new owners. So Bitcoin is very simplistic in this
+regard because the state of any given output is either spent or unspent in
+other words the output is either owned by someone or owned by no one. What
+Ethereum intends to do is provide a blockchain that is Turing complete has
+a Turing complete programming language that can be used to create contracts
+that encode arbitrary state transition functions allowing users to create any
+of the systems I've described so far as well as anything else that we haven't
+even imagined yet. So Ethereum supports these more complex
+states and offers greater flexibility than Bitcoin scripting language which
+was purposely designed with minimal functionality in order to maximize
+security. The Ethereum virtual machine is Turing complete which means you can
+encode any computation that can be conceivably carried out including
+infinite loops. Naturally this leads to a problem can malicious users
+essentially shut down nodes by putting a program out there that will never
+halt. Ethereum solves this problem by requiring a transaction to set a maximum
+number of computational steps that it is allowed to take and a fee must be paid
+proportional to the number of computational steps and if execution of
+a transaction takes longer than has been paid for the computation is reverted
+but the fees are still collected. Finally side chains are a revolutionary
+concept that is being developed by a company called Blockstream which was
+founded by a number of Bitcoin core developers. If instituted side chains
+would allow assets to be exchanged in a trustless manner across multiple
+blockchains with Bitcoin serving as the parent chain but unlike the current
+means of acquiring assets of an alternative blockchain which requires
+sending bitcoins or other currency to a third party cryptocurrency tokens are
+instead locked on their current blockchain by publishing a cryptographic
+proof and then cryptographic tokens can be redeemed on the side chains by
+providing the proof of locking and vice versa. Bitcoin swapped with a side chains
+assets would not necessarily be subject to the frequent price fluctuations
+inherent in the altcoin market. If one transferred a Bitcoin to a side chains
+asset it would still hold the value of the Bitcoin because of the two way peg
+linking the chains. There are many advantages to a system like this because
+the blockchain the side chains or blockchains independent of Bitcoin
+people are free to experiment with new transaction designs trust models
+economic models asset issuance and cryptographic features. Currently any
+significant improvement to blockchain technology must either be implemented on
+the Bitcoin blockchain which is dangerous because there's so much money
+tied up in it or must be implemented on a new asset which is difficult because
+you have to convince a bunch of people to come use it and put their money into
+it. So if the altcoin that you create fails then everybody loses their money
+under a side chain any tokens that exist on a failed side chain would be
+transferable back to the main Bitcoin blockchain preserving their value. This
+will allow people to experiment with both technical and economic variables of
+blockchain technology without the fear of destroying wealth and if a side chain
+is eventually found to be superior to Bitcoin people can all migrate onto that
+new one. So if successful trustless computing on blockchains will have an
+enormous impact upon the world. We're building the technology that will create
+a world where you can buy goods and services without a merchant, place bets
+without a bookie, buy insurance without an underwriter, access finance and loans
+without a bank, trade without an exchange, purchase commodities without a
+broker, create and enforce contracts without lawyers, secure escrow without an
+agent, gain internet access without an ISP, securely store data without a
+hosting company, verify records without a notary, establish reputation and credit
+without a credit agency, and create identity without a government. Any
+questions? Yes so I didn't get to go into this but there are what we call full
+nodes and then there are lightweight nodes so at the moment there are
+probably about 20,000 full Bitcoin nodes that have 35 gigabytes of the entire
+ledger. However there is already a part of the protocol that allows you to not
+store the blockchain but query these nodes in a trustless manner so that you
+don't have to keep it all like on your phone that's how all the phone wallets
+work. But also in the next version of Bitcoin which is coming out in a few
+months we'll have what's called blockchain pruning which is a way where
+you can actually prune away all of the old transaction history that is no
+longer relevant. You still need to download it all initially to verify it
+but then you can prune it away and at the moment that would only require one
+gigabyte of space in Bitcoin. Yes sir?
+So you mentioned in your app out there trading and what Commedial comes to mind is high frequency trading and the fact that there's very short delays. It seems like one of the things intrinsic here is that everybody has to have a copy of node of the chain so there's some amount of delay. It seems like buying a car would be a good example of something where cars only move so fast and probably the data moves faster.
+Yes. But in the case of a hundred transactions per millisecond it seems like you might push those transactions intentionally to the wrong places and then you know it's sort of basically haven't made its way back around to be verified. Isn't there some trade-off between speed and...
+Oh yeah certainly I don't think that we'll ever see high frequency trading in a
+blockchain system unless networking improves a lot more. We do see high
+frequency trading at the moment but it's all on centralized exchanges and I think
+that's mainly just a latency issue. Oh yes. Yes. Correct. Though there have been
+means that people have come up with for doing offline sending of transactions in
+a trustless matter but those are more proprietary. It's not really part of the
+protocol and you have to trust the people who invented that. All right. Thanks
+everybody.

@@ -1,0 +1,280 @@
+All right, I guess we'll go ahead and get started.
+I have no idea how long it will take me to get through this, so hopefully it's shorter
+rather than longer.
+But today I'm going to do something similar to what I did yesterday, which is tell you
+how terrible everything is.
+But there's plenty of hope, plenty of reason for hope.
+The terribleness of these early stage networks just means that we have a lot of work to do
+and a lot of challenges to overcome.
+So I'm Jamison Lopp, CTO of CASA, where our mission is to improve personal sovereignty.
+We're trying to do that from a multitude of different angles.
+One of them is through key management.
+The other one is through helping people operate fully validating nodes on these crypto networks.
+And one of the more exciting nodes that people are having fun experimenting with these days
+are Lightning nodes on the Lightning network.
+And we have run into quite a few unanticipated challenges as a result of that.
+We started shipping out these CASA nodes in, I believe, early December of last year and
+have gotten a lot of interesting feedback and support requests once they got out into
+the field.
+So one of the issues that we are still dealing with is just security of these nodes.
+Lightning, if you're not familiar with it, is basically running a hot wallet on this
+online device.
+And we have issues where we're trying to help people be able to securely connect to it from
+outside of their home network.
+We have run into a few issues where super security and privacy conscious people can't
+even use the web interface we've created because they're blocking all of the scripts and stuff
+that we're using.
+That is something that we need to sort of automatically detect and help people realize
+that the problem is on their end.
+But from a network security standpoint, one thing that we have not yet deployed yet is
+just HTTPS support.
+So if you want to connect to your node from outside of the network right now, that is
+not recommended because we're not encrypting the traffic to your node.
+Now the reason we're not doing that is because sure, we could just generate an SSL certificate
+on the node, but then if people tried to go to it, their browser would start complaining
+because it's self-signed.
+There's a whole issue there with figuring out how to create certificates that are tied
+to a domain, but these domains, of course, need to be somehow programmatically generated
+in a way that it can be sort of plug and play for the user and they don't have to do a lot
+of stuff on the command line.
+So that is something that we're still in the designing phases for.
+We'll probably need to involve some sort of dynamic domain system as well.
+But what we have released recently is a browser extension, which you can see a little demo
+of on the right over here, which connects directly to our node.
+It takes your password for the node and all of the traffic is actually encrypted so you
+don't have to worry about man-in-the-middle attacks.
+The nice thing about this compared to a lot of other lightweight lightning clients and
+browser extensions is that we have managed to get you connected to your lightning node
+without having to expose the admin macaroon from the node, which is tantamount to another
+password.
+Whenever you're starting to have to copy and paste private key data or passwords around,
+you start to open yourself up to security issues.
+Also there's plenty of privacy issues right now.
+The default, and what I believe most people are doing, is running their nodes on ClearNet.
+So they're basically advertising their home IP address.
+This isn't necessarily a vulnerability, but it is, of course, making you a potential target.
+I have experimented with running behind VPNs, but unless you are running your own VPN or
+paying for a fairly expensive VPN, you can only do outgoing channels.
+It basically creates a network address traversal problem where nobody can come back in to whatever
+your VPN IP is and actually get that routed to your node.
+Talk a bit more about NAT problems in a bit.
+But the thing that we want to do long term to help improve that is to actually have Tor
+support built in on the device.
+Once again, it needs to be some sort of single click solution where we can't rely upon people
+having to get in on the command line and figure out how to install software.
+One of the biggest problems that we've actually run into is data integrity.
+By that I mostly mean integrity of the blockchain data, sometimes of the lightning wallet data.
+We've run into a number of issues with Docker, actually.
+The way the CASA node works is that it has about eight or nine different Dockerized services
+that are running on it at any given time.
+They're all working in concert and talking to each other.
+We have a way for you to shut down the device cleanly, which basically sends commands to
+these Docker instances and tells them to shut down.
+But it wasn't until recently when I was trying to debug this because we were able to reproduce
+the data consistency problems that I actually was looking through the documentation and
+realized that Docker only gives you 10 seconds after you tell it to shut down before it just
+force kills any process.
+What we really found out is that due to these running on Raspberry Pis, fairly low powered
+hardware, it can very easily take more than 10 seconds to stop the Bitcoin instance because
+it does a lot of checks when you tell it to shut down.
+Also running into power loss issues that is basically causing the same type of problem
+where you might be in the middle of writing data and you have an unclean shutdown.
+So when you try to come back up after you get your power back, you have a corrupt chain
+state.
+We have run into so many issues with hard drive copying that we're probably going to
+end up writing a blog post specifically about that.
+But basically figuring out ways of having high quality, like no data loss, no problems
+with the data being copied from a source drive to a destination drive hundreds and hundreds
+of times is something that is actually a lot more challenging than we thought.
+We've tried probably six or seven different types of enterprise hard drive copying hardware
+and most of them are pretty terrible for a variety of boring low level technical reasons.
+Hard drive failure has also been a problem.
+We hope is mostly due to the fact that we've been using cheaper spindle based drives.
+This is older technology, but trying to keep the cost of the node down is very difficult.
+A lot of people give us flack because it costs $300 to buy one of these nodes, but well over
+half of that is just for the hardware and the rest of it is for our software development
+and support services, so it would be very easy for us to increase the cost if we wanted
+to get the power and the quality of these pieces to be even higher.
+We actually believe that the majority of issues where people are receiving nodes, plugging
+them in and actually having failure to do initial boot is in fact due to shipping damage.
+That is not something that is very easy to track and figure out why, because of course
+we're sending these things all over the world and they could be exposed to any number of
+different environmental problems or just crappy shippers who are throwing them on porches
+and in various containers when they're going across the ocean.
+A result of a lot of these things, especially the things that are causing bad blockchain
+data is that you then have to fix the data and how do you fix the data when you're running
+it on a machine that takes a month to do a full sync from scratch?
+Well one way we got around that is by offering a resync from CASA where we're basically uploading
+snapshots to our own server that you can download and save a lot of time because it's not doing
+the verification of all of that data.
+Now with these shipping issues, like we've said, a lot of the nodes which are passing
+our QA tests when we're packaging them up and shipping them off are arriving somewhere
+and then the node is just not working and it's very difficult to tell why.
+Well amongst other things we've discovered that customs in a lot of countries are pretty
+terrible.
+They're holding a number of these hostage and basically making the owners pay a lot more
+in value added tax or custom fees or what have you.
+We have also had the certification issues, I think only in Germany, they've been the
+only ones where they've been complaining about us not having our own special certification
+stamps which we found to be rather unexpected because we're not actually creating our own
+hardware.
+We're just using off the shelf Raspberry Pi and Western Digital Drives and those things
+already have certification stamps and it was rather confusing to us that we would need
+to somehow get additional certification just for putting a few pre-certified pieces together.
+The reason that I have this shipping box here is that there was actually a Dutch bicycle
+manufacturing company a couple of years ago that wrote a blog post where they noted that
+about 30% of the bicycles that they were shipping overseas, especially the ones that they were
+shipping to the United States, would arrive damaged and this was of course causing them
+a lot of additional cost on their end and support issues and returns and whatnot and
+they actually came up with a novel solution.
+They started shipping their bicycles in boxes that had a television on them because they
+realized that Americans love their televisions and the shipping services would be very, very
+careful if they thought that they were shipping a TV that might break and was worth thousands
+of dollars.
+So I don't know if we might need to somehow do something like that with the Kasa nodes.
+We just need to figure out something that's fairly expensive but in about that same shape.
+We've also run into just a lot of English as a second language issues.
+Once again, it was kind of a nice surprise but we don't offer any sort of internationalization
+support either for our support services or for the UI or any of the instructions on the
+node but this lightning network really is a global phenomenon and we've probably shipped
+to several dozen different countries if not more at this point and so unfortunately when
+some of those people who do not speak English as their native language end up receiving
+a node that's not working for some reason, it can make our support process a lot more
+complicated.
+So we knew ahead of time that this was going to be a little challenging because we're deploying
+hardware into unknown environments.
+I have over a decade of experience building web applications but that has always been
+running in an infrastructure where I had full control over everything.
+So I could debug pretty much anything that was going wrong.
+So now these devices, they're running our software on our hardware and they're going
+who knows where and we've found a number of different common problems that we didn't quite
+expect such as crappy power quality, basically people living in areas that they have power
+flickers that happen very often.
+This results in the node automatically rebooting and something else I'll talk about a bit later
+is that while we can get the bitcoin service coming back up and running, the lightning
+service does not come back up because it requires a password to unlock the wallet.
+And of course frequent reboots can also cause problems once again due to the low powered
+nature of the device and so users may log into their device and realize that it's like
+it's always seems to be syncing and trying to catch up because it's getting rebooted
+so often.
+Also I mean ISPs are all over the place with how they handle different things.
+A lot of ISPs at least in first world countries seem to be good at not rotating your IP address
+too often but when the IP does change at your house that can result in you needing to do
+a reboot in order for the lightning node to recognize that otherwise any traffic that
+you were getting from other peers on the network might stop coming to you.
+Also there's just so many different consumer level routers out there that some of them
+are easier to use than others, we'll talk a bit about that later but here the idea that
+I'm trying to convey is that while a lot of users will just have one router at home and
+all of their devices are behind that either wired or wireless, we have seen a number of
+issues where users will have a modem from their ISP and that modem has a built in router
+and then they go buy another router and they plug that router into the router and you can
+even have a daisy chain of basically unlimited number of routers and every time you have
+a new router it creates this network address traversal problem which is not really detectable.
+I'm not aware of any way for us to write software that can detect how many NATs you're behind
+and so usually that will result in a support call where we have the user pull up their
+router's admin interface and we basically have to figure out their network architecture.
+Also we attempt to make it easier for users to have a plug and play node by using this
+universal plug and play functionality which if it works means that they don't have to
+go into their router and figure out how to do port forwarding which is something almost
+nobody is going to know how to do unless they're really a techie person but we have even found
+that universal plug and play sometimes it'll work when you first plug it in and then at
+some point over the next few weeks or months or whatever it'll stop working and so it's
+not quite as reliable as we would like.
+On a similar note we try to make it easier for users to originally get to the dashboard
+of the CASA node by using the.local DNS service and basically telling the node to host itself
+on the CASA node.local and this works sometimes but once again the.local domain is not supported
+by all DNS servers or all browsers or whatever so it's just a kind of hit or miss type of
+thing where if it doesn't work then the user needs to somehow figure out what IP address
+this device has been given by their home router and we recommend using tools like angry IP
+scanner which seems to work about 90 plus percent of the time but if that doesn't work
+then ultimately they're going to have to go into their router's administrative interface
+and try to find the list of connected devices which for the non-technical users is going
+to require a support call.
+Like I said universal plug and play is finicky here's one I guess this is one of the net
+gear routers interfaces for creating port forwarding and of course if you don't know
+anything about networking and you're just given you know a bunch of blank boxes then
+you're probably going to be lost here some of the newer routers and firmware do at least
+make it easier where they give you drop down options but usually the drop down options
+are for like very common services or gaming protocols or whatever like you're not going
+to find a router that says hey here's how you set up port forwarding for lightning like
+there's no routers out there that support that but maybe one day also we found that
+strangely enough Apple really sucks like their airport extreme and other networking stuff
+you know they're so good at writing nice user interfaces for everything else but for some
+reason it just doesn't translate to their networking technology and we've had a number
+of very long support calls trying to help debug Apple networking.
+Also Raspberry Pi I guess due to its global nature it comes with a Wi-Fi chip on it but
+it's disabled by default because of various regulations of like the FCC and other countries
+with their similar regulatory bodies regulating the wavelengths that certain devices can operate
+on and so it won't let you enable Wi-Fi unless you specifically tell it what country it's
+working in so for simplicity we just don't bother with that at all and tell people just
+plug it into their router directly with the Ethernet cable.
+On the LND side I mean this is still a piece of software that is evolving pretty quickly.
+We've run into several issues that have occurred in like some of the newer versions though
+there was I guess a very recent release just in the past week or so that we'll need to
+start testing but once again due to the sort of underpowered nature of the Raspberry Pi
+we've seen occasional issues where like the generation of a seed phrase on LND uses up
+more RAM than is available causes it to crash.
+We've also seen some various panics within LND related to what's called the birthday
+bug that can cause a crash.
+We've also had an issue with our build pipeline where we have not been able to build LND for
+the ARM architecture in AWS.
+We're hoping that we'll be able to get that working soon because I think AWS is rolling
+out ARM specific servers.
+The real problem was trying to build ARM architecture on a Intel x86 server and of course like I
+said LND has to be unlocked in order for it to get onto the network and start doing stuff
+so we don't really have a solution for this at the moment like we could of course store
+the password on the device but that's kind of terrible from a security standpoint.
+Autopilot it is very early.
+Autopilot is extremely naive and it just like tries to connect to as many nodes as possible
+right now.
+There is a lot of work to be done on making it more efficient and actually making it better
+than what you could do with a human so we've seen stuff like from Alex Bosworth where he
+has manually curated channels or Pierre Oshard has manually curated channels with other people
+on the network and that actually seems to be a better way to organize your channels
+at the moment but of course over the long run this technology is never going to go mainstream
+if people have to worry about channels and channel management.
+I don't think there's any technical reason why we can't improve the logic behind Autopilot.
+We just need to have more data.
+We need to continue running this experiment and figuring out how the liquidity issues
+on the lightning network play out and so it is reckless.
+We have a disclaimer when you initialize your node that you should not put more money on
+it than you're willing to lose but I think part of the reason that people can easily
+be reckless is that we've conditioned users to believe that if they have the recovery
+seed then they can always get all their money back but the current state of lightning network
+at least with LNDs wallet implementation and as far as I'm aware the other popular ones
+as well is that the recovery phrase is only for your on-chain funds and if you have funds
+in the channel and something happens and you lose all of your wallet data then you're not
+going to be able to recover the funds that were in that channel and we've had a few users
+who have had hardware issues and we've basically had to do manual data recovery for them.
+I myself lost a little bit of Bitcoin a few weeks ago when I was testing some chain resync
+and reset features that accidentally wiped my LND wallet as well so when people say reckless
+they're not just being light-hearted it really is a reckless thing to put a lot of money
+into lightning network at the moment and so like I said the low-powered hardware combined
+with a lot of these other issues kind of compound upon each other it also creates an issue just
+with our user experience where people only really have an attention span of a few seconds
+and so if you're sluggish in giving responses to clicking on things which can easily happen
+on Raspberry Pi that creates a problem as we've had power users create hundreds and
+hundreds of channels on their node and then they can very easily get to the point where
+the Raspberry Pi is struggling even to keep up with the the traffic on the network and
+this is sort of an uptime graph from one of our users who was saying that it was getting
+so slow that it was becoming unresponsive on the Bitcoin network.
+User error you know this is the setup guide for the node it's five steps but there are
+so many things that can go wrong just with plugging in the hard drive cable plugging
+in the Ethernet cable plugging in the power.
+How have we seen things go wrong?
+Well we've seen users not plug in the hard drive we've seen them plug in some other power
+cord from who knows what we've seen them plug the hard drive into other computers which
+then screw up the data on the drive and the biggest problem we've had is that right now
+a lot of our early adopters are extremely technically proficient and they want to experiment
+and so they get in on the command line start installing other software that just completely
+breaks our entire setup.
+I actually accidentally broke my node because I tried to install Pi hole on it and that
+just screwed with all the network settings to the point that the node was no longer routing
+data with our dashboard service.
+So complexity of course is the enemy of security in general where we're trying to make this
+extremely extremely complex software and networking stack as simple as possible but there's still
+a lot of work to do and I think that we're going to be busy working on this for quite
+a while.
+So lightning network still has a lot of potential but is still a work in progress and if any
+of you are interested in joining the reckless train then feel free to talk to me or ping
+us at CASA and we'll be happy to help you get on to this new experimental network.

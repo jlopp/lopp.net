@@ -1,0 +1,394 @@
+People are buying guns to exit their dependence on the police.
+People are hoarding food to exit their dependence on supply chains.
+But what about money? What about the treasure that you have saved or the treasure that you are earning?
+Money. What are people doing about money?
+Well, I don't know about you, but some of the wealthiest people in the world are increasingly looking at Bitcoin.
+This includes people in the public like billionaire hedge fund managers who are putting full percentage points of their hedge funds portfolio specifically into Bitcoin.
+But also we're seeing a move from wealthy individuals, family offices to go into Bitcoin.
+And what are they doing? How are they doing this? How are they moving their treasure from a place that is becoming scary into something that allows them to move it wherever might be less scary?
+Well, it's increasingly becoming Bitcoin. And not only is it Bitcoin, but Bitcoin is actually becoming usable.
+So what do I mean by this? Well, as somebody who's been paying attention to Bitcoin since 2010, I didn't think Bitcoin was actually usable by normal people.
+But I think we're there. I think that there are people like the person that we're going to talk with today, Jameson Lopp, who are actually making Bitcoin so that normal people like you and I can use it.
+Now, having been in Bitcoin for 10 years, I have made enormous costly mistakes again and again and again because Bitcoin is hard.
+It is very easy to make catastrophic mistakes in Bitcoin. But there are companies, technology emerging that make it easy.
+And so the best one that I've come across so far is Casa. And the guy who leads the tech for Casa is this guy, Jameson Lopp.
+So we're going to talk to him today about how a normal human can keep their Internet money and specifically their Bitcoin safe.
+Not only today, but how it's going to get easier and easier as more technology like this new thing called Taproot gets built into Bitcoin.
+I hope you enjoy the conversation. Comments, questions and polite disagreement is encouraged as always.
+Enjoy the conversation.
+All right, let's jump into it. So first of all, a huge thank you for making the time. I know you're extremely busy.
+Before we really jump into it, I should tell you how I found out about you because I only recently discovered you and what a discovery it's been.
+So I've been in crypto for a little while. I first really started talking about it in about 2010 ish.
+And I've had you could call it the fortune or the misfortune of doing everything you can do in crypto, which is a lot of pain.
+So every year my friends and I ask each other, OK, like what is the most important thing that few or no one is doing?
+Right. And then are there any companies that we would consider joining? And over the last two years, every single one of my technical friends has had the same two answers.
+One holding your own bitcoins is the hardest thing for everyday people to do.
+And Casa is the most interesting company that I would actually consider hacking with.
+And, you know, when you when you hear that from technical people who are mostly divas, by the way, you have to ask, OK, like, you know, having worked with a bunch of divas myself, it's like, why are these divas willing to pick Casa?
+And usually it's because they really admire the person who's leading the tech stack. And in the case of Casa, that's you.
+And so I started digging into why all my technical friends liked you. And very quickly I realized, oh, this guy is like he's a treasure chest of information.
+And you convinced me of something that I was really down about, you know, for the for the longest time, I've been waiting until Bitcoin and crypto more broadly could be usable by normal humans.
+And I started to feel really down about it. You know, I was on a little bit of a podcast tour a few months ago.
+And occasionally I'd get connected with these older folks who were trying to ask about Bitcoin.
+And I couldn't in good consciousness recommend that they buy Bitcoin because I didn't think they could hold it.
+And as I started reading more and more of your stuff, I was like, you know, hold on a second.
+Maybe Jameson and the folks over at Casa, maybe they've actually got something here.
+And the more I read your approach to security, the more I studied what you guys were doing at Casa, the more I realized not only might Bitcoin be usable today,
+but with things like Taproot coming out, the options for what we can do with an everyday person actually holding their Bitcoin safely, it's actually it might be getting more and more accessible.
+And so that's kind of what I'm hoping to chat with you about is to understand where are we today with the average grandma or grandpa being able to actually hold Bitcoin in a time where Bitcoin is becoming increasingly interesting and valuable.
+And then how much easier might it get over the next few years as we have these Bitcoin improvements like Taproot becoming part of the protocol.
+And I guess we should really introduce you first because I haven't done a good job of introducing you.
+How would you introduce yourself?
+That's a good question.
+I mean, I generally start with, you know, I'm a computer scientist by trade.
+I got my degree in the early 2000s and spent the first decade of my career doing back end large scale data analysis for online marketing company.
+Interestingly enough, basically the antithesis of what I try to do today.
+You know, I learned a lot and perhaps that is also what has driven me towards some of my cypher punk ideals. But, you know, started getting into Bitcoin as a project years ago and started creating my own side projects where I was just trying to better understand Bitcoin and trying to help other people understand it.
+And was fortunate enough that I was able to go full time in 2015 as the venture capital started coming into the space.
+Spent three years building infrastructure at BitGo, which is enterprise multi SIG security company that powers a lot of exchanges and other services learned a lot there. And then two years ago, made a slight pivot to do the same type of back end technology, but with a new focus on trying to improve the experience for individuals.
+We learned a lot in the enterprise setting. It was still hard. It still required, you know, teams of people with technical expertise to do things right, but I felt like we had learned enough best practices and started to have enough hardware and software available that the pieces the
+puzzle puzzle were starting to come together. And that is kind of the fundamental building blocks that we use to then create CASA and we can talk about all of the complexities that we've abstracted away with that system.
+But it is. I mean, historically, Bitcoin has been terribly difficult and I'm I'm technical enough to get myself into trouble, but I need help to get out of it. And so, you know, my hope is that at some point my dad can actually reasonably have a chance of having some Bitcoin, securing it.
+You know, he decides to, you know, leave it to his grandchildren or, you know, his partner or whatever that he would be able to set that up in a similar way that he understands that he can have a bank account and he can have a will.
+So these are the kinds of things as I as I look at the CASA product that you guys have been building out. So maybe you could help me understand in your view, where are we today with making, you know, grandmas and grandpas able to hold, move and understand the security of their Bitcoin.
+We've made a lot of progress, but I think there's still a lot of progress that remains. And the the main reason why I think this is problematic is because we're really talking about a paradigm shift.
+We've never had a system like this before, where it has been so easy both to secure your money and have a well defended posture.
+You know, we call this like asymmetric defense. You can theoretically have like better than bank level security and in some cases even like resistance to nation state attacks in certain ways, but on the flip side, there's no one who can really help you if you screw yourself up.
+So the the reason I say that is that, you know, throughout human history, we have built up very specialized entities, you know, the way that we have organized our society that allows us to operate efficiently is through specialization.
+And so we are used to going to specialists to help handle our daily matters, you know, whether it's food, whether it's transportation, pretty much everything that we use as part of our daily lives, because that means we no longer have to really think about growing our own food.
+We don't really have to think about these basic necessity things. Instead, we earn money through our own specialization and then take advantage of other people's specialization to get, you know, those goods and services in return.
+So long story short, now we're kind of telling people to go back into this almost, you know, caveman era survival, like I have to do everything myself paradigm. And we've even got memes in the Bitcoin community that kind of reinforce that, you know, don't trust, verify trustlessness, et cetera, et cetera.
+And those are good in many cases, but kind of the result of what I've seen from being in Bitcoin for so long is that while, yes, you can put yourself in a position where you're not trusting anyone, you're verifying everything yourself.
+Once again, very few people have the time or the skills to do that. So the question really becomes in my mind, how do we still let people leverage the specialization of others to help them manage their private keys and their crypto assets without just handing over the keys to the kingdom
+to a trusted third party and taking us back to the old financial model. And so that is that's what we've been trying to do with Casa is create a new type of model where it's, you know, we're helping you help yourself.
+And I don't think there are many other places in the Bitcoin system that are like that. You know, you've got on the spectrum, you've got your full custody providers, you've got the free open source software, you do everything yourself, no one's going to help you.
+And then we're kind of here in the middle, like we're trying to find the sweet spot so that people can leverage the strengths of the attributes of this system without having to, you know, spend an inordinate amount of time, scaling up a really high learning curve and performing maintenance and doing all of the really boring like IT data management stuff.
+Yeah. And for those who may not be familiar with the nightmare that is Bitcoin security, let me let me paint a picture for you.
+So in the early days, you just had this really simple desktop application and you had this special file called a DAT file. And if you lost this file, kiss your coins goodbye.
+Now you fast forward a couple of years and you start to have these dedicated hardware wallets. But there are oh so many problems that you can fall into mostly user error. And the problem with Bitcoin is there are no take backs.
+So, you know, you have these issues where, you know, maybe you're using like this is one hardware wallet called a Trezor with a passphrase. And if you forget one of the digits in the passphrase, say goodbye to your coins.
+Right. Then you've got these other other types of hardware wallets like the ledger. And there's there's problems there where you can very easily lose your coins and to no fault of the hardware manufacturer.
+And, you know, you've got hardware components that are just not meant to be secure. So if you run some juice through them, they can leak, you know, the keys that are required to get the money out of them.
+Not to mention there's all of these really inexpensive attacks that hackers can do like the five dollar wrench attack, which you, you know, you've recently put out some content thinking through those different scenarios.
+So, you know, the weird thing about Internet money, specifically Bitcoin is you have the power, right, which is like it's unprecedented power for individuals.
+But you also have the responsibility. These two things are brand new. And people really have a hard time wrapping their heads around what they're getting into when they get into Bitcoin.
+You know, if you're in the United States, a lot of people are getting into Bitcoin, not because they have to, but because they're speculating.
+If you are in an oppressive regime, you know, if you're in a sanctioned country, if you're in a place where your currency is inflating, basically where you can't have any value,
+whether you're in an Iran or a Venezuela or another scary place, you're just like looking to take whatever value you saved or are producing and get it somewhere safer.
+Right. And, you know, there are just so fewer options other than Bitcoin and Bitcoin specifically because of the liquidity it has globally and all of the incredible infrastructure built on top of it.
+And so, you know, when you think about the weirdness that's happening around the world with the coronavirus and how central banks are just printing money like never before,
+a lot of people are starting to ask, how do I think about exit? How do I safeguard my wealth? And some very strange things are happening today.
+I saw that you had tweeted this info about this billionaire hedge fund manager who is actually publicly announcing that their hedge fund has some percentage of its fund in Bitcoin, not crypto, but Bitcoin specifically.
+If you look at Grayscale, which is where how a lot of institutions get paper access to Bitcoin, which is not the same as having Bitcoin.
+But you see, it's like massively asymmetrically that these wealthy people are putting money into Bitcoin versus other things. And the increase is bananas.
+And so, you know, these are what I would call lagging indicators. So we have lagging indicators that smart money is putting significant resources both into paper Bitcoin.
+That's Bitcoin that you don't have custody of, but also actual Bitcoin where you do have custody of it.
+And all of this in my mind is that Bitcoin is it gives you the ability to exit a scary situation.
+And the question that I always come back to is, OK, because I grew up with grandparents who survived the Holocaust.
+And so, you know, a lot of what I heard from them from a very early age is like, look, you know, everything got taken from us.
+House taken, bank account taken, business taken, all of our money taken, even grandma's gold necklace that she tried to sneak across the border taken.
+And so you got it. You got to be on the lookout from a really early age for anything that is going to be hard to take.
+And so, you know, when I saw Bitcoin being used on the dark and I was like, oh, this might be the thing.
+But then I started using it as like, wow, this is so hard. I've lost so much of this.
+Like, why is this so difficult? So, you know, I know that it was terribly hard to use in the beginning.
+But where are we today? Like, how tech savvy do you have to be to have a reasonable chance of being able to put some value into Bitcoin,
+safely take it across a border and still have that Bitcoin when you get across the other side?
+How hard is that really in your view today?
+Yeah, I mean, that's it's certainly doable for a short period of time.
+You know, if you're just trying to do something like do a border crossing or remittance or whatever,
+what becomes a lot more complicated is when we talk about long term storage because, you know,
+the longer you're holding on those keys, the more things that can go wrong.
+And, you know, as to some of the problems that you were mentioning earlier,
+I have an hour long talk where I do nothing but go through every failure scenario
+that we've seen play out over the past decade and what we've learned.
+You know, every failure is an opportunity, right? Every time someone screws up and shoots themselves in the foot,
+we can make a note of that and then make a change to our best practices, to our software development,
+to our user interface design to prevent that from happening again.
+And unfortunately, you know, usually many people have to make the same mistake
+before it starts to get baked into standards and stuff like that.
+But for people to use Bitcoin today, especially if you're willing to spend 50 or 100 dollars
+on a dedicated hardware device, you know, that is going to protect you from any internet based attack.
+You know, that'll give you this air gap that'll prevent a hacker from being able to just steal your private keys.
+And that is like the first major step that you can take.
+I kind of well, of course, after withdrawing your coins from wherever you bought them in the first place,
+you know, taking custody of your keys is the first real step.
+Putting them into a device where they're not on an internet connected computer is the next.
+And after that, it actually gets, I would say, exponentially more complicated
+because the problems become less about direct attacks and more about user error and negligence
+and people being human.
+And that, I would say, has been what we've had to spend the most amount of time at CASA designing for.
+It is all of these edge cases of, you know, what the silly user could potentially do
+because, you know, working in software development, you know, you see users do things that you would never imagine.
+And, you know, sometimes you can't believe the things that you see, but, you know,
+after you've been writing software for long enough time, you start to get that adversarial perspective of like,
+you know, what is the dumbest thing that someone could do here and how do I write the software to be robust against it?
+But essentially what it comes down to in the way that we've designed CASA is you have to build robustness.
+You have to build resilience into the wallet setup.
+And the way that we do that is through leveraging a few different features, both at the protocol layer,
+through multi-signature transactions, then through hardware layers using various different companies
+and their special hardware devices like Trezor, Ledger, Coldcard.
+And then finally, it is physical geographic separation.
+That gives you a level of robustness against both physical attacks and any kind of physical disaster,
+whether it's fire, flood, earthquake, whatever.
+Essentially, the further apart, you know, you can distribute that key material,
+the harder it is for an attacker to go around and collect it all,
+and the less likely it is that a single disaster event will be able to wipe out a sufficient threshold
+of your key set that you can, you know, not recover from.
+And so by having, you know, a two of three or a three of five setup, you also have this resilience
+where if you lose a device or even with three of five, if you lose two devices,
+you can still reconstitute your wallet, you can spend from it.
+And then with CASA, we make it very easy.
+You just, you know, go buy a new device off the shelf and plug it in,
+and you can essentially do a key rotation to bring yourself back up to, you know,
+full shield percentage-wise in terms of your keys that are managing your wallets.
+Yeah, let's break that down for some people who may not be familiar with multi-sig.
+So the basic idea is you have a Bitcoin. You put the Bitcoin in a wallet.
+Now, you want to try to make sure that that thing, you know, is safe. So how do you do it?
+Well, I think the first thing that you're mentioning is potentially removing your ability
+to get direct access to that Bitcoin. So how do you do that?
+Well, one way you could do it is to separate the key to unlock that wallet into several parts, right?
+And then you put one part on one hardware wallet, one part another hardware wallet,
+and another one on a third hardware wallet.
+And you need two of these three things to actually, like, put a key together,
+open the wallet and have access to the Bitcoin.
+And when you talk about geographic distribution, what that can mean is,
+okay, we're going to put something on continent one, something on continent two,
+something on continent three. And ideally what you want is that if a government gets weird,
+which historically has happened a lot throughout history,
+even if you're a patriot of your government, you know, cool,
+but you want to have these things in places where there's unlikely to be collusion
+between the people who can ultimately, like, use guns to get access
+to wherever you might be storing either the physically hardware hardware device
+or, you know, the part of the key that you might have written on metal or something.
+You know, and so did you think I did a decent job of unpacking that
+and kind of like putting it into layman's terms?
+Yeah. And so, you know, these these setups are highly customizable.
+And at the end of the day, everyone has a different threat model that they're worried about.
+You know, I would say only the most extreme of our users go to the point of nation state resilience
+where they're actually placing devices in different jurisdictions that are unfriendly with each other.
+You know, even if you were only distributing your keys around the city and county in which you live,
+that will give you a level of robustness that very few people in this space have.
+What are your thoughts about more like smart money publicly disclosing that they are taking custody of Bitcoin?
+Like, you know, this is a really interesting phenomenon because as this coronavirus situation is accelerating
+the digitization of money, you know, and more money printing is happening than ever before,
+a lot of either the wealthier people I know or the people who help allocate capital or invest capital for wealthy people,
+they're becoming less interested in buying paper Bitcoin and a lot more interested in having Bitcoin.
+So have you seen like what have you seen behind the scenes in terms of I know you can't disclose specific people,
+but in terms of, you know, family offices, multifamily offices, prop shops, hedge funds,
+looking into custody instead of just buying paper Bitcoin?
+Yeah, for us, the main division line that we've seen is due to regulations.
+And so multifamily offices tend to be more regulated hedge funds.
+It generally comes down to the size.
+At least I think in the United States, there's some sort of demarcation line around the $150 million assets or whatever.
+And basically, the problem is if you're an entity that is regulated,
+you end up being required to use, you know, registered custodians that, you know, have approval from regulators, et cetera, et cetera.
+And so those people and those entities are unfortunately priced or at least from a legal standpoint,
+forced to go down the route where they have to put their trust in some third party.
+So, you know, as a result, we're specifically trying to reach out to those who still have the option where they can actually choose between the two.
+Because, you know, we do believe that if you really want to take advantage of the, you know, the promise of Bitcoin,
+its real value and, you know, that censorship resistance, that seizure resistance that you were talking about,
+then you need to hold your own Bitcoin.
+A Bitcoin IOU gives you that financial exposure to the volatility, to the utility of the network.
+But you don't actually have the direct utility of the network.
+Interestingly enough, with some of the trading shops, for example,
+we've heard that it's actually preferred to use a self custody system if you're the type of shop
+where you want to be able to make trades, you know, if the market moves suddenly.
+Because in many cases, if you're using one of these highly regulated institutional custody providers,
+it's going to take you a matter of days to actually get a withdrawal done
+because you have to go through all these security and authentication processes,
+which is fully understandable because, you know, that custodian is taking on a lot of risk
+and they want to be very sure that they're sending the Bitcoin to the real owners.
+Whereas if you've got a distributed multi-sig setup and, you know, we use this ourselves,
+you know, we dog food our own product at Casa, you can have, you know,
+a team of people in a secure end-to-end encrypted chat room
+and you're just coordinating amongst yourselves to basically get a transaction signed
+within a matter of minutes by a threshold and get that transaction out on the network.
+So, you know, there are plenty of reasons even apart just from the censorship resistance.
+It's the ability to directly interface with the protocol.
+You know, that's where you get that real permissionlessness.
+If you don't want to have to ask a trusted third party for permission to access your own money,
+then you've got to somehow have a self-custody solution.
+Yeah, and we should very briefly kind of describe the weird thing about Bitcoin versus normal money.
+And, you know, when you use this word protocol, it might be unfamiliar to some of our listeners,
+so I'm going to give a very oversimplified version.
+Feel free to, you know, nudge me in the right way if I go too far off the rails.
+But, you know, in my observation after having like been looking at Bitcoin for like 10 years,
+what Bitcoin looks like to me, and none of us really know what Bitcoin really is,
+it's, you know, we're all figuring out there really are no experts.
+It's just too wide to be an expert in all the things that Bitcoin is.
+But it looks like what Bitcoin is to me is it's the first fair money humans have ever had.
+And what I mean by fair is that no participant in the network has any more power than any other participant.
+And this is new.
+Usually you have what are called power asymmetries, especially in money.
+So the whole idea behind a fractional reserve currency is a central bank has a gigantic power asymmetry,
+meaning they can print more money, but you don't get more of that printed money.
+They get more of the printed money.
+It's called senorage value.
+And this is a really unfair practice where they double the money supply,
+but your percentage shrinks and their percentage grows.
+But with Bitcoin, there's no inflating the money supply.
+There's only ever going to be 21 million Bitcoin.
+If you hear people talk about inflation, it's because they're talking about this release schedule that happens over time.
+But really, there's like a fixed amount.
+And now this idea of a protocol, right, versus like a traditional money, as people understand it, is the rules are just there.
+The rules are there. People can participate in it if they want.
+If they don't like it, they can change the rules and try to do something else.
+And a lot of people, they kind of get mistaken about what that means.
+Like, oh, I could just copy it and make it my own.
+Well, this has been tried again and again and again.
+The first copy was Litecoin.
+There have been so many different flavors of copies with different crypto cults to support them throughout history.
+But the thing that I think is really underappreciated about all of this is that you need a network to support the value that this thing can both create and capture.
+And you get these like three different networks that support the whole thing.
+You get the speculator network, the people who are like, oh, I think this is going to be worth more in the future, right, which attracts the developers who are like, oh, I can work on this thing and make it more valuable in the future.
+And then you get the people who actually need it, the users, the user network effect.
+And when you look across crypto, what you realize is Bitcoin has this pretty amazing combination of these three things.
+It doesn't have the strongest developer network effect.
+You could argue Ethereum or maybe Cardano have more developers who are doing regular check ins on the core code.
+But when you look at the liquidity of Bitcoin, the amount of value that you can move in and out of it, it's just like nothing comes close.
+When you look at the adoption by the actual users, if you look at like the best place that I think you can look at crypto adoption, which is the darknet, which is there's no fiat or fiat alternatives.
+There's no like prepaid credit cards.
+There's no fiat analogs on the darknet.
+It's like it's almost entirely Bitcoin.
+You know, when you look at every objective measure, Bitcoin just looks like such an attractive escape hatch for money.
+You've seen it in Latin America, where people will make money in Venezuela and take their money through Bitcoin into another currency.
+Have you seen anything out there, James said, that like gives you a sense of what Bitcoin is becoming for the West?
+I think it was probably primarily a speculative asset.
+Do you think that that's changing now?
+At least in America, I think that it's still primarily speculative. You know, I'm definitely not the best person to ask about that because I don't really have the chance to go around.
+And I haven't been in many of these countries where I think Bitcoin is needed most.
+But I have had plenty of conversations around people who are worried about whether or not it's fair that it seems like the wealthy people are adopting it faster than the poor or more economically distressed folks who probably need it more.
+In general, I think everyone needs Bitcoin. We have systems that are imposed upon us without our consent.
+And I suspect that most people, if they had to choose, would prefer not to live under a system where they're guaranteed that their money is going to become worth less over time, regardless of how quickly that happens.
+I think at the very least, you know, those of us in most well-developed Western countries are better off because our money devalues a lot slower than in other countries.
+But, you know, the compounding effects of that are still pretty drastic when you start to look at it on a multi-decade time span.
+Yeah. And to me, you know, it's so weird to look at money because money is a tool, right? It's just a tool that we use to coordinate.
+All technology is deflationary, meaning the reason you use technology is it makes your life easier.
+And ideally, technology gets better and better, and you can spend less and less time doing the thing to get the results that you want.
+But fiat currency is the opposite. It's inflationary. So it becomes harder and harder to do the things you want with money, whether that is to save it or to have spending power to buy stuff, right?
+You know, the simplest thing you can point out for this is stagflation, right? Where everything's becoming more expensive, but wages are relatively static.
+And so with something like Bitcoin, you know, the argument that I hear sometimes from people is, oh, well, you want inflation in an economy.
+I'm like, do you? Do the politicians want that or do you want that? Because, you know, I'm a pretty frugal guy.
+I love the idea of my savings being able to buy more tomorrow than they could today. That seems like it encourages just like good spending and good accounting.
+I think one of the best ways that I heard it phrased recently, someone in one of the chat rooms I'm in basically said, look, the reason why the Federal Reserve promotes, you know,
+small amounts of inflation is because they're scared to death of deflation.
+They're afraid that they can't control deflation, but they can control inflation. So it's better to err on the side of inflation.
+Oh, that's interesting. Yeah, I'm so confused by this current situation where, you know, I've been studying this whole Euro dollar phenomenon.
+Are you familiar with this?
+Not too much, no.
+So the basic premise is that the Euro dollars is dollars outside of the US regulatory control. So it's US dollars parked in banks outside the US.
+And so the debt for US dollars outside of the US is something like 60 trillion a year. And the GDP of the US is like 25 trillion a year.
+And so if you look at all the different countries who have this US dollar denominated debt, it's like the demand is enormous for dollars.
+And so, you know, what happens as and I should add that the dollar that the central bank has these things called swap liquidity swap liquidity swap liquidity lines, there we go, where they are basically buying foreign currencies to keep them propped up.
+So what I'm wondering is like, what happens if these swap liquidity lines don't work and you have, you know, like countries basically like not being able to maintain their peg to the dollar.
+I'm trying to figure out what the game theory might be for countries to adopt crypto. And if they do, you know, specifically Bitcoin, because to me, you know, I never believe the meme that like Bitcoin is going to suddenly take over without government participation.
+Like I look at all these different markets, you know, everyday people, you know, institutions, and then at the very top of it, governments like at the end of the day, governments control all the money in the world.
+So, you know, it would make sense that if you were going to see like a significant increase in Bitcoin adoption, it would follow that it might actually come from a government or several governments.
+And then the game theory is that you don't want to be last if the world is moving to something like a Bitcoin standard.
+Have you have you thought about this at all?
+Oh, yeah. I mean, the geopolitical implications are very interesting to think about, you know, whether or not. Well, as of I think the last time I really had this discussion was a few years ago, and it was on Twitter.
+And I think I essentially ended up making a bet with someone about, you know, whether or not we would see some tiny island nation or something declaring Bitcoin to be its national currency within the next so many years.
+I think that that seems to be fairly likely.
+And, you know, perhaps that creates this domino effect.
+Another question is, you know, what if something like the IMF steps in and says, you know what, we think that we're going to start allocating a portion of our reserves to Bitcoin, just, you know, to balance our portfolio.
+You know, how does that change things?
+Yeah. Well, you know, the reason for that, I think, is actually a really simple one, which is, you know, if you think about this, right, like, let's say that you're Germany a few years ago, and you've got a bunch of money in Fort Knox.
+And I don't mean to disparage the US. Big fans live in the US, love the US, it's great. But, you know, this is just an event that happened.
+Germany's got a bunch of gold in the US. They're like, hey, we want to come check out our gold. And the US is like, nah, bro, can't do it.
+They're like, but it's our gold. They're like, nope, sorry, you can't look at it. Like, can we cut a few bars in half and just make sure that they're gold all the way through?
+They're like, nope, you can't touch it. You can't see it. You can't get close to it. You can come about 25 feet away and look at the pile.
+And so, like, embedded in that is a trust discount that Germany must now issue on that gold to say, OK, how much do I trust, given these constraints, that the gold that I think is there is there.
+And at some point, if that trust discount gets too big, you don't care about the volatility of something that you can guarantee with math and code like Bitcoin.
+So volatility becomes a non-issue when the trust discount is so big because you basically have run out of trust of the people that are acting as the, I guess, the storage and the oracle of your value.
+And for a lot of people, that's what money was. It was like an oracle of value. It's like, OK, this thing, this dollar, this peso, whatever, has this much purchasing power.
+But when you lose trust in that thing, the purchasing power falls with it. And so it seems to me that we are in a time where trust is falling rapidly.
+And if it falls too low, you're not going to care about the volatility of something where you don't need to have trust at all.
+And that's kind of what Bitcoin is. It's like it removes trust from the equation.
+Yeah, I mean, we are living in unprecedented times for many different reasons.
+But, you know, specifically the complexity of the world and of the various systems that are controlling our day to day lives just keeps growing to the point that I don't think it's possible for humans to fully comprehend them anymore.
+You know, when I hear central bankers or economists talking about, you know, this is what we need to do to help the economy, I always kind of envision them standing in front of this wall of levers and switches,
+you know, almost like a nuclear power plant type array of something that's so complicated that they don't really know what the effects of all of these things are.
+They're just kind of toggling things and seeing what happens and hope for the best.
+And I guess a good question would be, you know, when was the last time there was a debt jubilee?
+Because I believe that is something that's happened a number of times throughout history.
+There's probably been quite a while since the last one.
+And that might end up being what happens if the whole system kind of collapses upon itself, is that if it just becomes too complicated to figure out who owes who what, you just wipe the slate clean.
+A debt jubilee. I've never heard that term before. Wiping the slate clean. Does that happen peacefully? Is that a thing that people can do and like be cool with each other?
+I think that it has happened peacefully before. I think the best place that you can read about that is in David Graeber's book.
+It's entitled Debt the First Five Thousand Years.
+Oh, cool. I will check that out. You've been like just a treasure chest of recommendations for reading.
+And I'm going to ask you more about that. But before I do, there's like two big categories of things that I think our listeners would really benefit from.
+The first is, OK, like let's say that you have decided to purchase Bitcoin for whatever reason.
+What are just some like very obvious high level like best practice? Like, for example, don't tell anybody that you have Bitcoin.
+And if somebody does think you have Bitcoin, don't tell anybody how much Bitcoin you have or crypto or whatever.
+Do you have any other like very low hanging fruit best practices that you would recommend?
+Yeah, I mean, you want to test things, you know, you don't want to go all in and, you know, start trying to move large amounts of money around.
+You know, there there are entire test networks where you can play around with things if you're setting up a new wallet or a new cold storage setup or whatever,
+so that you don't have to worry about your your money going into a black hole.
+I think the most important thing that I usually keep in mind that I don't think many people understand the way that Bitcoin works at a very,
+very low level when you're creating a transaction, you're not moving money from a protocol perspective, from a blockchain data perspective.
+You're actually consuming money and destroying it and then recreating it in one transaction.
+The inputs take in value and destroy it and then the outputs recreate that value with with a new type of locking script or locking key or whatever.
+And so every transaction that you make is a potential catastrophe if you consume that money and then you send it somewhere that you can no longer retrieve it or you send it to the wrong place or whatever.
+And so that that is why it is important that you are careful about what you're doing, that you're double checking the addresses where you're sending things to,
+that you are testing with small amounts of money when you're trying some new process for the very first time.
+Basically, you can't be too careful with this system, but that also gets into kind of the broader conversation of, well,
+how do we ever get this to be a mainstream thing if people are not confident with what they're doing?
+And so that is why we're trying to build a lot of these best practices and self checking and validation with diversity of hardware and software
+so that we're not even trusting any single piece of wallet software or hardware because a single bug, a single point of failure can be catastrophic.
+That's why diversity is great and we want to have as many different types of checks as possible.
+So let's shift gears for a second and look at what you guys are working on.
+And so, you know, I keep hearing from my most technical friends that you guys are kind of at the front of helping people actually hold money.
+So I looked at your website, I saw three different products, kind of like an entry level product, a mid tier product and like a pretty beefy product.
+Can you kind of like walk us through what those are and how our listeners should be thinking about like CASA?
+Sure. So from a technical perspective, we have a two out of three multisig, which means you have there's three different devices.
+Two of them are yours. The third one is CASA and our offline cold storage.
+The other two tiers are both three of five with an optional three of six.
+So, you know, as these numbers go up, it requires more signatures to authorize and create a fully valid transaction.
+But also with that second number going up, you're getting more redundancy, a larger number of devices spread across a larger number of locations.
+The gold level, that two of three, that is kind of the self-service, bring your own hardware device and you'll get basic email, like online support.
+But in general, you know, you should be able to walk yourself through setting up and using the product pretty easily because we've got a great design team that came from outside of the crypto space.
+So they're not designing for crypto nerds, they're designing for normal humans.
+The next level up, the platinum plan, is kind of the first white glove service level where you're getting a dedicated client advisor.
+We're providing you with all of the hardware. We're walking you through onboarding and we're basically there, you know, 24 seven.
+If you have questions, if anything goes wrong, we help you navigate all the different decisions that need to be made or edge cases that may come up.
+The final plan, that diamond tier, that is for generally groups.
+This is where team signing comes into play. We do have some families that use it, of course, family offices, hedge funds, etc.
+It's also the tier that comes with what we call casa covenant, which is a fully thought out inheritance plan.
+And as a part of the inheritance plan set up, we actually work with you and your estate attorney to get them in a position where they're in control of one of those six keys.
+So once again, they don't have the ability to unilaterally create or block transactions.
+The idea is that we end up with a threshold, you know, three different devices in your setup that are actually accessible through the estate process.
+So, you know, upon proof of death certificate or court order determining someone to be legally declared deceased, you can then go through the normal estate process and be able to access sufficient threshold of keys from this set so that you can create a transaction that then transfers it to the heirs, to the beneficiaries that are also part of that last will and testament.
+That's kind of the high level. We have an extensive, I think, 40 pages of documentation on our threat model, basically, every type of attack and loss scenario that we thought through and how our system mitigates against that.
+And it mostly comes down to, you know, how much wealth do you have in the system? You know, how much do you stand to lose? How much are you willing to spend to protect it? Unlike a lot of other services, we were not a free service that gets revenue by selling advertisements or reselling your information.
+We collect basically no private information other than an email address. You can provide us with a name if you want, but we fully support pseudonyms coming in through our system.
+That just potentially changes some of the onboarding process, but we have plenty of people who we don't know their real identity, and that's fine with us because we're not holding anybody's money. We're really a service provider where one of the services that we provide is just holding an extra key offline so that we can actually help you recover from certain disaster scenarios.
+Other than that, I think one of the major differentiators is that we have that level of service that you don't really find with other self custody setups.
+And unlike a lot of the institutional custody, they're going to take a cut of whatever your assets are, usually like 50 to 100 basis points per year. And over time, that adds up, especially if the price of Bitcoin keeps going up, whereas our products, our service levels are all very flat fee. You know, you know what you're paying on a yearly basis.
+Yeah, this is fascinating. I'm a big fan of the general model that you guys have. You know, I haven't had the privilege yet to try out your service. Definitely something I'm interested in, which I'll follow up with you later just to learn more from like a security perspective.
+Also, you know, I wonder how many people come to you who understand the value of what you do because like me, they've screwed up. Is that everybody? Does it take a giant screw up before you realize how hard and important this stuff is?
+Some people are in that situation. So you know, anyone who has been in Bitcoin long enough has a story of something that they screwed up that caused them to lose money. You know, the longer they've been in Bitcoin, usually the more absurd and the higher the number is of you know, I would have had this much money if I hadn't done this one stupid thing.
+I've got three or four of those incidents myself. Thankfully, none of them catastrophic, but some of them could have been a lot worse. And you know, so we've got a few people that come in through that. And then there's other just sort of early adopters in the space who they understand things
+well enough, but they just don't have the time to put together their own setup. I mean, it's a very time intensive thing. And that's, you know, one of the big pieces of value that we have is the many, many months, if not years of effort that we've put into, you know, thinking adversarially and also just the
+experience that those of us who have been in the space have collected over the years. And, and then actually the the really interesting thing is what's happening now. And this is why I think that we are on the precipice of another wave of adoption is that we are seeing people come
+to us before they've ever bought their first Bitcoin. And, you know, this is basically the, in many cases, high net worth or family office or whatever type of people or entities that they're aware of the macro environment, they're looking around for hedges, they're looking to
+diversify their portfolio. And they have realized that if they want to fully get bitcoins value and utility, they need to hold it themselves. But how do they do that? They just want someone to help them. And so their research brings them to us. And, and that is, I think, another one of our interesting
+services that we provide that you can't really find many other places is that we're happy to walk newcomers through the entire process, you know, educate them, you know, how do you obtain the Bitcoin? How do you store the Bitcoin? How do you maintain it going forward?
+This, this, you know, the educational component, I mean, that's something that I've been doing for free for the past six or seven years, I think. So, you know, being able to take that knowledge and disseminate it to help, you know, protect large sums of money for people is it's a great feeling.
+You know that, yeah, first of all, a huge thank you on behalf of everybody. Because when I discovered the treasure chest of free information you put out there, I was just in awe. It's enormous. And I know it's not easy. And it takes a lot of time. And on behalf of the internet, thank you.
+Now, thanks. Going back to what you said just now about helping newcomers, especially people who are looking for hedges, the thing that's so unique about this potential wave of people that's different than before, is that, at least from my observation, you had people who really needed
+the stuff, who just needed something that was censorship resistant. And now you have more people that I've ever seen before, more of my network, is looking at Bitcoin in terms of exit. So the difference between speculating on the price of Bitcoin versus using Bitcoin
+for exit, it's this basic question, which is how much of your wealth do you want to preserve? How much of your wealth do you want to potentially move out of one scary place and into a less scary place? Because if you are a family office who's listening to the very first Bitcoin advocate that had access to family offices,
+Wences Kisaris, the advice was, hey, 1%. 1% of your portfolio into Bitcoin because the upside is so interesting. But that's not the pitch anymore. The pitch is a simple question. What percentage of your wealth are you okay losing? And for most people, it's no percent. Most people want to take as much of their wealth as possible.
+But it's certainly more than 1%, right? And so in my observation, it seems like the basic question of most of the people that even have savings nowadays, which is a very small percentage of the population, unfortunately. But those people, they're less interested in putting 1% on a roll of the dice. And it appears to me that they're more interested in safeguarding their wealth, just in case things get weird and being able to move it.
+Well, the way that I've been phrasing that recently, I mean, I hate talking about price and speculation in general, because I think there's just a lot of phonies out there that claim they know the future. And also, you know, I'm a technical guy. I know what the protocol does. I know what the system is designed for. And the system itself is completely orthogonal
+to the fiat exchange rate, right? I mean, it exists completely outside of that world. And therefore, there's no way that I can use any of my knowledge to claim that I know, you know, how it's going to be related to or affected by that completely other world.
+But in general, the reason why I invested in it was not because I thought it was some sort of get rich quick thing. It was not because I thought that the value was going to go up orders of magnitude.
+I invested in it because I thought it was a don't get poor slowly scheme. You know, it was protecting myself from the effects of compounding inflation in the wrong direction for my portfolio.
+You know, the compounding effects of the loss of value of purchasing power of my dollars. And, you know, it just so happened that there are then other second order effects of, well, if enough other people also see the utility in that, then you get this additional speculative boost in the value and the utility of the network.
+And, you know, that's just one of the many amazing things about Bitcoin is how well aligned the incentives are.
+There's so much there that I would love to go in depth on, but we have used up an hour of your time. I know you are extremely busy.
+And I want to respect your time. Before we conclude, how can people learn more about this amazing product that you've built at Casa? How can they learn more about you? Where can they access some of this amazing information you've collected?
+Sure. So our website is keys.casa. That's K-E-Y-S.C-A-S-A. My own website. You can either get there by going to lop.net or if it's easier to remember, bitcoin.page goes directly to my educational resources, which is generally what I recommend sending to anyone who is first starting to get into this space.
+Also, your Twitter is awesome. I am a huge fan of the virtual reality posts, especially the toilet hoarding VR post that you made. That was hilarious. So yeah, your Twitter is educational. It's fun. It's funny. Yeah, I would highly recommend people follow you on Twitter. I'll have links to all of your stuff in the description.
+Jameson, a huge thank you for the time, for the energy. I hope that we can make time in the future to do this again. This has been fascinating. You bet. It's been great to be on with you. Have a good one. You too.

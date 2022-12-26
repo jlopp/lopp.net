@@ -1,0 +1,546 @@
+This is the Hashrate Crypto Mining Podcast, your best choice for quality conversations
+on cryptocurrency mining equipment, spec plays, and relevant news.
+Thanks for tuning in.
+We hope you enjoy the show.
+Now here are your hosts, Crypto Chris Walken, Whale Bearman, and the Bitcoin Broski.
+Hey, everyone. Welcome to the Hashrate Crypto Mining Podcast. I am the Bitcoin Broski here
+today with my co-host, Crypto Chris Walken and Whale Bearman. We're joined today by special
+guest Jameson Lopp. I'm sure most of you already know who Jameson is, and he goes without introduction,
+but we're going to give him one anyway because he deserves it. Jameson is a staunch supporter
+of Bitcoin and a big believer in personal freedoms. He currently serves as the chief technology
+officer of CASA and before CASA was also with BitGo. We're excited to have you on the show,
+Jameson. Thanks for joining us today. Happy to be here. Awesome. Jumping right in, we've talked a
+lot about this show and having you on and which direction we wanted things to go. I mean, you're
+incredibly knowledgeable on a lot of topics and it's awesome to have someone with your depth of
+knowledge and your experience with us today. Connor, I'm going to kick it over to you. If you want to
+jump in with some of the questions that you have, then we can just roll from there. Yeah, so basically
+we do cover a lot on mining, but one of the very important aspects of mining is security practices.
+And I think a lot of people, especially when you get set up with mining, if you're newer, it's not
+as much as learning from your mistakes as it was anymore. There's a lot of easy ways to get into
+mining now, but it leads to more mistakes. So could you kind of go over the best practices as
+far as security goes, especially in the crypto verse? Yeah, I mean, it's a complicated topic. It's
+funny regarding mining. I don't have a ton of experience mining. In fact, most of my mining is
+actually on Bitcoin testnet. A couple of years back, I got a used Antminer S5 and was debating,
+you know, just having it running in the garage for a while to see how it went and ended up actually
+deciding to plug it into the Bitcoin testnet, which while that did not net me any valuable coins,
+it actually made me a Bitcoin testnet whale. So I love playing around on testnet as a developer
+and having tens of thousands of fake bitcoins that I can throw at people, you know, whenever there's
+other developers in need of, you know, getting new applications started up. And in fact, I don't
+know how many of you are aware of this, but testnet is a crazy, crazy place. And one of the reasons
+I was actually able to get tens of thousands of coins was because testnet has this kind of
+unique difficulty reset rule. And it's actually possible if you tie it right to reset the
+difficulty on testnet to one, which means you end up getting like 100 blocks a second for a little
+while until the difficulty readjusts and end up with some pretty crazy like multi hundred, if not
+thousand block long reorganizations. But aside from my limited testnet experience, most of my
+experience in this space is on the security side of things. And working at BitGo for three years,
+I saw a lot of interesting setups and unfortunate mistakes that various enterprises made. And for
+the past year, I've been working at CASA, which is more on the individual security side. But
+there's a lot of overlap there. In general, wallet best practices are pretty similar between
+individual and enterprise use cases. I will say that like one of the things that I saw a lot of
+hobbyist miners screw up was that they were getting payouts on an almost daily basis, and would
+end up with thousands of UTXOs and their wallets that weren't worth very much. And then when they
+went to go to spend them, they had the unpleasant surprise that a large percentage of their value
+was going to transaction fees. So this is one of those, I guess, security versus convenience
+tradeoffs you have to make, because you're probably going to be mining through a pool and having to
+figure out like when your payouts are going to come to you. And, you know, essentially, when the
+money is going to go from being in someone else's custody to actually being in your custody. And the
+more patient you are, the more risk you're willing to take there on the custody side, the more
+consolidated those outputs will be. And then of course, you have to ask yourself, well, where am
+I going to put them? I think most people just use single SIG wallets, probably, unfortunately,
+online hot wallets. And if you really want the best security and robustness, then you're going to
+need to go on the multi SIG side. But then there's more trade offs there where you're once again,
+going to be paying more transaction fees, because these are creating more complex and larger data
+size transactions. So at the end of the day, I think that someone who's spending a fair amount of
+time in this space is going to need to have multiple different types of wallets with multiple
+different security models, and basically have one wallet or several wallets that are not quite as
+secure, but are more convenient to use on a regular basis. And then ultimately, every Bitcoin
+hodler needs to have their like super duper long term cold storage vault. That is what I've been
+spending a lot of my time working on for the past year. And that is where you can get like multiple
+hardware wallets, multi SIG set up and have, you know, geographically distributed private keys, so
+that you're not only protected against hackers, but you're also protected against various
+catastrophes and loss scenarios that could result in you losing enough data that you can
+no longer spend out your own money.
+So bringing up the Bitcoin testnet, what are your thoughts on VeraBlock? And did you mess with that
+at all? Because VeraBlock is kind of a kind of an issue on Twitter and in the space right now,
+because a lot of people are thinking that VeraBlock is an attack on the Bitcoin network.
+Yeah, I mean, that's a tricky phrase, I guess, is whenever people start calling things attacks. I
+try to limit my use of the word attack to be something that is like against the nature or the
+rules of the protocol, something that is trying to like undermine the the rules of the Bitcoin
+protocol. And so if you call certain use cases or certain types of data that's being put into the
+blockchain as an attack or a spam, I think that that is kind of emotional and subjective. If
+you're paying the fees to put it in the blockchain, and you convince the miners to put it in, then
+there's some economic rationality behind that, that you're basically outbidding other people if
+there's any contention for block space. So I'll I have to admit that I don't know a ton about what
+VeraBlock is actually doing. Like, I don't see anybody talking about building things on top of
+VeraBlock. So I don't really know what value there is there. I do know that there is value to using
+the Bitcoin blockchain as a data anchor. And I've written about that in a variety of different
+articles. And so, you know, if people are using the thermodynamic security, the proof of work is
+offering for Bitcoin basically being the most expensive blockchain to rewrite the history of
+then I'm all for people building on top of that and essentially anchoring other systems into it.
+Now, are they doing it in the most efficient way possible? It doesn't seem like it from my
+cursory glance. But this is just another thing where I have to say if they if they're not really
+bringing value into the system, then the economics are going to push out those use cases. And, you
+know, they've been fairly fortunate that fees have been pretty low for the past six months or a year.
+If that changes, then VeraBlock may find themselves in a bit of a pinch and need to justify the value
+of the system that they've built. I think I saw a random statistic recently that they had spent, was
+it something like a million dollars or maybe even several million dollars worth of transaction
+fees over the past six months? So hopefully, they're actually bringing sufficient value to pay
+for that in the future, because those fees are only going to go up from here.
+So I wanted to circle back to the comments about security. The news that's that's out lately that a
+lot of people are talking about is the Quadriga exchange fiasco in Canada. What did you make of
+all of that hearing that, you know, the the CEO of the exchange had died suddenly and no one had
+access to the 140 or 197 or 141 million, I don't remember the exact number, dollars worth of other
+people's money? How did that read to you?
+My first thought was, you know what, this is exactly what could have happened with Mt. Gox. I
+don't know how familiar you are with the the Gox setup. But we learned after Gox crashed and
+burned that in fact, Mark Karpalos was the sole owner and holder of all of those cold storage
+devices and keys. And so if and and I'm actually I'm very surprised that that he managed to get
+through this without being physically attacked. And if he if he had gotten attacked and hurt or
+killed or whatever, then the the Gox fiasco could have actually ended up a lot worse where there
+would be no coins that got recovered because they wouldn't have been able to get the the cold
+storage that he found, you know, a few months after. So it's, it's just simple negligence,
+right? And I think that in Mark's case, he has a little bit more solid ground to stand on,
+because when he started, the coins were basically worthless. And and people weren't prepared for
+them going up several orders of magnitude. But you know, with this guy, I don't know how many
+years Quadriga was actually operating. But you know, Bitcoin was already pretty big, and I think
+at least in the hundreds of dollars when they started. So it just it just sounds like another
+case of like incompetence and negligence, leading to a business operating a fractional reserve and
+like trying to claw their way back into solvency. And we've seen already that that's a very difficult
+thing to do. Yeah. Yeah. And I mean, going off that, I think a lot of exchanges, even though these
+things happen, and yes, they are bad for the space, they end up being building blocks for the future.
+And with security, most of the time, you just learn the hard way the first time if you're
+following everything the right way, then there's obviously something new that needs to be implemented.
+So in this case, I definitely agree it was just not doing what was required of someone that handles
+that many coins at one time. I just I mean, even me, and maybe it's just because I've been in the
+space for a while, but I I do not broadcast when I go out to places. And when I do travel internationally,
+I make sure, you know, there's there's no way that anything could be extracted from cold storage or
+or or else. So I just find it insane that these guys that are running these companies that have
+millions of dollars and billions of dollars even aren't running around with like security teams.
+And I mean, it just it blows my mind. You see these these kidnappers that know that these people
+like I think there was a conference in Mexico for Ethereum a few years back when some people
+were getting kidnapped, I believe. I don't know if that was a rumor or not. But yeah, I mean,
+that stuff scares the shit out of me. Yeah, I mean, I've heard a number of stories about that,
+especially the conference that was happening in Cancun. I forget exactly who it was that
+that was saying this. But there there was one group of people who were trying to employ,
+I think, some former special services, like, you know, former Army Rangers or something,
+types of of of personnel to basically be their bodyguards so they could go down there.
+And, and, and that bodyguard company, actually, they did a survey, basically, of the the locale
+and the recent activities that have been going on. And they basically said, you know what,
+we're not going down there. We're not we advise you not to go down there. We don't want to go
+down there. You know, there's a lot of like cartel activity in the area. And so they ended up not
+going to that conference. And I've been to a few other sort of VIP level conferences where there
+has been actual like armed security, plainclothes around the conference that really started
+happening after the last bubble before this, you know, crypto was so tiny that we didn't have to
+worry about anybody even caring enough to try to show up at a conference. And it's it's unfortunately
+just the the the nature of the beast of like being your own bank. And if you're walking around and
+being public about being your own bank, then you have to be ready to actually protect your assets.
+And so that's part of the reason why I switched from doing enterprise crypto security to individual
+stuff, because I felt like there was a gap in the market there, and that it's actually going to
+become more and more important for people as we go through more bubbles as more people finding
+themselves basically unexpectedly falling into levels of wealth that they're simply not prepared
+to handle. And we've we've, you can actually see historically, in a vast majority of cases, it seems
+that people who suddenly acquire large amounts of wealth often end up losing it one way or another.
+And I'm afraid that that is basically going to repeat, but in a new way with this new technology,
+if we don't have a bunch of people building tools and services to help people secure their own money
+and really make use of this, quote unquote, being your own bank, because there's there's just so
+many ways that you can screw it up that I think that we're going to find it's more likely that
+you make a mistake and lose access to your private keys than someone attacks you and takes them from
+you by force. But that's just, you know, anecdotally what I've seen over the years, and I kind of expect
+that trend to continue. And I'm also monitoring the physical attack side of things and watching
+that trend sort of go up and down along with the price and the general mainstream awareness and
+mainstream awareness and therefore criminal awareness of this new type of honey pot for
+for physical attackers. Sure. And, you know, with the work that you're doing in CASA right now,
+I mean, what what do you find is the the most prevalent problem that you're currently trying to
+solve? It's it's basically getting rid of single points of failure. It's it's boring old data
+management and IT practices really is what it comes down to. We have gotten to the point in
+the space now that we have a variety of decent hardware devices that can help you protect your
+private keys. But if you get, you know, a treasure ledger and initialize it and go through the setup
+process, then, you know, the first thing that it says is, you know, here's your 24 word seed,
+keep this safe. And I think that that phrase is the tip of a huge security nightmare iceberg that
+gets completely glossed over. Because, you know, keeping that seed phrase safe, it involves a lot
+of data security, both on on the cryptographic security side and on the robustness of like
+having multiple redundant geographically distributed backup side. And so, you know,
+we sat down, we thought about this problem for a long time. And we basically came to the conclusion
+that we felt like the most user friendly approach to keeping seeds and private keys safe is to not
+have users deal with them at all. But rather, if users can just imagine, you know, these tangible
+held handheld devices, basically their treasures and their ledgers, their mobile phones, whatnot,
+then it's a lot simpler for an average person to envision, you know, the actual security of a
+physical thing. So as long as you have these physical things geographically distributed,
+then we can give you a very high degree of confidence that your private keys can't be stolen,
+that they will not have a sufficient level of loss that your your complete wallet will
+become inaccessible. So it's Yeah, it's, it's really trying to keep the user from shooting
+themselves in the foot. And, and I've been writing software for over a decade now. And the user
+is usually the biggest problem. You know, there's always technical challenges and scaling issues,
+and, you know, tons of complexities and all the different levels of software and network stacks.
+But at the end of the day, the user manages to create problems that we never even dream of as
+programmers. Yeah, well, yeah. Oh, go ahead, Chris. I'd say I made the joke on Twitter that,
+you know, we can't have adoption until Nana doesn't have to input her 24, you know,
+passphrase seed key with her arthritis fingers, you know, and we've we've all heard the horror
+stories of people that have tossed out laptops with 10,000 Bitcoin and stuff on there, because
+they haven't backed up their seed keys. So yeah, the solution that you guys are having at cost is,
+you know, it's a very big thing for the space. Well, and, you know, also, I mean, right now,
+obviously, the system that we have is broken. Just, I think that anyone who's paying attention to,
+to the world economic system can can see that pretty, pretty easily. But one thing that always
+remains true, is that people will give up their freedom for a level of convenience. And it's,
+I think that the one area that I know as as definitely the newest person on this podcast,
+right, I'm of the four of us, I am the newest to crypto. And I'm definitely probably the least tech
+savvy. So for me, as as I've learned and gotten into the space, the, the, the areas that have
+always drawn me in the fastest were those that were the easiest to understand. And for that newest
+person coming in, there needs to be a level of a level of ease to it. So I think that that's the
+thing that I'm I'm seeing with casa that is cool is it's just easy. And easy is good to an extent,
+is good to an extent. You know, Connor, we were, we're talking really, I know your internet dropped
+out there for a second. But we were talking about the problems that they're they're working to solve
+at casa. Did you want to jump in and get some questions about Jameson living off the grid and
+kind of the story behind that? Actually, Jameson, if you want what, what led to that shift? So why
+did you go from from your living situation before to now kind of removing yourself from, from the
+grid and doing things the way you're doing them now? Well, I mean, I've noticed a number of
+exponential trends in the Bitcoin space, not just with like the exchange rate and the general level
+of mainstream awareness, but also with like my presence online, social media following and
+resulting backlash at times due to controversial things that I may say or do. And one of the
+results of that is it's a very small scale of what you know, real mainstream celebrities run into,
+which is basically the celebrity stalker or the, the deranged person who doesn't really see the
+line between right and wrong. And so this is just the result of having, you know, hundreds of
+thousands of people who are listening to me is that it's inevitable at some point that I say
+something or do something that will trigger someone and that someone may be in the like 1%
+of psychopaths or sociopaths. And I need to now actually worry about the attacks that may come
+from that type of person. And I, I am fairly libertarian or anarchist leaning and it doesn't
+make sense, I believe, for me to rely upon law enforcement or in general rely upon the third
+parties to protect me from any type of attacks. And so I've, I've, I've tried to take a similar
+approach on the physical side and the privacy side as I have with my technical security around
+my, my crypto private keys, which is that we have to assume that there will be another order of
+magnitude like increase in value or order of magnitude increase in level of attacks that
+happen on you. And so if that is, don't mind my dog in the background there. And so if, if,
+if the level of, of like attacker resources that are going to get thrown at you is increasing by
+a power of, of like 10 or several orders of magnitude, even then you can't wait until that
+happens to make changes. Like you have to have a level of security, a level of, of privacy
+that is an order of magnitude or more, more than you think is necessary. So it's kind of like the
+overkill shock and awe type of approach, I guess, better safe than sorry. And so as a result,
+after having the, the one incident of some idiot calling the police and, and claiming that I had
+killed a bunch of people, which ended up, of course, getting my whole neighborhood shut down,
+I decided that I didn't want that to ever happen again. And while the police assured me that they
+wouldn't shut down my whole neighborhood and send out the SWAT team without calling me first next
+time, I figured, you know, that assurance was not quite sufficient to give me peace of mind.
+And I ended up spending about six months and tens of thousands of dollars on attorneys and
+various legal constructions, which allowed me to then own property that is, you know, publicly
+registered, but not have my name tied to anything. So I've, I've really changed a lot of aspects of
+my life, just to make sure that whenever I am in my physical location that I spend most of my time
+in, that nobody in the general vicinity actually knows who I am. I have proxies for almost
+everything that I do, not just network proxies, but like human proxies, you know, using lawyers
+to do various things, using legal entities to do various things, and just keeping my name off of
+anything. So whenever I'm, I'm out in the world using my real name, then it's either because I'm
+doing something over the internet through various network proxies, or because I'm doing something
+at a location that is not where I spend much of my time, and I'm just doing a quick in and out visit.
+So, I mean, it comes to a point, right, where it sounds like it, is this worth it to you? I mean,
+is this really, I mean, I know as someone like yourself that came into this space, and you saw
+the opportunity here, not only financially, but the revolution side of things, and that's probably
+more of why you got involved in it, and it wasn't about money in the beginning. You know, is this
+really what you thought would happen? I mean, at this point, it's almost like, it's like your whole
+life now is changed. And did it change for the better in your opinion? Or do you think, you know
+what, maybe I should have never made public of my roles, and I should have just 100% remain anon?
+From a personal standpoint, it would have been much easier, and I guess safer, if I had simply,
+you know, bought my crypto, put it on a cold storage setup, and gone about my life. But you're
+correct that really, my life has pivoted and become really focused on this. I would say, like
+when I went full time into the Bitcoin space four years ago, I had already been doing hobbyist side
+projects for a few years. And that led me to realize that I was, I guess, gaining a lot more
+from that. I was getting more satisfaction from working on those side projects than I was on my
+day job, which was working for email marketing software, doing backend data analysis, which is
+actually kind of ironic because I was basically anti-privacy before. I was like stripping people's
+privacy away by writing these huge MapReduce jobs, running over petabytes and petabytes of data,
+where I was figuring out all of these different attributes of people and their online habits,
+so that marketers could sell more shit to them. But now, you know, I go full time in the Bitcoin
+space, and I feel like I'm actually making a positive difference, where I'm helping people
+escape the existing banking system. I'm helping people, you know, evade capital controls and
+basically empowering people in a way that I was not before. And while I've been, you know, focused
+on Bitcoin and crypto for the past four years, it was actually at that time that I decided that I
+wanted to make my career goal and basically my life mission is to help empower people through
+technology. And so, you know, going down the route of being a cypherpunk and saying, you know, I
+believe that privacy enhancing technologies are a meaningful way to impact change upon society and,
+in fact, improve people's freedom throughout the world, that I felt like that, at least today in
+the early days, doing that through crypto and private key management is the most obvious way
+of going about it. But even if Bitcoin gets to like full mainstream adoption, and I get bored of
+Bitcoin, then I suspect that I will still remain in the technology space, but perhaps switch to
+some other sort of privacy or liberty enhancing technology. I'm also a big fan of 3D printed
+firearms, for example. Yeah, me as well. Hold on. Have you shot one? No, my 3D printer is not quite
+high grade enough to do a lower that I would be comfortable putting my hand into. I'm also interested
+in the, you know, the ghost gunner. I've been keeping an eye on that as well. But what was it,
+there was actually just in the past week or so, someone dropped a full payload of basically
+every single AR 15 part. And so, like I said, my current 3D printer is kind of crappy. And I'm
+hoping as that technology continues to improve, then hopefully someday I'll be able to buy a good
+enough 3D printer for like under $1,000 that could actually, you know, print out any conceivable
+firearm part. Yeah, I mean, that just goes hand in hand with the space. And it's insane to me,
+the kind of backlash and the grip that the media has over the population on how that knowledge,
+that is literally just a book. And they don't want people to have that ability. And the fact
+that they're trying to make it illegal. And it's Cody, Cody's taking a lot of flack for that. And
+I mean, hats off to that guy for doing what he's doing. Followed him throughout this whole ordeal
+that's been going on. And I mean, yeah, it's crazy. It's not as on the level of what you're doing.
+He is going through, I can't even imagine his OPSEC, but it's got to be top of the line.
+Interesting. Yeah, I mean, I think right now, not to get too far into politics, but
+for me, at least, as I see the way that the country is shaping up, especially coming into the next
+four to eight to 12 years, the lack of belief in a person's personal freedoms is, it's troubling.
+It's unsettling to see kind of the direction that we're heading in, knowing that there's probably
+not much we can do to stop it at this point in time. There doesn't seem to be enough of an outcry
+to maintain our freedom. And you can kind of just see with each new generation that's being raised
+up, less and less of a desire to hang on to control over our information, control over
+the things that we're able to do for ourselves. I don't know, when it comes to that and the future
+outlook, have you thought about, I mean, where we're going from here as a country, what that
+could all mean, not only for us personally, but for cryptocurrency as a whole?
+Oh, yeah. I mean, it's very bleak to think about at that level. I don't necessarily believe that
+any one of us can change the tide. But what we're trying to do at CASA is at least offer
+some alternatives. And the theory being that if we can make the alternatives
+somewhere close to being as user friendly, as the extremely convenient non-privacy preserving
+options, then hopefully we can at least get a non-negligible number of people using these
+alternative systems that empower them a bit more. And so, you know, with regard to like the CASA
+node, for example, like right now that is helping people navigate their way around Bitcoin and
+Lightning and basically being sovereign with their own private keys and their transactions on those
+networks. But if you think about it, sovereignty on the internet basically means running your
+own services for anything. And like if you wanted the ultimate email sovereignty, for example, you
+would run your own email server. Now, there's a reason nobody does that because nobody has really
+made that very user friendly. It's extremely convenient for us to use Gmail or some other
+centralized third party that is spending all of their time working on the intricacies of email
+management. Like I mentioned earlier, I worked for an email marketing company for 10 years and like
+on the back end, it is extremely complicated at the technical level, but also at the non-technical
+level. There's a lot of like human relationships that actually go on with regard to keeping the
+emails flowing. And so we do believe that there is a huge opportunity there, especially if we can
+figure out the crypto side of things and then move on to other services, is to help empower people to
+hold on to their own data and run their own services on the internet so that they're not
+trusting third parties. And that could be applied to almost any type of service if you think
+about it. It's really just going to come down to what do we think are the things that are going to
+be most impactful and are going to be most feasible for us to implement.
+Actually, going off the email server, I did see a new, I think it's a startup
+called Helm, and it's a personal email server that you can basically put it on your desk.
+Even it's not that big, but it's supposed to be a pretty easy solution for people that want to do
+that. And I definitely agree with you. That's one area that a lot of people don't understand how
+insecure email is. I think that's a good segue to talk about 2FA and also...
+James, was there something else that you wanted to add to that point?
+Well, it's just what we've already found from shipping out nodes for the past six months or so
+is that you've got the server-side infrastructure environment that is what is running most
+networks. And there's a big discontinuity. There's a big gap between those two things.
+It's very difficult to get people to be able to run internet-facing web services that's on their
+home network, just due to the complexities of networking in general, and the fact that users
+are not IT gurus. So that's one of the biggest challenges we've been struggling with. We knew
+it was going to be tough in the first place of basically deploying hardware into these unknown
+environments. We've definitely found some very unique home networking environments. One of them
+is when users have called in and said, hey, my node's not working, and we have to do a lot of
+debugging. So that's just part of the learning curve that we're having to scale.
+Yeah. I mean, I would imagine most people aren't even comfortable opening ports on their network.
+So hands down, you guys made it super easy for me. I was expecting there to be something that I
+just maybe was doing wrong and was going to have to debug. But when I got the CASA node, it was
+just pretty much plug and play. It synced super fast. That was one of the things that I wasn't
+looking forward to, because I already run a couple of nodes already. But yeah, I mean, I wanted to
+see how easy it truly was. And it was not hard at all. And I didn't have to do anything that I don't
+think someone with at least a decent understanding of how computers work would be able to set one up.
+Yeah. So I'm a big privacy coin person, I think, especially with the conversation we just had.
+There's a lot of leniency towards that. I know you talked a bit on MimbleWimble before,
+the launch, and it was pretty exciting for the mining community. But after the
+launch of Beam and Grin, what are your thoughts on MimbleWimble now?
+Yeah, I mean, it seems like a lot of the interest has kind of plateaued at the moment. Whenever
+there's a launch of something, then you have a lot of speculators jumping in. And now it's kind of
+back to the grind of watching the developers actually make these networks more secure. And so,
+you know, there have been a few fairly major security flaws that have been found and patched.
+I mean, pretty standard stuff for anything that's such a new type of protocol that it's almost more
+surprising that there haven't been any crazy network-wide failures, at least not that I'm
+aware of. But it's really going to be like a long-term battle of philosophies and economics,
+I guess, between Grin and Beam to see which of those get more traction. And I've heard decent
+arguments for why some people may prefer one to another. I mean, personally, I'm more of a fan of
+Grin because I feel like it has more of a Bitcoin philosophy to it, whereas Beam seems to have more
+of a Zcash philosophy to it. But, you know, that's the market for you. And we'll see how they keep
+working out. But I think what would be more interesting, which I've heard a few rumblings
+about, is like if they can actually get Lightning Network support working. And if you can tie
+Lightning Network into an extreme privacy coin like that, then it seems to me like that opens up
+a lot of more interesting possibilities. Because, you know, Lightning Network is a
+fairly private in and of itself, but you still have the on-chain privacy issues. You know, when
+you're opening and closing channels, there's a lot of things that may change on that side as the
+technology continues to progress. And we see like multi-party channel opens and closes. But ultimately,
+it seems like the best way to get awesome privacy is actually to jump from one blockchain network
+to another blockchain network and back around. I'm not a blockchain analysis expert. But as far as
+I'm aware, unless you're getting a lot of third-party data and able to basically
+extract data from the points at which people are entering and exiting the blockchain, it's going to
+be darn near impossible to actually correlate multiple different blockchains and the activity
+that's going on if that activity is only happening within the protocol and not happening with some
+third parties that might be leaking data. Yeah. I mean, I think there was one that came out
+recently. It would use XMR to broadcast a Bitcoin transaction. And I was pretty excited about that.
+I didn't actually test around with it, but I heard some decent things.
+Yeah. So it's kind of funny that you brought up your favoring of Grin, because I basically figured
+that me and Connor, we actually had a talk about MimbleWimble, but we didn't get to talk about
+Grin. We actually had a talk about MimbleWimble, and we were basically comparing Beam and Grin,
+saying that Beam was much more of the corporate side and Grin being more of the cyberpunk side.
+But my other question towards you was, so they had the announcement basically of Beam and Litecoin
+working on something together. I kind of feel that implementing privacy is kind of inevitable
+for Bitcoin. So what are your thoughts on the whole Beam Litecoin thing?
+Okay. I might have actually missed that. Well, so I think I saw something about Litecoin working
+on implementing confidential transactions. Was that what you're referring to?
+Yes. That article was on Medium. Okay. So they're actually doing that in conjunction with Beam?
+Yeah. Well, more power to them, I guess. I think a number of Bitcoiners got triggered by that,
+because Litecoin was kind of the one that really got segregated witness adoption out on a production
+network and kind of showed that a lot of the FUD around it was just FUD. And confidential
+transactions on Bitcoin is also another interesting debatable topic, right? Is that
+it's a substantial protocol change. There are people who have, I guess, issues with
+what it might mean with regard to auditing the entire monetary supply, with regard to
+bloating the blockchain with larger data size transactions. It seems like there hasn't been
+too much discussion, at least that I recall, around trying to push that into Bitcoin. But
+there may be some people who are so against it that they even see Litecoin adopting it as kind
+of a threat because they think that then that will be used as an argument of, see, look, it's safe.
+Litecoin did it. Now Bitcoin can do it too. But yeah, I'm interested to see Litecoin implemented.
+If anything of like Litecoin as a production test net for Bitcoin is something that I've felt like
+has made sense for several years and really proved itself with the whole SegWit thing.
+Yeah, that was exactly my thought with the whole Litecoin being Bitcoin's test net and
+them possibly implementing the confidential transactions that might spill over to Bitcoin.
+So yeah, it's interesting to see where that's going to go.
+Now, Jameson, aside from Bitcoin, when it comes to in MembleWimble as well, are there any other
+coins that you pay any attention to whatsoever? I mean, are you looking at any of the altcoins
+that are available and trading currently, or is it just kind of a focus on Bitcoin and the
+MembleWimble protocol and then things that can come from Bitcoin? I mean, there's a lot of
+the MembleWimble protocol and then things that can come from those, or is there a broader view
+of the market that you're taking? I mean, I mostly pay attention to any privacy enhancing
+technology. So I also try to pay some attention to Monero and Zcash. At Casa, we have done some
+research into multisig on Monero and multisig on Zcash. I think the trickier question is around
+support from hardware devices. It's been a very slow process. So like Monero, I believe,
+late last year finally implemented multisig, though at least the original multisig was only
+M of M or M of M minus one. They didn't have like the arbitrary M of N that we needed for doing
+three or five wallets. But I think that they did recently add that. And now we're looking
+at hardware support. There's definitely been plenty of demand for that. Now, at BitGo,
+we implemented multisig for Zcash, but only for unshielded transactions, which is basically
+Bitcoin transactions. So it was easy. I think that doing multisig and shielded transactions
+is also not been done yet, at least not that I've heard of. So it's complicated. It's like,
+how do you get privacy and security is the problem is like, you know, we have these extreme
+privacy coins, but they tend not to have the more complex like multisig scripting features
+that we want to have for ultimate security. So I guess the last thing I wanted to cover
+was more on the on the Lightning Network side. I love Lightning Network. I think it's something
+that needs to happen. And like currently, I am on the belief of, yeah, the Bitcoin network
+right now, without Lightning is in the future will be kind of like an ACH transfer for a
+larger transaction, one that you want to know gets confirmed on the network with maybe someone
+you don't trust. Or like I said, with a with a bigger, a bigger size order, and the Lightning
+Network is going to be to take the bloat off of the main network with smaller transactions
+with people who you might already know, or it's an amount of money to where you're not worried
+about it, you know, I guess not worried about it, really losing losing from transaction. But
+overall, you I can see Lightning Network being something that that lets Bitcoin scale to the
+level that we want it to. But, you know, right now, currently, I mean, I didn't think that
+it was going to be as complicated as it is right now. Even even with even with Casa, I still feel
+like we are definitely in the alpha stages of lightning, lightning network. I think that
+there is a lot to be said with how easy this is going to be in the future. But right now,
+I think you guys have done, you know, everything you can to make it as simple. But how long do
+you think it will take for Lightning Network to, to really have that adoption, say, where, you know,
+someone who doesn't understand, you know, necessarily what's happening on the back end,
+back end, can can comfortably use it without messing up? Yeah, I mean, that's, it's tough to
+say, because I think the, the first question that might be more relevant is, do we think that even
+regular plain old Bitcoin has reached that point yet? I would say no, like, like, even even regular
+old Bitcoin is still not like mom and pop user friendly. And so the stuff that's happening with
+Lightning Network is like even more out there and cutting edge and experimental. And, you know,
+we're we're running into issues, you know, with the the Casa node, for example, of, you know,
+L&D changes that happen, you know, it's still in a state of flux where bugs can get introduced,
+and some things may start start, like temporarily failing or having unexpected behavior simply
+because of the pace of development that is happening at that layer. So, you know, it's still
+reckless to use Lightning Network, because, for example, like the backups are not at the
+the level that they need to be to, like perfectly reconstitute lightning wallet and all of its
+channels. That is one of the very simple reasons of why it's still very experimental is because
+of how easy it is to lose access to your money if you have some sort of hardware failure or something.
+So, you know, when will any of this technology get to the point that it can really have mainstream
+adoption? I really wish that it was easy to find more types of discussions like we're having right
+now, but from 20 years ago with like the internet, right? I wonder what people were speculating back
+then. You know, there are a few famous examples of, I guess, like the economist who said,
+Krugman said that the internet was never going to be like more important than fax machines or some,
+you know, very pessimistic views like that. We only really hear the few extreme historical views.
+I wonder, you know, what was the real general thought around the evolution of the internet?
+You know, I got on the internet in the late 90s. I was, I guess, doing AOL dial-up and then early
+days like Time Warner, quote-unquote, broadband. I mean, it was still faster than dial-up,
+but I never really thought about it that much. I just, you know, took whatever was presented to
+me and started playing around with it. And, of course, everyone else around me was looking
+at me like I was crazy. So, I'm kind of used to being in that level of like being on the edge
+of stuff and having everybody looking at me like I'm crazy. And then maybe like 10, 15 years later,
+I turn around and they're all doing stuff that, you know, 15 years earlier was considered crazy,
+but now it's normal. And so, with adoption, it seems to be more about just adding more and more
+layers of abstraction and user-friendliness so that, for example, a lot of people today that
+they're picking up their smartphones and they're doing their Snapchats and their Facebooks and
+their WhatsApps and whatnot. And they have no clue of the complexity that is going on under the hood
+that, you know, those of us in the 90s were dealing with. It's all been abstracted away,
+and all you have to do is swipe left and you get amazing levels of functionality. So, you know,
+from that standpoint, I think that a lot of it is going to be reliant upon the user experience
+engineers and the level of iterating that we can do where, you know, we've already seen some pretty
+cool stuff with Lightning come out with like Jewel and other user-friendly wallets for Lightning
+Network. And we just need to fail more. We need to screw up more and learn from those failures and
+move forward. And in fact, that's one of my most recent talks that I've been going around and giving
+is this kind of 10-year overview of all of the catastrophes that have happened in Bitcoin,
+all the different ways that people have screwed up and lost millions of dollars over the years,
+and how each of those screw-ups, you know, while they were catastrophic, at least for one person
+or for a group of people, it was always localized to an extent. It was never this systemic network-wide
+catastrophe. And as a sort of collective, we're able to learn from those things and move forward.
+So as long as we keep experimenting, as long as we keep making mistakes and learning from them,
+we will get to that point. It's very, very difficult, though, to make predictions when it
+comes to software. It's difficult to make predictions even when you're like writing a single
+feature for software to predict if it's going to take you like one day or a few days or a week or
+whatever, but then trying to do a prediction of this entire global network and with all the layers
+of complexity that go on behind that, it becomes exponentially more difficult to predict how long
+it will be. But I think that in general, you know, we probably overestimate how much work
+can get done in the short term, and then we underestimate how much work can get done in the
+long term because it does kind of compound over time. So I don't have a specific number for you,
+but I think that like every year that we go forward in this space, when I look back a year
+or so, I'm usually amazed by how much has been accomplished. So I figure if that continues to be
+the case, you know, a year from now, we'll look back and say, wow, you know, we got a lot done.
+Just in 2018, Lightning Network had crazy levels of growth. And I think if that level of growth is
+sustained, then, you know, it is only a matter of time, a matter of years before we can get to the
+point where this technology becomes potentially mainstream adopted.
+Yeah, I mean, I run my autopilot, and I know that's like just pretty much running around my
+node on the most dangerous level right now. So yeah, that's kind of fun to see it just suck all
+my active Bitcoin away, open random channels that no one gives me back.
+Oh, yeah. And I mean, that's the thing is like autopilot right now is extremely dumb, naive
+technology, where it's just going out and the algorithm behind it is very random, it's just like
+randomly opening channels. And a future iteration of autopilot is going to need to be a lot smarter
+economically, to figure out, you know, where are the parts of the network that could have the most
+improvement by having additional liquidity added to them, and can therefore, you know, get you the
+most fees by having money routed through you. So there's a lot of interesting like network analysis,
+and also economic like liquidity analysis that is going to need to happen as the network continues
+to grow, where, you know, networking in general is not a new thing. But I'm not aware of any
+comparable type of like economic real time network modeling on this scale that has ever happened
+before. So that's, that's, I think one of the biggest technical challenges that we're going to
+have to continue experimenting with and screwing up and, and learning from, if this thing is going
+to get to like global mainstream adoption. Yeah, I mean, it's just goes back to the traveling
+salesman problem. And, you know, that's something that Lightning Network would definitely, you know,
+especially with the autopilot is going to have a hard time getting past. But, I mean, I was just
+looking at, I forgot what website it was, where you can see all the channels opening and closing,
+and then they post their fee. I was playing around with that and just, you know, seeing who's most
+active there, and opening channels with them, and then trying to communicate with other people that
+I know in the community that have Lightning Network, and we open up maximum channels, and then
+that helps a lot. So, I think it's going to be interesting to see the model around Lightning
+Network and the economics that will come from it, because it's, it's, it's actually a really,
+really interesting model. Like you said, there's nothing else like it. So I'm excited.
+Yeah, and you know, James, and I know as we're, as we're wrapping up here, and I appreciate you
+taking the time to speak with us today, what I would really love is if you could let our listeners
+know, not only how can they, they find and follow you online, but also, what can they do to support
+your work at CASA?
+Well, it's easy to find me. If you Google my name, I'm the first result of what I've done.
+You can also just go to my website, it's lop.net, l-o-p-p dot net. I've got all of my educational
+resources, all of my articles, videos, presentations, whatnot, are archived on there.
+Probably at least like a year's worth of material, if anybody actually wanted to go through all of it.
+But, you know, at CASA, we just need more adoption so that people can tell us what we're screwing up,
+so that we can fix it and make it better. And we've got, we've already got, you know, lots of users
+giving us great feedback, both for our node product and for our wallet product. And we're just
+continuing to iterate and trying to work our way around some of the complexities, especially with
+the Lightning Network. I would say one of our biggest challenges that we've had over the past
+few months is that, unfortunately, a lot of our early adopters are extremely technical users, and
+they've actually been asking us for extremely technical features and, you know, helping them do
+stuff under the hood. And we've been pushing back against that. We don't want to overcomplicate the
+UI and put in a bunch of advanced functionality that would overwhelm the average person. So we're
+just trying to find the right balance there between giving a person full control over what's happening
+with their node versus making it an easy solution to the problem. So, you know, we're trying to
+make it easy to use the seamless user experience. Yeah, give me the login for my node. Yeah, we can
+definitely give you the login that will void your warranty because I can tell you that a lot of
+people who have started messing around on the command line have managed to screw up their node
+because basically the CASA node runs like seven or eight different Dockerized services. And what
+we've actually found is it's very easy for people to, like, install other software, and then that
+just screws up the whole networking stack and random things break, and it becomes a real pain
+for us to diagnose. All right, I won't do that. Nevermind. Well, guys, is there any anything else
+that you'd like to ask Jameson before we let him go here? No, not really. No, all I want to say is
+people call me a jerk and Jameson just told you to Google it. So there you go. Yeah. Yes. It's very
+important. We have all these all these resources at our fingertips that we just don't take advantage
+of. But Jameson, seriously, thank you so much for taking the time out of your Saturday to spend it
+with us. We appreciate it. I'm sure our listeners will appreciate it as well. And to our listeners,
+we are so appreciative that you continue to tune into the Hashrate Crypto Mining Podcast. It is
+March 9th. This show will be coming out in just over two weeks. So until then,
+you know, we will be holding down the floor and we will talk to you guys very soon.
+Thanks for tuning in to the Hashrate Crypto Mining Podcast. We would love it if you would
+subscribe to this show on your preferred podcast platform and leave us a review with your feedback.
+Also, if you could help us grow the crypto mining community by sending this show to a friend or
+sharing it on Twitter, that would be epic. Let's grow the mining community and help other people
+see how much fun it is. And of course, remember to follow us on Twitter at Hashrate. That's H4SHR8.
+If you want to snag some mining merch or to schedule a consultation with the guys,
+visit www.hashrate.com. H4SHR8.com.

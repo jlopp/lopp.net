@@ -1,0 +1,1139 @@
+Hello, everyone. Welcome to another episode of Crypto Scam with your host, Tone Vays.
+We are continuing the Ethereum series. This is going to be part three of Crypto Scam Ethereum.
+If you recall, in episode one, we talked about the regulatory issues that Ethereum could
+potentially face and why I consider them to be totally centralized, as the regulators
+can easily take them down. In part two, me and Johnny Dilley discussed the idea of smart
+contracts and why do smart contracts need to be decentralized from a conceptual perspective.
+In this third episode on Ethereum, we are going to get into the tech a little bit and
+talk about the scaling problems that Ethereum is already facing, and they're only going
+to get more complicated over time. There will be at least one more on Ethereum. I could
+probably do at least five more, but there will be at least one more talking about the
+economic incentive of having an application token. With us today for this episode to talk
+about the scaling of Ethereum is someone I've been trying to get on for a while now. His
+name is Stop&Decrypt with an awesome Twitter account that has written two of the most amazing
+comprehensive articles that I've read summarizing the Ethereum scaling issue. Stop, thank you
+for joining us.
+Thank you for having me.
+For several reasons, Stop has decided not to show his face and we blurred out his camera
+a little bit. This will be a really good investigative journalism to talk about it. Here, let me
+throw on the screen your Twitter profile. All of these links will, of course, be in
+the video description. You definitely want to follow him on Twitter where he points out
+a lot of the technical issues with Ethereum and several other things. He also has a great
+article out helping you build your full node, which is really, really important. We're going
+to get into that in this episode. Once again, thanks, Stop, for joining me on this episode.
+Hey, let's start with your background a little bit.
+Sure.
+How long have you been in the crypto space and what got you into it and what year was
+that?
+There, I guess, there were two moments where I first heard about it and barely paid attention
+and then the moment when I really dug deep into it all. When I first heard about it,
+like everybody else, I think it was a slash.article that led me to looking into it. That had to
+be around 2011 because I have a confirmation email from, I think it was bitcoin.cz, which
+is what slushbool used to be from 2011. I remember mining for maybe only a week, but
+I stopped because it just didn't make any sense. I would have made like 13 bucks a month,
+one bitcoin a month. At the time, it just didn't make any sense to me and I had no foresight.
+I had no understanding of what was going on. I dropped out, stopped paying attention to
+it until about 2013 when it started going up to a thousand. I think a lot of people
+did that. I read a little more, I got a little more interested, but never really followed
+through again. At one point, I considered buying a Butterfly Labs miner. I'm glad I
+didn't do that. I was going to split it with a friend, but yeah, I was going to say, no,
+it's good that you were around back in the GPU mining days and that is crazy. That's
+what I always tell people. The most money you will make from mining is if you have the
+capital to hold on to that bitcoin three to four years after you mine it, because you
+have no idea what that environment will be at the time. Even if you can get on and mine
+for X amount of time and then sit on that bitcoin long enough, it'll get you all of
+your money back, which is difficult to do if you want to be a perpetual miner. You got
+to have a real backup of fiat so you can actually wait out and ride a bull market.
+I was young. I had no foresight. I didn't follow through with any of it.
+You were in before me, so you had some foresight there. Let me ask you another question. Since
+you've been around for a while, because I was around before Ethereum made its announcement.
+I came in in 2013. I wasn't that involved. I only heard of Ethereum when I came back
+after I dropped out in 2015. You weren't there for the crowd sale stuff
+of Ethereum. I was only touching the surface during 2013-2014.
+I need to get Kevin Pham on. Maybe I'll do. Maybe there'll be a part five. I'll sub everything
+up with Kevin because I know Kevin was around. He even showed the emails of the Ethereum
+crowd sale and stuff. Let's just jump right into it. Again, I'm
+going to go to screen share. I'm going to pull up your medium profile. Those were your
+last two big articles having to do with Ethereum. Let's just go ahead and start with the first
+one. It's titled, the Ethereum blockchain size has exceeded one terabyte. Yes, it's
+an issue. You have an awesome cover picture. I absolutely love it. Where is it?
+These are long articles, by the way. It's at the bottom.
+There it is. Ethereum holding up the chart. This is a chart that you used. I went to it
+and the guy has stopped updating this chart. Yeah, he came onto Slack one time because
+I asked on Slack if anybody knew who was running the site. I don't know if he just happened
+to browse or if someone contacted him, but he came on and he said that he just stopped
+doing it because he just couldn't keep up. Right. It's not that you can't keep up.
+It's not that he couldn't keep up with the work of updating the chart. He couldn't keep
+up with downloading the data in Ethereum, right? Yeah. Like it was a technological fail.
+It wasn't like, oh my God, I'm bored. Yeah. I don't know if it was his hard drive or I
+don't know what the scenario was, but something stopped him from being able to do it. Whereas
+that doesn't happen. Like if your Bitcoin node works now, it works tomorrow. You know,
+it's just. So let's start at the very beginning, right?
+Like what is a blockchain to you? And then we'll go from there talking about Moore's
+law and Nielsen's law and all this other stuff. Well, let's start with the easy stuff. What
+is a blockchain and what are its benefits and what are its. Well, that's a touchy subject
+for some people. Some people try and say that you could have centralized blockchains, but
+it's just a segment of data that has a hash and then that hash is linked to the next segment
+of data. And what that provides, like the utility that that provides, some people argue
+it has a much broader scope than how we apply it in Bitcoin. And a lot of people argue that
+it only works to solve a simple thing. Like one problem that we have, which is immutability.
+And that's your view on it as well. I see it as. The goal is to come to decentralized
+consensus over a ledger. I don't want to like reiterate eight years of what we've been saying.
+So but yeah, a blockchain, the purpose of it is to have an immutable history of data.
+Right. And obviously what the dial hack Ethereum has proven that they don't care for immutability
+of data, but that's probably for another time. But you agree with that statement though.
+Yeah. Perfect. Okay. So I still have screen share on. We're going to let's go to your
+article one at a time. Let's talk about some definitions, right? So that people understand
+when we're throwing terms out. So can you briefly explain what Moore's law is because
+people always use it all the time, but just a layman's version of it for the non-developer.
+Like what's Moore's law? Specifically, Moore's law is all the zeros and ones that are computed
+on your computer are done on an integrated circuit. And those circuits grow in density
+over time. The observation I think was around 60% annually. I think I even wrote that in
+the article, but yeah, it's just an observation of where, of like the rate of growth for computers,
+for a computer's ability to process information, but it's not applicable from every angle.
+There's other ways information is processed that Moore's law just doesn't apply.
+Right. And that's where the blockchain stuff comes in because it's not just the processing
+of information. It's the moving of that information around the world, right? And this is where
+bandwidth comes into play. And in your explanation of bandwidth, you say that bandwidth grows
+slower than the circuit's ability to process the information. And that goes into Nielsen's
+law. So maybe you can define that for us real quick.
+Nielsen's law is the same concept. It's an observation of the rate of growth within a
+certain system. So Moore's law observes the density of integrated circuits. Nielsen's
+law observes the average consumer bandwidth speeds. But even that misses the point because
+the average consumer bandwidth doesn't apply to other countries. It doesn't apply to third
+world countries. There's a lot of places in the globe that just don't have the accessibility
+that the first world countries have. And the first world countries have such a huge effect
+on that average number that referencing it just misses the point because we need this
+system to be distributed throughout the entire planet, not just throughout America, not just
+throughout Europe.
+Right. So the points that you make are, I mean, even Moore's law has already, as far
+as I know, is not up to speed as initially considered. It's already breaking down and
+the circuits are not processing the information as fast as expected. Now bandwidth is even
+slower and blockchains have another component and that's network latency, which is scales
+even slower than the bandwidth. And my understanding of network latency is basically the ability
+to just process the block. And the bigger the block is, the longer it will take to process
+even with good bandwidth.
+Yeah, because no matter how good your bandwidth is, there's hops. So the data, the block goes
+from one node out to its peers. And then each of those peers have to take its time to process
+that and then it hops. And then those powers of nodes, so each of those eight peers, their
+eight peers has to now process that information as well. And it just keeps on going. So latency
+is that delay between actually going across the network.
+Right. And this has been one of my main arguments when I debated Roger Vier against Bitcoin
+Unlimited, saying that you can't go to bigger blocks. I mean, two megabytes might be okay.
+No, two megabytes is probably okay. Four megabytes might be okay. But after that, it scales very,
+very badly. And the right B cache is already on 32 megabyte blocks. And I think they're
+planning to go higher. And I can't wait. Is that absolutely crazy?
+I can't wait. I want to see it happen. Yeah, no, in a way we all do. Okay, so let's
+draw a couple of more definitions out there for people. And then we're going to get into
+the problems of Ethereum scaling. So the Ethereum developers like to name their releases with
+some weird names. So can you just explain to us the difference between parity, salinity
+and Casper? Oh, parity is a wallet. Salinity is their coding
+language for the smart contracts. And what was the third one you said?
+Casper. Casper?
+That's their proof of works. That's their new upgrade to proof of work, proof of stake
+with sharding, right? Yeah.
+Because these terms are always being used. And they're not really like, they expect everyone
+to know this, like not even Ethereum people. Yeah, I mean, if you asked me to explain to
+you the intricacies of Casper, I wouldn't be able to.
+Well, not the intricacies. Just like.
+Like me writing these articles, I can't do that. So I have no expectation that the layman
+is going to have any idea what Casper is besides its name.
+Right. So as far as my understanding of what Casper is, Casper is the name of their new
+upgrade that's going to have sharding and proof of stake.
+Yeah. Or one or the other. And it keeps changing
+because first, they were going to do sharding first. Then they were going to do proof of
+stake first. And now I think they decided to do it at the same time.
+Well, my understanding is Casper is a contract that these staking nodes are going to have
+to run. And it was calculated that in order to run the Casper contract, you would need
+to be staking about a thousand Ethereum to break even when it comes to being one of those
+nodes that stakes. And sharding effectively, my understanding, because it's all very unclear,
+sharding somehow distributes that amongst nodes. So now sharding requires you to stake 32 Ethereum,
+which I still think is absurd.
+I wasn't going to get into this this quickly, but I don't understand why there is a break
+even point in staking your coins. Right. It implies that you can be losing coins. Right.
+Because if I stake a thousand Ethereum, what do I need to break even on? Am I losing these
+Ethereum every block if I don't find enough blocks? Let's say I stake 10 Ethereum. Right.
+I know you need a minimum of 32 Ethereum to have a node at all. Right. And assuming they
+go to proof of stake, which, by the way, I don't think they're ever going to. That's
+a different that's a completely separate discussion. I don't understand how proof of stake is possible.
+What are you going to tell your miners? Stop mining?
+Yeah, well, that's why Barry Silbert has this sticky little plant of his with Ethereum Classic.
+Right. Also, I don't know if you know about their difficulty bomb, which I thought was
+supposed to happen a year ago. But they keep on pushing back. Oh, it's so it's like the
+debt ceiling. They keep delaying it. Yeah. So it's not OK. So they can just so Vitalik
+just tells them what the next date is. There's no like that's that's that's what it seems
+like. Excellent. OK. So you know what? Let's let's hold off on that for a second. Let's
+talk about their crazy bandwidth. So your article explained it. And like a lot. Here's
+the thing. Right. Like I also like about six months ago, like yourself, I was Googling,
+you know, setting up on a theory not that I was going to. But like if anyone is capable
+of setting up an Ethereum node with full history and in all my Google searches, I was not able
+to find anyone that was able to do it six months ago. So is it even harder now to run
+a full like if somebody wanted to run a full Ethereum node with full history, is it possible
+for them to download the entire history of that data? I know that it's possible. Jameson
+Lopp did it recently, but he had a 2000 dollar piece of machinery that he was doing it with.
+And he had a one gig fiber connection or something. Yeah. So I mean, that's that's an exception.
+So it's definitely possible. But once once you do that, you're basically subsidizing
+the network for everybody else. So if he kept running that node, I don't know if he is.
+But he's basically one of those centralized nodes. And it shouldn't you shouldn't have
+to spend that much money to take part in the network effectively. And Ethereum doesn't
+separate like SPV and light client nodes versus nodes that actually process the transactions.
+So nobody knows how many real nodes there actually are. Right. Yeah. The thing is, I
+don't know how you would go about tracking what nodes or what without some sort of complex
+way to request random nodes for different types of old data and recent data. So how
+you would do it with Bitcoin, you just assume because there is only one every node validated
+the entire chain. So like whatever the number is, there's no like splitting that number
+up between different kinds. With Ethereum, since there's so many different options and
+they all identify as a node, you have this large number with a big cloud over it. Right.
+So I guess we can take this conversation to all kinds of directions. And let's just summarize
+your articles about that. So you also mentioned how it's basically it's all about the exponential
+functions where Bitcoin has linear growth. And even if I mean, we were never going to
+go to two megabytes because hard forks are just impossible because you can't convince
+everyone to upgrade. Right. But if possible to an extent, because if the entire network's
+life depends on the hard fork, then it's going to happen. True, true. It's like I always
+say like if it's some kind of a bug, then yes. But if it's an optional hard fork, it's
+not going to happen. Yeah, I don't see at this point, especially I don't see an optional
+hard fork happening at any point. Right. So even had Satoshi decided on two megabyte blocks
+or five megabyte blocks back in 2011, we would have been just fine. We would have still had
+linear growth. Yeah, because because it really doesn't matter. Like that as long as it's
+not ridiculously high. Right. I would say 32 pushes it pretty well. I would say that
+at some point in the future, eight megabytes could be sufficient. But it would also not
+be much of a difference compared to where we are in respect to actual scaling. You need
+you need orders of magnitude and scaling. You don't just need doubling. So
+right now, Bcash is continuously trying to double. But their ultimate goal is to be just
+like Ethereum to let the miners decide how big the blocks are. And that's what Ethereum
+does now, correct with their gas. Yeah, it's it's a little I don't know if it's 1.2 1.5.
+But basically, you take a moving average of the past x amount of blocks and the gas limit
+on those blocks. And then the current block could be I think it's 1.2 times that size.
+But that's still exponential growth. Yeah, if you keep like if you make that block 1.2
+and then you make the next block 1.2 of the next moving average and you keep doing that,
+that grows exponentially as well. And even if it's like, even if you're not doing that
+consistently, it's still growing at some exponential curve because it goes up over time. I mean,
+you could see it and the argument the argument against that is always well, we've decreased
+the gas limit some this whole statement is absurd. We've we have like we have decreased
+the gas limit in the past. So you already have a and you're acknowledging the centralization
+just by saying that and then what you're pointing to only happened once. Right. Well, once is
+enough to prove you're centralized and not immutable. Yeah, no, it's definitely enough
+to prove that you're centralized. But even like it like the claim is that it's not going
+to keep increasing because we've decreased once. And that just doesn't make any sense.
+Because when you look at it, it's just it's kind of like saying, hey, Bitcoin hashrate
+is not going to increase because it decreased up one time. Yeah. All right. Pretty much.
+Okay. So, um, the next thing that oh, man, I had no thought in my head. Um, so. Okay.
+Oh, the gas. I'm sorry. So here's a question. I hope you know. Um, well, I've never used
+Ethereum. So I have no idea. Right. So one Ethereum token right now is about 600 bucks
+or 400 bucks, whatever the hell it is. Right. But is how is gas calculated? Right? Like
+a contract costs X number of gas. But how much Ethereum is gas? Right. Like I know I
+have one Bitcoin transaction costs me X amount of satoshis per byte of size. Do you know
+how gas is calculated for paying a smart contract? Um, because I don't know. Like if I have to
+pay two gas to pay for a smart contract, I'm not sure what that means in dollar terms or
+how that two gas was calculated. Yeah. Off the top of my head, I don't know. I don't
+know the exact details. And every time I read it, I like grasp it. And then I forget it
+because it's just, it's, it's insignificant to me. It doesn't matter because I don't need
+to, I don't need to understand exactly how it works because I don't use Ethereum. I don't
+care for it. Right. Okay. Makes sense. But, but it's, but it's a sub small amount, right?
+Like if I'm holding one Ethereum token, I can run a bunch of smart contracts, right?
+Yes. And no, I guess, I guess it depends on how full the blocks are because the each block
+has a, has the gas limit, which is determined, you know, by the miners. But, um, that let's
+say you have a contract and that contract requires 50 gas and the gas limit in one block
+is a hundred gas. You can only run two of those contracts. So there's three, there's
+going to be a market now for getting in and then you have to pay a fee to be prioritized.
+So it's the same concept as Bitcoin when it comes to fees and getting into a block, but
+there's just no limit. The miners can allow more if they want to. And the only reason
+they're not doing it right now is for altruistic purposes because of the uncle rate is too
+high for them. Right. So, uh, again, just to, for definition purposes, uncle rate is
+basically when let's say two miners, two separate miners find a block almost at the same time
+and they both try to propagate that block. So some of it could be luck, whichever block
+moves through the system faster. So it's like in Bitcoin, right. You're connected to about
+eight peers. So if you can get lucky that the eight peers you're connected to slightly
+faster got that block by milliseconds and then they slightly faster propagated that
+block through their network and the next block got built on top of that block. So if, uh,
+that could be more luck than you finding a better block. Right. Um, well, I think it's
+better to explain how it works in Bitcoin first. In Bitcoin we have orphans. So, uh,
+if there's two chains being built at the same time and then one becomes the longer one,
+the block that was built on the chain that doesn't get extended, that block is an orphan.
+The same thing, the same thing happens in Ethereum, but Ethereum also has a function
+where you could take those orphans and then make it an uncle and you can include that
+into the blockchain with your next block. But doesn't that, Oh, so that means that the same
+contract can process an extra time for no reason at all. What do you mean? Well, um,
+if that kind of, Oh, do they do in that uncle block, do they look for contracts that weren't
+already processed in the, in the main chain? Yeah. That like that, that's off the top of
+my head. I, I don't know exactly how it works, but if there's duplicate transactions, I'm
+imagining it just overlooks the duplicate transactions, just looks for the ones that
+aren't in the block that's being paired with. Oh, I gotcha. But, but, but there is an assumption
+that, uh, those are valid contracts. Uh, yeah, but no, you, you still have to validate them.
+They're not like bypassing anything. Okay. I see. I see. The only, the only thing is
+like not every orphan becomes an uncle. So it's, it's just, it's just the second aspect
+of the orphan rate in Bitcoin. We don't really have that many orphans because block times
+are 10 minutes apart. Right. I gotcha. So, um, so where do you think this goes? So, um,
+so you're expecting the, the number of transactions on Ethereum to just keep growing exponentially
+and this leads to less and less validating nodes leading to more centralization, which
+is the concept you define as scaling in versus scaling out. So maybe you can define those
+for us. Um, yeah. So I just want to review how I, how I put it just because once I put
+this out, I have not read it since and I have a tendency to forget everything that I write.
+Yeah, no, those were great articles. I mean, I, I read both of them and I read slow, so
+it took me a while, but there's, there's great information there, which is why I wanted to
+have you on. Um, yeah. So this comes back to the definition of what scaling is. Um,
+because people like to throw around the word scaling and nobody knows, like not everybody's
+on the same page. So when someone says, well, this doesn't scale the listener or like the
+person who isn't as technically inclined is thinking of what scaling means in their eyes.
+Um, like you need, you need to be on the same page. Okay. So yeah, we, we need to be on
+the same definition of scaling before we can really use, use it as like a, a cornerstone
+of a subject that we talk about. Um, to me, scaling is increasing the number of fully
+validating nodes. It's not scaling the amount of transaction throughput on the base layer.
+I'm not, I'm not interested in scaling. Like I don't want to say that I'm not interested
+in that type of scaling. I'm not interested in it if it sacrifices my ability to run a
+full note or if it sacrifices anybody else's ability to run a full note. I'm interested
+in more people being able to do this over time. I think that, um, being able to directly
+be part of the network for whatever reason, like it doesn't matter. So there's a lot of
+people who like to question and say, well, what are the incentives for running a node?
+And then, and then other blockchain networks come up with master nodes to provide an incentive.
+I don't think there needs to be an incentive. I think you need to have whatever incentive
+you want and to have access. So like, as long as the access is there, it doesn't matter
+why you want to run one. You're able to, to me, that's important. So got it. And, uh,
+and Bitcoin is trying to do just that. Correct. I wouldn't even say it's trying to do that.
+Just that I'm, I would say that it is doing that. I would say it's successfully doing
+that by denying motions like P cash to, uh, prevail or take, take place on the Bitcoin
+network. Right. And your argument is, and you even had a few back and forth with Vitalik
+on this is that Ethereum's, uh, all of Ethereum's, uh, scaling solutions would reduce the number
+of full validating nodes. Yeah. And his, his response, I don't want to say it's ingenuous,
+but he tries to make the argument. He tried to make the argument at one point that all
+the nodes on the P2P layer are effectively the same. So you could run a, you could run
+a node and not validate every shard and then choose to, if you want to, but that's not
+the same as everyone validating it all by default. It's, and, and he says choose to,
+but you can only choose to, if you have the ability to, and people's ability to do is
+also going to be limited when it all gets rolled out, if it even becomes something that
+they managed to get working for who knows how long.
+So what would you, do you want to take a guess? I mean, we know Bitcoin has one high, about
+115,000, uh, full validating nodes. Uh, you're running one, I'm running one. Uh, a bunch
+of people are running them. And, uh, what's your best guess? What do you think Ethereum
+has?
+Well, the numbers, the numbers fluctuate a bit when, um, there's only one site that tracks
+the total count that I'm aware of. There's no site that tries to differentiate them.
+Uh, and when I say the total count, I mean, they're including, they're including fast
+sync nodes. So that would be like including all the Electrum and Armory nodes in Bitcoin,
+which we don't do. Um, so the numbers hover. I, I, my guess is it might be around 15,000
+right now. I've seen it at 20. When you look at the archive websites for that website that
+tracks it, you can see that number going up a little bit. I think at one point it might
+have been at 40, but it's definitely been decreasing from there. And
+so I don't know. I, I would say, I would say maybe around tens of thousands, but that's
+the total count again. So you have like how many of them are fast versus not. I, I, that's,
+that's anybody's guess. And the problem, it shouldn't be anybody's guess, you know.
+Gotcha. So, um, so when do you think like this ends? Uh, okay. So before we go there,
+I don't think, I don't think it's going to end for a while. I think it's going to keep
+going because you have the problem with the, this is, this is another concept I, I wish
+people would, would grasp is Bitcoins and network functions with just one node. It doesn't
+need to have hundreds of thousands of nodes. I'm hoping that it would need at least two,
+not one. Well, the thing is you could append the blockchain on your own. You could run
+one node. You could do that yourself. You could, but the thing is you can have two,
+you can have three. Even Craig Wright tries to make the argument that Bitcoin would work
+with three, you know, it's a valid statement, but it completely misses the point. Like,
+because it's your, you don't want to have to be dependent on those limited amount of
+people running those nodes or those limited amount of people who are, have the ability
+to run those nodes. You know, you don't want to, you don't want that dependence. You want
+to be able to access the network and be part of the network yourself. So when, what exactly
+was the question you said with Ethereum? Well, when do you think this unravels? Yeah. Okay.
+So yeah, circling back to that, the issue is it doesn't, it's not going to be some sort
+of apparent unravel in my opinion, because the, the, the amount of nodes that exist that
+are sinking in the network could be reduced by one and that set of nodes that are still
+sinking in the network is still sinking. You know, you could keep on, you could keep on
+reducing that number and it works between the nodes that are connected. The issue is
+nobody else at one point will be able to run these nodes. When, if they do ever move over
+to sharding and it requires 32 Ethereum to stake 32 Ethereum right now is, is how much
+I think it's like, yeah, I think it's about, let's say $500 price of Ethereum. So about
+15 grand. Yeah. So if you have 15 grand just to stake in Ethereum, you might have enough
+to fund some sort of server or host it in the data center and it's not going to be an
+issue. So like, I think, I think Ethereum might sustain itself for some time on that
+premise until it gets to a point where there's a limited amount of people running Ethereum
+and then the regulators can just come down on them because it's easy to pinpoint them.
+Well, I would think that it's not even going to get down to the regulators. I think that
+enough people will realize this is ridiculous and leave the network. That might happen as
+well because another thing is you have these, you have these light nodes that are completely
+dependent on these fully validating nodes because the light nodes are the issue. It's
+funny. The issue is a lot of these nodes, they can't, they can't sync. So the suggestion
+is run it in fast and then they run it in fast and they can't get any peers because
+the amount of peers that are syncing are so limited and they can't see it out to all
+the light nodes. So it's like this double, it's this double complication that they're
+having.
+Right. This sounds like the problem I used to have with BitTorrent when I want to download,
+you know, some very obscure movie or like a very old song and there's only like four
+people seating it and there's like nine, 20 people trying to reach it.
+Yeah. It, it gets really slow and it sucks. Well, I mean, even, even just like Torrents
+over time, the seaters drop off.
+Right. Less and less people eventually start seating because they're not like benefiting
+from it. And from reading your second article, it sounds like Vitalik is saying you will
+agreeing you will need like a thousand Ethereum in order to actually profit from staking the
+Ethereum. And wouldn't just a couple of big boys be the only ones that are running these
+things?
+Yeah. And then it goes back to the whole problem with staking in general, because if you have
+that much to stake and then you're profiting, all you have to do is take those profits and
+then put them back into the system. And now you're running two nodes at stake. And then
+like, as you, like you, you slowly grow in the amount of nodes that you're running and
+then you become the network and then you have say over what gets run. And people like to
+point to mining and saying, it's the same thing. It's not at all. The network of nodes
+determines what the consensus is. And miners have to make valid blocks. It's completely
+different and they love to convolute that in defense. And it just, it doesn't work.
+Okay. So do you believe that they will be able to go to proof of work? I mentioned that
+earlier. I don't think it's possible. I don't think it's possible for them to go to proof
+of work. I don't think the miners are going to let them.
+You mean proof of stake?
+I mean, pro stake, right?
+Well, what does it really mean to say the miners aren't going to let them?
+I think Ethereum is a fork. I think there'll be an ETH and an ETW. ETW stands for Ethereum
+work. This way they can keep all the same smart contracts on the same platform and they
+will just eliminate the difficulty bomb altogether.
+I don't know. I don't know. I mean, that depends. I don't know how long you'll have assist.
+I mean, people were speculating over how long bcache would exist with having two networks
+using the same hashing algorithm. I don't know how long that fork would exist with Ethereum
+Classic existing at the same time.
+Well, it could exist. No, but the new Ethereum work chain will have all of the ICOs on it.
+Ethereum Classic has nothing on top of it, right? So there's no, there's no transactions
+happening on Ethereum Classic because no one has built any ICOs on it.
+Right.
+So nobody needs that chain.
+Yeah, but the issue is now you have two pairs of ICO tokens for everything. I mean, who
+do you think Vinnie Lingham is going to side with?
+I don't know. That's going to be, and I don't think Vinnie knows, right? Like for example,
+Vitalik goes to stays with, he's going to stay with proof of stake and sharding, but two ideas
+that are both unproven in the technological realm, or is he going to stick to the Ethereum
+work chain that has been working and made him a multimulti-millionaire up to this point?
+It's a big decision for every ICO. Where do you go? And I don't think it's an obvious
+decision because, you know, remember if Jeff Garzik would have done his 2X, there would
+be no first block because there was a bug, right? So you have to choose where you're
+going to be and you don't know if the proof of stake with sharding is going to go completely
+belly up within the first week because it's so speculative.
+Now if the entire industry, like you're not going to be able to move your ICO token to
+Ethereum Classic, I think that's another, that would be too much of a no reason for
+that, right?
+What about all these securities, right? What about all these tokens? Like who gets to decide
+that the valid token is on this chain or that chain? What expectations do the investors
+have to begin with?
+No, it's irrelevant. There are no investors, right? Because these ICOs are companies that
+are giving a security to their investors but they don't call them investors and they don't
+call them securities, right? So their investors have no rights. That was the EOS, right? EOS
+said you have no rights. This is not a security. You have no rights. So it's up to one guy.
+It's up to again, up to Vinny Lingham, up to Reggie Middleton, up to the CEO of the centralized
+company that issued the ICO token on where that ICO is going to be run when, and I'm
+saying when because I've been talking about this for years, when Ethereum splits again
+between proof of stake and proof of work.
+I think that they're all going to come together in some centralized manner and just decide
+to go with Vitalik. That's my opinion. I mean, we can agree to disagree. I mean, it's all
+speculation.
+Yeah, no, that would be interesting. That's what I'm waiting for, right? Like, I'll reveal
+some things.
+Yeah, I'm waiting for that split. I'm waiting for when Vitalik flips the switch to proof
+of stake. How many of the ICOs are going to go with them? And I wouldn't be surprised
+if the majority don't go.
+I think I would be surprised if the majority stayed behind, to be honest. I think a lot
+of the miners might be playing Ethereum Classic, and I think they might be loading up on it
+just so it can pump. That's just my speculation, but it's all speculation. I don't know. You
+could be right. I mean, you know what, you made a valid point here, right? But if all
+the miners do move to Ethereum Classic, that doesn't necessarily mean that the coin's going
+to pump.
+Well, they might be planning a pump.
+Yeah, that could be true. Yeah, that would be true.
+I don't like to speculate on price, to be honest. I just DCA Bitcoin.
+Yeah, that would be interesting. All right, so let's talk about sharding. Let me tell
+you my... So I was at the very first scaling Bitcoin conference in Montreal. I believe
+that was in 2016, I want to say, early 2016, maybe. And Vlad Zamfir gave the presentation
+on sharding, and I believe that was the first public introduction to sharding. And I was
+hanging out with a bunch of those guys later that night, and I was listening to Vlad say
+how he would love to bring sharding to Bitcoin, because it's such an amazing scaling solution.
+So can you just explain what sharding is, and what a terrible scaling solution it actually
+is? And later on.
+Yeah, that's interesting, because I don't know why he would... My interactions with
+him and the way I see him engage when he's doing those lectures, or whatever you want
+to call them, or when he's interacting with people on Twitter. I have no issue with him
+as a person, so I just want to throw that out there.
+I like Vlad. I've hung out with him on several occasions.
+But I know that he's kind of against proof of work as a concept, or that's my interpretation
+from what I've seen him write. So I don't know why. Maybe his opinions have changed
+since that statement, but I don't think he would want to bring sharding to Bitcoin now,
+just because he's against proof of work. Unless he... I don't know.
+So I guess explain sharding. Sharding keeps changing. Different people have different
+opinions on what it means, but fundamentally, when they talk about sharding, and when I
+mention it, each shard is its own blockchain. So what you're doing is you're making a bunch
+of blockchains, and then you're tying them together on a network above each of those
+blockchain networks. So at its fundamental... Fundamentally, sharding is combining many
+blockchains together. That's the simplest way to put it.
+Okay. And what does this do if you want to use it on layer one? What happens?
+And you have some diagrams that are out in your article.
+This is why I like writing, because it really gives me a lot of time.
+It's way down in...
+It's going all together.
+Jesus. I read it. It took me a little while. So here's your example of sharding, and over
+time it's this.
+No, no, no. Keep going down.
+Oh, I didn't get to it yet. This. Sorry. You're right.
+Well, no, no. That's just an extreme... Keep going down. Okay. So that one helps a little
+bit. So the purple blockchain at the top is one shard. And the nodes that create the blocks
+for that shard, those are all centralized and they're staking 32 Ethereum each. This
+is just a silly diagram that kind of helps people visualize.
+Trying to zoom scale out here. There we go.
+This begins to make more sense when you go down to the next one.
+Okay. So you want to explain this one more time real quick?
+Okay. So the purple blockchain at the top, that's one shard. And the nodes that are surrounding
+that purple block in the center of that circle, those are the nodes that are staking 32 Ethereum.
+Some of them stick to one shard and some of them delegate the other nodes to different
+shards. But ultimately those are the only nodes that have any effect on what goes on
+in each shard. They're the ones that are validating.
+And what does go on in each shard?
+Whatever would go on within a blockchain. So how would you explain this? There's a lot
+of different ways you could start, but...
+So are you saying that instead of, let's say...
+Because I want to explain headers and the difference between validating everything in
+a block and just validating the headers, because that's the most important aspect here.
+Because in Bitcoin, every node is a fully validating node. So it validates every transaction.
+It validates the entire block. But each block has a header, which you could just validate
+the headers, but it doesn't prove that everything in those blocks were valid.
+And the issue with this system is each of these shards work together on a network above
+these individual blockchains. And that network above only looks at the headers. It doesn't
+look at any of the transactions.
+So the green is the actual Ethereum blockchain.
+The green is what's going to be the new Ethereum blockchain.
+In their proof of work with sharding, proof of stake with sharding.
+Oh, I should just do this.
+This is just my rendition of this. So I don't want anybody to look at this and think that
+this is some sort of completely accurate model of what the network looks like. It's not.
+It's a very simplified version to explain the points that I'm trying to explain, not
+to cover exactly how it works.
+So yeah, that green blockchain is the main chain or the beacon chain as Vitalik has referred
+to it at some points. And all that chain does is it takes the headers of each of the shards
+and sinks those into a block. It creates a block of headers.
+So you're basically breaking up your mining, though in a proof of stake model, there's
+no actual mining. You're breaking up validation into smaller pieces and then combining them
+by looking at the headers.
+Yes, the issue is though, validating each of those small pieces only happens by the
+subset of nodes on that specific shard and you need to trust those nodes.
+And how are you guaranteed that your transaction is going to be picked up by one of the shards?
+Well that's another question in and of itself because cross shard transacting is complicated
+and I don't think it's fully fleshed out just yet.
+Like specific contracts are going to be running on a specific shard. They're not going to
+be running on cross shard. I mean, you might be able to get something working in that fashion,
+but generally if you're some sort of DAP developer, you're going to throw it on a specific shard.
+So let's say CryptoKitties, right? So CryptoKitties would always have to run on this circle.
+Yes, and the problem is that doesn't even resolve the backlog issue that CryptoKitties
+is already creating because I don't know of any way to prevent the transaction backlog
+on a single shard. You're still going to run into that issue from my understanding.
+But even then, like all of this, all of this is like looking past the fundamental problem
+that I have with sharding because if you want to run a node from home, you're trusting these
+other nodes to say that these are all the valid transactions, that none of these transactions
+are invalid. And all you can do is check to see if something's invalid, but you have no
+way to stop it. And I went into this with the section on Bitcoin's network because the
+way Bitcoin's designed, when your node propagates, you have the power to refuse to propagate.
+And since all nodes validate together, you announce your block to the network and then
+that passes it off to the next set of nodes and then they pass it off and whatever many
+hops the entire network has it, all of those nodes are running the same consensus rules
+and they have the power to reject propagation. And that includes your node. This block, your
+node could be the second hop, the next block, your node could be the fifth hop. It doesn't
+really matter. The point is, together you have the power to reject. In Ethereum, all
+of these light nodes, they don't have that power to reject. They have no say because
+they're not validating. They're just trusting and checking. They're not propagating to
+the other nodes that validate.
+So eventually you see Ethereum becoming, let's say, maybe 10 nodes or not even.
+I wouldn't say 10 nodes. I would definitely say that when Ethereum crashes, it's probably
+going to be more than 10 nodes. But 10 nodes isn't, I mean, like 100 nodes doesn't mean
+100 people. You could have 100 nodes, you could have 50 people. And I think that's what's
+more important. It's location, distributed, how it's distributed among people, countries
+across geographically, stuff like that matters.
+And, oh, you're going to say.
+Well, no, I'm just, when you really, when it really comes down to it, that stuff's the
+most important. Let's say you live in some, let's say you live in Taiwan, right? And you're
+the only Ethereum node runner there. The government's going to tell you what to do, right? They're
+going to have the ultimate say if they want to. And that's a problem because there's one
+and you can pinpoint who that one is because it's clear that there's a lot of activity
+coming out of that location. And Bitcoin works because of the amount of, it just keeps increasing
+the targets to the point where you can't even win with a carpet bomb. There's just too many
+of them to destroy the network. That's why it works. It's the only way it works long
+term. So that comes back to, you know, Ethereum lasting for however long it might last. It'll
+be subsidized. It'll definitely be subsidized by these limited amount of nodes, but at some
+point something's going to stop it, whether it's regulations or just people waking up
+because it doesn't work.
+All right. So I'm good. I mean, I mostly want people to really read these articles. And
+on a final note, it looks like everything that Bcash is doing is headed in a similar
+direction as Ethereum. And you state that as well, right?
+Yeah, I kind of wanted to not get too much into Bcash because I already covered it, but
+I mean, within that article, it does seem like there's a lot of overlap between the
+people who are interested in both blockchains. And you see a lot of them being okay with
+Ethereum existing, the Bcashers.
+Oh yeah, yeah. They think that the world is big enough for infinite number of blockchains.
+Yeah, it's not. Now, I mean, there's some arguments for...
+But not Bitcoin, infinite number except Bitcoin.
+Yeah. I mean, there's definitely some arguments that are worth looking into where there might
+be some sort of extremely, extremely minor chain that coexists with Bitcoin, but I'm
+not sure how much value it would actually have. And it would also have to be completely
+decentralized, which none of these are. But that's a different subject. I don't think
+it's... I'm generally a maximalist. I don't see there being any room for two sound monies.
+So...
+Well, right. But Ethereum never claimed to be money, right? Which is kind of silly because
+everyone is... Because half the people are treating it like money and like an investment,
+but they've always said, hey, we're not money, we're just gas.
+Yeah. I just...
+So it doesn't make any sense to me and...
+It doesn't. No, it doesn't make any sense, which is why arguing why Ethereum is an outright
+disaster is very difficult. And part four of this episode is going to try and talk about
+the economic incentives of the stupidity of the application token. But one final question
+and you may choose not to answer. So what do you think all of these... We know the motivation
+of the ICO scammers, right? We know what their motive... I mean, they'll build that shit on
+anything, right?
+They just want money.
+Right. But why do you think so many people that aren't running their ICO scam, why do
+you think so many people still believe in Ethereum? Even the developers, what do you
+think is going through their brain that they don't understand the basic stuff that non-developers
+like me see a mile away?
+I think that it's because the concept that we're trying to address is so obscure to most
+people in general that the scene attracts these people before they're able to grasp
+the concept.
+So it's a nice way of saying not very bright developers are all over Ethereum.
+I mean, I think there's a lot of genuine developers on Ethereum, but it's very... We could go
+into hypotheticals about how someone would wind up developing on Ethereum and not understand
+the concept of sound money. And I don't think that that makes them unintelligent. I just
+think it puts them in a certain situation because there's been accounts of people going
+to blockchain conferences and working on blockchains without ever having heard of Bitcoin. I've
+heard that from some people where there are these accounts of people who they've been
+working on blockchain for a year and only just came across Bitcoin.
+So there's definitely circumstances where you can come across this concept and just
+not have been introduced to everything else surrounding it. So I don't want to say that
+they're all incompetent or... I don't want to say that they're stupid. There's definitely
+a lot of intelligent developers.
+I do. I want to say that. I have said that.
+I think there's some genuineness among some of the Ethereum developers, but you can also
+start breaking down the developers into different groups. You have protocol development and
+then you have DApp development. Are they the same? You have TCPIP stack developers that
+worked back when it was all coming out and now you have website developers. Are they
+the same? They're definitely not the same.
+Very different.
+So that's one of those things where it comes down to the definition. We could talk about
+developers and then have to clarify which ones. But I lost the track that we were on.
+That's okay. We're talking about the IQ levels of Ethereum developers.
+I don't know. I'm not fond of making broad...
+Yeah, no, and that's fair. And that's fair. All right. I think I've taken up enough of
+your time. Thanks so much for coming on the channel. Once again, this was my little chat
+with Stop and Decrypt who wrote two amazing articles in as layman's terms as you can get.
+You don't need to be a developer to understand it. He explained in very layman's terms why
+Ethereum blockchain is growing exponentially, why it has a major problem scaling and why
+efforts like going to proof of stake, which charting will potentially make Ethereum even
+more technologically centralized, causing severe problems. And unfortunately, this Ethereum
+nonsense can last longer than we expect. I didn't think it would still be around, but
+it's still with us. And any final words, Stop, as I close out?
+No, I'm bad with final words. But it was interesting. This is the first time I've been on video,
+second podcast. I apologize for anything that they may have stumbled through.
+It's not easy, man. It's not easy. Thanks for coming on. It actually took me some time
+to convince him to get on. But amazing articles. Some people are definitely better at writing
+than doing video. I am the opposite. I used to write, now I don't. Now I just do video.
+And besides Twitter and your medium channel, which will be in the description of this video,
+anywhere else people can find you or just those two places?
+It's Stop and Decrypt on Twitter, Medium and Reddit.
+All right.
+Yeah, that's it.
+All right. Excellent. So thank you for watching, guys. This has been another episode of Crypto
+Scam focusing on the technological side of Ethereum. I will have more guests talk about
+other problems of Ethereum. And of course, Crypto Scam will go on reviewing other projects
+and other scam coins. Thank you so much for watching and see you all on the next one.
+Welcome back to part two of this very special episode of Crypto Scam with another guest
+to continue our discussion of the scalability and the promises of Ethereum. With us for
+the rest of this episode is going to be the famous Jameson Lopp and his uncanny beard
+who is now a systems engineer at Casa, a new startup in the space. Formally, he was the
+systems engineer at BitGo. And thank you very much for joining me on this episode, Jameson.
+Pleasure to be here for the first time.
+Yeah, you're right. This is the first time I'm interviewing you. And we haven't seen
+each other lately. I haven't attended too many Bitcoin developer events. But your name
+did come up this past weekend as I was purchasing my new toy in the world of hardware. And you
+were instrumental to them in order to actually stress test the crypto key stack. So you want
+to do a quick shout out to them and a word on what I'm holding?
+Yeah, I bought a bunch of the hardware metal storage devices out there and put them through
+the ringer, everything from like 2000 degree heat for a prolonged period of time to crushing
+with like 10 ton hydraulic press and crypto key stack held up the best to all of those
+things and even more environmental hazards like hydrochloric acid, rusting, all kinds
+of stuff. So if you're going to go with the metal, that's probably one of the best ones
+to do.
+Yeah, no, that's great. Now, this is not a hardware wallet. This is simply a way you
+can preserve your private key in a non destructible way a lot better than writing it down on a
+piece of paper. So there you go. We got a little plug in there. So is that what you
+currently do? Mostly physical stress testing or you mostly focus on technical stress test?
+That was a kind of unique thing for me. I've never tried anything like that before, but
+I've read a number of reviews and a few stress tests of these metal devices and I just felt
+like they didn't take it to the extreme that it really needed. So I think that, you know,
+I arguably put these into conditions that the normal user is not going to experience,
+but you know, we like to think adversarially in this space.
+Cool. So real quick, tell us about CASA where are you, I'm assuming you are one of the co-founders
+of CASA as well? Yeah, early, early employee. You could call me a partner, I suppose. And
+tell us what your company does or the company that you are associated with does, what your
+exact role is and what is your general role in the Bitcoin ecosystem? So at CASA, I'm
+doing similar stuff to what I was doing at Bitco, which is really helping build the infrastructure
+and think about all the backend systems that we need. And then just thinking about security
+from a number of different perspectives, how can we facilitate these crypto finance transactions
+while minimizing the trust required? You know, obviously users are going to be dealing with
+us and our software that we're providing and there will be some trust, but we want to minimize
+that as much as possible while still helping the user be sovereign in what they're doing.
+And specifically when we're targeting user sovereignty, we want to be a non-custodial
+solution. We want the user to finally realize the promise of being your own bank in Bitcoin.
+And we're doing that by offering a very user-friendly mobile app, but that is backed by the security
+that you get from hardware key management devices like Ledger, Trezor, KeapKey, what
+have you. So while you'll be using a mobile app to actually manage your wallet, see your
+balance, you know, facilitate creating the transactions, the actual private keys themselves
+are going to be stored on geographically separated hardware key management devices.
+So it's really like a vault product where we're trying to make your wallet robust, not
+only against hackers, but against physical attackers and all types of other loss that
+can happen even due to user negligence. So that's kind of one of the things that we're
+going for is lowering the barrier to entry, lowering the learning curve that's required
+to be your own bank.
+Gotcha. Thanks a lot for that background. And is it fair to call you, I'd say, a Bitcoin
+core contributor?
+From a technical standpoint, I mean, I've got three or four pull requests that were
+just trivial changes, usually stuff that I ran into while I was working on my own fork
+of Bitcoin core, which is a Satoshi fork. So, you know, don't have any major functionality
+that I've contributed there. But I am on the list of the like, you know, 570 people who
+have code that's in the core repository.
+Right. And from my point of view, it's hard for me to get, you know, I want core developers,
+you know, our top 20 engineers. I'm not really here to interview them. I want them working.
+Like I need them to keep my Bitcoin safe and decentralized. And I know you are very well
+respected in the space. And I recently heard you on the Noted podcast talking about your
+adventure in setting up your Ethereum node. And I wanted to dive a little bit deeper into
+that specific conversation. So earlier in this episode, I talked with Stop and Decrypt,
+who is somewhat anonymous in the space. And I not many people know much about him other
+than he writes pretty detailed research articles. And lately, he is or not lately, but over
+the summer, he wrote several criticizing the scalar, the technological scalability of Ethereum.
+Now as I brought Stop and Decrypt for this interview, I found out that he's not actually
+a developer. He's more of a researcher. So I wanted to bring you on and just for a more
+developer perspective, because my developer days are long behind me. I did have a degree
+in financial engineering. I used to look at code. I used to write amazing VBA code in
+the back of Excel. I'm telling you, my VBA skills were not ones to mess with. But that's
+as far as I really wanted to go. Started learning some Python and then realized, you know, coding
+is not what I really want to do. So I'm actually going to pull up screen share. And we'll jump
+right into the full topic. So the first article that he wrote, it was titled the Ethereum
+blockchain size has exceeded one terabyte. And yes, it's an issue. This was written back
+in May. Back at the end of May, we are now about to go into September. So it's been a
+good what four months. It's been a good four months since then. And it was a pretty lengthy
+and detailed article. I love the picture of Vitalik holding up that sign that everyone
+has been using. I think it's coming up there eventually. These are long articles, guys.
+I read all of them. And it takes some time. So what? What do you think about that? And
+how did like, Jeff, from a general point of view? How is the Ethereum blockchain getting
+so many transactions? And where do you think it's going? And then we'll pick at the details
+of that. Yeah, so the one terabyte number is for a what they call an archival node.
+Within Ethereum, there's there's more classes of node types and security models than you're
+going to find in Bitcoin. And that was the type though, that I was running when we were
+operating infrastructure at Bitco is this archival node. And basically, that means that
+if you are starting off your node, and this requires using non default parameters, by
+the way, the default is using a much more lightweight and lower security model. But
+if you do decide to do a full validating archival node, where you start off from the genesis
+block and you download every transaction that's ever happened and actually perform the calculations
+that do the state changes to the Ethereum state, then if you're lucky, you know, maybe
+a week or so later, if you're running decent hardware, you will catch up and you'll get
+to the current tip of the blockchain. Now, you're only going to be able to do that if
+you're running pretty high end solid state disks that have a lot of disk throughput simply
+because the calculations that are required involve reading and writing a lot of data
+from the disk. And if you get to the very end, then you'll end up with over a terabyte
+of data. And that's because it's storing all of the different states that have ever
+occurred in Ethereum. There are other options for you to prune those away. And I think if
+you end up doing pruning, then you'll probably end up with somewhere around 50 gigabytes
+of disk usage, but you'll still have had to do all of the reads and writes, which is what
+makes that initial sync incredibly slow. And like you can't even do an initial sync from
+the genesis block on Ethereum if you're using spinning disk hard drives, for example. You
+also can't do it if you're using a virtual private server that has a pretty low IOPS
+or disk IO set to it. So the nodes that we were running at Bicco were fairly expensive
+to use because this disk IO on virtualized servers is incredibly expensive. But I have
+done some tests on the opposite end where I bought one of those like brand spanking
+new M.2 NVMe drives that's like a RAM drive. And I was able to do a full sync and validation
+of the Ethereum blockchain earlier in the spring, I think in a couple of hours. And
+that was with like a $2,500 computer that I built myself. So suffice to say that there
+is a lot more disk IO required to churn through the entire Ethereum blockchain in comparison
+to Bitcoin. And the way that they get around this is that on pretty much all of the Ethereum
+clients that I'm aware of, they will default to doing something called either warp syncing
+or fast syncing where they're basically going out and they're getting a snapshot from usually
+like 30,000 blocks or so ago. I forget how many weeks or months that is. And then they
+will just start syncing and validating from that point in time. So you could call this
+the like ask a friend model of, you know, give me the state from a while ago and then
+I will assume that the proof of work that that chain is following is been valid up to
+that point, you know, that there is no invalid states before that. And we'll just go forward
+from there. And that's, you know, somewhat similar to like a Bitcoin SPV type of mode,
+though where you do start doing more validation, you just you don't do it from the very beginning.
+So it's it's weird. It's kind of a hybrid security model. And then, you know, what we're
+going to get into, I think talking later is about the even crazier changes that are going
+to happen to Ethereum security model when we start talking about stuff like shard and
+proof of stake. Yeah, we're about to get into that. I'm just a little more curious on the
+costs, right? Yeah. And also, you said you did it in the spring. I think Ethereum has
+gotten a lot of transactions into their blockchain since the spring because now we're going into
+the fall. What would your expectation be on costs, time costs, machine costs? You know,
+just general, let's say on January 1st, let's say going into 2019, what would you say would
+be a reasonable price cost and time cost to download, you know, the full big boy Ethereum
+blockchain from Genesis block? Yeah, from from, you know, I don't keep as close a track
+as I used to since I'm not operating these type of Ethereum nodes on a day to day basis
+anymore. But from what I have been seeing, it seems like the Ethereum blockchain has
+been basically maxed out for most of the year while on Bitcoin, of course, it as the price
+declined, the activity dropped off a lot and very few blocks have been full on Bitcoin.
+But at the very least, if you're going to want to build your own machine that is running
+this, you're probably going to want to spend close to $1,000 because you're going to want
+to get, you know, really high end solid state drive and fairly high end CPU to be able to
+churn through that. And this is, of course, assuming that you want to do the non default
+full validation of the entire history. It gets a lot more expensive if you're doing
+this in an enterprise environment, like running virtual private servers. Those costs are going
+to easily run into, you know, hundreds of dollars per month if you want to have sufficient
+disk IO to keep up with the blockchain. And what we find is that the releases of these
+new Ethereum clients tend to come out with performance improvements. And that's mainly
+because I think there's a lot of pressure on the Ethereum developers because the enterprises
+are just running into issues where their nodes are falling out of sync, lagging behind, and
+it's resulting in operational headaches for exchanges and DAP makers and really anyone
+who needs to be providing services that are up to date with the current state of the Ethereum
+blockchain.
+Gotcha. But all of those costs you have just described, actually, let me drop screen share.
+So all of those costs that you just described, they're hardware costs. What about bandwidth
+and internet speed costs? Like, what minimum bandwidth do you need to download this thing,
+you know, in less than six months, historically, and what bandwidth speed you need to be paying
+for in order to keep up with their 12 second blocks, I believe?
+Yeah. Well, the bandwidth isn't as bad because, you know, the block size on Ethereum, I think,
+equates to about 20 kilobytes. Now, of course, their block times are more like 15 seconds.
+But it's not so much the bandwidth of like downloading and uploading as it is the much
+more intensive disk operations where you're having to read and write data from arbitrary
+points on the disk. Every time a transaction comes in, you know, that could be requiring
+you to read data from a really long time ago. And that's why using spinning disks is just
+a non-starter because they take like 10 milliseconds to go even find a point on the hard drive.
+Because solid state is a lot faster in terms of latency.
+Gotcha. So what does this, like, how does this work for every single ICO that has launched
+on Ethereum? And how many of these ICO companies do you think are running their full Ethereum
+nodes, processing their own transactions, or are they relying on some centralized entity
+to do it for them?
+I would suspect that very few of them are running, you know, fully validating nodes.
+It's just, you know, it's a lot more, it's costly in terms of money and time and operational
+expenses. But even beyond that, it's just, it's not the default. And really what you
+find in software in general is that defaults are very sticky. So even if they are running
+their own node, they're probably just downloading parity or death or whatever and running it
+with the defaults. And so that's doing like fast and warp syncing and skipping over the
+vast majority of validation.
+All right. So before we move on to the next article specific to sharding and POS, like,
+let's just say on a scale of one to 10, how would you rate Bitcoin? We say Bitcoin is
+decentralized. How would you rate that on a scale of one to 10? And then the same question
+to Ethereum, how would you rate the Ethereum's decentralization on a scale of one to 10?
+I actually, I hate trying to simplify it in such terms, because when we talk about centralization
+and decentralization, there's so many different ways you can measure it, so many different
+vectors. Now, and when I do it, it's, you know, it's going to be mainly from technical
+standpoint of like, what is the network of nodes look like? And you know, from that standpoint,
+I think that there are a lot more fully validating nodes on the Bitcoin network. So it's thus
+much more decentralized than on Ethereum, where the Ethereum node count, if we're looking
+at like fully validating nodes is much, much smaller. And I think it's going to continue
+to decrease simply because the cost of running them will continue to increase.
+Right. And that is actually my biggest, I try to look forward. And that is my biggest
+thing. I never felt the need to run my own Bitcoin node until the whole user activated
+soft fork kind of blew up in our faces because no one expected the miners not to go along
+with something that everyone thought they should have been happy with. So the user activated
+soft fork experiment created a lot more node holders, and I think made the system a little
+more decentralized. And I think that going into the future, Bitcoin is being built out
+the technology of Bitcoin is being built out as a way to encourage more people to run their
+own validating nodes. And everything I've seen so far in Ethereum is discouraging your
+ability to create your own node, decentralize the system and process your own transactions.
+Would you agree with that generalization? Well, yes, because it's a lot more difficult.
+It's a lot more challenging to build a system that is, you know, efficient at the base layer.
+Whereas there are a number of tendencies that push various people and developers and companies
+within these ecosystems to want to centralize different aspects of it because centralization
+is tantalizingly easy because you can get such greater performance gains by centralizing
+different aspects of the system. Gotcha. All right. So let's jump over to how Ethereum
+plans to scale. And Ethereum has two things on their roadmap, and everyone is debating
+which one should happen first. And of course, they're going to meet in the middle and try
+to do both of them at the same time, which is probably going to create an even bigger
+disaster. So one of them is, of course, moving to a proof of stake system. And the other
+one is moving over to sharding. So I don't know which one would you rather start with.
+If we start with sharding, please define sharding for us. Yeah. You know, from reading over
+stuff, they seem to want to tie them together because I think it will be simpler for them
+to do that. You know, kind of like do one big transition all at once rather than try
+to figure out how to do multiple different transitions. All right. This is what the Bitcoin
+core developers attempted to do with segregated witness and ran into a bit of a problem. And
+if those pieces were going to be done one at a time, maybe one of them would have created
+the big problem. So in hindsight, it's hard to say if that was the right way to do it
+or not. But now it's hindsight. And I think the way it was done was absolutely it needed
+to be done. Yeah. Yeah. So sharding in general technical terms is a fairly old concept. I
+actually first experienced sharding 10 years ago when I was working on a web application
+that was on the lamp stack. So Linux, Apache, MySQL, PHP. And we had a MySQL database and
+the company grew to the point that it just wasn't possible for that single server with
+that single MySQL database to continue to be able to process the load of our increasing
+number of customers. So what did we do? We sharded it. And by sharding, basically that
+meant that we created a bunch of new machines that had their own MySQL databases. And then
+there were just little pointers in a master database. And whenever a customer started
+doing stuff with our web app, we would say, OK, this user has been assigned to this shard.
+So just send them over and do all the regular database operations, but do it on this one
+machine rather than on a single huge instance. And so it's a fairly straightforward way of
+doing quote unquote horizontal scaling, where you can just buy more machines, you throw
+more machines at the problem. That ends up being a lot more cost efficient than vertical
+scaling, which means you still have one machine or a few machines and you just buy increasingly
+more powerful ones, but they become exponentially more expensive to do so. Now in a decentralized
+environment, this still makes sense from a performance standpoint because you're basically
+spreading out the load more widely across a larger number of machines.
+But the trick, the kind of downside is how do you do this without changing the security
+model of the system? Because we currently in Bitcoin have a single blockchain. And if
+you're running a full node, then you're downloading all the data, validating it yourself. And
+it gives you this amazing security model people often refer to as trustless, where the only
+real security assumption is that you at one point in time have connected to one other
+honest node on the network. Even if you're connected to a hundred nodes and 99 of them
+are lying to you, then that one honest node will get the data to you that you will be
+able to authoritatively say yourself, this is the correct data and everyone else is lying
+to you. But if you're on a network where you're only downloading 1% of the data, then the
+other 99% could potentially be lying to you by omission. You're just never receiving the
+data. So it becomes a lot trickier to retain a strong security model in a system where
+you're not looking at all the data yourself.
+So that's very informative, but that's the security and the omission of data perspective.
+So stop and decrypt specifically makes the point that sharding can actually centralize
+your system. I don't know if you had a chance to deep dive into this article, but what are
+your general thoughts on just centralization in general because of sharding?
+Yeah. And I've spent a number of hours reading through as much of the technical documentation
+around proof of stake and sharding that are currently available in Ethereum. And I remember
+when you were first asking me about this about a month ago, I said, I'm really not comfortable
+talking about it because I don't understand it very well. And since then I've spent a
+fair amount of time, probably at least six hours so far reading through the various blog
+posts and FAQs, both on F3 search and Vitalik's blog and Twitter and whatnot.
+Yeah. I'm sorry about that, James. I didn't mean to kill some of your brain cells. I really
+need them to continue programming Bitcoin.
+No, no, this is good. I mean, learning is always good. But what I would say is that
+at least six or so hours into it so far, I'm not sure that anyone really understands the
+proof of stake and sharding in Ethereum because I don't think it's done. And the reason why
+I say that is you actually go to the FAQ for sharding on F3 search website and there's
+a note near the bottom that says, this is only about 70% done. And then it lists a lot
+of things that have not yet been fully finalized. And that includes a fair amount of the game
+theory around how they're going to penalize bad actors or even find bad actors in the
+system.
+And so suffice to say that within Ethereum moving to this proof of stake model, they're
+implementing a ton of new game theory. That's not necessarily bad. I mean, you could make
+an argument that Lightning Network is implementing a ton of new game theory. But they're also
+introducing just an enormous level of complexity at the base layer. And there are things and
+there's a lot of unanswered questions of how are you going to have good guarantees mainly
+or what I'm worried about is the cross shard communication of how do you guarantee or at
+least have some sort of probabilistic guarantee that transactions and data that occur on one
+shard correctly make it over to another shard. And they're trying to do that by using a lot
+of pseudo random sampling from the validator set to say, okay, each shard has 150 validators
+and they're randomly assigned. So it's hard to gain the system. But there's still, I think,
+deeper level issues in how they're going to do the actual load balancing of the data across
+the shards. And so there's a number of things that could go wrong. Like if the activity
+on one shard got really out of whack, really high, and another shard was really low, you
+can start running into throughput issues. And the reason why this is the case is that
+you should basically think of each of these shards as being the same as what the current
+Ethereum blockchain is like. So we can expect that they will be able to do, at a best case,
+maybe 15 transactions per second. So what happens when one shard starts trying to do
+100 transactions per second and then some other neighbors that are only doing one or
+two transactions per second are trying to communicate with it. So it's just an issue
+of, you know, increasing levels of complexity by orders of magnitude. And of course the
+fact that this is something that has been researched for, I think, four or so years
+now. And if you look at Vitalik's recent tweet storm that was 70-something tweets long, he
+went through the whole history of it. And it's pretty clear that this is still a work
+in progress. They're still trying to figure out the optimal scenario. And it's not clear
+whether or not there is an optimal scenario. And it's even less clear like what all the
+tradeoffs are going to be. But it is certainly clear that if you are running a fully validating
+node on Ethereum right now, it is going to become exponentially more expensive to be
+running what I'm seeing referred to as a top-level node. Because the top-level node would have
+to validate not only what is the current Ethereum blockchain, but then the beacon chain and
+all of the shard chains, which I'm also seeing conflicting information about, but it seems
+like they're currently targeting 1,024 shards. So 1,024 instances of the Ethereum virtual
+machine potentially doing 15 transactions per second. So say throughput max is out around
+15,000 transactions per second. You're going to need a Craig Wright-level node, a $20,000-something
+odd node in order to be able to validate all of that stuff yourself. And I think almost
+nobody is going to be doing that.
+Well, we both know Craig Wright might do it. But no, but it's really funny that you mentioned
+that because I finally met Craig Wright for the first time. This was recently, probably
+a couple of months ago when I was in London. I was visiting London. Some of the guys put
+together a dinner because I was in town. They invited Craig Wright for fun. And he said
+yes. And as funny as that conversation went, I was sitting next to him all throughout the
+dinner of like 10, 15 people at the table. Him and I agreed on everything except what
+is Bitcoin. We can sit there across the table from each other and talk shit about Ethereum
+all day. He hates this thing as much as I do, or many other Bitcoin maximalists do.
+So there is some commonality even if you ever do end up sitting at a table with Craig Wright
+and you want to find some commonality, start talking about some of these altcoins. And
+it's actually, it can be pretty enjoyable conversation to say the least. I know people are still
+mad at me for saying this, but it was fun. Well, like listening to him talk about how
+bad Ethereum is, it was actually pretty interesting. But then, so the other thing I was going to
+say is I remember I was actually at the very first scaling event in Montreal. I believe
+it was in 2015. I'm not sure if you were there. I don't believe you were a speaker.
+That was the only one I didn't make it to. Ah, okay. So I thought my memory is pretty
+good, but I don't remember meeting you there. So that's when Vlad Zanfier introduced sharding
+for the first time and spoke about it publicly on stage. That was 2015. So I still remember
+that. And I remember all the discussions that took place kind of after that. All right.
+So let's change gears slightly and stick with the proof of stake mechanism. Now you're not
+an economist and there will be an Ethereum part four. This is an Ethereum part three
+guys. In part one, we talked about the regulatory problem of Ethereum with it being a security,
+the way it was financed. In part two, Johnny Dilley and I discussed the concept of smart
+contracts and why smart contracts don't really need to be decentralized because that doesn't
+make any sense. There's no censorship in your contract. It's just maybe the money that you
+need to pay for those contracts. This is focused on the technology. So I will, I will bring
+up the proof of stake conversation in my fourth episode, which is going to focus on economics,
+hopefully with an actual economist, why proof of stake is more of either a communist system
+or a more of a, you know, you just get free Ethereum for holding Ethereum system. But
+from a technological perspective, what do you think about proof of stake versus proof
+of work? I find it hard to apprehend how people are taking proof of stake seriously. The technological
+innovation of Satoshi Nakamoto's blockchain was proof of work. That is the innovation.
+Like proof of stake, it's been done forever. Like where is the innovation? Where's the
+technological innovation of proof of stake? Right. So a lot of people of course get upset
+about proof of work because they consider it to be a waste of energy. They consider
+it to be harmful to the environment. And you know, you can come up with all kinds of metrics
+to make an argument that from an energy efficiency standpoint, Bitcoin is less efficient than
+any number of other financial systems. But the thing about proof of stake that is appealing
+to people is that, you know, they can be running their system basically without requiring any
+sort of inputs, you know, externalities, I guess, if you will. They have their fully
+self-enclosed ecosystem that nobody else can screw with. The downside is that you run into
+a number of problems of incentive. And of course, I always end up going back to Andrew
+Polstra's proof of stake versus proof of work paper from years ago in which he was making
+arguments that, you know, long range attacks are the primary problem that you run into
+within a proof of stake system. And actually Vitalik himself has referenced this on a number
+of occasions and he called it the nobility problem. And this basically means like if
+you ever have a point in time where someone controls an inordinate proportion of the value
+of the system, they can always in the future, even if they sell off all the value that they
+have, they can always do a long range attack that starts from that point in time and rolls
+forward. And so this was actually a way that a number of the early naive proof of stake
+systems worked or were attacked is that, you know, someone would just go back in the blockchain
+weeks or months after they had already sold off all their coins and then said, okay, I'm
+creating a new chain from this point in time when I held a lot of money. And you can basically
+rewrite history at no cost because, you know, your CPU can be generating these blocks, probably
+hundreds of blocks per second because there's no real proof of work required. So what ends
+up happening is that you start creating this sort of Rube Goldberg machine to deal with
+all of the new edge cases that come from nefarious things that a proof of stake attacker could
+do. And actually, if you look at Vitalik's tweet storm that I was talking about, he concedes
+that they ended up abandoning trying to solve the long range attack problem and they rather,
+they just introduced a new security assumption, which is that, you know, we will just make
+it so that no client will ever accept blocks that are more than like, I think, 20 or 30,000
+blocks old. So we just kind of, you know, have an implicit type of checkpoint there.
+And you know, maybe that's good enough. It's really hard to argue about this because you
+can't really know whether it's good enough until it gets attacked and it fails. And so
+really what you find if you're looking at like the current cutting edge state of proof
+of stake research is that they're trying to figure out how to do the best slashing conditions,
+which is a fancy term for saying penalization conditions, and trying to figure out how to
+only penalize the bad actors without penalizing good actors who like accidentally went offline
+for a while and stopped doing their job. It just, you start going down this rabbit hole
+that gets insane. And that's like why they've been still doing this research and pivoting
+for the past three or four years now. Maybe it is a solvable problem. But as far as I
+and most of the other people I talked to can tell, it still has not been fully solved.
+But you know, kudos to Vitalik and Vlad and all the other team for keeping at it. Maybe
+they will finally solve it. And we'll be able to make all of the tree huggers happy and
+everybody can switch to a proof of stake system. And we don't require any more electrical generation
+to go on. But of course, plenty of counter arguments to that. You know, I would say Bitcoin
+actually incentivizes people to find cleaner, more efficient forms of power generation.
+Yeah, that's always been the argument that I have been trying to use in Bitcoin will
+drive the innovation in not only energy generation and energy consumption, but also, you know,
+high hydro dynamic, thermodynamics, and let's say, cooling of your heated equipment. Like
+there is there could be so much innovation there that I'm really looking forward to.
+So this is the paper that I have on the screen right now that you're referring to, right?
+That's one. Alright, so I'll throw that in the video description. I don't know if I'm
+going to go out searching for their Twitter war. But please, I encourage you to go and
+do that. So because of all these concerns, and it sounds like they're still researching
+this thing, does that explain this amazing Google search of Ethereum delays the difficulty
+bomb? And once again, continuously, because I thought that Ethereum was supposed to be
+on a proof of stake system a year ago, and what was going to force them to get there
+was this difficulty bomb rendering their mining useless, and they continue to delay it. Any
+thoughts on this? What? Have you heard anything? What's the latest news? Is it going to be
+this is like the debt ceiling that gives us the exactly it's like, you know, what's the
+point in even having a debt ceiling or a difficulty bond? Like we all know that you're not gonna
+let your network commit suicide, because you did not reach a technical achievement in the
+time that you thought was going to happen. And, you know, it's not, it's, I'm not going
+to like criticize them for saying that, you know, they should have gotten it done by now.
+It's like when you're when you're doing stuff that nobody's ever done before, it's really
+hard to come up with timeframes. I just I think it's weird that they keep putting this
+difficulty bond back in. I mean, why not just take it out so that you can admit that we
+don't know how long it's going to take to get to where we're going. I don't know. It's
+kind of a weird aspect of Ethereum. Like they've already set the precedent that whenever they
+get close to the difficulty bomb, it's going to get taken out. At this point, it's it's
+hard to say when they're going to be willing to do a full transition to proof of stake.
+And, you know, the story keeps changing, it seems like on an annual basis. So I would
+be surprised if if we're sitting here a year from now, and they have completed transition,
+but maybe a year from now, it will be in sight and it will be scheduled.
+But I still have a conceptual difficulty believing that they can ever go to a proof of stake.
+I mean, Ethereum, even though it's down like 90%, or whatever, one Ethereum is still like
+100 to $200. And I believe they're mining three Ethereum every 12 to 15 seconds, whatever
+their blocks are. So how do you just show up and tell, you know, a giant mining facility
+that's invested millions of dollars to just point their hardware somewhere else?
+Yeah, I think a few things could happen. We very easily could end up with, you know, another
+Ethereum classic situation. Or maybe Ethereum classic, you know, becomes much greater and
+a lot of the proof of work transitions over there. But you know, also, there's I think
+quite a few other altcoins that can be GPU mined, and they might be able to soak up a
+lot of that demand. But there was actually, I think, a meeting very recently in which
+it seemed like there was pretty strong consensus to decrease the mining reward in Ethereum.
+So we may see a decrease there, you know, another economic disincentive for proof of
+work miners to stick with Ethereum.
+Yeah, no, I've always said for probably a couple of years now, I envision another Ethereum.
+We already have ETC. ETH will stay with Vitalik because wherever he goes, he's trademarked
+for ETH. And I envision an ETW, Ethereum work, where the miners are going to try and convince
+all of the current ICOs to stay on the Ethereum proof of work chain. I think it will be a
+little challenging to get your ICOs to convert to another blockchain, like an Ethereum classic,
+like an EOS, like a Tezos or a Waves or all of them. And lately, I've been saying these
+ICOs that become platforms for other ICOs, like all the ones I just named, they're going
+to be totally fungible. And your company's unlicensed security in the form of your ICO
+can just transition from one to the other to the other, with all of them slowly becoming
+technologically unstable over time, until some centralized solution shows up. Or at
+this point, I think Ethereum would almost be better served as a centralized scalable
+solution to run all of these ICO smart contracts, because none of these ICO smart contracts
+are actually decentralized. They're centralized by the company creating the ICO. So wouldn't
+it make better business sense for Ethereum to centralize their product and offer their
+services for a fee of moving all of the stock around, like all of these securities around?
+Maybe. I mean, so there's, of course, the Ethereum Enterprise Alliance could potentially
+create their own network for that. Really, it seems to me like stuff like EOS, which
+is even more centralized, but has much greater capacity for throughput, could pick up a lot
+of this ICO slack. But kind of a counterpoint, though, for the incentives is that if a lot
+of these ICOs are holding a lot of value in Ether, then they could be incentivized to
+switch to a proof of stake system. And basically, Ethereum would become, you know, secured by
+the ICOs themselves. Yeah, no, that is an interesting thought to consider. And it's
+also great that you said EOS is, you know, more centralized with a lot more throughput.
+And that makes sense, because decentralization comes at a cost. It comes at a security cost,
+and it comes at scalability cost. You have to weigh those costs. And Bitcoin isn't willing
+to budge on decentralization side of the equation, and which is why the focus is on the Lightning
+Network and scaling your transactions as a second layer protocol, as long as that second
+layer protocol can be just as decentralized, probably even more fungible and anonymous
+and have a lot more transaction throughput. And then it's a done deal. Bitcoin can actually
+scale.
+Well, maybe it all just comes down to marketing. Yeah, no, that is interesting. All right,
+any final general thoughts? I mean, you remember the DAO. I mean, I'll give the floor to you
+as far as, you know, the technology and the competency of the Ethereum. I know developers
+don't like to talk bad about other developers. I once asked Eric Lombroso on a live interview
+the following question. I didn't want to put him on the spot. I said, are there any altcoin
+developers that you truly respect? And he avoided the question. I think I meant it specifically
+in the case of Vcash, but I'm not going to go there. But is there anything else you want
+to talk about from the DAO hack, from the Parity Wallet hack, from the MyEther Wallet
+hack, to anything else you think that why do people continue to trust the technology
+underlying Ethereum with these grand hopes that just aren't deliverable?
+Yeah, well, it's just a very different mindset. And, you know, as I look out across this diverse
+ecosystem of different networks, I also see a diversity of different perspectives and
+ideologies. And in general, I think it's fair to say that Ethereum is a much more social
+network, you know, social ideology. And that's why Vitalik and a lot of the other developers
+are willing to make certain tradeoffs with regard to consensus, where they're turning
+it into more of a social consensus of saying, you know, we're going to have a bunch of fairly
+well known actors that are going to be, you know, putting skin in the game, and then we're
+just going to try to figure out how to help coordinate these actors. And that's a stark
+contrast to a Bitcoin style ideology, where it's more like, you know what, we have the
+protocol, and everyone is either going to follow the protocol, or they're going to fork
+off and, you know, you get burned if you don't stay in consensus with everyone else. So,
+I think that, you know, a lot of these things, they're valid. And it's hard to make technical
+arguments about them that necessarily convince people who have that other perspective. And
+I just take a very long term view on it of, you know, these things are going to get attacked,
+and the ones that survive were good enough, and the ones that die were obviously not good
+enough. And that's, you know, time is going to have the ultimate say in which of these
+perspectives is workable.
+All right. And one more question I forgot to ask earlier. As you read over the two articles
+by Stop and Decrypt, was there anything there you disagreed with? Was there anything there
+you felt was inaccurate?
+Well, you know, I first read it when he first published it, and I didn't know whether or
+not it was accurate. But then, you know, I went back recently and read a lot of the technical
+FAQs and stuff from Ethereum developers. And I would say that my perspective is about the
+same as his, that ultimately, this new type of system creates a much smaller number of
+players who are able to actually validate the whole system. And it results in the regular
+end user having to trust the system a lot more. And also, you know, the main point that
+I think he was making is that unlike in Bitcoin, if you're running one of these nodes in Ethereum,
+especially once it gets sharded, you can't reject anything that goes wrong. You just
+have to go along with what you're told. And so it once again, it comes down to these like
+very different perspectives, I guess, and how the network should operate and how the
+developers extend them over time.
+And I'll let you go on this one. As a long time Bitcoiner, as a developer within the
+blockchain space, would you advise, would you ever build anything on top of or combined
+with Ethereum or advise anyone that it's actually a good idea?
+Something that you want to scale out, you know, to be a mainstream application. Now,
+if you actually look at one of CASA's recent blog posts, we are going to add Ethereum support.
+And that's because we have wealthy clients who will pay us to add Ethereum support. But
+we are actually in a conundrum because I spent over a year at BitGo working on Ethereum wallets
+and Ethereum infrastructure. And it was a nightmare for a number of reasons. And I wrote
+a very lengthy blog post about that. And I really want to avoid trying to do multisig
+and a smart contract again, because like some of the stuff that you were mentioning, there's
+no real guarantees. There's very poor auditability and correctness proofs, anything like that.
+And so we, if we're going to be doing multisig and Ethereum, we want to have some sort of
+assurance that, you know, if there is a bug in the smart contract we're using, the entire
+network is going to fork to fix it. Otherwise, you know, what guarantees do we have? We don't
+want to end up in another parity situation.
+All right, Jameson, thank you very much for coming on on this third episode of Ethereum's
+crypto scam, where we delve deep into the technology and the scalability of Ethereum.
+My pleasure.
+Thank you.
+All right, guys, if you really like the show, there will be more to come. I am bringing
+back crypto scam slowly. This Ethereum series really got me stuck. I tried completing the
+technology of Ethereum is unsustainable over a year and a half ago, and I had a big problem
+getting the right guests. Those guests have finally arrived. And hopefully the show will
+flow going forward. Of course, you can check out all of my other podcasts on the Tone
+Vase YouTube channel and the Tone Vase audio podcast stream. See you all on the next episode
+of Crypto Scam.

@@ -1,0 +1,774 @@
+Record on this computer. All right, we are live. All right, welcome to the Sunny Ray
+Show. Today we've got Jameson Lopp, one of my favorite people, definitely in Bitcoin,
+maybe on the planet. So Jameson, thank you for, for spending some time with us. And yeah,
+maybe start with an intro.
+Yeah, good to see you again, virtually, at least virtually. As for myself, I mean, I've
+been in the space for a while, started getting interested as a hobbyist. Ooh, that was a
+good eight years ago, and started building some open source projects for a few years
+trying to better understand Bitcoin and then was fortunate to be able to go full time around
+early 2015. And really since then have been focused on a very boring problem that I believe
+continues to persist in the space, which is just, how do we make it easier for people
+to manage their private keys? How do we continue to push forward the fulfillment of Bitcoin's
+promise of being your own bank? Because it's always been possible, but it's generally been
+relegated to the people who are technical or who are willing to spend a lot of time
+and resources learning how to do it right. So if we really want to keep pushing this
+space forward in a decentralized fashion, then I think we continue to make it easier
+and easier and understand where the pain points are around key management.
+Cool. So why don't we start there and get a bit deeper on that topic? Because you're
+right, I do also believe that it's something that's incredibly important and it barely
+gets talked about. And so, okay, so let's start with the question of like, why is it
+important for people to hold Bitcoin? And that might help to maybe even proceed that
+question with like, you know, why is Bitcoin important? But yeah, we'd love to kind of
+dive into that a bit more with you.
+Yeah, you know, there's a few different approaches. You can take the more technical approach,
+the more philosophical approach. Generally, I kind of take a blended approach to all of
+this, where, you know, what is the reason that I got into Bitcoin in the first place?
+And that was because I felt like money as an abstract concept should not be something
+that is dictated by a small group of people like money, as an open source project fundamentally
+made sense to me. And I felt like it was humanity's best hope towards making at least a fairer
+type of monetary system, you know, it's probably never going to be perfect. But at least if
+anyone who cares enough can give their input, then hopefully we'll get to a system that
+while it may not be perfect for everyone, hopefully it is at least less harmful for
+more people because you don't have a few people controlling it at their own whim and to their
+own benefit. So if we assume, okay, Bitcoin has already done a pretty good job of doing
+that, of being an open project where anyone who really cares can contribute, then how
+do we prevent it from sliding back, you know, towards what the current financial system
+is like? And in order to do that, we need to keep the power as decentralized as possible,
+as spread out as much as possible. We need to empower the individual. And for individuals
+to be empowered, they need to be able to take control of what is like the ultimate security
+model of Bitcoin, which is commonly referred to as trustlessness and permissionlessness.
+Though you know, there's a whole lot of gotchas underneath those words. But what I really
+see that as is you are running your own software and you're using your own hardware to verify
+the entire state of the system and to directly control your private keys so that you're not
+having to ask anyone for permission to use your money and you're not having to trust
+any third party that your money is actually there. And that means, you know, you need
+to have your own self custody system, preferably be running your own fully validating node,
+you know, from a technical perspective. And this is where you start getting into all of
+the technical tricky things that can turn a lot of people off because the average person
+just wants to go to a website and click some buttons. And so now we get into this whole
+issue of, you know, the sort of the spectrum of convenience versus security versus privacy
+and all the other trade offs that people make. And, you know, the freedom of a system like
+this is that people should be able to have the freedom to choose to trade off security
+or privacy for convenience. But at the very least, I think we should try to lower the
+bar as much as possible to get into a high security posture. And hopefully, you know,
+the lower we can make that bar, the more people will opt into a better security environment.
+And the result of all of these different individuals opting into that is that we make the whole
+system actually stronger and more resilient because we're not putting all of the money
+into the hands of a few people once again. So, again, I don't want to spend like a whole
+bunch of time because we could probably spend like the whole conversation just on these
+next two questions. But I think before we can make or before we can dive deep into this
+argument of like, you need to hold your own private keys, we need to touch on two things.
+So one is, well, you know, you made this comment that money should be open source, right? And
+this sounds super weird. But one thing I've found is, is that even though most people
+are like waking up early, going to sleep late at night, getting divorces and wars and like
+trying to like make that, you know, cash, when you ask most people, what is money? Like,
+what really is it? You just like kind of stop there. It's like crickets. And it's literally
+an infinite number of answers that I've received, which I find super interesting, because it's
+like, what? How does that even happen? But what is money? You know, maybe in a paragraph
+or two, you know, if we had to try and really distill it down to its main, main essence.
+Yeah, and really, I don't expect most people to understand money. I mean, I don't expect
+most people to understand most things. The world is such a complicated place. And we
+have a finite amount of time and resources, you can only focus on a few things. You know,
+this is why humanity has evolved the way it has to construct these hierarchical systems,
+because that enables specialization and specialization allows for greater efficiency. And you know,
+that's how we become more productive, both individually and collectively. So what is
+money? I mean, money is just the way that we decide who owes who what, that's, that's
+the simplest way I can think of to describe it, because that then can encompass any number
+of different systems and encompass the fact that money is whatever we collectively agree
+is money. And then of course, you have the whole question of what is consensus? How do
+we agree upon it? What are the properties that result in humanity in general converging
+on certain types of systems to be money? But you know, there, there are properties that
+make money more appealing. And that is things like, you know, having the ability to have
+some decent idea that the value that you put in the money is going to be somewhat the same
+at some point in the future as it is right now. There are great properties such as the
+ability to pay someone without having to worry about whether or not the money is going to
+get to where it's going. There are privacy properties of the ability to send it without
+the entire world necessarily knowing what economic transactions are performing. But,
+you know, that's getting a lot more into the minutia. And you can even get into economic
+arguments about whether whether money has to have certain properties. Ultimately, I
+don't think it really matters, you know, whether one specific system fits all the criteria
+of money or not is money is money if people use it as such, and it works for them.
+Very interesting, very interesting. And then and then this notion of wealth, I mean, there's
+been many attempts of trying to make money digital, right? I mean, you could argue that
+my bank account, right, is to some extent is digital, right? I don't really actually
+handle cash all that much. My credit card seems to work on ones and zeros. So I guess
+like, I guess the deeper question here that I was wondering is, is like, when was your
+aha moment? When were you like, ah, like, yes, like, this can actually potentially work.
+But when was it like, did it take a couple times before you were like, yeah, there's
+actually something here. I'm curious to know your your kind of, you know, deep dive story.
+Well, you know, like most people, I heard about Bitcoin a number of times and dismissed
+it as, you know, nerd money that was going to get hacked. And everybody was going to,
+you know, have a story that ended in tears. And so, unfortunately, we'll never remember
+the first time I heard about Bitcoin, because I know I heard about it several times before
+I actually looked into it. And, you know, it was probably the third or fourth time that
+it came up on slash dot or some other news site, where I actually looked into it, I actually
+read the white paper. And the computer science side of me was like, oh, you know, this is
+intriguing. Like, first of all, I never really thought about how money works. And then second
+of all, I certainly never thought about this Byzantine generals problem before. It's just
+not something that was in my field of computer science of what I was building with web apps
+back in the day. And so that's what sparked my interest. And then it wasn't until I actually
+jumped through all the hoops of sending wire transfers and actually getting some Bitcoin,
+and then being able to exchange it for other things of value that I realized that, you
+know, this is actually money, it actually works as such. And it's a project that I think
+is worth, you know, putting my time into.
+Interesting, interesting. Okay, so it's okay. So money is money is Bitcoin is, and then
+you have this, I guess, this moment in time, before we get into the kind of the costs,
+I want to dig, I want to dig deep into that. And I think there's a lot of stuff that we
+need to explore. But before we do, I wanted to just ask you a couple of questions. So
+to me, you know what, you're like a technical guy, right? So you know, the word like unit
+step function, you know what that means, right? Like zero, and then you go to like one, right?
+To me, when I and I was in the financial industry back in the day as well. And so when I first
+discovered Bitcoin, there was a part of me that felt like it was like this zero to one
+moment, you know, it was like, it brought all these like different like philosophical
+and like, you know, whether it's like, economical theory, game theory, you had like cryptography,
+you had all these like really, really interesting things coming together to solve quite possibly
+one of the biggest problems, you know, that we've ever faced. But, but, you know, since
+then, there's been a lot of noise, right in this space as well. And, and some could argue
+that it's innovation, right? Some could say, well, no, there's actually like crazy, awesome
+things happening there. And then you've got this like, you've got Bitcoin, you've got
+like, innovation, question mark, and then you've got like, rujas and like the one coins
+of the world, right? So how does one who isn't dedicating their life to this, this world
+to this craft, right? How are they to figure out what's real and what's not? Because there's
+a lot of projects right in this space. I'm just curious, like you seem like you have
+a like a moral compass almost that you've used to kind of navigate over the last few
+years. And I'm just curious to get a bit of pulse on that, like, what kind of principles,
+what kind of things are you looking for? And again, like, there's been so much innovation
+in this space, how come Jameson's not, you know, writing, you know, tweets and blogs
+and doing podcasts? And why aren't you building your company around that? I'm curious. So
+what is it? So not so much about the fiat world, I get, you know, how we kind of relate
+to that, but like, it's holding everything after world, like, what are your thoughts
+on it?
+Well, it's, it's a very simple breadth versus depth type of issue. And you're certainly
+when Ethereum came out, I was paying attention to it. I mean, to my own detriment, I am certainly
+not good at evaluating projects as investment potential. And so I certainly try not to give
+any sort of financial advice, because I was there, I, I could have put a lot of money
+into Ethereum, and I didn't. And, you know, the main reason for it was that I read the
+terms of the Ethereum ICO. And in the terms was a section that said, you know, we're not
+going to promise that we're ever going to deliver any software, much less working software,
+much less, you know, meeting any of the grand ideals that we're promising the system can
+do. So, you know, unfortunately, for me, that turned me off. And I should have like realized
+at the time that it was just, you know, legalese, you know, cover your butt type of stuff. But
+what do I do as an approach to all of this? I mean, I simply don't have the time to keep
+track of all of the new projects that are coming out. You know, you could very easily
+turn that into a full time job. And there are plenty of people who do and then, you
+know, speculate based upon their own evaluation of the different projects and the different
+teams. I would say, you know, I spent a decent amount of time looking at some of the more,
+you know, popular projects that were coming out like during the 2017 cycle. And, you know,
+most of them were just utter trash. There's plenty of red flags that give away, you know,
+a scam project. And that is usually things like white papers that are word salad or that
+are straight up, you know, copied from other white papers, websites that are more focused
+on marketing aspects and, you know, the team of people behind them rather than the actual
+technology and, you know, innovative functionality that you're building. You know, there's a
+ton of ways to evaluate different projects. And for me, it's just, I don't really think
+it's worth my time because the vast majority, probably 95 plus percent of them are not going
+to go anywhere. And so I could spend a ton of time trying to find the diamond in the
+rough and maybe invest in them or try to help them or whatever. But for me, I see Bitcoin
+as the one that's, you know, the greatest in the lead. It has a clear vision of what
+it's trying to accomplish, you know, keeping things simple, trying to be the best money
+possible. And it's a long ways from being what I would consider optimal money. So we
+still have a ton of work to do. And I want to continue working to fulfill that singular
+goal. And, you know, perhaps if we get to the point that I feel like we have fulfilled
+the optimal vision of Bitcoin, then perhaps I will start looking at other projects in
+the space, but not necessarily even like the crypto finance space. My objective at a very
+high level, when I first transitioned from just doing like data analysis for a marketing
+company to the Bitcoin space, my high goal that I basically set for myself was from that
+point forward to use my skills and my resources to help empower individuals. And, you know,
+whatever I feel is going to help with that is what I'm going to work on. So Bitcoin
+is like the obvious, most straightforward solution to that right now. There are plenty
+of other technologies that fulfill similar type of objectives, but in different ways.
+And so that at a very high level is what I want to do. And the reason that I want to
+do that is because I kind of see it as an issue of power in the world today, where I
+think too much power has been concentrated in the hands of too few people. And I believe
+that technology and my skills as a technologist give me the greatest leverage to help try
+to, you know, reverse some of that flow of power.
+Very interesting, very interesting. Okay, so now dive a bit deeper into why, I was going
+to say one thing, just one quick thing is that, you know, I'm always trying to think
+of different ways of explaining Bitcoin to people. And more recently, it kind of dawned
+on me that what I'm actually, I would say, defeating or beating by buying Bitcoin is
+time, which I'd argue is maybe all of our, you know, biggest nemesis, right? You know,
+whether you're like, whether you're thinking about what's happening in the future or some
+relationship you're in years ago, whether it's like, you know, death, just having like
+a finite point in time, whether it's fearing old age, whatever it is, I'd say by death,
+I mean, generally time is what we're all fighting against. And I always found that when my mentality
+wrapped around fiat, there was never enough time, there was always, there's always me
+kind of like running to try and there's always more months than money, as I always say, like,
+you know, it was like, just never like, whether it's like taxes and inflation, and, you know,
+just like the, everything just working against me. And it just felt like I was never going
+to get off this treadmill. Whereas as soon as I bought my first Satoshi in 2011 or 12,
+it wasn't even about like, buying it and selling it, it was more about like this one way portal
+into timelessness and into a world where I wouldn't have to constantly look, you know
+what I mean, like feel like I was running out of time. But I find like the decentralized,
+not the decentralized, but the fact that it's like limited and all that it kind of lends
+to it. But, but sovereignty, right? So speak to me about key management, speaking about
+a little bit about, I guess, from a high level, you know, what is CASA doing, right? You know,
+in terms of like, what is the solution? And then a bit deeper into kind of what, like how
+you guys are actually enabling, you know, sovereignty, how you're enabling people to,
+you know, become owners of their own future and their own time.
+Yeah, I mean, money is basically time storage, right? For a long time, I thought of money as
+just a way that you buy things. But it was also, you know, after getting into Bitcoin that I
+started thinking of it more in terms of time. And that, you know, the ability actually to buy other
+people's time is far more interesting thing than the ability to like, buy a yacht or something.
+So, you know, that actually kind of goes back to my point earlier of like leverage. You know,
+the ability of technology to leverage various balances of power, the ability of money to
+leverage the really the things that you can get done, actually, I think I just tweeted in the
+past day or two about leverage of code, where if you think of code as an employee, or, you know,
+I actually think of code as a sort of a manifestation of a single small tiny part of myself,
+is that when I write a certain script, a certain function, a certain, even more complex architect
+a piece of code, what I'm really doing is I am projecting my will into reality, I thought of
+something that I want to have happen, and I preferably want to have happen over and over again,
+and hopefully even want other people to help have that happen. And I turn it into code, I test it,
+and, you know, there will be of course maintenance required. But once I deploy that code,
+it is running 24 seven, with very little overhead, it doesn't require to, you know, eat or sleep or,
+or have, you know, health insurance or all of the other complex things that make human employees
+a lot more difficult to manage. It does require different types of maintenance. But in general,
+you get a lot more bang for your buck, especially over the long term. Now, if you're thinking about
+leverage, though, in terms of employees, you know, you can leverage other people's time by employing
+them for various things. Then if you combine those two, you know, and you you hire employees
+to write the code that you want to be written, then you're really cooking with gas, you know,
+it's like leverage squared. I hear you. I hear you. You know, I know this wasn't like a prepared
+question, but I was very curious about this. I don't know if you know, but I spent like 10 years
+in robotics. So before I got into Bitcoin, my wife is a mechatronics engineer, I literally helped
+outfit most of the major robotics labs in the world, including Stanford, Georgia Tech, IIT, MIT.
+And I work for a company that essentially, you know, built products for these types of labs.
+And I've been thinking about robotics for a long time, right? So like I got to play with quadrotors,
+3D printers, we have a Tesla, like we're all about like the robot renaissance. But you know,
+lately, there's been a lot of talk about, have you ever heard of the term singularity, the
+technological singularity or whatever is it referred to? Oh, yeah, definitely. So Raymond Kurzweil,
+you've heard of the guy? Yeah. So, you know, more, so I always like I read all those books,
+like 20 years ago, 15 years ago, whatever, right, and always had it really fascinating, kind of
+chucked it to the back of my mind. But then more recently, you know, you've got like Elon Musk and
+Bill Gates and Zuckerberg and all these like, super wealthy, like, you know, technologists talking
+about, you know, this, this like, similar type of idea, right, where we're not necessarily like
+these narrow bands of artificial intelligence that already exist kind of all over the world, but
+really kind of a coming together and almost like, you know, humanity giving birth to this, this,
+you know, something that's far, you know, they can have, you know, way more computations per second
+that has kind of the subtleness of humanity, and it's able to interact with us and, and all of that.
+So I guess what I'm getting at is, is I'm curious to know, number one, I guess your thoughts on,
+do you think, I mean, and then I'm bringing this up because of what you were saying earlier,
+is do you, I drive a Tesla, it literally drives itself, it freaking drives itself, people don't
+even believe me when I tell them, it drives itself. How many people on earth drive for a living?
+Once two years go by, and it's like, I don't even need to, like, it's literally from my parking lot
+to the parking lot of this, you know, grocery store, and it drives itself, it parks itself. I mean,
+once it's at that level, it's going to almost like overnight disrupt like a lot of people's jobs,
+especially people who drive for a living. Are we going to tell those people, those people to become
+programmers? And by the way, I don't know if you've seen open AI and what they're doing with like,
+you would be able to convert natural language into code, like, oh my freaking God. So even telling
+someone to become a programmer might not be a long-term sustainable solution. Yeah, so.
+I'm looking forward to that day, right? Is that right now, you know, we have a wide variety of
+programming languages to choose from, and there have been great advancements in programming
+languages over the past few decades, but it is still a huge pain to turn that concept into reality,
+especially in a way that is robust and doesn't break around edge cases. And so yeah, I really
+look forward to the day where we have the Star Trek type of thing of like computer, create a program
+that simulates, you know, these conditions. And then, you know, a few minutes later, you have
+everything you could ever imagine. So that, that will certainly be great, but you know, even then
+you're going to have to have some sort of meta-scientist, you know, who is building those
+systems until, you know, perhaps we get to that singularity point. But, you know, there are,
+there are a lot of scary things, of course, that can happen as a result of all of this, you know,
+kind of to your point about Tesla. I don't have a Tesla because I don't trust all the data collection
+that it's doing. Like, I don't know what it's doing with all of that information. I know why
+it needs a lot of it, but I also know that, you know, gigabytes and gigabytes of information are
+getting sent back to Tesla headquarters and getting warehoused in a central repository. And
+while, yes, it's being used to make the system better, that data, I consider all data about me
+to be a toxic waste of sorts. And so there's the question of, you know, is that risk that I'm taking
+worth the trade off of having a car that comes when I call? Is there a car that will, you know,
+drive down the highway and probably do a better job at it than I would myself? And, you know,
+these same type of issues come up with basically anything. And especially as we approach the
+singularity, the world is just going to continue to become a weirder and weirder place. And, you
+know, it is, I mean, I think we're already in a type of early cyberpunk dystopia. There's a lot
+of dystopian things about the world in 2020, much less when we start looking forward a few decades,
+it's going to get even crazier. So we have to try to protect ourselves as much as possible and,
+you know, understand as many of the potential ramifications as possible. But there's also just,
+there's so many unforeseeable consequences that I actually believe that, you know, we're in one of
+those periods right now in a civilization where everything is evolving so quickly that it's
+actually one of the most dangerous points in time for our civilization to, you know, go over the
+brink and self-destruct. You know, there are a number of different things that could go wrong
+and essentially cause a collapse of everything that we have built. Not trying to be a downer.
+Yeah. And I'll stop harping on this topic here, but just curious, as a technologist,
+this is like more of like a thought experiment. Something that I've been thinking about is like,
+do you think, so like, you know, that mad scientist you talked about, I'm super scared of that guy
+because like that's exactly what we don't want, right? Like one dude designing like some sort
+of AI software. So I was curious, do you think that Bitcoin could serve as like the nervous
+system for some sort of like future artificial intelligence? Like could it, because you know,
+I've read a lot of books on AI and then there's a couple of like major concerns that they have.
+One is just the fact that it computes at a very, like very fast rate and humans can't even like
+comprehend how it's coming to its decision. Like it just does it. So we might need to have checks
+and balances. I sometimes wonder if it's like humanity's role to try and figure out some way
+to like give us, you know, the leash on this day, right? And I don't know, like are there,
+like you hear about Neuralink. It's like, well, you can't beat them, join them, but
+like, is there a way to, again, I don't know, I don't know. Have you thought much about AI? Have
+you kind of looked into this space? Like have you seen the OpenAI, the GPT-3 project and some of the
+things? Was it Marzin or Maros or whatever that wrote that? Did you read that article? Like it's
+one of the, some Bitcoin guy out of Argentina wrote a, anyhow he posted things on Bitcoin talk on,
+and then you read the whole article at the end of the article. He's like, by the way, this article
+wasn't written by me. It was written by the OpenAI. That was a bit scary for me. And so, yeah, so I
+do, I do, you know, and I know what kind of, like what doctors even do. Like, I mean, I think there
+could be a time in the near future where a nurse is potentially more valued than a doctor, because
+like I can imagine computers making decisions, like doctors do far more, you know, better than
+like a person that needs to relate to a human being. It's kind of insane, like the amount of
+sort of data knowledge and retrieval that is expected of a doctor, you know, that's not possible
+for like the human mind to know all of medical science at this point. Like it's just too much.
+Even if you're a specialist in one tiny part of the medical field, you probably still don't
+know everything. Or once again, it's like Bitcoin and the crypto space is that even if I'm a Bitcoin
+expert, it's just, it's physically impossible for me to keep up with all the things happening
+in the space. So it makes sense to use some sort of AI, you know, knowledge retrieval system,
+because it will be able to pick up things, you know, the instant that they hit the internet,
+basically, and, you know, merge that into the collective consciousness, if you will,
+from a like adversarial AI taking over the whole world perspective. You know, I don't think that
+one of those AIs would like run on a like decentralized consensus network simply because
+they're so computationally slow. However, what we have seen, even just I think in the past year,
+novel new uses of even the Bitcoin blockchain as a censorship resistant pointer to information.
+And specifically, I'm referring to there have been botnets that have used the Bitcoin blockchain as
+a command and control database, because these, these bots can essentially, you can have your
+bots infect a million different machines. And inevitably, in the sort of botnet space, what
+happens is the botnet has some sort of centralized command and control infrastructure, it's usually
+it's using like a domain or IP address or something else, where all of the the worker infected machines
+will go out and ask for instructions of what should I do now that I've taken over this machine.
+And so when security researchers and government officials and whatever are looking to take down
+these botnet networks, they go for the head, they just they want to chop off the head.
+And basically, all those infected machines, they'll still be infected, but they won't do
+anything because they can't get any instructions. So the novel thing that has just started to happen
+recently, is these botnet operators realize that they can spend a very tiny amount of Bitcoin,
+and actually put instructions in the Bitcoin blockchain with the op return functionality
+that does nothing but link to some website or IP address, somewhere else on the internet,
+it could potentially could even be something like IPFS, you know, some other distributed data store
+to basically say, all right, you know, go here and get your updated instructions. And there is,
+as you know, no one in the world who has the authority or the ability to stop Bitcoin
+transactions from going into the blockchain. Therefore, you now have botnets that are
+essentially a hydra of you can, you know, you can cut off the most recent infrastructure that is
+hosting the commands. But all the botnet operator has to do is create another Bitcoin transaction
+with the right data format, put it in the blockchain and say, all right, your new
+instructions are now located at this other, you know, completely different part of the internet,
+some server hosted somewhere else. And, you know, it just it turns it into a hydra where
+no one can, can permanently stop it. And you know, this is maybe a bit controversial,
+but I always felt that like, in the future, in the future, I mean, like 10, maybe 20 years out,
+I think that bots, I think robots will be like, they'll dwarf humans in terms of like,
+you know, their usage, like, when I think of it, I agree with you on the concerns around Tesla,
+I think about that stuff too. But when I picture my automated car in the future, passing yours,
+right, because that's what's going to happen, right, I'm going to pass yours. But the way it's
+going to happen is your car is going to send some sort of message saying I've got nothing on my
+calendar for the next two hours. I've got, whereas my calendar knows I've got, you know, a meeting
+that I'm late for. And they're just going to not do like a wire transfer between one another,
+they're going to like just send something that feels and looks like TCP IP. And then your car's
+going to move out of the way, I wouldn't pass you. But I can't, whether it's my washing machine,
+talking to my TV, telling it to come on three hours later, because it's on, I mean, I just,
+I can see there being like an economy between machines. And Bitcoin strikes me as something
+that, you know, would make that possible. Okay. Kasa. So I want to talk about this. So I'm going
+to try and first explain what I understand Kasa to be in just my layman's terms. So there's,
+there's like these exchanges, right? There's websites that people can buy Bitcoin, right? But
+once you buy it, you don't have to hold your Bitcoin sitting on some server that's controlled
+by, you know, whoever, right? And so for the longest time, Bitcoiners have known that, you know,
+the best thing to do is to not have your Bitcoin on exchanges, right? The best thing to do is for
+you to hold your own Bitcoin. And then, you know, whether it's Trezor or, you know, Opendime and,
+you know, I love the Opendime guys, just all these like kind of wallets, hardware wallets, if you
+will, that look like US E-Sticks. And you can essentially hold your crypto there. They don't
+connect to the internet and you're safe-ish. Okay. So I guess to me, Kasa strikes me as like
+the next kind of evolution, right? It's like, well, yeah, great. You've done that. You've got
+the Trezor, whatever, in your box at home. But what if a bad guy comes with a gun and says,
+you know, says, hey, well, give me that Trezor. Now all the security in the world and all the
+math isn't going to work for you because you've got a gun to your head. So in that case, you're
+going to want to use something like Multisig or you're going to, I don't even know. This is part
+of my question is like, is it Multisig? Is it Shamir's? Like, you know, how are you guys actually
+making this happen? But the idea effectively is that I would have, you know, maybe M of N, maybe
+three of five keys or two of three keys that I'd need to reconstruct to be able to access my Bitcoin.
+Maybe one is in India, one is in Canada, one is buried somewhere in the middle of the ocean
+or something or a field. And so I could essentially recreate my keys, but anybody who comes to my
+house, I essentially can't because I don't have all the keys. I need to recreate it. So
+is that essentially the problem statement that you're trying to solve for or am I missing something?
+Yeah, I mean, CASA is the system that I wanted for myself. The sort of background history is,
+you know, I started working for BitGo in early 2015, was basically running Bitcoin infrastructure
+for them. They're doing enterprise Multisig, basically helping exchanges and other service
+providers help to secure their hot wallets because, you know, they need to be constantly
+transacting. They need to be keeping keys online. That's the most dangerous thing that you can do,
+but it's a business requirement for a lot of enterprises. So you need a lot of extra security
+and sort of processes around managing those hot wallets. So, you know, the way that they improved
+upon just having a single key on a single machine is they split up the key as a two of three Multisig
+solution where you need to get signatures from multiple different machines that are secured by
+completely different type of firewalls and software and human processes, et cetera, et cetera,
+essentially, you know, making it exponentially more difficult for an attacker because they now
+have to break into multiple different completely, you know, separate setup systems. You know,
+they have to find ways to exploit not only one system, but multiple systems. And, you know,
+this was good. It was certainly an improvement, but it was far from perfect. You know, we still
+had a few incidents over the years where usually what would happen is someone would infiltrate the
+internal infrastructure of a client and basically spoof them and make, you know, API calls that look
+legitimate and follow the rules and whatever. And so it was still possible for someone to get into
+the system and steal money. And so what I realized after working there for several years is that
+I was spending one to two days every year, refreshing my own cold storage setup.
+And this was an extremely onerous thing for me to do. I have an article that I wrote about it
+a few years ago, which it was like a 15 or 20 step process that would take, you know, a day or two.
+And what I was basically doing is, you know, gathering all my different wallet data and
+seed phrases and stuff and using an air gapped computer to create an encrypted file system that
+I would then put onto different data storage drives. And I would then Shamir secret share the
+decryption key. And then, you know, I would spread out copies of these encrypted data drives and give
+one piece of the Shamir sharing to each of my executors, if you will. Because I wanted not only
+cold storage system that was secure against attackers. I wanted something where if I get
+hit by a truck, my heirs would be able to reconstitute those keys and actually spend the
+money. That's actually one of the harder parts to everything is like it's easy to secure your keys.
+If you want to be completely silly about it, you know, you can basically destroy your keys and
+that's as secure as they'll ever get. No one will ever be able to access them, including yourself.
+What gets a little bit harder is if you want to secure your keys against everybody in the world,
+except for yourself. Well, then you just need to create a much more diverse and robust set of
+security that makes it almost impossible for anyone who is not specifically you to get through
+all the different layers of security. But then what if you want to build a system where
+you can access your keys, but if you're dead, a few certain other people also are able to access
+them. That just like explodes the complexity even more. And it's actually something that we've
+started offering at CASA. But to kind of step back a bit to like what did we actually do?
+Can you just allow me one second? Sorry, when you just said that, like they can access it if I die,
+but doesn't that also mean they can access it if I don't die? That is why the difficulty in setting
+up a system like that is so tricky. And that's because, you know, it's the oracle problem,
+right? It's the same problem that Bitcoin and Ethereum and all of these other things have
+issues with when you want to do something on the blockchain that is really, you know,
+the blockchain that is reliant upon an event that happened outside of the Bitcoin network or whatever
+other crypto network you're running on. And yeah, so just to jump back in. Yeah, so I was
+going to say, so we're talking about, you know, lawyers and my estate getting access to my funds
+and all that. But I mean, like, I think about that stuff quite a bit, right? But I don't think,
+I think most people, they just care about themselves. So I was just curious, how does somebody,
+you know, use your solution or your system to protect their own Bitcoin so that they can be
+super loaded one day when they're old or whatever, if they think Bitcoin is going to go to the moon?
+Just curious. So and from what I understood, it's that one thing I liked about it is that if I have
+to rely blindly on Trezor, you know, if something goes wrong with Trezor, which we've seen in the
+past, you know, not Trezor specifically, but you know what I mean, these wallets, like you hear,
+oh, there's a vulnerability that scares me a bit. So if I want to maximize my chances, if I use
+something like Casa, I could, you know, use Trezor, use a, you know, another, you know,
+grand company's wallet, I could use maybe my thinking, I think even my phone as like one of
+the keys. So can you just talk a little bit about that? I mean, that seems to me like a super
+like intelligent way of, you know, securing your own bitcoins for you. Yeah, we kind of jumped
+forward to the highest tier, most extreme offering that we have with the inheritance setup. That is,
+that is a pretty in-depth setup that requires a lot of hand holding. And you know, we charge a lot
+of money for it because of all the time, the hours that go into it. But we have a couple of other
+tiers, you know, very entry level tier, only $10 a month, where all you need is one or two
+hardware devices. And you can set up a two out of three sig, essentially just plugging in your
+ledger or your Trezor or your cold card. And you know, we plan on continuing to add more as,
+as we continue to test other hardware manufacturers. But the idea around this,
+at a very high level, is to eliminate single points of failure. And so, while a hardware device
+on its own is great, it's far superior to keeping your coins on an exchange, it's far superior to
+keeping your coins in a like single signature hot wallet on a mobile phone or a computer or whatever.
+You're essentially taking those keys offline, you're creating an error gap so that hackers
+can't steal them. There's still a ton of ways that you can lose that money. Probably, I would say,
+more ways that you can shoot yourself in the foot and just lose access to it, rather than having it
+actually stolen from you. But there are still plenty of other attack vectors where you could be
+tricked into sending it. That you know, we've seen plenty of people lose money to essentially
+sophisticated types of phishing now where we have, we've improved the technical security
+of the keys by putting them on dedicated hardware. So now the attackers are essentially going after
+what is the weakest link, which is the humans, you know, the brains, where they're hacking
+people's brains to trick them into sending their money to the attackers. So, when we want to
+eliminate single points of failure, it basically means we want to understand that humans make
+mistakes and we can't build brittle systems that can have a catastrophic failure where you lose all
+your money because you made one stupid mistake or you got tricked by one stupid piece of malware,
+etc, etc. So, by taking keys, putting them on dedicated hardware devices, and then distributing
+them geographically, we save you from all types of not only attack vectors, but also just loss
+vectors of things that could go wrong that could, you know, cause those keys to get destroyed for
+some reason. And then the, like, the ultimate backup to all of this is that CASA holds a key
+offline where if you lose keys yourself, then you can go through an authentication process with us
+to get us to essentially co-sign a transaction and we can then help you restore your key set. So,
+one of the major differences between us and a lot of other multisig providers is that we actually
+have, like, flexibility and key rotation built into the app itself. So, you know, if your treasurer
+goes missing, is stolen, destroyed, whatever,
+managing seed phrase for that offline somewhere because that turns into a whole complex issue
+of physical security for the data that is essentially your private keys because you're
+no longer keeping it on a special dedicated device. Instead, what we enable you to do in the app is
+essentially go buy a new hardware device off the shelf, plug it in, and then we walk you through
+what is really a wallet sweep transaction to rotate out that old key and move your funds
+to this new set of keys. It's just a more flexible way of thinking about multisig.
+Okay. I don't think I fully understood that. So, did you just say that even if I lose all my
+treasurer and all my keys, I can come to you guys and there's a process by which I can still
+retrieve my Bitcoin? And if that's the case, how do I protect against, you know, mad scientist,
+AKA Jameson running away from my funds? Oh, yeah. So, it's not all of them, right? So,
+the ultimate, the trade-off to self-custody is that there will always be a path through which
+you can lose your money. The way that CASA designs our system is to basically build guide rails into
+the app to try to steer people down the road of best practices so that, you know, we're not assuming
+that people are reading manuals and spending hours, days, weeks learning about them. Rather,
+if they just follow what the app tells them to do, they should be in a better situation than 99.9%
+of other Bitcoiners. So, if you're in a two out of three setup, for example,
+you can either have one mobile key, one hardware device, and then the CASA key,
+or you can do two different hardware devices in the CASA key. There's trade-offs there around,
+you know, security and trustworthiness. Like, some people may not like the idea of having a
+mobile key. We actually think that the trade-offs with the mobile key are great because we can
+actually back it up in a secure fashion. And we have a blog post about this as well where
+the key itself is kept encrypted on the device. But then we further create a different encrypted
+backup of that key that we put in your cloud storage, Apple storage or Google storage, whatever
+that may be, depending on your device. And the decryption key for that is not stored on your
+phone. It's not stored in the cloud. It's actually stored on CASA server, also additionally encrypted
+with one of our hardware security modules, essentially creating like a two of two type of
+backup, you know, kind of like Shamir's sharing, but without all the complexity behind Shamir's
+sharing. The cool thing about that is that, you know, if you lose your phone, if you upgrade your
+phone, whatever, then all you have to do is log back into your CASA account and the same Apple or
+Google account, and it can suck down both of those pieces of data and reconstitute that mobile key
+all behind the scenes. So automated backups, especially secure automated backups, we're a big
+fan of. What we're not a big fan of is people writing down their seed phrase on a piece of paper
+and trying to figure out how to physically secure it. Hey, James. Okay, so just to be clear about
+one thing, CASA is obviously a website. From my understanding, I know CASA, you guys used to sell
+a node at one point, which was like a hardware device. And then there's also a physical hardware
+device as well, right? That I plug my Trezors into or am I missing something here? So CASA itself,
+we don't actually manufacture any hardware. We had the node, but that was all off the shelf,
+you know, Raspberry Pi type stuff. Like we've never been a hardware manufacturer, nor do we want to be.
+The idea behind getting rid of single points of failure is to actually create a diversity of
+different security for each key. So like I said, every multi-sig setup, whether it's two or three
+or three or five, will have one key with CASA. And you know, we control those keys completely
+offline. They're never on any online storage. If they're needed to be used, then they get loaded
+onto a dedicated air gapped hardware device. Then you have the mobile key, which is, like I said,
+it's either on your iOS or Android phone. It is secured by the secure element that is, you know,
+in that phone itself to encrypt it and use the various authentication mechanisms that that
+operating system provides. It could be biometrics, it could be a pin, et cetera. It's whatever you
+have configured on your phone for security. And then you have either one hardware device
+or two hardware devices for two of three, or for the three of five, you have three different
+hardware devices. And the whole idea around that is, once again, it's a completely separate type
+of like computer storage system. And also, if you have multiple hardware devices, then you should
+use different manufacturers. So, you know, you shouldn't have all treasures or all ledgers or
+all cold cards, because, you know, there could be some supply chain issue, you know, there could be
+a bug, you know, any number of things. And you don't want to put all of your eggs in one basket.
+And that's also why CASA itself is not interested in manufacturing a hardware security device,
+because that would put more trust in CASA, and we want to have less trust in CASA.
+Interesting, interesting. And by the way, like I said, I spent 10 years in robotics. So,
+I came to the conclusion that they call hardware, hardware, because it's hard. It's also like,
+it's very cumbersome. Security is also interesting. So, the node was just like a bit of a side
+project. It wasn't really anything that you guys double down on. And so, by the way, I have all
+those... Go ahead, go ahead, go ahead, go ahead. The node was a funny thing, because it, from a
+sheer marketing and branding perspective, it surpassed our security service as a known thing.
+And so, due to the popularity of the node, that was what we became known for, even though we had
+been doing the multisig security service for over a year before we launched the node. And so, now
+we're kind of having to readjust and like reacquaint people with the fact that we're fundamentally a
+key management service for people to self-custody their own funds. And the node was a very, very
+different type of thing. It was never a high security thing. It had a lot of things that could
+go wrong with it. And we always told people from the offset, it was even in the code,
+it was even in one of the setup screens that said, don't put more money on this than you're
+willing to lose, because this is a highly experimental project. Funny how the internet
+works, right? It just kind of runs away with things. Okay, but just to kind of clarify,
+just to finish up on this though, is that if you're someone listening to this and you want to
+partake in this super high security network or system or whatever, all you need is you need a
+legit cell phone so you can download the CASA app. You need ideally a couple of like maybe a trezor,
+whatever, a cold card, and I want a ledger maybe, right? So I've got all those at home. So you're
+saying I can essentially, I need to, I can get set up. I don't know why I thought in my head that
+there was also another hardware that acted as the piece that brought all the different
+hardware together, but it doesn't. Okay, good. Okay, so anything else on the, before we kind
+of move over to these last few questions, just curious, like any other things you want to maybe
+mention on the, anything you want to clear up in terms of confusion or just maybe sharing? I don't
+know, usually people don't like talking about future things, but I don't know, is there a product
+that's coming out? I guess you said you do have a blog or something coming out on the weekend,
+right? Yeah, I mean, I'm constantly talking about new topics that I think have not received enough
+attention. The one thing that we didn't touch on at all with CASA, because we were mainly talking
+about the technical aspects of it, the unique major difference I would say between CASA and
+any other self-custody setup, because of course you can, you know, we're not recreating the wheel,
+you, there's any number of other software that you can go out and create your own multi-sig setup for.
+One of the main reasons that I would recommend CASA is because we have a service component that
+you're just not going to find with a do-it-yourself solution. And that's one of the other major
+differences with the different tiers is that when you go up into the higher tiers, it really turns
+into more of a bespoke, like private client services type of arrangement where, you know,
+you have a dedicated client advisor that, you know, if you have any issues, questions, you run
+into anything, you can actually get on a phone call with somebody, which is almost unheard of
+in the Bitcoin space, you know, with a lot of providers out there. You know, if you're using
+like an open source project, then that's all community driven stuff, like you might post on
+a forum and hope that somebody cares enough to respond to you. If you're using some sort of like
+custodial service, like an exchange or whatever, then you're probably going to send them an email
+and hope that they respond. You know, during bull markets, you might not get a response for over a
+month. And really with us, it's like, if you're paying us at a premium tier, then we're going to
+dedicate actual human bandwidth where if you want to get on a phone call or video call or whatever,
+then you'll have dedicated customer support. So it's one of the ways we actually describe that
+is like at Casa, we're not here to hold your keys. We're here to hold your hand. So we're here to
+help people. It's a great option for non-technical people or people who are new to the space and
+don't have the time to spend figuring out all of the minutia around best practices.
+Makes sense. Makes sense. Hey, James, I have a question. So as somebody who's, you know,
+spent what, almost eight years in the exchange brokered space, have you figured out a way where,
+let's say, users of, let's say, Unocoin can hold their funds or Bitcoin at like, you know, I know
+it sounds almost like an impossible thing, but maybe not where I can hold my Bitcoin, you know,
+in my possession in kind of a Casa environment, but then have those Bitcoin in some shape or
+form show up on an exchange and makes it tradable? I mean, I can kind of think it's maybe a couple
+ways, but just curious to know, is that something you guys have thought about or come across?
+We've certainly thought about it. And we've even talked to some other companies about, you know,
+this type of, well, it would essentially require two things. It would require a like hybrid
+custody solution where you have like one key held by the exchange, one key held by Casa,
+one key held by the user. If you can, you know, think of how that would essentially put you into
+a setup. That's pretty sick. Okay. I just got that. Okay. Cool. Yeah. So, you know,
+but that's only the technical part. That's kind of like Bingo, isn't it? Sorry. I don't know
+not to nudge the waters, but it's a bit like that or not really. Yeah. And so you may remember Bingo
+had a service called Bingo Instant. And the way that Bingo Instant worked is that you'd have one
+key at Bingo, one key at your service. And then the third key was with a third party, like key
+recovery service. And so that's just the technical components. What is required though, to make that
+work from an enterprise, like organizational level, is it requires legal agreements between
+the two companies that essentially say, you know, if the user defaults or if the user meets these
+other situations, then you, other company, are legally obligated to sign the transaction that
+sends the money away from the user and into my account. And so it is certainly doable.
+The tricky thing that comes into play is that usually with exchanges, there's a very like
+limited time window to actually execute these things and get them done is like when the markets
+are moving, people need to liquidate really quickly. And so you would also need to have some sort of
+service level agreement in there that says, you know, not only will I, you know, co-sign a
+transaction to send the money to you under these certain circumstances, but I will do it within,
+you know, this many hours or this many blocks, because usually what's the reason why something
+like that would be happening would be that you got margin called or, you know, you hit some other
+liquidation trigger that required the money to be sent out of your account and to the exchange,
+and then perhaps to somebody else who was then owed that money. So it gets a little more
+complicated. And once again, it's going to involve like humans in the legal system. So it starts to
+become more fragile. Well said. Okay. Okay. Okay. So I had a couple of questions,
+James, that I wanted to ask you. So we touched on maybe pieces that are here and there, but okay.
+First question is, you know, what is, what is like one truth that you believe that you think most,
+you know, and we can go one of two ways, either Bitcoin or crypto, maybe crypto might be the
+blockchain, we're going to call it, that most block chainers would disagree with you on. So what's
+one truth that you know to be true than most, you know, block chainers, I hate that word, but we
+would disagree with you on. I still think, and I think I've been saying this for at least five
+years, but I still think that is important that we actually come to some sort of consensus around
+how much it should actually cost for people to be able to transact on chain. And the reason for that
+is that the sort of second order effect of that is that if it's too costly to transact on chain,
+then it will be too costly for people to move their funds off of trusted third parties and into
+self custody. You know, this is a very complicated issue because there, you know, butts up against
+issues of how much does it cost to fully validate the whole system and run a full node and whatnot.
+And so you can't, you can't let it be zero cost because then the blockchain data will blow up and
+it becomes too expensive to validate. But on the other hand, you know, if it costs hundreds of
+dollars to, you know, withdraw your money to your own wallet, then that's going to prevent a lot of
+people from doing that. And, you know, maybe second layer solutions will be able to get us there, but
+I think it's fundamentally impossible for a second layer solution to ever be as secure as a base layer
+solution. So at least like as it stands right now, I don't see, I don't foresee people, you know,
+holding their life savings and a second layer solution.
+Okay, fair enough. Cool. Cool. I got that. And then, and then the same question as it pertains to
+like the world at large, you know, I don't know, I mean, there's a lot of weirdness going on in the
+world right now, but just wanted to know if you had any, you know, again, strong beliefs where you
+kind of saw the light or see the light and most people in the world will probably disagree with
+you on.
+I mean, in general, I still believe that the like crypto-anarchy line of thinking, the sovereign
+individual thesis, and that line of thinking for the general trajectory of the world will prove to
+be true, though I also don't necessarily think that that is in conflict with a lot of people.
+Other things, especially with, you know, Orwellian nightmare dystopias, where it could very well end
+up being the case that the vast majority of the populace is not free and, you know, is living in a
+dystopian surveillance state, which we kind of already are. Whereas the, you know, the, the
+financial and technical elite are able to retreat to their citadels, as it were, and, you know, be
+true sovereign individuals that are, you know, wielding a power that is perhaps on, on a level
+similar to, if not eventually exceeding that of nation states. And this is crazy for people to
+imagine, but like, historically, it has happened before. Like, there have been plenty of times in
+history where private individuals wielded power that was, you know, even like militarily greater
+than nation states, for example. It's just not something that we've seen in the past few
+centuries.
+Very interesting. Okay. So James, I know I've used up like an almost an hour and a half with you.
+Anything else that you want to talk about, you want to ask me, you want to, I don't know, share
+about just recent events. I didn't really touch on all this like DeFi, you know, stuff that's going
+on and all that stuff. But, you know, like, you know, it's like, you know, it's like, you know,
+just recent events. I didn't really touch on all this like DeFi, you know, stuff that's going on
+and all that. I mean, it doesn't sound like you're, you're too into it. I did see a little bit of
+uproar about, again, I don't know if you want to touch on it or not, but something about some
+sort of security token offering recently. I'm just curious to know your, I was curious to know your
+thoughts on, on whether or not you think that, you know, I'm, I'm, I'm, I'm not going to lie. I, I
+wrestle with, with the idea of Ethereum a lot in my head, because I think what we were talking
+about earlier in this call, it didn't feel right at the beginning, but I have a hard time justifying
+that, that it doesn't have some value to the world in the sense that it is, you know, it does pull
+in a lot of people into the crypto community. And a lot of those people end up in Bitcoin. Okay.
+So is that such a terrible thing? You know, the Turing completeness, right? As an engineer,
+it's something that I understand. I get that Bitcoin can do it too. And that most likely it
+was left out because of the attack vector that it presents. And therefore it never presented
+something super sexy for me. It's like, okay, well, we can do, you know, while loops and if then,
+but like the question is, do you want to do that for money? But they're not trying to design or
+optimize around money. And I recently had a bit of back and forth with Vitalik's dad on Twitter as
+well. You know, he was pretty much, it was actually in relation to Samson and Vitalik doing an
+interview where long story short, you know, Vitalik pretty much admitted that one of the biggest
+challenges that Ethereum faces, that it doesn't stand for anything. And, you know, I don't know,
+maybe that's like a good thing in some way, but I struggled to find how that's a good thing in the
+sense that like, you know, maybe like, it's kind of like a Swiss army knife. It doesn't really
+stand for something, but you know, it's, I mean, I stand for something. It stands for the ability
+to do lots of things. I prefer kitchen sink protocol. Kitchen sink. Okay. Yeah. Yeah. So,
+yeah. So I don't know. I guess my kind of quick question on that front is, do you think DeFi is
+like a reemergence of like the ICO kind of, you know, wave or like, you know, DEXs, like
+as someone who believes in decentralization, as someone who's like spent this, you know,
+the last eight years in centralized exchanges, I'd be lying if I said that I didn't, you know,
+dream about someday, you know, our service being obsolete because you can do it like all on the
+chain. And so when I do see, you know, glimpses of that, when I see protocols like attempting to
+solve real problems, not the Bitcoin problem, which is money at large, but problems, I just,
+I can't, it's hard for me to be like, well, these guys are all scammers and they're like the rujas,
+like, but they're trying to do something that's like legit. So I guess I'll just leave it at that.
+Like, well, what are your thoughts? Like, how does one, you know, reconcile like innovation with
+scamminess? So Ethereum, you know, has every right to exist and it is, you know, going back to sort
+of the crypto anarchy thinking, you know, no one can stop anyone from performing these experiments.
+Obviously people get pissed off when they think that, you know, someone is pushing the line
+a little too far and like promising too much when it comes to like, what could my experiment
+potentially be able to offer the world someday? This is, you know, it's almost like a Theranos
+type of thing where if you saw any of the documentaries around that with like Elizabeth
+Holmes, I got the impression that, you know, Elizabeth may have deluded herself into believing
+that, you know, they could deliver on all of the promises that she was making. And from my own
+experience with a lot of CEOs, you know, founders, essentially of startups, you have to have a certain
+level of delusion that what you're doing is possible because if everyone believes that what
+you were doing was possible, then someone else would have already done it. It's almost a requirement
+in order to go out and do innovative things is you have to have not only the belief that it is
+possible, but you have to have the persuasiveness to convince at least some other people that it's
+possible so that you can collectively get your resources together to try to make it happen.
+And, you know, that's where it starts to get tricky of, you know, making promises or making
+grandiose statements about what you're going to be able to do, which then may result in people
+committing resources that they end up losing. I mean, this is all just part of the game of trying
+to build new things. So, you know, Ethereum deserves its chance. Like, no one's going to be able
+to stop it or shut it down. I think the ultimate question will be, you know, will it be able to
+achieve more of the vision of what the people are working on it are trying to do, or will it kind of
+like collapse under its own weight? And will, you know, there end up being more Ethereum competitors
+that kind of take off different pieces of the functionality that is being built on Ethereum as
+a generalized machine? And perhaps we have other networks that kind of spawn off and are more
+specialized and able to do those things better. It's really hard to say at this point, but
+just from a computer science standpoint, it seems to me like Ethereum is on a roadmap to become more
+complicated and not less complicated. And so that's the main reason why it's difficult for me to
+believe that they're going to be able to, you know, hit all of the scaling desires that they want to
+do. But, you know, you can make similar arguments about Bitcoin and second layer scaling. I mean,
+that's a lot more complicated than base layer stuff, you know, as I've had a lot of hands on
+experience with doing lightning node stuff at Casa, for example. So that's why it's hard for me to
+distinguish between what I would consider to be a conscientious malevolent scammer, and a person
+who is perhaps overly optimistic and essentially scamming themselves into believing that a certain
+thing is possible because, you know, they might end up being proven right.
+I've only called out probably fewer than like 10 what I consider to be conscientious scammers in
+the space who obviously knew that what they were promising could never be possible. Most of the
+other folks in the space, I try to give the benefit of the doubt and just look at it as, you know,
+they're trying to achieve what is currently impossible, but they're trying to achieve what
+is currently impossible, and they may fail. But you got to let them try.
+Okay, before I let you go, I got to ask you one more thing. So because you brought this up,
+I'll just say these two words and let you kind of go Craig right. Well, maybe there's more than
+two minutes worth to talk about there. But how are you so positive that he's not who he claims to be?
+Well, did you read my 20 page article that I published?
+I did. So if you had to tell me on it. Yeah, I mean, the the reason that I'm so positive,
+I mean, the TLDR is that he promised multiple times to provide the very simple, straightforward
+cryptographic evidence that he that would prove that he was Satoshi like that. If he was Satoshi,
+it would be very easy to do. And instead, what we have is an entirely insanely complex web of
+of lies and half truths and distortions. And of course, there is some truth sprinkled in there
+to make it seem like it could all be real. But it's just it's like the hallmarks of a confidence
+man and that what he does is he says a lot of things that inspire confidence in him or make
+him seem to be far more intellectual than he actually is like he tries to act like he's
+speaking over everyone or speaking at a level at which no one else is able to understand him.
+But the true mark of being an intellectual is that you're able to distill complex things
+into simple matters that you can then explain and educate to people who aren't at your level.
+And I've never seen him do anything like that is always the inverse. And you know, instead,
+you know, creating a complexity instead of, you know, shedding complexity to help people understand.
+So it it all has the hallmarks of a ruse or an affinity scam. You know, it's obviously it's hard
+to tell, you know, what his actual incentives are. But there's certainly like, how did he treat Gavin?
+How did he treat Gavin? Yeah. Well, I believe from what Gavin told us, like there was
+there was a a like a fresh laptop that got introduced that was like it was brought in
+by I think one of Craig Wright's assistants. So, you know, that could have been tampered with.
+I'm pretty sure he was running some other software that I don't believe he ran integrity checks on
+to make sure that that had been tampered with. In general, like the whole the whole key like
+proof process that Gavin was subjected to, we don't really know the parameters of that.
+It was not a controlled environment. Therefore, there's a ton of different things that could have
+been tampered with. And, you know, that in and of itself, like doing a private key proof session
+is a red flag in and of itself, because the whole point of public private key cryptography
+is that you can sign a message that you can then show to the entire world and not be worried about
+any security ramifications. Yeah, so just a couple of things on this point. So the fact that he said
+he was gonna prove it and never ended up doing it does not prove that he's Satoshi, but also does
+not disqualify that point. And then also his inability to speak at like, you know, at a very
+simple pace also I feel doesn't necessarily disqualify him, right, in the sense that it's
+probably a signal in the opposite direction. But is it, by the way, we're at the end of our hour
+and a half. So I guess what I was trying to get at is that, you know, and then could he have other
+reasons as to why he doesn't want to publicly disclose i.e. like the tax man or something. I
+mean, there's always, you know, I've heard about the Australia situation and all that. And so yeah,
+I definitely don't believe it's Satoshi. I just I just I just I still didn't I wasn't quite like 100.
+It's kind of like, you know, like, God, I mean, I go to church every now and then with my wife,
+I'm not religious, and I don't think God exists. I'll just do it as like a hedge against, you know,
+I'm completely wrong on this one. So I just I just ask myself every now and then, you know,
+like, how do we like prove without a shadow of doubt? I mean, if you look at Satoshi, whatever
+his Bitcoin is one of the top like five or 10. So he's like, you know, doing a great job. I mean,
+if he is this like hardcore scammer, he's doing a great job of convincing you a lot of people.
+And he's quite possibly like the best scammer of all time, you know, with like the rujas,
+you just literally watch like 30 seconds of their video and you're like, Yeah, these guys are
+smelly. But it's like, Craig has gone like to the nth degree to figure this one out.
+Oh, yeah, I mean, so that's what he's relying upon is that you can't prove a negative,
+like, it's not possible to disprove that someone is Satoshi. But what we can prove,
+and what I have in my like, how many wrongs make a right article on Bitcoin magazine,
+is proving dozens of lies that and contradictions that he's been caught in over the years,
+including, you know, technical misunderstandings of Bitcoin that Satoshi never would have made
+in the first place. And, you know, also a very long list of lies like about his academic credentials.
+And he also has a very lengthy legal history, where he has been accused of fraud, you know,
+not once, but on numerous occasions. Cool. Okay, so I don't want to take up more
+your time. I know you probably have something else to do. But Jameson, I just want to say,
+thanks again for you know, this time really enjoyed it really admire the fact that you're
+like, it seems like one of a few hardcore Bitcoiners. I really respect that. And yeah,
+that's all I got. I mean, if you want to just end off on like, where people can, you know,
+find you on Twitter, you know, your CASA's website as well, just so that,
+yeah, it's easier for people to get there. Yep. My Twitter handle is just lop l-o-p-p.
+And you can learn all about CASA and our offerings at keys.casa. Awesome. All right,
+buddy. I guess we'll talk again soon. Just give me one second. Thanks.

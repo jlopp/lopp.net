@@ -1,0 +1,556 @@
+Episode 164 of Futures Radio Show, sponsored by CME Group, the world's leading and most
+diverse futures and options exchange.
+CME Group's markets help individuals and businesses around the world manage risk and
+seize opportunities.
+Learn more at futuresfundamentals.com.
+Every day, traders and investors dive in to tackle the ever-changing markets to find opportunity.
+Futures Radio Show is your number one source for answers to the questions that all market
+participants want to ask.
+Veteran futures trader Anthony Crudele sits down with the most influential leaders and
+top traders in the industry.
+Now, here's your host, Anthony Crudele.
+Hey everyone, before we get started today, I want to thank our sponsors, CME Group, Trading
+Technologies and Top Step Trader.
+Now, today I spoke with Jameson Lopp, Infrastructure Team Lead at BitGo.
+Today I had a fascinating conversation with Jameson.
+I started off by asking Jameson to explain to us in simple terms what Bitcoin is.
+We then went on to discuss the fundamental differences between Bitcoin and other blockchains.
+Jameson explains Bitcoin mining and Bitcoin forks.
+We chatted about the ICO craze and the future of crypto asset trading.
+Last but not least, I asked Jameson what the impact will be with the CME launch of Bitcoin
+futures.
+As usual, thank you all for listening and please enjoy this episode.
+Jameson, welcome to the show.
+It's a pleasure to be here.
+Thanks for coming on the show today.
+I'm really, really excited about our discussion.
+I mean, what a time to speak to you about Bitcoin.
+We all know that CME Group recently launched Bitcoin Futures and they're going live here
+real soon.
+You have been a great resource for myself to learn more about Bitcoin and crypto assets.
+So a lot to talk about today, going to have a great discussion.
+But before we dive into that, how did you get your starting your industry?
+Well, it goes all the way back to 2012 for me when I first heard about Bitcoin, probably
+on Slashdot or some other nerd website.
+Like most people, I initially dismissed it.
+I thought this is going to get hacked.
+Everybody's going to lose their money.
+It's going to end in tears.
+Over the next few months, I kept hearing more about it and somehow it was still staying
+around.
+I started looking more into it and as I dug into the technical aspects of it, I realized
+that it was actually a very elegant design.
+It had its number of drawbacks, but it really created something new that the world had never
+seen before.
+So that really began my journey down the rabbit hole and I started doing side projects just
+to try to better expose some of what was going on within these Bitcoin nodes so that both
+I and other people could understand how the network was operating.
+Eventually after several years, the industry started growing, the venture capital started
+flowing in and I realized that I had an opportunity to start doing this full time.
+Yeah, that's awesome.
+So you started off actually as a skeptic and then became a believer.
+As I believe, most of the people that I've met over the years initially started as well.
+While this was like my first foray into the concept of digital money, some of the people
+who have been working on this, it goes really all the way back to the 1980s.
+So talk to us about your current role at BitGo.
+So I'm the team lead for our infrastructure services at BitGo.
+That basically means that I'm in charge of running a lot of our really low level back
+end services that are just keeping our databases up to date with the state of different block
+chains, monitoring the network, broadcasting transactions, doing the cryptographic signatures
+on them in a secure fashion and just keeping our low level platform humming so that our
+wallet teams and other folks who are building the customer facing APIs and user interfaces
+are able to do their job without having to worry about like what's going on at the back
+end.
+Cool.
+Way above my pay grade, Jamison.
+But as I mentioned, I found you through by searching BitGo because of a CME Group press
+release.
+Talk to us about how you guys are working with CME Group.
+Yeah, this has been a pretty long road.
+I think that the conversation has probably began over a year, a year and a half ago,
+but basically CME decided that they wanted to try to modernize the infrastructure of
+the physical gold trading space.
+And so they looked at blockchain technology and realized that this was a new sort of audit
+log that could be used to securely prove and transfer the ownership of records in the log.
+So while a lot of folks are using your traditional databases these days, that works fine for
+a lot of cases where people are willing to just trust each other.
+But if you want to be able to prove how many assets there are existing in a certain system
+or enable peer to peer trading of these assets, then you're going to need to have some sort
+of Byzantine fault-tolerant system that is able to operate without any single operator
+that you're relying upon to keep the integrity of the system.
+Okay.
+Yeah, very cool.
+We're going to talk a little bit more about how CME Group has launched Bitcoin Futures
+a little bit at the end of the interview here.
+But I want to talk about your post that you had on CoinDesk.
+And it really helped me, your post on CoinDesk, because you said something in there along
+the lines of, look, it's okay if you don't understand Bitcoin.
+I'm still a student of it.
+It just made me feel like, okay, I'm relatable to that, to trading.
+Because in my whole career, I've always felt I was a student of trading.
+When I first started, I didn't understand markets at all.
+And then we evolve and you understand it and more as time goes by, you start to learn more
+about it.
+So for those that are listening that do not understand what Bitcoin is, can you just give
+us a brief overview as to what it is?
+So it's really hard to compress all of the technical aspects into just a few sentences
+or even a few minutes, because you can easily spend months digging into how the protocol
+and the network operate.
+But the easiest way that I can describe it in a non-technical level is that throughout
+human history, we have kept track of money, which is essentially debts and IOUs in various
+types of ledgers.
+And normally, these ledgers are going to be administered by some trusted institutions
+such as a bank.
+And we just trust that the institutions will reconcile the ledgers within their own systems
+and possibly with other institutions.
+But Bitcoin really turns the whole model upside down.
+So instead of just having a few trusted authorities that are keeping track and updating the ledgers
+that we're relying upon them to not cheat us, instead, we take the ledger and we replicate
+it out so that literally everyone who wants to has a copy of the ledger is verifying all
+of the actions that are being done to modify it.
+And as a result, is not having to trust anyone else on the network because they are essentially
+checking everyone else's work.
+And if they catch someone cheating, the entire network basically says, no, we're not going
+to allow you to do that.
+And as such, instead of having like a single authority that is rejecting cheaters or double
+spenders, you have the entire network that is working together to do that.
+Can you give me an example of how the network would recognize that someone's cheating?
+So at a very, very simple level, the transactions on the network have to be signed cryptographically
+with the correct private key that is used to create an address to receive funds.
+So then if you want to spend funds from that address, you have to show to the rest of the
+network that you were the one that created the address by signing a cryptographic signature
+that matches using public private key cryptography.
+And then also, I mean, there's many other checks that happen where when you if you do
+show a signature that that matches an address, the the nodes on the network will then look
+into the ledger and say, well, was this particular piece of value that you're trying to spend
+ever spent before?
+Does it still exist?
+Is it still in a state where it can be spent?
+And doing those two checks and many, many dozens of other checks, if everything works
+out, then then the nodes on the network will accept it and will update the ledger.
+Otherwise, they'll just say, no, you're trying to do something wrong.
+We're not going to change anything in the ledger.
+Okay, so I want to take it to just another level to where I think a lot of people are
+probably listening going, okay, so who's overseeing that?
+I mean, look at someone like myself.
+I don't know very I know very little about this.
+I go to make a transaction using Bitcoin.
+Does the system just reject it if the other person is cheating?
+Like how am I someone who's a total layman on this recognize that?
+Is it automatically done in Bitcoin itself?
+That's like the value of Bitcoin, because it can recognize it without me, the end user
+having to write.
+So when you go into any type of wallet software and create a transaction, it then is broadcast
+out on the network, specifically, you're going to broadcast it to one node, that node is
+going to look at the transaction, decide whether to accept or reject it.
+If it accepts it, then that node will do what we call a gossip protocol and basically tell
+all of its friends, hey, do you know about this transaction?
+And if they don't, it will then send to them, each of those nodes will then validate.
+And if they agree, they will then, you know, tell all their friends about it.
+And in that manner, the entire network, which is by many counts, like over 100,000 different
+computers around the world, will within a matter of a couple of seconds have have validated
+and propagated this transaction to everyone who is currently online.
+Yeah, it's fascinating.
+Thanks for that explanation.
+Now that explains to me more the fundamental value of Bitcoin versus the other blockchains.
+Talk to us about that.
+Why is Bitcoin, it's obviously now become, you know, a word that's being used everywhere
+in the world.
+And we've had so many other blockchains coming up.
+So what is the real fundamental value of Bitcoin versus these other blockchains?
+Well, one thing that Bitcoin still has going for it is that, you know, first mover advantage.
+It is the oldest of all the crypto currencies, of all the crypto assets, blockchains, what
+have you.
+As a result, it has a much larger network effect that goes for many different aspects,
+both, you know, trading and general acceptance and number of users that are holding it, but
+also a number of developers and a number of skilled people who are contributing to the
+ecosystem to continue to improve it over the years.
+So from a technical standpoint, it is actually fairly trivial to create your own blockchain.
+I mean, this is all open source software.
+You can just with a few clicks of a button, copy all of the code, and then it's a little
+bit trickier to jumpstart your own new block, Genesis block, if you will.
+But very low cost for someone who has the technical chops.
+So at this point, I think there are thousands of different blockchains out there, and it's
+really a long tail distribution of both the size of their networks and as a result, the
+utility and the value of the networks.
+Explain mining to me, because this is something that I get asked a lot.
+I've read about this and we said earlier, you're always going to be a student.
+Well, I've read several things on mining and I still really don't understand it.
+Can you give us some insight as to what mining is?
+Yeah.
+So one of the really interesting aspects of these systems is because there's no administrator,
+there's no central controller, it's just this loose mesh that creates its own network.
+You have to be extremely paranoid, extremely defensive in how you secure the networks because
+everyone who is participating needs to be secure.
+And one of the ways that the network is secured against certain types of denial of service
+or spam or double spending attacks is this mining, which is one part of how the network
+progresses.
+It's how the new blocks get added to the blockchain.
+And really what we're saying when we're doing that is we are collecting a bunch of recently
+created transactions that are floating around the network and we're putting them into a
+nice little package, which is a block.
+And that is all getting cryptographically hashed and linked to the previous block to
+create this tamper evident audit log that goes all the way back to the beginning of
+2009 for Bitcoin.
+But the interesting part that makes it very, very difficult for just anyone to hop onto
+the network and start creating blocks and try to trick people into like what is the
+real blockchain is that we require something called proof of work.
+And without getting into the nitty gritty details of how hashing operations work, essentially
+what we're doing is we are mathematically requiring a proof of energy expenditure.
+And we do that by basically requiring these miners to solve a puzzle that the only way
+to solve it is to brute force it by trying billions, if not trillions of different possible
+combinations.
+And the result of that with all the brute forcing is that basically you have to burn
+a lot of electricity, you have to convert that electricity into heat as efficiently
+and quickly as possible.
+So over the years, this has become a really industrialized operation.
+And you'll hear a lot of statistics where people are saying, oh, Bitcoin is completely
+unsustainable because it requires like the energy that you could use to power your entire
+house for a week just to make a single transaction.
+And while in some aspects you could take a perspective that says that technically that
+is correct, the energy expenditure of mining is actually completely uncorrelated to the
+number of transactions in the blocks and on the blockchain.
+It is literally a security parameter.
+And the network and the market as a whole is paying these miners with the newly created
+bitcoins and saying, you know, we are willing to pay this much money every 10 minutes or
+so in order to have a certain level of cryptographic security that we know that, you know, computational
+attacks will be very unlikely to happen simply because they are so insanely expensive to
+pull off that it's actually it makes more sense for someone with that much computational
+power to just help the network continue along rather than to try to attack it.
+One question I have is I recently just went through having to evacuate leaving Southwest
+Florida because of a hurricane.
+And at the time I was doing a little bit of trading of Bitcoin and Ethereum.
+And we got to an area where we couldn't use our phones, there was no internet.
+And I was thinking to myself, I didn't own any Bitcoin at the moment and I didn't have
+any positions on.
+What keeps it online?
+You know, like, is there a reset switch or is there I mean, I mean, it's like, what if
+I can't access it for periods of time, you know, like, how does maybe at some point does
+it ever disappear?
+Because people are always like, where is it in a cloud?
+What keeps it active?
+Right.
+And, you know, one of the one of the, I guess, FUD type of arguments that we had to deal
+with a lot in the earlier days was especially from the gold bugs, which was that, well,
+if you know, if the internet ever goes down or there's like a solar flare or an EMP or
+whatever, then Bitcoin will be dead.
+And you know, the obvious counter argument to that as well, you know, Bitcoin would only
+be dead if the internet was dead.
+If the internet was dead, we'd have a lot of bigger problems.
+But really, what we're talking about here when when we say like, what is Bitcoin?
+Well, I mean, it is the blockchain, it is the ledger, the data itself that is the entire
+history of every transaction that's ever happened.
+So while there could be various network disruptions that cause like new blocks not to be created
+or make it hard for for people to get onto the network for whatever reason, what really
+matters for like the integrity of the system in the long term is that many, many, many
+copies of the ledger are distributed all around the world.
+So even if there was some catastrophic event where like the entire network went down for
+days or weeks or months, eventually, you know, people would fix it, it would come back online.
+And all of these 100,000 hard drives around the world, they would still have their copies
+of the blockchain.
+Or even if a lot of them got lost or corrupted, they would be able to, you know, re download
+them again, and, you know, heal the network, bring it back online.
+And we would continue forward.
+So I think that like this is a very robust way of doing things as opposed to traditional
+methods where what you're doing is you're you're centralizing all of the information of a specific
+system and into a single company.
+And you know, that might be in like one data warehouse or a couple of different data warehouses,
+which can, you know, be prone to failure in specific catastrophic situations, whereas
+if we're really distributing this this data all over the world, you can't really get much
+more robust than that.
+Okay, I want to move on and talk about Bitcoin forks.
+Just as I think I'm getting a better understanding of what Bitcoin is, I wake up one morning
+to chaos on Twitter and blogs.
+I'm reading everything about Bitcoin forks.
+Had no idea this could even happen.
+Jameson, what is a Bitcoin fork?
+Well, this is one of the governance mechanisms of permissionless network.
+And that's one of the more exciting things I think about this space is that we are creating
+a new form of governance.
+You know, a lot of like libertarians and anarchists got interested in these concepts years ago
+because they had visions about, you know, where we might be able to go in a system that
+is not ruled by anyone.
+And now that the system has grown to the size that it's at, we start to see conflicts, you
+know, different visions of how the network should evolve.
+So a lot of it really comes down to scalability these days and like, you know, what do we
+need to do to onboard more users and what tradeoffs are we willing to make in order
+to grow the size of the network?
+So the result is that people can change the rules that they are running on their computers.
+And if those rules are not backwards compatible with the existing rules, then it forks the
+network and you have a sort of competing blockchain that has the same history up to a specific
+point and then at the point where some conflicting rule was activated, you then have a fork and
+now you have two different blockchains going forward from that point in time.
+Okay.
+So give us some examples of some Bitcoin forks.
+So the, you know, we had a number of proposals for forks over the years and no one ever actually
+executed one until August 1st of this year, 2017.
+And so that was the Bitcoin cash fork, which essentially increased the block size from
+one megabyte to eight megabytes and made a number of other low level changes.
+But essentially this was done by a group of people who believed that it's perfectly fine
+for us to do a lot more transactions on the blockchain and we don't really have to worry
+about a number of the trade-offs that people who disagree with that perspective think need
+to be worried about.
+Let's talk about ICOs.
+Boys, this has become a craze, Jameson.
+I hear about them, read about them pretty much on a daily basis now.
+And I know very little about what they are.
+I mean, I know that they're an initial coin offering.
+They named it very similar to an IPO.
+I don't think there's a lot of similarities between the two.
+You could clarify that for us, but ultimately they become extremely popular.
+Can you explain to our audience what an ICO is and why they've gotten to be so popular?
+So the easiest way that I can basically describe it is it's kind of like crowdfunding, but
+using cryptocurrency in order to do the crowdfund.
+There's a lot of downsides to this where people might think that because it sounds like an
+IPO that if you invest in it, you might have some sort of shareholder rights, but generally
+that is not the case.
+Really what you're doing, it's almost more like angel investing or crowdfunding because
+you're just throwing some money at a group of people who are making a promise of delivering
+some sort of software service at some point in the future.
+And you're getting these tokens as a result of the money that you're sending to them.
+And depending upon the structure of the software that they're building, those tokens may hopefully
+generate demand in the future due to whatever utility that they claim will be provided.
+And if you're holding those tokens, hopefully you will then have some sort of return on
+your investment.
+But of course, there's no guarantee that the tokens will ever actually work to unlock any
+sort of functionality on any software.
+So you're taking a pretty big risk by investing in them.
+Yeah.
+I mean, they seem pretty risky, could be a gamble, but what's life without a gamble?
+I've taken a gamble or two in my day and some have worked out, some haven't.
+But in regard to ICOs, can you give us a gauge as to how many ICOs there are out there and
+how many of them actually end up becoming successful tokens or coins?
+I would be pretty sure that we're well over the thousand mark at this point, because I
+think that I saw recently that there were basically like 10 per day going on at this
+point.
+And off the top of my head, like I can't think of any that have already proven to become
+like a popular platform.
+I think they're still mostly used for speculative trading.
+Some of the older ones would be, I know like the Augur Prediction Market, they've done
+a lot of work over the years.
+And you can really go on to like any of the coin market cap sites to see like which of
+the tokens are actually trading and doing well.
+I think I do hear some about like the first blood ICO getting used as well.
+But you know, there's a long tail distribution again, where only really a few projects are
+going to succeed in this space.
+Let's talk about some permission blockchains.
+I mentioned one earlier that BitGo has actually helped CME with, with Royal Mint Gold.
+You mentioned one to me called Prova.
+And I am really not familiar with these.
+I mean, I've read a little bit about them.
+Explain to us what permission blockchains are.
+And talk to us about how popular you think they are going to be in the future.
+Yeah.
+So these blockchains, these protocols can provide a number of different valuable features.
+And there are ways that you can gain utility from using them without necessarily having
+a like totally open permissionless system like Bitcoin or Ethereum.
+If really what you're looking for is just like a better type of audit log, then you
+can still build permissioning layers into a blockchain system.
+So like what we did at BitGo in conjunction with CME and the Royal Mint was we forked
+one of the Bitcoin nodes, one of those code bases.
+And we felt like Bitcoin was a very well suited, robust, vetted solution.
+We didn't want to do anything too complex like with smart contracts, because those are
+still so new and have a number of issues that are being worked out.
+So we took Bitcoin, that code base, created our own new genesis block and added in a bunch
+of administrative functionality such that you can have different overseers of different
+parts of the system who are cryptographically authorized to then make changes to the system
+that like a normal user would not be able to do.
+So with the Royal Mint Gold for example, we have administrators, the highest level administrators
+are able to provision keys for wallet providers, for validators on the network.
+They're able to do things like actually allocate and deallocate the assets on the network.
+And then the other entities such as the wallets and the validators can then use their keys
+to do other specific actions such as signing blocks or co-signing transactions on behalf
+of users.
+So there's a heavy level of AML KYC type of thought that has gone into the Royal Mint
+Gold fork software.
+But really what we're going for is just general ability to digitize physical assets that are
+going to be held under custody of some known entity.
+So in this case, that would be the Royal Mint.
+Yeah.
+This sounds like a game changer to me, Jamison.
+I don't know, but I could be wrong.
+But I have a feeling that a lot of industries, a lot of businesses are going to be searching
+out this technology.
+What industries right now do you see that would probably have the highest demand for
+this type of blockchain technology?
+Yeah, so I think the general way that a lot of the industries that are looking into this
+technology are approaching it is, well, if we already have some sort of network of entities
+who are probably semi-trusted, maybe probably not fully trusted, but if they are already
+essentially forming some sort of consensus network where they're trying to reconcile
+various balance sheets or really any sort of data that needs to be tracked and audited
+and done in a secure fashion that can't be forged, then a blockchain data structure is
+going to provide potentially greater efficiency gains and greater robustness and security
+against tampering.
+So you can create a permissioned network that is essentially just mirroring what your existing
+business relationships are and then just have those businesses now use a new type of technology
+under the hood to continue doing the same type of reconciliation that they've been doing
+for years.
+Now, from the Bitco side, what customer adoption in the ecosystem beyond the crypto players,
+what does that look like?
+Well, we're getting a lot of demand for just general private key management, I would say.
+That's kind of the direction that we're going where we are a non-custodial software as a
+service provider and we are really basically just helping people manage their private keys.
+And while for the years before 2017, we were just helping people with Bitcoin private keys,
+we're now looking across the industry and saying, well, we foresee a digitization of
+many different types of assets and all of those are going to have some sort of private
+key data that is used to prove ownership of the assets and to transfer ownership of the
+assets.
+And we believe that we're well positioned to help secure any type of private key digital
+assets that may arise on the markets as this technology continues to proliferate.
+How do you see the future of crypto asset trading?
+So it's already been kind of a wild west over the past few years and that's what I think
+gets a lot of bad press is various exchanges getting hacked or falling over for whatever
+reason.
+And it's still a very similar model to how trading has occurred traditionally, at least
+for the electronic age, though, of course, these exchanges in many cases tend to be unregulated
+fly by night companies that don't have particularly long standing reputations.
+And from really the security standpoint, you're creating a huge honeypot when you're moving
+a lot of these highly liquid crypto assets into the custody of a single entity.
+No matter how trusted they are, it becomes a huge target for hackers since if they get
+in, they can take everything and there's nobody who can reverse those transactions.
+So I think long term, what I would really like to see to sort of further the ideals
+of this space is decentralized exchanges.
+And so you may start to hear terms being thrown around such as cross chain atomic swaps.
+And really what that is a fancy way of saying that we're going to have trustless cryptographic
+protocols that allow you to do real peer to peer trading in real time with other people
+who want to trade a crypto asset on another blockchain with whatever crypto asset you're
+currently holding.
+So I think that a lot of trading will eventually become peer to peer trading such that you
+will basically be running your own exchange per se, you know, with software on your computer
+that is automatically going out and doing the matching of orders.
+Cross chain atomic swaps, did I get that right?
+That's right.
+Wow, my mind's already spinning after hearing that, but I appreciate the insight.
+Now last but not least, CME launched Bitcoin Futures.
+I mean, from my perspective, I haven't been more excited about a new product at CME and
+I can't remember when.
+I mean, I was really excited when they introduced the 10 year ultra, but this is big.
+What impact of any do you think it will have on Bitcoin?
+Well, I just hope that it helps us find the true value of Bitcoin, you know, even faster
+than than what we've been doing so far.
+It's going to be great just to have more reputable institutions coming into the space and hopefully,
+you know, providing even more liquidity than we've had before.
+So it wasn't that long ago, you know, just a few years ago, I remember that, you know,
+relatively tiny events would cause shockwaves across the entire ecosystem because the various
+exchanges simply like couldn't keep up, they couldn't handle demand, they would just fall
+over and sometimes that would actually exacerbate the boom and bust cycles in Bitcoin.
+And so I'm hoping that, you know, as we have more of these larger traditional institutions
+coming in and opening up new avenues of liquidity, that that that will both help the markets
+get to where the true value of Bitcoin is, but also just make them more stable.
+So you know, obviously the volatility is something that a lot of people over the years have said
+is terrible for Bitcoin if it's to be a currency.
+I think we're still many years away from it being anything that you would consider stable.
+And this is really just like the next step in the path to getting there.
+Yeah.
+Speaking of price of Bitcoin, it's sitting just above 7,000 as we record here today.
+And I'm wondering if it continues to go up, does it price itself out?
+Does it actually hurt Bitcoin by continuing to go higher and then nobody is able to participate
+in it the way that it was meant to be used?
+Yes and no.
+So because Bitcoin is subdivisible to like eight decimal places and could trivially be
+changed to subdivide even further, it should always be possible for someone to buy a dollar
+or 50 cents or whatever of Bitcoin.
+However, on the scalability side of things, due to the fact that there is a very scarce
+resource and the size of blocks and the number of transactions that you can get into the
+blockchain over a certain period of time, what's end up happening is as the price goes
+up, the kind of minimum transaction value that is economically feasible for someone
+to spend is also going up.
+So whereas in years past, you could make a Bitcoin transaction for like a penny or five
+cents these days, it can easily be a dollar or several dollars if you're trying to do
+it during a very busy time of the day or week.
+So what we're trying to do with the scalability issues is find more efficient ways for people
+to create Bitcoin transactions, which in many cases will be what we call off chain transactions
+that are anchored to a transaction that is in the blockchain.
+But this is where the technology gets sort of an order of magnitude more complicated.
+And we've got a lot of smart people working on it.
+But suffice to say, there's a lot of work that is yet to be done so that we can eventually
+have a Bitcoin that really is capable of becoming a mainstream thing from a technological standpoint.
+See, now I look at Bitcoin now more like an index, more like the DAX, the way it moves,
+not like a currency would move.
+And I'm just curious how they get price stability so it can be used as a currency.
+Now hopefully the futures can provide that, which I think they will provide some price
+stability to Bitcoin.
+But once again, what price and at what level of volatility, if it remains this high volatility,
+is it just ruled out as a currency?
+Yeah, the market cap of Bitcoin is over $100 billion now.
+And we've seen people speculate as to it doesn't need to be in the trillions or tens of trillions
+of dollars to achieve some sort of stability.
+Really it's almost more like it needs to eat a certain percentage of other forex markets
+or other types of assets.
+If you want to think of it as a digital gold or store of value, then maybe it really needs
+to get a certain level of adoption from those type of traders who are keeping a lot of value
+stored in gold or other precious commodities.
+Yeah, I agree with that.
+That's exactly what I think it needs as well.
+Fantastic stuff today, but we're not done.
+I have some rapid fire questions if you're ready for those.
+Sure.
+All right, everyone, our rapid fire segment is sponsored by Trading Technologies.
+Trade the global markets from virtually anywhere with TT.
+They are the world's fastest commercially available futures trading platform.
+Create your account and try it now free at trittnow.com.
+First question for Jameson, who has influenced your life the most and why?
+I would have to say I'm a really big fan of Naval Ravikant, not only from all of the stuff
+that he's done in the tech space, but also just sort of his philosophy.
+I think that really that has helped me take a kind of Zen approach to the chaos that we're
+seeing in the Bitcoin and crypto asset world.
+What's the number one resource you spend your time on?
+Well, I'm going to have to go with Twitter.
+These days, that's mainly because I've gone so far deep into the technicals of this space
+that now I've kind of popped out the top and I am really more looking at the whole ecosystem
+from a social standpoint and really trying to understand perspectives of all the different
+major players and how their views bounce off of each other to create this sort of human
+consensus for whatever it is that this system is we're trying to build.
+What's your favorite book about crypto assets?
+I would recommend Nathaniel Popper's book, it's called Digital Gold, and it's a number
+of interesting stories about the early adopters in this space and some of the crazy things
+that they did to help get the ecosystem bootstrapped.
+What's the best piece of advice you've received about being a software engineer?
+Really never stop learning.
+The space is always changing and I've probably changed what I work on every couple of years.
+There's always something new to be looking at, to stay on the cutting edge.
+If you are on the cutting edge, it may feel like you're doing something at the time that
+is not really understood or valued by the rest of the world, but inevitably a few years
+later you find that you are in high demand and you've left everyone else behind.
+It has resulted in some great opportunities for me during my career.
+Now if you can give a piece of advice to the new people interested in getting involved
+in the crypto space, what would it be?
+Basically, you don't want to jump in head first without really knowing what you're doing.
+As a result, I have a large portion of my website devoted to educational resources because
+there's such a high learning curve in this space and there are so many different pitfalls
+that can result in you losing everything.
+If you make one technical misstep, there's no one out there who is going to be able to
+save you and get your assets back.
+Bitcoin right now is sitting just above 7,000.
+Is it higher or lower a year from now?
+I'm going to go with higher.
+We have our dips every now and then, but I think that the long term trajectory is up
+and the market is still incredibly tiny compared to what its full potential is.
+Final question for today.
+If you weren't a software engineer, you'd be doing what?
+I would definitely be doing something related to the Liberty movement.
+My career goal is not so much like Bitcoin and crypto assets, but rather helping to empower
+the individual, trying to help change the world from a governance level such that people
+have more power and more responsibility to do what they feel is the right thing.
+You said your number one resource is Twitter.
+Where can people find you on Twitter?
+Well, I managed to get one of these great four letter handles.
+It's just L-O-P-P, my last name.
+Everybody, Jameson is a must follow on Twitter.
+If you're interested in crypto assets, then I highly suggest you go and follow him on
+Twitter.
+Jameson, where's a website that people can go and check out?
+You can also find me at lopp.net.
+I've got all my educational resources up there and pretty much all of the content that I've
+ever produced, various articles and presentations and interviews.
+Jameson, what can I say?
+Thank you so much for educating us today.
+I have been waiting for this interview and I just thoroughly enjoyed it.
+It was fantastic.
+I really appreciate you taking the time to coming on Futures Radio Show.
+My pleasure.
+Thanks for having me.
+Thank you for listening to Futures Radio Show.
+If you have any questions or comments for myself or my guests, please visit futuresradioshow.com
+and sign up to be a premium member for free.
+If you enjoyed the show, don't forget to leave us a review on iTunes.

@@ -1,0 +1,219 @@
+Hey guys, sorry for the long wait. So now we have Jameson Lopp, co-founder and CTO of
+CASA, who's going to be talking about the state of hardware device ecosystem. Please
+welcome Jameson on stage.
+As we are handling support issues with our product. So we'll start off at the
+beginning here. The history of hardware devices, why do they exist? Well,
+obviously we want to take the keys offline. We want hackers to no longer be
+able to just compromise their computer and steal all of our money. And these
+hardware devices also greatly diminish the size of the attack surface by
+getting the keys off of a more complex operating system. These generic operating
+systems that are widely used like robots, OSX, Linux, iOS, whatever, they're incredibly
+complicated because they are generalized to be able to support almost any type of
+computation you can think of. And they're so complex that basically nobody has
+the ability to verify everything they're doing. So if we can instead get the
+important parts of key management off of these complex systems and get them into a
+very simple and easy to audit piece of hardware, then we will greatly improve
+our ability to verify the security and the real threat model that these
+hardware devices are able to provide to us. Now at CASA we actually further
+minimize the attack surface by blending brands, different manufacturers,
+hardware together so that we no longer have a single point of failure even if
+there is an issue with any one manufacturer. And one thing that I'd
+like to touch on is that I actually don't really use the term hardware wallet
+anymore because as a wallet developer myself, I consider a wallet to be a much
+more full-featured piece of software that is doing things like UTXO management
+actually, you know, keeping track of your balances, deciding what UTXOs to spend,
+etc. Whereas these hardware devices do not know anything about UTXOs. They are
+purely used to manage keys and to assign data that is provided to them.
+So hardware devices have been around for about six years. In 2014 we had Trezor
+launch their first product, I think in January, February, and then shortly
+thereafter Leisure came through with what I believe the HW.1 device. And there are
+a number of other manufacturers that aren't on here, but really these are
+probably the most popular. 2017 Shift Crypto came out with Bitbox, 2018 CoinKite
+came out with CodeCard. And the number of companies in the system is
+continuing to increase. But what are the more commonalities that we see between
+these devices? Well, generally you're going to see a screen and you're going to
+see some type of hardware buttons. And the screen is actually incredibly
+important. You may notice the bottom left, the Bitboxer 1 is actually similar to
+the Leisure HW.1 and then it doesn't have a screen. That's actually a major
+point of failure because it means you're blindly assigning data. The screen is
+important because it allows the hardware device to parse the transaction and
+then display the various details like the value being moved, the addresses
+being spent from and to, and really allowing the user to verify on
+standalone hardware that whatever their wallet software is telling them is
+actually the truth. So the screen is incredibly important. The other
+commonality that pretty much all of them have is that they are USB based, which
+means you're plugging a USB cord into some other computing device, whether
+it's a computer, desktop, laptop, possibly even mobile phone. And so the data
+transfer for most of these things happens over USB. One exception, of course, is
+ColdCard, which has true air gap operation. You can do the data transfer via SD
+card. LedgerX also has Bluetooth. That's kind of a one-off though. I'm not really
+familiar with many wallet software supporting Bluetooth and LedgerX. Now,
+it's important to note the hardware ecosystem is very young. And in fact, in
+the first four years or so, we did not see much along the lines of vulnerability
+is getting reported. But in 2017, it seems that really ramped up mistakes and
+really ramped up the level of security experts who were starting to test these
+devices. So right now, we're kind of in an interesting phase where there are a
+lot of vulnerabilities that are still being discovered and disclosed on a
+regular basis. So I would say we're still quite a ways away from being in the
+position where we feel relatively comfortable that there are no unknown
+major vulnerabilities in the various hardware that's being developed. Now,
+here's a number of different aspects by which you could judge a hardware device.
+There are probably several others that I've left out and hopefully a bit making
+mistakes here. These are kind of highly high-level trade-offs that you might see
+between the different devices, whether it's open source, more audible. Really,
+the reason why you see so much red here for Ledger is because of their very
+specific decision not to use a secure element. There's a lot of trade-offs
+there between open source audibility versus actual physical security of the
+keys and how they're managed. The trade-offs that you get, though, are that
+if you don't have a secure element, you can't have a true random number
+generator, and that is also why you see this known exploit right here where I'm
+specifically referring to a known physical key extraction exploit that is,
+as far as we're aware, never been actually pulled off outside of lab
+conditions, but theoretically can be done with about $100 worth of hardware and
+physical access. There are, of course, trade-offs and things that you can do to
+mitigate that, like using passphrases, but that's a much more complex and nuanced
+discussion that we could get into. Also, one of the main reasons that I added the
+complex transactions issue at the bottom was because Cold Card does
+really well on pretty much everything, and I finally managed to find something
+that Cold Card does not do as well as a lot of the other hardware devices on the
+market. This is actually the results of a bit of research I've been doing all year
+and just published a couple of weeks ago, so you can check that out on the
+console blog if you want to see what complex transaction support really
+means. Now, getting a little further along with platform support, these
+devices do not generally operate on their own. You are plugging them into some
+other computer that's running some other operating system. You have to have, in
+many cases, specific USB libraries installed. For Linux, you may have to
+configure various rules to allow the USB device to open in the first place. If
+you're doing browser-based signing, then there are compatibility issues you may
+have with WebUSB or HID communication layer that's essentially used to talk
+to the USB devices. Some of the worst browsers will only actually say that you
+plugged in a 5.0 U2F type of device and won't even know that it is a hardware key
+manager. It'll think it's just some sort of two-factor authentication device.
+There's, of course, also the issue of PSPT support, which generally I think that
+CodeCard and Cobo Vault are the only ones that support it at this time. But one of
+the interesting things that we've really learned over the past year, once CASA
+added CodeCard support, is that having true air-gapped operation is not only a
+cool security feature, but it is actually really good for usability. The user
+experience of doing an air-gapped data transfer, while it can be a little bit
+more onerous because you're having to transfer it via perhaps a microSD card,
+what you're doing there is you're actually able to bypass all of these
+other complexities with operating systems and browsers and USB drivers and
+whatever. So the short version is it's actually a lot more reliable if we're
+looking across the diversity of different computing devices and what
+people might be trying to use these hardware devices with. So in particular,
+one thing I haven't talked about is mobile systems. If you're running an
+Android phone, Android generally allows you to plug in things via USB and have
+the phone operating system directly talk to them. So you can actually use Trezor
+or Ledger to plug into your Android phone and sign transactions if the app
+is added support for it. However, good luck doing that with iPhone. The Apple
+ecosystem is pretty locked down and they don't let you have just arbitrary USB
+devices plug in and talk to your apps. So the interesting thing that we've also
+discovered is that, once again, CodeCard actually comes out a winner when it
+comes to iOS support because we can just plug in the micro SD card with an
+adapter and the iPhone will mount that just as a regular data drive and then
+all you're doing is doing a simple file transfer. The actual sign-in, of course,
+is happening standalone on the CodeCard.
+So getting even deeper into some issues of derivation support, which you may or
+may not understand, you know, what's going on under the scenes, like when
+you're actually creating private keys. These devices, they are using entropy
+generally that is provided by a random number generator on the device to create
+the seed and the seed is then used to deterministically generate an almost
+unlimited number of public and private key pairs and that is what results in you
+creating your addresses that you can use to deposit funds into that set of keys.
+Now, the interesting thing about the derivation paths is that while hardware
+devices have made it really hard for an attacker to steal your keys from you,
+there are some theoretical attacks where the attacker could trick you into sending
+your money to yourself but in a way that you don't even know how to access it
+anymore. So there are these theoretical advancements of attacks that, once again,
+I do not believe have actually been pulled off in real life, where the attacker
+could get you to send your money in a way that you lose it and then can
+essentially ransom you to get the data required to spend your money basically
+asking you to split your money with them. There's also issues of unhardened
+versus hardened paths, which can send us some more minutia around security and
+privacy. In general, there is an issue with unhardened path derivation where if
+an attacker got one private key and they got the extended public key of a certain
+part of your derivation, then they could theoretically drive the rest of those
+keys. In my opinion, this is much less of an issue now that people are managing
+their keys on these hardware devices. So that generally, I think it's a fairly
+safe assumption to say that if an attacker got one of your private keys that
+you're managing with the hardware device, they probably already have all of the
+other ones already. So this is not really something that I worry about myself. We
+have also got some issues with forcing some standards in the ecosystem, which
+I'll touch on a second, and kind of similar to the ransom attack stuff, but
+change address validation on these devices can get tricky,
+especially if you're using less commonly used paths. Essentially, it can
+result in a poor user experience where the device makes it look like your money
+is not actually going back to yourself, or it's not sure whether that's
+happening. Probably hard to do some of this, but just trying to put up a general
+idea that in these devices, they are using a variety of different derivation
+standards, and in many cases they allow completely custom uses of derivation
+paths. So I don't think that these devices should be thought of as sort of
+standalone things anymore, but rather that we're creating an ecosystem where
+these hardware devices are a platform, and we do need to understand that they
+may be used for a variety of different things. We should try to sheet them in
+specific use cases, and this is actually an issue that I opened with Trezor back
+in June, where we discovered a Trezor firmware update actually broke
+compatibility with CASA because of the derivation paths that we were using, and
+this is an interesting bit of conflict because historically hardware device
+manufacturers have actually built full-stack solutions where they provide
+not only the hardware device, but also the wallet software and often the
+backend infrastructure that is managing balance and transaction and UTXO
+lookups as well. So this was a decision that was made by Trezor because they
+wanted to further compartmentalize and sandbox some of their own Bitcoin apps,
+but the unfortunate side effect is that it broke other companies that were
+using their device as a platform. So CASA, I think it also broke Green
+Address, and there may have been others that it broke that we just didn't know,
+didn't chime in on in this particular case. So it's an interesting point of
+contention, which I hope does not become a trend in this space because it will
+potentially cause issues with using, being able to support multiple different
+hardware devices on any given platform if they don't all support the same type
+of derivation. So getting to the complex transaction stuff, this is the results of
+a lot of testing that I did manually recently. If you're doing a happy
+use case, you're spending a couple of UTXOs type of transaction, it'll
+probably work just fine with any of these devices, but if you're getting to
+the edge of what is considered a valid Bitcoin transaction, if you have many,
+many UTXOs, perhaps because you've been receiving money from a BTC-paced server
+type merchant setup or because you've been dollar-cost averaging for a long
+time, then what you find is these hardware devices can often struggle to
+deal with large amounts of data. You might get a PSVT is too big error, you might get
+some sort of like random session interrupted error or timeout for Trezor.
+On the ledger side, what I found is that often the ledger device will just hang
+for 10 or 20 minutes before finally giving some sort of obscure read error. So
+there's definitely still a lot of improvements that can be made by these
+hardware device manufacturers to make sure that they handle the edge cases of
+Bitcoin transaction signing. In general, I'm sure that this is a challenge
+for them to do because these are fairly low-powered devices. And sort of to give
+you an example of like, I did a 15-15-100 input transaction on a laptop
+recently and it took three seconds. Whereas on most of these devices, they
+would take tens of minutes if not to take, you know, completely failed while
+trying to assign the transaction. So where's this all going? Well, I think that
+what we're going to see happen is more types of devices come out. We're going to
+see some do-it-yourself hardware, this Inspector DIY, which I'm keeping an eye
+on. This will probably remain fairly limited to niche technical folks because
+it will require some assembly at home, but it's interesting because this gets
+rid of more supply chain risk if you're just over the generic computing parts
+rather than specific security hardware. We will also see an interesting trend on
+the QR side. I think QR code-based data transfer is going to be similar to the
+improvements on air gaps file transfer where we can get rid of a lot of the
+complexities and make this stuff a lot more user-friendly by not having to worry
+about what operating system people are using. Just completely bypass computers
+in general. There's a couple of devices on the market that already support that
+and a couple more that will be coming out soon. And finally, one interesting
+throwback to Case Wallet, which I reviewed in 2015. I felt like it was
+really ahead of its time. It had 2G network built in. It had a camera that
+worked really well. It even had a biometric fingerprint scanner. Multi-SIG
+is also built into it. It even had inductive charging that made it really
+easy for you to keep powered. And of course, it had a discrete form factor and
+it looked like a calculator, much like the code card does. Unfortunately, even
+though I felt like it was really well-designed, the trade-offs that they
+made with the 2G meant that it actually did not work very well like it was
+supposed to. And the biometric fingerprint scanner, unfortunately, was
+not user-friendly at all. So I think that there's still a lot of
+improvements that can be made. And we're going to continue, I think, seeing this
+sort of cat-and-mouse thing on the security and usability side in the
+hardware space. And I'll keep stress-testing these things as they come
+out. And hopefully, we'll all be able to continue moving forward and getting
+better and better hardware to the point that we no longer really have to worry
+about various edge cases where it might fail on us. So thanks for listening. I
+think I've pretty much used up all of my time.
+Applause
