@@ -1,0 +1,386 @@
+Hey, everyone.
+We have Jameson Lopp here of CTO of CASA.
+He'll be doing a talk on attack vectors in real life, what it means to be your own bank.
+Can you guys confirm in the chat that you can hear him?
+Hello.
+Looks like we're good to go.
+All right, well, let's get this thing started then.
+We've got far too little time and far too many things to worry about.
+But as I think many of us are aware, there's a reason why banks exist.
+Banks are specializing in security, and there's a lot of different things that they have to
+worry about on that end of things.
+So if we want to really achieve the promise of Bitcoin and crypto, the ability to be your
+own bank, then a big question comes down to how do we actually make it feasible for normal
+people to have the same level of security, if not better, as a bank?
+And I believe that it is possible.
+The technology is within our grasp.
+It's just a matter of usability.
+So this is what I've been focused on for over five years now.
+I've been working on various self-custody multisig based products since early 2015.
+And I've seen a lot of things go wrong.
+And every time something goes wrong, that's an opportunity for us to learn a valuable
+new lesson.
+So getting things started.
+We know the greatest strength of these digital bearer assets is that no authority can confiscate
+your wealth, no one can censor your transactions.
+But the flip side of this is that if you screw up, if someone manages to penetrate your security
+and finds a weakness, or if you just lose your keys, there's no one out there who can
+give you your money back.
+So this is a high stakes environment.
+If you make a single mistake, it can be potentially catastrophic.
+And unfortunately, a lot of people have done that over the years.
+It's a history with many documented failures and probably even more undocumented that people
+were just too ashamed to talk about it.
+So there are reason to believe from various on-chain analysis that millions of Bitcoin
+have been lost, millions of Bitcoin have been stolen throughout the years.
+As I'm sure most of you are aware, not your keys, not your coins.
+Might be hard to read, but this is just an exchange hack timeline only from last year.
+This is something that continues to be a problem in the space that a lot of people are putting
+their funds with custodians and trusting that nothing will go wrong.
+But if anything, it seems like the volume of hacks that is happening in the space is
+increasing.
+It's not clear to me that people are at least on the crypto custodian side that they're
+necessarily learning from the mistakes of the past because we have a lot of new people,
+a lot of new businesses that come in, especially during bull runs.
+And I think they just throw themselves into it and don't necessarily learn from history.
+So we'll start off with some of what I think are scarier, but actually less likely attacks.
+So something you hear a lot about in this space are wrench attacks, physical coercion.
+What if somebody comes to your house and decides to start beating on you until you hand over
+your money?
+Well, this has happened.
+I actually run a project that catalogs known physical attacks in the space.
+And there have been about 50 or 60 of them over the past decade.
+Once again, these provide good opportunities for us to learn from other people's mistakes.
+And in the vast majority of these attacks, the perpetrators were actually successful
+in coercing the victim to transfer their money.
+So the question becomes, when did the attackers fail?
+Well, there were three examples we know of.
+A man in Norway escaped a home invader by jumping off a second floor balcony.
+Not great.
+A Dutch trader a year or two ago actually was horrifically tortured and didn't give
+up his private keys.
+It's unclear whether or not he was capable of doing so.
+We didn't really get a lot of insight into that case.
+The only single case in which a physical attack was successfully thwarted and a victim defended
+themselves was actually a man in Miami who was engaging in a face to face Bitcoin trade.
+He was carrying a handgun.
+He defended himself and shot his attacker.
+So we certainly have a long ways to go when it comes to people being able to defend themselves
+against physical coercion, but it is very rare.
+So we'll get into some of the more common things quite shortly.
+But the only way to prevent physical attacks is by having strong operational security.
+That means not broadcasting that you have a decent amount of wealth and that you're
+a juicy target.
+On the other hand, the only foolproof way to defend yourself against coercion is to
+not have access to your keys.
+If you can't access your keys, then it's not possible even if you're being coerced
+for you to give your money to that attacker.
+Now there are theories about duress wallets and essentially trying to bribe an attacker
+with a small amount of money.
+I don't really subscribe to those theories too much because they involve a lot of speculation
+as to whether or not an attacker knows how much money you have and has an expectation
+of how much to get out of you.
+But also you're speculating as to how the attacker is going to react if they think you
+might be trying to trick them.
+So I try to stick to the better guarantees of just not allowing any money to flow.
+There are also hardware flaws in this space, which once again is a fairly edge case.
+For example, there are known attacks against hardware devices that are essentially voltage
+glitching.
+This allows a sophisticated attacker to dump all the data off the device and then essentially
+brute force their way through any software security to get to your seed phrase.
+Now as far as I'm aware, these types of attacks have only really been demonstrated in lab
+conditions, but it is the type of thing that I believe is going to be cheap enough that
+we're going to see proliferate more and more as the years go on.
+This is not a multimillion dollar attack, but rather something that just requires some
+technical expertise and a few hundred dollars worth of equipment.
+The more common type of attacks we see against people who are at least using hardware devices
+is just simple stuff of supply chain, essentially not buying a hardware device directly from
+the vendor, buying it on a secondhand market where it's already been opened and initialized.
+And if you are using a hardware device where someone else knows the private keys, then
+you're not really getting any security and they're just going to be able to sweep your
+funds as soon as you deposit anything.
+Brain wallets are something that I believe were a lot more popular before hardware devices
+became more popular, but this is a particularly devious attack that people are susceptible
+to because it requires absolutely no interaction between the victim and their attacker.
+Rather the attacker is just watching the blockchain data and trying to brute force keys to see
+if any have been deterministically generated with brain wallet algorithms.
+So there are a number of examples here of common phrases that have had a lot of money
+put into them and stolen very quickly.
+My favorite is actually the last one.
+It's just a blank wallet.
+It was like the default on some wallet generator website.
+And of course, within a few seconds of the money being deposited, it was gone.
+So a short version here is that humans are very bad at generating randomness and entropy.
+And that's essentially what a brain wallet is relying on.
+So don't use brain wallets.
+Malware is something that has been around for quite a few years, but as the incentives
+are changing, we're seeing more and more malware come out that will install itself in your
+browser through an extension or on your desktop, even some on mobile devices, though that's
+less common.
+And it's going to be looking for private keys.
+It's going to be trying to screw with any other wallet software that you have installed
+and try to get you to unintentionally send your money to the attacker.
+So a more common version of malware we're seeing is clipboard malware, where essentially
+if you're copying an address because you're going to send money to it, then this malware
+is sitting on your device, reading everything that gets copied into the clipboard.
+And if it sees a crypto address, then it'll actually swap it out with one that looks very
+similar, probably has the first few characters the exact same, except those addresses will
+belong to the attacker and you will unintentionally send your money to them.
+So you have to be very careful, check the entire address, not just the first few characters
+whenever you're sending money in this space.
+In a similar vein, a kind of another type of man in the middle attack that we've heard
+about recently, malicious Tor relays.
+If you're doing any type of browser based sending where you're sending to a service
+that is displaying an address in the browser.
+And if that service is not being served over SSL and encrypted, then if you're using Tor,
+it's possible there's a malicious exit node or relay node out there that is actually going
+to swap out that address once again, for one that is owned by the attacker.
+We're also seeing plenty of malicious QR code generators is just another common issue where
+you know, people have an address, they want to be able to scan it with their mobile app.
+And so there's probably hundreds of websites out there that you can paste data into and
+it generates a QR code.
+But some of them, they'll act normally until you put in a Bitcoin address or something
+else, you know, another type of common crypto, and they will swap it out.
+So be careful, always check your addresses multiple times.
+A common thing that we see, especially with newbies in the system that are, you know,
+looking to improve their privacy, they want to mix their coins, they don't understand
+a lot about how mixers actually work.
+And they'll probably just Google Bitcoin mixer and go to the first thing that comes up.
+Unfortunately, a lot of these mixers are custodial, and essentially you send your money to them.
+And if that is the case, then it's probably not going to send your money back to you have
+to be very careful about that should only really use mixing software that you are running
+yourself, something like join market wasabi or Samurai's solution, where you're not really
+handing over your money to a third party.
+There's also plenty of malicious wallet software out there.
+This one is an interesting case, because I believe wallet generator was running as a
+up and up software, you know, generator for a number of years.
+And I think it was purchased by a malicious actor.
+This software was actually open source, you could download it to an offline air gapped
+computer.
+But even if you generated your keys offline, you are still susceptible to having your funds
+taken because they had put some underhanded malicious code in the generation of the keys
+that made it not random.
+And so it was deterministic in a way that the attacker actually knew all of the keys
+that would be generated ahead of time.
+And it was sufficiently obfuscated that auditing the code was not obvious and, you know, less
+and more sophisticated programmer looked at it.
+So I think they got away with a decent amount of money before people caught on.
+System swapping, something that's been around for about five years in the Bitcoin space.
+It really started taking off in 2015.
+The problem here being that a lot of services, even today, they should know better, but they're
+using SMS as a two factor authentication or in some cases, even full account recovery
+mechanism.
+And the short version is that the security around your mobile phone provider, especially
+if you're an American citizen, is extremely low.
+You should not use anything phone number related as a secure authentication mechanism.
+There's actually a weird trade off here where there are a number of countries that don't
+have this problem.
+And usually that's because the country actually has draconian identification laws around
+SIMs that actually require you to personally register your SIM with strong identification
+around your passport, driver, license, or whatever.
+So it's a weird situation where we have some additional freedoms and privacy potential
+in America, but the trade off is that it's easy for people who are not us to then steal
+our SIM.
+So use hardware devices whenever possible.
+And by hardware devices, I mean things like Ubiqui or even Trezor has like a U2F two factor
+authentication functionality.
+Now as this space is becoming more secure, as we are learning and we're improving our
+best practices, there's the software and hardware continue to improve over the years.
+The weakness that will always remain is the humans.
+And so social engineering is something that becomes more and more prevalent.
+And in fact, you know, that is what a number of these attacks that I've already talked
+about actually are.
+They aren't using technical weaknesses to take your money away from you.
+Rather, they are using weaknesses in other parts of the software stack to fool the human
+into voluntarily sending their money away.
+So this was an example of a more sophisticated attack.
+There was actually a multi hop attack against several different people at different companies.
+And the primary problem or thing that could have stopped it is having a stronger authentication.
+So if you're sending money simply because you receive an email from someone, especially
+if it's not like a GPG signed email, then you shouldn't trust it.
+Fishing with AdWords is something that has been prevalent for a number of years.
+And Google doesn't seem to be doing a very good job stopping it.
+These fishers are actually paying Google for ad placement for common browser based wallets
+and other online custodians.
+And they're preying upon people's laziness.
+You might have a blockchain wallet or a Coinbase exchange account or whatever.
+And a lot of people, I think they just go to Google and type in what they want to go
+to and then click on the first thing.
+And that's where this trap will spring.
+The easy way around it is that you shouldn't be searching for the web based services that
+you're using commonly.
+You should bookmark them and always use the bookmarks to make sure that you're going to
+the service that you think you are.
+In a very similar vein, something called typo swatting where instead of the attack occurring
+at the search engine level, it actually is occurring at the domain name service level.
+So malicious attackers will purchase variations of common popular services that you would
+essentially type in incorrectly.
+So one or two characters off of the real thing.
+And once again, if you're just being lazy and you type in the URL to wherever you're
+going all the time, then it's probably going to happen over a long enough period of time.
+You're going to make a typo at some point and you might end up at one of these clone
+hijacker sites, put in all of your authentication info and then they just proxy it to the real
+service log in and sweep all of your money.
+So once again, bookmarks are your friend.
+Now this is an interesting one.
+Fake air drops were a thing in 2017, there was a number of malicious software, especially
+when there were like 50 different Bitcoin forks happening in a several month time span.
+Some of that software was malicious and it would just literally steal all your Bitcoin
+keys instead of allowing you to split off air dropped funds from another chain.
+But this is one that I actually came across just in the past week.
+Obviously this is a Ripple based scam.
+And if you can't, if it's too small for you to see in the URL, it's ripple.com.so.
+So most people are probably going to miss that.
+It has a valid SSL certificate, so nothing to throw any red flags there.
+It looks a lot like the Ripple website.
+And the most interesting things that I found when I started digging deeper into this is
+that they would actually detect if you put in your address and it belonged to an exchange,
+I guess they had some sophisticated analytics on that.
+They would detect that this is an exchange address and ask you to withdraw your money
+to your own wallet before you could proceed with the airdrop.
+The other unique thing I saw was they were actually kind of nice in that they checked
+the balance on your address and if it was less than $1,000, they actually declined to
+steal your money.
+Of course, the way that they put it was, oh, your balance is too low to qualify for our
+incentive program.
+So that was a very surprising thing.
+But the most unique thing that I had never seen before, which is also probably hard to
+see but in the center there, they have a fully functional in browser ledger hardware wallet
+integration.
+I tested this out.
+It works.
+You can actually plug in your ledger wallet and it will construct a transaction that if
+you're dumb enough to click on the buttons, it will sign that transaction and sweep your
+entire ripple wallet balance.
+So this is really what I'm trying to warn people about.
+I've known that this type of stuff was possible for years, but it hasn't happened until now
+that the incentives continue to grow and the sophistication of the attackers continues
+to improve.
+So we need to remain on our guard.
+Now you're probably wondering, well, you know, we've gone through a number of nightmare scenarios.
+What's the greatest threat?
+It's actually I would say none of these things.
+All you have to do is look in the mirror.
+If you remember one of those first slides I showed about Bitcoin like lost versus Bitcoin
+stolen and anecdotally over the years, this is what I have seen myself is that you're
+actually far more likely to screw up yourself and lose access to your private keys than
+you are to have your money stolen from you.
+So simple things like bad cyber hygiene or reusing passwords and passwords getting leaked
+from other parties and then getting used to log into your other crypto services.
+This is something that we see a lot in the security spaces.
+Whenever there's a major hack and leak of an online database, we start getting slammed
+with basically millions of login requests where someone's just going through all the
+usernames and passwords from that leak and using them against our service, against other
+services.
+And if they find a hit, that's free money.
+On the other hand, simple IT data management practices, it's tough for a lot of people,
+even more sophisticated folks.
+Nobody really wants to spend time backing up their data.
+Here's some examples of Stefan Thomas actually had three different redundant copies of his
+wallet, but he managed to delete two of them and lose the password for the third.
+On the other hand, I believe this was an editor for a tech magazine.
+He had backed up his pen and recovery seed on the same piece of paper and the house cleaning
+service threw it away.
+He did end up getting his Bitcoin recovered, but it actually required a highly sophisticated
+technical attack against his treasure.
+So that turned into a really lengthy, interesting article to read a number of years ago.
+Of course, a lot of you have probably heard about, I believe it was James Howell's very
+early Bitcoin miner who had thousands and thousands of Bitcoin that were just stored
+on a hard drive that he accidentally threw out, I believe during spring cleaning or something
+at some point and didn't realize it until much later.
+And unfortunately, his requests to his local city to go through the dump and excavate it
+have been denied.
+Of course, some people do back up their keys, but they don't do it in a secure manner.
+And if you just back them up into a third party service unencrypted, then some terrible
+things could happen if the wrong person gets access to that account.
+Paper wallets, thankfully, I believe are becoming less popular, but there's just a lot of things
+that can go wrong with them.
+It's hard to generate the keys securely.
+In many cases, they're not encrypted.
+So if an attacker finds it, they can steal the money.
+Of course, paper itself can easily be destroyed.
+And one common thing that not many people know about is a lot of paper wallets are just
+like a single private key.
+And if you load that into software and spend it, but don't spend the entire balance, then
+the rest of the balance in many cases of Bitcoin software will get sent to another private
+key, another address that actually doesn't exist in your backup.
+And so a lot of people have unintentionally lost their money that way by not fully sweeping
+the wallet.
+Metal wallets, definitely a lot better.
+However, not a panacea.
+I have another project where I stress test these metal devices.
+And some of them are not as robust as you might think.
+The short version of this is that usually the more pieces a metal device has, the more
+complex it is, the more likely it is to have some sort of failure under various stresses.
+Once again, these devices are very rarely unencrypted.
+So a physical attacker could probably steal your money if it's a single signature backup.
+Metal factors are less of an issue, but some of them do not, in my experience, survive
+a common house fire.
+They may not survive a building collapse, et cetera, et cetera.
+And this is a quick review, but if you just go to lop.net, you can find a link to all
+of my detailed stress tests.
+So best practices.
+What do we really want to do?
+Well, when I'm architecting things for CASA, my primary consideration is to eliminate single
+points of failure.
+How do we do that?
+Use multi-signature wallets, use a diversity of different hardware devices to prevent things
+like supply chain attacks or any possible catastrophic bug in any one device, any one
+brand.
+And then we also geographically separate those devices, and that gives you additional robustness
+against things like environmental disasters or, like I said, the $5 wrench attack.
+If the keys to your setup are sufficiently geographically distributed amongst a variety
+of different access-controlled locations, that, in my opinion, is how we achieve a level
+of security that is actually superior to your average bank.
+And when it comes to using these metal backups for seed phrases, I basically recommend using
+the simplest devices out there, the blockplate, seedplate, steel wallet, just a single sheet
+of metal that you punch some little holes into with a straight punch, and that will
+survive basically anything that you can imagine.
+So I haven't really talked much about operational security.
+That could be a whole other talk in and of itself.
+First rule of Bitcoin Club is always talk about Bitcoin.
+Second rule is never talk about your Bitcoin.
+And what do we mean by that?
+So here we see this was a tweet from Cody Brown in 2017 where he was actually referencing
+a Facebook post from a friend of his who got SIM swapped and had all of his money taken
+out of his Coinbase account.
+Well, within 48 hours of Cody Brown tweeting this, you'll notice he says, I trade all of
+my coins there worried by their lack of transparency and response.
+He got SIM swapped and all of his money got taken out of his Coinbase account.
+Now obviously, we can't say for certain that that never would have happened otherwise,
+but he made himself a very juicy target, and unfortunately, he paid the price for it.
+So if you're going to be public on Twitter, other social media, the easiest thing to do
+is to use a pseudonym and not your real name that people can then find information about
+and try to attack.
+Otherwise, you need to go down the privacy rabbit hole that I've done that takes a lot
+of time, a lot of resources.
+Now finally, the end.
+Very few people, it seems, in this space, perhaps because a lot of the early adopters
+are younger, seem to be thinking about inheritance issues.
+And so we have a number of clients come to us because at Casa, we have an inheritance
+setup that we spend a lot of time architecting to work within the traditional estate planning
+process.
+But the ones that come to us that do have an inheritance plan, usually it can be best
+described as a treasure hunt.
+And the problem with a lot of these treasure hunts is that they tend to be very brittle
+and are usually not well tested.
+And so if you have a multi-step, multi-hop process treasure hunt that your heirs, your
+beneficiaries would have to go through in order to recover your funds, you need to be
+very careful that there aren't single points of failure in that as well, because usually
+if you get one step wrong or they can't figure out how to execute it, then they'll never
+be able to recover your money.
+So I think we have a few minutes left for questions.
+This is still just trying to cram everything I can to in a short period of time.
+But this is the type of stuff that I have been dealing with for several years and trying
+to continue to architect solutions so that the average person doesn't have to worry about
+every single possible thing that can happen in this space.
+It's a very dynamic environment and we'll continue to see new novel types of attacks,
+I'm sure, for the foreseeable future.
+Yeah, this was a really great presentation.
+If there are any last questions, we can have one more minute, otherwise we'll transition
+to the next talk.
+Cool.
+So we're going to transition then.
+Thanks again sincerely.
+All right, take care.
+Thank you.

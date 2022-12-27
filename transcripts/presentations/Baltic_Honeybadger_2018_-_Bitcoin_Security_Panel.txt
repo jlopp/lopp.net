@@ -1,0 +1,233 @@
+Okay, hey everyone, good to see you. I'm Florian May. I'm going to moderate the next 30 minutes
+on the Bitcoin security panel. Yeah, Bitcoin security is a really broad topic with a lot
+of different aspects that can be considered from like mining, hash rate, key handling,
+patch management, and Bitcoin core and other implementations. There's a lot of FUD going on.
+So security by itself is always an interesting topic, but combined with Bitcoin it gets even
+more interesting. I'm really happy to have you guys here. I don't think any of you needs an
+introduction. I'm a big fan of your work. We have hardware, we have software experience,
+which is really great. And to start the discussion, I want to start with an open question to the round
+to get started. Like what aspects of BTC or around BTC or maybe crypto in common, but obviously with
+BTC as focus, do you think especially important right now to address what should the community
+and companies working on Bitcoin focus on? Maybe Pierre, can you start? Yeah, certainly. I mean,
+this is a really good question and there are many aspects affecting the security of Bitcoins and
+the holdings in general. I, as you know, specialize more in the vulnerability side with a good
+understanding of the cryptography. So I'm more looking at the vulnerability side, the health of
+the networks, the clients, and not running into issues based on that. The good thing though with
+Bitcoin is because of proof of work, even though there's vulnerabilities, there's no way to like
+kind of reverse transaction, right? That easily because you need to redo the proof of work even
+though there would be like exploitation of nodes. So this is very reassuring. And then the thing
+that gets to me on the other side are the clients, the holding and not losing the funds because I
+always get asked, I'm worried about my Bitcoins being stolen. But I, you know, tell people you
+should worry about not losing them first. That's like the there's much more Bitcoins that are just
+lost than actually stolen. So those are like the aspects that I, I'm focusing on that I think are
+important. So there's technical aspects like, you know, securing, you know, key management where
+there's basically like there you're talking about cryptographic barriers to be able to actually do
+anything. But then besides that, you have like game theory and you know, like incentive kind of
+things that prevent people, bad actors from doing stuff. And then you have like, you know, the
+social layer, people actually, you know, trying to manipulate the narrative and manipulate
+markets. And then I think that in this space, we've actually seen a lot more people hurt by
+either losing their keys or by falling prey to the social engineering more than people stealing
+keys. Not that that's not to say that we should not be careful securing keys. But I think, you
+know, unless like you're a really big exchange, you know, which kind of, you know, is going to be
+a major target. Attacks against individuals for stealing keys other than ransomware attacks or
+other stuff like that have been relatively rare. So I'm more concerned, I mean, when I first
+started working on stuff on Bitcoin software, I was mostly focused on how to secure keys and
+how to make sure that key management was done in an environment that's secure. But as I started
+to see more things that could potentially lead to game theoretical issues or consensus failure, I
+started to focus more on like the, you know, the issues with forks and issues with different
+kinds of, you know, market manipulations and things like that. So I think all these things need to
+be taken into consideration.
+Yeah, so I've spent the past few years mainly working on key management side, three years doing
+more enterprise hot wallet key management, and now focusing more on personal key management. So
+obviously, I feel like this is where I can best put my skills to work and try to help people
+basically be more sovereign to themselves. There's a number of other issues at play, though.
+Something that plays into that is actually the usability of having a high security solution.
+And really, I think one of the results of having not so good usability is that we result in
+creating more systemic risk in the system. You end up with more people basically leaving their
+keys with trusted third parties, usually because they don't trust themselves. And in many cases,
+maybe they shouldn't trust themselves. But, you know, I think the goal is that we should be
+trying to get to a point where people should be comfortable being their own bank, trusting
+themselves. I could go on, but I think that's enough.
+With Bitcoin, we have a wonderfully designed cryptographically system, which is, from my
+point of view, very secure. But at the same time, we need to also invest in the usability of
+such systems, because without a good usability, I think you couldn't have a very good security.
+The product or the project can be very secure, but if users don't know how to use it properly,
+then we failed, ultimately. And that's what we are trying to solve in a software or hardware
+wallet space. We need to educate the people what actions they are doing, what the effects of
+these actions will be. And also, there are a lot of things that can be improved, like, for
+example, people are blindly scanning QR codes, sending Bitcoins to this, and they don't check
+the address. The address itself is a problem, because there is no really straightforward way
+how to confirm that the recipient address really comes from the person we want to send
+the coins to. And there are a lot of work to do, even non-trivial work, because it kind of
+relates to the whole digital identity management thing. And I think this is something that should
+be improved, and it's not really related to the hard core cryptography security, but it's also
+very important if we want Bitcoin to be used not just by hard core cryptography nerds, but everybody.
+Okay, thanks. That was really interesting, and I think I got two keywords that kind of triggered
+me that were, obviously, education is one point where we have to work on as a community, but
+ultimately, I feel there's always a limit to education, what you can make non-technical
+people understand with what the current state of Bitcoin and the whole cryptosphere is. I mean,
+you have scammers telling people to enter some commands into the debug console of their wallets.
+We have supply chain attacks. We have different channels where people, like on Discord and Slack,
+where people get ripped off all the time. We have exchanges where, obviously, input validation is
+done on the client side and cryptography. So there's so many different layers going on
+with problems that cannot be solved at once, but I would be interested, especially in your opinion,
+Jameson, in our experience, and yours, Pavel, what the current feedback from your customers and
+buyers is, maybe early adopters of CAESAR, not only the small ones, but also the institutional ones,
+what the problems are, the typical ones that you actually plan to address.
+Yeah, it's actually, I guess, one of the first major points is that it's loss is the biggest
+problem. And so this is because we have made great advances, like with Trezor, with hardware
+devices, making the private keys much safer from digital attackers. Just getting an air gap in
+there goes a long way. And so then what we're really dealing with now is probably one of the
+biggest security issues is really one of the biggest issues with any type of computing
+environment is always that dang user that keeps getting in the way and screwing things up. And
+we have yet to figure out how to eliminate the user from the equation, so we have to do the next
+best thing and try to prevent the user from shooting themselves in the foot in as many ways
+as possible. That's really one of the primary focuses that we have at Casa, where we're not
+trying to build any hardware ourselves. We're taking what's already out there on the market and
+trying to assemble it in a new way with software that just implicitly by following the software
+itself, you have to follow a number of best practices. So we don't necessarily have to do as
+much education. It's just baked into the product itself.
+From our experience with our Trezor support, I can tell that there are two big issues that happened
+during the last year. One of them is not specific for the last year, but I still feel that people
+don't really understand that the recovery seed or the mnemonic sequence is really, really
+important, and they just decide to, for whatever reason, not write it down. There are some counter
+measures, like, for example, requiring a person to give back some of the words they have written
+down, but still, it doesn't really mean they have not thrown away the paper shortly afterwards.
+Also, we had one example that a person wrote down the seed, but they didn't know they should
+really write down it in a correct order, so they just tried to be smart and randomised it for
+whatever reason.
+Oh, but you can brute force that with the right script, right?
+Yeah. And so I think that could be solved by education, and it's really a much bigger issue
+because we tried to educate people not only to use Bitcoin properly but to stand for themselves,
+and suddenly they have their faith in our own hands and they are not really used to it.
+And the other thing was, well, from the last year, it has been a year of Bitcoin forks,
+at least that's how I perceived it, and a lot of people are really hasty about trying to
+claim new coins and they were entering their mnemonic seeds to lots of various websites with
+no history whatsoever, and also it created a lot of problems because they somehow managed to
+send coins to where they should not really appear.
+For example, if you have a big cache, you claimed your big cache from the main Bitcoin chain,
+and then you accidentally send it to a SegWit address because the exchange gave you a SegWit
+address and there was no really easy way out of it, so there was a coin loss because of lost
+mnemonic and a coin loss because of coins being sent to somewhere they really shouldn't belong to.
+Okay, thanks. Maybe another indirectly related question, maybe you can even start with that
+because that topic keeps popping up, at least in my talk with people, how to deal,
+especially in your case, with supply chain attacks. What does Trezor do about it? What
+do you think about, I think the typical questions are trusted element within the hardware,
+secure stickers with holograms on it, all that kind of stuff.
+Yeah, so let me first explain what supply chain attack is. It's basically when you order a device
+and someone intercepts it on a way and they replace some of the critical parts with tainted one,
+and obviously there are more ways how to do it. One of them is to introduce some kind of
+a attestation element which is able to say, hey, I'm a legit hardware. This creates
+automatic trust to the hardware vendor and by hardware vendor I don't mean the hardware
+wallet vendor but the producer of the chip it is using. I'm not really comfortable with that
+because from my experience this stuff mostly works but then it comes a moment where it stops
+to work and this happened last year where a very smart computer cryptography expert and hacker
+found a bug in our competition which uses a secure element and he basically broke down
+their attestation model and this is really hard to fix because once you have a million devices out
+there, you can either not fix the bug or replace all of them and it's a big problem. Another problem
+is some of the platforms use Intel SGX secure computing platform and there are a lot of attacks
+related to Spectre and meltdown attacks which can be also applied to this so it's I'm not saying
+it's a bad solution but it has some drawbacks and if you rely on it, it's very hard to fix
+because it's embedded in the hardware. What we use is what you mentioned we try to protect
+the supply chain by applying various physical features like for example we are applying holograms
+on the device and on the on the box. This also has its drawbacks and one of the main drawback
+is that we really need to educate our users what should they look for, how the packaging looks like
+and of course this is also not 100% temper proof because somebody can try to copy it in a very good
+way and there is a basically there is a race how good your holograms are for example.
+I think that you know one takeaway from you know what stick is talking about of even all of these
+hardware vectors that are getting exposed over time is that the idea of secure computing is a
+fallacy. I mean it's you know fantasy land it's not going to happen at least not anytime in the
+foreseeable future and so the best thing that you can really try to do is eliminate as many single
+points of failure as possible and so this is one reason why we actually recommend with our multisig
+setup using you know a variety of different brands you know instead of just buying three treasures
+use a treasure, a ledger, a cold card and really spread out the risk because it's not possible
+even for like hardware level experts such as himself you know some of these devices are black
+boxes you know he doesn't know what's going on inside of like the ledger hardware there's
+probably you know only a handful of people on the planet who do and there's no way that we
+can expect to ever be able to really get any level of trust you know at the like hardware
+level like that. I would like to add to this because the supply chain attacks traditionally
+uh the hardware secure modules like they were not popular at least the you know the people
+in general and uh there's a big difference between buying an off-the-shelf computer
+turning it into something you know is most likely clean because you know obviously this
+computer was not specifically targeted because computers are used for general purpose and
+and uh you cannot assume to be able to hack all of them without being detected so or or um you
+can go at the store and buy it um the problem with the hardware outlets that they're facing
+is that they're obviously will be targeted just because they are hardware wallets for
+bitcoins so uh and the Kessa huddle I assume there's also advice maybe to add a device that
+is not a hardware wallet uh in the multi-sig scheme. Yeah I mean definitely I mean I love
+Trezor products but um I have to agree that uh I think um you know one of the issues is that
+they will be specifically targeted um I I've tended to like to use um you know um airgapped
+computers that are not that are general purpose that you know are it's hard for someone to
+specifically target that machine and also to use a different operating systems or different
+distributions of operating systems in case one of them gets hacked um in the case of like for
+instance bitcoin nodes usually don't want any kind of divergence there because you want them to
+reach consensus but in the case of using multi-sig um basically every single uh additional uh you
+know signature that you require is another thing that needs to be hacked so so you're adding more
+security with with more different kinds of platforms. Just to be clear I trust Trezor and
+this is what I give to family members so. Thank you. Yeah that's a good point. I just wanted to
+add that I think it's very wise to combine various security options and security layers
+so if you combine a hardware wallet even multi-sig you are getting uh the best of both worlds or
+security of the both worlds uh the bad thing about this is uh you are also getting the minimum
+usability so you combine the usability but in opposite way so uh I'm not not saying it's uh
+it's not a thing to do but there it has some drawbacks. Oh yeah it's it's going to be very
+difficult for us at CASA to uh to both advise our clients to eliminate and eliminate these
+single points of failure and for us to support all the shitcoins. Yeah that's that's a very good
+point. Uh I have so many questions left on my on my book but we have only so much time so um
+uh when why we have you here um I'd love to hand over to the crowd now for a couple of questions
+so you can pick uh the brains of the experts with uh your security questions so feel free to
+raise your hand if you have a question related to bitcoin and security now.
+Please.
+Yeah maybe can we get this guy a microphone please.
+Thanks. Yeah.
+Uh I want to ask about the multi-sig three or two of three setup with the three different
+hardware bots uh what software do you use like Electrum or more just raw CLI or there's some
+review software that I could use for this multi-sig wallet or or just I shouldn't care because the
+wallet is secure enough that it doesn't matter. Uh well I mean I I would not assume that the
+software is secure though you know if it's open source you're gonna have a better guarantee uh for
+usability I've set up multi-sig hardware uh based wallets with Electrum and it was pretty easy uh
+the most difficulty that I had was doing it on Linux and having some issues getting all of the
+the libraries installed to support but uh other than that um it it's uh if you're if you're tech
+savvy then it should only take you a matter of minutes or maybe an hour at most to set up. So
+one other question is that uh what I saw is that for the ledger I can't see the the address the
+multi-sig address on the ledger itself for Trezor and keep it implemented so I thought implementing
+it because I think it's important part to be able to verify it but. Right and you know I'm not entirely
+sure of the details of why that's not supported I mean I think that's something that we just need
+to annoy them. That's probably not done but I personally I just also use Electrum mostly
+I think they're even implemented in the uh assistant in the base one so. I would just
+shortly add to it uh it's a good idea to use uh any software wallet that uh has hardware wallet
+support for multi-sig and at the same time it's open source uh it has been set Electrum three times
+uh I'm saying Electrum is fine but do your own research there are other options uh for example
+yesterday we had a talk with uh green address I think they also support uh hardware wallets and
+multi-sig at the same time. Any more questions from the audience on the other side?
+Get your sports in. Hi just talking about uh the open source and some more eyes can see and verify
+that uh the software is clean and bug free or doesn't have something. Is there any formal
+uh process to this like how many developers have looked at Electrum have looked at Trezor and.
+Those are that's a good question uh but you know no um really the the best metrics that you might
+be able to get is uh if you're looking on github and looking to see um number of forks number of
+stars number of total contributors I mean that will give you a general idea um you know hopefully
+uh you know at least the number of contributors or people who have looked at at least part of the
+code because presumably they then you know added or deleted some code um but yeah just some like
+general activity uh but that's only really gonna give you relative ideas by comparing between the
+different projects uh there is no metric you know for open source security other than probably
+general usage um so like if we know which I I don't think that we even do but if we knew that
+you know so many million number of people uh are using this software and you know have not gotten
+exploited uh the more people that are using it the you know the more uh value basically is up for
+grabs for an attacker to come in and try to steal from them so if the more and more people that are
+using it and not seeing any exploits gives you you know a general better sense of reliability but
+there's still no guarantees yeah let me add to it there is no formal process uh uh for trezor and
+I don't think there is any for uh one of our competitors uh one of the reason is partially
+that there are not a lot of people uh developing this stuff like there are maybe up to 10 people
+developing trezor I think it's the same or even worse for other hardware wallets um not sure how
+many electrum contributors has but also it's not not a big number so I think the good thing is to
+for the general bitcoin community to look at the commits uh for open source projects because
+every everything we deploy as a firmware to our users is uh being published before on a github
+as a part of uh of the commits so if there are a lot of people reviewing it we can start uh
+formalizing some kind of process but right now I'm not sure if it's even possible like internally
+at our company uh we have a rule that uh one shouldn't merge uh the the commit if if if it
+was written by by the same person so someone else has to merge it and I think it's a good rule
+but this is as formal as uh we can get uh at the moment I guess. Okay thanks that was uh was a
+really great insight um maybe uh one addition from from my side that the usual slogan applies
+don't trust verify if you can't maybe just avoid any bleeding edge stuff use uh uh the providers
+hardware wallet providers software wallet providers or software providers in common in the space that
+have a good reputation ask around uh be careful and yeah stay safe um unfortunately the time is
+already running out so I have to close around um thank you very much for your thoughts and input.

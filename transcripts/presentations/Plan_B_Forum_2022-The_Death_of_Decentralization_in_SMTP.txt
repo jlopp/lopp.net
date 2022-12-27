@@ -1,0 +1,353 @@
+So this next talk is a bit of a eulogy and a warning.
+It's the death of decentralization in SMTP.
+Please welcome Jameson Lopp, co-founder and CTO at CASA.
+Let's give him a warm welcome.
+Ciao, Lugano.
+I'm Jameson Lopp.
+I'm the CTO and co-founder of CASA.
+And it is often said that those who do not learn from history are doomed to repeat it.
+So today we're going to review 40 years of history of SMTP.
+And this is an abbreviation for simple mail transfer protocol.
+It's the standard for sending email from one server to another.
+And SMTP has proven itself to be quite successful and has reached mainstream adoption decades
+ago.
+It's used by billions of people on a daily basis.
+So you probably know me as a Bitcoin educator and engineer, but my previous career involved
+working on software and infrastructure for an email marketing company called Bronto Software.
+When I started working there, our clients sent out about 100,000 emails a day through
+our servers.
+By the time I left a decade later, that number was over 100 million emails per day.
+So I had a front row seat to the challenges of scaling email infrastructure to massive
+levels.
+And what I learned was that email deliverability is an incredibly complex problem that can
+only be partially solved by technical means.
+So let's start at the beginning.
+In 1982, Jonathan Postel published RFC 821.
+It's defined the SMTP protocol.
+Now in the 1980s, the internet had not yet been commercialized, and it was comprised
+of a small collection of military installations, universities, and corporate research laboratories.
+Connections on this network were slow and unreliable, and the number of hosts was small
+enough that all of the participants on the network could recognize each other.
+The first email was actually sent between these two different machines that were in
+the same room that were connected to ARPANET.
+Now ARPANET was the predecessor of the modern-day internet.
+In this early setting, SMTP's emphasis on reliability instead of security was reasonable,
+and it contributed to its wide adoption.
+As you can see here, there were only maybe 1 to 200 different entities connected to the
+network at the time.
+Back then, most of the users of the network, they'd help each other out by configuring
+mail servers as open relays.
+That meant that each of these cooperative hosts would accept mail that was meant for
+other systems and would forward it on to the final destination.
+This way, email transfer on this fledgling network had a reasonable chance of eventual
+delivery, and most of the administrators of the machines on this network were happy to
+help their peers and receive help in return.
+In other words, despite originally being designed as a communications network that could survive
+a nuclear attack, the early internet was not an adversarial network.
+Due to the difficulty of getting connected and the cost of adding hardware to this network,
+the administrators tended to act altruistically.
+Here we can see that SMTP, as a protocol, it's a client-server protocol that's fairly
+straightforward.
+It's back and forth message that are sent and received between a client and a server.
+SMTP originally only supported unauthenticated, unencrypted text connections.
+These were vulnerable to things like man-in-the-middle attacks, spoofing, and spam, and early email
+was treated the same regardless of the content and regardless of where it came from.
+As long as you followed these very basic rules displayed on the screen, you could expect
+that your message was going to reach its destination.
+Now in 1995, another RFC 1869 defined the extensible simple mail transfer protocol,
+and that established a general architecture for current and future extensions to SMTP
+because there were a lot of missing features.
+Some of these features were things like messaging and authentication.
+Those were introduced in the late 90s, and they described new trends in email delivery.
+Now originally, SMTP servers were internal to an organization and primarily used within
+an organization, but over time, they found themselves relaying more and more mail that
+was external to the organization.
+So the problem here, as a result of the rapid expansion of internet adoption and World Wide
+Web in the 90s, it meant that SMTP needed some additional rules for relaying mail and
+authenticating users to prevent the relaying of unwanted spam.
+Now as spam became more prevalent, these rules were seen as a way to provide permission to
+send mail from an organization as well as to add some traceability.
+So what is spam?
+It's just mail that the recipient doesn't want to get.
+It's existed since 1978 when this guy, Gary Thurick, earned the title Father of Spam.
+After sending the first unsolicited email marketing message to hundreds of ARPANET users,
+he was promoting a new product for his company, the Digital Equipment Corporation, and he
+claims that this one email earned him $13 million in sales.
+The resulting outcry was sufficient to dissuade any other users from sending a spam email
+for many years.
+However, this changed in the 1990s, millions of individuals discovered the internet and
+they signed up for inexpensive personal accounts.
+When that happened and the size of the connectivity of the network exploded, advertisers realized
+that there was a very large and willing audience that they could now reach very cheaply through
+this new communications channel.
+So the helpful nature of open relays was one of the first victims of the spam influx from
+these marketers.
+In the young commercial internet, high-speed connections were prohibitively expensive for
+individuals and generally only businesses had them.
+So spammers quickly learned that it was very easy to send a small number of messages with
+recipient lists thousands and thousands of addresses long.
+They would send that to a corporate server, which would then happily relay the message
+to all of their targets.
+Now the administrators of these corporate email servers noticed the sudden spikes from
+their metered service bills and, of course, an uptick in complaints from users and they
+realized that they could no longer help their peers altruistically without incurring some
+significant monetary cost and ill will from other users of the network.
+So SMTP, which was designed with reliability as a feature, it now found itself needing
+to be redesigned to purposefully discard certain messages.
+This was a foreign concept and no one was quite sure how to proceed.
+The first step was to close these open relays and email server administrators argued, they
+argued loudly and at great length about whether this was a necessary move or even a good idea.
+In the end, though, there was consensus that the trusting nature of the old internet was
+gone and it was harmful to make that assumption in this new setting.
+Now the Internet Mail Consortium reported in 1998 that 55% of email servers were open
+relay servers.
+By the year 2002, that was down to 1%.
+Some email users took this idea a step further and they decide not only would they close
+their systems as relays but they would no longer accept incoming messages from other
+servers that were acting as open relays.
+They eventually began to share these lists of open relays with their peers by adding
+specifically formatted entries into their domain name servers and allowing for anyone
+to query the servers for that data.
+This was the beginning of the first DNS black hole lists and they were highly controversial.
+For example, administrators debated whether it was acceptable to actively test other servers
+to see if they were open relays and then they discussed what procedures a system administrator
+should have to follow to remove their server from these black lists after they disabled
+their open relay.
+One of the earliest black lists was the Mail Abuse Prevention System or MAPS.
+MAPS is actually spam spelled backwards.
+Now being certain that there was an absolute right to publish anti-spam black lists, MAPS
+even published this How to Sue Us page because they were inviting spammers to sue them in
+order to create case law around this issue.
+In 2000, MAPS was a defendant in no fewer than three different lawsuits from marketing
+companies.
+In 2001, they actually started requiring a paid subscription in order to access their
+black lists, making it one step further and more expensive for people to be a part of
+this network.
+Now their stated purpose was to educate users to relay mail through a quote unquote acknowledged
+internet service provider rather than running their own email servers because doing this
+would bring various advantages.
+ISPs can in general better afford to monitor the traffic going through their systems and
+help avoid viruses and hijackers and other threats.
+And furthermore, it paved the way for more effectively enforcing new policies like SPF,
+the Sender Policy Framework, which relied upon end user SMTP authentication to block
+email address abuse.
+But this can also prevent people from using and publishing their own proper SPF policies.
+So the first victim of collateral damage from this was actually the mail servers who were
+blocked through no fault of their own.
+This often happened when overzealous blacklist administrators would add entire blocks of
+IP addresses to their lists rather than going through and getting only the specific IP addresses
+that were abusing the spam.
+So a group of operators argued that these lists should err on that side of caution in
+order to prevent such problems.
+But others believed that they should actually put extra pressure to open relay administrators
+to stop doing that.
+In the early 2000s, the United States started to set standards for regulating commercial
+email with the CAN Spam Act.
+This was signed into law by President George W. Bush 32 years after SMTP was first defined.
+Some critics said the law didn't go far enough because while it makes it a misdemeanor to
+spoof the from address field and it requires you to have a way of opting out of email,
+it doesn't actually make it illegal to send unsolicited email.
+So many, in fact, called this the You Can Spam Act because it essentially said that
+it was legalizing unsolicited email as long as you followed those several rules.
+Now over the next 20 years, we saw Canada come in with their CASEL anti-spam legislation
+and Europe came through with their general data protection regulation.
+It's unclear how much these laws have actually helped.
+Due to the international nature of the internet, it can be very difficult to prosecute criminals
+who are acting as spammers from other countries.
+I've only been able to find a couple dozen instances over the past 20 years of spammers
+actually being prosecuted.
+And we can see that the volumes of spam have remained quite high.
+So the United States has several large anti-spam companies that have tracked email volume over
+the years.
+It's hard to get consistent, accurate data on it given the peer-to-peer nature of email.
+But we can see that in the mid-2000s, what happened is that botnets really rose up and
+came of age.
+And this spiked the volume of spam to over 80% of all email, eventually peaking at close
+to 90% of all email in 2010.
+In 2011, the spam rate dropped to 75%.
+And this was due to the takedown of three massive botnets as well as some unrest amongst
+the pharmaceutical spammer gangs.
+Other significant declines happened in 2015, but that was less due to any technical changes
+or law enforcement and rather was a result of a lot of these spammer criminal rings switching
+from email spam to malware and ransomware because it was far more profitable.
+So as you can see, this is a never-ending battle.
+And even today, it's estimated that over 50% of all email is spam.
+So with this email abuse rising, ISPs had to take measures into their own hands to avoid
+cluttering the inboxes of their customers with all of this unwanted, irrelevant email.
+To counter this, they started using these crude filters of keywords or patterns or special
+characters.
+Over time, that software evolved into more complex Bayesian filters that were somewhat
+self-learning and could adjust.
+Spam Assassin was the most widely adopted project that had over 1,000 rules, some of
+which are described here.
+While it was partially effective, these measures were still highly inaccurate and caused a
+lot of false positives.
+So there were a lot of emails that were filtered or blocked even though they were actually
+desired by the recipients.
+The ISPs tried their best to improve these matters by guessing what their users actually
+wanted.
+But early attempts to do this were not great.
+They failed pretty spectacularly.
+Machine learning, AI, all of that stuff was nonexistent at the time.
+When open relays died off in the 1990s, providers generally scraped by with those terrible content-based
+filters.
+But as high-speed residential Internet connections became more readily available, spammers started
+to write malware that would infect the computers on residential networks and use them as botnets
+to send out high volumes of spam quite cheaply.
+Most ignorant residential users would have no idea that their machines had even been
+infected.
+The ISPs saw themselves struggling against this flood of traffic from their own users.
+And the only thing that they could come up with to stem the tide was to completely block
+all Internet traffic on port 25, which is the port that is defined to be used by SMTP.
+So the fact that email spam filtering was so inaccurate led ISPs to start offering channels
+of communications between senders and other ISPs.
+This resulted in the creation of whitelisting for legitimate senders to try to get around
+the limitations of these content-based inaccurate spam filters.
+In other words, this was the beginning of the quote-unquote postmaster department at
+ISPs.
+It worked pretty well for a while.
+But of course, in order to get senders to deliver their emails, even this new way was
+not bulletproof.
+This started to be abused.
+And the ISPs often still didn't have enough data to really understand which senders were
+legitimate and which emails were really wanted by the recipients.
+Having a good relationship with the ISPs actually started to become a very crucial part of being
+an email sender because these decisions were now human rather than machine-automated.
+The next major development that happened in email deliverability was actually the standardization
+of reputation scores, things like sender score and reputation systems emerged at this time.
+These were done to further reduce false positives, and they started adding things like authentication
+mechanisms with sender policy framework, sender ID, domain keys, identified mail.
+If you're familiar with how any of these technologies work, you might see that most of them are
+reliant upon centralized gatekeepers, gatekeepers that assign IP addresses, gatekeepers that
+control domain registrations.
+None of these actually provide email senders with any type of self-sovereignty.
+The fatal flaw with choosing to implement reputation that was based upon delivery filtering
+is that there is no decentralized online reputation service.
+So as such, what this created was a new industry of highly centralized meta protocol layer
+reputation services that were essentially on top of the decentralized simple mail transfer
+protocol.
+As spam became a bigger and bigger problem over the years and the quote unquote accepted
+solution was this reputation and identity, it imposed a really high cost on being able
+to process large volumes of incoming email.
+It did not scale for the average user.
+The complexity required to maintain these lists had to be outsourced to specialists,
+and thus it increased the cost of doing this to basically the biggest businesses in the
+game.
+Now, as a result, where are we today?
+Over 90% of email users are captured by five corporations.
+This centralization ended up producing non-economic solutions to spam prevention, and today's
+email servers will actually, at a protocol level, claim to accept incoming mail but will
+actually delete it as soon as it is received, and this is called black-holing or hell-banning.
+It is not actually a part of the SMTP protocol.
+The email servers that are operated by the tech giants permanently blacklist wide swaths
+of IP addresses and delete these emails without processing them, without giving any notice
+of what actually happened.
+The backend infrastructure that is required to do this runs algorithms across massive
+data sets so that most of the spam that is sent doesn't end up in your inbox.
+Does this work?
+Sure, but it comes at great costs, a cost that few even realize is being paid.
+Now, in 1997, Adam Back realized that the root problem of spam was that it was cheap
+to send.
+He published the Hashcash whitepaper as a solution to impose a cost upon sending email
+as opposed to receiving it.
+I won't go into all of the details, but Hashcash is a cryptographic hash-based proof-of-work
+algorithm that requires an amount of computational work in order to compute this puzzle.
+The proof, however, can be verified efficiently and with very low computational costs.
+What do you do?
+You essentially add this Hashcash stamp to the header of the email that you're sending
+to prove that you have expended some modest amount of CPU cycles to calculate the stamp
+before you sent the email.
+In other words, because it is mathematically proven that the sender has taken some certain
+amount of computational effort and energy to generate this stamp, then it's unlikely
+that they are a spammer because in order to do that at an extremely high volume would
+it be computationally prohibitive.
+Spam Assassin actually implemented Hashcash in version 2.7 many years ago and would assign
+a negative score to any email that came in, making it less likely to be filtered out.
+However, even though this Hashcash plugin existed in Spam Assassin, it still needs to be manually
+configured by server operators to look for certain address patterns.
+As a result, the vast majority of servers, even those that use Spam Assassin, don't actually
+use Hashcash.
+You can actually see here a very rare glimpse at some software that implemented Hashcash
+on a server.
+Not many server software ended up implementing it.
+Why not?
+Well, one reason is that there was a bit of a chicken and egg problem for Hashcash adoption
+to work at a global level.
+In order for it to really work without massive disruption, you would want almost all email
+users, both senders and receivers, to nearly simultaneously upgrade their clients and servers
+to require Hashcash.
+Of course, this is a nearly intractable problem when you have millions and millions of people
+that are using a protocol.
+So what happened?
+Instead, we ended up with a piecemeal solution that evolved over the decades.
+To recap what happened, the unfortunate path that we took is that due to the hacky content
+and reputation filters that were adopted piecemeal by administrators over many decades, we ended
+up with a highly centralized solution.
+This was essentially a multi-decade decline and degradation of the email network as the
+proverbial frog was slowly boiled in the pot.
+Individual server administrators would eventually throw up their hands and give in to the new
+email overlord tech giants because they found themselves pushed out of being able to afford
+to operate sovereignly within the network just by following the actual protocol.
+So what are we left with?
+As of today, you cannot successfully run your own email server at home.
+You cannot successfully run an email server on a cloud virtual server.
+You cannot even successfully run an email server on your own bare metal machine hosted
+in a data center because at some point, perhaps even before you plug in your machine, your
+IP address is bound to be blacklisted and it may be due to a compromised IP address
+neighbor of yours that is sending spam.
+It may be because one of your user's machines gets pwned and starts sending out spam or
+arbitrary reasons, some mistake.
+It doesn't matter.
+It's not a matter of if, it's when.
+One wrong move or unfortunate circumstance and you could say goodbye to your email deliverability.
+Game over.
+No recourse.
+Nowadays, if you want to build services on top of email, you need to pay an email service
+provider to secure access to an API that has been blessed by others in the industry.
+And this concept may sound familiar to you.
+It's called a racket.
+It's an industry of middlemen grifters who are incentivized to continue gatekeeping in
+order to sustain their anti-competitive moat.
+As such, it's my distinct displeasure to declare the death of SMTP.
+The protocol is no longer usable.
+As we can see, this devolution occurred organically.
+There was no grand conspiracy to capture the network by some malevolent authority.
+There was no single inflection point at which everything went wrong, but rather it was the
+compounding effects of many minor engineering decisions over several decades that did not
+make any effort to prioritize preserving the low cost of operating your own email server.
+You could perhaps call this commercial capture.
+I'm ashamed to admit that I was part of the problem.
+I never even saw it as a problem at the time because I wasn't looking at the big picture.
+I was a single engineer.
+I was focused on my own problems and my job of making our business and our systems and
+our infrastructure work by whatever means were necessary.
+What does this got to do with Bitcoin?
+If you haven't seen the pattern yet, it's all about the cost of being sovereign.
+This chart, I consider this to be a thing of beauty.
+What is this?
+This is a view of a single Bitcoin transaction being propagated across the peer-to-peer network
+of Bitcoin nodes.
+This is a bird's eye view of self-governance in a voluntary system.
+What we see is when you have one of these systems, it comes down to the cost of the
+individual being able to operate on their own.
+If that cost becomes too high, it's logical for the individual to outsource their operations
+to third parties, and eventually the number of peers on the network will shrink to the
+point that only a handful of entities become gatekeepers and they can dictate the governance
+and the rules of the network, even without formally changing the underlying protocol.
+This is why, if we are to preserve Bitcoin's valuable properties, we must reject any changes
+to the ecosystem that substantially raise the cost of using the protocol.
+This includes things like running a fully validating node, securing your wealth, being
+able to transact freely.
+It is not a stretch to imagine similar draconian mechanisms ring-fencing the Bitcoin protocol
+over a period of decades.
+We already see it being done under the names anti-money laundering and know your customer.
+And you can be sure that any such measures will be marketed to the world as being for
+our own good.
+If you think about it, much of Bitcoin's scaling debate was a fight against an attack by large
+companies seeking to capture the network and improve the user experience for our own good.
+So I am optimistic that we can fight, that we can win these battles.
+But my fellow Bitcoiners, we must remain ever vigilant.
+We must push back against the creeping advance of tyranny, because if we become complacent,
+if we settle for convenience over security, then we can expect that this elegant protocol
+will morph into a monster.
+Thank you.

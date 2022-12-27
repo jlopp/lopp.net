@@ -1,0 +1,309 @@
+I'm Jameson Lopp.
+I've been doing Bitcoin and crypto asset security for a little over three years now.
+Three years at BitGo and now for four or five months at Casa.
+And really what I want to try to do today is just do a general brain dump of a lot of the concepts that I've come to believe are important that anyone who's building systems that are basically protecting private key should be thinking about.
+So just going to give you a lot of design principles and ideas that hopefully you can ingest and use whenever you decide to build one of these systems.
+So if you've been in this space for long at all, then you're well aware that there's a lot of risks.
+There's risks to trusting third parties.
+This is something that we are always fighting against as various entities are are trying to centralize aspects of the system.
+And really I think the next problem once we have have successfully pushed back against trusted third parties is recognizing that users securing their own keys, their own assets.
+It costs a lot of time and money for users to do this.
+They have to deal with a lot of headaches because users are not security experts.
+And as a result, we have a lot of different types of losses and a chain analysis is estimating around four million bitcoins have been lost and at least two million bitcoins have been stolen.
+And these numbers are actually probably higher in reality because at least with the stolen number, that's mainly looking at well-known publicized hacks of like centralized services.
+There's no way to really keep track of all of the different individuals that have have lost money.
+So there's some issues here.
+For much of human history, we have seen this structure of our society evolve in a way where we are using specialists and we are outsourcing a lot of pieces of our lives to specialists because it allows us to be more efficient.
+But the problem here, of course, is that we're generally coming to trust these third parties.
+And as a result, a lot of users are fairly lackadaisical with regard to both their digital and physical security.
+And I'm seeing this resulting in people trusting their bitcoin and other private keys to third parties.
+So I think that a lot of people are not really keeping self-defense at the top of their mind, usually because they just don't think that they're much of a target.
+And they may be correct, but as I've found personally, you can not be a target for your entire life and then become a target in a fairly quick, unexpected fashion.
+And as a result, we see from having these systems that are basically creating liquid bearer assets, the attackers tend to have different profiles than we see in traditional real world situations.
+So attackers are seeing this as like a juicier target because if they can get away with it, it's less likely that they're going to be caught.
+And this actually creates a bit of a problem at a meta level because if a lot of people are failing to secure their own assets, it's almost like a herd immunity type of problem.
+I think that that's going to invite more and more attackers.
+And I'm particularly interested in seeing the evolution of what's happening with physical attacks in this space, because from my perspective, it seems to be accelerating.
+And I think we should all try to help each other out by helping ourselves first and trying to disincentivize these types of attacks.
+So if you're building these types of systems, there are some high level types of attacks and defenses that you need to worry about.
+We really have to build this software with the assumption that the average user is going to put minimal effort into securing their own assets.
+And we need to do everything that we can to be proactive about helping the users help themselves and help educate them.
+So with physical theft, that's a pretty well known problem humans have been dealing with for the entire sum of human history.
+Digital theft is also easy to fix. All you have to do is take it off the Internet.
+So we have hardware devices that make it fairly easy to do that these days.
+Physical disaster, that's really just an IT problem.
+But of course, most people are terrible at doing good IT practices.
+So we need to try to help people automatically have redundant storage.
+The bigger problem, I think long term, of course, is going to be social engineering.
+And that's where education comes in, basically helping users understand that they are constantly under threat of being hacked.
+Not just in a digital sense, but having their brain hacked by social engineers.
+And of course, collusion, that really comes down to having trusted third parties and really minimizing the trust in these systems.
+So if we're talking about private keys and how we're managing them, there's of course an infinite number of different ways you can set this up.
+But traditionally, if it's just the user holding a key, there's a lot of different problems.
+They can get malware that steals it. They might have a weak password that gets brute forced.
+They can be coerced, of course. We heard about the $5 wrench attacks.
+The death of owners, end of life issues is something that a lot of people have not thought about.
+I'm a big fan of Pamela Morgan and her book that she put out recently talking about these issues.
+I learned a lot from it myself. Of course, data loss, just due to bad IT practices.
+Forgotten password, of course, another type of data loss.
+And phishing, of course, the hacking of the brain is always going to be a problem.
+Or if we go the other route where the service's custodial has the keys, they could also get malware and viruses.
+They are actually creating juicy targets where they're creating a honey pot where hackers only need to go get in through one door to get a lot of money rather than a lot of different doors.
+Insider theft, once again a trust issue. Fractional reserve, we saw that with Mt. Gox and possibly some other services.
+You just don't know what's happening if you can't audit it.
+Government seizure hasn't seemed to be a big problem yet, but you never know.
+Data loss should not be as big of a problem, presumably, if there's an entire team of people that are managing it, but it's still a possibility.
+And of course, confiscation by the service.
+And this is happening pretty often at a lot of the AML KYC places that are arbitrarily seizing people's accounts
+and requiring them to provide all kinds of outrageous information to get their money.
+And even phishing can happen on the enterprise service side.
+In fact, at BitGo, we saw some of the most sophisticated spear phishing attacks against our own employees that I've ever seen in my entire career.
+So it's just because you're creating those honey pots, attackers are going to put a lot more effort into it.
+Now, if we take this to the next level and turn it into like a two of two situation, we can start to get rid of some of these weaknesses
+because you've basically got two different parties and they're kind of watching each other's backs.
+But you see there's a lot of stuff that we still haven't fixed, mostly around data loss, and that's because we don't really have much redundancy.
+Now you have a situation where with either one of these parties screws up, then you can potentially lose access to the assets.
+So I think the next logical step is, well, you give the user multiple keys.
+So this allows the user to be in full control.
+They are the custodian. They're not using a third party as a custodian.
+They're just using a third party as sort of a service provider, a facilitator.
+And that third party can provide different functions around recovery and around preventing things like fractional reserve from happening
+because in a situation like this, the user can actually audit what's going on because the wallets are segregated rather than all pulled together.
+And really, fundamentally, while we can't 100% solve all of these problems, we're bringing down the risk quite a bit.
+But the main risk that is going to still be there, of course, is phishing on both sides.
+So from a high level objective standpoint, of course, we want to get rid of third parties and attackers.
+But one thing that I'm going to try to push here is that I think that the user is their own worst enemy in these systems.
+And a principle that we had at BitGo, which I thought worked pretty well, was that it's preferable for the user to temporarily get locked out
+than for an attacker to get in even momentarily.
+And what I think that we should do when we're engineering the system is actually flip it.
+Personally, I have seen far more users lose access due to negligence than I have seen them lose access due to an attacker stealing money from them.
+And of course, if we look back to that first slide, those estimates, which you could argue about how accurate they are,
+tend to suggest that data loss is probably a bigger problem than attackers.
+But especially when we're getting to the point now where we do have a number of options in these systems
+where we've pushed the security out to the edges and the users have more sovereignty,
+then I think that they're more likely to experience loss due to their negligence.
+So how do we actually build a Bitcoin bank?
+Well, if you've ever used Bitcoin, it's pretty familiar.
+All you have to do, step one, write down that 24-word seed phrase and keep it safe.
+This probably seems normal to most of us who have operated in the system, but from an outsider, this is actually kind of insane.
+I mean, it's like saying, here, have some radioactive material, put it in a safe place.
+I mean, a safe place, what normal person really knows how to properly store even a small amount of digital data?
+I mean, we've opened up a whole can of worms with this very simple suggestion that a lot of wallets give you when you're first initializing them.
+I think that we can agree that at least outside of this room, there are very few security experts who know how to properly manage this system.
+So I'm actually going to consider this a fail.
+And this may be a bit controversial, but I believe that we won't really be able to get to a level of mainstream adoption
+if we are requiring people to keep even small amounts of data perfectly safe where they have no recourse if they don't have great IT practices.
+And here's an interesting thing, and I'm not trying to rag on Trezor or anything.
+This is really part of a thesis that we have at CASA that if a user should not be entrusted to be managing and manipulating raw private keys by hand,
+then logically it doesn't really make any sense that we should be requiring users to hold on to the seeds, which are really the roots to all of these keys.
+And just a few days ago, we saw this phishing attack against Trezor users that was trying to exploit this vulnerability.
+And last I heard, it's not clear if this was like a DNS poisoning or BGP attack or whatever. It doesn't really matter.
+The point is that we're in a phase now where we have fairly secure hardware.
+And so this proliferation of secure hardware has made it more obvious that the weakest point is, in fact, the user.
+And unfortunately, it's very difficult to get rid of the user out of these systems.
+I've tried it for my entire career, but the user just keeps coming back and managing to find new vulnerabilities to create.
+So I actually, there's a number, well, probably even an infinite number of ways that you can store and recover data.
+And it's only really limited to your imagination.
+At CASA, we've actually created a fairly easy to use wizard where the user can rotate the keys in their wallets.
+And this works well due to the multi-sig, multi-device, multi-location aspect of our vault product that we've set up.
+There's also another seedless account recovery that I'm aware of.
+The Edge wallet has a setup, which is basically a two of two scheme where you have a key that is sent to your email and then you have another key that is encrypted and on the Edge servers.
+And the way that you decrypt it is through basically account recovery questions that you have to answer.
+And I would like to see a lot more work happening in this space.
+I can give you a little preview here of like the way that it works in CASA.
+So basically, you go in, you hit a device, you mark it as compromised because you've lost it, and then you begin the process.
+You go buy a new Trezor, you plug it in, and we get the ex-pub off of there.
+So we now have the new set of public keys that we're going to rotate your wallet over to.
+And once we have that new set of public keys, then you see we need to transfer the funds.
+So you select the account that you want to rotate and you then just have to start adding signatures as a three of five multi-sig scheme.
+This in reality would take a lot longer because your hardware should be geographically separated.
+But once you have added all of your signatures, let's see, this should be the second signature, and then add the final signature,
+you will have a fully complete and valid Bitcoin transaction that you can then broadcast.
+And due to Testnet, of course, always having fun time,
+you then have to duplicate that process for any account that you have.
+But it should be a lot more simple than having to go dig out private key seed phrase from somewhere
+that you may have issues with how you've stored it, how you've recovered it.
+This entire process allows you to visualize fairly seamlessly a way to recover your private keys
+without ever having to physically touch any of that sensitive data.
+And I think this is an interesting first step towards allowing users to operate in a system like this
+without having to touch the private keys.
+There's a lot of people out there who say, oh, well, it's so easy, just create a paper wallet, send your money to it,
+and you're good to go.
+But we've seen a lot of people lose money in paper wallets.
+A, it's hard to generate those private keys securely.
+Also, if it's an unencrypted paper wallet, you suddenly have physical attackers could easily get it and sweep your wallet.
+Paper wallets are not particularly robust against environmental disaster.
+And then there's also this weird edge issue that some people have hit where if it's a paper wallet with a single private key,
+sometimes people will load that into their digital wallet and create a transaction that only sends part of the value,
+and then the rest of the value gets sent to a change address.
+And that change address isn't actually, the private key isn't stored anywhere, and then they don't understand what's happening,
+they throw it away, and they have accidentally lost the vast majority of the money in that wallet.
+Metal wallets are better.
+They still have the physical attacker problem if they're unencrypted.
+They are more robust against environmental factors.
+A month from now, I'm going to be publishing an in-depth stress test of all of the popular metal wallets.
+It's going to be interesting to see how they stand up.
+I actually managed to get access to a 20-ton hydraulic press, so I really mean stress test when I say stress test.
+And then the improper transaction construction is not a problem if you're putting down a whole seed phrase,
+but there are some metal wallets where people just put a single private key on them.
+So really, we need more redundancy.
+Once we've succeeded in protecting the users from trusted third parties,
+it becomes more of this redundancy IT problem where we're just trying to keep the users from losing their own keys.
+Users should not be relied upon to perform even the most basic IT practices,
+and so we need to help them do that.
+And I think we can all agree that five RICs are better than one.
+So this was my personal solution before we started doing CASA.
+I would basically have to spend an entire day every year doing this, where I would get an air gap computer.
+I'd create a Veracrypt partition that I generated with an insanely long randomly generated passphrase.
+I then put all my private key data into that, you know,
+basically all the recovery data that was necessary for my heirs to know.
+Then I'd use Shamir's secret sharing scheme to take that insanely long decryption passphrase
+and shard it into an M of N setup based upon how many heirs I had and how much redundancy I wanted.
+Then copy this encrypted file onto N different USB drives
+and put a text file with the one Shamir shard on that drive for that person,
+along with a text document, of course, of the instructions.
+Hand out these USB drives and Faraday bags to each of my executors
+and update annually to protect against bit rot.
+Now, then, of course, the process of writing down and testing the entire instruction set
+was what took up even more of my time, because if you don't test it, you're almost guaranteed to have a failure.
+And this is because complexity is the enemy of security.
+And when we're thinking about end-of-life issues especially,
+we need to realize that these applications that we're creating,
+we're not just creating them for the people who are in this room,
+the enthusiastic early adopters who are probably pretty nerdy
+and are willing to put a fair amount of effort into making these things work.
+We also need to make sure that our heirs can navigate these systems,
+because they're going to be pretty upset if you get hit by a truck and they can't access anything.
+So how to actually build a Bitcoin bank or Crypto Castle is this concept that I came up with
+after I actually submitted the talk.
+Using some of these basic building blocks of air gapping to protect you from the digital attackers,
+and hardware devices are good at that.
+Using strong crypto and multisig as basic building blocks to add redundancy
+and also add more layers of protection against someone who might get a single key.
+Hardware managers are protected by pins, making it very difficult for someone to get at those private keys as well.
+And then the wallet software really being this overarching gatehouse, if you will,
+managing all the different complexities of what's going on under the hood,
+trying to abstract away the complexities to bring some usability, user-friendliness into it.
+Automated alerts are also helpful so that people don't have to be constantly checking on the status of their wallets.
+And duress kill switches are something that I think we could also use some more investigation and development in.
+And so we're actually in the design phase of better duress switches at CASA.
+And we're just thinking about ways that we can leverage the software that is now available on mobile devices.
+And this especially is interesting if you start looking at some of the improved object detection
+and facial expression detection software that you can get out there.
+We're even thinking about playing around with potentially developing a way that you can, you know,
+facially signal to your wallet that you're under duress.
+Like imagine being able to blink an SOS or, you know, stick out your tongue or flare your nostrils or something like that
+in a way that you could, even if you're under duress with a physical attacker right in your face,
+they would not really be able to say, oh, you just, you know, disabled your wallet.
+But that's, you know, more of a long-term thing.
+So trust minimization, of course, is a big deal if we're trying to build systems where we're using third parties,
+but we don't want them to be trusted because, you know, us building a team enables us to come together
+and build software at a pace that wouldn't be possible if we were all just working on little things by ourselves.
+But the problem is you can easily centralize it in a way that makes failure scenarios much more likely.
+So really what we're trying to do is make a balance between like low trust and convenience versus high trust and convenience.
+And by pushing the security out to the edges, I think that we can allow for untrusted third parties
+to help facilitate bank-like relationships where we are providing financial services without actually being custodians.
+And that's important when you can actually do things like having a key on a device that you are then physically
+or you're cryptographically signing data with that gets stored on the server so that you can actually be protected against insider attacks.
+If a hacker manages to get into that third party server and screw with the data,
+as long as you have integrity checks and like signatures on that data that are checked on the client side,
+then you can throw up alarms and basically shut down any operations before you get deceived by whatever data is on that third party service.
+And of course, as several people yesterday noted, I think that a full stack integration
+where you can have a node or a miniature server running at home in your own trusted environment
+is going to be something long term that we're going to see a number of people try to work on and hopefully get plug and play going.
+So Bitcoin is this new paradigm. It throws a lot of users for a loop because they've been conditioned to trust third party specialists
+to fix whatever problems have happened in the system that they're using.
+You lose your password, you get it reset, you have a fraudulent charge, you have someone step in and basically reverse it for you.
+But not so much in this system. So if the average user is not going to read the manual,
+they're not going to make any sufficient effort to try to secure their own data,
+then we need to do what we can to build guide rails to kind of force the user to go through educational processes.
+And really what we're trying to do at CASA is do that in a user friendly visual format
+where we're actually trying to visualize the security in real time or at least as well as we can
+to let people have a better understanding of what's going on with their wallet.
+And of course, once again, we come back to the hacking of the brains is that people are going to get tricked.
+You can't save everybody even with the strongest technical back end security.
+But there are some things that you can do. And one thing that I've seen in some wallets that's very helpful is
+if you're sending a large amount of money, just have a little pop up that says, hey, this is a lot.
+You should not be pasting this address in from your clipboard.
+You should be calling up or using out of band communications to verify the address manually with the recipient
+to make sure that it's actually going where you want.
+I'm also interested in seeing check lock time verify get used more because after all,
+if you're cryptographically prevented from spending your money, then you can't be socially engineered out of it.
+This does pose a few tradeoffs, though, if you're trying to implement it with a multisig system
+because it becomes an issue if your funds are all locked up, but then you've lost a key or two and you need to do a recovery.
+So I'm hoping that we can figure out some ways to do sort of like a graceful degradation of multisig where we say,
+OK, we're locking it up for the next year, but we can degrade from three out of five to two out of five after a year
+and from two out of five to one out of five after a couple of years if nobody is touching this money.
+Really, whatever makes the user comfortable.
+This, of course, gets more complicated on the technical side.
+I'm hoping that MAST or something like that is going to be able to make these more complicated scripting solutions possible and also more private.
+And malware blacklist.
+So blacklist is a loaded term.
+A lot of people get triggered by this.
+But we actually successfully implemented malware blacklist at BitGo where what we were doing is going out and finding all that clipboard malware
+that's just listening for addresses and swapping it out with the attacker's addresses.
+And whenever we saw a transaction that was going to one of those addresses, we would just refuse to co-sign it.
+And we managed to save tens of thousands of dollars from going into these malware authors' pockets.
+And then finally, long-term solutions.
+I'm hoping to see more KYC.
+But by KYC, I mean know your counterparty.
+Better reputation features, basically.
+I think a lot of people here are well aware that we need a better web of trust slash reputation systems.
+A number of people are working on that.
+And, of course, Bitcoin covenants.
+I believe they have actually been implemented on the elements side chain.
+And hopefully someday we will see those on the main net as well.
+So hopefully, you know, if you're able to ingest a lot of these things, then you'll have a little bit better preparation
+for starting to build your own crypto castle and build crypto castles for the rest of the world.
+If we have any time, hopefully I can take some questions.
+Thanks.
+Thank you.
+Where were you getting the sources for those blacklists?
+Were you like scanning like Chrome extensions or?
+I believe it was actually from like Kaspersky and other security researchers
+that had like looked into the binaries to find those addresses.
+So you bought data from them or like a blog post or something that listed the data?
+They were they were posting their findings.
+Yeah, it was publicly available data.
+Thanks for the talk.
+One question you mentioned that you do kind of rotate the keys when some action or event happened.
+How about the privacy implications?
+I mean, if you if the user is going to think, OK, everything is OK,
+but then you forward all the funds to a single new address,
+did you made any thoughts about how to prevent like the whole history or how to not hurt the privacy?
+Yeah, so actually I posted a blog about kind of the privacy features at Casa.
+And and to to be honest, if you want really good privacy, you should not use our solution.
+It's it's really meant to be more of a vaulting product with very low volume.
+So there's not going to it's not going to be easy to like obscure the XOs
+because we expect there's only going to be a handful of them in the first place.
+And also, you know, whenever you're using a third party service,
+even if it's non custodial, if if they're just facilitating stuff,
+it's very hard to have strong privacy because you have to interact with them.
+So the you know, the the only way to get like true strong privacy in these systems
+is to operate in a way that you are fully self-contained.
+You're running all of your software and hardware yourself
+and not interacting with any third parties who might know your IP address
+or your identity or what have you.
+So it's you know, it's tradeoffs.
+And really what we're going for is more convenience and security.
+And of course, that is kind of at the expense of privacy.
+But you are more than welcome to to sign up with us using a pseudonym and pay anonymously.
+It's just not going to be perfect privacy.
+Thanks for the talk. It was super.
+I was just wondering if you'd seen any interesting solutions to recipient verification,
+because once you've optimized the storage and the transaction side,
+it feels to me like the weakest point for the funds is whenever you're making a transaction.
+And especially when you're sending to organizations,
+how do you ensure that the address belongs to those people
+without like having to make like a Skype call or phone call or a video call or something like that?
+Well, I think that at least the first time that you are sending a transaction to an entity,
+you should do some sort of out of band communication.
+Now, if you're then, you know, making multiple recurring payments,
+you can be pretty well assured that, you know, that address is going to continue to work.
+But it almost comes down to an identity problem once again, right?
+And so, you know, these these like decentralized identity services that are popping up,
+some of them, or at least I believe on on block stack, you know,
+you can associate your Bitcoin address with your identity.
+So I would think it would have to be something like that,
+where you're actually tying the addresses to an identity that is at least somewhat immutable.
+Thanks.
