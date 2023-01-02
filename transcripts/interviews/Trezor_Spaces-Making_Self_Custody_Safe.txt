@@ -1,0 +1,1040 @@
+Hello sorry some technical difficulties this is my first time hosting I'm
+taking over from Matt Fay who's usually here and today I'm being joined by
+Jameson Lopp who doesn't really need much of an introduction this space is
+going to be talking about the well self-custody and how to make it safe so
+the reason that we've invited Lopp to join this space and Jameson sorry is a
+habit to call him Lopp is because we want to kind of give an unbiased
+introduction to the idea that you can self-custody your coins without the need
+to be a complete expert and what the best way to go about it is so hi Jameson
+maybe I can just check that your mic is working all right I think it is yeah
+perfect so the format of this space will be I have prepared some questions for
+Jameson and hopefully there'll be a good starter to get us talking about what it
+takes to self-custody and how we go about understanding self-custody so
+during the course of this I'll be letting some other people up to speak so
+if you have something to say something ask Jameson feel free to request and I
+will let you up one by one so to kick it off let's just start with Jameson when
+you please just introduce yourself and your work and how you see your work
+today sure so I am a computer scientist by trade I spent the first 10 years of
+my career doing fairly standard software as a service web applications
+specifically in the email marketing industry where over the years I worked
+my way towards the back end of basically doing large-scale distributed data
+processing and so suffice to say I was doing almost the antithesis of a lot of
+what I do and preach today which is that I was ingesting petabytes and petabytes
+of raw tracking data and helping companies basically figure out what their
+customers were doing in order to try to better target and sell stuff to them and
+so that was never a passion of mine it just provided some very interesting
+technical scaling challenges and of course over that period I really came to
+learn just how much surveillance really happens as you're going about your day
+using the internet so eventually I became interested in Bitcoin about 10
+years ago I started a few side projects I forked Bitcoin core not as a different
+protocol or a different network or token but rather the actual software puts a
+bunch of instrumentation logic into it to try to help people better understand
+what the actual Bitcoin nodes were doing and that was just the beginning of what
+has turned into many different projects eventually I was fortunate enough to go
+full-time in 2015 and spent three years building infrastructure for bit go
+that's when I really got deep into self-custody and private key security
+and multi-signature aspects of these protocols and that was really focused on
+helping enterprises secure their hot wallets which is a big challenge in this
+space as we all know there's been quite a history of large custodians getting
+hacked and losing lots of money over the years so that goes primary goal while I
+was there was to help prevent future huge hacks didn't have a 100% success
+rate but we did learn a lot and kept getting better and better over the years
+unfortunately when it comes to security a lot of the lessons have to be learned
+the hard way and after doing that for three years made a very small pivot to
+basically do the same thing use multi-signature functionality within
+these protocols to help self-custody but instead I decided to focus on helping
+individuals do that because I felt like there was still a huge gap a huge amount
+of knowledge that was required in order to do self-custody really well and so I
+just wanted to make that easier more accessible for people and at CASA we
+have been providing multi-sig solutions now since 2018 and actually Trezor is
+one of the building pieces that we use on our platform and I've been using
+Trezor devices myself since I think 2015 or so and we felt like in order to help
+people self-custody you know especially if you're talking about non-trivial
+amounts of money the very first thing you have to do is get those private keys
+off of internet connected devices and so Trezor has been you know a great piece
+of hardware over the years to help people do that and we're very fortunate
+to be using it and other similar pieces of hardware to build out robust software
+to help people tackle this problem and it is a giant problem I think we'll go
+into a lot of different aspects of that. Great so it sounds like you've kind of
+found a greater and greater motivation as you've twisted your original
+experiences into Bitcoin and channeled it more and more towards the individual.
+Would you say that it's a big motivation for you to help people
+self-custody? Do you feel like it's a personal mission of yours or? Yeah it's
+it's weird because you know this space is crazy complicated like over the past
+ten years the ecosystem around these technologies has exploded in complexity
+and there is countless different teams and projects and people that are
+exploring all types of different things that you can do with this technology and
+and it's you know it's it's at the point now where even I or you know
+someone who is full-time in the space cannot possibly keep up with all the
+different directions that things are going and you know for the past six
+years now I've been focused on pretty much the same old boring thing which is
+just trying to keep these tiny amounts of data these private keys safe and and
+make it easier for the average non-technical person to do that and it
+it may not be the most exciting and glamorous thing it's certainly not
+something that's easy to you know market but I feel like it is fundamental that
+we continue to improve this and we have to get it right otherwise all of the
+other cool and crazy stuff that's being built on top of private key
+cryptographic technology is is not going to work or at least it's not going to
+work at a mainstream level we need for people not only to you have the
+theoretical ability to self-custody and be their own banks we need for people to
+be comfortable and confident that they can do it and you know not be worried
+about making one mistake and having catastrophic loss and you know it's a
+personal problem too I think anyone who has been in the space long enough
+probably has some stories of either you know loss or theft or something that has
+gone wrong I mean I was actually just making a transaction I think last
+weekend and and realized like two seconds after I broadcast the Bitcoin
+transaction that I had one of the outputs off by an order of magnitude
+thankfully I was able to do a replace by fee and fix my mistake you know before
+it got confirmed in the blockchain but that's just the type of thing that I'm
+talking about is that you know I was using a single signature wallet for that
+and I was just being slightly less careful than I should have been and that
+it could have ended up being basically a thousand or multi-thousand dollar
+mistake if I hadn't then caught it within a few seconds so you know this
+I think the underlying theme to all of this this whole space self-custody
+self-sovereignty all of that is that it has great potential and great power that
+the functionality offers to mankind but this also comes with great
+responsibility and unfortunately in many cases great brittleness you know
+basically a lot of potential for people to make a single mistake and have
+something go terribly wrong so there's just there's still just so much left to
+do that I have not gotten bored remaining focused on this very low-level problem
+that is great to hear I think people kind of overestimate the glamour behind
+cryptography they see these private keys as some mathematical Mecca whereas the
+trouble is it's it's literally just a string and people don't really see it as
+something that they can tangibly protect but I think you also touched upon a
+point is that most people have had this experience where they've lost some money
+to to an oversized fee or they they've actually been scammed out of their the
+private of their recovery phrase and there's not the holistic approach to
+security I think that's something that's missing people don't expect to perhaps
+be be swatted like something that happened to you in the past or having
+their their sims swapped and so on and so they don't see these as attack vectors
+if we can go back to that part of your life I know it's probably a sensitive
+one but I know it's something you've also talked about by a lot was there was
+that a wake-up call for you of it of some form did what did it just confirm
+something you already knew or or did you suddenly reevaluate everything at that
+point yeah it was one of those things where I wasn't surprised like I knew
+theoretically that it was a possibility that someone who was determined could
+find my address and send a SWAT team and basically create a huge annoyance if not
+a very life-threatening situation for me but it's one of those your edge case
+type of thought exercises where it's really hard to believe that something
+like that could happen to you so it was definitely a wake-up call and I certainly
+don't expect it to ever happen again especially not after all of the
+protections that put in place but it has been a it's been four years now actually
+I think it was 11 days ago was four year anniversary of that happening and I put
+out a tweet where I basically said you know this is still ongoing the the case
+is not closed but I am I am optimistic that I'll be able to share more about it
+but you know it's it's the how does the phrase go an ounce of prevention is
+worth a pound of cleanup or solution or whatever I'm sure I'm bashing that
+phrase but the point being that you know if I had put in the the time and effort
+upfront then I wouldn't have had to deal with the countless hours of both you
+know re-creating my life with a whole new level of privacy and security and
+paying for all these private investigators and attorneys and dealing
+with the criminal justice system which is just incredibly onerous and I think
+you know one thing that I can definitely say right now about my whole experience
+going through the criminal justice system as a victim is that I can't
+imagine having to go through this process if you were an average person who
+like didn't have expendable resources to put into it because it took years to
+even get really attention from federal investigators and I basically had to use
+networking and use money to even get to the point where I think anybody would
+take me seriously because this this is one of those crimes that almost always
+goes unpunished but I am hopeful that the criminal justice system seems to be
+slowly catching up and I think there was actually an announcement from the
+Department of Justice recently where they're actually focusing on creating a
+whole new like cyber criminal division and this is something that I think has
+really been a problem ever since the internet started going mainstream is
+that the way the justice system was set up historically you know pretty much all
+the crimes were local crimes and so your local jurisdiction therefore would be
+the ones that were tasked with investigating and prosecuting and
+sentencing and all of that for whoever the criminal was but now that the
+crimes can cross jurisdictions so easily very commonly in criminal cases like
+this it gets escalated to the federal level so essentially you know in the
+United States the the federal law enforcement system is completely
+overwhelmed like they can't possibly keep up with all this stuff and the
+states feel like they don't have the jurisdiction but I think that's changing
+and unfortunately you know I may be a part of that change but I think it's
+something that has to happen so it sounds like the message there is just to
+do everything you can to avoid that which I suppose is why we're on this
+call is talking about anonymity talking about security of your key critical data
+and the more you preserve that the less likely likely you are to have to deal
+with the US federal justice system so from that perspective what do you see as
+the biggest priorities for the next five years of your work let's say in the
+Bitcoin space and maybe after that we can open up to the audience and so if
+you do have a question please start requesting that by the way this is being
+recorded so if you don't want to be recorded please don't request anyway
+back to you James yeah so like I said I'm I think I'm still just gonna be
+focused on low-level private key management but the question that it it
+really comes down to is if you can get to the point that we can make security a
+usable acquirable state by the average person then where do we go from there
+and Casa has never fundamentally considered itself just a Bitcoin
+company we consider ourselves like a self-sovereignty company and that our
+thesis is that private keys are going to be pun intended I guess the key
+to an enormous amount of functionality in the future and it just so happens to
+be that right now the the most obvious way to take advantage of that the power
+of private keys is with money itself you know that there obviously are plenty of
+other things that you can do like with GPG but the usability around that is
+horrendous and point being like I said at the very beginning there are so many
+other teams and projects that are building really really cool stuff on top
+you know multiple layers of this technology that we want to be able to
+facilitate as much of that as possible and there's going to be trade-offs
+there's going to be different I guess gradients of the security and
+convenience scale so while I've mostly been focused on the extreme end of
+super duper high security for you know life-changing amounts of value which
+means people are going to be willing to put up with a fair amount of
+inconvenience in order to get that high level of security we recognize that
+that's not what all of the functionality in the space is going to be based around
+there are going to be things where you're going to want to be signing and
+transacting and doing more interactive stuff on a day-to-day basis maybe those
+are financial transactions maybe they are like identity and reputation and
+social media based transactions I don't pretend to have like the specific
+knowledge of exactly how the space is going to go but I think that you know
+more and more of our lives is going to be based around private keys so from
+from that aspect the the question becomes you know how do we continue to
+provide better and better user experience but do so in a way that people
+can do more complex and more convoluted stuff and and that's where it gets
+scary right now I think we'll probably talk about a number of these scary
+things but um you know even even within I guess a lot of the like Ethereum and
+DeFi stuff that's out there right now there are some scary things that are
+being exploited where even if you have a hardware wallet it may not be enough to
+protect you and that's that's where you know we need to keep making improvements
+both on the hardware and the software side as the whole space becomes more
+complex yeah I think you're on to something the the idea of not
+considering yourself a Bitcoin company raises a lot of questions about
+security when you're considering chains that are centralized and therefore they
+get their security from there but they they do have these inherent vulnerabilities
+in their smart contracts and so on and perhaps when we're talking about scams
+in the space we talk about scams being people trying to fish you and fishing
+websites and things like that but we also talk about the projects themselves
+being scams and I feel like there's something to be said for that do your
+own research tribe and people who who recommend more of a critical thing more
+critical thinking when it comes to what you're doing with your money and I feel
+like the crypto space is kind of moving away from that so do you consider that
+scams in general are are in these two camps or would you say that it's all one
+problem that we can address at the same time it's really hard I think to say
+that you know all of the problems that are leading people to part with their
+money when they end up regretting it or didn't intend to our scams so I'm I'm
+generally not a fan of the word scan like I prefer to be more specific about
+exactly what is happening and that's because scan is just such an umbrella
+term that can encompass so many different ways of either you know
+technically tricking someone or just doing some sort of social engineering
+which I often refer to as you know hacking someone's brain to get them to
+basically authenticate and bypass all of the technical security mechanisms that
+that have been put in place I mean there are of course projects that are obvious
+like ICO scans that are you know they have no intention of ever building the
+things that they're trying to build but then on the other hand there are tokens
+and networks out there that are really gray area borderline it's you know more
+like like Theranos kind of like fake it till you make it like we know that they
+can't do what they claim they may one day be able to do but who knows you
+can't you know you can't prove a negative you can't prove that someone
+will never be able to you know achieve some sort of functionality that they
+claim that they're building so that's where it gets a lot I think trickier but
+then of course there are there are also a decent number of people in the space
+probably mostly newbies will fall prey to scams that we all consider to be
+obvious you know the like crypto doubler scams like the fake Elon Musk's and fake
+celebrities who say that you know if you send them so much Bitcoin or Ethereum or
+whatever they'll double or triple it you know that's obvious but there's we've
+also seen just a lot of other social engineering scams that happen as a
+result of data leaks and you know you might get scareware or blackmail
+messages they might you know claim to have like hacked your computer and have
+photos or video of you and compromising positions I think those are called sex
+torsion scams there's there's even at a technical level fake airdrops and and
+so you know because airdrops are a real thing there have been people that have
+created malicious software forks that will say you know if you own this much
+of a token you just install this software and you'll get the same amount
+of this new token but if you install that software it'll actually steal all
+your money there's just so many different ways you know we could
+enumerate through dozens if not hundreds of them but the point is you know this
+is this is a never-ending problem and so while I generally focus on technically
+securing private key data and and doing that can protect people against certain
+types of quote-unquote scams at the end of the day there is no technical
+solution to the human problem of you getting simply tricked into
+authenticating and sending your money somewhere the one thing that I would say
+that I do like about multi-signature aspects of storing your wealth
+especially if you're if you're storing the keys far away from each other so you
+have to physically travel and this becomes onerous of course is that I
+think that it's less likely that you will fall victim to your human nature of
+greediness and just clicking on something and sending some money because
+you thought that it was going to be profitable for you maybe that'll give
+you more time to think about exactly what you're doing before you send your
+money somewhere and then you know sometimes sometimes this isn't
+necessarily even like a doubler scam you know there have even been services that
+claim to be like privacy mixing services and I guess even just going back to some
+of the original quote-unquote scams exchange exit stands there have been
+plenty of those and so this is once again you know why self-custody is
+important is you never know what somebody might do if they have the keys
+yeah I think that covers the many fact many yeah factors of scamming very well
+rather than dwelling on this maybe we can go back to the idea of hacking your
+brain against hacking your device so I suppose one of those would be considered
+info sec and the other up sec so would you maybe have any what could you first
+maybe describe those two approaches to security and do you believe that there's
+some combination in there that would be able to help people avoid these things
+or do you think that it's more about the schema having having that multi signature
+set up that limits what you're able to what mistakes you're able to make do you
+think that's maybe the only way to go yeah I mean I think they're very
+similar though I generally think of info sec more in enterprise terms when you
+know you're holding on to a lot of data and trying to figure out how to best
+classify it is you know different levels of sensitivity and thus how to restrict
+access to it whereas I think off sec is something that every individual should
+be thinking about and it's it's more around you know how do I prevent third
+parties from getting any sensitive data or you know isn't as little data as
+possible on me so that it can't be used against me because the one the
+commonality between all of this is that nowadays with the internet information
+wants to be free information flows at the speed of light information is hard
+to secure it's the same reason why there are so many businesses that are built
+around securing private keys all we're really doing is securing you know a few
+hundred bytes of information but that information is of some of the utmost
+importance and utmost sensitivity when I was working at the the big data
+marketing company back in the day and we were in the early days of cloud
+computing and storing hundreds of petabytes of raw metrics on our own
+clusters we had people try to hack into us or social engineer any of our clients
+in order to get into their accounts and so on and so forth and we didn't have
+private keys like Bitcoin didn't even exist back then but what we had was
+information which was the next best thing and even though we told our
+customers you know we are not a like HIPAA compliant you know highly secure
+database like don't put sensitive information into our API's and into our
+database they did it anyways and so a number of our customers would put
+anything from social security numbers to credit card numbers so you know names
+addresses everything that you can imagine and of course that stuff has
+value back then it was primarily used for identity theft if you know criminal
+organizations got a handle on it but you know that's why we have a number of
+different attempts and a few successful intrusions usually because of problems
+with the actual clients themselves not our own infrastructure but nonetheless
+they were still able to get in and siphon off large amounts of data and so
+this that you know that was more of an info sec problem though there wasn't a
+ton that we could do about it other than try to monitor what the data our
+customers were putting in to our own databases were and tell them to stop
+being idiots whereas off sec is something that I think about every day
+you know I I I went out and ran some errands today and had to go give some
+contact information to a service so that they could get back to me when they were
+done and you know I had because I don't give people my real name address phone
+number so on and so forth unless it's absolutely necessary you know I had to
+decide you know what pseudonym am I gonna give this service which of my
+burner virtual phone numbers am I going to give them and the reason that I do
+that and it is it's annoying it's onerous but now I know that I don't
+have to worry about what that particular service providers info sec is you know I
+don't I have to assume that they're all idiots and they're gonna get hacked or
+leaked it leak it or sell it or you know do something because that's just the
+nature of information these days so yeah like I said up sec is what I think most
+of the listeners in this audience need to be worrying about you know protect
+your own data prevent as many entities as possible from having it because you
+don't know what the info sec practices and policies are of everyone that you're
+interacting with that's that's a great answer I think we're we're kind of
+looking to you for this as this kind of model of how to do it would you say
+there's anything that you could share about say a minimum viable approach to
+to to op sec where a newcomer could reevaluate how they're approaching
+things now and decide what they're going to do to secure their their most
+critical data how would they go about doing that and in the meantime if anyone
+wants to request to speak feel free we're we're open to any questions yeah I
+mean entire books have been written about this and the short version that I
+tell people at least if you're American you should spend 30 or 40 dollars on
+Amazon and buy the most recent edition I think it's the third edition now of
+extreme privacy by Michael Buzell and you'll see I think it's like 500 pages
+now it seems like each new edition adds another hundred pages it's because
+there's so many different aspects of your life that you can worry about and
+you know I am an extreme example I don't expect most people are gonna use
+burner phone numbers or set up intricate systems of physical emailers so that
+they can still receive packages without giving away you know what geographic
+location they're in but you don't have to start out at the extreme you can
+incrementally improve your privacy you know you can make it like a weekend
+hobby project where you just spend an hour to each weekend looking at your own
+life and saying okay I can make this one slight change and that's really what it
+all is it's when it comes to privacy and opsec it is about making changes to your
+habits and you need to basically reprogram yourself it after you've been
+doing it for a few years it becomes second nature but you know I can tell
+you from experience that going around and giving a pseudonym especially like
+in social situations it it feels really weird at least for the first year or so
+and then eventually you start to easily start you know automatically responding
+to that pseudonym which you know is important if you don't want to be too
+weird but once again I don't expect people to go around and not give their
+real name at least to friends that they're meeting it just depends on what
+your threat model is and I think a lot of people aren't gonna have the
+same threat model as myself because you know I am fairly high profile at least
+in this niche space I do work for a company that is focused on security for
+a lot of high net worth people and I'm sure there were people there are people
+out there who would love to get their hands on me and try to torture me and
+get sensitive information out of me not that it would get them anything because
+we've set up our own infrastructure in a way so that I'm not a single point of
+failure our own company is not a single point of failure but somebody would
+probably be willing to try because they figure the potential reward might be
+worth it so that's I guess the the short version is there are things that you can
+do the easiest thing that anybody can do is just protect your day-to-day web
+usage you know install ad blockers consider setting up a VPN they're
+actually really easy to do these days a lot of VPN providers out there will have
+you know executable software that you can run it'll automatically just run in
+the background whenever your computer starts up so it really is not nearly as
+difficult as it was you know 10 15 years ago so just by protecting like your day
+to day email browsing and usage you know that'll do a really good job you know
+putting you ahead of like 99% of the rest of people just preventing all of
+your web browsing from being correlated together and like I said I was the guy
+who used to be doing that so I know exactly how much information is being
+scooped up and analyzed okay yeah I think that's that's really reassuring to
+hear from you that VPN is going to do anything for your privacy I think a lot
+of people are dubious about that the trust and so on that's involved but
+instead of diving into that I've added Mike as a speaker so hi Mike yeah thank
+you not the best speaker but uh I've got something on my mind here I've been
+quite surprised that I have not seen it more utilized I've been in the IT space
+for many years and though I'm not the best speaker I think myself to be quite
+a guru when it comes to cryptography that's my compassion I just want to put
+something out there I'm surprised that I haven't seen it utilized more what I
+love about crypto is that you know mainly if I was just swiped up and put
+into a jungle buck naked I could come out and have my money it's a beautiful
+thing I've toyed around with the idea of having you know how can I secure my
+seeds with so I use a lot of encryption I talk about encryption a lot you know
+minors you could put your seed words encrypted on a billboard and be safe
+with nobody been able to to know what those were but the average bear cannot
+remember 12 to 24 words one of the things I've done and I say that you know
+I'm surprised no one's utilized this is it's taking you know a key phrase let's
+use like Satoshi Nakamoto as an example if you take Satoshi Nakamoto and in
+very any variation whether it be capital S's all capital you're going to get a
+hundred and twenty eight bits of data in binary and I believe strongly that the
+when it comes right down to it is trusting our randomness is is the issue
+here do we trust it software level hardware level so one of the scripts as
+an example in Coleman has a great script out there you know utilized offline that
+would allow you to use binary as your randomness so if you take a converter
+and you convert Satoshi Nakamoto just as an example you're going to get 128 bits
+of data which equals 12 seed words right if you're using that as your
+randomness in binary form so one of the things that I do is I have a phrase in
+my head that will equate to at least 128 bits to make it more complicated you
+could kind of back out if it ends up being more you could back out and still
+have that 128 bits or 256 for the keywords so all you really have to
+remember is one phrase converted to binary and that is your randomness and
+I'm surprised there's not a platform that has not utilized that whether it be to
+educate people to utilize that system because the key here is we are the
+weakest link so if we're storing 12 or 24 words on a document or you know on
+the cloud and we got some rogue dropbox administer you know searching for key
+words to get those so that that's that's a big deal right there well I can tell
+you why I can give you several reasons why that's not a common thing and so
+what you're essentially describing is a brain wallet and there are a few well
+you know we're just talking about data and entropy so you know you can come up
+with your own scheme but there there are a few schemes out there for brain
+wallets that have been developed over the years the first thing that I would
+suggest you go check out is search for a piece of software called brain flare
+there's an entire talk actually that was given a number of years ago by the
+author of brain flare and basically what they showed is that they can do what is
+essentially a dictionary attack and very easily sweep up funds from brain
+wallets that are using you know human generated phrases you know a lot of
+people tend to use popular phrases that can be found in literature or pop
+culture or whatever and he basically found that he could you know create a
+dictionary attack and run these servers 24-7 that are just listening to
+deposits on the network and listening for deposits to billions of different
+addresses that he's already pre-generated and found the private keys
+for you know all these different permutations and he managed to steal
+hundreds if not thousands of Bitcoin thankfully he was a white hat hacker and
+you know he gave as much of it back as he was able to find the owners to but
+the reason that this is a problem and I think you touched on it is that humans
+are not good sources of entropy and you know you said you know how can we find
+really any good random number generator that we can trust and probably I would
+say the best solution to that would be dice where if you get some like casino
+grade dice that are you know fair to roll there there are ways for you to you
+know roll them like a hundred times and and generate really really good entropy
+that you can then use to generate your own keys if you don't want to trust
+these hardware devices to generate them themselves that's just the technical
+reason why it's not great the next reason is actually a long-term issue I
+think the idea that brain wallets can be used to like portably and you know
+concealably transport private keys across the world that's a great great use
+case if you're like a refugee or something I would not put money in them
+for more than like a few days and that's only if it was really really good random
+entropy you know I would only do that for a short trip if I was like in a
+dire situation needing to escape from some terrible situation but um back to
+the the bigger point is that there whenever you create any sort of setup
+for securing private keys you also need to think about inheritance you know what
+happens if you get hit by a truck because you know we as humans are
+fragile single points of failure and if if you're in the situation where you
+have any sort of heirs or beneficiaries and you don't want your money to end up
+just being permanently lost then you do need to have some way for the people
+that you care about to be able to recover those funds and that gets into a
+really weird tricky security situation of like how do you do that in a way that
+then isn't giving complete custody to these people right now so that they
+could steal your funds from you and it we spent basically a whole year at CASA
+thinking through inheritance problems there's also some good inheritance
+guides out there I would recommend buying Pamela Morgan's crypto asset
+inheritance guide I learned a lot from reading that inheritance is its own
+complicated issue and and that's less because of technical factors and just
+because of human factors very good thanks for letting me speak guys hey
+guys thanks for letting me up I have a I have a quick question and I'm sorry if
+this has already come up I just joined the space a little late my question is
+like for some some good measures for like a digital nomad where you know
+necessary like keeping seed phrase in a safe in a home location really doesn't
+make sense you know because you know a digital nomad may not have access to
+that property and also might not feel secure leaving their seed there while
+you know they're elsewhere moving around the world so yeah I was just I have a
+few per cut or a few methods I use myself but I would love to just get yeah
+your take lop if you if you've got some some good ideas there yeah this is a
+challenge and I mean I move around a fair about myself but I'm not really
+like a full-time digital nomad there I think once again it comes down to what
+do you need to be able to access immediately what do you need to be able
+to access with a short or medium amount of delay and what are you willing to
+to to sock away long term that's like really really hard to access because at
+least for the former which like I said is really what or for the latter which
+is what I've mostly focused on that like if you have the majority of your net
+worth it's being secured by private keys I make some assumptions here which is
+that you know you're probably not trading it you're probably not selling
+it or moving it like more than once every few months if then you may only
+move it once every few years and for for that level of security even a digital
+nomad I would expect has some sort of semi trusted friends and family and
+that's a good way to essentially create some sort of either multi say or like
+Shamir secret sharing your sharded backup solution where you're giving
+pieces of data to a group of people that you don't necessarily fully trust but
+you somewhat trust and they they're not taking custody of it they don't even
+have the ability to access it but this is really what I did a number of years
+ago before I was really even using multi SIG and I have a blog post about it but
+the the short version is I would use some encryption software I guess I was
+using true crypts back then but now you want to use Vera crypts because that's
+sort of the successor to true crypt and I would I would take all of my backup
+information all of my sensitive data and I would create a fully encrypted data
+partition with that and I would take I would generate you're using like a
+password manager or something some sort of search of entropy I would generate
+an extremely long random set of characters as the encryption phrase so
+something that's so long that even I didn't know what it was and then I would
+use Shamir secret sharing tool to split up that decryption phrase and I would
+give copies of the encrypted volume to you know this handful of different people
+friends and family and I would give them one piece of the decryption phrase
+along with of course the actual Shamir secret sharing software and instructions
+for how to use it and stuff and you know it's it's onerous to do and you
+certainly need to make sure that you you test the the whole setup and make sure
+that the people who have that know how to use it and that's sort of your like
+emergency you know everything went wrong type of backup you know the final fail
+safe in case whatever data or hardware devices or whatever that you keep on you
+get completely lost or destroyed otherwise you know for just sort of the
+the more short-term faster to access stuff then at least using a hardware
+device to keep that private key offline is good if you then want to have to deal
+with things like the physical security of it then I think treasure would tell
+you that you you should be using the additional 25th word passphrase so that
+no attacker can get their hands on the keys and whatever you're doing here you
+know you should also have backed up preferably on that like final backstop
+solution but without going off you know into tangents of all of the other
+permutations like it it really depends right it depends on how how much you're
+moving around what the jurisdictions you're in are like you know what your
+your threat level is so I don't know how helpful all of this is because it has to
+be really high level in vague there are so many variables at play that you know
+you have to take into consideration exactly what you're doing and I don't
+expect you to know docs yourself in your personal situation here in public yeah
+no I appreciate that that was very helpful I've been I've been honestly
+considering the multi-sig approach which I think is is pretty clever and just you
+know yeah instilling a few people that I trust very well with with different
+different keys to yet to hold but yeah I like that idea of of maybe sectioning
+off the majority of my stack with that most secure method of multi-sig with
+with very trusted friends and family yeah and then my current I think yeah
+and then my current setup too has been like I basically and I'm curious like
+how at risk you think this setup would be but like with an air gap computer I
+encrypted my keys and then have been hosting that encryption through another
+go through keybase which has a different set of keys so as like a as a as a file
+server so I have access to it at all times however in order to yeah get
+access to my keys you need you have to have like key base installed and then I
+had to have to have you know the other keys in order to decrypt actually
+actually get my my stack if that makes sense it's a little early for me yeah
+yeah no absolutely like a fully encrypted backup that's also on the
+cloud this is so if you really really know what you're doing you know in
+general I say like what people are if people are using air gapped computers
+like you'd better be an amazing expert who really really knows what you're
+doing because it's it's almost impossible to really be sure that your
+computer is air gapped but once again like all of these things that comes
+down to exactly what your threat level is what are you trying to protect
+yourself against so you know theoretically if you've done everything
+correct if you have an amazing complex encryption passphrase on that that file
+volume you're uploading you know through key base or really any cloud service
+then it's probably fine you're certainly orders of magnitude better than the
+people who just take their seed phrase and put it in Evernote but you know
+anything that you're putting on the internet I think you should assume that
+that you know the service itself may have an employee that decides to you
+trawl through all the files and and you know puts them on a cluster they're
+trying to you know crack with a bunch of GPUs or something so it's it's it's
+hard to say that it's 100% foolproof but it's probably okay it's just not
+something that I would recommend to anyone who you know isn't really really
+deep into this stuff and so without knowing you and all your skill set I
+wouldn't comment one way or another one thing kind of going back to the multi
+sig or distributed key setup is that you know if you have a huge amount of money
+that you very rarely need access to or or really even you know we have some
+clients who ask us you know how do I set up nation-state level robustness you
+know the only way to really get that level of robustness is to not have a
+spending threshold of keys in one jurisdiction you know if you if you go
+under the assumption that you or whoever is holding a key in any given
+jurisdiction may find themselves put in a cage and otherwise tortured or coerced
+into using that key or whatever keys they have access to then you know the
+only foolproof way to be secure against that is to not have the keys there if we
+have to assume the humans are single points of failure then it is helpful if
+you happen to have your friends and family who are scattered across
+different jurisdictions who could essentially act as key holders because
+they don't even have to know about each other you can be managing and
+coordinating a multi sig setup and when and if you need a signature you can send
+that request to each of those different key holders separately they don't have
+to communicate with each other they only have to communicate with you they don't
+even necessarily have to know each other exists for the signing interaction and
+and you know this is one somewhat convenient way of being able to
+transact but of course once again there's a lot of variables here you you
+have to think about you know what could go wrong is it possible that you could
+lose contact with or you know lose a sufficient number of those key holders
+if they're not cooperating with you and you might get locked out of your funds
+until you can then go to whatever your super secure ultimate backup solution is
+to retrieve enough key material to reconstitute the wallet on your own but
+just a few thoughts I just like to jump in with an observation that our last two
+speakers have both come up with let's say a customized security schema of their
+own and I was just wondering perhaps we should be pointing out the the purpose
+of standardization as a way of actually in ensuring that your security setup is
+going to going to last into the future yeah so this is this is just something
+that is extremely common that we see with people who are talking to us we
+call it the treasure hunt solution where essentially you know people create their
+own treasure maps and you know that works usually it works pretty well from a
+security standpoint but you know the problem with security at least in this
+space is it's far too easy to achieve 100% security which means that no one
+including yourself is able to access those keys so you know we're walking
+this really fine line here where we want to still be able to access the keys in
+the right circumstances but we we don't want you know the wrong people to be
+able to access them. Great and we have another speaker here Karabot if you have
+a question please feel free.
+Okay perhaps not going to happen maybe then we can continue with some other
+questions just about perhaps the idea that that securing the Bitcoin is very
+very uncertain and the the general public that kind of need to rethink how
+security works so how do we approach the masses with the question of security
+for Bitcoin? Well this is also it's one of our thesis is that users don't read
+the manual and so we you know we can write all of the documentation and all
+of the best practices and I certainly have written countless articles and it's
+like support knowledge base questions but people are lazy people want to take
+the path of least resistance to achieve their goals so what we need to do is we
+need to build the hardware and software that provides as low friction of an
+experience as possible while guiding the users down the path of following best
+practices like following the best practices should not even be a question
+it should just be presented as you know this is the way that you are going to do
+it that that can be especially in Bitcoin a aggravating thing for power
+users CASA specifically designs its software not to facilitate a number of
+different pieces of functionality of things that you can do with Bitcoin and
+this is a conscious design decision on our part because in many cases we think
+it's more dangerous to let the the novice users have access to these foot
+guns then it is worse the benefit of letting the power users access certain
+functionality so you know one example around that which I've actually given
+an entire talks around is that you've probably heard that your Bitcoin
+supports time-locking functionality and time-locking functionality does get used
+in other like second layer protocols I think some of the coinjoin stuff may use
+it a lightning network definitely uses it but I'm not aware of any wallets that
+just give you a like a single field and say hey how long do you want to lock
+your coins for and there's a number of reasons for this one is that I think it
+would be really easy for someone to shoot themselves in the foot and lock
+their coins until after they're dead which of course once again is achieving
+100% security another is that it creates actually a lot of complexity around
+backups it actually breaks the ability to have deterministic backups but
+there's a lot of things like this that you can do in Bitcoin your Bitcoin is a
+protocol Bitcoin has a programming language you can create complicated or
+somewhat relatively complicated you can call them smart contracts you know
+they're spending conditions essentially you're building these redeemed scripts
+that describe how the coins are able to be spent and like once you get down to
+that level there's a ton of ways that you can screw up and you know
+accidentally lock yourself out of your own coins the number of these examples
+happened in the early days of Bitcoin I think even Mount Gox screwed up and like
+locked themselves out of like 10,000 coins for all time and thankfully as far
+as I'm aware that seems to be happening less often these days because I think
+people are developers who are building wallets are more often using standardized
+libraries like they're not actually building the Bitcoin script you know one
+one function call at a time they're using other standard libraries to do
+that and that once again it helps provide safety rails from shooting
+yourself in the foot and that's the same type of thing that we need to keep
+happening at higher levels up in the application stack yeah that's great
+answer I think maybe based on that what would you tell the listeners here today
+well I know I for one get asked all the time oh how do I get into Bitcoin and
+then what do I do with it and I'm going to tell people send people to an exchange
+or to an ATM or something but what kind of advice can you give to someone like
+that to get them to safely start using Bitcoin and know that they're securing
+it properly and know that they're not going to go down some dark alley on the
+internet and lose all their coins what's that's that first elevator question or
+elevator pitch that you can make yeah well start small ease into it you know
+much like with the privacy stuff that we're talking about early on like you
+don't have to jump in headfirst you know you don't have to put your life savings
+into Bitcoin and then you know potentially make one catastrophic
+mistake and lose it all buy $20 worth buy $100 worth play around with it try
+out different software buy different hardware devices see which ones work
+best for you and you know there's there's like I said there's so many
+different ways to do self-testing there's dozens if not hundreds of
+different wallets out there that can help facilitate and they have different
+levels of usability and security and you know for a novice they probably don't
+really have any way of differentiating you know what the actual security is so
+you know the best way if if you get to the point where you have you know more
+than probably a thousand dollars worth of Bitcoin you should really be looking
+at making an investment of five to ten percent of that in a hardware device get
+those private keys off the internet that gives you additional layers of
+protection you know when you're actually spending it because you can verify the
+details of those transactions on this independent hardware and firmware so you
+don't you you don't have to worry about things like your actual wallet software
+being compromised for example and it can be overwhelming this is something that
+I've spent really ten years immersed in and I can you know rattle off tens or
+hundreds of different potential vulnerabilities in ways that you you can
+lose your money but that's only because I've been around for so long I've seen
+so many things happen and you know we shouldn't we shouldn't expect that users
+are going to know all of that everything that can go wrong all of the history
+I think it's really just a matter of being conservative and being careful
+you know when you're when you're actually sending Bitcoin when you're
+sending a cryptographic bearer asset it just requires that you change your
+mindset it's not like going to the store and buying something with a credit card
+it's like paying for something with you know cash or a bar of gold you're not
+gonna be able to get it back if that other person doesn't want to give it to
+you so I think that this actually this goes beyond just like the individual and
+it's actually sort of a cultural paradigm shift that needs to happen but
+I don't expect that it will happen quickly this this may be a multi
+generational shift where over time as adoption of these protocols continues
+to increase and as people become more comfortable with using them they also
+change their mindset and you know when they're spending money exactly you know
+what they're thinking about how careful they're being and I suppose some some
+people might say you know it's kind of a difference between a fiat mindset and a
+Bitcoin mindset I think there's a lot of things that have changed and will change
+just in how we operate our day-to-day lives because of this technology it's
+you know it's all just ripple effects from the the attributes of the
+technology and how it changes how we interact with other people how we
+interact with with the world really from an economic standpoint yeah exciting
+stuff we have another speaker here ArcPlate cold storage solution feel free
+to speak please hey everyone my name is David Cowan I'm the CEO of ArcPlate and
+I manufacture and design cold wallet solutions so there's a whole bunch of
+stuff that has been touched on probably a dozen different things that have been
+discussed over the past 20 minutes that I would love to speak about them all but
+you know I'll touch on a few of them and I've been trying to solve this solution
+starting out in digital assets myself and trying to self custody you know not
+only for myself but my family members who don't understand digital assets and
+how they work and and being able to be trusted with their own wallet safety so
+I got into this solely from a family perspective of seeing that self-custody
+of digital assets is probably the the biggest problem in this industry that is
+not discussed enough so trying to manufacture these things and deal with
+several of these issues that were touched on like being able to give your
+digital assets as inheritance and finding affordable solutions which person
+that they can understand and I see a lot of bottlenecks in the industry and I'd
+like to get your opinion on on some of these bottlenecks the first one being is
+a universally recognized security standard you know much like the VIP 39
+word list or the Shamir word list we have 12 24 25 word wallets some wallet
+uses numbers we're all over the place when it comes to a having some form of
+industry recognized standardized format that everyone can agree upon and thoughts
+on how we might develop a universal standard so that there's no
+misunderstanding when it comes to inheritance time what the format is how
+to get those assets that type of thing second is is storage when it comes to
+physicality and crypto and that's really what I'm into is trying to take a
+digital world and have something tangible that you can hold that you can
+pass along that's not stored in the cloud and so trying to come up with
+solutions not just for us because realistically we are the 1% of the
+population the early adopters who who understand this technology to some
+extent and unfortunately the reason we're here is that a lot of people still
+even in what could be considered the the first wave of adopters still don't
+understand it and how are we going to reach mass adoption when it comes to
+custody of private keys whether we're going to have pre-issued keys that are
+given away at a bank just like a plastic debit card is today so I'd like to again
+kind of hear your thoughts on what your beliefs are for the future of issuance
+of whatever keys in institutions as well as their custody whether a user may
+retain custody themselves whether the institution is going to retain custody
+so just a few things and I'll pass it back over here I'd love to hear your
+thoughts yeah I don't know if you are familiar with the xkcd comic about
+standards but I think that's basically my my retort to how do we get to a
+common standard standards you know it's sort of an organic process and yeah
+especially if you go to wallets recovery org I believe then you'll see what a
+real mess the quote-unquote standards are just even amongst the wallets in the
+Bitcoin ecosystem my only hope there is that over time and time probably means
+decades we eventually coalesce on to similar standards but you know when you
+go look through the bits if I recall correctly like that's 39 as a standard
+is actually discouraged for some reason I forget exactly why and yet almost all
+of us are using it because I think it's certainly better to have hierarchical
+deterministic wallets than not though you know there are wallets like
+Electrum that have a different seed phrase standard that they say is better
+I think because it has a birthday or something encoded into it or maybe they
+like the word less better who knows but um yeah this is a voluntary system right
+everybody can create their own standard and presumably it's a free market then
+the best one should bubble to the top but who knows how long that will take as
+for you know securing or issuance of keys I mean at least the way things have
+been going I suspect that a lot of providers a lot of people are I think
+it's an onboarding problem so people are getting onboarded with custodial
+providers they are today probably 99% of the on ramp and off ramps and the
+system between traditional finance and and the crypto world are these
+centralized custodians and so inevitably what happens is newbies who have never
+used any sort of bearer asset before and can't even comprehend of what self
+custody means they're just used to going into a website and you know trading
+buying stuff and and that's you know that's like their interface to their
+bank account and their their stock market account and so on and so forth
+and so they figure okay these numbers on this screen on this website say that I
+own this and that's all there is to it and so they probably never even bother
+to try to withdraw because that's just not a functionality that they're used
+to having so I think at least for the foreseeable future that's going to be a
+really common thing you know that it really requires someone to take the
+initiative to learn that self-custody is even an option you know there are some
+companies out there that are kind of straddling the line you know I I'm I'm
+optimistic that places like Fidelity and Square for example will help educate
+users about self-custody as an option but I think in general these companies
+are disincentivized from doing so and and one of the main reasons for that is
+that you know the the financialization of these assets where they're then
+offering other products you know based on holding custody of them and
+rehypothecating them and so on and so forth so I'm doing my part I think
+that's all I can I can really do is you know those of us who who care about the
+overall security and distribution of the system need to keep making it easier
+need to keep explaining to people why self-custody is something that they
+should care about and you know obviously there's there's the personal incentives
+which is that you know the entire point of these systems is to not have to trust
+third parties because of all the ways that they can screw with you and then at
+an even higher like meta level it's that if we don't have sufficient
+distribution and level of self-custody then all we're really doing is you're
+recreating a new centralized financial system where all the same tricks are
+going to be used against us by a small group of elites and you know worst-case
+scenario they are then able to have enough power enough control over enough
+value of the system that they might be able to change attributes of the system
+as such. Oh definitely that's that's again there's a huge amount of
+information when it comes to this and again my focus from the start of this
+has been to offer people you know just an alternative way to be able to self
+custody and again inheritance was a big thing with that and you know it's it's
+curious to think about what the future holds when it comes to key storage as
+well as as inheritance and you know when it comes to how I've set things up
+personally with my family again I manufacture cold wallets so I've got my
+own special models that I have for myself and my family and they're buried
+in a known location and that particular location is given to certain family
+members and again I will have theirs they will have mine and we know each
+other's locations and of course that brings in you know multisig or things
+like Shamir where we have the ability to split up into shards and to be able to
+have the conceptual of model of having cold wallets as a primary way of
+storing digital assets using something like trays or hardware wallets to
+actually interface and to have you know a possession of one one of the shards is
+with you one of the shards is with your lawyer who has your will and one shard
+is with a family member so that at any given point in time you will have access
+to another shard or again in the event of a passing some way of passing along
+the custody of those assets to the the next person in line for their possession
+so what are your thoughts on on inheritance and passing it along to to
+the next line yeah that's actually very similar to the solution we ended up
+landing on a casa which is like we didn't want to recreate the wheel we
+wanted to have an inheritance setup that followed you know established
+guidelines for how inheritance already works which is you know you have an
+executor you have beneficiaries in many cases you have a variety of different
+financial accounts that have beneficiaries listed on them and there are established
+ways you know if you have like a brokerage account for example you have
+beneficiaries on it there are established ways for those beneficiaries
+to essentially prove to the brokerage that you have died that you know they
+are the beneficiary they are who they claim they are they should be able to
+take control of those accounts and you know we basically did something similar
+except that you know we're wrapping it all around private keys and so you're
+for a private key based inheritance solution you want everybody who's
+involved to know about it you want to have your estate attorney well-informed
+and they may be a key holder in a multisig they should certainly have like
+the instructions of how it's set up and how to recover those funds and then you
+may decide depending upon the the games theory and how you trust people you may
+have a beneficiary or two hold a key or two or you may have completely neutral
+third parties act as executors who then are key holders and can help manage the
+distribution of the assets but this is why inheritance in particular is a
+really gnarly problem because it becomes increasingly complex based upon your own
+family and your attributes and you know potential personal and social issues and
+whatnot awesome well I appreciate your responses I'll let another speaker go
+ahead thank you okay yeah we have here Chad I don't know if you can hear us
+Chad but you're up next and just in regards to that I feel like inheritance
+is one of these really tricky things when it comes to Bitcoin because there
+are many ways to approach it and none of them are standardized so I think really
+good job for raising that from from arc plates so Chad is not joining I was just
+wondering if we could think a bit about the what's acceptable as a security
+technology and I was just wondering James what your thought Jameson what
+your thoughts are on biometric security in in crypto is it completely avoid is
+there a place for it there's been that world coin I didn't want to mention name
+but it's everyone knows about it whereas harvesting biometric data and do you
+have any concerns about that absolutely so I think my biggest problem and really
+any security professionals biggest problem with biometric authentication is
+when it's used as a single point of authentication I guess one of the sort
+of catchphrases that has become a thing is that biometrics should be considered
+usernames and not passwords and there's some good reasons for that mainly you
+know for for good password hygiene and good password management you should be
+able to change your password if you ever think it's compromised
+whereas good luck changing your biometrics if they get leaked and
+compromised so I think that there is a place for biometrics as one of a
+multi-factor authentication solution perhaps you you use it as like the
+initial login of like this is your username and then to get to the next
+step you have to provide some sort of password or other signature from a
+security perspective with authentication there's there's really three major types
+of authentication so there's something you know which is like a password you
+know some random string some random alphanumeric characters or whatever
+there's something you have and that would be something like a Yuba key you
+piece of hardware you know you trezor actually I believe I believe trezor can
+do you to f authentication for example and then finally there is something you
+are and that's the biometrics and really if we're talking about high security
+then you never want there to be only a single piece of authentication you want
+there to be multiple factors of authentication because you should
+operate under the assumption that any one thing is going to become compromised
+so you know I haven't dug too much into like world coin itself for example I
+know that they they seem to be using the biometrics as an anti-civil type of
+mechanism I'm not aware that they're using them on a like regular basis like
+as authentication to your wallet or transacting it could be wrong haven't
+really looked into it but obviously even just the fact that they're collecting
+biometrics in the first place is scary there's just so many things that could
+go wrong there so I personally do not use biometrics for anything if I if I
+did and what probably the most common form of what people are using is you're
+probably using biometrics to unlock your phone it's just so convenient right to
+have either your face unlock or your fingerprint unlock on your phone and I
+don't do that I have a really long pin and I probably have to put that pin into
+my phone dozens of times a day I don't really want to think about you know how
+much time that ends up costing me but the reason that I do that is that I
+assume that if someone is holding me under duress then they're going to be
+able to unlock my phone with my biometrics and I don't want that to be a
+possibility so there's actually it's and it's not just that I'm like I'm saying
+I'm a badass because no one could torture me or anything there's actually
+legal precedent at least in the United States where you know my big problem or
+my I guess one of my bigger fears is just border crossings so you know
+whenever I cross a border I power everything down make so all of my data
+is encrypted at rest and that means that if I got detained for some reason
+they're not going to be able to just power off my device and then you know
+push my finger on the phone or put it up to my face and be able to unlock it
+because there are there have been court cases that have basically shown that the
+Fourth Amendment protections do not cover biometric unlocking but they do
+cover password and pin based unlocking so you can not be coerced into handing
+over a pin or a password to your devices at least in the United States but you
+can be coerced into handing over your biometrics yeah on that point there was
+recently a post by Jonas Schnelly Bitcoin core developer and his parting
+words were that future developers should join anonymously and then he says this
+is tricky to do so I suppose you're kind of existing in a similar vein that's as
+those core depths where there's always in motivation for someone to harm you
+let's say or put you under duress and try and get your secrets out so would you
+maybe speak to anonymity and Bitcoin as something that should go together yeah
+you know I've actually fantasized about a world in which every pull request and
+every commit to Bitcoin repositories is done by anonymous randomized hash
+github username basically or you know preferably even a more on a more
+decentralized system than github but that's a whole other issue and I have a
+really long post that I wrote a while ago entitled like who controls Bitcoin
+core because there's a lot of fud around that because they're like half a dozen
+people who have merge access to the repository and sometimes people try to
+you know do gain theory out well what you know could one of them be compromised
+and then the whole project gets compromised so on so forth and it would
+certainly be better if you know all the the maintainers of these important
+software repositories were not known identity so that they couldn't be
+targeted but the problem I kept running into when I try to sort of game that out
+is that at least amongst people who are committing code to open source projects
+I mean reputation is a thing and if everyone was completely anonymous like
+where I was thinking of like a system where even if you you wouldn't even have
+a username you know it would be kind of like 4chan where like every time you
+post it's it's a different randomized username that system I I'm skeptical
+that could ever work because if there's if there's no reputation it's kind of
+demotivating and also reputation does help people create shelling points and
+shelling points are kind of important in open source projects but as for like
+individual users it's I mean privacy operational security is important
+because you know we've changed the model and the incentives are a lot higher for
+attackers because these are better assets I'm I'm not gonna say however that
+you know many people will achieve true anonymity it's a really really high bar
+it's it's quite impressive that Satoshi has managed to remain anonymous so that
+is I suppose Satoshi is a great optimistic example of the fact that it
+can be done but I think we should also assume that Satoshi really really knew
+what they were doing they seem to cover their tracks pretty well and that the
+problem with privacy especially if you're trying to achieve perfect
+anonymity is that you only have to make one mistake you know you have to retain
+a perfect operational security at all times whereas an attacker who's trying
+to pierce through the shields of privacy that you've erected they only have to
+succeed one time so it's very imbalanced from that perspective and that's why
+it's very very hard to achieve perfection but I don't think that's what
+people should be trying for really anything is better than nothing
+yeah I think that's a very fair direction to go is just try and secure
+your your Bitcoin as good as possible and user tools are available there for
+you we have another speaker here to ask some questions and if anyone else from
+the audience wants to ask Jameson how long do you have maybe we have another
+ten minutes for questions sounds good perfect so request to speak and Saurosh
+if you would like to speak please go ahead oh yes my name's Sir Sharali I'm a
+undergraduate student at the University of Arkansas computer science and with
+self custody I was wondering what is the best or not the best but your personal
+favorite I didn't catch it Jameson for yourself if you don't mind me asking
+yeah well I mean I'm highly biased because I've spent the past three years
+building my my company casa to do that I don't know probably didn't really touch
+on it earlier but like I said I spent the first three years of my full-time
+Bitcoin work building security in the enterprise setting and even after doing
+that for three years and generally being considered one of the top Bitcoin
+security experts I found my own cold storage set up to be really onerous and
+I did touch on that earlier where I was talking about you're creating these like
+very crypt encrypted file containers and your secret sharing the decryption
+phrase and I would basically do that on an annual basis and update everything
+and then have to you know go distribute the the data drives and keys to my
+executors and it was onerous it would take me like a whole weekend to to set
+it up and to test it you know and do this all on an air gapped machine at
+least a machine that I thought was air gapped you know like I said you can't
+perfectly prove that but um I figured if it takes me a whole weekend to do this
+and I'm highly motivated to do this because the majority of my net worth is
+in these private keys then how can I possibly assume that you know more
+average mainstream people who aren't so incentivized who aren't so technical who
+aren't living eating and reeling this stuff every day for a decade are gonna
+do what I consider to be the best practices for all of this and so that's
+why it was natural for me to do the slight pivot and try to take the best
+practices take the multi-sig aspects of the protocol and build something that
+was more user-friendly so so I guess that's the the long-winded way of saying
+that you know CASA you know distributed multi-sig you don't have to use CASA you
+know we just try to make it easier we're not doing anything completely novel and
+reinventing the wheel we're using standards we're building on top of well
+established hardware and software in the space we're just trying to make it
+easier for people to create a multi-signature setup where the keys are
+geographically distributed and you're storing those keys on a variety of
+different manufacturer hardware and the whole point of all of this is is very
+simple and that is to eliminate single points of failure so we look at like
+every piece of the system and how it's architected and say okay well if this
+thing blows up will it be catastrophic and if so then we need to add more
+redundancy there so that's I guess the the short version is not not just one
+key even even if you have you know one set of keys and you create multiple
+backups of them then you start running into this rabbit hole of you know how
+do you ensure all the backups are also secure against things like physical
+attackers I think most people would say well you have to encrypt the backups or
+you have to have some sort of other you know password or whatever to be able to
+access those and so then the question is okay how do you back up the the password
+or the encryption key to that and it can very easily turn into a more convoluted
+rabbit hole to keep the whole system together so I I felt like just worrying
+about the keys themselves and putting those keys on physical devices that
+people can easily you know think of and visualize and keep track of that that
+was a more straightforward way for people to do private key management
+perfect I appreciate it and then a last thing is Casa hodl the physical device
+y'all sell it as well or was the recommendation for physical key and
+storage unit yeah so we very we very specifically do not manufacture our own
+hardware devices because we don't want too much trust to be in Casa itself we
+write the software but we use and we support a variety of different hardware
+devices Trezor was the first device we supported they are really the OG of
+hardware key management then we added ledger and then we added a cold card and
+most recently we added keystone and we're gonna keep adding devices that we
+believe will continue to improve the usability and the security of the whole
+suite of software that we are offering to people appreciate it thank you yeah
+if there's anyone else who wants to speak we still have another five minutes
+so please do request otherwise we'll be wrapping up soon Jameson thanks a lot
+for your time I think this has been really enlightening in in many ways so I
+guess the key takeaways here are do what you can to secure your coins don't think
+that anything is too little but continuously strive for more think about
+your multiple both the attack vectors that you have within your life and maybe
+personalize it to yourself and yeah I suppose we all just need to be a bit more
+aware of the of this huge transitionary period so where people are not so
+familiar with with with Bitcoin yet and are not used to the new levels of
+security we need to start really hammering down those those veins in in
+our society so Raymond Raymond's just joined us welcome to our talk I've seen
+you here for a while please go ahead and speak as one of that quick question as
+taproot approaches obviously you know taproot gets activated next month and
+you're probably held up by you know support from all the harbor manufacturers
+will you be adding taproot support to casa as soon as it's ready her quorum
+setup like let's say if I have like you know two treasures or treasure in a
+ledger as long as I've got those two could we do taproot support or you have
+to work wait for all four of the hardware manufacturers plus your
+internal services before taproot set casa yeah this is gonna be an
+interesting thing to deal with in particular you know the fact that we
+support a variety of different manufacturers hardware devices and they
+may not all support the same thing at the same time that can definitely be a
+gating function but with with taproot it's even trickier because I do not
+expect that we're just going to go in and implement taproot where we're doing
+multi-sig the you know creating the actual like multi-sig spending pass where
+it still gets all exposed on Shane like I don't think we're as interested in
+doing that as we are in waiting for there to be a clear winner when it comes
+to signature aggregation and right now it seems like there's maybe three
+different proposals for how to do that and I'm I haven't heard of like any of
+the hardware manufacturers commenting on them or saying like we're gonna
+implement this one so it's still very much in a holding pattern on how we do
+that because the signature aggregation I would say is the most important thing
+that we're interested in for our users because it will give them much greater
+deal of on-chain privacy because you know under under the the right you know
+optimal happy conditions it's no longer even gonna look like a multi-sig spend
+on Shane and unfortunately you know with the nature of Bitcoin development it's
+hard for me to say when everything is gonna fall into place for us to be able
+to support that cool I didn't expect like a full-blown date but I just know
+with the collaborative capacity of like a very unique challenge getting
+everything ready compared to every other wallet manufacturer so appreciate it it
+is though you know there's always gonna be workarounds for example if you had a
+key set where all but one of your devices supported some new functionality
+then you can either in CASA you can either rotate that key out which of
+course requires sweeping the funds of the wallet or if you have that seed
+phrase you can always just load it onto a different manufacturer device that
+does support the functionality yeah that's good point thanks
+okay and we have one more question please RMB feel free okay it's just
+dropped off I suppose we don't really have a queue here so I guess most of the
+questions have been answered which is great I again thank you very much
+Jameson for joining if you have any parting words maybe please feel free to
+go ahead yeah I guess the main thing is we've talked about a lot of things I
+think it's pretty clear is very complex space just don't be overwhelmed you know
+you don't have to be an expert and spend all day every day worrying about this
+stuff just take it one little bit at a time
+yeah I guess everyone's been through ups and downs of a different portions and
+yeah it can be it can be overwhelming but time goes on number goes up and we
+we get over it I suppose just need to look out for yourself so thanks everyone
+for joining us I'm going to end this now and thanks a lot again for Jameson and
+all of our speakers and all the questions and this is the last space
+that we've been running for cyber security month we'll be putting out a
+recording of this as well and the other two that we had earlier the previous two
+weeks so if you missed the earlier parts of the of the of the session or you can
+always catch up with it there it will be on YouTube within about a week so again
+thanks for joining and yeah good night to everyone or a good morning good day
+etc
+so Jameson as well you might want to say goodbye all right thanks for listening
+bye

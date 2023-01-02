@@ -1,0 +1,507 @@
+All right, everybody, welcome to the Bitcoin Bottom Line.
+I'm CJ Wilson with Stephen McClurg and Josh, though, I guess, what do we call you, Josh,
+the the metrics wizard or the analyst crypto historian is also crypto historian.
+OK. And today we're we're joined by a crypto luminary.
+So he's so bright.
+His background so bright that he actually looks like he's in a scene from The Matrix.
+Jameson Lopp, who is one of the foremost experts in Bitcoin security and some of these
+technical models that we as Bitcoiners need to be aware of.
+So, Jameson, thank you for joining us today on the Bitcoin Bottom Line.
+You bet. Happy to join you from my anonymous white void.
+I love it. It's like I heard you talk one time and you were you were explaining that
+anonymity is a huge model in security.
+So the the downside really of being like a big Twitter personality or big Bitcoin
+personality is people know who you are.
+So in order to combat that, you have to sort of like obfuscate your trails around.
+Right. Can you talk about that a little bit?
+We just jump right into it and then we can talk to some of the other security models
+behind your your process.
+Yeah, I mean, a large part of it is just trying not to leak any information about
+where I am, where I'm going, more physical security related stuff.
+The the pieces of my operational security that tend to be extreme are mostly
+government related stuff, like so any public property, anything you own that is a
+publicly registered thing, an asset like a vehicle or land or house or whatever.
+That's where it gets really tricky and very jurisdiction specific to make sure that
+your name doesn't end up on those public records that are very easily searchable.
+But then going beyond that, actually, the easier stuff is just trying to break any
+ties between your name and other various online activities that might somehow then
+be correlated to rough geographic location.
+But it's it's a whole field unto itself.
+And I generally tell people if they're interested in going down that rabbit hole
+to just buy Michael Bazel's Extreme Privacy Guide, I think the fourth edition just
+came out a month or so ago and it's close to 600 pages and it seems to add 50 to 100
+pages every year. So it's it's not getting any easier, that's for sure.
+Yeah, I think like as a as a I guess I would call you a celebrity in the space, right?
+I mean, you're you're always talking at the let's say Bitcoin 22, 21, whatever
+you're at these on. You're on stage sometimes doing these things.
+So people sort of know where you're at.
+How much is that has your willingness, I guess, to to just make public appearances
+and stuff changed over the years? Or is it just like your skill level has gone up
+about kind of Batmanning in and out of situations?
+I'm definitely a lot pickier about public presentations and things that I go to.
+And yeah, I did go to the Bitcoin 22 conference.
+That was the first one I have been to in over two years.
+Of course, there was the whole pandemic thing, but I'm getting a ton of requests now.
+The things are opening back up and I'm turning pretty much all of them down
+because it's one of those things where you're you're you're marketing yourself
+as being in a specific location at a specific time in the future.
+So that could definitely be used against you.
+Well, we certainly are glad that you are at Bitcoin 2022.
+We were all there. It's good to see you there.
+Don't get to see you much, but
+but I think it's been twice in one year and I won't say where the other place was.
+But but given that, you know, what you guys do at Casa,
+you do have physical locations, different places.
+You help white glove people onto your platform.
+I'm a client, full disclosure.
+And so so so how does that work exactly?
+And how do you guys kind of protect the business
+while you're trying to protect your clients at the same time?
+Well, I mean, the most important thing is that we architect these setups
+so that there's no single point of failure, and that includes Casa as a business.
+Now, we have been a remote company since inception.
+We do have a handful of physical like co-working locations,
+but they're not publicly disclosed.
+It's not something you can find on a website or through any sort of
+people finder or business directory, anything like that.
+So it would be very difficult for a physical attack
+against like multiple Casa employees to happen.
+But most importantly, we have to assume that a physical attack
+against Casa employees might happen because
+really none of them have the same level of operational security as I.
+And some of them are getting there are certainly better than your average
+person when it comes to privacy.
+But the most important thing is that even if a wrench attack did happen
+against myself or the CEO or any high level
+ranking person at the company, that there's no way that that could lead
+to any sort of loss of funds or compromise for our clients.
+And that's the whole point of having a distributed key set up.
+So that's the sort of foundation upon which the company is built.
+I can sleep well at night knowing that even if a worst case scenario
+happened where all of our servers got blown up or seized by the government
+or what have you, that that would only be a minor inconvenience for our clients.
+And it would not result in them being locked out of potentially their life savings.
+So I guess along with that conversation, like when you have different tiers
+of clients, right, they're going to have different levels of Bitcoin.
+They're going to have different levels of personal security, financial security,
+maybe legal entities like shielding legal entities, family trust, things like that.
+Has Taproot and the development on Bitcoin in the last, let's say, four or five years,
+has that really given you guys more options in terms of how to how to price
+the concierge services or whatever?
+Because I think that's one of the weirdest things about Bitcoin is, you know,
+hey, we want to help you be secure, right?
+But we have to advertise that we help people.
+And then we also so there's like this weird thing where you have to kind of put it out
+there what you do, but then you don't want too many people to know how you do it
+or anybody to really know how you do it.
+Right. So how do you guys balance out your own internal business innovation with,
+like, the innovation that Bitcoin itself allows you to do?
+I mean, I would actually say that we're very open and more than happy to talk
+about how we do it.
+And in fact, on our website, we have a wealth security protocol, which is like
+35 or 40 pages of in-depth explanation, essentially of all of the decisions that
+went into how we architected the product and using multi-signature aspects of
+protocols, using multiple different manufacturers, hardware devices for
+managing the keys and then figuring out how to actually distribute them
+geographically.
+So, you know, we don't want any of this to be a sort of security through obscurity.
+An attacker should be able to completely understand our architecture and still not
+be able to do anything about it on the on the sort of taproot.
+And I guess what you're getting at is a sort of more complex scripting side of
+things.
+We're definitely we're keeping our ears open with regard to what is being
+developed throughout the ecosystem.
+You know, one thing that we're very interested in is aggregated signatures
+because that provides a really big privacy boost for multi-sig users and
+also sort of transaction fee and data size savings.
+However, the reason we haven't already rolled that out and the reason we haven't
+seen Schnorr rolled out in a sort of general sense is that there's a number of
+different ways to do these aggregated signatures.
+And unfortunately, most of them are highly interactive, which means that you
+basically have to have multiple different signing rounds happening.
+However, we are seeing, in fact, just a couple of days ago, a new paper, which
+was entitled Roast came out, which was a new way of doing the Frost type of
+aggregated signatures, which, my understanding is, should allow you with
+one pre-computed round, which I would think that CASA as a multi-sig provider,
+where we're helping coordinate that, we would be able to do that ourselves.
+And then the user themselves would only have to do one round of signing so that
+it would basically be the same type of user experience of what they're seeing
+right now.
+Otherwise, it would get really onerous and also, when it comes to any of these
+protocol changes, we have dependencies, we have software dependencies, we have
+hardware dependencies.
+So this is one of the trade-offs of us supporting many different manufacturers
+for the signing devices.
+It gives us additional robustness in the sense that you're not exposing yourself
+critically to any supply chain attacks, where there might be some sort of
+exploit or vulnerability in one of those manufacturer's devices.
+The flip side of that is you are now limited to whatever the subset of
+functionality that all of the devices in your keyset can support.
+So if we want to roll out some sort of cool new aggregated signature scheme,
+but only Trezor supports it, then we're going to have problems with clients who
+have a Trezor and a Ledger and a cold card.
+So there's a lot of moving parts.
+And as a result of that, we're probably never going to be the first early
+adopter of any of these technologies, but also we don't want to be a super
+early adopter because we want to observe the landscape of what's happening in
+the ecosystem and hopefully let other people make mistakes and shoot
+themselves in the foot and let us learn from their mistakes.
+Yeah, part of that low time preference thing that Bitcoiners are supposed to
+have, right?
+It's like know what the goal is, but then maybe inch your way there so you're
+taking just positive steps the whole way and not opening yourself up.
+One of the things that we always talk about, myself and CJ, and then I tell
+clients as a Valkyrie, people say, well, wait, don't you have funds that hold
+Bitcoin for people and don't you have ETFs and don't you offer all these
+services?
+Don't you use your own funds?
+Why do you use a service like COSA?
+Why do you use hardware wallets yourself?
+And my answer is always diversification, right?
+Different people have different levels of skill.
+If you have very little skill, you just go to Coinbase.
+If you've got a little bit more, then you might have a hardware wallet or
+use a different service.
+And some of these services now don't require a whole lot of skill at all.
+And then even for our funds, it's people that say, okay, I've got this
+family trust.
+I've got to report the numbers back to my accountant.
+I've got to report them.
+Or it's a corporation or it's a fund that has to have statements.
+And then some people can only use certain solutions.
+Some people like myself, I like to diversify across a lot of different
+solutions in case there's a point of failure.
+How do you feel about that given obviously that's your business?
+What has this week been like as far as have you seen inflows?
+Have you seen outflows across?
+Just give us your general thoughts on the diversification.
+Yeah, okay.
+So I think in general, the only reason that I have come across that makes
+sense to me for why someone would use a custodian is if they're in a
+regulatory position where they're legally required to use a qualified
+custodian.
+And so we certainly understand that those type of entities are not a fit
+for us.
+We have no intention of ever being regulated, of ever being a financial
+provider.
+We are really a security consulting service.
+I would say our biggest value is actually giving people the ability to
+actually get on the phone with someone if something goes wrong or if
+they're not sure what to do.
+It's very rare to find that level of service in this space, especially for
+self-custody.
+Almost all self-custody options tend to be sort of community-based support
+or the companies are so huge and retail-based that if you're trying to
+get in contact with them and get help, you might be waiting for days or
+weeks to get what is probably a templated response that will be really
+annoying.
+I've run into that myself with a number of different companies in the
+space where you can tell that they're outsourcing their support to the
+Philippines or something and the support people aren't even allowed to
+type their own stuff.
+They're only allowed to choose from a drop-down of different possible
+answers to any given query.
+When it comes to diversification, I think there's logical ways of doing
+it and then there's other ways that might feel logical on the surface but
+actually be a bad decision.
+One of the most common forms of diversification that we see, at least in
+the self-custody space, is people buying a handful of different devices or
+creating a handful of different single signature wallets and then just sort
+of spreading those around.
+The idea there is that if any given seed phrase or device or whatever gets
+compromised, then they'll have lost some portion of their holdings but it
+won't be catastrophic loss of everything.
+Our take on that is that what you're doing is you're taking the old adage
+of not putting all your eggs in one basket.
+That makes sense and you are decreasing the likelihood that you'll have one
+single catastrophic loss.
+I think what people don't necessarily realize is that that type of
+diversification actually increases the chance that you will have some small
+form of loss.
+The type of diversification that we like to see instead is where you have
+one logical constructed vault and the diversification is within the different
+security protections around each of the keys that comprise that vault.
+Whether that's geography, whether that's the type of hardware that's securing
+it, really even then the potentially physical layers of security around where
+you're putting it, whether that's in a safe or in some sort of professional
+vaulting service that is requiring various forms of authentication to even
+enter into the building.
+With CASA, we have different levels of authentication that we set up for
+requesting signature from the key that CASA holds.
+For our concierge level clients, that basically includes doing an audio-video
+call with someone verifying various details, giving them opportunities to
+provide duress phrases and so forth and basically making sure that everything
+is good on their end.
+Plus then actually having a multi-day waiting period even after authentication
+happens just to once again make a sort of $5 wrench attack scenario less and
+less likely or be a higher or higher cost.
+We do see a number of people and entities that are diversifying between
+self-custody and third-party custody.
+I think that does make sense as well in certain situations and I myself am in
+that situation where while I self-custody the vast majority of my funds, I
+also have funds that are spread out between various services and that are
+providing me with other functionality.
+Sometimes that comes in handy.
+It actually came in handy this week when I got a margin call on one platform
+and I was able to authenticate myself and instruct them to move some funds
+around without me then having to spend a whole lot of time going around to
+geographically distributed keys to actually make an on-chain transaction to
+move extra collateral into that service.
+I think that's where Lightning really works really well.
+If you have an emergency Lightning wallet, theoretically you can move things
+around from the exchanges that are actually willing to process Lightning
+transactions so then that helps you a little bit.
+Obviously there's some super out there Bitcoin or hardcore things like you
+could have an open dime or something like that if you really needed to do a
+combination of a physical and a quick one-way transaction or something like
+that but I think the thing that freaked me out was as we had the price dip, the
+mempool gets clogged up because people start moving coins around and then some
+people are going to be getting margin called and won't be able to get there
+depending on what the length of time between the margin call and the actual
+action is.
+That's really where there's I think still a little bit of immaturity in the
+Bitcoin space for that because like you said if you have to chase things around
+that's a time delay and if you have a time crunch we have to figure out as an
+industry what's the most efficient way of solving that problem and sadly one of
+the most efficient ways of doing it is paying by fiat because you could just
+sort of call and do a wire if you have to unwind a dollar loan against a Bitcoin
+position or something like that but if you have a Bitcoin to Bitcoin thing
+sometimes it's way more convenient because it's like one sat per byte or
+something like that and you just fire it off at three in the morning on a Sunday
+it's no problem but other times you have a mempool clogged in the middle of the
+week and you're like oh shit I just have to call a bank and or sell on an
+exchange and then get wired the money then wire the money to somebody else or
+whatever.
+So I think we're still at that phase where we're going to see some of that
+stuff developing where you can maybe live completely on Bitcoin but I don't
+know if we're totally there yet because you know not everybody is going to have
+a lightning wallet with enough money to really handle their day to day spending
+you know.
+That's how I think so we're getting close one interesting aspect about the
+sort of convenience and speed issue with multisig is that in our default setup
+we really originally designed it for single individual who was then
+spreading their keys out and intentionally making it difficult to spin
+that's really as part of the security model if it's hard for you to spend it's
+going to be really hard for an attacker to spin.
+However one thing that we have noted because you know we have a number of funds
+and teams and corporations and such that are using CASA's team product it's
+actually faster and more convenient for a multisig where your keys are
+distributed amongst many different people for you to coordinate and be able
+to create and broadcast an on-chain transaction even in comparison to a
+third party custodian because many of these third party custodians are going to
+have one or two if not more business day delays between you authenticating with
+them to request a withdrawal and them actually processing it.
+Whereas in an optimal scenario if you have an emergency where you know you
+need to move funds somewhere out of a shared treasury within like five or ten
+minutes you can have everybody plugging in their devices passing around the
+partially signed transaction and then having a fully completed transaction
+that you can broadcast out on the network.
+Yeah I think that's where necessity is the mother of invention right so as we
+run into these things like I was talking to somebody about it the other day when
+you go to buy a house through your shell corporation that's named you know
+obscurely with a symbol in there something like that in a random state
+that protects you you know trying to stay on theme the contract is very thick
+usually right it's like usually there's like all these disclosures and all these
+things you have to sign and triplicate because there's been lawsuits for
+decades about these different things right and that's sort of the learning
+process so by the time someone goes to buy their first house there's been so
+many houses sold and so many like you know litigious things that that's why
+they have all these things in there so I think at some point you know Bitcoin
+transactions or Bitcoin based companies or Bitcoin teams will have will have
+like more tools in the same sense right more tools to work with because you'll
+have the security assessor you'll have a chief Bitcoin officer for the company
+you'll have you know various security protocols that are just sort of de facto
+that's just sort of the way people do it once Bitcoin as an asset class either
+gets more distributed or more valuable because the stakes are so high right and
+I think like guys like yourself that have been really like way earlier had
+your vision on it the whole way but new people as they come into this are like
+oh hey I have $5,000 with the Bitcoin or something like now what do I do and you
+sort of have these I mean maybe you're not engaged at this level but when I've
+been in let's say like clubhouse rooms or Twitter spaces or whatever with other
+people from Casa and they sort of have this explanation of like okay this is
+like how you get there and I think people have the goal of accumulating a
+lot of Bitcoin but then it's like they have to have the security from day one
+like as a as a guiding principle because otherwise they end up with a bunch of it
+and then they have no security and that's really when they're the most
+vulnerable right almost like if you buy too much too soon before you're really
+you have your personal security and you're you're you know signing devices
+and your ability to use all these different devices because a cold card is
+much different than a ledger I mean like in terms of the the actual operation
+yeah I think the biggest issue is people making the leap from the sort of
+traditional brokerage type of system to this new system so what generally
+happens is you know someone creates an exchange account and they make their
+trade and that's it because that's how every other system works every you know
+non crypto traditional financial system they probably don't even understand
+that withdrawing is a thing so and the exchanges aren't necessarily
+incentivized to to push you towards the withdrawal features so there's there's
+definitely a lot of learning that's going to happen that's one of the reasons
+that I think this is going to be a sort of generational thing that humanity will
+have to sort of absorb over the years and then also because people aren't used
+to having the same level of risk of like you know someone logs into your
+brokerage account they're probably not going to be able to completely wipe out
+your account in an hour or so and you have no recourse and and so for that
+reason your people don't understand that the risk is a lot higher and that they
+do need to think more about security and and that's how they end up just using
+the same poor cybersecurity practices that the vast majority of people are
+using we're reusing passwords either not using a two-factor authentication or
+using really weak two-factor authentication like SMS based stuff and I
+mean I just heard I think yesterday one of the CASA employees posted that they
+had a friend who got into crypto a few months ago and had a Coinbase account
+and they they were just asking them hey is it possible for someone to clean out
+my account because they logged in for the first time at six months and balance
+was zero and someone had just withdrawn everything probably because they were
+reusing their passwords yeah that's and that's where you need stuff like you
+need you need people like Valkyrie or you know CASA or somebody else that is
+gonna have some sort of emergency break right and you can have some sort of
+human interaction I think that's I think that's what's really interesting is like
+Bitcoin has this ability to go really fast and to move huge sums of money in
+very quick periods of time but it also has the ability to go real slow you know
+what I mean and and because of multisig to force you through these hoops you
+know and I think that's one of my favorite things about having a multisig
+setup personally is you know like I use exchanges I buy Bitcoin like at various
+different places I sort of try to manage my UTXOs I have a mining company I try
+to like you know do all this stuff I I think that you can get so complex with
+your own security setup that it does get to a point where you might you might be
+I want to say like creating a random what's the word like scavenger hunt for
+your for your spouse if something happens to you right so in that regard
+for someone that has a huge technical setup like how do you manage the the
+spouse kids will and testament kind of thing I mean is it like you have the
+master you have the master book you know you have like the the post-its that you
+got to spin through at the right time and the stars it's like it's all of a
+sudden where it's like goonies right you know you got to have the thing and turn
+the thing and then like the stars are coming through and you know one-eyed
+Willie like falls off the falls off the wheel and then that's how you have access
+to your Bitcoin I think it's like we're weird like we we love the analog as
+humans and we love the technical as as geeks but then like combining analog and
+technical together is like you said it's a generational thing that like the I
+don't know I guess I mean technically I guess it's a cypher punk thing right so
+to kind of want to do that but I just have this old sort of like steampunk idea
+of like you know you have this magic dust you put put over a book and then it
+shows you the code to get into the safe to get into the phrases to get into your
+wallets to do the multisig you know and hopefully none of that ever happens to
+my wife but you know I have to leave like little Easter eggs somewhere for
+her to figure it out yeah so you know that that's a case where like
+diversification or over complexity is actually a threat this is how a lot of
+people have lost a lot of Bitcoin over the years is that they tried to get
+cute they thought that they were a security expert and they created an
+incredibly secure setup and in fact it's possible to go too far and create a
+setup that's so secure that you lock yourself out of it or you lock your
+loved ones out of it yeah and really probably twice as much Bitcoin has been
+lost due to reasons like that then has actually been hacked and stolen so
+that's something to keep in mind is that it is possible to have too much security
+and to create setups that are too complicated so that's why we have very
+specific inheritance plans that we have standardized and you know work with our
+clients on where you know there is a treasure map of sorts but it's a very
+simple guide and also you know we're capable of onboarding your spouse or
+your beneficiaries into our platform so that you know we can help them out when
+the time comes so some of the things that we always tell people that you know
+when it comes to security there's there's a few simple things right one
+always use you know maybe an authenticator app instead of SMS right
+you know that's that's a basic one we also tell people to have multiple
+emails you know have have one email that's sort of like your your spam junk
+type email that anytime that you're you know you got to use your email to do
+something like you know log on at a hotel or something like that which is in
+itself a security risk but always always use a you know a spam email but then
+always create a another email that doesn't have your name in it for any
+financial transaction it doesn't matter if it's crypto bank accounts it doesn't
+matter and then you know having two laptops one that's you only do financial
+transactions on you know those are some of the basics but but if you have one
+piece of advice you know one thing that somebody could do that is they can
+protect them and their security what's what's the key thing that you would say
+by a you be key and use a password manager that you unlock with that you be
+key and then you should not you should only know one password and the only
+password you should know is the master password to unlock your password
+manager every other password that you have should be randomly generated and
+like over 20 characters long that's that's gonna protect you from some of
+the most common stuff because you have to assume that every service that you
+create a login to is gonna get compromised and that those credentials
+might get leaked and then this is something that we see all the time or
+really anyone who runs an online service every once in a while whenever there's a
+big data leak you your service starts getting hammered with just lists and
+lists of all of these leaked usernames and passwords because people are just
+trying them they're like you know there's a good chance that at least like
+half a percent of these usernames and passwords are getting reused on other
+common services so you know humans are very bad source of entropy so you don't
+create your own passwords so along those lines though there's something to be
+said about the the nature of your passwords in the sense that longer they
+are the harder they are to hack right and so some of these some of these apps
+or web services or whatever they have like a limit to the amount of
+characters you can use or they limit you from using other characters so it's
+almost like in a way they're they're broadcasting how they're at some point
+going to get hacked because they they have a limit to that they have a top end
+limit to their security protocol right so if like I remember a couple years ago
+there was like a like an iCloud hack where all these celebrities whose it
+would their emails were basically like first name dot last name at me.com or
+something like that you know like like no obfuscation of their email at all it
+was just literally just first name dot last name and they had their stuff hacked
+to the point that their iCloud photos were being put online right and people
+were like up in arms they're like oh my gosh there's naked pictures of like these
+you know actresses and stuff like that and it's like well you know the whole
+point of Bitcoin and I mean one of the great points about Bitcoin is it
+obfuscates your wealth so that you can have a ton of money or no money and then
+like nobody really knows how much you have at all because if you're doing
+everything right then it's always a mystery you know because you don't have
+just one huge wallet that's got everything in it that you're like oh I
+need to pay for you know tacos so here's like you know fifty thousand sats coming
+out of a wallet that's got a hundred Bitcoin in it or more or whatever but I
+really think that that like we're at this weird meeting where like the the
+there's a lot of plebs that are coming into the Bitcoin and their dollar
+cost averaging and they're coming up to a point where they're about to
+transition from you know having let's say a million sats to ten million sats
+or ten million sats to a hundred million sats or something like that and so
+they're getting to that point where they're especially with Bitcoin being
+as cheap as it is today and the economy being crazy people are kind of squirting
+more money into Bitcoin as they go as they learn more about it and so there's
+going to be this really weird like like ramp I think of exploits that happen
+because like you said the human is the soft target right if their password is
+you know big boobies one two three on every every service they use or like
+what's the kid from Kyle from Wisconsin or whatever you know it's like you know
+you you have to think about the Bitcoin that you have today could be worth ten
+twenty a hundred times what it was today one day and if someone has your password
+now then they can get in your email now and then they can you know like stay
+with you and and there's there might be a whole benefit for hackers or whatever
+else for hacking people today but not exploiting them today because the
+Bitcoin is not as not worth as much so I think like that game theory is so
+interesting because it's like there's all these things tumbling at the same
+time so I think like the more you get into it you get like the sort of
+conspiratorial mindset you sit there think like well I really have to take
+extra steps you know because otherwise and you know and cut emails off and
+stop using that email for everything because if you have one email for like
+15 years there's a I mean the longer you have that email the higher the chances
+that someone's going to get into it and if you have some sort of reset button or
+whatever that they can go through your email to get then you're going to get
+hacked at some point right as a person so yeah I mean that's it's good
+cybersecurity 101 is treat your email account is actually your most important
+account because that's how hackers tend to get into all of your other accounts
+you know resetting passwords and whatnot so I would also recommend you know once
+you get that you be key use that you be key for everything especially your email
+service and then this comes down to you there's like three different types of
+authentication there's something you know like a secret like a password or a
+private key there's something you are which is like biometrics and then
+there's something you have and something you have is is like a you be key you
+know a physical device so that you know if you have that form of
+authentication nobody out on the internet is going to be able to grab
+that and then impersonate you and so that limits your attack surface down
+significantly from everybody on the internet to someone who is willing to go
+to the extremes of you know physically coming to your location and taking
+control of that device yeah well we really appreciate you coming on
+Jameson this is the end of the Bitcoin bottom line hope we have you back soon
+and thanks for having me and Jameson you you provide a lot of really cool
+resources on your website can you tell everybody about that a little bit yeah
+last I checked there's over 1500 links to different resources and a couple
+dozen different categories it's very easy to find the site it's just
+Bitcoin dot page and that'll take you directly to my resources that I
+maintain on a daily basis well thank you so much for like what you provide for
+free really the open source aspect of Bitcoin is so cool because it brings out
+this this really interesting skill set and the I personally have gone through
+there a lot and you try to double check resources and stuff like that so I
+really say thank you as a as a Bitcoin or that's never met you you know in
+person or whatever and might not ever meet you in person because of ghost
+protocol right then you know it's just keep up the good work man and and you
+know I definitely I think from a lot of other people a lot of our listeners
+they're gonna take their security a lot more serious you know they're gonna be a
+lot more secure with their life and their Bitcoin as a result of this
+conversation and and you know what you do yeah we really appreciate it with
+great sovereignty comes great responsibility great well thanks
+everyone for joining us on the Bitcoin Bottom Line this is Stephen McClurg my
+host CJ and thank you Jameson

@@ -1,0 +1,743 @@
+Welcome to The Blockchain VC, a podcast about crypto and the digital assets ecosystem.
+My name is Tomer Federman, and I'm the managing partner at Federman Capital.
+We invest in the most promising blockchain startups across the globe.
+I have more than 15 years of experience in tech, and before starting the fund, I was
+on the product side at Facebook, where I led product strategy and global growth of some
+of Facebook's major ad products.
+Previously, I also lived in Silicon Valley for a few years, where I attended Stanford
+Business School.
+You can find me on Twitter at Tomer Federman.
+Before we begin, please note that this podcast is for informational purposes only, and all
+the opinions expressed on this show, either by guests or me, do not reflect the opinions
+of Federman Capital.
+Nothing on the Blockchain VC podcast represents an investment or financial advice.
+Please do your own research.
+Also, if you liked this episode of The Blockchain VC and want to help us bring more awareness
+to the space, I'd really appreciate it if you can rate, review, and subscribe to our
+podcast.
+This only takes a few seconds and helps us get the word out.
+Okay, let's do this.
+So really excited to welcome to the show today, Jameson Lopp, the CTO of CASA.
+Jameson, thanks a lot for coming on the show.
+No problem.
+Glad to be here.
+So maybe to get started, Jameson, you're one of the, I think, most well-known people in
+the space.
+We'd love to hear more about your background and how you became interested in crypto and
+blockchain to begin with.
+So I got involved in Bitcoin a number of years ago.
+I was just interested in it mainly from a computer science standpoint.
+I heard about it a number of times over the years and was always dismissing it because
+I figured it was some system that was going to get hacked and everybody was going to lose
+their money.
+But after it kept coming back over and over, I finally realized that it wasn't dying off
+and that I should probably look into it.
+So once I actually read the white paper and I realized that it was doing some interesting
+things on the computer science side, it also piqued my interest from a sort of philosophical
+viewpoint because I figured that if money is this abstract concept that kind of belongs
+to humanity, then it makes sense that the definition and development of money ought
+to be an open project where anyone who cares can contribute to it.
+Right.
+And was it immediately obvious to you when you started looking into it that this thing
+could be so transformative?
+I definitely thought it was an interesting development.
+Once I read the white paper, it wasn't obvious that it was going to work incredibly well,
+which is why I went ahead and actually got some Bitcoin so I could actually play around
+with it and see it work.
+It was once I actually started using it and was able to exchange it for other goods and
+services and realized that this was a new type of payment system that could not really
+be censored.
+That's when I really started to see the value in it.
+Got it.
+Makes sense.
+And when was that?
+When did you start?
+When did you read the white paper and became more interested in this paper?
+That was back in 2012 and I spent a few years just as sort of a hobbyist talking about it
+and reading the forums and discussing with people.
+And then after I had been interested in it for three years or so, that's when I decided
+that I wanted to go ahead and work in the space full time.
+A bunch of venture capital had been coming into the space and that's when I started
+working for BitGo doing basically infrastructure engineering for their enterprise multi-sig
+security wallet.
+And I had been doing some other projects just on the side, open source stuff, trying to
+better understand how Bitcoin worked.
+But that's when I went sort of head first and was really living and breathing Bitcoin
+24 seven ever since then.
+One thing I was curious about is, you know, obviously with BitGo and more recently now
+with Casa seems like you're pretty focused on solving custody and key management and
+how people protect their crypto assets and Bitcoin in particular.
+Why is that?
+Like is that something that you think is particularly interesting in the space?
+Obviously there's a lot going on.
+Why did you decide to focus on that segment of the market?
+You know, it's not necessarily the most interesting thing going on, but I think that it is a fundamental
+issue that is still not fully solved.
+Basically I think that the easy solution where people could just sort of throw up their hands
+and give up is to just give your private keys to a trusted third party and allow them to
+custody your funds, but I find that to be very unpalatable because then we're just recreating
+the banking system, you know, with a new layer of infrastructure underneath it.
+So the promise that Bitcoin allows you to be your own bank, in my opinion, is not yet
+fully fulfilled because while it is technically possible to be your own bank and it always
+has been, the level of like sophistication and the high learning curve required in order
+to do that well has prevented a lot of people from doing it or a lot of people who have
+done it have ended up shooting themselves in the foot and losing access to their private
+keys.
+So I think that this is a fundamental unsolved problem in Bitcoin and that, you know, we're
+never going to realize the dream of a fully distributed financial system if it's not easy
+for the average person to hold their own funds securely.
+Yeah, absolutely.
+I mean, I've actually been hearing more and more recently, I think a lot of people in
+the space think that, in a way, custody is a solved problem at this point, right?
+Because you have all these companies, you know, whether it's Coinbase or Fidelity are
+now entering the space or Bitgo, you know, Kingdom Trust and so forth, who are offering
+a regulated custody solution, oftentimes now also with an insurance plan.
+But I completely hear you, what you're saying is that's not really why we got into this
+space to begin with.
+Yeah, I mean, it's, to me, it's incredibly boring and a cop out and it recreates a lot
+of the systemic risk where, sure, you can make arguments that, you know, highly respected
+and secure companies with lots of experts are now custodying private keys for people.
+But if you're concentrating the holdings of large portions of the system in a small
+number of actors, it doesn't really matter how secure they are against your average threats.
+You're still creating honeypots for either sophisticated attackers or for, if you want
+to go to the extreme, nation state attackers.
+And, you know, in this system, you know, it was kind of born and developed out of almost
+a level of paranoia and adversarial thinking.
+But we do want to build a system that is robust against any conceivable attack, even if it's
+highly unlikely.
+Yeah, yeah.
+And is that also what prompted you to more recently make the move from BitGo to CASA?
+Yeah, so the three years that I spent at BitGo, I was working on non-custodial multi-sig solutions
+where BitGo would have one out of three keys, but we were never actually fully custodying
+anyone's funds.
+As I was leaving, BitGo was starting to spool up a custody solution, which they're now also
+offering, which is, you know, a completely different system, actually.
+But I switched over to CASA.
+It was a very small pivot for me on the technical side because it's also a multi-sig, non-custodial
+type of solution.
+The main difference is that BitGo is specifically targeting enterprise customers, and at CASA,
+we're targeting individuals.
+So I felt that this was actually a personal problem that I had been dealing with the entire
+time I had been in Bitcoin, where I spend one to two days every year basically refreshing
+my cold storage setup, making sure that everything's up to date and is still usable.
+And if it takes me that long to do it, then I could very easily see how the vast majority
+of people would not bother to go to that extreme.
+And so I wanted to build a solution that was as robust against both attacks and accidental
+losses as the system that I had already set up for myself, but that was much more easy
+to use and that the average person could easily follow along with.
+So there were various options out there, guides like the Glacier protocol, but that is even
+more complicated than my own solution that I had set up.
+So we managed to build a very user-friendly solution that is easy to use because it's
+just a mobile app interface, but on the back end, we're leveraging a lot of the security
+features from hardware devices that are already out there on the market and making it very
+easy for people to visualize and update basically the health of their own vault setup with these
+multiple different hardware devices that are geographically distributed.
+Interesting.
+I mean, I think you can also make the case that solving for the end users or I guess
+the long tail of users is arguably a more difficult problem to solve as opposed to solving
+custody for large institutions who may have more resources behind them and are more sophisticated
+in nature.
+Yes.
+And it's hard to sell security.
+So BitGo, I think, made the right decision early on in targeting other businesses because
+these exchanges and payment processors that are probably custodying millions if not tens
+of millions of dollars worth of Bitcoin, they have a lot to lose and it's not actually
+their money.
+So they have an incentive to pay in order to have better security and not lose other
+people's money.
+Whereas when you're talking about the individual, the average individual does not really think
+that way.
+We're not really used to paying very much for security.
+You might have an alarm on your house or something, but in general, we're more used to paying
+for insurance, which will reimburse us after the fact.
+We don't really think about paying for security to prevent the bad things from happening in
+the first place.
+Right.
+Right.
+So I guess how for people who are listening to this episode and are not familiar with
+Casa, what is Casa?
+Sure.
+So at a very high level, our motto is to help improve personal sovereignty.
+That's a very broad mantra for us to sort of operate under.
+But the way that we're starting out approaching that is by helping people manage their private
+keys and helping people manage their full nodes and basically acting as fully validating
+entities on the Bitcoin network, because that also gives you the best security posture.
+So we have a couple of different products that we've released over the past few years,
+the first of which was our Keymaster product, and that is the Multisig Self-Custody Vault
+solution.
+We've got both a three-of-five multisig and a two-of-three multisig, several different
+tiers based upon the value that you are trying to protect and how much effort you are willing
+to go to, how distributed you want your keys to be, and how redundant against various loss
+and failure scenarios.
+And in fact, we just released about a 50-page PDF that is our Wealth Security Protocol that
+goes into all of the details of the decisions that we made around these different multisig
+tiers and the attacks and mitigations for those attacks that each of our products helps
+protect you against.
+Now the other thing that we released about a year ago was our Casa node, which is this
+plug and play Bitcoin and Lightning node.
+It's basically a Raspberry Pi platform with a lot of custom software that we've developed.
+And the idea is that you just plug it into your network and your power, and it's very
+easy to set up and deposit some Bitcoin onto, which will then be input into the Lightning
+node to create channels and allow you to send and receive payments on Lightning.
+Originally, this was only really accessible through your web browser when you were on
+your home network for security reasons.
+And then over the past few months, what we've done is create a few other pieces of software
+that make it possible for you to access your node from anywhere in the world securely over
+Tor.
+Those things are the Casa browser extension, and then more recently, the Sats app, which
+is another mobile app, which is very easy for you to connect to your node just by scanning
+a QR code and inputting your password.
+So that now you're able to send Lightning payments from anywhere globally to other people
+on the Lightning network or other people who have Sats app usernames.
+And you can do that all over Tor while still actually using your own node that is running
+back at your home or wherever you put it.
+So kind of what you can see is we're creating this ecosystem of products where we are helping
+users help themselves to be sovereign currently from a financial standpoint.
+But over the long term, we want to help people be sovereign from many different standpoints,
+including having full control over their own data, full control over their own digital
+identity, and really any other sort of decentralized and distributed protocols that come out that
+help empower people to take back the power from the trusted third parties and basically
+run their own services in a way that is censorship resistant.
+Right.
+There's a lot there.
+So I'd like to try to unpack it a bit.
+Maybe starting actually with one of the things you mentioned towards the end.
+I read through your wealth security protocol that you released recently.
+One of the things I really like about it and appreciate about it is, like you said, you
+basically walk people through your reasoning for making a bunch of decisions there.
+Why did you think it's important to share that?
+Because I think it's quite unique.
+And I personally really appreciated that.
+But I don't see many companies who release a 50-page PDF explaining why they made a bunch
+of different design, usability, security decisions.
+Curious what prompted that.
+Well, it's actually a natural result of the conversations that we've ended up having over
+the past couple of years.
+What we've found is that a lot of our high end users who have millions of dollars worth
+of Bitcoin that they want to keep secure and don't want to trust to third parties, these
+tend to be more sophisticated users.
+And they, on the whole, do not want to just blindly trust CASA that we have a good solution
+because of my reputation or anyone else's reputation who is working at CASA.
+We ended up having what we found to be a lot of very similar conversations with these new
+users during the sales process.
+These are the types of questions that would come up.
+They would basically want to know what happens if X happens?
+How do I recover from failure Z?
+And it just became a lot more efficient for us to formalize all of the questions and answers
+that we were seeing on a regular basis so that we could just give people this document
+rather than piecemeal having one-off conversations with people.
+And once again, it kind of goes back to what I said earlier, that it's very hard to sell
+security to people.
+This type of document helps people understand that we're not just claiming to be secure.
+We're actually, we're showing our proof of work that we have worked through all of these
+possible failure scenarios and we have built a solution that can mitigate against almost
+all of them.
+Now, the ultimate, I guess, problem with any self custody solution is that there always
+will be a path to failure where because the user is in control, they can make enough mistakes
+that they lose access to their funds.
+And really what our job is at CASA is to try to build guide rails within our software,
+within the processes that the actual wallet follows to try to prevent users from going
+off on any of the paths, the sort of decision trees that can lead to failure.
+But ultimately, we can't prevent someone from making enough mistakes if they're not following
+our guidance, if they're not following the software and the warnings that we're displaying
+to them.
+But we try to make it as bulletproof as possible.
+Right.
+One of the other things I really like about your approach, I know you've mentioned previously
+the emphasis that you put not just on security, but also on usability and trying to make it
+as intuitive as possible for users to start using CASA without necessarily having deep
+technical knowledge.
+Yes.
+I mean, the goal is really to make it as easy to use as any other mobile application.
+So we have a great team of designers and they have made it very easy for you to visualize
+your security basically all on one screen on the mobile app.
+And then you can dig into the different key sets and different devices that are helping
+secure your funds and you can perform health checks.
+You can even perform rotations of devices.
+If a device breaks, you just go buy another one off the shelf, plug it in and click through
+the wizard that we have in our software there.
+One of the unique things actually about CASA's Keymaster is that we have actually eliminated
+the need for the user to keep the backup seed phrases stored.
+And we actually found that this was very important to help better understand the security model
+because when a user sets up a new hardware device like a Trezor, a Ledger, a cold card,
+what have you, it gives you this 24 word seed phrase and says, write this down and keep
+it safe.
+And there's just an entire mountain of IT and security knowledge that is contained within
+that sentence that gets completely glossed over.
+And what we found is that when we were trying to reason about the security model, it became
+impossible for us to reason about the security model if we had no idea what was going on
+with these seed phrases.
+And so we figure if the user is writing down the seed phrase and then could be doing absolutely
+anything with it, they could be leaving it out in the open, they could put it somewhere
+where someone else sees it and throws it away because they think it's trash.
+It just became impossible for us to fully be confident in a multi-sig setup where you
+have basically the exposed private keys floating around who knows where.
+Right.
+It defeats the purpose of the whole product.
+Exactly.
+And we basically said to ourselves, if everyone agrees that users should not be managing private
+keys directly, I mean, that's why we have hardware devices, specialized hardware to
+do that, then why is it okay for us to just give the seed phrase in an unencrypted format
+to the user?
+Because that is all of the private keys right there on a piece of paper and it didn't really
+make sense to us.
+And so when we figured out that we could actually get rid of the need to store the seed phrases
+by having a more flexible system in the multi-sig setup where you can basically rotate out a
+lost device, that I think was one of the major advancements that we made just in the security
+model in general.
+Absolutely.
+I think that's really important.
+Actually one of our thesis is, you know, keep the can't really scale much more before we
+actually solve the private key issue, right?
+Like writing down a seed phrase or a private key or whatever it is and, you know, storing
+it at the safe or maybe not, it's not going to work.
+Not just because it feels very clunky and, you know, prone to hacking, but also because
+of what you said earlier and maybe even more likely, people just forget about it and won't
+know where they left it and then they just lose access to their funds.
+So on Keymaster specifically, so when you said earlier two to three and, you know, you
+talked about three to five, basically what that means, got me if I'm wrong, in the three
+to five case, you only need three out of the five keys that you get in order to unlock
+access to your funds, but each one of the keys on their own is basically worthless.
+And then you can rotate between them if you lost access to one of the keys.
+Correct.
+So in the three of five setup, you'll have one key that is on your mobile phone secured
+by the secure element that's in the hardware on your Android or iOS device.
+You will then have three hardware devices, you know, Trezor, Ledger, Cold Card, what
+have you, and those will be in geographically separated locations.
+And then the final key is held offline by CASA as a sort of extreme disaster recovery
+scenario.
+So in normal operation, if you lose your phone or you change phones or it breaks, or any
+of your other three hardware devices get lost, stolen, or stop functioning for any reason,
+then you can just go into the Keymaster app, click on that device and say, hey, I need
+to replace this, go buy a new one, and we will walk you through the process of basically
+sweeping the funds from the current set of keys and sending them to your new set of keys,
+which will be the same four out of five, but only one new key set.
+And so that gives users a level of flexibility where they can basically re-secure themselves
+without ever having to call up CASA or bother support.
+Now, if you lose two devices at the exact same time, then you get into a situation where
+you have to go through the CASA assisted recovery process and will need to do some additional
+authentication to make sure that you're not under duress and that, you know, nothing fishy
+is going on.
+And we set up some of the processes beforehand with the user of how long do we put a sort
+of a freeze on this process.
+It's usually three to five days, but it can be longer, whatever the user wants, before
+CASA will actually sign off on a recovery transaction with our key that we're keeping
+in cold storage.
+And so in general, this three of five setup seems to be incredibly robust against all
+of the factors that we outline in our paper.
+And we have ended up releasing the two of three multi-sig, which is not as robust, but
+it's simpler and we price it a lot lower where basically anyone who buys our gold level package
+for $300 a year will get that two of three setup along with the plug and play node and
+hardware device and probably a few other things.
+So we also have like a Faraday bag for you to keep your hardware device in.
+But the idea being there that, you know, we want to get people using our system and understanding
+how user-friendly it is in the hopes that, you know, over the long term, as Bitcoin continues
+to grow and become worth more, that people will find that they're very happy with their
+current setup and that if they get to the point where they are securing a much larger
+amount of value, then they may be interested in upgrading to the higher security, higher
+key set.
+Yeah, and how important is it to use different hardware wallets as part of this process?
+You mentioned, you know, ledger, tracer, so forth.
+Can I just use, you know, two or three different tracers or is your recommendation to diversify
+that as well to reduce this?
+Yeah, so the entire point of everything that we have set up is to eliminate single points
+of failure.
+We don't want CASA to be a single point of failure.
+We don't want any of these hardware device makers to be a single point of failure.
+We don't want Apple or Google or any of the phone makers to be a single point of failure.
+So that is why we recommend using a diverse set of manufacturers basically to prevent
+supply chain attacks because no one is actually going to go in and audit the hardware.
+I mean, that's an insane proposition that requires a level of resources that pretty
+much nobody is willing to go to the expenditure to do.
+And so if you figure that, hey, I'm spreading out my keys both geographically and digitally,
+you know, and across a number of different companies and different hardware and software,
+then the likelihood that enough of those different companies have all colluded or have all been
+exploited by the same actor and will be able to, you know, work in concert against me simultaneously,
+it becomes incredibly low.
+And that is really about the best guarantee that you can get in this space.
+You know, there's no 100% guarantees.
+It's all kind of about probability and thresholds for risk.
+Right, right.
+Makes sense.
+And then you talked about the assisted recovery in the unlikely case that you lose access
+to two devices pretty much at the same time.
+Can you expand a bit more about how that works?
+I mean, when I sign up, do I need to provide a lot of details about myself so that in the
+unlikely event that I do need to go through the assisted recovery process, you can verify
+that I am what I claim I am or how do you do that?
+Yes, this is where it gets interesting because of our privacy protection, where we're very
+keen on avoiding getting to the point where we do any sort of AML or KYC level identity
+verification.
+So it actually is customized for each user based upon what level of information they
+are comfortable with giving.
+So some people will give us a selfie and do a video call with us so that we can have that
+level of detail.
+But it is definitely not required that you give us your real name or even photo or anything
+else like that.
+If a customer is more privacy conscious and we have plenty who are, who basically give
+us a throwaway like proton mail email address that they created specifically for this purpose
+and they never interact with us using their real name, then we have other options where
+basically we can use other forms of authentication like recovery questions.
+We have a whole bank of questions that we've developed that are not your standard type
+of questions.
+They should be things that are not publicly known.
+You can also do other types of photo authentication where you take a photo of some object that
+is personal to you that you may have in your possession or in your house or whatever, but
+no one else would know that that is something that you would use for authentication purposes.
+So at the higher platinum and diamond tier levels where we have users that are securing
+millions of dollars, we have what is almost like a white glove concierge level of service
+where we are customizing a lot of things basically to suit each user and ultimately the final
+tier of customization and where it gets really complicated and this is something that we're
+still working on.
+But basically the next extension of the CASA well security protocol is the CASA inheritance
+protocol and that is another thing that a lot of users have talked to us about.
+They're interested in having a setup where they can be confident that it's not only robust
+against attack and robust against loss, but they also want to be confident that in the
+case that they pass suddenly that their errors will be able to access the funds.
+This is where it gets really customized and really complicated because everybody's personal
+family situation is different.
+People live in different jurisdictions that have different estate laws and so we've spent
+pretty much most of this year working on the inheritance protocol as well trying to come
+up with a general guide that is also customizable based upon each user's needs and we're currently
+in the sort of beta testing process of having some customers go through that and give us
+feedback.
+Yeah, I can imagine that's a whole new challenge in itself, inheritance and how do you solve
+for that?
+So it sounds like the system that you're offering is very flexible and customized to each user
+and their own needs.
+Definitely.
+One thing also I wanted to ask you about Keymaster is you talked about using your mobile device.
+What about desktop support and do you think that mobile is more secure inherently than
+desktop?
+Yeah, so it can get complicated to evaluate the security of any given device.
+In general, I would say that mobile devices are more secure than desktops and specifically
+we actually have a big issue with a lot of services that are browser-based.
+We've been researching how easy it is for malicious browser extensions to screw around
+with web-based services.
+But the problem with desktops is that they have a much larger attack surface.
+It's much easier to get malware and basically exploits that will affect your desktop.
+One of the most common ones that we've seen in the crypto space is actually the clipboard
+hijacker malware that will actually swap out crypto addresses that you copy and paste for
+addresses that belong to attackers.
+While it is possible to get malware on your phone, just the nature of the fact that the
+iOS and Android operating systems tend to sandbox the applications much better than
+what happens on Windows, for example, it does give you a much stronger security posture.
+In general, we find that developing for mobile platform is just easier to get a more consistent
+user experience.
+Got it.
+And then what's behind your decision to focus on Bitcoin and so far not to expand to support
+other tokens beyond that like Ethereum and so forth?
+Yeah, that's actually mostly based upon my experience that I had at BitGo where the last
+year that I worked at BitGo, we overhauled a lot of our infrastructure to make it more
+generic and make it easier to add in support for all kinds of other tokens and crypto assets.
+And personally, what I found, at least for me, was that we ended up adding a ton of complexity
+by adding all of these other assets, and it's really hard to justify the return on investment.
+Our infrastructure became an operational nightmare to manage.
+I think I wrote a few blog posts and gave a few presentations about how much more challenging
+I found Ethereum infrastructure to keep running compared to Bitcoin.
+And when you go in and you actually look at the value that is being stored and transacted
+on these other networks, I mean, it just falls off so quickly and there's such a long tail
+of assets that while sure, you could argue that we're losing out on some potential revenue,
+it's ultimately so much smaller relative to Bitcoin that the technical complexity that
+you end up adding, it's hard for me to justify.
+And when I look at how much progress we've made over the past couple of years, but still
+how much more work I would like for us to get done just on Bitcoin, it kind of pains
+me to think about how many things we would have to forgo adding support for on Bitcoin
+if we started adding other assets.
+That's really interesting.
+I could see that pretty much for every other crypto asset, but in the Ethereum case, I
+guess when you think about the ERC20 ecosystem and how many of these crypto projects are
+built on top of Ethereum, that's a really interesting decision.
+Well, there's also the security aspect when it comes to multisig.
+And I also have spoken about this, but there's an inherent problem with Ethereum because
+they don't have native multisig functionality.
+You actually have to run a smart contract that has multisig functionality that is built
+into the contract.
+And this is something that BitGo spent, I think, a year and a half developing a multisig
+smart contract and had it audited three or four times.
+And basically every audit kept finding problems that could have been catastrophic.
+And it seems to be a little bit better now.
+I think a lot of the standardization has fallen around the Gnosis multisig smart contract.
+I'm not sure if anyone else is using BitGo's multisig smart contract, but we saw multiple
+catastrophic failures with smart contracts in Ethereum because it is, I believe, deceptively
+easy to write smart contracts in Ethereum, but deceptively difficult and complicated
+to write secure smart contracts.
+So there were a few examples.
+I believe Parity, for example, had a multisig smart contract that basically got attacked
+and broken.
+And forget how many tens of millions of dollars were pretty much frozen forever as a result
+of one simple bug.
+And that's just the kind of security nightmares that keep me up at night.
+Yeah.
+Can you talk, Jameson, a bit about your nodes?
+And I guess the basic question is, why should an end user even run a node?
+What's behind this?
+Why is it important?
+And why one of your very first products?
+Yeah.
+And I've written a number of articles about this because it's a common question.
+People basically say, why should I run a node?
+It's not paying me anything like I would get paid if I was mining, for example.
+What is my incentive to run a node?
+And the incentive is actually quite clear.
+It is not a direct financial payment incentive, but rather it is a security posture incentive,
+where if you are running a full node and full is short for fully validating, then you are
+in the strongest security model that Bitcoin has to offer.
+And that is the model that is often referred to as trustless, but it is at the very least
+trust minimized because you are not trusting that anyone else on the network is being honest
+to you because you are going out and talking to peers on the network, you're asking them
+for data, and then you're validating the data that you receive.
+And if you receive invalid data, then you basically block the peer that sent you invalid
+data and you don't trust them to send you anything anymore.
+So why is this important?
+Well it kind of goes back to the whole decentralization and censorship resistance philosophy that
+the network was founded upon, which is that if you're connecting to a trusted third party
+to tell you the truth about your transactions and balances, then sure you might be a little
+bit better off if you're still maintaining your private keys, but you're once again recreating
+a sort of bank-like system where you're creating choke points where third parties could be
+lying to you.
+And why would we want to do that when we don't have to?
+Now obviously for a lot of people running a node seems like too much work or requires
+too much technical knowledge, but that's exactly why we created the CASA node is because we
+believe that it should be as simple as plugging something into your router and your electrical
+wall jack and then using other software to basically make use of the full node.
+So I often describe a full node as it kind of acts as a sentinel on your behalf.
+It is making sure that nobody is breaking the rules on the network.
+And it's doing this 24-7-365 and it's basically acting as your own personal auditor.
+And as long as you can keep that computer running, then you can be assured that no one
+is trying to defraud you, at least at the protocol level.
+And then what happens if for some reason I unplug the node?
+Maybe there's even, you know, I lost electricity in my house or something.
+Am I at any risk if temporarily I unplug the node?
+Not really.
+The biggest problem that comes into play with having your node go offline for an extended
+period of time is if you're running on the Lightning network, you could run into problems
+if your node is offline for more than several days at a time.
+And this is where we start getting into the area of research around what is being called
+watch towers, where you can have other nodes on the network essentially that are watching
+out for transactions that are trying to defraud you and basically stopping those from stealing
+your money if you go offline for a long period of time.
+But you know, that's a bit more complicated to get into and watch towers are still in
+the early days.
+There is watch tower software available, but it's not yet widespread use.
+Okay.
+And what's next for Kaza?
+So you see yourself, for instance, going beyond Raspberry Pi and like, what's your vision
+moving forward?
+Yes.
+So we want to do a lot more than just Bitcoin and Lightning, like I said, which is going
+to require faster, beefier hardware, though we're going to want to keep it all in a small
+form factor.
+You know, we don't want to have to ship out desktop sized computers to people.
+But you know, this hardware is continuing to improve.
+We're actually currently working on the next minor iteration in the hardware, which is
+just going to swap it out for the Raspberry Pi 4, which is already much faster than the
+three that the current Kasa node is based upon.
+And in fact, it's fast enough that we will no longer have to ship the blockchain precinct,
+which means you'll get the node and within one to two days of turning it on, it will
+have fully verified the entire history of the Bitcoin blockchain there at your house
+or wherever you put it.
+But looking further out, you know, to next year and beyond, we are most likely going
+to end up doing more customized hardware that is even more performant and hopefully will
+get us even greater savings of manufacturing at scale.
+This first device has been all off the shelf parts and hand assembled by us.
+And if we can continue to keep ramping up production and actually getting to at least
+some medium scale manufacturing level, then we can start reducing our costs a lot and
+be able to do more customized stuff.
+There's a lot of things that I would like to see, but I do hope that in a year or so
+we'll be able to put out a more customized board that is also going to have more customized
+case and a lot more processing power that we'll be able to run a variety of different
+services.
+We kind of anticipate having almost like an app store itself within the Kasa node of,
+do you want to run a like a data file storage, you know, distributed Dropbox type of setup?
+Or do you want to run your own BTC pay server for commerce purposes or who knows, you know,
+some people have even expressed interest in running their own email server, though I know
+from personal experience that that can be a nightmare.
+But you know, these are all the type of things that we're going to continue experimenting
+with.
+That's fascinating.
+Like you said, I think earlier, there's just so much ahead.
+So really curious to see what you do next.
+One more question on that just before we do want to ask you also a couple of questions
+about the market more broadly.
+But one more question about that, curious about your view on, you know, MPC technology
+and threshold cryptography.
+Have you looked into that, and do you see that as something that you're going to build
+on top of in the future?
+So you know, multi-party computation stuff.
+Are you specifically referring to like the setups that are being used for various ZK
+snarks?
+Yeah, exactly.
+Yeah.
+So the whole area of zero knowledge stuff seems to be moving really quickly right now.
+So it's definitely something that I'm keeping an eye on, though, you know, when it comes
+to security, you often don't want to implement the freshest, most cutting edge stuff.
+You actually want to implement the things that have been around for a number of years
+and have been attacked and attacked and, you know, withstood a ton of attacks.
+So this is the type of thing where, unfortunately, I have to say, you know, time will tell.
+Because kind of like I said earlier, there are no real guarantees.
+It's once again, one of those things where the longer something has withstood the test
+of time, the more confident that we are that there are no lingering major exploits out
+there.
+Yeah.
+Yeah, that makes sense.
+So we are focusing on the tried and tested, as I think many proponents of Bitcoin argue.
+Bitcoin has been around for over 10 years now and has been tested certainly to a certain
+degree more than any other crypto asset out there.
+So I can definitely see how that applies to security even more so.
+So kind of shifting gears a bit, I do, as I said, want to ask you a couple of questions
+about the market more broadly.
+What's your view on the status of the Lightning Network and the pace of scaling of the network
+so far?
+Well, it's definitely grown a lot over the past year.
+The kind of awkward thing is that as Lightning Network continues to be improved on the privacy
+side, it actually becomes more and more difficult for us to visualize the growth of the network.
+It's already impossible for us to actually know how many transactions happen on the network.
+And it's becoming more and more difficult for us to even know how many nodes or how
+many channels are on the network.
+And it's actually by design.
+So while it's hard to actually look at the network itself, we have to then kind of look
+at second order of effects of how many services are hooking into the network, how many digital
+different people are talking about using the network.
+And that is something where I think there has been some progress made.
+But one of the most important missing pieces that I think is going to have to happen for
+Lightning Network to really grow and become more usable is we need to get the exchanges
+onto the Lightning Network.
+At this point, I'm only really aware of I think Bitstamp has said that they're experimenting
+with it.
+But I don't think any of the major exchanges have actually added it yet as an option.
+And that's important just to, again, increase the volume and the number of transactions
+that are happening on top of Lightning?
+Well, and it's important from a liquidity standpoint.
+I wrote an article, I think about three years ago now, where I actually showed some simulations
+of sort of channel rebalancing and liquidity management, where I believe that it's incredibly
+important that people should be able to get inbound liquidity to their node via paying
+out of band in some other fashion, by which I mean, if you have a bunch of channels on
+your Lightning node and they get imbalanced and they can potentially become unusable for
+either sending or receiving, depending on which way the channel is imbalanced, then
+you want to somehow rebalance that channel to avoid having to close it and reopen it
+with on-chain transactions.
+And if you can reach out to some other liquidity provider on the network, one example right
+now would be BitRefill.
+I think they do something like this with Thor and some of their other Lightning services.
+But if you were able to just go to your exchange where you already have an account and basically
+send them money through a traditional financial network, then they could send you the money
+over Lightning to rebalance that.
+And this is, I believe, going to be one of the greatest challenges over the long term
+with the Lightning network.
+It's not going to be so much the security or the privacy engineering, but I think it's
+actually going to be the engineering of managing the liquidity and doing that in as automated
+a fashion as possible.
+One of the things that I've been saying quite a bit is that I don't believe that Lightning
+network is going to be able to be a mainstream thing as long as the user has to understand
+what channels are.
+I kind of look into the future and when I try to envision what the optimal Lightning
+wallet would look like, it would just be a Bitcoin wallet.
+You wouldn't even necessarily know that it's using Lightning.
+The software itself should be figuring out automatically whether to do something on chain
+or off chain and how to manage all the channels under the hood and how to do channel rebalancing
+and seek out liquidity providers and all of that stuff.
+So that's where I think a lot of the coding and a lot of the research is actually going
+to need to take place over the next few years.
+Right.
+All right.
+What do you say to critics who claim that the hub and spoke model of Lightning could
+actually generate quite a bit of centralization?
+That is actually something that I addressed in that article three years ago, which seems
+to be holding true, which is that we are going to see a kind of power law of liquidity providers
+where you would expect that the large enterprises like the exchanges and payment processors
+are going to have the largest presence on the Lightning network.
+And then you'll have some medium to small other retail businesses that will also have
+a decent amount of liquidity.
+And then you'll have all the individuals who are just interested in making the occasional
+payment, but they're not going to be receiving a ton of payments.
+And so this will create a graph that to some people looks highly centralized.
+But ultimately, the question is not, what does the network graph look like?
+The real question is, is it censorship resistant?
+And so if you had a hub and spoke model where there were only a handful of hubs and everyone
+had no real choice but to connect to those hubs, then you would have lost the censorship
+resistance there.
+But in Lightning network, that's not the case.
+You can connect to almost any other node on the network that is making itself publicly
+available.
+So you can always route around the hubs if they become bad actors.
+And this is one of the things where I don't think it's possible for me to prove that it's
+impossible for Lightning to turn into a hub and spoke network.
+But we can continue looking at the network graphs and see pretty clearly that it is not
+today.
+And I find it highly unlikely that it will turn into that.
+And I am actively fighting against that by making plug and play node hardware and software
+so that the individuals can be a part of this network mesh on their own.
+Right.
+That makes sense.
+And speaking of the market, curious about your views on, you know, we've recently seen
+Bakkt launch, much anticipated, I think.
+Any thoughts on that?
+How important is that to the ecosystem, to the crypto ecosystem overall?
+Maybe you see even a potential collaboration with CASA moving forward?
+So far, we've generally stayed away from any institutional stuff because once you get to
+a really large level and you start being regulated, we probably don't want to have anything to
+do with that.
+We want to remain a pure software provider.
+But I don't know.
+It's been so many years now with people talking about, you know, quote unquote, institutional
+interests coming into Bitcoin that I don't even really worry about it or think about
+it very much.
+Personally, I don't want like institutions to get into Bitcoin super early because I
+want the individuals to be able to get into Bitcoin super early and, you know, reap all
+of the benefits of that themselves.
+But you know, institutions are free to do as they please, at least within the confines
+of their regulatory framework.
+But it's not really something that I think is going to make or break Bitcoin itself.
+And I think if you just kind of look at what I've been working on and what I focus on,
+you know, I care more about the individuals.
+Right, right.
+So the end user, the individual who is learning about the space and wants to get involved.
+So last question before we end, Jameson, your emphasis, I guess, on personal privacy has
+been well documented.
+The New York Times ran an article about it earlier this year.
+One thing that really caught my eye was you mentioned that these days you're working remotely
+and don't really join meetings in person.
+And that's something that's really interesting to me because I always tend to think that
+there's a lot of value, just for my own experience building products, there's a lot of value
+to a team being at the same location.
+You know, oftentimes it just fosters innovation and casual conversations can lead to new ideas.
+I'm curious if you can share more about your experience working remotely and do you think
+it is better than, you know, being in person in the same location with the team?
+Or maybe there are multiple locations, but the idea of centralized locations, I guess,
+for teams.
+Right.
+So I've been working remotely for almost four years.
+I certainly don't miss commuting.
+From a team building standpoint, there is something important about having this natural
+background noise, like as people are collaborating and, you know, cross pollination, overhearing,
+you know, people talking about things that you may have not learned about otherwise.
+And actually something that we did at BICCO that I have also brought over to CASA is the
+idea that you can actually kind of simulate or recreate some of that by having a persistent
+video conference on in the background.
+So, you know, as people may want to just chat about one small thing or another, they can
+actually do it on the video conference and you still have the ability to overhear that.
+And if there's something interesting where you want to get clarification or you want
+to put your own input into, then you can actually do that over the video conference.
+Or if it's just getting annoying, you can mute it, which is not necessarily an option
+if you're actually in the office.
+Right.
+Interesting.
+So that's something I haven't, I don't think I've heard before.
+So basically like ongoing video conferencing rather than scheduling a video conference
+for a specific meeting.
+Exactly.
+Interesting.
+Yeah, because I find that scheduling meetings and all of that, that just, you know, it becomes
+so formal that sometimes you just have these casual conversations where, yeah, you didn't
+even necessarily think about some of these ideas before and then they just come up as
+you're having lunch or, you know, talking between meetings.
+But interesting.
+Well, thanks a lot, Jameson, for coming on the show.
+It really has been a pleasure talking with you.
+Thanks for having me.
+Thanks for listening.
+If you like this episode of The Blockchain BC and want to help us bring more awareness
+to the space, I'd really appreciate it if you can rate, review and subscribe to our
+podcast.
+It takes a few seconds and helps us get the world out.

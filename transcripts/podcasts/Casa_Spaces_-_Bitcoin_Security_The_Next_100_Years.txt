@@ -1,0 +1,732 @@
+Hello, everyone. Thank you for joining us. This is John with CASA, and we're excited
+for today's discussion on Bitcoin security the next hundred years. I'll quickly introduce
+our panel. We have Jameson Lopp, our co-founder and CTO, Ron Stoner, CASA's head of security,
+and our special guest, Dan Held from Kraken. Thank you very much, Dan, for joining us.
+So I thought I would kick off the discussion by talking about the absolute coldest of storage,
+cryopreservation. So imagine that the year is 2122. You're finally thawed out from your
+cryotube. Is your Bitcoin safe, or at least do you think your Bitcoin is safe? Take it
+away. Yeah, so I'll go ahead and introduce the topic. I think a lot of people have probably
+heard about cryopreservation because of Hal Finney. Hal Finney being one of the original
+cypherpunks and a good candidate for Satoshi. He signed up with a company called Alcor, which
+does cryopreservation. Now, what does cryo mean? Is it like the movies where they're
+like, you know, Star Wars where they're frozen like that? Or how does it work? Well, so the
+basic hypothesis is with cryopreservation, there's a hypothesis that we have the ability
+to cryopreserve an entire human, and at a later date, bring them back. Now, at first,
+that seems like sci fi, that seems impossible. But there's a couple reasons why it could
+work. One, it already works at smaller scales. So when we look at things like sperm and egg
+cryopreservation, that currently works. The problem is scaling up cryopreservation for
+larger organs and bodies. So for organs, they're starting to get close with animal organs on
+cryopreservation. And that's a pretty, you know, that's a pretty large organic object
+to cryopreserve and bring back no damage. And so we're edging towards that direction
+of it being possible for humans. And the basic bet is when you get cryopreserved, the chance
+of you coming back if you get buried in the ground is zero, and cryopreservation is greater
+than zero. So by no means am I saying that it will work or that it's guaranteed to work
+or that it's likely to work. You've got some shot at it working. And based on physics,
+it's plot, it's possible, it's not plausible, it's not highly likely, but it's possible.
+It's certainly possible to do it depending on how much damage has occurred. And so with
+cryopreservation, the basic fundamental tenet of that is that your consciousness must reside
+in your brain matter. And as long as the brain matter is preserved to such a high fidelity,
+and we don't know what high fidelity is required, but if it's preserved at a high enough fidelity,
+at some point in the future, we can undo some of the damage that was done to your body before
+you know what that caught led to your death, plus heal the damage from cryopreservation.
+So that's that's some of the basics. And that's the basic premise behind it. And when we look
+at storing wealth through time now, so if you get cryopreserved, you might be in there
+for a while. And so I think the exciting part of today isn't isn't necessarily spending
+a ton of time on if cryo will work or not. More of just assuming it might work and talking
+about the implications of that.
+Yeah, this is a topic that I'm only somewhat theoretically familiar with. Actually, I was
+at a Bitcoin meetup in Athens a number of years ago, where someone gave a talk about
+this topic. And I found that there was a lot of interesting game theory at play or, you
+know, potential security models or potential incentivization schemes that you could come
+up with. And of course, this is the type of thing that I spend all day thinking about
+is like, what is everything that can go wrong? And what can you possibly implement to try
+to safeguard against those things going wrong? And this is a particularly challenging problem
+space because, you know, generally, when we're we're thinking about security models, or wealth
+preservation, what and whatnot, you're only thinking about the present and in short to
+near term future and like what an attacker could do, given different levels of resources
+that they're willing to devote to an attack, but like one of the many, many reasons why
+this is a crazy type of thought experiment is that we're we're now trying if we're thinking
+about like Bitcoin key management over an indeterminate time period, we're trying to
+safeguard potentially against attackers who have an unlimited nearly amount of time to
+try to break down your security model and get to the funds themselves. So there's certainly
+a lot of things that can go wrong. And I've probably spent several days over the past
+week or two, thinking about this problem, and have yet to come up with anything full
+proof. But I think that, you know, kind of going back to what you said, like the whole
+problem that we're talking about, there's no guarantee that it works in the first place.
+So it's probably okay to have, you know, a good enough level of security, or perhaps
+even a variety of different storage schemes, to try to sort of distribute the potential
+failure so that no one thing is going to be catastrophic. So that if somehow you manage
+to thread the needle and come out alive in 1000 years, then there's a also a non zero
+chance that you might still have some wealth stored.
+Yeah, so there's a couple different. So the cryo preservation folks, obviously, are cryonauts.
+You know, they've been thinking about this as well for for quite some time. A lot of
+them aren't Bitcoiners, which I find bizarre, but you know, to each their own. And so the
+way that they've currently constructed it is that you set up a trust to oversee your
+body through time, which is really, really interesting, because there's a couple different
+tax implications as well, because technically, according to the IRS, you're dead. So it's
+technically a tax free tax free donation. Because when you're dead, you know, to be
+the recipient, you can't normally set up yourself yourself as the recipient of a trust after
+you're dead. But anyways, you set up a trust to oversee your body through time. So, you
+know, if the creation company went bankrupt, you could, your trust could facilitate the
+payment of moving your body to a new facility, all sorts of things like that, which is really
+interesting. And I was going to say that gets I was thinking the same thing. And that gets
+a little bit scary to me when I think about that, because I know that, you know, with
+debt, with mortgages, with a lot of financial instruments, they're bought and sold, you
+know, wholesale and mass for debt recovery and things of that nature. And when James
+and I were talking about this, I'm wondering if there's actually going to be a perceived
+value based off of who the tenant of that cryo storage unit is to say what's their perceived
+value when they thought, you know, are we dealing with somebody where they're they're
+holding potentially well amounts of money? And in that case, are you then becoming the
+asset or the NFT that's being traded based off your your rarity or perceived value?
+Yeah, I mean, there's there's a couple different components here. One, you've got like the
+trust that's set up through time, but that's obviously open a seizure by governments. You've
+also got issues, you know, as well, even with self custody, private key management. So here's
+the theoretical problem that the cryo folks have thought of. So let's say you memorize
+your backup, right? So you've got a 12 to 24 word seed, you've memorized that you're
+like, All right, well, you know, you could think about it two ways. One, you've got your
+normal trust set up to resurrect you or to incentivize your resurrection to where you
+get resurrected first in the future and oversee your body also. So let's say you have that
+set up and you've got your Bitcoin is kind of like your retirement account in your head.
+Well, there's two issues with that one is if anyone ever finds that out, in the future,
+if they're able to bring your your brain and body back, they're probably going to be able
+to parse through your memories and extract your private key, which is a pretty bad problem
+because that means they could technically just keep you you know, keep you in that cryo preserved
+state and slice your brain open, and just extract the information without ever cryo
+resurrecting you. Which means that you're still somewhat in the suspended state forever,
+or maybe they've introduced so much damage that you are technically dead now. And two,
+so one one case scenario is that, you know, they're malicious and that they get access
+to your brain and slice it open to extract the information to is a more it's more of
+a fun game theory where you actually have the mnemonic in your head, you have your backup
+in your head as a reward for successful resurrection. Which means that, you know, maybe we never
+do have the technology to like parse through brain like parse through your brain in a in
+that sort of state to extract information in in such a high fidelity that they'd be
+able to resurrect a mnemonic. But maybe they're like, you know what, we can still we can bring
+them back and Dan held on his body has a tag that says if you bring me back, I've got 10
+BTC in my head. And so the fidelity of the resurrection will have to be very, very high.
+Otherwise, the information in my brain will be lost, which makes me dead and also makes
+them lose their their incentive. So there's a really interesting game theory with that.
+It's the same problem for the uploader argument, you know, upload me to a metaverse, my mind,
+my soul, my being my consciousness. And it's the same thing where you would have no control,
+you wouldn't be able to control the thoughts that would be extracted. And in some instances,
+to take this journey, you are giving up control, you know, the saying today's memento mori,
+you have to die, remember, remember that you don't get to take anything with you. And you
+can do trust in the states. But generally, that's being transferred to another physical
+living entity. So when we're taking this journey, where we may be coming back, we're starting
+to approach kind of new challenges and security paradigms and systems that I haven't heard
+a lot of people in this space talk about, I've heard, you know, the longevity crowd,
+the anti aging crowd, there's a lot of that. But when people are starting to talk about
+will just freeze me or upload me or do do whatever, I'll be a robot, right? I'll replace
+all of my dying body parts with machinery and technology, I'll be a transhumanist. Well,
+what happens with all the exploits and everything that gets associated with that, and you still
+can't prevent certain things from happening, even if you are able to attain immortality
+or some level of robotic autonomy. The other things that I would challenge people to think
+about with this is, you know, there's a time where banks used to contact all of their customers
+and say, come into the office and we'll do a review of your account. And the purpose
+of that was to verify the customer but also upsell services. So just because you're frozen,
+this technology is going to keep advancing and there may end up being check ins from
+time to time or somebody needs to perform maintenance or updates on you to either refreeze
+you or to verify or to fix something that wasn't correct with the 1.0 iteration of the
+system. So I don't know that people are necessarily prepared for that either because if you have
+that perceived value and you're being woken up to be checked in on, how are those conversations
+going to go and are you prepared for that eventuality as opposed to the surviving 100
+or 1000 years and then being unfrozen for good. That may not be the option that's necessarily
+being presented to you when you wake up.
+Yeah, it seems to me like there's also probably a lot of human rights issues here. You already
+mentioned Dan, there is at least currently something of a tax loophole because you're
+legally dead. I'm wondering though, are you familiar with the Babaverse series? It actually
+exposed an interesting potential issue I think with digitization of consciousness and this
+long term cryopreservation stuff where it's a dystopian future in which basically the
+governments have passed laws that deemed that cryopreserve people were not citizens and
+didn't have human rights and they essentially became the property of the companies that
+owned them and these companies eventually monetized them by essentially turning them
+into AI that they then embedded in other devices and spaceships and stuff and so they essentially
+became slaves in a digital sense.
+There's all sorts of weird game theory stuff too where have you guys ever heard of Rocco's
+Basilisk where folks say if you don't help an AI become sentient then the AI might come
+back later and haunt you and so some people that are really freaked out with cryopreservation
+get really scared about it because they're like well what if a malicious AI takes these
+bodies and tortures you to some degree and brings you back and then just brings you back
+to torture you and I think my thoughts on that is why would a machine spend all that
+energy just to do something so silly like that? I don't think machines are exactly
+just motivated by such cold revenge that they go resurrect millions of humans just to torture
+them. I think that's very, very silly. But yeah, there's certainly some interesting
+things as well of like when it comes to portfolio construction how would you even go about constructing
+a portfolio? Let's say the government seizure of assets and wars didn't exist because those
+add a lot of variability to this and I know that's a lot of asset security through time
+but let's just say there wasn't. How do you even construct a portfolio that performs over
+that much time? I mean in a way do you need to have some active management of it? You
+know like for example if a quantum computer came out the Bitcoin protocol there are quantum
+proof algos out there and Bitcoin could upgrade to be secure against it. There's moments like
+that that happen over very long time horizons maybe 50 or 100 years and there actually is
+kind of a case for not active-active management in your portfolio but I think as Ron put it
+like somewhat of updating your systems. I mean I think Jameson you've had a great article
+on this like Bitrot. You know for example your hardware devices are not going to last
+that long. You definitely have to have it on metal perfectly. You know for me I like
+Crypto Tag and they're one of my sponsors but it's made out of titanium. You know crush
+proof almost fireproof and all these sort of things. But when you think about those
+hundred year thousand year durations it has to be on something lasting and you almost
+need some sort of active management. I mean there is by the way for those who are curious
+the way that your body is cryopreserved is actually very very low risk and passive which
+makes me very bullish on it. So the way that your body is kept cryopreserved is it actually
+doesn't get frozen like a cooling and so your body yeah your body glassifies in a way which
+is very interesting and if you look at cryopreserved organs you don't have like there's not frosts
+on them. And so this preserves some of that cellular damage that occurs with some of the
+cells rupturing due to the freezing process. Some of them still very they still get very
+much damaged but there's a degree of damage that occurs. But cryopreserved bodies are
+actually kept in vats of liquid nitrogen. Liquid nitrogen is plentiful cheap and very
+stable and you basically what they do is they put these bodies or if you just do neuro preservation
+just your head and these things called doers big big big aluminum containers. I think they're
+aluminum they might be steel or something but they put these bodies in these big metal
+containers and fill it up with liquid nitrogen. And liquid nitrogen evaporates at a pretty
+slow rate and so they basically fill these things up once every month or so. And so humans
+can walk away for an entire month and the bodies are fine. And you can actually build
+much more robust systems and Ralph Merkel guy behind Merkel trees actually grabbed lunch
+with them when I lived in the Bay Area. He's on the board of Alcor and Ralph Merkel talked
+about how to build cryopreservation cryopreservation for the masses like how do you make cryopreservation
+show so cheap that everyone in the world who passes away in the clinical sense could be
+cryopreserved and maybe resurrected at some point. And at scale using these techniques
+using very safe very long lasting techniques and these these facilities can last for forever
+if you had a and you can bypass of liquid nitrogen compression machines that takes the
+air and compresses liquid nitrogen out of it. And those are passive machines with no
+moving parts. You can actually have these facilities run without people there for potentially
+you know 50 to 100 years which is really cool. But that was a little bit of a little bit
+of a sidestep there. I'm going off on a tangent here talking about the process. But you know
+when you think about your money though you know how do you have your money on that autopilot
+or like and I think Bitcoin is the only one that's resilient enough for that. I would
+want to hodl for 100 years right. It's if you were to pick one now I think almost everyone
+would pick Bitcoin as if you would pick any asset out there real estate stocks bonds it's
+going to be Bitcoin. You know I still think there are some issues around some upgrades
+that might be needed given like a quantum computer or something else. But I'd be curious
+to hear your thoughts Jamison on stuff like that like Bitcoin protocol upgrades that might
+impact your backup or private key management for that long.
+Yeah this is yet another one of the many challenges of talking about sort of far future looking
+storage because you know we're talking about a protocol that's only 13 years old. And while
+the protocol and the community and the ecosystem around it over the past decade I think it
+has become clear what the principles are that are held most widely and most strongly and
+are therefore most likely to be retained for the far future. You know these things like
+having forward compatibility and not making changes that that basically break people's
+wallets or that would make their money unspendable for any reason. You know a lot of very thoughtful
+engineering and design goes into keeping these principles as we make changes to the protocol
+because you know it is software it is a kind of a living document if you will really a
+new form of communications and language just for money itself. We can certainly you know
+hope and that would be a foundational principle I think of storing your wealth in Bitcoin
+for an indeterminate period of time. For at least for the quantum computing stuff I think
+one simple thing you would want to make sure you do is not reuse any Bitcoin addresses.
+As long as you haven't ever spent from the funds that you have in cold storage then those
+public keys should not be accessible they haven't been put out on the blockchain therefore
+they're actually protected by several other layers of cryptography that make even a quantum
+computer with sufficient qubits would be unable to brute force the private key because it
+wouldn't even have the public key in the first place. But I think it all comes back to this
+issue of I guess you could call it active management but at least having some sort of
+guardianship that is able to make small tweaks and the thing that really comes to mind for
+me from some of the multi-generational wealth management books that I have read if you look
+at case studies of some of the longest running wealth management entities these tend to be
+families I think a number of them are like Japanese and Asian origin the ones that have
+been successfully running for over 500 years many many generations. A component to that
+is actually family and raising your descendants with a set of principles that can guide you
+all as a family unit and continue to maintain a successful posture from one generation to
+another. If you don't do that then pretty much all multi-generational wealth management
+experts will tell you that your family will lose all of its wealth within one or two generations.
+Jameson and Dan are kind of getting to the same summation that I came to is that if you're
+looking for you know anti-aging anti-death longevity either through any of the methods
+mentioned you do have to put some degree of trust or custodianship into another person
+and they need to do things like the protocol changes the updates security vulnerabilities
+if there's major consensus changes with forks or maybe it's not backwards compatible for
+whatever unforeseen reason hopefully that doesn't ever occur there's a lot of things
+that you know can potentially go wrong that we don't see today that you need to really
+encompass in this strategy for a hundred or a thousand years. Dan mentioned metal and
+that's great but are you going to know where that's physically located when they wake you
+up in a hundred years is that location still there is the fire safe still there did the
+building burn down or was it bombed in a war right we've seen some of that stuff today
+in different parts of the world that when you're asleep and you're you're frozen you
+don't have control or awareness of a lot of that and what I would say to people is Jameson
+I think if you're talking generational wealth and multi-generational there's an incentive
+for your family to kind of keep that going but if you're if you don't have that multi-generational
+wealth and you've put that degree of trust into somebody or into a family member that
+has no connection with you what stops them from taking that wealth or plugging you or
+deceiving you there's a lot that can really go wrong and in that instance if that's your
+concern and you're worried you know we have inheritance today that's as best as we can
+we can get as these inheritances and these trusts we can pass it on we can ensure it's
+allocated for but this is the new problem is if we want to keep it and we want to come
+back you know there's no good system for this there's no product and as Dan said we're still
+fixing the technology and getting to the point where we can prove that that's doable and
+in a state where we can remember those things those brain wallets in these weird security
+games that people play with themselves to try to try to protect stuff but we have to
+get there first and until we do I think we are really highlighting some of these uncomfortable
+decisions and thoughts that people need to have when they're thinking about this related
+to all of this I was wondering Dan if you've ever heard of the domino of love strategy
+I have not what is it it's really related to this multi-generational stuff but it has
+to do with actually incentivizing your resurrection and the whole idea is this kind of goes back
+to what I was talking about sort of familial principles is that one way to try to incentivize
+your resurrection is to build a belief and value system with your family and your descendants
+that they should also be cry or preserved because you know there is from a technical
+and scientific standpoint we know this is a last in first out problem where the people
+actually who are preserved last like furthest in the future will actually be the first to
+be revived because their bodies will be in better condition and won't require as much
+advanced technology to revive them so you actually have this sort of reversal domino
+effect where you want the your your descendants furthest in the future to be incentivized
+to work to to revive their parents and then once they are revived the technology for revival
+keeps improving you know they will because hopefully they love and miss their own parents
+they will then do the same thing and this sort of creates a domino effect a chain if
+you will of course there's a number of assumptions at play here but I think it's just an interesting
+game theory yeah so I'll kind of go off on my my final rant here where I've thought about
+these sort of structures for a while one you know when you think about the facilities that
+you would store these in like so I would imagine a company let's call the company stasis so
+stasis is the biggest cryo preservation company in the world right and let's say stasis commands
+like a massive market share like 90 percent market share so stasis would probably create
+a strata of different storage techniques you know for example it could be stored in an
+old nuclear silo with passive technologies to where they're like look you know if there
+was an incident it'd be 20 years until someone would need to go check on it they'd have active
+monitoring and it could withstand a direct direct hit from a nuclear weapon you would
+probably want to have the bodies mixed and what do I mean by that you'd want to mix it
+based on country race language religion everything else that way you would minimize your terrorist
+risk you know for example maybe you you mix presidents in with normal bodies and everything
+else to where you wouldn't have a circumstance where there's a concentrated group of individuals
+that could be targeted after they get cryo-preserved you know to the LIFO you know last in first
+out methodology it's definitely to be LIFO where the late the last technologies to be
+created a cryo-preserved people will be the best ones and those people would be resurrected
+first because it's the quality of their cryo preservation is so pristine you know when
+I think through you know when I think through how you could incentivize society or your
+family to do this you know the trust structures actually lead to something very very cool
+and exotic so let's say let's say stasis has an agreement with their collective cryo-preserved
+humans and let's say they hit like a billion humans right and stasis is overseeing all
+of the trusts through time now the trust are held in different multi-sig arrangements and
+everything else to where stasis can't run away with the money or do something malicious
+with it but they do have a good amount of control over the trusts and they have the
+ability to move funds given that certain parameters are met for example the technology becomes
+available to resurrect someone what's really cool is if if stasis decides to publicize
+the aggregate amount of value being held in the trusts to resurrect certain types of individuals
+so as an individual who's cryo-preserved you can choose hey when the technique has like
+an 80% success rate bring me back or 90% or 99% or you know because if you're already
+cryo-preserved who cares if you wait 10 more years to make sure the process is working
+right because it's the time difference for you is the same and so you can specify you
+know when you would like to be resurrected or like to what degree of quality would you
+want to be resurrected in if the technique is is x x you know works x percentage of the
+time you can you can also create things that are really interesting too where you can give
+free cryo-preservations to people given that they're test dummies where you're like look
+you're going to be buried in the ground and you have zero percent chance of coming back
+so we'll do your cryo-preservation for free under the stipulation that we get to experiment
+with the resurrection techniques on you but when you look at you know the long-term incentivization
+model the assets held by a billion people over time are compounding with no withdrawals
+right so let's say this company stasis has a billion people in cryo-preservation and
+the app you know and they've got you know 30 trillion or 50 trillion dollars dollar
+equivalent worth of value stored and they can go basically build an x-prize for cryo-preservation
+resurrection where they're like look there's a hundred billion dollars sitting on our customers
+accounts to resurrect if there's like an 80 percent chance of it working and so that's
+an extremely strong incentive and that incentive compounds over time because there are no withdrawals
+from this fund this becomes the biggest fund in the entire world and the fund incentivizes
+permanent life or everlasting life and so basically the fund compounds until the incentive
+is so great that humans deploy enough capital to go solve the problem and receive the x-prize
+award essentially.
+Amazing indeed though of course my pessimistic and adversarial thinking takes me to a worst
+case scenario of you know what if we end up with all the bitcoin ogs cryo-preserved and
+due to the you know deflationary aspects of the currency it actually turns into an issue
+where you know these days people are going to be complaining about like the top one percent
+owning like 50 60 70 percent of all assets well what if it turns into like the top point
+one percent of all assets of actually people who are even no longer alive own 90 percent
+of all of the wealth that could also create some really perverse game theory of people
+wanting to then you know destroy those cryo-preserved humans and basically you know destroy a large
+portion of the money supply because it would enrich everyone yeah that's that's why you
+mix them with their parents and then keep the location and then you keep the locations
+of their parents semi-secret where you're like look if you want to go seize the wealth
+of these people that violates your parents clause and your parents bodies will be destroyed
+so you know if we discover that this you know you could the game you become a company of
+that size becomes bigger than the Dutch East Indies company becomes bigger than all the
+governments in the world at a certain level because then it becomes it becomes involved
+in everything and and cryo-preservation won't be a wealthy person's thing at all cryo-preservation
+at scale as described by Ralph Merkel and as specked out by him he has got a great article
+on this in back of the envelope math with today's technology you can cryo-preserve every
+person on earth and it would only cost a half a penny a year to keep their bodies cryo-preserved
+so cryo-preservation won't be a wealthy person's thing it'll be a standard operating procedure
+at some point in time when it's like hey you know we've been bringing you know this is
+the logical step forward I mean it is the logical step to do right you have a zero percent
+chance of coming back if you get buried you've got a greater than zero percent chance of
+coming back if you're cryo-preserved and and within the realm of physics it's definitely
+possible that it could work but yeah I think that you become so massive and so intertwined
+with everything that the negative game theories yes could exist but there's not one facility
+there's thousands of facilities across the world and they're mixed with all sorts of
+peoples and nationalities and everything else and you know you have some pretty strong you
+know game theory and incentives that could combat that where you're like you know you
+could destroy your family's legacy or forfeit their trust if you were to act negatively
+against the process but yeah yeah no they could definitely go south though I mean there's
+a there's a most ways it will go wrong let's put it that way I'm not I'm not that much
+of an optimist but I still think there's a good chance it could work there's no good
+multi-signature system for the living and the dead to coexist yet but I imagine there
+will be at some point and I hope CASA develops it and guys appreciate you having me I've
+got I only had 30 minutes today but this is a fascinating topic as you guys could tell
+I kind of geeked out on this a lot of people get weirded out by it it's a very strange
+there's a lot of like different dimensions to this about consciousness and choir preservation
+ethics and morals and 30 minutes definitely wasn't enough time to cover it but maybe we
+do v2 some other time but I appreciate you all having me and thanks for thanks for having
+me on thanks for joining thanks thank you Dan so we'll continue the discussion a little
+bit so something that we haven't really covered yet is the prospect of time locking Jamison
+or Ron would you be able to explain whether this is a viable strategy yeah you know time
+locking is actually something that comes up pretty frequently not even you know with regard
+to this afterlife issue but we have people who ask you know how can I time lock my funds
+just to make sure that a I don't do something stupid like panic cell or be that you know
+even if I am somehow being coerced that there's absolutely nothing that I can do or anyone
+can do because the funds are they are you know literally locked by the protocol there
+there is no one in the entire world who has keys that can possibly move them until a certain
+point in time and you know we've been we've been kind of pushing back against implementing
+time locks for a while because it creates a lot of issues both with recovering your
+wallets because now you're putting non-deterministic data into your locking scripts which is going
+to break your deterministic you know seed based backups and secondly because if you
+if you really think about the the game theory of what happens to time locked funds if an
+attacker gets your private keys then it never ends well and the reason why I say that is
+because while the time lock will successfully prevent an attacker who gets your keys from
+spending the funds until that point in time once that time arrives what's going to happen
+is depending on who has the keys you know perhaps the attacker has a copy and you still
+have a copy then you enter into this race to the bottom where essentially you would
+both be looking to broadcast transactions and probably doing replace by fee on those
+transactions to incentivize miners to confirm a transaction that basically sends all the
+funds to a new address that only you own well you know what's going to happen the attacker
+is going to be happy with getting absolutely any amount of that money and so I would expect
+that you know both you and the attacker would be continually replacing the transactions
+with higher and higher fees trying to bribe the miners and of course lower and lower amounts
+of the actual funds eventually going to yourself so even even I think if you did end up getting
+your funds back it would only be a tiny portion if anything because of the sort of race to
+the bottom game theory that results the other concern I would have with that we did a paper
+fools post from the cause of law the one on blog.keys.casa.casa centurion and it was a
+product a hundred-year multi-sig time lock solution so that when you're in cryo your
+family can't get access to your keys that's exactly you know what's going to happen I
+think there's way too many situations and scenarios that when you wake up you may not
+be have to deal with the one I would be immediately concerned about is what jurisdiction am I
+in what is their local laws and what is their local tax policy because if I've been frozen
+for quite some time or I've locked my keys for quite some time I don't know what the
+lay of the land or what that situation looks like when I come out of it on the other side
+and as Jamison said I might be able to recoup some but who's to say you know we haven't
+seen some massive crypto tax or you know things haven't gone wrong in that case hopefully
+not I'm hoping for the inverse but these are the questions I want to ask myself that people
+worry about today and I don't think they extend that time frame out a hundred years or a thousand
+years and say well these are the same concerns I have what does it look like now and it's
+very very hard to answer those questions so by time locking all you're doing is guaranteeing
+that you're setting yourself up to handle that situation and figure out what you need
+to do when the ship goes with the fan it's also a question of flexibility right so we
+kept harping on this issue of having guardians or managers who are able to stay apprised
+of the situation with the ecosystem or the world at large and if needed make adjustments
+when you're time locking let's say you're time locking multi-signature setup this actually
+prevents you from making changes to that key set and so one of the very valuable features
+that we have in CASA is the ability to rotate out one of your keys you know if for any reason
+you believe that one of those keys has become compromised we make it very easy for you to
+replace it with a different one but if you think about it if you've put your your funds
+into this super cold storage that's time locked then you can't even make those type of adjustments
+you can't manipulate the properties of the key set and and so in a way it actually makes
+your robust distributed key set somewhat more brittle because if attackers start chipping
+away at the pieces of your key set you know they now have a really long period of time
+in which to slowly compromise your key set one key at a time meanwhile you're not able
+to do anything about it and you're not able to think of it as kind of like fainting away
+you know parrying the attack if you will by replacing keys with new ones that you know
+are not compromised thank you the next question i have is about the digitization of consciousness
+if you were going to upload your consciousness say in perpetuity and you were going to embark
+on this right now how would you go about it are we talking about a smart contract platform
+or some sort of complex AI i think if i had to do it today i would just want a one-to-one
+copy when you get into forensics and data there's some differences between file types
+and metadata and was it a file level backup or a block level backup and that's all just
+in its difference on how the data is being stored on the back end i would want to get
+as close to like as a one-to-one raw data block level backup of my memory and my consciousness
+as i could but the only way i would go doing that is if i had some sort of encryption or
+control where somebody else could maintain that somebody i trust or somebody in my family
+the only reason is that i do know things in my head i do know the locations of seed phrases
+and items and things that were very sensitive so if i'm uploading my conscious one-to-one
+and it's in clear text what stops you know that theoretical company from going through
+their backups or their files and saying let's see what's in ron's head or what ron experienced
+in his life because i'm board service tech and you know it's late at night we see that
+people that happens with your credit card bills with cable bills people of all industries
+go snooping sometimes so i would want to make sure that i retain some degree of control
+otherwise i think i'm not moving my conscious forward sometimes the best move is to not
+make a move and if i'm not confident in that technology where i'm not confident they're
+going to be able to bring me back and recover my funds i think at that point i'm going to
+have to seek control and hope that somebody else in my family or my lineage is ready to
+enjoy that yeah i mean the problem right now is that we don't really understand the brain
+that well we don't really understand what makes you you uh we don't know what the exact
+data structures are required in order to perfectly recreate your consciousness what we do know
+is that you're simply mapping your neural pathways is not sufficient that there's there's
+far more to it that really goes down to the probably molecular if not atomic level and
+so like this is why people are currently using the same substrate to preserve the data and
+by substrate i mean your physical brain is because uh you know whatever the level of complexity is
+in your physical brain that needs to be uh replicated or reproduced or simulated somehow
+digitally uh we aren't at that point yet we're still missing pieces of the puzzle and you know
+this is the hope is that if you cry or preserve yourself well enough that hopefully there has
+not been data loss or corruption of that substrate but who knows i mean maybe maybe it's uh such
+that as soon as you die even if you get cry or preserved within a day or within a few hours
+maybe there has already been sufficient corruption of that substrate you know we won't really know
+the answer to that problem i think until we're at the point that we can actually uh read the data
+and then recreate the consciousness but that is it's that's certainly the bet is that if you do
+it fast enough and well enough that hopefully there is a a period of time shortly after your
+your legal death that you're still able to your snapshot that data thank you um at this point
+i'm going to open it up to q and a but uh while we get some requests in the queue i'm going to
+um throw up one question so jamison you've been working on this project of getting old versions
+of bitcoin core to sync from scratch um from all of your research do you think that there is a way
+to run a node forever well
+this is where this the research gets kind of complicated um and and also it turns into a better
+a philosophical question of like whether or not bitcoin has ever hard forked and whether it's
+always been forward compatible is that what we found is that for a a number of the really early
+versions of bitcoin core basically the 0.7 and earlier um they had an issue with the type of
+database that was being used by the node and these versions of bitcoin core never ran into issues
+during the periods during which people were actually running the versions however now you
+know 10 years later we find that due to the increased data volumes and complexity of the
+blockchain and and all of the database operations that end up happening in the node the node is
+actually grind to a halt because there are some sort of default limits on the database operations
+so could or is it likely that something like that will happen again uh you know 10 20 30 years from
+now i think the answer is yes you know this is a reason why software needs to be maintained
+in perpetuity is because the world is a complicated place and and even though your bitcoin core
+bitcoin core uh developers have done a very good job of removing as many dependencies as possible
+from the software there's there's still other libraries that that's using and there's things
+that happen you know in the world at completely other layers um basically affecting you know
+computer science and cryptography and security best practices in general that make it such that
+if you are not continually maintaining and applying security patches and updates you know
+unmaintained software tends to become exploitable and you know this is even basically true at the
+level of math and your cryptography in general is that over long periods of time cryptographic
+functions end up becoming weaker and vulnerable because our understanding of cryptography
+improves and this is just the name of the game of security in general it's it's a never-ending war
+so you know while you'll probably be able to run a node for many many years it's it's also probably
+only a matter of time before that node itself becomes vulnerable in some way just because
+our understanding of of the space and the code has revealed vulnerabilities that were there
+all along i think it won't be uh if bitcoin protocol itself it fails i think it'll be all
+the associated infrastructure or hosting capabilities or dns or tls um it's very hard
+to keep servers going and and sometimes the servers at the most up time are like the laptops that's
+on top of somebody's closet somewhere that they haven't touched in 15 years the ones in the data
+center that have the drive recursion and dual power supplies and redundant power uplinks those
+are a lot of times where you see the failures which is why they have the five nines of service
+up time and slas to show you who's actually doing it right and who's not so like my concern would
+not necessarily be the code updates because it's very easy to automate pulling down code bases and
+doing database migrations but i think what's very hard is how do you how do you replace a failed
+piece of hardware how do you fix a cloud service that goes out of business how do you architect
+for those types of things so i'm going to go the inverse to say i don't think you can ever run a
+node forever i think you always are going to need some maintenance or some administration or a touch
+point being able to keep the ecosystem going and there's nothing wrong with that it just ensures
+we're doing it correctly thank you um the last cloud bender i added you to the stage you have
+a question for us yes sir thank you very much for this uh space i read a blog from j mason about
+you know retention of keys and the best practices it's a very good blog by the way
+so question is about sskr which is also sometimes referred to as shamir shards the question is how
+do you recommend preserving keys the private keys 24 words or 12 words for a really long period of
+time by just putting the 24 word directly on a steel or titanium or do you recommend sskr and if
+so how do you then preserve these shards and do you also put these three shards or more shards in
+three different pieces of steel or titanium what's the recommended approach yeah this gets pretty
+complicated right um i i would say i have not recommended sskr to anyone um it's it's still it's
+fairly technical um i think that something like seedzor is actually a lot more straightforward
+for non-technical people to use and it's also the nice thing about uh seedzor is that it's
+it's essentially using seed phrases uh kind of on top of each other it gives you this level of
+plausible deniability where each piece of it looks like a completely valid seed phrase in and of
+itself and as a result it's also very easy for you to then go ahead and be able to reuse any of these
+steel or titanium uh plates out there uh because you're still using the bip 39 word list so um i
+think one of the things that i mentioned in that seed phrase backup article is that you know if you
+are using seeds or the the default is basically a two of two backup um i was told later on that
+it's possible to do others it just it gets more complicated and i think uh leads to problems where
+the average person might shoot themselves in the foot so i would think the the user-friendly less
+technical good option would basically to have multiple pairs of these uh seeds or plates and
+then distribute them around in many different places so that you know none of them are a single
+point of failure and uh to add to that i think distributing them around that's different
+connotations for the the physical world versus the uh ethereal world and what i mean by that is i made
+the joke a little bit earlier about the life and death multi-signature product but it's the same
+thing with seed doors where if i was going to upload or we're talking a thousand years that may
+be something where my estate or the executor or the guardian of my uh cryo tube or whatever i'm
+in at that point um you know has one piece of it and i have the other piece of my head and that's
+the contingency is we need to bring ron back successfully so that we can get his part of the
+seed door and then he can unlock the wallet and do the final step something like that would give me
+a little bit more degree i think of comfortability than knowing that i had everything in one seed or
+somebody else had full control over it while i was in long-term storage
+thank you um frank i added you to the stage do you have a question for the panel
+hi thanks for inviting me out jimson and um yeah i just i'm just going back to the cryotherapy
+discussion that you had not so long ago um how was it would it be possible i know you kind of talked
+about the the brain and memory um but if it was possible to in the futures stand each kind of
+nanosegment of the brain would it be possible for a company to be able to identify memory of that
+person who was cryogenetically frozen and then find out perhaps where they have their seed phrase
+hidden or where it might be stored yeah yeah absolutely you know i don't i don't see why not
+you know i think this is one of the many many reasons uh that i landed on of why it's very
+difficult to come up with a self-custody solution that works when you're dead and uh you know cryo
+preserved uh the the way that essentially i ended up thinking of it is when you're cryo preserved
+you are essentially a prisoner um you know you are you are in someone else's custody they have
+all of the time and resources to do whatever they want with you and one of the the many problems
+here is that you you don't know whether or not they'll be able to scan your brain and i think
+you have to assume that they will because eventually if the technology gets to the point
+where you can ever be resuscitated then they would have to be able to you know scan everything and be
+able to understand you know what makes you you what makes this memory here and so anything that
+you're you're keeping as a a secret in your mind whether it's a seed phrase that you've directly
+memorized or even if if you've set up essentially a treasure hunt that you know you've distributed
+your metal plates in these different locations you know that could also be retrieved by an attacker
+and then they could leisurely take their time going around uh scoping out all these locations
+and figuring out you know how to get the different pieces of um your your keys and wallet back
+together so you know that's one of the reasons why it seems like it's better to to use some sort of
+external solution whether it's you know whether it's a legal framework based trust or or a
+distributed multi-sig that is is basically handled by other people your your heirs and descendants
+and and and essentially you know something that is a bit more flexible so that they can also
+make changes over time if needed but yeah this is a very complicated uh type of of model to to think
+about and there's a lot of unknowns but i think i've i've written down and identified at least like
+a dozen things that could go wrong and i don't see any one of these things that could go wrong
+and i don't see any one straightforward solution that will guard against every possible thing that
+can go wrong it hurts when when you get scammed or when i've seen people get rug pulled on various
+things that are out in the industry today but i can't imagine the hurt and the pain when you get
+unfrozen after 100 years and realize you were scammed or run pulled that's really got to stink
+yeah i think um one way that i've heard it described is um you want to ensure that if you wake up in a
+thousand years you're a rich tourist not a uh a poor um person who's completely out of place
+uh because one of the things that we haven't talked about is that if you okay so we're basically
+talking about time travel but we're not talking about uh time travel back in time we're talking
+about time traveling to a point in time potentially so far in the future that almost everything about
+society has probably changed so if you wake up in a future a thousand years from now it's going to
+be similar to if someone in medieval times got prior preserved and woke up today they will have
+communications issues they will have cultural issues they'll probably have a lot of beliefs
+that will be considered you know savage or backwards or outdated or whatever and they
+uh and they probably won't have any skills that will actually be monetizable other than perhaps
+the fact that they're an oddity and could be some sort of you know sideshow attraction so if you if
+you wake up a thousand years in the future and you're destitute you're going to have some major
+major hurdles to overcome it'll it'll be you know i think far worse than what you know someone who
+immigrates to a new country today will have to deal with thank you um crypto magnet i added you
+to the stage do you have a question for the panel yeah i was uh i'm one of the coordinators for the
+demoine bitcoin and blockchain uh network meetup group and i was wondering if any of the speakers
+here would be interested in giving a presentation over um over zoom for us we had jamison we had
+jamison lopp a couple years ago he was outstanding and i appreciate this conversation you guys are
+having on here thank you um yeah if you'll send us a dm and we can uh we can chat um okay um i'll
+keep the discussion moving just for the sake of everybody here no problem um ignacio i i had to
+do the stage do you have a question for the panel hello everybody thanks for the space
+i don't have any question right now um i was interested in the applications that could be
+built around bitcoin and i was wondering if ethereum or other smart contracts what in your
+opinion is the the most areas with most potential thank you are you talking about within the the
+context of long-term wealth security over the next hundred years yes the security of the ecosystem
+built around bitcoin such as lightning network smart contracts ethereum and so on
+yeah you know there's very different approaches from these different networks and i think it's
+not controversial to say that bitcoin as a an ecosystem uh is a lot more conservative about
+changes that it makes it tends to be more focused on security rather than functionality whereas
+most of the what would be considered more feature rich smart contracting systems seem to be focused
+on making changes at a faster pace you know evolving adding more functionality um and
+that really always it leads you to question you know what is the long-term viability or how long
+will they be able to do that now on one hand it means those systems are more flexible and they
+can respond to certain threats faster you know there's a number of occasions throughout the
+ethereum history where various vulnerabilities or like denial of service issues were discovered
+and they made fairly fast changes that were you know hard forks and basically not forward compatible
+changes and you know that allowed the system to continue working and being usable but you know
+when you're using a system for your super long-term storage where you don't necessarily know what
+the next time is that you're going to be able to spend the funds i think that's when you want to
+prioritize the thing that is is more conservative but you know it's really hard to quantify um you
+know it's hard even to talk about this type of stuff with regard to bitcoin because we have
+a whole 13 years of history and we're talking about problems on a time scale of hundreds if not
+a thousand plus years so you know this is all very speculative and uh there's no way for me to
+to really give a sort of quantitative weighting uh it's all very hand-waving and relative
+anybody i think you asked that question too is going to give you a different opinion depending
+if they're a tribalist the maximalist the trick queen or what their experiences have been
+you know if they were hacked if they lost their money they're going to lose their money
+you know if they were hacked if they lost money there's a lot of emotion that goes into this and
+what i would say to anybody that's new to this stuff or is looking into it is you know read
+the white papers read the use cases understand why there's different types of coins out there
+why there's different forks why there's different versions of bitcoin even um even though you know
+we should only really be recognizing one of them um and what i mean by that is everybody's use
+case is different so i've i've had my own opinions and i've talked to people in this industry that
+like a coin that i have no interest in because it has different settlement time and that's what's
+important to them or they use it because it's more privacy focused right it's got some privacy
+shielding features baked into it that may not be in other coins or protocols or there's drafts or
+proposals to implement that stuff but maybe it's not fully integrated on chain a versus chain b
+so i've heard people actually give me some convincing arguments about why they like certain
+technology and coins and it really comes down to the use case uh some people are proof of work
+versus proof of stake fans other people like settlement times or low transaction fees and i
+don't i'm not going to tell you that you're wrong for reading into one or one or the other everybody
+should do their research and come to their own conclusions and if somebody that you know has
+worked for various companies in this industry and has gone back and forth there's really only one or
+two coins that i keep coming back to and there's a reason i keep coming back to them so i will leave
+it at that thank you nesky i added you to the stage do you have a question for us
+yeah absolutely i uh good to say everyone no so yeah question so a lot of my patients are excited
+about beep 119 cltv and some are actually concerned so uh james and ronaldick was wondering
+if you could just give your take on on this thing oh juicy drama um okay so i i'm a fan i'm i'm
+actually a um a sponsor of jeremy rubin um i i like the work that he's been doing i like the idea of
+covenants um i'm not pushing for you know activation of of any one thing at this time
+my my sort of take on the whole covenants issue is that uh
+uh jeremy cares a lot about covenants and a lot of other people don't seem to care much
+or at least they don't seem to care as much to put uh as much effort into covenants as jeremy has
+so it is it's kind of you know disappointing to see sometimes how slowly the development process
+can be this is not a new thing by any means i think jeremy has been working on uh covenants
+for two if not three years now um and on the plus side there's been a lot more uh conversation
+about it and that's what i think is needed uh need to keep having discussions about you know
+what the optimal covenants solution should be i think we all know from uh you know previous
+consensus rollout stuff is that uh you're trying to rush anything is is going to end up with uh
+people getting upset and and bad things happening but i can also i can understand jeremy's point of
+view of just trying to put some more pressure on uh you're getting more input into this issue so
+so um covenants is interesting you know from a security model perspective of being able to
+you know be more descriptive about where your bitcoin can flow to i think we're going to need
+a lot more tooling to really be able to understand the ramifications of that and you know one of my
+my issues when it comes to you know creating logical flows for your bitcoin that are kind
+of like escape hatches is that you then need to also worry about the security properties of
+whatever keys are securing the wallet that they're going to so you don't even necessarily need to
+have covenants for something like this um you know we could fairly trivially even today with
+with taproot and tap scripts create for example a um a degrading multi-sig setup where after so many
+blocks or so many years in time um you can then spend the funds with a different set of keys
+and and so you know or or even you know with a a smaller spending threshold of your current set of
+keys and this provides you know some interesting ways to get out of scenarios where you might
+otherwise lose access to your money but you know i don't i don't have a um a perfect you know silver
+bullet answer of like we need to be able to implement this one specific uh workflow you know
+this is a much more you know generic tool that people are going to start building on top of and
+so just like we see with other smart contracting systems you know people are going to make mistakes
+they're going to they're going to use the tool to end up creating systems that actually have
+vulnerabilities or or weaknesses and um you know that's the name of the game when it comes to
+security is sort of trial by fire and learning by failure i'm uh i'm a person that's very appreciative
+of some of the drama and the inflating that happens in the community and it's a weird thing
+to say people are sick of it they're exhausted they're tired um in the early days of reddit
+it was bitcoin versus rbtc and they talked about colored coins and things like that and then we
+saw ethereum happen right in the rc20s um there was the small the small block versus big block
+and soft work versus hard work and user acceptance and all of this stuff and what i what i would say
+to this is the fact that there's drama and that this is being debated is a win for bitcoin it
+means that consensus is working and that we're all adhering to it right if there's questions
+about things or ambiguity we're not going to activate it or mine are going to signal for it
+or whatever the mechanism is at the time um and and we need to answer those questions and get
+everybody on board and get a full understanding so like that's the beauty of this design and
+consensus and community is that it's working right we're able to inflate we're able to
+debate these decisions whereas the flip side i've seen you know gals that are running these
+decentralized organizations and when you look at their snapshot page or their voting history
+they've got 70 proposals where everybody just votes yes for every single one of them and maybe
+those 70 proposals are good or maybe they were written with all intention but in in my review
+of some of that stuff it just seems like it's a group think and hide mind uh and everybody's
+kind of going with the flow right they're being the sheep so the fact that we can have discourse
+and discussion and really get into the weeds and debate these types of things before we all come to
+consensus is a win and i'm very appreciative of that yeah absolutely i think it's um still remains
+to be seen what miners are going to do right when they vote um but um yeah i like totally agree with
+you is that just having those discussions really that's what kind of really matters and uh but it
+also was fascinating to see that amongst my patients that a bunch of people became like almost
+instantly unstable and uh very concerned about uh beep 119 cltv and uh yeah so those discussions
+are productive absolutely yeah i mean maybe people are just concerned or under because it's
+you know creating some friction and drama um personally i would like to see you know more of
+the proponents of like the any prevout uh which is my understanding is basically the main other
+competing potential covenant proposal i just want to see you know them put more uh more pressure
+into you know dialogue and and consensus building um there was i think almost nobody in the
+community was around for it and so almost nobody ever talks about it anymore but there was a really
+really um dramatic debate in like 2011 or 2012 about uh which of two proposals for uh what
+uh what eventually became uh paid a script hash was uh and i think luke dashier had one and gavin
+andreson had one and and gavin ended up getting his in uh you know arguably by being a bit forceful
+about it uh and sort of saying you know this is what consensus is going to be um so you know there's
+a very long history of um fairly like ferocious uh technical debates happening around the bitcoin
+protocol thank you um crypto for all added to the stage do you have a question for us
+yeah how you doing there i was just uh well i was wondering your thoughts on the uh coin base uh
+uh or the coin base wallet as a storage for your bitcoins
+uh so you got to be kind of careful here because i think a lot of people um they have the coin base
+app for basically the brokerage and exchange and you know they buy their bitcoin there and then they
+just leave it there um this is where you get into the whole not your keys not your coins issue
+um you know there's a lot of potential risks when you're leaving your money with a third party
+now coin base also has a wallet which to my understanding is just like a phone app basically
+the the keys are sitting there on your phone um and you know this is what i would consider to be
+like sort of the first step into self-custody um it's it's arguably better in many ways than
+leaving your money with the third party uh however now you know if all of your funds are sitting
+in some private keys that are on your phone that's creating a whole new set of risks so um
+you know we we do have uh one wallet that is architected like that within the casa app
+and our general recommendation and in fact the app itself will start yelling at you if you have like
+more than a thousand dollars in that particular setup because it's risky um you should only really
+have as much money in a single signature phone um wallet as i would say you would carry around
+in your wallet in real life in cash it's just a lot more ways to lose it so you know once you
+start having a more significant amount of value in bitcoin that's when you need to to look at
+getting you know dedicated hardware devices so that the keys are never touching an internet
+connected device you know that protects you from a whole new class of issues and then once you get
+into having you know really substantial amounts of money that's when i think it makes sense to
+start looking at multi-signature setups where you're you're basically adding more resiliency
+and redundancy against having single points of failure that could cause wasa funds
+all right thanks a lot there
+thank you um and this is all the time we have for today thank you so much for joining us um
+ron james and any final thoughts on the uh the topic of cryo preservation and wealth security
+over the next century it's uh it's it's a really risky uh situation there's a ton of things that
+can go wrong but kind of like dan was saying if you don't even try you're definitely gonna fail
+yeah i agree with that i think we're not there yet we're building our way there right it's like
+year one of bitcoin we got a walk before he can run with this and i would say for the people that
+are worried about this that are considering it um you know we can do inheritance today so that is
+what's available and castle offers that type of uh that product as well so if that's something
+you're worried about that's the definitive for sure go-to methodology but forward looking in
+the future this stuff's fun to think about it's interesting problems to work on and i know we're
+not done talking about this stuff yet we're going to continue this and try to figure out solutions
+i look forward to the living person dead person multi-signature product
+awesome well thank you ron thank you jameson and thank you to everyone who listened in
+and this concludes our program in the meantime don't trust verify take care everyone
+bye

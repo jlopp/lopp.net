@@ -1,0 +1,413 @@
+Hi and welcome to the Stefan Levera podcast focused on Bitcoin and Austrian economics.
+Today for episode 107, we are talking with Jeremy Welch and Jameson Lopp of CASA.
+But first, let me introduce the sponsors of the podcast.
+Check out Kraken, one of the world's leading Bitcoin exchanges.
+I'm really impressed with the way they have operated consistently with a strong focus
+on security over the years.
+They have acted ethically in the space as well under Jesse Powell's leadership.
+They're one of the longest standing Bitcoin exchanges and they consistently read the best.
+They've got high trading volume and low fees with no minimum or hidden fees.
+Kraken also have 24x7 support and on the institutional and solution side, they are providing best
+in class accounting, reconciliation and reporting services for cryptocurrency hedge funds, asset
+managers and fund administrators.
+Kraken have an OTC desk for those higher touch large block trades.
+They offer 5 fiat currencies and also offer margin and futures trades.
+To learn more and sign up, go to the Kraken link in the show notes.
+Next up is Unchain Capital.
+They're doing Bitcoin financial services and their two main products are a two of three
+keys multi-signature vault and a Bitcoin collateralized loan.
+So with the vault, remember it's difficult to use multi-signature right now, but Unchain
+Capital have a very easy solution and you can use Trezor or Ledger and you're still
+maintaining control with your two keys and you can distribute those keys to improve your
+security a little bit.
+And we'll also be talking with Dhruv Bansal from Unchained Capital on the podcast shortly
+so keep an eye out for that episode.
+Remember Unchain Capital also offer Bitcoin collateralized loans so you can get USD liquidity
+without selling your Bitcoins and incurring that capital gains event, which might be better
+for you from a tax point of view.
+So they store that under a dedicated multi-sig address under collaborative custody.
+So if you want to learn more and sign up, go to the Unchain Capital link in the show
+notes.
+So for this episode today, we are carrying on with the Bitcoin custody series and this
+episode was actually recorded together in person at Riga just before the Baltic Honey
+Badger Conference the first day.
+So we're speaking with Jeremy Welch, the CEO of CASA, and Jameson Lopp, the CTO of
+CASA.
+They've both been on the show previously.
+Jeremy was on SLP 26 and Jameson was on SLP 43.
+So keep an eye out for this conversation where we're talking about some of the different
+security decisions made from CASA's perspective and how they have designed their different
+services and how they think about security, which they have recently released in the CASA
+Wealth Security Protocol document.
+Here is the interview.
+Jeremy and Jameson, welcome back to the show.
+It's fun.
+How are you, man?
+Good.
+So we are recording here in Riga just before the Baltic Honey Badger 2019.
+So yeah, look, guys, I wanted to get you guys back on and talk about the CASA Security or
+CASA Wealth Protocol, rather, and also just what's going on with CASA these days.
+So maybe Jeremy, you just want to give a quick overview on where the company is at and what's
+going on.
+Sure, sure, sure.
+So just this past week, or about a week ago, we released this CASA Wealth Security Protocol.
+We've had some other updates around the multisig side and also around SATS app and around some
+updates to the node.
+But one of the big things we've done the last few weeks is release this document that really
+expands through the full security model, the features that we chose.
+We actually chose to go ahead and lose all of the features that we didn't choose to use
+to, because there are specific reasons why we did those.
+And this should just help.
+There's a lot that we usually walk our clients through.
+Anyone that comes to us, most of our clients actually know all the things that are in the
+stock already.
+But for the majority of the population, majority of the Bitcoin community, they're not aware
+of this.
+So we thought that putting in a document form, making it really easy to access, and then
+also update.
+And as we learn, as we work with customers, we'll update this from year to year.
+But it makes it really easy to have a rule set to really gauge against.
+Yeah, I mean, this is part of what I think is the real value add of CASA as a system
+where we've focused a lot on both the technical and the user interface design such that a
+user could just come into CASA and start using it and basically have this huge benefit of
+the wealth of knowledge of like 50 pages of technical decisions that have been made around
+the security model.
+But of course, we have people who are securing a large amount of wealth within our system.
+And in many cases, they want to then further dig down into actually understanding why the
+system is designed the way that it is.
+And this, like Jeremy said, basically explains those decisions that we've already had to
+describe to a lot of our customers over the past couple of years.
+Fantastic.
+Yeah.
+And I've had a chance to read through the document.
+I thought it was really nicely written.
+In the document, you speak through the three alternatives, right?
+So you've got kind of do it yourself, custodial storage, and then other commercial sovereign
+storage systems.
+And another thing that struck out to me is also just the comparison with Glacier Protocol.
+So my previous interview was with Diogo Monaco, the maintainer of Glacier Protocol.
+And it strikes me like as I was reading the document, the CASA document, it's essentially
+talking about how there are certain trade-offs that we make using Glacier Protocol.
+I think one of the key ones is the difficulty of usability and the difficulty of setting
+up.
+And I think that's one thing that I view CASA is doing is you guys are really helping with
+the usability of high security option.
+Do you want to discuss about that?
+Sure.
+So everything we built around the CASA wealth security protocol is in direct response to
+and kind of an extension of learnings from Glacier Protocol.
+So Jacob Lyles, who created the Glacier Protocol, is on the team, helped us write this document,
+helped us really pull a lot of the resources together whenever we built this.
+But we actually use Glacier Protocol as a kind of basis to start working from.
+And a lot of companies have done this in the past, a lot of even exchange companies use
+Glacier Protocol early on as foundations for their cold storage.
+And we just saw that it's rock soft, but it's very hard to implement and execute and set
+up where we wanted something that usability, if we go through kind of our threats and we
+kind of identified these 13 core threats, one of them is just working from what we call
+a child or pet attack or these kind of usability issues of needing to be kind of idiot proof
+in a sense.
+And Glacier Protocol is just really extensive.
+And so from that perspective, it will always say that we actually are, I don't think we've
+announced that publicly yet, that we are kind of co-maintaining with Diogo and those guys
+with Glacier Protocol.
+But we kind of did the learning from there and then we've tried to extend it and specifically
+in the direction of where the Anchorage guys and they built a phenomenal product company
+and they're really focused on the enterprise side, we're kind of extending in the side
+of the consumer and the side of the individual small teams for kind of maximum security.
+And we talk wealth security instead of just Bitcoin because Bitcoin is the core focus
+and that's what we're focused on, but it really is around Bitcoin as data and these threats
+are going to be true of any type of data going forward and personal wealth.
+I think that you could potentially describe CASA as seeking to find the optimal practical
+security solution.
+When it comes to security, if you're really trying to go for fully trustless, fully minimizing
+the risk of anything going wrong, then you take it to the extreme, you basically can
+get to the point of, well, you basically need to be writing your own software or at least
+auditing all the software you're using and then even the more extreme is, well, on the
+hardware side, you basically need to be fabricating your own hardware to make sure that nobody
+has tampered with that because we're at the level of complexity these days with the hardware
+that nobody really knows everything that's going on.
+And so the question is, where do you draw the line of, well, I'm going to assume that
+everything below this level is working and can be trusted.
+And for us, we're raising the line a lot higher and saying, well, we're going to assume that
+if we spread out your key generation and management across multiple different providers, then
+you're lowering the risk that you don't really need to worry about things like supply chain
+attacks or low-level hardware issues.
+Yeah.
+And to me, even reading the wealth protocol, wealth security protocol document, it came
+clear to me there was this concept of defense in depth, right?
+It's saying, how do you set up your security in such a way that any individual failure will
+not compromise you totally, that you can afford one failure or before you lose your wealth?
+You need to have a more flexible system because Bitcoin and the sovereignty that it gives
+to you is also highly inflexible and unforgiving when it comes to mistakes.
+And that's why it seems like the bigger risk of loss in these systems is actually due to
+ignorance and user mistakes as opposed to actual attack and theft.
+Right.
+Yeah.
+So there's that idea that you're more likely to screw yourself out of your own coins if
+you're trying to do multi-sig and you make a mistake with it.
+I think even Andrew Chao on the previous episode mentioned that he had difficulties trying
+to get multi-signature with multi-hardware while it's working.
+And he is himself a quite competent technical developer.
+So if it's hard for him, it's going to be hard for anyone, right?
+So there's definitely some components around that.
+Let's talk a bit about some of the design principles from the document.
+So you've got here minimal knowledge.
+Yeah.
+And there's a lot around minimizing data on CASA.
+It's both for privacy reasons, but also for can't-be-evil reasons, right?
+That's one of our core company principles.
+But we have a set of system design principles.
+And we're touching on a few things from the document.
+Anybody can go download this.
+You just Google CASA Wealth Security Protocol, or I think it's keys.casa.forge.wealth-security-protocol,
+I think.
+Yeah.
+You can check this out and follow along.
+But there's a lot more here.
+But kind of the high level there is that Elena has this term, don't collect what you can't
+protect.
+And for most companies, even just from the side of people exploiting it for their own
+purposes, this can't-be-evil principle is what we're talking about there.
+You need to minimize data.
+So minimal knowledge just really means that we're going to have minimal knowledge overall
+of data, period.
+And usability as security is another one, just thinking about export support.
+It's not just about even like the software.
+It is about the integrations of the data, but it's also about working with humans and
+humans being part of that system, too, and having experts.
+Sovereignty as a principle, incentive alignment, again, that kind of aligns with can't-be-evil.
+If we can't even attack you or an internal employee can't even attack you, then that
+just changes the logic tremendously.
+If the data's not even there, it changes the logic tremendously, versus if a kind of internal
+employee is going to have to be tested regularly, whether they want to exploit data.
+So keeping the system design principles and then looking at the total number of threats,
+and we had about 13 total threats that we consider, is how we then chose the kind of
+selected features.
+Yeah.
+And there's also the principle of usability as security.
+So did you want to touch on that around how in making it more usable, you actually are
+making people more secure?
+So quick example.
+I think it's probably fair to say a lot of people have looked at Glacier, but have not
+executed Glacier, because it takes a certain level of patience, diligence to execute.
+And I think that is a key point from CASA the way.
+Well, and basically every step that you have to take is a potential mistake.
+So the simpler you can make it, the more...
+When I think of usability, I think of when we're building actual software interfaces
+that humans are using, you are creating a series of paths that a user can go through.
+And at CASA, we're trying to lead it to paths that include the best practices, that include
+a lot of these secure principles, so that what you're really doing is you are trying
+to throw away as many foot guns as possible within the infinite number of possible decisions
+that a user could make when they're setting up and executing their own storage.
+So many of these paths make it possible for you to screw up in a catastrophic way.
+And we're basically just trying to create guardrails that prevent the user from even
+going off on others' paths in the first place.
+Well, still maintaining the sovereignty.
+That was an important point.
+And that's why this kind of full system design principles, you have to keep them in balance.
+And it really does have to be balanced, because there are certain things you can do to improve
+your ability, but that take away control from the end user.
+Going fully centralized, it's way more usable.
+Let's be frank, it's just Coinbase and just throwing someone a regular login is way more
+usable on the surface, but it immediately takes away sovereignty, immediately takes
+away control.
+It immediately creates a can't be evil situation to where someone could take coins.
+And so doing that balance of making sure it's usable while at the absolute extreme that
+we can while also maintaining that sovereignty is really important while optimizing data.
+And we've even gone as far even from the legal structure of the company.
+We have this open data policy, our privacy policy, we kind of wrote a totally new type
+of privacy policy.
+And that's open source.
+Other companies can copy that.
+We're trying to go through kind of every step of the way to build up this stack in terms
+of the design of the overall system and the incentives even for the internal employees
+to again, address these 13 threats.
+Let's talk a little bit about some of the, I guess, what are some of the big threats
+in your mind?
+What were some of the ones that are most obvious for the user?
+So I guess just off the list here, there's a few SIM hijacking, that's a big one lately.
+Supply chain attack, that's something where a lot of people are concerned about that and
+trying to have different hardware wallets and different software that they're working
+with, data credential loss, or even being attacked on the platform that you're using.
+Did you have any that you wanted to kind of highlight?
+Well I mean, I think that of the ones that are listed, the most common one is just simple
+data loss.
+And so that's why we believe having a geographically distributed set of hardware devices that are
+easy for the user to visualize and think about how are these actually distributed, that gives
+you a level of redundancy and robustness that is going to exceed 99% of other people who
+are just keeping all their keys in one place.
+And I suppose let's just for, I think most listeners might have heard the earlier episodes,
+but just in case they haven't, the basic overview, you've got the silver and gold, which is the
+two of three basic multi-sig, and my understanding there is they have one hardware wallet, and
+they've got one key on their phone, and then one key is the CASA recovery key in that model.
+And then taking it up a notch to the platinum and diamond, and that is the $1,800 level
+and the $5,000 level, that is a three of five setup.
+We have three hardware wallets in that model.
+There is one key held on the user's mobile phone, and the fifth key is held by, it's
+the CASA recovery key.
+So I guess let's just talk to maybe the two of three model.
+I think one concern I've heard from Bitcoiners is that, oh, hang on, does CASA have two of
+my three keys, two of the three keys?
+How can I be sure that I hold two of three?
+Well, you can ensure that you hold two of three.
+We also have export functionality on the mobile key.
+I suppose, however, it's impossible to prove that CASA doesn't have the mobile key.
+That is one thing that you'd have to quote, unquote, trust us on, and so this is another
+good reason of why there are trade-offs here.
+We do intend to add ability to have two different hardware devices, so you could then have a
+greater assurance that you have two of the keys, and there's no way CASA could have two
+of the three.
+But right now, that assurance is best provided by the three of five model.
+We kind of rolled this out intentionally from the three of five, where we were able to build
+up a user base and work directly with clients.
+We have direct client relationships.
+It is kind of like a private banking relationship.
+We learn a lot from client preferences.
+We've done a tremendous amount of testing before we rolled it out to people publicly,
+but then we also learned a ton from even just the first several months, and we're now, over
+a year of being public, I guess it's almost like 1.5 years of being public, and all of
+that wealth of knowledge, we've kind of scaled up.
+We always intended to scale, and we actually have a single key, a mobile key, as well.
+Again, it's a single key.
+It's on the phone.
+That's actually used, and it's the same key that's shared with our Sats app.
+So if you want, Sats app is just really fast spending, and Keymaster is the kind of full
+multi-sig.
+But even the way we rolled that out is we, again, started with the three of five most
+premium multi-sig, and then we slowly rolled out.
+We had two of three, the single key, slowly rolled those out.
+We rolled out the two of three specifically to goal customers first to make sure that
+that was usable.
+We also, we mentioned before the multi-location, multi-device, multi-sig model.
+The reason around that, again, is in terms of these 13 threats, that model is what mitigates
+those threats the best.
+There's a weird trade-off where with the mobile device, if you're going to use a mobile device,
+from the principle of the usability side, you actually want to maximize usage as soon
+as you decide to even use it because of the fact that you can also maximize usability.
+Now that mobile device, as a single device, is your phone is potentially connected to
+the internet.
+We do have customers that choose to keep that off at all times, never really connect to
+the internet, and that effectively does act similarly to a hardware wallet.
+But it's effectively just a really fancy hardware wallet.
+But for most people, they keep it as a regular key.
+When people have asked us about that question too, what that comes down to is that it's
+also true that Apple or Google and most, it's either a Google phone or an Apple phone that
+people are using, they could even try to exploit that key.
+And as soon as you put that key on the platform, you want to maximize the features that are
+available there.
+So we've done that now on the phone.
+And for the two of three, it's specifically designed, it's not designed to hold millions
+of dollars.
+It is designed to hold somewhere between say $1,000 and around $100,000, sometimes less.
+We do have people that put even a little less than $100,000 on the three of five, right?
+So we have, there's a range of what people are comfortable with, but it is designed to
+be an entry-level version of just getting started with Multi-Sig.
+That's why we decided, hey, we will use the mobile key and then one hardware wallet.
+And for most people that started using this, they'd never used Multi-Sig before.
+So it was already a learning experience.
+We had a lot of people that upgraded immediately after and they were like, oh yeah, I get it
+now, why there need to be multiple keys.
+We will be rolling out a version that does have the two hardware wallets, but we wanted
+heavy testing around just that single version first before we do that.
+But these are great questions and the community is always phenomenal about asking and figuring
+out these kind of nooks and crannies of questions.
+And again, that's why we released this document, is that there's a lot more even beyond some
+of these questions that customers are asking.
+And so we just want to kind of constantly put these forward and bring these for ourselves
+and have that level of transparency.
+And so even as we're adding more features, we expect to get a lot more of these questions.
+Yeah, sure.
+And I think it might be good just for the listeners who are not familiar, just to understand
+what is the way the mechanism works.
+So they might be thinking, oh, do I need to bring all three keys into one place at one
+time, but actually, it's more like you individually do the signatures, do you want to talk through
+the process?
+Yeah.
+So when you're creating a transaction with the Keymaster app, actually, it's like any
+other transaction, you can scan a QR code, you can manually input data, but basically,
+you set those initial details of the amount and the output destination, and then you'll
+apply your initial signature there with the key that's on the device and most likely using
+either your biometric or face ID or pin input to basically unlock the mobile device so that
+you can access the key which we keep secured via the secure hardware elements that are
+on the phone.
+And so then what you have is a partially signed transaction.
+It's not valid for broadcasting on the Bitcoin network.
+You then have to go figure out what other devices do I want to use to add a sufficient
+number of signatures that it becomes valid.
+And essentially, you just tap within the app on the device you want to use and you say,
+hey, I want to add another signature from here, will then generate a short-lived unique
+link that you can use to essentially go find that device wherever it is, plug it into a
+laptop, click on the link, add the signature, and then continue that process until everything
+is done.
+And of course, it can get more complicated if you've lost devices and need to have help
+from CASA that enters into a different logical recovery process.
+But under normal circumstances, you're basically just going to be traveling around getting
+enough hardware devices that you can reach that threshold.
+And the other thing about making this a really usable system is that we also have health
+checks available.
+We have the ability for the user to essentially do key rotations and swap out devices that
+get lost or broken or compromised without even having to reach out to CASA for help.
+It's just a simple wizard that you can walk through within the app.
+And this ties into even more of a reason to use the mobile device is that we realized
+that people carry their mobile devices with them everywhere.
+And arguably, sometimes even more than a birth certificate or a social security card or government
+ID, people keep track of their phones always on their person.
+And whether it's Candy Crush data or maybe it's a favorite photo or something, there
+are data valuables that are already on those phones, and people treat them very personally.
+And they protect those devices.
+And from that side, people usually have it on them.
+And so if they're traveling from one location, say it's a home to an office or to this third
+location that could be even in a different city, they're going to have their phone on
+them.
+They're going to use that as a communication tool.
+And so using that as the tool to be totally asynchronous and sign.
+You could go, you could sign the first one on one day, go two or three days later if
+you wanted to in a totally different city and signing.
+And then you've maintained the distance between those two signings.
+And within that time span, that also means an attacker has to maintain that distance.
+It is true that an attacker could hold you at gunpoint or do something more aggressive.
+But even in that case, they're still going to have to go these distances.
+And the more time that's, we're just raising the bar there.
+The more time that's required to go these distances and the more people and places you
+have to go, the higher likelihood that someone gets caught, someone gets noticed.
+You could, you know, whether it's actually kind of saying safe words, even have like,
+that's part of our service around this is we even have safe words and specific process
+and emergency lockdown buttons and all these other features that are built in.
+But it comes to that usability of having the asynchronous nature where you can go different
+places, but having that usability to where you're always kind of seeing the command center
+kind of on the phone.
+Yeah.
+I think that's the thing as well that maybe might not be apparent that a customer can
+sign up in a more pseudonymous way.
+Can you talk to that?
+Sure.
+So, you know, at CASA, we are not a bank or a financial institution.
+We're a software service provider.
+Within the context of actually managing keys, CASA only ever has one out of N of your key
+set.
+So those keys are always kept completely offline and requires, you know, manual human recovery
+process to be gone through, usually a process that can take multiple days.
+This is also, you know, configurable by each user and how they want that to be done on
+the CASA side.
+But the general gist of it is that CASA is going to be helping the user help themselves
+is the best way that I know how to put it.
+The downside to this is that, you know, whenever you're into a situation where you are not
+taking the time or don't have the level of knowledge that you can do everything all by
+yourself without asking anyone for help, obviously that's going to be the best proxy.
+But if you want to save time, if you want to have expert guidance, then there has to
+be some sort of communication.
+There has to be at least some sort of, you know, pseudonymous email address or other
+communication endpoint for us to have back and forth.
+So while we are not a financial institution, we don't do AML KYC, we don't actually care
+about your government identity.
+We do need to have some way to communicate with you in case something goes wrong.
+If, like Jeremy said, if you hit the emergency lockdown and we basically refuse to allow
+any signatures to be added for anything, then you'll need to go through a process in order
+for us to unfreeze the account.
+Or if you lose a sufficient number of devices that you need CASA to dig the cold storage
+key out and sign it, you'll need to go through additional processes because at that point,
+if we believe that you may have been compromised, we need to ask for some other, you know, non-identifying
+questions but some sort of authentication questions, whether it's, you know, things
+that you know, special phrases or words, or even, you know, photos of either yourself
+or objects or, you know, it's basically any type of unique identifiers that you are comfortable
+with using that would be difficult if not impossible for an attacker to replicate.

@@ -1,0 +1,343 @@
+So, my name is Jonathan. I work at an exchange based in Tokyo called BitBank. And one of
+the currencies that we currently list is Ethereum. I was the person that implemented the deposit
+withdrawal system for Ethereum. And also, I originally was the person who ran the full
+node that we have running in our backend. So, I currently don't work on Ethereum anymore.
+I stopped working on it a little bit after CryptoKitties. But I am in close contact with
+the person who is currently working on maintaining our full node, keeping it up. And we're all
+on the same team. We're all aware of all the problems that are going on. So, I feel like
+I'm qualified to speak about dealing with Ethereum from the perspective of an exchange.
+Okay. Thank you for that. And finally, Jameson.
+Yeah. So, I worked at BitGo for three years, basically building and maintaining infrastructure
+that BitGo was using to help service enterprise clients and manage their multisig hot wallets.
+So, that started off with Bitcoin only. And after I'd been there a year or so, we then
+decided to work on Ethereum support, which took us about a year to get to the point that
+we wanted. And we ran into a ton of challenges both on the running a node, running fully
+indexed databases to help be able to look up transactions and balances, and then managing
+the actual sending logic, and of course, the smart contract side and building a multisig
+smart contract. So, I had firsthand experience getting paged whenever there were any issues
+with the infrastructure and testing out different types of nodes, seeing what the performance
+was. And while these days, I'm not actively maintaining or working on Ethereum infrastructure,
+I do still manage the state and do a test on all of these things to see what the process
+of the ecosystem is from the performance of their nodes.
+Okay. Well, our involvement at Coinflux is really easy. We don't list it anymore because
+of various issues, which we can talk about another time. The point is quite relevant
+to my next question, which is the audience will have probably a range of different backgrounds
+and experiences with Ethereum. But could you guys, in summarizing your mind, how you describe
+Ethereum, what it is, and what you see are the greatest strengths, its weaknesses, and
+what are the concerns and challenges that you have with it or had with it if you're
+not going to be using it? Maybe we'll start with Jonathan.
+Okay. Yeah. So, if I were to describe Ethereum in a very simple set of terms, whereas Bitcoin
+is basically a single state of UTXOs, which are either spent or not spent, Ethereum is
+a very complex global state where each account has all these different types of, you can
+store values, you can store all of these things in it. And because of that, there are a lot
+more game theoretical aspects to Ethereum. And also, it makes it much more difficult
+to run as compared to something like Bitcoin. So, I think that one of the biggest weaknesses,
+although a lot of people would probably argue that running a full node is not important,
+I would assume that everyone or almost everyone at this conference is probably of the mind
+that running a fully validating node is something that is important to cryptocurrency. With
+Ethereum, that is exceedingly difficult day by day. We have to increase our budget for
+running our full node almost every month. It's very difficult to run. However, its strengths
+are the network effect. And one thing that I think a lot of people see as a negative,
+which I think is actually a positive from a network effect point of view, because of
+the fact that so many smart contracts are open source, where the source is openly available.
+A lot of people feel like they can just grab a contract from a popular, like let's say
+Uniswap or something, and then change the name, redeploy it, and then all of a sudden
+they have a clone, which it can be a good thing or a bad thing. But one thing that it
+definitely is, is it really does help the network effect of developers. Whereas when
+you're building a Bitcoin wallet or an application based on Bitcoin, it's very like even if you
+copy paste the source code, the Bitcoin applications are usually very, there's a lot more than
+just the code. Whereas in Ethereum, if you copy paste an ERC-20 and you change the name
+of the coin, suddenly you have just a new ERC-20 that is named whatever you named it.
+And you don't have to do anything else. And everyone else can use Metamask or whatever.
+So it's very streamlined for developers, which I think is a great thing, because one thing
+that I find difficult, especially when we're hiring for developers, is a lot of people,
+they've touched Ethereum and Solidity because it's so easy to just copy and paste. And as
+we all know, developers are basically just copying pasting machines. So a lot of people
+have touched Ethereum, whereas not many people have deep experience with other cryptocurrencies
+such as Bitcoin and whatnot. So I do find that it's really good for getting developers
+on board with the ecosystem and starting developing tools and things like that, whether or not
+it's useful or whether or not it's decentralized or whether or not it's all these other things
+which are putting the cart before the horse. That's a different topic, but I definitely
+do think it does get developers excited and it makes them feel like they have a good understanding
+of Ethereum because they were able to copy and paste and get something running really
+quickly without needing to train for five months or have a deep understanding of cryptography
+or anything like that. So that's the strong point.
+So basically, it's technically, the infrastructure is far more complex than Bitcoin, but the
+offering to a developer is much lower entry requirements. And so you can get adoption
+more quickly, whether that's a good thing or not, or gives a full sense of capability
+is a different question. Let me pass the question on to Jameson.
+Yeah, I mean, in general, I would say that Ethereum's strengths are its weaknesses. It
+is simply making a different set of trade-offs than Bitcoin has made. And the result is,
+you do have this quote unquote world computer where you could say Bitcoin and Ethereum are
+the same in the sense that they are distributed ledgers. They are a new type of distributed
+append-only database, but Ethereum provides much more, I guess, developer ease of use
+when it comes to manipulating that database in a variety of ways. And so the trade-off
+is that developers can create more rich applications that live entirely on this network without
+having to build things outside of the network. Really, it seems that Bitcoin is more focused
+on validating and doing more things off-chain and then having the smallest amount of data
+necessary on-chain to validate whatever those off-chain operations were. Whereas Ethereum
+is allowing you to do a lot more on-chain, which makes it a lot easier for developers,
+easier for people to get into and start using these apps without needing the other infrastructure.
+But really what it's doing is putting a lot more load on the network itself. And that's
+where the network operators, whether it's individual enterprises, are end up having
+a lot more pain trying to keep the network going.
+Yeah, I think it's so trade-offs. The question is, do some of those trade-offs over the long
+time, long run lead to potentially centralization risks to a greater degree than potentially
+Bitcoin? Andreas?
+Yeah, I mean, I'd say most of the important points were brought up already. The main difference
+between Bitcoin and Ethereum is that Bitcoin is what we call you-takes-all-based, which
+means if Jameson sends me one Bitcoin and I would like to send half a Bitcoin to OBI,
+I would then send the one Bitcoin out to the networking transaction, where half goes to
+OBI and half goes back to me as change. And then I can spend my half Bitcoin for something
+and OBI can spend his half for something.
+Well, in Ethereum, it's what we call account-based or non-spaced, which is similar to what we
+know from Ripple and Stellar, and I believe also maybe EOS. And I'm not sure why they
+made that decision when Ethereum was made, but not using the you-takes-all-based system
+has a lot of weaknesses, especially if you are sending transactions rapidly or if the
+fee landscape is uncertain. So I'm sure even pretty normal users of Ethereum today jumping
+on the DeFi train, they end up in a situation where you're staring at your metamask and
+the transaction you're trying to send is not going through because the fee was high enough.
+And then you try to send another one. Now, that one is not going to go through because
+the first one must come from first. And you end up in this really nasty situation.
+Well, in Bitcoin, this is not a problem because if I do send the one Bitcoin to the half Bitcoin
+to OBI and half back to myself, then I can immediately spend the half Bitcoin and send
+it to Jameson without the initial transaction getting confirmed. So it might take a while,
+but it will confirm eventually. And all of my transactions will confirm at the same time
+then. So I would say that's the major downside of Ethereum that we're seeing today for normal
+users without touching on the difficulties of operating a full node of Ethereum in a
+professional wallet. Yeah, I think actually on a recent What Bitcoin
+did Peter McCormack podcast, Vitalik and Andrew Polstrow were discussing the account-based
+versus the UTXO-based trade-offs. And Vitalik admitted that if he realized the complexities
+related to that, he might have taken a different path. And challenges like the ones you've
+mentioned and others have meant that over the coming few months and years, Ethereum
+is set to go through a number of major updates, culminating in the move to what they're referring
+to as Ethereum 2. Not all of you are using it, but what are your thoughts on Ethereum
+2, how it differs from Ethereum 1, and what's your thoughts on the viability of this approach?
+And if you are planning to be using it in your systems, how are you going to plan the
+transition from Ethereum 1 to Ethereum 2? Jameson?
+Yeah, thankfully, I get to just sort of watch this as a passive observer now. And I forget
+how many years we've been watching it happen so far. I think it's still going to be at
+least another year or two before enterprises really have to worry about starting to transition
+their infrastructure. But I certainly have a lot of questions around how that's going
+to end up working. The short version of all of it is from the technical diagrams and articles
+that I've seen, it appears that Ethereum 2 will be adding a fairly significant amount
+of complexity to the operation of the system. And one major question will be how feasible
+it will then become for any individual or any entity, even enterprises, to fully validate
+the state of the system. You then get into even lower level questions of having to worry
+now about different shards and what's operating on different shards and whether or not different
+enterprises are going to have to essentially start building this cross-shard management
+logic into their system.
+Okay. And Jonathan?
+Yeah. So similarly to what Jameson was talking about, as far as we are concerned, right now
+we kind of have our hands full with Ethereum 1.0. And kind of, you know, we have been messing
+around with some of the, you know, dev, the testnet and whatnot for staking and all that
+stuff. But to be quite honest, right now we list Ethereum. And if Ethereum 2.0 is going
+to be a different coin that has like backwards compatibility by making the old network into
+a single shard on the multi-shard network or whatever, I personally think that it's
+going to be an interesting social experiment for the, for the crypto community to decide,
+okay, so what exactly is Ethereum? So is Ethereum something that is a balance that is given
+to you by value granted to you on the global state of the Ethereum blockchain? Okay. What
+is the Ethereum blockchain? You know, what about the old Ethereum 1.0, 2.0? Are they
+going to have different prices? Are they going to be different coins or, you know, there's
+a lot of questions I think that the, that as a community we'll need to answer moving
+forward. And I'm sure a lot of people who are very into the community are like, of course
+it's going to be the same coin or they might already have their opinions set. But we also
+have a lot of due diligence that we need to do for these coins, where if the, if some
+hard fork completely changes the attributes of a coin, then we need to make sure that
+it's something that we are able to secure so that our customers who are giving us their
+coins do not need to worry about, you know, some bug in the system destroying a whole
+bunch of the ether that we're holding for them or something like that. So yeah, for
+2.0, whether or not 2.0 is the same coin as Ethereum or not is going to be one of the
+main things that we're watching moving forward. And if it turns out it's going to be a different
+coin with a, you know, different, theoretically a different price, and it's not tightly coupled,
+then we would have to go through all the regulatory hoops and basically do everything we did for
+Ethereum with Ethereum 2.0 or whatever they call it. So right now we don't have any specific
+plans, but we have been testing the testnet stuff for 2.0 and we've been playing around
+with it. And it looks like it's going to be a little bit more difficult to run a what
+they call archive node currently. And I don't even know if an archive node would be possible
+moving forward. I'm not exactly sure how we're going to 100% verify everything to make sure
+that we're not getting screwed over. So that's our stance right now.
+And Andres?
+Yes. So the word sharding has been brought up a bit and without being explained. So I
+can just do that quickly. It's sharding is what we call in computer science, especially
+distributed computing, which is very similar to if you use Facebook. So I mean, Facebook
+cannot store everybody's information on every server they have, right? It's like hundreds
+of thousands of service, I'm sure. So what they do is they try to figure out who you
+interact the most with, which is for most people as people who live in the same town.
+So they will store information about people interact with each other a lot on the same
+server. So that's what you call a shard. And for special cases like celebrities who everybody's
+following or newspaper, they will be stored on sort of a global shard or like a global
+server that everybody can interact with quite easily. And the issue with sharding is
+if my Facebook is really tuned to me talking to people, you know, in the same country I
+live in, and I then want to interact with people in a very different country for some reason,
+then internally at Facebook, it's a real pain for them to keep transferring data between the
+servers, between the server my profile is mainly on, and the server where whatever discussion I'm
+involved in now is on. So this has been figured out a long time ago. And in Ethereum, they call
+this crossing sharding, cross shard interaction. And it'll just be very expensive to interact with
+smart contract that is not living on the same shard as your contract. But I think the more
+important point is proof of stake. Because I don't believe that proof of stake works at scale
+and can stand up to attacks. I believe it's similar to, you know, having a spaceship that runs on
+magic instead of a propellant. So, yeah, I mean, in proof of work, you know, you burn electricity,
+which we call an externality. And that gives value to your Bitcoin. But if Ethereum switches
+to proof of stake, then it's a completely closed loop. So you are using your Ethereum inside of
+your ether inside of Ethereum to get more ether inside of Ethereum. And you're also using your
+ether in Ethereum to prove to others that you're not being malicious. And that's never been proven.
+I mean, we have some other proof of stake coins that's been around for a while. I know it's what's
+still alive, but I think most of them are dead. So I don't think that's going to work. And I also
+believe the Ethereum miners of today will probably rise up and stick to the proof of work fork.
+Most of the proof of stake coins that have been in existence have either died or they've ended up
+having to implement other trade offs, checkpoints and stuff. Centralized take pointing out. Yeah,
+so one of the issues that I think proof of stake or proof of stakers are going to have to deal with
+is sort of the liveness issue where when you're mining, if anything goes wrong with your mining
+infrastructure, then sure, you're losing out on some potential profit, but you're not going to get
+wrecked and have your money taken away from you. Whereas if you're staking and something goes wrong
+and you're no longer able to participate, something will basically cause you to violate one of the
+staking rules. And now you have to worry about getting slashed and actually reducing the amount
+of money. The slashing is an issue for miners, but for a normal user who's just installing an
+Ethereum wallet on his computer, he has no way to establish which chain is the correct chain on
+proof of stake. He must speak to a centralized checkpoint authority to establish the fork he's
+supposed to be on. And from then on, he can use staking as a proof of what is the correct chain.
+And well, that's sort of the idea. It's a challenge. I think in summary of Ethereum 2,
+there's three major change. One is the virtual machine. That's the equivalent of moving everybody
+from Windows to Mac OS X. It's possible, very difficult. Next level up, we've got proof of
+stake. Some would argue that proof of stake pre-existed proof of work in some form, and we
+have not been able to get it to work up until today. Maybe they will also fix that one and be
+the first to get it to work. And finally, sharding. Well, we've seen the challenges even at MCCVR.
+We've had a sharding issue that caused a delay. It's not an easy problem to solve. In fact, in
+database engineering, the idea of a database that's distributed, that can be sharded and be
+read and be written to and read from multiple locations has been something that everybody who
+develops a distributed database has wanted for 40 years. No one's been able to do it. Maybe
+Ethereum will fix all three of those problems in one go over the next year or two. I'm a doubter,
+and it sounds like all three of you are as well. So, next, a second to last question.
+Does Ethereum, if they can fix all these problems and make it work, compete with or
+complement Bitcoin? Just yesterday, for example, Free Arrows Capital completed the single largest
+issuance of new wrapped Bitcoin tokens by a merchant, minting nearly 2,500 wrapped Bitcoin.
+And a week earlier, Alameda Research said the previous record of 2,000 wrapped Bitcoin.
+So, it could almost be argued that Ethereum is morphing into a highly functional, complementary
+sidechain of Bitcoin rather than a competitor. But what are your thoughts?
+Let's go with Andreas.
+Yeah, I mean, I'm going to have to object to sidechain because that means something specific
+where you actually have cryptography deciding if the coins that are not on Bitcoin anymore,
+but on Ethereum are valid or not. But if we can call it like a companion, I think it's fantastic.
+I mean, in Bitcoin, we've been struggling for as long as I can remember to attract new developers
+because, you know, it's not that exciting. You get a private key and an address and your friends
+can send you some money and you can send money to your friends. That's not very enticing for,
+you know, the 16 year old developer out there looking to just flip the world upside down.
+So, for those guys, the smart contracting, and you can see how they're doing it in DeFi,
+where they're actually composing smart contracts so that smart contracts made by different people
+are actually interacting and creating this kind of absurd but really interesting financial system.
+So, I think Ethereum is great for Bitcoin. We're getting in all these new developers and
+even if Ethereum does work out or becomes too expensive, you know, these guys are probably
+going to save their money in B2C and not in Ether. So, I would say everybody wins.
+Okay. Thank you. And Jonathan?
+Yeah. As far as Ethereum and Bitcoin and how they would relate with each other moving forward,
+I think you also need to make a distinction of Ethereum the coin and Ethereum like the EVM,
+the Ethereum virtual machine. So, I think that even though the EVM, the Ethereum virtual machine,
+like the actual like runtime that runs the smart contracts and basically just commits
+into the blockchain that is being currently run by proof of work and is planning on going
+to proof of stake, the EVM itself I think is an interesting system for kind of optimizing
+computations on a distributed system. It is kind of, it's still not very mature,
+but I do think that it is something that is very interesting that even, you know, protocols like
+let's say currently the RGB protocol, which is basically trying to create a kind of like a
+smart contract platform slash token platform on top of UTXO based blockchain, so like Bitcoin,
+and even they're planning on supporting Lightning Network. So, you would be able to make state
+changes in the smart contracts that are only verifiable by the two people in the channel of
+the Lightning channel. So, some sort of system like that could use something like the EVM,
+and because it's all open source, I mean, you know, we would be able to basically just
+piggyback off of all of the solidity contracts that have been written so far and we would be
+able to use them on a system like that. That said, as far as Ethereum, the currency goes,
+you know, I am of the personal opinion that I think that Bitcoin is like gold, and Bitcoin is
+like the cryptocurrency that I personally think is going to be kind of like the leader of the
+space for pretty much the rest of all time, as far as cryptocurrency time goes, whenever that ends or
+ends or whatever. But for Ethereum, I think that as long as the network is useful, and some people
+are using it for something, like whether that be DeFi or whether it be some token or, like you said,
+some like wrapped BTC or wrapped something rather, as long as the network is being useful in some
+capacity, regardless of whether it's actually decentralized or there's some weird way to attack
+the consensus algorithm to basically kind of mess around with the state, I think people will still
+use it in spite of those difficulties, even if there's some way that you could attack it to kind
+of mess around with the state. So I think that Ethereum is not going to go away for a significant
+amount of time, at least. And in the best case scenario, I think they will definitely become a
+big platform moving forward. But as far as whether it complements Bitcoin or not, I am not of the
+mind that these wrapped Bitcoin things are being kind of basically minted by centralized parties
+using a tool called Ethereum. So it's nothing really new than just basically having an exchange
+hold on to your Bitcoin and giving you a number on your login screen that says you have 10 Bitcoin,
+except now you can use Metamask. And that's about it. So I don't think that the wrapped Bitcoin
+thing is really a complement of Bitcoin in that specific example. But I do think that Ethereum
+is experimenting with all these new things like how to properly do proof of stake, if there is a
+way to do that, and how to kind of do these adversarial complex state smart contracts
+in a decentralized network by studying those things that can eventually help Bitcoin or Bitcoin
+related projects like let's say RGB or risk or whatever. And in the end, I think it would help
+out Bitcoin and I think Bitcoin will help out Ethereum. So I think open source in general,
+we're all going to help each other. And I think a lot of the tribalism is unwarranted personally.
+Okay. Well, and you sort of effectively pretty much answered my last question, but
+I'll put the last question to Jameson first. But first of all, Jameson, the last question is
+to finish up is what do you think the future holds for Ethereum? Jameson, can you answer that? But
+first of all, give us your view on the previous question. And then finish up with where you think
+Ethereum is going over the following years? And what's the future for Ethereum?
+Well, you know, the complexity of interactions between these different networks, I think will
+continue to increase. People will try to find ways to reduce the friction like hop between them. So
+you can argue about what that really means. I would say you can make an argument that we have
+Ethereum on Bitcoin and we have Bitcoin on Ethereum from the sense that, you know, there is
+a merge mind chain now RSK, which has the EDM and has the ability to peg Bitcoin into it. Well,
+I believe that's still a federated peg. So Andreas will probably object to calling RSK a side chain.
+Well, I do believe they would like to eventually become a drive chain, which more people would
+probably consider a side chain. And on the flip side, until recently, the Bitcoin quote unquote
+on Ethereum has really just been an IOU token that has generally been with a third party custodian.
+As of recently, with the new launch of each project, I believe we finally have a way to
+cryptographically peg Bitcoin to Ethereum. So that might be more interesting for some of the more
+hardcore folks who would like to minimize their trust as much as possible. So where is this all
+going? I don't think Ethereum is going away anytime soon. It will mostly be interesting to
+continue to watch how it feels as it's growing pains. And so we've already seen what has really
+gone on with the DeFi boom this year, kind of similar and reminiscent to what happened in 2017
+with Bitcoin, where the continued demand for gas and blockchain space and these limited resources
+in this distributed system have been pricing out a lot of the lower end use cases. So you could make
+the argument that while DeFi may be marketing itself as a narrative of being available for
+unbanked and whatnot, really, at this point, with the current level of demand and constrained
+resources, it's mainly the players that are playing around. And in my opinion, most of the
+games that they're playing are just overcomplicated, obfuscated forms of gambling, and in many cases,
+hoodlinking and rug pulling. That is, from a really high level, I would say a lot of the
+financial system is just various forms of complicated gambling. So it shouldn't really
+be that much of a surprise to people. So there's certainly demand and utility for this type of
+stuff. And I guess the real interesting question will be whether or not it will be able to get to
+the point that it can actually handle mainstream demand and can handle more mainstream day-to-day
+utility rather than just rampant, wanting speculation. Thank you for that. And Andreas,
+and then Jonathan, just a brief words on to sum up, what do you think the future holds for Ethereum?
+Andreas? Yeah, you put me in a tough spot here because Jameson had all the good points.
+Yeah, like, you know what, if the market cap of Ethereum overtakes Bitcoin, I wouldn't be
+surprised at all. But to some of us, that's not what it's about. We're kind of more long term.
+And yeah, maybe Ethereum will see some competition from a UTXO based network,
+like you mentioned, RSK, that can run the Ethereum code, which most people know as Solidity,
+but in a bit more sensible way. And yeah, also gonna have to agree with Jameson again on,
+you know, when you have a coin like Bitcoin or Ethereum, where there's a free market,
+which means there's not unlimited block space. So we're all competing for it. And then the
+question is, who can afford to pay the most? And that's, of course, going to be people who
+are doing gambling. If you look online, who's buying the expensive ad spaces, even a coin
+market cap, they're all scams. It's because they run with such high margins that they have
+unlimited money. So yeah, we can end up in a situation where Ethereum is completely clogged
+by real degenerate gambling, for better or worse, and that the real use cases like
+Augur, which is a prediction market, and these kind of things will just be completely squeezed out,
+maybe to their own shard, but also maybe just out of the network.
+Interesting. And Jonathan, just a quick summary. I'm getting the calls from the backstage.
+What do you think the future holds?
+Sorry about that. Can you hear me?
+Yeah, I can hear you.
+Okay. All right. Yeah. So basically, I think I already kind of went over what I think is
+going on in the future. I don't think that Ethereum is going to go away anytime soon.
+I don't think it's going to implode. I think the transition to 2.0 has some
+possibility to create some trouble, maybe have some incidents that might cause problems for
+some people. But if it turns out to be the same coin, or to be considered the same coin by the
+community, I think we will pretty much be forced to run a validating node to validate the Ethereum
+2.0. And if it's decided by the community that it's a separate asset, then we'll have to run
+through the regulators and do all that stuff and decide whether or not we want to list it or not,
+which is a different subject all on its own. I definitely think that Ethereum is doing some
+interesting experiments that I think will eventually be good for Bitcoin. And I think that
+Bitcoin has a lot of things that Ethereum can learn from. And obviously, it has learned from.
+So, yeah, that's what I think about the future of Ethereum.
+I think that's a very good way to finish this talk. The summary is Bitcoin and Ethereum can
+potentially complement each other. Ethereum, most people's view is that it's not going anywhere
+anytime soon. It has a number of technical and social challenges to overcome. But as an
+experiment and as popcorn-inducing, popcorn-eating interest, entertainment value, Ethereum will be
+an interesting space to look at over the coming years. I'd like to thank all of our panelists,
+Jameson, Jonathan and Andreas. And thank you to the audience for bearing with us. And hopefully,
+you'll enjoy the rest of MCCVR today and tomorrow. Thank you very much.
+Thank you.

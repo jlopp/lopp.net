@@ -1,0 +1,634 @@
+Hi, this is Wessel Simmons from New Block Media from Amsterdam.
+We are a publisher from bitcoinmagazine.nl and here we got a weekly special and this episode
+is with Jameson Lopp.
+He's famous for his work for Bitco.
+It's a custodial for digital assets and now he started at Casa, famous for their Lightning
+notes.
+Yeah, we talk about various topics like privacy and cypherpunks and obviously his vision on
+Bitcoin network and technology and of course we dive into the Lightning network.
+What does it mean?
+I mean, are we going to pay with Bitcoin and Satoshis and how does he see the off-chain
+solutions evolve?
+And yeah, I hope you enjoy the talk and see you around for next time.
+Yeah, the professional cypherpunk title that I put on my website is a bit tongue in cheek.
+It's kind of a joke, really a result of a lot of journalists and other people describing
+me as a quote unquote self-proclaimed cypherpunk.
+And I always thought that that was kind of funny because that is the only way that you
+can be a cypherpunk is to proclaim it.
+It is not a title that is bestowed upon you because a cypherpunk is someone who advocates
+for the use of strong privacy enhancing technologies generally as a means to enact political and
+social change.
+So it is a very self-motivated type of thing.
+You have to put yourself out there as being a proponent of these technologies and ideas.
+And so for me, it has become much more important personally over the past few years as my prominence
+in the Bitcoin and crypto ecosystem has resulted in me getting attacked in a number of new
+ways.
+And so focusing more on improving my privacy also helps with my security.
+And I've spent a ton of time and resources on my own privacy, mainly as a result of having
+a bunch of police show up to my house a few years ago.
+And I just want to avoid that.
+Yeah.
+That's a very sad story and a very known story, of course, and a bizarre story actually.
+You also have your own blog, I think, in security and privacy tips, isn't it?
+Yes, I've been blogging pretty much ever since I got into this space, just about whatever
+is currently interesting to me.
+So plenty of technical things, but also as I go down any new path where I'm educating
+myself around all this privacy stuff, I want to share the results of what I've learned
+and what I've experienced.
+So whenever I do anything that I think is kind of complicated that I can distill down
+into an easy to digest format, I try to write up some sort of post about it.
+And do you still grab back to some of these methods of research or of the cypher funds
+from the first generation, or like Hal Finney and Timothy May, Zimmerman, or...
+I mean, it is a very self-motivated thing, right?
+It's good to know the history and where we came from, but the whole point of all of this
+is to continue breaking new ground and experimenting with new things and trying to figure out ways
+that we can continue to fight this battle.
+Because the whole problem with privacy is that it's in direct conflict with the information
+age, the fact that information is becoming easier and easier to share and spread.
+And so it's becoming harder and harder to contain information, to keep any information
+private and out of the hands of the wrong people.
+And so this is a never-ending struggle, I think, and you can make plenty of arguments
+that we're actually losing the battle for privacy.
+Basically what I have experienced over the past few years is the incredible difficulty
+to retain your privacy simply because the default for most of our everyday lives now
+in society is that we're just giving away information at every turn.
+And when you try to go against the grain to protect it, it ends up costing you a lot of
+time and resources and also can be uncomfortable because you end up creating a lot of friction
+with the other people you're interacting with because they're not used to trying to help
+people retain their privacy.
+Yeah.
+Yeah.
+And I think you gave this example of going to a funfair and then you got checked by their
+employees and there were...
+Yeah.
+Yeah.
+So that's...
+So the whole surveillance systems, yeah, I mean, it goes even where you just want to
+have fun actually and a funfair, but yeah, the impact is quite big on everyday life.
+Now ultimately, you end up having to become a lot more comfortable at basically at lying
+or at coming up with cover stories that raise less suspicion than saying, oh, I'm trying
+to protect my privacy.
+Because when you go around saying, I'm trying to protect my privacy, that actually makes
+people question, oh, what is he trying to hide?
+And so you often end up coming up with other stories of why you don't want to reveal certain
+information that sounds less suspicious to people.
+Yeah.
+Yeah.
+And actually, you also gave this, yeah, I mean, you actually also shaved your beard
+because you got all these random check-up checks, security checks at the airports.
+And I mean, that's the way I understood it, that it's one of the reasons.
+And because it was just, it was making me stand out.
+And so I've only ever been recognized randomly out in the real world one time.
+And that was definitely a result of having a two-foot-long beard.
+It just makes you so much more unique that people notice.
+And it's more likely that they would make that correlation in their head that, oh, wait,
+this is that Jameson guy because he's got that really long beard and he talks about
+privacy and other nerdy stuff.
+So now I look a lot more like everybody else and blend in with the crowd.
+Right.
+Right.
+So if we just dive into your personal motivations, I mean, is privacy like the core of your personal,
+yeah, motivation to do this kind of work or?
+That's tricky.
+It's changed over the years.
+It became a lot more real to me after the swatting incident.
+Before that, I definitely believed in the ideology, but I wasn't really walking the
+walk.
+I wasn't practicing all of these things that I was aware about.
+And there were a lot more things I wasn't aware about because I didn't spend that much
+time really trying to maintain my privacy in every possible way.
+So I originally got into the Bitcoin space more from the ideological perspective of separating
+money and state.
+I just felt like the concept of money was something that should be open for everyone
+to contribute to rather than to only be controlled by a small group of people.
+So that was more about power.
+The privacy stuff has built up over the years just as a result of other things that I've
+done in the space.
+Okay.
+Okay.
+And if you can give one advice and then we will dive into the Bitcoin Lightning Network
+topics.
+But if you can give one practical advice for people concerned about their privacy, I mean,
+what would you advise first hand, I mean, at first?
+Yeah.
+So there are many different ways that you could be leaking information and each person
+basically has to decide what they want to protect themselves against.
+Most people are not going to spend a ton of time or effort or resources improving their
+privacy.
+So normally I say the easiest, lowest hanging fruit for people that they can gather to improve
+their privacy is just installing a lot of ad blockers in their browsers, potentially
+setting up a VPN so that they're not exposing all their browsing activity to third parties.
+But it really does come down to how much effort you're willing to go to.
+And I've gone to the extreme and it gets a lot harder when you try to take it to the
+real world privacy level.
+But if you want to do the easy stuff, there's a lot that you can do to improve your digital
+privacy or privacy online that doesn't cost a lot of money, just takes a little bit of
+time to install software that will help you out with that.
+All right.
+And do you use Tor on a daily basis?
+So I'm 100% on multiple VPNs all the time and then Tor I use sparingly.
+I mean, I usually use it when I want even superior privacy or when I'm trying to do
+something that is getting blocked by VPNs.
+There's a lot of services out there that will block VPNs due to abuse, but usually they
+don't block Tor.
+Okay, cool.
+And okay, if we dive into the payments, if you look into private payments, on a personal
+level, do you do like some private payments via cryptocurrencies or via lightning network
+or?
+Yeah.
+So, you know, most of my payments are still not via crypto or in fact, I would say that
+in many cases, the payment methods that I use are better privacy than cryptocurrency.
+So whether that's cash or something like a prepaid debit card or a virtual like unique
+credit card, there are several services that allow you to create those very easily.
+I normally only stick to like crypto payments if it's some sort of crypto based service
+that is selling something related to crypto or they only accept crypto.
+Otherwise, a lot of times I find that it's more of a hassle to like go dig out my hardware
+wallet and then write down the accounting stuff to like take capital gains taxes that
+I'll have to figure out to report on at the end of the year.
+It's just it's a lot more of a hassle to do crypto in most cases.
+Yeah, it still is, unfortunately.
+So yeah, I mean, yeah, the question is, of course, the questions will also focus on Bitcoin,
+of course, and then we will dive into lightning network.
+You did a presentation in Berlin on the lightning network.
+So first, I mean, Bitcoin is now 11 years old, a white paper.
+But how do you judge or how do you, yeah, what were your expectations of Bitcoin and
+how do you see the current phase of Bitcoin?
+I mean, it's obviously a very broad concept of ideology, technology and asset and means
+of payment, perhaps.
+So yeah, how do you see the current phase that Bitcoin is in?
+Well, it's definitely surpassed, I think, most people's expectations in this time period
+when when I first got interested in and I just thought it was an interesting experiment
+that in all likelihood would probably fail.
+And then over the years, as we had multiple adoption cycles and the technology continued
+to improve, I spent more and more time working on it and eventually went full time and have
+basically been fully immersed in it and trying to better understand it for for five or six
+years now.
+And so I still think that it is something that we're trying to fully understand the
+implications of and the possibilities for what we can do with it.
+There are plenty of constraints in place that make it difficult to change Bitcoin.
+And so you have to spend a lot of time understanding how you can navigate through this kind of
+maze of constraints and the difficulty in obtaining consensus amongst a large distributed
+group of people or in many cases, how do you avoid the need for having to obtain that consensus
+and how do you make changes in a way that don't require going through that very difficult
+path.
+So it has definitely come a long way.
+But from a technology and usability standpoint, we still have a very long way to go both for
+things like scalability and security.
+And I mean, this is why I've spent the past five years now focused on the very simple
+fact of helping people secure their private keys.
+I think that there is still a fairly high bar for people to be their own bank.
+And there's a lot that we're going to need to do to make it easy enough for the average
+mainstream person to feel confident that they can control their own keys without having
+to worry about losing them to any number of different attackers or loss vectors.
+And so while it's great to see all of these cutting edge improvements and technology changes,
+I still think there's plenty of work to be done at the very low level of just private
+key management.
+All right.
+All right.
+Right.
+Yeah.
+You talked about constraints.
+What do you see as the biggest constraint if we focus on the decentralized governance
+aspect of Bitcoin?
+It's very frustrating for a lot of people because there hasn't ever really been a system
+like this before.
+People are used to more traditional hierarchical command and control type governance systems.
+And so that's kind of what we saw through all the scaling debate drama was people trying
+to find ways to basically take a vote, whether it's like, do we let the miners vote on things?
+Do we let the developers vote on things?
+Do the nodes vote on things?
+And that's just not how Bitcoin works.
+There is no really efficient way to take a vote to test the consensus of the variety
+of diverse participants that are making up the system.
+And so ultimately, you end up with a rift between kind of the high time preference and
+the low time preference people.
+Some people will believe, oh, we need to make these changes as soon as possible, otherwise
+terrible things will happen.
+And then other people will say, well, if we start rushing and making changes, then it's
+more likely that terrible things will happen.
+And that's kind of like the crux of the scaling debate.
+It was also boiled down to a fundamental ideological difference between prioritizing low cost of
+making a transaction versus prioritizing the low cost of being able to fully validate the
+entire history of the blockchain.
+And ultimately, we saw that these were basically irreconcilable differences.
+And that's what resulted in the forking of Bitcoin.
+Yeah.
+Yeah.
+And looking back, I think you shared a graph of the hash rate of the different networks.
+I mean, of course, Bitcoin or Bitcoin Core and then the forks.
+And actually, if you look at the health of the system, then we can conclude that, yeah,
+I mean, these forks, yeah, didn't pull it off, actually.
+I mean, if you look at the security and the hash rate of their networks, or what's your
+conclusion?
+Well, ultimately, and there were a lot of debates about miners and what role they play
+in the system, but I'm still quite sure that miners are basically employed by a given network,
+or at least a given network makes an offer to miners that basically says, we will pay
+you, you know, this block subsidy and these transaction fees, if in return, you will point
+your hash power at securing our network.
+And so the result of all of this, the forks and whatnot, has been that the majority of
+the value has remained in Bitcoin, both from block subsidy and from transaction fees.
+I think I saw a statistic that just in the past day or so, there was something like $250,000
+in transaction fees on Bitcoin, whereas any of the forks like Bitcoin Cash or Bitcoin
+SV, all in total had less than $1,000 in transaction fees.
+So that kind of goes to show like where the economic incentives are for miners to point
+their hash power.
+And you know, you can argue all day long about why it ended up being the Bitcoin fork versus
+any other fork.
+But you know, we do have that empirical evidence that it seems like the majority of value,
+whatever that may be, store value, medium of exchange, et cetera, et cetera, has remained
+in Bitcoin.
+And that's what is incentivizing the most minor hash rate to remain there.
+Right.
+Right.
+Yeah, we've seen exponential growth and hash rate.
+And what are your expectations of the hash rate of the Bitcoin layer?
+Or Bitcoin layer one, actually, the main chain of Bitcoin?
+Well, we seem to have pretty much reached the limit of the technical capabilities of
+improving Silicon manufacturing.
+Like I don't think that we're going to see another order of magnitude efficiency improvement
+with the mining hardware.
+So asking what the hash power is going to look like is basically asking what do you
+think the exchange rate of Bitcoin is going to be like?
+Or what do you think that the transaction fees are going to be like?
+And so I do expect that over the long run, we will either continue to see more of these
+bubble like cycles or something catastrophic will happen and the whole system will crash.
+So I think that it has to keep going up significantly.
+It has to keep growing significantly.
+Because I think the least likely scenario is that we stall out and we remain where we
+are right now.
+Right.
+Right.
+Okay.
+So before we will dive into the scaling problem and scaling Bitcoin, I think it was also at
+the presentation in Berlin that you shared a few graphs about network protocols and network
+activities.
+Well, actually, also, you concluded that most of the transactions on Bitcoin are still on
+centralized exchanges, right?
+Yes, and a lot of them are going from one exchange to another exchange.
+Yeah.
+So is that I mean, do we have like, is there some what's your position in this centralized
+decentralized discussion or debate or is it is it like a good thing or a bad thing that
+central parties or is it just a natural outcome of, of, of, yeah, of this system?
+Yeah, I mean, I think that centralization is a sort of naturally occurring force, mainly
+because that's where you get the easiest value capture.
+You know, if you can become an intermediary, then you can capture a lot of value with economic
+transactions.
+And so at the moment, these centralized exchanges are, I think, unquestionably capturing the
+largest amount of value in the system.
+In fact, exchanges are probably one of the few highly profitable enterprises that you
+can have in the ecosystem right now.
+So there's, there's a very large disincentive for exchanges to, I think, decentralize themselves.
+It's a lot of work to do that and still be able to capture a lot of value.
+So I think it is kind of inevitable, but that, you know, we do have plenty of people that
+are working on options to help decentralize that.
+But I kind of see it as an intermediary onboarding phase.
+We're going to need to have these like on ramps and off ramps as long as Bitcoin is
+small and is not being used as a unit of account and does not have a true circular economy.
+And this is kind of what I talked about with the lightning presentation is that I think
+we all understand that we want to get to a point where you can remain completely inside
+of the Bitcoin ecosystem and pay for everything in Bitcoin.
+But there's a lot of work that we're going to have to do to get to that point where,
+where everyone, both individuals and enterprises are all accepting, you know, sending and receiving
+Bitcoin or lightning payments or whatever.
+And until we get to that point, it's going to be very important to have these sort of
+fiat conversion options.
+Could you work at an exchange?
+I mean, there are some, I listened to this interview with Pierre Rochard for instance,
+and he started to work at Kraken, but could you work at an exchange or?
+So interestingly enough, I, for the first three years of my full-time Bitcoin career,
+I worked behind the scenes and I was working at Bitgo, which was powering a lot of exchanges.
+So I've seen a fair amount of, you know, at least the Bitcoin side of what goes on behind
+the scenes there.
+I probably would not want to work at a regular exchange or really at any company that's doing
+AML KYC stuff just because of the privacy implications.
+Hmm.
+Hmm.
+All right.
+Right.
+Right.
+And actually you made the transfer to, to Casa.
+Why?
+Why Casa?
+What's the reason?
+I mean, there, there obviously are a manufacturer of also equipment.
+I mean the notes and software of course, but also hardware.
+Well originally it was, it was a fairly small pivot because I basically went from doing
+a multi-SIG security for enterprises at Bitgo to doing multi-SIG security for individuals
+at Casa.
+You know, Casa has a whole suite of products now.
+We seem to be better known for our node stuff, probably because it's much lower price point
+and we have a lot more people who are as a result buying the lower price point stuff.
+But our real bread and butter product is our key master, which makes it very easy for people
+to create high security multi-SIG wallets and manage them in a way that's never really
+been possible before with a really user-friendly interface.
+So the reason why I did that switch was that I felt like we had made a lot of progress
+improving enterprise, private key security, but there was still a lot of work to be done
+to make it easier for individuals to attain that same level of security.
+And I think we've actually made a lot of progress in that regard.
+It was, it was a personal problem amongst everything else where I realized, you know,
+I was spending one to two days every year, refreshing my own cold storage setup in a
+very highly technical complex process that I was also doing as a means of inheritance
+planning so that if I got hit by a truck, hopefully my heirs would be able to recover
+my money.
+And it was a really, it was a frustrating thing because, you know, I had a fairly high
+degree of confidence that it would work if I died suddenly, but I wasn't 100% confident.
+And I knew that if I was having that problem, then I'm sure a lot of others were having
+it.
+And we've built a product now that I think is giving a lot of people peace of mind with
+regard to the security of their funds and to the idea that if something terrible does
+happen to them, their heirs will be able to access them.
+Yeah, I think it's a good development that we have these more professional products that
+are covering that because that's of course, yeah, very important for kids or grandkids
+or other family members to get access to your keys or slash Bitcoin.
+Yeah.
+So yeah, let's talk about scalability.
+I mean, some say Bitcoin, does Bitcoin have a problem with scalability?
+Obviously, you think that Bitcoin has a scaling problem?
+Oh, certainly.
+But I mean, pretty much any technology has scaling challenges.
+It's just that Bitcoin has some uniquely difficult scaling challenges that your average technology
+doesn't.
+Yeah.
+Okay.
+Okay.
+Okay.
+So and one of the developments is the Lightning network and it's still I mean, we've covered
+a few weeks back towards this bug, a few bugs on the Lightning network.
+So it's still like experiments.
+It's still in the experimental phase or how do you see the current phase of the Lightning
+network?
+Yeah, I would I would still say that it's fairly beta.
+I mean, people who are enthusiastic enough to put some time into it and are willing to
+encounter the occasional failure, they're able to use it pretty well right now.
+I would say personally, like, you know, it depends on a ton of different factors.
+But a failure rate of maybe around 10% that I've experienced personally, and I don't believe
+that a payments technology is really going to be capable of going mainstream until the
+failure rate is like well below 1%.
+And there's a lot of different challenges that will need to be overcome on the software
+side in order to continue improving that reliability.
+Right, right, right.
+And I mean, one of the users are also advised to don't have that large amount of Bitcoin
+or Satoshi's on Lightning network, right?
+I mean, it's still yeah.
+So you know, we've what we've seen, you know, from all the Bitcoin and Lightning nodes that
+we've shipped out at Casa is that there aren't really huge security issues.
+There was that one bug a few weeks back, but I don't think that we ever had any confirmation
+that that was actually exploited to steal money from anyone.
+Really the more common loss vector tends to be like catastrophic hardware crashes and
+the challenges with recovering funds from corrupted data.
+And so that's where we have things like watch towers that are coming out to help with certain
+losses.
+But really, I think ultimately, we're going to need to have just more robust backup systems
+for all of the channel data.
+Right, right.
+If you look at the network itself, I mean, the whole logic within the network with the
+payment channels and the nodes, of course, the payment routes, et cetera, is there is
+there's still I mean, of course, there's this whole new ecosystem, actually, you described
+as a new economic system.
+So what are the how can we Yeah, actually, better those What do you say?
+What are the challenges in that respect?
+I mean, within the network itself?
+Yeah, it's, I think mostly going to come down to liquidity management.
+I don't think that there's really anything quite like this that has been built before.
+And so figuring out how to manage your own liquidity in a way that makes the payments
+and routing more reliable is what I think a lot of engineering effort is going to have
+to go into.
+And as I discussed in my talk, the really important factor to making liquidity management
+easier is going to be having ways of rebalancing these channels, preferably by making out of
+band payments to liquidity providers, aka exchanges.
+Once we have more exchanges on the lightning network, then it would be possible for you
+to set up a basically a conversion of fiat to lightning or vice versa, so that you can
+continue to rebalance the money in your channels so that you don't have to close out the channels
+and you can just keep them open for potentially an indefinite period of time and continue
+using them for payments without having to fall back to on-chain transactions.
+Right, right.
+So possibly there's this route of fiat unwrap on exchange and then a direct line to your
+payment channel.
+So for instance, there's this connection between your lightning wallet and an exchange for
+instance, or what is it?
+Yeah, so basically it would depend on whether or not you're more making payments to people
+or receiving payments from people that will the sort of net imbalance between the flow
+of money between yourself and other people is going to change whether or not you end
+up with too much lightning value on your end of the channels or if you are running out
+of value on your channels for making payments.
+And regardless of which one of those it is, you would want to interact with an exchange
+to rebalance it.
+So if you had too much value on your end of the channels and it was making it difficult
+to receive more payments, then you would want to send some of that value to the exchange
+and then they could send you a fiat payment via traditional network in exchange for that
+or vice versa.
+If you'd need more value, then you could send a fiat payment to the exchange and then they
+would push value to you over the lightning network to rebalance your channels.
+So we can conclude that we still need fiat money.
+I mean, we still need fiat money in this new build system.
+For the time being, yeah.
+So until we get to the point where there's a fully circular economy, then you're going
+to need something like that.
+If we get to the point where everyone is on this new network, then you're not going to
+have to rebalance your funds with an exchange, but rather you're going to be rebalancing
+by making other payments or receiving other payments from other parties, whether it's
+as your salary as an employee or if you're a business and you're receiving a lot of payments
+for things that you sell, you would then be making payments to your suppliers.
+This is really the natural flow of money in any healthy economy is the money is always
+moving around between different people.
+It's not just all being collected in one place and sitting there.
+All right.
+All right.
+One of the pleads you made in Berlin was also to have more businesses on the Lightning Network.
+Is that also a part of this circular economy, of course?
+Yeah, mainly because the vast majority of payments are not between individuals, but
+they are rather between an individual and a business.
+It's retail is where the vast majority of payments happen.
+Then of course, a fair amount of payments of larger value, but lower total volume are
+between businesses themselves.
+The whole point of that was that if only individuals are on the Lightning Network, then there's
+not going to be a lot of opportunity to use it because not very much economic interaction
+happens just between two individuals.
+Then is this Lightning Network in your eyes good enough or ready for more mass usage or
+mass adoption?
+Right now, it's good enough for the enthusiasts who are willing to put some effort into it.
+One of the things that I was talking about with regard to enterprises in that talk that
+I gave was that enterprises have a lower risk tolerance.
+They're generally dealing with much larger amounts of money, or in many cases, they may
+be dealing with money that technically doesn't belong to them, like exchanges, for example.
+What we need if we want to get to that next level of enterprise adoption is a number of
+different things, mostly around reliability and robustness.
+Right now, there are too many potential failures that could cause that business to lose the
+money that they're using on the Lightning Network.
+Part of this is going to be software improvements, but I think a lot of it is also going to just
+be creating new standards and best practices around how to manage high... I have a lot
+of that is going to be things like infrastructure of how do you set up your machine so that
+if you have some catastrophic hardware failure, you can always recover from it and not lose
+any of the money that was in that Lightning node.
+Right.
+Right.
+Right.
+Yeah.
+I mean, it's actually a new kind of network.
+I mean, we've also seen utilities like messaging.
+I mean, I saw a tweet retweeted by you, like a sort of messaging app on Lightning, that
+kind of utilities are disrupting, yeah, or erupting, I must say.
+Well, yeah, I mean, the biggest change that I think can happen from this is sort of realization
+of true micro payments.
+What does it really mean when you can start streaming pennies or even fractions of a penny
+for small utilities?
+Sometimes that means we can get rid of a lot of subscription models where generally if
+you want to use a service, you're going to have to pay them for at least a month of service
+ahead of time.
+But what if you only want to use a service for a few minutes?
+Right now, it's not really feasible to pay a service for a few minutes of usage.
+So I think that this potentially creates a lot more economic efficiency with regard to
+how we interact with any number of entities or enterprises online.
+It could also make a lot of difference with regard to like Internet of Things type interactions
+where we can actually have computers paying computers for things.
+This is interesting both from the ability to sell tiny, tiny amounts of valuable services
+or even as sort of anti-spam measure, you know, it's kind of like hash cash.
+But you know, just the ability of preventing abuse of systems by requiring payments, you
+know, it's the HTTP 402 payment required code finally being realized after like 30 years.
+I think that the possibilities are enormous.
+Oh, wow.
+So it's all kinds of things can can pay each other like computers or cars or perhaps houses
+or energy uses it within houses or I mean, that's kind of Yeah, I mean, it's I think
+basically going to be limited by our imagination.
+Once the the network and the infrastructure are reliable enough, I expect that it will
+be as easy for your average developer to add support for this as just, you know, importing
+a new standard code library and then telling the machine, okay, you know, accept or require
+payments for these operations.
+Yeah, very, very interesting.
+So okay, let's a few questions.
+I mean, is there actually an alternative to the lightning network?
+I mean, we've seen, for instance, some some side chains, of course, we have to look with
+side chain of blockstream, of course, but there's also that has also a connection with
+the lightning network.
+So so do we have alternatives for the lightning network or is it better just to focus now
+on lightning and yeah, and build on that?
+Yeah, so some of these side chains are interesting, like liquid, because it has additional functionality
+with the confidential transactions that add a new level of privacy to what you're doing.
+But really, even any of these on chain things, and like, you know, you can also set up potentially
+atomic swaps across other chains, where you're, you're, you're actually making a payment
+with a different coin, and basically just exchanging a coin on one chain for a coin
+on another chain.
+There's a lot of different possibilities, but I don't think that any of them are going
+to be as fast or as efficient as the off chain systems.
+And really, you know, we're still exploring what the real privacy ramifications of this
+are.
+But I think that in general, any any sort of on chain operation is creating data that
+is going to be shared with the entire world, whereas off chain stuff is inherently more
+private, simply because you're not sharing the data with everyone, you're only sharing
+it with a small number of people.
+All right, so that's a big plus.
+I mean, if I mean, if you look into private concerning with privacy, when we need private
+transactions, for instance, then then, then it's better, of course, to have an off chain
+possibility.
+Yeah.
+Yeah, I think there was actually one of the chain analysis companies was asked recently
+if they were looking into trying to analyze lightning network payments.
+And they basically said, No, we don't think that that's even possible.
+Yeah.
+Okay.
+Okay.
+So do you do you have actually time to look into other projects in this space?
+Or are you primarily focusing on on, of course, Gaza, lightning and Bitcoin or I mean, I remember
+your tweet that you were running a grin notes, for instance, I'm not sure if still running
+a grin notes.
+Yeah, actually, I just upgraded it again last week.
+And, you know, that's, you know, it's just another project, I run a lot of nodes, actually.
+And in fact, right now I'm in the middle of another annual round of node performance testing.
+I'm basically testing several different Bitcoin nodes to see how quickly they sync.
+And then I've historically also been testing, Ethereum nodes, Monero, Zcash, and maybe something
+else, just to try to compare all these different nodes and networks from a performance standpoint.
+Yeah, I think it's on Twitter that one of these nodes, they performed quite well.
+I think it was called Bitcoin or something.
+So far, Bitcoin was interesting, because it has been the only node that actually got faster
+over the past year.
+A lot of these other nodes are getting slower and slower, which you do kind of expect because
+the blockchain keeps getting larger and larger.
+And so that's why I think it's an interesting thing to test to see, you know, how the performance
+is changing over the years as more and more data has to be processed by the node to get
+it to sync from genesis.
+All right, all right.
+And can you, is there an explanation for this, yeah, for Bitcoin, the performance of Bitcoin?
+Oh, yeah, they've made several improvements.
+They completely rewrote their block storage file system, and they also removed some caching
+mechanisms that normally are meant to speed things up by preventing you from having to
+do a lot of disk reads and writes.
+But they actually determined that in their case, their UTXO cache was slowing things
+down.
+So I think that the main point that I try to get across from these tests is that a number
+of these nodes still have potential optimizations that could make them faster.
+And I just think it's interesting to see which nodes have teams that are actually working
+on that and which ones seem to ignore those issues.
+All right, right.
+Yeah, just one or two questions.
+I mean, there was some criticism or criticism between brackets was this blog post in which
+you actually explained the type of design decisions you made with CasaNode1.
+One of the things was the HTTP instead of the HTTPS.
+Perhaps you can explain just to give some insight into these choices.
+Right, so the criticism was that theoretically a compromised machine on your home network
+could intercept traffic to and from your CasaNode if you were accessing it over HTTP with your
+local network.
+As we stated, technically this is correct, however, our own analysis of the risk of this
+versus many other bad things happening is incredibly low.
+The reason that we chose not to go with the SSL route is because that would require users
+to go through a fairly scary looking browser error that would basically be telling them
+that something is terribly wrong and like the SSL certificate could not be validated.
+And so we chose to bypass that for usability reasons because we felt that the possibility
+of this seed phrase being intercepted on their local network was fairly low.
+Now I tell you from my own experience and seeing our support queue and the issues that
+people have had with the node, I am not aware of a single case of anyone actually having
+money stolen from their CasaNode via a compromised machine on their local network or any other
+security exploit.
+Rather every case that I can think of where people lost money was due to simple hardware
+failure or corrupted data with the lightning node.
+So while the criticism was technically correct, we believe that it was vastly overblown in
+terms of the actual risk to users compared to the many, many other risks that are inherent
+to running this software.
+Okay, okay, okay and if we dive into the hardware issues, I mean some of the users, for instance
+also me personally, I just want to build this Raspberry Pi node.
+Is it something that you would advise?
+I mean is this hardware capable of running a node?
+So the CasaNode 1 was on a Raspberry Pi 3B+, which I would say is right at the sort of
+minimum level of what you would run a node on.
+The main reason for that is that if you were doing a full sync from scratch on a Raspberry
+Pi 3, it's going to take probably a month.
+And so we were shipping those nodes with most of the blockchain data already synced.
+Now we still gave people the option to re-sync if they were patient enough to do so.
+However, if you're going to build on a Raspberry Pi, I would highly recommend using the Raspberry
+Pi 4, which came out recently and that's the platform we're using for the CasaNode 2.
+With that hardware you can sync in a little over one day.
+So much more feasible from a performance standpoint to have a fully self-validated blockchain.
+And also just due to having better processors and more memory, et cetera, et cetera, you're
+also going to be able to run multiple other services, whereas just running like Bitcoin
+and Lightning on the Raspberry Pi 3 was pretty much maxing out the performance capabilities.
+So we're quite hopeful that we're going to be able to run a variety of different things,
+different services on the 4 that was not really feasible on the 3.
+All right, all right, all right.
+So what can we expect from Casa?
+I mean, with some colleagues we made the comparison for instance with Apple, I mean, in essence
+you are a hardware manufacturer, I mean, and there's still some possibilities to introduce
+new products, et cetera, I mean.
+Yeah, kind of, I mean, we also, we don't really see ourselves as that same level of hardware
+manufacturer because we're still using mostly off the shelf parts.
+For the Casanova 2, we are having a custom case created, but other than that, all of
+the actual electronics and stuff is retail available hardware.
+Now perhaps someday we will get to the point where we actually create custom boards and
+try to get even better performance and efficiency than you can with one of these retail boards.
+But at the moment we still mainly see ourselves as a software company.
+Also because like I said, we have a variety of different services.
+We've got the Keymaster service, we've got the Sats app, which is a mobile app that connects
+you to your Bitcoin and Lightning node.
+And I would say the vast majority of our resources are actually spent on the software side rather
+than the hardware side.
+All right, all right, all right.
+Okay.
+And the Sats app is a non-custodial app or because that's also a bit of a sensible point
+nowadays.
+Yeah, yeah.
+And so the Sats app is actually, it connects you directly to your Casanova over Tor.
+So it's really just like a mobile front end for your Bitcoin and Lightning node.
+Cool.
+Yeah.
+Thank you very much again for your time.
+Have a nice day.
+Thanks for having me.
+Talk to you later.

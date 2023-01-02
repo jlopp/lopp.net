@@ -1,0 +1,1075 @@
+Oh, awesome.
+Hello, everyone, and welcome.
+Today, we are going to be talking
+about our cryptocurrency security standard
+and the key compromise aspect.
+So I'm Jessica Levesque, I'm C4's Executive Director,
+and I'm so lucky to be here today
+with some of our CCSS committee members.
+So let's start with intros.
+Michael, you want to go first?
+Sure, my name is Michael Perklund.
+I'm the Chairman of the Board of C4,
+and I serve on the CCSS Steering Committee.
+It's a pleasure to be here.
+Joshua?
+Well, just going to lose my phone at the same time.
+Joshua McDougall, also a board member of C4,
+committee member for the CEP and the CCSS.
+And I've had the pleasure of helping some businesses
+write their key compromise protocols.
+Jameson?
+I'm Jameson Lopp, co-founder, CTO of CASA.
+I have been focused on private key management
+and self-custody solutions for about eight years now.
+Okay, cool.
+Thank you all for being here today.
+So we're going to be talking about key compromise.
+So this is something that is an aspect
+and a control in our standard,
+the cryptocurrency security standard.
+But there's also a number of different scenarios
+that could happen, either if you are in exchange
+or a custodian, but also even if you just yourself
+hold your own private keys.
+So we're going to get into a little bit
+about what that means.
+Michael, do you want to start by just explaining
+what a key compromise is?
+Sure.
+As the name says, a key compromise is a compromise of a key,
+but it actually goes a little bit further than that.
+It's any kind of doubt of the confidentiality of a key,
+as well as any kind of doubt in the trustworthiness
+of a key operator.
+Basically, if the key or the operator has had any issues
+that make you doubt the trustworthiness of that key
+or that operator, you are dealing with a key compromise.
+Anybody want to add to that?
+I know that the situation or what we're talking about
+is kind of in the phrase by key compromise,
+but anything else before we get into the standard?
+Sure.
+I think it's important to note
+that it's not always malicious things.
+Sometimes these can be accidents or just acts of nature.
+Perhaps there's a flood,
+which may or may not have destroyed a key,
+it's part of a multi-sig.
+It's important to know that no one maliciously flooded
+the building, but the key compromise protocol
+may still be something that needs to be enacted.
+I'd also say this covers a whole range of uncertainties.
+So it doesn't necessarily mean that you are sure
+that a compromise has happened,
+but rather it's that you are no longer sure
+that a compromise has not happened.
+Yeah, that's a good way to look at it for sure.
+So we've got an idea now of what we're talking about
+with a key being compromised.
+So why don't we talk a little bit about the state of the key
+compromise, so why don't we talk a little bit about
+the standard, so we have a example I'm going to put
+in the YouTube chat where you can find our standard,
+but if we want to just start by going over
+what a key compromise policy would be.
+So in 1.05.1, to reach level one of CCSS,
+you need to have, case CP needs to exist.
+So does anyone want to go over that a little bit
+in terms of what's needed for levels one and two?
+I'd be happy to.
+So a key compromise protocol is a set of protocols
+or a set of steps that you have prepared in advance
+so that when you do run into some of these
+trustworthiness issues that we just talked about,
+you know exactly what you need to do.
+The last thing that you want to be doing is scrambling
+about and thinking, okay, well, what should I do?
+Should I do this?
+Should I do that?
+When stress is high and you're fearful of something,
+it's the worst time to start planning.
+The best time to start planning is now when you have
+a calm collected demeanor and you can work through
+all the what if scenarios with your team.
+So a key compromise protocol is basically this list of steps.
+When we run into a key compromise, what are we going to do?
+Step one, do this.
+Step two, do that.
+Step three, do the other.
+And it's difficult to get into any specifics
+for a specific system because every system is different.
+But there will be some commonalities
+for all of the different types of systems
+that would have a key compromise protocol.
+Whenever you believe a key is compromised,
+the goal is to replace that key with a new one.
+In order to replace that key with a new one,
+you'll have to create one or more key shares or key pieces
+depending on if it's multi-sig
+or maybe it's just one or more keys, period.
+You want to test it, send a small amount to it,
+spend a small amount from it.
+Make sure that you do have full control
+that you believe you do over this brand new key
+that was just created.
+You want to create a strong backup,
+make sure that it's protected against fire, flood,
+and all the other types of things that the CCSS covers
+in making that backup.
+And once you're sure you've created the new key,
+you've tested it, you've backed it up properly,
+now it's time to move all the funds from the old key
+that you believe now may be compromised
+you move it all to the brand new one,
+completing the process.
+All the steps involved for your specific information system
+that carry out all of these instructions
+need to be laid out in the key compromise protocol.
+This typically would take the form of a document,
+the KCP document or whatever your organization will call it.
+And it'll hopefully sit idle and never need to be used.
+But God forbid you do find yourself in a situation
+where you suddenly need it,
+well, now you can dust it off
+and just start following the script right from the beginning.
+I have a question.
+How often should something like some company's KCP be updated?
+So if you've got this policy,
+is this something that should be regularly updated
+and like, what would that look like?
+Absolutely, it should be updated regularly.
+Josh, you wanna jump in a little bit more?
+I'm just gonna add that from the standards perspective,
+there's also varying levels of preparedness that it expects.
+A level one actually just requires
+that there's an inventory of these assets.
+Everyone kind of knows that these keys,
+everyone who needs to know knows that these keys exists.
+And I think that's a good way to look at it.
+Despite maybe not being a formal document available
+that outlines all these steps,
+there's at least one staff member in charge of orchestrating
+should some sort of incident occur that requires this.
+And then as we get to level two and level three,
+that's when the formal document actually starts
+to be required that outlines all these steps,
+outlines a table of contacts and ways of contacting people.
+And the other processes that might occur.
+The other key word that I just used there was communicate,
+ways of contacting people.
+The key compromise protocol could even be a dangerous thing
+if the way in which it's communicated amongst the team
+is not done properly.
+So I simply, sending a SMS text message
+that a key compromise has occurred
+and the process should start
+should not be considered strong enough
+and instead strong methods of communication
+and authentication should be used.
+Yeah, I mean, I think it's fair to say
+that key compromise policy is kind of like a variation
+on your key generation framework
+because that's what you're essentially having to go through
+the initialization process that you have done
+when you were originally setting up your system,
+except now you're doing it under a bit more duress
+because you're afraid that something has gone wrong.
+So it becomes even more important
+that you have methodically thought through
+all the different scenarios
+and you know exactly what you're doing
+because once again, like Josh said,
+this is a sensitive operation
+and you don't wanna get yourself into a position
+where you're tricked into initiating a key compromise policy
+that then has some sort of attacker
+who has managed to put themselves
+into a position of trust or a position
+where they can actually take advantage
+of you executing this policy.
+That's such a good point,
+especially because like I think for most people,
+if there's something that is happening
+that's urgent or immediate,
+it's like there's all these additional things
+that are going through our minds
+and it makes it easier to make mistakes.
+So that you might have like this plan set out,
+but if it isn't really like clear and organized,
+it would be easier to make a mistake.
+And I hadn't really thought about that,
+somebody using that to their advantage too, right?
+I mean, this is why I'm not a cybersecurity expert
+like you all are,
+but that's good to hear and to think of certainly.
+Yeah, in many of the investigations that I've worked on,
+a false sense of urgency
+is usually a common attack vector
+that is used to confuse and fluster
+generally the targets or victims of these attacks.
+One of the things that the CCSS calls out in this section,
+in the KCP section,
+is the use of an authenticated communication channel.
+Both Jameson and Josh mentioned it.
+And the importance of this piece
+can't be understated.
+It's definitely possible for someone to impersonate
+a known trusted individual
+and convince you that they are somebody else.
+Oh, looks like the key's been compromised.
+Hey, Josh and Jameson,
+we need to create brand new keys and replace everything
+and move all the funds to the new safe keys.
+And you think that you're working
+with the real Michael Perklund,
+the three of us working together to move all the funds,
+but in reality, I'm an attacker.
+I'm pretending to be Michael.
+And I've now just convinced two of the other operators
+to follow my lead.
+And it allows an attacker to potentially insert themselves
+as a authorized signer
+when they were never authorized to begin with.
+In the CCSS, there's a definition for an ACC,
+an authenticated communication channel.
+And that involves what I call in short form as strong off,
+getting on a video call
+where you can see and hear the other person,
+maybe even ask them to turn left and say the word banana,
+turn right and say the word blueberry,
+just to make it even harder
+for all these new kinds of deep fakes
+to pretend that they are someone who they're not.
+Always the best form
+of an authenticated communication channel
+is in person in the same room.
+Whether or not that's even possible
+for your specific system,
+it's a totally different story, of course.
+Yeah, I like that you brought that up
+with having the person that you're meeting virtually
+with doing something like that
+and repeating the random words and whatnot.
+You and I have done that, Michael.
+And the random words always make me laugh
+that you come up with a random things.
+And it's important though, it really is.
+And so if you're always saying the same word
+or doing the same thing, then that's no longer as secure.
+So it's like coming up with something
+that makes sense in that moment.
+Okay, cool.
+Anything else that we wanted to say about that specifically
+before we get into some different scenarios?
+Okay, so there's a couple of different ways
+that keys can be compromised.
+The key itself could be compromised
+or there could be something with the key folder.
+And like we said earlier,
+there can be different ways that this happens.
+Sometimes it can be because there is a bad actor.
+Sometimes it can be just like confusion.
+Did this happen?
+Did this not?
+Where did I leave this?
+Things like that.
+But let's go through a couple examples
+of what could happen if the key itself was compromised.
+So Michael and I were talking about some scenarios
+before the call.
+And one of them we were talking about is
+if you've got your private key in a safety deposit box
+and you go into the safety deposit box,
+you go to check for it and you notice
+that the tamper evidence seal on your bag is open
+and you're not sure if you accidentally nicked the bag
+or if someone was there since you were last in.
+So either way, what would we do in that scenario?
+Let's say it's me, I head into the bank,
+look at the safety deposit box.
+I find that there's something in there.
+I'm not quite sure if I left it like that.
+I'm clumsy, so hard to say.
+Or if somebody else was in there,
+what would the next steps be?
+Next step would be to reach
+for your key compromise protocol
+and again, going through one by one.
+It'll probably say something like
+contact the other key holders in your multi-sig arrangement
+and let them know that you're initiating
+the key compromise protocol.
+Anything else Neil wants to add about that?
+Is there something that, oh, go ahead, Michael.
+I just wanted to say that in this specific example,
+it's one of the operators who is initiating
+the key compromise protocol.
+It doesn't have to be an operator
+that initiates the key compromise protocol.
+Anyone who identifies that there's no longer
+the same trust in the system as there was before
+could initiate it.
+It could be your secretary who has noticed
+that according to the video logs,
+there were many people who went in and out
+of the room that has the safe overnight.
+And she calls and says,
+hey, we can no longer trust that the one key
+that's here is safe, we need to replace it.
+As Jameson pointed out,
+it is less about an amount of trust
+and it's more about a lack of trust
+or the loss of confidence.
+I think it's easy in this type of scenario to think,
+oh, you know, it was fine.
+I probably just didn't seal the bag properly.
+You know, I'll just, I'll put it in a new bag
+and this will be fine.
+It's, you know, five days before the holidays,
+I'm busy.
+All the other key holders I know are so busy today as well.
+This is too much effort.
+You know, it's probably fine.
+It's probably fine is certainly a nice indication
+of when you probably want to enact
+the key compromise protocol
+because the reality is that trust is gone.
+It's probably fine, but it might not be.
+Right.
+And especially, I mean, I think that like,
+if we're thinking about ourselves,
+like if I'm like, oh, it's probably fine,
+but you know, maybe it's just my own money.
+And like, that's a decision I get to make,
+but when you're saying it's probably fine
+and you're custodying somebody else's money
+and you're making a decision for them
+if they would consider it being fine or not,
+it's like, it's not fine
+because you are making this decision
+for somebody else who doesn't have, you know,
+access to it in the same way you do.
+And so the right thing to do
+is exactly what you guys were just saying was
+if it's probably fine,
+then you need to do something about it.
+You bring up an interesting point though.
+You said, if it was my own money,
+I can say it's probably fine.
+And while that's true,
+I'm not saying it's a good choice.
+If it's your own money, we, you know,
+we talk, especially on these CCSS live streams,
+we talk a lot about what organizations can do
+and what we hope these organizations do
+to protect funds of consumers like ourselves as well.
+But the reality is, is especially with cryptocurrencies,
+we need to take responsibility ourselves
+and kind of lead by example of how we want these businesses.
+I've had a time when I was in an airport
+and happened to be traveling with something
+and one of the agents took it out of my bag
+because they thought it was going to be a weapon.
+It wasn't, but as they're looking at it,
+you know, they're opening it.
+They're looking at it this way.
+They're looking at it that way.
+Cameras are everywhere.
+And then they closed it up.
+Said, oh, it's not a weapon.
+Put it in my bag.
+Now, certainly I can assume, you know,
+they weren't looking for any sort of cryptocurrency key,
+but it had been exposed to the cameras.
+It had been exposed to my fellow travelers.
+It had been exposed to so many people.
+I could easily just say, I'm tired
+and I don't want to worry about this
+and move along with my life.
+But the reality was, is that key was exposed
+to a hell of a lot more things
+than I wanted to be exposed to and I knew it.
+So even as an individual, the key compromise protocol,
+I don't have a document
+and I don't have other people to notify,
+but it's still, even as an individual,
+something that we can do ourselves to say,
+nope, there is a compromise.
+And now much to what Jameson was saying,
+I now know that in the same way I usually generate my keys,
+I have to do that process and I have to do it probably
+with a little bit more speed than usual.
+That's a good example, especially because I think
+we might make the like, yeah, that it's okay
+or it's not and you're traveling
+and there's a lot going on.
+But so even if it's just, you know, yourself,
+if you've got a plan in your mind for what would happen
+if you are traveling and something like that goes down,
+what do you do?
+It's not like you necessarily just have
+like a ledger, a treasure, like another one in your pocket
+or like, what are the steps that you would take
+to handle that?
+Especially like, let's say you're, you know,
+in an airport and you're changing planes
+and you're going from one place to the next,
+there's a lot of different things
+that you're already dealing with
+and then to try to figure that out.
+Can I ask, Josh, what did you,
+like, did you have to take care of it right then?
+Were you like kind of freaking out
+or what did that look like?
+Luckily for me, it was a key
+that I happened to use for presentations.
+So although that there was some on it,
+it wasn't really anything too concerning for me,
+but I did deal with it as soon as I got home.
+Okay, all right.
+We're talking about some examples
+of when a key might be compromised.
+A TSA agent takes a look at a piece of steel
+or your tamper bag.
+The seal is for some reason broken
+when you believe that it should have been intact
+and you don't know whether it's something you did
+or something somebody else did.
+These are examples of when the key becomes compromised,
+but the key compromise protocol aspect of the CCSS
+calls out another set of scenarios,
+not related to the key, but related to the key holder.
+It's possible for the key holder
+to become compromised as well.
+Some examples of this could be,
+the person has, for whatever reason,
+become soured against the organization.
+Maybe they feel like they've been passed over
+for some kind of a promotion
+and now they are vitriolic and are actively speaking
+against the organization that they're a key holder to.
+The other key holders may see that as a form of compromise
+because they can no longer trust
+that the key holder will carry out instructions
+per the policy of the organization
+because now they seem to be going out on their own.
+It's also possible, and this is difficult
+to contemplate, but if one of the key holders
+has a child, a son or a daughter,
+and that child we've now learned has been kidnapped
+and they're being used as ransom,
+either you organization transfer me 100 Bitcoin,
+otherwise this kid is going to, bad things will happen.
+In that moment, I think it's reasonable
+for any parent to acknowledge
+that that parent is not gonna be thinking clearly.
+They're not gonna be thinking about the organization
+or the 100 Bitcoin.
+They're gonna be thinking about the safety of their child.
+That is a prime example of the compromise of an individual.
+They're no longer thinking about the system.
+They're thinking about their family.
+Rightfully so.
+I'm not saying that that's a bad thing
+or that they should have a different set of priorities.
+Absolutely not.
+Don't mistake my meaning.
+What I am trying to point out is that the scenario
+that this individual now finds himself in
+is a compromising scenario.
+A prudent organization would very quickly
+recreate the multi-stake arrangement
+without that employee involved.
+So now there is no risk to the organization.
+Yeah, I think this is, once again,
+going back to the initial key generation, key ceremony,
+key distribution, it's important to get that right
+so that a single compromise won't wipe out your organization.
+Take for example, let's say all the executives
+in your organization are living
+in the same swanky apartment together.
+Distributing all the keys amongst them
+is probably not gonna be very helpful
+because you've opened yourself up to a number
+of different attacks simply due to their
+physical proximity with each other.
+So there may be a key compromise
+that you can't simply execute a policy
+to get yourself out of a situation.
+That's a good point.
+That's an excellent point.
+At no point in the key compromise protocol
+should you be weakening your system further.
+There shouldn't be a, okay, we create a temporary wallet
+instead of the multi-stake and we send all the funds
+to the temporary single-stake wallet
+until we can safely create the multi-stake wallet again.
+We shouldn't be weakening the system during this event.
+The policy should be designed in a way
+and the protocol should be designed in a way
+in which the strength of the network
+is not itself compromised in order to get to some place,
+get to the finish line faster.
+There's a real example of when AKCP was invoked
+in Laura Shin's book about Ethereum's early days.
+Back in 2014, when Ethereum was still in its infancy,
+it had raised its 30-some thousand Bitcoin in their ICO
+and it was stored in a multi-stake arrangement.
+There were questions about the confidentiality,
+integrity, or availability of one of the keys
+and the KCP was invoked for the Ethereum foundation
+at that time.
+If any of you haven't read Laura Shin's book,
+you may want to keep an eye out
+for that little piece of Ethereum history.
+Does the book talk about what they did next?
+It glosses over,
+it does not get into any of the technical specifics, no,
+but it does discuss the compromise
+that was alleged to have taken place
+and it was in that moment that a new crypto key system
+was contemplated to remove the compromise
+from the system entirely.
+Okay, interesting.
+What are some, I would be just interested to know
+some other kind of well-known key compromises
+that have maybe been shared publicly
+and like what's the next step for maybe that,
+like a key that was compromised
+and then nothing actually happened that was negative
+and it was resolved.
+Do you guys know of any interesting stories
+that you're able to share?
+Unfortunately, the ones that go okay
+and properly safeguard user funds,
+those are the ones you don't hear about.
+Nobody talks about how everything is humming along as normal.
+People talk about the actual compromise
+or the actual loss of funds.
+We've got Josh's airport story,
+which I think is pretty fascinating.
+But I mean, like I have heard of people
+who have said like I've made this mistake
+and then I realized that I was doing this
+and I made a change and whatnot.
+And then I've also heard people
+who have personally just screwed up and lost their money
+because their key was compromised.
+But generally when I've heard that it's because they lost it.
+That was the compromise,
+which is I can attest to that back many, many years ago
+when I was a little less well-informed and made a mistake.
+I can't think of any major like enterprise level
+key compromise stories off the top of my head,
+but I can say from my own experience
+with some CASA clients,
+we certainly have had clients who have experienced
+home break-ins and basically times when secure locations
+where they had one of their keys stored
+had obviously been ransacked.
+In some cases, the key was actually taken
+and others it was not.
+And we theorized that it was just a crime of opportunity
+and the attacker probably didn't even know
+what the Trezor or Ledger or other hardware device
+was in the first place.
+But in all of those situations,
+key compromise policy was enacted
+and they got a new device, generated a new key
+and then rotated their funds over to the new key set.
+Where would somebody store?
+How would an organization
+or should an organization store this policy?
+So if you've got it all written out,
+what does that look like?
+Everybody who has a key has a copy of this.
+Where does it live?
+What would this kind of look like in real life?
+So in general, a policy like this
+should not be particularly sensitive
+like in the sense that it should outline a process
+that includes authentication
+around all of the sensitive areas
+such that there's no security through obscurity
+or security through secrecy of the process itself.
+Everyone who is a key holder
+or possibly an executive in the organization
+should be able to get their hands on a copy of this
+and disseminate it as needed.
+So the policy should, I think, be copied
+and stored in multiple places
+where multiple people have access to it.
+Can't really have too much redundancy
+for something like this.
+It's kind of similar to what we see.
+Like when you're setting up a distributed key system
+in the first place, one of the potential weaknesses
+is around the sort of public instructions,
+the public keys and the other configuration
+of that key set such that if you had some sort of disaster
+and even if a lot of people still had their keys
+but you no longer had the instructions
+for how it was all set up,
+then you could lose access to those funds.
+So for a public or semi-public instructional
+piece of information like this,
+we generally encourage lots of redundancy
+because you don't want this to become a potential
+single point of failure.
+Another thing I would caution-
+When you're done, I have a follow-up question
+about this too.
+I apologize.
+Another thing I would caution is stale, outdated
+or maliciously altered copies of the KCP.
+Each key holder should have their own copy,
+ideally stored on their own computer
+that they put there themselves
+and they know they can trust that copy.
+Maybe also put it on your mobile device,
+throw it in whatever books app
+or a place where you can get to it easily on your mobile,
+you can get to it easily on your computer
+because when the KCP is called for,
+you should be reaching for your copy of the protocol.
+One of the last things you would want to rely on
+is in that moment of franticness,
+you're receiving a copy from someone who purports
+to be one of the other key holders
+or someone who purports to be your executive assistant.
+Like, oh, Johnny just initiated the KCP.
+Here's your copy in case you don't have it.
+Start following steps one through 10.
+Now you're suddenly questioning, can I trust this copy?
+Is this the same as before?
+It just removes all those questions
+when you can reach for your own copy.
+Lastly, I'd recommend in addition to having digital copies
+on your devices that you know you put there yourself,
+if it's possible, also have a printed out copy
+in the location where you're most likely
+to carry out the KCP.
+If you have a home office, maybe that's a good place.
+If you have a boardroom, keep it in the cabinet
+in the boardroom of your company
+if that's the location you are likely to carry out the KCP.
+As Jameson said, you can't have too many copies.
+So my question related to this is,
+okay, so in the key compromise policy,
+you know what to do, but as Joshua was saying,
+you need to take that next step then.
+And if you lazily recreate the system,
+then it's not going to be secure anyways.
+So where's the distinction between
+what is in the key compromise policy
+and how the keys are created and stored
+so that you can kind of either improve
+or replicate what you were doing before the compromise?
+That question makes sense.
+Well, yeah, I think that the short version
+is that I would expect a key compromise policy
+to be referential and basically it refers
+to the same processes that were used
+during the initialization of your keys and architecture.
+Like you don't want to be changing the way
+that you're doing things.
+More complexity is generally bad.
+We're already talking about dealing
+with a fairly complex organizational,
+probably multi-key system here.
+So as simple as you can keep it is better.
+Okay, that makes sense.
+Okay, Michael, in a previous live stream,
+you were talking about how there are five different parts
+of an information system and policies, procedures,
+people, or the other two.
+Hardware and software.
+Hardware and software, okay, of course.
+Yeah, an information system,
+but we usually think of an information system
+as the technology that we're using.
+And while that's the most tangible piece
+of an information system, it is only a piece of it.
+There's the hardware you're using,
+there's the software running on it,
+there are the policies your organization may have,
+there are the procedures that your organization may have
+that implement those policies.
+And of course, there are the people
+who interact with the system.
+No information system exists without the people
+that are doing the things with the system.
+And their training and their adherence to procedure
+and policy is equally as important
+as the hardware and software they're using.
+Okay, and I was asking about that
+because I think when we're talking about this,
+like with the policy, but there also has to be a procedure
+for what you're doing next
+and how you're actually implementing that
+and the people that you trust.
+So let's say that you have a multi-SIG setup
+and one of the people is compromised
+because they are missing and maybe not necessarily,
+like they turned out to be not that trustworthy.
+Let's do that scenario, okay?
+So how would, so you've got this procedure in place
+for what to do and you have an idea
+of how to set this up again, but you're down one person
+because things have changed.
+Do you build into the policy what happens
+if there's no longer a trusted actor
+that you originally had in set in the system?
+Like how would someone go about planning
+for that within the policy
+and then actually proceeding to do that?
+That's a great question.
+And there is no hard and fast rule
+that applies to every system.
+Again, every individual information system is different
+and you'll have to make the best judgment calls
+that you can for your system.
+But in a scenario like that,
+where you are now dealing with the potential compromise
+of a person rather than the potential compromise of a key,
+the process is very similar.
+Instead of only replacing the key though,
+you're now also replacing an operator.
+Maybe there is another person that it makes sense
+to have that person step in their place.
+Maybe there is no other person,
+but it makes sense for the organization
+to adjust the quorum and the number of key holders.
+That all depends on how many key holders
+there were to begin with and whether the system has,
+and the quorum has room to reduce it by one.
+So you could see here that there is no simple,
+hard and fast rule that applies to everyone,
+but each of these key holders,
+they were put in a trusted position
+because they've shown to that organization
+that they understand the technical aspects
+of being a key holder,
+and they've shown that they are trustworthy enough
+to be a key holder on behalf of that organization.
+In my opinion, these people are the prime people
+to decide whether or not there should be a replacement
+of one of these people or a reduction in quorum.
+Now, depending on your organization,
+maybe there is a policy that says
+the key holders should never be the ones that choose.
+Even though I believe that,
+if you trust someone enough to put them in this place,
+you should trust them enough
+to make these types of decisions for the system.
+Your system may have a rule
+that these key holders can't make that decision.
+The board of directors has to make that decision
+or some other entity within the organization.
+Well, now you need to make sure
+that your key compromise protocol has in amongst its steps
+contacting that other body,
+that other organizational body
+and getting the permission clearance blessing
+that you need to add that other person into the quorum.
+Yeah, I think that's a good point
+that you could have a line of succession, as it were,
+perhaps based on titles or organizational structure.
+I would probably not want to have actual people's names
+in there because those are bound to change over time
+and you prefer to have a policy that is somewhat timeless
+and doesn't have to be adjusted on the fly.
+That's kind of the whole point of this
+is that you're not hopefully having to make many decisions
+during a stressful situation.
+But kind of what I think Michael was getting to
+is that this can also turn into a governance issue
+and it's worth thinking about ahead of time.
+I personally would suggest avoiding
+making it a governance issue
+and having the policy itself say ahead of time
+exactly how any governance process would happen
+so that once again, you're not making stuff up on the fly.
+Yeah, and as you mentioned earlier,
+referential is always helpful as well.
+So there should already be an onboarding process in place
+that says, this is how, leaving the selection of the person,
+let's say to however the organization needs to do it.
+But if there's a new person coming onto the key system,
+then there should be maybe those backers
+and background checks have already taken place
+on some of these people
+who are not necessarily key holders yet.
+They might need new hardware source to them,
+understanding how they're supposed to source hardware,
+maybe having that hardware sourced before it's necessary
+might feel a little bit wasteful,
+but in the time of need,
+it's certainly better to have some extra hardware
+while it's sitting around or extra,
+even simply as temper evident bags
+sitting around with the people who need it.
+So having those onboarding processes
+where we bring in our key,
+our new actor into those key systems,
+having that established already
+means that the key compromise protocol
+doesn't have to say,
+oh, and then the person goes to the store
+and then we quickly do a background check.
+Those are all already defined within the organization.
+So anytime we can simplify on that is certainly helpful.
+Well, and one of the things in the standard for level three
+is that in addition to a protocol
+and having the documentation of this policy
+written out and disseminated,
+also there needs to be training and rehearsals
+for any type of key compromise.
+So, and I think that that really speaks
+to what we were talking about earlier
+about if somebody is frazzled with what's going on,
+having practiced something like this,
+and they know what those next steps are,
+but so what would that look like?
+What is like a training and rehearsal for a key compromise?
+Do you create this based upon all,
+like a variety of different scenarios,
+or do you have a couple of different training sessions
+based on if it's like a key that's compromised
+versus a person or like, how do you make that so that it's,
+is it one size fits all?
+Is it if A happens, do B or what would that look like?
+Or maybe I'm making it really complicated
+because I feel like this goes back to what Jameson said
+about not making things complicated,
+but yeah, what would you guys do?
+Rehearsals are an essential part of good security.
+I would recommend that your organization
+have different types of instigations
+that are not necessarily going to be
+of instigations that start these types of training.
+Let's pretend now that Jameson is compromised.
+Now have everybody walk through the motions,
+generate a brand new key,
+do everything up to the point of sending everything
+to the new key as if we are replacing Jameson.
+Maybe six, eight months from that point,
+let's go through another run through,
+but we're going to now pretend
+that it is Michael's key in his safe
+that he believes may have been accessed.
+Now let's go through the whole thing again,
+replacing Michael's key with Michael.
+Let's replace Josh's key without Josh
+and a different variance of it.
+Each time that the key operators go through it,
+it will be more familiar.
+It will be easier for them to go through
+and it will give them the training,
+the peace of mind that they need
+so that God forbid tomorrow when the KCP is really invoked,
+they'll know exactly what to do because it's old hat.
+They've been doing this for a while.
+Sometimes incident response can be a lot like a D&D game.
+And if you want to, you can literally have some scenarios,
+roll some dice and say, okay,
+this is what we're doing today.
+If you want to really ensure that no one is accurate,
+no one is just kind of going through the motions
+and they're forced to actually think about,
+okay, what is this?
+It's a different scenario than I'm used to
+and what I expected, but let's go through it.
+So someone put a comment in the chat
+and I'm not sure if anyone has a response to this or not.
+A person said, I'm really rarely concerned about our KCP
+because my CPU is a neural net processor,
+a learning computer,
+but Skynet presets the switch to read only
+when we're set out alone.
+I have no idea.
+Is that a joke?
+Is that, what is that?
+I have a response.
+I think, thankfully by the time Skynet is turned on
+in I believe it's 2032,
+the Terminators will be our best friends by that point.
+So it's not an issue.
+Sounds like I need to do some research,
+some learning to do myself.
+Okay, so let's see here.
+What else do we want to talk about with key compromise?
+You've talked a little bit about the trainings and whatnot,
+but I guess there's one other thing I wanted to bring up.
+I think Michael, you're the one that brought this up,
+but this idea of, or maybe it was you Jameson,
+but the idea of getting,
+making sure that you don't have extra copies around
+or like old copies of this.
+So like, should the policy include a policy for old policies?
+Good record keeping has version numbers in documents.
+I'd recommend using a version number
+that is clear and unambiguous,
+such as a date rather than a simple number
+that gets incremented.
+So if you're using the key compromise protocol
+as written from June, 2017, and it's 2022,
+as a key holder, you should know
+whether that KCP has been updated since 2017.
+If you know that you just updated a few months ago
+and now you're looking at a document that says 2017,
+this is the old one.
+Let me find that new one.
+Okay, for all the other people out there
+who missed the joke earlier,
+I feel like we have to point this out
+that it was a Terminator joke.
+I just Googled it and was like, oh my God.
+Sorry, Sarah Connor wouldn't get it either.
+Actually, Terminator is the first movie that I cried in
+because I was scared because I was a kid
+and we had, my dad had to take me out
+and my brother was pissed that we had to leave the theater.
+So I'm actually gonna see him tonight.
+I'm gonna have to bring this up.
+That's why you didn't get the reference.
+You probably blocked out that trauma.
+Yeah, oh yeah, I'm sure.
+No, I've seen it since.
+I'm with you all now.
+Okay, so is there anything else
+that we should be sharing about key compromise,
+what people should be aware of
+when either they themselves have a key compromise
+or how we should go about this for organizations,
+companies that are maybe looking to become CCSS certified.
+Anything that we haven't covered
+that you all feel like is important to address?
+I think just the general spirit behind it.
+If you're building your own security for your own self,
+chances are you're not gonna be dealing with multi-sig.
+You're just having your own key.
+Having an awareness of how everything is done
+and the processes that you went through is good enough.
+And you can create a CCSS compliant system
+for your own keys in your own home, all on your own.
+If you're acting on behalf of an organization, however,
+a lot more planning would need to be done.
+Not only because there are more keys involved
+in the crypto system,
+but more formal documentation, more formal policies,
+more formal procedures, more formal versioning requirements
+on your documents and tests and iterations and war games.
+This is when and how you can reach level two or level three,
+depending on your level of preparedness.
+The last thing I'll say is having access to good tools
+can dramatically simplify your job, not only in the CCSS,
+but with things like the key compromise policy.
+The CCSS has qualified service providers, QSPs.
+These are companies that go out of their way
+to cover as many of these controls that the CCSS has
+so that you don't have to.
+And all you need to worry about are the few
+that they can't cover for you,
+like where are you backing up your key
+and how are you backing up your key?
+QSPs can't do that for you.
+You need to do it for yourself.
+I know that all the early work that was CCSS compliant
+that the Ethereum Foundation went through
+when it was building its cold storage ICO system,
+all that work has been open source.
+So if you search for key compromise protocol,
+you can likely find a few different documents
+from a few different organizations that have open source
+their work, read through these, understand what they did
+and draw on their knowledge when you're designing
+and building your system.
+And when you are drafting your own key compromise protocol,
+you don't have to do it all on your own.
+There's plenty of resources available for you to draw from.
+And it never hurts to reach out to any of us here
+on this call, whether it be C4 directly through Jessica
+or through any of the other guests that we have
+on this live stream, Joshua, Jameson or myself.
+Chances are we can answer your question easily
+or point you in a direction to give you the answer you seek.
+I'd also say what we're really talking about here
+is a situation in which you have architected
+a reasonably secure system and now you have reason
+to believe that there has been some sort of degradation
+in the integrity of that system.
+If you've built a system that is just a single key
+that you're protecting and you believe that that key
+has been compromised, most likely if it has actually
+been compromised by a malicious attacker,
+the money is already gone.
+So this is in a situation where the money is still there,
+you're just no longer completely sure
+about the integrity of the system.
+So it's important to be methodical
+and to go through a process.
+And the reason we're doing this is because we want
+to reduce the potential for mistakes or the potential
+for other attackers to actually be taking advantage
+of the process.
+So this is a part, of course,
+of a much larger system of rules and protocols
+that encompass the standard.
+And the whole point of the standard is to build
+a robust information system that can tolerate compromises
+of some sorts.
+So that's why we're here.
+We've helped people architect a system that is quite robust
+against a wide variety of different attacks and losses.
+And we understand that things happen,
+but if you've architected the system well,
+then one thing going wrong isn't catastrophic.
+But when something goes wrong, you need to be able
+to address it and basically get the integrity
+of the system back to full strength.
+I think those are good points.
+We've got this standard that's free, it's open, right?
+You don't have to pay to look at it.
+You don't have to pay anything.
+You can look at the whole thing,
+design your system around this.
+And if you've got questions and they're not answered in it,
+you can always reach out to us.
+Also for those systems that are going through
+and being audited, they're getting feedback
+from their auditor on what they're doing
+or what they're not doing,
+what changes they would need to make
+in order to up their security as well.
+And there are also organizations out there
+and auditors that are doing gap assessments
+to say, here's what you're doing,
+here's what you should be doing in order to be level one
+or level two or level three.
+And so those resources exist
+and we're hoping that you will continue using them.
+I know Michael, you and I talked recently
+about how hundreds of systems have already been looking
+at this to you, looking at the standard to design it.
+And these are the systems that are doing so
+in a more safe way.
+So if you are either holding your own keys or others, use it.
+It exists for a reason.
+And the reason everyone's on this call
+is just because we want the space to be safer
+and for people to not be losing their money
+or other people's money.
+All right, well, anything else we wanted to add
+before we close?
+No, all right.
+Well, the standard is linked in the notes.
+So please read up on it, reach out for questions.
+We'll be back next, oh God, we'll be back next year
+for more live streams.
+That's very weird.
+I did not realize that, but okay.
+Have a wonderful rest of the year and we'll see you in 2023.
+Stay safe out there, everyone.
+All right, thank you. Happy holidays.

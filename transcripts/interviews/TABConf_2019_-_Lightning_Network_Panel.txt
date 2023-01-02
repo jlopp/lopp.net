@@ -24,7 +24,7 @@ It turns out there are some much more fascinating things
 happening in the regulatory space
 than in the permission of space.
 Yeah, Larry Wall, you like that?
-I'm glad we got that guy.
+It's interesting to see other perspectives.
 If you didn't see the Larry Wall talk,
 make sure to check it out on YouTube afterwards.
 So we're going to get started.
@@ -36,735 +36,730 @@ You have to verify.
 Anyways, let's start with some quick intros.
 Just take about 20 seconds.
 I mean, people fairly know who you are.
-So let's get to the content.
-I may or may not be the CTO of a company called Casa
+So let's get to the-
+Yeah, I may or may not be the CTO of a company called CASA
 that focuses on private key security
 and helping people run full nodes,
 just in general being more sovereign unto themselves.
 And Alan?
 Yeah, so I'm the director of product at Blockstream,
-the company that's designed to control and destroy
-Bitcoin by the banks, or at least as some people say.
-So I've been at Blockstream since 2017.
-I've been in the Bitcoin space since 2011.
+the company that's designed to control
+and destroy Bitcoin by the banks,
+or at least as some people say.
+So I've been at Blockstream since 2017,
+been in Bitcoin space since 2011.
 And John?
 Yeah, I'm John.
 I'm a co-founder and CTO of Openode,
 one of the first Lightning payment processors out there.
 And I joined Bitcoin two years ago.
 So let's start off with just a little bit.
-What is Lightning?
-What is the killer use case of it?
+What is Lightning, what is the killer use case of it?
 Why would I use Lightning as a primer?
-Maybe we can just take a couple of minutes.
-Yeah, well, I mean, the TLDR is that blockchains
-are really crappy at doing high volume throughput
-and processing and meeting certain use cases,
-such as use cases for transferring
-tiny amounts of value.
-These blockchains, at least the public permissionless
-blockchains, are creating these global flood fill
-networks that are extremely inefficient.
-And that is by design.
-That's how we get a level of robustness that has never
-really been seen before.
-But then if you want to start doing even more inefficient
-things, it just doesn't scale very well.
+And maybe we can just take a couple of minutes.
+Yeah, well, I mean, the TLDR is that
+blockchains are really crappy
+at doing high volume throughput and processing
+and meeting certain use cases,
+such as use cases for transferring tiny amounts of value.
+These blockchains,
+at least the public permission list blockchains,
+are creating these global flood fill networks
+that are extremely inefficient and that is by design.
+That's how we get a level of robustness
+that has never really been seen before.
+But then if you wanna start doing
+even more inefficient things,
+it just doesn't scale very well.
 So the way that some people are trying
 to approach scalability of these systems
-is actually in a similar manner to how the internet itself was
-scaled.
-And that is by building additional layers on top
-of them, and those layers can provide the efficiency.
-Anyone want to add anything?
+is actually in a similar manner
+to how the internet itself was scaled.
+And that is by building additional layers on top of them
+and those layers can provide the efficiency.
+Do you wanna add anything?
 Yeah, I would say the key idea is basically
-the small and everyday transactions are not
-worth casting to the blockchain, and you just
-broadcast the final settlement.
+the small and everyday transactions
+are not worth casting to the blockchain
+and you just broadcast the final settlement.
 That's pretty much it.
-I guess it's worth noting, too, that this
-was something that the idea has been around
+Yeah, I guess it's worth noting too
+that this was something that the idea's been around
 since the beginning of Bitcoin.
 On a more limited scale of just one party
 to transferring between each other,
 there were some broken parts of it
-that didn't quite work right, that
-did need some minor improvements.
+that didn't quite work right,
+that did need some minor improvements.
 And then the real benefit of Lightning
-is not just having a single party that I can transact with,
+is not just having a single party
+that I can transact with,
 but transact through anyone throughout the network.
-And I think you asked, too, what is the killer
-application of Lightning?
+And I think you asked too,
+it's like what is the killer application of Lightning?
 I think we're all waiting to figure out what that is.
-I don't think anyone in this room, whatever you think it is,
-it's probably wrong.
+I don't think anyone in this room,
+whatever you think it is, it's probably wrong.
 There's a lot of things.
 So I think we have to look at what does Lightning do
 that we can't do otherwise.
 And so we started this with the Lightning satellite service
 on Blockstream.
-So Blockstream has satellites that we have access to,
+So Blockstream has satellites that we have access to
 that we stream down the Bitcoin blockchain.
 And we have bandwidth that we could use that we don't.
 And so what we did was we opened up a Lightning channel
-that you can pay request invoices from to broadcast
-any message you want from space across the whole world.
-So literally, someone paid money using Lightning
+that you can pay request invoices from
+to broadcast any message you want from space
+across the whole world.
+So literally someone paid money using Lightning
 to rickroll the whole world.
-And I'm not going to say rickrolling
-is the killer app of it.
-But what this does is someone could
-have made a contract with us.
+And I'm not gonna say rickrolling is the killer app of it,
+but what this does is,
+someone could have made a contract with us.
 They could have agreed for a certain amount of bandwidth.
 They could have done all this overhead
 to set this relationship.
 But instead, all we had to do is just say,
 we have no idea who you are.
-We have no idea what you want to do.
-Send us money, and we'll give you this.
+We have no idea what you wanna do.
+Send us money and we'll give you this.
 And it was cheap enough that they can take the risk.
-The worst case is they pay us a little bit of money,
+Worst case is they pay us a little bit of money
 and we don't rickroll the world.
-But the reality is someone can send this transaction.
+But the reality is,
+someone can send this transaction.
 We can broadcast it in small chunks.
 We have no idea.
-There's none of that overhead of contracts and overheads.
+There's none of that overhead of contracts and overhead.
 So any underutilized service or network
-where a wide number of people where
-it's costly to form relationships with in contracts
+where a wide number of people
+where it's costly to form relationships with in contracts
 or they're global and it's costly to deal with them
-if there's problems has the potential
-to be the killer app for Lightning.
-So at Blockstream, I think we inspired a lot of people
-that had those services.
-And they've been coming to us and asking, oh, I've got this.
+if there's problems,
+has the potential to be the killer app for Lightning.
+So at Blockstream,
+I think we inspired a lot of people that had those services
+and they've been coming to us and asking,
+oh, I've got this.
 How can I do that with Lightning?
 And that's pretty exciting.
-So I think we'll start to see maybe in the next year or two
+So I think we'll start to see maybe in the next year or two,
 the killer apps showing up.
 I have a quick question for you.
-You mentioned that at least later
+You mentioned that,
+at least later too,
 or maybe Lightning idea was part of the first ideas
 since Bitcoin's been around.
 When was the first mentions of an L2?
 Because I know about Poon and Drudge
-kind of putting out that white paper in 2014, I believe.
-But what was the earliest kind of mentions
+kind of putting out that white paper in 2014, I believe,
+but what was the earliest kind of mentions
 of a Lightning idea?
 Where did that come from?
-Stosh's white paper, I believe, has it in there
+Stoshi's white paper, I believe, has it in there
 with the payment, the idea of having a sequence number
 and updating the channel state between people
 and having a final transaction that can be broadcast.
 There's some flaws in it.
 Those are the early building blocks, right?
-Is that payment channels were actually
-first technically possible.
+Is that payment channels
+were actually first technically possible.
 There was software to do payment channels
-as early as, I think, 2011 or 2012 with BitcoinJ.
-That was Mike Hearn and Matt Corallo that wrote that.
-At the time, those were just from one person
-to another person.
-So I recall that payment channel technology made a bit
-of a leap in 2014 or so because there was Streamium, I recall,
+as early as I think 2011 or 2012 with Bitcoin Jay.
+That was Mike Hearn, Matt Corallo that wrote that.
+At the time, those were just
+from one person to another person.
+So I recall that payment channel technology
+made a bit of a leap in 2014 or so
+because there was Streamium, I recall,
 was a service that came out.
-It was basically video streaming,
+It was basically video streaming
 and you're paying in real time.
-But there were some big limitations
-to that because you would have to directly open this on-chain
-transaction to the service, and then it would just
-update that one channel.
+But there were some big limitations to that
+because you would have to directly open
+this on-chain transaction to the service
+and then it would just update that one channel.
 Lightning Network takes that basic building block
 and extends it by creating a network of payment channels.
-And so the trick was, how do you allow an intermediary node
-on the Lightning Network to hold funds in a way
-that they have to eventually send those funds forward
+And so the trick was how do you allow
+an intermediary node on the Lightning Network
+to hold funds in a way that they have to
+eventually send those funds forward
 to your final destination?
-And that basically involved a couple
-of new primitives in the protocol
-and a lot of game theory.
-And so as a result, Lightning Network
-is, from a rules perspective, it's a lot more complicated.
-But that was necessary in order to create enough security
+And that basically involved a couple of new
+primitives in the protocol and a lot of game theory.
+And so as a result, Lightning Network is
+from a rules perspective, it's a lot more complicated,
+but that was necessary in order to create enough security
 that you could actually end up sending money
 through an arbitrary number of other nodes.
-No, I agree, I think what we see here with Lightning Network
-is basically, like Lob said, a network of payment channel.
-It takes the use of something that was already made before,
+No, I agree.
+I think what we see here with Lightning Network
+is basically, like Lop said, a network of payment channel.
+It takes the use of something that was already made before
 but we didn't find quite the usefulness of it
-because we would need, after all, a direct connection
-with that party or the service you want to use.
-And here, in the network, people nodes
-can route payments in a trustless way,
-I would say, using Bitcoin smart contracts, basically.
-And you are sure that the payment is going to get there.
-Otherwise, you can claim the money back.
+because we would need, after all,
+a direct connection with that party
+or the service you want to use.
+And here we can, in the network,
+people nodes can route payments in a trustless way.
+I would say using Bitcoin smart contracts, basically.
+And you are sure that the payment is going to get there
+otherwise you can claim the money back.
 All right, thank you.
-So I have a question for all of you,
+So I have a question for all of you
 and you can give your opinions or your expertise on this.
-What do you believe is the, in terms
-of the entire percentage of the scale pie,
-how large is the lightning slice of Bitcoin scaling?
-And you can also mention some other things
-that you think are prevalent with scaling.
-But in terms of scaling itself, how big,
-how important is lightning in those terms?
-I mean, scaling is generally, scaling is a tricky word
+What do you believe is the,
+in terms of the entire percentage of the scale pie,
+how large is the Lightning slice of Bitcoin scaling?
+You can also mention some other things
+that you think are prevalent with scaling
+but in terms of scaling itself,
+how big, how important is Lightning in those terms?
+I mean, scaling is generally,
+scaling is a tricky word
 because there's multiple ways to scale.
-You can scale up or you can scale out.
-And so that's one of the reasons there's
-been a lot of divisiveness in the space
-is because some people want to scale up and just put
-more data on the blockchain.
-And let's continue on in a similar fashion.
-Scaling out tends to be more technically complex,
+You can scale up or you can scale out
+and so that's one of the reasons
+there's been a lot of divisiveness in the space
+is because some people want to scale up
+and just put more data on the blockchain
+and let's continue on in a similar fashion.
+Scaling out tends to be more technically complex
 but what you're trying to do is find efficiency gains.
-So there are a number of ways that we're
-trying to find efficiency gains in Bitcoin.
+So there are a number of ways
+that we're trying to find efficiency gains in Bitcoin.
 One of those is by reducing the amount of data
 that is going on the chain.
 You can do that in a number of different ways.
 Some that are coming down the line that are interesting
-are like signature aggregation, so that basically you
-can reduce the amount of signature data
-required to go onto the chain.
-But the way that I try to describe second layer
-solutions is that you're taking a lot of activity that, sure,
-you could just put it on the chain,
-but now you're taking it off and you're really
-just doing private transactions between each other
-so that you are still putting some data on the chain,
+are like signature aggregation
+so that basically you can reduce the amount
+of signature data required to go onto the chain
+but the way that I try to describe second layer solutions
+is that you're taking a lot of activity
+that sure, you could just put it on the chain
+but now you're taking it off
+and you're really just doing private transactions
+between each other so that you are still
+putting some data on the chain
 like at the beginning of opening a channel
-and at the end of settling.
-But all of the stuff in between, which nobody really
-cares about except the two people that are interacting,
+and at the end of settling
+but all of the stuff in between
+which nobody really cares about
+except the two people that are interacting
 need to actually exchange that data.
-I think the question is, how important
+I think the question is how important
 is lightning to that story?
-Right now, that is, I think, the best solution
+Right now that is I think the best solution
 for doing those types of payments.
-There may be other layer two solutions that pop up
-and are possible.
-There may be new technologies that
-emerge that make lightning completely
-irrelevant in 20 years.
-We just don't know at this point.
-But it's a pretty big part of the story
-for being able to bring Bitcoin from what's
-capable of now to what it can be capable of in the future.
-Yeah, today I don't see, I think lightning
-is the winning horse, I would say.
-We don't see yet another solution that
-can compete with lightning.
-So there's a ton of solutions that are possible.
-It's all about trade-offs, right?
-One thing that a lot of people don't like to talk about,
-but this is reality, is that a lot of Bitcoin scaling
+There may be other layer two solutions
+that pop up and are possible
+and there may be new technologies that emerge
+that make lightning completely irrelevant in 20 years.
+We just don't know at this point
+but it's a pretty big part of the story
+for being able to bring Bitcoin
+from what's capable of now
+to what it can be capable of in the future.
+Yeah, today I don't see,
+I think lightning is the winning horse I would say.
+We don't see yet another solution
+that can compete with lightning.
+So there's a ton of solutions that are possible
+and it's all about trade-offs, right?
+One thing that a lot of people don't like to talk about
+but this is reality is that a lot of Bitcoin scaling
 has happened because of custodial providers.
-That's another type of off-chain transaction.
-But most of us find that rather detestable
+That's another type of off-chain transaction
+but most of us find that rather detestable
 because it means that we're just using trusted third parties
 and making trade-offs with security
 in order to get more scalability.
-So it's basically Bitcoin banking 2.0.
-And there have been theories that even
-if lightning and all the second layer solutions
+So it's basically Bitcoin banking 2.0
+and there have been theories that
+even if lightning and all the second layer solutions
 completely fail, we could always just scale
 using these Bitcoin banks.
-It's certainly possible, but it would
-suck because of the security trouble.
-I think it would still be better alternative
-because it would be much easier to create one than it
-is today with regulation.
+It's certainly possible but it would suck
+because of the security trap.
+I think that would still be better alternative
+because it'd be much easier to create one
+than it is today with regulation.
 You could create one in any environment
-that you needed to, and people could flock to it
+that you needed to and people could flock to it
 without necessarily living there.
 So it's a little bit better.
 I hope we're not in that situation.
-I hope lightning is a much better answer.
-But yeah, something off-chain is going
-to have to be the alternative.
-And really, how much goes on lightning
+I hope lightning is a much better answer
+but yeah, something off-chain is going to have to
+be the alternative and really how much goes on lightning
 and how much goes on trusted third parties
 and how much goes on something like federated side chains
-or merge mine side chains?
-I mean, those are kind of Chaumian banking systems.
-Chaumian banking systems.
-I mean, there's lots of different trade-offs.
-It's going to move around based on usability
+or merge mine side chains.
+I mean those are kind of
+Chalmian banking systems. Chalmian banking systems.
+I mean there's lots of different trade-offs.
+It's gonna move around based on usability
 and what people want and what they're willing to accept
 with these trade-offs.
 So yeah, I think for the hardcore Bitcoin people
 that are paranoid and don't trust anyone
-and want to have control, lightning's the best answer
-we've seen.
-And I think also in regards to privacy,
+and want to have control,
+lightning's the best answer we've seen.
+I think also in regards to privacy
 because lightning offers a lot of privacy
-that you cannot have in a custodial services, obviously.
+that you cannot have in a custodial services obviously.
 They own the data.
 So it's not just about the holding our funds or not.
-I think it's also about privacy, the fact
-that only us know the data, what payments we are doing.
+I think it's also about privacy.
+The fact that only us know the data,
+what payments we are doing.
 So I think that's also important.
 This would be maybe a quick response from all of you.
 If Bitcoin currently decides to keep the block size
 or the block weight what it currently is,
-I guess theoretically with all transactions being
-SegWit transactions, 4 megabytes and then
-everyone using public key hash would be maybe 1 megabyte.
+I guess theoretically with all transactions
+being SegWit transactions, four megabytes
+and then everyone using paid public key hash
+would be maybe one megabyte.
 If we keep these limits the same,
-would Lightning Network be sufficient for all the users
-that would actually want to use Bitcoin right now?
+would lightning network be sufficient
+for all the users that would actually
+want to use Bitcoin right now?
 Or would we need some other kind of scaling?
 Yeah, so there's so many variables there.
-It's hard to break down.
-But the short answer is I think in any reasonable number
-of time frames and throughputs and whatever,
-then it would be very difficult, if not impossible,
-to onboard billions of people.
-One thing that I made a reference to before
+It's hard to break down,
+but the short answer is I think in any reasonable
+number of timeframes and throughputs and whatever,
+then it would be very difficult,
+if not impossible to onboard billions of people.
+Kind of one thing that I made a reference to before
 was aggregate signatures.
-Generally, aggregation in general,
-there are multiple paths that people are working towards.
-And so that's where the L2 ELTOO solution and multi-party
-payment channels are another type of aggregation
+Generally aggregation in general,
+there are multiple paths that people are working towards
+and so that's where the L2ELTOO solution
+and multi-party payment channels
+are another type of aggregation
 where you could once again get more people
-into the second layer network with a smaller amount of data
-going on the chain.
-My personal view, and of course this is just me,
+into the second layer network
+with a smaller amount of data going on the chain.
+My personal view, and of course this is just me
 and there are plenty of people who would attack me
-for saying it, is that I expect that we will continue
-to try to see people in the space making
-as conservative and creative protocol changes as possible
+for saying it, is that I expect
+that we will continue to try to see people
+in the space making as conservative
+and creative protocol changes as possible
 in order to squeeze out the maximum performance
 and efficiency of what is currently available.
 But I would hope that on the long-term scale,
 if we get to a point where there are literally
-no more efficiency gains that anyone can think of,
+no more efficiency gains that anyone can think of
 and it seems like hardware in general
 is decreasing the cost of running full nodes,
 that eventually it will become less contestable
-that perhaps allowing a little bit more data on the chain
-would be OK.
-You have to get permission from Luke Best, Jr. first.
+that perhaps allowing a little bit more data
+on the chain would be okay.
+You have to get permission from Luke Best Jr. first.
 Just kidding.
-Alan left so hard as, oh no, never mind, you left so hard.
+Alan, laugh so hard as, oh no, okay nevermind,
+you laugh so hard.
 It was Jameson.
-No, I think the question, too, is should it or could it
-scale to those levels?
+No, I think the question too is should it
+or could it scale to those levels?
 I think the most important thing is,
-I think it was Andrew Pulsar who said it,
-is we can't afford to break Bitcoin.
+I think it was Andrew Pulsar who said it is,
+we can't afford to break Bitcoin.
 That is the most important thing.
 And so if the choices are maybe we break it
 and be able to scale to everyone in the world
-and everyone's grandchildren that could ever exist,
+and everyone's grandchildren that could ever exist
 versus maybe we take a little bit more conservative approach,
-maybe there's a little bit more limits, but it stays safe,
-we have to err on that side.
+maybe there's a little bit more limits,
+but it stays safe, we have to err on that side.
 And so that means we stay within the bounds of technology.
-I would be great if I could drive my car 300 miles an hour
-down the highway, but I'm going to do that.
-I'm going to endanger a lot of lives,
-and I'm going to kill a lot of people,
-and it's not a good idea.
-So I'm going to stay within reason of what's actually safe.
+I would be great if I could drive my car
+300 miles an hour down the highway,
+but I'm gonna do that, I'm gonna endanger a lot of lives
+and I'm gonna kill a lot of people and it's not a good idea.
+So I'm gonna stay within reason of what's actually safe.
 And that's the principles we have to apply to Bitcoin.
 We can't base it on projected demand
 or what people are actually do.
 We have to base it on what the technology actually can do.
 And if there is an expansion of the block size,
-I really hope that there's some way
-to do it in a way that we never have to worry about this again.
-Because you're going to need everyone
-to agree to the change, or else you're
-going to cause a split.
-It's just a fact of the matter.
-You cannot change a system as long
-as there's enough people that are dead set on it.
-And maybe it's OK if a couple of people
-stay on the original path and go on,
+I really hope that there's some way to do it in a way
+that we never have to worry about this again,
+because just trying to, you're going to need everyone
+to agree to the change or else you're going
+to cause a split.
+It's just fact of the matter.
+You cannot change a system as long as there's enough people
+that are dead set on it and maybe it's okay
+if a couple people stay on the original path and go on,
 but it's a new thing at that point.
-So we want to be very certain that it has quite widespread
-support, much more support than anything has ever
-had up to this point that would have caused a split.
-And we've had these debates, and it should be settled by now.
-We've seen Ethereum say, we're going to make these changes.
-And then we've had a couple of hardliners say, no, we're not.
-And there's a split.
-We've seen, even with BCH, they say
-they're going to make a change.
-And a bunch of people say, no, we're
-going to make a different change.
-There's a split.
-And so causing splits is, I don't think, productive
-or helpful.
-So it's more important to make sure it's something conservative.
-And we don't have to face this problem ever again.
-Yeah, I agree.
-It's way more harder to get consensus on the first layer
-rather than you don't need consensus on second layer
-solution.
-And that's why I like it, the fact
-that if you break it, you don't break Bitcoin.
-You break this technology.
-Because Bitcoin is there, the first layer.
+So we wanna be very certain that it has quite widespread
+support, much more support than anything has ever had
+up to this point that would have caused a split.
+And we've had these debates, it should be settled by now.
+We've seen Ethereum say we're gonna make these changes
+and then we've had a couple of hardliners say no we're not
+and there's a split.
+We've seen even with BCH, they say they're gonna make
+a change and a bunch of people say no we're gonna make
+a different change, there's a split.
+And so causing splits is I don't think productive
+or helpful, so it's more important to make sure
+it's something conservative and we don't have to face
+this problem ever again.
+Yeah, I agree it's way more harder to get consensus
+on the first layer rather than, you don't need consensus
+on the second layer solution and that's why I like it.
+The fact that you can try, if you break it,
+you don't break Bitcoin, you break this technology
+because the Bitcoin is there, the first layer.
 So I think there are rooms for improvements
-on the second layer solutions before we even think about it,
-such as the fact, like Lop was talking about,
-the fact you can aggregate all channel openings
+on the second layer solutions before we even think about it
+such as the fact like Lop was talking about,
+like the fact you can aggregate all channel openings
 in one single transaction.
-I mean, there are so many improvements
-that you can do at the second layer
-that I think we don't even need to think about it yet.
-Who knows what technology can come up
-tomorrow on another second layer technology?
-We never know.
-I think we should first, the approach, in my opinion,
-we should do is, let's try to solve this
-in the second layer solution.
-Let's see how we can optimize this as much as we can
-without breaking the first level.
-Because if we break the first level, it's going to be hard.
-From there, we broke it.
-We broke Bitcoin.
-And it's hard to get a consensus on that.
-Thank you.
-So Jameson just mentioned something, L2,
-which, to be honest, I'm not very familiar with.
-And L2, E-L-T-O-O. I believe you mentioned
+I mean there are so many improvements that you can do
+at the second layer that I think we are not,
+we don't even need to think about it yet.
+Who knows what technology can come up tomorrow
+on another second layer technology, we never know.
+I think we should first, the approach in my opinion
+we should do is let's try to solve this
+in the second layer solution, let's see how can optimize
+this as much as we can without breaking the first level
+because if we break the first level,
+it's gonna be hard, it's from there, we broke it,
+we broke Bitcoin and it's hard to get a consensus on that.
+Thank you, so Jameson just mentioned something L2
+which to be honest I'm not very familiar with
+and the L2 EL TOO, I believe you mentioned
 that will help with scalability on Lightning.
-Can we talk about a little, for people who don't know,
-what is L2?
-Anyone can take this.
+Can we talk about a little for people who don't know
+what is L2 and anyone can take this.
 That feels comfortable.
-I haven't actually run it myself,
+I haven't actually run it myself
 so you might be more familiar.
 Maybe we can talk about it.
-So this was an improvement to Bitcoin.
-There's a white paper that was written
+This was an improvement to Bitcoin,
+there's a white paper that was written
 by two of the engineers at Blockstream
 and one of the engineers at Lightning Labs.
-So if anyone's unfamiliar, there's
-three implementations of Lightning.
-Blockstream has done one of them.
-There's another company called Lightning Labs.
-There's another.
-And another company called Async that
-runs another implementation.
-And so if you're unfamiliar with how Lightning works,
-and basically it's a reactive security model where
-we have a state of channels.
-It's always me and you.
-Maybe I should be.
+So if anyone's unfamiliar there's kind of three
+implementations of Lightning, Blockstream has done
+one of them, there's another company called Lightning Labs
+that does another and another company called Async
+that runs another implementation.
+And so if you're unfamiliar with how Lightning works
+and basically it's a reactive security model
+where we have a state of channels,
+it's always me and you, maybe I should be.
 I'll be Alice.
-Yeah, you want to be Alice?
-Alice, Bob, Carol, and Dave.
-We've got the four right here.
-We're ready.
-I have to be Carol.
-All right, so you have the channel state.
-And if Michael publishes something incorrect,
-something expired, he has the opportunity
+Yeah, we've got, you wanna be Alice?
+Alice, Bob. Alice and Bob.
+Carol and Dave, right?
+We got the four right here.
+We're ready, I have to be Carol.
+All right, so you have the channel state
+and if Michael publishes something incorrect,
+something expired, he's the opportunity
 to steal all the funds.
-Now, part of me, when I heard that, I was like, this is great.
+Now part of me when I heard that I was like this is great.
 This is so much fun to just steal everyone's money
-when you try to cheat.
-I'm very vindictive.
-So it was kind of exciting for me.
-And I think there's some error message even.
-It's like, justice has been served.
-Yes, a bug has been found.
-And that's great.
+when you try to cheat, like I'm very vindictive.
+So it was kind of exciting for me
+and I think there's like some error message
+even it's like justice has been served.
+Yes.
+A bug has been found. And that's great.
 But then there's some realities of that
 that make it not so fun.
-And part of that is, let's say Michael's backing up his wallet
-and he's not as informed on Lightning as maybe he could be.
-And he accidentally has an old state and his computer dies.
-And he goes and pulls back his old wallet.
-And now he broadcasts that state that says, this is the end.
+And part of that is, let's say Michael's
+backing up his wallet and he's not as informed
+on Lightning as maybe he could be.
+And he accidentally has an old state
+and his computer dies and he goes
+and pulls back his old wallet.
+And now he broadcasts that state that says
+this is the end.
 This is the last thing I know about.
 I want to close the channel.
 But he actually has a newer state.
 Guess who steals all the funds?
-Michael didn't really try to steal.
-He just didn't know that that was a history.
-So that's a pretty big flaw, I guess,
-you could say, in Lightning.
-And what L2 really does is it improves that situation,
+Michael didn't really try to steal
+and he just didn't know that that was a history.
+So that's a pretty big flaw I guess
+you could say in Lightning.
+And what L2 really does is it improves that situation
 whereas if he broadcasts something incorrect,
-the worst that can happen is now we
-broadcast a newer one that says, no, no, no, this
-is really the right one.
-So it's basically the process of you go to a judge.
-You have a court case.
-You say, look, here's my argument
-for why I should get the funds.
+the worst that can happen is now we broadcast
+a newer one that says no, no, no,
+this is really the right one.
+So it's basically the process of you go to a judge,
+you have a court case, you say look,
+here's my argument for why I should get the funds.
 And then there's some time for the other person
 to respond with an update.
-Fortunately, this is better than normal court cases
-because you have cryptographic proof that there
-was agreement on everything.
-And after some amount of time, that basically can settle it.
+Fortunately this is better than normal court cases
+because you have cryptographic proof
+that there was agreement on everything.
+And after some amount of time,
+that basically can settle it.
 So it's a much cleaner system.
 You don't have to worry about as much about backups.
-The other part about that it benefits
-is you can have the idea of what's called a watchtower.
-So if I'm not connected a full node at all time watching
-the blockchain, I might not see someone
-try to broadcast an old state.
-And if I broadcast, so I might want
-to outsource that to someone else.
-And currently, the way to do that,
+The other part that it benefits is
+you can have the idea of what's called a watchtower.
+So if I'm not connected a full node at all time
+watching the blockchain,
+I might not see someone try to broadcast an old state.
+And if I broadcast,
+so I might wanna outsource that to someone else.
+And currently the way to do that,
 there's a pretty heavy amount of information
 that needs to be stored and updated to do that.
 And this simplifies it tremendously
-where a single basically claim can
-spend multiple different versions of it.
-Yeah, because in the current model,
+where a single basically claim can be
+to spend multiple different versions of it.
+Yeah, because in the current model
 we need to save all the states, right?
-So in this new model, all you need
-is the first and the last, which we will know
+So in this new model all you need is the first
+and the last which we will know
 which one is the correct one.
 So you have a big improvement on data there.
-So I think we'll see how that rolls out,
+So I think we'll see how that rolls out
 because we need a new input, right?
-That's right, yeah, there's going
-to be some changes that Bitcoin needed for this.
-Hopefully, make it in kind of a bundle
-of a bunch of new updates that are going to be ready to go soon.
-Hopefully, they don't get stalled or delayed.
-I don't think they break any secret ASIC technology,
+That's right, yeah, there's gonna be some changes
+that Bitcoin needed for this.
+Hopefully make it in kind of a bundle
+of a bunch of new updates
+that are gonna be ready to go soon.
+Hopefully they don't get stalled or delayed.
+I don't think they break any secret ASIC technology
 so they should be all right.
 But yeah, this is definitely important.
-And then one other thing to mention
-is this is not mandatory for everyone in the network.
-And so it allows for a gradual upgrade of the network
-as needed.
-So the people that know about L2 can use it,
-and the people that want to use everything else the same
+And then one other thing to mention is
+this is not mandatory for everyone on the network.
+And so it allows for a gradual upgrade
+of the network as needed.
+So the people that know about L2 can use it
+and the people that wanna use everything else the same
 and talk to each other, they can.
-Or if I don't know about L2, I can
-open someone with who does, as long as they
-support the old model.
+Or if I don't know about L2,
+I can open someone with who does
+as long as they support the old model.
 So it's a very elegant way of upgrading the network.
-So would that require new opcodes in,
+So would that require new opcodes in
 in order to make L2 work?
-Is that what that means?
-Yeah, there's a new signature mode.
-So you basically can commit, instead of just getting
-a little bit in the weeds.
-I don't know how much everyone knows here.
+Is that what that means or?
+Yeah, there's a new signature mode
+so you basically can commit instead of,
+this is getting a little bit in the weeds
+so I don't know how much everyone knows here.
 Raise your hand if you're a technologist.
-All right, so there's a couple of different ways.
+All right, so there's a couple different ways.
 Whenever you spend a Bitcoin transaction,
-you're basically saying, go point to some output
-in the past, based on its transaction ID and its order.
-And you're saying, this is the one
-I'm going to put as an input, and I'm
-going to sign that that's where it's coming from.
-And these are the rules I'm signing on the conditions
+you're basically saying go point to some output in the past
+based on its transaction ID and its order.
+And you're saying this is the one
+I'm going to put as an input
+and I'm going to sign that that's where it's coming from
+and these are the rules I'm signing on the conditions
 to now spend it in the future.
-And so you can agree right now, currently, you
-can agree to say, I don't care where the money goes.
+And so you can agree right now, currently,
+you can agree to say I don't care where the money goes,
 I don't care what the other inputs are.
-You could say, I only care about this one input.
-Or this one output.
-I don't care about anything.
-This basically changes it saying,
+You could say I only care about this one input
+or this one output or I don't care about anything.
+This is basically changes it saying
 rather than linking to a specific output,
-you're linking to a specific script.
-And you're saying, I don't care what that transaction ID is.
-I'll basically go to anything of those,
+you're linking to a specific script
+and you're saying I don't care what that transaction ID is,
+I'll basically go to anything of those
 and that's what I'm committing to.
 So this is where cars a little bit of change to Bitcoin.
-Hopefully, I didn't misdescribe this too well.
-And I don't know how well you're following it, James.
-And I was hoping you would take this one for the team,
+Hopefully I didn't mis-describe this too well
+and I don't know how well you're following it, James.
+I was hoping you would take this one for the team,
 but he's the engineer, so I was hoping he would get it.
-Well, so I do.
-I mean, so I think this is some of the,
-I think what a lot of people learned about Lightning
-Network in 2014, 2015, kind of like the theory and stuff,
+Well, so I do, I mean, so I think this is some of the...
+I think what a lot of people learned about Lightning Network
+in 2014, 15, kind of like the theory and stuff
 and don't really know how it's currently being implemented.
-In terms of what's available right now,
-in terms of watch towers, and what
-it will take to get L2 in, and how far we are off
-from some of these things.
-For instance, is watch towers being used right now
-just experimentally on main chain,
+In terms of what's available right now
+in terms of watch towers and what it will take to get L2 in
+and how far we are off from some of these things,
+like for instance, is watch towers being used right now
+just experimentally on main chain
 or are we still off from that?
-Maybe we can talk a little bit about something like that,
-and how L2 and watch towers fall in terms
-of timeline of events.
+Maybe we can talk a little bit about something like that
+and how L2 and watch towers fall in
+in terms of timeline of events.
 I'm not aware of them being on the production network.
-I'm sure they are being used on test network.
+I'm sure they are being used on test now.
 At least on L and D, that's what I follow.
-And then going into the future.
-So L2, again, we need this new input for the signature hash
-type for it.
-I believe it's going to be rolled into a change that
-covers a couple of other things that James had mentioned,
-like Tapered and Schnorr signatures,
-music that will be kind of rolled up
-as an upgrade to the Segwit script version.
-Never want to promise any kind of timelines
-on when code is going to be delivered for Bitcoin,
-just because if someone finds a problem,
-it's going to be fixed rather than trying to shove the release
-out to be Q4.
-But this is something I think it's getting pretty close.
-And then it's going to take rolling out to the network,
-and it's going to take, how is it going to be activated?
-Is it going to be another minor activated soft fork
-through signaling?
-Or is it going to be a timeline?
-Flag day.
-Flag day.
-There's going to be.
-Fuck it.
-Do it live.
+Then going into the future, so L2,
+again, we need this new input for the signature type,
+hash type for it.
+I believe it's gonna be rolled into a change
+that covers a couple of other things that James had mentioned
+like tap root and snore signatures,
+music that will be kind of rolled up as an upgrade
+to the SegWit script version.
+Never wanna promise any kind of timelines
+on when code's gonna be delivered for Bitcoin
+just because someone finds a problem,
+it's gonna be fixed rather than trying to shove
+the release out to be Q4.
+But this is something I think it's getting pretty close
+and then it's gonna take rolling out to the network
+and it's gonna take, how is it going to be activated?
+Is it gonna be another minor activated
+soft forked or signaling or is it gonna be a timeline?
+Flag day. Flag day.
+Fuck it, do it live.
 There's still debate in the community
-of how we're going to do soft forks,
+of how we're gonna do soft forks
 because that whole process got kind of a little messed up
 in the last time it went out.
-So I think people are going to have to decide
-how it's going to be done even.
-Yeah, I think meanwhile we'll have the channel backups first,
-which is something that I'm actually looking for.
-Because with this problem, the fact
-that we have this Justice TX that can spend all the funds
-if you broadcast the old state.
+So I think people are gonna have to decide
+how it's gonna be done even.
+Yeah, I think meanwhile,
+we will have the channel backups first,
+which is something that I'm actually looking for
+because with this problem,
+the fact that we have this Justice TX
+that can spend all the funds if you broadcast outside.
 So there is something coming.
 I think it's also coming soon.
-It's already being tested as well,
+It's already being tested as well
 is the static channel backups.
-So I think that will help a lot while we
-do this transition first.
-So I have a question that kind of leads into another question
-that's relevant to what you all are just saying.
-So first, I want to do some self-diagnosis here.
+So I think that will help a lot
+while we do this transition first.
+So I have a question that kind of leads
+into another question that's relevant
+to what y'all are just saying.
+So first I wanna do some self diagnosis here.
 How many Bitcoin do I need to lose on Lightning Network
 in order to be considered wrecked?
 At least one.
-OK, so let's say maybe I bought a little Raspberry Pi box
+Okay, so let's say maybe I bought a little Raspberry Pi box
 and plugged it in and did it back on my channel state.
-So I'm good.
-It was less than one, so I'm not wrecked.
-Would that be?
-Oh, yeah, yeah, yeah.
-I lost some a few weeks ago while I was testing,
-but it was only 0.01.
-So I can do that at least another 99 times.
-Nice.
-Now you know all of Jameson's Bitcoin amounts right now.
-He just went live.
-I think if I would have known I was going to be on this panel
-before I left for my trip, I would have brought my Reckless
-at.
-But if anyone knows the history of Reckless, basically,
-we opened the Blockstream store on Mainnet
-before there was really much else on Mainnet
-and got accused of being Reckless by, I will say,
-an unnamed CEO of a company that is involved in Lightning.
+So I'm good, it was less than one.
+So I'm not wrecked, would that be?
+Oh yeah, I mean I lost some a few weeks ago
+while I was testing, but it was only 0.01.
+So I can do that at least like another 99 times.
+Nice, now you know all of Jameson's Bitcoin amounts.
+Right now he just, he went live.
+I think if I would have known I was gonna be on this panel
+before I left for my trip, I would have brought
+my reckless at, but if anyone knows the history
+of reckless, basically we opened the Blockstream store
+on Mainnet before, there was really much else on Mainnet
+and got accused of being reckless by,
+I will say an unnamed CEO of a company
+that is involved in Lightning.
 And people in this space that are going to be using this,
-there's a little bit of Recklessness just of using Bitcoin.
+there's a little bit of recklessness just of using Bitcoin.
 Anyone who's lived through the last hype cycle,
-I guarantee there's been a lot more money lost that way just
-by ups and downs than what's being lost in the Lightning
-Network.
+I guarantee there's been a lot more money lost that way
+just by ups and downs than what's being lost
+in the Lightning Network.
 And you didn't see my presentation yesterday,
-which was really the history of Bitcoin Recklessness.
-But one of the things that I try to impart upon people
-is that every time you make a transaction on chain in Bitcoin,
-you're destroying your money and recreating it.
-That's fairly Reckless in and of itself.
-Don't use Bitcoin.
-It's Reckless.
-So previously, you're kind of talking about some of the things
-that need to be done in terms of improvements.
-But we'll see how you answer this.
+which was really the history of Bitcoin recklessness,
+but like one of the things that I try to impart
+upon people is that every time you make a transaction
+on chain in Bitcoin, you're destroying your money
+and recreating it, that's fairly reckless in and of itself.
+Don't use Bitcoin, it's reckless.
+So previous, you're kinda talking about some of the things
+that need to be done in terms of improvements,
+but we'll see how you answer this.
 What are some of the biggest misnomers,
 how people can lose money on Lightning Network
-just not knowing really the tech and what
-people can do to prevent some of these loss of funds?
-I mean, I think it's hard to prevent the loss of funds
-today because we don't have still the things,
+just not knowing really the tech and what people can do
+to prevent some of these loss of funds?
+I mean, I think it's hard to prevent the loss of funds today
+because we don't have still the things,
 the channel backup thing.
-So I mean, you can do RAID, yes.
-But that's too complicated.
-But basically, what happens is if you have a system,
-an hard drive system failure or something, you are basically
-wrecked.
-That's why it's Reckless.
-And I want to ask a follow-up question to you real quick.
-Even if you have your 12 or 24-word seed
-from that device that created, you're
-still wrecked if you don't have the channel database?
-Yeah, because that seed allows you to recover the on-chain
-funds, not the channel funds.
+So I mean, you can do RAID, yes, but that's too complicated.
+So but basically what happens is if you have a system,
+an hard drive system failure or something,
+you are basically wrecked.
+That's why it's reckless.
+And I wanna ask a follow up question to you real quick.
+Even if you have like your 12 or 24 word seed
+from that device that created, you're still wrecked
+if you don't have the channel database?
+Yeah, because that seed allows you to recover
+the on-chain funds, not the channel funds.
 So that's exactly what I was talking about.
 So the static channel backups is this mechanism
-that will allow you to retrieve, as well,
-the funds from your channels.
-But it's not ready yet.
+that will allow you to retrieve as well the funds
+from your channels.
+So but it's not ready yet.
 I don't know if anyone is using that on production,
 but I guess no.
-So I do know a clear wallet will back it up to Google Drive
-for you, but that's not like, I don't know.
+So I do know a clear wallet will back it up
+to Google Drive for you.
+But that's not like, I don't know.
 I don't know if that's the right solution or whatever,
 but it is a version of it, I guess.
-It needs to make sure it backs it up every time
+Yeah, it needs to make sure it backs it up every time
 and didn't miss anything.
-So you need to double-serve that.
-Hopefully, you're not routing money through it, or it would be.
+So you need to double share of that.
+Hopefully you're not routing money through it.
 Yeah, I could just not route money.
-Is it spend-only?
+Is it spend only?
 Yeah, that's why.
 So that's why it's feasible to do.
 Gotcha.
-So if you receive that, well, is there
-anything else that you want to hit on in terms of Lightning?
-Who's doing the best job in the Lightning space
-in terms of use cases and any things
-that you'd like to talk about?
+So if you receive.
+Well, is there anything else that you want to hit on
+in terms of lightning, like who's doing the best job
+in the lightning space in terms of use cases
+and any things that you'd like to talk about?
 We can kind of do a free form before you do Q&A.
 I'm a big fan of Lightning Koala.
 He's done some really cool stuff.
-Did he do the pixel one, too?
-Satoshi's Place.
-Satoshi's Place.
-So that was pretty cool, just paying
-to put a pixel somewhere.
+Did he do the pixel one too?
+Satoshi's place.
+Satoshi's place, so that was pretty cool.
+Just paying to put a pixel somewhere.
 This has been done before, but never like this,
 where it's just a fraction of a penny to place a pixel.
-And he's now doing things with chess.
-Yes, I tried to get him to do poker, but he rejected my idea.
+And he's now doing things with chess, yes.
+I tried to get him to do poker, but he rejected my idea.
 But yeah, so that's a pretty interesting way
 that you can do things.
 I mean, these are a lot of cute little proof of concepts.
-I think the more powerful thing is
-when we can really have machine to machine streaming payments.
-The unlocking use cases for pay as you go something,
-whether it's pay as you go bandwidth resources
-or pay as you go virtual private servers
+I think the more powerful thing is when we can really have
+machine-to-machine streaming payments.
+The unlocking use cases for pay-as-you-go something,
+whether it's pay-as-you-go bandwidth resources
+or pay-as-you-go virtual private servers
 or some sort of other computation,
-where we can get rid of the you have
-to pay a monthly subscription model, which
-may be orders of magnitude more than the actual usage you
-want, I think that actually enables
-us to unlock some new economies of scale
-with regard to just economic interaction
-and more efficiently.
+where we can get rid of the,
+you have to pay a monthly subscription model,
+which may be orders of magnitude more
+than the actual usage you want.
+I think that actually enables us to unlock
+some new economies of scale with regard
+to just economic interaction and more efficiently.
 Yeah, mid-trade payments are definitely
-one of the big advantages or one of the opportunities
-I see with Lightning Network.
-And we can also use that on Bitcoin mining pools.
+one of the big advantages,
+or one of the opportunities I see with Lightning Network.
+And we can also use that on Bitcoin, mining pools.
 We can pay out with Lightning.
 We can pay out as much as you go.
 So why do we need to send us to the blockchain
 when they get paid out like small amounts of Bitcoin?
-Why can't I just line in and stream the payments right away?
+Why can't I just Lightning and stream the payments right away?
 I think that's one interesting use case.
 Yeah, definitely.
 I'm aware of some pretty big potential use cases as well.
@@ -772,115 +767,120 @@ Unfortunately, can't share too much right now.
 But I think in the next year, you'll see some things.
 What's that?
 Give us the roadmap.
-Well, it's not the roadmap.
-I know, that's the Bilderbergs.
-Yeah, no.
-There's definitely been a lot of interest from use cases
-I had never conceived of.
-Again, the underutilized network, the opportunity
-where I don't know who the customer is,
+Well, it's not the roadmap, it's...
+I know, that's the Bilderbergs, yeah, no.
+Rumor has it.
+There's definitely been a lot of interest
+from use cases I had never conceived of.
+Again, the underutilized network,
+the opportunity where I don't know who the customer is,
 nor do I care who they are to use it.
-So this is something that's looking forward.
-The quality kind of stuff's cool and cute now.
-But this is going to be huge.
+So this is something that's, looking forward,
+the quality of the kind of stuff is cool and cute now,
+but this is gonna be huge.
 And I think the B2B side is one that people
-are kind of missing in the space of where
-this could potentially go.
-I did think of something else I did want
-to go to before we did Q&A. I guess
-this is the first question because I'll ask it.
-But in terms of implementations of Lightning Network Solutions,
+are kind of missing in the space of.
+They're missing in the space of
+where this could potentially go.
+I did think of something else I did wanna go to
+before we did Q&A.
+I guess this is the first question,
+because I'll ask it.
+But in terms of implementations
+of Lightning Network solutions,
 I'm familiar with C Lightning or the Elements project.
-I'm familiar with L&D. There's also
-probably two other ones that are fairly popular.
-There's also stuff that I think Drudge is doing
-that is not even compatible with the Bolt standard.
-You have other kind of things going on.
+I'm familiar with L and D.
+There's also probably like two other ones
+that are fairly popular.
+There's also stuff that I think Dryja is doing
+that is not even compatible with like the Bolt standard.
+You have like other kind of things going on.
 In terms of the landscape of this space,
-do you really feel like there's going to be like,
-everyone's just going to be on the Bolt standard.
-It's going to be like different web browsers?
-Or do you feel like there's going to be,
+do you really feel like there's gonna be like,
+everyone's just gonna be on the Bolt standard,
+it's gonna be like different web browsers,
+or do you feel like there's gonna be,
 maybe you can kind of give your take on overlay.
-What do you think is going to be popular?
+What do you think's gonna be popular?
 What's easy to get into?
-Is one good for something?
-One's good for another maybe?
-Well, that's one of the big differences
-between Bitcoin-based protocol and Lightning
+Is one good for something, one's good for another, maybe?
+Well, you know, that's one of the big differences
+between Bitcoin-based protocol and Lightning,
 is that Lightning was actually developed
-as this joint collaborative specification.
-So there were teams of developers
+as this like joint collaborative specification.
+So, you know, there were teams of developers
 coming together to decide upon a specification
 before they even started building the software.
-So at least from that standpoint,
-I think that it is going to be pretty entrenched
+So, you know, at least from that standpoint,
+I think that it is gonna be pretty entrenched
 in the Bolt specification.
-But the really cool thing is that
+But the really cool thing is that,
 because this isn't consensus,
 anybody can create their own other spec
-for other second layer networks.
+for other second-layer networks.
 And it would be great to see other specs
-for other second layer networks come out
+for other second-layer networks come out
 if someone can think of some
 that are substantially different.
 Diversity in additional layers
-is going to be a lot less contentious,
-I think, than diversity in base protocols.
+is going to be a lot less contentious, I think,
+than diversity in base protocols.
 And that's what the MIT version is doing.
-They don't follow the Bolt.
-They have their own protocol, so.
+They don't follow the Bolt,
+they have their own protocol, so.
 I think there's advantage to try to stay together
 as much as possible with getting adoption.
 If there were five Lightning networks right now,
 I don't think it would be anywhere near as popular
 as if there's one.
-This torch is going around.
-It's passing through people that are using,
+This torch is going around,
+it's passing through people that are using,
 some are using C Lightning,
-some are using Async's version,
+some are using, you know, Async's version,
 some are using LND.
 It doesn't matter.
 And they're connecting and paying over networks
-that are connecting with each other
-because interoperability
+that are connecting with each other.
+Because interoperability
 and being able to connect through these routes,
-the bigger that network is that's compatible,
+you know, the bigger that network is
+that's compatible,
 the more successful it's going to be
 and that network effect grows.
-So I think it's important that people try
-to stay together as much as possible
-unless there's a very strong need
-to do some feature that's just not possible
+So I think it's important that people try to stay together
+as much as possible,
+unless there's a very strong need to, you know,
+do some feature that's just not possible
 or not compatible.
 Did Jack pass off the torch yet?
 Jack passed the torch.
 To Stark?
-I think you gotta give it to Stark.
+I think he got, yeah, give it to Stark.
 Is that where it's sitting right now?
-No, she gave it off to a couple people
-who eventually made it to Sampson
-who sent it over the satellite
-after being rickrolled and then...
-Last I heard it was...
-Someone's trying to get in China or something.
+No, she gave it off to a couple people,
+eventually made it to Sampson,
+who sent it over the satellite after being rickrolled.
+And then-
+Last I heard it was-
+Someone's trying to get in China.
 Yeah, they're trying to get to like China
 or Venezuela or Iran.
 It's in Laborland right now.
-But the idea with that torch is you increase the amount
+But the idea of that torch is you increase the amount
 every single time by a little bit.
 Yeah, so that eventually someone will exit scam.
-And it's exit scammed once so far.
+And it's exit scammed once so far?
 I think that person got shamed into submission.
 And what is the opposite of exit?
 They enter unscammed, I guess.
-They were pretending to exit scam
-just to make everyone sweat.
+They were pretending to exit scam just to make everyone sweat.
 Just to get publicity, gotcha.
 So when this thing gets to like a whole Bitcoin,
 you can send it to me.
 It'll get to maybe 0.16.
-But you're gonna start experiencing failures
+But you know-
+Oh, channel max, okay.
+They're gonna start experiencing failures
 to send well before that just due to liquidity issues.
 I did have one more, I'm sorry guys.
 In terms of private lightning implementations in public,
@@ -889,21 +889,24 @@ if some of these networks kind of overlap?
 That's the way I say privacy now.
 Robin, Robin taught me.
 But is there any idea where you can lose some privacy
-or I don't really know if you run an auditorium,
+or, you know, I don't really know if like,
+if you run an auditorium,
 hey, this is a private lightning version.
 There's gonna be a public lightning version.
 Do you see anything like that happening?
 There's a lot of variables at play.
-So one is are your channels advertised or unadvertised?
-Another one is are you on clear net
+So one is, you know, are you using,
+are your channels advertised or unadvertised?
+Another one is, are you on clear net
 or are you on Tor or some other privacy network?
-And then in general, like the actual lightning protocol
-itself is using this form of onion routing
+And then in general,
+like the actual lightning protocol itself
+is using this form of onion routing
 that is supposed to make it more difficult
 for network observers to figure out where things are going.
 But this is gonna become a whole other,
 I guess, facet to the analysis industry.
-It'll be interesting to see if Chainalysis
+It'll be interesting to see like if Chainalysis
 and other folks manage to have much success
 with trying to de-anonymize the network.
 Set up a whole bunch of lightning nodes
@@ -916,7 +919,7 @@ as to put like 300 Bitcoin on a lightning network?
 Yeah, and today you can still identify
 a channel opening in the blockchain.
 But I think that will be.
-It was the two-party ECDSA.
+It was the two-party ECBSA.
 It's gonna basically hide.
 It's gonna be like a normal Bitcoin transaction.
 So it will be even more difficult to track all this.
@@ -928,8 +931,8 @@ Maybe, you know, he was talking about interoperability.
 And if we do, in fact, see a number
 of different crypto networks
 that get hooked into lightning network,
-then you could start swapping
-between Bitcoin and other privacy coins
+then you could start swapping between Bitcoin
+and other privacy coins
 and hopefully mix your coins so well
 by basically like hopping chains
 that it's practically impossible to follow that.
@@ -938,14 +941,15 @@ please come over here to Peter
 so we can streamline those questions.
 All right, so we'll have the first one right here.
 So when you say you don't care who the customers are,
-utilizing the lightning network, if you're a business,
+utilizing the lightning network,
+if you're a business,
 how do you get past the regulators
 demanding that you know your customers?
 Well, AMLKYC mainly is for financial services, right?
 I don't, as far as I know,
 if you're just like a regular business
 and you're selling widgets on the internet,
-then there are no like AMLKYC regulations
+then there aren't any like AMLKYC regulations
 unless it's some sort of controlled substance
 like fireworks or something.
 In that case, you can still,
@@ -954,7 +958,8 @@ You still have contract negotiation.
 Where am I gonna settle this lawsuit?
 How am I gonna deal with this in the real world?
 Whereas if I'm getting paid as I go
-and I do my minimum AMLKYC stuff, that's good enough.
+and I do my minimum AMLKYC stuff,
+that's good enough.
 So that's another part where you're still getting a benefit
 even if you have to do those steps.
 Well, that will possibly open up some interesting new
@@ -965,8 +970,8 @@ with each other?
 We're gonna throw them into like
 virtual private server jail or something?
 Next question over here.
-Yeah, so I actually met up with Taj a couple months ago,
-last time I was at MIT.
+Yeah, so I actually met up with Taj a couple months ago.
+Last time I was at MIT.
 He told me that what's lightning now
 is not what he envisioned for lightning
 when he wrote the paper.
@@ -1002,7 +1007,7 @@ or not correct, but you know,
 sometimes you have to just alter things based on reality.
 Well, I mean, maybe we'll end up with
 the lightning network colon Taj's vision.
-It'll be a separate network.
+They'll be a separate network.
 But you know, these public permissionless protocols,
 it's actually, I think it's good when they exceed
 and grow beyond the initial creator.
@@ -1027,16 +1032,16 @@ It doesn't matter.
 Satoshi no longer has any more weight in this community
 than any other contributor.
 I think that should be the truth really
-for any of these systems,
-is that if we want them to be fair,
+for any of these systems is that if we want them to be fair,
 then we need to accept input from anyone.
-Yeah, yeah, who gives a fuck who Satoshi is, yeah.
+Yeah, yeah.
+Who gives a fuck who Satoshi is?
+Yeah.
 Next question right here.
 Could any of you elaborate more on the B2B use cases
 for Lightning Network,
-especially when B2B payments
-are generally significantly larger
-and more subject to KYC AML regulations?
+especially when B2B payments are generally
+significantly larger and more subject to KYC AML regulations?
 Yeah, so the limit that's in Lightning right now
 is a soft limit.
 It will and can be broken when it's ready.
@@ -1044,10 +1049,9 @@ So right now, the network is in its early stages
 and we don't want to have people losing money.
 And so it's a nice way to do it.
 You can, if you wanted to, get rid of that limit
-and do whatever you wanted
-and be even more reckless than people are today.
-And the use case here, yes,
-more greater payments are there.
+and do whatever you wanted and be even more reckless
+than people are today.
+And the use case here, yes, more greater payments are there.
 You can still KYC AML.
 It's not incompatible with that.
 You still can know who's actually paying you.
@@ -1066,16 +1070,15 @@ He doesn't want to just prepay me a lot of stuff.
 I'm not going to accept his credit card payment
 because there's like a 50% chargeback risk there.
 He's not going to want to just wire me money
-that's for what he might pay in the future
+that's like for what he might pay in the future
 and he may never do business with me again.
 But I can collect his information.
-I can verify he's a real person
-or he has a real company.
+I can verify he's a real person or he has a real company.
 And that's easy.
 That's the easy part of this whole thing.
 So it's something where it will open up these use cases
 that just weren't possible right now.
-And you have these networks of trusted third parties
+And you have these like networks of trusted third parties
 where like, I'll trust Jameson,
 but I don't know anyone else.
 Jameson trusts a few people
@@ -1087,33 +1090,32 @@ with correspondent banking where it's like,
 if I want to route money from the United States
 to Zimbabwe, maybe that's a bad example,
 but somewhere that actually is functional,
-but still remote.
-We have to go through these layers of correspondent banking
-because you have to find the people
-that really trust each other
-because if they don't trust each other
-or something bad happens, someone's out money.
+but still remote, we have to go through these layers
+of correspondent banking because you have to find the people
+that really trust each other because they're,
+if they don't trust each other or something bad happens,
+someone's out money.
 And with Lightning, you're getting paid.
 You know you're getting paid.
-So the KYC problem I think is easy
-compared to the problem of payment settlement.
+So the KYC problem I think is easy compared
+to the problem of payment settlement.
 From a technical standpoint,
 I actually talked about this in a blog post
 that I made yesterday.
-It was buried in the Satoshi Roundtable post
+It was buried in the Satoshi round table post
 where I actually think that B2B payments
 are incredibly important for Lightning Network
 to help realize some of those efficiency gains
 I was talking about.
 I posted a chart that was showing sort of a fund flow
 on the Bitcoin network.
-And basically talked about my experience at BitGo
-where BitGo is this non-custodial wallet
+And basically talked about my experience at Bitgo
+where Bitgo is this non-custodial wallet
 that backs a lot of enterprises.
-And so BitGo has some interesting insight
-into the flow of funds
-between popular exchanges and other stuff.
-And we would look and try to figure out
+And so Bitgo has some interesting insight
+into the flow of funds between popular exchanges
+and other stuff.
+And we would look and try to figure out,
 is there a way that we could reduce
 the number of on-chain transactions
 that our customers are doing with each other
@@ -1123,9 +1125,9 @@ Our customer A doesn't know
 that they're sending it to our customer B.
 They're just sending to a Bitcoin address.
 And so this would happen thousands of times a day basically
-of money going back and forth and back and forth redundantly
-where if they had been doing it with payment channels
-especially through Lightning Network,
+of money going back and forth and back and forth
+redundantly where if they had been doing it
+with payment channels, especially through Lightning Network,
 all of that redundancy would have been kind of
 hidden under the hood and taken care of.
 That's really what Lightning does
@@ -1134,7 +1136,7 @@ of just moving these values back and forth
 on the public ledger.
 So I think that enterprises are gonna be helpful
 both for that efficiency use case
-and also gonna be important for the liquidity aspects
+and also gonna be important for the liquidity aspect
 of helping the rest of the people on the Lightning Network
 to be able to manage their own channels.
 But that's one of the biggest I think outstanding questions
@@ -1163,100 +1165,99 @@ And please make your question pretty brief as well.
 Thanks, I'll be brief.
 From a user's perspective,
 do you see any new innovative devices coming out
-for a Lightning Network and how do you think
-Lightning Network can advance the mass adoption
-by gaining more users to the network?
+for a Lightning Network?
+And how do you think Lightning Network can advance
+the mass adoption by gaining more users to the network?
 Yeah, so right now, I guess I missed the beginning part
-but basically adoption, how do we make it easier to use?
+but basically adoption, how do we make it easier to use.
 Right now there's a lot of manual steps involved
-in trying to figure out how do you route channels?
-How do we set up liquidity?
-How do we make payments?
+in trying to figure out how do you route channels,
+how do we set up liquidity, how do we make payments.
 The ideal situation is you can be able to pay
 your full channel capacity to anyone you want at any time.
-I think, and you do that where
-you don't have to manually configure anything.
+And you do that where you don't have to manually
+configure anything.
 So if I'm sending something over the internet,
 I don't have to know like go hop at this stop,
 go stop at this stop, go hop there
 and eventually you're over to the website.
-It just happens and so I think with time,
-as we learn how it evolves,
+It just happens.
+And so I think with time, as we learn how it evolves,
 these things will become more and more automatic
-and more transparent to the end user
-and the ideal is you have a wallet
+and more transparent to the end user.
+And the ideal is you have a wallet
 and it can send Bitcoin to Bitcoin address,
-Lightning endpoints, invoices, whatever you want
-and you have no idea what's going on.
+Lightning endpoints, invoices, whatever you want.
+And you have no idea what's going on.
 It just figures out whatever is best for you.
-Yeah, I think that the channel concept will be abstracted
-to the user later on and you will have like
-Fiat on ramps like you have today for Bitcoin.
+Yeah, I think that the channel concept
+will be abstracted to the user later on.
+And you will have like Fiat on ramps
+like you have today for Bitcoin.
 You can just top up with your card
-and suddenly you are on the Lightning network
-being able to transact.
-So yeah, I mean we are still in the very early stage
+and suddenly you are on the Lightning network,
+be able to transact.
+So yeah, I mean, we are still in the very early stage,
 I would say.
-We are still figuring out backup solutions so.
+We are still figuring out backup solutions, so.
 And let's take the last question right here.
-Do you guys have any phone apps
-that you would suggest for us to download
-in order to open up payment channels
-that you guys endorse like Blue Wallet
-or like Raw TX for the different platforms?
-Blue Wallet is the custodial one, right?
+Do you guys have any phone apps that you would suggest
+for us to download in order to open up payment channels
+that you guys endorse, like Blue Wallet or like Raw TX
+for the different platforms?
+Blue Wallet's the custodial one, right?
 Yeah.
 Jameson's gonna endorse that one.
-So you know, ultimately it very well may be the case
+So, you know, ultimately it very well may be the case
 that custodial Lightning wallets
 gain more traction early on.
 Custodians in general are able to abstract away complexities
 a lot more easily because they control everything.
 In the long run though, you know,
-myself and a lot of the other
-hardcore decentralized sovereign folks
-will be working on trying to make it easier
-for the average person.
-But I like to think that
-CASA's browser extension coupled with our node
-works pretty well.
+myself and a lot of the other hardcore,
+decentralized, sovereign folks will be working
+on trying to make it easier for the average person.
+But I like to think that CASA's browser extension,
+coupled with our node, works pretty well.
 I'm a much worse shill than Jameson.
-I can't, I'm so bad I can't even remember the name of it
+I can't, I'm so bad I can't even remember the name of it,
 but there's a project we sponsored
-that basically lets you have a like front end
-for your phone that you can use to connect to the back end.
+that basically lets you have a front end for your phone
+that you can use to connect to the back end.
 Do you remember what it's called?
 Does anyone remember?
 Spark?
-Spark maybe?
+Spark, maybe?
 I don't, I'm gonna get in trouble for not remembering this.
 But yeah, that's another one that we have
 that lets you connect to your own node.
-It gives you that full sovereignty.
+It gives you that full sovereignty,
+but it has something to do with it.
 Does Zap have a mobile version?
 No, they don't have because Netrino is not.
+Yeah, okay.
 I mean, but there are a couple of wallets.
 I would say for iOS you have, yeah, custodial wallets.
 You have Zap, which is you need to connect
 to your full node though.
-I don't know, if you are a tech person
+I don't know, if you are a tech person,
 you should be able to do it fairly easy.
-For Android you have more friendly.
-I would say you have Eclair and BLDouble,
-Bitcoin Lightning Wallet where you can receive, I guess.
+For Android you have more friendly,
+I would say you have Eclair,
+and BLW, Bitcoin Lightning Wallet,
+where you can receive, I guess.
 And I think that's pretty much it right now.
-But is there a Lightning site that lists all these
+But is there a Lightning site that lists all these,
 like Bitcoin.org does with wallets?
 It's a lightning.tech or something?
-I mean, there's lnroot.com.
+I mean, there's Lnroot.com.
 I think they have a lot of resources.
 There are a couple of websites.
 Lightninghood?
-Lightninghood, I think.
-Okay.
+Lightninghood, I think, okay.
 You'll have to add it to lop.net slash bitcoin.
 There is a lightning section on lop.net
-where I'm sure if you click enough links
+where I'm sure if you click enough links,
 you'll eventually get to one of those.
 Can we please get a round of applause for our panelists?
 Thank you.

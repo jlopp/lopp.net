@@ -1,0 +1,644 @@
+Welcome back to the Bit by Bit podcast.
+In today's episode, I speak with Jameson Lopp.
+Jameson created and manages Lopp.net,
+one of the best resources online for people who are interested in Bitcoin.
+Jameson is the CASA co-founder and CTO.
+CASA's aim is to make security on Bitcoin more accessible to the non-technical.
+CASA provides Bitcoin inheritance, multi-sig security, and 24-hour support.
+Bitcoin can be complicated. CASA is there to make it easy for you.
+At the time of recording, the world's gone mad.
+People are on lockdown, money printers around the world are going brrrr,
+and new laws are being passed to take away your rights.
+I speak today with Jameson about what I think is the most important technology
+and our last chance for freedom.
+That technology, obviously, is Bitcoin.
+So let's jump straight into it.
+Jameson, like I said before, thank you very much for taking the call.
+And yeah, if I can start with finding out what is it that led you to Bitcoin?
+How did you find it and how has it changed things for you?
+I'll probably never remember the specifics.
+I know I heard about it a few times on various geek websites
+and dismissed it just as many times until eventually some article came along.
+I'm pretty sure it was on Slashdot, but that piqued my interest enough
+that I read the white paper and once I did that, my computer science interest
+really got kicked off.
+I realized that it was solving an interesting problem
+that I'd never really thought about before.
+And then as I continued to think more about that from other perspectives
+like the philosophical and libertarian side of things,
+just looking at how money operates because I never thought about that concept before,
+it made sense to me that money should be this open project
+where anyone who wants to can collaborate and try to make it a better thing.
+So just the entire concept of money as an open source project
+was what I also found to be interesting just from the standpoint of,
+well, maybe that will end up being more robust, more fair,
+or at the very least less likely to be wielded as a tool for certain special interests.
+So I got interested from a variety of different perspectives
+and started playing around with it, created some side projects,
+and then a few years later decided that I might as well go full-time.
+So when was it switched in your mind? Did you very quickly think,
+oh, I just want to work in this space?
+Or was it a gradual, you got sucked down the rabbit hole
+and at one point you just thought, no, I have to be just focusing on this?
+No, it took several years as I learned more and more about the operation.
+And let's see, I forked the Bitcoin Core repository in 2014 to create Statoshi,
+which was essentially Bitcoin Core plus a bunch of instrumentation and metrics
+because I was just trying to better understand it,
+trying to bring more transparency to how the nodes themselves were operating,
+trying to help other developers understand and optimize various aspects of node operation.
+And I actually applied for a grant from the Bitcoin Foundation,
+which I never heard back from them on.
+And it wasn't until after I had been working in the industry for many years
+that I actually heard that I had won that grant internally,
+but then the Bitcoin Foundation fell apart and ended up not paying it out.
+So I would have ended up working probably more on Bitcoin stuff even earlier
+if they had paid out that grant for me to work more on that project.
+But it all worked out in early 2015, a lot of venture capital was starting to come into the space.
+I saw more job openings and that's when I decided I was just going to start applying to any position
+that I thought looked interesting.
+So you've done a few things before CASA, now that you are your CTO of CASA now.
+What is it that drove you to the way that the business is set up?
+It seems to me from reading through lock.net, some of the things you've written on Twitter,
+basically security comes first in your mind.
+It seems that that is number one.
+Yeah, and that's because of the nature of Bitcoin.
+It is very easy to shoot yourself in the foot.
+But it's very easy to permanently lose either through an attacker or more likely your own negligence
+and really lock yourself out of your own wealth.
+And there's a million different things that can go wrong.
+It's a very tricky maze of obstacles to navigate.
+And that's why if you talk to anyone who's been in the space for a number of years,
+they most likely have a story of something that they screwed up that resulted in them losing money.
+And so this is something obviously I learned a lot more about once I started going full time
+and working at BitGo doing enterprise, multi-sig, Bitcoin security.
+And even though that was a very well architected setup, there were still things that could go wrong,
+usually the result of bad decisions by users.
+I also personally realized that I was spending an inordinate amount of time,
+basically a weekend every year, refreshing my own cold storage setup.
+And that was very convoluted and I had my own inheritance that I set up,
+which I was not completely confident would actually get executed correctly if I got hit by a truck.
+And so I just realized that if it's this complicated for me and I'm supposed to be one of the experts,
+then for most people, they're not going to go anywhere near the links that I went to.
+And I suspect that that would result in one of two things.
+Either they're going to have a more fragile setup where they're more likely to lose their private keys,
+or they're just going to throw up their hands and leave all their money on the exchange or at some other custodian.
+And of course, that's against the ethos of what we're building here.
+It also is creating more systemic risk in the system if a lot of the money is held by a small number of entities.
+I have to say, I've only been involved for a few years now.
+And for me, coming into someone non-technical, it's really scary doing this stuff.
+Every time I'd send a transaction or be thinking about how I do my cold storage
+and thinking through what's the safest way I can do it and where do I put my seed phrase and all these things.
+And definitely for normal people, you're right.
+I think it puts a lot of people off and scares a lot of people.
+Yeah, I mean, an easy way to actually show the complexity is we have about 40 pages.
+That's 40 pages of documentation on our website. That's on docs.keys.casa,
+which goes through all of our own decisions and threat modeling when we were building our product.
+And if someone reads all of that and internalizes it all, anyone is more than welcome to build their own solution.
+I think that one of the reasons we're able to provide a lot of value
+is simply due to the amount of man hours and thought that we've put into this
+and all the experience that we have seen of various mistakes people have made over the years.
+And really the idea is to build software where, yes, it is security first,
+but it's also usability as a component of security.
+Because if the software itself is not guiding the user to do things the secure way,
+to follow the best practices, then even if you have a product that is basically impossible
+for an external attacker to penetrate and get those keys,
+you're probably still leaving a number of different possible branches down various decision paths
+that end up in the user shooting themselves in the foot.
+So I always hear that's sort of what happens more than anything.
+It's not the wrench attack. It is more just people making a stupid mistake and losing their coins.
+So I guess that's your mission to stop that happening.
+There's just so many possible things that could go wrong.
+It's kind of like insurance, right?
+Almost nobody is going to spend a ton of time thinking about everything that could go wrong in their life.
+Rather, you buy an insurance policy that covers all types of different things.
+And this is the same type of mindset that I guess we're kind of approaching as a business of
+we're helping people avoid all of that overhead of thinking through and planning out every possible contingency.
+And we're kind of wrapping up all of that planning into one package.
+And as long as you just follow the instructions on the screen, you'll be good to go.
+And you have this, it's like a key rotation thing. Is that right?
+You sort of have keys across a certain amount of multi-sig basically, but making it more user friendly.
+Because that's something I keep thinking about. I still haven't gone to multi-sig.
+And I just get comfortable with something. And then once I'm comfortable, done enough research, I change.
+But from what I understand, you're sort of making that process a lot easier for people to go into multi-sig.
+Right. And this is another one of those things where if you start trying to explain multi-sig
+and the benefits of this protocol feature to most people, their eyes are just going to glaze over and they'll get really bored.
+At a much higher level though, what we're doing is we're systematically eliminating any single point of failure.
+And that's another thing that we cover a lot in the documentation that I was talking about,
+where if there's any single point along the line where a catastrophe happens, it doesn't really matter what.
+It doesn't matter if we're talking like a physical flood or fire versus an actual thief coming in
+or even your maid accidentally throwing away your seed phrase or something.
+If there's anywhere in your system where a single action, whether by you, someone else or an act of nature or just bad luck,
+if that can cascade into a complete catastrophe for your whole system, then you've got a major problem.
+And so by using multi-sig, by requiring multiple different keys in order to sign off on a transaction,
+by using the hardware devices that are already available on the market that are made by specialists,
+we're a software company, not really a hardware company, and by geographically distributing these hardware devices,
+we can create an extremely robust solution that is resistant to all types of different loss
+and also provides a sufficient level of resiliency where even if the user screws something up,
+even if you lose or destroy one of your devices or even two of your devices, we have a level of resilience in the model
+so that humans can still make mistakes and still recover from them.
+And so you mentioned the key rotation stuff.
+One of the other novel things that we've done, I don't think anyone else has at this point,
+is we actually got rid of the need for you to store seed phrases.
+And that was because, once again, it just made the security model so complex,
+and it was very difficult to reason through how a user might store their seed phrases
+and basically trying to enforce best practices around all that.
+And so once you get into a multi-sig setup, it's actually possible for you to not have to keep track of that
+because we built in this key rotation functionality where if you lose a device
+or otherwise have a device become inaccessible, then you just go into the software and tap on, you know,
+replace device, and we walk you through a very simple wizard of go buy a new device, plug it in,
+and we then help you rotate out that particular device so that you once again reconstitute your wallet back to the full secure state.
+That's cool. I think the security, like I said before, is one of the biggest things when I speak to people about it,
+and they just go, ah, it's too complicated.
+But when we're talking about, well, the way you just described it, it sounds pretty simple.
+I can imagine most people can get on board and understand that, and it's got a nice flow and it's, you know,
+you feel like if you make a mistake, it's not all gone. And I think that's the people that scares them.
+And now with the way, with the last couple of weeks and the current uncertainty around the world,
+it sounds like more and more people, it feels to me like more and more people might start waking up and going,
+do you know what, it'd be quite nice to have money that I control and no one else can fuck with.
+And, you know, it's going to become, I feel, more obvious.
+So having these services for people jumping in, it just stops, like you said, people having it on Coinbase or some exchange, which is not what we want.
+So, yeah, the Black Swan events, I think make it more clear that you do need to be prepared for edge cases. And it's kind of a weird situation of
+trying to convince someone that, you know, they basically need to buy insurance for events that are unlikely to happen.
+But if they do happen, could be catastrophic. And that is why I think, you know, when these events start happening,
+at least some people will start to open their eyes. But I still suspect that probably the vast majority of people
+will go through this event and still, you know, not be prepared for similar types of things.
+Because they'll probably have survivor bias of like, oh, I made it through fine with the other one.
+Anything else that happens, I'll also be fine.
+Yeah, it's been really weird, especially like all this stuff that we chat about on Bitcoin, Twitter,
+and I speak to people who are interested in this stuff. You know, we talk about the scenarios that are happening around the world literally today.
+We've been talking about them for ages. And now it's happening and it just, it feels really weird.
+It's sort of like everyone's been saying, oh, it's coming. But this meltdown is just crazy.
+And then how people don't wake up to it just, I find it amazing. I find it amazing that people don't see the value
+or most people don't see the value in having something that is completely controlled by you.
+And no one can mess with, you know, I've never come across anything like that before.
+Even property and there's nothing you really own because the government has their hand in it.
+And this, it just seems, it seems...
+It's kind of a new asset, right? It's like you said, and I and many other people have said,
+if you're incapable of actually defending any given asset against attackers, do you really own it?
+And once we take assets out of the physical world and bring them into the digital realm,
+that's the really cool thing about cryptography is that it now gives the average person
+an inordinate level of defensibility at very low cost if you can use it correctly.
+And so that's what we're trying to do is trying to leverage the hardware and the software that's already out there.
+The best practices that people have learned the hard way over the past decade of using Bitcoin
+and wrap it up in a very user friendly package so that people can attain the level of self sovereignty
+that Bitcoin has been promising all along, but has had a really, really high learning curve to actually get there.
+So if you talk through for anyone who's, I mean, most people who listen to this show already interested in Bitcoin,
+for people who are newer to it, if you talk through like say today,
+someone goes and they buy themselves a couple of thousand pounds worth of Bitcoin and they then say,
+OK, I want to actually take control of this and I want to make sure that this is mine
+and no matter what happens, if we have an apocalypse, whatever happens, I control this. What do they do?
+If they were to come say to CASA, what does that flow look like?
+They've got their coins on an exchange. What do they do? What would you suggest?
+Yeah. So, you know, the first step is to actually take control of your private keys.
+And so that means setting up a wallet that is generating private keys that only you know.
+And, you know, there's a million different ways you can do that.
+You can set up wallets on desktops or mobile devices where it's just the software keeping track of that
+and storing the private keys on a hard drive.
+That's only really recommended for small amounts of money because, you know,
+keeping those keys on a full fledged operating system that could have a ton of different possible security issues.
+The next step beyond that is moving your private keys to a hardware device
+like a Trezor, Ledger, Coldcard, and so on, where now those keys are no longer on an internet connected computer.
+They only exist on this hardware that never actually has internet access.
+You know, you can do that for, you know, $50 to $100 basically depending on which device that you buy.
+Sorry to interrupt, do you have a favorite?
+I always had Ledger, then I went to Trezor, and now I'm looking at Coldcards.
+Do you have a preferred hardware wallet?
+Well, this is an interesting question because they all have their own pros and cons.
+And actually we covered those in our most recent blog post where we announced Coldcard support.
+We were talking about why we believe Coldcard is a great complement to Trezor and Ledger as part of a full package.
+But, you know, the good thing about Trezor is that it's fully open source.
+One of the downsides is that there are some known physical exploits where a sophisticated physical attacker could extract the keys off the device.
+Ledger, on the other hand, does not have any known physical vulnerabilities.
+However, it's not fully open source. But then Coldcard is actually both.
+It's fully open source hardware and software and there are known physical vulnerabilities.
+However, one downside I would say with Coldcard, because of how new it is and the fact that it's using PSPT,
+which is not yet supported by a lot of other wallets, I would say Coldcard if you're using that as a single device,
+that's still more of an advanced user type of setup.
+It also gives you really cool air gap signing flexibility, which Trezor and Ledger don't support, to my knowledge.
+I think you could get a Ledger Nano X, which has Bluetooth only, but then you have to go down that whole rabbit hole.
+So, you know, suffice to say all of these devices are designed differently.
+They have pros and cons, but the really cool thing from a security standpoint is when you start using them in combination
+as part of a multi-seg setup, the security properties are actually additive rather than subtractive.
+So, while any one given device could potentially be attacked in a certain way,
+you know that all of the devices are not going to be attacked in the same exact way because they don't have the same vulnerabilities.
+You're also getting rid of things like supply chain attacks simply because they're coming from different manufacturers.
+And so, there's one of the many reasons why having a more diverse setup and distributed key set, we believe, offers the absolute highest level of security.
+That makes sense. And so, for people, if they're to set things up that way, I mean, it's been described to me before
+that if you were to try and break the encryption or trying to hack or get one of these private keys,
+that basically it would be something like you'd have to choose two grains of sand on the planet
+and someone would have to guess which ones they were out of all of them, some sort of crazy number like that.
+Does having it put onto multi-seg mean that it's even more complicated and even less likely?
+I'd have to do some math, you know, but I think suffice to say even if it is, you know, from a cryptographic standpoint,
+even harder to brute force because multi-seg is a more complex script.
+You know, we're already talking so astronomically high from a computing standpoint that, you know,
+you're basically talking about like needing quantum computing to even make it feasible and even then Bitcoin scripts
+are quantum computing resistant if you haven't spent from them, which is another reason why address reuse is a bad idea,
+not just from a privacy standpoint, but also potentially quantum computing standpoint.
+But really like when we're thinking about the most likely types of attacks and losses, you know,
+brute forcing is already pretty much out of the question.
+The next level down is just like general hacking.
+And so you get rid of that by using dedicated hardware devices.
+And then, of course, there's all the different loss vectors of just something goes wrong and the device gets lost or destroyed.
+And at the end of the day, you know, if you get a really well designed setup,
+then the only thing that you should really be having to worry about is some sort of phishing attack
+or even, you know, malware that is like making you think that you're sending your transaction to one address
+and it's actually going to another.
+And the way that that's another good reason why we use different dedicated hardware devices is that
+even if you somehow got malware on your phone when you were initializing a spend out of your CASA wallet,
+you then have to go and confirm the value and the recipient addresses on multiple diverse hardware and software.
+So that even if something happens to your device or to our software, none of those are single points of failure.
+Yeah, that makes sense.
+The other thing that I had a question with multi-sig.
+Say, for example, you were trying to control, you know, maybe you'd bought a little bit of Bitcoin from one exchange
+and then some was bought in cash and then some is sent from another wallet
+and you didn't want to have those coins all in one wallet because then it's more trackable.
+If you were to have, say, a multi-sig setup, is there a way of setting it up
+so you could have one multi-sig setup, but you could have, say, 20 different addresses
+and there's no way that those touch each other? Does that make sense?
+Yeah, yeah. So this is basically a sub-accounts feature and I don't know how deep you want to go into protocol level stuff,
+but basically like the way that a wallet creates the addresses is a standard for address derivation
+and you just have these different numerical paths and you can increment the paths.
+It's part of the standard where if you increment one part of the path,
+that's considered to be like a sub-account under the main account.
+So it's certainly doable and it's a lot easier, I think, to do it that way as opposed to the other way,
+which is you have one main account and then you're still depositing everything in there,
+but then you're having to manually control each individual UTXO. That gets really messy.
+It's like coin control basically.
+Yeah, so coin control. I know Bitcoin Core and Electrum both offer coin control.
+At CASA, we do have coin control at the address level, not at the UTXO level
+because it basically ends up being the same thing from a privacy standpoint,
+but still it's annoying to deal with and I don't recommend it.
+It's definitely easier to use these sub-accounts.
+Okay, and so if you make these sub-accounts, then those coins don't effectively touch each other
+and there's no way of anyone saying, okay, well, this person has...
+We can tell that this person has these two addresses and that these coins are from here
+and these coins are from there and they can link it. It's kept separately.
+Yeah, and I mean, that's the tricky thing about on-chain privacy in general,
+is if at any point in the future, those funds get commingled and you send both of them somewhere
+or essentially you end up spending those UTXOs at the same time
+or I mean, there's a million other heuristics that companies like Chain Analysis use
+to try to come up with at least a percentage probability
+that certain funds are owned by the same entity.
+Privacy in general is very difficult, but on-chain privacy even more so
+because this is a permanent history and one single mistake can potentially link
+any number of different funds together.
+And it's there forever, right? That's the problem.
+Yeah, they're dirty bastards, these Chain Analysis. They drive me crazy.
+It's so frustrating because that's always the one thing with me.
+I just almost get scared to do anything because I think, well, I don't understand these systems
+well enough to know if I'm doing something wrong.
+And then you think, oh, well, I've made one mistake, like you said, and it's there forever
+and all the things you've tried to do to keep your privacy, then you've lost it from one mistake.
+Do you have high hopes for things like Whirlpool and Lightning Network
+and all these sort of things eventually overcoming these problems?
+I think second layer solutions will have much better chance of offering stronger privacy
+simply because you're no longer broadcasting what you're doing to the entire world.
+The main problem with mixing in its current form is that even if you do manage to mix your funds
+with a sufficiently large other set of participants, and I would argue that currently
+they're probably not sufficiently large enough, not enough people are doing it,
+you have this problem where it's highly obvious.
+You're creating, once again, heuristics around these coin joins are so obvious
+that we've already seen several different services start to ban users that were mixing their coins.
+And it's because the service doesn't want to take the risk of them potentially accepting funds
+that are used for some activity that they can't track.
+That's ridiculous because I don't think that there's anything even similarly analogous to that
+in traditional finance. If you deposit a bunch of funds at a bank,
+they can't trace where it came from more than one hop, for example.
+But on the blockchain, you can trace it all the way back to wherever.
+You get into this really weird situation of quote unquote taint analysis.
+And then the question is like, how many hops does the money have to go
+before you're no longer culpable for whatever it may be?
+Yeah, it's such a weird, I don't know.
+To me, it's just crazy that it's even something that should be considered.
+To me, I think, well, it's digital cash.
+And you don't do it with cash. If I go down to the shop and I buy a paper,
+they give me the change back and then I can't get stopped and said,
+oh, where did you get that change and where was it five hops before?
+No one cares. It doesn't make any sense.
+At least in America, we do have the unfortunate civil asset forfeiture stuff
+where cops can basically say, oh, you're carrying too much money on you.
+And we're going to assume that that's drug money because why else would you have
+10 or $20,000 in cash on you unless you have illegal activities?
+Yeah. Yeah, it's crazy. It's absolutely crazy.
+Do you hold out high hopes that this stuff, obviously for someone like yourself
+and people who understand these systems well, I'm sure that these things are doable.
+But for the normal people who just want some privacy, do you think that
+in the next, say, five years, we're going to see large improvements
+or is it all things that I've had a lot of talk about that needs to be changes
+on the protocol level to make it so that, say, coin joins aren't so obvious?
+And then is it Adam Gibson who's doing this pay join or something?
+Yeah. Yeah. Yeah. So Adam Gibson is one of the maintainers of join market.
+He's also did a present. He's done a number of presentations on pay join
+on the VR thing, wasn't it? Yeah. Yeah. Yeah. And that's awesome.
+Yeah. I think the most interesting thing in terms of what we traditionally
+consider to be a coin join, because I would say pay join is kind of a different
+kind of coin join than we normally think of.
+You know, normally we think of large group of people coming together
+and just mixing all their money together. I think the most exciting thing
+on that front is going to be signature aggregation that will reduce
+the fingerprint on chain of these coin joins that are happening.
+Okay. So they will look the same as any other transaction basically?
+That's definitely the goal. Will it happen in the next five years?
+I think so. I mean, we should be getting Schnorr signatures
+hopefully in the next year or two. I mean, the code is already written.
+The spec is up. All that really needs to be figured out is deployment.
+And of course, that tends to sometimes end up being the most fun
+controversial part, though I'm not aware of any strong arguments
+against signature aggregation. What you end up having more controversy over
+when we're talking privacy is super strong privacy that's more experimental,
+you know, stuff like ZK Snarks, where you're actually completely hiding
+the values of the transaction and where it's going.
+And the main issue with that is that it bumps up against another fundamental
+property of Bitcoin, which is the auditability of the total money supply.
+And so while privacy is, I think, very highly ranked in terms of desirability,
+I think that auditability of the total money supply will always end up
+trumping privacy. Yeah, that makes sense.
+And say it's obviously this would have been thought of, but I just thought I'd ask.
+Say you had like a way of changing, you know, how you have like liquid
+and you sort of you have Bitcoin, which then is turned into a liquid token
+or I don't know how you describe it exactly, but then that's basically one for one.
+Would there not be a way of doing a similar sort of thing with Bitcoin
+and having like a set up where you have, I don't know, ring signatures or something
+you had like it almost transformed into a Monero-ish type coin
+that was just the same one Bitcoin one.
+Well, yeah, I mean, you use that. So, you know, you can create a side chain.
+The main problem with side chains that I see is that no one has figured out
+and deployed a trustless pegging mechanism.
+There is the drive chain concept from Paul Stork that I think is interesting,
+but also seems controversial mainly due to the power that it gives to miners
+to potentially misbehave.
+Is this the thing it takes six months it's got to be locked up for?
+Yes, it's something like that and it's complicated.
+It's been a while since I've looked at it.
+Unfortunately, it seems to be fairly controversial though.
+I do think that they will eventually launch a side chain or a drive chain of some sort.
+As far as I know, they're still working on it.
+But, you know, even liquid, you know, you don't need to create a new side chain.
+You can use liquid if you peg into liquid or you can do an atomic swap basically into liquid,
+at least theoretically.
+I know I think some have been done, but I don't think it's extremely user-friendly at this stage.
+Then on liquid, they do have the confidential transactions enabled,
+which obscures the addresses in the transaction.
+I think the values are still in the clear, but the addresses are not.
+I've actually, I think I've kind of brought this up a few times before and never really got an answer.
+I'm not aware of any reason why we couldn't set up mixing pools on liquid
+that are a major improvement in comparison to mixing on Bitcoin.
+I'm not aware of anyone who's actually gone down the path of trying to write a CoinJoin software
+that does confidential transactions or, you know, if there's any hidden gotchas there
+of why you wouldn't be able to do that.
+It's also, you know, in general, perhaps what will end up making more sense than doing on-chain CoinJoin
+is we'll be doing maybe, you know, a series of atomic swaps and you can do those on-chain
+or you could do them with Lightning.
+The whole idea there being that, you know, you break the linkability by simply going to a different blockchain.
+So there is no real link.
+Right. Yeah, I see.
+But, you know, I think those are just still mostly theoretical concepts where no one has actually tried to build something.
+You know, there are projects that are working on atomic swaps, but as far as I'm aware,
+like there's not any extremely user-friendly ones, but I also haven't really had time to play with many of them.
+I know we had an interesting presentation at MIT Bitcoin Expo from Arwen and they've figured out
+they've made an improvement upon the traditional atomic swap operations,
+which basically leverages some like Ethereum smart contracting to store these pre-images for hashes.
+So you're essentially doing something that's similar to, you know,
+a hash-timelock contract except you're basically operating it across two different blockchains.
+Hmm. Well, that's interesting.
+I guess, like you say, there's all these sort of things will happen on second layers and it just takes time.
+I guess it feels like it takes time when you're interested in this stuff and you're just chomping at the bit.
+But yeah, these things take time and it will come.
+But do you have some sort of plans within CASA?
+You have the nodes and am I right in saying you're not supplying or selling those anymore?
+Right. And actually tomorrow, so maybe even before this gets published,
+we're going to be publishing a how to build your own basically do-it-yourself CASA node guide
+since we have stopped manufacturing and shipping them.
+But, you know, we still want anyone who's interested to be able to use that on their own.
+And it's something that we will probably revisit at some time in the future.
+Just for now, we're going to be focusing on our original mission with helping people, you know, secure their wealth.
+It's, I think, a much higher value proposition,
+whereas the node stuff is much more cutting edge and it's interesting,
+but people aren't putting their life savings into, you know, a lightning node.
+No, and it's more important that you have everything safe.
+I guess that's step one, isn't it?
+And, you know, making sure that you feel comfortable and things secure.
+That's interesting you're going to actually do that because I'm ordering a Raspberry Pi and a few bits and pieces.
+And I was looking at my node where I was really leading with this question was
+if we have technologies like lightning and the usability gets better and better,
+can you imagine that given time you do have a sort of a node at home and everything just runs through there
+and you can store your data and you can have your, you know, lightning on there
+and you can have everything sort of, I don't know how I'm phrasing this question,
+but basically that you have everything controlled by yourself
+and that given time we can have less and less of our data sort of sat in silos and controlled by other third parties.
+Is that realistic? Is it sort of a dream to say what we take back control of more and more of our data?
+Well, yeah, I mean, this is actually a cycle.
+This has happened before and it may happen again.
+And, you know, in the very early days of computing, all the computing actually occurred on mainframes
+and you would have a lightweight terminal that you would connect to that mainframe
+and request, you know, your various data and computing operations from.
+And then we had the advent of the personal computer where, you know, we grew by orders of magnitude in computing power
+so that you could actually afford to have an immense level of computing power in a machine that's, you know, in your home.
+And so at that point, all the data, all the processing went mostly away from the mainframes
+and became more decentralized in people's homes.
+And then in the 2000s era, you know, as the internet started happening, the pendulum started swinging the other way
+where we would still have our personal computing devices, but a lot of the data was getting sucked up and stored
+and computed mostly for marketing purposes by the quote unquote cloud.
+And now, even today, you know, cloud computing is able to operate at such a cost effective scale
+that it's in many cases, it's cheaper for you just to buy a subscription to like a Dropbox or a Google Drive
+than it is for you to actually buy several hard drives that you then manage yourself and, you know, create redundancy for.
+And so it's quite possible that we see the pendulum start to swing back yet again,
+but I don't think that it will happen just in the sense that we go from doing cloud for everything
+back to doing everything on a device at home.
+Rather, I think what needs to happen is I think the cloud needs to migrate to these, you know, many computer at home devices,
+by which I mean, you know, the reason that all of these enterprise cloud computing stuff has become so popular
+is because it abstracts away all of the boring IT administration stuff, you know,
+just dealing with redundancy and hardware failure and other natural disasters.
+You know, real cloud computing companies mirror entire infrastructure across different continents at that level.
+And like, you know, almost no one is going to be able to have the resources to go to that extreme.
+And so it makes sense because you're buying a lot of security against those type of losses.
+Of course, you're losing a lot of security in other ways by handing all of your data over to a third party.
+Now, if we can get the best of both worlds, if we can start to build decentralized clouds
+where your little mini node at home is actually participating in a peer-to-peer decentralized storage network
+for all types of different things, that's how I think we might be able to get the best of both worlds.
+And, you know, we learned a lot about that at Caso, shipping out all these nodes over the past year or two
+in that, you know, there's still a lot of just IT administration headaches of deploying devices into unknown networks.
+You know, people had all kinds of crazy network setups with different ISPs.
+And, you know, you need to be able to abstract a lot of that away to really make a plug-and-play device
+that also has all of the resiliency of cloud computing.
+Hmm. That would be so cool if that's doable.
+When I was looking at the MyNode stuff, I was looking and it had sort of, you know, a little thing with VPN on there
+and then it had Tor and it had all the other bits and then it had your wallet and it had Lightning.
+And I was just looking at that dashboard, you'd call it.
+And I was looking at that and I was just thinking, how cool would this be if you had your photographs or your documents
+and, you know, everything that you'd have on a computer.
+And like you were describing, you have it as a system where it is some sort of decentralized cloud computer
+and you control everything on there, but you can still use it from wherever you are.
+Because I think that's the thing. It's like you don't walk around with hard drives in your backpack or whatever.
+You want to be able to jump onto a phone and still be able to use these things.
+But if that was possible, I can't see why people wouldn't switch across to it.
+Because I think people in their gut feel things are wrong.
+I think maybe they don't know, you know, with things like Facebook and everyone having your data.
+And I think people feel uncomfortable. They just don't know that there could be another way.
+And it's become so easy now with, like you say, that they've made it so easy to store your data with them
+that it kind of has to be as easy or close to as easy for them to switch.
+Yeah, I mean, it really comes down to convenience.
+And I think part of the problem here is if we're talking about building open systems,
+then often convenience gets left by the wayside.
+I mean, usually these open source systems are designed by engineers
+who are going to be prioritizing things like security and scalability.
+But there's usually a big gap on the usability and convenience side.
+And so that will be an interesting question to see how that progresses.
+I mean, you can kind of look at similar things with Linux, for example.
+I mean, I've been a Linux user for 20 years.
+And the experience has immensely improved, especially over the past 10 years or so.
+And you could probably have an entire show or thesis about why that's the case.
+But I can only hope that we'll see similar things with this particular set of industry.
+Maybe it just takes time, but it feels like that's the way things would naturally slide.
+I feel like enough people are sick to death the way that things are.
+And if enough people want it, presumably it will eventually come along.
+Well, there's some sort of crowd theory around all of that,
+that you only really need maybe 5% to 10% of people to go through a higher friction experience
+and be early adopters into technology that is sufficiently superior.
+So I think that the vast majority of people simply don't have the time to think about these things.
+I'm sure they would care if they had time to sit down and think through them.
+But people are worried about other things.
+Horrors and stock market crashes.
+People like us have the privilege that we're in a position that we can think about
+some of these more esoteric and theoretical edge case black swan type of problems.
+I think the average person is just worried about their next paycheck and insurance and food on the table
+and just living their lives.
+Yeah, for sure. That's definitely true.
+And then like you say, maybe if the 10% go through that friction, then it changes for them as well.
+That would be nice.
+So have you got anything that you're particularly excited about?
+Any developments within Bitcoin or Lightning that are particularly exciting to you at the moment?
+The biggest thing that I think is going to happen in the next year or so is Taproot, Mass, Schnorr.
+That's going to significantly expand, I think, the usability of Bitcoin scripts,
+both from a scalability perspective and a privacy perspective.
+We're going to see much more complex Bitcoin-based applications coming out,
+though the keynote that I just gave the other week at the MIT Bitcoin Expo
+is kind of a warning to the developers who are going to be working on that.
+There's going to be a lot of increased complexity under the hood,
+and we need to think about how we build these systems so that they are protected against disaster scenarios
+and without going too deep into the weeds of the technical stuff.
+Basically, it comes back to what we were talking about earlier, getting rid of seed phrases,
+because even just giving somebody 24 words and telling them to keep it safe
+is just the tip of an iceberg of a whole mountain of IT and security knowledge
+that I think most people are going to need to avoid
+if they want to actually be able to operate safely and securely in these systems.
+We need to continue to work on usability so that the average person can feel confident
+in taking control of their digital assets.
+The flip side of this equation and the reason why it is a double-edged sword,
+it gives you power, but it also gives you the responsibility to wield that power,
+because if you use it incorrectly, if you make a mistake, there is no one else with the power to save you.
+Yeah, sorry for your loss.
+This is what I don't particularly understand. With Schnorr, from my basic understanding,
+Schnorr would replace ECDSA, is that correct?
+If it was to replace that, is it just a security that it helps with or does it have other impacts?
+Does it change other things, switching them?
+Yeah, I believe it's actually like a different set of public keys and, of course, the signatures.
+It's not a new method for cryptographic signing,
+but it was under, I think, a patent for 20 years or so.
+Is it going to change things?
+I think one thing I haven't actually even looked into is will existing hardware devices, for example,
+be able to easily support this?
+We do know that we're going to be able to roll it out in a backwards compatible fashion,
+so it's not like people are going to have to start using it.
+That'll be similar to the way SegWit was rolled out.
+It can be very tricky to have a wallet that you're maintaining that then has a major change like that.
+Basically, each wallet developer is going to have to figure out how they want to do their own sort of migration
+of different UTXOs, different scripts that they're creating.
+At the really low cryptographic level, even I don't really go down that low
+into understanding the actual constructions of the cryptography for a lot of things.
+Does it change anything more than security then?
+Or does it give you more ability to do more things changing to Schnorr?
+Or is that just one part of many changes that are looking to Taproot and Schnorr and all of these?
+They get bundled into one software update or whatever you would describe it as.
+I think one of the reasons why Schnorr was preferred is that it does have provable security.
+This is more of a theoretical thing and it's beyond my understanding.
+I'm not the only one.
+It also has some other properties to it that I think it's some of the mathematical properties
+under the hood that make it possible for you to do the signature aggregation.
+This is basically a summing of a group of public keys.
+Obviously, the protocol developers can tend to explain it better than I can,
+but this property allows you to have a group of public keys that essentially sum to a certain number
+and you know that no other possible set of public keys could have that same property.
+The linear nature of the math then allows you to have the signatures basically be aggregated
+so that you don't have to show every single signature to someone to prove that it's been signed,
+whether you can show the sum of all the signatures and the one who's viewing it can have that same assurance.
+There's some mathematical proof around that that gives you that assurance.
+That makes sense because I hear a lot of these things that they're trying to get them done
+and that people are arguing over certain things.
+I hear these Schnorr and Taproot and things and a lot of this just goes well over my head.
+It's interesting to know why some of these things are going ahead,
+but that does sound like a very worthwhile thing to do.
+These are the things that more experienced protocol developers spend years looking into
+and you're trying to save a few bytes here and there,
+just trying to keep the cost of operating the system as low as possible
+while continuing to expand the functionality for end-users like us.
+Well, I'm very grateful that they do.
+I'm very grateful.
+Jameson, like I said, I don't want to take too much of your time.
+I know it's late here.
+What time are you there?
+Are you eight hours behind us?
+Meraka.
+I wanted to just finish up on asking you, obviously from reading through lock.net
+and hearing you on other podcasts,
+it seems that above all really you care about freedom and privacy.
+I just wanted to hear from you.
+Do you feel confident and what's your outlook over the next, say, 10, 15 years?
+Do you feel that Bitcoin gives us some hope to turn things around?
+It feels to me like we're on a tipping point.
+Sometimes I feel positive and sometimes I feel negative about how things are going to play out.
+My fear is 1984, George Orwell.
+Sometimes it feels like that's coming.
+But you obviously spend all day every day fighting a good fight with this stuff.
+How do you feel it's going to play out?
+I'm confident not for any particular technical reason,
+but rather because of the original reason why I got into it all,
+which is creating an open collaborative project
+where anyone who wants to can help contribute and coordinate.
+The properties of a project that is architected in such a way mean
+that you can essentially create this Hydra
+so that there is no single point of failure in the project.
+There are certainly plenty of large actors and participants
+that play various roles in the system,
+but it's sufficiently spread out and sufficiently large enough at this point,
+I think, that it's even resistant to nation-state attacks.
+The way that I tend to put it is that Bitcoin can't die until we all agree that it's dead
+and then we all agree to give up trying to work on it and improve it.
+Just from that philosophical standpoint,
+that's why I think that we've already gone past the point of no return.
+It's very hard for me to envision a scenario
+where everyone around the entire world decides to give up on it.
+We've even seen nation-states like India and China crack down on it a lot.
+Sure, there's a loss of confidence,
+but never to the point that the people like myself,
+who have basically dedicated our career to working on it,
+and many people who have volunteered a lot of their free time
+and their skills to working on it,
+I think it would create a disaster or require a disaster of proportions
+that I can't even really imagine to sufficiently disillusion all of those people.
+It does feel like that, and I'm not technical or of any use really,
+but it's something I will never give up on as long as it's possible
+because I believe that this is our best chance of freedom.
+I think it's such an amazing opportunity, such an amazing system.
+I think most people who are involved in this,
+it seems that they all care so deeply.
+I think you're right. It's for people to give up.
+I don't know what it would take.
+Hopefully, we'll never find out.
+Hopefully not.
+Well, yeah, like I say, thank you so much for joining me.
+James really enjoyed chatting,
+and it's been really useful to go through some of these things
+that go well above my head.
+I'm hoping to get one of these VR headsets soon,
+so maybe we'll meet in virtual reality at one of these meetups
+or something like that.
+Great. I'll see you in cyberspace.
+All right. Fantastic. Yeah, thanks again.
+I'm going to link lop.net and CASA in the show notes.
+Anything else you want to finish on
+or anything you want me to add in?
+No, all good.
+Okay, fantastic. All right.
+Thanks a lot. Hopefully, we'll speak in cyberspace.
+Thanks. Bye. Cheers.

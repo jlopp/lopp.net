@@ -1,0 +1,738 @@
+Okay, it looks like we're live perfect. Okay, thank you all for joining us today. I'm Jessica
+Lavec. I'm the executive director at C4. And today, we're really excited to talk about the
+cryptocurrency security standard. And we have our steering committee here with us today.
+So let's start by going around and introducing ourselves. So first up, let's go with Josh up in
+the corner. Hey, Josh Madugo here with C4 proud board member, one of the co authors of the original
+CCSS, and currently working at slow ninja. Thank you. All right, Dirk. Hi, sorry. I'm Dirk Anderson
+here. And I am also the one of the board or one of the committee members here and also on the
+certified Bitcoin professional committee, and currently the CIO CTO at salt lemon.
+Thank you. Michael. Hi, everyone. My name is Michael Perklin. I'm proud to be one of the
+founders and see for and one of the founding members that wrote the initial drafts of the
+CCSS. After spending a five year stint at shape shift us, I'm now a proud member of the decentralized
+shape shift down where I work to keep everything decentralized. Thank you, Ron. Thank you, Jessica.
+My name is Ron Stoner. I am a committee member, the architect of the CCSS auditor exam and the
+head of security over at Casa. Awesome. All right. And now Petri, our committee chair,
+you introduce yourself, please. Thanks, Jessica. So my background is finance and
+IT. So chartered accountants, CISA, and then six certificates in IT. And I used to be previous at
+KPMG at the moment trying hash data, which is data aggregation and organization. And then also
+consulting with quite a few firms in the space. Thank you. Noah. Hey, everybody. I'm Noah Buxton.
+I'm a partner at Arminino. Arminino is a top 20 public accounting firm, and I get to lead our
+blockchain and digital assets industry practice. My background is actually in IT and controls
+assurance that started our risk assurance practice here at the firm before I got the crypto bug. And
+I get to do crypto full time all the time now. So I'm a happy guy. Love it. And Jameson.
+Hi, I'm the CTO of Casa. I was probably one of the first people to take the certified Bitcoin
+professional exam in early 2014 and had that on my resume when I then went full time Bitcoin and
+joined BitGo, which was one of the founding members about a year later, which resulted in me
+getting even deeper into the standard over the coming years. And it's been great to be a part of
+the committee for the past few years. Awesome. And Andreas Antonopoulos is also a committee member,
+but he unfortunately was unable to make it to the call today, but he probably says hello to
+everyone. So thank you all for being here. Really appreciate it. I'm excited to talk about the
+CCSS. So it's the Cryptocurrency Security Standard. It has been around for a while and I'm excited
+for Michael Perklin, one of the founders, to start explaining what that is. So Michael, will you jump
+in? Thanks, Jessica. Yeah, it's been a long road. C4 launched in May 2014. And very shortly after,
+we began work on the CCSS. At the time in 2014, I was working full time as a blockchain security
+expert, or I guess back then it was a Bitcoin security expert, because there really was only
+Bitcoin at the time. And historically, whenever I would do security audits in the traditional world,
+I would audit against a set of standards, maybe the ISO 27001 or SOC 2, or I would always audit
+against some standard. And it would be very easy to tell a client, hey, you're not, you're not
+meeting the bar because these three controls are not present in your system. Oh, and it came to
+cryptocurrency systems. At the time, only a few years before, sorry, only a few months before,
+Mt. Gox was hacked, losing countless funds. And it seemed very clear that every company was going
+their own way. Every company was implementing whatever security controls they thought was good
+for them. But nobody was adhering to any kind of common standard. And it occurred to C4 that
+somebody should have a standard that outlines all the security controls that are necessary
+to properly protect cryptocurrency. And if nobody else is going to be building the standard,
+why not the one at C4? So work began on the CCSS in June 2014.
+Through a collaboration of a lot of different companies, including BitGo,
+where Jameson's involvement came from, as well as a variety of other exchanges, whose CTOs or CISOs
+offered to provide feedback on the initial draft. This all culminated in the launch of the CCSS
+in January 2015, at the very first Satoshi roundtable. Satoshi was the first company
+at the very first Satoshi roundtable. Since then, the CCSS has been referenced by many different
+companies on their websites, proclaiming to adhere to the standard, as well as countries,
+governments, a variety of countries have required that their financial services adhere to the CCSS
+standard, if they're going to be getting involved in cryptocurrency. This long road of the CCSS
+has led us here today, where we only just a few days ago launched the CCSSA, the auditor exam,
+which certifies a person and their individual knowledge of the CCSS, making them a proper
+candidate for securing your business with their knowledge. And did I miss anything, Jessica?
+I think that was a good overview. Does anybody else on the committee want to say anything about
+the CCSS in general, before we get into some of the specifics of it?
+Yeah, I will just add that a lot of these things that we're going to jump in with these specifics
+were actually modeled after real world behavior, right? So when you look at some of the traditional
+and historical hacks and things that have happened in this industry, a lot of the specifics that
+we're going to discuss are directly applicable to those events or the lack of security that
+allowed some of those things to transpire. So this is a battle test in, and it's based off
+real world scenarios. This isn't just stuff that we're coming up with because it sounds nice. These
+are applicable controls that can be applied to help secure those cryptocurrency based information
+systems. That's a great point, Ron. The initial committee that put together the first set of
+controls for the CCSS, we did so by analyzing every single hack that had occurred so far from
+the beginning of Bitcoin all the way through 2014. And that is where all the controls come from.
+That's a great point, Ron. Well, and it's interesting that people have said that they've
+looked at the standard and said specifically like, oh, this is maybe why this came into play,
+because they remember some of that. So yeah, go ahead, Dirk. Yeah, I would just add to that,
+too. One of the things that I think is really interesting about the CCSS is that it is kind
+of a modular security compliance set of controls. So it's not intending to replace ISO 27,000 or
+NIST or PCI or anything else like that. It is a very specific set of controls around handling
+cryptocurrency or digital assets. And as such can just kind of be plugged in alongside of any other
+sort of like controls framework or anything you might be using for security overall in an organization.
+Yeah, that's a good point. I might just say that I think everybody on this call,
+many of them Bitcoin OGs, right, definitely believe in decentralization. We believe in
+sovereign money and self-custody, but we also acknowledge that this marketplace,
+it has become a capital markets marketplace, right? And it needs on-ramps and off-ramps.
+There will continue to be service providers and centralized players that allow ready access
+for anything from retail to institutions to get into this space. And if that's going to be the
+case, this market needs the proper infrastructure of trust and transparency and a focused security
+standard that deals with actually custody of cryptographic private keys related to cryptos
+is 100% necessary. So this is a really exciting thing, I think, for the larger marketplace.
+Yeah, for sure. Without going into details, it feels especially pertinent this week with
+some of the things that have been going on. So let's talk a little bit about what the standard
+is. So Petri, do you want to get in there and talk a little bit about how it's structured with
+the categories and aspect controls and what that looks like? And someone from our team will put
+the link to the standard in the YouTube chat. Definitely. So, I mean, firstly, PassWolf Turon,
+who sort of authored this and wrote a lot of it. And as we've mentioned, a lot of this is very
+practical. So, I mean, at a very high level, we've got two main categories, the cryptographic asset
+management and then the operations side of it. The cryptographic key management is really focused
+on those keys that are you're using. So over there, we're going into key MC generation,
+wallet creation, key storage, key usage, key compromise, keyholder grant revoke. So,
+as Dirk mentioned, Noah, you've got standards out there already. But I remember when I actually did
+some of these audits, you in a SOC 2 in the ISO world, it's very difficult. Those standards don't
+provide for the cryptographic or the private key specific type controls. So that's where this is
+really useful. You can actually get into the details and have a standard to test against.
+And then the operations side, you go into security testing and audits, data sanitization,
+proof of reserve and audit logs. So those are more of the operational controls that you're
+expecting to see around these keys. And then I think one of the things that's very useful
+for those of you when you're looking at the table is you'll also see the rationale
+behind these controls. Because I mean, the cryptocurrency industry is always evolving,
+people find better ways to do things. And that's where that rationale is really useful. You can see
+what the principle is that we're trying to achieve to, for example, ensure that software hasn't been
+modified when it's being used. And for an auditor, that's really useful. So sometimes you might not
+meet the control to the letter, but you know what the principle is that you're trying to actually
+achieve there. And I think for any auditor, that's actually really useful when you're doing these
+audits. Now, in terms of scoping, in terms of all the controls, I think there's going to always be
+questions around that. And that's where we definitely welcome anyone's input and questions around
+this. We've already had a lot of community members asking questions, helping us to strengthen this.
+I think that's almost where the decentralized aspect comes into this. We want everyone to be
+helping to build the standard. So it's not just this group of the steering committee,
+it's everyone's input, and we're busy building it out. I mean, we've already made a few updates,
+as I think Michael said, when this was originally designed, this was almost a Bitcoin security
+standard, because that was the gold standard back then. But we have made a few updates already
+to be able to accommodate other technologies and other tokens as well.
+One of the interesting things about the list of the aspects and controls that Petri listed,
+that make up the CCSS, is the fact that each group focuses on a different area of an information
+system. Now, most people think of an information system as, oh, the computer that you're using.
+But when you're instituting a system at a company, yes, the computer, the hardware is one piece of
+that information system, but the software that's running on the hardware is another piece. The
+humans that interact with the system is another piece, and the policies and procedures that they
+follow as well. So there's actually five different aspects of a information system, hardware,
+software, policies, procedures, and the education of the personnel who are interacting. So the
+CCSS dives into the lifecycle of all of those moving parts. How does a key get created? How is
+it born? How does it live? How does it die? When it comes to the people, how are they initially
+granted access to the system, and when are they revoked access in the end? The entire lifecycle
+of all five of those components, whether they be the hardware, software, policy, procedure, or
+education, are covered in the CCSS. And that's why I think it really makes a very tight,
+holistic security for any information system. Yeah, Ron, did you want to jump in and talk a
+little bit about it as well? I was just going to add to Michael's point, there's some other things
+that this standard goes into that we see in cryptocurrency-based information systems that
+I've never seen a lot of guidance about, and that's some of the caveat information about
+things like dust transactions, right? If you're doing reporting and accounting, or you have
+potential denial of service scenarios that could occur there, the standard actually encompasses a
+lot of that. What do we do for things like reorgs or forks where we're changing the chain tip,
+where we've got two different copies of chains out there? These are things where the standard's
+trying to provide some guidance and some controls to make sure these systems are being architected
+these systems are being architected correctly and securely to prevent a lot of the issues that
+we're seeing today, right? A PCI audit, a SOC audit, some of the ones we've mentioned earlier,
+they may not catch the fact that private key information is being stored in clear tech somewhere.
+This is the type of standard I think that fills in those gaps and really takes a deep dive into
+all of those creation and usage and storage methodologies to ensure things are being done
+correctly. Yeah, and I think as we're talking about it, we'll start to get into some of
+the specifics and the details of the standard. So there are two categories. There's the cryptographic
+asset management, and then there's the operation side of it. And if you look at the matrix,
+you'll see those two separate categories. But then within it, there are a lot of aspects. And
+we tried to add rationales as well to the standard, which explains why this is something
+that matters and gives a little bit more information for either an entity that's
+cryptocurrency system is being audited or the auditor that's actually going in and looking at
+these systems as well. If you have questions about any of the parts of the standard, feel
+free to put them in the chat either in Twitter or on YouTube, and we'll do our best to answer
+those as well. I think it's interesting to talk a little bit about what some of the
+aspects are requirements that maybe are a little bit unique to cryptocurrency. I mean, obviously,
+this entire standard is specifically about cryptocurrency, but there are some pieces that
+I think people have had questions about in particular. And I'm sorry to call you out,
+Michael, on this, but I know that you've answered this for me before, but the proof of reserve
+section, would you be able to speak a little bit on that in particular?
+Yeah, absolutely. It's occurred numerous times in the past where a exchange or some company that
+is taking custody of a lot of different cryptocurrencies, they actually don't have as
+much as they report that they do. Or in other words, the reserves of cryptocurrency assets
+that they control does not match what they are telling the public. This is usually a sign of
+either some kind of an exploit or some kind of fraud. Either way, it's something that every
+user of the system needs to be aware of when it's happening. So the proof of reserve requirement of
+the CCSS allows the auditor or it provides a check for the auditor to perform to make sure that all
+of the assets that the company claims to be able to control really are controllable by that company
+and no funds have gone missing. Great. Thank you for explaining that. Josh?
+Yeah, as far as the topic of what makes the CCSS unique to other standards. And again,
+the whole design is to complement other standards specifically for this purpose. And the one main
+thing that comes out is there's no undo in cryptocurrency and blockchains and things like
+that. So a lot of the standard came of the fact that although it's one thing to lose data and
+certainly we see businesses losing customer data all the time and not that that's a good thing,
+but they don't ever actually lose the data. They give the data away. Someone else has a copy of
+the data, but they also still have the data themselves unless there's been some sort of
+destruction. But when these assets are stolen, when digital assets are gone, they're actually
+gone. So a lot of the standard is putting in, you know, extra controls in place to make sure
+that there's a very, very one strict audit trail to know what has happened and who has happened by
+as well as to prevent things from happening either accidentally or maliciously.
+That point dovetails actually to what Michael was just saying around proof of reserves. I mean,
+this is an area that you guys are going to have to stop me talking about because it's a passion
+area for me, but it's, you know, from Greg Maxwell's early, you know, 2014 theory around
+proof of reserves to what we have today is a wide disparity of practice. And as Michael noted,
+there seems to be this unwritten rule, right? I think docs had the unwritten rule early. They
+operated under reserved when their hack was not disclosed for some time, but essentially the
+unwritten rule in our industry from the exchange perspective is that, yeah, you deposit Bitcoin,
+that Bitcoin might be in an omnibus or shared wallet at the exchange, but largely it's going
+to be a one-to-one reserve to what the exchange owes you. But this is a really important area
+where CCSS is including this as a baseline best practice and requirement to the extent that we
+start to see this required through the audit process. It's going to force best practice.
+It's going to force uniformity at these exchanges, right? There's really no service provider that
+shouldn't be able to provide this level of access essentially or transparency to their customers,
+right? And historically it's been the case that exchanges will, they'll lean on security actually
+as the reason that they shouldn't do this, or they'll, you know, say that that potentially
+could expose them to a vulnerability. But that's, that thankfully is in the review mirror. We've
+done it, right? Kraken has done a $19 billion proof of reserves against Bitcoin and Ether and
+others are starting to adopt. So anyway, not to take the proof of reserves tangent, but that is
+a really cool nugget that's within the CCSS, but that has a larger impact on the way these
+platforms treat their customers and provide information to the larger market. So.
+I think one thing maybe to add on there that was a very interesting point is we, a while back we
+got the question of why do you have a proof of reserves? This is a security standard. Why do you
+do that? And I think it's important to build that link between the security controls and those
+private keys and the assets, because you don't want to have perfect security, but the assets
+aren't actually even linked to those assets. So I think this actually builds that link when we're
+doing an audit. Yeah, absolutely. Does anyone else want to touch on any of the specific
+aspects right now before we move into talking about the levels? Was there anything else anyone
+wanted to point out? You're just like, can't wait to talk about, cause it's so fun. I feel like
+I think we're super nerdy, but it is super fun to think about this and to spend time focusing on how
+to make this industry, this field, this space that we all really care about safer, not just for
+ourselves, but for the people that we know who are trying to get into crypto and aren't sure how to
+do it or where to go and having something that says, yes, this is a secure place to have your
+crypto be held. Even if they're just holding it for a minute while you're doing a bridge,
+something like that, I think it really matters. So Dirk, did you want to jump in and talk about
+the different levels of the CCSS? So to explain that the CCSS is the standard, the CCSSA is the
+auditor, and there's an exam for that. And entities, cryptocurrency systems are certified at
+different levels and they are all secure. But Dirk, do you want to explain what the differences are
+for us? Yeah, yeah, absolutely. So the way that each one of the controls is set up in the standard,
+there are three different levels or up to three different levels of requirements for that particular
+control. And there are some controls that maybe only have one or two. And it might be that there
+is like to be, so it's level one, two, and three, level one being the baseline, level three being
+kind of the more paranoid, secure. And there might be, for example, nothing in level one,
+right? That this control really is about like kind of that enhanced security. It might also be that
+there is nothing in level three, because this control is really just like, there's a baseline,
+and you just got to meet that baseline, period, right? There is no, there's no other stuff. It's
+just, you've got to be doing this, period. But then there are some controls as well that have like
+different requirements in each one of the controls. A good example of that is, I think it's 131.03.03,
+which is one of the controls around backing up your, your seeds. And the first one basically
+just says you have to have environmental, protection against environmental control, right?
+So you don't want to flood or something like that to, you know, destroy your ability to access your
+keys or your key backups. The second level is, what does it add on to that? Oh, that they have
+to be stored geographically separate, right? So that they're not, all your key backups aren't in
+the same place as you're operating every day. So that, so that you can actually go get them if there
+is a flood or something like that. And then the last one actually takes into account, like
+electromagnetic attacks and that sort of thing, right? So if you're storing them only on a digital
+electronic magnetic format, right? They're susceptible to a remote, like you have AMF type
+poles, whether that's sunspots or intentional, right? So, so that's kind of an example of the
+progression of the different levels. And so each one of the questions has those. And, and in a lot
+of cases, right? So the organization I worked for was one of the early folks to actually go through
+the audit process. And we found that there were a couple where we were just like, you know what,
+from a business perspective, the way that we do business, it doesn't make sense for us to
+try and be a three or even a two, right? We're, you know, we're, we're doing the baseline level
+of things here in that particular control to protect the data. But because of the way that
+we do business or because of the business we're in, you know, it might not make sense to do some of
+those others. So there's the, the, the standard was designed not to be a one size fits all
+necessarily, but to be a one standard is useful for all sort of approach. And so, yeah, so that's
+the, there's each of those. And the only other thing I'll add then is right, that the overall,
+you get an overall kind of rating that also falls into that one, two, three, which is the whole,
+maybe is only as fast as the slowest ship, right? So the, you know, if you have, if all of your
+scores are up to twos and threes, right, but you have a couple areas where you don't have a three,
+then your overall score for the CCSS is going to be a two. If you have, you know, one category,
+a single category that you're only a one in overall score is going to be a one. But what I
+always try to stress there is that one is good, solid baseline security, right? The whole idea
+of being a level one is you're doing the stuff you should be doing. The level twos and the level
+threes are, Hey, you know what you're doing, the stuff you're, you should be doing, but also
+you're doing a hundred billion dollars, you know, in, in transactions, you know, a day or a month,
+or maybe you should up your, you know, up your game a little bit, right? So that the idea being
+that there's, there's options there, depending on what fits the, the risk factors associated
+with your business. That's awesome. That's a great point there, Dirk. Yeah. The, the overall
+levels that Dirk was just mentioning, I think is super important to stress because it's actually
+one of the most commonly misunderstood pieces of the CCSS. When you look at any information
+system's ability to reach level one or level two or level three, naturally you think, well,
+level three has got to be the best. So I've got to strive for the best. The reality is level one is
+secure. Most information systems out there, I would be willing to wager, do not even meet level
+one. It takes a considerable effort to reach level one compliance with the CCSS. And if your
+organization has reached level one, that is a huge accomplishment. Level two and level three are even
+more secure and are paranoid secure. And truth be told, that paranoid level of security, while it
+does maximize the confidentiality or the integrity or the availability of, of your assets, it's,
+it'll probably also be so onerous on your staff to use that information system while maintaining
+such a high degree of security that it may actually slow you down. A perfect example is the one that
+that Dirk gave. You want your keys to be secure against environmental issues. As long as it's
+secure against fire and flood, that is secure enough. And that is a level one compliance.
+Your keys will not be burned. Your keys will not be flooded off of a piece of paper. But you can
+but you can also go farther beyond that. You can spread them out over multiple geographic areas,
+and you can protect them against an electromagnetic pulse. Now, how rare and how infrequent are
+electromagnetic pulses? But they are still technically a risk, and it could wipe a USB
+flash drive without your knowledge or intent. So that's why level three is the paranoid level.
+But level one is still an incredible achievement and should not be discounted as being insecure.
+Yeah, and I think that's the thing, right? There's a good number of us on this call came out of
+backgrounds in pre blockchain pre crypto information security, right? So we come,
+we came at this from a risk based perspective, right, trying to make this a risk based standard.
+And so that the controls that you can implement and put into place are appropriate from a cost
+perspective from a management and oversight perspective to the business you're doing. And
+and it just doesn't, you know, doesn't always make sense, right? And it may be that you're doing,
+you know, kind of ephemeral transactions, and you can literally expose the secrets or the keys
+to your private wallets after you've done them, because that wallet never gets used anymore,
+right? I mean, in theory, right, that you could have that kind of a risk profile.
+But that for the moments as long as the data is sitting on a wall that you absolutely have
+to have the backups, right? So it's not always just necessarily even what we think of, you know,
+from a confidentiality trumps everything else sort of perspective, right? So the design of
+the whole structure was allowed to just let people apply it as it made sense in their in their
+business or operations. So this is a question that comes from the chat that relates to what
+we're talking about with the different levels. The question is, what is an example of a data
+sanitization policy failure? And that's 2.02 for the aspect objective. But it goes up in level,
+obviously, of what is the most secure way, but can someone explain what a failure of proper data
+data sanitization would look like? And then we can go into the levels as well. Michael?
+Sure, I'll start off. Yeah, I I'm going based on on memory here. But I believe that one specific
+control it works as a binary on or off you either have sanitized your data, or you have not sanitized
+your data. There is there are no multiple levels of sanitization that that you can achieve for that
+level. There is actually that was one of the updates. There's two in that case, I'm going
+to turn it over to one of the other committee members who is more familiar with that one control.
+I'm actually glad you brought that up, though, because I feel like what you just said, you've
+looked at this so much, but it's a good reminder that the standard is huge. And it's all encompassing.
+And you can't just like memorize it and just know it, which is why it exists like a two different
+formats on our website. And it's living and breathing and changing. Exactly. I feel like
+that was such a good example of how we do change it as needed. So oddly, that was a really effective
+way to prove that. So thank you. Ron, do you want to explain the different levels? I see you unmuted.
+Yeah. So I think what Michael's actually referring to is the level one control where
+he's talking about the binary option of does your staff have the tools and the knowledge to perform
+data sanitization. And what we're really talking about here is think about the hard drives that
+people are putting data on, right? Where they're storing keys and things like that, or the backups
+that Burke's talking about. We've seen through history where those drives get mailed off,
+or people forget they're in the storage room, or it goes to the landfill. And hackers,
+much like myself, are going, this has some really good information on it, right? So
+corporations that are taking and information systems that are taking their security seriously
+are implementing this DSP, this data sanitization policy. So for level one, if you're implementing
+that in your organization or your system or whatever you're looking at complying with these
+different types of controls, the level one is just to say, do we have people on staff that's aware of
+this, how to do it, and operating in that procedure? Level two goes a little bit further. As we said,
+level one's great. You're wiping that data. You're ensuring those CD-ROMs, those USB drives,
+and whatever you're doing to store your information and your data, you're taking
+procedures and steps to wipe it. Level two goes a little bit further, where it actually has a
+policy that details all of that. So just like policies at work and stuff like that, sometimes
+there's the unspoken policy, but when the rubber meets the road, is there a document that lists
+who's responsible for this? How often are they doing it? Have they been trained in it? We're
+really wanting to see a policy that details all of that. And then when level three, we're going a
+step further. We have level one with the people that know how to do it. Level two, we have a
+policy that defines who's doing it. Now at level three, we have an audit trail of all of those
+actions that are being taken to wipe that media or perform data sanitization. So as you're seeing
+with that hierarchical structure there, we're getting a little bit better at each level. And
+as Dirk said, level one is nothing to laugh at. I would feel comfortable if somebody told me,
+we wipe our data, we use this tool, this is the person responsible. No, it's not written in a
+policy, but we'll get there. We'll get to level two eventually. We know we can do a little bit
+better to help close those gaps and ensure the system's working as optimized and efficiently
+as it can be. Yeah, a clear failure would just be like that record-keeping requirement. You see
+that there's an in-scope system that doesn't... You've missed a day, essentially. You've missed
+a week. Whatever the cycle is that's defined by the policy, the auditor goes to sample that.
+And if you find it, that would be a potential failure of the controller, an exception to that
+control. Yeah, and I think as we talked a little bit about how this is updated as needed within the
+standard and then the exam as well will be updated to reflect that. And we will continue to do
+live streams or information sharing about these specific aspects. So if everything... I know there
+are questions popping up in the chat, everything that we haven't covered yet, we probably won't
+get to everything today, but we will do more of these to share information. And we're also
+going to release a video of Ron and Petri that are there explaining some of the controls as well
+in another video, which will be released probably next week. So I feel like this is a good start to
+explain what the standard is about and what it represents and what is inside of the standard
+when you look at it. But why don't we talk a little bit about why it matters? So Jameson,
+do you want to talk about... You said a little bit about how you started working at Bicco and how you
+then realized how important something like this is, but can you explain why you think the CCSS
+matters? Sure. It exists for the same reason that other widely used standards are in existence and
+have been compiled. It's because we're in a space where if you make a mistake, if you overlook
+something, there's potentially disastrous consequences. And I think most of us here have
+been in this ecosystem for quite a while. It is a very new ecosystem. I mean, only really about a
+decade from an industry perspective of professional quote unquote businesses that are taking custody
+of people's cryptographic assets and private keys and managing them and whatnot. And so obviously,
+when you have a new system, it's the same type of ongoing war that we see with any type of security.
+It's a constant battle of attack versus defense. And people on both sides of that are constantly
+learning as the other side is trying new things. I think over the past decade, we've seen over a
+hundred high profile hacks of custodians where private keys were exfiltrated, massive amounts
+of money were lost. And if each failure doesn't result in the rest of the ecosystem learning,
+then we're going to have a really bad time getting this technology to be mainstream,
+because people are not going to be comfortable with it. It's going to seem like it's just too
+unsafe for people to even deal with. So there's a reputation issue. It's a knowledge sharing issue.
+There's no good reason why large amounts of money should be lost from different entities in the
+exact same way, because we have the ability to coordinate, to create these best practices and
+standards from the mistakes and failures of the past and continue ratcheting up the overall
+security of the entire industry. Now, one of the big problems I would say with crypto in general is
+that self-custody is not as widespread as we would probably like to see. The default way that almost
+everybody gets into this ecosystem is through a custodial provider. So it's incredibly important
+that whatever your default setup is, is also fairly secure. Once again, getting back to the
+reputation and people feeling comfortable using these technologies. So why is it tricky? Well,
+prior to having a standard, you really had to go by gut feeling, by the history of any given provider.
+So when I think back to early days when I was on MTGox, that was the first exchange I ever used.
+Even then, I was a fairly technical guy. I was a web developer. I was familiar with best practices
+for general web development. And I could see that MTGox as a service was kind of rough around the
+edges. There were some red flags that made me a little nervous trusting them with a lot of money.
+But for a less sophisticated, less technical person, they would probably miss most of that stuff.
+And you really had no idea what was going on behind the scenes. These custodians tend to be
+black boxes. And so in order to get an idea about their reputation, you're really limited to what
+you can do with you interacting with them or trying to watch them interact with other people.
+So what we're doing here is we're creating a trustworthy mechanism for people to more
+quantitatively judge the security of various entities in the ecosystem. And of course,
+we do that by having the organization of CCSS, which is managing the standard, managing the
+auditor exam, and basically us putting our reputation out there saying, these people
+understand the standard and we have made sure that they know what their controls are. And from there,
+they can use that reputation to then attest that they have checked that company XYZ meets
+a certain threshold. So I see this as a sort of way of uplifting a large part of the industry
+by leveraging our collective experience and reputation and letting the rest of the industry
+improve their standing. Rather than them just saying, yes, we're secure, they can say,
+yes, we have a level of security that is recognized by many reputable people and entities
+throughout this ecosystem that we are following the best practices, at least the best practices
+as they are known today. Like we said, this is going to be a continuously evolving thing.
+Yeah, that was a great rundown of it. I think a couple other people wanted to jump in too.
+I saw on mute her hands up. Michael, I think you were one. Josh, Josh, do you want to start?
+I only reacted with this emoji because I agree with everything Jameson said.
+I thought it was a hand, but you can't see it on you too, but it was an applause. He's very excited,
+which I am too. I think that was a great way of explaining why I said that.
+Josh, do you want to add some more? Yeah, I just wanted to add. Obviously that business to customer
+thing is really important because it's all of us, it's all new people joining the industry and
+getting involved and we want to make sure that there's ways that they can see those red flags
+or see someone who might be trustable in the space. But I think there's also a really important
+business to business component that we want to make sure that there's a way that we can
+make sure that there's a really important business to business component about what the CCSS allows
+for. One of those main kind of situations, let's say either an insurer coming into a business
+and really needing to know, does this business and really needing to know...
+Sorry, things got exciting in the car. Business to business aspects of being able to know
+when an insurer can trust a business or understanding what policies can apply to that business.
+Having other reputable firms in the industry who normally do security assessments giving them the
+tools so that way they can go in and understand, oh, I'm dealing with a cryptocurrency company.
+There's other things I should be looking for as well before I give my approval on this business
+as well. Or even businesses merging and doing due diligence and things like that too and understanding
+what is this bicycle that I'm buying? Is it actually going to work down the street or is
+it all kind of spoken here? I think obviously protecting customers is massive and obviously
+I think that's our core desire is to make sure that the normal users of the space are protected,
+but helping businesses interact with each other I think is a really,
+really valuable step to helping the industry as a whole mature as well.
+Maybe something to add is one of the things I always think about is the old principle of
+trust, the verify. And in this industry, a lot of us are trusting at the moment,
+but the verify is very hard. I mean, a custodian can't open up their doors for everyone to come
+and check. So by having a standard, by having CCSSAs out there who can actually verify this,
+it opens up the entire industry and it helps you to be able to trust to say, yes,
+someone has actually gone in here and checked that they're doing all of the stuff that they
+say on the website that they're doing. I think it's so important too, because
+people who aren't super technical and are end users need other people who are trusted,
+who are able to actually evaluate these things to go in and take a look at it and to have that
+system of checks and balances if you're unable to do that yourself. So the standard I think is
+going to, it already has changed the industry in my opinion, and it will more so as we continue
+to get people certified as auditors and get entities, cryptocurrency systems certified at
+the different levels as well. Noah, did you want to add to that? CISOs and CTOs love standards and
+frameworks and methodologies that they can easily communicate. The board level, they need to
+communicate to the board level of companies and key investors that they're doing the right things,
+but technical gibberish doesn't work for that, even though it might be all of the right things.
+So these kinds of things where you can say, yeah, we're following a focused security standard that's
+directly related to how we secure custodial crypto and digital assets. That's the kind of thing that
+goes upward very effectively and also trickles downward through the organization very effectively
+as well. This is a way for CISOs and CTOs, they should be welcoming this with open arms. I know
+many are, because you can drive a policy and activity across the team in a very sort of
+uniform and known way. It's not just because the CTO has a great idea. It's no, we're following
+the standards, right? And this is our roadmap. And I would add just on top of that, and kind of to
+that value question we talked earlier about maybe you only do something at a level one, and even
+though everything else is at a two and three, so overall you're maybe at a level one, but there's
+still value in that, right? There's still value in the standard, even if you can't be validated
+against it. There are businesses that the way that they operate, that they're not going to validate
+against the entire CCSS standard, right? Maybe they use a third party custodian for some of their
+assets or something, right? There may be situations in business environments where people or
+organizations are not going to validate against the entire standard. Absolutely doesn't deplete
+the use exactly for the reasons that Noah was talking about, that the standards still can
+bring value, right? You can still use it as a tool in your environment and just say, okay,
+these are the five questions or the five sections of the CCSS that really apply to what we're doing
+and how we're doing it. Let's make sure that we're aligned to those. So it can still be a partial
+alignment type tool. And maybe the other questions apply to that third party custodian you're using
+or something, and you use those to evaluate who's going to be doing that for you. So even when it's
+not about necessarily validating against the entire standard, there's still a lot of value there,
+but it can bring your organization. Yeah. And personally too, I mean, I know I've looked at
+the standard compared to what I've done with the assets I hold. So yeah, I think that's a really
+good point. I do also want to point out, this is a question somebody had in the chat about how you
+know if an entity has had their system audited. And so we will be sharing with that, that entity
+will get a badge that says that they have been audited and there's going to be a number on
+their badge that shows what level they are certified as. And then also it will be on our
+website. So if you hear that an entity has gone through the audit and they're saying they're
+level three at this point, that means that they have self-audited. So as of August 4th,
+it does not mean that they have officially been certified by C4. It means that they looked at it
+and determined themselves what level they were at. And that is very different than having an
+external party come in and look at what's going on and really evaluate the entire standard. And
+we have a couple of audits that actually have already started. And from what I've heard,
+the companies are surprised at how kind of difficult it is to be able to get certified
+at level one. Yeah, I saw Michael, your finger went up. Yep. It's even level one is a challenge.
+That's a great point, Jessica, about the difference between compliance and certification.
+The CCSS has been released in the wild since January 2015. Many companies, many governments
+have referenced the standard and have used it for self-audits and determining whether or not they're
+compliant with the standard. But up until August 3rd, nobody has been certified with that compliance.
+And now that we finally have a set of certified auditors, I'm excited to see how many of these
+companies that have been working with the CCSS for so long, how many will choose to go through
+and audit by one of the certified auditors so that they can display that badge proudly
+on their website and have C4 list them as a certified information system?
+I did just want to clarify real quickly with what Jessica said that C4 is not actually a
+certifying body, right? We're not certifying that people are compliant as an organization.
+We're training auditor, we're developing the standard, training people on the standard,
+certifying auditors against their knowledge of the standard to go out and audit.
+And then we maintain a record source for verification that that has happened. So that
+a certified auditor has gone out and done the audit and validated them at a particular level.
+But that C4 is not, because that kind of goes against kind of the, I mean, it's way too
+centralized for the folks on this call, right? To do that, right? That's not the goal to make
+ourselves the authority on that, right? We're providing tools so that this can happen,
+but not trying to be a certifying body, unlike, say, PTI Security Council or something like that.
+Yeah, that's a good point. We're relying on the auditors to go in and do the audits.
+That leads us into talking about how to become an auditor. Josh,
+do you want to talk about what it looks like to become a CCSSA?
+Sure. So, as with all of our certifications, the Certified Bitcoin Professional, Certified Ethereum
+Professional, now we have the Cryptocurrency Security Standard Auditor certification. So it's a
+100-question exam that has about 90 minutes to take the exam. You sign up through our site
+and take the exam. This one, it'll have kind of two main sections of information. One is going to
+be just a general understanding of the standard itself, of the Cryptocurrency Security Standard.
+Also, how you apply the Cryptocurrency Security Standard while auditing a business.
+Beyond that, though, there's also four different scenarios that you'll want to study.
+These are each different organizations with different controls and details.
+I really recommend, if you're going to do the CCSSA exam, you might want to actually not only
+print those out and have them handy, but me personally, when I took the exam, I did a CCSSA
+assessment. I took out my checklist and I did an assessment on each of those. So that way, I knew
+kind of where they sat at each going into that exam. When I went into that exam, I could just
+reference my assessment to easily answer each of those questions. So that way, I knew where
+reference my assessment to easily answer those questions. There's a little bit of, I would say,
+cheat code, but really it's just being prepared. If you want to really kick that test butt,
+I would highly recommend, and I mean, it's really just good practice to do a CCSS assessment,
+grab the checklist. One thing that we haven't actually mentioned, but I think it's a pretty
+important piece of information, the CCSS, the Cryptocurrency Security Standard, is an open
+source standard. This is something that's free for you to use. When we say businesses can apply it
+in their daily business and not even worry about certification, just make sure that they follow
+those standards. This is an open document that you're able to use. It's not like the ISO where
+you got to pay a chunk of money for a PDF. This is something that we want the entire industry to
+have. So take that CCSS, grab the checklist, get those scenarios audited, get that practice in,
+and then you'll be more than ready to crush that exam and become an auditor.
+Yeah. And I think it's important too, to note that not just anyone can or should be a CCSSA.
+You do need to have that security background. So I've been in crypto for five years and I am
+not going to become a CCSSA because I do not have that kind of prerequisite knowledge about how to
+look at security systems. And so most of the people who are going towards the exam that want
+to become auditors have some background on either auditing and or other systems. So like they're
+either, you know, QSAs or some other type of auditor and they know how to look into systems.
+So if you're not an auditor, we do have an auditor guide that explains a lot of the processes, but
+that knowledge about security is super important to understand what the standard is even asking
+you to do in order to comply. So I just wanted to point that out, that there is a rich history
+there of things that you do need to know to understand how the standard should actually be
+enforced when you're looking at it. But let's talk about the auditor guide. So we're going to
+put a link to it in the chats. And Noah, do you want to talk a little bit about what the
+audit auditor guide entails and the peer review process?
+Yeah, absolutely. Nice segue. You're a great MC. So yeah, we did produce an auditor guide. I think
+there's sort of a notable piece of information here too, is that, you know, standards don't
+often come, excuse me, with the guide immediately, right? They don't often come with direct
+implementation tools about how you engage with the client, you know, what types of audit or
+assessment methodologies and procedures you can apply to get the work done, to get to an audit
+report or a certification end state. And so we thought that was really important. And so, you
+know, the idea here is to provide really usable information about how do you go from looking at,
+you know, an information system or working with management who's a maintained cryptocurrency
+information system, and then how do you actually audit that? How do you engage with them? How do
+you engage with them? How do you work through the process to get to the the end state? And so
+you mentioned peer reviews, and that is a really important part here. I think that goes to the
+some of the initial ethos here, the way I understand it, right, is that it isn't a just a
+trust us or trust one person necessarily in this equation. And this is also something that's not
+necessarily commonplace across security standards or certifications to have a peer review of this
+nature. You do see in things like PCI DSS or ISO, you know, certifying body stamp over an internal
+audit or an independent audit. So there are examples of it, but I think this is an even deeper
+peer review process, right? It's not a rubber stamp. It's a review of the initial CSS, CSSA's
+work. And so that's, I think, an important layer here, you know, to the end product is ultimately
+more uniform when you think about a peer review process. And so that's an important
+component. The auditor guide is developed, give credit to multiple people on the call,
+because I didn't write it myself, right? This was a group effort and largely wasn't written by me.
+So Petri gets a lot of credit. But, you know, Petri's background, for instance, isn't in audit,
+right? He's conducted more of these external assessments and audits than he probably wants
+to remember. And so this guide is informed by assurance industry, best practices, methodologies,
+and procedures as well. And so that's super important, right? I think it's very important,
+at least, right? That the end certification under the hood of that is really best practices that
+are performed in the audits. The way that, you know, you assess a population of information,
+you assess policy, you assess how controls are implemented, managed, and monitored over time.
+There's information about sampling in there. So it should be a really usable guide for people,
+for auditors. Yeah, the details, yeah, completeness, accuracy, etc. So I think that's
+a great starting point, right? Like, frankly, if you look at like SOC 2, if you want to call
+that a security standard, it's really more of a reporting, a controls reporting standard.
+But, you know, often these reports are issued by CPAs. That's kind of an interesting example where
+there is a SOC guide, but it doesn't actually give you, it doesn't really give the auditor
+probably what they would really want. It's like, wait, what sampling methodology should I use?
+Like, how many samples should I select here? What happens is CPA firms and other certifying
+bodies tend to implement their own, you know, their own manual, right? Internally, their own
+policy of how they go about doing these audits. And so there, again, you have disparity in
+practice that can emerge, where one firm, you know, might be willing to sign off with very
+little sampling or a lower level of control testing, where I think the CCSSA, the way this
+audit guide is built, is there's some spirit of uniformity here, right, at the outset. So that's
+good stuff. Yeah, and I think we're probably close on time. So the last thing that's been noted is
+that, hey, this is an evolving thing. It is open source and open to input from the community here.
+And so the auditor guide will inevitably grow, become more detailed, become more usable based on
+the community's input. Yeah, absolutely. And I do know we're at time. So I want to continue answering
+some of the questions we've had in the chat, but give everyone who's on this call an opportunity
+to say goodbye. If you need to go on to the next thing, that's totally fine. I'm going to stay on
+an answer. So if you need to go say goodbye, we so appreciate you spending the time you already have.
+So I see Josh, Michael. Okay, thank you, Noah. Appreciate it. For those who thanks for a great
+chat, everyone. Yeah, thank you so much. Appreciate it. We'll stay and answer some of the other
+questions. So we'll see you the rest of you soon. So for those of you that are able to stay, I did
+want to talk a little bit, I want to say one thing about the auditor process in the peer review is
+we have actually just like within the past couple weeks even updated it. So we really are listening
+to the community and making sure that this is something that is that the standard is the best
+it can be. And that the audit process works for entities for the original CCSSA and the peer
+reviewer. And importantly, that the entire purpose of this is so that end users are able to know
+where to go, who to trust. And if there are things that need to be updated along the way,
+we're certainly going to do it. Obviously, we have a committed group of people here. And Dirk,
+did you want to say something about that? I just wanted to build off of that a little bit. And
+that idea, yeah, that, you know, we could have just kept beating this to death before we released
+the auditor certification program, right? Didn't we? Well, I mean, it feels like we did.
+But that's not to say that we aren't aware that there are going to be people who come up and be
+like, oh, so in my case, this, this, this and this, right? And there are probably even going
+to be people who come up and just say, hey, why didn't you guys think about this? And every one
+of us is going to hit ourselves in the forehead and be like, yeah, we should have thought about
+that, right? But we, you know, we, I think we really strongly felt that, you know, the standard
+had been out there long enough, and it's been kind of beat up long enough that it made sense
+at this point with where the industry is with things that have been going on in the industry
+very recently, that we really just needed to get this process out there and then let the process
+get better along with everything else. So I guess that's kind of my, you know, don't just
+flame us, contribute it, right? You know, if you see things that need improved, right, you know,
+the entire process, if you go to the C4 website, right, it's structured to take input from people
+in the industry. So, so, you know, help us, help us make it better instead of just being like, oh,
+stupid CCSS doesn't cover this or the CCSA exam has this problem in it, right? So.
+Yeah, we're definitely willing to and want to hear feedback from it. So we're,
+we believe that it's really well done, but also none of us are clairvoyant. So we need to hear
+feedback from other people, although I kind of wish I was. Okay, so a few other questions that
+we have in the chat. The CCSS is being applied to centralized entities, but is it useful to
+decentralized entities? Who wants to take that? I think there's different trade-offs for that,
+right? And we can get into the whole mindset of centralized versus decentralized and whether
+you're providing a service for the user or sovereignty for the end user or a specific
+privacy conscious end user. I think one of the considerations specific to the CCSS that I would
+be interested in is if you're operating in a decentralized capacity, some of the controls
+recommend things like, do you know who your key operators are and have you perform the proper
+background checks? And if you're operating in a system where maybe people are distributed
+geographically and you have not had that face-to-face verification or contact,
+or you're operating in a DAO where people are doing work under pseudonyms, right?
+That may be harder to achieve those controls. So I think it's going to be pros and cons for both
+systems, depending on what their offering is and what level of compliance they're going to.
+It may be harder to achieve certain controls in decentralized versus a centralized system.
+It may actually be easier in some cases with publishing things like proof of reserve,
+right? You could automate that as a script. There's a lot of different ways,
+I think, to achieve this stuff and trade-offs depending on how your system's built.
+Yeah. And fundamentals around things like initial key generation and those sorts of things,
+they apply regardless, right, Jim? Yeah. Okay. Another question is,
+does the CCSS delve into smart contract code, such as emphasizing that certain best practices are
+followed? I think so. Smart contracts are, when this was originally written, right,
+not a technology that was fully implemented. Well, to some degree, right? But as new chains,
+new chains, coins, as the system has evolved, we've seen different functionality, different
+languages, different ways to achieve that smart contract functionality. This is something that,
+as a committee, we're constantly meeting and throwing questions up about smart contracts
+and sharding and MPC and how does that specifically affect key generation usage, storage,
+and operations. And when it comes to smart contracts, yes, that's something that we are
+building and looking at and saying, how does this fit and can these controls be applied to this?
+There's nothing that says you have to use Solidity at this specific version, but I do imagine at some
+point in time, we may end up diving deep into those specific types of details. So what I would
+say is I think for smart contracts in DeFi, it's something we're constantly looking at and
+evaluating and seeing how can the standard fit or apply into this specifically. I think with the
+smart contracts, if I was looking at that against a standard and doing an assessment, I would be
+looking at the key generation operation, who was the deployer? Are they known? What's the background
+information on them? How did they do that deployment in that generation process and how is that being
+maintained through the life cycle of the system? There's definitely some areas that aren't going to
+be covered too, right? I mean, governance of the smart contract and things like that, right,
+that are not currently going to be covered in the standard. Okay. So another question that we have
+is, are we going to get a training like we created for the CBP? So yes, that is something in the work.
+So we're on C4s and we have the Certified Bitcoin Professional course and prep book. And for the
+Certified Ethereum Professional, we have a prep book coming out hopefully by the end of August.
+And then we'll be creating a course for that. And we'll also be creating something for
+the CCSS. I don't know, just to be transparent, we don't know what that will look like yet.
+Like we've said, the standard changes, we need to keep up with different things. That's the same
+with all of the exams, but we haven't actually, I'm not part of the committee, but the committee,
+I'm in the meetings. I know the committee hasn't discussed this yet. I don't know if anyone has
+thoughts on it and wants to talk about it. There's an awesome video recording from the
+blockchain training conference. Yes. Thank you. Back in 2019 with it that Mr. Stoner did. That
+is a really good foundation, right? If you want, obviously some things have changed since then,
+right? And in going through this process and there've been some updates and the world of
+crypto has changed around us a little bit as well. But it's a really good foundational training for
+somebody who's wanting to look for that. And that's out there on the C4 YouTube site, right Jess?
+I actually don't know if it's up right now. I don't think it is, but one of the things I
+was thinking about is it would be fun to do that again. Ron, with you going through and teaching
+how it all works and doing something now that we're able to be in person again,
+but to do something like that. I think with something like this, it's really large. I think
+the standard's huge. There's a lot more content and there are so many things that come with it
+and a lot of questions that people are asking. I don't know how, and we can see if this would
+work, but I don't know how well just a video recording of something would work. I think we
+first should at least try another maybe in person to see what the questions are that come up.
+But I don't know. I know that's not a good answer, but I don't want to promise something
+we can't deliver. I do know that we want to create more educational resources around key management
+and ownership and then also the CCSS, but I guess stay tuned for what ends up happening with that.
+We do want there to be an easier way to become a CCSSA in terms of making sure that you understand
+all the information. I don't know about you all, but when I sit down to read a large matrix
+spreadsheet, I'm not like, ooh, this is the best time ever. I can see how having some type of
+interactive or video course would be beneficial rather than just going through the standard
+by yourself, but we'll have to see. I'd love to teach and educate Jessica, so that might be a
+possibility, especially when it comes to security-related topics. I think the best
+advice I could give to people while we're generating more of that educational supplementary
+content is to, Josh alluded to it earlier, perform mock audits. The data is out there.
+It's open source. You can go consume it. Take your favorite cryptographic information system,
+the one you use every day or the one you're looking at saying, I wonder actually how secure
+the system is, and just go through the checklist because what that'll do is that will allow you
+to go pretty deep on things like the entropy of the system that generated the keys. Are they
+reusing nonce values? What are the K values and digital signatures? If you're sitting there
+going, I don't know what Ron's talking about right now, that's a great opportunity to deep dive into
+that because these are the types of questions and things that are being validated and being
+disclosed in these controls on the best way to go about those types of operations. I would tell
+people, start to perform those mock audits, and you will get to things like what is a K value
+and how do digital signatures actually work? Now that I know that, I can see how is this being
+applied in the system and what level of compliance does that meet with the controls?
+Yeah, I think even for people who don't want to be CCSSAs, like someone like me, who has really,
+I've dove into the standard, I understand a lot of it, but some of the things that you're talking
+about, I even would just want to know so that I feel more confident about it.
+That I feel more comfortable using crypto, and I understand. I feel like there are different
+levels. You aren't sure how crypto works, so maybe you're going to buy from an exchange,
+you're going to set some of this stuff up, but then you want to... Stephanie Murphy has called it the
+stairway to self-sovereignty. You start at just the basic of buying crypto on an exchange, and then
+you hopefully learn to move it to maybe a hot wallet, and then you learn how to move it to
+a self-custody hardware wallet, and then maybe you learn about multi-sig, and there's
+kind of like that whole chain to figure this out. But starting small and then building up,
+and I think it's the same thing with the CCSS. Start with the basics, and then as you get more
+into it, you can start to grow and learn to really understand everything that's a part of it.
+And I do know, Ron, that the course that you gave in 2019, everybody who attended it, that I've heard
+from, absolutely loved it and found it super helpful. And I really wanted to go to it and then
+couldn't because I was helping run the conference, but I do think doing something like that, again,
+would be really helpful. Let's see here. I think we've covered all the questions that are in the
+chat. Is there anything else anyone who's on the call wanted to talk about before we sign off?
+Anything about the CCSS or the auditor exam? I think Noah hit it pretty early. You know,
+we are only as good as you are with this stuff. There is a lot of things that people are thinking
+of in their head going, what about XYZ? We want to know about XYZ so we can discuss it and throw it
+against the wall and then pick it up and brush it off and put it back into the standard, right?
+And that's going to make us better, the community better, and just all of these systems, these
+information systems, better overall. So that is the biggest thing I would love to see to this.
+If you're sitting there going, I've got ideas. I want to help. How can I help?
+Please reach out. And we would love to get your feedback and start to encapsulate some of those
+ideas. Yeah, I'm glad that you said that because there are eight people on the committee and
+they're volunteering their time because, I mean, you all know this, it matters and you want to make
+sure that the standard is the best it can be because you work and function within a space that
+needs some help with security. And so I think it's really cool. I mean, I greatly appreciate all of
+you volunteering and spending your time to make this standard as good as it can be in the exam.
+And I think sometimes we see on the outside that there's been some work done, but there is so much
+work that's happened behind the scenes with the monthly committee meetings and then oftentimes
+additional meetings to discuss small different pieces with different members. And just, there's
+a lot that has gone into this to make it and be very intentional to make it the best standard it
+can be. But none of us are of the mentality that it can't get better, that we have everything
+perfect for everything. I think it's an amazing standard. The amount of effort that's gone into
+it is just incredible. But there are going to be things that change in the space, obviously,
+that we're going to need to add and keep track of and all of that. Dirk, did you want to say
+something else? No, just kind of along those lines, I wanted to address the rumor that I've
+heard from a few people that I started growing my beard only to be more like Jameson. And that is
+absolutely true. But for any of you out there that start growing a beard to be like Jameson,
+he's still smarter. So, you know, it has limited value. I saw somebody post on LinkedIn about how
+you have the best beard in the group, Jameson. So sorry, everyone else. I obviously not in that
+group. So I wasn't offended. But that was something somebody posted. Okay, so before we end,
+I just wanted to quickly give, I mean, I think the committee, you all are amazing. Behind the scenes,
+our team at C4 has done just an amazing job. I wanted to thank Erica, Lisa, Miss Adrienne,
+our web developer, Alejandro, there's been so much that's happened to get everything set up with the
+exam and getting everything put on the website and all the little questions that have come in. So,
+yeah, thank you all so much. The C4 team has just really stepped it up and been amazing to make
+this happen. So thank you to each of you on the committee and to everyone else that has made this
+possible. We will probably do another live stream at some point to talk about more of the specifics
+in the standard. But I wanted to just thank you all for being here. And anything else anyone wants
+to say before we go? So just a huge thank you to you, Jessica, for keeping us on track. I mean,
+I mean, you, Jennifer, from your side really appreciate it. Yeah, we've got a great team
+here. So thank you all. Appreciate it.

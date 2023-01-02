@@ -1,0 +1,405 @@
+Welcome to the Advanced Tech Podcast. Joining me today is Jameson Lopp, Bitcoin philosopher
+laureate, professional cypherpunk and co-founder and CTO of CASA. Welcome Jameson.
+Great to be back.
+Cool. So yeah, we've spoken before and I will link that episode in the show notes. So for
+the audience not familiar with your journey, how did you get into Bitcoin?
+Well, it was a number of years ago, but essentially I heard about it on some random tech blog,
+probably Slashdot or something. And I know that I dismissed it several times before I
+actually started looking at it because I figured, oh, this thing's going to get hacked. Everybody's
+going to lose their money. And why should I bother spending any time on it? And eventually
+after it, oh boy, after it kept coming around, I started looking into it. And when I read
+the white paper, that was when I realized that this was something special. And you know,
+once I really started thinking about money and thinking about, you know, money as a open
+source project, I felt like it aligned with a lot of my philosophies. And it was also
+interesting to me from a computer science standpoint. And it all just kind of slowly
+escalated over the years from that point. And I started working on some side projects,
+just trying to better understand it. And after several years, venture capital started coming
+into the space and I realized I was spending so much time doing Bitcoin related stuff that
+I might as well just get paid to do it full time. And that's when I joined BitGo and spent
+several years working on infrastructure for enterprise Bitcoin security. And then a couple
+years ago, made a slight pivot and have been working on a similar type of security problem,
+but rather focused on individual private key management. And that's really what we've been
+doing for several years at Casa now, just trying to help people help themselves be more
+sovereign and really take advantage of everything that Bitcoin offers. But up to this point
+has been very difficult to do. There's been a high learning curve and a lot of possible
+pitfalls where you could shoot yourself in the foot and end up, you know, with a catastrophe.
+Fair enough. So before we dig into some of these things we're going to be talking about,
+I'd like to get your thoughts on why Bitcoin's value proposition is different from money.
+Well from fiat money or, you know, money that is issued by central banks and governments
+and all of that. I mean, the main difference is what I just touched on a little bit in
+that with Bitcoin, we've created this open collaborative project where anybody who wants
+to can contribute and can basically voice their opinion of what they think the properties
+of this thing should be. And I believe that, you know, money is an abstract concept that
+doesn't really belong to anyone. And so it makes sense that it should be an open collaborative
+project. But the money as we have known it for hundreds of years now has been defined
+by small groups of authorities who in many cases decide what the properties of the money
+are in closed door sessions. And whatever they decide, that's what we have to put up
+with. There hasn't been a whole lot of choice or a whole lot of input that the average person
+can put into it. They're just told to use whatever, you know, by their government. And
+generally the government, you know, uses their laws and their force to say, you know, you
+have to accept this piece of paper or this money that we're issuing in return for any
+debts. You also have to use this to pay your taxes. And so, you know, they can basically
+force adoption at a large scale through those various mechanisms. But with Bitcoin, with
+cryptocurrencies, this is a much more voluntary type of thing where we're not going to get
+a whole lot of adoption unless we can offer something that is superior to the market.
+So I think like in general, the incentives are much more aligned and also it just seems
+to be a more fair type of system because it's more inclusionary than exclusionary. Great.
+Very well put. Yeah. And the days of the money printer going burr with many other Rs. Yeah,
+I think that's important to point out as well that there's scarcity, there's actual value,
+actual work behind and, you know, there's really strong game theory backing Bitcoin.
+Yeah. I mean, everyone likes to talk about the scarcity, but at a really high level,
+like there is nothing in Bitcoin that guarantees scarcity. Rather, the quote unquote guarantee
+that we have is due to, like you said, the incentive alignment in the game theory. It's
+that it is so highly unlikely that a sufficient threshold of people will come together to
+say, oh, we should just inflate the money supply to bail out X, Y, or Z entities. It's
+almost guaranteed that that's not going to happen just because the incentives aren't
+there. Whereas if you have a small group of people who probably have their own personal
+connections to various insider interests, that type of arrangement like we see with
+central banks that are tightly connected to governments that they're essentially working
+for, it's much more likely that you have, you know, large scale bailouts printing, debasement
+of the currency, and of course, basically changing of interest rates and such on a whim,
+which also affects, of course, the creation, the ebb and flow of the money supply. So there's
+a lot of knobs that these bankers can turn and they kind of turn them willy nilly because
+it's all just a grand experiment. I don't think anyone really knows what's going on.
+The main guarantee that we have in a more open system where it's harder to make changes
+is that it's going to be somewhat more predictable as to what happens in the future as various
+shocks come into the system.
+Cool. So we've talked about your background. I'd like to get into kind of what you're working
+on and what's new.
+So for the past couple of years, you know, we've been continuing to try to decrease the
+technical complexity and the learning curve that is required to be climbed by someone
+who wants to put themselves into the ultimate self custody solution where you can be confident
+that you can store large amounts of value on your own without having to rely on trusted
+third parties or custodians. But it's not just that you're confident that an attacker
+won't take your money. It's that you also need to be confident that you won't make a
+mistake that will cause you to lose money. You also need to be confident that if you
+get hit by a truck that your heirs will be able to recover the money. And each of those
+things tends to be progressively more difficult. Like it's very easy to make sure nobody can
+get your private keys, you know, just throw them away and nobody will get them. It's somewhat
+easy to make sure that attackers can't get to your keys, at least online by just using
+hardware devices. But then, you know, how do you protect against all of these edge case
+events, any number of loss vectors, physical attacks, natural disasters, the list goes
+on and on of things that can happen that can cause the data to be destroyed or lost. And
+then finally, when you get to the sort of issue of, well, I want only me to be able
+to access my keys unless I have died, then, you know, allow a certain other people to
+access them. That starts to straddle a really weird line where it can be, you know, difficult
+to keep these conflicting things in sync, as it were. And so we have spent, you know,
+innumerable hours thinking through all of these edge cases and developing fairly complex
+threat models that we've published to our website. And the result of which is then we
+start to build software based upon those threat models. And the software that we've built
+is very user friendly. It's literally a mobile app. So it's as easy to use as any other mobile
+app out there. However, this is a multi layered solution where the actual security of the
+keys is ensured by using dedicated hardware devices and keeping them geographically separated.
+And in some cases for inheritance using other pieces of like a legal system and well known
+estate planning procedures and processes. And while it's all very complicated under
+the hood, we we just put a really nice user interface design on top of it. And essentially
+what it comes down to is the user just follows the instructions on the app. And that basically
+guides them down the path of best practices of what we have put together with years of
+research in the security space. And in my case, like seeing many different catastrophes
+happen over the years where, you know, even in a well architected system, even in multi
+seg systems, it's possible to have single points of failure if you're not really careful.
+And at single point of failure can still result in catastrophe. So I think we've made a lot
+of great progress there. And we're seeing a lot of demand for it, especially as you
+know, Bitcoin is maturing, as the people who are using Bitcoin are maturing, they're going
+through life events, they're starting to think about, you know, more longer term things where
+it's not just, oh, I have this Bitcoin investment and it's cool, it's done well. Now instead,
+we're thinking of it from a generational planning type of thing of, you know, this Bitcoin has
+been around for 10 years, the longer it's around, the more likely it's going to stay
+around. I need to start thinking, well, maybe Bitcoin will be around for so long that I'll
+actually be in a position where, you know, I want to hand down my Bitcoin inheritance
+to my children type of thing. So that's an exciting new frontier to get into.
+Very cool. So before we get into, let's see, before we get into your site, and you've got
+a really amazing site on Bitcoin resources. And I think that's one of the things that
+I quote all the time. It's well laid out, it's easy to navigate depending on your level
+of where you're at with Bitcoin and your Bitcoin journey. I'd like to get your thoughts
+on the current COVID pandemic right now.
+Well I guess it's kind of scary. You know, I've been in quarantine myself for about two
+weeks because I was traveling. I went to the MIT Bitcoin Expo. I heard recently that supposedly
+there was somebody who was there who tested positive, but I didn't get any specifics.
+But you know, in general, I was avoiding handshakes and all of that. So I think that I am okay.
+But you know, more worried, of course, about the older people in my family and making sure
+they understand the seriousness of the situation. But it's also just been fascinating to watch
+people on Twitter, you know, especially in the Bitcoin community, there's a lot of people
+who are very adversarially minded. And there's also a lot of people who prepare for edge
+cases, as it were, and seeing how those people are reacting. Of course, there's a whole spectrum
+where some people are probably taking it a bit too far. But this is a type of situation
+where it is better to over prepare, I think, than to do too little and then end up having
+a much more outsized negative effect. But it's especially interesting and I guess the
+prepper type of mindset to see how some of those people are reacting. You know, this
+is definitely not an apocalyptic scenario. I think this will all be under control, whether
+it's a matter of weeks or months. That's the real big question. But you know, I don't think
+that we're going to have, you know, people starving in the streets type of thing, because
+all of the supply chains are completely disrupted. But it has been more interesting, I think,
+on the economic and financial side, the this major shock, you know, we've seen that a huge
+sector of the economy, which is, of course, services based, is basically reliant upon
+people going out and about and doing things, going to restaurants, going to retail shopping,
+et cetera, et cetera, how quickly that whole sector has collapsed, you know, how many millions
+and millions of people lost their jobs almost overnight. And, you know, how the rest of
+the economy and governments, et cetera, are reacting to that is especially interesting
+to watch. And as the people with the money printers see a problem that they think can
+obviously be solved by printing more money, this may be a situation that is good for Bitcoin.
+Perhaps that's because the money printing happens. I think it's more likely that it's
+because it becomes so obvious to the rest of the world who are now stuck at home watching
+the news, watching all of these things happen, and, you know, watching the value of their
+money go down as a lot of the money that's getting printed is not even going to them
+but is going to other special interests that probably don't deserve it as much or need
+it as much.
+Yeah, it's interesting to see how that it's a potential path to hyper Bitcoinization and
+not to downplay the tragedy of what's going on. But you're right, there's a lot of really
+interesting things happening in the market. And really people sitting home, they're in
+a position where they can take the time to, you know, dig into, you know, big existential
+questions like what is money and what is value and, you know, especially as they're kind
+of being challenged to work remotely versus going into an office for people that are in,
+you know, they're able to do that. And of course, for people that, like you mentioned,
+are in the services industry, maybe it's getting them to think, you know, what are they going
+to do next?
+So one of the central themes that I'm seeing on Twitter is there's kind of a, it's a binary
+decision, either safety or sovereignty. So I wanted to get your thoughts on how you can
+survive this pandemic while maintaining your personal liberty, essentially what you can
+do to be safe and sovereign.
+Well, you know, part of it depends on which country you're in in the first place. You
+know, we've even just today, I think, been seeing more data coming out of basically individual
+tracking of people via their mobile phones. And like that type of stuff also depends a
+lot on what country you're in. You know, when I've looked into mobile phone privacy and
+SIMs, for example, in a lot of countries, there is a strong requirement to have, you
+know, AML KYC basically on your mobile phone, your SIM card. And of course, that can make
+it very difficult, if not impossible to travel around and do your normal daily life without
+being tracked with your geolocation to a very, you know, very precise level.
+At least in America, we don't have that, but it's still very difficult. You have to go
+out of your way to get a SIM that isn't tied to your identity just due to the way a lot
+of the phone carriers operate. So there's that tracking aspect. There's just, you know,
+working from home now, you know, are you going to be tracked online with all of your activities?
+I think a lot of people don't even employ basic privacy with their internet usage, you
+know, whether it's ad blocking or using VPN or whatever. But it's a very broad topic,
+I guess. I've seen a number of interesting memes where there's a weird conflict of like,
+well, you know, those of us who are rational and are keeping track of this whole thing,
+it's generally okay. And most people will be fine with quarantining themselves voluntarily,
+you know, to help the greater good of society, you know, to help prevent the spread of this
+pandemic. But then, you know, once the government starts to tell you, you have to do this, then
+you almost sometimes get that urge to go against it just because it's like, hey, you know,
+I was willing to go along with this voluntarily. But, you know, hopefully that doesn't turn
+into the same level of, I guess, crackdown that we've been seeing in some countries like
+China, Italy, for example, where I mean, I've seen a number of people and I'm sure Mir talked
+about this as well of just like, when the government really cracks down on your physical
+movements, then you get into all these weird edge case situations of like, well, you know,
+this person has like a medical necessity and they need to go get some sort of supply. But
+they also have this other, you know, mobility issue that makes it difficult for them to
+do that. And can I go help this person? And then you have to, you know, you have to start
+getting permission to do everything and government bureaucracy slows everything down. And, you
+know, that can easily result in harm coming to people who are in certain edge cases that
+didn't get thought through. And it's not a fun situation. I don't know. There's no, I
+think, one size fits all solution to it, other than, you know, hopefully, you know, if people
+have prepared somewhat in advance, then you're already well stocked up so that you don't
+need to go out and get necessary supplies for a while. I mean, you know, even the United
+States government has various guidelines that I believe they generally recommend everyone
+has several weeks of food and water and etc. And I think one of the problems that happens
+a lot when we're talking about this type of stuff is that, you know, you've got the doomsday
+prepper like TV show type of over the top mentality of like the people who do nothing
+but prep and they spend their entire lives focused on that. And then you've got, I think
+most people who basically only have a few days, maybe a week worth of supplies in their
+house and they're used to having to go out and top up very often. But then you've got
+people I think more like myself who, you know, I'm moderately prepped. I believe I could
+handle at least like several months of disruption before I started having to be more creative
+about my lifestyle. But it's very, it's difficult to have a discussion in that type of level
+of thing because you're kind of stuck in the middle and you've got the extreme preppers
+who just kind of look down on everyone else. And then you've got the normal folks who only
+see everybody else as some sort of extreme prepper. And then you have to start having
+all these discussions about whether prepping is hoarding or whether or not like you're
+harming other people by stocking up on supplies, etc, etc, etc. And so, you know, I think that
+the best way to avoid all that discussion is to, you know, quietly be prepping when
+there is no disaster. But then you have the folks like myself who were like, well, I'm
+not doing anything different because I was prepared for this years ago. And then the
+people who weren't prepared get really upset. They're like, hey, you don't need to be saying
+I told you so at this point. And I'm like, well, I mean, I was telling everyone for years,
+and it actually reminds me a lot of kind of like my journey through Bitcoin, where for
+the first few years, I was going around evangelizing how amazing this new system was to all my
+friends and family and coworkers. And they generally dismissed me as a lunatic. And,
+you know, maybe 1% of them actually believed me and bought into it. And they actually are
+glad that they did. But everyone else now is just like, oh, I can't believe you didn't
+try harder to get me to, you know, be interested. And I was like, I don't know what you want
+me to do. I felt like I did everything that I could. And, you know, it's in your hands,
+you know. I informed you the responsibility and the decision was in your court. And it's
+the same type of thing, I think, for any type of issue where we're talking about self-sovereignty
+is that the natural result of self-sovereignty is more responsibility. It means that you're
+taking more risk, you know, into your own hands, but also that if you're the one who
+is managing those risks, then hopefully you'll end up with a better outcome than if you're
+trusting somebody else to manage them. Because if they drop the ball, that could be catastrophic.
+And really what I think in like a situation like this, or like just talking about prepping
+for edge cases in general, it's that you have to realize the fragility of the systems that
+we've built that over a long enough timeframe, there will be stress events that cause breakdowns
+in the system. And I think something I tweeted recently was basically to the effect of, you
+know, if 5% of people get extremely sick and require intensive care, then our entire medical
+system gets overwhelmed. And a lot of people then will not be able to get any care and
+will die even though normally they would have been able to have been saved. If like 10%
+of the links in our supply chains completely break, then the supply chains will be so screwed
+up that a lot of people will stop being able to get food and will starve after days or
+weeks because in general, most of the supplies, the perishable goods in our system are on
+like a three to five day type of wait time. Like the supermarkets are constantly restocking
+because they know that they can get these things so quickly. So when the supply stops
+coming in, they run out extremely quickly. And similar thing with the banks of, you know,
+if 5% or 10% of people come to the bank and request, you know, physical cash for their
+balance in the bank account, then the bank is going to run out of money, at least until
+the money printers can catch up with their infinite level of printing. Bank runs can
+also cause major stress in the system and it doesn't require even anywhere near a majority
+of people to go in and start stressing the system in order for it to break down. And
+it's because the systems have evolved to be highly efficient rather than highly robust
+and reliant. And this is basically like the exact opposite of Bitcoin where Bitcoin is
+designed not to be highly efficient. It's actually designed to be highly inefficient
+because it's prioritizing robust, reliant redundancy. And that's, you know, one of those
+things I think throws a lot of people for a loop.
+Yeah, we're so used to convenience and everything being, you know, if you've got to wait more
+than a few seconds for a webpage, forget it, you're on to the next tab. So I think for
+our listeners that are just kind of realizing this, I think the people in the Bitcoin space
+and kind of at the edge of tech are familiar with this. But for people that are hearing
+about things like, you know, the fact that our supply chains are fragile and that money,
+you know, you might not be able to get all of the money out of your bank account, which
+is for some of our listeners and viewers, probably the first time that they're hearing
+of that. Without causing panic, because I'm sure some people are like, what? They're asking
+themselves some hard questions. What are some of the things that they can do to make them
+themselves? And I guess the systems that they interact with a little bit more resilient.
+Well unfortunately, a lot of it comes down to your perspective and spending time thinking
+about, you know, what would happen if blank stopped working? What would happen if my bank
+stopped working? What would happen if my grocery store stopped working? You know, what are
+the things that I am incredibly reliant upon and how can I make sure that I have alternatives,
+you know, backup options in place? And the way that I basically describe this to my friends
+and family is that it's where, you know, normally people think of buying insurance as a completely
+logical thing. You know, there's always an edge case that your house might burn down
+or there might be like a torn or whatever. And we don't know what the specific percentage
+likelihood of that happening actually is, but there are experts out there, you know,
+these actuaries who deal with that. They make money by figuring out that risk and quantifying
+it and then selling us a product with a slight markup on it so that it protects us. It also
+protects them because they're making profit that otherwise would be kind of out of reach
+for most people to handle. But what if you need insurance for other events where an insurance
+company may not even if it happens? That's when you have to start thinking about-
+I'm going to interrupt you for a second. We're starting to cut out. I'm just going to close
+some tabs and then let's- Sure. I can hear my fan going in the background.
+That's never a good sign. Close my editor. Good. All right. I think we should be in a
+better spot. So from the top. Well, so we were talking about, you know,
+alternative forms of insurance. If you get into a situation where you can't just have
+an insurance company bail you out, you know, what if there's a food supply issue and there
+is no food bank insurance that is available? You know, you need to think about these things
+and differing grades of like risk and possible consequences. And so, you know, the likelihood
+that there is maybe a several day event where you run out of water and power and utilities
+and stuff is reasonably likely to happen in your lifetime, you know, depending on your
+geographic location. And so, you know, pretty much everybody should be prepared at least
+for that level of catastrophe, natural disaster or what have you. What is the likelihood
+of, you know, some sort of edge case economic events happening? You know, those seem to
+happen several times per generation. So it makes sense that you should have some backup
+assets that are outside of the traditional financial system. You know, don't put all
+of your eggs in one basket. Keep some hard assets, whether that's, you know, precious
+metals or cryptocurrencies, what have you. You know, it obviously doesn't have to be
+everything. We're just talking about diversifying portfolios essentially. So just like you want
+to diversify your financial portfolio, you should diversify your food portfolio. You
+know, while I have like multiple stages of food preparations, some of which are more
+short term, some are more medium term of food you wouldn't want to eat unless you were in
+a survival situation. And then you've got your long term of, well, if everything really
+hits the fan, then I need to be able to grow my own food. So, you know, I've got like a
+seed vault essentially for that type of stuff. And so, you know, having these multiple different
+levels of preparations for different events of different likelihoods is basically the
+way I approach any of these things.
+That's a good idea. And I'd also like to just stress there for people that, again, are hearing
+this for the first time that they might need to, you know, be a little bit more self reliant.
+You're talking about edge case scenarios and varying levels of risk and how you can protect
+in the extreme versus, you know, the slightly inconvenient, which I think it's good to think
+about all of those scenarios, because you're right, we're probably not going to have no
+multiple day disruptions where there's power and water cut off, but maybe we will. And,
+you know, I certainly feel for people in third world countries where that's a common theme.
+I think we're relatively lucky and privileged to be in the first world where we have relatively
+reliant systems, which is great. But just because we have that now doesn't mean that
+we will always.
+Well, and it's also, it's kind of weird because in some of these disaster type scenarios,
+the people in the third world countries might actually weather them better because they
+are used to these stressors on a regular basis and they probably already have plans and alternatives,
+you know, ways to handle those events. But the people in the first world countries that
+are more reliant on these more fragile services may have a tougher time dealing with the loss
+of those services.
+That's a really good perspective. Yeah. Again, coming down to that core resiliency and you
+know, like anything, it's a muscle that you build up over time and you're not going to
+be, you know, the super survivor like in a week, but maybe a year. Right. I'd like to,
+as we close out the episode, talk a little bit about your Bitcoin page, your site and
+your Bitcoin resources and Lightning resources for people that don't know this and they're
+hearing it for the first time. What can people find there? What's new? And could you tell
+us, I guess, just a little bit more about it?
+Yeah. So this is one of my many projects. I think this one dates back to around 2014
+or 2015 when I first started just bookmarking as many Bitcoin resources as possible because
+like I said, I was coming around, I was evangelizing Bitcoin, I was running local meetups, et cetera,
+et cetera. And people would message me and it would usually be the same types of questions.
+In order to save myself time, I would just start bookmarking resources so that I could
+send them the links and wouldn't have to search everything out. And then eventually over the
+years that got to be more and more onerous and people started asking, you know, wider
+variety of questions. And eventually I got to the point where I was like, you know what,
+I should just take the bookmarks and put them on a page and then tell people to go to the
+page. And so now I've actually got an easy to remember domain. It's just bitcoin.page,
+which will take you directly to my educational resources. And at the moment, I want to say
+there are over 500 different linked URLs and resources there. And I think I've, on the
+Bitcoin side, I've had to break them out into many different categories. I think there's
+several dozen categories now in sub pages. And essentially these are what I believe to
+be the most reputable, high quality resources for almost any topic under the sun with regard
+to Bitcoin, because Bitcoin is a very multifaceted diverse ecosystem. Nobody is interested in
+Bitcoin for the same reason as everybody else. Everyone brings their own perspective to it.
+You may be interested from the financial perspective, the ideological perspective, or you might be
+interested in just trading it, or you might want to develop things on top of it. You might
+be more on the technical side. So we've got, we've got something for everybody at bitcoin.page.
+And it is a project that I am constantly updating, you know, as some sites die off, as new sites
+come on, as people come to me and say, Hey, check out this new resource. If it's reasonable
+quality, I put it on there just so that it's easier for people to find. And I hear a lot
+of people come to me saying, you know, I send all my friends to that site and I'm just hoping
+that it provides an easier experience to onboard into the ecosystem because ultimately it has
+to be a choose your own adventure type of thing, you know, based upon your own perspective.
+And so we've got the getting started section, but you know, after that, you can, you can
+basically fall down the rabbit hole into any number of sub rabbit holes as it were.
+Awesome. Well, make sure that we include that in the show notes and links below. And then
+also on your homepage, I noticed that there's a few new projects that are there. Are you
+right? Can you talk a little bit about that? Well, whenever I start working on something,
+I just add it in there. What have I got? I mean, I've got my physical attack log of keeping
+track of people who are getting like physically robbed for Bitcoin. Most of the time that
+is happening for people that are doing face to face trading. That's one of the more dangerous
+activities. What else do we have? There's several projects. Let's see. And I'm always
+adding more. My oldest one is actually Satoshi, which is my fork of Bitcoin that's been running
+since about 2014. The Bitcoin savings plan is actually ripped off from somebody else
+long ago. That was a project that someone stopped maintaining. And so I picked it up,
+but it was basically like an idea of how to sell your Bitcoin in a way so that you always
+have some left. You never sell it all. I got some highly technical stuff for developers.
+Something that I think more people will be interested in is the metal seed storage stress
+tests. And that's me buying every seed phrase backup device on the market that I can find
+and putting it through the wringer to see which ones are most likely to survive various
+disaster scenarios. And then we've got, I think the newest one is actually my, I guess
+you could kind of call it like a shod and fraud project. It's the U.S. Marshall's Bitcoin
+auction tracker. And that's basically looking at all of the hundreds of thousands of Bitcoin
+that were seized and sold by the U.S. Marshalls over the years and how much that would be
+worth if they hadn't sold it.
+Well, I'm sure that people will be very interested in knowing the value and seeing the value
+of the Bitcoin change over time as well. I know that's one of the things that people
+always ask is, what's the current price of Bitcoin? And I think by asking that, they're
+kind of missing the point. But it is interesting to look at the value of the asset go up and
+down over the years and starting as fractions of a penny to where it is now.
+Well, it's ultimately just a lagging indicator, I think, of sentiment and belief in the robustness
+of the system. And sometimes it can get overheated, but that's what everyone's getting excited
+about what's going to happen with the halving this time. And I remember the excitement around
+the first halving, nobody really knew what was going to happen. And then a similar type
+of thing with the second halving. And then some people on the opposite side who are saying
+things like, oh, there's going to be a minor death spiral, et cetera, et cetera. And similar
+type of thing happening this time around. And it's because nobody really knows. It's
+a big question of, well, is the cycle going to repeat itself in terms of price action
+or has the fact that the cycle already repeated itself and now a lot of people want it to
+repeat itself actually going to make sure that it's not going to repeat itself. But
+there's a lot of people who are making predictions who are probably going to end up looking kind
+of silly after it's all over. But that happens every time.
+Fair enough. Right. As we close out, I wanted to ask if you have any questions or parting
+comments for our audience? Questions for the audience. Well, since they
+can't actually answer, it's tricky, right? But in general, I think the biggest question
+that I have for most people is, do you actually think about that money that's in your pocket
+or do you just use it because it's given to you? Do you think this is something that you
+should have control over how it operates or are you happy with everything as it is? And
+if you're not happy with the state of the financial system and how it's all tied in
+to the nation states, then you have an option and you can opt out. You can join the rest
+of us in trying to create a better system. There's no guarantees that it'll be better,
+but I think the incentives are better aligned. Awesome. And then again, we'll include links
+below, but where are the best places for people to find you online or your content online?
+Well, everything that I have ever done, all of my articles, my presentations, my interviews,
+it's all on lop.net, L-O-P-P dot net. And the only social media network that I spend
+much time on is Twitter and my handle there is just LOP. Awesome. All right. Thanks, Jameson.
+I appreciate your time. It's interesting times we're living in and it was great getting
+your perspective on some of the basic things that people might be dealing with and just
+the rational approach that you always have. I appreciate that. My pleasure. Thanks for
+having me. Thanks a lot.

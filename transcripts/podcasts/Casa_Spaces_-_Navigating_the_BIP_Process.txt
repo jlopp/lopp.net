@@ -1,0 +1,406 @@
+I'm Andrew. I work on Bitcoin Core. I'm the maintainer of the Bitcoin Core wallet and I've
+been doing this for like six years-ish, something like that. I'm also the author of
+BIP-174-PSBT and various extensions of that and also I co-authored the BIPs for output descriptors.
+Exciting times. You've got yourself on, I think you're coming up on a dozen BIPs here if I've
+got my count correctly. So you've definitely been prolific in this space. I think most people
+only have a handful, right? Well to be fair, the descriptor BIPs, there's like six of them,
+which is a little excessive, but they're all describing like the same thing. So they don't,
+I don't know if they count separately, but I did write like six of them for the different
+components of descriptors. Yeah, well they got assigned unique IDs, so I guess they're separate.
+So how did you really come into becoming a protocol level developer? I guess six years
+is an eternity in the Bitcoin space, right? That's about half of the lifetime of the project.
+Yeah, so sometime in high school, I learned about Bitcoin from a friend who was
+who was using it to buy stuff off the Silk Road, or you know, one of the Silk Road copycats,
+and while I didn't have any Bitcoin myself, I looked, I decided to look into the technology
+and like, you know, how it worked instead of buying Bitcoin. And so that's how I got started
+with like learning about the protocols, you know, all the network stuff, consensus, and all that
+stuff. I got into development just from, you know, using the software, using different Bitcoin
+software, finding problems with them, and fixing them. So one of the wallets I used was called
+Armory, and you know, I started using it because it claimed to be like the most secure whatever.
+It was very much not maintained at the point I was using it, and I was running into a lot of problems
+with it, partially because it was not very maintained. So I contributed fixes. One of the
+things that Armory did was it relied on Bitcoin Core to do all like the full node stuff, and I
+was finding incompatibilities between new versions of Bitcoin Core and Armory, and so I would contribute
+fixes to either one to fix the problems, and that eventually meant I started working on Bitcoin Core
+more and more, and I've been working on the Bitcoin Core wallet for quite a while now.
+Yeah, so I assume, or is it safe to assume, was your first bit the partially signed Bitcoin
+transactions? Yes, it was. And was that really a result of all of the work you had done on the
+Bitcoin Core wallet? Yeah, so it was more related to the hardware wallet stuff. So
+when I got a hardware wallet at some point, and you know, I wanted to use it with my own full node,
+and I think the only way at the time to do that was to run your own Electrum server, like ElectrumX,
+and then connect Electrum to that, which is kind of a pain in the ass, not very user-friendly,
+and also this was before Electrum personal server existed, so like you had to run a full-fledged
+Electrum server, and I was talking to Sepa about, you know, what it would take to get hardware
+wallet support into Bitcoin Core, and basically because in Bitcoin Core we don't want to have
+vendor-specific code in the Bitcoin Core code base itself, we needed to have some external program
+that would be able to talk to the hardware wallets, translate that into some other
+protocol language, something that Bitcoin Core could understand, and send it off to Bitcoin Core,
+so that Bitcoin Core could call the external program, which would then talk to the hardware
+wallets, and then vice versa, and so what ended up happening was the way that the external program
+and Bitcoin Core would communicate became PSBT, and the external program became HWI, the hardware
+wallet interface that I currently maintain, so that's kind of where PSBT came from, you know,
+as a need for HWI to be able to interact with Bitcoin Core.
+Did HWI come first, and it was implementing all the proprietary integration before PSBT was a thing?
+I developed them together, so I was writing HWI and PSBT at the same time, so
+how HWI would use the information informed how I wrote PSBT, and then how, like, I had to write
+PSBT to fit in Bitcoin Core informed how HWI would need to work also, so they were developed
+simultaneously. Gotcha, so it sounds like it was a fairly long iterative process, right, and this was
+your first bit, so can you kind of walk us through that process, you know, going from your initial
+conceiving, you know, what is the problem and how do we solve it, to really getting to the point where
+you have rough consensus for this, you know, new way of having hardware wallets
+communicate with software wallets? Yeah, so the main thing was that I got a working implementation
+as, like, before I submitted the bib to the mailing list, so obviously the bib is just a
+document, and that had to be written, which was, you know, it's not that hard to write a document,
+especially if you just use it for your own note-taking while you experiment with stuff,
+so that's what I did. I wrote the bib as I was experimenting, kept changing things,
+you know, it was kind of my notes document until I cleaned it up at the end for submitting to the
+mailing list, and, you know, when I posted the email to the mailing list, it was the bib document,
+all the stuff I'd written up, and I also had a reference implementation to Bitcoin Core,
+and then my HWI implementation as, like, a client, like, so there were two software implementations,
+and I was able to test off of each other, so I could make sure that Bitcoin Core could send
+to HWI, HWI could send to Bitcoin Core, and there were no incompatibilities there.
+So you took the Satoshi route, did you have to convince yourself that it would work first by
+writing the code? Yeah, I am somewhat of a perfectionist, so I would be like, this has to
+work before I even tell anyone about it, other than the people I'm working with directly, you know,
+before it goes public, it has to be perfect. That's what I was going for, at least, didn't
+really happen that way, but yeah, eventually, like, when I posted it to the mailing list, I basically
+got crickets, like, no one said anything for, like, six months, and then one day I learned that
+ColdCard was going to be using it, and that was the first time I heard anyone really say anything
+about PSPT, like, it was, like, months after I posted it to the mailing list, and then I
+said, yeah, initially, there weren't really any comments, but as people, especially after ColdCard,
+like, said they were going to be using PSPT, I started getting more comments then,
+it just seemed like maybe it wasn't on anyone's radar. Yeah, so do you feel like it was kind of,
+like, you know, the old proverbial snowball rolling down the hill, it just took a while to get started,
+but then, you know, once you started getting some velocity and some buy-in from other
+manufacturers in the space, then it really started to solidify? Yeah, I think there was
+quite a bit of that. I feel like there was probably a bit of the whole, like, yet another
+standard thing, because it definitely did feel like there were a lot of different competing
+formats for a shared transaction thing, and, you know, PSPT was just yet another one, except
+if you look at the BIPs repository, PSPT is the only one there. Actually, that's not true,
+there's BIP10, which is similar and does almost the same thing, but not quite. It's also withdrawn.
+So, yeah, like, of the other formats that were being used at the time, I think PSPT, PSPT ended
+up being the only one with a BIP number, which might also just be because it was the only one
+that anyone decided to write a BIP for and ask for a BIP number, because that's also something that happens.
+So, it looks like you originally created the BIP July 2017. So, I see it's considered as final now,
+but I think there was a pretty long time in the interim there. As you said, you know,
+for the first six months, there was really no feedback, and then I believe, you know,
+there was a fair amount of back and forth with some interested parties kind of on some trivial
+aspect of it, so that it did have a few updates before it was finalized, right?
+Yes. So, it was on the mailing list for a while, and then eventually I opened up the
+portal quest to the BIPs repo, and that's where it got the number. And then, like,
+sometime after that, I got more comments on the mailing list. And there were a couple revisions.
+I think I added a few fields, but I didn't, like, and I kind of, I think I just redefined
+some parts of it. It didn't really change the serialization, but it changed how
+the serialization should be thought about, like, the mental model.
+But for the most part, I think a lot of what I originally did survived. Survived the revisions.
+And, yeah, it's now marked as final because it's in use by a lot of different software.
+So, changing it now, like, changing it fundamentally now would be
+a major problem, which is why it's considered final.
+Gotcha. So, you know, it sounds like you were fortunate in the sense that this was
+not a particularly contentious issue. It sounds like probably the biggest contention was more
+around fatigue of, you know, the, you know, yet another standard for ways to pass this
+data around, even though there wasn't really an all-encompassing standard at all, I would say.
+Before this, do you have, you know, experience working on many other software projects?
+The reason that I ask is, you know, do you think that there are some major, you know,
+structural differences between developing for the Bitcoin ecosystem versus your more standard
+software? So, I don't really have any experience with other open source projects. I have, like,
+perused some of how they work. I think the most, the one I'm most familiar with would be Python
+and their Python enhancement proposal. I think that's what it stands for. Which BIPs are actually
+modeled off of, I think. But, I mean, like with Python, you know, a major difference there is
+that they have a benevolent dictator for life, right? It's completely centralized. And in Bitcoin,
+we don't have that. So, I don't really have much experience with that, though.
+Yeah, it does seem to be one really major structural difference. I think, you know,
+even with a lot of free open source projects, there's inevitably someone at the top of some
+structure that can make decisions and kind of move things along. Whereas, you know, in the
+Bitcoin space, you have to have a really low time preference. You have to be really patient. And,
+you know, there is this kind of additional issue, I guess, of having to be your own advocate. You
+know, having to drum up support or interest in a thing. You know, even if you may have a
+perfectly valid, great idea and implementation, if you don't have buy-in from people, because
+really, you know, the default is apathy. And, you know, it's one of the great strengths of Bitcoin,
+I think, and why it is so resilient against things, because you generally don't have to do
+anything in order to make a decision. And, you know, I think that's one of the great strengths
+because you generally don't have to do anything in order to resist pressure of different types.
+You know, apathy is very, it's a core strength, I guess, of the system and the game theory. But,
+you know, apathy with people who are trying to develop and evolve the system can certainly be a
+major, I guess, frustration. There are certainly plenty of Bitcoin developers who have spent a lot
+of time and resources creating things that ended up, you know, not being adopted for one reason
+or another. Kind of, I guess, along a more specific route, have you paid much attention to the
+controversy around the check template verify lately? Yeah, well, pay attention is a strong word.
+I have looked at it and also have ignored it. I'm aware of it. Yeah, yeah, so there we go,
+you know, apathy, once again, you know, I won't put words in your mouth, but it sounds like,
+you know, you aren't necessarily totally against it, but I guess you just don't find it interesting
+enough to, you know, spend your time and resources trying to move that along the process. Yeah,
+pretty much. Yeah. So, you know, Bitcoin is built around this idea of consensus and
+trustlessness, which, well, that may be a loaded word, we may say trust minimization. How do we
+achieve this technical consensus around BIPs while, you know, keeping that principle held true? You
+know, I know that a lot of people who don't participate in these processes may look at it
+from a really high level and say, oh, that's, you know, centralized gatekeeping process. You know,
+how would you push back on that? And basically, you know, make the argument that this, you know,
+the BIP process is imbued in the important principles of Bitcoin. Yeah, so BIPs are,
+you know, it might seem like they're centralized. There's, you know, there's like one BIP editor,
+maybe two. For the most part, there's one BIP editor. There's only one repo and BIPs get assigned
+numbers. But actually, BIPs are pretty decentralized. An important thing is that
+just because a BIP has a number and is in the BIPs repo doesn't mean it's a good idea. And it
+doesn't mean that it's going to be deployed. There's a lot of withdrawn BIPs. There's a lot of
+rejected BIPs. There's a lot of BIPs that are dumb. I mean, a BIP, in order for a BIP to get a
+number, it just needs to follow the formatting. And it needs to be like possible to implement,
+even if it's not a good idea. So it's not really, it's not really centralization because anyone can
+submit a BIP, anyone can open a PR against the BIPs repo. And if their BIP follows all the
+formatting guidelines, and it is, you know, possible to implement, easiest way to show
+possible to implement is to just have a reference implementation. As long as it, that's possible,
+then it gets a BIP number. So the BIPs repo is really just a, a convenient place to get
+a, a convenient place to have technical documentation about ideas for Bitcoin.
+And the numbers are just a convenient identifier to refer to things, instead of having to say like,
+you know, the, the BIP for partially signed Bitcoin transactions, you can say BIP 174. So,
+you know, the BIPs is more of a convenience thing rather than any form of centralization.
+Yeah, I gotta say, I'm not a real big fan on the, the number process, you know, maybe I'm slightly
+dyslexic or something, but I often have to go and look up, you know, unless it's one of the like top
+five most commonly referenced BIPs, I usually don't know what it is. And kind of to your point
+that just because there's a BIP, it's not necessarily a good idea. I don't remember when this
+happened, but, and I don't, it may be a surprise to a number of people who are listening, but, you
+know, BIP 39, which is basically describing seed phrases. It turns out it's actually unanimously
+discouraged.
+I wouldn't say unanimously, but it is a lot of people don't like it.
+But you might also notice there are no BIPs for any alternatives.
+So, so it gets used kind of by default. And I mean, but I, like, I guess there is, there is,
+you could say there is some, I would say it's more of a network effect, right? If something has a
+BIP number and it's in the BIPs repo, that means it's easy to use, right? So, you know,
+it means it's easy to reference and easy to find, which means it's more likely to be used.
+So, BIP 39, even though a lot of people don't like it, it still ends up being used because
+it has a BIP number, it's in the BIPs repo, other software are using it, and it's easy
+to reference. There are alternatives to BIP 39 like the thing that Electrum does. But,
+well, if I just search for the thing that Electrum does, it's not very specific.
+And also, finding the documentation to that is non-trivial, because it's not a BIP, so there's no
+number, no easy number to reference. And because it's not a BIP, it's not in the BIPs repo, so it's
+not just something I can pull up. I have to go digging through Electrum's documentation to figure
+out what their seed phrase thing is. So, yeah, I've always found that odd. I've always found it odd
+that Electrum devs have been very confident in stating that their seed phrase paradigm is superior,
+and yet it's not a BIP. You think they would want to push forward to get the rest of the world on
+board with that. Yeah, that is kind of a problem I have with a lot of other Bitcoin software
+projects and companies. It's like they will say, oh, here's a standard, and we should all use this.
+But then they won't submit a BIP, and so finding the standard is very difficult. As a different
+example, there's stratum, which is a widely used protocol. I'm sure it's specified somewhere,
+but I couldn't tell you where that is. And it does have BIP numbers, but the BIPs are not written.
+So, if you look at BIP 40 and 41, these are numbers allocated for stratum. They were allocated in
+2012, and there's just no documents. So, to be clear, the BIP editor, Luke, has allocated
+those numbers, so this wasn't an instance of them going rogue and allocating their own numbers,
+which is definitely a known number. Yeah, yeah. So, at the time, Greg Maxwell was the BIP editor,
+and I actually, I only know this because I answered a Stack Exchange question asking about this.
+So, I followed up with Luke, and Greg Maxwell said, you can take the numbers 40 through 49.
+10 BIP numbers should be enough for anyone. And then they took 40 and 41 and just never
+wrote the documents, I guess. This is supposedly some conversation on IRC in 2012, and I assume
+the process was like Slush wrote the stratum protocol, wrote documentation for it, and then
+people said this should be a BIP. So, he went to Greg Maxwell and said, you know, let's get BIP
+numbers or something. Or maybe someone went to him and said, Greg went to him and said, you can have
+these BIP numbers. But they just never wrote the documentation for it. So, I don't think this
+happens anymore. Like, to get a BIP number, you have to have a document. But there are a few
+examples of BIP numbers being allocated before documentation is written.
+Yeah, I mean, it's kind of interesting to see the historical evolution of various aspects of
+Bitcoin. Not always necessarily a softener, right? I mean, you're familiar with a lot of the digging
+that I've done into historical versions of running the Bitcoin core nodes. And, you know, sometimes
+it's fun to poke around in those really old commits and proposed changes, especially, you know,
+I think BIP 01, which was the original description of BIP was authored in September of 2011. So,
+really, you know, anything that happened before 2011, it definitely didn't go through the BIP
+process, right? How would you describe that? Of course, in the early days, I guess it was,
+you know, Satoshi decree, but there had to be some sort of intermediary period there, right?
+Yeah, so my understanding is that a lot of the discussion at the time took place on the
+bitcoin.org forum, now known as Bitcoin talk. And there's a lot of stuff you can learn just by
+looking through all those old topics. They're all still there. You can find discussions from all the
+developers from back then from even including Satoshi. The only problem is Bitcoin talk is
+like impossible to search. So finding those discussions is pretty difficult. But once you
+can find them, like there, a lot of stuff happened on Bitcoin talk. Also, funny, funny thing about
+just searching through old commits. It's always if you get blame the bitcoin repo, and you get
+back to a commit that's authored by S Nakamoto, you will rarely figure out why the hell it was
+written. Because Satoshi didn't write commit messages. Oh, dear. Kind of along that same vein,
+do you have any idea of how much of Satoshi is original code that's still left in the repo?
+I found a few lines here and there. I don't know. I mean, I recently found a line that dated back
+to the first commit, which was quite the adventure because I still don't know why it exists.
+Oh, yeah, there's quite a bit of code. Not a whole lot, but there's lines here and there that
+they might not have been written directly by Satoshi, but you can see the evolution of just
+like, you know, a new interface was added, and so this line had to change to fit that interface,
+but it still does exactly the same thing as it did when Satoshi wrote it. So it's not like actual
+Satoshi code, but things that are functionally the same and like very close in code. Gotcha.
+So what do you believe is the biggest misconception that people may have
+about the Bitcoin improvement proposal process?
+I really think it has to be the idea that BIP number means anything. Like, going back to the
+thing I was talking about with a number, having a BIP number doesn't mean it's a good idea. Like,
+people will be like, oh, it has a BIP number, so that means it's a good idea, but no, that's not
+what it means. I think that's still one of the biggest. Surely BIP 42 is an exception to that.
+BIP 42. Oh, that was the April Fool's joke. I guess it's still serious.
+It is dead serious, Andrew. It's not a joke. Yes, yes, it's very serious.
+Yes. And I think another misconception is that there is
+a process for accepting and deploying BIPs. So I recently got an email from someone that also
+emailed like 80 people or something, complaining or asking questions about the BIP process.
+And one of the things that jumped out to me was that he said BIP committee. I'm like, there isn't
+one. That's not how BIPs work. There isn't a committee for acceptance. There isn't a committee
+that determines what should be deployed or used or whatever. I mean, even just having a BIP number,
+it's not even down to the BIP editor. It's up to everyone that uses Bitcoin as to whether they want
+a BIP to be used. Just talking generally, because there's a lot of BIPs that aren't consensus related.
+So like PSPT, it's not consensus related. It's up to the community to see that BIP 174 exists. And
+if wallet developers think it's a good idea and they start implementing it, that's how
+a BIP like that gets used. So it's up to everyone, really, for a BIP to become accepted.
+Yeah. So on the flip side, do you think that BIPs are necessary? So we've already,
+you know, we talked a little bit about the fact that, you know, there are certain wallet software
+that has their own standards they haven't made BIPs for. We're even seeing folks like,
+you know, Greenpeace, for example, I think had a whole change the code campaign, but I haven't
+seen them submitting BIPs. So, you know, perhaps they're trying to go a different route there,
+kind of like back in the scaling debates, not everybody who wanted to do different
+scaling-based forks bother to create BIPs, right? Actually, there were many scaling-based forks.
+I think. Yeah, I think there were four or five. No, there's like 10 of them. So 100 through 109
+are all hard forks for increasing the block size. And I think a couple of them became Bitcoin Cash.
+So that's like, I was trying to remember if something happened. I think that was BIP 102,
+wasn't it? I'm pretty sure it was BIP 102. It's not very well written. But yeah, so I would say
+that BIPs are, I mean, in the current world of Bitcoin, I think BIPs are necessary. BIPs are
+an important coordination mechanism, kind of, not for Softworks. Well, even for Softworks, but
+BIPs help everyone who uses Bitcoin to coordinate on the same
+protocols. As an example, Glowzao has published, has submitted a BIP for package relay. And this
+is something that affects a lot of different software, a lot of different wallets, different
+node implementations. And so everyone, in order to implement this package relay feature, has to
+agree on how network messages should be sent, how to indicate that this feature is supported and
+all that. And BIPs help everyone come to agreement on what to do. So having, well, I guess it's more
+of an artifact of having documentation. But having documentation like that, that is ostensibly
+independent of any software implementation is necessary, just so that all the different things
+that use Bitcoin can come to the same thing and agree on the same thing and not end up being
+unable to communicate with each other. So are you working on any BIPs at the moment that we
+don't know about? Um, maybe. Well, you probably do know about it. So,
+Miniscript is a thing that Sipa, Sanke, and Andrew Kulstra have been working on. And actually quite
+a number of other people, I think. But it doesn't have a BIP yet. It's not really being used. Well,
+it might be used by some people. But the goal is to have the Miniscript
+specification, which right now is just a website, but to have a BIP for that. And I suspect that I
+will have to be the one that writes it, because it doesn't seem like anyone really wants to,
+or has the time to. So that might be a BIP we will see in the near future. But other than that,
+I don't, I'm not really working on anything else. My current focus is trying to get the existing
+BIPs implemented. So I have some PSPT extensions that need to be implemented into Bitcoin Core.
+And that's what I've been working on. Fair.
+Fair enough.
+Have you participated much in, I guess, mentoring or talking to people who are new to Bitcoin
+development? Yeah, I have. I've been talking to several new contributors. I'm working,
+I'm also a mentor with Summer of Bitcoin, where we get students from around the world and
+they do an internship working on Bitcoin things. Yeah.
+So what would you tell new contributors about, you know, how they should think of BIPs or,
+you know, what decision making process should they go through to even decide if embarking on
+BIP creation and, you know, advocating for their BIP to achieve consensus for it becoming a
+standard. What advice would you give to people who've never been through that process?
+I would say the first thing is, like, make sure that writing a BIP makes sense for whatever it is.
+So ideally, a BIP should be something that will be used by many, many different software
+and they need coordination on how to agree on something. And so a BIP should be something that
+is implementation agnostic and is expected to be used by a lot of different people and used by,
+you know, people you aren't expecting to be using it. So, you know, that's the first step. Make sure
+that writing a BIP makes sense. So for some things, this is really easy to determine. Like,
+if it's a consensus change, you kind of need to have coordination so a BIP makes sense.
+If it's a network protocol change, also you need coordination with other node implementations. So
+writing a bit there makes sense. Wallet stuff, it depends on whether you're targeting
+cross compatibility between wallets or you want there to be
+compatibility between wallets. Then for the BIP itself, it's, I mean, I would say it's pretty
+simple. BIP2, yeah, BIP2 is the current BIP that specifies how BIPs work. And it's pretty
+specific. And it just like tells you exactly how the BIP should be formatted just for like
+the basic formatting and acceptance stuff. So following BIP2 will get you close enough, I guess.
+And then the last thing is to have a working implementation that can be used as the reference
+implementation. So this is in part to help you know that the idea will work if you don't implement
+it. So a lot of times ideas don't make it past implementation just because you realize, oh, when
+I implement this, actually, the whole thing explodes. So maybe it's not a good idea in practice.
+So having an implementation is really useful, especially with when discussing with people.
+And having also having use cases is a pretty big thing. Like, you can have the best idea in the
+world, and if it doesn't have a use, then it's kind of useless. So having an implementation that
+has use cases for whatever is going to be a BIP is also something to consider.
+And for writing the BIP itself, my favorite thing to do is to take a BIP that I like,
+that I thought was well written, and to copy its formatting. So a lot of my BIPs,
+I think I stole the formatting from the BESH32 BIP. Because it was, I like the way it was
+formatted, and it was easy to write it like that.
+And I think theft is highly, highly appropriate in the free open source software development space.
+Yeah. Yeah, I personally find that the way that SIPA writes BIPs is a easy, is a, like, he writes
+them very well. So I tend to borrow formatting ideas from him.
+Standing upon the shoulders of giants.
+Yes.
+Let's see. I mean, we've been five minutes here. John, do you think it's about time for
+audience Q&A? See if anybody has any super nerdy questions.
+Yeah, sounds good to me. If anybody in the audience has a question, feel free to hit the
+request button while we're waiting on folks. One question I have is that, I mean, with Bitcoin,
+you at least theoretically can run whatever software you want to run. Is there any sort of
+any sort of downfall to releasing your own implementation of a BIP without going through
+any sort of process? Like, say you have an idea, you just implement it and try to connect to the
+Bitcoin core protocol. Is there anything that can go wrong with that?
+So, if you're implementing consensus things, one of the biggest issues is that you have to be bug
+for bug compatible, otherwise you will, you might end up, you know, on the wrong chain or disconnected
+from the network entirely. There are, the unfortunate thing is that there are still several
+behaviors that are not well documented. So, there are some network things that if you implement it
+incorrectly, you might end up just forcibly disconnected by whatever peer you've connected
+to. And this is mostly because of the fact that there are some things that are not well
+connected to. And this is mostly related to denial of service protections. So, we have a
+number of protections that are just like, you know, if the peer is sending us spam,
+we kick them out. And if you're on your own and you're implementing everything from scratch or
+something like that, that's definitely something to be aware of. You know, you might just
+accidentally do something that ends up getting you disconnected. Although now, it used to be
+disconnect and then ban, so the node would not allow you to reconnect to them. But we've
+mostly removed a lot of the banning behavior, because it is also not good for the network to
+just ban peers that might be accidentally misbehaving. But, I mean, a lot of BIPs, like,
+a lot of BIPs are implemented independently. I know there are several BIP32 implementations.
+I know there are several PSPT implementations that, like, people will tell me, oh, our software or
+whatever is using PSPT. I'm like, cool, I didn't know that. And, you know, what library did you
+use? And usually they wrote it themselves, because there isn't really a PSPT library.
+Yeah, you know, I think it really comes down to, is whatever you're implementing an externally
+facing thing, right? If you're doing wallet stuff, if it's related to how you're managing your keys
+or UTXOs or whatever, like, the rest of the network doesn't really care about that, as long as
+when you're trying to spend your broadcasting a transaction that's considered valid by the other
+nodes on the network. Kind of related to that, though, like, let's take, for example,
+Merchant's branch-inbound UTXO selection algorithm. Why or why not do you think
+it would be appropriate to have a BIP for that?
+That's a good question. I think, so, it could go both ways. It might not be relevant for a bit,
+because you don't need coordination with anyone else. Like, it's not something that affects anyone
+else. It's not something that really affects anyone else. It's not something that someone else needs
+to do for something to work. So, it's not, like, it's not really something that requires coordination
+among different software for it to be implemented and used. And, like, used to be useful, rather.
+To be useful, rather. At the same time, it's also a good idea. So, maybe it should be, I don't know.
+As I said before, like, the bar for a BIP number is not very high. So, I mean, someone could write
+a BIP for the branch-inbound algorithm, and I would not be opposed to it. But I would not
+write one because I don't think it's appropriate for a BIP.
+That makes sense. It reminds me of, I was a reporter covering a political campaign,
+and the mayor used to always tell me, you know, anybody with $12 can file, but not everybody's
+going to get chosen. A lot of these systems are very, they're very open for participation, but
+ultimately, there's a culling process that takes place. This question came in through chat.
+So, to what degree does the BIP process rely on development on other chains? It's a little bit
+of a controversial question.
+I don't know. I mean, I'm sure that there have been BIPs written, I'm fairly certain there have
+been BIPs written based on things that were implemented on other chains, and vice versa.
+Other chains implement BIPs written for Bitcoin, but weren't, well, even also were deployed on
+Bitcoin, like Litecoin implemented Segwit before, or deployed Segwit before Bitcoin did, and that
+was just a Bitcoin BIP. So, if this does happen, it's not that transparent, and I don't think
+anyone would really care either way. It's not like, like, if an idea is good, it doesn't matter
+where it came from. So, if it came from another chain, and it's still a good idea, great.
+So, I guess it's not always necessarily just another chain. So, I know, for example, there
+are slips, right, which is like the Satoshi Lab, their own BIPs, if you were, which I guess are
+more things that, you know, are mostly internal processes to the stuff that they're doing with
+Trezor. They're probably, I think there's a few other companies. I mean, obviously, we have
+Bolts for Lightning, and I think some of the Lightning implementations have their own
+improvement proposals as well. So, you know, it's always possible that there could be some
+cross-pollination there of manufacturers or companies that have their own improvement
+proposals that may implement something that seems interesting enough to get done at a protocol level.
+Yeah, I think, yeah, there's just slips, although I believe slips are, well, they include a lot of
+altcoin-related things, if I remember correctly, because Trezor deals with altcoins.
+Yeah, Bolts are a separate set of documents. I think there was some talk about writing BIPs
+for the Bolts, but I don't know where that discussion went. I do know that in Blockstream,
+we have or will have elements improvement proposals for the element side chain. So,
+there could be things, you know, things that come from there that end up as BIPs, but...
+Are those EIPs or ellipse?
+I think they're ellipse. I don't know.
+I think, yeah, EIPs could get a little confusing.
+Yeah, EIP would definitely be confusing. I think they're ellipse, or E-L-I-P.
+Dajib, those are all the questions that have come up, and I know we're running low on time.
+Before we close out, James and Andrew, do you have any final thoughts?
+Um, you know, having never actually really participated in the BIP process, not too much,
+though it has, I think, always felt like it would be really challenging to go through.
+I think that that's one of the big misconceptions that hopefully Andrew has been able to
+convince some people otherwise, where, you know, if you start reading through all this stuff,
+it can certainly look overwhelming and challenging, but on the flip side, it's pretty low risk.
+I mean, what's the worst that could happen? The worst that could happen is you don't even
+get it assigned a BIP number, but, you know, once you do get assigned a BIP number, there's
+a million other points along the way where you might find yourself basically getting stalled
+out, but at the very least, there will be a historical archive that you tried.
+Yeah, and, you know, if you're interested in the BIPs, in the BIPs, there's the BIPs repo,
+and if you're interested in, like, upcoming things that might be BIPs, or participating in
+discussions about BIPs, and, you know, proposing changes to BIPs, most of that happens on the
+Bitcoin Dev mailing list. So, you know, you could join the mailing list and participate. It's
+open access. Anyone can read it. Anyone can send to it. So, all of this stuff happens in the open.
+Awesome. Thank you, Andrew. Thank you, Jameson, and thank you to everyone for joining us.
+All you shattery super coders get to working on your BIPs, and for the rest of us,
+don't trust, verify. Take care, everyone.

@@ -1,0 +1,749 @@
+Good morning Bitcoins and welcome to MadBitcoins Live! This is part three of our scaling discussion.
+We had part one on Monday night with Roger Veer, part two last night with Peter Todd,
+and now according to Flibber on Twitter, the Bitcoin blocks are getting closer and closer
+together with Bitcoin Core blocks going down and Bitcoin Unlimited blocks going up. The closer
+these lines come together, the closer we are to forking. We're joined by Jameson Lopp from BitGo
+and Rhett Creighton from Zclassic and a member of Bitcoin Unlimited. Jameson, how's it going?
+Welcome to the show. Not bad. It's exciting times in Bitcoin land as usual. All right, Rhett Creighton,
+thank you so much for being on. Yeah, thank you for having me. I really appreciate this video
+series that you're doing. All right, and then I just wanted to let the guests introduce themselves
+a little bit. Jameson, what's your background and what's your opinion on the Bitcoin fork in just a
+really short sound bite? Sure, my background, I've been a software engineer for 10 years,
+I've been interested in Bitcoin for five, been working at BitGo for two, and I've really been
+through all sides of the block size debate. I was a big proponent of XT and Classic back in the day.
+I think that we're going to need bigger blocks eventually. I think that we're also going to need
+off-chain scaling. And at the moment though, it looks like segregated witness is going to be the
+safest, swiftest path forward. So I'm really favoring that and hoping that we can get some
+larger legacy blocks before too long as well. All right, Rhett, a little bit of your background
+and your basic opinion on Bitcoin scaling. Hi, so I'm a software engineer and I first started
+using Bitcoin in 2011. I also, as you said, I forked Zcash to create Zclassic and I've been
+going to Bitcoin developer meetups in San Francisco for a few years now. I know several of the core
+developers. I know several people who work at Blockstream. Originally, when I heard about segregated
+witness, it sounded like a great idea to me. It sounded really reasonable. I thought for sure it
+was going to pass. And as I saw, we can get more into it in detail, but the more that I've been
+learning about Bitcoin Unlimited, I sort of came to understand both sides of this debate. I feel
+like I understand both sides of the debate really well and just that there are some reasons to
+consider Bitcoin Unlimited in my opinion. All right, and we've got about 50 live viewers,
+so if everybody could give us a thumbs up and a share so that more people could hear about this
+and go ahead and join us in the chat. I'm sure the chat's scrolling by, but I'm not looking at
+it right now. Just again, to go over what is our goal tonight. Our goal tonight is to find agreement.
+What we're looking for is the places that I can get Rhett and Jameson to agree. We're also looking
+to find disagreement. We're looking to find the absolute technical points where one person says
+five and one person says 10 and they can't come together, but we can put that aside for later
+and we can work on the disagreements later. Let's start with agreement. Bitcoin was invented by
+Satoshi Nakamoto, Jameson Lopp. So they claimed. Rhett Creighton. Yes. That's pretty close to
+agreement. Bitcoin has 21 million units, Jameson Lopp. Except for the rounding error, we'll say
+that's close enough. Yeah. Rhett Creighton. So you say this a lot and I would say that right now
+we're in a phase of Bitcoin where block reward is by far the additional reward that's given us,
+the dominant mining fees or mining rewards that the miners are collecting. And it's actually
+unknown what's going to happen, say, in 30, 40, 50 years when that's a much smaller percentage
+of the rewards that they collect. And there are a lot of, so there's just sort of unknown questions
+that we have in game theory about how that will play out. And I think that there may be the case
+where you have to say, look, in order for the blocks to keep being stable, which is keep a stable
+network that we all want, we need to keep subsidizing the miners with a block reward.
+And honestly, we don't know if that's going to happen. And it might be the case that we have to
+say, look, we have to accept 1%, 2% inflation, something like that. And these are choices that
+could come down the road. And yeah, as Bitcoin is programmed now, I would say yes, there's this 21
+million coin limit. But I would not be surprised to see inflation added in 50 years, 100 years or
+whenever. All right. I also would have accepted a disagreement that so many people have lost their
+bitcoins as well as minus the Satoshi bitcoins that maybe there's less than 21 million. I would
+also accepted that as an answer. Let's continue with our goal of agreement. Bitcoin is an open
+source project. Jameson. As far as I can tell, there are quite a few different open source
+code bases for the protocol. There's probably some closed source code bases as well that we
+don't even know about. Let's go to Rhett. Yes, I completely agree with that. All right,
+open source projects have their own forms of government or governance, a way of getting
+things done. And let's go backwards. Let's go to Rhett. Yep. And Jameson. In a vague,
+hand wavy fashion, I suppose you could say that every collection or organization has some form
+of governance. And how were things done previously under Satoshi? Was this similar to how things are
+done with Linux under Linus? Let's go to Rhett. I actually wasn't really around when Satoshi was
+still around. But looking at old Bitcoin talks, it appeared that there were a small number of
+developers. Bitcoin was worth far less than it was today. And I think that Satoshi was probably
+looked to as an authority figure, largely by other developers and participants in the project.
+Jameson? Definitely. I actually covered that in my last article that I wrote on Coindesk about
+really what Satoshi did in the very early days, all the mistakes he made, all of the things that
+he missed. Hal Finney being really the original contributor who showed a lot of those early
+mistakes and edge cases with opcodes and other bugs. And in the early days, it was definitely
+not a code is law. It was a Satoshi's vision is law. That's what we're going for. And there
+were mistakes in Bitcoin. So Bitcoin can be fallible. It's software. It needs to be improved
+sometimes. Right, Jameson? Definitely. I mean, any of these systems are just ways of automating
+what the human consensus actually wants. You know, we're just trying to duplicate human
+consensus in a machine world so that it can do what we want when we're not looking.
+And Rhett? Definitely. I mean, one of the most well-known cases was there was something like
+a bug that allowed people to create an extra 184 billion Bitcoin. And that was very quickly
+patched and reversed or forked by the miners out of the blockchain. So it's not in the chain
+that exists anymore. But definitely most people considered that a bug in Bitcoin.
+So we're agreeing that Bitcoin is open source. Satoshi was its leader. Satoshi was also not
+infallible. There were mistakes in Bitcoin. Bitcoin is software. And we can fix those mistakes.
+Sometimes we even make more mistakes when we fix them. But we're generally in a lot of agreement
+there. So we're moving on towards Bitcoin Unlimited. Now, Bitcoin Unlimited deals with
+the lack of Satoshi problem, I believe, by the system of appointing a president, a president of
+Bitcoin. Is this a good thing? We'll just go to Rhett first. Go ahead. I don't know. Honestly,
+it is a little different. So it could be a good thing or a bad thing, or a good thing sometimes
+and probably a bad thing sometimes. I think it's a good thing in that if you are trying for
+PR and marketing, if you're looking for maybe a person to be a representative or a spokesperson
+for Bitcoin, you can have an idea of maybe who to look for. It can be a good thing, maybe sometimes
+in leadership when you just want to get things done and you have more ability to execute in sort
+of a top down fashion. It can obviously be a really bad thing. If you're a government
+that decides you want to look for someone to either blame or you're looking for someone to
+coerce into putting back doors into the software and things like that. So I think there are good
+points and they're going to be bad points, but it's definitely different. It also definitely
+depends on the character of the president of Bitcoin. Certainly, we'd hope that the person
+would be infallible like the Pope, but we can't always count on that. We cannot even really count
+on that with Popes. Jameson, your thoughts? Well, I don't really want to speak for the Bitcoin
+Unlimited Organization, but my understanding and my hope is that I believe Roger is currently the
+president of Bitcoin Unlimited. I don't think that he thinks of that position as the president of
+Bitcoin, but rather of the Bitcoin Unlimited Organization and implementation. Because even if
+Bitcoin Unlimited becomes the de facto reference client or what have you, even then Bitcoin
+Unlimited will not have an authoritative control over the Bitcoin protocol. The Bitcoin protocol
+is this amorphous, hand wavy thing that emerges from our collective desires as developers come in
+and write code to codify our desires and then we choose what rules to run. So I'm not really
+worried at all about there being a president of Bitcoin or president of a Bitcoin organization,
+I guess, from a protocol level standpoint. That's a very fair distinction. I like that
+distinction. I like the ring of president of Bitcoin. It sounds nice, but I also agree with
+Rhett when he said it's a place for the media to contact. The media often looks for the CEO
+of Bitcoin and we never seem to have one, but this would give us something like that. Rhett,
+did you have more to add? Yeah, just point of information actually. Roger Baer is not president
+of Bitcoin Unlimited. It's a person named Andrew Clifford, I believe, and I've never met him.
+I've never been introduced to him. I've never seen him at a San Francisco Bitcoin developer
+meetup. He seems like he may not be very well known, at least in the San Francisco Bitcoin
+community. Well, certainly no disrespect meant to President Clifford, but we've got to get him on
+this show right away. Let's get him up on Twitter. Let's see if we can do that. We've agreed that
+Bitcoin is an open source project, probably invented by Satoshi Nakamoto, maybe a team.
+We used to have a leader. We don't have a leader. We're not sure if we want a permanent or a fixed
+leader in the future, but let's move on to problems with the Bitcoin network. What kind of problems
+does Bitcoin face today? Rhett? What kind of problems? Well, what kind of problems? You kind
+of caught me off guard there, right? Because you're just like... You could say too many transactions
+or the fees are too high. Yeah, so that seems to be a big concern right now to a lot of businesses
+and a lot of companies. What the Bitcoin miners are asking for is to lower the Bitcoin transaction
+fees and allow more people to use Bitcoin for a lower fee. That's one major issue affecting
+businesses and users at the moment. All right, so we'll say that users are affected by high
+transaction fees because there's a lot of transactions and we might want to try to lower
+them. Jameson, what would you think about this problem? Is this also agreed as a problem?
+Yeah, I mean, working at Bitco, we have had more and more user complaints of transactions not
+confirming in a timely manner of transaction fee costs going through the roof. I mean, we have a
+lot of enterprises that use us and they have seen their fees go up over an order of magnitude over
+the past year. As far as I'm aware, this hasn't quite yet reached the point where it's actually
+pricing these businesses out of their business models. But if you were to draw a trajectory
+and assume that it continues on the same trajectory, I think some of them are starting
+to get worried about that. That is definitely creating challenges for us from an engineering
+standpoint. This also created a problem with wallets. Wallets originally didn't have a very
+variable fee assignment, so they would maybe send a fee that's too small or they would send a fee
+that's too big to try to cover themselves. This is very confusing to users. They don't really
+understand. I think that the fee is based upon the size of your transaction. That's just a really
+basic understanding, but the users probably don't even have that. They would prefer to just pay a
+dollar or pay a quarter. They're not sure why there's a difference. But we're all in agreement,
+there's a lot of transactions and there's a lot of fees. How are we going to solve this problem
+of too many transactions and too many fees? I'll start with Jameson this time.
+Sure. There's multiple ways you can solve it. The most straightforward, of course,
+being just go in and change the block size limit so we can have bigger blocks.
+The more complex, technical, and I guess long-term vision would be to try to reduce the current usage
+of block space via second layer payment channels and other networks. You could, of course, also
+just say, well, we'll just use some other altcoin because it's a lot cheaper. And from that
+standpoint, you could also say, no, there's actually far more than 21 million Bitcoins
+because all these altcoins are actually trickled down from Bitcoin when it gets too congested.
+But it's a challenging problem and there's a lot of different ways to approach it. And of course,
+the different perspectives that we have between people on how they think that we should approach
+it is what's causing a lot of this contention and conflict.
+If they don't like it when I say the wrong company's name, they're really going to not
+like it if I say that all the altcoins are really Bitcoins. But I like this solution so far. We have
+three solutions. We have bigger blocks. We have a more complicated long-term solution with SegWit.
+We also have plan three, just use an altcoin. We say that Litecoin is now mini Bitcoin. And if
+you're going to buy a latte, use mini Bitcoin. And there we go. What do you think of these?
+I think that was a really good explanation from Jameson. I think he pretty much covered all the bases. The only thing I'm surprised he missed a little bit is rather than making the blocks bigger, you could also introduce something like SegWit, which allows more transactions into the same block space, which is, you know, another way to increase transactions, just the probably the fourth of all the ways. And I think we pretty much got our point there.
+All right. So let's just go through these, these issues one by one. The number one that he listed is bigger blocks. Now, if you make the blocks bigger, what I've heard is there could be an issue with the Great Firewall of China. There's a potential latency issue because the larger the blocks get, you have to send them through. That's harder. There's also issues with hard drive space. You have to have a bigger hard drive to do that. Maybe some of the miners aren't ready for that. What are the potential issues with bigger blocks? We'll go to Jameson. I think that's a good question. I think that's a good question. I think that's a good
+question to Jameson first and then to Rhett. Yeah, I think there is a general consensus that at this point, the biggest bottleneck is bandwidth and latency network propagation issues. So, you know, as a result of that, you've seen things like compact blocks, extra thin blocks. Matt Corallo has built not one, but two different high speed relay networks specifically for miners. Of course, those are a little bit more centralized
+than I think a lot of the Bitcoin developers would like, but it is what it is. They get the job done pretty well at the moment. But really, at the end of the day, I think one of the biggest points of contention and differences in perspective is what should the cost of running a full node be for a user?
+And, you know, you can break that down into bandwidth, CPU disk space, all this other stuff and come up with some fancy matrix algorithm for determining the current cost as hardware continues to get cheaper.
+But the question then becomes, what's the actual dollar cost? Or, you know, how much is someone going to have to invest in a full node so that they can be self sovereign in their finances and be in a fully trustless environment?
+And no matter where you put that dollar figure, if it's $50, $100, $1,000, you're disenfranchising people. And then the question then becomes how many people are we willing to disenfranchise from having those specific security properties that we can then enfranchise another set of people from being able to use Bitcoin?
+So it's this weird trade off which, unfortunately, is very hard to quantify. And that just makes the debates much worse because both sides have valid perspectives. But a lot of times you can't even really put numbers to anything.
+And the hardware issue is similar to the bandwidth issue. It's usually people in more developed countries that have better hardware, have better bandwidth. People in less developed countries have worse hardware and worse bandwidth.
+Rhett, what would you think about what we talked about the big blocks here?
+Yeah, I mean, the other, I think Jameson made some great points. The other technical issue that is maybe worth considering is that, well, one thing is that people are, they're using Bitcoin for different purposes right now.
+And some people have, they've been sold on this promise that the blockchain is immutable, which means, what does that mean? Does that mean in 20 years, in 50 years, 100 years, you can just expect full notes to keep every single Bitcoin transaction record ever and they'll be required to have that?
+Or will there be some pruning? No one really knows what that means at this point, which kind of means that when you're trying to price the storage cost of a transaction, no one really knows, are you pricing that in for 10 years or 100 years?
+And so, you know, that's another reason why some of these costs are just really hard to calculate. You know, what is the fair cost of a transaction fee at this point?
+We also don't know if new hard drives or new bandwidth technologies will be invented. They may turn this all around. It may not be an issue anymore.
+Also on this hard block issue, the larger block issue, sorry, we would have to hard fork. What do you think about a hard fork? A basic understanding is that a hard fork, Peter said it yesterday, a hard fork changes the rules.
+I think it subtracts a rule. I'm going to maybe be wrong, but it basically makes the chain incompatible so that the chain, new coins are incompatible with old coins.
+Jameson, is a hard fork a good solution to get to these bigger blocks? I mean, I think that on a long enough time frame, we are going to have to make backwards incompatible changes to Bitcoin for one reason or another.
+I think actually it was Ryan Charles who posted something recently about, you know, the 2038 date timestamp problem is kind of like the next Y2K. I mean, there could very easily be some sort of Y2K type events that requires us to make non backwards compatible changes.
+But also, just like I said at the very beginning, if we want Bitcoin to be the mainstream cryptocurrency, then even with a very optimal segwit based lightning network and very optimistic assumptions around how many transactions you would be able to do with those payment channels.
+If you want to onboard the entire globe, you know, billions of people, you are going to have to have more on chain transactions anchored into larger blocks that then are able to use those second layer networks.
+So I think the real contention right now is timelines and timeframes and how urgent is it to do that now versus to have the ecosystem continue to struggle for another year or two or three.
+No one is completely sure we can be optimistic or pessimistic. But I think that one way or another, we have to have every scalability solution we can get our hands on.
+I like this idea of urgency. I think we should talk about this more later. But Rhett, your thoughts on a hard fork.
+Yeah, so that's a really important point.
+So the first thing is, I think that if you ask Peter Todd, he'll say that Bitcoin has hard forked once. And that was early in the history of Bitcoin when it switched from, I believe the fork was switching from choosing the chain with most blocks versus choosing the chain with the most total work.
+And really everybody at the time just actually forked. It wasn't contentious. And so there was no, there's not a separate chain.
+Now, Vitalik Buterin actually did a really good write up with this kind of this Venn diagram describing sort of different kinds of hard and soft forks. And I think that's one point where people get into a lot of arguments, because two people are arguing about what a hard fork is.
+And they each in their mind have a sort of a different definition of what a hard fork is. And I'm not going to be able to rattle them off off the top of my head.
+You can look at the Venn diagram and they sort of mean different things. But the scary thing about a hard fork, I think, or the most risky thing is that if you have two groups of people or two networks that decide at that point that they're going to split like we had with Ethereum and Ethereum Classic.
+And, you know, that was a case where right now, I don't know, Ethereum Classic is maybe five or 10% of the market cap and usage of Ethereum.
+So you kind of have this like majority and minority fork, the network splits, and they just keep on going forever.
+So yeah, that's sort of those are my basic thoughts.
+Okay, so what we're agreeing on hard forks is there's different kind of hard forks. There's contentious hard forks like the Ethereum, Ethereum Classic hard fork, where we end up with two chains, and there's basically just a lot of confusion.
+Then there's hard forks like we had a Bitcoin problem, and everyone agreed to hard fork and surprisingly everyone got on board and joined the new chain, and there's no one fighting out that old chain.
+So we're agreeing on that. What was else I was going to say? Something else about hard forks.
+Anyway, let's just move on to the layer two solution we were talking about. Is it possible? Should we go to a lightning type solution where there's a second layer network on top of Bitcoin?
+Would that solve our problem to start with Rhett and then go to James?
+So I guess what I want to say about that is, first of all, I know the Joseph and Tash and Elizabeth and Rosebeth, the developers and creators of the lightning network really well.
+They have done really great work on lightning network. They have spent a really long time developing it and asking the community for feedback.
+And so I think that they are doing really great things.
+I guess what I disagree with or what I hear a lot of people, I feel like they're misinformed because they know that there's this transaction malleability bug in Bitcoin right now,
+which is preventing the lightning network from from us being able to use the lightning network on main Bitcoin.
+However, it is possible to use the lightning network on SegWit activated test net right now.
+And that's the main way that they're testing lightning network.
+And I will say that I so the lightning network just had a new release a few days ago.
+I used the release prior to that and it was extremely difficult for me to send my first lightning network transaction.
+I mean, I know it's really early stages, but I'm a developer. It took me like about four hours of working on it.
+I had to ping their developer. They had a they have a faucet and it was it was down.
+I mean, these are all like issues that are solvable. But I think that if people are thinking that, oh, once we activate SegWit transaction malleability, boom,
+lightning network is the switch that's going to turn on. I don't think that's the case.
+So I view lightning network as something that that made it will likely develop and be used more and more.
+But I see that as maybe something two years down the road, maybe, you know, it could it's we're really just not there yet.
+All right. Also, I remembered my third point on hard forks.
+I was going to say that we're basically in agreement if there's a Y2K type bug in the future,
+a time stamping issue that we would hard fork together as a group to fix that.
+It's very unlikely, I think, that we would hard fork over a Y2K timestamp issue and end up with two chains.
+So so actually what I would I would say on that point, quantum computing is really going to be a big deal
+because if we get to the point where we all know that RSA is going to be broken,
+then you're going to either have to move your Bitcoin to a new public private key system or you're going to lose your Bitcoin.
+Right. And it'll be really interesting to see if Satoshi moves his Bitcoin then.
+But, you know, I think I mean what there's not going to be a choice at that point.
+Right. That's an inevitability in all crypto systems that they will become obsolete and you'll need to migrate.
+Yeah. And then James, would you basically be in agreement that we would hard fork together to fix a timestamp issue?
+Just to use the hard fork. I seriously doubt that that would be contentious.
+Yeah. All right. Excellent. And to move on to the Lightning Network.
+Do you agree with Rhett? Is Lightning not ready?
+And also, while we're talking about Lightning, what would it do to the miners fees?
+Can the miners survive a Lightning Network? And I'll ask Rhett.
+Right. Well, I mean, you know, Lightning is definitely not ready now.
+How long will it be before there are user facing Lightning wallets that, you know,
+successfully abstract away all the complexities and make it as simple, if not simpler, as using a Bitcoin wallet these days?
+I mean, I would be optimistic maybe in a year.
+But also, it may not be that Lightning gets traction from that standpoint.
+You know, there are so many other use cases that might pop up first, such as, you know, machine to machine micro payments.
+Internet of Things is something that I'm seeing a lot of even larger companies starting to work on these days.
+And it's also possible that we'll really see it more start as a back end infrastructure where, you know,
+it would not surprise me if it really does start off as more of a hub and spoke type thing,
+where you've got the large liquidity providers, wallets and other services around the ecosystem who are able to jump in
+and use their technical capabilities to hop onto the Lightning Network, possibly before we even have user facing UI wallets.
+And then they're using the Lightning Network to do these off chain transactions between each other in a trustless fashion.
+It's very hard to speculate as to how unknown technology like this is really going to take off.
+And it may not even be that it's just the Lightning Network.
+So, you know, once again, going back and looking at Ryan Charles, he's building his own micro payment hub and spoke system.
+And it's not the Lightning Network. And it doesn't even require SegWit.
+And he probably won't be the only one to do that.
+If we continue to have more and more challenges with the limitations of block space, that just creates pressure,
+economic pressure on all of these companies to come up with their own solutions, permissionless solutions,
+where they don't have to go out and try to lobby miners or lobby the rest of the ecosystem.
+They're going to want to build their own systems that will work without having to rely upon other people changing stuff.
+So I think I'm really parroting a lot of the stuff that Jimmy Song has been writing about in some of his medium posts
+that are really my style of thinking, very optimistic of like, you know, things might look terrible right now,
+but it's just challenges for us to overcome.
+So we may see many interlocking walled gardens of micro payments. That's an interesting idea.
+Rhett?
+And I think back to that, I just this is sort of one of the I guess one of the things that I don't know.
+I think this is a really important point that a lot of people, you know, Lightning Network sounds like it will be this great thing.
+And a lot of people just in their head, it's just, oh, like Lightning Network will solve things and it sounds really great.
+But so it will actually change the user experience very much.
+Because, for example, if you think about like if you were, you know, right now, I don't know, you sign up for Coinbase and you get some Bitcoin, right?
+Well, now what's happening is so there's a few things.
+I mean, you have this extra layer that somehow needs to be developed for this opening up channels on the Lightning Network.
+And then you have this complication that actually every time you open up a channel, it's costly.
+It costs a transaction fee.
+And when the Lightning Network was presenting this in the early days, that was pretty much their risk.
+They were saying like, yeah, you know, so like worst case is you're trusting the other party enough that you might lose a transaction fee.
+And every time you open and close a new channel, you know, OK, it costs your transaction fee, which didn't sound like much back then.
+But if we're talking about transact, transaction fees are like ten dollars or two dollars or whatever.
+Now, every time, even if it's one dollar, if you are opening up a channel every month,
+now every single one of your users are costing you a dollar a month in a transaction fee to open up this channel.
+And that just changes things dramatically.
+And, you know, who knows, is it going to go to one dollar? Is it going to go to ten dollars?
+Are we going to require Coinbase to be opening up a channel every month for ten dollars for each of their users?
+And if you try to say, well, let's stretch that out to a year, right,
+then the whole trustlessness of Lightning Network kind of breaks down because now your Bitcoin is locked up for a year.
+Right. So it's not just this like this magic thing that makes you get a lot of transactions for free.
+And I think that, you know, I just hear a lot of people thinking that like Lightning Network is going to come and solve all their problems.
+And A, almost none of those people that I've talked to have actually sent a Lightning Network transaction.
+So what I would say is that if you think Lightning Network is going to like solve all the problems of Bitcoin, then please go and try Lightning Network.
+And if you think that there are any issues with it and maybe you could contribute to, like that would be great.
+Like help make Lightning Network better.
+But I think that, you know, people should just be forming, should have an informed point of view when they're forming these opinions about Lightning Network.
+All right, Jameson, your thoughts are the transaction fees too high for the Lightning Network?
+Yeah, I mean, I wrote an incredibly long article about a year ago about all of the potential complexities
+and challenges that I saw that we're going to have to overcome with the Lightning Network.
+And both at like the micro payment channel scale and the macro, you know, network mesh scale.
+And there's still a lot of unknowns where, you know, I've talked to a number of the Lightning devs and it's, you know, you can't predict the future.
+It's we're going to have to build it, see what happens, if stuff breaks, adjust.
+That's kind of why you're seeing a lot of these Lightning developers take a very conservative approach to what they're building,
+where like right now I believe they actually are limiting the value of any given channel to about $40 worth.
+So, you know, if that was like the permanent, like you can never have a channel more than $40 worth ever in Lightning.
+And we have, you know, on-chain transaction fees that are becoming $1, $2, $3.
+And yet it starts to sound kind of dumb and not really economically feasible.
+But really, at the moment, that's more of a safety issue in terms of, I guess, one of the things that I find really interesting
+is the whole argument about locking up your Bitcoins.
+And it's true that, you know, you are encumbering your Bitcoins in this multi-signature transaction
+so that you can't spend them in another on-chain transaction because that would be conflicting with it.
+But the idea of them being locked up in terms of capital, I think, only really makes sense like during the initial bootstrapping phase of Lightning.
+So, if you're envisioning a future where the vast majority of transactions are, in fact, occurring on the Lightning network,
+then you're not really locking up your money. You're just moving it to another layer.
+And, you know, if you're paying and receiving the vast majority of people on the Lightning network,
+then I don't think you would really consider your money locked up.
+But, of course, this is all speculation on what the future use cases of on-chain versus off-chain transactions would be.
+And we could speculate all night long about what could happen.
+So, just on that point, when I was talking about, I guess, locking it up.
+So, yeah, if who you've created your Lightning channel with is a trustworthy person and everything works fine,
+then it shouldn't feel like you've locked it up because every time you want to send a transaction back and forth,
+you'll do that voluntarily and nothing will happen.
+The whole point of a Lightning network is that you don't have to trust people, the person that you created this channel with.
+And if that person decides, hey, I'm going to just try to hold your Bitcoin hostage, right?
+Well, the very worst case is at the end of this end time lock, you just get your Bitcoin back.
+And originally, when Lightning Network was presented at the Bitcoin developer meetup,
+there were discussions of like, well, how long should end time and lock time be?
+And they were like, well, it could be maybe it'll be a week, maybe it'll be two weeks.
+So, you know, worst case, you'll get your Bitcoin back in two weeks.
+Now, if we start saying that, OK, these terms that transaction fees are so high
+and we don't want to create a new channel every two weeks and instead we're going to create a channel once a year,
+now I believe that you might be under this risk where it could be the person you've created a channel with
+can start to hold your coins hostage.
+And they could say, no, you know, actually, I'm just going to I'm not going to sign these transactions you want me to sign.
+And if you don't like it, your Bitcoin can stay frozen for a year.
+And that now there's some real opportunity costs that you're losing on Bitcoin that's frozen for a year.
+And it kind of in a way, it starts fighting against the trustlessness of lightning. Right.
+Yeah. Now, I believe that one of the responses to that was to use relative lock time
+so that you could basically set like one or two weeks and then push it back, you know, every time you update the payment channel.
+But I think a lot once again, this is just like a lot of numbers and back of the napkin calculations
+where we're just pulling numbers out of nowhere.
+And I think the idea is that they're going to they're going to throw these magic numbers into their test networks,
+see what happens, let the network grow a little bit more, see what happens,
+especially if you talk to Rusty Russell, he'll straight up tell you I expect for there to be complete failures
+and collapses in the early days of lightning network because it's going to be a learning experience.
+So, you know, hopefully with enough experience and time and seeing people trying to act as malicious lightning nodes,
+trying to exploit each other, you know, basically being cypher punks, you know,
+trying to find all of those edge cases, those problems, then use the old sewer rat analogy from Andreas.
+You know, eventually we will overcome all the viruses and we'll become stronger and learn from our experiences.
+So it's, I guess, kind of optimistic versus pessimistic view of, you know,
+how great is this mountain that we have to scale?
+So I'm actually hearing a lot of agreement on Litecoin.
+We're agreeing that on lightning network, that lightning network is an interesting project.
+Lightning network is not ready yet.
+There are a lot of unknowns and we may even need bigger channels.
+So that's a whole nother potential argument and debate there.
+But I just want to go through one issue again because I want to cover all three groups, the coders, the users and the miners.
+Is there room for the miners in the lightning network?
+Will they still make money from Bitcoin?
+Can they make money by being part of the lightning telephone chain of transactions?
+I'll start with Jameson, then we'll go to Red.
+Yeah, though I think that they would probably benefit more if there were, in fact, smaller blocks and, you know, scarcer block space.
+This is one of the things that I speculated about in that article that I wrote.
+Basically, think of it as trickle down economics of off chain to on chain.
+So if we do end up having a very, very popular mainstream lightning network with a lot of value held in that,
+then there's going to have to be high value on change anchor transactions,
+which people would economically, you know, be incentivized to pay much higher fees even than today probably to open.
+But, of course, they're not going to do that if you can only put $40 in a channel.
+I'm thinking more like if we get to the point where lightning is so well tested and proven and robust
+that you would be willing to put $1,000 into a channel and that is like your primary wallet that you walk around with for a year,
+then sure, you know, spend $10 on a crazy on chain fee because you're going to be saving it down the road.
+But lots of hand waving once again of what possible situations could happen.
+All right. Rhett, your thoughts?
+Yeah. I mean, I can tell you as a Bitcoin blockchain consultant for the past few years,
+a lot of people are excited to anchor all sorts of metadata in the Bitcoin blockchain.
+I see lightning channels as just another kind of metadata layer that people want to anchor in the Bitcoin blockchain.
+There's increasing demand to anchor data in the Bitcoin blockchain and the lightning network will just increase that demand.
+OK. Our third potential problem and solution we came up with was using another coin such as example Litecoin
+to do all of our smaller transactions while continuing to use Bitcoin for our larger transactions.
+Rhett, what do you think about this possible solution?
+People are doing that. I think people are doing that.
+And I think that that's actually I would say that is one of the reasons why I think value is leaving Bitcoin.
+And that is one of the one of the biggest reasons why I can understand.
+And I guess what's the word, but I understand the argument that Roger Ver is making and that Bitcoin Unlimited is making
+and what some of these miners are worried about.
+And I believe that what they're worried about is they're very invested in Bitcoin and the future of Bitcoin.
+And when you see a lot of applications now are being built on the Ethereum network because it's a penny a transaction
+and your transaction will go through in 17 seconds.
+And a lot of developers like myself, you know, when you look for, OK, I just want to make this application that works.
+And this is the big problem is I use that word works.
+And then a lot of people who are just holding Bitcoin like gold, like a store of value, they'll say, well, Bitcoin works for me.
+Right. But I can tell you that there are a lot of applications that are really innovative.
+The people want to, you know, build these really great products.
+And they're moving to Ethereum because they have 17 second transactions that cost a penny.
+And if you look at the market cap of Ethereum, it's come back down.
+I don't know where it is between three and four billion dollars.
+But it was, you know, a billion dollars a couple of years ago and it's grown to three billion.
+And I think I forget the relative numbers, but Ethereum has grown a whole lot quicker than Bitcoin.
+So, yeah.
+I would agree, Rhett, that the system that works is not always the best system.
+The safest thing I can do with my computer is turn it off, take the battery out and put it in the closet.
+It's very secure. It's not going to get hacked.
+It doesn't go on any Wi-Fi networks, but it's not very useful to me as a computer.
+I've also I've heard what you're saying about I've seen Roger's tweets that Bitcoin is losing market share and he's presenting this as a big problem.
+I would propose another way of looking at it the way that we've been discussing tonight is that maybe Bitcoin is a steam boiler.
+And this is we're pulling the whistle and the steam is coming off the boiler, preventing it from exploding.
+Maybe these altcoins are preventing Bitcoin from exploding.
+And this isn't a bad thing. Bitcoin doesn't necessarily need 100 percent of the market share.
+This might be a different way of looking at things, but I think we need to explore this as an idea as well.
+Jameson, your thoughts on using an altcoin to scale Bitcoin?
+Yeah, well, I mean, I think the question is, you know, what are we engineering Bitcoin to do?
+And I can't think of of any protocol level developer that I've met who has ever said, you know,
+we're engineering Bitcoin to be worth a market cap that's 100 times what it is today.
+And we're going to do that by X, Y and Z. Maybe we can get that guy.
+Maybe he's a bit you know, that's I think really more of like a CEO enterprise mindset of growth in terms of financial value.
+Whereas, you know, most of the protocol developers that I interact with, they care more about things like security and privacy
+and trustlessness and permissionlessness and all of the buzzwords that we're very familiar with.
+So I think that's also where you get another big point of contention, especially between the enterprises and the developers,
+because they don't necessarily have the exact same economic interests.
+All right. And our fourth point tonight, right? More on that?
+Oh, yeah, I was just going to say that's interesting that you point out that you haven't really heard a lot of developers,
+you know, talk about Bitcoin reaching some kind of market cap, because I think that's that's what I see a lot of investors and holders.
+And if you go on Reddit, I mean, very often times over the years, I mean, that's that's why people that's what brings a lot of people to Bitcoin.
+That's what I think a lot of the why a lot of the users are invested in Bitcoin is because they do see Bitcoin as as replacing the dollar or replacing gold.
+And they talk about what's what's the market cap of Bitcoin going to be when it replaces the point of gold.
+And I hear tone days all the time. He says gold is obsolete because the metal detector got invented.
+And I can have 12 words in my head and I can walk across a border with a million dollars in Bitcoin.
+And so it's better than Bitcoin. And I've heard venture capitalists say, like, you know, are you kidding?
+This is definitely the future of money. And they're talking about, like, when we're going to colonize space and stuff.
+And they're like, they're like, yeah, we're not going to like what are we going to ship dollars to space? Right.
+Like, that's stupid. And and so, you know, I hear a lot of investors hold.
+I mean, that's why I think a lot of people are in this space. And I agree.
+I hear a lot of developers are scared to make a mistake with with something that's worth 20 billion dollars.
+And they want they want to be they want to be risk tolerant.
+They they want to be intelligent. They want to be secure.
+They want to be prudent. And you don't nobody wants to be the developer that like lost 20 billion dollars in Bitcoin or whatever.
+And nobody wants to be market place and make the exchange that everything breaks. Right.
+But I that's that's that's attractive to me about Bitcoin.
+I do see a lot of potential for the future replacement of money in Bitcoin.
+And and and I think it's kind of sad if if what if what we're agreeing to is that if we want to be invested in crypto currencies,
+that what we need to do is actually start divesting into these other all coins that maybe have faster or or better technology for certain use cases.
+And, you know, if that's the case, I mean, that's I think that Bitcoin has the best brand globally right now.
+I mean, those those like it flyer commercials in Japan are awesome.
+You've got you got people all over the world. They know about Bitcoin.
+And if if if we're not going to innovate with with the position that Bitcoin has in the marketplace right now,
+then it's just throwing away a lot of value.
+Well, first, I want to say it would be a shame to see a pallet full of greenbacks go out the airlock into space.
+That would be a very sad loss of money.
+Red's got a good point there on the space based money.
+I also want to say that this is part of the Bitcoin governance problem.
+What I'm seeing is that we have three different groups of people.
+We have miners, we have users and we have coders and they each have different problems.
+They have different goals and they're all working together on this system that we call Bitcoin.
+So part of what we're doing is we're trying to get all three of these groups onto one page
+and to make sure that some don't collude with others against the others
+and that we have all kinds of complicated political power issues that we're dealing with there.
+Well, let's move on to our fourth problem and solution for Bitcoin scaling, which was segregated witness.
+James, we're going to go to you first, maybe give us a little roundup of what segregated witness is
+and what problems it would solve or potentially solve.
+Sure. So segregated witness basically is doing exactly what it says.
+It is segregating the witness, which in this case is essentially the transaction signature.
+So we're taking that signature out of where it currently is in the Bitcoin blocks
+and we're just moving it over a little bit so that older nodes don't see that, but newer nodes do see it.
+So this is one of the big points of contention of is segregated witness a block size increase?
+And well, from the legacy standpoint, no, it's just freeing up more space for other transaction data
+from the new perspective of the SegWit block format, then yes, the serialized block is actually larger.
+But I think that that whole block size increase really gets lost in the noise of all this debate
+because that was never the primary reason why segregated witness was sought after by the developers.
+They were seeking to fix the transaction malleability problem, which Peter Willa has been trying to do
+for as long as he's been in Bitcoin and he had a bit open for a number of years,
+which eventually he just gave up on. He was like, nope, won't fix.
+But thankfully, they figured out how to do SegWit as a soft fork and have been pursuing that.
+But so the real value add of fixing transaction malleability is enabling these second layer networks
+like lightning network or at least making it easier to enable them.
+And it's also got some other benefits, I believe, like the Bit9 will allow us to have many, many
+multiple parallel soft forks going on at the same time.
+Opens up the door for other things like Schnorr SIGs, which you could very well argue is on-chain scaling,
+signature aggregation.
+So it's really Bitcoin Core's answer to how do we make Bitcoin more performant
+while doing it in a backwards compatible format.
+All right, Rhett, your thoughts on segregated witness.
+Yeah, I thought that was a really good technical explanation of what segregated witness is.
+So my thoughts on segregated witness.
+I have no problem with segregated witness from a technical point of view.
+And I was actually really excited for segregated witness when I used to go to Bitcoin developer meetups.
+And I actually was there at a meetup right around the time when they four months ago
+when they were pushing segregated witness out.
+And I asked Peter Wille, I was like, oh, that's awesome.
+You know, then we can start using Lightning.
+It's going to be great.
+You know, how long do you think it's going to take to activate?
+And he was like, oh, he conservatively, he said, because after they get to 95 percent,
+then it's like, I don't know how many more blocks.
+But he was like, oh, you know, six months or something.
+And so I guess my issue with segregated witness is really just, you know, it is political.
+And from a marketing perspective, it really concerns me.
+You know, when I see now four months later that it's signaling maybe in the mid 20 percent from the miners.
+So what that tells me is that the miners don't really want it.
+I mean, at least they're not signaling that they want it.
+And something there there was some kind of miscommunication between the developers
+and the miners because the miners, the developers were so confident that there'd be no problem
+and no issue in getting this passed that they put the activation threshold at 95 percent.
+So, I mean, at this point, I would have to I almost would have to say, like,
+why are we talking about segregated witness?
+Because segregated witness is just it's dead.
+It cannot activate this year.
+It's going to stay stay out there and it's going to maybe maybe it'll get 25 percent.
+Maybe it'll get 75 percent, but it's not going to reach the 95 percent activation level.
+We know that. So, I mean, it's almost like I don't even know why anyone is talking about segregated witness anymore.
+And, you know, I what the what really brought me into looking at Bitcoin Unlimited
+from the beginning is as I said, wait a second.
+Like, why why is it? Why are why is it only 26?
+It's not like it's 75 percent of miners and there's just like this one pool no one likes or something.
+Right. It's 75 percent of miners are not signaling that they want segregated witness.
+And now what we're seeing is upwards of 40 percent of miners are signaling we want Bitcoin Unlimited.
+And so we're going to cross this 51 percent threshold with Bitcoin Unlimited soon.
+And by the way, there's no set activation threshold for Bitcoin Unlimited.
+So, you know, I think that from a technology point of view, I've talked to other other Bitcoin Unlimited members.
+They nobody's against the possibility of adding segregated witness or something like it into Bitcoin Unlimited down the road.
+I don't think I've really heard, you know, too many definitive technical reasons that there's anything wrong with with segregated witness.
+Now, I guess the only other thing I guess I should point out from a from a I don't know, an organizational point of view.
+I think that what worries me is because segregated witness is a soft fork.
+Right. If we create this sort of major change in Bitcoin with a soft fork, I worry a lot that that psychologically the public is going to think, oh, only soft forks are safe from here on out.
+And now we're talking about like five, ten years down the road. Right. And we're talking like you're saying with the with a timestamp error and all these things were like we may very much need to hard fork Bitcoin.
+If we impress on the public now that the only safe fork in Bitcoin is a soft fork. Right.
+Then that could be setting a bad precedent for future growth and development in Bitcoin.
+So that's where I can be inclined to understand and start to think about, OK, what is the point of view of these 42 percent of miners or whatever that are signaling we want Bitcoin unlimited.
+Right. And maybe what they're saying is, well, you know, we looked at the Ethereum Classic, the Ethereum fork.
+Yes, they broke off. But now look at how much Ethereum's market cap has grown.
+So maybe maybe for hard forking, splitting the community and innovating is actually better off from a from a market cap point of view of the people who are invested invested in Bitcoin.
+Maybe hard forking can lead to a more innovative, innovative technology driven Bitcoin in the future.
+All right. I'm seeing a lot of contentious issues there. I want to unpack some of them.
+First, I'm seeing kind of a failed rollout of SegWit. SegWit is kind of like the new American Health Care Act.
+They say it's going to pass and then everyone says it's dead on arrival.
+So you have this bill that's kind of languishing out there at 25 percent and I can huff and puff all I want.
+But 25 to 95 is a big jump. I'm going to need 70 percent of the miners.
+Maybe I need to change the name of SegWit. Maybe I need to relaunch it, put it in a new package.
+Something like that could just be it's not going down right. Then there's also the question of mining incentives.
+Are the miners incentivized to do SegWit as the transactions as there's more transactions and the fees get higher?
+The miners make more money. Maybe they don't want to do SegWit.
+And then there's Rhett's third point, which is if we don't hard fork and if we only do soft forks, we lose the hard fork as a tool.
+James, what do you think about each of these points and just we'll go through them slowly.
+Right. Yeah. So I think one of the tricky things, especially with the history of rolling out soft forks and the way that they have been,
+at least for the past few years, is that a lot of the community has come to see the miner signaling as some sort of voting democracy.
+And I think that Shaolin Fry and his emails to the dev list did a really good job of explaining how we should actually be striving for depoliticizing this entire process
+and instead seeking for signaling permissionless activation.
+So really, the reason why these 95 percent thresholds have been set so high was the reasoning is that whoever has not opted into a soft fork as a miner
+could conceivably get accidentally forked off of the network.
+And we want to avoid hurting the miners by doing that.
+So as a result, we require a really high activation threshold.
+But then Shaolin Fry comes along with this concept of user-activated soft forks where he is saying,
+well, actually, there is a safe way to have a minority hash rate be validating a soft fork rule set.
+And basically, the way that you would be able to do that is you would have to get the miners who don't want to validate it,
+don't particularly agree with it or want to use the soft fork to firewall off their older nodes that don't support it
+to prevent them from accidentally validating invalid transactions according to those rules.
+And this does get a bit more hand wavy because now instead of talking about this very easy to read metric of, you know,
+signal blocks and hash rate, we're instead saying, no, we're going to try to hand wave, you know,
+measure the economic majority of what the nodes are who are going to be actually making use of this mechanism.
+I think that it could probably be better thought out and be more safe than the current form is,
+which is why I think you don't see a whole lot of developer support for it, really pushing for that to happen.
+But in general, I think that the big thing to get past is that Bitcoin is not really a democracy.
+It is this crypto anarchist system.
+And it's certainly possible to turn it into a democracy or to at least take a segment of the ecosystem
+and democratize it by creating some organization that people are opting into and saying, yes, we want these things.
+But I suspect that if that happens, that you will have this contingent of hardline crypto anarchist and libertarians who say,
+no, we don't really want that because if we wanted that, we could use some other legacy financial system.
+So it really seems to be more of a philosophical than a technical problem to me, though it very well could also be economic.
+And, you know, miners may not feel like they really have any incentive to start validating those rules.
+But I'm not a miner. I don't pretend to speak for them.
+All right. Ret, follow up question. User authenticated soft fork.
+Yeah. So I would have to group. So this user activated soft fork.
+That was an idea that was kind of floated around Reddit for about a day.
+I think it's absolutely I mean, I just have to file that again under under SegWit as just not going to happen.
+I don't think anyone's really taking this user activated software seriously anymore.
+It's it's just it can't happen. You can't you can't think about what would happen with 75 percent of miners opposing this change.
+So what you're going to lose, you're going to be OK with the nodes like activating. We're going to just cut out 75 percent of the miners.
+And oh, by the way, there's also like all these other there's Roger Bear and all these other businesses part of the community that have to get on board.
+It's not going to happen. I don't think anyone's taking this user activated software thing seriously.
+It was like kind of a neat idea for a day. And, you know, it was interesting from a technology perspective to think about what could happen now.
+But on Jameson's other point, what I do agree with, I think this is a really good point.
+And it's the only way that this even this 95 percent threshold thing makes any sense at all when I'm trying to figure out how the heck why did that happen?
+And I think that in the past, Bitcoin was not as political and and this signaling mechanism was not meant to be a political mechanism for people to vote and to make Bitcoin more political.
+I think the intent from a developer's point of view of the signaling was really just to say, look, here's the upgrade and let's just track who has the upgrade.
+You're going to upgrade to Bitcoin, but some people are going to be slow. And if they haven't upgraded, like we can have a way to see who it is and we can remind them.
+And, you know, like like a friendly kind of upgrade monitor system, I think, was the intent.
+And what it's really turned into is it has turned into a political voting mechanism.
+And Bitcoin has gotten a very political in many ways over the past few months, especially over this issue.
+And, you know, what I think what I my point of view about that is I think you have to be realistic and say, look, this is something with a 20 billion dollar market cap that people are trying to disrupt the global financial system with.
+Of course, it's going to be political. I think you can't you can't just say, look, let's not make Bitcoin political.
+It's like that's just not the world that we live in. And so I, you know, I I can like very much agree with Jameson.
+And it's a shame that the community is split now and that things have gotten political and, you know, politics makes people say and do stupid things.
+Definitely. And, you know, it was nicer when we were all cohesive. But I just think you have to be realistic about some of these things.
+All right, Jameson, would you agree the signaling has gotten too political?
+Yes. This is a point that I think I've also been making a lot recently is that if we want to make forward progress, we have to collaborate because just the way that the entire checks and balances of power in the system are set up.
+Whenever one group pisses off another group or whenever one group makes another group feel threatened or feel as if they are becoming an authority or becoming coercive,
+then the group that feels threatened or victimized or hurt or whatever immediately bands together and digs in their heels.
+And the result of that is stagnation and the status quo. So like the most powerful thing in Bitcoin from the hand wavy like meat space consensus of what is Bitcoin is the status quo.
+And if you want to change anything about Bitcoin, then you need to either figure out how to convince a large majority of the system to come along with you with these changes.
+Or you have to figure out a way to implement the changes so that nobody else even cares that you're doing them.
+And that's like the permissionless innovation style. Some excellent points. And again, the user activated soft fork versus the miners signaling brings up the point that we have three disparate groups in Bitcoin.
+We have the users, the coders and the miners, and they all want different things.
+And part of this scaling problem is that we don't exactly have everyone on the same page. We kind of have some some coders going with the miners.
+We have the users on the other side. We have some users going with the coders, but the miners on the other side.
+We're having trouble getting the three sides of this pyramid together.
+So I want to go on to the last issue tonight, which is the issue that we talked about earlier, the issue of urgency.
+How urgent are these problems to Bitcoin? Do we need a hard fork tomorrow?
+Do we need a hard fork next week or do we need a hard fork several months or maybe a year down the road? And we go with Rhett first and then James.
+Well, I can say that so a lot of a lot of my friends and a lot of people, a lot of people who are, I'd say, Bitcoin core supporters.
+One of the things that attracts them, maybe maybe the things that attracts them to Bitcoin is the long term stability of Bitcoin.
+And especially compared to other crypto currencies, it's often seen as a safe haven.
+And so there is this idea that we should not rush into any any changes.
+And I know some people who say, you know, let's wait two years, let's leave things how they are and wait two years and fees can go up to ten dollars.
+And I've heard people say, let's just wait until I don't I don't believe this could happen.
+But people are saying, like, let's just wait until it's no longer political.
+Right. Let's just wait it out. And, you know, it could take years.
+And even even Peter Todd will say things like, oh, well, if Bitcoin unlimited splits from from Bitcoin core and then there's only the mining power splits
+and there's only a block every now there's only a block every hour on Bitcoin core coin and it's full.
+Who cares if that takes two months or whatever and you have to wait for difficulty to readjust.
+Right. Like a lot of a lot of conservative developers are of the mindset of like we can wait.
+We can wait years from my point of view.
+I don't know. I look I think this Bitcoin is very comparable to a tech startup.
+And I view people who own Bitcoin in a very similar way to owning shares of a exponentially growing technical startup.
+And in my own in the past, I don't know if people remember, but
+Friendster was one of the examples of like this startup that was like growing really quickly.
+It was an early social network before Facebook.
+And what happened was eventually they just hit the scaling issue.
+And it got to be the point, like if you wanted to use Friendster, you'd be waiting like minutes for pages to load.
+And it was just this like horrible experience.
+And they couldn't get any new users on board.
+And, you know, it lasted a few months and then people moved on to MySpace.
+And, you know, if you look alternatively say to Twitter.
+Well, when Twitter was growing, you know, they had all of these like the fail whale and they have all these bugs and things.
+And, you know, things would happen.
+But there weren't like month long periods where it was just like, you know, Twitter was taking like 10 minutes to load or whatever.
+There wasn't like this period where you just you just couldn't use Twitter that lasted really long.
+And I think that that's critical to the growth of a of a fast growing tech startup.
+So I would say that if if you know if what you want to do is bring 10 times the current the current Bitcoin users,
+if you want to increase that number by a factor of 10, then doing something about scaling, it's really critical to do that now.
+Because, you know, if you wait a few months, there's there's all these altcoins, there's all these ICOs popping up.
+The longer you wait, the more of those are going to come up and just take market share away from Bitcoin.
+And and it creates a huge risk of I mean, I saw I don't know what it's at now.
+But, you know, Bitcoin had been about 80, 85 percent, 90 percent of the market share of crypto coins for a long time.
+I saw it drop down to 72, 73 percent.
+So I think that we're at a risk of it no longer being the majority market share of crypto coins in within a few months if if the scaling issue isn't addressed.
+All right, Jameson, your thoughts on urgency?
+Well, I think that one way or another Bitcoin is still going to exist.
+The question becomes, you know, what will it be?
+And one of my speculations that I really came out from the latest Satoshi roundtable with from talking to all the different people, all their different perspectives,
+was that even if we end up with status quo deadlock where nothing happens, Bitcoin still keeps running.
+It's just the nature of Bitcoin changes.
+The nature, I think, would continue to go up into higher, higher value amounts, be more of a digital gold rather than a payment system,
+potentially even getting more of the Wall Street and traditional financial industry and, you know,
+very wealthy family back office people using it as some sort of hedge where, you know,
+they're moving millions of dollars around and they don't care about a hundred dollars fee here or there.
+So, I mean, I'm optimistic that Bitcoin will exist.
+It's very hard to predict the future about, you know, who will win in one thing or another.
+I'm not so sure that, you know, even if if we switch to like 10 megabyte block sizes right now today,
+that still wouldn't give Bitcoin more capacity than, say, the next top 10 altcoins, right?
+If you're looking at that like trickle down altcoin blow off valve type thing.
+And also, I believe there are some altcoins that have, you know, basically unlimited block sizes, right?
+Like, doesn't Monero have an adaptive block size limit?
+I think there was a pretty cool blog post a while ago where they got a pretty crazy spam attack and their block sizes shot up for a while and then eventually went back down.
+I don't know. I mean, Bitcoin is going to scale.
+It's going to fail to scale. Pull some more Andreas quotes out there.
+It will continue to fail to scale like the Internet. It's going to hurt.
+People are going to wish that the changes happened earlier than they have been happening.
+But at the end of the day, I think we really hit on another philosophical difference of like the very conservative developers
+versus the more growth oriented Silicon Valley startup type mindset.
+And the question will really come down to like, are those philosophical differences irreconcilable?
+And if so, then, you know, maybe there will be a Bitcoin fork and chain splitting, you know, similar to what happened with Ethereum.
+And there's no there's no way that we can stop that.
+I mean, it's a mechanism that is built into the protocol itself where anyone is free to exit at any time
+and create their own new rule set and and see how many other people will follow them along.
+All right. And my final question tonight is about the direction of this show.
+Who should I interview or talk to next about scaling Bitcoin?
+Rhett. I stumped him on this one. He's not even unmuting himself. We're going to go to Rhett first.
+Who should I talk to next on scaling?
+I think I think these have been great shows.
+I'm excited for you to interview Roger Vera again with some follow up questions.
+I would ask the audience. I know you sort of solicited people to to ask some more follow up questions.
+I think that would be great to try to sort of drill him with some maybe some tougher questions.
+And and, you know, I would like to see some people from Lightning Network on.
+I'd like to hear their point of view about what you know what they see as the
+sort of the future, because we're kind of uncertain about that.
+We don't know whether, you know, after malleability sticks, if we really see it rolling out to consumers in a year or two years
+and really what the economic impact and the and the transaction scaling impact would be.
+All right, Jameson, your thoughts, who should we have on next?
+Yeah, so, you know, I see three primary perspectives here where you've got the on on chain scale,
+all the things versus the off chain scale, all the things.
+And then perhaps the missing piece is the the status quo of neither.
+How does Bitcoin scale if if the block size stays the same and we don't fix transaction malleability
+and we don't have, you know, protocol upgrades?
+What will happen if people are forced to innovate outside of changing the protocol?
+That'd be interesting, but who would be an expert on that?
+That sounds incredibly difficult.
+Yeah, well, sorry.
+Sorry, I didn't mean to interrupt.
+I was going to say I just thought Charlie Shrem also might be a good person to interview.
+And I'd like to see somebody that represents the miners, because I think that that's been really one of the biggest
+problems in this whole situation that we're in, is that that there must have just been some
+miscommunication issues between the developers and the miners.
+And you've been talking to a lot a lot of developers and Roger Baer.
+And I think we've just we've just been missing out on a point of view from the miners, which I frankly I don't talk to miners either.
+I don't know.
+I would very much like to talk to the miners.
+I do feel their voice is missing, maybe because of a translation issue or maybe we're just not getting through to them.
+And I also I worry about them being confused.
+I worry that they think they're not going to make money on the Lightning Network.
+I worry they think they're going to make more money on Bitcoin Unlimited.
+I'm not sure if these things are true, but I just want to like reach them and get them as much technical
+expertise as I can gather from you guys and give to them.
+Jameson, follow up anybody on that extremely hard question. What are we going to do if we don't scale both directions?
+Yeah. Well, so far, the only person I've even seen talking about that is Jimmy Song.
+And, you know, he's got a number of medium posts where he's basically talking about, you know,
+setting up other types of payment channel networks using the existing technology.
+And to be quite honest, we have considered stuff like that at BitGo.
+I mean, as as this type of contention continues to increase
+and the economic incentives continue to increase for for companies to build their own solutions
+without waiting on protocol developers or miners or anyone else, people are going to innovate.
+You can't stop people from innovating. Excellent points.
+I just want to thank you guys both for being on the show.
+I think we really did a good job of agreeing as well as disagreeing.
+And we got to all the different points that I wanted to talk about.
+And I just wanted to give you guys each a point here at the end to maybe advertise some future projects
+or tell people where they can check you out on Twitter.
+Rhett, go ahead.
+Yeah, you know, I guess I'd like to take this.
+I would like to take this time to point out that actually, I don't know, it's kind of another issue.
+I hope I don't ruin this. But geez, I don't want to get into it.
+I was going to say that I think that we have I would like to see.
+I think we had a great discussion tonight and I would like to see.
+I think people are saying really emotional, reactive things on either side of the fence here
+because people are really invested in Bitcoin and it's you know, it makes people feel really strongly one way or the other.
+And what I'd like to ask people is, you know, look, miners are signaling over 40 percent that they want this thing.
+And so, you know, just like consider it, like look about what are what are the what are the points of that thing?
+And I'd like to see on Reddit.
+I think that there was this case where Bitcoin Unlimited, Bitcoin XT, they were considered altcoins.
+They weren't discussed on Reddit. And I think that that honestly has has created more politics at this point,
+because I think that we have to agree that there there is a scaling debate going on.
+It's something that people are have concerns about in Bitcoin.
+And it would be much better if we could discuss these issues like we did on this show.
+I think rationally, we could consider both sides, both points of view and and and try to, you know,
+not just attack each other and be emotional about things.
+So that's sort of my plea, I guess.
+I agree with that. That's not contentious at all.
+Jameson, go ahead.
+Sure. So if anybody out there is on Twitter, you can follow me at LOP, L-O-P-P.
+And I actually fully agree with the sentiments that were just presented regarding Reddit.
+In fact, I wrote a Medium article about it a few weeks ago talking about censorship and moderation and how Reddit is a shit show.
+In general, I have to say every Bitcoin forum is a shit show.
+The reason for that is that every Bitcoin forum is owned by a Bitcoiner.
+And that Bitcoin person has a vested interest in seeing their vision of Bitcoin propagated.
+And therefore, they will, you know, make changes to the content of whatever site or forum they own in order to better suit their own vision.
+So that's why I really stick to Twitter, because there aren't any Bitcoiners that own Twitter that can censor what I'm saying or moderate what I'm saying.
+And, you know, I'm really hopeful that maybe a platform like yours or some other type of completely new system will better enable us to talk to each other without having to worry about those type of issues.
+Of course, there's also the behavioral emotional stuff, which I'm not so sure there really is a solution for.
+I try not to fall into any of the easy, fallacious arguments of name-calling and emotionalism.
+And unfortunately, I actually get flamed a lot when I try to calm people down.
+So that may be a waste of my efforts to try to broker peace between the two sides.
+At this point, and as I've said many times, I'm just an observer.
+I mean, I participate, but in a way, I'm just observing this entire ecosystem as it evolves.
+And it's still incredibly fascinating to me, despite all of the vitriol and other things that I've had to endure.
+I don't plan on going anywhere, regardless of what happens with any protocol upgrades, hard forks, soft forks, whatever.
+I'm just here for the long haul because I think that as Bitcoin and cryptocurrency enthusiasts, we have far more in common than we have different.
+We can certainly still agree upon some things such as that we like a nice, predictable inflation rates.
+So if all else fails, I'm sure we can still fall back on a few things that we agree upon.
+Thank you so much, Jameson. I do agree. I'm glad that we were able to find points to agree on tonight.
+And I just wanted to thank our 100 or so live viewers and anyone that's watching now.
+Just give us a thumbs up, give us a comment and continue the discussion down below because this is about everybody discussing this.
+And I think we got to a lot of great points tonight.
+And I look forward to continuing this tomorrow night. And then on Friday, we'll do the Bitcoin group.
+So thanks so much for watching until next time. Bye bye.

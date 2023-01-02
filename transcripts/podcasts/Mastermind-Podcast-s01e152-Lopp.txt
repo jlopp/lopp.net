@@ -1,0 +1,830 @@
+Hello everyone and welcome to another episode of Mastermind.fm.
+In this episode we have Jameson Locke with us.
+Jameson is one of the biggest experts in crypto security, especially in the area of Bitcoin.
+And he's the co-founder of Kasa, which is a wallet solution for holding your crypto Bitcoin
+keys.
+It's a Bitcoin-only solution.
+Now in the Bitcoin space we have various solutions for custodying your Bitcoin, and these can
+vary from fully custodial solutions like Coinbase, or you can also buy hardware wallets on the
+other end of the spectrum where you would take responsibility for holding your keys.
+The problem is that with holding your keys in a hardware wallet it's a fairly technical
+process and it's prone to people losing their keys unfortunately.
+And on the other hand if you hold them with a custodian you're giving up full control
+of the keys, which is also something that is dangerous because you're assuming a lot of
+risk from third party.
+Now Kasa bridges the gap or intends to bridge the gap between these two solutions by offering
+a custody solution where they handhold you in setting up a multi-signature wallet.
+And we'll get into all this during this episode, we'll explain how the multi-signature solution
+works, what Kasa offers, they have different plans depending on the kind of user, and even
+they have inheritance planning which is something I find really interesting, and we'll just
+talk about security, how to keep your keys safe, how to recover keys if you lose them.
+So for anyone who's interested in Bitcoin, buying and holding Bitcoin, I think this is
+a very important episode to listen to.
+Even if you don't end up going with Kasa, it's very interesting to hear about the different
+considerations that one must keep in mind when holding Bitcoin.
+So without further ado, let's go ahead and listen to Jameson together with myself and
+my dad Joseph.
+Hi Jameson, welcome to Mastermind.fm.
+With me I have my dad Joseph as well, and today we'll be talking about Kasa and how
+to keep your Bitcoin secure.
+So again, welcome Jameson, and to start off, I know that you've been on many podcasts,
+people know you.
+You're one of the OGs in the crypto space, so no need for a long introduction, but let's
+give the listeners a bit of an intro about who you are and what Kasa does.
+Sure.
+I'm a software engineer by trade, spent about 10 years doing infrastructure engineering
+for an online marketing company before I came across this thing called Bitcoin.
+I spent a few years just doing some open source side projects, trying to better understand
+Bitcoin before the space became large enough that there was venture capital flowing in
+and a lot of job opportunities created.
+So eventually, after three or four years of being a hobbyist, I went full time and have
+spent the past six years basically focused on low-level key management, Bitcoin security,
+trying to help both enterprises secure their funds that are usually customer funds.
+And then the past few years, I pivoted slightly and have been focused on helping individuals
+secure their funds and really trying to improve the usability, make this new ecosystem easier
+for people to navigate around.
+Basically, there's a million ways that you can screw up and lose your money in this system
+and we have to figure out how to help guide people down the path of best practices without
+requiring them to be really technical or spend hundreds of hours learning all of the intricacies
+of the system.
+Yep.
+Very good.
+So in my opinion, I don't know if you agree, but I guess you agree.
+So custody of crypto and Bitcoin especially is one of the biggest headaches and perhaps
+one of the biggest kind of problems we have as people who want to get involved in this
+space just because it works in a totally different way than say the banking system or even buying
+stocks where we have a certain level of trust in institutions.
+Now Bitcoin turns all of this on its head and demands that people who are holding crypto
+or who are buying crypto take responsibility for their crypto.
+Now there's also a way of giving away this responsibility to custodians, but people like
+yourself are helping people making the process of holding their own keys and taking this
+responsibility and making it manageable.
+So if you could maybe give us a short description of what's the spectrum right now in terms
+of options people have for holding both in custody or in self-storage and where Kaosa
+fits in and what's your model?
+Yeah, so to kind of back up a little bit to describe what it is that we are actually dealing
+with here, normally people are used to having accounts with banks that are tied to their
+government identity and all sorts of authentication mechanisms go into that, you may have a passport
+or driver license or other government numbers that are assigned to you that you can use
+to prove who you are and that you should be able to access the funds in a given account.
+And then what has happened with the internet age is we've started putting other forms of
+digital access onto that, usernames, passwords, email and SMS to FAA.
+It gets fairly complicated, but at the end of the day, you can always fall back to using
+whatever your government identity is in case you lose those digital authentication mechanisms.
+Now we are moving onto a new system now with Bitcoin, with these public permissionless
+cryptographic based protocols that they don't have an understanding of government identity.
+Rather the thing that allows you to control your asset is a private key, which is really
+just a tiny amount of data where we're talking less than a kilobyte of data for the less
+technical people, it's kind of equivalent to a few sentences worth of random characters.
+And these really are the keys to the kingdom.
+And if you have the correct key, then you can follow whatever the rules of the protocol
+are in order to move those funds around.
+And if you don't have that key, you can't do anything.
+So it becomes very apparent that this is a critical single point of failure.
+If you screw this up, you can have a catastrophe where you either have your money stolen from
+you by someone else who gets that key and takes it, or you simply lose access to it
+and no one in the entire world can get that money back to you.
+So what we end up with is a spectrum of different ways that you can store this data or even
+have someone else store this data for you.
+And depending upon how you do it, there are different tradeoffs for the convenience of
+you being able to access it versus the security properties of who can stop you from being
+able to access it versus privacy issues.
+There's so many different considerations that it's very hard to say that this is the right
+way to do it.
+I think it's important for people to understand the tradeoffs.
+But what ends up happening is that naturally, people prefer to do whatever is most convenient
+for them.
+And that is why we have a lot of people in this space who are not controlling their own
+keys.
+They are essentially using a third party, usually the exchange where they purchase the
+asset, and they just leave it there.
+And they allow that third party to worry about all the private key management issues.
+And instead, their authentication is just the simple username, password, and perhaps
+some other form of second factor.
+Now, this is easy for most people to use because they're used to using that type of setup with
+bank accounts and thousands of other online services.
+However, what a lot of people don't understand is if something goes wrong there, either if
+that custodian has an internal issue where they get hacked, they get breached, and they
+lose the funds, or if your own authentication gets compromised, someone gets into that account,
+which are all the funds, you can still have catastrophic loss.
+It's just easier for you to use on a day-to-day basis because that's what you're used to.
+So we're trying to get people to move further into new security architectures that these
+protocols allow, mainly using your own hardware, your own software to take ownership, to take
+control of that private key data.
+And while this does place more responsibility on the user in order to maintain that data,
+keep backups of it, keep it secure from various types of theft and loss, if you get yourself
+into a position where you are doing this self-custody, then you're actually able to take advantage
+of some functionality in the protocol, which is basically you no longer have to ask permission
+from any third party in order to use your funds to move them around.
+All you have to do is create the correct signatures, create the transaction, put it out on the
+network and the rest will take care of itself.
+Now this can feel very onerous, it can feel like a lot of work for people because if you've
+never done this before and you start looking into it, you get inundated with a hundred
+different recommendations of this is how you should do it, this is how you should do it.
+And most of these recommendations are going to be fairly technical, they're going to throw
+a lot of jargon at you that you don't understand and then you have to back up and spend many
+many hours learning what all these different things even mean.
+So what we're trying to do at CASA is to give people access to these systems but put a really
+nice user interface on top of it that doesn't require a lot of outside education and learning
+about the intricacies of the system but rather to provide you with essentially a mobile phone
+app that has the guidance and the instructions that you need for how to use the software,
+how to use these other pieces of hardware in order to maintain those keys and we then
+bake in the best practices of how should you distribute your keys, how should you store
+them so that essentially if you follow the instructions in the mobile app, you put yourself
+into a security setup that is probably better than 99% of the rest of the people in the
+space.
+Very good.
+I think that's a great description of what you do at a high level and I don't know if
+my dad wants to chime in here based on this.
+Yeah, Jameson, I've learned that you've passed through an unpleasant experience in life and
+possibly triggered this idea of providing this security to holders of cryptos.
+Can you elaborate on this and from your past experience, what can happen and what are the
+risks?
+I mean, not only myself personally having been targeted by someone who essentially filed
+a false police report and had my entire neighborhood shut down causing me some grief and anxiety
+at the fact that my privacy and operational security was not as good as I had assumed
+but in the six years that I have spent focused on security in this space, I have learned
+a lot more from other people's mistakes thankfully than from my own mistakes.
+I have seen many different forms of loss and theft over the years.
+I've cataloged as many of them as I've been able to remember and find on some of my blog
+posts but essentially every way that it's possible for someone to screw up managing
+data, we've seen that played out again in this space and prior to Bitcoin, if you had
+some sort of data problem, then maybe you lose some files, you don't have some backups.
+Usually it's not a catastrophic issue or usually the worst things that we would hear of would
+be things like credit card breaches and identity theft and those can certainly be annoying but
+usually they don't result in you losing the vast majority of your net worth overnight.
+It's more of an issue where you have to go around and deal with all of these third parties
+again to just try to clean up a mess.
+So the problem I think in the disconnect between the old forms of data loss and the issues
+that we have now with private key management is that you can't go back and clean up a failure
+if you have a private key catastrophic issue.
+So instead, you have to put in the work upfront.
+You have to be a lot more proactive about putting yourself in a good position so that
+you are well defended against all of these different forms of threats and loss.
+And that's just, it's not the type of environment that people are used to operating in.
+We are used to having trusted third parties out there that we can go to if something goes
+wrong and ask them to fix whatever problem has occurred.
+And now, this is the trade-off that we have with this system where it allows us to have
+great power but as the saying goes, with great power comes great responsibility.
+So this is resulting in people having to have a shift, I think, in the way that they operate
+where they can't just assume that someone out there will be able to save them if something
+goes wrong.
+They really, they need to help themselves upfront so that they don't have to worry
+about having some sort of catastrophe that they can't recover from.
+And unfortunately, most people, I think, in this space have to suffer from at least one
+small issue or some close call that kind of gives them a wake up that says, you know,
+you need to go and put in some effort into putting yourself into a better position here.
+But I think in a lot of cases, what happens is someone does suffer from a catastrophic
+loss.
+And then at that point, they either just completely quit using the entire system because they're
+so turned off and that they don't want to think about it, or they just have to start
+over from scratch.
+Well, people my age, I'm 65 years old, worry about these situations because it's harder
+than the money you're saving for the rainy day.
+When you get old, maybe you need to go to an old people's home or something like that.
+Therefore, it's important that we protect these savings.
+There are various threats, as we were saying, loss, debt hacking, tax coercion, whatever.
+And this thing of cryptos, holding cryptos, for many people like me in my age bracket
+who are not, say, as savvy on computer systems and all that as your generation, feel a bit
+vulnerable.
+And they say, OK, but can I buy cryptos or Bitcoin and sort of deposit them with somebody
+like a bank, as you said, and then I put my mind at rest.
+And I also earn some returns because they promise returns as well.
+The other two alternatives are either to keep everything yourself and do your own thing
+and with all the sort of dangers that there are.
+And the other alternative is your solution, which I found quite intriguing.
+I also heard your slogan, help people to help themselves, which sounds great, actually.
+Don't you think that the public might perceive this to be too generous and altruistic to
+be sincere?
+And in this mission, again, does your personal experience affect you?
+And when I ask you, why should I put the money with the Bitcoins, with Gaza, rather than
+with another company that gives me returns?
+What are the advantages and disadvantages?
+Sure.
+Yeah, so it's an interesting space because a lot of the self-custody wallet solutions
+that exist are completely free.
+It's software that you download, you run, and you have to figure out how to use it yourself.
+Kasa is an interesting kind of hybrid situation in that we are charging for the services that
+we offer.
+But one of the reasons for that is that we actually offer a higher level of support.
+Pretty much all of these free wallets that you can download and run yourself.
+If you want help, you are probably going to end up using community and volunteer resources.
+You may be able to send help tickets to the actual developers themselves, but there's
+not going to be any sort of service level agreement around when or if they're going
+to respond to you, depending upon current conditions of how overwhelmed they are.
+On the other hand, if you go with a full custody provider, you may or may not have a good level
+of help.
+What we've really found there is, especially with exchanges, it depends on whether it's
+a bull market or a bear market.
+If it's a bull market, you may not get a response for weeks, if not months.
+We've seen some incredible backlogs there trying to get requests through.
+This can also affect you if you want to move your money.
+What we've seen happen a number of times is you deposit your money with the custodian
+and you have a withdrawal limit that is probably well over your total account balance if you're
+starting out small, but then your Bitcoin goes up 10x and you can no longer withdraw
+your account balance because it's over the limit, so you request a limit increase.
+I've done this with a variety of providers myself, and if it's during a quiet period,
+maybe that limit increase gets approved in a week or so, but I've had some limit increases
+that took over a year to get approved just because that exchange was so busy and I was
+not considered a priority.
+Why does CASA want to help people help themselves?
+It is a business model.
+We are trying to get revenue and profits and all of that.
+It is, I would say, probably not nearly as profitable as a fully custodial business because
+unlike a lot of custody providers, we don't charge based on the amount of money that you're
+storing.
+The enterprise and institutional level custodians will charge, I think, usually around 20 bips
+per year for whatever you're storing with them.
+Whereas we're just doing flat fees, which is really based on the level of customer service
+that you're paying for.
+How many hours of service are we essentially offering to you to help you when issues come
+up, help you onboard, help you move things around, and so on and so forth.
+But at an even higher level, I think that it's important for us to be able to get more
+people onboarded into self-custody because this is relevant to the security of the ecosystem
+as a whole.
+You get into some interesting game theory issues.
+If the vast majority of Bitcoin is held by a small number of entities, then it starts
+to become questionable as to what level of power do they have over potentially trying
+to change the system or even just being attack targets.
+You could have just a handful of governments come in and essentially seize all of the Bitcoin
+that's at a few different companies.
+We, for example, at Casa, do not want to be a target where a government could not come
+in and seize the Bitcoin that is held by our clients because Casa only has one out of N
+keys.
+We don't have enough keys to prevent someone from moving their money or to move their money
+without their authorization.
+It's a new type of, you could call it like a hybrid custody model or a shared custody
+or semi-custody.
+This was the model that I actually was working with six years ago when I started being full-time
+in Bitcoin.
+I thought it was interesting because we can be a third party and we can help people use
+their keys, we can give them guidance, and we do.
+We hold one key in their multi-signature key set, but that means we can only facilitate
+transactions if they get into an emergency situation.
+We can't actually create a transaction and send money out of the wallet.
+It's an interesting setup where, at least from a regulatory standpoint for now, we are
+not a bank.
+We are not providing banking services.
+We're not a financial regulated service provider.
+We're just a software and a service provider where we can kind of sit in this gray area
+where we can help people, but we don't have power over their funds.
+Actually, I was going to ask you about this, therefore, you're not regulated and that's
+the reason why you don't ask for your client information, any documentation, etc.
+And a new subscriber can possibly go into the system under a different name to preserve
+his identity.
+And I think that this also ensures that nobody who is working with Kaza, maybe eventually
+who would have some wrong intentions, if he leaves, he cannot really do any damage.
+Do you confirm this?
+Yes.
+So for creating an account, we require an email address.
+We have plenty of people just create a unique Proton mail or some other privacy email address
+that is not associated with anything else or with their identity.
+You can provide us with a pseudonym, it doesn't have to be a real name, and it can get a little
+tricky because for our premium clients, we ship physical hardware devices.
+So in that case, we recommend either having a private mailbox set up somewhere that's
+not your address, or you can forgo having the devices shipped to you and you can buy
+them yourself directly from the manufacturer.
+The only other trade-off basically comes into play with the authentication of requesting
+sensitive actions on your account.
+So if you want to make changes, say to your email or login, or if you want to request
+that Kaza signs a transaction, then this is something that is decided when you get onboarded,
+but there are a variety of different options for what authentication gets used in those
+scenarios.
+Now, the strongest form of authentication is we do an actual audio-video chat, and
+we can keep an encrypted photo on file of you so that when we get on audio-video chat,
+we can be sure that we're actually talking to that client.
+If someone does not want to give a photo and they want to, say, remain audio only and not
+give up any other information, then you can also take a photo of some other object that
+is important to you, use that as a second factor of authentication.
+And then there are also additional things that we can do regarding sort of duress scenarios,
+emergency contacts that we can reach out to if something goes wrong, because we also have
+a feature in the app, which is basically this emergency lockdown that turns off all of the
+functionality of the app until we reach out and authenticate that everything is okay with
+you.
+But this is really a part of the higher level of white glove service that our premium tiers
+get.
+It's just a lot more customization.
+And this is because we realize that everybody has different levels of security and privacy
+models that they are willing to go through, different trade-offs they're willing to make.
+And this is why it is helpful to have your security experts that you're essentially paying
+for their consultation, because there are many different decisions that need to be made.
+And every one of these decisions really comes down to security versus convenience.
+Okay, let's talk about how the setup actually works.
+I think we can just go directly to the three of five keys setup, just because I think given
+the fact that it includes that hand holding and the initial shipping of the keys, that
+would be what most of our listeners perhaps, and I guess that's the biggest selling product
+that you have.
+Yeah, this was our original product and since then we've released the higher tier and we've
+released a lower sort of self-service basic multi-signature tier.
+This is the platinum tier, the three of five key shield.
+So essentially, the way that these Bitcoin transactions work, like we've already said,
+is you have a private key and that controls the funds in a given address and if you want
+to spend the funds, you have to create a signature with that private key and then you broadcast
+the transaction to the network and it validates that everything is correct and that allows
+the funds to be moved.
+But that is only the simple single signature way of doing things.
+For about eight years now, the protocol has supported something called multi-signature
+and essentially what that means is that instead of only signing with one private key, you
+can create deposit addresses that have more complicated spending conditions.
+So you can say the funds in this address can only be spent if three out of these five keys
+add signatures to the transaction.
+If you only have one signature or two signatures, then it's not a valid transaction and the
+network should reject it.
+And as you can imagine, this gets a bit more onerous because you have to go around and
+get private keys from various places.
+But the idea here is that this is for highly secure long-term storage.
+And so the way that we accomplish this is that we've designed a system that is eliminating
+single points of failure and that means absolutely anything that can go wrong.
+We don't want there to be a single thing that can go wrong that can cause you to lose access
+to your funds.
+So the way that we do that is through diversity.
+That's diversity in where the keys are stored, diversity in how the keys are stored, diversity
+in different manufacturers and companies that are used for the key storage.
+So the standard three of five setup, you'll have, like I said, five different keys.
+One of them will be held by CASA, completely offline, can't get used unless you go through
+all the authentication mechanisms that we set up with you.
+One of them will be stored on your phone and will be secured by the secure elements that's
+in the hardware on your phone.
+So that means in order to use it, whatever unlocking mechanism you have on your phone,
+whether it's a PIN or biometrics or facial recognition or whatever, that will be sort
+of the authentication mechanism for accessing that key.
+Then you will have three different air-gapped hardware devices.
+These are Trezor, Ledger, Coldcard, and so on.
+We'll continue adding support for more, whatever is popular and well-affected on the market.
+And each of these three devices will generate its own set of private keys.
+And that will never be touched, essentially, by the internet.
+And so what you end up with here is five different keys.
+Only one of them is on an internet-connected device, which is the phone.
+And that is really used to add the first signature to a transaction when you're initially creating
+it.
+Then in order to finalize a transaction, you will need to travel around to two different
+other devices and have them add signatures.
+Normally, this is where it really comes down to the client and what their own situation
+is.
+You may keep one of those devices in a safe in your home.
+You may keep one at a secure area at your office.
+We recommend keeping one at a highly secure vault, either at a bank or a private vaulting
+company.
+And the whole idea here is the geographic separation, of course, gets you security from
+attackers.
+An attacker is not going to want to have to take you hostage and move you around through
+multiple locations.
+It's too risky for an attacker to have to do something like that.
+Using the different air-gapped hardware devices will protect you from hackers, like we said.
+Only one of those keys is even on an internet-connected device in the first place.
+And you're also just getting a lot of robustness.
+Even if there's something like a fire or flood, some other sort of natural disaster, then
+it's unlikely to affect more than one of those keys.
+So even if you have a key get lost or compromised or destroyed or what have you, you make it
+very easy inside of the app to actually mark that key as compromised.
+And then you can go get a new device and plug it in, and we guide you through what we call
+a key rotation to essentially roll over your key sets and get rid of that old key and basically
+reestablish your key set with the new device.
+There's a lot of considerations that have gone into this, more than we could even feasibly
+go into.
+We have about 30 pages on our website that describe the security architecture and all
+the decisions that went into why we set up certain things in a certain way.
+But one of the nice things, I think from the usability standpoint, is that the user no
+longer really has to worry about managing these seed phrase backups on their own.
+They can basically rely upon the security of the different hardware devices and the
+ability to rotate out a device if something goes wrong.
+A nice thing from a backup perspective is that the mobile key has an encrypted backup
+that happens automatically to your cloud storage.
+The CASA key, of course, has multiple redundant offline backups.
+And then if you want to, you can, of course, always make additional backups for the seed
+phrases of the hardware devices that you set up.
+This is sort of an edge case question, though, is because really the extreme scenario that
+could result in funds loss, it would require all three of those hardware devices to be
+lost or destroyed simultaneously.
+So generally, if you don't keep all three of those devices in the same place and there's
+not some sort of cataclysmic solar flare that fries all of the electronics on one side of
+the world, then you should generally be OK.
+But some people want to protect against that, too.
+So you can always make backups, and CASA has no way, of course, of knowing if you've done
+that.
+OK.
+I know that on the website there is a really deep explanation of all these threat models
+and how you protect against them and why you chose to not do certain things.
+So I highly encourage people to read them.
+I want to go through a few maybe points related to this, and we can keep this short like a
+Q&A on why you chose certain things.
+First of all, the seedless things keep coming up, and I know that some competitors actually
+criticize you for choosing this as being anti-Bitcoin thinking, to throw away, so to speak, the
+seed words.
+How would you convince someone who's freaking out about seedless and that being the main
+reason why you wouldn't move to CASA?
+Well, the first thing is it's a choice, right?
+Like I said, we can't stop anyone from doing it.
+We have no way of knowing what you're doing with the seeds.
+But I think I have a lengthy blog post from a couple of years ago of why I consider seed
+phrases to be overly complex and not user-friendly.
+And one of these issues is just the fact that when you set up one of these hardware devices,
+it'll tell you, okay, here's the seed phrase.
+Now write it down and keep it in a safe place.
+And there is a whole mountain of security knowledge and issues hidden underneath that
+keep it in a safe place is that now you have once more, you have this tiny amount of data
+and you're trying to figure out how to keep it secure.
+Well, they tell you to write it down on a piece of paper.
+Well, of course, that paper is not going to be safe against a fire or flood or anything
+else.
+So then what happens?
+Well, people say, okay, maybe I'll put it and stamp it in metal.
+And this is actually another side project I've done is testing a lot of these different
+metal seed backup devices.
+I would say about half of them are decent.
+About half of them are not decent in my testing, it would actually not survive a house fire.
+So you have to be careful about that.
+Even if you get, I would recommend something like a seed plate, a very simple piece of
+steel and you put basically divots in that.
+That's going to be robust against really any type of loss, but you still have the issue
+of physical attackers because this is not encrypted data, it's just in the clear.
+So any physical adversary who manages to find it, now they have that seed phrase.
+So if you want to protect against physical attackers, now you start going down this other
+rabbit hole as well.
+Do I put it in a highly secure bank vault?
+Well, even if you do that, you should probably assume that a rogue bank employee, or sometimes
+banks have been known just to drill open safety deposit boxes and empty them out, or they
+might get coerced by agents of the states to do that for who knows what reason.
+This is basically, you can see we're going down, we're trying to figure out what is the
+actual threat model, how do we secure it against everything?
+The reason that I really like these hardware devices is that they've already done all of
+the heavy lifting on securing you from physical adversaries because basically, if an adversary
+gets a hold of one of these devices, if they don't know the pin to unlock the device, they're
+not going to be able to get the private keys off of that.
+This can be a controversial topic.
+My take is that it actually simplifies things, it makes it easier to reason about the security
+model.
+When you have a security architecture that is using all these devices, but then you also
+have the seed phrases in the clear and basically backups of this data, then you have to figure
+out how does this possibly make the security model weaker?
+For example, if you were keeping the backup in the same place as the actual device, then
+you've completely lost any protection against physical attackers and having those keys distributed.
+If you keep them in a different place than the device, then now you have six different
+places that you're worried about, three for the actual devices and three for the seed.
+This goes back to what we really started out with, with saying that there's no way that
+you can say this is the perfect way of doing key management because every decision you
+make has trade-offs.
+When it comes to having the seed backups, what you're really saying is, I am interested
+in trading off some security against attackers in order for more security against loss.
+By having multiple redundant backups, I know that even if I lose this one over here, I
+can always recreate it over here, but now you're kind of ping-ponging between two different
+issues.
+At CASA, we tend to lean towards user-friendliness and simplicity.
+I think actually that with one key, the seed backup is pretty manageable and I can figure
+a safe way to do it, but when you have three keys to protect, that becomes a major headache
+and anxiety-inducing exercise to protect them as well as your keys.
+If you keep backups of all three hardware devices, then that is a spendable threshold
+of keys right there.
+If an attacker got all three of those, they could spend from your three of five key set.
+This is generally our recommendation if someone wants to do backups, as we say, keep one backup
+and keep that in the highly physically secure bank vault that you are sure that almost nobody
+is going to be able to get into.
+Even in the extreme case where the bank goes rogue or they get coerced, then you're going
+to be okay because that's only one out of five keys.
+In terms of bank vaults, I think they're common in the US, but here in Europe, they're kind
+of on the way out.
+I know that in Malta where my dad is, they closed them off and here in Spain, when I
+last looked, no major bank was offering them, so it's not that easy to find this bank vault.
+In terms of the iCloud, this is another thing, the iCloud backup.
+Some people here, iCloud, they remember the hacks and they freak out about iCloud.
+What exactly is the model there and can somebody use CASA without using iCloud?
+Sure.
+Also, this is another thing that we have a blog post about how the mobile key backup
+system works.
+The default is that if you're on an Apple device, of course, it uses iCloud.
+If you're on an Android device, it uses Google Drive.
+What happens is the phone itself generates another random bit of data in addition to
+the seed phrase, and that bit of data is used to encrypt your seed phrase.
+That encrypted seed phrase data is then stored either on iCloud or Google Drive.
+What this means is this protects you against either Apple or Google snooping and trying
+to get your keys because there's only encrypted data there.
+It also protects you against any other hacker who might somehow get access to your cloud
+account.
+The important part here is that that decryption data is actually sent to CASA where it is
+then additionally encrypted with hardware that we have.
+But you can think of this as creating a two-of-two multi-sig just for that one mobile key.
+If, for example, you lose your phone or your phone breaks or whatever, you buy a new phone,
+then you download the CASA app, you log in, and this is important.
+You also have to be logged into the phone on that same Apple or Google account.
+What happens is you log in, it notices that your mobile key is missing, and then goes
+and looks on iCloud or Google Drive for that encrypted piece of data.
+It then goes to CASA and says, hey, I'm authenticated as this user, send me the decryption key,
+and CASA sends that over, and they get reconstituted on the phone itself.
+Now, we did this because we think it is about as user-friendly as you can get.
+The user never actually has to think about private keys.
+They don't have to do anything other than be logged into their various accounts, which
+this day and age, people can generally figure out how to log into your various online accounts.
+Now, it is not a requirement, however.
+In fact, I use an Android phone that is not connected to Google Drive, so this is not
+an option for me.
+In this scenario, what you can do is use our alternative mobile key backup system, which
+it basically creates an encrypted mobile key backup in the same way, but instead of having
+that encrypted data go off to the cloud, we present it to you as a QR code.
+You can save that QR code as a PDF, you can print it out, you can really do whatever you
+want with it.
+We also like this as opposed to giving the person the actual seed phrase, which is also
+an option we can talk about later.
+But once again, the reason we do this is because we can't make any assumptions about how the
+client is going to store that data.
+We have to assume that it may not be safe against physical attackers.
+Since this is only encrypted data, we know that even if a physical attacker finds that
+QR code, that paper print out, whatever, they are not going to be able to access those private
+keys.
+Now, there is an option in the app to export the actual seed phrase for the mobile keying.
+We only recommend doing this in what we call a sovereign recovery situation, where you
+are trying to recover funds without talking to CASA, and if you do that, it will actually
+mark the key as compromised in the app and will then basically force you to do a key
+rotation because at that point, we really don't know about the integrity of that seed
+phrase.
+Okay.
+Very interesting.
+So yeah, the flexibility is also available within CASA to kind of set up things the way
+you want them if you think a particular setup is more secure for you.
+So that's really great.
+And now in terms of hardware devices, you chose to use the Trezor and the Ledger in
+terms of sending them out to your clients.
+Is it because they're the most commonly used?
+Because for example, the question might arise, why not use a calls card or a Bitbox?
+Yeah.
+So Trezor and Ledger are by far the most popular and I would say battle tested.
+They tend to work quite well.
+They have different security models themselves and this is why we recommend using a diversity
+of devices.
+Now we also support cold card, though it is not a default device that we ship out.
+We will ship it out to our top tier customers if they ask for it.
+The reason for this is it's a little bit less user friendly.
+It requires instead of just plugging in a USB cord, you actually have to do file transfers
+with little micro SD cards and so you have to have some additional adapters and stuff.
+However, cold card is nice in the sense that it makes it easy if you want to, for example,
+do transaction signing while you're in the middle of a bank vault, which is essentially
+a giant Faraday cage that probably does not have internet access.
+Your phone probably doesn't work in there.
+So once again, there's more trade offs.
+I am a fan of cold card.
+We've also started beta testing foundation devices, which is actually based off of cold
+card.
+So it's a very similar experience and we'll have I think a similar security model.
+So it is once again an issue of sort of convenience and other trade offs.
+And there are many other hardware devices on the market that we could add support for,
+but each time we add another device, that just creates more complexity, more things
+for us to have to support.
+And one of the trickiest things that we've found over the past few years is it's actually
+a result of the high level of security that we chose for this architecture.
+And that basically is the trade off of the fact that we're using a lot of hardware and
+software that CASA has no control over with all of these devices.
+And that is a good thing because it minimizes the trust that you have with CASA.
+When you are signing a transaction, obviously you're creating it and adding that first signature
+on the phone, but then you're having to go around and you are additionally verifying
+all of the details of that transaction with multiple other manufacturers, hardware and
+software so that you know that even if there is a bug in the CASA software, you would catch
+it while you were validating like on your Trezor or Ledger.
+And this is great for security.
+The downside is it's possible for these other manufacturers to change their software in
+ways that makes it less user friendly.
+We even had incidents where it was actually the Trezor Model T firmware was incompatible
+with our signing for almost two months last year.
+So this is one of the things that we're working on trying to improve the communication between
+the different hardware vendors and software wallet vendors in this space so that we can
+stay on the same page and not step on each other's toes.
+Is there a threat where the app itself gets compromised and does something and towards
+within that time period where it's compromised, where it changes the model say out of three
+of five, it might siphon off the funds or?
+Yeah, this is actually a fairly common question, at least from the more sophisticated people
+is like, you know, what is the worst case scenario if CASA either went rogue or was
+coerced into essentially putting malware in the app?
+Could CASA steal my funds?
+So the the short version is, you know, we can't steal funds because we only have one
+of the five keys.
+I would say the the greatest threat against CASA software becoming malicious would actually
+be in generating deposit addresses that don't have the spending conditions that you believe
+that they have.
+And in this case, the way that you can actually verify that that is not happening is by creating
+a watch only wallet that you run on separate software.
+So much like how we recommend you're using multiple different vendors for verifying the
+transactions when you're spending them.
+You can also and we have instructions for this on our blog and on our website.
+You can use other multi-sig compatible software like Electrum or Spectre to essentially recreate
+your CASA setup.
+And when you do that, you are you're specifically saying, you know, I'm creating a wallet that
+requires three out of five signatures.
+And then you give it the public keys for each of those five keys.
+And the software will then generate all of your addresses and find your transactions,
+so on and so forth.
+This gets really deep into the technical weeds.
+But the reason why this provides assurance against CASA changing the spending conditions
+is that a Bitcoin address is actually based off of a cryptographic hash of all of those
+spending conditions.
+And a cryptographic hash is essentially a fingerprint.
+If you change a single byte of information that's going into that hash, the hash completely
+changes and therefore the Bitcoin address will completely change.
+So if you have your watch only wallet and you look at the deposit address of that and
+compare it to the deposit address that you see in the CASA wallet, they should match
+up perfectly.
+If they don't match up perfectly, then something has gone wrong.
+Something is in your change with the spending conditions.
+Okay.
+So to recap, the only threat would be if you try to spend, if you're just passively storing
+your Bitcoin for the long term, the app itself, even if it gets hacked for a few days and
+nobody notices or whatever, it's not going to change anything because your funds are
+still protected.
+Exactly.
+Yes, really the only sensitive operations are when you are transacting either a deposit
+or a withdrawal.
+And I think the withdrawal mechanism, well, it's a lot more straightforward because you're
+actually looking on the screen and having to say, you know, this is the amount and this
+is the address where the funds are going.
+The deposit authentication or validation requires a little bit more effort to set up
+initially, but I would say it's maybe like 10 minutes to set up.
+It's really copy pasting and following our step-by-step guide.
+And for those who have maybe some anxiety about depositing a big chunk of Bitcoin into
+CASA, exporting from the exchange or previous wallets, is that something where it's foolproof
+or is there something that can go wrong there?
+This is an interesting thing that comes up fairly often, I think, with people who are
+newer to the space is they want to send a test deposit for $10 or something.
+And yeah, you can certainly do that.
+I would note that we actually offer Bitcoin test net support in the app.
+And so what you can do before you even do anything where you're using real Bitcoin or
+real value is that you can just toggle on the Bitcoin test net functionality.
+And we'll send you some test net Bitcoin, which has no value, but it works exactly like
+Bitcoin.
+It's just a different network.
+And you can play around with all the different functions, you know, deposit, withdraw, creating
+sub accounts, moving money between your own accounts, so on and so forth.
+And this is, you know, part of the onboarding practice that people who are doing their due
+diligence definitely like being able to do, I would say the most extreme level of diligence
+that you can do is to then go through the sovereign recovery process, which is a separate
+guide where essentially once you finish creating your CASA key set, we send you instructions
+for how to recover your money outside of CASA.
+So this is, like we said, eliminating every single point of failure, including us as a
+company and us as a software provider, that we're essentially proving to you that we're
+following the various standards of the Bitcoin protocol and that there are multiple other
+pieces of compliance software that you can download and recreate and spend your funds
+from, even if CASA gets hit by an asteroid or something, if we cease to exist for some
+reason.
+Okay.
+Jameson, you have four plans, right?
+Yeah.
+If somebody wants to start with a small holding with the plans for an increase, a systematic
+increase, a yearly increase, what do you suggest or do you actually have a discussion with
+the potential client before he starts so that he chooses the right plan for him?
+And what about the fees?
+Are they fixed, irrespective of the holding?
+How does it work?
+Yeah.
+So we have multiple salespeople who are available to schedule calls with.
+If you want to better understand what the offerings for each plan are and what level
+of service probably suits you best, you should have a button at the very top of our website
+where you can get a calendar set up to call one of them.
+But the high level explanation is we have our free silver tier, which is just a single
+signature wallet on the phone.
+You really don't want to put more than a few hundred dollars in that because that is a
+single point of failure.
+It's just to get people used to seeing what the user experience of the app is like.
+Our lowest level tier that I would use for actual value, that's the gold tier.
+It's really a self-service type of multi-signature wallet where you bring your own hardware device.
+You can essentially buy whatever hardware you want from any of the supported manufacturers.
+And we have both tutorials online and we do, I think, bi-weekly group onboarding walkthroughs
+if you need help getting set up on that.
+That's a two out of three multi-sig.
+So it gives you some redundancy.
+It's not the sort of extreme level of security and redundancy that our higher tiers have,
+but it's definitely good to get started.
+And going up from there is the platinum, which is the one that we've really been talking
+about most of the time.
+Our highest level tier, all platinum.
+Let's see, I believe platinum is around $1,500 a year and all of these are unrelated to your
+actual holdings.
+Let's see.
+Yeah.
+So gold, if I didn't mention gold is $120 a year, platinum is $1,800 a year.
+And then the final one is the diamond, which is our extreme level of white glove service
+for $5,000 a year.
+What that offers on top of platinum is just a higher level of service, like being able
+to call us around the clock if anything goes wrong.
+We give you this additional three out of six multi-sig, which you can either just use that
+on your own or you can use it as part of our inheritance and estate planning service.
+And that's one of the main reasons for the jump up in the price is if you choose to onboard
+with the inheritance, then essentially what we end up doing is onboarding either your
+attorney or your estate advisor, whoever is going to be executing your last will and testament.
+And we are onboarding them as a key holder.
+So the short version of how the architecture of that plan works is that you have three
+out of six keys set.
+And at any given time, you have access to four out of those six keys.
+But then one of those keys is going to be held by CASA and one of them is going to be
+held by the estate advisor.
+One of them is also going to be held in some sort of deposit box that has beneficiaries
+listed on it.
+And so, of course, you can access that key at any time, but the trick here and the important
+part and the way that this was designed is that at any given point in time, there are
+also three keys that can be accessed through the estate process.
+So that is the one key with beneficiaries in whatever safety deposit box or other deposit
+institution and then CASA and then the estate planner.
+So the whole point being that with essentially death certificate or a court order as part
+of the estate process, those three keys can be accessed even if your phone and other hardware
+devices can no longer be accessed.
+Very interesting.
+Last question from my end would be if there is someone who wants to hold his money, maybe
+his children's or his parents' money in Bitcoin and maybe his company's Bitcoin, could he
+use one CASA account to manage these multiple accounts, so to speak?
+Yes, so the nice thing about the way that wallets and Bitcoin work is that once you
+have created that root level public-private key pair, you can essentially derive a nearly
+unlimited amount of private keys off of that.
+And so we have functionality where you can create what we call sub-accounts, but at a
+low level, you're essentially just creating different segregated buckets of Bitcoin.
+They are still all managed by the same high root private keys, but they at a much lower
+level are actually managed by separate private keys.
+And what this results in is just sort of a logical separation of the addresses and of
+the funds that get deposited into those addresses.
+So within the app, once you have your key set set up, it's very easy to create a sub-account.
+You really just click a button and you say, create a sub-account with this name.
+And at that point in time, it will generate another set of sovereign recovery instructions
+and you'll be able to interact with that sub-account the same as with the original main account
+that you set up.
+Okay.
+And that would be using then the same five keys and the 305 model?
+Yes.
+And even I want a separate account for like day-to-day spending.
+Does that work in the same way would be a sub-account in that case?
+Yeah.
+So there's a couple of ways to go about doing that.
+Really if someone wants more of a day-to-day spending account, then you're actually probably
+going to want a different security model.
+You're not going to want to have to travel around to multiple places to spend.
+So there's two different options there.
+If you're a premium platinum or diamond tier where you have that three of five or three
+of six key set, first of all, everyone at every tier gets the single signature wallet.
+You can always keep a small amount on there.
+Like I said, I wouldn't put more than a few hundred dollars on it, but that's good for
+day-to-day spending.
+Though if you want more sort of a medium tier, like if you want to be able to spend say,
+I don't know, something less than $10,000, then what we can actually do is we can enable
+the two of three multisig in your same account.
+You would want a separate hardware device for that, but you could essentially have one
+key on your phone and then keep the second hardware device somewhere that's not too hard
+to access, and that would be a way for you to be able to spend medium tier amounts of
+money without having to travel all over the place.
+And you could also annotate expenses, add a note, say, for accounting purposes.
+One final question from my side, Jameson, when it comes to payment, how is it affected
+in a way that maybe you protect your identity?
+Is it by wire transfer?
+But you have to disclose your name, no?
+Yeah.
+So if you want to sign up and you want to be pseudonymous, then I would say most of
+our clients end up choosing to pay in Bitcoin.
+The more hardcore ones will essentially send us coins that they have mixed.
+Another option, I'm not sure what your availability is in Europe, but there are various privacy
+debit cards or prepaid debit cards that you can set up.
+It just depends on what our card processor will accept.
+Sometimes those get rejected, sometimes they get accepted.
+Yeah, they're not easy to find, as in the US, where you can just walk into a store and
+buy a $20 voucher.
+Yeah.
+Most of the time I found that they work for me.
+I also use privacy.com a lot, which allows you to create virtual debit cards and those
+very rarely get rejected, but I'm also not sure if they're available outside in the US.
+Yeah.
+Have a look at that.
+You can always pay via bank transfer, no?
+We do support wire transfers.
+I'm not sure offhand how private those are, though.
+I don't think they're as private asà
+I don't think they're private.
+Yeah.
+So I would say very few of our customers end up going that route.
+It's a bit more onerous for us.
+We don't have an automated checkout system for it.
+We have to actually email you the wire transfer information and then go check the account
+every once in a while.
+All right.
+Well, thank you very much, Jameson, for this quite interesting discussion.
+As you kept repeating during the podcast, rightly so, all this information is available
+on your blog, the CASA blog, and I also highly recommend people to look into your personal
+blog where, like I said, you can spend probably years looking through all the material.
+And there's also a list of extra resources that you collected from all over the web.
+So people, even if they're new to Bitcoin, they can probably just start from your blog
+and take it from there.
+So thanks a lot for joining us.
+And yeah, if you have any places to direct people, both to contact you and to check out
+your products.
+Sure.
+Our website is keys.casa, k-e-y-s dot c-a-s-a.
+And you can find my website, all my resources at lop.net, l-o-p-p dot n-e-t.
+Thank you, Jameson.
+It was a real pleasure.
+Excellent.
+Thank you very much, then.
+Thanks for having me.
+So that's a wrap for this episode.
+Hope you enjoyed it as much as we did, and as usual, I ask you to leave a five-star review
+on iTunes if you like the show and all the other shows we've produced so far.
+Please let us know if there is any other topic that you'd like us to tackle or platform to
+review.
+We're very open for hearing from you, your opinions, whether you like the shows we're
+producing.
+And yeah, just if you've been listening to this show for the past two episodes or the
+first episode that you listen, we'd really, really appreciate if you could even just get
+in touch and tell us how you're finding it, what you'd like us to improve, and things
+like that.
+So the email is podcast at mastermind.fm, again, podcast at mastermind.fm, and you can
+also find us on Twitter at mastermindfm.
+That's it for today from us, and see you in the next episode.

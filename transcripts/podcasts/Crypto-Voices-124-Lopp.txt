@@ -1,0 +1,543 @@
+Hey, everybody. Welcome. Welcome here to Show 124 on Crypto Voices. Matthew Majinskas, your
+host here from the Baltics. Joined here by my co-host, as always, Alec Harris from Halo
+Privacy and in Eastern US. Alec, what's going on, man? Matthew, how's things over there?
+You know, hold and steady, hold and steady, my friend, as well as our friends in Ukraine.
+So very happy about that. But obviously, crazy times. In any event, let's let's get back to
+Bitcoin a little bit for the show. Very happy to introduce our special guest, Jamison Lopp.
+Most of you should know him. CASA co-founder, Statoshi, very big privacy advocate, did a great
+privacy presentation at Honey Badger a couple years ago here in Latvia. And yeah, all around
+cypherpunk. Jamison, thanks a lot for joining us and welcome back to the show. Glad to be back.
+Appreciate it, man. So yeah, just wanted to touch base with you, see how things were in the
+you know, in the sovereign Bitcoin world. You guys, you know, I follow your CASA updates. You
+guys are working hard there. What's the latest going on at CASA? Well, let's see, over the past
+few years, we've mostly been making small iterative tweaks to our product, just continuing to refine
+the onboarding and maintenance process and ended up overhauling our inheritance program to make it
+even simpler, because it was taking a lot of effort to get people onboarded to that. But suffice
+to say, this year is going to be a big year, we've got a lot of big projects underway, but nothing
+that we've announced yet. And it's, it's exciting for me to, once again, really get my hands into
+some of the lower level protocol stuff since for the past few years, we haven't really been
+doing anything new at a like technical level, it's really been more focused on our user
+experience. But we continue to survey the landscape and see what our clients are demanding
+and try to figure out, you know, how can we use the tools that are available to us and
+package them up in ways that make them more accessible to the average person. So that's
+really what I'd say CASA's main mindset is, is, you know, we don't want to reinvent the
+wheel, we don't want to do anything completely novel or exotic, what we really want to do is
+just improve accessibility for people to be sovereign in as many ways as possible. And for
+the past four years, that has meant helping people basically set up and maintain their
+on chain Bitcoin vaults. And over the much longer time period, we expect that the ability
+to leverage your cryptographic keys to improve your sovereignty and many different aspects
+of your life, like that's the the general direction that we want to see the world go
+in and we want to help the world go in by making it easier for people to accomplish.
+I would like to actually talk to you about some protocol stuff. So a lot of changes in
+Bitcoin, you know, in the last couple of years. But before that, yeah, I remember asking you,
+we'll touch as we always do with Alec, we'll touch on some privacy here. But I remember
+asking you some of the compromises you might make in CASA on our first interview, which
+was I would recommend our listeners check out a couple of years ago just to compare,
+for example, your inheritance services or some other services which involve multi SIG,
+you know, what would be some of the sacrifices that need to be made there with privacy? And
+you said something to the effect of well, the more security you have with with a third
+party, even though they're not holding the keys, or all of the keys, so to say, you know,
+you're going to make some privacy sacrifices. Is there anything that's changing there? Is
+there any way, I guess, not with the legal inheritance type services, but is there anything
+in the pipeline where you are planning to be like even more private, let's say, for
+the average user while also remaining sovereign? Well, we have a variety of different ways
+that you can set up and use CASA. We certainly have clients who are completely anonymous
+and you know, they basically create a completely new email address that's not associated with
+anything, not associated with their identity. And that's basically what their login to the
+app is. And that's how we have all of our communication with them. And the some of the
+trade offs that you have there are basically around authentication when it comes down to
+requesting CASA to sign with our cold storage key that we're holding. So it's certainly
+possible to do as an ongoing thing. You basically will have other authentication methods that
+are not our default. Like our default authentication method for our clients is to have an audio
+video call where we actually look at the client and talk to them and compare them to our notes
+of like what we know that they should look and sound like. But you can do that in other
+ways. Like we have the ability to use other like image based 2FA. For example, you can
+like take a photo of some object that is meaningful to you and have that be a sort of form of
+authentication where you can then show us that object. But you know, obviously it's
+not as strong as an actual real time audio video call. It's also possible for you to
+set up a sort of do it yourself inheritance. We can help people basically figure out how
+they should set up their keys and have backups so that they can be accessible to other people
+if they pass away. But that is different from our normal flow, which is really meant to
+go through a more legal estate process type of setup, which involves having one of your
+keys and like a safety deposit box with beneficiaries on it, adding beneficiaries to your account
+with CASA so that we can sign a transaction at their request if they also have proof of
+death. And so, you know, there's a million different ways to do self custody. And we're
+here to help people figure out like what is the best option for you? What are the different
+trade offs that you're going to be making with any given decision? And you know, we're
+not here to tell people, you know, you have to do it this way. We're here to help people
+and guide them down a path that we consider to be safe because of the million different
+paths and decisions that you can make, I would say probably 99% of them have some sort of
+flaw. So it's a dangerous space to navigate, especially if you aren't really deep into
+thinking about security.
+Yeah, interesting. Okay, so actually, you still probably would say for your service,
+which totally makes sense in this in line with what we were, I remember talking about
+before, and certainly is hugely valuable for so many, I don't know, everyday Bitcoiners,
+but certainly a huge part of the business still is the inheritance, like still having
+face to face legal side, something like that, where the identity is pretty much known by
+CASA.
+Yeah, I mean, the short version is that, you know, if you want perfect privacy, you can't
+really be interacting with third parties, like, you have to do everything yourself.
+So that gets really tricky, because one of the major pillars of CASA is our service,
+our sort of consulting. And it really hamstrings us if we don't have a good line of communication
+with the client to be able to help them through different aspects of their self custody.
+So as your client base, I mean, I'm sure it has, right, but how has it changed since since
+you guys kicked off? Is it more sophisticated, less, you know, I could see how there's more
+awareness of Bitcoin, but you also have more entrance. And so I just be curious what they
+look like now versus the beginning.
+Yeah, obviously, in the beginning, when we didn't really have a reputation built up,
+the primary clients were your sort of Bitcoin OGs, usually your less technical, long term
+holders who had, I would say the like the the general profile was someone who has been
+keeping all their money on like one treasurer or one ledger or whatever. And we're deathly
+afraid that, you know, that's a single point of failure. And one day they're going to wake
+up and they're going to try to spend their money and something is not going to work.
+So over the years, though, especially once the pandemic hit, the profile started changing
+and we started seeing more, I guess you could call them new coiners come in. Basically,
+profile changed to more traditionally wealthy people who didn't know anything about Bitcoin
+and they were looking to diversify. And they had at least done enough research to understand
+that they wanted some help figuring out the whole self custody thing. And so in many cases,
+it was not only us helping them figure out self custody, but also helping them figure
+out how to acquire Bitcoin, sometimes like referring to OTC desks or whatnot. And that
+has then over, I would say the past year or so changed a bit because we've put more focus
+on our gold tier plan, which is the like ten dollar a month, two of three multisig. And
+we're kind of trying to push down market a bit more to, I would say, the broader crowd
+of anyone who has like more than probably a thousand dollars worth of Bitcoin. It starts
+to make sense to look into multisig or to spend like a hundred dollars a year at the
+very least. You know, if you have a thousand or a few thousand dollars worth, you should
+probably be investing 50 to $100 in a hardware device to get your keys off the Internet.
+And if you've done that, then the next logical step, I think, would be going from a single
+hardware device to a multisig key set that's using that hardware device.
+I would imagine you get some customers that are coming to you post incident or post breach.
+And if so, what do you see in that space?
+Yeah, I'm sure there are some, though usually it's like someone who had money on an exchange
+account and their exchange account got breached. And so then it's more of a question of was
+it a, you know, if it was a 100% loss, then they may not be coming to us because they
+may basically have been knocked out of the game. Hopefully, though, it was smaller forms
+of loss or I would say the more common thing that I've seen is not someone who has had
+their money stolen, but rather has made a mistake and gotten locked out of their funds.
+And so I've helped a decent number of new clients recover funds that have become inaccessible
+to them. And sometimes that's as simple as doing some semi-brute forcing of like derivation
+paths and like they might still have a seed phrase. They just didn't know what wallet
+they used to set it up or what derivation paths or script types it was being used to
+store. So in like in those situations, I can often help people recover the funds. In other
+situations, sometimes it means referring them to a service that is much more sophisticated
+at brute forcing stuff. You know, it really depends on exactly the nature of why they're
+locked out of the funds.
+So actually, let's put it back then to Bitcoin. And you mentioned you're going to be able
+to work a little bit more on changing some of the, perhaps the protocol level things
+and as it relates to your service there. But I guess just first, generally broadly, I think
+the last time we spoke, it was right in the middle of the, you know, the civil war, as
+it's now been called between the big blockers, the small blockers, however you want to say
+it. It took four years, but we got a great upgrade in Taproot and we had this, you know,
+new, I don't know if new is the right word, but we have the signaling process. Just one
+broad question generally about Bitcoin and how it changed and how long it took to get
+that Taproot upgrade and how methodical it was and how different Bitcoin has remained
+compared to perhaps other projects in the space. Just general kind of reflections. Do
+you have any, do you feel pretty, pretty well about how all the upgrade process is going
+in Bitcoin and just sort of any reflections there over the last many, many years that
+you've been in the space?
+I would say my main takeaway is that far too many people are still scarred and battle weary
+and I would say the kind of like where we were on the spectrum of like conservative versus
+liberal to making changes. The fallout from the fork wars and scaling debates, I think
+was that it really pushed the needle to make a lot of people even far more conservative
+because they want to avoid having this showdown of like between different major economic players
+on the network and brinksmanship and people like trying to negotiate or use political
+tactics to figure out how to force changes through the protocol. And so the result of
+that is that the Taproot upgrade, I would say as an upgrade, it actually went extremely
+smoothly and there was no real contestation between different entities on the network.
+Like we didn't have any mining pools, I think put up any objections to signaling and eventually
+validating it. But I think what a lot of people may have missed is that the sort of the friction
+and the major contests that were happening, they weren't happening out in the public sphere
+like they did during the scaling debates. Rather, they were sort of raging on the developer
+mailing lists and chat rooms and whatnot. And this is because developers who are at
+the protocol level and actually caring and thinking about, you know, how do we activate
+stuff on this network that is worth what, like a trillion dollars now? They spent just
+a ton of time arguing over the nittiest, grittiest, tiniest little details of the game theory
+behind how we might best activate this stuff on the network. And so I don't even remember
+the exact thing because it was being argued about like a year or two ago. But I would
+say like one of the biggest cruxes of the Taproot activation debate basically was choosing
+between like one of two different ways, I think, of how to count how many blocks had
+been signaled for something and exactly how to count what the activation threshold should
+be. When I was reading through it, I was like, just flip a coin. It seems almost to be the
+exact same either way to me. I don't see how there's going to be any major difference
+because this isn't even a highly contested thing. I expect that it's going to get activated
+pretty quickly, and it did. But now I'm seeing not similar, but I'm seeing other debates
+especially around stuff like any Prevout or the Jeremy Rubin's Check Template Verify stuff
+of like, I'm getting the feeling that there's even more and more pushback against changes
+now. People are getting even more and more conservative, and I'm even hearing from a
+number of developers that they feel like this is it. We should just ossify the protocol
+and no more changes. I think it's like it's way too early to be talking about never changing
+anything again. That's kind of my takeaway, and my biggest fear is that there's been so
+much contention a few years ago that a lot of people are still weary of it and don't
+want to. They're kind of like in conflict avoidance mode, and even they're so fearful
+and wanting to avoid conflict that they're going to extreme lengths of thinking through
+game theory of how can we even manage this in a way that will minimize conflict. But
+at some point I think there has to be some conflict and debate if we're going to continue
+to evolve.
+In 2017 when this was... So almost everyone had an opinion back then because the community
+was a lot smaller, and so the number of participants tended to be participating because there was
+a genuine interest. So it seemed like everyone was involved in the conversation, and my guess
+is if there was another contentious debate now, it would seem a little more muted just
+because you have so many passive participants that don't really even... And that's fine,
+right? That's desirable, but I don't think it would seem as loud, or I guess I'd be speculating
+there. So do you think that some of these protocol debates would become more niche as
+there are more participants overall in the Bitcoin ecosystem?
+Yeah, and also I think we've learned, and a lot of the major industry participants have
+learned what happens when they try to take a position and try to force a sort of democratic
+method onto Bitcoin. So while only a few of those players I think ever really admitted
+that they went about it the wrong way, I think most of them have been sort of put into a
+more submissive position where they don't want to even try to expend the energy to go
+through a process like that again. And also, I mean, the ecosystem is so much larger now,
+like you said, not only just from the bigger diversity of participants in Bitcoin, but
+just the crypto as a whole. If you don't like some way that Bitcoin is going, there's probably
+another protocol, another network out there that you can go focus on, or you can go build
+your own network. There's still no shortage of people creating new protocols and new networks.
+Exit is always an option.
+A million directions we could go from there and talk about all the implications plenty
+of plenty of people do still in this space. It is a very interesting topic. But now that
+we did have a successful upgrade with Taproot, you know, just so many interesting, fascinating
+pieces have been added to the repertoire of Bitcoin here. As you said at the beginning
+of the show, then you might be looking forward to doing some more protocol level stuff with
+CASA. I presume a lot of that has to do with the Taproot upgrade, is that correct?
+Definitely. So I've definitely been doing a lot of research around this. You know, it
+is one of the more common questions we get. And suffice to say, like, Taproot is not what
+is most interesting to us at CASA or for our customers. What is more interesting is one
+of the things that came along with the upgrade, which is aggregated signatures. And that's
+because if you think about it, you know, a lot of our customers are doing either three
+of five multisig or two of three multisig. And especially the three of five, I think
+is rarer. But that's it's creating a more unique fingerprint on chain. It's taking up
+more data and that's costing more fees. And if you have aggregated signatures, then essentially
+what you're doing is you're doing your multisig really off chain and you're only really posting
+on chain what is essentially a single signature. So that is really what I'm keeping my eye
+on. However, it is unfortunately not something that we're going to be able to roll out in
+the immediate future because there's not really a set standard yet for how to do this. There's
+a couple different projects that are doing aggregated signatures. They all have tradeoffs.
+And really the biggest tradeoffs tend to be a higher level of interactivity. And by interactivity,
+I mean that you have to do multiple rounds of signing. So for a CASA user who's normally
+having to go around to two or three different physical locations in order to add signatures,
+if they had to do that multiple times, it starts to become an extremely poor user experience
+and it's a lot more onerous. So I'm basically keeping my ears open for the holy grail low
+interactivity aggregated signature solution.
+Interesting. Okay. So I was actually thinking there might be more there, at least in the
+near term. So still, I was just curious what you said at the very beginning of the show.
+I don't know if there are any business secrets you don't have to give away or whatnot, but
+you said you would want to get more back into the protocol level stuff with CASA. Is there
+anything there specifically?
+Oh yeah. Well, there's a few other projects, but nothing that we've announced. I also mentioned
+Check Template Verify. Really the sort of covenants and on-chain vaulting solutions
+are also something that is interesting to us. Now, at the moment, most of these would
+require some sort of soft fork. So that kind of also ties into why I'm not pro-ossification
+of the protocol yet. I think there's a very large potential design space for what could
+be achieved if we had the proper on-chain opcodes to be able to create these sort of
+logical branches, trees of potential execution paths for where your funds can go. It can
+actually get kind of mind-boggling to think of, and I think it will take a lot of work
+to be able to craft the tools to make that user-friendly. But like I said, that's kind
+of what CASA is in the business of, is finding the raw, powerful functionality and building
+guardrails into it so that the average person can leverage it.
+And then there's also a lot of interesting stuff going on with Lightning. CASA is not
+a stranger to Lightning. We had, for a couple of years, a plug-and-play Lightning-in-a-box
+node product, and we ended up discontinuing that because, well, a couple of reasons. One,
+two years ago, Lightning was really just a sort of hobbyist-tinker enthusiast market,
+and so there probably weren't more than, I would say, 10, 20,000 people using Lightning.
+It was very easy to saturate that market, not a whole lot of growth opportunity. Secondly,
+it was extremely onerous for us to support people having hardware running in their own
+networks, basically in these unknown environments. We ran into a lot of really crazy edge cases
+that we hadn't anticipated with people running their own hardware, and also just very difficult
+for our support people to give that same level of support when these nodes were basically
+black boxes to us. They were potentially thousands of miles away. We didn't have any sort of
+access to them, and it could be very difficult to help users even get us the information
+that we needed to help them debug what was going on with their node.
+Thanks again to Max, Roma, and everybody over at HODL HODL for the support, and a reminder,
+they also organize the very well-run and fantastic Baltic Honey Badger Bitcoin Conference every
+fall in Riga. So head on over to hodlhodl.com slash join slash crypto voices. Thanks again,
+and welcome back to the show.
+So I think probably a lot of our listeners, but just to set the table, know you as someone
+who lives in a very extreme version of privacy, and I would recommend your article. And actually,
+there's a ton of great resources at lop.net, but I think the article is a modest privacy
+protection proposal. And so that goes into great detail about how you did, what you did,
+and I think you've given people lots of opportunity to hear it through your presentations. So
+rather than revisiting that, actually, one of the things I really like about it is that
+I think it acknowledges the difficulty in going through these processes, and it acknowledges
+some of the predicate knowledge that you have to have in order to do it. So you either have
+to have someone basically holding your hand the whole way through, or you on your own
+have to understand things like open source intelligence and data collection and financial
+privacy and legal structures and asset protection and liability and insurance, and the list
+goes on. And so once you go through that instantiation process, which is painful, I found it very
+painful doing it myself. I'm certain my wife would agree. And then having done it on behalf
+of other people or helped other people with it, I've yet to find anyone who just thinks
+it's a piece of cake. However, the challenge doesn't end at instantiation. And the thing
+that I always tell people is, you're signing up for a wholesale change in your life that
+has to be sustained basically forever. For as long as you want to continue to accrue
+and protect that privacy, you have to live like this. And so that's a little bit daunting.
+The other thing I tell people is, actually, after you set things up, it really becomes
+pretty easy and you get used to it. But it's not without friction. And there have been
+a few things that surprised me along the way that two years in, I hadn't thought of, much
+less at the beginning. And so maybe for the audience, if you want to just kind of, it's
+been a couple of years for you, what's it like living that lifestyle over time and what
+have you discovered in that process?
+For example, I actually had to redo everything a couple of years in. And this is something
+that I think that I cover in my article is, this is not a set it and forget it thing.
+You have to keep monitoring. And so on an annual basis, I actually hire private investigators
+to try to hunt me down and use their own open source intelligence techniques to see if I've
+had any data leaks. And so I found actually that there was a data leak through a banking
+provider. And so that basically connected one of my anonymous companies to my identity.
+And that company could be connected to a property that it owned. And so once again, really
+had to burn that all down and started all over again. And there were also some other
+minor leaks that happened. But there was one minor leak that happened to my credit report
+that I caught pretty quickly because I had all my credit stuff frozen and had high alerts
+on everything. And I'm pretty sure that I was able to get that expunged. It was another
+banking related thing. And I also had through a different provider, they like sent some
+mail in my real name to an address that I was living at, even though they knew like
+that address was only supposed to receive anything in the name of the legal entity.
+But there's always new stuff that comes up. It comes up less and less frequently, but
+usually it has to do with some random third party doing something stupid because that's
+their normal process and leaking data. But for example, just a few weeks ago, I got a
+bit of a curveball. So I don't know your specific situation, but I assume that you have a sort
+of pseudonym or alter ego identity that you use to introduce yourself to people that you
+don't know or trust. And so I have one myself. And when you want to do that, you don't want
+to just come up with something that's completely foreign to you. So I tell people that I do
+security consulting. And that works for me because I know a lot about general security.
+And I can basically pass myself off as an expert in that without ever mentioning anything
+about Bitcoin. And so this is normally fine because most people don't give a hoot about
+security. And so they're not really going to ask you more than a few really high level
+questions and then they'll want to move on, change the topic. But I ran into a new guy
+a few weeks ago and I gave him my line and he was like, oh, that's cool. I actually am
+in sales for a cybersecurity consulting agency. And so I was like, oh no, what have I done?
+Now I'm going to have to really amp up my bullshit meter and I'm not used to this. I'm
+feeling uncomfortable. And he wanted to connect to me on LinkedIn and start a whole thing.
+And I realized I'm going to have to put more resources into this other identity of mine.
+And so then I went and I spent like half a day actually setting up a whole new company
+and website and email and basically a new front for this identity that I've been using.
+And I've never had to do that before. And so, yeah, you never know when you might get
+a curve ball like that.
+And I stopped correcting people at a certain point, but sometimes people will just refer
+to me as Mr. Trust because they assume that the identity, so the highest level superstructure
+that owns the property we live in is a trust. And so I'll just get called to Mr. Trust and
+I'm just like fine. And the first part of the trust is it's a weird word. And so I surprise
+people with things that think it's a name. But I agree with you, right? And I actually
+tell people social engineering is also one of the predicate skills that you need for
+all this. And the closer you can be to your comfort level, and actually you don't need
+to stray too far from the truth because it'll be easier to remember, the better. And I actually
+find going, so I always tell people you need some privacy excuses, right? So you need some
+reasons why you're doing what you're doing that'll maybe evoke some sympathy or empathy
+and that you'll meet less resistance. Because if you try to tell people, I'm not giving
+you that information and you put up walls, it just becomes a more difficult interaction.
+And so having some adjacent reason for the way things are going tends to be helpful.
+And I've tried both ways. But the alter ego you're talking about of a pseudonym, I think
+I've heard you say you extend that into your neighbors. Is that correct?
+Correct. Yeah. So yeah, never, never give my real name or occupation or anything like
+that. The only people who who know that are really my family and my like, pre privacy
+era friends. And, and really, even the vast majority of my family doesn't know my specific
+location. I would say probably five, definitely less than 10 people know where I am at any
+given time.
+I don't know if you have kids, Jameson that brings a whole other angle. And I had to learn
+about something called the Family Education Rights and Privacy Act. And so under that
+act, a school can disclose information about their student directory to any third party
+they want without consent. And that includes name and address among a few other things.
+And so you have to some schools will proactively have parents sign a consent form for that
+others don't. So you have to go seek that out. As well as there's something called COPPA,
+which I forget what it stands for. But it's the it's an act that basically limits the
+amount of personal information that can be collected from someone under 13. But you know,
+once you're 14 or over, which is high schoolers, that information just can be collected and
+reshared and resold as well. And there's a ton of data leakage that occurs in the education
+system, which I wasn't thinking of our kids were super little when we moved and they're
+not ton older now, but we're starting to get into that. So I don't know if that's part
+of your experience.
+Yeah, I haven't had to deal with that, though. It comes up very often. And I, I have not
+found a lot of literature out there. Like, for example, the the Bible that I tell people
+to go get is the Extreme Privacy by Michael Bazzell. And I don't think he covers anything
+related to children.
+He doesn't he does pets. So there's something that I recommend that book too, as well as
+his OSINT book. Because if you go through both of those, you can kind of understand
+the defensive and offensive side of things.
+I'm sorry. Again, I get it. Yeah, about pets.
+Well, so Mike Basil stuff is all US centric. And so I don't know that's how this applies
+in Europe. But in some jurisdictions, you know, when you have a pet, you have to register
+that pet or when you buy a pet, you have to register it just like you would, you know,
+a vehicle. And so that would usually come with a air quotes home address for that pet.
+And so if you want to go buy a dog, you have to think about that, the attribution that
+you want to make back to that dog air quotes home residents. And so and there's actually
+some some enforcement of this, or there is some scrutiny on it, because people don't
+this is for the protection of the animals, right? You don't want them going and being
+mistreated or being resold or into, you know, unscrupulous breeding situations. So there's
+a reason for it, but it doesn't serve the privacy motive.
+So this is interesting, as always, hearing you go off on this Alec, and obviously, having
+Jameson here, it's, it's very interesting to hear you guys share thoughts on this. But
+obviously, the topic of privacy, and especially like privacy regarding your personal life,
+I can imagine it's hard to sometimes even talk about that, as well, because you don't
+want to misstep or you want to keep things in generalities, you both have your real names.
+As far as I know, that you use from your pre privacy lives, and you have, you know, credentials
+that you've built up that you didn't want to necessarily sacrifice. But then you also
+have these alter egos, you probably wouldn't recommend even that for that process for most
+people, right? Because if you don't have a podcast, or you're not around, like you wouldn't
+even want to do that.
+Well, yeah, and this is also why I've gotten a lot of pushback from some more, I don't
+know, angry or toxic people online, who are like, Oh, that Jameson guy is not a real cypher
+punk, you know, if he was a real cypher punk, he he would be using a completely anonymous
+handle, and wouldn't be talking about all of this stuff. And, and I think I'm pretty
+open with the fact that I'm not taking the easy path, like the easy path is, of course,
+you know, not using your real name or identity. But it was, it was a little too late for me
+there, like I had already built up a pretty big reputation with my government identity,
+and I didn't want to throw that out the window. So that's why I took the more difficult path
+of trying to protect my sensitive government identity. And you build up all of these different
+proxies basically around various aspects of my life. But yeah, for for someone who doesn't
+have, you know, public persona reputation that they want to continue, then yeah, I would
+certainly would recommend a very different path of how to go about protecting your life.
+It's going to be all consuming. And I always tell people at least a few times you will
+want to quit for sure. Because you're going to be tired, and you're going to be moving
+and you're, you know, just going to want to order a pizza, and you're not going to want
+to have to, you know, make an identity to do that. And it's going to be annoying. And
+that's probably the least of your worries. So I wanted to get into, and I'm not sure
+to the extent you're tracking this, but there are some regulatory changes in the US that
+would require disclosure to FinCEN, the ultimate beneficial owner of any US registered entity.
+So in the privacy world and in the asset protection world, you can set up an LLC, or you can set
+up a trust, or you can set up a hierarchy of, you know, asset protection structures to limit
+or fully shield the ultimate beneficial owner, which would be like you or me or whoever is
+buying a house or owns an asset from what is on public record. And so what the government
+is saying is, you know, no more of that, because we're too much of them, there's too much risk
+of money laundering and criminal activity there. And so we need to know who is behind
+everything. And I think everyone on this conversation would agree that a government registry is
+not where you want to be. So are you tracking that? And what are your thoughts on maintaining
+your structures? If that passes?
+No, I can't say that's actually come up on my radar. What, I guess, would you say is
+the the current feeling on like how, how likely that is to go through?
+My favorite privacy attorney, Doug, who is of a like mind with all of us here says that
+he's pretty confident it is going to happen. And I know he's working on some ways to mitigate
+it. But the current, the current mechanisms, probably what you did, what I did, what others
+have done wouldn't work in this incend disclosure scenario. And so, yeah, it's gonna be a challenge.
+But what we pay lawyers a lot of money to do is to find loopholes. So we can only hope
+that they'll find some other loophole.
+This is not the first challenge of dealing with government entities in this process,
+right? Because you have to have a driver's license or most likely do, right? And you
+pay taxes. And so there are certain things. And, you know, if you happen to do this for,
+you know, more than 10 years, you're going to go through a census. So this is not new
+to the process. But this is a new wrench, I would say.
+Yeah. And that's why, you know, I have my address that is like my real address, you
+know, for driver's license and other purposes. But I'm actually not spending much time there.
+It's really more from my perspective about protecting the physical locations of the places
+that I'm spending significant time.
+Good news to that, because I know, you know, that comes with logistical challenges, too.
+And I'm sure you're probably using adjacent towns or, you know, there's driving involved.
+That gets old. I have just one more question on this. You know, we can put it to bed. But
+have you found that there are well-intentioned third parties that are risks to your setup?
+And if so, how do you deal with those?
+Yeah, I mean, they all are. I mean, I've had issues even with family members. So, you know,
+for example, like I've the few family members who I've had, you know, come to my home. I've
+had, you know, one of them start mailing just like birthday cards and letters and stuff.
+And you know, I had to be very strict of like, look, you do not send anything to this address.
+That's why I gave you this private mailbox that is not at that address. And then there
+were other times when just due to the complexity of like, I've set up multiple mailboxes in
+multiple places. And sometimes people who send me stuff get confused. And I even had
+a good one recently, just a few months ago, I think I may have like ended up losing a
+Christmas gift because of this. But I sent a package to a family member from some like
+random UPS store or something. And they took the return address, which I guess was that
+UPS store and sent a package back to it. But I don't have an account or a private mailbox
+or whatever at that UPS store. So I think that package just got black hold.
+Yeah, you have difficulty unwinding things sometimes. So maybe we'll pivot into some
+Bitcoin privacy stuff. But I so when you were talking, I was reminded of and this was probably
+a mistake. I might do this differently the next time. But we did not go in pseudo or
+use a cutout when we were buying the house. So the builder and both the agents knew my
+wife and me at the time. And so we sat him down and talked to him about this process
+and how important it was to us. And they of course all nodded, right? All three of those
+people then within 30 days, you know, put us on their like realtor mailing list and
+signed up for third party warranties for appliances in the house. And, you know, set up like a,
+you know, some gift subscription in our names. Oh, yeah, it's all of the common marketing
+stuff. Yeah. And this is like this is after sitting there, you know, in the like, being
+built kitchen, telling them this is really important to us. This is what we're going
+to do. You know, we're going to go through this process together. And they're all like,
+and these are good people, right? These are not bad people. But the if you rely on bull
+whose job it is, or whose job isn't to like necessarily understand this and for whom this
+is very foreign, the likelihood of a mistake is really high. Yeah. Well, the the only thing
+I can really recommend there and what has worked for me. So like I said, first time
+I went through this, I had a few leaks. Second time I went through it. One of the major things
+I changed is literally every person that I dealt with, whether it was a realtor, banker,
+contractor, anybody. Most of the time, you know, whenever it's possible, I give my fake
+identity. So for most contractors, they don't even know my real name. And so I think that's
+easier. You know, there's no real friction there. Like, go ahead, leak whatever you want.
+It's all made up. But for the few who I have to give my real identity to now, I don't even
+start a conversation with any of those people without putting a nondisclosure agreement
+up. I'm like, look, you either sign this nondisclosure agreement, and you were going to remember
+it because it tells you what's going to happen if you leak any information, you're going
+to remember the consequences and you're going to think before you you do any of your normal
+data manipulation stuff, or I'll just go find somebody else to handle my business. So basically,
+what I'm understanding from this is Jameson, when you said you got in contact by accident
+with a security analyst in the business, and you didn't want to go down that rabbit hole,
+that was actually Alec, wasn't it?
+Please could be. I would have been more respectful as well. But that's it's always interesting
+to hear you guys thoughts really deep down in the rabbit hole, which I'm sure and I know
+obviously goes goes much deeper than than this that we've been talking about. But look,
+we're getting close to time here. I know you got a hard stop, Jameson in a couple minutes.
+Should we pivot back to Bitcoin privacy? I don't know, should people be coin joining?
+Congress is going crazy on KYC AML, among other things, you know, in the developed markets,
+if you're if you're just buying and selling Bitcoin, should you waste? Should you spend
+your time coin joining?
+Right? This is tricky, right? So first of all, Bitcoin privacy is really, really hard.
+But privacy is not a binary thing either. So the question whenever you're talking about
+privacy or security is what's your threat model? What are you actually trying to protect
+yourself against? And I think most people don't need to be worrying about like having
+to coin join their funds constantly. I think like for the average person who is using Bitcoin,
+why might you want to use coin join? I think the reason you would want to use it for the
+average use case is if you're sending money on chain to someone, and you don't want them
+to be able to just go to a block explorer and look back a few hops and start to be able
+to deduce how much Bitcoin you have. So in that case, what I tell people is, you know,
+if you're worried about the sort of sender level of privacy, then make your payments
+through a coin join. If you need to send money, coin join it and then send it. But the people
+who are just like constantly tumbling their coins, unless you're actually like a maker
+on join market and you're getting paid to do that, I think you're probably wasting a
+lot of money in fees. Otherwise, what are you trying to protect against? If you're really
+trying to protect against, you know, nation state level actors, then why are they after
+you? You probably have bigger problems that you need to be worrying about. But I guess
+for the short version is like coin join is a really tricky thing. And especially like
+some of the stuff that's been having happening with Wasabi lately. It's making that environment
+a lot more chaotic. And the short version is I do not coin join particularly often myself
+unless there's a specific use case where I think I need to be making a payment and I
+need that level of privacy. Yeah, I would agree that it's I mean, Bitcoin
+just isn't like a native privacy tool really. And I think, especially now that there's really
+sophisticated forensics and surveillance tools layered on top of it. And I don't know if
+either you guys saw Jonathan Levin from G analysis sparring with everyone's favorite senator
+from Massachusetts, Elizabeth Warren. Amazing. But I mean, as I was watching that, and for
+anyone who hasn't listened to it, or hasn't seen it's well worth watching. I had two thoughts.
+One was Elizabeth Warren, someone has prepped her somewhat, right? She's gotten better.
+She has a better understanding, I think flawed, right? But still she's got a better understanding
+of the space. And Jonathan Levin is, you know, he's actually like a defender of the space.
+And I think that's great. But I'm also at the same time, very concerned about the extent
+to which the surveillance tools have gotten really sophisticated. And so, you know, there
+is some just like native lack of privacy in Bitcoin. And then there's this augmented lack
+of privacy that comes from these tools. And I know that, you know, there's a counter argument
+that says, well, everyone, the regulators are more comfortable because the tools exist.
+But I guess I'd be curious, Jameson, where do you fall in the in the our blockchain forensics
+tools, you know, advancement for the space? Are they hindrance to some of the principles
+or both?
+I mean, I think they're going to exist because there's a market for them. And the customers
+have a lot of money because they're generally nation states. And it's just it's a it's a
+fact of life that we'll have to deal with. I mean, these are adversarial networks who
+have to assume that people are going to be surveilling them and trying to use them to
+track anyone for any reason. So funny story, though, I actually met Jonathan Levin and
+I think 2014 or 2015. And and we we were actually suffice to say, he was working on a project
+at the time called Coinlytics, which was somewhat similar to what eventually became Chainalysis.
+But I was in discussions with like joining that that company with him. And, you know,
+it would not have been a far-fetched future, I think, where I could have been like one
+of the early engineers at Chainalysis. And, you know, thankfully, it didn't go that way.
+But it's just a small world.
+It's amazing to see the the current state of legislation. And, you know, even even just
+a couple of years ago, even the time period that we were talking about with, you know,
+the block size wars and just the complete lack of understanding from from Congress,
+which I think is still very much exists. But they're really just they're really trying
+to fit that square peg into the round hole. And they're just going to keep trying. So
+anyway, I want to be respectful of your time, Jameson. We can't go down that rabbit hole
+too much. But it's always interesting to chat with you, chat about privacy. Thanks a lot
+for joining. You know, as we wrap it, any final thoughts? And Alec mentioned it, lop.net.
+Absolutely. That's a link our listeners should go to. But yeah, any any final thoughts? Where
+else can our listeners find your work?
+You can follow me on Twitter at LOPP and check out the security offerings that my company
+has at keys.casa. That's C-A-S-A. And usually my my final takeaway on any privacy or security
+stuff is that it can feel very overwhelming, especially if you're listening to experts
+talk about various rabbit holes and complexities that they've endured. But you should not let
+that deter you from at least starting to scratch the surface. You can spend a few hours improving
+your security and privacy. It doesn't have to be the insane extreme levels that we have
+gone to. And any improvement that you can make any amount of resources you can put into
+it is just going to make your posture better than 99% of the rest of the people in the
+world. And if you're a harder target than most other people, then it's a lot less likely
+that you're going to end up suffering and being attacked in the first place.
+Excellent. Jameson, thanks a lot for your time. Always appreciate it and all the best.
+Thanks. Bye.
+Cheers, Matt. Thank you.

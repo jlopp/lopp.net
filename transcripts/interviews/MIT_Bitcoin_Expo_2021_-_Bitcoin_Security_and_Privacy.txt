@@ -1,16 +1,16 @@
 Hi, everyone. We're back with the Bitcoin security and privacy panel moderated by Michael
-Perklin, featuring Jameson Lopp, Jimmy Song, and Michael Flaxman. I'll introduce Michael
-Perklin very briefly. He's a cryptocurrency security expert, having provided over a decade
+Perklund, featuring Jameson Lopp, Jimmy Song, and Michael Flexman. I'll introduce Michael
+Perklund very briefly. He's a cryptocurrency security expert, having provided over a decade
 of contributions to the Bitcoin and cryptocurrency industry. He currently serves as CISO, Chief
 Information Security Officer of ShapeShift, and president of C4. He's also the co-author
 of the Cryptocurrency Security Standard. Thank you very much. It's a pleasure to be moderating
 this panel. I have the pleasure of serving this panel with a few of my colleagues in
-this space. We have Jameson Lopp, we have Jimmy Song, and we have Michael Flaxman. Jameson,
+this space. We have Jameson Lopp, we have Jimmy Song, and we have Michael Flexman. Jameson,
 why don't you go introduce yourself to the audience?
 Sure. I'm CTO of CASA. We are a provider of multisig self-custody services. Prior to that,
 I was also doing multisig self-custody at the enterprise level with BitGo and just been
 a general Bitcoin enthusiast for a number of years.
-Thank you. Michael Flaxman, why don't you introduce yourself to the audience?
+Thank you. Michael Flexman, why don't you introduce yourself to the audience?
 Yeah. I guess I can say long time Bitcoiner now. I had my first commit to PiCoin in 2013.
 I write the 10x Bitcoin security guide on how to use multisig to secure your Bitcoin.
 I'm a co-maintainer of the Biddle Python Bitcoin Library with Jimmy Song also on this panel.
@@ -63,145 +63,145 @@ in a giant multi-sig setup or something like that. So that is the particular tra
 that you generally have to think about with security is that it does tend to come at the
 price of convenience. And it's for that reason that you need to think about who you are as
 a Bitcoin holder, like what you're planning to do with it and how you plan to use it.
-I think one of the big things that's often that I often harp on in Bitcoin is the value
-of multi-sig because it allows you to make mistakes. And we think of Bitcoin as the scary
-thing where you're going to make one mistake and you're going to lose all your Bitcoin.
-There's been stories since forever about somebody throwing out a hard drive or forgetting a
-password and being locked out of a massive fortune. The reality of where multi-sig is
-and in theory, what it offers are still a little bit of a gap. It's still not as easy
-to use as I would like it to be for everyone. But in theory, multi-sig is this amazing win
-because you're allowed to make horrible mistakes. And depending on your threshold, like in a
-three of five example, you could make two horrific mistakes. And as long as you have
-access to three hardware wallets, you'd still be able to spend your funds. So having that
-no single point of failure in multi-sig is a really, really good thing.
-I think the biggest vulnerability is just in practice, there's a lot of difficult details,
-getting the hardware wallets to play nicely with one another, having to run your own node.
-Even the way you verify like are my other hardware wallets part of this multi-sig quorum
-is all kind of complicated now and it is getting easier all the time. So I think the biggest
-vulnerabilities are these detail things that are there still room to get wrong. But the
-thing that's important to remember is that Bitcoin is actually the most secureable asset
-in human history and that that's a new thing. You cannot two of three or three or five year
-gold. Only Bitcoin can offer this. And I would argue that no altcoin can either. I mean,
-we've seen Ethereum have a massive loss in the parity multi-sig contract and that's sort
-of something to be expected when you have a complex smart contracting language and not
-a simple statically analyzable smart contracting language like Bitcoin has. So multi-sig provides
-this unbelievable level of security that's never existed in the world, but it's just
-a little bit complicated right now.
-And these types of trade off. So go ahead, James. I was just going to say this can also
-be really overwhelming. You know, the three of us are probably going to be talking about
-some crazy low level details that we understand because we live and breathe this stuff. But
-I can imagine that most people who are in the audience, people who are just dipping
-their toes into this, they start hearing security experts talk about how to do like the extreme
-perfect security setup and they're just going to feel totally overwhelmed. And I think one
-of my biggest fears is that that will turn people off from even trying to move into self
-custody. I don't want people to feel like, well, this is so complicated that I might
-as well just leave all my money on the exchange.
-Yeah, there's always going to be a trade off when dealing with these things. And while
-we're talking to some of the specific technical aspects of it, generally speaking, when you
-look at the information theory of security, Jimmy mentioned there was that trade off.
-It's a three point trade off between confidentiality, integrity, and availability. If you maximize
+I think one of the big things that I often harp on in Bitcoin is the value of multi-sig,
+because it allows you to make mistakes. And we think of Bitcoin as the scary thing where
+you're going to make one mistake and you're going to lose all your Bitcoin. There's been
+stories since forever about somebody throwing out a hard drive or forgetting a password
+and being locked out of a massive fortune. The reality of where multi-sig is and in theory,
+what it offers are still a little bit of a gap. It's still not as easy to use as I would
+like it to be for everyone. But in theory, multi-sig is this amazing win because you're
+allowed to make horrible mistakes. And depending on your threshold, like in a three of five
+example, you could make two horrific mistakes. And as long as you have access to three hardware
+wallets, you'd still be able to spend your funds. So having that no single point of failure
+in multi-sig is a really, really good thing. I think the biggest vulnerability is just
+in practice, there's a lot of difficult details, getting the hardware wallets to play nicely
+with one another, having to run your own node. Even the way you verify like are my other
+hardware wallets part of this multi-sig quorum is all kind of complicated now and it is getting
+easier all the time. So I think the biggest vulnerabilities are these detail things that
+there's still room to get wrong. But the thing that's important to remember is that Bitcoin
+is actually the most secure-able asset in human history and that that's a new thing.
+You cannot two of three or three of five-year gold. Only Bitcoin can offer this. And I would
+argue that no altcoin can either. I mean, we've seen Ethereum have a massive loss in
+the parity multi-sig contract and that's sort of something to be expected when you have
+a complex smart contracting language and not a simple statically analyzable smart contracting
+language like Bitcoin has. So multi-sig provides this unbelievable level of security that's
+never existed in the world, but it's just a little bit complicated right now.
+These types of trade-offs. So go ahead, James.
+I was just going to say this can also be really overwhelming. The three of us are probably
+going to be talking about some crazy low-level details that we understand because we live
+and breathe this stuff. But I can imagine that most people who are in the audience,
+people who are just dipping their toes into this, they start hearing security experts
+talk about how to do the extreme perfect security setup, and they're just going to feel totally
+overwhelmed. And I think one of my biggest fears is that that will turn people off from
+even trying to move into self-custody. I don't want people to feel like, well, this is so
+complicated that I might as well just leave all my money on the exchange.
+Yeah, there's always going to be a trade-off when dealing with these things. And while
+we're talking about some of the specific technical aspects of it, generally speaking, when you
+look at the information theory of security, Jimmy mentioned there was that trade-off.
+It's a three-point trade-off between confidentiality, integrity, and availability. If you maximize
 confidentiality, the secretness of your key, you're going to minimize either the availability
 of that key or the integrity of it or both. Similarly, if you make it incredibly available
 because now you've copied it into five or 10 places across multiple places, sure, it's
 more available, but now you're compromising the confidentiality of your key. It's these
-trade offs that you have to make in general. And once you've decided on that model, then
-you go into the specifics of multi SIG or something else. I'm a firm believer that just
-like today, people have better password hygiene today in 2021 compared to the 1980s and 1990s
-when computing first started taking the world by storm. It took 20 years for us to become
-comfortable with passwords and know the pitfalls of reusing passwords and not using proper
-character sets in your passwords and things like that. It's my belief that 20 years from
-now, everyone will be so comfortable with private key security just as they are today
-with password security. Sure, there will still be some people who are doing it wrong, maybe
-reusing a key in multiple places, but the children that are growing up today will grow
-up in a private key controlled world. And I think that's really exciting.
+trade-offs that you have to make in general. And once you've decided on that model, then
+you go into the specifics of multi-SIG or something else. I'm a firm believer that just
+like today, everyone has very good or people have better, I should say people have better
+password hygiene today in 2021 compared to the 1980s and 1990s when computing first started
+taking the world by storm. It took 20 years for us to become comfortable with passwords
+and know the pitfalls of reusing passwords and not using proper character sets in your
+passwords and things like that. It's my belief that 20 years from now, everyone will be so
+comfortable with private key security just as they are today with password security.
+Sure, there will still be some people who are doing it wrong, maybe reusing a key in
+multiple places, but the children that are growing up today will grow up in a private
+key controlled world and I think that's really exciting.
 Next I'd like to talk a little bit about something that's being built on Bitcoin that is giving
-a lot of benefits to Bitcoin users, and that is lightning. With lightning, there are a
-lot of great benefits to the Bitcoiners with also its own trade offs. Again, you have that
-tug of war between the different aspects that you optimize for. We were talking before this
-panel about some of the trade offs between lightning security and usability. Jimmy, why
+a lot of benefits to Bitcoin users and that is lightning. With lightning, there are a
+lot of great benefits to Bitcoiners with also its own trade-offs. Again, you have that tug
+of war between the different aspects that you optimize for. We were talking before this
+panel about some of the trade-offs between lightning security and usability. Jimmy, why
 don't you start us off with lightning security and usability?
-Lightning is extremely convenient in the sense that you don't need any confirmations on the
-on chain or whatever. You can send extremely small amounts for very low fees and so on.
-If you've tried something like Sphinx Chat or the Breeze podcasting app or whatever,
-you know exactly how quickly you can do that stuff. The only problem with lightning is
-sort of that security model. You have to have your node online as you're spending, and if
-you're a routing node, you need your private keys online the entire duration that you're
-routing because you can't route anything without your private key. The security model is significantly
-different than one of Bitcoin where you could keep your private key offline and so on. There's
-not really much choice but to keep it online at least some time. That of course does expose
-it to the internet and so on. I think there are ways to maybe once in a while, if you
-have a fat channel open with an exchange or something like that, you could keep the key
-offline and sign just the funding transactions or something to that effect. That said, it
-generally tends to be harder to secure but it is extremely convenient. For small amounts
-of money and for micro transactions, I think lightning makes all the sense in the world.
-From a security perspective, I would say that it enables something like a decentralized
-web that we've all been wanting. Instead of keeping your passwords on a centralized website
-like Facebook or Twitter or whatever, you can have things like SphinxChat which are
-completely peer-to-peer and you don't store any of your credentials anywhere and so on.
-From that perspective, I think lightning is an order of magnitude improvement over the
-current web as it is structured. It's going in the right direction but that said, it's
-from a monetary perspective versus Bitcoin on-chain. It really is more vulnerable though.
-We haven't yet seen too many people get hacked on that necessarily but it is more risk.
+Lightning is extremely convenient in the sense that you don't need any confirmations on chain
+or whatever and you can send extremely small amounts for very low fees and so on. If you've
+tried something like Sphinx Chat or the Breeze podcasting app or whatever, you know exactly
+how quickly you can do that stuff. The only problem with lightning is that security model.
+You have to have your node online as you're spending and if you're a routing node, you
+need your private keys online the entire duration that you're routing because you can't route
+anything without your private key. The security model is significantly different than one
+of Bitcoin where you could keep your private key offline and so on. There's not really
+much choice but to keep it online at least some of the time and that of course does expose
+it to the internet and so on. I think there are ways to maybe once in a while if you have
+a fat channel open with an exchange or something like that and you could keep the key offline
+and sign just the funding transactions or something to that effect. That said, it generally
+tends to be harder to secure but it is extremely convenient. For small amounts of money and
+for micro transactions, I think lightning makes all the sense in the world. From a security
+perspective, I would say that it enables something like a decentralized web that we've all been
+wanting. Instead of keeping your passwords on a centralized website like Facebook or
+Twitter or whatever, you can have things like Sphinx Chat which are completely peer-to-peer
+and you don't store any of your credentials anywhere and so on. From that perspective,
+I think lightning is an order of magnitude improvement over the current web as it is
+structured. It's going in the right direction but that said, it's from a monetary perspective
+and versus Bitcoin on chain, it really is more vulnerable though. We haven't yet seen
+too many people get hacked on that necessarily but it is more risk.
 Jameson, do you have anything to add?
-This is I would say at a point where I'm actually kind of pleasantly surprised that there haven't
+This is, I would say, at a point where I'm actually pleasantly surprised that there haven't
 been more disasters with lightning. I think I wrote a fairly lengthy post six or seven
 years ago where I outlined a few different potential disaster scenarios of essentially
 like network collapse or economic issues that could happen. While lightning does have its
-share of issues around potential economic attacks or privacy attacks that have been
+share of issues around like potential economic attacks or privacy attacks that have been
 sort of spoken about academically, I don't think that we've seen too much that has actually
-been carried out. This whole thing of course is an interesting ongoing experiment because
+been carried out. This whole thing, of course, is an interesting ongoing experiment because
 there has never really been a financial network constructed in this way before. To me, it's
-still something fascinating to continue to watch and evolve and I'm hopeful that someday
-I will feel confident enough to participate from a large economic standpoint. Basically
+still something fascinating to continue to watch and evolve. I'm hopeful that someday
+I will feel confident enough to participate from a large economic standpoint, basically
 doing my own type of yield farming as it were, liquidity providing on the lightning network.
 I have seen up hand just for running a routing node, if you're going to do it with large
 amounts of money, you really need to be almost like at the enterprise level of IT infrastructure
-provider simply because there are a number of different single points of failure, things
+provider, simply because there are a number of different single points of failure, things
 that can cause you to have funds loss that are all a direct result of what Jimmy said
 of the fact that you have to have these keys online, you have to have these other databases
-that are constantly being written to and if you lose that data you may or may not be able
-to go into certain manual recovery scenarios and it can get pretty gnarly as I actually
+that are constantly being written to. If you lose that data, you may or may not be able
+to go into certain manual recovery scenarios and it can get pretty gnarly. As I actually
 wrote a blog post about a couple months ago of a number of different nasty data and funds
 recovery scenarios that I've run into over the years.
-That's right, with traditional Bitcoin the only thing that you really need to worry about
-backing up is your key and whether you choose to keep that key offline or online you can
-receive coins and you can participate in the Bitcoin network. With lightning with the extra
-convenience of micro payments and nothing being written to chain, while you have those
-benefits what you bring up Jameson is absolutely true, there's more than just the key that
-you need to back up with the constant state that is ever changing and while it may be
-accessible to people who have significant amounts of money to open up a variety of channels
+Yeah, that's right. With traditional Bitcoin, the only thing that you really need to worry
+about backing up is your key. Whether you choose to keep that key offline or online,
+you can receive coins and you can participate in the Bitcoin network. With lightning, with
+the extra convenience of micro payments and nothing being written to chain, while you
+have those benefits, what you bring up Jameson is absolutely true. There's more than just
+the key that you need to back up with the constant state that is ever changing. While
+it may be accessible to people who have significant amounts of money to open up a variety of channels
 with other participants, not everybody is able to open up a lightning channel. One other
 difference between lightning and Bitcoin is the requirement to put up your own capital
-into a channel. For example, opening a channel worth $100 between myself and Jameson allowing
+into a channel. For example, opening a channel worth $100 between myself and Jameson allow
 me to participate in the lightning network and all the other connections that Jameson
-may have beyond his note, if I don't have that $100 to open up a channel I can't participate
-in the network to receive my 0.05 micro payment. Now of course you don't have to put up 100
-Bitcoin in a channel, you can put up less but there is still a higher barrier of entry
-than what traditional Bitcoin offers where as long as you have a key, you don't need
-any capital to receive your funds and keep it secure offline.
-Is that true because I don't think you need any funds in order to have a channel open
-to you so you can have a one-way channel where somebody opens $100 worth of Bitcoin into
+may have beyond his note. If I don't have that $100 to open up a channel, I can't participate
+in the network to receive my 0.05 micro payment. Now, of course, you don't have to put up a
+$100 Bitcoin in a channel. You can put up less, but there is still a higher barrier
+of entry than what traditional Bitcoin offers, where as long as you have a key, you don't
+need any capital to receive your funds and keep it secure offline.
+Is that true? Because I don't think you need any funds in order to have a channel open
+to you. You can have a one-way channel where somebody opens $100 worth of Bitcoin into
 you and then you can receive as much as that channel capacity allows, if I'm not mistaken.
 It doesn't have to be bidirectional.
-I think there's the theory and then there's the reality and that I think that one of the
-more interesting challenges going forward here is going to be less on the technical
-side and more on the economic side of how do we push a lot of the complexities of figuring
+I think there's the theory and then there's the reality. I think that one of the more
+interesting challenges going forward here is going to be less on the technical side
+and more on the economic side of how do we push a lot of the complexities of figuring
 out liquidity under the hood. My personal belief is that I don't think that Lightning
 Network is going to be a mainstream thing until we can abstract away a lot of the fact
-that there are channels even happening under the hood. Channel management is not something
-that we would want the average person to have to even think about.
-One of the main things that I think is important there is to get more and more liquidity providers
-onto the Lightning Network and then figure out ways to make these integrations more seamless.
-You should be able to basically have an exchange provide liquidity since they already have
-a lot of funds. This is where also I think the lightning pool technology that they're
-working on is going to come into play. I know that there's active outreach happening from
-lightning labs to figure out how do we bring together the people who have the liquidity
-with the people who want the liquidity and figure out the best way to build the technology
-to make that happen.
+that there are channels even happening under the hood.
+Capital management is not something that we would want the average person to have to even
+think about. One of the main things that I think is important there is to get more and
+more liquidity providers onto the Lightning Network and then figure out ways to make these
+integrations more seamless. You should be able to basically have an exchange provide
+liquidity since they already have a lot of funds. This is where also I think the lightning
+pool technology that they're working on is going to come into play. I know that there's
+active outreach happening from lightning labs to figure out how do we bring together the
+people who have the liquidity with the people who want the liquidity and figure out the
+best way to build the technology to make that happen.
 Awesome. You're absolutely right, Jameson, that today programs are still working on the
 plumbing that everyone will be using tomorrow. I compare it in my mind to the engineers who
-worked on TCP IP and then HTTP that was built on top of it. Today we are able to grab our
-tablet and have a video call with grandma on the other side of the planet so easily
+worked on TCP IP and then HTTP that was built on top of it. Now today we are able to grab
+our tablet and have a video call with grandma on the other side of the planet so easily
 that you're not even thinking about HTTP connections and TCP channels. I look forward to the user
 interfaces that will be built on top of these technical primitives to make Bitcoin super
 easy to use in the future for everyone who comes after us.
@@ -235,219 +235,227 @@ It's a really easy to use thing. When you go to log in, it asks you this extra c
 It says, put in your U2F key and hit the button on there. Most of them don't even have screens
 or anything. It's like literally just hit the button, but it means that for somebody
 to steal your U2F key for access to your site, they would have to physically come into your
-home and take it, which is enormously more tricky than, say, guessing your weak password,
-for example. U2F keys are great. Once you have them, you just add them to every service
-you use. It's amazing. Even login.gov for if you use any services there takes a U2F key,
-and once you have them, you may even want to get multiple, but you don't have to start
-that way. I keep one in a safe deposit box, and I keep one at home, and I keep one in
-my travel bag. I can always just have that access should everything else melt down. U2F
-keys are great. You can get them. Google sells one Titan key that's highly reputable for
-$25. You can buy different ones on Amazon for $20. That's a great way to help you with
-authentication, which is a different problem than storing Bitcoin, but you're probably
-going to buy Bitcoin somewhere, and they should support U2F keys. You should secure your account
-that way, and it just requires no tech know-how. You'll just figure it out. It's really easy
-to use.
+home and take it, which is enormously more tricky than say like guessing your weak password,
+for example. So U2F keys are great. Once you have them, you just add them to every service
+you use. It's amazing. Even login.gov for if you use any services there takes a U2F key.
+And once you have them, you may even want to get multiple, but you don't have to start
+that way. So I keep one in a safe deposit box and I keep one at home and I keep one
+in my travel bag. And so I can always just have that access should like everything else
+melt down. So U2F keys are great. You can get them. Google sells one Titan key that's
+highly reputable for $25. You can buy different ones on Amazon for $20. So that's a great
+way to help you with authentication, which is a different problem than storing Bitcoin,
+but you're probably going to buy Bitcoin somewhere and they should support U2F keys. And so you
+should secure your account that way. And it just requires no tech know-how. You'll just
+figure it out. It's really easy to use.
 That's right. As much as attackers can remotely connect to your computer, they cannot do touch
-over IP, at least not yet. Jimmy, do you have anything to add? What would you recommend
+over IP, at least not yet. Jimmy, do you have anything to add? Well, what would you recommend
 to people looking to secure their account?
 Well, the first thing, and I've run Twitter polls on my Twitter account, and the thing
 that still shocks me is that a vast majority of people just still keep their Bitcoins on
-an exchange. This has traditionally been the biggest security hole for most Bitcoin holders.
-The biggest fail in Bitcoin history was Mt. Gox when they went bankrupt. There's a lot
-of people that would have a lot more money if they simply kept their own Bitcoins instead
-of leaving it on Mt. Gox, for example. Getting it off the exchange and getting into hardware
-wallets or self-custody of some way, shape, or form, that I think is the first step. Now,
-that tends to be very scary for a lot of people because we're not used to bear instruments
-or things that we have to secure on our own. It does require some level of technical understanding,
-but I think that's the main step that most people can take. We haven't had a major exchange
-go down as a result of a hack in a while, but I think it's inevitable, whether through
-internal hacking, external hacking, rehypothecation, or just bad loans or something like that.
-It's inevitable, and it will happen. I think a lot of people have been conditioned over
-the last three or four years to think that nothing bad is going to happen and I could
-keep it on this thing for five years or something like that. I generally don't think that's
-a very good bet, and it's a very big risk to your Bitcoin if you're keeping all your
-coins on an exchange.
+an exchange. And this has traditionally been the biggest security hole for most Bitcoin
+holders. The biggest fail in Bitcoin history was Mt. Gox when they went bankrupt. And there's
+a lot of people that would have a lot more money if they simply kept their own Bitcoins
+instead of leaving it on Mt. Gox, for example. So getting it off the exchange and getting
+into hardware wallets or self custody of some way, shape or form, that I think is the first
+step. Now that tends to be very scary for a lot of people because we're not used to
+bear instruments or things that we have to secure on our own. And it does require some
+level of technical understanding, but I think that's the main step that most people can
+take. We haven't had a major exchange go down as a result of a hack in a while, but I think
+it's inevitable, whether through internal hacking, external hacking, rehypothecation
+or just bad loans or something like that. It's inevitable and it will happen. I think
+a lot of people have been conditioned over the last three or four years to think that
+nothing bad is going to happen and I could keep it on this thing for five years or something
+like that. I generally don't think that's a very good bet. And it's a very big risk
+to your Bitcoin if you're keeping all your coins on an exchange.
 We've actually seen a number of exchanges still getting hacked. The total number of
 exchanges getting hacked is going up, but I think that they are newer and smaller exchanges.
-If I recall correctly from the stats that I ran at the end of the year, it's like fewer
-Bitcoin are being stolen and it's more altcoins that are being stolen in large quantities.
-It's probably just because new people, new companies coming into these spaces not knowing
-any of the best practices and basically repeating the mistakes of the past. In terms of general
-security, if I was going to talk just to a regular person, I would actually advocate
-minimalism and by minimalism, what I mean is stop installing every little piece of software
-you come across, stop adding a million different browser extensions to your browser for convenience,
-especially stop downloading and installing every little crypto price ticker or crypto
-whatever thing because you're exposing yourself to a higher likelihood of malware.
-The real world reason that I say this is that we've had a number of clients come to us at
-Casa and we've been walking them through setting up a multi-sig wallet and they'll have never
-had a Trezor before. This has happened multiple times. I've seen it. They go to plug in their
-Trezor for the first time and it automatically pops up a webpage that is actually a fake
-Trezor malware page and is asking them to put their seed phrase into it. They're like,
-is this normal? Should I be doing this? We really have no stop everything, burn your
-computer, go buy a new computer. I think there's a lot of people out there who probably have
-those specific malware that's already on your computer just laying in wait for you to try
-to do something so that they can try to trick you into getting your private keys.
+And if I recall correctly from the stats that I ran at the end of the year, it's like fewer
+Bitcoin are being stolen and it's more altcoins that are being stolen in large quantities
+and it's probably just because new people, new companies coming into these spaces not
+knowing any of the best practices and basically repeating the mistakes of the past. But in
+terms of general security, if I was going to talk just to a regular person, I would
+actually advocate minimalism. And by minimalism, what I mean is stop installing every little
+piece of software you come across, stop adding a million different browser extensions to
+your browser for convenience, especially stop downloading and installing every little crypto
+price ticker or crypto whatever thing because you're exposing yourself to a higher likelihood
+of malware. And the sort of real world reason that I say this is that we've had a number
+of clients come to us at Casa and we've been walking them through setting up a multi-sig
+wallet and they'll have never had a Trezor before. And this has happened multiple times.
+I've seen it. They go to plug in their Trezor for the first time and it automatically pops
+up a webpage that is actually a fake Trezor malware page and is asking them to put their
+seed phrase into it. And they're like, is this normal? Should I be doing this? And we
+really have no stop everything, burn your computer, go buy a new computer. And I think
+there's a lot of people out there who probably have crypto specific malware that's already
+on your computer just laying in wait for you to try to do something so that they can try
+to trick you into getting your private keys.
 That's a great point. There are so many copycat apps out there that impersonate the Trezor
-app or impersonate the KeepKey app or whatever crypto app that people use. Usually the dead
-giveaway is it's asking for your seed phrase. For those in the audience who aren't aware,
-most Bitcoin clients, the other generator asks you to enter a mnemonic sentence. This
+app or impersonate the KeepKey app or whatever crypto app that people use. And usually the
+dead giveaway is it's asking for your seed phrase. For those in the audience who aren't
+aware, most Bitcoin clients, the other generator asks you to enter a mnemonic sentence. This
 is 12 or 24 words that create all of your private keys. It's only ever needed the first
 time you set up that Bitcoin client and it's never needed again. One telltale sign that
-you've got malware is whenever you're opening up your Bitcoin program, it's asking you
-for that seed phrase when you've already set up that Trezor or you've already set up that
+you've got malware is whenever you're opening up your Bitcoin program, it's asking you for
+that seed phrase when you've already set up that Trezor or you've already set up that
 Ledger wallet. Making sure that you're using the real apps from the real publishers is
-absolutely important. Once you have those apps, you're able to send and receive Bitcoin
-on chain. There's another aspect of security that we haven't touched on yet on the panel
+absolutely important. And once you have those apps, you're able to send and receive Bitcoin
+on chain. But there's another aspect of security that we haven't touched on yet on the panel
 and that is privacy. With a public Ledger for everyone in the world to write to and
-to read from, anybody can see where any amount of Bitcoins are transferring. Sure, at first
-you see one Bitcoin address to another Bitcoin address and you may not be able to immediately
-tell who is controlling address one or address two. Once you know that you've received some
-funds from Michael Perklin, you can ask him, well, where did you get those funds from?
-You can start to peel apart the history of all these transactions and get a real world
-picture of how much wealth people may have online. What strategies are there to minimize
-your data footprint or to maximize your privacy when using public blockchains like Bitcoins?
-Do any of you have suggestions? I'll jump in. What I like to say about Bitcoin is that
-it's as private as you want it to be and the default setting is not very private. By default,
-it is hard to get privacy right in Bitcoin. You're probably buying your coins on an exchange.
-That exchange is asking you for KYC information like your driver's license and social security
-or utility bills so they know who you are. They're probably record sharing with blockchain
-analysis companies like Chainalysis that are basically spying on behalf of the government
-and doing that with all the other exchanges. If you send Bitcoins to somebody and they
-withdraw them in an exchange, then they'll probably be able to figure that out too. Then
-of course, how you're storing those coins. If you're using a hardware wallet that shares
-the Xpubs with a server somewhere, it's sharing, here's my collection of addresses, then you've
-also doxed yourself there. Privacy is hard. You need to buy your coins anonymously. You
-need to run your own node so that you're not querying third-party services. Now, maybe
-you could argue like Electrum behind Tor would be sufficient, but there are trade-offs there
-and that's non-trivial as well. Unfortunately, the privacy story in Bitcoin is hard, but
-it's actually not nearly as bad as it sounds because number one, the fact that Bitcoin
-doesn't rely on any zero-knowledge proofs or anything like that means that it's very
-easy to audit the supply, which is what I think and what many Bitcoiners think is by
-far the most important thing in Bitcoin. We can all trivially verify the 21 million Bitcoin
-supply cap on the most basic of hardware. That guarantee is always true and that's what gives
-us the confidence in the monetary policy. I actually think that that's a feature, not
-a bug. The second part of it is that as much as it might be uncomfortable for people to
-know how much Bitcoin you have or to see your Bitcoin transactions, fundamentally, privacy
-and security are different things. Now, if it's known that you have a lot of Bitcoin,
-you've just painted a target on your back. That's not ideal. That said, the richest people
-in the world, at least we don't hear about it, don't tend to be getting robbed. The real
-reality of it is that all assets are liquid on a long enough time horizon. You won't see
-a Bill Gates or Jeff Bezos or Elon Musk vacationing in Venezuela because that would be very dangerous,
-but there are not like kidnap and ransom operations in the US because it would be so hard to rob
+to read from, anybody can see where any amount of Bitcoins are transferring. Now sure at
+first you see one Bitcoin address to another Bitcoin address and you may not be able to
+immediately tell who is controlling address one or address two. But once you know that
+you've received some funds from Michael Perklin, you can ask him, well, where did you get those
+funds from? And you can start to peel apart the history of all these transactions and
+get a real world picture of how much wealth people may have online. What strategies are
+there to minimize your data footprint or to maximize your privacy when using public blockchains
+like Bitcoins? Do any of you have suggestions? I'll jump in. What I like to say about Bitcoin
+is that it's as private as you want it to be and the default setting is not very private.
+So by default, it is hard to get privacy right in Bitcoin. You're probably buying your coins
+on an exchange. That exchange is asking you for KYC information like your driver's license
+and social security or utility bills so they know who you are. They're probably record
+sharing with blockchain analysis companies like Chainalysis that are basically spying
+on behalf of the government and doing that with all the other exchanges. So if you send
+Bitcoins to somebody and they withdraw them in an exchange, then they'll probably be able
+to figure that out too. And then of course, how you're storing those coins. So if you're
+using a hardware wallet that shares the Xpubs with a server somewhere, it's sharing, here's
+my collection of addresses, then you've also doxed yourself there. So privacy is hard.
+You need to buy your coins anonymously. You need to run your own nodes so that you're
+not querying third-party services. Now, maybe you could argue like Electrum behind Tor would
+be sufficient, but there are trade-offs there and that's non-trivial as well. So unfortunately,
+the privacy story in Bitcoin is hard, but it's actually not nearly as bad as it sounds
+because number one, the fact that Bitcoin doesn't rely on any zero-knowledge proofs
+or anything like that means that it's very easy to audit the supply, which is what I
+think and what many Bitcoiners think is by far the most important thing in Bitcoin. We
+can all trivially verify the 21 million Bitcoin supply cap on the most basic of hardware.
+That guarantee is always true and that's what gives us the confidence in the monetary policy.
+So I actually think that that's a feature, not a bug. And the second part of it is that
+as much as it might be uncomfortable for people to know how much Bitcoin you have or to see
+your Bitcoin transactions, fundamentally privacy and security are different things. Now, if
+it's known that you have a lot of Bitcoin, you've just painted a target on your back.
+That's not ideal. That said, the richest people in the world, at least we don't hear about
+it, don't tend to be getting robbed. And the real reality of it is that all assets
+are liquid on a long enough time horizon. You won't see a Bill Gates or Jeff Bezos or
+Elon Musk vacationing in Venezuela because that would be very dangerous. But there are
+not like kidnapping, ransom operations in the U.S. because it would be so hard to rob
 somebody in this way. You would need so much support. You would literally need to hold
 somebody hostage for days, potentially weeks. Any person who is involved in that in any
-way would go to jail for a very long time if they were caught.
-In practice, it's an uncomfortable topic, but it's not that different from a rich person
-who's CEO of a company or who's known to own a lot of property. All assets are liquid on
-a long enough time horizon. Bitcoin is just unique in that with a gun held to your head
-in a single key setup where you have the hardware wall in front of you, you can just hit send
-and move it. In practice, most people keep their coins in a more secure setup anyway
-where you'd have to go into a safe deposit box at a bank to get them out and they're
-only open Monday to Friday during bank hours and they have silent alarms and you have to
-show ID and sign and all that. It's a scary, uncomfortable thing, but I don't think wealth
-is a new topic and I don't think Bitcoin fundamentally changes that.
-It is a threat model issue. This is also one of my side projects is whenever I hear about
-a physical attack that is against someone who is being targeted because they have Bitcoin,
-I put that on my GitHub project for it and I think there have only been 60 something
-in the decade plus of history that we're aware of and close to the majority of them I think
-are people who are engaging in high-risk behavior, aka doing face-to-face high-value Bitcoin
-trades with people that they don't know. There was actually one just a few weeks ago. Some
-guy in Germany met some other random guy in a parking lot and ended up getting his wallet
-physically snatched out of his hand when he unlocked it.
-Policy like security is a very complicated topic and it's really a question of what are
-you trying to be private from? Usually, once again, when experts come together to talk
-about this type of stuff, it's usually the crazy, insane edge case of how do we remain
-100% private from nation-state level surveillance? What are all of the tools at our disposal
-for that? While that is certainly theoretically possible, I think it's out of reach for most
-of the non-technical people who aren't immersed in this stuff around the clock because it
-is a very brittle type of environment to be living in. You make one single mistake and
-that can haunt you for the rest of your life. We've seen this time and time again when you
-look at usually a court case related things, how did the investigators end up tracking
-down this person? It was usually because of one stupid thing they did years ago that unfortunately,
-because the internet does not forget, they were never able to get away from.
-I would say that with respect to privacy, despite an unpopular opinion, but I think
-the risks of privacy loss are a little bit overrated. A lot of people tend to overestimate
-how much privacy loss can be used against you and not enough on just general common
-sense security like securing your own keys and not keeping it in an exchange and so on.
-A privacy hole is a security hole and I agree with that, but it's not as big of a security
-hole as you might think. That said, if you can get privacy, all the much better, but
-to some degree, it's overstated the amount of data that you need to gather in order to
-really dox people and the scale at which you need to do it, it usually doesn't come out
-to be economically viable for your attacker. That's just my personal opinion.
+way would go to jail for a very long time if they were caught. And so in practice, it's
+an uncomfortable topic, but it's not that different from a rich person who's CEO of
+a company or who's known to own a lot of property. All assets are liquid on a long enough time
+horizon. Bitcoin is just unique in that with a gun held to your head in a single key setup
+where you have the hardware wall in front of you, you can just hit send and move it.
+But in practice, most people keep their coins in a more secure setup anyway, where you'd
+have to go into a safe deposit box at a bank to get them out. And they're only open Monday
+to Friday during bank hours and they have silent alarms and you have to show ID and
+sign and all that. So it's a scary, uncomfortable thing. But I don't think wealth is a new topic
+and I don't think Bitcoin fundamentally changes that.
+Yeah, it is. It is a threat model issue. You know, this is also one of my side projects
+is whenever I hear about a physical attack that is against someone who is being targeted
+because they have Bitcoin, I put that on my my GitHub project for it. And I think there
+have only been 60 something in the decade plus of history that we're aware of. And close
+to the majority of them, I think, are people who are engaging in high risk behavior, aka
+doing face to face high value Bitcoin trades with people that they don't know. So there
+was actually one just a few weeks ago, some guy in Germany met some other random guy in
+a parking lot and ended up getting his wallet physically snatched out of his hand when he
+unlocked it. So privacy, like security, is a very complicated topic. And it's really
+a question of what are you trying to be private from? And so usually, once again, when when
+experts come together to talk about this type of stuff, it's usually the crazy, insane edge
+case of, well, you know, how do we remain 100% private from, you know, nation state
+level surveillance? You know, what are all of the tools at our disposal for that? And
+while that is certainly theoretically possible, I think it's out of reach for most of the
+non technical people who aren't immersed in this stuff around the clock, because it is
+a very brittle type of environment to be living in you make one single mistake. And that can
+haunt you for the rest of your life. And we've seen this time and time again. When when you
+look at usually like court case related things, you know, how did the investigators end up
+tracking down this person? It was usually because of one stupid thing they did years
+ago that unfortunately, because the internet does not forget, they were never able to get
+away from.
+Yeah, I would say that with respect to privacy, despite an unpopular opinion, but I think
+it's the risks of privacy loss are a little bit overrated. Like a lot of people tend to
+overestimate how much privacy loss can be used against you, and not enough on just general,
+you know, common sense security, like securing your keys and not keeping it on an exchanger
+and so on. You know, a privacy hole is a security hole. And I agree with that. But it's not
+as big of a security hole as you might think. That said, you know, if you can get privacy,
+you know, all the much better. But, you know, like to some degree, there's, you know, it's
+overstated the amount of data that you need to gather in order to really dox people and
+the scale at which you need to do it. It's it usually doesn't come out to be economically
+viable for your attacker. So yeah, that's just my personal
 The one thing that I'll say about, I think one of the most popular privacy preserving
-technologies, CoinJoin and Bitcoin, there are certainly some people who love CoinJoin.
-They talk about it all the time. I've experimented with the various CoinJoin providers. I tried
-being a market maker on join market for a while to see what the liquidity provider yield
-was that I could get for that. Really ended up barely breaking even on there and ended
-up not doing it for the long term because I was making another trade off where I was
-having to keep those private keys online in order to provide that liquidity for join market.
-I think a lot of people gloss over that security versus privacy trade off with CoinJoin.
-In general, I don't think it makes a ton of sense to be constantly CoinJoin from a real
-world usability standpoint. If I want to make a private transaction, then I'll send the
-money through a mixer and then make the payment directly after that rather than trying to
-keep some pool of constantly mixed funds going on because you run into all of these other
-UTXO management issues if you're constantly trying to deal with your privacy UTXOs.
-Great points to add, Jameson. Thank you. At this point, with only 10 and a half minutes
-left until the top of the hour, I'd like to turn to audience questions. We've got one
-question from an audience member. What happens with Bitcoin network security when the hash
-rate drops abruptly? Does the network become more suitable to a 51% attack? I think this
-is a great question. I'll start us off by mentioning that Bitcoin adjusts its difficulty
-level every 2016 blocks. Now, normally, with an average of 10 minutes between blocks, 2016
-blocks should take about two weeks. However, if the hash rate drops abruptly, it may take
-a long time until the last of those 2016 blocks are mined, allowing the network to adjust
-the difficulty downward. Until that happens, there's no increased risk of a 51% attack,
-but after that happens, the lower the global hash rate is, the easier it is for a motivated
-attacker to get 51% of it by running their own miners in a data center or worse, by infecting
-enough malware in enough machines around the world that they can control that hash rate.
-At first, no, there's no increase, but eventually, there may be. Do any other panelists want
-to add to this answer about the hash rate? We haven't really seen any huge abrupt hash
-rate fluctuations that I can think of. I think difficulty adjustments tend to be less than
-10%, at least in the past few years. The one scenario that might cause this, it would once
-again be a sort of nation state issue is if, for example, like China tried to somehow ratchet
-down their great firewall and cut all of the miners in China off, that could be an interesting
-split scenario, but it's unlikely that something like that would be able to persist because
-you only have to punch one hole through and the data required for Bitcoin is so minimal.
-You can balance it off the ionosphere. It's really hard for even a first world nation
-to be able to prevent the flow of information like that. I think it would require something
-even more resource intensive and onerous. Some of these edge cases that people talk
-about of what if China sent in their army to all of the mining farms and tried to nationalize
-them all, et cetera, et cetera. It gets into some interesting game theory scenarios, but
-I think the fact that we haven't seen anything like that happen makes it seem less and less
-likely that it's going to, but you never know. These things are interesting to talk about.
-They're hard to put or quantify an actual risk percentage on.
+technologies, you know, coin join in Bitcoin, there are certainly some people who love coin
+join, they talk about it all the time. I've I've experimented with the various coin join
+providers. You know, I tried being a market maker on join market for a while to see what
+the like liquidity provider yield was that I could get for that really ended up barely
+breaking even on there and ended up not doing it for the long term, because I was making
+another trade off where I was having to keep those private keys online in order to provide
+that liquidity for join market. I think a lot of people kind of gloss over that security
+versus privacy trade off with coin join. And in general, I don't think it makes a ton of
+sense to be constantly coin joining from a real world usability standpoint. If I want
+to make a private transaction, then I'll send the money through a mixer and then make the
+payment directly after that, rather than trying to keep some pool of constantly mixed funds
+going on because you run into all of these other UTXO management issues if you're constantly
+trying to deal with your like your privacy UTXOs. Great points to add Jameson. Thank
+you. At this point with with only 10 and a half minutes left until the top of the hour,
+I'd like to turn to audience questions. We've got one question from an audience member.
+What happens with Bitcoin network security when the hash rate drops abruptly? Does the
+network become more suitable to a 51% attack? I think this is a great question. I'll start
+us off by mentioning that Bitcoin adjusts its difficulty level every 2016 blocks. Now
+normally with an average of 10 minutes between blocks, 2016 blocks should take about two
+weeks. However, if the hash rate drops abruptly, it may take a long time until the the last
+of those 2016 blocks are mined, allowing the network to adjust the difficulty downward.
+Until that happens, there's there's no increased risk of a 51% attack. But after that happens,
+the lower the global hash rate is, the easier it is for a motivated attacker to get 51%
+of it by running their own miners in a data center or worse by infecting enough malware
+in enough machines around the world that that they can control that that hash rate. So at
+first, no, there's no there's no increase, but eventually there may be. Any other panelists
+want to add to this answer about the hash rate? We haven't really seen any huge, abrupt
+hash rate fluctuations that I can think of. I think difficulty adjustments tend to be
+less than 10%, at least in the past few years. The one one scenario that might cause this,
+it would once again be a sort of nation state issue is if, for example, like China tried
+to somehow ratchet down their great firewall and cut all of the miners in China off, that
+could be an interesting split scenario. But it's unlikely that something like that would
+be able to persist because you only have to punch one hole through and and the data required
+for Bitcoin is so minimal. I mean, you can balance it off the ionosphere. It's really
+hard for even a first world nation to be able to prevent the flow of information like that.
+So I think it would require something even more resource intensive and onerous. Some
+of these edge cases that people talk about of like, well, what if China sent in their
+army to all of the mining farms and tried to nationalize them all, etc, etc. And it
+gets into some interesting game theory scenarios. But I think the fact that we haven't seen
+anything like that happen makes it seem less and less likely that it's going to.
+But you never know. I mean, these things are interesting to talk about. They're hard to
+put like a quantify an actual risk percentage on.
 It's important to keep in mind when we think about the threat of a 51% attack that there's
-two models you can think about it. One is like a nation state trying to cripple Bitcoin
-and there's been tons of talk about this and it would be very expensive and difficult to
-pull off stealthily. In some ways, it could drive prices up for Bitcoin while they're
-trying to secure mining equipment. That's one topic that's been very well covered.
-The other one is, is it a 51% attack against you? Is an exchange trying to trick you into
-depositing your Bitcoin or sending you Bitcoin in exchange for something else and then double
-spending you? This is just not a credible threat. No one is going to show up and buy
-your car and send you Bitcoin and double spend you. Obviously, you want to wait the number
-of confirmations that would make that transaction considered safe enough, but there is nobody
-amassing giant hash power to steal a Honda Civic in a Bitcoin transaction. I think a
-lot of times that we know of. It would be just wildly out of line with the cost benefit
-of that attack. It's a thing that we need to be mindful of, but it's basically the nation
-state version and it's very expensive to pull off and you have to sustain it for a very
-long time. I think the biggest issue of a hash power drop is that that two-week recalculation
-is every 2016 blocks, which should be two weeks on average. The problem is, is if hash
-power fell off a cliff for some reason, maybe I'm trying to think of what that scenario
+two models you can think about it. And one is like a nation state trying to cripple Bitcoin.
+And there's been tons of talk about this, and it would be very expensive and difficult
+to pull off stealthily. And in some ways, it could drive prices up for Bitcoin while
+they're trying to secure mining equipment. So that's one topic that's been very well
+covered. And the other one is, is it a 51% attack against you? Like as an exchange trying
+to trick you into depositing your Bitcoin and sending you Bitcoin in exchange for something
+else and then double spending you. And like, this is just not a credible threat. And no
+one is going to show up and buy your car and send you Bitcoin and double spend you. Obviously,
+you want to wait the number of confirmations that would make that transaction considered
+safe enough. But there is nobody amassing giant hash power to like steal a Honda Civic
+in a Bitcoin transaction. So I think a lot of times that we know of. Yeah, it would be
+like just just wildly out of line with the cost benefit of that attack. So, you know,
+it's a thing that we need to be mindful of, but it's basically the nation state version
+and it's very expensive to pull off and you have to sustain it for a very long time. I
+think the biggest issue of a hash power drop is that that two week recalculation is every
+2016 blocks, which should be two weeks on average. The problem is, is hash power fell
+off a cliff for some reason. You know, maybe I'm trying to think of what that scenario
 would be like blackouts in all of China for a week or something and they just couldn't
-run anything, including mining equipment. It'd have to be something crazy. If that happened,
-that two-week adjustment would actually take much longer because it's 2016 blocks and it
-could take a long time to find them. Then you could get a ton of fee pressure in that
-short period of time. Fees might shoot through the roof and it would be total chaos as people
-scrambled to get their transactions confirmed until that difficulty adjustment in the case
-of say losing half the hash power, it might take four weeks instead of two weeks. It would
-be unpleasant, but it wouldn't really do anything.
+run anything, including mining equipment. I mean, it would have to be something crazy.
+If that happened, that two week adjustment would actually take much longer because it's
+2016 blocks and it could take a long time to find them. So then you could get a ton
+of fee pressure in that short period of time. Fees might shoot through the roof and it would
+be total chaos as people scrambled to get their transactions confirmed until that difficulty
+adjustment in the case of, say, losing half the hash power. It might take four weeks instead
+of two weeks. So, you know, it would be unpleasant, but it wouldn't really do anything.
 Great. I have to interject in the interest of time. I appreciate everybody's thoughts
-and inputs on our audience's questions. Thank you, Michael, Jameson and Jimmy for the engaging
-debate this morning. We are now entering our first break of the day for 15 minutes before
-everybody gets up for a cup of coffee or to stretch their legs. I just wanted to remind
-everybody that we do have online networking in the GatherTown Multiverse. We fixed the
-link below the stream in case anybody wants to join. They can find Expo committee members,
-speakers, sponsors to come and watch it. You can see here I'm actually in a watch party
-of the Expo. Also, we have our Discord, which is also linked below where you can just find
-help about the hackathon, find help from Expo committee members. Finally, we also are running
-a merch store this year, also linked below. I hope you guys enjoy it.
-Thank you so much.
+and inputs on our audience's questions. Thank you, Michael, Michael, Jameson and Jimmy for
+the engaging debate this morning. We are now entering our first break of the day for 15
+minutes before everybody gets up for a cup of coffee or to stretch their legs. I just
+wanted to remind everybody that we do have we do have online networking in the Gather
+Town Multiverse. We fixed the link below the stream in case anybody wants to join. They
+can find expo committee members, speakers, sponsors to come and watch it. You can see
+here I'm actually in a watch party of the expo. Also, we have our Discord, which is
+also linked below, where you can just find help about the hackathon, find help from expo
+committee members. And finally, we also are running a merch store this year, also linked
+below. So I hope you guys enjoy it.

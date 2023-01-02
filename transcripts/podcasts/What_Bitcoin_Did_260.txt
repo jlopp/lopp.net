@@ -1,0 +1,1129 @@
+The definition of easy for an early Bitcoin or cypherpunk is much different than the
+definition of easy for somebody who's just getting started with Bitcoin.
+Hello there from Bedford in the UK, the Bitcoin Mecca of the world.
+How are you all?
+Welcome to the What Bitcoin Did podcast, which is brought to you by Kraken, the best place
+to buy, sell and trade Bitcoin.
+I'm your host, Peter McCormack.
+And today I've got an interview with CASA CEO Nick Newman and CTO and WBD regular Jameson
+Lopp to discuss securing your Bitcoin.
+But before that, I do have a message from my show sponsors.
+And for full transparency, CASA are a sponsor as well.
+So you should know that.
+Anyway, first up, I welcome back Least Authority as a sponsor of the podcast.
+Now this is definitely for you techies out there, the people out there who are building
+and creating applications.
+Now Least Authority is a security consulting company who are pushing the limits on how
+to build privacy respecting solutions.
+They specialize in security audits, design specification reviews, security by design
+and so much more.
+And they can help you improve the security of your wallet application, key management
+solution, layer two protocol, P2P network design, use of cryptography and so much more.
+If you want to boost your security strategy, well, you can arrange a no obligation call
+to find out how Least Authority can help you on your next project.
+Just head over their website and hit the schedule or call button, which is at least authority.com,
+which is L E A S T A U T H O R I T Y dot com.
+Now let's talk about my other sponsor sportsbet.io, who are the best place for online gaming.
+And now the Premier League is back as well as other European leagues.
+It was great.
+What a great first weekend, Liverpool won, Tottenham lost.
+Could you want anything more?
+Perhaps a little wage on the game, perhaps you put a little bit of Bitcoin on that result
+for Liverpool to win and Tottenham to lose made a little bit more Bitcoin.
+Now a great thing that's happening with sportsbet this season is they are the main club sponsor
+for Southampton.
+They have put a Bitcoin logo on the front of the shirt.
+So if you're there watching Premier League football and you see Southampton, you can
+see that the Bitcoin logo is out there.
+What an amazing company.
+They love Bitcoin.
+They do so much for Bitcoin and they are the best place online gaming.
+If you want to find out more, head over to sportsbet.io, which is S P O R T S B E T dot
+I O.
+Also, the subject of today's show, CASA, the best in Bitcoin security.
+Now with CASA, it could not be easier to protect your Bitcoin from hackers, personal mistakes,
+in-person attacks, device failure and so much more.
+And me being the type of person I am, I'm definitely vulnerable to those type of mistakes.
+I'm glad to be a customer.
+I am a CASA platinum customer, but whatever type of Bitcoin you are, they have a product
+for you.
+With CASA gold, you get triple the security of a hardware wallet for only $10 a month.
+With CASA platinum, you get their three or five multi SIG, the best protection for large
+Bitcoin holders.
+And that comes at a great price.
+And with CASA diamond, you get their full service offering.
+This includes a customized personal security review, inheritance planning and of course
+their best in class security.
+There is no better time to upgrade your Bitcoin security and get total peace of mind.
+And you can find out more about this at keys.casa, which is K-E-Y-S dot C-A-S-A. Okay, now on
+to the show.
+And I'm joined by Nick Newman and James a lot.
+They are the CEO and CTO of CASA and you will have heard James on the show a bunch of times
+talking about security.
+So this is what I've been looking forward to doing for a while, you know, properly securing
+your Bitcoin.
+It's not always that easy for someone like me was always an eagle in the back of my mind
+that I might fuck something up and end up losing my Bitcoin.
+And look, firstly, for transparency, look, unless you skip the ads, you would have heard
+that CASA are a sponsor.
+So you will have heard them in the intro.
+And I just should probably say that I'm also a paying customer of theirs.
+So about last 12 months, I was like a little bit concerned about my single wallet solution
+with my backup key hidden away somewhere securely.
+Look, I knew there was a potential for mistakes and I knew there was like potential of hacks
+and you know, in person kind of attacks.
+And I was really worried about this.
+So I reached out to James and I said, look, it's about time I look at CASA and then Nick
+got in touch.
+He said, well, Pete, we've been thinking about a sponsorship.
+Let us give you a solution.
+You can try it out and then that'll be helpful for the sponsorship.
+And I was like, no, I'm going to pay for this.
+Look, and the reason I pay for it is because I'm pretty much a customer of all my sponsors.
+Kraken I use as an exchange, BlockFi, I'm a customer, SportsBet, I'm a customer.
+I'm a customer with all these people.
+So I wanted to know if it's worth the value, if it's worth the cost.
+So I paid.
+And yeah, look, it is.
+I definitely will be renewing next year, but look, you need to hear that because otherwise
+this show might sound like a bit of an advertorial.
+But yeah, since setting up my CASA multisig, I've had so much peace of mind that my security
+is protected mainly from my own stupid mistakes, but like all these other scenarios.
+So I hope you enjoy the show.
+If you've got any questions about it, you know, you can reach out to me.
+My email address is hello at whatbitcoindid.com.
+I do pretty much reply to anyone outside of that reviews, I'm kind of chasing down reviews
+at the moment.
+Head over to iTunes, leave me a review that's super helpful.
+Outside of that, go and check out my other show Defiance.
+I've got this four part about the ghost inside this metal band.
+Honestly, the reviews have been amazing.
+Everyone who's listened to it has loved it.
+Definitely go and check that out.
+Outside of that, have a great week and I'll see you all soon.
+All right, here we go.
+Welcome to the show, Nick.
+You haven't been on before.
+How are you doing?
+Yeah, good.
+Thanks for having me on, Peter.
+Not a problem.
+Good to see you again, Lop.
+It's been a while, mate.
+We used to do this quite regularly.
+Last time I did this with you, I was in Lubbock, Texas.
+I've lost count of how many times we've recorded something at this point.
+You've done a few.
+The first one was like nearly three years ago now, so yeah, anyway, welcome to the show.
+We have a ball run situation looking like we might be in one, so it is a perfect time
+to dive back in, talk about security again, remind everyone.
+We'll cover a bunch of stuff we've covered before, Jamison, but I think it's time to
+get back into that, talk a bit about security and also, Nick, I think it's time for people
+to get to know you a bit.
+I mean, you're now the CEO of CAS, so how long has that been?
+Yeah, it's been since about, really since December of last year.
+We announced it at the end of January this year.
+And how's that been going for you?
+Great.
+I mean, we've been, you know, the team is doing really well, the company is doing really
+well, and so especially, you know, as we focus down on just security and making sure that
+we really were focused as a team and as a company on providing the best security for
+Bitcoiners, that's really paid off in terms of people understanding what CASA does.
+Yeah.
+I mean, I think some people were a bit disappointed on, you know, the node going, but I kind of
+understand why you did it, why you made the choice.
+But anyway, welcome, Nick.
+You know, we've been getting to know each other probably since then, actually, I think
+we spoke about December, so it's been good to get to know you.
+Yeah, let's get into the security stuff because, you know, I'm now a CASA customer, we're going
+to talk about that.
+We'll get into that.
+But let's cover some more of the security 101 stuff, and I know, Jameson, we've done
+this before, but there are new listeners since we've done this before, and the show's probably
+doubled in size, and some people don't take this as seriously as possible.
+So this is a good starting point, Jameson, is that privacy and security are linked.
+The two things you have to consider at the same time.
+So do you want to break down for people why privacy and security, you have to think of
+them as one holistic exercise?
+Well, really, the question comes down to the attacker, you know, what are you trying to
+secure yourself against?
+And in order to try to minimize the attackers and the range of different types of attacks
+that you have to worry about, a strong privacy model can help you there because you can essentially
+hide from certain types of attackers, you know, if they're unable to easily find you,
+then that provides some security, you know, through obscurity.
+But the real issue, I think, with privacy is how complicated it is, and, you know, it's
+its own rabbit hole.
+So at CASA, you know, we focus on security and usability and privacy, I would say is
+like a secondary thing that is like a nice to have because it bolsters your security.
+But we have found that in general, it's easier to get people into a really strong security
+model.
+And then after that, we can try to, you know, make it even better by adding various privacy
+enhancing techniques on top of it.
+It's just privacy stuff tends to be a lot more work, you have to keep it in the front
+of your mind.
+Whereas with security, there's more stuff where you can just set it and forget it in
+many cases.
+Yes, funny.
+Now I'm, I've never been particularly good on my privacy, but the kind of job I have,
+you have to be out there and talking to people and I've just not been very good with it.
+And now I'm, this can sound like an advertorial for CASA, but now I have CASA, I actually,
+I give less of a fuck because I'm less worried.
+So we could, we should talk about the product actually and why that is.
+Normally when we do these shows, James and we normally go through all the privacy and
+security stuff outside of your Bitcoin first, but I think I want to start with Bitcoin
+this time.
+I want to, I want to dive in and then talk about things, other things people should do.
+So would you say Bitcoiners are particularly at risk or have a specific type of risk they
+need to be prepared for?
+Well there are a lot of the standard risks that anybody needs to worry about when it
+just comes to data or using the internet.
+The internet in general is a huge privacy and security nightmare, but the, the real
+problem with Bitcoin and digital bearer assets is that they are very tantalizing target for
+remote attackers.
+So essentially it changes the risk reward ratio where traditionally if someone wanted
+to steal a lot of money from someone or an entity, you know, they would have to physically
+go and coerce them, you know, rob a bank, rob a person, rob a business, whatever.
+And there's a lot of risk to doing that.
+There's a potentially high reward, but you're essentially putting your own life in danger.
+Whereas now when you can reach out and remotely hack someone and steal a small amount of information
+from them, these private keys, you can then transfer, you know, potentially huge sums
+of money in a matter of seconds.
+And the physical risk to the attacker is a lot lower.
+So this is something that, you know, as the world is changing, attackers are also changing
+their own perspectives, they're testing out the different risk rewards and these new scenarios.
+And that's why for Bitcoiners, this is a very dynamic environment, the, the new types of
+attacks that we're seeing, they're constantly changing where, you know, education is a big
+part of this space and basically keeping our clients, keeping people in the ecosystem in
+general up to date with like what the latest most sophisticated attacks are that they need
+to worry about.
+I know you have that GitHub, are you still maintaining that GitHub page?
+I'm technically maintaining it though, on the bright side, there have not been many
+physical attacks, at least in 2020 that have happened and you know, perhaps part of that
+is due to the lack of that out.
+Well, no, because one of the other things I was going to ask is I'm wondering, you know,
+does anyone track the number of kind of like Bitcoin hacks, stolen Bitcoin and are we seeing
+this trending down as people become more aware of security and people have better practices?
+Do you know if that goes on?
+There are a number of different articles and projects that have like timelines of Bitcoin
+and other crypto hacks in general.
+And it seems like in terms of Bitcoin as a unit of account, you know, value being stolen,
+I think that's going down, but in terms of Fiat value and total number of attacks against
+various exchanges and other entities, that seems to be continuing to creep up.
+And especially as we enter what looks like is going to be a bull run, the obvious implications
+of that is that it's going to get more attention from people who have never tried to pull off
+attacks in the crypto space before.
+So we should expect that we're going to see essentially new types of black hats, you know,
+security researcher folks who are going to come in and they're going to experiment with
+new types of deception, new types of technical attacks.
+And as a result, it's only to be expected that we're going to see more and more amounts
+of value get stolen during the bull run and then inevitably there will then be a sort
+of correction where the ecosystem absorbs the knowledge of, you know, all of the things
+that happened and sort of shores up its defenses.
+But you know, this is a constant cat and mouse game.
+It's always going to keep ebbing and flowing.
+And you know, as the amount of value on the line continues to increase, that is going
+to continue to result in more novel types of attacks, especially attacks that cost more
+to pull off start to happen because once again, the reward will become even higher.
+So it will make sense to do costlier attacks.
+So you know, some examples of that were just a recent one.
+It looked like there was a 51% attack against OKX exchange with Ethereum Classic.
+And from what I was reading, they just did a report.
+It looked like the attackers actually deposited like over a million dollars worth of Zcash
+into the OKX exchange before using it to essentially launder and do a 51% attack of Ethereum Classic
+against the exchange.
+So they ended up getting their Zcash and their Ethereum Classic back and I think got over
+five million dollars, which is pretty good ROI.
+Yeah, pretty good.
+And you know, one thing to add on to that is that what makes the headlines is the big
+exchange hacks like last year, the Binance hack where there was a bunch of Bitcoin lost.
+But what actually is probably especially as we get into a bull run and more new people
+come into the space, what's going to happen more is that people get phished and their
+Coinbase account is stolen and emptied.
+And so there's actually more of a risk to individuals generally from things like phishing,
+SIM swapping, and just individual targeted attacks where an attacker can get access to
+their exchange account and just suck the money off the exchange and it's gone forever.
+Right.
+Okay.
+Nick, what were you doing before car sell?
+Yeah, so before CASA, I was really working in finance.
+So I did finance, which was investment banking and private equity kind of on the investing
+side.
+Then I went into the startup world and was actually working at a travel tech company
+called Grab.
+That was when I fell down the Bitcoin rabbit hole, started getting involved with Bitcoin
+and private key management and security and so that's how I got involved with CASA.
+How big was the learning curve when you joined CASA in terms of considerations for security
+and multisig?
+How big a learning curve was it for you?
+So I joined before we even had our product out, right?
+And so before CASA had already been working on some private key security and usability
+projects.
+And so I was relatively familiar with private keys and so I kind of was able to hit the
+ground running when I joined CASA with Jameson and Jeremy.
+And that was really, that was beneficial for me because before becoming CEO, I was head
+of product.
+So I was leading the launch of what was then Keymaster, now the CASA app.
+So yeah, there wasn't a huge learning curve for me, but it's a complex topic and that's
+why CASA was created and is successful is because private keys are hard and we're just
+trying to make it easier.
+Yeah.
+That's a really interesting point on the easy side of things.
+I've got two experiences of multisig, there's yours and Unchained Capital's and no disrespect
+to Unchained.
+I love those guys.
+I love what they do.
+Big fan of Parker Lewis, but that was a very kind of manual process to set one up.
+I don't know if you know, I've got a bet on the election with American HODL.
+So we set that up in that and it's very cool, but I could not have done that on my own.
+And then I've obviously got experience to set up the CASA and the CASA one is obviously
+very much designed for people like me who don't have to think about private keys.
+It's all just kind of done for me.
+And it was one of those things, it's so funny, it's one of those things, there's always those
+things you always put off in life.
+You're like, I'll do it another day, just because it seems so much.
+And now it's done, it was quite a relatively simple process to go through.
+The harder process wasn't actually setting it up.
+The harder process was like, where am I going to hide these?
+Where am I going to distribute these keys?
+That was the real challenge and thinking through that.
+Yeah, and that's why we have the client service side of our business, is we realize that people
+aren't thinking about security every day for their job like we are at CASA.
+And so by offering our client services, we can really help people benefit from our knowledge,
+but not have to do all of the work themselves.
+So they've got somebody that they can talk to and ask like, hey, where do you think I
+should put these keys?
+Can you help me think through that?
+And so the way we've built CASA really from the ground up is to make sure that we think
+from every angle about the security and then can build those best practices into our offering
+for our customers so they don't have to think about it.
+And it's just, we try to be as helpful as possible with their own security setup so
+that they can feel secure, but not put in the hours and hours of work that it used to
+take.
+Well, security is a very personal thing.
+There are a ton of decisions to be made, and each of those decisions has tradeoffs with
+the risks.
+And it's usually a trade off of risk versus convenience that you have to decide what you're
+comfortable with personally.
+Now on the technical side, we get a fair amount of pushback from especially more technical
+folks or people who have been in the space a long time of, oh, multi-SIG, I mean, that's
+just a standard part of the protocol.
+Anybody can set up multi-SIG.
+And they're correct in the sense that we're not reinventing the wheel, we're not doing
+anything novel at a protocol level.
+Really what we're doing and what you probably noticed with your own experience, comparing
+and contrasting different interfaces, is that CASA actually doesn't give you as many options.
+It's not a super advanced, you know, you have a hundred different things that you can tweak
+in the interface.
+And we believe that that's because one of our tenets is that simplicity and usability
+is actually a big part of security, because I would say one of the big things that I learned
+during my time working at BitGo and seeing a couple of different incidents happen there
+is that, you know, BitGo was a more advanced like enterprise-based solution.
+There were a ton of different things you could configure with the setup.
+And inevitably, the various BitGo customers who did get hacked and lost money, it was
+always because of a decision that they made and how they configured things, how they were
+managing stuff on their end.
+It was never an issue of BitGo and BitGo's infrastructure getting compromised.
+So that's what kind of led me to the conclusion that, you know, we need to build the guide
+rails into the user experience to essentially eliminate a lot of those foot guns.
+Well, I know what I'm paying for.
+I bought UX and customer service off you.
+That's what I'm buying in my head.
+And actually, we should clear something up as well, Nick.
+You offered me the product for free, right?
+Yeah.
+I did because, you know, we were talking about the sponsorship stuff and I figured it'd be
+good to get you to test it out and you were like, hell no.
+I want to pay for this thing.
+Well, do you know what?
+I'll tell you what I did.
+I don't know if I told you at the time.
+The reason I did it is because it's an annual price, right?
+So I knew I wanted to know if I valued it next year and I wouldn't know if I valued
+it next year.
+Maybe I can just twist your arm next year and have it for free.
+But I wanted to know if I valued it.
+So I wanted to pay for it and I also wanted to know which one I wanted to pay for because
+the diamond was just like a bit too expensive for me.
+But I wanted to pay for it.
+But I know what I'm paying for is I'm paying for the interface, the UX, of what it does,
+which is brutally simple and by the way, looks good, which is rare for Bitcoin.
+But also is I'm also paying for the customer service, like helping me kind of like get
+it set up, make sure I just make some correct decisions.
+And I've been waxing lyrical about CASA since because now I've done it.
+Now I've gone through that process.
+I've distributed the keys.
+I've set it up.
+I have that total peace of mind now that I've got that kind of like, oh, that wasn't hard.
+That was actually quite easy.
+But I mean, that's it, James and Joran.
+It isn't easy, right, what you've done to do.
+There's a lot of complexity.
+Under the hood, there's a lot going on that is very complex.
+And so that's why it's, you know, it's taken a lot of work to actually make this a very
+easy solution for people to use.
+And so it's something that I think is it's not easy to for other people to copy.
+That's where the value comes in there.
+Like we've had some really OG advanced Bitcoin adopters come to us who had actually replicated
+a decent amount of the same setup that we offer.
+But they just weren't comfortable with the amount of maintenance that was required to
+stay on top of everything and, you know, can continue to make sure that what they had set
+up was still up to date and working and, you know, just little things like building cryptographic
+health checks easily into the app to make sure that your keys are still working.
+I think it's things like that that become valuable and are fairly difficult to replicate
+on your own unless you're a software developer.
+Well, yeah, but I just want easy buttons.
+I just like don't press that button.
+And that's it.
+That's like, it's really, it's a bit like when I tried to use some Samurai, is it somewhere
+I want it that has a coin join?
+Yeah.
+It had too many options.
+It was like, you know, you had anonymity sets, I was like, I don't know what that means.
+And just all these options.
+I just wanted like a one button that said, like, coin join.
+Make me anonymous.
+Yeah.
+Make me anonymous.
+Wander my money.
+Yeah.
+No.
+Jamus, come on.
+Yeah.
+So that's the, but that's where we're really trying to sit as a product, right?
+We think that people aren't going to, you know, holding your own private keys is super
+important for the success of Bitcoin generally, but the average person isn't going to do that
+unless you make it easy for them to do.
+And the definition of easy for an early Bitcoin or Cypherpunk is much different than the definition
+of easy for somebody who's just getting started with Bitcoin.
+And so we think this is a really critical spot that we're sitting in as a company to
+help bring more people into Bitcoin and give them the best practices from day one.
+All right.
+Well, listen, look, I want as many people to sign up as possible, not just because you're
+a sponsor, but I just think it's prudent and it's sensible right now.
+So let's, but let's go back a step.
+Not everyone will fully understand what we're talking about.
+Let's keep it basic.
+Cause you know, I like to do this for my audience, Jameson, can you just explain to people what
+multi-sig actually means?
+Because I'll be honest, I kind of had an idea in my head, but I didn't know fully what it
+meant before I, you know, before I actually set up with you guys.
+Explain to people what multi-signature is.
+I will not explain it to you at a technical level, but instead we'll give you a nice analogy
+of anyone who is familiar with say a safety deposit box at a bank.
+You know that they give you a key to that safety deposit box, but it's not just you
+go into the bank, you insert the key and turn it.
+There's actually two different key holes in that safety deposit box.
+And one of those keys is held by an employee, you know, at the bank.
+So this is essentially a multi-signature operation that's required.
+You have to have, you know, two different authorized key holders that sign off on opening
+that safety deposit box.
+It's really the same thing, but at a cryptographic level in the Bitcoin protocol where we're
+saying that when we, we put Bitcoin into a certain address, into a certain cryptographically
+redeemable script that locks it up, that in order to unlock that money and spend it,
+you need more than one key to sign off on it.
+And with CASA, we have a couple of different technical setups, but our flagship offering
+is a three out of five multi-sig, which means there's five different keys.
+They get distributed around a diverse set of locations and are stored on a diverse set
+of hardware and software.
+And if you want to spend from that vault, you actually have to get three of those different
+devices and plug them in and add the cryptographic signatures before you have a Bitcoin transaction
+that will be accepted as valid by the network.
+Okay.
+So that's still technical in some ways.
+Like because this was the thing I didn't know before I used it.
+I was like, okay, I understand it's a multi-sig, but like, how do I actually, if I actually
+want to move Bitcoin, what do I, like I know now, so I'm going to let you explain it.
+And what do I physically, what is the process I go through with a multi-sig?
+Because I think a lot of people listening will certainly have, as a minimum, they would
+have had Bitcoin on an exchange and hopefully moved it off, moved into a hardware wallet.
+So they'll be used to that process of doing that.
+And they'll also be used to that process of maybe moving it from a hardware wallet back
+to an exchange.
+So they'll be used to that process of creating a transaction.
+But most of the time when you do that, you're just pressing buttons on a ledger or a trestle
+or a presa.
+You don't actually realize yourself, you're signing something in your head.
+But when we talk about multi-sig, we say you've got to sign three.
+So in layman's terms, tell people the process they go through.
+So it's basically like, think of signing as approving.
+So when you send from your ledger, you're saying, I approve this money to be sent to
+Coinbase or wherever you're sending it.
+And so to do that, you're plugging your ledger into your computer, pressing a few buttons,
+and then the transaction goes off to the Bitcoin network.
+With CASA, what you're doing is instead of doing it all on the ledger, you've got a mobile
+app and the mobile app lets you type in, I'm sending $5,000 worth of Bitcoin to Coinbase.
+And then you are saying start.
+And so after you hit start is when you start approving it from your hardware wallets.
+So first, you'll approve it from your phone, which happens automatically after face ID.
+And then you'll approve it from a second hardware wallet.
+Maybe it's a Trezor, maybe it's a ledger.
+And all that requires is plugging your Trezor into your computer and hitting a few buttons.
+It's just as easy as if you're using, I actually think it's easier than if you're using their
+interfaces, the Trezor ledger interfaces.
+And then you're doing that a third time with a third device.
+And then after that, the transaction goes because it's been approved by three devices.
+So the key here though is like, what this does is that it means that from one hand,
+if you have your ledger stolen, for example, and somebody knows the pin, they could just
+use that to steal your money.
+Well with this, if one of your keys gets stolen, they can't do anything with it.
+They need other keys in order to actually steal any funds from you.
+But more importantly, and what people really discount is the risk of loss.
+So since you've got five total keys, but you only need three of them to send funds, you
+have a room for error, you have margin for error.
+So we're all humans and we're all going to make mistakes.
+And previously private keys have all been about make sure you protect this one key with
+your life or else you're screwed.
+Well CASA is built so that it's okay if you lose one of your keys, you've got the other
+keys to back you up.
+And so that gives people a lot more peace of mind and a lot more room for error because
+you're going to make a mistake, but it's okay.
+So that's really the, that's how things work and that's why it's built the way it is.
+Well, we should probably say also like, so people know if you lose one, you can swap
+it out.
+Yeah, you just swap it out for a, you swap it out for a new one, but you've got the other
+keys remaining to actually, you know, help recover those funds.
+Let me tell you what really fucked with my head for, for to begin with.
+So when I first set it up, there was a moment where I had to just take a little walk and
+work it out in my head.
+Like I knew what he was saying was correct was the fact that I strictly speaking, you
+don't need to back up your private keys.
+Yeah.
+Yeah.
+That's the, that's the other piece that's kind of magical here, right?
+Is because they screwed with my head, right?
+Can I tell you why?
+Because I always, I've told Jameson about this.
+I have this little Jameson that sits on my shoulder sometimes and says, Pete, don't fucking
+do that.
+Don't do that.
+You're going to fuck up.
+And one thing that's been on the back of my mind is like, for a long time, my Bitcoin was
+on a single hardware wallet and the key was backed up, right?
+And I don't mind talking about it now because it's, I don't use it anymore.
+It was backed up on a piece of paper hidden in the house, right?
+Okay.
+And very secure against an evil maid attack.
+Well, no, no.
+So, so, so, and then, yeah, but they would never have found this.
+And then, so I was at that point, I was thinking, right, I need to like, like write it down
+in two places, distribute it.
+But then like, I was thinking about the house burning down and I just kept thinking where
+I need to put that private key.
+But I went through the setup for Casa and the guy who's helped me set up, he said, yeah,
+you don't need to write down the private keys.
+I was like, what?
+What would you mean?
+Like, what if I lose the, this is, this goes against everything I've been taught.
+Yeah.
+But it's, it goes against everything you've been taught as a Bitcoiner.
+But think about it from the flip side of people who are not Bitcoiners.
+It goes against everything they are used to, to have to write down this random 24 word
+phrase on a piece of paper.
+Don't put it on your computer.
+Can't be on a connected internet connected device, put it on a piece of paper and hide
+it somewhere safe.
+Well, who knows what somewhere safe means.
+So we're trying to build this in a way that you don't have to worry about those seed phrases
+because this makes it much more accessible to the average person as they're coming into
+Bitcoin.
+I have a lengthy blog post about our thoughts around what we call seedless setups, but suffice
+to say that there are some backups of some keys.
+We automatically encrypt and backup your mobile key in a way that you don't have to worry
+about that getting hacked off of, you know, cloud storage.
+We also, of course, have backups of the CASA recovery key.
+And so then there are some, you know, individuals who think through the extreme scenario of,
+okay, well, what if all three of my hardware devices got destroyed simultaneously?
+What would I do then?
+Well, in that case, if that's something that you're worried about, we would recommend,
+you know, you could back up one of your hardware device seed phrases on some metal or something
+and throw it in maybe a safety deposit box that is extremely physically secure, because
+then, you know, even if that one seed phrase got compromised by an attacker, they wouldn't
+be able to do anything.
+You've got to really, you've got to really try hard to fuck this up.
+Yeah.
+And that's the goal, right?
+Put in the rails to make it really hard to mess up.
+Yeah.
+I mean, I wouldn't, I don't think I would want to go back down to the two or three because
+of this, because with the two or three, there's a, you know, it's better than having one wallet,
+right?
+One hardware wallet.
+But like, there's just a bit more room for error, just a tiny bit more room for error.
+So personally, I wouldn't, I wouldn't go back to that.
+Let me ask you something, Jameson.
+So the one thing I worry about since this, I was like, okay, what if CASA screw up?
+What if they get, there's like a, like a bug that goes into the app and could a bug go
+into the app that means like I end up locking away all my Bitcoin.
+Is that a possibility?
+Yeah, you know, this is one thing that scares me a lot when I think about Bitcoin and single
+SIG wallets, because every time that you're spending Bitcoin, every time you create a
+transaction, you're at a technical level, you're not just moving values on the blockchain.
+You're actually destroying your money and then recreating it.
+You're consuming it with inputs and then you're creating new outputs and, you know, essentially
+unlocking scripts and then creating new locking scripts.
+And so there's a lot of things that can go wrong there.
+You could potentially screw up the fee and like send all of your money to the miners
+if you miscalculate the inputs and output values, you could screw up the locking scripts
+and unintentionally lock yourself out of your own money.
+There's a lot of room for error and one of the reasons why multi SIG is great that not
+many people understand, especially multi SIG using different hardware devices is that if
+something like that happened in the CASA software, you would have to manually approve it multiple
+times on non CASA software and non CASA hardware.
+So the, you know, once again, the diversity of the setup helps protect against even CASA
+screwing up.
+So really one of the fundamental things that we keep in mind when we're making architectural
+and design decisions is eliminating single points of failure.
+And that includes CASA as a company.
+We don't want a single human mistake on our end to be able to cause catastrophic issues.
+We don't want even the company as a single entity, if say it ceased to exist for some
+reason to cause catastrophic issues for our customers.
+Yeah.
+And one thing that we've built, we've had this for two years now since we built the
+product is because it comes with the way that everything was created, how multi SIG is part
+of the Bitcoin protocol is that you can actually recreate your entire CASA multi SIG using
+other software like Electrum.
+And so you can, you're not going to do that.
+I'm going to vote up Jamison and say Jamison call that.
+The point though is that like, you can fully verify that everything is working properly
+in the CASA software with a completely different set of software.
+And so that helps people get a better comfort around the fact that there isn't an issue
+with the CASA software itself.
+And usually we'll have clients that'll do that.
+And after they set that up, they'll be like, wow, I now fully understand everything that
+you guys are doing under the hood and blown away by the amount of complexity that you've
+taken out of the product.
+But that is important because it means that if CASA were to ever go away, suddenly drop
+off the face of the earth with no warning, you could actually fully recover all of your
+funds using a completely different set of software.
+Yeah.
+I'd be worried about that with me, but luckily I know Jamison, I can phone him up.
+Okay.
+So one other thing.
+So I've removed all my personal single points of failure, because that's the thing I always
+worried about.
+It's just me being a moron and screwing this up.
+The one thing I haven't solved yet, and I can't afford your diamond product yet, but
+I've never solved the inheritance point.
+But I've solved my single point of failure myself.
+So I don't actually know how your inheritance product works.
+Can you explain that?
+Just so...
+Yeah.
+Yeah.
+So the way that our inheritance product works is we build our inheritance to work within
+the existing estate transfer legal system.
+So you actually, this takes a ton of hands-on work from the CASA client services team, which
+is why it's only available for diamond level.
+Right.
+So you essentially change your multi-sig to have six total keys.
+And one of those is held by your estate lawyer.
+And so that means that after you pass away, at least three of the six keys are accessible
+through the legal process.
+So that's, after you pass away, you need a court order that says, yes, this person passed
+away.
+Here's the death certificate.
+And then the estate lawyer can approve a transaction with their key, CASA can approve a transaction
+with our key.
+And then your third key, which is held in a safety deposit box, can be accessed with
+that court order.
+So it does require a more specific setup.
+And so this is all built into the existing, to work with the existing legal system.
+One of the things that we're thinking about is, like you said, inheritance is still a
+problem for people who are at our gold or platinum levels, but it takes so much time
+from the CASA client services team and the setup is so robust that it really has to be
+at the diamond level for our current inheritance offering.
+But we're working on something that'll be available for platinum and gold that'll help
+them.
+Maybe it won't be quite as strong a solution as a diamond, but we really can still help
+them have some way to pass on assets to their heirs after they pass away.
+I definitely need something.
+I've not solved that and I need to think about it because otherwise I think they're going
+to be...
+I mean, I could leave one with a relative and they can just hold the phone over my dead
+face to approve it on my phone.
+All right, cool.
+Brilliant.
+This sounds like such an advertorial, but I don't care because I think people really
+need it.
+I really think people should be looking at this.
+Next up, I talked to Nick and James and more about securing your Bitcoin.
+But before that, I have a message from my amazing sponsors, who I love very much.
+So firstly, the mighty, mighty Kraken, the only place I go for buying and selling Bitcoin,
+my favourite place for buying and selling Bitcoin.
+Because you know what?
+Being as this show is about security, it's important to use an exchange which has their
+security shit together and they are consistently rated the best and most secure cryptocurrency
+exchange.
+And also they have world-class customer support.
+If you've got any issue, it doesn't matter who you are, where you are, you reach out
+to Kraken, they're going to get back to you.
+And if you want to start trading Bitcoin, they have the best suite of tools out there.
+Whatever your level experience, if you head over to Kraken.com, it could not be easier
+for you to sign up to start trading Bitcoin.
+They also have this beautiful mobile first app so you can buy Bitcoin on the go.
+And with their margin trading, futures and OTC desk, Kraken really does have every option
+covered for you.
+There is no better place to trade Bitcoin.
+You can find out more at Kraken.com or you can download the app.
+It's available for the iPhone and Android.
+Just search for Kraken Pro, which is K-R-A-K-E-N-P-R-O.
+Also we have BlockFi, the future of Bitcoin and financial services.
+What a great year they're having, absolutely smashing it on numbers and they also raised
+another round.
+So with BlockFi, you can open up an interest account and start earning interest on your
+Bitcoin and you can use your Bitcoin as collateral to take out a USD loan.
+You can also fund your BlockFi account directly from your Bitcoin wallet.
+And with the BlockFi mobile app, you can now fully manage your account on the go.
+They have got so much other cool shit come this year.
+I cannot wait to tell you about it.
+If you're interested in checking BlockFi out, I recommend you do your own research, then
+head over to BlockFi.com, which is B-L-O-C-K-F-I.com.
+What else are you working on?
+You got any other new cool products coming?
+Oh, you know, you just released something.
+We did.
+Yeah.
+So we just released our Buy Bitcoin feature.
+So this lets you...
+It doesn't work in the UK yet, right?
+Yeah.
+Blame the UK, not CASA.
+Nothing works in the UK.
+Every cool thing out there, you try the UK, it doesn't work.
+Yeah.
+So what Buy Bitcoin is, is it lets you buy Bitcoin through the CASA app and have it deposited
+directly to your cold storage.
+So right now, people are having to, you know, if they want to buy Bitcoin, they're going
+to Cash App or Swann or Coinbase or one of the many other exchanges.
+And they're buying Bitcoin and it's sitting in a custodial wallet until they withdraw
+that to one of their, to more secure storage.
+But the problem with that is that a lot of people are worried about moving Bitcoin.
+They don't feel like they know how and they might lose it, or they just are kind of lazy,
+honestly, and they don't ever move their Bitcoin off the exchange.
+So we've built this so that it's secure by default.
+It's automatically going to your secure storage so that you can really have an easy experience
+for buying Bitcoin, but still maintain that level of security that our customers love.
+Well, that makes sense.
+So I bought some Bitcoin the other day because when MicroStrategy did their thing, I was like,
+right, I'm going to have more Bitcoin.
+So I moved some of the cash, the business cash into Bitcoin, it went 50% only, but yes,
+I went on the exchange and I bought it and then I transferred it into my CASA wallet.
+So it would just make more sense to be able to do that directly.
+Yeah.
+Why not cut that step out?
+You know, why do we have to go through the exchange?
+The exchange is great for people that want to be active traders, but it's not really
+a good solution for somebody who's just stacking sats to hold for a really long time.
+And so that's where we come in.
+I mean, it depends on your fees, right?
+I'd have to check those out first.
+Yeah, so the fees, it really depends on what solution you're using, right?
+The fees for a Apple Pay debit card transaction are going to be a little bit higher because
+you're actually paying the card processing fees.
+The other thing that's interesting is in that it's just a little bit different than what
+people are used to is that since this is a real on-chain transaction going to your wallet,
+you do have to pay the mining fee as well.
+And so that's something that I think people aren't quite used to, but at least for me
+and the rest of the CASA team, that fee is worth paying to avoid going through a centralized
+exchange and taking those extra steps.
+Have you partnered with someone for this?
+Yeah, we partnered with Wire.
+So it's...
+Ah, Michael Dunworth.
+Yeah, exactly.
+I know Michael.
+Have you hung out with him?
+Yeah.
+Yeah.
+He's a character.
+He's a good guy.
+He's great.
+Yeah.
+I like Michael a lot.
+All right.
+Can I tell you my wish list?
+Yes.
+I know you know.
+I don't know if Jameson knows this.
+So Jameson, tell me how hard this is.
+I really want to be able to have at minimum two, but like multiple wallets within my CASA.
+I tell you why, because I have business Bitcoin and personal Bitcoin.
+Yeah.
+You're not alone.
+This is our most commonly requested feature.
+I want it myself because I have several pools of Bitcoin.
+Like I have some that's in a retirement account that has to be completely separate.
+And yeah, this is totally doable.
+We have a few really low-level architectural changes we want to make to stuff like derivation
+paths to standardize on that before we...
+What's a derivation path?
+Yeah.
+So like I said, really low-level architectural changes that we've got queued up over the
+coming months before we can roll that out.
+But yeah, that is definitely high up on a lot of people's wish lists, including mine.
+How big of a challenge is that?
+You know, technically we could do it right now and probably have it out in a few weeks,
+but that would make doing some other low-level migrations trickier, which is why we're putting
+it behind a few other technical changes first.
+So it's something that we kind of have on our technical debt cleanup list to do first.
+Right.
+Okay.
+Actually, I think that's the only thing... Nick, I spoke to you about this before.
+Was that the only thing I had on my wish list?
+I think that was the only thing on your wish list.
+The rest of it, you said, this is the most amazing thing I've ever used in my life, right?
+No, I did though.
+I do like it.
+Now, I want to be able to name the wallets as well.
+Obviously, if I have multiple wallets, I want to be able to name them.
+But that's really it.
+I mean, it does what it...
+Like I say, I know this is going to sound like an advertorial because I'm wax and lyrical
+about it, but it does it so simply.
+But you must have other things you're working on.
+What else?
+You must have some things you want to do, James, and you've probably got a massive list.
+Yeah.
+I mean, I've been creating tasks for two years now.
+So this is the thing that when people come to us occasionally say, when are you going
+to add support for my favorite cryptocurrency, then my common retort is as soon as we're
+done with all of the Bitcoin improvements and like at this rate, it seems like it's
+going to take a while because we're also trying to be forward thinking.
+We have other low level architectural changes that we want to make in order to be prepared
+for future Bitcoin protocol improvements, taproot, hopefully sometime next year, which
+will then support aggregated signatures, which will be a huge boon for CASA users and for
+any multisig users, both from the privacy standpoint and the like how much transaction
+fees you have to pay a standpoint.
+So lots of work to do there.
+I don't want to spoil anything, but suffice to say the existing landscape of hardware
+devices has been fairly static until recently.
+We had a cold card has been I think one of the newer ones that has been getting more
+adoption this year.
+We're starting to see other devices.
+I mean, obviously I haven't been to any conferences in like six months now, but when at the tail
+end of my last run of conferences, I was seeing a lot of new prototype devices that were coming
+out and some of those were very exciting to me for a few different reasons, both on the
+technical security side and on the usability side.
+So one of the things that we're always trying to continue to do is to simplify and improve
+the user experience.
+And I think that some of these new hardware devices will enable us to do that.
+Up until now, it's actually been kind of a challenging environment to be working as a
+multi-vendor hardware platform because really I think a lot of these hardware vendors have
+been thinking of themselves as like a full vertical stack where they create the hardware
+wallet.
+They also create all the wallet software.
+And there's been some friction there with the different hardware companies just because
+they keep pushing out things, changing things, and sometimes it breaks our stuff.
+And I'm hoping that we can continue to mature this space to the point that we can find some
+equilibrium and have some better communication that these device vendors start to see themselves
+as platforms that people are building a wide variety of software on top of.
+You're not going to do the car-to-hardware wallet, are you?
+Well, we are not a hardware engineering company at the moment.
+We won't say we would never do it, but we would certainly want to bring on people with
+hardware expertise if we went down that path.
+But from the hardware product that we had with the node for a while, we learned a lot
+about how different it is to manage and maintain and support physical hardware.
+There's so many more things that can go wrong and it's a lot harder to get insight into
+what the hardware is doing when it's not in your possession.
+Actually, I don't know if I'd want that.
+I'll be honest.
+I don't know if I'd want that because it's kind of like you're the gatekeeper and I work
+with three other kind of vendors.
+That would reduce the diversity, right?
+That would kind of add more trust onto CASA if we were also creating the hardware devices.
+I think earlier you were basically saying you're not going to support any other cryptocurrencies.
+Not anytime soon.
+That's also something that can always change.
+It's basically, well, it's building software, of course, but then we've spent a fair amount
+of time investigating and making decisions about this, especially a year or two ago where
+if we're talking about adding other cryptocurrencies into our three of five multi-sig product,
+then you start getting this Venn diagram of dependencies and requirements of now all the
+hardware devices have to support that, whatever digital signature scheme they're using.
+There have to be software libraries for interfacing with the hardware devices and doing that and
+other software devices for Android and iOS.
+Essentially it becomes less and less likely that you meet all of those requirements unless
+you're talking about maybe Ethereum, the really, really popular ones.
+I can imagine Ethereum is the one you get asked for probably most, but yeah.
+When you think about what we're trying to do, we're trying to make the usability and
+security as high as possible.
+When you get into the complexity that Jameson was talking about with adding other currencies
+that work very differently than Bitcoin, you really have to be careful because the complexity
+just ratchets up significantly.
+As a security provider, we like to say that we'd rather be an inch wide and a mile deep
+than a mile wide and an inch deep.
+We want to make sure that the security and the experience that we build is the absolute
+best and we can do that by focusing on Bitcoin.
+What about Lightning?
+Is that something you guys have to consider at all?
+Does Lightning either have a multi-sig scenario?
+I'm way out of my-
+Lightning doesn't really have the equivalent of multi-sig from a user facing perspective.
+You're not really dealing with that, but I think Lightning as a technology is very interesting.
+We did dip into that with the CASA node and I think that it's been growing a lot.
+It's an area that we're keeping an eye on and when there's sufficient demand for us
+to actually build something usable in that area, then we'll definitely do it.
+There's a lot of potential path forward that could happen with Lightning.
+At a technical level right now, a Lightning channel is a two of two multi-sig, but it's
+between you and someone else.
+It's not a multi-sig from your perspective of having to authorize multiple signatures
+yourself.
+Now, there are possibilities in the future where we might see various types of Lightning,
+almost CoinJoin style aggregated signatures where there are a lot of different parties
+that are essentially sharing a Lightning channel and sending funds through it.
+I don't think this is something that we need to worry about for at least the next few years.
+Especially while the Lightning node product that we did got a lot of traction and I think
+a lot of people liked it, we realized one of the issues is that it was so cutting edge.
+It was really engineering intensive just for us to keep up with the pace of the changes
+that were coming down from the Lightning developers.
+If we're talking about building a security product, we want to try to minimize the volatility
+at the technical levels just so that we can manage it and have a more stable platform.
+I'm thinking of ideas I want as I go and I'm wondering if whether this is a good idea.
+You have another...
+I've not actually played with it.
+You do have a normal wallet.
+Don't you?
+A normal...
+Have you ever thought of mixing them?
+Just like in one app, I have my vault, which is my multi-sig, my vault, my normal wallet,
+having them together.
+Yeah.
+That's what you have right now.
+I don't know if you've actually gone over to...
+I do?
+I've never used it.
+Yeah.
+If you open it up, at the top of the home screen, you can select between your multi-sig
+and your normal wallet.
+I've never even seen it, but I hear.
+Your normal wallet is super easy to use.
+It's like using a single signature wallet on your phone, but we've taken out the part
+where you have to worry about all the technical stuff like backing up your seed phrase and
+all that.
+To do that, we've come up with a secure backup mechanism that gets into the technical details,
+but it really makes it easy for it to feel like you're using Coinbase or a Coinbase style
+wallet, but you're still in full control of the keys.
+I thought it was a separate app.
+I didn't even...
+See, this makes me now want to have a Lightning wallet in here as well.
+Yeah.
+That's what we would probably do one day when Lightning gets to the point where we feel comfortable
+like building something to support it.
+There's enough demand for that.
+That's what we would do because we've already got the structure set up in there, right?
+It's kind of cool.
+It would be nice here if I could just transfer from my vault into my single...
+You can.
+Yeah, but I have to...
+You still have to sign with the keys, so you can't just move it because that would break
+the security.
+No, no, no.
+But it says receive here.
+I have to copy the address, then I have to go into...
+No, there's actually a shortcut.
+If you want to send from one CASA setup to another, then during the send flow, on the
+page or the screen where you can scan a QR code or put in an address, there's shortcuts
+for your other CASA wallets and that'll automatically paste in the address.
+I've had this and I didn't even realize it was in there.
+That's brilliant.
+Okay.
+That's really, really useful to know.
+Yeah.
+So that's like your poker money.
+Yeah.
+It's my poker money.
+Yeah.
+Well, not based on how I've been paying the last three months.
+I'd have to put some of that into the shield.
+Anything else coming on?
+Yeah, so from a user facing feature perspective, we don't really talk a lot about like, here's
+the big things that we're building because we like to make the fun announcement once
+it's ready.
+But from an overall kind of thematic perspective, what we're working on is just making it as
+easy as possible for people to secure and use their Bitcoin by securing their private
+keys.
+Right?
+So we look at Bitcoin as it's got these two amazing features that are different than any
+money before it.
+One of them is that it has this 21 million hard cap.
+The other one is that it's digital money that you can actually own.
+And so the actually own it as digital money part is what we're really interested in as
+a company.
+And that's what we think a lot of people miss about Bitcoin when they just buy it to hold
+it on an exchange or something.
+So how can we drive that part of the adoption as much as possible?
+Because that's how Bitcoin is really going to succeed as if both of those two major breakthroughs
+are really adopted and understood by people around the world.
+Right.
+We talked a lot about that.
+Okay, before we do the closeout, so Jamison has talked people through, they set themselves
+up with CASA, they've got it in place, they've distributed their keys.
+Still, what are the other things people should be aware of, they should be thinking about?
+Because even though you've got this, you still don't want to place a massive advert, I mean,
+I have because of what I do, but you don't want to put an advert out there and say, well,
+I've got a CASA wallet now with all my keys distributed.
+You still don't want that.
+You still don't want someone to put yourself under some certain threats.
+That's why I've geographically...
+That's interesting though.
+Well, I know what you're going to say.
+So, okay, let me still say it because I want to see if you actually know what I'm going
+to say.
+When you are using CASA, there's this interesting thought that we throw around sometimes that
+like, let's say you've got a home security system.
+You put a sign outside your door that says, I've got a home security system from ADT or
+whatever it is.
+And that actually deters people from coming after you because it makes it harder for them
+to break into your home.
+So, is there the equivalent of that for a CASA user with Bitcoin?
+It's so hard for you to steal my Bitcoin that I actually want to tell you that I use CASA
+because that keeps you from even going after me in the first place.
+It's like, don't even bother here because you're not going to get it.
+I see what you're saying.
+So that's good for certain public faces.
+So myself, Jameson.
+But a lot of people might secretly hold Bitcoin.
+So they don't want to say, I've got CASA because you are introducing that.
+When it becomes commonplace that most people have Bitcoin, that's maybe the place.
+I see what you're saying about me.
+It's good to say that.
+I mean, I still don't want somebody coming at me.
+Well, this works if we're talking about $5 wrench attacks where someone is trying to
+coerce you physically into moving your money.
+And I also have a recent blog post about that and that's why physical separation of keys
+into access controlled locations is the way to prevent $5 wrench attacks.
+Now ultimately, CASA is a digital security provider, not a physical security provider.
+So we can't do anything to protect you from a situation like a ransom or hostage situation.
+Like if someone you care about is taken and coerced and now you have some other reason
+why you might then want to go around and authorize all the transactions.
+That's a situation where you really need to think more about the physical security side
+of things.
+I've got plenty of blog posts about that too, as you're probably aware.
+Yeah.
+Well, I'm aware because I've seen part of your arsenal because I've shot some of your
+guns.
+But the reality in the UK, I can't do that.
+I have to have a very different...
+I can have a kitchen knife and a spoon, but I can't have an AR-15.
+But I get what you're saying.
+That is a different scenario.
+But still, are there certain things, we won't cover it all again now because I'll send people
+to the other shows, but are there certain basics in terms of internet security, personal
+profile that you think people should just be very careful about?
+There's a good reason why a lot of people in the Bitcoin space are anonymous.
+We have all these funny avatars.
+We have a space cat who loves tacos, who is a prominent figure in the community.
+It all goes back to Satoshi Nakamoto.
+This is the originator of understanding that holding onto a digital bearer asset that is
+controversial in nature and may upset very powerful entities, may incentivize very powerful
+or bad entities to come after you and physically harm you, the best protection against that
+is to essentially hide and make it so that they don't have a target to attack in the
+first place.
+There is this trade-off that I've talked about for a while, especially once I started doing
+the cataloging of physical attacks against Bitcoiners, which is that it's a catch-22
+situation that once you're in the Bitcoin space, you are incentivized to talk about
+it because you want the network to grow, you want adoption to grow.
+That will ultimately be good for you as a Bitcoin holder, it will be good for Bitcoin
+in general because it makes it stronger against all types of attacks.
+But the flip side is that once you start doing that or at least if you start doing that proselytizing,
+that evangelism with your government name as it were, then this opens up a whole bunch
+of attacks just due to the default lack of privacy that we have.
+Right.
+Okay.
+Well, look, I'm happy.
+Look, I'm happy.
+I've got my casters set up and it was so much easier than I expected and it's such a peace
+of mind to have it, especially when it's a bull run and I don't have a lot of Bitcoin
+but I have enough to know this is worth doing and I think other people should check it out.
+Nick, is there anything I've not covered that you wish I'd have asked or covered in this?
+I don't think so.
+I mean, I think that the last point you made there is a really good one about peace of
+mind and something that I heard another client of ours say recently was, I've heard people
+talk about their peace of mind that they get with CASA, but I was just kind of like, maybe
+they're exaggerating.
+But after I set it up, it was like a weight was lifted off my shoulders and I totally
+didn't expect that.
+And so it's almost like people underestimate the amount of peace of mind that it gets you
+once you finally get it set up.
+There's a lot of-
+Totally.
+Yeah.
+People, I know personally for me, like before we built CASA, I had a lot of just basic kind
+of back of my mind anxiety about my Bitcoin and that's just gone totally.
+Well, that's what I had, that's when I reached out to you, I was like, no, I need to do this,
+I need to get this sorted, this piece of paper is going to be the downfall of me and I'm
+going to be crying.
+All right.
+Well, look, brilliant.
+Look, I'm glad we're working together.
+You know, it's a pleasure getting the product set up.
+Okay.
+Listen, anyone listening, get your fucking shit together.
+You're going to hear an answer for this as well on the show, which is going to be weird,
+but definitely check out CASA, it's probably my favorite.
+I think I said recently, it's my favorite company in the space.
+I love what you're doing.
+The product's amazing.
+It is very Bitcoin as a product in, it's just got a very Bitcoin feel to it.
+All right.
+So if people are interested, Nick, where do they find out more?
+Yep.
+So you can go to our website, which is keys.casa, K-E-Y-S dot C-A-S-A.
+You can also follow us on Twitter at CASA HODL and then you can find me and Jameson
+on Twitter as well.
+Yeah.
+Jameson, tell people where to go and find all your jazz as well.
+You can check out my website at Bitcoin dot page or lop dot net.
+They'll both get you to the same place.
+And my handle on Twitter is just lop, L-O-P-P.
+Awesome guys.
+Well, let's keep it up.
+Amazing work.
+Love welcoming you guys.
+And hopefully once this lockdown bullshit is over, we'll actually meet up again soon.
+Yeah.
+Thanks Pete.
+Looking forward to it.
+Thanks.
+Okay.
+So what did you make of that?
+Did you enjoy that?
+Did you enjoy hearing about CASA solution and the different ways to protect your Bitcoin
+security and the different attack vectors?
+Look, as I said in the intro, they are a customer, but I am a customer of theirs too.
+I will be staying a customer once the sponsorship ends.
+It's been so much peace of mind for me to have this solution set up.
+You know what?
+There's like this other side issue because of the way it's set up.
+It's actually really difficult to actually move Bitcoin out of it because of the way
+the keys are distributed.
+It's an absolute pain.
+So it just ends up becoming this long-term saving solution.
+But yes, I love it.
+I think CASA are great.
+I've always been a big fan of Jameson.
+He's been on the shows a bunch of times.
+Definitely go and check him out.
+Look, go and review it.
+And also, if you've got questions, you can reach out to me.
+You can ask me about my experience.
+My email address is hello at whatbitcoindid.com.
+Happy to talk about it.
+Happy to tell you what I've been through.
+And yeah, hope you enjoyed the show.
+Outside of that, I am chasing down reviews.
+If you enjoy the show, if you want to help me a couple of minutes, it will take you.
+Just go over to iTunes, leave me a review.
+Look, if you think of the show as shit and you just want to leave me a one-star review,
+that's fine.
+If you don't, I hope you enjoy it.
+Five-star reviews help.
+But this all helps with the rankings in iTunes.
+So a little job over iTunes, leave me a review and I will greatly appreciate that.
+Outside of that, please do go and check out my other show Defiance.
+I've completed the four-parter about The Ghost Inside.
+Universally great reviews.
+People really enjoyed it, which is super because it was a really personal project.
+But definitely go and check that out.
+It's a four-part story.
+It's absolutely fascinating what that band's been through.
+And outside of that, have a great week and I will see you all soon.
