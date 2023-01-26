@@ -89,7 +89,7 @@ AddType application/vnd.ms-fontobject    eot
 
 <IfModule mod_headers.c>
 	Header set X-UA-Compatible "IE=Edge"
-	Header set Content-Security-Policy "script-src 'self' https://platform.twitter.com https://cdn.syndication.twimg.com https://syndication.twitter.com 'unsafe-inline'; base-uri 'self';"
+	Header set Content-Security-Policy "script-src 'self' https://platform.twitter.com https://cdn.syndication.twimg.com https://syndication.twitter.com https://*.google.com https://*.withgoogle.com https://*.googleadservices.com 'unsafe-inline' 'unsafe-eval'; base-uri 'self';"
 	Header always set X-FRAME-OPTIONS "DENY"
 	Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains; preload" "expr=%{HTTPS} == 'on'"
 </IfModule>
