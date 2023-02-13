@@ -250,9 +250,9 @@ function hc_CreateStamp()
   $nonce = $_POST['hc_nonce'];
 
   //embed stamp in page
-  echo "<input type=\"hidden\" name=\"hc_stamp\" id=\"hc_stamp\" value=\"" . $stamp . "\" />\n";
-  echo "<input type=\"hidden\" name=\"hc_difficulty\" id=\"hc_difficulty\" value=\"" . $hc_difficulty . "\" />\n";
-  echo "<input type=\"hidden\" name=\"hc_nonce\" id=\"hc_nonce\" value=\"" . $hc_nonce . "\" />\n";
+  echo "<input type=\"hidden\" name=\"hc_stamp\" id=\"hc_stamp\" value=\"" . $stamp . "\">\n";
+  echo "<input type=\"hidden\" name=\"hc_difficulty\" id=\"hc_difficulty\" value=\"" . $hc_difficulty . "\">\n";
+  echo "<input type=\"hidden\" name=\"hc_nonce\" id=\"hc_nonce\" value=\"" . $hc_nonce . "\">\n";
 }
 
   //////////////////////////////

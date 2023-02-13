@@ -8,4 +8,4 @@ Judgement criteria for submission of new resources is completely arbitrary based
 * Resources that are clearly built as referral revenue mechanisms will be rejected.
 * Services that are new and have the potential to be scams will be held indefinitely until they have proven their reputation.
 
-<img src="/images/resources.png" />
+<img src="/images/resources.png">
