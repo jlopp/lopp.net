@@ -1,0 +1,36 @@
+var _____WB$wombat$assign$function_____ = function(name) {return (self._wb_wombat && self._wb_wombat.local_init && self._wb_wombat.local_init(name)) || self[name]; };
+if (!self.__WB_pmw) { self.__WB_pmw = function(obj) { this.__WB_source = obj; return this; } }
+{
+  let window = _____WB$wombat$assign$function_____("window");
+  let self = _____WB$wombat$assign$function_____("self");
+  let document = _____WB$wombat$assign$function_____("document");
+  let location = _____WB$wombat$assign$function_____("location");
+  let top = _____WB$wombat$assign$function_____("top");
+  let parent = _____WB$wombat$assign$function_____("parent");
+  let frames = _____WB$wombat$assign$function_____("frames");
+  let opener = _____WB$wombat$assign$function_____("opener");
+
+SIQ_settings_loaded({"searchBoxName":"s","postTypesForSearch":"post,product,siq_pdf","autocompleteNumRecords":10,"customSearchNumRecords":10,"showACImages":false,"disableAutocomplete":false,"autocompleteWidth":null,"customSearchThumbnailsEnabled":false,"resultPageUrl":"https://web.archive.org/web/20230214111002/https://www.upfolio.com/find","queryParameter":"q","autocompleteTextResults":"Results","autocompleteTextPoweredBy":"powered by","autocompleteTextMoreLink":"Show all # results on Upfolio","feedEnabled":false,"crossSiteSearch":false,"crossSiteSearchOnPage":false,"mobileEnabled":true,"mobileStylingBarInputBoxPlaceholder":"Search Assets","mobileStylingSearchHeadTxt":"Search","mobileStylingSearchResultStatTxt":"# results","mobileStylingSearchLoadingTxt":null,"mobileStylingBarFavicon":null,"mobileFloatSearchIconEnable":false,"mobileFloatSearchBarEnable":false,"mobileItemTitleTextSize":50,"mobileSearchIconSelector":".searchctamobile","siqSid":"11167975","showAuthorAndDate":false,"showPostLink":true,"showCategory":false,"showTag":false,"searchAlgorithm":"BROAD_MATCH","customSearchBarPlaceholder":"Search Assets","customSearchResultsInfoText":"Showing ##offset## to ##limit## of ##total## Results","customSearchResultsOrderRelevanceText":"Relevance","customSearchResultsOrderNewestText":"Newest","customSearchResultsOrderOldestText":"Oldest","paginationPrevText":"Prev","paginationNextText":"Next","noRecordsFoundText":"Example: Bitcoin or BTC","jsVersion":null,"sortBy":"RELEVANCE","featureExcludeFields":true,"isProPack":false,"thumbnailType":"crop","resizeFromOriginalImg":false,"scripts":["##BASEURL##js/##VERSION##/autocomplete.js","##BASEURL##js/##VERSION##/search-results.js","##BASEURL##js/##VERSION##/siq-mobile.js","##BASEURL##js/##VERSION##/sa.js"],"rawScripts":["!function(s){var o,a,n,r;void 0!==s&&(o=location.href.replace(/^https?:\\/\\/([^\\/]+).*$/i,\"$1\").toLowerCase(),a=location.href,n=function(e,i,n){var r,t,s;i&&((r=new Image).onerror=r.onload=n,t=null!=i.kw?i.kw.replace(/\\\"/g,\"\"):i.kw,s='{\"sid\":\"'+i.sid+'\",\"said\":\"'+i.said.replace(\"www.\",\"\")+'\",\"kw\":\"'+t+'\",\"source_url\":\"'+a+'\",\"engineKey\":\"'+i.engineKey+'\"'+(i.refURL?',\"external_referrer\":\"'+i.refURL+'\"':\"\")+\"}\",r.src=\"//track.searchiq.co/api/tr?event=\"+encodeURIComponent(\"search\")+\"&eventInfo=\"+encodeURIComponent(s))},r=function(){var e=s(\".holdResults\");if(0!==e.length){for(var i=e.attr(\"class\").split(\" \"),n=-1,r=0;r<i.length;r++){var t=i[r].trim();/^siq_searchIndexResult-\\d+$/.test(t)&&(n=t.replace(/^siq_searchIndexResult-(\\d+)$/,\"$1\"))}if(!(n<0))return{kw:s(\".siq_searchIndex-\"+n).val(),sid:SiqConfig.siqSid,said:o,engineKey:siqConfig.engineKey}}},function(){if(s(document).on(\"click\",\".holdResults .searchWrapperLabel, .holdResults ul li .resultsMore\",function(){n(0,r())}),s(document).on(\"click\",\".siq-autocomplete a\",function(){s(this).hasClass(\"siq-recommended-link\")||0!==s(this).parents(\".siq-recommended-link\").length||n(0,r())}),s(document).on(\"submit\",\"form.siq_searchForm\",function(){n(0,r())}),s(document).on(\"keydown\",function(e){switch((e=e||window.event).which||e.keyCode){case 13:(0<s(\".holdResults\").length&&0<s(\".holdResults .siq-autocomplete.highlighted\").length||s(e.target).is(\"#siq_ajax_search\")||s(e.target).parents(\"form\").is(\"#siq_search_results div.siq_search_ajax.siq_search_box form\"))&&n(0,r())}}),s(document).on(\"click touch\",\".siq_aclinewrap\",function(){n(0,{kw:s(this).parents(\"#siq_mobile\").find(\".siq_searchwrap input.siq_searchfield\").val(),sid:SiqConfig.siqSid,said:o,engineKey:siqConfig.engineKey})}),document.referrer&&document.referrer.replace(/^https?:\\/\\/([^\\/]+).*$/i,\"$1\").toLowerCase()!==o){if(SiqConfig.resultPageUrl.replace(/^https?:/,\"\").replace(/\\?.*$/,\"\")!==location.href.replace(/^https?:/,\"\").replace(/\\?.*$/,\"\"))return;function e(e,i){if(!(e.indexOf(\"?\")<0)){var n=e.substr(e.indexOf(\"?\")+1);if(0!==n.length)for(var r=n.split(\"&\"),t=0;t<r.length;t++){var s=r[t];if(s.indexOf(\"=\")<0&&decodeURIComponent(s)===i)return!0;if(i===decodeURIComponent(s.substr(0,s.indexOf(\"=\"))))return decodeURIComponent(s.substr(s.indexOf(\"=\")+1))}}}var i=e(location.href,SiqConfig.queryParameter)||e(location.href,SiqConfig.searchBoxName);eventData={kw:i,sid:SiqConfig.siqSid,said:o,engineKey:siqConfig.engineKey,refURL:document.referrer},n(0,eventData)}}())}(window.siq_S);","!function(){\n var img=new Image();\n img.src=\"//api.searchiq.co/live?engineKey=\"+window.siqConfig.engineKey;\n}();"],"enableAutocompleteFacet":null,"enableResultsPageFacet":null,"openResultInTab":false,"resultPageLayout":"LIST","hideLogo":false,"licensed":true,"containerGroupId":null,"enablePostTypeFilter":false,"defaultThumbnailUrl":"https://web.archive.org/web/20230214111002/https://uploads-ssl.webflow.com/59446f92d4c908089df22b0f/5b254de74636a733b4cc417c_LOGO.jpg","descriptionFields":{"post":"excerpt"},"displayContentFromStart":true,"autocompleteTemplate":"default","resultPageTemplate":"default","bannerScript":null,"mobileBannerScript":null,"domain":"www.upfolio.com","multiSelectFacetEnabled":false,"listTemplateVersion":null,"gridTemplateVersion":null,"descriptionSegments":null,"enablePopularitySorting":false,"autocompleteAlignment":null,"autocompleteInputSelector":null,"autocompleteWidthType":null,"autocompleteTemplateCssUrl":null,"eventClickUrlPattern":null,"searchPageUrlPattern":null,"forceToApplyAutocompleteResult":false,"noResultPage":false,"autocompleteFollowUrlByClick":false,"enableSearchHistory":false,"enablePopularKeywordSearch":false,"enableKeywordSuggestions":true,"injectionUnitEnabled":false,"injectionUnitTplUrl":null,"injectionUnitCssUrl":null,"resultPageUrlTpl":null,"partnerEventFireEnabled":false,"autocompleteSponsoredInjectionOnly":false,"autocompleteSponsoredContainerSelector":null,"autocompleteSponsoredInjectionRule":null,"isPartner":false})
+
+}
+/*
+     FILE ARCHIVED ON 11:10:02 Feb 14, 2023 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 11:10:08 Feb 14, 2023.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+*/
+/*
+playback timings (ms):
+  captures_list: 150.487
+  exclusion.robots: 0.073
+  exclusion.robots.policy: 0.065
+  cdx.remote: 0.063
+  esindex: 0.01
+  LoadShardBlock: 107.225 (3)
+  PetaboxLoader3.datanode: 26.526 (3)
+  CDXLines.iter: 33.527 (3)
+  PetaboxLoader3.resolve: 74.565 (2)
+  load_resource: 7.395
+*/
