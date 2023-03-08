@@ -1,0 +1,784 @@
+Okay, so we only have what 45-50 minutes to try to compress seven years of Bitcoin security
+experience.
+I'm sure this will go very well.
+But my name is Jameson Lopp.
+I have been full-time in Bitcoin since 2015 and have basically been working on various
+iterations of self-custody software.
+Spent three years focusing on enterprise, multi-signature wallets, trying to prevent
+a lot of the hacks from happening against exchanges and other large providers.
+And then for the past four years, I've been pivoting and focusing more on trying to bring
+best practices and security to individuals.
+And so that's mostly what I'll focus on today.
+There will be some organizational level stuff, but that's what we're really going to talk
+about is best practices.
+And I will be making some assumptions that you know, some basic stuff about Bitcoin so
+that we don't have to waste time on that.
+But if you've been in Bitcoin for more than a few minutes, then you understand that one
+of its greatest attributes is that at least if you hold your own keys, if you self-custody,
+then no one can confiscate your money.
+No one can censor you.
+You have this level of self-sovereignty that has never existed before.
+But the flip side of that is this double-edged sword and with power comes responsibility.
+If you screw up, doesn't really matter how, no one can help you.
+So it's very important that you front load all of your paranoia, all of your security
+considerations, because unlike with a credit card or a bank, if something goes wrong, you
+call up support and they reverse the charge.
+That's not going to happen in Bitcoin.
+You need to prevent that from happening in the first place.
+So what are we really going to be talking about?
+I mean, the fundamentals, it comes down to private keys.
+What is a private key?
+It's essentially a unique, randomly generated number that is then used to create a public
+key.
+And then that public key goes through a few various transformations to eventually become
+a Bitcoin address.
+And that's how you receive your money.
+So the public key and everything to the right is public information.
+It's fine.
+It's what you give to other people so that you can receive money on the blockchain.
+The private key should never be shared with anyone.
+And you need to be very, very careful about how it's stored, how it's used, and make sure
+that it is robust and that you're not going to lose it either to an attacker or to some
+sort of disaster.
+So with great power comes great responsibility.
+We're talking about these private keys.
+Don't bother loading this one up.
+There's no funds in it.
+But this is the binary representation of a seed phrase.
+You're probably more used to the 24 word version, which is down at the bottom.
+But this is what we are talking about.
+This is literally the keys to the kingdom.
+If you have a significant amount of money in Bitcoin, then the money is just this random
+number.
+So there's a couple of different ways that you can describe or categorize a Bitcoin wallet.
+One of those is based on the authentication that is required to move the money out of
+the wallet.
+The vast majority of people and the default for the vast majority of Bitcoin wallets is
+to use a single signature, which means one of the keys like this.
+However, like I said, what I've been working on for about seven years now is different
+types of multi signature wallets, which means you have to have two out of three or three
+out of five, some sort of M out of N set of keys in order to be able to spend the funds.
+And this is programmatically a part of the blockchain where we're using these locking
+scripts to lock them up in an address on the blockchain.
+And then if we do not provide the correct corresponding number of signatures and type
+of signatures, then the transaction that we try to create gets rejected by all of the
+nodes.
+It does not get mined.
+It doesn't go into the blockchain.
+And this is a much more robust, though slightly more complex way of going about doing a wallet.
+But we'll go through why that is in the coming minutes.
+Now another way that you can slice and dice wallets is where and how the private keys
+themselves are stored.
+Now we're going to throw out custodial wallets right off because it's kind of ridiculous
+to use them in the first place.
+If you use a custodial wallet, if you leave your money on the exchange where you bought
+it, you don't even have Bitcoin.
+You have an IOU for Bitcoin and there's a million different things that can go wrong.
+Essentially all of the same things that can go wrong in a self-custody wallet can go wrong.
+Additionally you have counterparty risk where any number of employees or other people or
+hackers that get into that company's database and get their keys can then steal your funds.
+So from a self-custody perspective, I would say probably the default for most people is
+a software wallet.
+You may install something like Electrum on your desktop.
+You may install a mobile app like Breeze on your phone.
+And then you're just using keys that are generated on that device.
+This is incredibly convenient.
+However it is a hot wallet.
+You have the keys on an internet connected device.
+There's still a number of things that can go wrong.
+I would say if you want to level up your game, what you want is you want dedicated hardware.
+You want these keys to be on a device that is specifically designed to do nothing but
+manage private keys.
+Examples of this, Trezor, Ledger, Coldcard.
+There's a dozen or more different companies out there and they're all good.
+Obviously if you start going really deep into it, you'll be able to find technical minutia
+of why one may be better than the other.
+But any of them are better than having your keys on your phone or on your computer.
+So if we look at the history of Bitcoin, these numbers are somewhat arbitrary estimates from
+chain analysis.
+And they're also a few years old.
+But we believe that about 4 million Bitcoin are permanently lost.
+Most of those of course from the very early years when it wasn't worth anything and people
+weren't putting a lot of effort into securing their coins.
+And we also estimate that over 2 million Bitcoin have been stolen.
+So the main thing that I would take away from this, both from a quantitative perspective
+and from my own arbitrary anecdotal perspective of working on wallets over the years, is that
+despite the fact that you probably hear about all the high profile hacks in the media, you
+know those are the great stories that sell and get clicks.
+You're actually far more likely to shoot yourself in the foot and just lose access to your keys.
+So while you should be paranoid about hackers, you should be more paranoid about environmental
+disasters or just simple mistakes that could result in catastrophic failure.
+So these are most of the high level ways that you could lose your Bitcoin.
+You know this is a cat and mouse game.
+It's a never ending battle of cybersecurity and people are always becoming more creative
+and innovative and finding new ways to get private keys.
+It's hard to really quantify which ones are the biggest to worry about.
+Wrench attacks are something that I'm particularly interested in, but if you're not going around
+being really flashy and showing off that you have a lot of money, you generally don't have
+to worry about being physically attacked.
+Supply chain attacks, fairly theoretical.
+We haven't really heard of any of the hardware manufacturers being attacked that we're aware
+of yet, but it's still possible.
+Brain wallets are definitely a huge problem.
+You should never, ever, ever, ever use a brain wallet because there are numerous servers
+sitting out there just listening for Bitcoin transactions that deposit into a brain wallet
+because they've already cracked billions of brain wallets and they're just, they have
+the private keys.
+They're just waiting for you to send the money in.
+Malware is a fairly big issue.
+I would say clipboard malware in particular is one that I've seen a lot.
+This is nefarious, especially if you're using a desktop wallet, especially if you're using
+a windows PC wallet where this malware will sit on your computer for years undetected
+and it's just waiting for you to copy and paste a Bitcoin address.
+And if it detects a Bitcoin address going into your clipboard, it'll swap it out with
+another address that looks very, very similar, at least the first few characters, except
+the private keys will be owned by the attacker that wrote the malware and you will basically
+be sending your money to them instead of to wherever you think you're sending it.
+Sim swaps, I think this is not as big of an issue in Europe.
+It's definitely a big issue in America just due to the differences in some of the authentication
+procedures of our mobile phone carriers.
+It's very easy to socially engineer or bribe a lot of our mobile phone carriers in America.
+So the short version there is that you should not use your phone number to secure anything.
+You generally should not use a phone number for a second factor of authentication.
+The bigger problem being that often when you do that, a lot of services will allow you
+to completely reset access to an account through the phone number.
+So we've seen tens of millions of dollars get stolen from people's exchange accounts,
+usually because they got sim swapped.
+The person took over their email address, their phone number, authenticated into the
+exchange account as them and then just withdrew all of their money.
+Social engineering is probably one of the last great vestiges in this cyber security
+field because there is no technical solution to it.
+As we continue to improve the best practices that we're going to be talking about, as people
+become more educated, more paranoid, the last thing that attackers are really looking at
+is your brain.
+Because your brain is just another computer and if you manipulate it in the right way,
+a lot of people's brains can be hacked.
+We call this social engineering, but it's really just using a different type of programming
+language, whether it's English or German or whatever, to trigger someone's organic computer
+to do the actions that they want.
+Phishing is definitely also quite prevalent and password reuse is just a basic cyber security
+thing that you should avoid.
+Most of the stuff on the right, all the malicious stuff, it's not really as much of an issue
+unless you're out there doing shady stuff over Tor, but certainly things to be aware
+of.
+So if I try to distill all of those different things into high level categories, what are
+we talking about?
+Well, if you're thinking about physical theft, physical attack of any kind, this is a very
+well known problem.
+Humans have been physically securing valuable things for all of history.
+How do we do that?
+We create physically secure locations such as safes or hidden storage areas that are
+not obvious or we hire guards to look after stuff.
+This is why bank vaults have existed for such a long time.
+I think that you can leverage that, especially in a multi-signature solution.
+It's nice to have one key in a highly physically secure bank vault that has its own authentication
+procedures around it.
+On the digital theft side, I would say this is mostly a solved problem.
+All you need to do is not put your private keys on an internet connected device.
+How do you do that?
+You buy one of these hardware key managers.
+Physical disaster is something that is also a well known problem, but people tend not
+to really think about it.
+That's because this is just a boring IT data management problem.
+If you think about it, the average person probably doesn't make good backups of their
+computer.
+If their hard drive crashed, they're probably screwed.
+They're going to have to start over from scratch.
+This is just a matter of having off-site backups, preferably secure off-site backups, whether
+encrypted, physically secure, or whatnot.
+As I mentioned, the social engineering aspect is really more of an education thing.
+You need to have your own internal firewalls up so that you're not just believing whatever
+somebody is telling you.
+You're not just sending your money off without being completely sure where it's going.
+Collusion is more of an organizational issue.
+It's definitely an issue if you're using a third party custodian.
+They might collude together against you and essentially exit scam you.
+In an organization where you're setting up perhaps a multi-signature storage for your
+corporate holdings, then you have to worry about exactly who has the keys, what the power
+structure and dynamic there, and exactly what the threshold of collusion that would be required
+in order to have enough private keys to steal the money would be.
+Obviously, there has to be a threshold somewhere.
+Otherwise, nobody is going to be able to spend the money at all.
+What's the TLDR of the hour-long talk?
+It is eliminating single points of failure.
+As we stated at the very beginning, there's a great deal of power that is available to
+you as a Bitcoin holder, as a sovereign individual who has these private keys.
+But the flip side is that it's very easy to create single points of failure.
+If there is a single point of failure, what that means is that you have potentially one
+thing that can go wrong.
+Maybe you make one mistake, maybe one attacker finds one tiny little chink in the armor of
+your setup, and it's catastrophic loss.
+This is one of the reasons why I think a lot of normal people argue against Bitcoin quite
+well because the average person is going to be deathly afraid that they're going to do
+something wrong, that they're going to suffer a catastrophic loss, and that no one will
+be able to help them.
+So we need to continue improving the user experience of the security products that are
+available in this space, continue making the possible number of single points of failure
+smaller and smaller.
+Thankfully, we do have a fairly well-defined solution.
+About five years ago, a group of security people in the space came together.
+I was working at a company called BitGo at the time.
+They were one of the founding members of this, and they created something called the Cryptocurrency
+Security Standard.
+You can check out the standard at cryptoconsortium.org.
+It's also really great.
+While it is designed to be used mostly by enterprises or by organizations that are holding
+money on behalf of other people because the risk is generally much higher there, you have
+large sums of money being pooled together, it is at a very high level just a series of
+best practices that anyone can read through and implement as many as you're comfortable
+with.
+So what are the high levels of things that we cover on here?
+The first is how do you actually create the keys?
+You want to create the keys yourself, but there's a number of ways you can screw up
+creating keys that make that weaker.
+Then there's the actual design and creation of the wallet itself.
+There's far more to a Bitcoin wallet than just the keys.
+Then there's the long-term storage of the keys.
+How are they able to be accessed when the keys are actually being used?
+What devices are they on, what is the security of the keys at the time of use?
+This is more for organizations and multi-signature setups, but how do you handle a key being
+compromised?
+How do you handle a key holder losing a key or going rogue or some sort of loss happening?
+How do you recover from that?
+If you're using a single signature wallet, the key compromise plan is throw up your hands
+and start over again because you just lost everything.
+But in multi-sig, you do have this additional flexibility to recover from partial loss of
+keys.
+Then also, at an organizational level, there are a number of user policies, just best practices
+around minimizing the trust in the group of people who are having keys distributed amongst
+them.
+So when we look at the initialization of keys, there's a million ways to do it.
+Because what are we talking about?
+We're just talking about a really long random number.
+Unfortunately, human beings are very, very bad random number generators.
+This is one of the reasons why brain wallets are terribly insecure, because humans tend
+to use common phrases or their favorite song lyrics or their favorite poem or phrase from
+a book.
+I promise you, if you use any phrase that will show up from Googling it because it's
+something popular and you create a brain wallet and you send money to it, your money will
+be gone within 10 seconds.
+How do we ensure entropy?
+There's a number of ways of doing this.
+One of the more manual ways, which is pretty good, is actually pictured here.
+You get some casino dice and you just start rolling.
+It does need to be casino grade dice because cheap dice tend not to be perfectly well balanced.
+There are a few different hardware wallets out there.
+I think Cold Card has support for this on the actual hardware.
+I know that Bitbox has instructions for how to use diceware.
+Essentially, you can just roll these dice a few dozen times to create a sufficiently
+long random number, then you can plug in and get what that 24-word seed phrase that corresponds
+to it is.
+It's also important, of course, to generate these things offline.
+You never want these keys to touch the internet because if they're touching an internet connected
+device, that device needs to be perfectly clean.
+It's very, very difficult to have 100% certainty that any given computing device doesn't have
+any malware on it.
+It's also really, really difficult to actually create your own perfectly air-gapped computer.
+You can go buy a laptop from the store, but unless you're really good at physically disabling
+hardware, it's still possible for other software, other malware to taint your air-gapped computer
+and it may not actually be air-gapped.
+I generally do not recommend that, other than for extreme experts who have a lot of free
+time.
+Then finally, what do you do with these keys once you've generated them?
+If you are generating them on a nice secure device, if it's not being used on that device
+in the future, you should not be leaving it there.
+You don't want to just leave keys laying around if it's not actually necessary.
+What happens when you want to create a Bitcoin wallet?
+Well, you've probably seen this before.
+Here's your 24 words.
+Write it down, keep it safe.
+When I see this, I think there's a whole iceberg of security knowledge hidden under that phrase,
+keep it safe.
+Essentially, what we're doing is we're giving toxic material, highly sensitive material
+to probably a non-technical person.
+We don't know what their level of sophistication is.
+The most likely thing is they're going to write that down on a piece of paper and put
+it in a drawer somewhere.
+There have been plenty of instances of people losing their money because their maid was
+going through and cleaning things up and found a scrap piece of paper and said, "This looks
+like junk," and they just threw it out.
+Some people think about the evil maid attack, but they don't think about the stupid maid
+attack.
+There's so many attacks out there.
+You can be like me, spend seven years thinking about attacks and still find new ones all
+the time.
+What are we doing with actually creating the wallet?
+Obviously, we create the keys, but there's more to it than that.
+We're creating these locking scripts that they describe using the Bitcoin protocol,
+what are the conditions required in order to spend this money.
+I'm obviously biased and a big shill for multi-signature wallets, at least for non-trivial amounts of
+money.
+If you have an amount of Bitcoin that you would be sad about if you lost, then consider
+putting it into a multi-signature wallet because you can get a much better security posture.
+One of the reasons for this is that putting it into a multi-signature wallet means that
+you automatically have redundancy.
+This is, of course, assuming you aren't just taking all of those keys and putting them
+into the same drawer in your office.
+You need to have these keys distributed geographically.
+That protects you from a number of attack vectors and loss vectors.
+Just have to assume that your house might burn down.
+It's actually a lot more common than people tend to think.
+Once again, off-site data storage, very good so that you can recover if something does
+go wrong.
+Keeping them geographically distributed, it saves you from so many different attacks and
+losses that it's so easy just to say, "Put them in different places.
+The further apart, the better, but the further apart, the more inconvenient it is."
+That is one of the other common themes that we see throughout cybersecurity in general
+is that there's always going to be a trade-off between convenience and security.
+This is why you need to decide, "How much money am I trying to secure here?"
+I would advocate that when you're thinking through that, you 10x whatever you think the
+value is.
+Because as we all know, Bitcoin is very volatile from an exchange rate perspective.
+You may set up a reasonably secure solution today, and a year or two from now, it might
+be worth 10 times or 20 times as much, and you need to re-architect it because it would
+hurt a lot more if that got compromised or destroyed.
+How do we actually store the keys?
+We want them to be encrypted at rest.
+That means we want a physical attacker or just a stupid maid or whatever who sees the
+keys to not be able to do anything with them.
+There are, of course, innumerable ways that you can encrypt data.
+For the average person, the best thing, once again, to do is just use one of these dedicated
+hardware devices.
+They have secure chips inside of them that are designed to protect the data from physical
+attackers.
+Once again, if you get really, really deep into the weeds, some of them do have flaws
+that a nation state attacker with multi-million dollar equipment could potentially be able
+to get into.
+But in practice, that's more of a theoretical thing.
+We've never heard of someone in practice who had a hardware key manager taken from them
+and then had that broken into using technical methods as opposed to simply just coercing
+and threatening the user to give up their pin to decrypt the hardware device.
+We want multiple backups as well.
+It's good to have one backup, but why not two?
+Why not three?
+Once again, it's this level of complexity versus convenience that you'll have to decide
+exactly how much redundancy you want.
+The primary thing to worry about with backups is that if the backups themselves aren't also
+encrypted, or if it's not part of a multi-signature setup, then it can be a single point of failure.
+That's why the default, unfortunately, for a lot of these wallets, they give you that
+seed phrase.
+Some of them even say, "Write it down on a piece of paper."
+If you make two, three, four copies of that piece of paper and put it around in more and
+more places, you're actually increasing your risk because there's more possible places
+that might have some sort of physical exploit.
+They might have a way for someone to either intentionally or unintentionally come across
+that seed phrase and be able to just import it into another wallet and steal all of your
+money.
+So, it's very important that your backups themselves are physically secure.
+If you're not technically sophisticated enough to encrypt them, I will talk about a fairly
+non-technical user-friendly option that I'm a big fan of.
+But otherwise, they need to be in a highly physically secure location that you won't
+have a random person be able to just get into.
+So definitely avoid paper wallets.
+I think this is far less prevalent these days, but I will say that paper wallets, especially
+the paper wallet websites, a lot of them are malicious.
+They will generate private keys that are either already owned by an attacker or are cryptographically
+weak and not random and can be guessed by the attacker.
+Paper wallets, of course, are generally unencrypted unless you do like a BIP38 password encryption,
+which I'm not a big fan of either.
+And if they're on paper, of course, it's not going to survive almost any type of environmental
+stressor.
+And another thing that people don't really know is that if you're using one of these
+paper wallets that just creates a single private key instead of a seed phrase, then there's
+a sort of unknown, not well-known usability issue in that you can load that private key
+into a wallet, and if you only spend part of the funds in that wallet, then the rest
+of the funds will go to a change address, which is on a different private key and is
+not backed up.
+And a number of people have learned that the hard way by accidentally deleting that wallet
+after the one time they spent the funds from it.
+And then the next time they tried to load it up, it was all gone.
+So metal backups, I am a much bigger fan of.
+You still have to be careful.
+This is one of my side projects that I've been doing for four years, and I've tested
+over 70 different metal backup devices, all of which tend to be touted as indestructible.
+Most of them are, about half of them are, but unfortunately about half of them are not.
+And you have to be careful, but thankfully I have ratings for all of this so you can
+figure out which ones are the best.
+There is still the issue though, if you're creating a single signature wallet, if you're
+creating just one seed phrase and then you're putting that one seed phrase into a metal
+backup, that's unencrypted.
+If anybody else gets their hands on that one backup, they can load up your money and send
+it to a different wallet.
+So this is a screenshot, but seedstoragereviews.bitcoin.page, or just go to bitcoin.page and you'll find
+a link to it there.
+This is the results of many, many hours and days of testing these things.
+I test them for heat up to 2000 degrees Fahrenheit, which is I think about 1100 or 1200 Celsius.
+I test them for corrosion and hydrochloric acid, and then I test them with a 20 ton hydraulic
+shop press for deformation of, assume a building collapse or something like that.
+And so any of the devices that have straight A's across the board are great.
+The short version is, keep it simple, just get one of the devices that is just a single
+plate and you can center punch divots into.
+So how about when we're actually using the keys on a regular basis?
+Once again, hopefully you're using a dedicated hardware key manager that's keeping those
+keys offline.
+Preferably you're using a wallet that requires multiple types of authentication.
+So that would mean, for example, if you have wallet software on your phone, you should
+have to enter a password or a PIN or your thumbprint or something.
+I'm not a big fan of biometrics as security, but it's still better than nothing.
+And then additionally, to actually spend the funds, you should have to enter some sort
+of other secret data.
+Typically on these hardware devices, it's going to be a PIN, four to eight digit length
+PIN.
+And the keys should only be in a trusted environment.
+That basically means an offline machine, a dedicated hardware device.
+If you know what you're doing, an air-gapped computer definitely fulfills this.
+And then very important, this protects you against manipulation and malware, is that
+you need to verify the transaction details on a dedicated device.
+Preferably a device that's different than the wallet software where you generated the
+transaction.
+Because you're probably generating the transaction on a desktop or a laptop or a mobile phone.
+These are general computing platforms that have huge attack surfaces and are almost impossible
+to be sure that they don't have malware on.
+So once again, worrying about clipboard malware and other types of malware that will try to
+manipulate your transaction data to redirect your money to an attacker.
+The reason why all of these hardware devices have dedicated screens is because of this
+attack vector.
+The very earliest hardware devices did not have these screens.
+You would just push a button on the device and it was very quickly determined that you
+were just blindly signing whatever data was given to you.
+And it was not actually protecting you against a man-in-the-middle malware type attack.
+And then finally, you don't want to put multiple different keys from multiple different wallets
+or coins or whatever onto the same device.
+Keep things segregated.
+That once again limits the sort of level of catastrophic failure that could happen if
+one of them got lost, stolen, damaged, whatever.
+Key compromise, like I said, this really only applies to multi-sig wallets or multi-user
+organizational wallets.
+You want to have a well-formulated and well-described written out plan that is essentially an inventory
+of your keys, your devices, who's responsible for what.
+The nice thing about multi-sig is that if you know who has what key, if some sort of
+compromise happens, you can see which keys signed the transaction.
+This really helps with forensic investigation.
+It essentially creates an audit log on the blockchain, which is great.
+And of course, you want to have backups.
+The integrity of the keys is something that you also need to check on regularly.
+This will protect you against things like bit rot.
+If you're keeping keys on these electronic hardware devices, the devices themselves are
+not 100% robust.
+They are susceptible to things like electric overloads.
+We've seen sometimes firmware updates happen that corrupt them and wipe the device.
+Even stuff like solar flares or potentially a neutrino hitting the memory on the device
+in the wrong way and flipping a bit the wrong way can corrupt whatever data is on that device
+and make it unusable.
+These are extreme edge cases, but we're talking about extreme security because we're operating
+under the assumption that you may have a large portion of your net worth and you can't tolerate
+a catastrophic failure.
+Also of course, keeping track of who is granted the keys, how are you authenticating, whether
+someone should be trustworthy in the first place.
+Perhaps you're doing background checks.
+Perhaps you're asking around to look into a certain individual that is joining your
+organization and try to make sure that they aren't an attacker or an unscrupulous individual.
+There have been a number of attacks in this space, usually against exchanges and other
+providers that have large hot wallets, that the attacks have been perpetrated by employees
+at the company.
+Usually people like infrastructure engineers working on the back end who have administrative
+access to all of the servers and keys on the back end.
+We've seen a few of those where they'll steal all the money and then essentially run off
+to some non-extradition country and just live their lavish life like a king.
+The final thing of course is an audit trail.
+This is sort of basic cyber security.
+Any internet company, really any company today that does stuff with computers should have
+good audit trails, once again just for forensic accounting purposes.
+If you're an organization, let's see, we went over the grant revoke policies, security audits.
+Most of this is still just basic cyber hygiene, making sure that you're not leaving sensitive
+key material laying around.
+If you are holding funds for other people, this is one thing, this is one best practice
+that unfortunately has not been adopted by many companies out there, but proof of reserves
+is completely possible to do in a privacy preserving way on Bitcoin.
+I know Kraken does it maybe once or twice a year.
+I think Bitnob was doing proof of reserves maybe one or two, but the vast majority of
+exchanges out there, even the ones that have billions or tens of billions of dollars, generally
+not doing proof of reserves.
+It does take effort, but this would provide people with a lot more peace of mind and of
+course audit logs as usual.
+So like I said, complexity is the enemy of security.
+You probably feel like we've gone through quite a bit of complexity over the past 30
+minutes here, and this is a trade-off that you have to worry about.
+When you're actually engineering your financial applications and you're trying to understand
+what is the security model of this thing that I have created, the more complex it is, it
+becomes more of a beast that is difficult to even reason about.
+The number of edge cases can grow exponentially.
+So the simpler your setup is, the easier it is to reason about what could go wrong.
+Also you're probably not only doing this for yourself.
+If you have a family, you have to think about inheritance planning.
+I think one interesting aspect of this space is that the hardcore hodlers, they're looking
+at Bitcoin not as just like a new digital gold, but some of them are actually looking
+out as a multi-generational asset.
+This is potentially generational wealth planning for people.
+So while yes, you're worried about the problems of today and you using and accessing and not
+losing access to your wallet is very important, unfortunately you are a single point of failure.
+And there is no solution to that yet.
+I have my own optimistic beliefs about what we may be able to do with our own bodies and
+consciousness and whatever in a potential cyberpunk future, but you could walk outside
+and get hit by a truck.
+What happens to your Bitcoin?
+That's the way that we need to be thinking about these wallets and we need to be designing
+them in a way that the people that we love, our heirs, will be able to access those funds
+if something goes wrong.
+And inheritance planning is actually a whole other talk.
+I could talk for hours about that.
+We have a whole inheritance planning guide and solution that we offer to clients.
+If you want to get more into thinking about all of the complexities around it, because
+it's not just technical complexities, there's a lot of legal complexities as well, I do
+highly recommend Pamela Morgan's book.
+It's the Cryptoasset Inheritance Planning Guide.
+I learned a lot from it and I thought that I already knew a lot about security, but I
+did not know much about the legal aspects and the potential conflicts that can arise
+within heirs.
+So if you were just an average new Bitcoiner, you're just getting into the space, you may
+not be dealing with life-changing levels of wealth yet, but you have enough Bitcoin that
+it would sting if it was lost or stolen.
+What do you do?
+Well, I highly recommend spending 50, 100 euros on a key manager.
+They're all pretty good, like I said.
+The backup solution that I didn't mention earlier, while I highly recommend just getting
+something like a seed plate or block plate, one of these simple single metal plates with
+a grid that you punch the divots into, you need multiple of them.
+And the reason for that is so that you can eliminate this backup as a single point of
+failure.
+So what is SeedZor?
+This is actually some software that is created by CoinKite and I think they have functionality
+built into the cold card for it, but SeedZor basically can take a single signature wallet
+and it can take that one seed phrase and turn it into two seed phrases.
+And it's great because each of these two seed phrases on its own is a completely valid seed
+phrase.
+There's no way to look at that and say, "Oh, this is actually part of a bigger multiple
+seed phrase backup."
+So this adds plausible deniability because even if an attacker finds one of them, they
+may load it up and then they'll either get an empty wallet or you can actually put a
+little bit of money onto that one wallet that corresponds to that one partial seed phrase.
+And then if that money moves, you know that it's been compromised and you can go around
+and basically recreate your setup.
+But the nice thing about this is that it's essentially a two of two backup.
+So unless someone actually knows that there are two different pieces to it, then they're
+not going to get your real funds.
+Now the downside is if it's a two of two backup, that's actually a single point of failure
+in a different way in the sense that if one of those two backups gets lost or destroyed,
+you can't reconstitute your actual wallet.
+So if you really want to have redundancy and this level of plausible deniability, then
+you need at least two sets of two backups so that you can have two, two of two.
+So this ends up being four different plates with seed phrases in them.
+It starts adding more complexity.
+I'm not a big fan of that level of complexity.
+You can make an argument that maybe a three of five multi-sig gives you better geographic
+distribution and is not quite as difficult to reason about.
+But these are things that you'll have to take into consideration of what you are most comfortable
+with.
+And of course you can experiment, play around with it.
+The great thing about Bitcoin is that there's test networks.
+So if you need test net Bitcoin, hit me up.
+I have plenty and you can test out pretty much any type of wallet software or backups
+on the test network without risking any real money because test net Bitcoin has no value.
+So I'll give you a million dollars worth of test Bitcoin if you ask nicely.
+Now we've spent the past 40 minutes talking about keys and unfortunately that's not the
+entire story.
+You also need the template that describes your wallet.
+You will need to know derivation paths, script types.
+If it's a multi-sig setup, you need to know what M of N it is and you need to know like
+all of the public keys that are involved.
+Now wallet output descriptors may be a simple solution.
+I'm hoping to see more adoption of that right now.
+Not many wallets support wallet output descriptors.
+But if you don't know all of these attributes and you lose your current day to day wallet
+and you need to recover from your seed phrase, then you're going to have to do a treasure
+hunt.
+And there's actually a whole website called walletsrecovery.org that is essentially a
+list of every Bitcoin wallet ever and all the different derivation paths and types they
+support and you can end up having to brute force that.
+I've had to help people recover Bitcoin on numerous occasions where they had the keys
+but they just didn't know all the other aspects of the wallet.
+So I had to help them brute force it to actually find where their money was.
+And so I recommend keeping a copy of this with every seed phrase backup because this
+is not sensitive private information.
+Like even if an attacker gets that template, they can't do anything unless they have a
+sufficient level of the private keys themselves to spend.
+So stepping back out of just Bitcoin, practice good security in general for everything that
+you're doing online.
+Assume that all of your usernames and passwords are going to get leaked.
+Don't reuse them.
+The only password that you should know is the password to your password manager and
+your password manager should be protected by a dedicated hardware device.
+I highly recommend getting something like a YubiKey or something where you have to physically
+tap a button.
+That once again prevents attackers over the internet from being able to get into your
+password manager even if they know your master password.
+Use that 2FA on every account that supports it, preferably hardware 2FA.
+And remember that your email account is probably a single point of failure.
+If you're American, your mobile phone is probably a single point of failure as well to a number
+of different online accounts.
+So as we said, security and convenience, there's a lot of trade-offs here.
+You can have multiple wallets with different setups and that's great.
+And then just practice operational security.
+It's fine to have laser eyes and talk generally about how great Bitcoin is on Twitter, but
+don't talk about your Bitcoin and how you store it.
+There's a lot of text to read, but basically this guy posted on Facebook, "Oh, I got SIM
+swapped and my Coinbase account got wiped out."
+And then this guy at the bottom, Cody Brown, screenshotted it and tweeted about it.
+He was like, "Oh, I'm really worried about this because I keep all my money on Coinbase."
+Twenty-four hours later, he was SIM swapped and lost all of his money.
+So hopefully we have a few minutes for questions.
+Yes?
+Nice to meet you.
+We are following you on Twitter.
+My question is what happens with 2FA?
+It's broken or something happens to them because it happened to me.
+Yes, what happens with 2FA keys if they get lost or destroyed?
+This is another...
+No, they didn't work properly with the phones and I don't know.
+It was quite a pain in the ass.
+Ah, okay, yes.
+So...
+And I was lucky because I was doing trading back then and then I will transfer all the
+funds after two weeks from Binance.
+I will transfer all the funds back in my cold wallet and that was that.
+And I said goodbye to everything.
+But my question to you is what happens then?
+If you are losing your 2FA keys?
+Yes, if your 2FA isn't working, so then this is another rabbit hole to go down because
+each service will have a different "2FA reset."
+And different ones use different types of procedures.
+Or if they don't have a 2FA reset.
+I think that if you are taking a SIM card with a phone, blank, you just use it for that
+kind of stuff, I think it's much more secure than 2FA keys.
+I'm doing that.
+Let's say it like this.
+Yes, there's pros and cons to different types of 2FA based on, I guess, what can go
+wrong.
+If you don't have an American SIM card, I would be less worried about getting SIM swapped,
+like I said.
+You can get the Swiss one.
+For your protection, you can get the Swiss card, which they have some laws here with
+telecommunication and everything else.
+So I don't think that it's...
+Because if you have like 1 or 2 or 10 bitcoins or 100, let's say like this, not going up,
+you will need to be a little bit secure about it.
+Not just store it in the Xapo bank and that's it.
+Because we are traveling, we are a community, and we need to buy and exchange goods and
+money.
+Yeah, I mean, this is also...
+If you're using a 2FA device, you're probably using it for an online service.
+So it's probably accessing some sort of custodial account.
+Those custodial accounts, they will have some sort of level of support that may help you
+if your 2FA stops working for any reason.
+And not to mention that the last hack of the Binance was through the 2FA.
+Yeah, yeah.
+So especially if you're...
+The security was there.
+If you're using 2FA with a custodial service, you have to realize that the 2FA is...
+It's not happening on a blockchain or on a decentralized network.
+It's happening at a centralized service.
+And there's going to be other potential exploits where hackers may be able to actually completely
+bypass the 2FA.
+So in some cases, it's just a feel-good thing.
+If you're using a 2FA, when I log into my password manager, I have to tap a YubiKey.
+That's happening locally on my computer, and it's decrypting that local file.
+So everything has the trade-offs.
+Why did you say that the American SIM card wouldn't go?
+American SIM cards...
+They are under attack that hard, and they are taking it...
+American mobile providers are incredibly weak against social engineering, because they
+give account...
+Like admin access to transfer accounts to tens of thousands of customer support associates
+and tens of thousands of stores.
+And these associates are often easily tricked or bribed into transferring accounts.
+Whereas in Europe, I think they have stricter identification.
+Bribe goes in Europe, too.
+We got one...
+I just want to...
+So maybe my question is...
+I'm an IT engineer, and I know certain ways to protect...
+To protect a password or access to a service.
+But my question is to my mother, or anyone that is coming in contact with Bitcoin nowadays.
+They don't know anything.
+They don't even know what two-factor authentication is.
+If we want Bitcoin to be more broadly used, but also kind of a little bit safe, because
+obviously you have to compromise, what would be your suggestion as a good compromise for
+people to kind of trust Bitcoin, use it, and not worry too much about, well, the safety
+of it?
+Yeah.
+So this is actually a good use case, I think, for like a shared custody solution.
+Another cool thing about multisig, you can split it between multiple people.
+So essentially, you know how you can create a checking account that requires cosigners?
+This is the same thing, but just at a cryptographic script level.
+So you could create a two out of three multisig wallet for your mother or your father, and
+then they can initiate a transaction, but it's not valid until you yourself go inspect
+that transaction, ask them, hey, what are you doing, and then cosign it.
+So that additional level of technical expertise and ability to validate is an even stronger
+form of what some of the traditional bank accounts do.
+Hi.
+Thanks a lot.
+What's your view on Shamir?
+Well, I have a whole blog post that talks about Shamir's secret sharing shortcomings.
+My biggest problem with Shamir is that there's a number of different implementations, and
+a number of people have rolled their own and had weaknesses in it.
+I am a fan of the, I think it's slip 39, Shamir secret sharing that Trezor did, because that's
+a very precise, specific implementation, and it has been standardized, and it works on
+the hardware devices.
+So in general, I'm more favorable of that.
+I would still recommend that blog post, though, because one of -- there are still some weaknesses.
+One of them is that if your wallet is compromised, with Shamir secret sharing, you can't tell
+which of the shards were used to reconstitute it.
+So you have less of an audit trail.
+It's harder to do the forensic analysis on a compromised one.
+But it's still definitely better than just having a single clear text backup.
+Thanks, James, for this excellent presentation.
+Do you have any recommendations on what kind of desktop software to use?
+Does it make any difference if you use like Core or Electrum or something else or a mobile
+wallet?
+I mean, I'm asking that because sometimes, you know, you have very good wallet software,
+but there's only like one developer or two developers, and then you install it on a computer,
+like you say, which has many attack factors, or in the end, doesn't it matter, because
+your private key is on this dedicated hardware, so it doesn't matter, take whatever wallet
+you want, or what's your view on that?
+So if you're using a desktop software and you're keeping the keys on separate dedicated
+hardware, then you don't have to worry as much about the funds being stolen, because
+you're verifying the details separately.
+The bigger consideration comes down to sort of the full node validation of like how do
+I know that I'm not being defrauded with the deposit.
+So an easy, user-friendly wallet that I still use a lot is Electrum.
+However, with Electrum, the default is going to point to some server somewhere else that
+may be lying to you.
+You can run your own Electrum server.
+There's even some, you know, Raspberry Pi plug-in nodes you can get that will run Electrum
+servers.
+If you want to go more heavy duty and you're willing to actually have that full 300, 400
+gigabyte full node on your desktop, I would recommend installing something like Spectre.
+But Spectre uses the Bitcoin core HWI library to then have all of the hardware device integrations.
+And so I would say in general, Spectre is my favorite like full node heavyweight desktop
+type of wallet.
+All right.
+Well, we'll talk after, because we're out of time.
+Oh, thank you.
+Thank you for squeezing me in.
+Real quick.
+So great presentation.
+Real quick, there's a lot of talk about quantum computing being able to bust like a lot of
+the shod due to Shor's algorithm, because we're able to compress billions of years of
+calculations into like a second.
+What innovation is being done to harden cryptocurrencies to protect against like quantum computing
+or high performance computing?
+I mean, there's a few altcoins out there that claim to be quantum proof, whatever.
+I'm not really seeing a lot of chatter about it in the technical community, because it's
+not considered a problem that's going to happen in the near or even medium term.
+I mean, if some magical quantum computing breakthrough happens today, tomorrow, next
+year, we're going to have so much bigger problems than Bitcoin, like all of the financial infrastructure
+is going to be completely broken.
+So that's the sort of hand wavy thing is that, you know, it's a future problem that only
+a few like extreme cryptographers, I think, are worrying about.
+One of the issues that I'm aware of is that as far as I can tell, like a lot of the quantum
+safe stuff is much larger from a data footprint size.
+So there would be some major arguments about whether or not we really, really need that
+on the Bitcoin blockchain at this time.
+So hopefully, you know, this is the story of cryptography, security in general, but
+even cryptography is another constant war.
+People are always trying to break cryptography and cryptography weakens, it degrades.
+Cryptographic algorithms are never just broken overnight.
+The slow incremental progress is made on weakening and then eventually breaking them.
+So you tend to have years, if not a decade of heads up that, you know, we expect this
+cryptographic algorithm to be broken in some period of time.
+And as it stands right now, I'm not aware of any like respected authorities that are
+saying, oh, you know, SHA-256 is going to be broken by quantum in a few years or even
+really any period of time.
+Nobody knows.
+But it will probably be at least, you know, five, ten, if not more years.
+Thanks.
