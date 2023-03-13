@@ -1,0 +1,445 @@
+After all of the crypto contagion and centralized services collapses of 2022, my assumption was that there's been a major move not only towards Bitcoin, but towards self-custody.
+The original ethos of Bitcoiners of being your own bank should resonate more thoroughly than ever in the past.
+Today I spoke with Jameson Lopp, who runs Casa, I'm actually a customer, and he said that there was a spike in interest in self-custody, but that slowly waned, which is highly disappointing and tells me that maybe we will once again repeat the mistakes of the past.
+But to that end, there has been at least some groundswell towards self-custody and Casa themselves have now opened the doors, not to just Bitcoin, but to Ethereum as well.
+Jameson and I talked about all of this and much more.
+Did our people coordinate on putting us in gray t-shirts?
+Ha ha.
+Just lucky, I guess.
+I think the big news for Casa, obviously, in the past few months was the move to add MultiSig for Ethereum, right?
+Which has been a largely controversial move, to say the least, probably for you.
+I've seen some of the Maxis trying to pull your membership card.
+What was behind the decision?
+And what do you make of the reaction to it?
+Yeah, I would say it was actually uncontroversial and that what you see on social media is not at all representative of the real world.
+That's the fundamental reason behind all of it, right?
+Is we're running a business, we're providing security services for people.
+So when we see a trend of a lot of both clients and prospective clients coming to us saying, "Hey, I have a lot of value in Blah, will you help me secure it?"
+Then you have to start making these cost-benefit decisions of how much effort will it be for us to expand our business to support whatever.
+And how do we expect that that will affect the total addressable market of potential clients for us?
+And so this is just a trend that we've been seeing over the past several years.
+It's not like a switch suddenly flipped and we were like, "Oh, we better do this.
+Otherwise, it's game over."
+It's more of just us keeping track of what's happening in the market, just like we do on the tech side as well.
+Have to see what's happening in Bitcoin, what's happening in really any of the other popular protocols.
+And is Casa in a position to do what we do well?
+And what I think we do well is we don't roll our own crypto, we don't do novel stuff.
+We assimilate whatever the best practices are and whatever the best tools and technologies are for today's security in this space.
+And then we just try to make it as easy as possible.
+Put a really good user experience on it, offer a really high level of support and hand-holding for people who need it.
+And so we got to the point where it makes sense to do that for Ethereum.
+There's, of course, a lot more than just Ethereum happening on Ethereum.
+I think stable coins are also going to be a big demand driver there.
+And then it's not going to stop there, right?
+We can even talk about NFTs on Bitcoin and ordinals and inscriptions and all the other stuff that is pissing people off.
+We're definitely going to get into all the trigger points for sure.
+But even before you guys were considering Ethereum, I think you and I had a conversation on a past podcast about the technological differences and actually creating multi-sig and allowing for that to happen.
+And I think back then you alluded to the fact that it wasn't so easy with ERC-20 to create the same kind of system.
+So that was more the reason that you hadn't done it at that point was because it wasn't up to your standards or you hadn't figured out the best practices yet.
+So what changed there? What now allows Ethereum to be secured by multi-sig in a manner that's as secure as Bitcoin multi-sig?
+Yeah, so when I was at BitGo back in 2015 to 2017, I was there when BitGo went from only supporting Bitcoin to supporting many other things.
+And of course, Ethereum was the first thing that we added support for after Bitcoin.
+And back then at the time, if you wanted a multi-signature smart contract, you had to write it yourself.
+And this is tantamount to what we would call rolling your own crypto.
+I would say like writing your own smart contract is about as dangerous as like trying to come up with your own cryptographic algorithms.
+These things need to have a really, really high level of vetting and stress testing.
+And you don't want to just write some code and then have people put a billion dollars into it because it is the perfect bug bounty.
+So when BitGo did that, it took us over a year to write the contract and then go through at least like three different independent audits.
+And each audit was scary because they would find critical issues, not necessarily that someone could steal all the money,
+but sometimes sort of griefing issues of like, well, due to this edge case bug, somebody could execute a transaction for 50 cents and effectively freeze your wallet and prevent you from ever being able to spend it by setting the nonce value to the maximum integer.
+Stuff like this, it's just like scary stuff when you're dealing with arbitrarily large amounts of money that you're trying to help people secure.
+So what happened?
+Well, people in the space kept working on MultiSig.
+And it was really right around, I think, the time when Casa launched around 2018, GnosisSafe came online and they really became, I think, the preeminent MultiSig solution for Ethereum.
+And so we've been watching and we got to the point where we're like, you know what, from what we can tell, GnosisSafe contracts are securing untold billions, if not tens of billions of dollars worth of assets on Ethereum network.
+And it's open for us to build off of.
+So it really got to the point where we're confident that we don't have to write our own smart contract.
+We're confident that we can integrate the sort of standard and best practices that has been out there for a number of years and basically apply the other aspects of Casa's technology and services on top of that much more solid foundation.
+I'm quite familiar, obviously, with the 305 MultiSig that you guys offer for Bitcoin.
+What does the Ethereum MultiSig actually look like for a customer or retail user?
+Well, from a user interface standpoint, it's going to look the same in the app, right?
+We're going to display your key set and you're going to have either three keys, five keys, six keys, whatever.
+And you will interface with it in the same type of manner where you'll have a variety of different keys, one on the mobile phone itself, several on other distributed hardware devices.
+And your signing process is also going to be similar.
+You want to create a transaction and we just help guide you through the workflow of adding the required number of signatures to it from any of the keys that you have set up on there.
+So the fact that under the hood it is being powered by this Gnosis safe contract is generally it's going to be opaque to people.
+If you want to, of course, you can always do what we call our sovereign recovery setup.
+You can go recreate that wallet with Gnosis safes UI.
+Maybe you want to interact with or manage some assets that we don't support in the mobile app, for example.
+That would be another option for you to be able to take advantage of the extra functionality that they may have.
+But under the hood, it's effectively the same type of multi-sig.
+It's just instead of using a Bitcoin script, we're now using Ethereum, EVM compatible contract.
+And is it available for all ERC20 tokens or strictly for Ethereum?
+Yeah, so this is where it gets a little bit more nuanced.
+Is that technically the Gnosis safe contract will support any ERC20.
+However, until we add support into the mobile app, you won't have it through Casa, but you could always have it through Gnosis safe UI.
+And this is where, once again, it turns into like a business decision of what's the demand for any given thing.
+I don't think we want to just like automatically load every possible token in there.
+And that actually creates security vulnerabilities too, because there will be fraudsters out there that will launch a token that looks almost exactly like a legitimate token.
+We want to do as much as possible to prevent our clients from shooting themselves in the foot.
+Which is the entire point in the first place.
+We've talked about it sort of at length, but your single point of failure is you.
+Right. So it's very hard to become your own bank.
+You need to because of all the contagion and risk we've seen.
+But then when it's all on you, you're very likely to make some sort of just fundamental error or mistake.
+Hell, I've almost done it. I've had to send you a DM on Twitter in a half panic about mistakes I've even made.
+So it happens.
+Yeah, we're all human.
+And that's why at least when you have multiple keys going on, hopefully that just slows you down.
+You have to think more about what you're doing.
+But it's still not perfect.
+At the end of the day, if you take on a sufficient level of responsibility and self-custody,
+then that necessarily means there will be some path of decisions that you can make that will end up being bad for you.
+Yeah. Well, luckily, you've abstracted away quite a few of them with what you're building.
+It's interesting what you said about the ERC20 support.
+I mean, there's got to be probably 20,000 ERC20 tokens at this point.
+Right. Right.
+So you've got to imagine that 90-something percent of those are either outright scams or completely worthless.
+So how will you then vet and choose what is likely to come next?
+Will it be by market cap, some sort of amorphous customer demand?
+How will you determine how you head down that road?
+Because it's a pretty slippery slope, I would imagine, and a pretty endless road that you could go down.
+Yeah, yeah. There will definitely be some level, I think, of sort of gut-check subjectivity.
+I think it's pretty much a no-brainer that we're going to add the multi-billion dollar stablecoins.
+Sure.
+You know, we could go down the whole tether, truther, rabbit hole there,
+but I think that that's not something that we're particularly serious or worried about.
+And then, yeah, I mean, a lot of it really is, I think, function of demand.
+So I think we'll basically put it out there for our clients of like, you know, do you have a favorite token?
+How much SHIB do you own?
+Yeah. Well, yeah, well, that's so, you know,
+and this is what I think pisses off a lot of the more, like, you know, toxic maximalist folks is, you know,
+that they have, in many cases, valid perspectives of why certain things are scams or immoral or, you know,
+just not as good as Bitcoin, and therefore you shouldn't be wasting your time on them.
+But at the end of the day, you have to understand, you know, this is a permissionless space.
+Like, people should have the freedom to experiment and play around with stuff.
+And we have to be neutral as a business.
+Like, I don't think it makes sense for a business to be, like, passing moral judgment on what clients are doing with their own money.
+And I think this is the thing that a lot of the people who may hate me or say that I'm not a good maximalist or whatever don't seem to understand is, like,
+there's Jameson and his personal opinions and beliefs, you know, as a longtime Bitcoiner who has avoided a lot of the scams in the space
+and is generally uninterested in most things in this space.
+And then there's, you know, Jameson, the co-founder who's providing security services for people,
+and people may have, you know, a million dollars worth of cumrocket, and they are willing to pay to secure that cumrocket.
+And I have to say, "Oh, you shouldn't have cumrocket in the first place."
+Or should I say, "I can provide you with security services."
+So, you know, it's a fun rock and hard place to be stuck between.
+It is, but it seems so obvious, right? Because at the core, I think that Bitcoin values align with values of freedom, libertarian, whatever you want.
+I find it so curious. I can understand the hate for these other assets.
+I can understand even the rationale behind it.
+But not wanting people to be free to do whatever they want should be such a hard line in the sand for anyone who believes in Bitcoin, in my opinion.
+And taking that even a step further, now we're seeing a lot of those toxic Bitcoiners applauding the regulatory and legislative efforts of the government against other parts of the crypto industry, which to me is just cognitive dissonance of the highest order.
+Yeah, I've heard about this. I don't think I've actually seen it, perhaps because I just don't follow or I generally ignore the type of people who are doing that.
+And I think the principled take on that is that we should understand that this is an adversarial environment, like crypto in general.
+Like the entire point of this space was started off the idea of needing to get rid of trusted third parties and generally get rid of authorities in general who can screw with and manipulate the rules of the various systems that they are creating or controlling.
+And we understand from a pragmatic standpoint that the authorities still do exist and have a lot of power.
+And therefore, like anything that you're doing in crypto, it probably makes sense for it to be nation state resistant.
+Or at least if you're not trying to be nation state resistant, you should be upfront about that in the first place, because I think it's kind of an assumption that a lot of people in crypto are going to say, which is this is quote unquote decentralized.
+Therefore, it should not be affected by what the SEC or other government agencies think.
+But we're definitely at the point now where the government agencies are well aware of what is going on, and it appears some of them are headed by people who have political aspirations and want to make a name for themselves.
+Therefore, they are going to be expending resources at nation state levels to attack whatever they think are the weakest things in these systems, because they want to make a point.
+They want people to be afraid or to at least respect their authority.
+I'm always here for any good Cartman reference.
+But I mean, the whole thing kind of reminds me of I don't know the exact quote, but, you know, first they came for the.
+I mean, this said I didn't pay, then they came for that, then they came for that and they came for me, right?
+I would think that.
+Speaking of slippery slopes again, I know that we all believe that Bitcoin is sort of well siloed and protected and it's not a security and all these things.
+But I think that sharing anything that puts regulators and legislators on the warpath could eventually rationally be bad for Bitcoin as well.
+Yeah, I mean, I think the I guess the biggest real like nation state attack that Bitcoin has endured was like the Chinese mining ban or really all of the Chinese bans.
+And, you know, it really depends on how you look at these systems.
+Right. I mean, when whenever those attacks happened, there would usually be a pretty negative exchange rates change, at least for a while because people were afraid what was going to happen.
+And then over the long run, you see that the network is resilient.
+And usually that's because the people who are powering the network are resilient and they're willing to go elsewhere if things get bad enough.
+It just gets so much trickier, I think, when you expand that to crypto as a whole and all of these other projects, because we just nobody has enough time to even evaluate all of these different tokens.
+Like, you know, maybe you do because you're more on the investor trading side.
+But like, I don't know, I don't have time to read the white paper for most of these things.
+Yeah, no way. And so like and that's part of the narrative, I think, from our echo chamber, which is admittedly a bit unfair to regulators and to the government.
+Not that I would support them, but like they're not going to go through twenty five thousand tokens and individually decide whether their securities or not or whether they should exist to pretend that were that important, important or that they would have the bandwidth to do so is a bit nonsensical.
+Just not something I think that could happen.
+Yeah, so it's it's it's going to be whatever becomes big enough to, I guess, cause enough harm and attract their attention.
+Yeah, I mean, we may have talked about this in the past.
+He brought up obviously China going offline and basically 50 percent of the hash rate disappeared overnight.
+I also find there found there to be some cognitive dissonance when that happened, because everyone panicked that China was gone and that meant Bitcoin was dead.
+But if you had looked six months before that, everyone was panicking that China controlled Bitcoin and needed to go away.
+Yeah, I had an article that I wrote about like why a sort of Chinese attack against mining was not a sort of existential threat to Bitcoin.
+And I think that has aged quite well.
+But, you know, now I haven't looked at the stats in a few weeks, but now it's like, well, that just all shifted to America.
+So now, you know, is America an existential threat to Bitcoin mining?
+I would I would argue less so because of just sort of American culture and politics in general.
+But still, you know, the the hash rate is not as well distributed across jurisdictional boundaries as I think any of us would like.
+And it seems like.
+There's a chance China is somewhat coming back online, which, by the way, every China ban, except for the last one, resulted in there not being a China ban and China coming back online.
+So I think we should not be surprised by that. But I didn't have on my 2023 bingo card like China opening up and being more reasonable in the United States declining and becoming tighter.
+I mean, do you think that there's a chance here from what you're seeing that I haven't looked at the hash rate stats or anything that China could effectively become a player again?
+I mean, I think it's always possible because of how easy it seems for the Chinese authorities to flip flop.
+So, you know, if I think if the the business folks in China, I guess, improve their relations with whatever authorities have been making these decrees, then, you know, it's certainly possible that we see more flip flopping.
+Because I still think a huge hash rate in China.
+Yeah, I think it's still 20, 20 percent, if not more, that's in China.
+I mean, China is so huge, you know, it's the it's the whole there's not enough boots to kick in enough of the door is problem that my understanding, like a lot of those a lot of those farms are literally just like in the jungle, you know, next to a hydro dam.
+So pretty easy to hide from a sort of footprint perspective.
+And also, I mean, I think a lot of the actual silicon, you know, ASIC manufacturing is still over there.
+So you would think that from a sort of industrial standpoint, they would want to try to keep more of the business in that region.
+Yeah.
+Has any of this government intervention, the ramping up of regulatory scrutiny of the industry, has any of that materially affected Casa and your business?
+Or do you see a path where it could or are you actually really well?
+Actually, I would probably think that has helped your business.
+Right. Because it's pushing more people towards self-custody.
+We can talk about the contagion side of that from last year.
+That's not necessarily regulatory.
+But let's first start with has any of it hurt you or does it give you any concern about what you're able to do in the future?
+No, nothing that has actually impacted our ability to operate.
+I mean, I think there have been some bills in Europe or changes in Europe that were more restrictive and in the sense that they were requiring more KYC type of operations for people who were doing self-custody.
+But nothing that has forced anything like that, any draconian changes on our end.
+It may, it's always possible.
+I think you're going to get into some situations in the medium to long term future where eventually the regulators may start to look at sort of hybrid custody models.
+So, like the fact that Casa has one of your three or one of your five keys, maybe someday that will be regulated more.
+As it stands today, we are just considered a sort of software and service provider.
+Whether or not that sort of like partial custody eventually becomes regulated thing is still up in the air.
+I think it can get more interesting, especially if we start seeing more multi-institution custody models and by which I mean, say you have three keys and you hold one key, but then Casa holds one key and then a different company holds another key.
+It's kind of hard to describe what is the custody arrangement in that situation, right?
+It's there.
+Like, basically, if you get into a situation where there is no single party who has a threshold of spending keys, does anyone need to be regulated as a custodian?
+Or perhaps will there be new regulations that are like, if you're a key holder, but not a custodian, do you need to do XYZ?
+I don't know. I think we're still a number of years away from the government agencies getting to that level of nuance.
+That is interesting.
+It's like possession is nine tenths of the law.
+So whose coins are they actually if you have the split multi-sig?
+But then we've seen a ramp up in rhetoric from the SEC about custody, right?
+Largely about institutional custody.
+So they're not speaking about you, but I would have to imagine that institutions to some degree have multi-sig access set up, right?
+So is there an angle there where it becomes problematic?
+Well, you know, the thing about what the institutional custody folks are doing is they tend to be pretty secretive.
+Yeah.
+I don't know how many of them are actually using multi-sig.
+I think a lot of them are using more like a Shamir secret sharing or other ways of sort of splitting up what is the important key material.
+You know, for example, like straight multi-sig actually isn't great for institutions and custodians because it's harder to add and revoke access to keys.
+Yeah, for sure.
+That's actually why I fired and runs away with a wallet.
+Yeah.
+Yeah.
+So that's why the thing, the more creative, you know, Shamir secret sharing or other MPC style architecture seem to be more highly adopted on the institutional side.
+It's because it has that additional level of flexibility.
+We are not as big fans of that because most of those solutions are either closed source, not standardized things and/or are not supported by dedicated hardware, you know, like the treasures and ledgers and whatnot.
+And so like my understanding is that, you know, the folks that are doing that type of stuff, they're using, you know, dedicated air gap devices, whether it's like a phone or a laptop or whatever.
+And so like there is a higher threshold and difficulty to actually set up and maintain that stuff.
+But it makes more sense if it's an enterprise setting.
+Yeah.
+So I hinted at this before, but 2022 year was obviously the year of contagion, right?
+I mean, Voyager, Celsius, BlockFi, FTX.
+We have FUD against basically every exchange not named Coinbase at this point.
+Has that given a major push to people towards your services or self-custody in general?
+I mean, anecdotally, we can see, I think, large exchange outflows, which would indicate that that's certainly possible.
+But it seems like for a business like yours, what happened last year would be a boon.
+It is, but only for like a short window of time, right?
+And this is one of the things that's disconcerting about the collapses in this space.
+These major custodian collapses have been happening for a decade.
+And unfortunately, history keeps repeating itself.
+You know, sure, each one collapses for a slightly different reason, but the aftermath is always the same.
+We talk about, you know, not your keys, not your coins.
+Maybe we talk about proof of reserves.
+And we talk about best practices for a month or two afterwards, and then everybody forgets and moves on because, you know, the news cycle has changed to something new and terrible that's happening.
+So unfortunately, from that perspective, you know, it's still an ongoing issue.
+It's still tough to sell security and self-custody to people who haven't been burned.
+And then usually the people who have been burned have lost almost everything and have nothing left to self-custody.
+So, yeah, it's a kind of paradoxical place to operate from.
+I'm not going to say I'm surprised, but I am disappointed.
+Because it seemed like there was a very clear movement at the end of last year towards self-custody.
+And I felt like we had the really massive sort of culmination of that in FTX.
+And I would think that only three months now after FTX, maybe we're four months removed, four months, you would still see people panicking.
+But I guess so many people who are crypto native were the ones who lost their money on FTX and have nothing left now anyways.
+Yeah, yeah. So, you know, October, November were pretty good, you know, peak fear and exodus from custodians.
+And then we went into the holidays and everybody forgot.
+Which gives you zero confidence that we're going to learn from our mistakes and that there won't be a repeat of these same cycles and errors.
+I mean...
+Oh, there's... For the foreseeable future, I think this type of cycle is going to continue until we actually reach maximum adoption, whatever that is.
+Because it's going to be another bull market, will be another new wave of entrants.
+And in many cases, they will have to learn the best practices the hard way.
+And so the question becomes how many more cycles with new waves of newbies who have to get burned are there going to be?
+And how will they enter the asset class and the cycle in the next one is the big question, because as much as I hate to say it, right, it hasn't been through Bitcoin as much in the past few years as it was before.
+Even me who came in in 2016, obviously much later than people like yourself, you still even if you wanted exposure to all coins, you had to buy Bitcoin first.
+There was no stable coin trading pairs.
+Even if you just wanted to be a degenerate gambler, you had to buy Bitcoin on Coinbase, you know, move it to Bittrex and then trade Bitcoin pairs because that's all there was.
+Now, I think we're more likely to see a bunch of people come in through...
+Well, last time it was Doge, let's be honest, right?
+NFTs, right?
+I don't know what the next narrative will be, but I have a feeling it will be more detached from Bitcoin than it was in the past, which gives people less self custody options and more of a chance, obviously, to get burned.
+Right. So it may be worse each cycle, not better.
+And that's half of the fun is seeing what the the wacky new fab is going to be that will suck in a lot of people.
+So I just remembered as we're talking that you had sent a tweet, I think, while we were in Dubai or just after about whales that we were basically with meeting with Three Arrows Capital and that we were going and just because now we're talking about repeats of same mistakes.
+I didn't tell you this, but I crashed a meeting I was not invited to with them while we were in Dubai because I'm a Voyager creditor and I was just pissed off and I wanted to know.
+But I came out very disheartened.
+I was not there to buy the token, as many people were no intention of doing that and did not do that, which I think was what your tweet was specifically talking about people going buying their token, which was pumping.
+And but they raised money overnight for their new venture.
+And all the people who sort of railed against them publicly seemingly were meeting with them and willing to take a shot on giving them money again.
+And maybe that's because they think this is the one trade to make it all back or something.
+I don't know.
+Do you think or do you think that maybe people are just so greedy and they literally learn nothing?
+I don't know. I don't know what the lesson is from it.
+But I mean, what was your first take when you heard that that was happening?
+Uh, you know, I just it's disappointing.
+Because people I mean, people, I guess they're following their incentives, right?
+They think, oh, these guys made a lot of money the first time and then something went wrong and they lost it all.
+But maybe they've got the juice to do it right this time.
+I think it's a question of how do we approach your reputation in this space?
+And I'm sure that there have been some debates and arguments around whether the Three Arrows Capital guys were like the good guys who just got screwed.
+That was the narrative that that was certainly the narrative when I sat with them and they made some good points.
+And then there was a lot of things where my bullshit alarms were flashing heavily.
+But yeah, continue.
+So I guess that's what people have to decide, you know, if they can sleep at night, you know, believing that, you know, these were just the good guys who they were in the wrong place at the wrong time.
+And if you just give them another chance, they'll do things right.
+But, you know, I think that there are a lot of cases in which we should understand that people are human and make mistakes and maybe give them second chances.
+But my problem with that whole saga, it was mostly with like how they dealt with it after the fact.
+I mean, why would you run away to Dubai rather than facing all of the questions that are coming at you after your business has fallen apart?
+Like that didn't feel to me like that's what, you know, the honest way of going about trying to deal with and clean up the mess that they left.
+And I can tell you what you'd find interesting about the conversation that I have with them.
+And I won't divulge who else was there, whose meeting I was crashing, because it certainly was not mine.
+But it was Kyle.
+And he was very quick to defend their previous actions by saying, "Listen, people pushed us to create a three arrows token.
+We had these opportunities to create a coin, and that was against our ethos.
+So we never did that.
+We really were just a hedge fund.
+And yes, we blew up.
+That's terrible.
+We took institutional money, not retail."
+But like five minutes later was talking about their new token.
+Right. For the Flex token or whatever for the exchange.
+Things like that kind of, you know, that was a bit tough to reconcile in my wizard brain.
+Yeah. Well, I mean, that whole partnership as well, you know, with CoinFlex blowing up after giving Roger all of that.
+I guess semi-collateralized margin.
+70 million dollars or something.
+Yeah.
+40, 70, 100.
+Yeah. I mean, you know, when you see sort of that shadiness kind of glom onto the three arrows capital shadiness, you know, I just don't see how anyone would want to touch that with a 10 foot pole.
+But maybe some folks are just kind of seeing this as a sort of, you know, long shot, high risk gamble.
+Maybe Mark Lamb from CoinFlex was secretly the third arrow.
+I always wondered who that third arrow might be.
+But we talk about this move towards self-custody that was somewhat temporary.
+Right. You said sort of max fear in October, November.
+Have you noticed or been surprised either way that there has or has not been a move towards Bitcoin in the same manner?
+Because there was talk of that, too.
+Right. The Bitcoin Maxis kind of saying, "Hey, come on over.
+The water's warm.
+You're not going to be deemed a security.
+You can self-custody.
+You can hold this asset.
+It's never going anywhere."
+Or do you think that that was also a two week temporary narrative that died?
+Yeah, well, I mean, it's like, why?
+Why are people in the space in the first place?
+And it kind of goes back to what you were saying is like with the more recent adoption cycles, it may not be people coming in because they want the hard money narrative.
+It may be some other flash in the pan, like gaming or gambling or art.
+And I think this is one of the things that to the consternation of the more angry, toxic, maximalist folks, they don't understand that.
+And I kind of straddle that myself.
+I don't really understand or see the value in tokenized art, but I don't see much value in a lot of art.
+I mean, I have some art pieces, but I've never spent more than probably $500 on a piece of art.
+So I certainly don't understand spending tens of thousands on something.
+And so it's all personal and subjective.
+And I think the things get weird when you're talking to the folks who are very anti those things, because it like you said, it almost it almost seems like anti free market or anti competition.
+In some cases, like they're almost like deluding themselves that such a thing can exist.
+And I try not to do that.
+You know, I can once again, there's like, Jameson personally does not see value in these things.
+But if I step back and I put my business hat on, I say, well, these people see value in it.
+And that's what matters.
+It's not whether or not I should be securing people's board apes.
+If you can do that in a manner that you believe in will actually secure them and those people see value in it as a business owner.
+Yeah. And so there is, I think there is no denying the value of these things.
+I mean, you can see it's a free market.
+You can see the actual dollar values that have been traded and are assigned to these various tokens, whether they're fungible or not.
+And so to deny that, I think is to kind of deny reality or have some sort of wishful thinking about what reality ought to be like.
+Bearing your head in the sand.
+It is.
+But speaking of digital art, you brought it up earlier, ordinals.
+What do we make of NFTs on Bitcoin clogging up all the block space?
+Yeah, you know, once again, I have not been minting anything myself because it kind of makes me feel icky to be using a lot of block space.
+But I have to understand, once again, this is a censorship resistant, permissionless network and that this has always been the case that people can use block space for things that you disagree with.
+Bitcoin is for enemies.
+Meme is real.
+And I can understand, I guess, the point of of having your art or whatever your other token is, where you have literally inscribed that data into Bitcoin's blockchain, which is arguably like one of the most decentralized, immutable data stores out there.
+I think it's hard for me to believe that the market size for those things will ever approach like what it has been on Ethereum or maybe Solana or some of the other stuff, because, you know, there's a couple of things going on.
+First of all, the fact that it truly is using the blockchain for the data storage, unlike most of the other NFTs that are just pointing to stuff.
+That means it is a very heavy and expensive protocol to use.
+You're paying a lot more than you would, I think, to mint stuff on like Solana.
+And and secondly, of course, the block space in general is far more constrained.
+So I think like sort of combination of the inefficiency and the constraints of doing the stuff on Bitcoin is going to make the Bitcoin NFT market small.
+It'll be limited.
+Like, I think if it does become a thing, then it's only going to make sense for the much more expensive, valuable stuff.
+And that may be appealing in and of itself, where people want to say, hey, I have rare NFTs on the expensive Bitcoin blockchain.
+And maybe that's a selling point for some people.
+So, you know, I think it will continue to be a thing.
+I just I'm I'm skeptical that it'll be as big or even a significant portion of the total crypto NFT market.
+And you also brought up stable coins before, which have obviously exploded over the past few years.
+If you look at the top 10, 20 market cap, it's like half of it is stable coins.
+Right. Yeah.
+But interestingly, in the sort of be your own bank mentality, you would think that being able to secure in the manner that you do stable coins would be something that almost everybody could get behind.
+Because that really I mean, it's one thing to say, you know, to push people towards Bitcoin and to say, you know, it's a superior, harder money, which we all agree to.
+But I think reality is that there's a lot of people in the world who just want access to dollars and are using stable coins for that.
+And to truly unbank those people means securing stable coins.
+Yeah. So, you know, there's both the individual and I think the enterprise way of looking at this.
+I think that actually a lot of crypto companies ought to be moving significant portions of their bank funds into stable coins, because, I mean, we're seeing a lot of it.
+It's crazy.
+Yeah, you're getting unbanked left and right.
+This is, you know, I guess the operation choke point happening, at least in the US and maybe Europe.
+But like from a personal standpoint, if I can choose between using like Tether or USDC versus having to do wire transfers, like that's a no brainer for me.
+And I suspect I suspect it's the same thing on the enterprise side.
+And then also, you know, if especially if you can keep your sort of operating budget of dollars in a multi-sig rather than having it in one bank account that could rug you for any of a million reasons.
+I mean, that seems like a pretty obvious win to me.
+Which is funny because your average person would never think that the bank could rug you, but they clearly haven't been paying attention.
+Yeah, although it seems that this as of this week, you know, it seems our industry rugged a bank instead of the bank rugging them.
+Everybody at the same time sort of pulled out of Silvergate.
+But yeah, I find, you know, outside of my Bitcoin sensibility, I really find stable coins to have become one of the truly killer apps of crypto that maybe I didn't see coming.
+I just think that access to dollars for people in places with hyperinflated currency.
+Yes, I'd rather than buy Bitcoin, but it's just hugely important, hugely important.
+And those same people can get robbed at the Western Union or just have their phone stolen and lose their stable coin.
+Seems like the next step there is true self-custody.
+Yeah, I mean, it feels kind of dirty, you know, because it's fiat.
+Well, yeah. Well, not even that.
+It's like I think stable coins are it's disappointing that the ones that have withstood the test of time are unfortunately the highly centralized ones who have that single point of failure custodian.
+Once again, I really wish that we had a algorithmic stable coin that could withstand.
+How dare you? How dare you?
+But, you know, that's because that's kind of my that's my thing.
+Like, I want to eliminate single points of failure in every aspect of our lives.
+And, you know, maybe maybe someday.
+Yeah, I mean, you're right, right?
+I don't think that they're coming after USDC anytime soon.
+I have no idea with USDT, but if that banking relationship gets cut off, we're screwed again.
+Yeah. Yeah.
+And now the algorithmic stable coin has become a four letter word because of Luna.
+So I don't know that we're going to see it happen on that side.
+Maybe the massively over collateralized die type.
+I don't know. I have no idea what kind of stable coin will win, but I actually am cheering for something to win.
+I do think it's really important.
+So is there anything else that we may have missed here that you want to share with everybody about what Casa is doing or what you're seeing in the industry?
+But before I let you go, you know, we're continuing to evaluate.
+You know, I think, you know, we will we have been seeing more demand for Bitcoin, NFT, Ordinal stuff.
+So maybe that becomes a thing.
+Personally, you know, I've been keeping track of Nostr a lot recently as well.
+Yeah. And, you know, I I'm interested in that because, you know, once again, it's it's a cryptographic technology.
+There's no token behind it.
+But, you know, people are using private keys to be able to have freedom of expression and communication and basically getting rid of the risk of de-platforming.
+And so, you know, the reason I say that it sort of all ties in with Casa because we we are not a Bitcoin company.
+We're not even like a crypto asset company.
+Like from the very beginning, we've been a self-sovereignty company.
+We want to help people manage their private keys because our thesis has been that private keys will become more and more important to people's lives over the coming years and decades.
+And so that's going to be a lot more than just the financial aspects of your life.
+Yeah, it's going to be your identity.
+And I mean, we don't need to talk about it, but I think digital identity based on cryptography with private keys could be the next huge wave.
+I mean, Nostr, I guess, is a first iteration of that.
+Yeah, you know, there's a number of different projects out there.
+They're all trying to solve it.
+So once again, we just keep our ears open and wait to see which things gain enough traction.
+I can say that I, for one, am excited that you've opened the door to Ethereum and will be using it myself.
+So at least you got one dedicated old customer who's not pissed off about it, but I would imagine you have quite a few others.
+Indeed.
+Glad to have you on board.
+Yeah, thank you so much for the time.
+Where can everybody find you and obviously check out Casa and utilize the services themselves?
+Check out keys.casa
+And you can find me at L-O-P-P on Twitter or lopp.net if you want to check out a ton of educational resources.
+Four letter Twitter name.
+It's like gold.
+Incredible.
+Awesome, man.
+Well, thank you.
+I absolutely love this conversation.
+I always love your sort of pragmatic approach and your ability to separate your own personal views from what's good for the community and good for the business.
+So I applaud that for sure.
+Thanks.
