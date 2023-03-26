@@ -12,7 +12,7 @@ const STAMP_LOG = "";
 $hc_salt = "";
 
 // number of bits to collide
-$hc_difficulty = 17;
+$hc_difficulty = 21;
 
 // tolerance, in minutes, between stamp generation and expiration
 // allows time for clock drift and for filling out form
@@ -94,8 +94,6 @@ if($formType == "free" && (!empty($_POST["name"])) && (preg_match("/^[a-zA-Z ]*$
       $captchaErr = 'Invalid proof of work submitted! Please try again.';
       return;
     }
-    // log that this puzzle has been used
-    file_put_contents(STAMP_LOG, $_POST['hc_stamp'] . "\n", FILE_APPEND | LOCK_EX);
 
     // All good
     $name = $_POST['name'];
@@ -250,9 +248,9 @@ function hc_CreateStamp()
   $nonce = $_POST['hc_nonce'];
 
   //embed stamp in page
-  echo "<input type=\"hidden\" name=\"hc_stamp\" id=\"hc_stamp\" value=\"" . $stamp . "\">\n";
-  echo "<input type=\"hidden\" name=\"hc_difficulty\" id=\"hc_difficulty\" value=\"" . $hc_difficulty . "\">\n";
-  echo "<input type=\"hidden\" name=\"hc_nonce\" id=\"hc_nonce\" value=\"" . $hc_nonce . "\">\n";
+  echo "<input type=\"hidden\" name=\"hc_stamp\" id=\"hc_stamp\" value=\"" . $stamp . "\" />\n";
+  echo "<input type=\"hidden\" name=\"hc_difficulty\" id=\"hc_difficulty\" value=\"" . $hc_difficulty . "\" />\n";
+  echo "<input type=\"hidden\" name=\"hc_nonce\" id=\"hc_nonce\" value=\"" . $hc_nonce . "\" />\n";
 }
 
   //////////////////////////////
@@ -334,9 +332,11 @@ function hc_CheckStamp()
   // check if this puzzle has already been used to submit a message
   $savedStamps = 0;
   if (($handle = fopen(STAMP_LOG, "r")) !== FALSE) {
-    while (($data = fgetcsv($handle, 1000, "\n")) !== FALSE) {
-      if ($data === $stamp)
+    while ($data = fgets($handle) !== FALSE) {
+      if ($data === $stamp) {
+        fclose($handle);
         return false;
+      }
       $savedStamps++;
     }
     fclose($handle);
@@ -345,6 +345,9 @@ function hc_CheckStamp()
   // truncate the log if it starts getting long
   if ($savedStamps > 1000) {
     file_put_contents(STAMP_LOG, "$stamp\n");
+  } else {
+    // log that this puzzle has been used
+    file_put_contents(STAMP_LOG, "$stamp\n", FILE_APPEND | LOCK_EX);
   }
   return true;
 }
