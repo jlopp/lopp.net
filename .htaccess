@@ -3,6 +3,9 @@ Options -MultiViews
 RewriteEngine On
 RewriteBase /
 
+# Don't apply rewrite rules to the .well-known directory
+RewriteCond %{REQUEST_URI} !^/\.well-known/ [NC]
+
 # Handle typos, redirect from old URLs
 RewriteRule ^[b|B][i|I][t|T][c|C][o|O][i|I][n|N]\.html$ /bitcoin-information.html [R=301]
 RewriteRule ^[b|B][i|I][t|T][c|C][o|O][i|I][n|N]\.?$ /bitcoin-information.html [R=301]
