@@ -1,0 +1,1310 @@
+Hey everybody, absolutely fantastic episode of The Bitcoin Show.
+We are joined by very special guest, Jameson Lopp.
+He's a cypherpunk and angel investor.
+He's the co-founder and CTO of the Bitcoin security provider, Casa.
+He's an expert on all things Bitcoin security, privacy, and everything in between.
+We talked to him about some of the recent developments in Bitcoin,
+what adding complexity to Bitcoin looks like,
+the differing opinions among Bitcoiners about what Bitcoin should be now and in the future.
+Overall, it's a great show.
+It's co-hosted by Trevor Owens and Aubrey Strobel.
+It's an absolute jam.
+Hope you enjoy it.
+Good morning, ladies and gentlemen, or good afternoon to you wherever you are in the world.
+This is The Bitcoin Show.
+We run this show on Tuesdays at 12 p.m.
+Eastern Time, where we speak with some of the brightest minds,
+the best thought leaders in the Bitcoin space about all things Bitcoin, past, present, and future.
+So excited about today's show.
+I'm your host, Pio, here with my co-host, Trevor Owens,
+investor in Bitcoin startups, partner at the Bitcoin Frontier Fund,
+CEO of Ninja Alerts, and host of The Ordinal Show,
+very talented Twitter spaces host in his own right.
+And Aubrey Strobel, the host of The Observation on YouTube and other platforms,
+just a big-time Bitcoin content creator,
+former head of communications at Lolly, among other very, very notable positions.
+Couldn't be more excited to have both of you as co-hosts.
+Aubrey, how's it going this morning? Or afternoon, depending on where you are.
+It's afternoon. I'm actually in Cape Town right now, so it's going good.
+Thanks for having me.
+Oh, yeah, absolutely. This is going to be a jam.
+So excited to have you here.
+Trevor, how's it going with you, buddy?
+How's the lack of beard life going for you?
+I mean, you took the words out of my mouth or off my face.
+You know, I'm super excited to talk with Jameson today,
+currently the reigning king of best beard in Bitcoin.
+You know, I think I would have given him a run for his money a few months ago,
+but unfortunately, I lost a dumb bet.
+So I am, you know, it's coming back in.
+I'm using Rogaine and DermaRolling every day,
+but it's going to take a long time to get to that level that Jameson's at.
+Well, that leads me to this week's extremely special guest.
+I wasn't going to bring up the beard disparity,
+that kind of like competition that no one's talking about,
+but everybody knows about between you and Jameson.
+But ladies and gentlemen, this week's guest is a cypherpunk,
+an angel investor, the co-founder and CTO of Bitcoin security provider, Casa,
+an advisor to AnchorWatch, CCSS, and other organizations,
+and most importantly, just an absolute expert when it comes to all things
+Bitcoin security, privacy, and technology.
+The man himself, Jameson Lopp.
+Thanks for joining us, Jameson.
+Good morning and good afternoon.
+Glad to be here.
+I will say I object to the term thought leader.
+I prefer to think of myself as a thought spewer,
+and I'm just fortunate if people decide to pay attention to that.
+A very, very humble response.
+So really excited to get things kicked off.
+Ladies and gentlemen in the audience, if you enjoy the show,
+if you want to support the show, you can retweet the space.
+You can do that either by retweeting the tweet that I pinned to the top.
+That makes it easy.
+You can also share the space yourself.
+If you just go to the space, click on the three dots and hit share,
+you know, copy the link, throw it in your own tweet.
+We want to get this in front of as many Bitcoiners and non-Bitcoiners as possible
+to spread, you know, just some really kind of insightful information about Bitcoin
+and where it fits in the world these days.
+If you have any questions or comments for Jameson,
+let us know in the comments. You can click on the bottom right,
+that little purple bubble there, and you can write any questions that you have.
+Later in the show, we will let audience members on stage to directly ask questions,
+you know, themselves.
+But just to kind of kick things off, Jameson,
+I thought that it would be definitely relevant to discuss, you know,
+just some basic security standards that everybody that owns Bitcoin,
+you know, should understand.
+Obviously, you're extremely knowledgeable when it comes to security,
+and there's different depths that people can reach when it comes to securing their Bitcoin.
+I'd love if we could just kind of kick things off briefly,
+talking about some basic security standards that anybody that owns Bitcoin should follow.
+Yeah, well, I mean, at a really high level,
+the way that I start off trying to describe Bitcoin security is you have to ask yourself,
+you know, are you taking your security into your own hands,
+or are you hoping that someone else will take care of it for you?
+And of course, there's a lot of things that can go wrong when someone else is doing it,
+and you don't necessarily know what they're doing.
+So the point that I generally try to get across is, you know,
+I'm a big self-custody advocate, which means you are holding your private keys
+because they are literally the keys to the kingdom of your Bitcoin.
+And if you look at the entire space of threats and attack vectors,
+and you compare self-custody versus trusted third-party custody,
+there are basically the same types of vectors that exist for self-custody
+also exist with a third-party custodian,
+but then a third-party custodian has additional threat vectors on top of that.
+So, you know, you're basically, you're paring down the sort of complexity
+and number of things that can go wrong simply by taking custody of your keys.
+And, you know, this is really high level,
+not even talking about the million different ways that you can take custody of your keys.
+So, and this is why not your keys, not your coins
+is such a very strong meme and narrative in this space.
+Yeah, I'd love to hear it.
+And, you know, obviously there's different ways of self, of, you know, approaching self-custody.
+You know, I think about a recent mainstream Bitcoin moment,
+I'd say was Balaji and his tirade about, you know, Bitcoin going to a million dollars.
+I'm sure people have asked you about this, or brought this up to you a number of times.
+You know, part of that was he was just reminding everyone to remove their coins,
+you know, from exchanges.
+I guess if I was going to ask you about multisig, for example,
+what would you say the most important concepts that people should understand about multisig wallets,
+you know, would be?
+Right, so there are trade-offs.
+Well, there are trade-offs with everything.
+But to be clear, you know, multisig, or you could call it just multi-keys,
+is where instead of having a single key,
+or a set of deterministically generated keys that are protecting your Bitcoin,
+you actually have multiple keys.
+And an easy way to think of this, without getting nerdy and technical,
+is just think of how like a safety deposit box at a bank works,
+or, you know, a nuclear launch mechanism at a military facility.
+They don't have one key or one button that needs to be pushed
+in order for a sensitive mechanism to be operated.
+Rather, they have multiple keys that need to be, you know, operated,
+preferably by multiple different humans.
+In our case, we do support having multiple different humans,
+but we're thinking more about having multiple different devices,
+or multiple different geographic locations.
+Basically, the whole point of adding this additional complexity
+is to increase your robustness, to eliminate single points of failure.
+So, you know, when you're increasing the bar of what is required
+in order to spend the Bitcoin,
+it does make it more difficult for you to spend your Bitcoin,
+but it also makes it far more difficult for an attacker to spend it
+and to steal your money.
+And hopefully, if you architect it correctly,
+you're also making it more difficult for a single catastrophic event
+to cause you to lose access to your money.
+Which arguably is actually a much bigger threat
+than having some hacker or physical attacker come to steal your coins.
+Right, it's much more likely that you're the reason that you lose your coins
+versus a nefarious third party, you know, actually targeting you.
+And, you know, speaking of that, I think about some technology,
+like, for example, you know, the seed phrase component of Bitcoin.
+Do you think that this may be too much of a behavior change
+for, you know, mass adoption, for example,
+like for Bitcoin to actually properly reach mass adoption?
+Does there need to be some sort of change with seed phrases?
+Like, what do you see the future of seed phrases being?
+Well, I still laugh whenever I open up a new hardware device
+and I look at the usually, you know, single sheet of paper that comes with it,
+which just gives you, you know, 24 lines and says,
+"Hey, write down your seed phrase on this and keep it safe."
+Because, you know, it makes it seem really easy and user-friendly,
+and it is, you know, at least to initially get set up.
+But there is an entire, you know, mountain of security knowledge
+behind that phrase, you know, "keep it safe,"
+that, you know, the vast majority of people are,
+they're just not security-minded or adversarial-minded people.
+Even technical people like myself tend to be lazy
+and not want to do just standard best practices
+when it comes to doing things like data backups.
+It's, I think, asking a lot of people to give them
+what is tantamount to, you know, sort of like radioactive material.
+You know, this is very highly sensitive, hazardous material,
+but it doesn't look that way, right?
+You just see a couple dozen English words,
+so people don't really, I think, think of it
+in terms of the sensitive nature that is really linked to it.
+So, you know, this is why, amongst other things,
+I think that, you know, putting people into a position
+where they're actually generating keys on multiple devices
+and putting them in physical locations
+where they can actually more easily think about the security properties
+and just, you know, getting them separated into different physical locations
+immediately protects you from so many different classes of threats and losses
+that, you know, that's really what we've been trying to do for a number of years
+is architect user-friendly setups where you just tell the user,
+"Hey, you follow these few directions,"
+and then they don't have to know about the million different things
+that could go wrong that you're protecting them against.
+So, you know, that's basically what I want to see happen
+is, you know, we want to have the convenience of,
+"Hey, just write down these couple dozen words,"
+but without the potential foot guns
+where we're potentially setting people up to shoot themselves in the foot
+because they are not thinking through all of the things that can go wrong
+and we're not guiding them down the path of best practices
+to protect them both from themselves and from potential attackers.
+Yeah, I'd imagine it's not the norm for people to confirm
+that their seed phrase is accurate through a test
+before they actually load funds into a wallet or send funds to a wallet.
+I love the kind of angle that you took there.
+We'll definitely get to CASA and what CASA is.
+I see that Trevor has his hand raised. Trevor, what's going on?
+Yeah, I just want to dig deeper on that.
+I think the thing is about seed phrases and just even setting up a wallet
+is maddeningly deep.
+And I'm curious, you know, Jameson,
+are there alternatives to the seed phrase approach
+that you think will gain popularity?
+And what are those best practices for when you have a seed phrase,
+like splitting it into multiple locations?
+You know, do you put one in a bank?
+Do you bury one in the woods?
+You know, do you keep one with different friends?
+Like what are some of those tips?
+And then what are some of the alternatives that you're interested in
+or think could be promising in the future to make this easier for people
+other than education?
+Yeah, so this is unfortunately where it gets really complicated
+because if you're architecting really a key management
+or seed phrase backup solution,
+you are creating a game.
+You know, you have to think through, you know,
+what are the rules of this game?
+You know, who has access to what?
+How adversarially minded do I want to be about it?
+You know, I keep repeating the same thing,
+which is single points of failure.
+You know, whenever you can find, you know,
+if there's one thing that can go wrong
+that would cause you to completely lose access to your coins,
+obviously that's when you want to change something
+about the architecture of your keys and your backups.
+So, you know, I have many lengthy articles on this subject.
+And at least when it comes to like your standard,
+you know, single signature wallet where someone just has,
+you know, 12 or 24 words and they want to figure out
+how do I back this up?
+And obviously just writing it down on a piece of paper
+is a single point of failure.
+You know, the paper could get destroyed
+in a house fire.
+It could get, you know, we've even seen this happen.
+It could get picked up by a maid.
+It could get thrown away
+because somebody thinks it's just garbage.
+You know, they don't know what it is.
+It could get picked up by an attacker
+as a like crime of opportunity.
+If you just have it in a desk drawer somewhere
+and someone breaks into your house
+and they're looking around
+and they happen to know what it is.
+So, so many things that can go wrong.
+You know, even if you put it somewhere
+that's quote unquote, well, traditionally safe,
+you know, like a safety deposit box
+at a bank or some other institution,
+you know, that is more physically safe
+against sort of natural disasters
+and catastrophes and whatnot.
+But it's still not safe against single attackers.
+You know, banks have been known to drill open boxes
+without informing the owners.
+There's still of course, potential for coercion
+from nation state actors.
+You know, there's a number of ways
+that people can still get in there.
+So in this case, if you're trying to back up,
+you know, a single key wallet,
+then I recommend doing something like SeedZore,
+which is a pretty easy way of splitting your seed phrase
+into a couple different pieces.
+Now, the downside there is that I think the default
+is that it does a two of two backup,
+which actually is another single point of failure.
+So, you know, if you have these two pieces of metal
+or whatever that have your split seed phrase on them
+and you lose either one of them,
+now you're still out of the game.
+So you actually need to make, you know,
+multiple copies of these two of two backups.
+But, you know, that just, I think, starts to show you
+the rabbit hole that you start going down
+because you're trying to balance this trade-off
+between, you know, accessibility and recoverability
+and preventing, you know, a single person or a single thing
+being able to lock you out of your money
+or steal your money from you.
+Yeah, I love the way you're kind of, you know,
+giving people so many different scenarios.
+Moisture is another thing, right?
+If moisture makes contact with the piece of paper,
+that's, you know, fire and moisture seem to be
+some of the most common ways
+that people can lose their seed phrases.
+You've obviously already brought up hardware wallets.
+What would you say is the best Bitcoin hardware wallet?
+And are there, you know, ones that, you know,
+people should really know about
+that maybe they don't know about?
+Ooh, this is highly subjective.
+I mean, the short version is stay away
+from any of the hardware wallets
+that are not extremely popular.
+Stay away from any of the hardware devices
+that are basically knock-off Android phones.
+You know, I--and so at Kasa, we support hardware wallets
+that we, of course, believe are user-friendly and secure.
+You know, big fan of Trezor, Ledger, Cold Card, Foundation.
+There are--you know, if we're not just talking about security,
+there are some usability aspects
+that I think are pretty neat,
+especially with the, like, Foundation-style,
+you know, QR code scanner stuff.
+I believe Jade actually has also recently
+added support for this,
+but suffice to say that I find using
+the animated QR code standard
+for doing the data transmission,
+signing, and other operations
+to be more user-friendly
+as opposed to having to plug into a computer.
+This is a hard lesson that we've learned
+over the years at Kasa,
+is that just having a much more complicated technology stack
+with, you know, browsers, operating systems,
+drivers, you know, USB permissions,
+there's just a lot more things that can go wrong
+when you're having to physically plug in
+one of these devices to a computer
+in order to use it.
+So I really do like the standalone device.
+And then, like, Cold Card,
+I think supporting NFC is great, too.
+And, you know, the hardware device market
+is becoming more diverse in what's out there.
+You know, Seed Signer is a very different take on it,
+but, you know, still great usability and air gaps.
+And then, you know, SATS card, NFC-style stuff
+is more on the extreme user-friendly side
+but doesn't have the same level of security
+because it, you know, doesn't have
+an actual integrated screen with buttons
+where you're able to independently verify
+what's going on there.
+But, yeah, I mean, the short version is stick to the big names
+and you should generally be okay.
+And the reason for that is that from a security perspective,
+you want to be using a company that is making enough money
+that they're spending money to attack themselves
+and do research.
+And so I would say Ledger is probably the leader
+in that regard with the Ledger dungeon guys.
+You know, they're spending probably millions of dollars,
+you know, attacking as many of the other hardware devices
+out there as possible.
+And that's really what we need in a security environment
+where so many people's life savings are at stake.
+- Yeah, Ledger, obviously one of the biggest names
+in the business.
+I'm a fan of Trezor myself.
+You know, Jameson, you've mentioned CASA,
+you know, obviously your organization.
+How exactly does CASA work?
+How does CASA play into this?
+- Well, we are not a hardware company.
+We build on top of the great platforms
+that these other devices out there have created over the years.
+And really what we're doing is we're acting
+as a multi-signature coordinator
+where I would say our value add comes
+from a couple of different perspectives.
+Basically, we make a really user-friendly mobile app
+which just allows you to interface
+with your key management hardware devices.
+So we are a non-custodial company,
+aka we help people help themselves be their own banks.
+We help you self-custody
+and get into a self-custody architecture
+that is extremely robust
+where you don't have to know all the ins and outs
+of everything that we're protecting you against,
+though we certainly have plenty of materials
+that explain our architecture.
+But the idea is that you'll create a two of three
+or a three of five setup.
+So you'll have either three keys or five keys.
+And one of those keys can be on your phone,
+which can be convenient, but of course is less secure
+because it's on a Internet-connected device.
+And then one key will be offline that is held by CASA
+and really only used for emergency backups.
+And, you know, we create different types
+of authentication protocols around what's required
+to request a signature from the CASA key
+if you really need it.
+And then the rest of your keys are gonna be distributed
+both geographically in different locations
+and distributed on different hardware devices
+that we support, you know, all those major brand names
+that I already mentioned.
+And, you know, the idea here is that you're putting yourself
+into a position where you can be human
+and you can make mistakes.
+You can lose a key, even two keys
+and the higher number of key setups
+and still recover from that.
+And you're not trusting CASA
+because you are independently verifying the details
+of your transactions on these other hardware
+and firmware stacks that CASA has no control over.
+So, you know, it can certainly be inconvenient for us
+sometimes because, you know, we don't have control
+of the user's wallets and the ability
+to necessarily debug everything that's going on
+very easily.
+But, you know, it's one of the trade-offs that we make
+because I can sleep easier at night
+knowing that even if CASA's infrastructure gets hacked,
+there's no keys that are going to get leaked and stolen
+and, you know, have people's life savings taken.
+Well, I think a user-friendly trustless solution,
+you know, is obviously very needed in the market.
+Trevor, you have your hand raised again.
+Go ahead.
+Yeah, I wanted to ask, Jameson,
+does CASA do anything with wills
+in the event of a customer passing away?
+And what are your thoughts on that topic?
+I know on Ethereum there's quite a few
+kind of crypto-will type of smart contract products.
+Have you looked into those at all?
+And what's your thought on succession?
+I'm not sure if it's called succession planning,
+but essentially wills in the Bitcoin and crypto space.
+Yeah, we've had an inheritance offering
+for several years now,
+and it has been tweaked and modified a bit over the years
+because it was really initially a lot heavier
+on the legal side of us, you know,
+helping people work with their attorneys
+and, you know, figuring out how to, you know,
+get this process really imbued
+into their last will and testament
+and make sure that the appropriate people
+would have access to the necessary keys
+in order to be able to facilitate
+executing whatever was in that will.
+Now, there have been entire books written about this.
+I do highly recommend reading
+Pamela Morgan's Cryptoasset Inheritance Planning Guide.
+I learned a lot from it when it came out several years ago.
+But the challenge with this
+is that you're walking an extremely fine line
+between architecting a secure setup
+where presumably only you have access to your funds
+while you're alive,
+but then you magically want the properties
+of that setup to change when you pass
+so that, you know, some predetermined entity
+or group of people then have access to it,
+but, you know, probably don't have access to it
+while you're alive.
+So essentially, this can--
+if you try to do it in too smart of a way,
+you know, you can run into
+what is essentially the Oracle problem.
+And this is also one of the problems
+that I have with people who are doing dead man switches
+is that--
+this could certainly be ignorance on my part,
+but I have yet to come across a dead man switch solution
+that I would have 100% confidence in.
+You know, because you have to ask yourself the question,
+"Okay, I could set up a dead man switch
+and I could test it now, you know,
+and let it time out and trigger and see if it triggers."
+But, you know, how do you get to the point
+where you're 100% confident
+that if you get hit by a truck,
+the dead man switch will trigger?
+And in many cases,
+when people are setting up inheritance
+with a dead man switch,
+that dead man switch is a single point of failure.
+So, you know, that's the thing that unnerves me.
+So I think that, you know, good inheritance solutions
+really do need to have humans as part of the process
+because there's going to be some subjectivity involved,
+you know, with KASA's solution.
+You know, if you want us to sign a transaction
+as a part of an inheritance recovery process,
+then we're either going to need
+some sort of, you know, legal, verifiable death certificate
+that shows that our client has passed
+and/or, you know, you'll need to have
+pre-approved identities of your executors
+or whoever is going to be, you know,
+working on that inheritance facilitation process.
+So it is extremely complicated.
+And as a result, there is a large design space
+of ways to do it wrong
+that will create single points of failure.
+- Got to think that those features and products
+are only going to become more prominent in the space
+as time goes on.
+And ladies and gentlemen, I also pinned the guide
+that Jameson mentioned by Pamela Morgan to the top.
+So Jameson just mentioned this
+as a very good inheritance planning guide.
+I'm going to go to Trevor.
+Trevor, if you have a follow-up for Jameson
+and I'll sync with Aubrey on the back end.
+- Yeah, so a little bit more of a technical question is,
+you know, how easy or how much of an advantage
+does a like Turing complete or more expressive language
+like or environment like EVM have
+compared to what we have on Bitcoin
+with like hashed Timelock contracts?
+I know that Ethereum recently approved ERC4337,
+which works with, you know, multi-sig wallets
+to give more flexibility for what can be done there.
+Do you have any thoughts on like
+the kind of technical differences
+between Bitcoin and EVM
+and how that advantages pros, cons?
+Obviously, Ethereum probably gives you enough rope
+to hang yourself with,
+but, you know, what are the actual limitations
+on with what you can do with Bitcoin?
+- Yeah, exactly.
+I mean, the EVM is far more complex
+than, you know, Bitcoin's own script interpreter.
+So, you know, I'm not a quote unquote
+smart contract developer.
+And even at Casa,
+we do not want to be smart contract developers.
+So that was one of the big things
+that was, you know, keeping us from adding Ethereum support
+for many years is that, you know,
+we were evaluating the space
+and looking to see if there was some sort of standard
+multi-sig smart contract
+that we could actually be confident in.
+Because when I was at BitGo back in 2016,
+I was there and I got to watch us
+write a multi-sig smart contract.
+And that was a year long process
+and going through multiple audits
+and seeing the horrors of the edge cases
+and vulnerabilities that can happen
+even when you're writing a fairly simple
+smart contracts in Solidity.
+So what, you know, are the trade-offs?
+Yeah, I mean, the biggest one, like you said,
+is more rope to hang yourself with.
+It's so much more complex that from what I've seen,
+and this is not my area of expertise,
+but when you look at a lot of the hacks
+that happen around, you know,
+exploiting smart contracts themselves,
+you know, sometimes it's really stupid naive stuff,
+like just, you know, not setting some sort of sanity check.
+But in many cases, I've seen it be, you know,
+really low level stuff where you can get lulled
+into a false sense of security
+with the ease of reading and writing Solidity.
+You know, pretty much anyone,
+I think who is a decent programmer can read Solidity
+and have a good understanding of what it's doing.
+Like even I can, even though I never wrote
+any Solidity myself.
+But unfortunately, like unless you understand
+how that Solidity code is actually getting compiled down
+into the actual instructions that are being interpreted
+and executed by the EVM,
+you can still have, you know, vulnerabilities introduced.
+And, you know, I'm sure that some of the tooling
+and ability to do sort of more verification
+to find stuff like that has improved over the years.
+But, you know, it still seems to me
+just from the really, really high level
+of tracking security incidents
+across the entire crypto asset space,
+it seems to me that the bulk of them these days
+are happening at the smart contract level.
+And in some cases, it's the sort of smart contract,
+smart contract versus smart contract issue
+where like when you have smart contracts
+that are interacting with each other,
+it's just like the complexity gets totally blown out
+and a lot of really crazy edge cases can show up.
+And that's when people manage to find ways
+to pull in a lot of profits
+against other people's expectations.
+So I, you know, from a security perspective,
+I really like Bitcoin and its limited scripting ability.
+Though, you know, even with Bitcoin script,
+we're getting improvements there
+with things like many scripts
+that's gonna make it easier
+to be able to do more complex stuff on Bitcoin.
+Like even though functionally,
+we've always been able to do
+more complex quote unquote contracts.
+I would say the most complex Bitcoin contracts these days
+are likely the hash time lock contracts
+that are primarily used for lightning related wallets.
+But there's still a lot of complex stuff
+that you can build
+with some of the basic functionality of Bitcoin script.
+It's just been very developer unfriendly
+because really nobody wants to be writing
+this fourth style, you know,
+stack based programming language and debugging it.
+Like that's just not a very common way
+of writing code these days.
+- And you talk about adding complexity to Bitcoin.
+Obviously you mentioned the lightning network.
+I've heard you describe yourself, Jameson,
+you know, as a technologist that, you know,
+you do research within the Bitcoin ecosystem,
+but then you also do research
+outside the Bitcoin ecosystem,
+you know, looking for effective technologies
+and, you know, different things
+that are interesting within the space.
+Have you seen anything that would make for,
+you know, make an L2 more effective,
+whether it's lightning or something else,
+like anything that you've seen out there
+that you think would be cool
+to kind of take from to implement onto Bitcoin?
+- For sure.
+You know, we've been seeing more research
+into the rollup technology.
+We're seeing more research with, you know,
+zero knowledge proofs and snarks
+and even a bit more discussion around
+actual protocol changes and various types of covenants.
+But, you know, any of the proposed protocol changes
+are always gonna be a lot more contentious and slower.
+So I certainly have hopes for various things
+that are going to come down the pipeline,
+but there has been no shortage of research
+over the past few years.
+The question really is, you know,
+how can we get to the point where there is,
+you know, sufficient rough consensus
+that adding some basic, you know,
+protocol level functionality
+will greatly increase the potential
+for doing experimentation that does not actually
+put Bitcoin itself at risk,
+but experimentation that will be a part
+of the Bitcoin ecosystem and hopefully as a result,
+you know, create more functionality
+and then get more value to flow into the Bitcoin ecosystem.
+- Very well said.
+And, you know, when I was thinking with Aubrey
+before this discussion, she definitely brought up
+the importance of discussing privacy with you
+and I totally agree with her.
+You're seeing pop, you know, more conversation pop up
+around central bank digital currency, CBDCs,
+and it's starting to feel like
+they might be coming sooner rather than later.
+I guess, what do you make of the recent
+kind of inflow of discussion about CBDCs?
+How do you see the CBDC situation playing out
+and, you know, what will it mean for Bitcoin?
+- Yeah, I mean, central bank digital currencies
+are a concept that I think we've been talking about
+for quite a few years because it's a very natural
+progression for authoritarians
+to use cryptography for their own benefit.
+I mean, just stepping back at a really high level,
+you know, cryptography is an interesting double-edged sword
+and I think not many people think of it like this.
+I think when most people hear crypto or cryptography,
+they think of privacy and secrecy
+and that's because they're thinking of encryption.
+And it's kind of funny because I even see
+fairly well-respected people in this space
+often say stuff about how Bitcoin
+is protected by encryption.
+And it's kind of a faux pas.
+I mean, it's technically incorrect.
+Like, there is no encryption in Bitcoin.
+There is cryptography, but that cryptography
+is mostly in the form of digital signatures
+and cryptographic, like, one-way hashes.
+There's no encryption like you see
+with a lot of other, you know, popular privacy technologies.
+So, you know, where are we gonna go with all of this?
+It's hard to say, but I think that CBDCs
+are an inevitability and that's because,
+sort of going back to this double-edged sword,
+what does cryptography give us?
+It gives us two primary functions.
+The first one is privacy,
+and that is generally accomplished by encrypting data.
+You know, public-private key pairs,
+you're basically encrypting your data
+to a public key pair that belongs to someone or something
+that can only then be decrypted
+and read by whoever has that private key.
+That is an extremely strong privacy assurance
+as long as the keys themselves are in a secure architecture.
+But the other aspect of cryptography
+is actually like verifiability and auditability.
+And this is where, you know, the digital signatures
+and tracking things with public keys comes into play.
+And so, you know, as I'm sure people are aware,
+Bitcoin is incredibly robust for many different reasons,
+but one of them is actually the transparency
+and auditability of everything that happens on the blockchain.
+So, you know, the trade-off here
+is that we have pretty crappy privacy characteristics,
+but we have very strong auditability
+and verifiability of Bitcoin.
+So, you know, really anyone with a halfway-decent computer
+can run a node and verify
+the entire 14-year history of Bitcoin
+and be 100% confident
+that no one is breaking the rules of Bitcoin.
+So, you know, what happens with all this?
+Well, we can expect that authoritarians,
+central banks, nation states,
+who knows, probably even private corporations,
+will take the auditability
+and verifiability aspects of cryptography
+and use them against us to their own benefit.
+You know, central banks will be able to do this
+and essentially write their own rules,
+run your own private blockchain network
+or distributed ledger network, whatever.
+It doesn't really matter because all of the "nodes"
+on that network will be authorized,
+permissioned participants,
+and they will be able to arbitrarily change the rules.
+They will be able to tell you how to spend your money.
+They'll be able to easily take your money away from you
+if they disapprove of whatever you're doing.
+So I think we should expect that, you know,
+any authoritarian or institution
+is going to leverage these technologies
+in whatever way they find suits them
+and empowers them the best.
+And, you know, that's just the nature of technology
+and neutral tools is you should expect
+everyone will use them however they find them most empowering.
+So the best that we can do,
+you know, we can't stop that from happening.
+The best that we can do is continue to try to empower individuals
+by using free open source technology
+that is more "fair."
+Yeah, definitely not a great idea to think about
+when you sort of think about the potential that it can have
+when a government's implementing it.
+You know, speaking of authoritarian government,
+last week we saw Coinbase receive a Wells notice from the SEC.
+Yesterday Binance sued by the CFTC
+for violating trading and derivatives rule.
+We had Nick Carter on the show two weeks ago.
+We talked to him about, you know,
+the paper that he wrote, Operation Chokepoint.
+He described it as, forget about Chokepoint,
+now it's Operation, you know, Decapitation.
+I guess, how do you view the recent action
+from the United States government against cryptocurrency?
+Is this like an administration specific thing?
+Like, how could, you know, do you see this playing out?
+Yeah, this has actually been playing out as I've expected,
+at least in the sense that I've always felt like
+the sort of novel nature of Bitcoin
+and what it is means that it can be seen
+in a variety of different ways.
+And the result of that when you're looking at things
+like government agencies is, once again,
+we should expect that each government agency
+is going to try to define Bitcoin
+and, you know, every aspect of crypto ecosystem
+in whatever way gives them the greatest authority
+and jurisdiction over it.
+And so it's going to be amusing,
+but in a kind of dystopian way,
+to see different nation states
+and different agencies within nation state justice systems
+kind of fight with each other over their turf.
+So I think we're starting to see some of that
+between stuff like CFTC and SEC.
+And I think there's general consensus
+that SEC has been highly, you know,
+political over the past few years
+and has not been a very logical or reliable organization.
+Yeah, yeah, well said.
+And, you know, just to shift back to technology a little bit,
+obviously Bitcoin ordinals has been a big topic of conversation
+over the past month, month and a half, feels like longer.
+You know, what's your impression of the protocol?
+Like how do you feel that ordinals
+will impact the future of Bitcoin?
+I've had a fairly bemused
+taking a stand back take on it all.
+You know, I've never really been that interested
+in like NFTs or art or anything like that.
+I do own one NFT, but that's a whole other story.
+I found it amusing for sort of historical reasons.
+But I like what is going on in the sense that, you know,
+this is the type of permissionless protocol development
+that we need to be seeing more of.
+And, you know, it's amusing to see folks acting
+sort of puritanical or authoritarian
+about how Bitcoin quote unquote should be used.
+So, you know, I have been following along, you know,
+from that aspect, even though I'm not personally interested
+in this particular application of the technology.
+As a technologist, it's just good to see
+any experimentation and innovation
+because while, you know, I'm skeptical
+that this will turn into the same size and style
+of NFT market that we've seen happen on other networks,
+it nonetheless, you know, could create an interesting niche
+and some various cultural and narrative offshoots as a result.
+Trevor, go ahead.
+Yeah, so, I mean, Ordinals was developed by Casey Rodemar
+and he also, I believe, was working on Grin before.
+And I saw that in your blog post on Bitcoin maximalism,
+you were talking about how you were intellectually interested in Grin
+and then some maxis were giving you backlash for it.
+I'm curious, just to like understand about like that timeframe,
+what was Grin and like, do you see any type of like lessons learned from that
+that maybe informed the development of Ordinals
+or yeah, just generally, how do you think the Grin
+being kind of a reference point, I think maybe,
+and I'm not sure if maybe ties you and kind of Casey on the same path,
+you know, Bitcoin maximalism from then to now?
+Yeah, so, the short version is,
+I will always be interested in any privacy enhancing technology
+and if it's not happening on Bitcoin, you know, that's a shame,
+but I will still look into it.
+So, you know, I was running Zcash, for example,
+before they even had their mainnet launch,
+like I was running beta node software, I think in 2014 or something.
+Always been interested in Monero, I was interested in MimbleWimble,
+which took a number of years of technical discussions and development
+before it had its first launch.
+With Grin, I think, you know, Grin kind of failed
+due to some poor economic decisions
+and I think there was some weird stuff going on
+with some like VCs and industrial miners and stuff.
+It was a number of years ago, though, so my details may be foggy.
+Though I believe that MimbleWimble has more recently been implemented
+on top of Litecoin.
+So, you know, MimbleWimble is not dead as a technology,
+it's just unfortunate that, you know,
+Grin did not succeed as a standalone network
+for the implementation of that technology.
+But, you know, that's the great thing about technology,
+you know, try and try again.
+It's okay to fail, you know,
+failure is how we learn and continue to improve.
+It's interesting they're trying to tie that into Ordinals development.
+I don't think I really have anything off the top of my head.
+You know, this is permissionless development.
+I don't think Casey was shopping his idea around asking,
+"Hey, should I do this?"
+He just went ahead and it has organically created a community
+over the past few months.
+And that interest has then sparked, you know, actual money and resources
+where, you know, people are building wallets and explorers and exchanges
+and really like just the rest of the infrastructure that one needs
+to have, you know, a full featured technology ecosystem
+where people are economically interacting with each other.
+So, you know, that I think is the sort of success story
+that has happened with Ordinals that did not happen with Grin.
+You know, there's a number of...
+There were other aspects of like the way that Grin was implemented
+that just did not make it easy for, you know,
+other infrastructure providers to add support for it.
+Yeah, it'll be fascinating to see how it continues to develop.
+Aubrey, let's see if we have you back here.
+Let's try it again. Hopefully it's working now.
+I don't know how long ago it was, but it was pretty funny.
+It was something like, you're called like a Bitcoin maximalist
+by altcoiners and a shit coiner by bitcoiners or something like that.
+I don't know if that's exactly what you said, but I thought it was funny.
+And I think this is interesting because there's a lot...
+There's obviously like a large debate going on right now.
+And to some extent, it feels like the community is at war with itself.
+How do you think we move past that?
+Because I feel personally like it's holding back
+a lot of the growth of Bitcoin currently.
+Yeah, I mean, there is definitely some fracturing going on.
+But I also think that this is a natural evolution.
+Sort of made some references to religion in my post.
+I didn't go too deep into it.
+But essentially, when you have a belief system,
+I think that it's basically an inevitability
+that you hit certain inflection points.
+And the size of the community of a given belief system
+grows to the point that some points of friction and contention arise.
+And that just happens as a result of people discussing
+what they believe with each other.
+And the fact that humans are complex social creatures
+that once you get a large enough group of humans together,
+it's impossible to have 100% consensus on all of your beliefs.
+And so inevitably, the size of the communities continue growing
+and sort of tribalistic nature starts to arise.
+And we...
+This is...
+Once again, it's kind of darkly amusing
+in the sense that we have probably 99.9% in common with each other
+in what we believe.
+Like if you're doing Bitcoin stuff,
+and even if you're doing crypto stuff.
+And of course, it's a very huge diverse ecosystem these days.
+But we have far more in common than we have different.
+But the sort of human nature is such that we somehow manage
+to suss out the smallest of differences.
+And then some people inevitably take those to the extreme
+and are very negative and basically use the small differences
+as ways of separating people and saying,
+"I'm better than you because you believe this and I believe that."
+And I think that has really happened
+over the past three years or so,
+partially as a result of the whole ecosystem continuing to grow,
+partially because I think effects of the pandemic
+and people being locked inside
+and spending a lot more of their lives online
+and participating in discussions like this.
+And perhaps even the fact
+that we haven't had enough external enemies.
+Even though I would say there's no shortage of external enemies,
+if people aren't feeling sufficiently threatened by external enemies,
+then I think they end up looking for enemies internal to the community.
+So yeah, I mean, what do we do to fix that?
+I guess my conclusions from the blog post were sort of a lot of boring tropes
+of like the golden rule,
+do unto others, don't be an asshole.
+But also we have to recognize that there are going to be assholes.
+And so then you just have to ask yourself,
+how are we going to deal with them?
+We cannot, in a voluntary community,
+the most that you can do,
+absent some sort of legal justice system is ostracize.
+So if you see people who are exhibiting behavior
+that you believe is reprehensible,
+I think there are obviously other things you can do
+before you get to that point.
+And you can try to talk to them
+and you give them opportunities to improve.
+But the final piece of, I guess, justice that you can implement
+is block, mute, and move on.
+Yeah, I mean, very well put.
+What else can you do, right?
+Trevor, you have your hand raised.
+Go ahead.
+Yeah, so I've noticed among some Bitcoin Maxi communities,
+there's a very, like an attitude kind of against building.
+There's kind of like, "Oh, don't try that."
+Or people want something to be perfect
+in order to be worthy of trying.
+And there's almost too much debate
+and not just enough of an attitude of like,
+"Let's just build cool shit."
+I'm curious, with Ordinal specifically,
+we've seen that change a lot in a big way.
+And I think it's caused a lot of people
+to kind of come back to Bitcoin.
+I think of like looking at the history of Bitcoin,
+a lot of early Bitcoiners end up building
+the rest of this industry, right?
+Even Vitalik, he started Bitcoin Magazine
+and then went on to do Ethereum.
+And we've seen, if you just Google a list
+of like Bitcoin billionaires,
+people who not were billionaires and then bought Bitcoin,
+but were not billionaires and then invested so heavily in it,
+they've gone on to build a lot of different stuff
+in the space, not just Bitcoin only.
+I'm curious, do you think that that culture of building
+will attract more of the right people to Bitcoin
+that will help it to reach more of a mass adoption?
+Or just generally, what are your thoughts
+on how Bitcoin can get to a billion holders
+in a world where we have USD denominated in Bitcoin
+and not the other way around?
+- Yeah, I think there is a whole other in-depth topic.
+And this is another topic that I have been touching on
+recently and will continue to talk about,
+which is kind of, you could just call it
+the ossification argument.
+But the ethos of Bitcoin is very different
+from pretty much everything else.
+And it's far more conservative in terms of
+talking about changes,
+really talking about doing anything novel.
+And so that's why we haven't really seen protocol changes
+happen more frequently than every few years.
+It's because there's such a high bar
+to reach this rough consensus to make changes.
+And that bar seems to keep getting higher and higher,
+which is probably the correct way to go.
+But the open question is,
+at what point does the bar become so high
+that we're literally unable to make any improvements,
+at least at the base protocol layer?
+So there's obviously pros and cons to this.
+And this also ties into one section of my recent essay
+where I talk about what I call Bitcoin monetary maximalism,
+which is really the idea that Bitcoin
+is the best money that we have available.
+Like it has properties that you can't reproduce
+with these other networks that arguably make it
+a better, more reliable, more sound monetary system.
+And you wanna preserve those properties.
+And there's quite a few properties, I believe,
+that are kind of quote unquote inviolable,
+that are important for Bitcoin
+to retain its monetary soundness.
+Now, the fact that we want to prevent
+any of those properties from changing,
+and we want to continue to be able to offer the assurance
+and confidence that Bitcoin is sound money,
+is then what creates this contention
+with people who want to continue to improve it.
+And that usually means the technologists like myself,
+who we see a system as being alive
+and as needing continual maintenance,
+continual improvement,
+because if you're not continuing to improve
+your complex technological systems,
+then they are going to degrade,
+or at the very least,
+they are not going to remain competitive
+with other technologies that may arise.
+And you have to kind of balance
+the monetary soundness perspective
+against the let's use this
+as a broader technological platform
+to create a whole ecosystem perspective.
+And you understand that some people
+just aren't gonna see eye to eye on that.
+And so there's certainly a number
+of Bitcoin proponents out there
+who believe that Bitcoin should only be money.
+And if we try to do any non-monetary stuff
+on top of Bitcoin, then that's just too much of a risk.
+Whereas on the other hand,
+they also generally see all of the other crypto projects
+and networks and assets as being in competition with Bitcoin.
+And of course, this is highly arguable topic.
+I would argue that most of them
+are not trying to directly compete with Bitcoin,
+even if they do offer some of the same basic
+value transfer functionality.
+But if we want Bitcoin to become a much more complex
+and fully featured ecosystem,
+then I think the way that we need to go
+is we should strive to find a way
+to make minimal changes to the Bitcoin protocol
+that will then open up the ability
+to experiment more outside of the Bitcoin protocol,
+but you're still connected and anchored to it.
+- And Trevor, I think you had one quick follow-up
+before you have to jump, is that right?
+Do we still have you, Trevor?
+- Yeah, yeah, I just wanna say, I agree with that.
+I don't think that the protocol needs to change,
+but there's a lot of opportunities,
+like you just said, to open the door
+to development on other layers
+like Lightning Stacks, et cetera,
+where those things can be new use cases
+and ways to use Bitcoin
+so that it's a better medium of exchange can be unlocked.
+But I also seem to see resistance
+to even like application development on top.
+I've seen maxis be like,
+oh, well, we don't need more,
+application development's just gonna taint
+the incentives of like companies
+are gonna steer protocol development.
+And I did have one final question for you, Jameson,
+which is from a money perspective,
+imagine a completely hypothetical world,
+which is always a fun question,
+where Bitcoin has the same properties it does now,
+Ethereum has the same properties it does now,
+but you can use Ethereum in the real world
+as a medium of exchange for everything.
+It's accepted everywhere as a medium of exchange.
+But Bitcoin is not.
+What's your opinion on which the better money is?
+- I mean, that's, it kind of takes you back
+to the whole issue of,
+does money need to be a store of value
+or a medium of exchange, chicken and egg argument?
+I would say, if we're looking at like payment rails
+type systems, I believe the aggregate value
+of all of the, at least like retail payment rail systems
+pales in comparison to the value of stores of value,
+like gold and whatnot.
+So, but I'm not an economist.
+The sort of counterpoint there would be that,
+if your crypto asset is acting as a payment rail
+and it's in as many locations as like Visa and MasterCard
+and whatnot, then that obviously is a huge network effect
+and will generally just increase the awareness,
+if not the adoption of the technology.
+So, pros and cons on both sides.
+From a network perspective,
+it definitely gives more of an edge to be widely accepted.
+And I'm certainly hopeful that we will see that
+continue to happen, at least with Lightning.
+But, this kind of takes me back to what I said a minute ago
+about minimal changes to the Bitcoin protocol.
+I don't see a path for Bitcoin to be mainstream
+like Visa level adoption, even with Lightning,
+unless we do make some scalability improvements
+at the base layer.
+One example would be adding some op codes
+that allow us to do L2, that's E-L-T-O-O style,
+batch Lightning channel management,
+where that could give us orders of magnitude,
+more scalability of being able to onboard
+and off-board people like to and from the Lightning network,
+where right now it's not great.
+You can have a single person potentially making
+10 different on-chain transactions
+to get their channels set up and then have to maintain them.
+And it would be far more efficient
+if we could have a thousand or 10,000 people
+sharing those same on-chain transactions.
+- Extremely hypothetical question there from Trevor.
+Pretty funny stuff, Trev.
+Aubrey, I saw that you had your hand raised.
+Was there a follow-up that you wanted to ask Jameson?
+- It was kind of back to the religion comment,
+'cause I was reading through the vlog post
+and I don't know if you wanna go back
+to the religion argument, but I do wanna bring up
+that obviously I think we all can agree as Bitcoiners
+that we are all striving for mass adoption.
+And the religion comparison is interesting to me
+because I've been thinking about it
+and then as cults don't scale, religions sort of do.
+And if we're using that analogy,
+for example, the Catholic Church is around,
+it's obviously global, massive, and it is rarely changed.
+Either Bitcoin should become sort of a religion,
+it is a religion, or it's more of a cult
+that needs to kind of not be a cult anymore
+and be more open, specifically on like political leanings
+and that kind of like ideology
+that's come about in the last three years.
+- That's an interesting thought.
+I mean, my initial reaction would be
+that an organized architecture
+is fundamentally incompatible with the way
+that Bitcoin operates and how it changes.
+So I think that that nature is what has resulted
+in the culture of Bitcoin to be more cult-like
+because what happens is we have our own
+quote unquote scholars, if you will,
+whether they be like white paper scholars
+or code scholars or economic scholars.
+And this diverse set of people come in
+with their own perspectives and interesting takes
+on what Bitcoin is and possibly what Bitcoin should be.
+And they craft their narratives
+and they manage to form followings
+of like-minded people who agree
+with whatever they're saying.
+So that's why we have this fairly diverse,
+but fractured, I think, set of beliefs
+and internal conflict within Bitcoin.
+It's because I think it's not even possible
+to put yourself forward as an authority over everything.
+The best that you can do is engage
+in the free market of ideas.
+And this is part of, I think, the optimism
+that is required, not just for Bitcoin,
+but really I think for any nascent technology
+that still has a lot of development
+that needs to be done is you need to have a vision
+for what do you want it to look like
+in 10 years, 20 years, 30 years, or whatever.
+Because we need to keep trying to herd the cats
+in hopefully a similar direction,
+even if we're not all 100% agreeing
+on exactly what Bitcoin is and should be.
+- Ultra reasonable response, Jameson.
+And I know we're approaching time here.
+You've been very generous with your time so far.
+Just a couple more concepts that I'd love to hit on.
+You talked about technology on top of Bitcoin
+and adding complexity to Bitcoin.
+Something that comes to mind for me right away
+would be stable coins on Bitcoin.
+And I've heard you discuss the idea of stable coins
+on Bitcoin on other podcasts.
+To me, it does seem like Bitcoin would be the ideal place
+for stable coins if they're implemented the right way,
+whether it's on a layer two.
+I mean, realistically, I think it would have to be
+a layer two, but obviously I'm not a technologist
+like you are.
+Do you see a future with stable coins on Bitcoin
+and what does that future look like if so?
+Jameson, I think you're muted.
+- There we go.
+I think it's also inevitable in the sense that
+just from a sort of capital markets perspective,
+stable coins aren't stable coins like three
+out of the top 10 crypto assets.
+Now, even though they are hilariously centralized
+single points of failure,
+there is no arguing that they don't provide
+an enormous amount of utility
+to an enormous number of people.
+So it's definitely going to happen.
+I'm still extremely skeptical about like,
+quote unquote, algorithmic stable coins.
+So I would expect that probably,
+at least for the foreseeable future,
+most of them will still be centralized issuers,
+but the utility is there, people are going to build it.
+And I look forward to helping people
+manage their stable coins on Bitcoin.
+- To the point and last concept,
+artificial intelligence,
+big, big kind of topic of conversation in 2023.
+And I've heard you again, talk about it on podcasts.
+To you, does artificial intelligence have a role
+in the future of Bitcoin
+or the future development of Bitcoin?
+- I sure hope not.
+And the reason for that is at least all of these
+like large language models and the AI of today,
+and what is it really doing?
+It's kind of ingesting whatever like the most popular
+form of thought is at the moment.
+And so, once again, I'm not an expert in this area,
+but I certainly suspect that all of these
+current generations of AI,
+and maybe even many in the future,
+I don't know if it's like a solvable problem
+or people have ideas on how to solve it,
+but they're incredibly biased.
+And they're biased based on what the data is
+that is out there on the internet for them to ingest.
+So, I'm incredibly skeptical about trying to use them
+to build the future of humanity,
+because there's always gonna be the sort of garbage in,
+garbage out problem.
+So, I certainly want,
+when it comes to like developing Bitcoin,
+I believe that what we're doing here is
+we are trying to codify the essence
+of the perfect form of money.
+And we really need, I think, to have actual humans
+who are collaborating with each other
+to try to determine what rough consensus is.
+I don't, I certainly would not at this stage
+trust any sort of AI or code
+to be able to determine rough consensus.
+It's not even really a quantifiable thing.
+- Gotcha, a great response.
+Obviously, it's a complex topic.
+Ladies and gentlemen, that's our show.
+Jameson, thanks so much for joining.
+Any closing thoughts that you'd wanna leave
+for the audience based on anything that we've talked about
+or anything that we didn't get to touch on?
+- Basically, this is a community project.
+Sure, Bitcoin is worth hundreds of billions of dollars,
+but it is still an open permissionless system.
+And the main thing that I want people to take away from it
+is that you should not allow anyone
+to stop you from contributing.
+You should not allow anyone to tell you
+that you're not a quote unquote real Bitcoiner.
+Fuck that noise.
+Continue to do whatever you think is best
+and the market will work itself out.
+- Oh, damn.
+Jameson. - Damn, Philos.
+- Giving them the business.
+Let 'em cook.
+Ladies and gentlemen, thank you so much for listening.
+Shout out to Jameson for joining us today.
+Make sure that you check out Casa @CasaHodl on Twitter.
+That's @CasaHodl.
+And make sure you follow Jameson.
+Check out the articles that he's written,
+the podcast that he's been on.
+If you want to share this podcast,
+it will be uploaded to Spotify and to Apple Podcasts.
+Monster shout out to Aubrey and Trevor,
+my two co-hosts on this show.
+Make sure you follow both of them.
+Subscribe to Aubrey's Twitter channel.
+I mean, excuse me, YouTube channel, The Observation.
+That's youtube.com/theobservation.
+And check out the different organizations
+that Aubrey is affiliated with.
+Make sure that you follow Trevor.
+Check out NINJA Alerts if you're into that.
+Check out the organizations he's affiliated with.
+And Jameson, just one last thank you.
+Thank you so much for joining us, man.
+This was a blast.
+- You bet. Thanks for having me.
+- Absolutely.
