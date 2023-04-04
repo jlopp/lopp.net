@@ -121,28 +121,53 @@
         </ul>
       </div>
       <div class="text-center col-sm-offset-0 col-md-offset-0 col-xs-10 col-xs-offset-1 col-sm-4 col-lg-4 col-md-4">
-        <a id="twitterwidget" class="twitter-timeline" data-height="500" data-dnt="true" data-chrome="nofooter noheader noborders transparent" href="https://twitter.com/lopp">Tweets by lopp</a>
+        <div id="tweets">
+          <a id="twitterwidget" class="twitter-timeline" data-height="500" data-dnt="true" data-chrome="nofooter noheader noborders transparent" href="https://twitter.com/lopp">Tweets by lopp</a>
+        </div>
         <script>
-          function setTheme() {
-            if (localStorage.getItem('mode') == "dark") {
-              const twitterWidget = document.getElementById("twitterwidget");
-              twitterWidget.setAttribute("data-theme", "dark");
-              twitterWidget.classList.add("dark-container");
+          function setTheme(toggle = false) {
+            var currentClass;
+            try {
+              currentClass = localStorage.getItem('mode');
+            } catch (ex) {
+              currentClass = document.cookie.split(";")[0].split("=")[1];
+            }
+
+            // if toggle is true, the current class is the one we are switching AWAY from
+            // otherwise, just set whatever is appropriate for the current theme
+            if (toggle) {
+              if (currentClass == "") {
+                const twitterWidget = document.getElementById("tweets").children[0];
+                //const twitterWidget = document.getElementById("twitter-widget-0");
+                twitterWidget.setAttribute("data-theme", "dark");
+                twitterWidget.classList.add("dark-container");
+              } else if (currentClass == "dark") {
+                const twitterWidget = document.getElementById("tweets").children[0];
+                //const twitterWidget = document.getElementById("twitter-widget-0");
+                twitterWidget.removeAttribute("data-theme");
+                twitterWidget.classList.remove("dark-container");
+              }
             } else {
-              const twitterWidget = document.getElementById("twitterwidget");
-              twitterWidget.removeAttribute("data-theme");
-              twitterWidget.classList.remove("dark-container");
+              if (currentClass == "dark") {
+                const twitterWidget = document.getElementById("tweets").children[0];
+                //const twitterWidget = document.getElementById("twitter-widget-0");
+                twitterWidget.setAttribute("data-theme", "dark");
+                twitterWidget.classList.add("dark-container");
+              } else if (currentClass == "") {
+                const twitterWidget = document.getElementById("tweets").children[0];
+                //const twitterWidget = document.getElementById("twitter-widget-0");
+                twitterWidget.removeAttribute("data-theme");
+                twitterWidget.classList.remove("dark-container");
+              }
             }
           }
 
-          // Call the setTheme function when the page loads
-          document.addEventListener("DOMContentLoaded", setTheme);
+          // Call the setTheme function when the twitter iframe loads
+          setTimeout(() => {setTheme();}, 4000);
 
-          // Add an event listener to detect changes to the 'mode' key in localStorage
-          window.addEventListener("storage", (event) => {
-            if (event.key === 'mode') {
-              setTheme();
-            }
+          // Add an event listener to detect dark/light mode toggling
+          document.querySelector('.toggle-input').addEventListener('change', function() {
+              setTheme(true);
           });
         </script>
         Search <a href="/tweetnest/">Jameson's tweet archive</a>.
