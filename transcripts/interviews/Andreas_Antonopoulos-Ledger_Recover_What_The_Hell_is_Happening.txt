@@ -1,0 +1,1173 @@
+Hello, hello, everyone.
+Welcome to this special public live stream.
+We're going to be talking about Ledger Recover.
+And this new service that they announced
+has created quite a bit of controversy in the community.
+Now, there may be a guest on this live stream.
+Don't know if he'll be able to make it.
+But if he does, we'll just pull him into the meeting
+and get him on.
+Jameson Lopp may be joining us.
+We'll see how it goes.
+Let me know in the chat if you can hear and see me well,
+if everything's OK on your end.
+Give us a little wave in the chat.
+That would be great.
+There's a slight delay between the video and the live.
+So, oh, yeah, there we go, about five seconds.
+So I will keep an eye on the chat,
+just in case there's any questions or follow-ups
+or things like that.
+And otherwise, we'll get started here in just a second.
+I hope you're all having a wonderful weekend.
+And we're talking about Ledger's new service called Recover.
+Now, this came to my attention primarily
+because all of my public channels
+just flooded with messages.
+Oh, my God, what is happening?
+Tell us more.
+Figure this out.
+And so I wanted to give you some of my opinions.
+Oh, and there is Jameson.
+One second, let's see.
+All right, let's see.
+Jameson, hello.
+Hello.
+We are live and streaming.
+Welcome.
+Welcome and hello from Bitcoin, Miami.
+Oh, fantastic.
+Must be-- I'm guessing it's hot and humid there at the moment.
+Yeah, we've got plenty of air conditioning, though.
+Oh, very good.
+It's been a while since we last spoke.
+Thank you so much for agreeing to jump on on short notice.
+And I think the last time we did a live together, it was--
+Ledger.
+The last time Ledger had an oopsie.
+Now, for those of you who don't know
+about that previous occasion, you can find it on my channel.
+It was a great conversation with two other friends,
+with Taylor Monahan and Peter McCormick,
+and of course, Jameson Lopp.
+And we talked about Ledger's leak of their customer
+database from their website, which
+created quite a bit of, let's say, backlash,
+as well as quite a few problems.
+Jameson, can I ask you to just introduce yourself
+for the audience who don't know you?
+Yeah, I'm Jameson Lopp.
+I am the co-founder and CTO of Casa.
+We're a self-custody solution.
+And I've basically spent the past eight years building
+self-custody solutions.
+Great, fantastic.
+Thank you so much.
+So one of the reasons you were one of the first people that
+came to mind to me when I wanted to talk about this
+is there are probably only a handful of true information
+security and operational security experts
+in our industry who are comfortable about talking
+about these things publicly and sharing their risk analysis
+and their thoughts on things like this.
+I-- hopefully, I count myself as one of them.
+And you were the first person who came to mind.
+So I'm very glad you were able to join.
+All right, so let's get started.
+Let me give a bit of background.
+So Ledger launched or announced a new service called Recover.
+And what this service is is a service
+that allows you to essentially share
+three fragments of your seed before the seed is actually
+produced through your Ledger device.
+And those three fragments are then sent to three providers.
+Ledger is one of them.
+And if in the future you lose your seed,
+you lose access to your seed, or something happens,
+you can identify yourself and have them recover your seed
+by assembling two of those three fragments.
+So effectively, your seed is split into three pieces.
+And any two of those pieces are sufficient to reconstruct
+the seed.
+This was announced with really not a lot of fanfare.
+And the initial announcements didn't have a lot of detail.
+And as a result, it created a bit of a crazed response
+from the community, a panicked response from the community.
+What are you doing to my devices?
+And just maybe this morning, Ledger
+published a much more detailed article and FAQ
+and clarified many of those details.
+Jameson, when did you first hear about this?
+What was your first impression?
+Yeah, I heard about it pretty much immediately
+because we had a bunch of clients calling in saying,
+oh, do I need to swap out my Ledger
+for some other hardware manufacturer?
+And the short version was no.
+But that's because we put people into a multi-key,
+multi-vendor setup.
+So the whole idea is we understand
+there is no perfect hardware device on the market.
+The way that you get around these weaknesses
+is by ensuring that any one weakness is not
+going to create a catastrophic loss for you.
+Now, I understood where Ledger is coming from.
+And by that, I mean that if you are a sophisticated enough
+user that you are purchasing and storing
+your keys on a dedicated hardware device,
+you're probably already in the top 1%
+in terms of your security model.
+So why would Ledger offer something like this?
+Well, for any of us who have worked in the custody
+space for even just a few years, it
+becomes very apparent that the next most likely way for you
+to screw up and lose your money if you have your keys off
+of an internet-connected device is that you're most likely just
+to lose it.
+You don't have a good backup solution.
+So what Ledger is trying to do is
+they're trying to offer a user-friendly backup solution.
+And of course, the devil's in the details.
+The devil is indeed in the details.
+So I would agree wholeheartedly here.
+In fact, for most users, that is not even the second most likely
+way to lose your funds.
+It's the number one way to lose your funds,
+is simply by misplacing or not sufficiently guarding
+your seed.
+The second most likely is probably
+phishing attacks, where you're basically socially engineered
+to give your seeds to someone by being told
+you need to type it into a website
+or you need to provide it to a service
+because your account has been frozen.
+We've seen a lot of those social engineering attacks.
+Many people, even sophisticated users, have fallen for that.
+And having your seed or your device stolen
+is so far down the list, or your system hacked,
+it's so far down the list of those risks
+that it doesn't even really matter.
+Unless you have unique circumstances that
+make you a highly targeted public figure,
+you're not going to have someone attempt to steal your Bitcoin.
+They're just going to go for the easy marks.
+And you're much more likely to lose it yourself.
+So I understand the motivation for providing a recovery
+service.
+And just to clarify, that is kind of also what Kasa does.
+And it's one of the reasons I wanted to talk to you
+is because you have a lot of experience
+in providing exactly this kind of recovery service.
+But you do it in a very different way.
+So to me, there are kind of three things
+that are a bit of a concern when it comes
+to how this service is built, how it was rolled out,
+and the details of how it's implemented from a risk model.
+But before we jump into that, already in the chat,
+I'm seeing people say things like,
+that's why I don't trust hardware wallets.
+You should use a paper wallet.
+I'm guessing somewhere soon we're going to see,
+I built my own solution with Linux, Tails, a Raspberry
+Pi, and some epoxy glue, whatever.
+We're going to see a lot of those kind of reactions.
+And I want to be very clear before we go into any detail.
+A hardware wallet is the best and safest solution
+for the vast majority of users.
+99.99% of users still is.
+Building your own, doing a DIY solution,
+using obsolete paper wallets, trying
+to do some weird encryption scheme,
+using a USB stick, a custom Linux installation,
+all of those things are much, much more
+risky than simply buying and using a hardware wallet
+correctly.
+And the biggest risk with all of those solutions
+isn't that you're going to get your keys stolen.
+It's that you're going to make things so complicated that you
+will inadvertently exceed your own technical capability
+and lose access to your own keys by accident.
+Or you'll create a solution where you've--
+without really knowing what you've done,
+you've shifted the risk model so far
+into protecting the confidentiality of the keys,
+but you've degraded availability,
+availability being the ability to recover.
+And at that point, you don't notice that
+until you lose your seed.
+Yeah, one way that I try to break this down
+is actually a mantra that we see very often, safety in numbers.
+Now, virus in numerous, this is a motto
+that we see all the time.
+And people usually talk about it in terms of cryptography
+and the very large numbers that are used with private keys.
+This actually applies in many different situations.
+And one of them is just your own security model, your own setup.
+If you have a novel setup, if it is a do-it-yourself thing
+where you're potentially making decisions and going down
+this logical path that few have ever tread before,
+it's far more likely that there are
+weaknesses in there that you've missed.
+It's actually very similar to open source development.
+The more eyes that you have on something,
+the more likely it is the weaknesses
+will be found and addressed.
+And that's true with all of these hardware manufacturers
+too.
+Look, Ledger is a huge company.
+They have a ton of money.
+I'm sure they have a ton of engineers.
+They have one of the most well-respected security teams
+out there.
+And they have put a ton of resources
+into ensuring that their products are quite secure.
+Yeah, interestingly enough, one of the articles
+that did an analysis on Ledger's recover service
+mentions that in the entire existence of the Ledger
+company, which is almost 10 years old,
+I think eight or nine years old now,
+they had sold 5 million devices before FTX.
+And then they sold another million devices just since FTX.
+So that's obviously a huge number of new users.
+So let's talk about recover in a bit more detail.
+I'm going to throw out a few technical terms
+for our audience.
+Whether you are into the technical terms or not,
+they won't be necessary to understand
+what we're talking about.
+First of all, how does Ledger split your seed?
+They do so using an industry standard algorithm called
+Shamir's secret sharing scheme.
+And this is one of the few actually mathematically
+provably secure cryptographic algorithms developed
+by Shamir in the early '70s.
+So it's a very old concept.
+And it allows you to take any number
+and split it into n independent shards, of which you
+need k of those shards in a k of n scheme to recover it.
+So let's say you split it into three shards, of which you
+need two.
+And you can calibrate Shamir's to do 3 of 5, 4 of 10,
+26 of 1,024, or whatever combination you want.
+In this particular case, they're doing a 2 of 3 Shamir scheme.
+The algorithm is well understood, well known.
+Basically, what the mathematical proof of Shamir sharing scheme
+allows you to know is that having one shard
+is mathematically equivalent to having no shards,
+meaning you gain nothing from having only one of the n
+shards.
+If you have essentially anything less than k,
+the quorum, the minimum number, which in this case is 2,
+you have nothing.
+It's not clear that what is transmitted from your ledger
+device is just the shard, though,
+because for obvious reasons, they
+have to be able to identify which shard belongs to whom.
+And so when you sign up for this service,
+these shards would have to be attached somehow to you
+so that they can identify you in case of a recovery.
+The technical details don't really matter,
+but there must be some identifier there.
+And so very importantly here, and this
+is a nuance in the FAQ, the original device
+that did the split is not required for a recovery,
+meaning that there is no secret encryption
+key or other identifier that is tied to the original device.
+You can lose the original device.
+And they can recover to a new device
+using only the shards and your identity,
+which you prove to them by showing them a passport,
+doing a live video interaction, probably waving your hand
+in front of your face to prove that you're not a deepfake AI,
+and things like that like we see nowadays.
+So what do we know?
+We know that this service allows you to split your seed
+into three components.
+All three components are sent out
+of your device over the internet to three different providers.
+These three providers have been identified as Ledger
+themselves, the company, a company in, I believe,
+the UK called CoinCover, and a third company in the US
+called Escrowtech.
+Each one of these companies will have only one of your shards.
+There's a bit more information in their newest post.
+They say they create an ephemeral encryption key
+in order to transmit these.
+And I'm going to take a guess here,
+but I'm guessing what they're doing
+is they have the public keys of Ledger, CoinCover,
+and Escrowtech in the firmware of the device.
+And the ephemeral encryption key is
+created using the Diffie-Hellman key exchange protocol.
+That would probably be the most standard way
+of doing such a thing.
+Again, these are robust, well-known encryption
+mechanisms.
+So then, OK, I mean, this sounds good.
+It's based on open, well-known cryptographic algorithms.
+But right away, I have three problems with the way
+this was rolled out.
+The first problem, and probably the most important problem,
+is this is being pushed to Ledger Nano X, I believe, or--
+I think it's everything after the S.
+So my understanding is the Nano S does not
+have sufficient memory to be able to perform the operations.
+Right, so this is being pushed out
+to all of the new Ledger devices.
+It's being put into the firmware whether or not
+you sign up for this service.
+So the capability to export--
+or some people might use the word
+"exfiltrate" if they wanted to be meaner towards Ledger.
+Exfiltrate, your private key, is being
+embedded in the firmware of every Ledger device
+the next time you update your firmware, whether or not
+you choose to use this.
+So that's problem number one.
+And we'll go into a lot more detail with that.
+Problem number two, because of the KYC requirements
+for recovery and the fact that the original device isn't used
+or needed to do a recovery, that means an identifier
+that connects this shard to your identity
+must be available to someone.
+And third, these three companies are
+located in three different countries, the US, the UK,
+and France.
+And they are entities subject to the jurisdiction
+and legal process of both national and international
+organizations.
+And therefore, they can be coerced, perhaps only slightly
+coerced, to give a shard to law enforcement,
+given some process which you do not control, which would then
+allow any law enforcement agency that
+could get two of these companies to give the shard to seize
+your money, freeze your money, reveal or find out
+how much money you have stored on these device.
+So these are the three big problems I have with this.
+And we can look at them one by one.
+Do you see any other really big concerns
+that people have brought up?
+Well, I think a lot of the outrage
+was the fact that people have realized
+that key exfiltration is possible.
+And this is, I think, generally a misunderstanding
+across the entire space of what the guarantees of these hardware
+devices actually are.
+Obviously, the firmware of these devices
+can access the private key material.
+People just haven't understood that you're hoping--
+and especially in the case of Ledger being closed source,
+you're trusting that they simply do not
+make that functionality available.
+So we can look at other devices.
+And we can literally look at the APIs, the programming
+interfaces that are made available to developers
+such as myself when we want to interface with the device.
+And we can see there is no way to make a call to that device
+to ask for the private keys.
+But that doesn't mean that that functionality
+couldn't be added in the future.
+Well, there is now.
+In this particular case, there is a call
+to be made because if you sign up for Ledger Recover,
+you would obviously need to activate this.
+Now, there is a key point to mention here,
+which is that you would need to authorize it from the device.
+And Ledger is saying that this is equivalent to authorizing
+a signature from the device.
+And it requires the same level of trust
+the hardware manufacturer.
+I disagree with that.
+I think the fact that there is code that takes the key,
+splits it into fragments, and sends it
+to three different parties in the device
+means that the barrier to exfiltrating the keys
+is now I have to socially engineer the user
+to do that and somehow compromise those keys.
+But it now means that the code is in that device.
+And the real problem is that even
+if I haven't decided to participate in Ledger Recover,
+the code for it is now going to be pushed from my device
+if I connect it and allow it to do a firmware update.
+So I didn't opt into the service,
+but I am opting into the capability being
+installed on my device, which in my opinion
+makes it kind of a breach of the implicit relationship
+between me and the manufacturer of this device
+that I used to decide to buy it.
+I bought this to do cold storage and self-custody.
+I didn't buy this to do hybrid custody.
+And I didn't consent to that.
+So I did trust the manufacturer, of course.
+I had to trust the manufacturer.
+But I trusted the manufacturer based on, among other things,
+assurances they made that you cannot ever take
+the private keys off the device.
+And now they've actually put code
+in there that does exactly that.
+So I have a problem with that.
+Now, before people kind of jump to conclusions
+and start running around, I think
+it's important to mention a couple of things.
+One, there will be a large number of phishing attacks
+in the immediate aftermath of the controversy that
+surrounded this that will attempt to persuade you
+that in order to not have this feature,
+you need to get this other firmware,
+or you need to put your seed into this other website.
+And in reality, people acting rashly, quickly,
+with speed, panic, and kind of with a need
+to do something quickly is often the way
+that people lose money.
+So my first advice would be, if you have money on a ledger that
+has not been connected and had its firmware updated,
+or it's an older model like the S,
+you don't need to do anything.
+Right now, you don't need to do anything.
+Even if you have a ledger that's on the newer firmware
+and maybe has even had that firmware installed on it,
+you still don't need to do anything right now.
+But you might want to think carefully
+about whether you connect that ledger back to anything
+and do a transaction.
+Because the next time you connect it,
+you're going to get the firmware updated,
+and you now have a new capability in there,
+which may not be on, but it's in.
+And that's a problem, at least in my mind.
+And that means you can also be socially engineered,
+potentially, to participate in this scheme
+without your knowledge.
+So first of all, don't do anything.
+The fundamental security model of hardware models
+hasn't changed, of hardware wallets hasn't changed.
+A ledger that you have and you've stored securely
+where you have a good backup of your seat continues to mean--
+it continues to be a perfectly suitable device
+for cold storage.
+You shouldn't be doing frequent transactions on that device
+anyway.
+I don't use a ledger for cold storage.
+And I'll talk a bit about that in a second.
+I do use a ledger for my operating account,
+for things like my store and little expenses for my staff.
+And I'm perfectly happy to continue using it for that,
+because even if the system is completely compromised,
+the loss is small.
+So that's number one.
+Right?
+Would you agree with that assessment, Jameson?
+Or do you have a different take on it?
+Yeah, I mean, we're not advising anyone
+that this is an emergency where you
+need to stop what you're doing, because keys are at risk
+immediately.
+But we've been providing integrations
+with a variety of different manufacturers over the years.
+And firmware upgrades are just a part of life.
+And this is another interesting point
+to get into, the sort of open source versus closed source
+nature of it, is that especially any closed source devices,
+they could be giving you firmware updates.
+And they could be providing key exfiltration functionality
+in those updates and not telling you about it.
+So you do at least have to get ledger some props
+for being open about the fact that this is now being added.
+They're not trying to hide it.
+Obviously, the PR disaster is due to people
+feeling like there have been certain trusts and assumptions
+that have been broken as a result of it.
+Yeah.
+So we've got a few questions here.
+Someone says, what happens if people don't update firmware
+and you don't use it with Ledger Live,
+you use it with a third-party program?
+You can use it with MetaMask.
+You can use it with Electrum for Bitcoin.
+You can use it with any number.
+There's probably 30 different software front ends for Bitcoin
+and 30 more for Ethereum and other chains
+that have hardware wallet interfaces that you
+can plug your ledger into.
+You don't need to use their software.
+And in some cases, in some scenarios,
+I certainly have found other pieces of software
+have better things for managing fees
+and are more up to date on some of the other features
+you might care about.
+So one of the key concepts of a hardware wallet
+that you should always consider is that the companion software
+is not necessary for you to be able to use that device.
+And sometimes the companion software
+isn't right for your needs.
+Here's a caveat.
+And this is something that's going to become an issue.
+And it's the same thing with when, for example,
+you have a fork in a chain.
+If you refuse to do the update, your software is--
+or your firmware, in the case of a hardware wallet,
+is now in a state of decay.
+And that decay occurs because the technology moves forward,
+vulnerabilities are found, bugs are found,
+little errors, inconveniences, perhaps not critical bugs,
+but still annoying bugs, the overpay fees, for example,
+or other things like that.
+And so the longer you leave that device
+without upgrading the firmware, the less useful
+it becomes over time.
+There's a very good chance that you will still
+be able to access your Bitcoin, your Ether, et cetera,
+but maybe some other more obscure chain is deprecated,
+a new one is added that you haven't been able to use,
+the fee management scenarios have changed,
+new protocols for addresses are introduced.
+So you'll still be able to use it, but it might not be fresh.
+So one of the big considerations here
+is if you let your ledger sit and rot
+and refuse to do firmware updates,
+effectively you're saying that you've given up on that device.
+Maybe it's better to consider a new device
+if you've reached that point in your risk analysis.
+I mean, there's also a software dependency issue.
+It's hard to put an exact time frame on it,
+but whatever that companion wallet software you're using
+is having to use software libraries to allow you
+to interface with the hardware device.
+And so generally over a long enough period of time,
+they may upgrade the libraries that they're using
+and in fact break the compatibility
+with whatever your old firmware version is.
+Yep.
+And you say it's hard to put a time frame on that.
+I found that after three or four years,
+it starts getting tricky.
+So I've had situations where I tried
+to use an old hardware device, not just ledger, others too.
+And the device drivers, the operating system infrastructure,
+the libraries, the Python libraries,
+the whatever else I need to use that has all changed
+and maybe it doesn't support that old firmware version.
+So that's a problem.
+All right.
+So the other...
+So people who have ledgers, who bought ledgers before,
+this was available,
+who do not intend to use the recovery feature
+are now facing a rather awkward kind of dilemma
+or conundrum.
+Do I still use this device knowing that they might add
+some unnecessary features,
+which slightly maybe increase my risk?
+Maybe it doesn't.
+We don't know.
+We can't know.
+And, or do I switch to a new device?
+And first of all, I would say there's no urgency here.
+So I would say that if you do decide to switch
+to another device, don't try to rush this process.
+Very carefully, get a new device, get familiar with it,
+set up a new seed, figure out all of the mechanics,
+test it, back it up, restore it, wipe it, restore it again,
+make sure everything's working, send a small test amount,
+send it back out after wiping it.
+And once you're very, very comfortable,
+maybe then you should move your money off that seed.
+I would certainly do that from my perspective.
+And I take my time doing that.
+If you decide you want to use the ledger recover service,
+you should know the risks that come with that.
+And I think the risks that ledger is most underplaying
+are the risks of a government imposed seizure
+or freezing of these things.
+They basically de-decentralized this.
+They've taken a self custody solution.
+And if you use recover,
+it's essentially a hybrid custody solution,
+if not a custodial solution.
+And those custodians can be coerced to seize your money
+or reveal how much money you have.
+- We also don't know what the social engineering risk is.
+I guess we don't know exactly
+what the authentication procedures will be
+if you are a ledger recover user
+and how an attacker might be able to pretend to be you
+and you convince them to basically let an attacker
+reconstitute your private keys.
+- Yes.
+Back in the day, I tried to build a company
+to help do this kind of recovery.
+We called it third key recovery solutions
+or third key solutions.
+And what I found was the inflection point was
+you can either do this at very high levels of security
+and authentication, or you can do it at scale, but not both.
+A ledger is saying you can do up to three changes a month
+and no more than 10, up to three recoveries a month
+and no more than 10 per year per user.
+They have 6 million users.
+If this has any uptake whatsoever,
+the actual standards they're going to have to use
+for identifying users are going to have to be fairly soft.
+And the other thing I'm thinking about
+is they've talked about how the shards are stored
+in hardware security modules by the three escrow companies.
+- That generally means internet connected.
+- That means internet connected HSMs
+that are API driven.
+It doesn't mean HSMs that are air gapped
+with further fragmentation of the private keys
+to access the HSMs and multi-user, multi-factor,
+insert three cards for many of the five executives
+'cause that doesn't scale for operational reasons.
+And to add another concern,
+all of this is happening just when the ability for AI
+to deep fake voice and video
+has gotten so incredibly sophisticated.
+So again, this is one of those difficult situations
+where I don't know if they can do this at scale
+without sacrificing security.
+I do know someone who can do this at scale
+and that's the US government in unmasking,
+seizing and freezing assets of people all around the world.
+They can do that at scale.
+And so that's the other big concern I have.
+The UK, the US and France
+are not three wholly independent countries.
+They're all members of the Five Eyes surveillance network.
+They're very strong military partners.
+They collaborate on a number of law enforcement things.
+Two of them are in Europol.
+One of them controls international law enforcement
+in many ways.
+And the irony that struck me
+is one of the reasons I got into Bitcoin
+and one of the things that was monumental,
+instrumental in my initial adoption
+and interest in the technology
+was this started with WikiLeaks trying to fundraise
+while Julian Assange was being accused of treason
+for revealing the war crimes
+of the British and American government.
+And guess what?
+The US and the UK are collaborating very closely
+to punish a journalist
+who told the world about their war crimes.
+And Assange is the victim of that close collaboration.
+So two of the three shards being in the UK and the US,
+they might as well be in the same place
+as far as I'm concerned.
+That is not filled me with confidence.
+- Yeah, and we can talk about,
+obviously the technical details all day long,
+but I think another easy way to give people an idea
+of really what the security,
+even from Ledger's perspective of this particular feature is
+I believe in their documentation,
+they were suggesting that you not do it
+for more than $50,000 worth of money.
+- That's the insurance provided
+by one of their partners CoinCover
+so that if something goes wrong and you lose your money
+because of this, they cover you up to 50,000.
+Again, so, okay, so maybe this is really targeted
+for operational wallets
+and the vast, 50,000 is a lot of money
+for the vast majority of the 6 million people
+who have Ledger devices.
+I would guess that 90% of them have less than 50,000
+on those devices.
+So maybe it's a suitable.
+So you have to think about this
+from your own risk management perspective.
+Are you comfortable with a hybrid custody solution
+that is not exactly as custodial as a single exchange?
+It's not exactly as self-sovereign
+as a much more decentralized solution.
+And the one your company provides is an example of that.
+And so you have to kind of balance these risks out.
+I don't think there's any reason to worry about that
+unless you wanna take advantage of that service.
+So the final kind of thing that comes out of this
+is how this was all rolled out.
+I don't know what the hell is happening at Ledger,
+but when you're dealing with a community
+that is as careful, some would say paranoid,
+certainly tuned in and ready to jump
+and worried about geopolitics
+as the community in the cryptocurrency space is,
+you don't design and deliver a feature like this
+with very little independent audit,
+with very little independent oversight,
+with a modicum of half-failed answers
+and then let PR manage the ensuing crisis.
+This is another example, I think,
+of Ledger being really tone deaf
+to this community and its concerns.
+- Yeah, I mean, my take was that
+they probably had plenty of internal meetings
+and they were running some numbers
+and they were saying, like you were saying,
+probably the vast majority of our users have under 50,000
+and this will help a lot of them not lose their keys.
+And I think they were probably just focused
+on the market segment that they're targeting here.
+And it seems like they just forgot
+about the rest of the market
+that is not interested in that.
+- Yeah, absolutely.
+And didn't learn from past experiences
+of very badly managing the aftermath
+of a botched situation as happened
+with the leak of their database.
+So I don't use, I mentioned before,
+I don't use a Ledger for cold storage.
+I use it for an operational account only
+and maybe that's exactly their target market.
+If you are using a Ledger for cold storage
+and you want to switch to another solution,
+as I mentioned before, I would start with a fresh seed.
+It doesn't have to be 24 words,
+as someone said in the chat, 12 is enough.
+And this is because the fundamental security
+of the elliptic curves is really 128 bits.
+So 12 words is enough and is easier to not lose and back up.
+But you must test it.
+The way I test it is I create, generate the new seed.
+I back it up on a durable medium.
+Steel is my preferred solution.
+I think I have, actually I have one of the devices
+I use here.
+Let's see.
+This I've shown it to you before.
+It's a crypto steel capsule.
+I'm sure you know this one, Jameson.
+And what it is, is a series of stamped disks
+that have letters on them that go around a rod
+and inside the steel tube,
+the whole thing is stainless steel,
+impervious to fire, corrosion, floods, whatever.
+Great, that solves it.
+I then wipe the device or I send a dollar to it.
+Then I wipe it.
+And then I recover from that,
+from the actual thing that I'm going to recover.
+So I'm training and recreating the exact circumstances
+of a zero basis recovery,
+where I start from the only backup that I have left to me,
+which is the stamped steel, all the way back,
+and then try to send that dollar back to myself
+and execute a signature and transaction.
+Once I've done that,
+I know that I have a complete operational cycle
+for that device.
+Now, obviously that's a one copy.
+You would probably want two copies of your seed.
+And then if you want to get into more complicated things,
+there's a number of other options.
+For Bitcoin, I'll tell you my recommendation.
+For Bitcoin only solutions, I use a cold card.
+Again, I happen to have my,
+the Velcro ripping you here is the Faraday bag they're in.
+So this is a cold card.
+It's a transparent case.
+You can actually see all of the hardware inside.
+This is a Bitcoin only cold storage device.
+It's completely air gap to use an SD card inside
+to move stuff from one device to another.
+There are a number of other hardware wallets you can use.
+I'm not gonna show you the rest.
+For if you want to do multi-currency,
+there are other wallets that are available to you.
+I quite like the Trezor,
+which is the original hardware wallet that I bought.
+They're obviously a direct competitor to Ledger.
+And I would say that at least,
+I don't wanna say they've done a better job
+because I think Jameson, you were very gracious
+in saying that they think of the market
+that they're addressing.
+And that market is low value, not cold, cold storage,
+not particularly paranoid about government action
+and more interested in an investment vehicle
+and adoption of this.
+And for that market, maybe this is the right answer.
+I can tell you one thing,
+the people who make Trezor
+were never going after that market.
+And they make decisions that indicate that.
+One of the things that I find disappointing here
+is the way that these decisions were made by Ledger.
+And I wish they had better ways of communicating.
+No hardware wallet is perfect.
+Someone else pointing out Trezor has issues too.
+They're partnering with a company that supports censorship.
+I would take that with a grain of salt,
+but every company has issues.
+Companies are entities.
+They're subject to various jurisdictional environments.
+They have decisions made by fallible humans, every company.
+But I will say that, and going back to how we started this,
+a hardware wallet is still better than the DIY solution
+that you carve your own path through the jungle
+and hope that it's a good path.
+And it's much less likely to cause you to lose money.
+All right, I think we've covered a lot of things.
+Let's see if there are any final questions on the chat.
+And then maybe, Jameson,
+maybe you have some additional thoughts to wrap up on.
+- Yeah, you know,
+Kasa, my company has been focused
+on the super extreme cold storage solutions.
+And we're able to do that
+because these hardware companies
+don't necessarily target the same market.
+You know, like you said, there's trade-offs with everything.
+You can go to the extreme
+with any of the decisions that you're making
+when trying to architect your setup.
+And that's what we try to do
+is help people think of absolutely everything
+that can go wrong.
+Because, you know, let's be honest that, you know,
+regardless of if you're using cold card,
+Trezor, Ledger, Bitbox, whatever,
+those are still, you know,
+physical single points of failure, right?
+You don't have redundancy.
+You kind of touched on it a little bit
+with some of like the seed backup problems
+that like, if you really wanna have
+robust redundant seed backups,
+then you actually need to do
+like some splitting of the seeds.
+Maybe you wanna do a seeds or of your seeds.
+And we start going down these rabbit holes that, you know,
+we could spend the rest of the day talking about.
+- Yep.
+And one of the challenges there is that
+for people who are experts
+who are designing possible solutions
+for different levels of risk,
+these kinds of decisions about,
+should I split?
+Should I use a passphrase?
+Should I do more than just the basics?
+Are very carefully balanced
+and they're balanced across multiple concerns
+and multiple possible threats.
+When, let me put it this way,
+when amateurs do this,
+when non-professional people who haven't been trained,
+don't have experience in information security
+trying to do this,
+one of the difficulties is there's two hidden variables
+that they often overlook in their assessments.
+The first one is violating the keep it simple,
+stupid rule, the KISS rule of security,
+which is security that is simple to execute,
+simple to operate,
+is usually going to be more successful
+than overly complex things.
+And the problem is that keeping it simple
+is relative to your own technical expertise
+and the technical expertise of the people
+who will clean up after you when you're run over by a bus,
+the family that you hope to leave
+your oodles of Bitcoin to.
+Between those two principles,
+a lot of people make a very obvious and bad mistake,
+which is they make something too complex.
+It either exceeds their technical ability
+to operate it consistently
+and then they lose their keys by accident,
+or it certainly exceeds the technical ability
+of their heirs to operate.
+And because it's a path no one has gone down before,
+or it hasn't been sufficiently documented,
+no one can figure where the treasure is buried.
+So the reason why a treasure hunting stories
+is so appealing in popular culture
+is because people violated the KISS rule
+and buried their treasure through layers and layers
+and layers of obfuscation.
+The Da Vinci Code would be a very boring movie
+if someone had a well-developed operational security manual
+that they'd left behind.
+So one is that, and the other one is,
+the other hidden variable that will bite you in the ass
+is that while you can see all of the things you're doing
+to make it harder for someone to steal your money,
+you're not seeing all of the compromises you're making
+in the overall availability and recoverability
+because you don't exercise recoveries often enough.
+And so an amateur will make something very hard to steal
+at the expense without realizing that this is a trade-off
+of making it recoverable,
+and then will lose the seeds themselves
+and not be able to recover it.
+So be very careful.
+Generally, I recommend people do not do DIY solutions,
+Glacier Protocol, paper wallets, et cetera, et cetera.
+There is one nuance here and a question from the chat
+that I want to ask and answer.
+Jeremy asks, "What if there was a passphrase
+on the seed phrase with a ledger?
+Would that be sharded off also,
+or would that be on the end user to keep safe?"
+There's no clarity in the documentation of ledger,
+so I'm going to make a guess here.
+The ledger says specifically the what they shard
+is your pre-BIP39 seed,
+meaning essentially the random number
+that the seed is built from, right?
+That the words are built from.
+The passphrase isn't added until after BIP39
+converts the number into words,
+and therefore the passphrase,
+by all documentation that I've seen,
+and again, the documentation is lacking, is not backed up,
+meaning that if you have a passphrase,
+you still need that to recover,
+and absent that, you cannot do a recovery.
+Here's the little problem though,
+and I think this is important to understand.
+That's actually not a security benefit.
+That's a recovery disability,
+because if you forget your passphrase,
+it will be very difficult for you to recover,
+but if I don't have your passphrase,
+and all I'm trying to do is crack your passphrase
+'cause I have the seed, it is not impossible.
+So let's talk about that very briefly to explain it.
+There was a really, and I'll go a bit technical
+for those who are interested.
+There was a very interesting compromise
+made in specification of BIP39,
+given the hardware capabilities of the device
+that it was going to run on,
+and that was to use only 2000 rounds
+of the key stretching algorithm PBKDF2
+in the use of the passphrase.
+That means if you're trying to brute force this,
+you have to pick a passphrase, guess a passphrase,
+and then you have to run that passphrase
+through 2000 rounds of a hash stretching algorithm,
+and then you can test to see
+if those addresses have money in them.
+That takes time, but because this was designed
+to run on a little device this big,
+which was a very simple 32-bit processor
+with not much RAM, they limited it to 2000 rounds.
+I wanna give you a bit of a reference for that.
+Modern day password managers like Bitwarden
+or LastPass that you use for that
+are now recommending a minimum number of rounds
+set to 100,000 rounds, not 2000, so 50 times more.
+And many sophisticated users will set it
+to a minimum of 500,000 or a million rounds
+because on my laptop, on my iPad, on my Android phone,
+running a million rounds
+of the password stretching algorithm
+still only takes about half a second to a second.
+If you are a determined attacker
+who has a couple thousand machines
+in a warehouse or data center running with GPU acceleration,
+or you have the money to rent that on demand
+or spot pricing from Amazon,
+you can brute force a short passphrase
+with 2000 rounds effectively.
+It may take you a month, but you can do that.
+And the problem is there,
+you're running into this very difficult balance,
+which is if you make your passphrase too long,
+once again, you just traded confidentiality
+for availability, you're much more likely
+to fuck up the recovery
+and never be able to get back to your money
+'cause you made your passphrase too long and complex
+and didn't back it up.
+And it still won't thwart a determined adversary.
+For example, our friends at the National Storage Agency
+from being able to brute force that trivially
+with the hardware that they have.
+So that's to give you,
+so that's not really the saving grace that you think it is
+for the security model.
+- Yeah, I mean, I'll say anecdotally,
+I think pretty much anyone who has worked
+in the self-custody space,
+we've seen a lot of people just lock themselves
+out of their money because they put a passphrase on it
+and forgot it.
+It might also be worth noting though,
+that this type of like Shamir secret sharing
+of the backup key,
+it's actually something that's possible
+for people to do themselves if you have a Trezor.
+I guess, I don't think you went into it too much,
+but Shamir secret sharing can be a little tricky
+if you're implementing,
+if you're running your own implementation of it,
+there have been a number of times out there
+where software implemented it
+and they accidentally had weaknesses.
+But Trezor's Shamir secret sharing is their own,
+it's not a Bitcoin improvement,
+it's a slip, Satoshi Labs improvement proposal.
+- Yes, slip 30 points specifically
+if our mods could link that in the chat.
+Yeah, go ahead.
+- Yeah, I mean, it's well vetted
+and that is something that I would feel safe recommending
+for people to do if you want it to go down that path.
+- Yeah, and so I recommend if you have a seed
+and you want to make sure that your seed
+is both more available,
+'cause you have more than one copy,
+but more also less easy to steal,
+the correct answer to do it
+is not to come up with your own scheme,
+but to use something like slip
+to break it into a two or three shard situation,
+store those three shards securely.
+And even if someone gets those shards,
+they can't easily,
+they'd have to get to two of those shards
+in order to be able to break in.
+By the way, the other thing is silly,
+but very simple security mechanisms
+that people forget about.
+When you store, let's say you steal backup
+and let's say you do your steel backup
+for your three shards,
+of which two are required for recovery.
+When I store shards or seeds that are sensitive
+that I have money on,
+and I really want to know
+if someone's ever been able to access that,
+this looks fairly dumb and simple,
+but you can get a hundred of these bags from Amazon.
+These are tamper evident bags.
+These ones are from,
+well, there we go, MMF Industries.
+They sell these for churches
+so they can collect cash
+without all of the godly people stealing the cash
+because trust in God,
+but trust in MMF Industries more.
+And what this is, is a bag that once you seal,
+the seal here is heat proof, cold proof,
+crack proof, tear proof,
+and it cannot be opened without distorting it,
+without leaving evidence that you opened it.
+So you take your steel backup,
+you pop it in the bag,
+you sign on the outside of the bag
+so that you can recognize your own signature,
+and you record the serial number,
+which is unique over there.
+You seal the bag, you put it in a safe.
+And now you know if someone's been at your seed
+and you need to do something,
+for example, protect the other two shards
+or move your money or something like that.
+So that's another little bit of advice.
+And all of this ties into a bigger question,
+which Lux Blocks just asked,
+which is what is the best way to plan succession
+in case I die?
+I don't want my family to have the access to the wallets
+when I'm still alive.
+You want them to have, as we say in the industry,
+you want them to have access to your money
+after you die and not a minute before.
+(laughs)
+- Yeah, too bad that usually runs into the Oracle problem.
+Though, there's some improvements in Bitcoin scripting,
+I think that will make inheritance more feasible.
+- Yeah, the problem with this
+is more often not technology, but people.
+Your cousin Charlie, who is a lovely person now,
+but is a meth addict six months from now,
+is the one who's gonna get you.
+And that's where the problem lies.
+For advice on that,
+one of the people I've worked with in the past
+is Pamela Morgan,
+who wrote the "Crypto Assets Inheritance Planning"
+for owners.
+And that's a book that looks at the technical, legal,
+and operational or people aspects of this problem,
+because it's a three-dimensional problem.
+There's people issues, there's technical issues,
+and there's also legal issues,
+where you need to make sure that what you did
+is also compatible so that your heirs
+don't end up suing each other
+and giving all of the money to the lawyers.
+So have we beaten this dead horse enough, Jameson?
+- Yeah, I mean, I think we hit the high level points.
+It's not a super emergency,
+but I think it's another good forcing function
+just to get people to think more carefully
+about exactly what their security model is.
+It's very easy to make assumptions
+about your security model,
+especially if you're not an expert.
+- Yep, and one piece of advice that I try to follow myself
+and I give to others is review your security,
+your backups, your password storage, your safe,
+your important documents, your wills, once a year.
+I usually spend the day after New Year's Day
+doing exactly that,
+or at least within the first week of the year,
+I do a comprehensive review of all of those things,
+make sure I know where my seeds are,
+what devices I have,
+if I've opened any new accounts that I didn't do last time,
+if my passwords are secure, if my family is informed,
+if I have my will updated,
+all of those little things that we leave
+'cause life gets too busy.
+All right, I think that's a great point.
+And PM Mod says, "Casa is another option.
+"They work with people to create inheritance planning."
+I know that's one of the service offerings
+you have for inheritance planning.
+- Yeah, I mean, the short version is,
+when you're paying for Casa,
+yeah, you're getting software and stuff,
+but a lot of it and a lot of the heavy lifting,
+you're really paying for consultation.
+And it's because, as should be obvious from anyone
+who's heard the complexity of some of the stuff
+we've talked about today,
+these can be very personal and individual problems
+and people have different needs.
+And so it's very difficult,
+even for experts to be talking about these issues
+because in many cases, we have to be a little hand wave.
+You have like, well,
+there's a whole plethora of different options
+and we cannot prescribe one specific option
+that will broadly apply for everyone and everyone's needs.
+Just like I can't go and say,
+everyone should use this one hardware manufacturer.
+It's because they all have different strengths
+and weaknesses and it's important just for people
+to evaluate their own needs
+and evaluate what the possibilities are.
+- Yeah, and I think to people's great relief,
+the security models that you and I have to run
+are very, very different from those
+that most people have to run.
+They're lucky in that way, but still distinct.
+All right, Jameson, thank you so much.
+I know this was last minute and you're at a conference.
+I hope you enjoy the rest of Miami.
+I really appreciate you contributing
+to this conversation today.
+- Glad to be here as always.
+- All right, thank you all for joining.
+Have a wonderful weekend.
+Bye-bye everyone.
