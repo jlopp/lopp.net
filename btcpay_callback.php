@@ -14,8 +14,8 @@ $invoice = json_decode(file_get_contents("php://input"));
 // read the JSON encoded data from the relevant file
 $orderData = file_get_contents("./messages/" . $invoice->orderId);
 
-// ignore expired invoices
-if ($invoice->status == "expired") {
+// ignore expired and unconfirmed invoices
+if ($invoice->status == "expired" || $invoice->status == "paid") {
   http_response_code(200);
   exit;
 }
