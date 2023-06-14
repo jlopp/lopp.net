@@ -1,0 +1,583 @@
+Jameson Lopp. Good afternoon. Zach. Thanks for coming on the show. Well, it was awfully
+convenient so I decided to drop by. Yeah, well, the perks of being coworkers. so we're,
+we were going to do a little something different this episode and not talk so much about Bitcoin.
+We'll get to it, but this, the context of this and what we've been planning is really
+to talk about the history of email, right? That was your work before Bitcoin and how
+it got to the, I think he was like abomination or how it got to the state that it is today.
+so maybe just start off like explaining what, what is email on the most basic sense
+and what is the email protocol? How are they different? Right. So when we talk about email
+as a protocol, we're specifically talking about SMTP, which is a simple mail transfer
+protocol. And this, this thing has been around for decades. It
+wasn't really popularized, I guess, until AOL in the nineties. And then of course it
+is really gone mainstream and billions of people are using email on a daily basis, but
+it has a very long storied, complex history. And the sort of the nature of email has
+changed a lot over time. And so if you want, we can just start at the very beginning where
+things were simple and then talk about the layers of complexity that have arisen.
+Yeah. Let's, let's start there. So what was the early days of email like? Cause most of
+everyone listening is not probably not privy to that. Most people use the Gmail and stuff
+of today. Yeah. the very first iterations I believe were actually used on
+ARPANET. So this was the predecessor to what we consider to be the internet, the world
+wide web, as it is today that really became a thing in the early to mid nineties. And
+so back then ARPANET was really a series of like military and academic installations that
+were on this very early internet. it was very intensive to get on to ARPANET
+and there was, it was a very small community and pretty much everybody knew each other.
+It was a very gracious community. Like, it was a bunch of nerds
+who were willing to help each other out because they saw the potential of this new thing and
+they, they basically wanted to help bootstrap it.
+ARPANET meaning the, what does that stand for? The, I don't even really know what the
+acronym is. It's so, it's so, so long, long since he used. So it was a sort of fringe
+thing in the early days of email, bunch of nerds working on this protocol as you said.
+And how did it get to the, I mean, what were like, how did it get to us? Like, you know,
+we use it for everything today and critical communications. What, what, what, what happened
+that it evolved so quickly and so differently?
+Yeah. Well, it was like a lot of technologies, it evolved very
+slowly and then it evolved very suddenly. And so, for the first few decades,
+it was very slow and there was not a whole lot of innovation or, or even 
+people trying to break it or abusing it really the, the, the first abuse of it
+or the first notion of a spam email, I think was in the 1980s and it was basically
+one sales guy. And I forget what he was selling, some enterprise software or something. Uh,
+and he sent out a spam email to basically the entire internet at the time. Wow. And
+it got a lot of backlash and enough backlash that really nobody tried to send spam emails
+for probably another 10, 15 years, until, the internet started going mainstream
+again. But, according to him, he made, he made something like $13 million in sales
+from that one email.
+Because spam was effective back then. Cause you really, he was the only one, there's no
+competition.
+And so why, I mean, it, was it something to do with spam that made people not run their
+own mail or like, why, why don't people run their own mail servers? Like they run Bitcoin
+nodes today.
+Yeah. Now that is the really long, complex, question of what changed over
+the years. I mean, the simple answer is, asking anyone to run any sort of 24
+seven service, is, is kind of an operational task that I think is generally going to be
+relegated to the nerds, because it, it requires ongoing resources and maintenance
+and the willingness to, to maintain something, so that it's, it has uptime
+and it's always responsive because when you're talking about internet protocols, generally,
+this is a dynamic thing where two computers are talking to each other.
+And so if one computer is not responding correctly, then it's broken. So, 
+what happened, not a lot happened, until AOL came along and, and when was
+that like, roughly early, mid nineties. so, before that it was very
+limited, unless you were some, some sort of academic or military researcher, you
+probably didn't have access to ARPANET, but AOL came along and then the sort of commercial
+internet as we know it, and all the other ISPs came along and now suddenly
+anybody who had a phone line could be connected to the internet. And so all of these ISPs
+naturally started offering email as one of their core services. way back
+then the worldwide web, when your commercial internet was a thing, it was so tiny. So I
+would argue that email was probably more interesting and valuable to people in the very early days
+of the internet than the actual worldwide web.
+Then the web pages.
+Yeah, because now, you could instantly talk to anyone else who was also on that network.
+Now, as soon as that happened, other sales people realized this is a new sales channel
+that has basically zero cost to reach millions of people.
+And it's not a competition either.
+Right. And, and so the, the nature of, of email or of the SMTP protocol is actually
+rooted in reliability. So it's all about being able to send a message and be very,
+very confident that that message will get to the intended recipient. And this
+is, this is the same way that the internet itself was architected, right? It was meant
+to be a way to pass messages around the world, even in the case of, nuclear war
+where there was massive devastation.
+Is that like how UDP, cause I've seen the memes where like UDP just sends the message,
+doesn't wait for confirmation.
+Yeah, it's a different type of protocol. there's so many different internet protocols
+out there and they all have different pros and cons and trade offs.
+So what was it about AOL? Cause you said like it was pretty niche until AOL came on the
+scene and then it became like commercialized and people started, all kinds of salespeople
+from all kinds of companies started, started using email. So what did AOL have some, some
+particular breakthrough or product or just good user experience? Like why was it that
+moment that led to that, explosion of, of new users on the, on the internet and
+mail protocol?
+Right. So before the nineties, like I said, it was mostly military and academic
+installations that were running email servers. in the early nineties, we started
+to see corporations start to do it because, at the enterprise level, you would
+have full time nerds who could manage that infrastructure. And, and then within a few
+years, the, the commercialization of, the retail users and these other enterprises
+that started offering email, not just for their own internal employees, but
+for any, subscriber to their service. That's when you saw the hockey stick growth
+of like, total number of email users.
+So before that it was, it was just like your company email address. There was no mail as
+a service that any end user could just sign up for. Yeah. That doesn't make sense. Like
+I have my like Zach at Casa and it's like most of the emails, like the, the company
+related, but at that point, like the, having it like at Gmail or at AOL, that was
+the sort of breakthrough where you could use these other people's mail domain names
+in terms of mainstream adoption. now in terms of like the technical way that the email
+servers were operating, like I said, they were all focused on reliability. So the early
+days, these email servers would actually, they would not only accept email, like for
+your own corporation, but they would often do something called, acting as an open
+relay where they would accept email for almost anything and then try to forward on that message,
+basically the same way the internet itself works with like routing messages. Um,
+so this was like one of the first things that really got abused is, is that, the spammers,
+even possibly before AOL, the spammers realized, oh, there's these corporate networks
+out there and there are thousands and thousands of, of end user inboxes that I can reach,
+by sending one message to the main email server for this corporation, it will
+go to thousands of people. and then basically that same tactic got magnified orders of magnitude
+when the retail, and commercialization of the internet came along.
+And, and so did, did people, they did, I guess they just didn't have the, like your everyday
+end user, it was just, was it easier? Was it more reliable to, to get mail? Cause you
+think it's like one of the most critical parts was the certainty of deliverability of the
+message, right? So it was at that, is it too technical out of reach or, or, or maybe a
+combination of both and why, why that occurred?
+So the, the reliability, that was the main, valuable aspect, you
+know, it's the instant transportation and communication and the reliability that that
+would happen was why email, adoption was so effective, but it was also what resulted
+in the spam, being highly adopted and being effective as a marketing tool.
+Cause there was a single point to spam. Yeah. Yeah. Because, well it, it greatly decreased
+the costs, of, of reaching people. And, and so what happened was the, the, the
+costs started to be imposed upon the email server operators. So when the, when the spammers
+started getting onto these networks and, sending messages to thousands of people,
+the, the email operators at the corporations and at the ISPs, they, they
+started seeing their servers, slow down, crash, just have massive spikes in volume
+of what was being processed. And, they, and of course they were getting lots
+of complaints from the users as well. And so they, they were the ones who were faced
+with this problem. so essentially, the, the, the onus of this problem of
+spam was, on the, the recipient side. So it was, it was kind of a one sided problem.
+Like the spammer could just blast out stuff and, and be fairly, reliable,
+that their messages were going to get to the intended destination. So it was a sort
+of asymmetry that started causing problems and started really pushing forward the evolution
+of what resulted in email becoming very different.
+So was it the, I mean, is spam prevention something that's challenging to accomplish
+effectively? And was it that the centralized servers like AOL and Google and Yahoo, were
+they just much more effective and had the resources to actually deal with this problem
+better?
+Yeah, well, so there were a variety of techniques that were used over the years and, you
+know, this became a cat and mouse game, between the spammers and the email server
+operators, trying to keep the, the signal to noise ratio for all of their end
+users, relatively high. So, what was one of the, really one of the first
+things that happened was the email server operator stopped. they turned off, you
+know, open relay policies and they said, we're, we're no longer going to relay stuff to other
+servers. We're only going to worry about accepting emails for our own domain. Basically. Um,
+that worked for a very short period of time. but then, they realized
+they needed to start figuring out a way to reject email. And the problem here was actually
+that this was in direct conflict with really the primary goal and architecture of email
+as a protocol, which is message reliability. so they started, there were
+some changes to the protocol to, add some codes around, your, your
+emails been rejected temporarily or permanently or whatever. but the, like the specifics
+of how and why you might reject that could be pretty arbitrary. And so the, one of the
+first things that we saw instituted in, I believe the mid to late nineties was this
+idea of content filtering. you may have heard of things like, Bayesian, filters,
+which was, spam assassin was a really popular piece of software that did that. And
+really the idea around that is, we look at all the spam that's happening and
+we look for patterns and then we essentially have kind of, kind of like regular expressions.
+we were looking for patterns in the content that, and then we essentially
+score the content of the email that's coming in. And if it's, if it's above a certain threshold,
+we say this is probably spam, it is unwanted. And that, that kind of worked, but
+it also had a lot of false positives. So now we started having non-spam emails getting
+flagged as spam, which was causing the opposite problem, but, but, or it was still causing
+a problem with the signal to noise ratio. There's the signal was not always getting
+through
+in a protocol where the deliverability is supposed to be the most, one of the most important
+parts. Yep. but, but the protocol has no concept of spam or of, desired
+versus undesired messaging.
+So I think that's actually, it makes me think like, how, how does one define spam? Is there
+a, sort of widely regarded open standard between the major mail providers? Like this
+fits the definition of, obviously it's quite complex, I'm sure, but just like in general,
+is there a...
+Right. well it's, it's subjective and arbitrary, but the definition
+of spam is an unwanted message. and so there is no like technical definition for
+that other than like a human telling you, I did not want, I did not ask for it. I did
+not want this message. So, what happened after your content filtering kind
+of petered out as, as being a worthwhile anti-spam measure? well it really turned into reputation
+and reputation, can be kind of qualified in a number of different ways, but one of
+them was, IP address reputation is like, we're going to look at all of the,
+the email coming from your IP address. And if the content is always looking spammy or
+if our users are giving us feedback that there's a lot of spam, then we're going to start to,
+consider everything from your IP address to be spam and essentially black hole it,
+and not accept it.
+All right. And now, now we're getting to that point where it's no longer permissionless
+is it's censorship and the, the, the individual mail providers are sort of playing a dictator
+in that way on what is, what is allowed to get through to the other side, the intended
+message recipient and what isn't.
+Yeah. but the thing is, a lot of the solutions to spam were actually developed
+as like third party businesses. So all of these email reputation businesses sprang into
+existence, things where they were operating, blacklists that you could essentially
+subscribe to, or, the idea is this company is listening to a lot of the email
+you have feedback for, for other email operators and aggregating it all together and creating
+and managing their own blacklists. there's various like sender reputation services that
+you can opt into and do things to configure aspects of your email so that it will be considered
+less spammy.
+But but essentially what we're talking about is a gatekeeping is what's starting to happening.
+It's like the cost of doing all of these things is also rising, which is continuing to price
+out, smaller players from being able to effectively use email.
+Do you, do you think it was a mistake that the, the, the, the, the spam prevention measures
+were taken sort of off protocol and done by private independent third parties?
+yes. In the sense that it opened it up to being very arbitrary, and also, you
+know, imposed a lot of costs. You're part of the problem is that everyone was looking
+at this as a recipient problem or as a problem for the ISPs or the ESPs, the email service
+providers. And that's what I worked for was an email service provider. So, you know,
+at my company, we, we were really more on the sending side. and we had thousands
+of clients sending many, many millions of emails through our infrastructure every day.
+And our job was to do everything humanly possible to, ensure the deliverability of those
+messages, which if you kind of think about it is kind of ridiculous because the protocol
+itself is supposed to ensure deliverability. But, but what happened was all of these walls
+and really the gatekeeping by, the big players, the tech giants and ISPs and the
+reputation services were what started causing problems for our clients who were mostly,
+on online retail, trying to market and sell stuff to people.
+And that's, that's an especially big gray area, right? You're trying to sell stuff to
+people. And then, we were trying to help our clients be able to navigate in
+both the legal and the, the technical aspects of how, how can you send sales and marketing
+messages that are wanted, so they're, they're not, they're not considered that they're
+not considered spam by the people who receive them.
+And more importantly, they're not considered spam by the intermediaries who are needed
+to approve and relay the messages to get to the recipient.
+Right. This, as you're saying that it makes, it makes me think of Nostra in some ways today
+where the relays, there's so many of the free and open relays today, but there's already,
+developing a market for these paid relays. It seems like a similar, problem is sort
+of...
+It's probably going to be the exact same problem. and, and I wrote a whole article about
+this recently. and well, we have the solution, which is great. we didn't have, well,
+we had a theoretical solution in 1997, I guess. but so, the, the solution is
+to flip the cost problem, away from the recipients and onto the senders.
+The ones who are doing this spam.
+Yes. because when you can impose a cost upon sending the message, you're turning
+it from this arbitrary categorization problem, which is what leads people down the road of
+like looking at content or creating the idea of reputation. and, and, and when you
+go down the reputation aspect, that's when it turns into permissioned gatekeeping of
+having to prove yourself, to be an honest player.
+So if you, you flip it on its head and you impose an economic cost on the sender, then
+you're really saying this sender believes that, whatever they're doing and
+what the message that they're sending is worth, some amount of value to be able
+to do this. Now the, the solution in 1997, Adam back, hash cash, uh,
+that was actually a protocol level, improvement that he was recommending where you were literally
+adding just a small amount of data, like one extra header to the email itself, you know,
+probably like a hundred bytes of data. And, and that data would do a few things, but it
+would basically say and prove mathematically that I, the sender have expended a certain
+amount of CPU cycles and, electricity and value and resources in order to send this
+message. And that in and of itself also, greatly, decreases like the, the volume
+of messages that anyone sender can send out because you're, you're, you're creating this
+bottleneck and resource costs.
+Adam: So why didn't, I mean, cause I know Adam back's quite influential in Bitcoin and
+it was quoted in the white paper. Why haven't that be a obvious problem that existed then
+and having the solution presented some 20 something years ago, like why did that not
+really get adopted into the mail protocol?
+Josh: I mean, I think at least part of it was a, a network effect and a migration
+problem. You can almost look at it as a hard fork versus soft fork problem, right? It's
+like if, if you wanted at least as far as I've thought about it, if you wanted to implement,
+hash cache, then you, in order for it to actually work, you would have to start
+rejecting messages that didn't have a valid hash cache header. Now hash cache was to,
+to be clear, it was implemented in spam assassin. And so that was done in a, I guess you could
+call it a soft fork or backwards compatible way where if you have a valid hash cache header,
+spam assassin would give you a negative score. It would say, Oh, this looks less spammy.
+So it wasn't a black and white thing. but like I said, most email providers stopped
+using hash or they stopped using spam assassin and content based filtering in general, uh,
+for reputation. And now for actual, for, more often it's, it's less about the content
+and it's more about actually user action and engagement that is used to decide what is
+spam.
+Like how they like, like how they're clicking where they're dragging their mouse.
+Yeah. Yeah. and, and feedback from the user. and so, but, but so basically it
+would have been very hard, to get consensus for every email user, even, even by the late
+nineties, we're talking about millions of, of email because there's clients and servers,
+yeah, to get, to get them all to agree to implement that. basically the email
+as a protocol had ossified by then.
+It's too late. Or, I mean, we've, we've discussed quite, quite a few negatives. I mean,
+the obvious of using a centralized email services, the convenience and so forth. we've, we've,
+we've discussed a few of the cons, which would be, the, the ability to not have permissionless
+email or sort of like the man in the middle that's making sure. but then the pros
+of being the reliability of it, what, what are some other, what are some other maybe
+less obvious drawbacks, or, or positives to using, to using a centralized mail
+server versus running, running one on your own, if that's even possible today.
+Yeah. Today, I mean, it is theoretically possible, but it's such a high, cost to be able
+to follow all of the other rules that have been developed outside of the protocol itself.
+this is why entire companies exist to help people with that. I,
+I myself, have never run my own personal email server because if you don't have a team
+of experts doing it, it's way too much of a time suck. these days it's, you
+can run the server and you can send a message from it and it might even work for a little
+while, but it's basically guaranteed that you're going to get blacklisted at some point
+and probably possibly not even due to your own actions. It could potentially even be
+due to actions of people with, an IP address in the same range as yours. Um,
+so there's a lot of other things that have happened. Like for example, a lot of, of email
+providers, or even ISPs will block port 25 and the reason, and that's the SMTP port.
+and the reason for that is that, one of the other things that spammers
+did in the early days, they, they started writing malware that to run, in fact, everybody's
+computer and send email directly from those computers. So when the ISPs had to deal with
+that, what did they do? Well, they just blocked all the traffic from all residential connections
+that were trying to send email.
+I noticed that I was, cause I set up a Google cloud server and it wouldn't let me open,
+cause I tried to run my own mail server and I was like, nope. That's actually what's
+sort of led me down this thought of wanting to have this conversation with you is that
+I was, I've, I've been using a Gmail for my, podcast email. And I was like, well,
+it would look way more official if I had like, my own email domain, kind of like
+you have. So, I mean, you have, cause you have app@lop.net. So how do you, if you're
+not running your own mail server, how does one still get that, identity if
+you will, even though, and maybe you could, could you explain the difference between having
+something that looks like, that's identified and branded as your mail server
+versus actually running your own mail server?
+Right. So, basically you can set up DNS records, the MX records
+basically for, that, that say, I own this domain and, and by the way, the
+mail servers that handle email for this domain, incoming emails, these are the IP addresses
+of those email servers. And all of that, like you said, it can look good,
+but from a like personal sovereignty perspective, it's all third parties all the way down. Like
+domain name system is third parties and controlled by ICANN, which is controlled by government
+entities.
+It wasn't supposed to be this way, right? Like this was not the initial vision of the
+mail protocol. I, to my understanding.
+Yeah. I mean, the idea of, of an internet protocol is that anyone who follows
+the technical specification of the internet protocol should receive the guarantees that
+that protocol provides. And that's really what we're talking about now is all of these
+other meta rules that have been, slapped on top of the email protocol over a very long
+period of time, decades, that have crippled the underlying protocol to the point that
+it actually no longer works.
+So it's like, it's not even really a protocol in the same way that we would look at Bitcoin's
+rules as a protocol, right? Because if you as Bitcoiners, if you fit the rules, it's
+it works. but this is, is not, not the case anymore. Were there, I mean, other than
+the just slow and steady, shift towards centralization, which just maybe may
+be due to laziness or lack of education or lack of a reason, other than that, like,
+what do you think were some major perhaps mistakes or, or, or, or sort of things that
+led us to, to get here in the development of evail over the last 20, 25 years, the critical
+junctions that we crossed that maybe affected the outcome later on.
+Yeah. I mean, there was no one single decision and there was, it wasn't a conspiracy. It
+wasn't the result of some authority coming in. really it was, it was a matter of
+incentives and people choosing the sort of naive easiest solution for stuff.
+So they were looking out for their own individual incentives or like what's the, but isn't Bitcoin
+in that with that same sort of game theory, like looking out for yourself somehow makes
+the whole system work. it's the protocol sort of expects you to be selfish in a way
+and a number of different ways. Yes. Like that's why, that's why Bitcoin has survived
+for so long is because the incentives are pretty well aligned, but the, not in every
+way though. the incentives, I would say like from a self sovereignty
+perspective, the incentives in Bitcoin are not as perfectly aligned as I would like.
+And we can already see plenty of examples of that. And really the biggest one is just
+the fact that, the vast majority of people are acquiring their Bitcoin through a trusted
+third party. And then the default, that's the default path. And then the default, uh,
+next step is nothing and they just leave it with that trusted third party.
+Right. And that to me is analogous to using the mail server that somebody else is running.
+sure. You may, you may get, get your Bitcoin most of the time, or you may, if
+when somebody sends a deposit to your address, normally you'll probably get it. But what
+if, what if that provider decides, Oh, no, no, no, this isn't fit. This doesn't work.
+Yeah, pretty much. So, if you in an optimal environment, if you were running
+your own email server, then it should not be possible for you to be de-platformed, right?
+You're sovereign as long as you have an internet connection, which, even the
+ISPs themselves, but I mean, I've, I've, I've set up, multiple redundant
+ISPs, just for that reason. But, now, with both like, your, your Gmail
+account or your, Coinbase account or, or whatever, if you do, or if you do the
+wrong thing or you don't do the right thing, or you're even just like living in the wrong
+place, any number of arbitrary things that you do or do not do may result in, uh,
+you being disenfranchised, your account shut down, you no longer have access to your, your
+email or to your money or whatever. And so it's really the same type of problem.
+Right. And, and so when you're using Bitcoin in this custodial way, you're essentially
+taking a step backwards in a way and, or you're, you're, you're going the email problems that
+were already figured out where we were kind of going backwards and not learning from those
+mistakes that were made. Have we, have we already started making, I mean, clearly it
+sounds like we are, we need to be cautious and quite alert about this because it sounds
+like we're heading, or at least we could be heading down the wrong path when it comes
+to Bitcoin and, and the protocol development. I mean, it's still early, right? We're, we're
+less than 15 or basically 15 years in, and part of what sparked the nature of this
+conversation was that I'm worried that if we don't take action sooner, this is that
+critical juncture in time where it could be co-opted where if, if, five to 10
+years from now, people are still major, by, by most cases using Coinbase as
+their wallet, not using self custody. I, I fear that it may too be compromised and a
+protocol level, especially once it becomes ossified.
+Right. So there's, a big problem, which is a convenience. Like we have to assume that
+the vast majority of people will take the path of least resistance, the most convenient
+path. And so that's, that's why, right now it's actually, I believe a problem that
+people get, they get onboarded through, not only centralized custodians,
+but through the AML KYC regime, which greatly increases your deep platforming risk. Um,
+and there are, there are certainly risks lower in the protocol. Like if we, if we look at
+it from a scaling perspective, an optimistic take is that the, the scaling wars were
+actually quite reminiscent of some of the email scaling history where, you know,
+one of the big problems, the centralization that happened with email and the ecosystem
+of email providers was the fact that higher and higher costs were getting, loaded
+onto the email server operators, essentially the folks handling the receiving and processing
+of all of this email. There's a nearly perfect parallel with the Bitcoin scaling debates
+where a lot of the big companies, really the custodial exchanges, mostly in Bitcoin, what
+did they say? They were saying we're having to deal with a higher load of sending and
+receiving Bitcoin. And because the block size is constrained, it's creating a lot more.
+So they wanted bigger blocks and they wanted to increase the cost and the load for running
+a full node because that would have decreased their costs around like development and maintenance
+and using the protocol more efficiently. and the Bitcoin ecosystem fought
+back against that. And because of the incentives and the way that Bitcoin as a protocol works,
+it was able to fend off that, you could call it an attack. Some people consider
+an upgrade, it's, it's a matter of perspective, but from, from what we're
+talking about, it would have been an attack on the sovereignty of being able to operate
+as your own entity on the Bitcoin network. so I believe that from that perspective,
+Bitcoin as a protocol has stronger, game theory around, selfishness
+potentially making it more robust against what we have seen happen with email. but
+there still is this commercialization aspect of the, the use of the protocol. And so this
+is why, I mean, for over eight years, my focus has been on making self custody easier because
+it's not the default and the, unless it gets easier and easier, fewer and
+fewer relative like percentage of people who come in through these custodians are going
+to even be interested in taking on the challenge and, the responsibility of self
+custody. And, there's also just additional, costs around the, you know,
+the complexity of, of using the protocol on a regular basis, which the, the centralized
+providers have a much easier time of because they get to hide all of that stuff under the
+hood and pretty much. So it's, it's a very interesting ongoing battle, you know,
+for the sovereignty of people in this space.
+And, and it sounds to me that you believe that we're still very much in that critical
+point of, of the battle for sovereignty for Bitcoin's protocol development. Like we're,
+we may have won the battle, the first, or maybe not even the first, but we may have
+won the block size wars battle, which when you explain it like that, it seems encouraging,
+rather than have succumbed to that centralized pressure. But it also sounds like that is
+not the okay. We're not done yet. We can't hang up our caps and call it a day.
+No. So, in 2017, when we finally got segregated witness, uh,
+soft fork activated, that opened up a whole new slew of possibilities. And, you
+know, now in the, the five, six years since then, we start to see lightning
+and, and even other protocols on top of Bitcoin being developed, which have been spurred by
+that. And, and, one of the concerning things is I certainly, especially with
+some of the recent drama around inscriptions and stuff, I, I see concerning, black
+and white, kind of judgment and behavior about protocol changes. Basically people saying
+we need to ossify the protocol and never change it again. Now, from, from one
+perspective that can be a good thing because it gives everyone, some, uh,
+assurance that, you, you use Bitcoin as it is right now and no one's gonna rug
+you by changing the protocol and breaking stuff. But the flip side of that, which actually
+takes us back to 1997 with hash cash, imagine if hash cash had actually gotten merged
+into the email protocol and how everything might have changed and you've gone very differently
+over the next 20 years. so my point being that we should not, blindly exclude all
+possibilities of protocol changes because they're very well, maybe protocol changes
+out there that will actually increase sovereignty. And, at a very high level, one
+example of that is if we want Bitcoin to go mainstream and we want a billion people or
+billions of people to be sovereign Bitcoin holders, they need to have their own UTXOs
+or we need to have new protocols for UTXO sharing that don't exist right now. And the
+only way currently that I see forward will require protocol changes to enable that type
+of stuff. So otherwise, if we also find the Bitcoin protocol right now, the only
+way that I see Bitcoin adoption growing by orders of magnitude is if more people come
+into centralized custodians and just leave all their money with the third party. And
+what are we doing? We're essentially recreating the traditional banking system
+with less privacy because everything is publicly broadcast. Huh. And so, I mean, is there this
+sort of, it sounds, is there like a, some lessons that can be learned from the, from
+the way that email's developed here to make sure that we can sort of track our progress
+against, as we go through the next 10 to, five, 10 to 15 years and Bitcoin
+does sort of become ossified because I imagine it will eventually get to that point. If people
+are calling for it now, they've been calling for it. It's becoming more likely.
+Yeah. I mean, I think pretty much everyone agrees that ossification is a natural process
+of all internet protocols. It's, it's, it's simply a, a function of, of like friction,
+and the larger a network gets, the harder it is to change.
+To change it. Right. And when there's implicit monetary incentives in it too, it makes it
+even harder to, to change it.
+So, what is the lesson? I mean, I think there's, there's no one specific rule
+that we can say, Oh, as long as we don't let this happen, we'll be fine. rather I believe
+the lesson is actually instilling the culture of valuing sovereignty. and so that is
+where, you said, well, it very early on, you were like, well, wasn't email all
+about being able to send messages reliably? Yes. But I don't believe there was ever a
+culture of everyone should be able to run their own email server. I don't think that
+was ever a value. And so as, as a result, it was very easy for it to be corporatized.
+And once you corporatize that, your, the incentives are completely different and
+like the, the, the willingness to impose costs in various places become very different.
+Something as I must imagine is because it's something as rudimentary as money, there's
+more skin in the game, like maybe not everyone is involved, is so passionate
+about the sovereignty of their email or communications. Some people maybe just don't, but, but the,
+the money touches darn near every aspect of life. Do you think that that perhaps is why,
+or do you have another idea of why that may be the case? Why are people more focused on
+sovereignty and why did that element of sovereignty, come about in the Bitcoin world where
+it maybe didn't in the email world? Yeah. I mean, I think it is naturally a touchier
+and more political subject. and, and of course money has been around for
+a long time and we have countless examples of ways that authorities have screwed with
+money. so there's a lot more historical knowledge and learning, I think that can be
+applied there. Whereas, new message networks were not really a thing. Like, you
+know, traditionally message networks had always been just about like physically somebody carrying
+a piece of, of mail from one place to another. Right. And then, and I guess like I'm trying
+to put myself in the, the situation of somebody in the nineties who's in business and you
+know what you were operating before it was much slower, much less efficient, much less
+effective, right? The guy was, you said the guy that's did the first spam made, made a
+killing on it. So at that moment, it seemed probably like the trade-offs of the convenience
+were far outweighed the, the negatives of the, what, what, what, what the path that
+it may lead people down. How do we know if we're on that path today in Bitcoin and are
+there ways that we can measure, like, is it a number of coins held on exchanges increasing
+or decreasing? What are the things can we look at? There's a lot of metrics we can look
+at now, of course, it's a pseudonymous network, so we can't say, exactly
+this number of people do this thing, but we can get some rough metrics around while we
+know somewhere in the range of 15 to 50,000 nodes are being operated out there. You know,
+some people probably run multiple nodes like myself. yeah. we, we can do some rough
+on-chain analytics and say, this percentage of, of total Bitcoin is held by
+like known custodian third parties. and then we can kind of hope that that means that
+the rest of it is more widely dispersed amongst individuals. So yeah, there's stuff that we
+can definitely keep, tracking and, and, that's also what I've been doing,
+since 2014 with some of the services that I've been running. but it's just about
+vigilance. And so, if you see something that looks like it's trending in a concerning
+direction, then you have to start yelling and, hope that you can get some people
+to come together to say, yes, we agree that this is a problem. and you let's work
+on a solution. Yeah. I've, the Bitcoin community is the most passionate group of people about
+a specific idea that I've ever seen them and the environmentalists that glue their hands
+to the stuff that's like the polar opposites, but that's the dedication we need to, to fight.
+So I, I wonder if, if, if you think like there, as we just naturally gravitate more
+people into the ecosystem, as it hits more and more aspects of life, if, if, if you think
+that that if left on its own accord, like we don't take the vigilance, right. We just
+kind of let it, let it go and let it, let it do its thing. Like, are we, are we sort
+of trending in the right direction right now? Or are we sort of trending against the sovereignty
+direction? Like if we don't take action, I mean, a little bit of both. you know,
+we've done well on the, minimizing the cost of running a full node. it would
+be far worse if any of the other scaling proposals had gone through, like if the block sizes
+were larger, it would be much, much harder, more expensive to run a full node, which hurts
+the distribution of the network. Right. Yeah. the, I think that the thing
+that I'm most worried about is just the general pace of protocol development where, I
+guess at this point it has been several years since taproot was activated and we don't really
+have any other changes on kind of up, for, for, for being implemented and
+activated.
+Yeah. And, and, and, and people will continue building stuff, you know,
+that doesn't require consensus changes, but, it's the moving forward with more protocol
+improvements, at some pace, like I want to at least see something every few
+years, otherwise it gets longer and longer and longer. And, the,
+the longer it has been since the last consensus change, the, I guess, stronger the, uh,
+ossification proponents will become.
+Right. At the same time, I hear people, criticizing the use of taproot or for, for
+inscriptions and ordinals. to my, like, I don't claim to understand like the technical
+aspect of that stuff well, but to my understanding, it is, it is similar to this sort of shared,
+abstraction. It reminds me of the, the third party tools that are coming about from
+email long ago that aren't part of the protocol where it sort of exists in its own little
+rule set.
+And as long as people agree to operate it, it's not necessarily part of the, of the protocol.
+is that like, and you, you don't have to have a fully formed opinion about this,
+but like, do you think these sort of abstractions that are away from the protocol, like inscriptions,
+which are really being categorized on, ordinals.com, for example, like, are
+those the types of things that we need to be careful about or, or is that totally fine?
+Or is it too soon to tell even?
+I think that any protocol that is sufficiently complex or, or even really what it is, is
+any protocol that has its own programming language, which Bitcoin does, will inevitably
+result in some savvy developers hacking quote unquote unintended or unforeseen functionality
+into it. That should be kind of a given.
+Okay.
+Now, I don't think that it harms Bitcoin. If anything, I think it's interesting to see
+people experiment with, I, I,
+And they're paying the fee, they're paying the fee, like the, the cost is on the sender.
+Right.
+That spam, if people are saying it's spam, it's like, well, they are paying the fees.
+Yeah. So this is also a much larger debate and interesting historical question around,
+quote unquote, Bitcoin maximalism, because really the original stance I would
+say of Bitcoin maximalism was that everything will inevitably be built on top of Bitcoin.
+Now it's a very vague, everything is a wide, wide range.
+Yeah. And, and, and I think what we've seen with some of the drama is that
+there will always be some people who are upset with how some things are built on top of Bitcoin.
+but that is also the permissionless nature of the protocol is that you, thankfully
+you don't have to ask for permission, at least as we're standing right now, as long as you
+follow the rules of the protocol, you can be as creative as you want.
+So with that, we'll wrap by, what are some couple, what are a couple of things that people
+who are passionate about Bitcoin succeeding and want it to develop and not suffer the
+same fate of the email protocol?
+What are some things that they can do to participate and help strengthen the network from, from
+that sort of centralization over time?
+I always tell people to leverage the skills that you already have.
+I feel like a lot of people come into the space and they're like, Oh, I'm not technical.
+Therefore I can't contribute to the Bitcoin.
+And that's absolutely false.
+And, if you're a good communicator, you can contribute by helping to disseminate
+knowledge by helping to distill values into memes that spread, more quickly, than
+having to make memes.
+Yeah.
+I mean, it memes can be interesting and we can have a whole other episode about memetics
+within Bitcoin and some of the weird things that have resulted.
+But it's like I said, I think the best defense of all of this is just vigilance and
+awareness and values.
+And especially as Bitcoin goes mainstream, I don't expect that that culture and, and
+those values will scale at the same way, but I also don't think they have to.
+I think with the game theory and the way that the protocol and network are set up, if anyone
+who wants to participate generally can, we try to make the cost of participating
+in various ways as low as possible.
+But anyone who cares enough to devote the time and resources to participate, there's,
+there's no gatekeeper that will stop them from doing so.
+So once you have decided that you want to participate in different ways, whether it's
+by running a node, whether it's by, participating in discussions or maybe
+even helping with development, that is helping to grow the network and make
+it even more robust and anti-fragile.
+So if you then become an advocate and you start orange pilling, friends and family,
+that just grows the network effect and makes it even more robust.
+Right.
+Just because it's a technology and internet protocol doesn't mean the only way that you
+can contribute to it is through coding.
+There's a whole world out there that, money will touch every aspect.
+Money already does touch every aspect of life.
+And if Bitcoin is money and believe it'll become the world's reserve money someday,
+then it too will touch every aspect of it.
+So, well, thank you for coming on and, and, pontificating.
+I got that fitted in, about, the history of email and, the future of Bitcoin.
+And we will do our part together to make sure we, we keep it decentralized, right?
+You bet.
+It's, it's up to all of us.
+There you go.
+Wise words from Mr. Jameson Lopp.
+Thanks for going on.
+Thanks for having me.

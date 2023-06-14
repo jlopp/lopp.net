@@ -1,0 +1,475 @@
+Jameson Lopp, welcome to the What Is Money Show.
+Long overdue.
+Long overdue indeed, and we get to do it in person in Miami here at Bitcoin 2023.
+Super excited to have you.
+Just by way of quick introduction, you are the CTO of Casa.
+Casa is a multi-key custody solution.
+You're also an OG Bitcoiner, long-term cypherpunk, and you got one hell of a beard.
+So glad to have you on the show.
+Let's start talking, as we were talking offline, you were telling me some interesting things about nostr.
+I don't know very much about nostr, but I'm certainly interested to learn a bit.
+So what, you said you had this high level technical view of why it's an interesting new communications paradigm.
+Could you walk us through that please?
+Right, so a lot of people, you may have heard of nostr, you probably never used it, not many people have.
+I don't know that many people even know what it stands for. It's an acronym.
+It stands for Notes and Other Stuff Transmitted by Relays.
+So you can unpack that. Notes just means text, messages, passing messages back and forth amongst people.
+Though transmitted by relays, basically a relay is just a server.
+It's no different than, you call it web 2 infrastructure, it's nothing fancy.
+But what's really interesting I think is the other stuff, and that's what people are really missing.
+Because I think most people right now, if they are informed about nostr or they're using it, they think of it as a social network.
+And a social network is only one of many things that you can build on top of nostr.
+Now, you do get some interesting properties as a result of how nostr works.
+Similar to Bitcoin, it uses public/private key pairs.
+If you "sign up" for nostr, all you're doing is generating a key pair.
+And then you are connecting to some arbitrary relays.
+And these relays, they don't even talk to each other. It's not a peer-to-peer network.
+There's no global broadcast mechanism. It's totally up to you as a client to connect to them.
+And then hope that the messages get to where they're supposed to go.
+So right now people basically tweet their messages and we're using nostr as a sort of Twitter clone.
+And we get some better attributes compared even to things like BlueSky or Mastodon, the Fediverse.
+Because those things, they use federated models.
+They are creating a consortium of servers. The servers do talk to each other.
+And you can still kind of get deplatformed because your account exists on one server.
+So if the administrator of that server says, "No, I don't like what you're doing."
+Well, they turn off your account and you have to start all over again on another server.
+So unless you're running your own server, which almost nobody does.
+I don't recommend it.
+Then you're getting some better properties than something as centralized as Twitter.
+But it's not real like pure sovereignty.
+The style of sovereignty that I think we should all go for.
+The cool thing about nostr and being connected to many different servers is that
+even if you get "deplatformed" or blocked by one relay,
+that relay cannot stop you from talking to any of the other relays on the network.
+And your public/private key pair still exists.
+And so you don't lose your audience, even if a relay decides it wants to censor you.
+But stepping back from just looking at it as a social network,
+you can pass really any type of messages that you want.
+So to give you an idea, anything where you're communicating or coordinating with other people.
+So you can create chat rooms.
+You can even create games.
+I think somebody very early on created a way to play chess over nostr.
+Because you're just communicating, "I'm moving from here to there,"
+and then the other person makes their move and so on.
+And more recently, we've seen more Bitcoin-like components being built on top of it.
+So we've seen some folks actually start creating a way to transmit Bitcoin transactions
+and create mempool relaying over nostr.
+We've even, to toot Casa's own horn, we had a team of our engineers that won a hackathon recently.
+I think it was the MIT hackathon.
+And they created a project called Munster,
+which is basically a multi-SIG coordination over nostr
+that also uses the new Music2 Schnorr signature stuff.
+So that the signatures that you create don't even look like multi-SIGs by the time it's all done
+and the transaction is composed.
+And so the way that it does that, it leverages another neat piece of Bitcoin technology,
+the PSBT, the partially signed Bitcoin transaction.
+And so those are the notes.
+The notes that you're passing over this network are just these partially signed transactions.
+And now you can use the, it's not a guarantee,
+but the general reliability of messages being received over this network
+to be able to just broadcast out your part of the transaction.
+And as your counterparties receive it, they can add their part.
+And you just coordinate to join them all together until you've got a totally signed Bitcoin transaction.
+Wow, that sounds complicated yet interesting.
+So what is nostr going to lead us towards?
+Are these like decentralized nostr apps?
+Are we going to have dating apps and other things?
+You certainly could.
+Actually, I'm pretty sure somebody has at least proposed some sort of dating app.
+Of course, it'd be a very limited pool of people on there.
+It kind of reminds me, I think a number of years ago,
+somebody tried to create like a crypto-specific dating app.
+I think it was way too many guys on it.
+But yeah, really anything where you are just trying to either communicate
+or economically interact with other people.
+It is especially, I think, the economic interactions where things get interesting.
+And because nostr has been developed, well, nostr was invented by a developer
+who was basically a lightning developer, probably, I guess, still is.
+And so one interesting result of that is that the development of the protocol
+has been very tightly tied to lightning to the point that pretty much all of the,
+at least the nostr Twitter-esque apps are deeply integrated with lightning.
+And it's very easy.
+Like people are, we're calling it zapping each other over nostr,
+basically sending tips, even doing stuff like, like I said,
+the economic incentive stuff is very interesting.
+So one developer actually developed a way to do a poll,
+but it's a lightning-based poll.
+So instead of, you do a poll on Twitter and people click what they want.
+That's very easily Sybil attackable.
+But when you do a poll, a lightning-enabled poll on nostr,
+people have to actually send the stats so that the votes get tallied up economically.
+Much, I think you get a much stronger signal, of course,
+of what people really believe if they're going to put their money behind it.
+Right. That's super cool.
+So is this going to be part of the architecture of, or the re-architecting of the internet?
+I mean, a lot of people in Bitcoin talk about value for value
+and Bitcoin serving as this like new, kind of restoring the promise of the internet originally,
+because it allows us to do microtransactions and things like that.
+Is nostr now a component of that or how does it fit into that picture?
+Yeah, I mean, I see it as a new communications technology.
+Obviously at a very low level, nostr builds on top of many other internet technologies.
+We're not reinventing the wheel, like it still uses TCP.
+And I see this as a platform.
+So if you're going to build an app, it's kind of like we've had the sort of Web 1, Web 2, Web 3,
+and I won't even try to talk about Web 5 or whatever that is.
+Right, okay.
+But this is like another Web something.
+Okay.
+The real difference is the infrastructure in that you can build these nostr enabled apps
+and they don't have to have backend server infrastructure.
+Okay.
+nostr is the network of relays that are just passing these messages around.
+The network is the computer.
+Pretty much.
+Yeah.
+And are you excited?
+I mean, this is an exciting new development.
+People like Jack that have only been excited about Bitcoin up until now are now excited about nostr.
+So where do you sit on that scale?
+Is it something as significant as Bitcoin or close to?
+Yeah, I mean, I think it's significant in terms of having a more censorship resistant way of communicating.
+So more freedom of speech online.
+Yeah.
+Okay.
+Now, there's no shortage of challenges that need to be overcome,
+but I am excited, especially just because I can see the pace of development that's happening.
+I swear my nostr client gets a software update on like almost a daily basis,
+like new stuff coming out, you know, playing around with new functionality.
+And like I said, more and more apps that are being developed.
+My understanding is that the protocol itself is so simple.
+Actually, one of our engineers at Casa wrote a nostr relay with chat GPT,
+just by pointing chat GPT at the specifications for the nostr protocol and the NIPs,
+the nostr improvement proposals.
+And it was able to spit out pretty good working nostr specification.
+I think he did it in Rust or something, but yeah.
+Wow.
+So are you in 10 years from now, will nostr be something we're using globally?
+It will be as impactful as Bitcoin or the internet?
+How do you see this thing playing out?
+It's certainly possible if the incentives can remain aligned,
+if the developer interest continues to grow.
+Right now we're kind of at a lull in terms at least of user adoption.
+There was some big spikes the first few months of the year,
+and it's been plateaued since then, but doesn't seem to be dying by any means.
+And on the development side, like I said, I've been seeing more and more activity happening.
+So development, that just means we need to have more people experimenting and failing,
+and then sometimes succeeding and continuing to move forward.
+So I think there are questions around the long-term economics of the network,
+because right now almost all of the servers, the relays, are being run altruistically.
+And it is possible to charge fees for providing that as a service.
+There are a few that have done that.
+But it's one of these chicken-and-egg network bootstrapping problems.
+So it's much like in the very early days of Bitcoin,
+developers like Gavin Andreessen, they couldn't give away Bitcoins.
+They literally wrote software to give the Bitcoins away, just to try to get more people interested.
+So we're really at that stage of development.
+And you mentioned there's no shortage of challenges.
+Are those scalability, or what categories of challenges are we facing with Master?
+Yeah, so there's scaling challenges.
+There's plenty of friction that's already been hit.
+Just seeing what happens when you run an Internet-connected service that's open to the public for free.
+Eventually people are going to abuse it.
+And so we've seen essentially denial-of-service type of attacks, usually unintentional.
+But because the protocol itself doesn't really have arbitrary length limits,
+someone might try to push a gigabyte of files or data through the server.
+And so that's where right now the relay operators and the developers are trying to figure out,
+"Okay, what are the sane parameters for what we should accept as a policy?"
+None of these things, I think, are going to be protocol-level changes,
+but you need some sane policies just so that the network continues to function.
+Gotcha. Okay. Interesting. Well, I guess we'll keep an eye on that.
+Now I'd like to tell you about our sponsor, The Gold Investment Letter.
+The Gold Investment Letter helps sophisticated investors navigate capital markets
+and maximize their profits in trading gold, silver, and mining stocks.
+The Gold Investment Letter seeks out the most undervalued companies
+and identifies special situations in the mining sector
+and then provides in-depth analysis on both their financial positions and future prospects.
+The Gold Investment Letter explores many complex domains,
+such as investor psychology, portfolio management, and macroeconomic trends,
+all with the goal of making you a better investor.
+The Gold Investment Letter offers a free version and a paid premium version,
+and I strongly recommend you at least sign up for the free version
+because after having read a few of these issues,
+I can promise you it is a treasure trove of good information.
+You can sign up for the free newsletter today at goldinvestmentletter.com.
+Now I'd like to tell you about our sponsor, iCoin Technology.
+iCoin has just released a sleek new hardware wallet.
+It looks like a mini iPhone, a little touchscreen and camera on it.
+The device has no Wi-Fi, no cellular connection, no GPS.
+It's a strictly physically cold hardware wallet.
+Like I said, it's got a high-res, three-inch touchscreen.
+It's got a camera for air gapping the wallet.
+It's got optional Bluetooth compatibility.
+And it's really a brand new UI/UX experience for a hardware wallet,
+making it very accessible, easy to use, not intimidating.
+And as we always talk about on this show,
+the only way you can truly own your Bitcoin is by having it in self-custody.
+So you need a device like iCoin Wallet to truly own your Bitcoin.
+Go to iCoinTechnology.com today and use promo code BITCOIN23
+for 30% off of this new sleek hardware wallet.
+Now I'd like to tell you about our sponsor, CrowdHealth.
+CrowdHealth is a Bitcoin-enabled alternative to Legacy Health Insurance.
+Now let's face it, Legacy Health Insurance is an absolute scam.
+Nobody can explain this better than the legendary comedian, Chris Rock.
+Insurance. You got to have some insurance.
+You got to. That's an insurance. They shouldn't even call it insurance.
+They should just call it in-case shit.
+I give a company some money in case shit happens.
+Now if shit don't happen, shouldn't I get my money back?
+So with CrowdHealth, instead of just paying premiums that you'll never see again,
+you can hold part of this pool of savings in dollars and in Bitcoin through CrowdHealth.
+And when you have a health event, you can draw against this pool of communal savings.
+So go to joincrowdhealth.com/breedlove to learn more or sign up.
+Shifting gears a bit, we talked about offline before we started here,
+the idea of network protocol ossification.
+And as I understand that, the internet is this stack of open source protocols,
+HTTP, TCP/IP, et cetera.
+There's a free market process that eventually people establish consensus on one of these protocols
+as the de facto standard for communication at whatever layer it is.
+And many Bitcoiners often talk about Bitcoin becoming ossified as the standard value transfer protocol layer,
+something like that, of the internet.
+There seem to be a lot of advantages to that for Bitcoiners.
+If it becomes the de facto currency of the internet, obviously it captures a lot of economic value,
+if not all the economic value that's transpiring on the internet.
+But you may have some devil's advocate perspectives on network protocol ossification.
+Please enlighten us.
+Yeah, so my points that I'm going to be conveying are basically that we have decades of history that we can look at.
+You even mentioned TCP.
+TCP is a great example of a network protocol that ossified a long time ago.
+Now, we won't get too deep into the weeds,
+but it would be categorically false to claim that TCP is a perfect protocol that could not be improved.
+It's just, it's no longer feasible to improve it because of the network effect.
+Like path dependence, right?
+Yeah, so, you know, look, pretty much everybody agrees.
+It's basically a law of nature, call it even physics, due to the...
+I almost see it as like, as a network based on a protocol expands,
+it eventually is the ability for it to evolve gets crushed under its own weight
+because the ability for the participants of the network to coordinate upgrades becomes harder and harder
+to the point that it's just not feasible without breaking a bunch of people and basically kicking them off of that network.
+So, as a result, I mean, I think there's consensus that network ossification is a thing.
+It is basically inevitable, but it doesn't have to happen sooner rather than later.
+There are things that you can do to force stall ossification.
+There are techniques.
+Unfortunately, a number of them aren't really applicable to Bitcoin.
+Like some techniques are to basically encrypt all the data you're sending so that it can't even be rejected
+because the middlemen who are passing it around don't even know what's in there.
+Obviously, that's not going to fly on a consensus network.
+Usually what you hear about is something called extension points,
+which is like you basically, you put little flags in parts of the protocol,
+which are saying, "Hey, FYI, this is an invariant,
+aka this is a part of the protocol that we expect we may want to change in the future.
+Therefore, just be a little bit looser about how you validate or accept or reject whatever is in this part of the data and message that's being presented."
+I would say that that is actually very analogous to how Bitcoin has been upgraded,
+which is you take an op-nop, you basically take one of the Bitcoin scripts operators
+that doesn't actually mean anything that Satoshi put there ahead of time,
+and you repurpose it.
+You say, "Okay, going forward after some activation period, now this operation has a meaning,
+and now the nodes that upgrade can interpret it to do this functionality."
+That works, but as we have seen, it is still very difficult to actually get consensus
+and deploy and activate stuff via a mechanism like that.
+It's still pretty much inevitable that you get to a point where that's just a non-starter.
+The thing that I'm really trying to get to is say that we need,
+if we want to be able to continually upgrade aspects of Bitcoin's security, scalability, privacy,
+and especially if we want to enable more permissionless innovation
+and make it easier for people to create second, third, fourth, however many other layers
+that they want and screw around and experiment in ways that can fail without necessarily harming Bitcoin itself,
+then we do want to see some changes to the Bitcoin protocol that will enable that.
+Because right now, if we're being completely objective,
+the initial vision of a sidechain universe with many, many sidechains
+that can be pegged to each other, that vision has not happened.
+You could go down a whole rabbit hole of why,
+but one of the reasons is that we never got a trustless two-way peg,
+so pretty much all the sidechains out there are glorified multi-signature federations,
+which is not permissionless by any means.
+I think especially some of the activity that we've seen recently in the past few months,
+it's been interesting to me as a technologist just to see people experimenting.
+Yes, some people get dramatic and upset about permissionless innovation, but I think that is necessary.
+Now, like you said, there are pros to ossification.
+There are sound, logical reasons why people want Bitcoin to ossify,
+and that's because they want it to be more difficult for someone to break Bitcoin.
+Obviously, there's the 21 million coin limit.
+We don't ever want to see changes to the subsidy schedule.
+There's also people will bring up unintended consequences,
+and it's completely true that whenever you have software,
+whenever you have a platform that is programmable, and Bitcoin is programmable money,
+even though most people think of it as dumb digital gold that can't really do much,
+it has a programming language, and whenever you enable new functionality,
+it is likely that someone will find a way to leverage that functionality in a way that was not intended by the original office.
+Yes, so some people will rightfully say that some of the ordinals and inscriptions and BRC20 tokens and whatever,
+the recent developments were not intended by the authors of Taproot and Tapscrims,
+and I think that's a fair claim to make,
+but that's one of the risks I think that you have to take whenever you're enabling functionality.
+Interesting. And forgive me because I'm not super versed here,
+but there's a trade-off then between the adaptivity of the protocol layer and its ossification.
+So the more ossified it becomes, the less adaptive it is.
+Yes, so another way to put it is, and I haven't even talked about really the parallels of all the other protocols,
+my favorite is actually SMTP, most people know as email,
+because I spent a decade working in the email industry before Bitcoin,
+and anyone who's familiar with email, they know email works quite well.
+You go into your email client and you write a message and it generally gets to where it's supposed to go.
+But under the hood, email is a monstrosity. SMTP has morphed into this really crazy meta protocol.
+The short version is that SMTP was actually developed in the 1970s, I believe,
+and it was designed to be a highly reliant message passing protocol, somewhat like nostr actually.
+In the early days, people ran their SMTP servers as open relays.
+And so your email would hop through a bunch of different servers to get to its eventual destination.
+But what happened in the 90s when AOL became popular, millions of people came in and started using email,
+that's when the spammers came. The open relays, they got overwhelmed,
+and the email server administrators basically were frantically scurrying around trying to figure out,
+"How do we stop unwanted email?" Because email was developed to guarantee delivery.
+It was never developed to stop delivery. The assumption was that people would want to receive the messages that were being sent to them.
+Then we underwent a multi-decade series of different things that happened in the email ecosystem.
+It started off with really naive keyword filters, and then more advanced mathematical Bayesian filtering,
+spam assassin software, but none of those things worked very well.
+Eventually, we ended up settling on reputation systems.
+The problem with the reputation systems is that the people who decided what your reputation were,
+were centralized companies that were basically surveilling the whole network and trying to point out,
+"This spammer is at this IP address," or "Sending this type of content," or whatever.
+What happened, we had more and more centralization, and we had all of these rules get added to email as an ecosystem.
+But you see, SMTP as a protocol had ossified.
+No one was even, I think, proposing changes to fix it at a protocol level, except for one guy, which we'll get to.
+After several decades of this, the bar and the level of resources required to be able to meet all of the criteria
+and have a good reputation, it priced out all but the largest enterprises.
+As people, I think, are generally aware today, 90% of email users are captured by one of five companies.
+Does email work? Have we solved the problem of spam? Pretty well. Email works pretty well.
+But at what cost? It is no longer possible to be a sovereign email user.
+You can go out onto the internet and you can abide by the rules of SMTP,
+and your email will never get to where it's supposed to go because you have failed to follow the meta-protocol rules
+that all of these centralized gatekeepers have put into place.
+So, short version is like, this is one of my fears of what could happen to Bitcoin if we ossify the protocol level.
+The way that I look at it is that, oh, you can ossify a protocol, and we expect that protocols will ossify.
+What's not going to ossify is the rest of the world.
+So, the learning lesson you can take from email is that it's possible for a protocol to work,
+and email did work for decades, but then it encountered stressors,
+which was mass adoption by tens of millions of people, and then the adversarial actors who came along with that, the spammers.
+And unfortunately, email at a protocol level was not modified to adapt, to react to the new world.
+And so, all of the solutions ended up being hacky, piecemeal, bolted on stuff that created centralization.
+And it didn't have to be that way.
+Now, there was this guy in 1997 who proposed something called HashCash.
+And HashCash was actually a new SMTP header, just like a new one line of text you add to the top of your email message.
+And it leveraged a neat little idea called proof of work, where you would basically send the whole contents of the message through,
+and you would hash it, and you would meet some desired difficulty target.
+And what did that do?
+Well, Adam Back realized that the problem of email spam was not one of content filtering or reputation,
+but rather it could be solved by economics.
+Because it was glossless.
+Yes.
+So, he figured out that you could actually fix the problem at the protocol level and at the client side level,
+rather than creating these behemoth servers that were doing all this reputation nonsense.
+And, you know, that's basically like that's the path not traveled,
+where it's quite possible that had we gone down that path, and had we adopted this change at the protocol level,
+email today might still be a sovereign protocol.
+Wow. Wow. So, that's an interesting saga of kind of path dependence leading us towards centralized email,
+but could have gone decentralized.
+Yeah. And it's an issue of convenience.
+Yes.
+So, you know, I glossed over a lot of details, but the point being, like, this was a natural organic evolution that happened over 40 years.
+And there was no conspiracy. There was no, like, authority that stepped in and attacked the SMTP protocol.
+Rather, it was a series of many, many, many small decisions compounding over decades, you know, extremely long time scales.
+That was, it was really not even noticeable, I think, unless you were deep into it.
+Yeah.
+And I can say that because I was there. I was running, you know, infrastructure and an email service provider.
+We were sending out 100 million emails a day, and I was ingesting a lot of the data and analytics that were coming back as a result of that.
+And I remember only one time did I ever even have a light bulb go off where I thought something was a little off.
+And that was maybe about five years in when I realized that we were hiring deliverability specialists who were not engineers.
+It was no longer an issue of us dealing with messages that we were getting back from other email servers and trying to figure out how to deal with them.
+It had literally become a social engineering problem.
+The deliverability specialists, what were they? They were actually relationship managers with the other humans, the ISPs and the anti-spam companies that were the gatekeepers.
+And of course, this was all pre-Bitcoin or really early Bitcoin.
+So I wasn't even thinking about decentralization. I wasn't prioritizing individuals being able to run their own email servers because I was getting paid to make the email flow at extremely high volumes.
+And my job was to do whatever was necessary just to make it work.
+You know, screw all of the other attributes of the system.
+So there's times where the protocol fails to deliver on what it's intended to deliver, then we have to fill those gaps with human beings, it sounds like?
+It's a convenient way, I think, and it's a natural way of trying to address those type of problems.
+And that contributes to centralization, trusted third parties, etc. Is that a market failure?
+Well, what is the market, right? If the market is just to send messages back and forth, email works. It works quite well.
+But of course, at what cost? The result is we are now putting a ton of our personal information into the hands of five companies because they're offering us free email services by basically harvesting all of our data and selling it and using it against us.
+Sounds like the free checking and savings accounts we've been offered for so long.
+That's very interesting. What can we learn? Are there lessons we can draw from that saga and apply to Bitcoin? Are there pitfalls we should be trying to avoid? How should we think about that in terms of Bitcoin?
+Well, I think we definitely need to be cognizant of any sort of external solutions that are being proposed.
+Now, I'm not anti-community banking model. There has been a push recently for more custodianship via things like Feddy and basically making it easier for local custodians to do stuff.
+But the thing that I am worried about at the really high level view is just creating systemic risk and weakness within the system.
+So what I've been fighting against for eight years by trying to make self-custody easier in the hopes that we'll get more people out of the large institutional custodian providers.
+What I'm afraid of is that, you know, eventually just due to convenience and the sort of natural ways that humans make decisions is that we end up in a situation where a huge portion of Bitcoin is held by a handful of companies.
+They're probably regulated. They're probably very easy, juicy nation state targets, or even just targets for hackers. I mean, just putting all your money in a few places creates so much risk, you know, both for the safety of the money itself and possibly for the governance of Bitcoin.
+Wow. That's interesting to think about. Speaking of self-custody, you've also talked about this mini scripts change. I'm not sure exactly what we call it, but apparently it lets us write more sophisticated or better self-custody schemas, I guess. Is that how you put it? Could you tell us?
+Yeah, think of it as a higher level programming language that basically gets interpreted and turned into the base Bitcoin scripting language. And Bitcoin script is a beast. Like nobody wants to write Bitcoin script. It's very brittle.
+It's hard to even think about logically if you're doing more complex operations because it's something called a stack based language, which I don't even know any other stack based languages that are used like anywhere common.
+It's just not a paradigm that many developers are comfortable with. And so mini script makes it both a lot more developer friendly to read and write and build and even verify like the correctness and attributes of some of the more complex scripts.
+And then also it makes it more modular so you can actually start using tooling that's almost like using pieces of a puzzle or Lego. You're kind of copying, pasting blocks of logic around.
+Right. So what does that enable us to do? It sounds like something like a microservices architecture or just modular component parts. What does that do for us in terms of self-custody? We get more options.
+It's yes. It makes it easier and safer for us to construct new self-custody architectures. And by self-custody architectures, I just mean spending conditions.
+It's like what happens when you create a Bitcoin address and you deposit money into it? I mean underneath that address is actually Bitcoin scripts. It's an address is basically like a hash that has been transformed.
+But the hash is of a much more complex Bitcoin script that all it really does is it describes the possible ways of how someone can spend whatever money is in that UTXO.
+So right now, the vast majority of UTXOs are going into just a single key script that says, as long as you publish a signature that matches this one public key, the network will allow you to spend that money.
+What I've been doing for the past eight years is I have been building using multi-signature Bitcoin scripts, which is a little more complicated, but it's still a single line. It just says, here is a list of three keys or five keys.
+And you have to provide two signatures or three signatures that meet those public keys. Still very straightforward. But the thing is, Bitcoin script has other functionality. It has the ability to do Boolean logic like ANDs and ORs and time locks and hash locks.
+These are like some of the most fundamental, like basic programming, like logic gates, if you were. And it's a shame that basically nobody uses them. They get used for lightning network stuff, but that's pretty complicated.
+Why do we need to relegate ourselves to just using complex scripts for that? Why can't we create completely new custody models that just give people more flexibility of preventing catastrophe?
+There are obviously a lot of ways that you can just take these very basic building blocks and construct new spending conditions. But some simple ones would be, okay, I have a key and this is the key that I'll use most of the time.
+Or maybe even it's a multi-sig and I'll use this threshold of keys most of the time. But what if I want an out of, like there's some catastrophe that completely blows up that key or that enough of those keys that I can't spend them.
+Well, now with the magic of miniscript making it easier to write and the magic of tapped script allowing you to create basically an unlimited number of alternative spending paths that you don't even have to reveal to the world unless you use them.
+So this is highly scalable, highly private. But now you can have as many alternate spending paths as you want. And a more practical example of that would be, okay, I have the multi-sig or I have the key, but if the funds haven't moved in several years, allow me to use this other key or other set of keys.
+And maybe those are keys that you hold. Maybe they're keys that are held by your beneficiaries and you could use as part of an inheritance plan. Maybe it's a key or even a set of keys that are held by an institution or a set of institutions, multi-institutional custody.
+Really, we're just scratching the surface here. It's very exciting as a developer because the gears start turning in my head. And of course, whenever you create a new security model, you have to think about it very hard and try to think of everything that could still go wrong. But it's still, the possibilities are enormous.
+So you're expanding the design space of these custody architectures.
+Yes.
+And then is that something you guys are going to incorporate into the products at Casa, I assume?
+I think we would be stupid not to.
+Nice. Very cool. All right. A lot of technical stuff. Very interesting. Thank you for sharing.
+Now I'd like to tell you about our sponsor, Wasabi Wallet. With Wasabi Wallet, you can receive, send, and store Bitcoin privately.
+In Wasabi Wallet, your transaction history and wallet balance are completely hidden. Wasabi Wallet is easy to use. All of its privacy features are built in by default, and it works with any amount of Bitcoin.
+Wasabi users can make CoinJoin transactions together with BTC Pay Server users or Trezor Suite users. For BTC Pay Server users, they can make payments directly inside of a CoinJoin. And for Trezor Suite users, you can make CoinJoins directly on a hardware wallet.
+These features result in the fee savings and security improvements for both sets of users. So go to wasabiwallet.io today to download the state-of-the-art Bitcoin privacy wallet.
+Now I'd like to tell you about our sponsor, Kasa. Kasa makes it simple to buy and secure your Bitcoin without wondering whether you're doing it right. Specifically, Kasa provides a multi-key custody solution, which is by far the most secure way to custody your Bitcoin.
+Now when I talk about Bitcoin being theft-proof money or inviolable private property, a multi-key custody model is exactly what I am talking about. Using multiple keys lets you maintain full control of your Bitcoin while also giving you redundancy in case you lose one of the keys.
+It's also the best way to secure your Bitcoin for inheritance planning purposes. So go to keys.kasa, that's C-A-S-A, today to sign up and use discount code BREEDLOVE.
+Let's talk about something a bit more sociological. Toxic Bitcoin maximalism, you wrote a piece about it, a very lengthy piece. We've both been victims of the cyber hornet toxic maximalism.
+It seems to just go with the territory of Bitcoin, like no matter what you do, you're going to piss someone off. What's the general synopsis of that piece and what were you trying to explore from more of a cultural standpoint?
+I was making a case that it's completely understandable how we got to where we are today. And that's what a lot of that, it was like a 40 page essay.
+There's also, I will say, Guy Swan did a Bitcoin Audible version of it. So if people want to consume it that way, that's so kind. And how did it happen? Well, I went way back to the early days.
+I was talking about Mircea Popescu and I may be butchering his name because he's Romanian or was Romanian. He actually drowned a few years ago. But he was like one of the OG toxic maximalists who he didn't care if you, he was a smart guy, but he didn't care if you understood the points he was making.
+And he would make them in ways that were designed to be offensive and outrageous and shock value. And there's actually, there's a lineage here where some of the people who were a part of his crew in the early days have gone on.
+Some of them have become quite prominent Bitcoin influencers and social media. And some of that has matriculated. And of course, along with the scaling wars, that was very inflammatory. And that also created a lot more toxicity because we're really fighting a civil war of sorts.
+It was like an ideological civil war. And so people were trying to draw lines and create sides. And we had a real explosion in the level of tribalism. And it made sense because people were defending their ideology of what is money.
+Yes. Yes. So, you know, there's a lot on the line, but then it got weird after the scaling debates died off. It got weird because like there wasn't really as much to fight about. And so a lot of people got really burned out from the scaling debates.
+And we were kind of left over with some of the vestiges of that. And then, you know, we had a new wave of adopters come in like 2020, especially with the pandemic. And what seems to have happened is that a lot of the memes and the short quips and narratives have been propagated and in many cases, you know, absorbed.
+And, you know, memetics is very important to Bitcoin for a variety of reasons. And I've written on that extensively. But I think that a lot of the newer wave, they absorb the memetics without absorbing the first principles.
+And so now we have this sociological phenomenon, which is not unique to Bitcoin. Many sociologists have opined upon it, but essentially we have people who have risen to prominence merely by being better at crafting the memetics and narratives and getting them to go viral and propagate.
+And so, you know, they have their audience, but the audience is less deep on the nuance. And it's when we lose the nuance of the discussion that things deteriorate. And so, you know, you know, as well as I, that you get a lot of logical fallacies, ad hominems, people just yelling stuff that doesn't really mean anything other than,
+I hate you.
+Yes. Yeah. It's definitely a good way to develop thicker skin, I think. Just hang out in Bitcoin for a little while. Something I've thought of as related to network protocol ossification, because my view for the longest was toxic Bitcoin, toxic Bitcoin maximalism. I almost said masculinity.
+Very indispensable when Bitcoin is young and small, like you need to have this cultural immune system to defend the core consensus rules and, you know, maintain 21 million, small block size, et cetera. But as it grows and ossifies, there comes a point where that immune system maybe doesn't serve as much of a purpose because it's ossified. Right? So the rough analogy was like, well, we don't have too many toxic HTTP maximalists, et cetera.
+Do you think that holds water? Like do we, as Bitcoin ossifies, does toxicity kind of lose its relevance? And then if Bitcoin is attacked, does toxicity then again become more relevant? Is it something like that?
+Yeah. I mean, this is actually another of my sort of pushes against ossification is that, you know, if you want to be able to react to attacks or just changes that, you know, it is important that I do see Bitcoin, you know, I like Brandon Quittam and his sort of mycelium analogies.
+I do see Bitcoin as a distributed organism, you know, everyone who cares who's contributing, it is important, you know, what they think and what they say. And I think the quality of discourse is important for both for the evolution of the protocol and for the defense of the protocol against all types of threats.
+And, you know, it is, I think also inevitable that you hear the analogy of like the white blood cells and or call them cyber hornets or whatever, you know, defending against attacks and that sometimes those things will get triggered when maybe they shouldn't, you know.
+Sure. Autoimmune disease.
+Yeah. So, you know, is it relevant or irrelevant? I think that one interesting phenomenon, my belief, you know, it's kind of hard to quantify. I do believe that this particular subset of the community, the folks who are perpetually online, some have called them grievance merchants.
+I think, you know, those people, at least some of them may be in an echo chamber and they may consider themselves to be larger, stronger, more powerful or more relevant. You know, it's, I'm not going to try to quantify any of this is very hand wavy.
+But, you know, one thing that I brought up in my article is that, look, there's probably fewer than a hundred thousand, really, I think it was more like 30 or 40,000 like Bitcoin, Twitter accounts.
+Yeah.
+In the context of everyone who like holds and uses Bitcoin.
+Which is a hundred million.
+Yeah. I mean, it's not like we're talking about like a million people. We're talking about like a million people. And we're talking about like a million people. And this is a huge number. So, you know, I think it's interesting that people are starting to talk about this. And I think that's a big part of the reason that people are starting to take Bitcoin more seriously.
+Yeah. Yeah. This is a good way to put it. Do you think that, so ossification is a bulwark against attacks, but it could also have trade-offs that it were given up adaptivity.
+So, it depends on the nature of the attack, I suppose, which one is better circumstantially.
+You know, sometimes it's hard to even say, you know, what is an attack? Like you don't necessarily even have consensus on what an attack is sometimes. And I mean, that was even true during the scaling debates, right?
+People don't like it when I bring this up, but, you know, I was also, I was on both sides of the scaling debate. So, I certainly see the perspectives, but obviously the small blockers would say, you know, big blocks are an attack on Bitcoin.
+Decentralization.
+Yes, because they, much like with email, they increase the resource costs to operate sovereignly and run your own node, your own server. Big blockers actually, quite honestly, and it's not an incorrect perspective, it's just a different perspective.
+They said small blocks are an attack on Bitcoin because they're pricing out people from being able to, you know, make their coffee transactions.
+And, you know, the coffee transactions were always kind of a humorous thing, but, you know, more seriously, you can just say, well, you know, someone who lives in a third world country who only earns a dollar a day or maybe even less. And if it costs several dollars to make a transaction, then you are disenfranchising them.
+And so that was a great point of debate of, you know, what should Bitcoin offer to the world in terms of guarantees? And, of course, I believe we rightfully settled on the fact that Bitcoin should guarantee a low cost of validating the system rather than guaranteeing a low cost of transaction, at least on the blockchain.
+Yes, pushing that up to higher layers.
+Yeah.
+Yeah, it's interesting to think about because it is, like you said, we're sort of striving to establish social consensus on what Bitcoin is. There's not really maybe right or wrong answers, there's just trade-offs ultimately. And sometimes we make the wrong trade-offs, like you said, with the email protocol. So hopefully we don't do that with Bitcoin.
+Yeah, well, you know, I'm just trying to raise more awareness around it and, you know, basically talk about the other side, really what is being left unsaid? Those are the things that worry me.
+Yeah, I think there's a quote, something like the height of genius is to be able to entertain two thoughts without accepting either. So we have to entertain and explore the nuance if we're going to make good decisions.
+Yeah. But, you know, what is money? And like I said, Bitcoin is programmable money. So, you know, people love to hate on Ethereum and Ethereum has plenty of problems. Look, I am not an Ethereum apologist. And it's true that not only my current company, but my previous company supported Ethereum because the market demanded it, really.
+And, you know, I am a free market maximalist. So I do try to listen to the market and react appropriately. But the point that I was getting at is at least like in terms of like developer activity and friendliness, it's hard to argue that Ethereum doesn't have like a more vibrant developer ecosystem. Like there's just a lot more experimentation going on.
+Now, of course, I would also argue, sure, a lot of them are really stupid ideas and scams and so on and so forth. But if you want to innovate and you want to find the really cool stuff, you got to let people do a lot of really dumb, stupid stuff and fail. And I want to see people doing the dumb, stupid stuff on Bitcoin.
+Gotcha. Okay.
+Or at least tied to Bitcoin.
+Yeah, yeah, yeah. That makes a lot of sense. Jameson, man, thank you for doing this. Really, I appreciate it. It's a good download for me to learn all this new and interesting stuff. Where can people find you on the Internet?
+Well, it's easy to find me on Twitter. It's L-O-P-P. nostra is a bit harder. I'm not going to try to spell out my whole extended public key, though. You know, if you find me on Twitter, you go to lop.net. I have links to all of the other ways to find me.
+Great resource space, by the way, for basically all things Bitcoin, self-sovereignty, et cetera. So definitely check out lop.net. Thank you again.
+Thanks for having me.
