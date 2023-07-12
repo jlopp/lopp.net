@@ -62,7 +62,12 @@ shuffle(
 # For some reason, not all the links are removed in one pass so we keep doing it until we've actually removed all the unwanted links
 for i in range(5):
     for link in all_links:
-        if link[:4] != "http":
+        if link is None:
+            continue
+        if link[0] == "#":
+            # ignore anchor links
+            all_links.remove(link)
+        elif link[:4] != "http":
             # If the link is not a valid URL, remove it
             all_links.remove(link)
         elif link.find("lopp.net") != -1:
