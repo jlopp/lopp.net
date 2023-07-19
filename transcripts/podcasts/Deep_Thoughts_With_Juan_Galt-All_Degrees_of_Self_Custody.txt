@@ -1,0 +1,1272 @@
+Hello everybody, welcome to the Juan Galt show. Today I have a very special guest. We have
+Jameson Lopp in the house. He's a man that needs no introduction. He is an OG, a true
+OG. He has created some of the most important cyberpunk self-custody works with Lopp.net.
+He's got a huge set of resources on that website. And he's the co-founder of Cast Out Hodel,
+which has certainly broken ground in terms of self-custody, multi-sig, user experience
+and inheritance planning. So I'm very happy and proud to have Lopp on this episode of
+the Juan Galt show with BitcoinNews.com and their support. And yeah, we get into a full
+range of discussions about the whole spectrum of self-custody. We go from why you need it
+at all and why you should do it and why not just stay on a Coinbase. I mean, BlackRock
+thinks it's fine. Why shouldn't you? Right. And we go all the way to the edges of self-custody,
+past multi-sig and inheritance solutions into what is being developed with Cashew and FettyMintz
+in community and collaborative custody models, which is pretty interesting and complex. So
+yeah, I mean, I love this show. I think it's going to be an epic. And I hope you enjoy
+it too. Let us know what you think and see you in the next one.
+Welcome, Jameson Lopp to the show. Thank you for coming on. I can't wait to hear from
+you. I can't wait to get into some of these topics. And it's so fitting that we're going
+to be talking about self-custody because at the same time as all this sort of upheaval
+we've been talking about is going down, the European Union with Lagarde is talking about
+doing a CBDC. There's all these stories about banks refusing cash withdrawals to customers
+unless they give the bank a reason like why do you need the cash? Right. So, you know,
+this is, you know, the CBDCs let these banks extend their reach and their control over
+money so that they can micromanage the collapse and keep people from doing a run on the banks
+and be able to punish their enemies and reward their friends with your money. So Bitcoin
+really is the path out. But in order to use Bitcoin properly, we need to learn how to
+self-custody. So Jameson, it's great to have you. Welcome to the show.
+Happy to be here.
+So Lopp, I'm a big fan of your work. I really appreciate a lot of what you've done. Lopp.net
+is an incredible resource for anybody that's looking to, you know, take the deep dive on
+the Bitcoin rabbit hole, right? Chase that orange rabbit down the, all this content and
+all this, all this really interesting information and cyberpunk philosophy and all these tools
+that we have available to us. So Lopp, you have a really great resource there. And you
+also co-founded Casa, Casa Hodel, which is in my opinion, really breaking ground in terms
+of self-custody. You know, you've solved some significant issues with, you know, the user
+experience of self-custody, especially at higher levels of wealth. And you've even come
+up with a fairly strong solution for inheritance, which is a very tricky problem in the Bitcoin
+world. So I'm definitely looking forward to, to getting into that. Is there anything, anything
+you want to, let's say announce or say before we kind of jump into some of the big questions
+that we have for you today?
+The big announcement for today is I'm now a wizard. Hooray.
+Are you minting NFTs, Jameson?
+No, I'm quite ambivalent about the whole NFT thing. Technically I have control of, I think,
+three NFTs now. Two of them were gifted to me because they were made in my likeness.
+I've only ever purchased one NFT. And that was actually something I'll probably write
+a blog post about because it was an internet meme that was early 2000s, like pre-Bitcoin
+meme. But the meme itself is kind of an NFT. So it's kind of a meta NFT, if you will.
+Which NFT is that? What meme is it?
+So there's this meme of the, it's a seven legged spider. And it's basically this email
+thread back and forth where a guy gets an email from his utility company claiming that
+he owes them money. And this was like in 2003 or 2004 or something. And he basically said,
+here, let me pay you with this really crappy MS paint drawing of a spider that I made.
+And it's a back and forth story.
+Sounds like an NFT for sure.
+People who are, I think, grew up on the early internet might recognize the meme. But I think
+these days it's not as popular.
+Right. I just had to Google it. I think I had seen it at some point. But yeah, that's
+the kind of stuff that's going on. And let's start off with a story that was a bit controversial
+and just to get it off of the table. Casa HODL recently announced that they're implementing
+MultiSig for Ethereum. Right. It seemed like a lot of people had expectations that Casa
+was a Bitcoin only or a Bitcoin first company. And so when they launched this announcement,
+it kind of triggered an uproar of some sorts. So I have to ask you, Jameson Lopp, you know,
+in the theme of seven legged spider NFTs, do you personally like Ethereum?
+I mean, I'm still not that interested in Ethereum. I have used it for things. Like I said, I
+guess I own two NFTs on Ethereum, but I only purchased one and the other was gifted to
+me. You know, the vast majority of the functionality that's being built on it, it's just not interesting
+to me because I'm not a trader. I'm not like a DGN person who's trying to find get rich
+quick schemes. But you know, my personal opinion of it is kind of irrelevant when it comes
+to business decisions. It's also not my first rodeo. I think a lot of people probably weren't
+even around when I was actually working on not only Ethereum, but also Ripple and Bitcoin
+Cash and Bitcoin Gold and all of these different alt coins back in the day at Bitco. When I
+started at Bitco in 2015, it was Bitcoin only. And really it was a function of market demand
+of either you decide that you only service Bitcoin stuff and you limit your addressable
+market there or you try to expand and have more offerings to your clients. So the thing
+that really becomes irksome at a business level is when you hear from your sales and
+marketing people about all of the deals that you're losing because you don't offer all
+of the services that your potential clients want. So that's basically what it comes down
+to. Of course, people say, "Well, it's a slippery slope and now you're going to end up supporting
+everything." This is, of course, a gray area of trying to decide which things will actually
+have a positive return on investment for the company. There's obviously a very long tail
+distribution of coins and tokens and stuff out there. And it certainly becomes untenable
+at some point to be able to support them all because there is not only startup costs, but
+ongoing maintenance costs, knowledge costs, so on and so forth. So moving from Bitcoin
+to now also Ethereum, where there's a ton of activity and demand, it became a no-brainer
+for us because we saw the volume of requests and lost deals continuing to increase over
+the past few years. So I know it's difficult for some people to understand that there's
+Casa the business and then the various decisions that have to go into that. And then there's
+me personally and I am not the dictator of Casa. There's a lot more going into Casa than
+just my personal opinions.
+Right. And what can you tell us about the result of the decision from a revenue perspective?
+Any insights you can share on that? Have a lot of people taken up Casa on this Ethereum
+multisig, which I know you guys were working on back in the day, but there was no real
+clear standard for multisig in Ethereum. So it seems like you guys have actually brought
+a very strong product to market. How has the market reacted to that?
+Right. Well, I think we only really launched it like a week or so ago. So definitely a
+bit early to say, you know, ask me again in a year and we'll see. It was a year long effort
+of research and development to actually get it to the point where we were pleased with
+the quality, where we felt like we could offer a secure enough solution. And kind of to what
+you mentioned, we technically supported, I think, single sig Ethereum for maybe the first
+few months after Casa's launch and we ended up removing it. That was back in 2018 or so.
+And one of the big reasons around that was just that there wasn't a sufficient standard
+for multisig that we were confident in. We didn't want to write our own smart contracts.
+In general, one of the things that we abide by is we don't want to roll our own crypto.
+We don't want to do anything that's highly novel because there is, you know, viruses
+and numerous strength in numbers that applies to many different aspects of security. Most
+people think of that with Bitcoin in context of the cryptography and the math that is securing
+the network. But it's also true for security models in general. If you're using a security
+architecture that is implemented and used by many people and is securing large amounts
+of value, then just like open source projects in general, the more people that are a part
+of that project, the more eyes that are on it, the more scrutiny it has, then the less
+likely that there's some hidden vulnerability that could be catastrophic. Point being that
+we didn't want to roll our own smart contract. That was a process I had gone through at BitGo
+back in 2016. It took us basically a year and three different third party audits of
+that contract. Every time multiple critical issues would come up, it was a really scary
+process. What have we done? Well, we continued observing the ecosystem and we saw that Gnosis
+Safe and their contracts had developed a multi-year history of not having security vulnerabilities
+and of securing billions, if not tens of billions of dollars worth of assets. So we felt like
+implementing a solution on top of Gnosis Safe was sufficiently safe enough for our standards.
+Gotcha. That's really interesting. And it really goes to show that Bitcoin has the best
+wallets, it has the best security. Ethereum is so complex and there's so much action and
+so much money in Ethereum, but the fact that they haven't had very strong multi-sig offerings
+until fairly recently. I think the fact that you guys are jumping on this technology is
+a good testament to that. But when I look at Bitcoin and compare it to all these other
+coins, the quality of wallets is just not even comparable. Bitcoin has very strong architecture
+and infrastructure on that front. With this multi-sig offering, do you see, are we going
+to have more than just Ethereum on multi-sig going forward? With Kasa, are we going to
+end up doing things like, I don't know, NFTs or maybe liquid level volcano bonds? Are we
+going to just be self-custodying all kinds of stuff in multi-sig in the future?
+There's no technical limitations. Gnosis Safe itself supports all ERC-20 tokens and probably
+a number of the other token standards as well. It really becomes more of a question of, once
+again, ROI, of what is worth our time and engineering effort to add support for and
+then continue ongoing maintenance for. I'll say this is a function of demand and the by
+far most demanded thing is stablecoins. I don't think that should be a surprise to anyone.
+There of course has been some demand for NFTs, but not nearly as much as stablecoins. Since
+technically the contract supports any tokens, you could use your multi-signature safe that
+you launch through Kasa to manage anything that you want through the Gnosis Safe UI.
+We have no control over that and that's by design. That's also how you would recover
+your funds if Kasa went poof and ceased to exist because that's a core tenet of our architecture
+is we don't want any single points of failure, including our own company. It's always possible
+to route around Kasa to be able to access other tokens or functionality that we don't
+support directly through our mobile app.
+I also want to point out that I don't particularly like Ethereum either. I think it's mostly
+Ponzi schemes and pyramid schemes. It's a very sketchy space. There's very few highly
+valuable things that I see in it. Nevertheless, as somebody that also worked teaching people
+and helping people secure their funds, I'd much rather that they hold their shitcoins
+securely than that they don't. If you're going to have crypto at all, whatever that means,
+it might as well be done under good security standards so that the day that you do decide
+to buy Bitcoin and hold it long term, you have those skills to secure your property.
+This is kind of why I'm kind of sympathetic to the decision by Kasa, not just business
+wise, but I think adoption wise, people should be understanding multisig and really integrating
+these systems into their lives. However, Ethereum has a lot of really weird scams, right? They
+have a lot of sketchy, like fake token scams and other things that you don't really see
+in Bitcoin because Bitcoin is not, let's say, as complex. Can you tell us, is there any
+story that you can share? Have you guys had any weird issues with niche Ethereum scams
+so far?
+Well, it's definitely too early to have any stories for you, but it is something that
+we're aware of. For example, one of the reasons why I would generally be against us allowing
+anyone to add any arbitrary token they want, at least through the Kasa app, because like
+you said, one of the many ways that people get scammed in this ecosystem is people create
+a token that looks very similar, if not almost exactly like a real legitimate project and
+then trick you. A lot of the stuff that does go on in the system ends up being various
+types of phishing attacks or just general tricking the humans into interacting with
+contracts in ways that aren't safe. So limiting what people can do has actually been another
+core piece of Kasa's architecture for a long time. There's a lot of advanced functionality
+that we consciously don't offer for Bitcoin because we believe that the potential value
+that can be gained is actually offset by the risks that a less advanced user might shoot
+themselves in the foot by applying something incorrectly. So that same thing is going to
+happen across the board when we're adding any sort of new feature. So trying to save
+people from themselves is a major part of what we're doing in our offering. I'm sure
+that people are going to get scammed at some point. You can only help people so much when
+it comes to preventing them from sending their money in places that they shouldn't. But there
+are certainly some low-hanging fruit for stuff that we can try to keep out of the platform.
+And kind of going back to what you were saying earlier, it's not just the business decision,
+but even from a higher level perspective, one of the things that has really pained me
+greatly is when I see people who have, you could call it a diverse portfolio or people
+who own a lot of different altcoins, end up deciding to keep all of their assets with
+a trusted third party instead of implementing self-custody because there aren't self-custody
+solutions that basically will support everything in their portfolio. So it's so much easier
+to just leave your funds on an exchange that already supports everything that you've bought
+than it is to possibly have to go out and find multiple different wallets to self-custody
+tokens for different networks and so on and so forth. So that's another thing that we're
+trying to push back against. And like I said, the thing that has pained me is when I see
+people deciding not to self-custody their Bitcoin because they also own these other
+tokens and they obviously for simplicity want to keep everything managed in the same place
+if possible. And so if that desire for convenience leads people to choosing third party custody
+over self-custody, that's when I start getting upset because this trade-off between convenience
+and security is basically the battle that I've been fighting for the past decade.
+Yeah, no, totally. I mean, I think that makes sense. And that's kind of why I'm a supporter
+of this effort on CAS's front because, yeah, I mean, what I see in the ground is a lot
+of people are in Ethereum, a lot of people like to play with these tokens and we might
+as well teach them how to take self-custody so they're ready when they need to actually
+put on some more, let's say, risk controlled and secure assets on them.
+Now I also have to ask you this. We have these stories about the El Salvador bonds, volcano
+bonds, I believe a billion dollars were raised. There's thoughts about putting them on liquid.
+I'm not exactly sure what the cutting edge of that is right now, but is there any efforts
+or plans to support securities of these sorts or bonds in CASA? Are you guys looking at
+that side of the market and considering launching, integrating that?
+As far as I know, we have had zero requests for that stuff. So I think that kind of answers
+your question. We go by market demand. Now, of course, since those bonds haven't launched
+yet, that would also keep the demand pretty low. But we're not against it. One of the
+many things that I've been canceled for over the years was actually being involved in a
+security token. And so I think it should be clear to people who have been paying attention
+that I'm not anti-STO either. I think that this is something that I kind of grapple with
+from an anarcho-capitalistic standpoint of, on one hand, I think that people should be
+free to basically do whatever they want and issue whatever tokens they want and deal with
+the consequences of the market. But on the other hand, we have seen that there are certainly
+a lot of problems with the fact just that the vast majority of tokens that get issued,
+they're not very well defined. Essentially, they provide no rights to token holders or
+they don't even really try to describe very well what they are offering to the token holders.
+One of the big issues around that, of course, is often with sort of token distribution and
+lockups, tokenomics, if you will, that are often not very transparent and in many cases
+gamed to favor the issuers and often done in ways that are kind of opaque and so that
+people don't necessarily know what they're buying. And then, of course, there's also
+governance issues that it may not be clear that even if the attributes of the token look
+good right now, that they may be changed in ways that you don't anticipate. So there's
+a reason why securities law exists and why there's so many countless pages of regulations
+that basically describe how you should be managing a company that has equity that is
+privately or publicly traded. And I think there's certainly some lessons to be learned
+that could be pulled in related to that and just tokens in general and giving people a
+better idea of what the hell it is that they're actually buying. So that's kind of why I'm
+in favor of supporting securities tokens, because while you may be against all the regulatory
+stuff, it can certainly be a pain. At the very least, you know, a security token is
+following a lot more best practices when it comes to actually giving or describing the
+rights of the token holder and what they can expect.
+Yeah, yeah. From an anecdotal perspective, in theory, everybody should be free to issue
+their coins. But on the other hand, fraud is also a violation of the NAP, right? So
+we always see a ton of fraud on this side of the space, not just in Bitcoin and crypto,
+but also like pre-crypto with all these Ponzi schemes that have been very popular before
+this era. But yeah, no, I mean, I think I like the idea of being able to hold a bond
+like an Apple bond or a Tesla bond in paper in self-custody and not take, let's say, the
+T, you know, like the risks of like fake bonds on the market that have been reported by,
+I think, the CEO of Overstock sort of had some big stories about these sort of revealing
+that there's a ton of fraud and fake bonds or fake securities in these brokerages, right?
+That they weren't necessarily synced. And so I'd rather just have my own and make sure
+that I own it, right? And that's kind of a cool aspect. So hopefully we can see something
+like that in the future.
+Yeah, I mean, these things, obviously, you're not going to be able to get the same type
+of security model that you'd get with a completely permissionless token. You know, they're always
+going to have a central issuer, but you can at least make some improvements on the existing
+system by having that level of transparency, you know, the auditability aspect.
+Yeah, it does seem like the system could be improved. I mean, again, people are used to
+using Tether now, you know, they use Tether all the time. It functions like a physical
+asset in the sense that, or like a self-cospited asset, right? You have it on your wallet,
+you can send it, you can receive it. But it also has this layer of administration that's
+kind of invisible. And it's certainly centralized and managed by a third party, you know, at
+the end of the day, right? A kind of federal bank, right? With Tether. And so I think people
+are already in a way used to what this technology can do to improve the experience of that.
+It's just a matter of like, you know, implementing actual securities, like integrating this technology
+with securities laws, which, you know, maybe El Salvador will be the one that leads that.
+We'll see how that plays out.
+Yeah, I mean, that is actually probably my highest volume use of the Ethereum network
+is Tether and USDC. And, you know, sure, you know, they are centralized issuers. I wouldn't
+recommend using them to store long term value. But I tell you, I would highly prefer and
+I do highly prefer using these Ethereum based stable coins over having to go to my bank
+and do wire transfers any day of the week. Like it saves me so much time. You know, sending
+a stable coin, you know, basically takes less than 60 seconds. Whereas if I'm going to go
+do a wire transfer, I have to fill out so much paperwork and often have to get on a
+phone call with people and, you know, jump through so many hoops of security bullshit.
+You know, it can easily take me half an hour to an hour, depending on how complicated the
+wire transfer is. So, you know, from a utilitarian standpoint, I am certainly a fan of stable
+coins as, you know, a medium of exchange.
+Yeah, that's the crypto dollar. The stable coin is a topic we've talked about here before.
+I agree. They're very useful and they're going to continue to be quite useful going forward.
+I would love to keep talking about that, but I think there's so many self custody topics
+that we definitely need to dig into that. I kind of want to bring it back to that and
+maybe bring it back to Bitcoin and ask you just like a very general big picture question,
+which is, you know, why should people take self custody at all? You know, why not just
+trust Coinbase like BlackRock is doing and Fidelity is going to be doing, right? Why
+not just put your money in Coinbase and avoid all the hustle of self custody?
+Well, really, it's because you're giving up some of the most valuable properties of this
+ecosystem. If everybody is using a trusted third party to manage their money, they no
+longer have permissionless money. They're just going back to a banking model and the
+bank may arbitrarily decide that they don't want you to use that money anymore. So there's
+no shortage of examples of people posting on social media showing that they've gotten
+locked out of their exchange account or whatever other custodian they're using. And sometimes
+it's because the custodian didn't like some aspect of a transaction they were trying to
+send or receive. Sometimes it's because of some other, you know, AML KYC issue that got
+flagged. Other times it could just be, you know, some suspicious activity of, you know,
+trying to log into your account, you know, through Tor or VPN or who knows what. So there's
+innumerable things that can go wrong that may not even be your fault that can get you
+locked out of these third party accounts. And the whole point of, you know, Bitcoin
+is that as long as you abide by the rules of the protocol, you know, there is no authority
+that can say no to you. And so, you know, the only way that you can get into a sovereign
+position where you're not asking permission to use your own money is to actually have
+control of those private keys. And this is why Casa exists is because we believe that
+your private keys are an empowering technology and it's going to be more than just Bitcoin
+and more than just assets. You know, we believe that private keys are going to give people
+more power and control over their own identity and how they interact with the world in a
+variety of different ways over the long run. This is, there's been a promise of cryptography
+helping people, of course, for decades now. And this is what the cypherpunk movement was
+all about. It's taken us a long time to get here. And I think it's still going to be a
+long time before we really get to the point where this is a mainstream thing. But, you
+know, that goal is certainly in sight. But once again, coming back to, you know, convenience
+versus security, part of the problem is that the default for most people coming into this
+ecosystem is that they're basically getting onboarded through trusted third parties. And
+you know, defaults are very sticky. So when someone comes in through a trusted third party,
+you know, they're probably using a web app or mobile app or something. And it probably
+seems like almost any other banking experience that they're used to. And they're probably
+okay with that. But in order to prevent the system as a whole from becoming more centralized
+as we onboard billions of people, we need to get more people into self custody. So,
+how do we do that? I really think that the most obvious way and not necessarily the easiest,
+but we basically have to route around these third parties. Like I'm not particularly bullish
+on being able to convince people to withdraw from trusted third parties. Rather, I think
+we need to be setting people up so that the default is self custody. And an example of
+that is basically when people are receiving Bitcoin directly as a result of some good
+or service that they're selling. Like they're working and they're receiving that Bitcoin
+directly. I think that when that is how people are getting onboarded to the ecosystem, it's
+much more likely that they will then immediately be in a position of self custody. But you
+know, there's obviously a lot of questions around exactly how we optimize that.
+Yeah. And shout out to Bull Bitcoin in Canada, who's doing great work on this front. You
+know, you send them money, they send you Bitcoin, and there's very little time in which you're
+trusting them with your money. And they, by default, kind of force you to give them a
+Bitcoin address. And thus, you have to set up your wallet. They educate you on how to
+set up your wallet and they have a good amount of work on that front. So I think that that
+kind of model or the model that Swan was following to some degree where you could actually do
+your DCA out into your wallet. I do also believe that that's the future of exchanges. And it's
+you know, as we see more of these custodians fall, you know, and as we see companies like
+FTX try to do a 2.0 scam, you know, make sure they can try and get more of your Bitcoin.
+I think we're going to see, hopefully, we should see more of these kind of companies
+show up and take the main stage.
+Now, OK, so people, you know, but today, you know, on average, people will join something
+like Coinbase or get on Kraken or go to Binance and they'll buy their Bitcoin and then they'll
+there. Maybe somebody will convince them to get their money out and they realize they
+should. And so the first thing they'll do is usually they'll download a mobile app,
+right, and they'll get 12 words, right. And they'll, you know, hopefully the Apple warn
+them not to take a screenshot of the 12 words, to write it on paper, to, you know, stash
+it underneath their mattress. Is there any other, let's say, pro tips for first, like,
+let's say, new users or early users that are not maybe ready for multi-sig, but they do
+want to take self-custody other than not taking a picture or did not digitizing their 12 words.
+What else might you recommend?
+Well, the most important thing to do when you're setting up, especially your first wallet,
+is to actually test the recovery aspect of it. So I think what goes wrong in a number
+of cases, and I've helped a number of people with recovery situations, though not always
+successfully, is that, you know, they may set up that wallet and they may write down
+those words, but they don't double check and triple check and make sure that the words
+are actually correct or that the, you know, the wallet can be reconstituted. So, you know,
+when you're, especially dealing with any non-trivial amount of value, if you think you're going
+to be putting more than pocket money into a wallet, when you create that wallet, you
+should make a small deposit into it and then just literally delete it. Delete everything
+about that wallet and then recreate it and, you know, import that seed phrase and make
+sure that the money shows up. Like that step is something that I think, I don't think
+I've ever seen a wallet that actually tells you to do that. And that is, you know, that's
+a foot gun that a lot of people have run into because, you know, if you write down the words
+wrong or, you know, some people try to get cute and creative with how they actually write
+down the words and do the backup and whatever and end up screwing something up. You know,
+it's just important to have that sanity check that your data is actually going to work when
+you need it.
+Yeah. You know, there's a lot of theoretical ways in which, let's say when you're more
+paranoid, like I think you and I are, there's a lot of ways in which you can think, like
+you can come up with ways things could fail. But I think empirically speaking, you know,
+it sounds like this is one where people actually fall, where they maybe, you know, again, they
+get cute, they write the words, but they don't define the order in which the words are placed.
+And so then they have 12 words, but no idea what order they should go in. That's one that
+I've seen. Or where, yeah, maybe they just misspell a word and now you have 12 words,
+one of which could be wrong. So you got to go into some brute forcing and like check
+them against the dictionary and so on. So yeah, that sounds like a good tip. But I assume
+that you're referring to testing the seed against a mobile phone or do you suggest this
+be done on desktop wallets as well? Because there's some different thread models there,
+right? Like I believe, let's say key loggers, which is one of the big scary, you know, cybersecurity
+threads, like a key logger is more likely to infect a desktop computer than a mobile
+phone, right?
+Absolutely. I mean, the optimal scenario would be, of course, that you're using a dedicated
+hardware device and you're wiping that device and then inputting the seed phrase into it.
+But you know, if you haven't invested that 50 or $100 or whatever for a dedicated hardware
+device, then there is a question of attack surface. And you know, mobile phone tends
+to be safer. The mobile operating systems are a bit more clamped down and are less likely
+to have key loggers and malware and so on and so forth. It's not impossible, but you
+know, if your phone isn't rooted, it's a lot less likely. So it's certainly, I would say,
+safer to be tapping or typing your seed phrase into a mobile app than it is to be doing it
+on a laptop or desktop where it's much larger attack surface, much easier for there to be
+some sort of malicious software running.
+Absolutely. And when it comes to mobile wallets, you know, before we get into hardware wallets,
+which is also a very, very important topic, there's this question of open source versus
+closed source and or even just source availability. There's a company that I'm a big fan of called
+WalletScrutiny.com. It's a project that ranks mobile wallets, Bitcoin wallets in particular,
+and checks whether their source is available and deterministically reproducible. That means
+that you can download the software from, let's say, GitHub, compile the APK file that you
+would install on your phone, and that APK file would be the same file that you would
+get from Google, which would be, it seems like the minimum standard that the industry
+needs to reach such that they can actually benefit from open source. What are your thoughts
+on these? I know that CAS is still closed source, though I believe that it's not obfuscated.
+So it's like if you open up the wrapper of the APK, you can see the code and it's not
+like intentionally hidden or anything like that. But what are your thoughts on this aspect
+of the industry?
+Right. I mean, there are very few companies that go to that level. I don't know. I'm sure
+it's single digit percentage of wallets out there that have reproducible builds. And it's
+better than nothing. It's not panacea. I think an issue with open source is, once again,
+it's a network based problem of how many eyes are actually on that project. So one thing
+that I've found really interesting in the space more recently, especially, is that there's
+a number of wallets out there that are literally one developer. Even if it's open source, if
+there is only one developer behind the project, there's no peer review. That one person is
+deciding all of the code that goes into it. So once again, there's a question of, are
+there any other eyes that are actually on that project checking to make sure that there's
+no malicious code going into it? Because if you have a wallet project that's only run
+by one developer, sure, they could be doing the reproducible builds and so on and so forth.
+But if nobody's looking at the source code, it doesn't really matter. So it's a complicated
+issue. And I think very, very few people bother to dig into the GitHub repositories and actually
+look at the different attributes of these projects. So Kasa, our mobile apps are not
+open source. Our kind of philosophy behind this is that we build on open source and we
+make it very easy for people to, instead of try to reproduce and verify our software,
+what they can do is actually use a number of different other open source software projects,
+recreate their wallet on there, and in a much more user-friendly fashion, be able to verify
+that the Kasa software is doing exactly the same thing that all of the other open source
+multi-sig software is doing. We encourage people to do that, set up a watch-only wallet
+essentially, because you get a similar level of integrity assurances. Like if we were trying
+to screw around, for example, with any of the address generation stuff, then that would
+become very immediately apparent because you'd get different addresses in the different wallets.
+Also it's a tenet of our design that we don't have control over aspects of the transactions
+that are created. So when a Kasa user is actually signing transactions, they are doing that
+on software and hardware that Kasa has no control over. This is kind of a pain for us
+in terms of managing the user experience and the compatibility and making sure that everything
+works, especially over long periods of time because it's a system with many different
+moving parts, but it takes power out away from Kasa where we don't have the ability
+to screw around with the user's verification of their transaction details. Since we don't
+have control over cold card or trezor or ledger or whatever, that's another important aspect
+of verification that I think it's far more user friendly for someone to be verifying
+transaction details on a hardware device screen than it is to be asking them to look at code.
+Right. Yeah. And just to be clear, with the multi-seat side of Kasa, you're plugging
+in your hardware wallet, you're getting an email with a link that lets you basically
+connect through let's say trezor connect or through a kind of interface for cold card,
+and then you're compiling these transactions with the hardware wallet, which means the
+seed words or the private key is not leaving the hardware device. It's just like a signed
+message that's being transmitted to a computer. So yeah, you guys, Kasa in a sense, never
+has any kind of choke point or control point over that transaction construction.
+But okay, so just to kind of finish up on that question of open source, because yeah,
+you're right, like a lot of open source projects are basically abandoned. In fact, I've been
+hearing that Coinomi is essentially abandoned. And that's alarming because Coinomi is a very
+popular mobile wallet in the crypto space. It was supposed to be open source for a while
+and then it went closed source. So anyway, just watch out for that. But do you, at what
+point, like it seems like open source is an essential aspect of self custody, nevertheless.
+And again, you've sort of recognized that, because a lot of these wallets, like even
+if they give you the 12 words, you don't know if they're just keeping a copy, right? And
+I understand that that can't happen with the multi-seat offering of Kasa, but it certainly
+could with the single SIG. And it's probably happening with a lot of these wallets that
+are single SIG and closed source that are fairly popular. I mean, do you think that
+this is a direction that the industry should move into? It seems like it's a very tricky
+thing, you know, like Samurai Wallet finally implemented deterministic bills after years
+of people pestering them about it. You're right, only about five wallets in this space
+actually managed to meet this bar. But like without that bar, you know, you are essentially
+trusting the single SIG wallet provider, right?
+Yeah. Even with the open source and verifiability aspects, like it's still possible for stuff
+to go wrong. I mean, you know, Bitcoin Core is the gold standard, I think, you know, when
+it comes to, you know, open source, high security projects. And even they have had vulnerabilities
+from time to time, even having dozens, if not hundreds of eyes on the project, things
+can go wrong. So, you know, part of my problem, I would say with using a single signature
+wallet, whether it's on the mobile phone or desktop or whatever, is that, you know, even
+if you're maintaining great security 99.9% of the time, it's still possible that some
+sort of bug or vulnerability can get introduced that can then cause, you know, keys to leak
+or can cause transactions to be malformed or, you know, created maliciously or so on
+and so forth. So, you know, it is a single point of failure by default, you know, regardless
+of whether or not it's open source or closed source or whatever. It's just as I've kind
+of been trying to allude to, it's very, very difficult to quantify what the like level
+of security that something being open source actually provides. And that's because, you
+know, the security is basically a function of the quality and quantity of developers
+that are actively working on that project.
+Okay but I mean, it is nevertheless preferable to closed source. I think because closed source
+you're just sort of trusting the third party. And again, this doesn't apply necessarily
+to the multi-sig side of things with Casa because of the variety of tools you guys support
+in Harbor wallets.
+But I guess, and this will probably be controversial, but I would actually say that Ledger, for
+example, closed source project is probably far more secure than many of the single developer
+open source projects. And the reason why I say that is because Ledger has a ton of employees.
+They have a lot of engineers and a lot of eyes on their own code. Now it's true the
+rest of the world cannot audit and verify that code, but compare that to a single developer
+project that nobody's even looking at is what I'm saying. That's why it can be difficult
+to quantify exactly what the level of security of these things is in terms of the sort of
+integrity and quality of the code itself.
+Yeah, no, that makes sense. I think that's a good argument. I've never really heard that
+argument, but yeah, you're right. So single sig mobile wallets are, they're arguably better
+than a sketchy exchange, but especially done right. And again, of the ones like, I think
+people should check out this website, walletscrudeny.com, which actually goes through that, but you're
+right. Like if there's one developer on that wallet, then how secure is it? Is anybody
+looking at it? So let's go into the next step of security or custody. Maybe somebody has
+had their coin in this one of these wallets and they're listening to this and they're
+like, okay, I guess I got to move to a hardware wallet. And we're looking at this story of
+Ledger, right? Which just had this, the most ridiculous sort of blowing up of their brand
+that I've seen in recent years, right? Where they, first of all, they started doing this
+marketing where it was like, hey, you just put your Ledger on your chain, a literal chain
+on your neck. And that meme with the Indian guy with a huge flavor flake clock of Bitcoin
+gold, like 50 ounces of gold, right? And so that was ridiculous. But then also they implemented
+this thing where basically they could withdraw key material from the Ledger through an internet
+connection and set up like this sort of charted backup thing with three other companies. What
+are your thoughts on Ledger specifically? And then maybe how to choose hardware wallets
+more broadly? Like how do we make this decision?
+Yeah, I mean, I think it's pretty clear that Ledger's various faux pas have been a function
+of them trying to push more mainstream. And I actually, I understand why they've gone
+down the path of this particular seed recovery solution, because, you know, they're not trying
+to create a security model for someone who has, you know, millions of dollars that they
+need to secure in a sovereign way. They're specifically, you know, this is targeting
+the sort of end of the bell curve of the sort of the laggard mainstream adopters who may
+have 50 or maybe a few hundred dollars, maybe even a few thousand dollars worth of assets.
+And people who aren't dedicating a lot of time and effort into their security, because
+really, if you have dedicated the 50 or $100 to buy a hardware device to manage your keys,
+you're already probably better off than 99% of people in the space, having taken self
+custody and taken those keys off of internet connected devices. At that point, the biggest
+threat to your keys is actually yourself. And it's basically just screwing up and losing
+access to those private keys. So from that perspective, I think it makes sense that Ledger
+has prioritized creating a user friendly recovery solution, because, you know, quite honestly,
+people suck at backing up data. It doesn't matter what data it is. It doesn't even matter
+how technical you are. Like a lot of technical people lose data all the time, because it's
+just a boring IT administrative task to do data backups, and especially to check on them
+regularly to make sure that they still actually work. So, you know, while there's certainly
+issues, I think, with how they did it, like it's not nation state resistant by any means.
+I think it is better than not having a recovery option for a lot of those people for those
+those target audience, those people who they're not necessarily securing their life savings.
+So I think that it will come in handy, it probably will save a number of people from
+losing access to their private keys. It's not something that I would use myself. But
+we'll see. I think their biggest screw up was really around the marketing of it. And then,
+you know, you can argue the minutia of whether or not they should have put more effort into
+or done a better job of selecting the actual key custodians for that stuff. But, you know,
+they published a white paper, I think, in the past week, and I looked at it. And, you know,
+from a technical perspective, it looks pretty solid to me, it is like the quality and caliber
+of work that I've come to expect from ledger. Okay, and do you believe that? Does this open
+up a door for hackers to maybe like, you know, like, is this a kind of backdoor? Or because,
+you know, if you can actually remotely with the remove or make a copy of data, even if it's well
+sharded, even if it's like, does this not provide a path for, let's say, hackers to, you know,
+backwards engineer, reverse engineer ledgers, you know, door, you know, remote door in?
+I don't know, I guess that's my concern. Like, I feel like I can't, again, like, and I'm probably
+on that side of the bell curve of like, you know, way too paranoid to give that kind of power to a
+hardware device. But is that a concern that you think they've addressed sufficiently?
+I think the well, the main problem in this case is the fact that we can't verify, you know, the
+code that is actually running on the ledger device. So like I said, I read their white paper,
+and I guess the caveat is, if the code running on the ledger is doing what their white paper
+details as the the architecture being, then, you know, it's a pretty secure setup. But
+kind of what you're getting at is, if there are any code issues, that introduce some sort
+of vulnerability where that security architecture can be bypassed to extract the key material,
+then of course, yes, that's a problematic backdoor. So it is possible that, you know,
+these changes could introduce a backdoor, we don't really have a way of verifying that this is,
+this is the trust model that you are getting into, you know, when you buy a ledger, and it has always
+been the trust model that you're getting into when you buy a ledger, even before they have
+offered this backup functionality. The only thing that I can tell you, like from a verifiability
+perspective, is that there are there are no API calls, at least that we know of that we can find
+that, you know, that's possible for us as developers to make to the ledger device to request
+the extraction of a seed phrase. That doesn't mean that, you know, there's, there's not any
+way that you could try to glitch the API or the device to try to extract that. The only thing
+that we know for sure is that no one has succeeded in doing it so far. And, you know, ledger has been
+around for a number of years, and they have, you know, they've withstood the test of time, they,
+I would say, have one of if not the most proficient team is when it comes to hardware
+security, you know, ledger, Don, john breaks a lot of other companies devices in this space.
+And as far as I'm aware, nobody has broken theirs.
+Right? Yeah, I mean, that's, that's very fair. You know, they do, they do very, very deep work on,
+on trying to break other hardware wallets. You know, I think that they also announced after this
+controversy that they were going to be open sourcing or like fast tracking their path towards
+open source. And they're, they're a big enough company, they could probably actually draw enough
+eyeballs for that to be, you know, properly peer reviewed. So I do hope that they take that path,
+you know, like, I can't recommend ledger going forward until the ICC significant changes on that
+front. But you're right, they do seem to have a very strong team. So hopefully, they'll turn
+the ship around. And so on that topic of hardware wallets, how do you suggest, let's say the average
+person that's ready, like to move to the next level of security, let's say they're not the
+they're not, you know, let's say that the boomer crypto friendly class, that is okay, that will
+buy a ledger so that they can play with crypto, but also, they will KYC themselves into ledger to
+make sure their backup is secure, right? Like, for people that are not that user, right? How do you
+go about choosing a hardware wallet that let's say, takes you to the next level of security,
+you know, because the options that we have left are, you know, obviously,
+Tresor, I think Tresor, Tresor Model T, and then you have the cold card
+wallets. And then there's like six other ones that are kind of like, you know, not that popular. I
+think BitByPit is one of them. I mean, no, it's not by me. That's an exchange. But anyway, there's
+a there's like a 10 more hardware wallets in the market. How do you think about those? And how
+should people think about those hardware wallets? Yeah, well, I think there's way more than 10.
+It just depends on how far out on the long tail you're willing to go. I think there's definitely
+a lot of like really low quality, crappy Chinese products out there that have not been very well
+tested. And in many cases, they're basically just old Android phones, I think, probably not even
+running up to date Android software. So you're going back to that recurring theme that one of
+the important aspects of security is safety and numbers, you don't want to go too far out on the
+curve of adoption, it is definitely safer to stick with one of these devices that has been sold at a
+high volume of level and therefore has been subject to more scrutiny than other devices. So
+I wouldn't, you know, go outside of the big name brands. Then after that, there's kind of the
+question of usability and, you know, how, how much effort or how technical are you as a user? And
+what do you need from a UX perspective, I do lean towards preferring people using devices that don't
+require USB cables. So for example, you could use cold card with as NFC, that is pretty convenient,
+though there's not a ton of wallet software that supports it yet. It's on our to do list. Certainly
+to add NFC support, we already support cold card. Just from a like raw, you know, PSBT file transfer
+perspective. I'm also a fan of really any of the devices that support animated QR code standard for
+transferring. So I know Blockstream Jade, Passport, Spectre DIY, though almost nobody has that.
+And really, you know, that's the reason why I say that is because what we've seen from a support
+perspective is that when you're when you're having to plug devices into like laptops and desktops,
+it's just a much more complicated software stack where there's a lot more things that can go wrong.
+And basically, cause the user experience to have more friction. Whereas if you can literally just
+tap your device or point your device at your screen and do that data transfer, there's
+far fewer things that can go wrong just from a user experience perspective.
+Very cool. Yeah, I haven't played with these, these Passport special QR codes,
+but I'm going to definitely check that out. And I do have a Jade that I bought
+ages ago that I'm going to I'm going to plug in and start playing with Jade is one of these
+companies or one of these products that has been kind of rising in the ranks, right? I mean,
+for a long time, Tresor had the lead and then cold car really kind of I think took the lead
+as far as like the most paranoid Bitcoin Harbor wallet. And then Ledger has always been in the
+game, more crypto friendly sort of wallet. But now Jade is in the game in the kind of like Bitcoin
+only, but plus liquid side of the market. What do you what do you think about Jade as a hard
+wallet specifically? I don't I haven't heard too much conversation about it, but it does seem to be
+firmly in the top tier at this point. Yeah, I mean, it's user friendly. I would say similar
+to Tresor though they do have the camera, which is a plus. I'll say I was I was definitely
+disappointed with Ledger stacks, which I think they have they aren't even shipping yet. But
+I was sad that Ledger stacks didn't even they didn't bother to put a camera into that device.
+I was like, you know, you really you're losing out on better user experience with that cold card.
+Their Q1, I believe, which is supposed to start shipping by the end of the year is also going to
+have a camera, though I know that they're not a fan of the QR code standard that all of these
+other devices are following. So we'll see how that goes. They're going to want to implement
+their own could be tricky, I think, to get a lot of other wallet software to add support for
+whatever they come up with, unless it's significantly better. I kind of yeah, I kind
+of see I think from a security perspective, Jade is probably similar to Tresor in the sense that
+I think there was actually a physical extraction vulnerability reported recently on it,
+because I think, you know, neither of them actually have secure elements. So that is something that
+people might want to think about, you know, whether or not you are worried about a sophisticated
+physical attacker being able to extract key material from the device. You know, I think that
+is a pretty edge case thing to worry about these days. It's not something that we've ever actually
+seen happen in real life. These tend to be more, you know, theoretical, laboratory based attacks,
+but you know, it is something that is possible.
+Absolutely. Quick side question. How are you doing for time?
+Oh, I'm good. I think I have several hours. Awesome. Awesome. Because we could definitely
+I could definitely ask you. We could definitely go for several hours. There's so many things I
+want to I want to talk about. And this is a topic that's so it's so complex and so deep that and so
+interesting to people, you know, that I think it almost merits it. But all right, so let's go a
+little further. So, yeah, the physical threat model really changes your setup as well, because
+if you don't consider physical attacks, let's say home invasion from a sophisticated thief that,
+you know, knows about crypto or let's say you're you're unless you're worried about like the Feds
+raiding you or something like that, which to be fair, there are some people who really do need
+to worry about that and that are not necessarily bad people. Right. I mean, I'll bring up the
+example of Tate, which is, of course, you know, being now accused of significant crimes and maybe
+he is guilty. I don't know. But, you know, how would somebody like Tate how do you think somebody
+like Tate should actually secure their Bitcoin? You know, I don't know if he had good enough
+counsel. You know, we're talking last week that he had like four coins for Bitcoin, some Binance.
+And was it his pocket money or his huddle? And he just had really bad advisors. But he probably is
+concerned about, you know, some sketchy raid from whatever Eastern European countries in and
+and they would probably get this hardware wallets and then have to do something about it. So maybe
+maybe go on to that, talk a little bit about that story or somebody of that level of prominence in
+aggro. How should somebody at that level of, let's say, popular controversy and government enemies
+handle their Bitcoin security, given that they do have, let's say, physical security as a part
+of their threat model? Yeah, basically nation state resistance. There's, of course, a number
+of ways that you could go and, you know, you can get really creative with any of this stuff.
+But, you know, the short version is you need to have your keys distributed. So
+this is something that we help our clients kind of grapple with because everybody has
+different threat models and different thresholds of convenience versus security that they're willing
+to manage and deal with. And at the extreme, which we certainly have some clients do,
+the extreme of sovereignty and security is that you have a multi-key setup where
+no threshold of keys exists within one jurisdiction or one set of jurisdictions that
+are cooperative with each other. So essentially putting your keys in different countries
+that do not cooperate with each other. So, you know, we have clients who literally have to
+get on a plane if they want to access their extreme cold storage. Now
+you can create, of course, any number of different wallets that you want. And so
+most people who have that level of extreme cold storage, that's not their only wallet. They
+probably have three, four, five, six different wallets that have different key setups that have,
+you know, higher levels of convenience for spending. You basically have your
+checking account and your savings account and your pocket money. For example, that would be like
+pocket money is your single signature hot wallet checking account. Maybe that's like a two of three
+wallet where you can access both keys within a matter of minutes or less than an hour. And then
+your savings account is your super cold storage where it might take hours, if not even days,
+to be able to access a sufficient threshold of key material to sign a transaction for.
+But then, you know, you can of course go even deeper and try to decide exactly
+what level of coercion you're even willing to try to protect against. So, you know, there are ways,
+for example, where you could have this, call it like jurisdictional arbitrage or distribution,
+and not have an extreme level of inconvenience if you're at the level where you
+either have semi-trusted friends or family, or perhaps you have employees who are scattered
+around the world. And in that case, you can have the key material in countries that don't
+cooperate with each other, but you can be able to request signatures from those people. Of course,
+then you have to develop, you know, various secure communications protocols and authentication
+procedures, and that can get pretty tricky, especially these days as, you know, deep fake
+stuff is becoming more problematic.
+Yeah, I was going to ask you about AI. I know you've been playing with AI as well,
+but I fear if we get into AI, we'll steer too far from Bitcoin self-custody. But yeah, I think,
+you know, deep fakes and KYC authentication is increasingly tricky in the age of artificial
+intelligence. So that's going to be fantastically entertaining to watch and also quite risky. You
+know, you really have to have that ship under control. So, okay, so yeah, I mean, some,
+you know, highly creative James Bond level, multi, you know, jurisdictional, multi-sig sort of
+almost institutional grade security for that level of aggro. Now, let's roll that back into
+something a little bit more, let's say, likely for a lot of people, you know, people that are
+perhaps concerned with physical attacks, you know, there may be, they have a hardware wallet and a
+12-word seed and their seed is stashed, you know, buried in some sort of metal device engraved
+deep underneath their dog house or something. But then they're afraid that somebody gets to it or
+maybe that they get their treasurer and then, you know, they'll go into a lab and try to extract
+the seed and then they'll get their Bitcoin. So they'll do this 25th word thing, right? And the
+25th word is like a feature that I believe a treasurer, you know, let the charge with,
+which lets you add an extra word on your seed. So it adds an extra kind of piece of cryptographic
+material to the seed, to the private key. And so your 12 words are now no longer sufficient
+to regenerate the public addresses of that wallet, which in theory protects you from a physical
+attack. But in practice, it also makes your backups fragile to loss because now you have to
+securely store this 25th word and where are you going to store it? I mean, obviously, you're not
+going to store it necessarily with your hardware wallet because otherwise, why create it in the
+first place? Or you're not going to store it with your other 12 words because if you're afraid of
+fiscal theft and they get to it, they're going to get the 25th word. So you got to store it somewhere
+else. You know, what do you think of this particular security feature? Because I think it's
+actually very problematic. I think it's more, I've seen more people lose their money to it than I've
+seen people successfully defend their Bitcoin with it. And to do it right, you know, you kind of have
+to spread that 25th word around enough so you don't lose it. What do you make of it?
+Yeah, I mean, you basically just summed it up is that I've seen a lot of people lose money as a
+result of problems with the 25th word as well. And, you know, I track the other side of this where
+all of the physical attacks that do happen, at least that we hear about, I track. And
+the vast majority of the time those attacks are successful. This is kind of related and touches on
+another issue of, you know, decoy wallets, because you can use this feature, for example,
+to have a decoy wallet. And the short version is we just don't have enough data. Like we,
+there are zero cases that anyone is aware of where someone has been attacked and has successfully
+either used a decoy wallet to pay off the attacker and save the rest of their stash,
+or has been attacked and was saved because they just, they had a, you know, a 25th word somewhere
+else that was inaccessible. So, you know, part of it is just sort of an issue of the amount of
+incidents that we have to go off of. And, you know, comparing that to the number of people
+that we have seen anecdotally lose access to their money because this is a more fragile setup.
+So I certainly don't recommend using 25th word option for people. Now, like we said,
+Trezor and I think Jade as well have potential physical extraction vulnerabilities, and this
+is how you mitigate that. But also, as I said earlier, those physical extraction vulnerabilities,
+as far as we are aware, have never actually been used in real life. So this is why security is so
+tricky is because there's a million things that can go wrong, but unless you're talking about
+what the actual frequency is, you know, when you're creating a sort of a threat model,
+when you're looking at all the different things that can go wrong, you just, you have to prioritize
+based on the likelihood. And so I think this is why a lot of people kind of get frozen up is we
+talk about security, and I can only imagine like if a sort of normal person or a non-technical
+person comes in, they listen to the security experts talking about all of these edge cases.
+It can be incredibly scary because often we don't talk about, you know, what's the actual
+likelihood of the edge case happening? And at the end of the day, nothing is perfectly secure,
+right? So there's always a potential for something to go wrong. And I think that can cause people to
+freeze up and say, well, I don't want to bother with this self-custody stuff because I'm never
+going to be able to have a perfect setup. But the way that I try to describe it very simply,
+like the different threat models, is that if you are using a trusted third party to custody your
+funds, the number of things that can go wrong, like all of the different vulnerabilities and
+threats to your money, are the same and actually greater than the number of things that can go
+wrong if you self-custody. So basically the sort of total scope or map of possible vulnerabilities
+and self-custody is a subset of the total number of vulnerabilities of third party custody. Because
+basically a third party that is doing custody, you know, they are doing quote unquote self-custody
+on behalf of other people. So all the things that can go wrong with the keys can go wrong on their
+end. But also you have a whole new class of things that can go wrong with basically insider attacks
+and basically the people who you are trusting to run the infrastructure that is essentially a black
+box. You have no idea what security practices they are actually doing behind the scenes. And
+even if they told you, you probably can't verify it. So when you take self-custody, you can at least
+know what the security practices are that are being put in place around those keys and you
+can verify them because you are probably doing it yourself. That's kind of the best way that
+I have been able to quantify the scope and the threats of like why is it worth the effort
+of trying to put yourself into a self-custody setup. >> You know, one of the ways that I framed it
+when I was teaching this stuff to consulting clients was that there's one of the big threats
+is that you build yourself a maze around your money that is so complex that you get lost in it
+and you effectively screw yourself. So that's one aspect. That's like the extreme paranoia side of
+it. But on the other hand, you know, trusting your money to a third party is basically the worst
+case scenario on the other end from an overall security perspective.
+Yeah, so okay, let's get into hardware wallet supply chain attacks because this is an area
+where let's say the critics of hardware wallets are, they've kind of established somewhat of a
+beachhead, so to speak. So what can you tell us about supply chain attacks in terms of,
+you know, let's say Tresor or cold card and how can people have some certainty? Like what
+protocols have been implemented to give people certainty that their hardware hasn't been
+manipulated? >> Well, that's certainly tricky, but I will also preface it by saying that I'm not aware
+of any incidents in which a supply chain between the actual manufacturer of a hardware device and
+the end user ended up being compromised. More frequently what we see happening is someone buys
+a bunch of Trezors or ledgers and initializes them and then resells them on like eBay or Amazon or
+whatever and basically hopes that whoever receives them is naive enough that they don't understand
+that the seed phrase that's on that device is already in possession by someone else and they
+just start using it and deposit money on it. We've also seen counterfeit devices,
+I think mainly Trezor counterfeit devices, but that's always, once again, like people
+buying not directly from the manufacturer, either buying off a secondhand website
+or I think there may have even been some like conferences where people were giving or selling
+fake devices. So as long as you're buying directly from the manufacturer website,
+you're in a pretty good position. And the devices themselves,
+they will at least validate when you're updating the firmware on them, that firmware has to be
+signed with a private key that ostensibly is only in the control of the manufacturer.
+And if it's not, the device is going to throw up some major warnings and usually won't even
+let you install the firmware unless you put it into a very special developer mode.
+Other than that though, I'm not a hardware security guy, but once again, at the end of the day,
+nothing is perfectly secure and it's practically impossible for even security experts to verify the
+integrity of hardware. And this is something that has come up a few times over the years,
+especially just like Silicon chips are so amazingly complicated that it's possible to hide
+malicious pathways inside of the transistors, for example, that no one will notice for a long time,
+if ever. It's kind of similar problems with really any hardware. And that is why, for example,
+we talk about simplicity of if you are putting a private key on a desktop or a laptop,
+just the overall complexity of that entire system of hardware and software is so huge
+that there's just a ton of potential vulnerabilities. If you're putting your key
+onto a mobile phone, it's still huge, but it's probably an order of magnitude less
+than laptops and desktops. And then finally you get to these dedicated key manager devices,
+which are extremely minimal in terms of their complexity. But even then, none of us,
+except maybe Ledger Dungeon, but almost nobody is actually inspecting these devices at a chip level.
+Yeah, that's amazing. And so the hardware wallets are the simplest of the devices.
+This brings us to one of the, simplicity is good for security in general, right?
+So this brings us to one of the aspects of Casa that I actually am a big fan of.
+So let's say somebody has had these 12 words in a hardware wallet, they're good, but they want
+to level up. Maybe their Bitcoin stack just grew 10x after a bull market and they're ready to level
+up. One of the cool features with Casa is that you can have the two of three multi-sig setup,
+which is the gold account, I believe it's like $120 a year. And you can have that set up in a
+kind of custom setup where you can have two hardware wallets plus the mobile key. And that's
+really nice because the UX of Casa is very good. And then you have these two hardware wallets,
+and then you can actually have a hardware wallet diversification, right? So you have,
+maybe cold card and then the tracer. And then so if one of them fails and you find out about it,
+you'll have a little bit of time to react, right? And switch it up.
+So I guess I just wanted to compliment you guys on that because I think that's a big piece of
+the innovation that you guys have put forward. It lets you not only benefit from the open source
+security of these hardware devices, but also lets you hedge against them by using multiple of them.
+So maybe you can talk a little bit about that and tell us, I don't know, if you have any comments
+on that particular issue. - Yeah, so multi-vendor, multi-sig
+is I really think the only way to go. If you're going to the extremes of setting up multi-sig
+and you're trying to eliminate single points of failure, then it's pretty dumb to put all
+of the keys on devices that are controlled by a single entity. And it's not just about
+supply chain attacks. Like I said, I'm not aware of any actual supply chain attacks
+happening thus far. It is still a theoretical vulnerability. But what we've seen over the years
+is that there are a lot of things that can go wrong other than just a supply chain attack
+when it comes to using these hardware devices with your Bitcoin wallet. Sometimes there's
+just sort of compatibility issues. Sometimes software or firmware updates can go out that
+create a compatibility issue and it can take a while to get fixed. And so you may temporarily
+not be able to use that device. Sometimes there's edge cases we've run into where a device may not
+be able to handle a certain transaction because it's overly complex, especially when you're doing
+multi-sig and you're trying to spend 100 plus UTXOs. Some of these devices kind of choke on
+larger data payloads, especially with PSBTs. Now, you can easily end up with PSBTs that are
+hundreds of kilobytes and can cause problems with these dedicated devices because they are
+very simple. They are designed to be minimalistic. I did a bit of research back in 2020 where I kind
+of stress tested a bunch of devices with complicated multi-sigs and complicated transactions.
+I'm actually going to be redoing that hopefully in the next few months here with some of the newer
+devices and using some of the newer Bitcoin scripting and just trying to see how well is the
+hardware device ecosystem doing for that. But like I said, it's single points of failure.
+And I don't want to focus on any one given thing that can go wrong because as we've basically
+covered, there's a ton of things that can go wrong. And since you don't know what thing is
+going to go wrong, having more diversity amongst your keys and how they're managed just gives you
+more flexibility and often more escape hatches so that if something goes wrong, hopefully it's only
+going to affect one of your keys. And that one key, if you're in a multi-sig, won't be a single
+point of failure. So this sort of resiliency, it protects people from the complexity of the entire
+ecosystem that you're dealing with, both at a software and hardware level. And it protects
+people from themselves and making mistakes. That's what I think you and I have both seen over the
+years, especially people who are using single signature setups. You can very easily screw
+something up. And that one mistake that you made just because you were naive or you weren't paying
+attention when you did it can result in catastrophic loss. And that is the type of
+problem that I think is a major inhibitor to mainstream adoption, or at least mainstream
+adoption of self-custody, which is what I think we should all be going for, is that simply the
+ability for someone to be their own bank is not enough. It's that we need for people to be
+confident that they can be their own bank and that they don't have to expend a ton of their time and
+resources managing that aspect of their lives. - Yeah, there's a question of sovereignty,
+which is, let's say, power or control over your jurisdiction, right? So let's say in this case,
+we're talking about your private keys. You have power and control over them in theory,
+but then there's also that aspect of responsibility. Are you actually able to
+respond to threats? Are you competent enough to handle it? And do you feel confident in that?
+And that, I think, is the area where sovereignty starts to get interestingly tricky, because you
+do have to get to a certain level of competence to actually achieve any kind of sovereignty.
+So somebody mentioned recently to me something about security, a concept in security, which I
+thought was really interesting. He said, with security, the best that a security system can do
+is alert you to a threat, some sort of breach, some sort of attack, somebody trying to jump over
+your lawn or the wall around your house, whatever. And that alerts you to give you time to respond
+to that threat and respond appropriately. So when it comes to Bitcoin security, especially now that
+we're entering, we're talking about multi-sig setups with Casa or multi-sig in general as well.
+How do you think people should respond? Let's say, maybe describe the two main offerings that
+you guys have, two of three and three or five, I believe. And then talk to us about maybe the ways
+in which people should respond to any kind of breach of a key or compromise and what process
+you guys have in place for that. Right. So that's, I would say one of the main deficiencies of,
+well, Bitcoin in general, like really any of these crypto assets, but especially single
+signature setups, is that there is no responding to a threat. By the time the threat has compromised
+your setup, your money's gone and there's no recourse, right? That's one of the reasons why
+people are afraid of taking on the responsibility is because you basically have to front load
+all of the security. There's no reactive security, at least for single signature setups.
+Now, I will say that the OpVault proposal would change that. And that's why I'm a big fan of
+OpVault because it would actually complete this whole other half of the security model that we
+currently don't have in Bitcoin at the protocol layer. Essentially such that you would be able to
+see that your funds had been compromised and you would be able to claw them back and put them into
+a new, fresh, secure setup. But since we don't have OpVault, the next best thing that we can do
+is put you into a setup where there are multiple keys and you are on a regular basis checking
+that those keys have not been compromised. So this is where we have some concepts in CASA.
+One of them is called health checks. Basically, every six months, if you haven't used a key,
+we just send you a reminder, "Hey, go sign this cryptographic message and prove that you still
+have control over that key." And so that kind of is a forcing function to get people to go and
+check on perhaps some of the keys that are stored in locations that are harder to access,
+that they don't go to very frequently, just making sure that they haven't suffered from
+physical attack, physical theft, environmental damage, bit rot, really any number of things
+that could go wrong where that key is no longer usable for really absolutely any reason.
+And if you're checking in on a key and you find that it's gone or just not usable anymore,
+then we have this other concept called the key compromise and key rotation, which is built in.
+And basically, that allows you to just tap on the key in the app and say, "Hey, this key is
+compromised. I need to replace it." You then go get a hardware device of your choosing, anything
+that we support, and you just set up that new hardware device and we walk you through essentially
+rotating your funds over from the old key set to the new key set. And the only difference will be
+that one key that was compromised and the rest of the keys remain the same.
+- Right. Okay. That's fantastic. What has been... What kind of data do you maybe give us a little
+bit of an insight into whether people actually do rotate their keys? Or at least not rotate them,
+but do they actually do the health checks? How often do they do it? Do people get lazy around
+this issue? Or are they fairly responsible with it? - Yeah, that's actually something I would be
+interested in knowing more. I do know anecdotally that definitely people are lazy about it. We have
+clients who ask us, "Hey, I'm getting this notification. What should I do about it? How
+worried should I be?" type of thing. This is some ongoing discussions. I think that we probably could
+be pushier about it because we have certainly had cases where people ignored those notifications for
+several years. And then when they finally got around to it, they discovered that maybe multiple
+of their devices have stopped being reliable. Usually, it's just a result of the firmware being
+really, really out of date. But of course, any number of things can go wrong. So we try to find
+this happy medium, of course. Once again, it's trade-off between convenience and security.
+And when you're in a multi-signature setup, there is more complexity. And the way that I see it is
+that you should not think of it as a set it and forget it type of architecture. It's kind of like
+a living organism, and you need to make sure that the heartbeat is still there every once in a while.
+You need to make sure that it's still alive. Otherwise, you can still get into a situation
+where you go too long, and then you try to spend your money, and you discover that too many things
+have gone wrong with your keys. So I think incentivizing people more on that side of things
+is going to be a path, a room for future improvements of getting people to actually
+put in the work. You would think that the incentives are there because in many cases,
+people basically have their life savings stored in these things. But it's kind of like what I
+said earlier is data backups, for example. It's very hard to get people to do data backups,
+even technical people, because it's just excruciatingly boring, tedious, monotonous task.
+And the same is true if you need to go travel to one of your keys just so that you can tap on a
+button a few times to make sure that the key material is still there and that the device is
+still functioning and so on and so forth. So it's definitely room for improvement.
+- Yeah, that's definitely interesting. And I definitely recognize that feeling of like,
+"Ah, I'll do it later." Twitter is more interesting right now than going and digging up this device or
+whatever. But yeah, and so, okay, so that's on the health checks. And then on the key compromise
+issue, I mean, that's I think over time, the more I think about it, the more it seems like one of
+the core principles of self-custody is like if you have any reason to think that your key has
+been compromised, even to the degree like maybe you lose your phone or you lose your 12 words,
+on a single SIG issue, immediately you got to move it to a new wallet. Because one of the ones that
+I've seen a lot is people will like, they'll get like a 12-word seed from a crypto wallet,
+right? Like something like Exodus, for example, which is a great wallet, I think, in general.
+And then they'll grab those 12 words and then import them into their laptop and then their
+desktop and then they'll import them into a bunch of computers. And then, of course, one of them
+gets compromised and then that seed has been compromised. And they're like, well, but I have
+my backup or whatever. They don't realize that that seed is no longer functional. They actually
+literally have to move all their assets to a new set of public keys. And so, even if like maybe
+their phone gets, they lose their laptop and then it takes three days for the hacker to get to their
+seed. Like if you have any reason to think you're compromised, you got to basically move your coins.
+And with single SIG, it literally means moving all your coins. Whereas with multi-SIG, you can
+actually, well, I guess you will have to sign a transaction and rotate your keys to a new multi-SIG,
+right? So you still have to. - Yeah, this is kind of an interesting
+related point is there's single signature wallets already irk me enough, but I think the extreme
+end of sort of concentration of single points of failure is the people who use
+one of the wallets, like Exodus, for example, or you mentioned Coinomi earlier. And essentially,
+they have all of their different tokens and assets all in one place, all secured by the same
+set of keys. Like that is like the ultimate single point of failure. And as you mentioned,
+of course, you start copying and pasting that data around into other pieces of software.
+It's actually kind of analogous to credit card fraud of the more merchants that you deal with
+and give your credit card info to, the more likely it is that one of them will be compromised or
+will have a skimmer or something. And it doesn't matter which one of them, it's just like every
+time you interact with a new one, you're handing your private keys to them essentially, and you're
+trusting them with it. So it's the same type of thing with reusing private keys across multiple
+different wallet software. - Yeah, like I imagine they don't,
+probably something like this, they'll hear about some exciting new ICO or whatever the flavor of
+crap coin it is this time around. And then they'll go in like download trust wallet, right? And
+they'll get the 12 words and then they'll realize that it's on Ethereum on layer five, and then
+they're like, "Okay, well, I guess I got to use MetaMask." And so MetaMask will be like, "Wait,
+do you want a new wallet?" It's like, "Well, a new wallet doesn't have my coin." So they'll
+import their seed. So now their seed is on trust wallet and on MetaMask and on two devices.
+And this is probably how it just snowballs slowly out of control. And this is why Harvard wallets
+are so interesting and so powerful 'cause it at least isolates you from that kind of shenanigans.
+We saw the trust wallet extension hack recently, that was bad. And who knows what happens there?
+Those extensions are pretty sketchy, but fun. Let's get into inheritance, right? So, okay,
+you've got your multi-sig, your deep huddle, your Bitcoin OG at this point. You're going to be rich,
+multi-generational wealth if you're not rich already, but you want to make sure your kids
+can get access if and only if you get hit by a truck in 30 years. How do you guys
+manage inheritance? Because inheritance, I mean, the Bible of crypto inheritance was Pamela Morgan's
+crypto asset inheritance book, which I think is still very strong and people should go ahead and
+buy that off Amazon if you're interested in this topic. But it's still like when she wrote that
+book, you know, like 2018, at least the version that I have, and it was still, you know, the
+wallets were not where we're at today. I don't think Casa existed yet. And her processes were
+very manual and sort of paper-based, right? Where are we today with inheritance? Hopefully,
+we've advanced a little more. How do you guys deal with it? - Yeah. And so, you know, the really cool
+thing about multi-sig is that we finally have the ability to walk this very fine line. And
+that line being that, you know, when you're doing self-custody, you want your setup to be such that
+you and only you have access to the money. But then if you want inheritance, you want this
+sort of switch to flip when you die that changes the security model of your money.
+So that now, you know, some predetermined set of beneficiaries and executors have access to it.
+And, you know, often a lot of people have gone down the path of saying, "Oh, you know, we need
+to do some sort of like smart contract, or we need to have some sort of dead man switch." Or,
+you know, they're trying to architect some fancy technical thing that usually ends up running into
+the Oracle problem, which is essentially, you know, garbage in, garbage out on any of these networks.
+There's no way to like programmatically know whether or not a human being is alive or deceased.
+So the short version is that, you know, the authentication procedures that should be in place
+around inheritance, they do need to be manual. They do need to require humans to verify the
+death of, you know, the owner of a given wallet, and then, you know, institute whatever processes
+have been put in place. Now, you know, the reason why I say multi-SIG is innovative here,
+and it lets us walk this fine line, is that the way that we achieve that is by putting
+a threshold of, you know, spending threshold of keys in positions such that they can be
+accessed through an inheritance process. And, you know, more practically, some examples of that
+would be that, you know, CASA holds a key, for example, so, you know, we can verify if someone
+has passed and we're, you know, we're given the death certificate that we can verify with the
+local jurisdiction that is, that's valid, and we can then process a signature request for our key.
+You can place keys in other custodians. Usually, we recommend people put one key in a safety
+deposit box. Now, that could be a bank, that could be a private service, but basically,
+some other physical custodian that allows you to list beneficiaries on, you know, the access
+to that box. So, once again, you know, that key would be accessible to you while you're alive,
+but if someone other than you showed up, they would have to hop through the authentication
+procedures to go through the sort of beneficiary process to access the contents of that box.
+And then, of course, you can also, you know, you can potentially onboard other friends, family,
+attorneys, so on and so forth, but, you know, the short version is it is, it needs to be a human
+based process for, you know, ensuring the security of those keys, but the, you know, the reason why
+this was maybe not completely impossible, but a lot harder to do before multi-sig is that if you
+had a single signature setup, yeah, you could put that in a safety deposit box and it has,
+you know, beneficiaries listed on it, but all of a sudden, that becomes a single point of failure
+because a safety deposit box in and of itself is actually not completely secure. There is precedent
+for safety deposit boxes being opened by malicious employees, by law enforcement, or even by like
+the company itself, just like shutting down or going out of business and you're not telling
+people. So, you know, safety deposit box has never really been foolproof, at least for, you know,
+the security of a single signature setup. But, you know, now, you know, if you have your keys
+distributed around, you don't have to worry about something going wrong with the safety deposit box
+because as we already covered, if that did happen, no sweat, you just mark that key as compromised
+and you go set up a new key and put it somewhere else that has not been compromised.
+So, would this work with the 305 diamond package where, let's say, I don't know, you have one key
+in your phone, you know, a couple of hardware wallets here and there, and then you guys have
+one of the keys and then the last one would be in some sort of legally protected vault, you know,
+that people would have to, you know, jump through a few hoops to get to? Or what, how does the
+distribution of the keys look like? What are the numbers? What's the multi-sig range?
+Right. So, generally, the people who are doing this, they're usually using our 305 setup. We
+also have a 306 setup, though that's less frequently used. That's usually for people
+who want to either onboard people like attorneys or possibly employees.
+Now, it's possible to do sort of a do-it-yourself setup with the 203, but it's not something that
+we really officially support as inheritance. But even within the 305, there's no single
+cookie cutter template for this. And this is part of the reason why our premium tier offerings are
+so much more expensive. It's not because, you know, the software is more expensive for us to
+develop and deliver to people. It's because you're literally spending a lot more time
+on the phone with us, essentially doing consulting to, you know, decide exactly how you want to do
+your inheritance setup. And, you know, for example, some people only really care about
+inheritance setups in the case that they die. Other people need to take it a step further,
+and they need to, you know, maybe they have, you know, they have a spouse and they have children,
+and they also want to account for the edge case where, say, maybe they and their spouse are,
+you know, in a fatal car accident and both of their children survive. You know, that can get
+a little bit trickier. Because, for example, one thing that we do see happen more commonly,
+we have the ability for, you know, you and your spouse can essentially share and, like, clone
+the mobile key. You can both have access to that. So, you know, in that case, if you pass and your
+spouse is still around, they can access the mobile key. They can, you know, go to the safety deposit
+box. Maybe they even have access to one of the other keys in, like, a safe at your house. You
+know, it's a multivariate problem, and there is no one single solution. But the short version,
+you know, comes down to is that you ensure that you have a threshold of keys that will be accessible
+by your executors of your estate. And you can get pretty creative with exactly how you do that.
+- Right on. Right on. Yeah, that's really interesting. I think,
+I can't think of another company that's doing, that's providing this service.
+And if they are, I don't think they're doing it kind of at the level that you guys are doing it.
+Because, you know, multisig is a big promise, right? It's a big promise of Bitcoin. I think
+it does solve a variety of problems. And, you know, I wonder, this kind of takes us to the next,
+I guess, the cutting edge of Bitcoin security. There's a variety of wallets that are kind of
+being developed, you know, very much in the cutting edge that are kind of playing with
+this concept of kind of like a community huddle or let's say something like Fetimint where
+custody is technically centralized, but maybe we can enforce some rules around what kind of spending
+conditions those funds can move on, right? I'm not too familiar with the details of these kind
+of cutting edge technologies. Maybe you are, I know you mentioned OpVault. Where do you see like
+five years out, you know, where could we go, right? Let's say we're in a world of high fees
+where Bitcoin transactions are a hundred bucks on average, right? Or something like that. And
+everybody's on, you know, on lightning, right? So now we're dealing with lightning level security.
+How do you see that side of things? You know, I know I just asked two very big questions,
+so feel free to like navigate or however you like, but like, you know, community enforcement,
+right? Like maybe I trust my brother enough with a certain amount of power over my huddle,
+or maybe my family trusts me as the local familial Bitcoin nerd. And then they decide
+that they want to give me a key to their multi-sig or to their FedE, you know, vault or whatever.
+Do you have any thoughts on how that might develop?
+Right. This could go a number of different ways. But one thing that I'm interested in,
+aside from OpVault, because we don't know when or if that will become available,
+but there is a very large design space that has not been explored yet with Bitcoin scripting. And,
+you know, Taproot and, you know, Tapscript itself have not really been utilized that much yet.
+And there's a number of interesting things that you can do of, you know, creating different
+escape hatches, if you will, you know, ways of getting out of situations where you could
+essentially start collaborating with other people. I do hope that we'll start seeing more kind of
+like multi-institution custody, if that's even a word. But this is where I think some of the lines
+are going to get blurred between self-custody and third-party custody. And it's definitely
+going to be interesting to see how it falls out on the regulatory side of things. But,
+you know, there are some interesting questions to be answered around, you know, how does the law
+view ownership of an asset where no entity has the unilateral ability to spend or to block
+spending of the asset? And by that, I mean, you know, what if you're in a multi-SIG setup where
+you have one or two keys, say it's a three or five, you have one or two keys,
+and then say, you know, the rest of the keys in your key set are each held by completely different
+people or institutions. That could get interesting. You know, you're really, you're distributing trust
+even further, and you can get to the point where, you know, in a sense, you're distributing more of
+the trust away from yourself. You know, this could work well for the people who don't trust themselves
+to do self-custody. Maybe, you know, right now it sucks that a lot of people just threw up their
+hands and are like, "I'll just let Coinbase handle everything," or "I'll just let Binance handle
+everything." You know, that's a single point of failure. That makes me cringe. I would,
+while it's, you know, I would still push for pure self-custody, I would still feel better
+if someone was in a setup where, you know, they had a key and Coinbase had a key and Binance had
+a key, for example, which is just distributing the trust more so that, you know, collusion is
+less likely, but, you know, catastrophic failure is far less likely just because the keys are spread
+out. You know, this starts going down a sort of deeper rabbit hole around reputation, but the
+point being that, you know, you can spread your keys out amongst a number of reputable providers
+and they can't rug you. That's really what we're going for. It can get even more complicated as
+we're seeing, you know, many script technology and the tooling around that being developed out
+so that, you know, for example, I've talked about degrading multi-sig for a number of years.
+What if you have your two of three or your three of five setup and, you know, that's kind of your
+happy path for spending, but now thanks to the magic of Tapscript, you can start adding in a
+number of alternative spending paths that are time-locked. So, you know, you could say, you
+know, this is my normal multi-sig setup, but if a year passes or if several years pass and the
+funds haven't moved, then, you know, maybe that is because I've lost a spending threshold of keys
+and I've essentially gotten locked out of my own multi-sig. Well, if you have been smart enough to,
+you know, plan ahead of time and you've created alternative spending paths, you can say, okay,
+if that really long period of time has gone by, now allow the funds to be spent with some
+completely different set of keys. Now, of course, we start going down a completely different rabbit
+hole here. You know, maybe that's a different set of keys that you yourself are holding and
+have distributed around in sort of emergency backup situations, or maybe they are what I
+mentioned earlier, a kind of distributed multi-institutional set of keys. So,
+this is what I've been thinking about more recently because the tooling is starting to
+get there for us to actually, you know, implement this stuff and make it more practical. Unfortunately,
+we're not yet really at the point where we have sort of system-wide compatibility,
+so that this is user-friendly for people to do. And it will also involve
+a fair amount of experimentation. So, what I do expect to happen, much like with what has
+happened with Ethereum and smart contracts, you know, for the first several years of that,
+it was a complete shit show. There was no guidelines and best practices. And so,
+the vast majority of people would write smart contracts that had vulnerabilities.
+And over time, you develop those best practices, you develop more tools and sort of verifiability
+and sanity checks and stuff. So, I would expect that, you know, what will happen is we'll see a
+lot of experimentation and people creating all types of weird conditions. And then as the years
+go by, we'll figure out, oh, that was actually not a great idea because of X, Y, or Z. And we'll
+probably settle on, you know, a handful of fairly well-understood kind of templates, if you will,
+for self-custody models and ways of making them more resilient.
+Yeah, yeah. That sounds like that's probably how it's going to play out, you know. And in that
+sense, the wild experimentation of Ethereum does kind of inform us about how things might play out
+in the future in Bitcoin. I mean, as a libertarian, I have this fantasy of, let's say, a kind of civil
+society, you know, like a societal huddle, right, where people choose all these different kind of
+civil contracts of self-custody. And we build this sort of, you know, this mesh of security
+where, yeah, you don't have any single point of failure or any obvious single point of failure.
+And where we're also not standing exactly on our own island. Like maybe, you know, I think
+that the multi-sig templates that you guys have created are very strong and they're probably going
+to be one of those templates that stand throughout time. I certainly am a big fan of it. But yeah,
+like I do wonder where we're going to go, especially in a lightning world where custody
+itself, like it's not obvious to me what self-custody is in a lightning world, right? Like
+you're in a two of two multi-sig with a time lock. Who controls that? Who owns that? How do you
+define that as, you know, how do you define the custody of that? It really does blur the lines.
+So yeah, maybe you can talk to us a little bit about that, like the two of two multi-sig and
+the lightning side of things. And I think after that we can open it to the audience. We've had a
+great conversation and I think we kind of covered a wide range of self-custody, which is quite a
+feat. So thank you for that. Yeah, you know, it becomes less of a sort of static question of who
+has custody. Whenever you're creating a dynamic system, and by dynamic I really mean a system
+that can change over time due to any variables, then as you said, the sort of the lines of custody
+get blurred. So, you know, lightning works primarily due to game theory and incentives.
+And, you know, not only are there various timeout issues of, you know, if you're not paying
+attention for several weeks, then your counter counterparty could screw you. There are other
+issues of, you know, if you're sending extremely tiny payments, for example, and the on-chain
+fee environment is fairly high, then the sort of game theory and incentives can make it such that
+you could get screwed out of some of those micro payments as well. And, you know, this is just
+another rabbit hole that you can start to go down. Yeah, I have a question that's a little bit off,
+let's say off topic. Where are you at with artificial intelligence and in particular,
+the identity issue that's kind of coming up, right? All these bots, very conversational and
+chatty bots that are difficult to distinguish from conversational chatty humans. Do you,
+you know, is Casa going to be developing an identity offering, some sort of cryptographic
+authentication to identity? Like, where do you see that side of things? Because it does seem like
+there's a great, they call it the deep, the great flood or the digital flood, the deep fake flood,
+you know, where it seems likely that we're going to get these impersonator bots becoming very sharp
+and very convincing. And it's a whole new era of phishing schemes. And the only solution might be
+cryptographic authentication of identity. So yeah, where are you at with that?
+Yeah, so, you know, there's three major types of authentication, you know, something you have,
+something you know, something you are, and the AI stuff definitely weakens the something you are
+aspect. Usually something you are comes down to sort of biometrics and your biometrics in general
+is a pretty sub optimal form of authentication, because you can't rotate those credentials. So
+if they get compromised, once you're screwed for the rest of your life, the biometrics can be
+helpful as a sort of additional factor of authentication. But like we've been seeing,
+especially with the deep fakes as well. We're, we're at a point in time now, where what's
+happening is that the ability for you to believe what you see and hear is being degraded, you know,
+it used to be for the first several decades of the internet, even though, you know, there'd be a lot
+of, you know, misinformation and disinformation. If, at least if you were able to like see and,
+and talk to people through the internet, you could still rely upon that as being, you know,
+a real person and real information that isn't being made up by a machine. But now,
+you know, we can't even really believe what we're seeing and hearing anymore, because the machines
+are getting to the point where they're going to be able to construct, you know, entire realities
+that are indistinguishable for humans. This is going to get even crazier, I think, you know,
+as virtual reality and augmented reality. And, you know, especially if, if technologies like
+Neuralink come along, and people start literally, you know, jacking their, their brainstem into the
+internet, it's going to be some pretty crazy experiences, and you're kind of like, ready player
+one slash snow crash, style stuff where like, the hackers may literally be compromising your brain
+and what you see and hear and believe. So you know, this is something it's, it's a dynamic
+environment that we're staying on top of, as usual, you know, CASA does not want to implement
+any novel solutions ourselves. Rather, we want to continue to remain apprised of what all of
+the tooling is that is being developed and is being made available. And really, like our bread
+and butter is to, to look out and survey the landscape of technology and find the technologies
+that exist that are highly promising, but are still way too difficult for the average person
+to actually utilize. So my, my take on this really, ever since I started working on Bitcoin stuff,
+in 2015, my, my mission was never to, you know, focus on Bitcoin, my mission since then,
+has been to use my skills as a technologist to help individuals empower themselves. And it just
+so happens that, you know, working on Bitcoin was one of the most straightforward ways to do that.
+But, you know, there's going to be plenty of other, you know, cryptographically enabled
+technologies that also let people empower themselves in other ways. So identity, of course,
+is going to be one of those. And, you know, we have yet to really see, I think, a leader emerge
+from the pack. There's a number of different projects that are trying to solve that. If we
+see one that we think is far superior and is gaining traction, then that's what we're going
+to go with. But, you know, for example, one of the biggest identity technologies that's out there
+right now is WorldCoin. And I'm sure that if we integrated WorldCoin, we would get a lot of flack.
+And, you know, I'm not even saying that it's something that I would want to implement.
+Obviously, there's a lot of really terrible aspects to WorldCoin and the sort of biometrics
+aspect of it. But, you know, I have talked to some of the people at WorldCoin about,
+you know, their perspective on things. And they are, you know,
+they are trying to solve some real problems. And they recognize that AI and identity is going to
+continue to become a big thing. I may not completely agree with their solution to it,
+but I certainly agree that the problems that they've outlined are real and need to be addressed.
+>> Yeah, it's such a thorny problem because, you know, again, like that conspiracy
+theorizing part of my brain goes like, well, this is clearly a problem reaction solution thing. And
+so the problem is AI, the reaction is, oh, my God, everything's fake on the internet.
+The solution is KYC all the humans, right? And I really don't like this KYC all the humans feature
+because, you know, if we've seen any big revelations against power and their dark
+agendas, which do happen at times, they've come from anonymous sources that they needed to remain
+anonymous for long enough for the data to get through and out into the world. So again, Snowden
+for the two weeks that were like two days that he was anonymous. And then, of course, Julian
+Assange and all the work that he did, you know, it's a miracle that Satoshi remains anonymous.
+And that's a whole other rabbit hole. But, you know, is there a path to survive the deepfake
+flood without KYC all the humans? Like, do you see a path to that?
+Well, I mean, part of the problem is also the sort of underlying question of what is identity
+and reputation. And so, you know, I reject the premise that identity needs to be a sort of one
+to one, you know, human body mapping, sort of government issued identity. I really think that
+people should have the flexibility to create different identities for different things and
+to, you know, not necessarily have to associate all of their different activities and all of
+the different aspects of their lives sort of together as one single entity. And so,
+the, you know, it may, the question may not even be correct. Like, worrying about whether someone
+that you're interacting with and whether or not they're human or AI, in many cases, that
+may be irrelevant. What's more important is that you know that you are interacting with the
+identity that you believe that you're interacting with. So, I don't see any reason why, you know,
+AIs couldn't have and manage their own identities and reputations and so on and so forth.
+All, I think what we should really be focusing on more is just preventing AIs from being able to
+spoof themselves as other entities. And so, there's certainly ways around that. It just means
+we can no longer, we can no longer just rely on kind of unauthenticated data streams that we're
+receiving, aka, you know, we can no longer rely upon simple text or video or audio and consider
+that to be a form of authentication. And of course, this is where private keys and cryptography will
+come in and play a big role. Yeah, it seems like the whatever PGP brought into the world
+might be really the only solution here. And hopefully, web of trust can actually make a
+comeback. Obviously, technology that might be a little bit easier to use than PGP or just
+integrated into things like Twitter and so on, which to some degree does seem to be like that's
+Elon Musk's vision to make Twitter the everything app or whatever that means. It probably will mean
+identity and authentication. And yeah, that's going to be fun. Are we going to see a Jamieson
+or a lopp.ai bot in the near future? I don't know. I think I saw a project recently that was trying
+to do something like that, but for Bitcoin in general, and I would certainly love to have an
+AI bot that is basically ingested every educational resource that I have linked from my website,
+there's like 1500 different websites that it links to. If we can get something to
+ingest all of that content and sort of, you know, be as you say, the sort of the lopp.ai expert
+where people can basically talk to me in digital form, but I can scale myself out. That's really
+what I've been trying to do for the past several years, you know, with the website, it was an
+entirely self serving effort, because I got tired of having to go find resources, you know, getting
+the same questions over and over again, having to give people the same answers over and over again.
+And so I compiled all that information so that I could just send people, you know, one link,
+say, you know, go, you know, read, read all of the things that I have in this particular section.
+But yeah, having an AI of me, or of, you know, of all of those resources that you could easily query,
+I think would really take that to the next level.
+Yeah, I'm definitely bullish on that, that side of the AI world. So cool, very cool. So if somebody
+made a third party project of Lopp.net or lopp.ai, would you be cool with that? Or what?
+Should we just DM you? Because I may or may not be plotting to create such a thing anyway.
+Yeah, well, you know, read the footer of every page on my website. I claim no intellectual property.
+Wonderful. Fantastic. Yeah, I think I think that would be a really interesting product.
+One question that I had gotten from a friend of mine was, what do you think about
+Green Wallet and Jade's two of two time lock multi-sig scheme? He was complaining that
+once he realized what it was, he said that they could potentially block you from spending your
+money for a while and that it was kind of sketchy and that he turned it off immediately. Do you
+think there's any value to these kind of like on-chain security two of two time lock multi-sig
+schemes that have nothing to do with lighting specifically? Right. You know, I mean, they're
+trying to eliminate single points of failure. I just I do fundamentally have a problem with
+two of two when it comes to anything. You know, as we've said a few times today, 25th word pass
+phrase also ends up creating a two of two setup. So you end up finding two of two setups in a
+number of different places in the space. And it's not always obvious that you're putting yourself
+into a more fragile position. So, you know, that's why they have to offer that that time lock and
+sort of escape recovery ability because it does it actually creates a single point of failure.
+The whole issue of doing time locks, that's something I've given a few talks about and
+it's something that's also on my mind a lot recently. You're thinking about many script
+and tap script and creating all of these alternative spending paths that will have
+time locks associated with them. That's going to create a number of sort of compatibility issues
+and sort of ongoing maintenance issues for wallets. We've already talked about how,
+you know, with CASAS multi-sig, we view it as more of a living type of setup where you need to be
+checking on it every once in a while, make sure that everything is healthy. And that's going to
+become even more true as we implement these more complex, you know, time locking spending conditions.
+Because basically, in order for you to be able to implement any sort of time locking
+for your funds, like for alternative spending paths, then that means that you're adding more
+dynamicism to your architecture. And it basically means that if you don't change your UTXOs
+and those time locks expire, then the security model of your funds changes. So you actually
+need to get to a point where you are more frequently staying on top of the exact state
+of your wallet. And, you know, as these time locks get passed, you need to rotate those funds
+to new UTXOs that have, you know, updated spending conditions around them.
+So obviously, this is adding more complexity. And we're currently in the sort of research
+and development phase of like, how do we allow people to leverage this functionality,
+but do it in a way so that, you know, they're not going to be shooting themselves in the foot,
+they're not going to be accidentally degrading their security due to laziness, which we have
+certainly seen there is an abundance of. - Yep, the laziest path that works tends
+to be the one that people take. All right. Cool. So anybody have any more questions?
+It's been a great show. We've gone pretty deep, I think, really kind of scratching some of the
+edges of self-custody. I think, again, like we're going to be publishing both of these
+conversations with love today, the Q&A and the earlier conversation at juangal.com. So go sign
+up to the emails, that way you'll make sure to get it on your inbox. And it'll also show up on
+your podcasting app. And so you can listen to it on podcast and check out BitcoinNews.com. They have
+a new part, part two of their interview with Michael Saylor in Europe out now. And it's a
+really solid show. Michael Saylor is a fascinating cat. So do check that out. And we also have,
+I think there's an announcement with Bitcoin Racing. There's doing some sort of early bird
+tickets for their same racing event in London. I believe that's London, UK, not London, Canada.
+And yeah, so check that out. That's pinned on the nest. And I mean,
+unless anybody else has any more questions, I think that we can call the show a wrap. It's
+been really good to have you, Jameson. Hopefully you enjoyed the show and can join us some other
+time when there's something new to cover. Awesome. Thanks for having me.
+Hey, everybody. Thank you for listening to the show. If you made it all the way here,
+you are a true fan and a true OG. This is not the kind of conversation that's going to get mass
+attention, but it is the kind of conversation that the ones that will be here in a long time,
+that'll be here in 10 years, will probably have listened to because this conversation,
+like many others that we have on the Juan Galt Show and in this Bitcoin News,
+Twitter Spaces collaboration, are trying to scratch the edges of the industry while also
+covering the most important news. So thank you for being a part of it. And I hope you'll join
+us on the next one. We are doing these shows every week on Twitter Spaces. You can go to
+the Bitcoin News Twitter handle or look for me and my tweets, as well as sign up at juangalt.com
+to make sure you get an email notification when the shows come and ahead of time so you can
+hit a reminder. Finally, I have been building an archive of my work at juangalt.com, as well as
+publishing new articles touching the most important topics, I think, of our era. This is
+bigger than Bitcoin. It's macro. It is romance and love and relationships. It is spirituality.
+And these are long-form articles, not the kind of short-term content that most people are used to.
+And honestly, you're probably going to want to read them in a couple of sit-downs.
+Maybe I'll split them up into pieces. But there's a lot more to say. And I am very proud of them. I
+think we have some very, very good work there. So I hope you'll check that out and follow me
+in this journey to try and influence the future of humanity into a positive, optimistic, and
+harmonious future, which integrates not just, let's say, the wisdom of the past, but also
+the technologies of the future. So thank you again for listening in. And I will see you in the next
+one.
