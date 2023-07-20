@@ -1,0 +1,1207 @@
+Hi everyone, and welcome back to another episode of the Progressive Bitcoiner podcast.
+I'm your host, Trey Walsh, and today we have an amazing guest for you.
+We have Jameson Lopp on the podcast and really excited to have him on.
+He was hugely instrumental in my own journey into Bitcoin and understanding all things
+privacy tech, as well as a wealth of knowledge through his articles that he's written and
+his own company, Casa, as well.
+So we discussed a lot of things in Bitcoin, what it's been like being in the Bitcoin ecosystem
+the past 10 years.
+We've talked about privacy and tech.
+We talked about Bitcoin culture stuff and his Bitcoin Maxi article and a host of other
+things, including some of his own background.
+So I really think you'll enjoy this episode and encourage you to look into his own articles,
+his own research and writings and things like that, which you can find in the show notes
+through his website and following along on social media to Jameson.
+So really hope you enjoy this episode.
+As always, if you have any questions or feedback for us, all is welcome.
+Please feel free to reach out to us at hello@progressivebitcoiner.com.
+And we're continuing to run those affiliate promo links for Jason Meyer's book, A Progressive's
+Case for Bitcoin, as well as through SaaS Mining for their renewable Bitcoin mining,
+both companies through Bitcoin Magazine and SaaS Mining that I really love and appreciate.
+So if you want to check those out, those are going to be in the show notes as well.
+And hope you enjoy the episode and we'll see you again next week.
+Hey, Jameson, welcome to the Progressive Bitcoiner podcast.
+How's it going?
+Not bad.
+Glad to be here.
+Yeah.
+Thanks for jumping on.
+So we revamped the podcast.
+We've had two official, a few releases so far and super thrilled that you're jumping
+on.
+And one of the reasons that I really wanted to have you on the podcast in general and
+our target audience is a bit more mainstream, a bit more ideally folks from the left that
+might not even know about Bitcoin.
+That's kind of the goal.
+It's still a Bitcoin podcast, so it's still got Bitcoiners listening.
+But I'd love for folks from the left who are curious to come on.
+And I really like your takes on privacy, on tech, on what are some of the things that
+we shouldn't necessarily compromise on and why should folks care about these things.
+And I think there's a massive gap from the left when it comes to things like this.
+So that's one of the reasons I was really excited to have you come on the podcast.
+I listened recently to your talk as well.
+I think you were at the Bitcoin conference with Robert Breedlove.
+Some folks from my audience might not listen to that podcast.
+So it's kind of getting some of those similar things, but also mixing it up.
+But for folks that don't know you or don't know about you, what's a quick summary?
+Who you are, what you do, how long you've been in the space, that kind of thing.
+Yeah, it's been a decade now for me.
+I'm a computer scientist by trade.
+I got interested in Bitcoin from reading about it on nerdy websites like Slashdot back in
+the day.
+And basically, I ignored it for a few years, like I think most people do.
+And it kept coming back, kept coming back.
+And finally, I read the white paper, and that's when it blew my mind as a computer scientist,
+like seeing the elegant but completely backwards way that this problem was solved.
+I never would have tried to solve the double spending problem, the Byzantine generals problem
+in the way that Satoshi did, because it's just incredibly inefficient, and it goes against
+all of my training as a software engineer.
+So that blew my mind.
+I started doing a few open source projects.
+And then within a year, I was so hooked on it that I was like, "You know what, I might
+as well try to get paid to do this because I'm spending all of my free time on it."
+So I went full time in early 2015, and really since then have spent the past eight years
+just working on building wallets and building private key management software and infrastructure
+and helping with the best practices and the standards around that.
+Because while the space has really exploded in complexity, and a lot of people are doing
+really cutting edge stuff, I think it all still rests on this foundation of letting
+people be able to and be confident in managing the private keys and having self custody,
+and really the empowerment aspect, empowering yourselves through the private keys in order
+to unlock and access all of these interesting technological functions that are coming along.
+So that's the tech side of it.
+I don't know if you want my political background as well, because that's quite varied.
+Yeah, yeah, go for it.
+Why not?
+Yeah, so I'm a good old boy, North Carolina, probably 10 generation North Carolinian.
+My lineage was traced back to, I think, the 1600s by my grandfather.
+I'm from Virginia myself, so similar lineage.
+So just across the line there.
+Yeah, so I was raised extremely conservative, religious household, was really indoctrinated
+into that.
+I voted for, I think, George W. Bush was my first presidential election, when I was still
+in college.
+But then I went to the University of North Carolina at Chapel Hill, third generation
+graduate from there, extremely liberal institution.
+And so I really swung the other way, ended up voting for Obama in 2008, because I was
+like, "Oh, this is something different, hope and change, I can really buy into this."
+And then I observed what happened over the next four years.
+And I was like, "Wait a minute, why is he still bombing all of these people?
+Why are we still engaged in all these wars with people that I don't have any problems
+with?"
+So I became disillusioned there as well.
+And I think I ended up voting for Gary Johnson, the libertarian candidate in 2012, kind of
+a protest vote.
+Obviously, I knew libertarian candidates not going to win.
+And then that was the last time I voted.
+I don't even vote anymore.
+I believe that the best use of my time is to use my skills as a technologist to help
+people empower themselves with the stuff that we're going to be talking about today.
+Democracy and republics in general, it's interesting governance.
+But to be quite honest, I find the governance of Bitcoin and these new systems to be far
+more interesting.
+Yeah, so we exchanged some emails and you mentioned that's one of the things that could
+be interesting to get into.
+So let's talk about that a little bit.
+And we can go 30,000 foot explaining to someone who might not even understand the first thing
+about cypherpunks, Bitcoin, cryptography, any of the landscape, and then go down deeper
+if you'd like.
+But when you say that governance structure and comparing the two worlds, because I'm
+starting to get there myself, been a lifelong Democrat voter, grew up in the South conservative
+as well and kind of shifted after college actually.
+So for me, I'm also seeing year after year, the same things are happening, the same issues,
+the same wars, regardless of political candidates.
+One of the reasons I love Bitcoin so much is like this might actually help fix some
+of these things or start to unwind some of this mess so we can address maybe some of
+these other things.
+Right.
+So I'm kind of in a similar boat of where I'm starting to just separate those two worlds
+and say, what can I do to actually make some change because this system doesn't seem to
+be working.
+So when you talk about governance, can you explain a bit what you mean by that?
+When we talk about governance, we talk about any sort of organization that has to have
+some way of really maintaining its cohesiveness over time as humans join and depart that organization.
+There has to be some sort of structure that sort of maintains a semblance of stability.
+As much as we can hate on the many, many problems with governance in America, it is still, I
+think, objectively better than many, many other countries that have far less stability
+and transition of power between different people and parties.
+The traditional way that we think of governance is usually hierarchical structures.
+This is a very logical thing, a logical way for humans to organize themselves.
+This happens both at the individual organization level and at the higher level of society and
+civilization.
+The way that we advance civilization is through specialization.
+The result of that is that people watching this podcast today probably don't spend a
+meaningful portion of their lives worrying about where the food on their table is going
+to come from.
+The reason for that is that we outsource that.
+Really, we outsource many, many, many aspects of our lives these days to specialists.
+You probably don't work on your own plumbing or electrical or other issues with your house
+or your car or whatever, even though technically you could if you put in the time and effort
+and resources.
+It's just you don't have the same leverage.
+Specializing in one specific thing allows you to have a much higher level of efficiency
+and output and leverage.
+Therefore, it's better economically for you to get paid money to do that one thing because
+it's more valuable than it is for you to become a generalist tradesman where you know how
+to do everything yourself because you're just not going to be able to do things as quickly
+as someone who spends their entire life doing that one thing.
+This is logical from an economic perspective.
+It has allowed us to create incredibly complex civilization and advanced technology at an
+insane rate.
+But the downside and what people tend not to notice or think about because it just happens
+in the background is that it introduces a lot of fragility.
+To put it in the context of this space, it introduces a lot of centralization.
+The specialization is centralization.
+And so you end up relying upon a lot of trusted third parties from many different aspects
+of your life.
+So one simple example of that is now, especially if you get into the sort of prepper community
+or you talk about how do I survive if there's some major catastrophe, something that comes
+up very often that you hear about is the sort of three-day supply chain problem.
+It's like we've created an economy that's incredibly efficient in transporting goods
+around.
+So we have all of these just-in-time supply chains.
+So you always have fresh food getting delivered to your grocery store.
+Well, if that system shuts down, if those trucks stop driving, if those cargo ships
+stop running, as we kind of saw happen during the pandemic a little bit, major, major first
+and second order effects happen.
+And a lot of people are not well positioned to be able to ride out those kinds of disruptions.
+So we have a kind of weird balance to strike.
+And I'm mainly focused on trying to improve my self-sovereignty and trying to help other
+people improve their self-sovereignty.
+So at least within the context of Bitcoin, we mainly do that within finance and the banking
+system.
+But there are certainly many other aspects of your life that you can apply the same thing
+to.
+So from the governance perspective, we have highly centralized governing parties now.
+I already spoke about the sort of third-party candidates basically being just a protest
+vote because of all of the power that has been concentrated within the Democrats and
+the Republicans.
+And anyone else who doesn't tow the party line of one of those major parties doesn't
+really have much of a chance, which is unfortunate.
+Then if you look at the way that Bitcoin itself as a system is governed, it's actually completely
+flipped on its head.
+And so instead of having this new top-down hierarchical organization, it's actually a
+bottom-up organically grown type of consensus system.
+So when you're operating on the Bitcoin network, you operate your node, you validate the rules
+that you agree to, but you aren't voting on anything.
+There is no concept of majority wins other than kind of with the hash rate.
+That's a special case.
+It doesn't really get to decide the rules.
+And so instead we have this system that it really, I think, can be best described as
+anarchy because it is a system of rules without rulers.
+So instead, we have to kind of fumble around and figure out how does the overlap of everybody
+running their own rule systems coalesce into this thing that we call Bitcoin.
+And usually that's extremely stable, though sometimes, for example, during the 2017 era
+fork wars, it can get a bit less stable and more dramatic.
+There's a lot there.
+I'll start with, again, trying to, you know, because I've heard similar things you've said
+on other podcasts in your articles, but trying to pivot a bit more to this potential audience.
+Why should progressives and those on the left care about this?
+So me speaking for myself as a progressive, as someone on the left, I really care about
+this.
+But a lot of those on the left, I think, don't think about this as much or aren't as concerned
+about this.
+I would say things like anarchical system, centralization, Bitcoin, those are like trigger
+words for the left in a lot of ways.
+In general, a lot of people just don't know much about it, period.
+But for those that do, some have decided those things and associations are bad.
+So from a progressive's perspective, if you were to articulate why a progressive should
+care about this versus a libertarian or conservative who might naturally be skeptical of those
+things – and again, there's issues there, right?
+You have the same kind of worship of monarchy in a different way.
+Why should those on the left care about this and want to advocate for a system that you
+described?
+So, you know, I think this actually applies to everyone.
+But one of the ways that I look at it is – and this is why I generally look at politics from
+a sort of arm's length amused standpoint, like I don't really want to get too involved
+in politics – is because the political games that our systems have developed into is basically
+one of rug pulling, is the best way I can describe it in terms of like Bitcoin and crypto
+ecosystem, because it is a winner-take-all type of battle, right?
+Whoever's candidate or whoever's party wins the votes, they are the ones who have
+all of the power.
+There's no split ratio of power based on the percentage of votes you got or any more
+complex – like we don't even do ranked choice voting in America, you know?
+So the stability, I think, which is what makes this so much more appealing in that if you
+are "sovereign" in whatever system you're using, you don't have to worry about a bunch
+of other people banding together and basically deciding to change the rules of the system
+out from under you.
+So this is why Bitcoin as a system is incredibly stable.
+There is a lot of drama and political-esque debate within the system, but there's not
+the same undercurrent of "I can rug pull you and change the rules if I gain a sufficient
+quota of votes."
+So that empowerment, you could frame it in a number of different ways, but from a progressive
+perspective, perhaps you would frame it from a minority rights viewpoint of "you can
+be any type of minority within the Bitcoin ecosystem."
+First of all, Bitcoin doesn't even know or care about your attributes.
+But even if you're a minority in the sense of what you believe the rules of Bitcoin should
+be and the actual governance of the system, you don't have at least the same threshold
+of rug pull risk.
+It's not a 51% risk of the rules being changed.
+It's more like 99% of the ecosystem would have to agree to change the rules without
+your consent.
+Also, it's difficult to quantify, but roughly it's more...
+I hate to use the word "fair" because that can be a trigger word as well, but the governance
+of Bitcoin, I best describe it as instead of being a system where you just have to get
+the slight majority of people to agree to a change, and thus the changes can be a lot
+more fickle and unpredictable, which is basically the way most Western democracies seem to work
+these days.
+Rather the incentives and the game theory around the system that we call Bitcoin is
+one such that a change is incredibly unlikely to go through and get enacted and get adopted
+unless it is not harming people.
+And it is objectively good for at least some substantial portion of the user base, but
+it is especially important that there's no strong and logical objections to why a change
+would harm a portion of the community.
+So you could call that conservative in a sense, like the protocol changes itself are fairly
+conservative, but I see it as a security and defense mechanism that it highly weights not
+breaking anything for anyone who is a historic user of the system.
+Yeah, no, I completely agree with that.
+And I think to pivoting a little bit, one of the things I want to bring up, there could
+be some people that subscribe to the New York Times and from this podcast, and one of the
+more public things that was probably released about you or most mainstream was that article
+that came out in 2019 that talked about you're talking about the protocol and things like
+that, but also privacy and things like that.
+So you had an article that come out, I think it was 2019, talking about privacy and some
+of the steps you went through almost as an exercise.
+And again, kind of the same question, why should people care about that?
+Why should people care about privacy?
+And how did that interview come about?
+And for those that don't know, there's this article, I might link it in the show notes
+as well, where Jameson described the steps to kind of erase yourself, is that a good
+way to put it, from being found and ultimate privacy and trying that out.
+So describe that a little bit and why people should also care about that.
+Yeah, so this is another result of technology really changing some of the incentives of
+other systems.
+And in particular, what happened to me was I kind of rose in prominence on social media
+during the scaling debates and during sort of my early years being full time working
+in this space.
+And so I went from being a nobody with 1000 followers to being someone with hundreds of
+thousands of followers.
+And this sort of kicks off a law of large numbers in terms of audience.
+And that if you have enough people paying attention to you, it's inevitable that one
+or more of them will be unhinged or will be willing to do things that you would consider
+illogical or not nice.
+So I would say I am generally an optimist or have a positive outlook on humanity in
+the sense that I believe that the vast majority of people are quote unquote good and they
+don't want to hurt other people, at least not obviously, not directly.
+And that's one of the reasons why democracy or democratic republics I think work generally
+okay.
+Unfortunately, with technology, some of the repercussions and sort of attack and defense
+games have really changed.
+And so this is it's not dissimilar to what celebrities have had to deal with ever since
+mass media became a thing.
+And if you have millions of people paying attention to you, for example, you'll probably
+have some stalkers.
+Now what has changed is that the sort of level of fame, if you will, required to hit that
+threshold of risk is much lower and it can happen much, much faster.
+So basically the point being, even though I'm not a celebrity, I'm this like niche
+micro celebrity in this one particular sector, it exploded within a year or so and I was
+not prepared to defend myself against these potential attackers.
+So I ended up having my entire neighborhood shut down by a SWAT team because somebody
+who I pissed off decided to leverage their technological skills to be able to place an
+anonymous phone call to my local law enforcement.
+And then essentially, I would almost call it, you know, hacking the rules of law enforcement
+by using the appropriate trigger words that they knew would create the ultimate lethal
+response and get dozens of highly and heavily armed guys out surrounding my house.
+So basically they said I had killed people and had a bunch of guns and explosives and
+was holding hostages and all of this.
+And of course, meanwhile, I was just at the gym, completely unaware of what was going
+on until I tried to get back into my neighborhood and was told that there was an armed person
+threatening.
+And it took us a little while to figure out that I was supposed to be that armed person.
+But that particular incident ended as well as it could have, but it could have ended
+with me dead because I do have firearms and I could have ended up being shot by the police
+as several people who were swatted over the past few years have been shot and killed and
+they were innocent victims.
+So what had happened here is that in this particular case, we once again have this massive
+asymmetry in the sense that someone who has the right skills for less than $10 can have
+hundreds of thousands of dollars worth of basically military hardware and personnel
+deployed against a specific target.
+And they can do so without putting themselves in any physical danger whatsoever.
+There's this massive disconnect between the sort of resource costs and the risk.
+And so swatting has become a bigger and bigger problem, at least in America.
+And there's a lot of other reasons behind that that we don't need to go into and I don't
+think would surprise people.
+But that basically is what triggered me to go on to this whole privacy adventure to figure
+out, okay, what is the cost for me to be able to defend myself against these type of attacks?
+And the short version is tens of thousands of dollars and probably a hundred plus hours
+of effort of understanding what both the technical and legal options are for protecting your
+privacy so that people can't target you.
+With this article, how did that come about, actually?
+Did the New York Times reach out to you?
+Was there a reporter?
+How was that started, that that conversation even happened?
+Yeah, well, like pretty much everything I've done for the past decade, I'm constantly researching
+and I have weird hobbies.
+And so whenever I undertake a new research project, I don't do it secretly.
+I basically write down my process and I try to, I think of it as like forging a new path
+and trying to leave breadcrumb trails for other people who are interested to follow
+me.
+So I spent a year doing the research and implementing all of this.
+And then I ended up publishing one of my 30-page articles about everything that I had done.
+And then I gave some keynote presentations and so on and so forth.
+So I think that was Nathaniel Popper, the journalist who, he had been paying attention
+and eventually was like, "Hey, let's do a short synopsis article on all of this."
+And so far, so good.
+I implemented all of that in 2018 and it's been five years so far.
+There have been one or two minor leaks and I've had to learn and redo a few things as
+a result, but it really does become a lifestyle.
+And so there's a really, really high bar to get to the level that I wanted to.
+But once you get there, it's not too difficult to maintain.
+Do you, in terms of reasonable privacy that you would advocate for folks, what are some
+of those things that you would advocate?
+If someone is zero knowledge privacy, zero.
+Maybe they're kind of like me when I started to get into Bitcoin, then you start learning
+about privacy, then you start learning about OpenLedger, which is good, but also how do
+you want to...
+And then you go down that rabbit hole.
+So where should some people start in their privacy journey, if you will?
+That are some of the, you think the most important things if we're looking to the next five,
+10 years.
+Yeah, I think very few people will go to the effort of trying to maintain your physical
+location privacy, but you can spend a weekend and just vastly improve your day-to-day internet
+privacy.
+You know, install some decent ad blockers so that you can be safer from some of the
+corporate surveillance that happens as you're just browsing around the web.
+Perhaps switch to a more private email company that's not going to be scanning all of your
+information and trying to use it to sell stuff to you.
+Installing a VPN client so that your ISP can't be spying on you.
+There's a lot of low hanging fruit that only takes a few hours to implement and it doesn't
+really cost anything because most of the software and services out there are free.
+It wasn't really until I got to the legal aspect of trying to create trusts and corporations
+and actually hide my physical property.
+So the things like real estate, vehicles, driver's license, those are the things where
+you end up spending an order of magnitude more resources trying to figure out how to
+protect and very few people are going to do that.
+But if you ask me, why should someone do that?
+This kind of goes back to how technology has really changed the game.
+And there are numerous examples of this now, but essentially you can go from being a nobody
+to being somebody who has the ire of millions of people directed at them.
+And this happens all the time.
+Some random person on a social media site may post something and maybe they only have
+a few hundred followers.
+But if you post the right combination of words at the right time, then you can "go viral".
+And if you go viral on something that is a politically sensitive issue, you can very
+easily piss off tens of millions of people.
+And then within that subset of tens of millions of people, there may be a few who try to track
+you down and try to screw with you somehow.
+I've personally started to think about that more.
+Again, just having a little bit more followers coming at and into Bitcoin from a cultural
+perspective and sociological perspective, which I want to get into.
+And my general tendency is not to block people, not do any of that unless it's a personal
+attack against me or my family.
+There has been some of those and it's made me think more about those steps, about my
+physical location, about disclosing if and when I'm going to a meetup.
+Some things that are very Bitcoin friendly that we want to advertise.
+It's made me think twice about that.
+I can't imagine then having 500,000 followers, whatever it is you are and your voice in the
+space and some of the other more political things specific to crypto and Bitcoin that
+you might hold that might piss some people off.
+So it's made me think about that.
+And it's just one of those unfortunate realities of the world we're in.
+That's a much harder issue to address is the sickness of why would people do that?
+Why would people swat your house?
+Why would people do that?
+Those are on the rise.
+But like you said, there's a lot of companies and a lot of protocols, open source stuff
+that is also on the rise.
+That's getting easier and easier.
+It's easier now than it was two years ago to access a lot of these things, whether it's
+in Bitcoin or privacy.
+So that's really cool.
+But even just me experiencing a little bit, I had to take a step back and say, "Oh, I
+really have to think about what I'm putting out there."
+Like, "Oh, that picture has something in the background that says what restaurant I might
+be at or what."
+So it's made me think more.
+And again, there's a balance, right?
+Because I also have friends or family members that can go in the opposite direction where
+if you live your life in daily fear, that's also not a way to live.
+So it's tough.
+And there's always a bit of, I hate using the word compromise, but there is.
+And I think everyone has to ask that question for themselves.
+What is that compromise?
+Because you can live as physically off the grid and not have human connections being
+in a bunker type of compromise, or how do you live in daily life, go about your life
+understanding there's risk, understanding I could go out today and something bad could
+happen.
+This is why I went to the extreme level of effort.
+I had family and friends who were like, "Why did you do all of this?
+You could have just deleted your Twitter, deleted your presence."
+And I'm like, "Yeah, I could be the mountain man who cut off all communication with the
+world.
+And as a result, I diminish my attack surface because I'm not "leaking information" anymore."
+This is what we do.
+But we are humans.
+We are social creatures.
+We do strive to have connections and interactions.
+And for me, I felt like my job was not done.
+I still have a lot to contribute to this ecosystem.
+And another thing I could have done, of course, is to come back as a pseudonym.
+But then I wouldn't be able to go to the physical meetups and conferences and stuff.
+And I had already spent six years building my reputation.
+I didn't want to have to throw it all away and start over again from scratch.
+So this was a compromise for me, a trade-off of saying, "If I want to continue to be able
+to contribute in the way that I have, then I need to invest a lot more resources in basically
+increasing my defensive posture."
+I also like asking almost every guest, depending on what they're working on, "What do you think
+is your intrinsic motivation for wanting to help and build?"
+And I get the sense that you're doing a lot of this because you deeply care about people
+in the world.
+And then your avenue is as a technologist, cypherpunk, whatever way you want to describe
+yourself or others might.
+What do you think is your intrinsic motivation?
+Whether that was like, "Oh, since a kid," or "My family," or for me, even growing up
+religious, there's some of that that stayed with me that I think has been good in terms
+of I want to try to help the world.
+So what for you is the main motivator?
+You might say, "Oh, I like working on this," but the intrinsic, "I want to help humanity,"
+where do you think that motivation comes from?
+I actually think that there's a decent amount of it is kind of an issue that could be traced
+back to my childhood in the sense that I was the nerdy outcast who got bullied a lot as
+a child.
+And I really regret not pushing back on that more at the time.
+And so I get really triggered by any time I see people basically being victimized by
+any sort of authority or power.
+And so one of the things that really motivates me is empowering individuals/disempowering
+large concentrations of power.
+So when I learned about Bitcoin, when I started learning more about money, because I, like
+most people, didn't really understand the mechanics of money back in the day, I saw
+very quickly what the massive abuse of power this was.
+That money is this concept that it shouldn't belong to anyone.
+It belongs to humanity.
+It should be a collective agreement amongst us all of what money is and how we use it
+and what its properties are.
+And so the idea that money is basically defined by a small group of not even elected people
+who mainly convene behind closed doors and use these arcane processes that a bunch of
+people try to prognosticate about, it just rubs me the wrong way.
+And so in general, whenever I can distribute power more, and like I said, I think using
+my skills as a technologist to help distribute power more is really the most effective way
+that I can contribute to the system.
+So you could call it fairness, I guess.
+But really, I think that we have the potential to reshape the world, reshape many aspects
+of the world more than just money, but even many aspects of society and how we interact
+with each other through technology.
+And anyone who's paying attention can see that there is massive friction between the
+traditional powers that be and all of these new technologies and the ways that they could
+change the world and could change the way that the masses basically coordinate with
+each other.
+So going back to governance, I see, like I said, that the hierarchical and bureaucratic
+systems of governance are completely logical.
+It makes complete sense that this is how humanity has evolved civilization.
+But I believe we're at an inflection point now where we have the ability to change our
+coordination mechanisms and basically create new coordination mechanisms that are not as
+fragile and are not as prone to abuse because they're more open, transparent, and distribute
+power further than the existing systems.
+And I want to give you credit too.
+I think you're more than a technologist in the sense of your articles and writings.
+And if people haven't explored, I'll link your website, which I think you have most,
+if not all of your articles there.
+Great writer, great, you analyze people.
+And my background is in sociology.
+And I think you're kind of at least an amateur sociologist.
+If not more than that, it's one of my favorite things to talk about and focus on.
+And for me, that's my gift and eyes is on that realm.
+So for me, I resonate with a lot of your writings.
+I'm getting more into the technology stuff since getting into Bitcoin, but my background
+is philosophy, sociology, political theory.
+So one thing I wanted to comment on, again, why I feel the need to even host this podcast,
+write things that I do, talk about progressive issues in Bitcoin is because I don't think
+there's enough content targeted at a mainstream or left-leaning audience in terms of Bitcoin
+and in terms of some of the other things that are important to Bitcoin or the other issues
+in the world.
+So I want to talk about your history of Bitcoin maximalism article.
+What made you want to write that?
+What was your focus on that?
+And maybe not to connect too much to your childhood, but there is a bit of bullying
+in a way that you probably experienced that people have experienced in the space, whether
+it was Casa taking on Ethereum or any of the other Bitcoin maximalist takes.
+But for you, what was your motivation in that?
+I thought it was a brilliant article.
+Reference it in something that I wrote.
+And yeah, just wanted to touch on that and talk about that.
+Oh yeah.
+And I've been canceled more times than I can count at this point.
+But also, that goes along with the game, law of large number of audience.
+It's not possible to please everyone.
+And really what happens or what you see occur as you grow an audience is, I don't think
+I talked about this in the article because it's kind of tangential, but your audience
+has a mental model of you.
+And this perception is based upon what you selectively choose to reveal to the world.
+And it's basically inevitable that over a long enough period of time, if you have a
+large enough number of people who have built various mental models of you, you will then
+eventually do or say something that breaks that mental model.
+And for some people, they'll be moderate.
+They'll be like, "Oh, okay.
+I didn't know that.
+I'm going to adjust my mental model of this person."
+But other people, they just can't handle it.
+They're like, "You have betrayed me.
+I thought that you were a pure Bitcoin or a real Bitcoin maximalist or whatever."
+So that is a somewhat amusing but also disappointing thing to see from people.
+But I've seen these patterns happen so many times over the years.
+And I've seen this evolution of certain sets of beliefs in the space and also a sort of
+fracturing of the community that I felt like this is not unique.
+We have seen plenty of historical examples of this.
+And this could be tied to politics.
+This could be tied to any number of types of human organizations.
+I think that there is something inherent to human organizations, at least in belief systems,
+that once again, as the system grows in orders of magnitude of people who are "subscribing"
+to a set of beliefs, that it's also inevitable that there will be schisms and there will
+be fracturing within those communities as they grow too large and can no longer really
+stay in complete consensus with each other.
+So an obvious example, of course, is religion.
+Many major religions have many different sub-sects of slightly different beliefs that have caused
+massive rifts.
+And I think a lot of the stuff that happens in Bitcoin is kind of like governance and
+politics and other sociological mechanisms, but on steroids.
+Everything's happening 10 or 100 times faster than it may have happened a thousand years
+ago.
+So it is fascinating to watch.
+I do have the technological background and the technology is what I have focused on a
+lot.
+But definitely the sociological aspects of this ecosystem have been one of the greatest
+surprises to me, one of the most fascinating things to observe.
+And unfortunately, it's not my specialty.
+I am certainly an amateur, but I do try to observe and report and try to explain at least
+as well as I can exactly what has happened over the years and how have the different
+major groups and belief systems within the ecosystem evolved and where are we today?
+And I think one of the major takeaways is that much like in politics, there is a very
+loud minority of extremists.
+And I think the moderates are generally quiet and get overlooked.
+And so because of my prominence in the ecosystem, I just want to try to get it out there that
+the extremists do not represent us.
+Well, in fact, nobody represents anyone other than themselves in this system.
+It's not a democracy.
+But the relatively small number of people on some social networks that espouse more
+vitriolic views, it's actually a tiny minority of the total user base.
+And you don't have to pay attention to them if you don't want to.
+Yeah, I don't take issue with if there's an account that's tweeting.
+And again, you know, I talk about Twitter and social media, and I'm like, okay, it's
+whatever.
+But also in terms of Bitcoin, Twitter is the place where people go for resources, right?
+Or they can see different articles of, you know, whatever about Bitcoin that's usually
+FUD or it's a specific tech sector type thing.
+So they go to Twitter.
+But in terms of, you know, on Twitter, if there's someone a lot of the garbage you'll
+see or kind of hate or toxic masculinity and toxic maximalism, you know, they might have
+three or four hundred followers, right?
+Trolling accounts, it's a human conditional thing.
+The issue I take is when there is a prominent Bitcoin that has a massive following, that
+is a voice in the space that if you type in Bitcoin, they could come up on YouTube or
+they could come up on Twitter saying things that has nothing to do with Bitcoin.
+And they say their sole focus is Bitcoin education.
+And again, I do not care people's views.
+I am a progressive, but much in the libertarian sense of like, you do you, just don't hurt
+people.
+That's usually my starting point with this.
+And I think for most progressive Bitcoiners, because if we're progressive, we're also Bitcoiners
+and that comes with something else.
+So I take issue more with that.
+And the biggest thing for me is people can say all they want that Bitcoin is apolitical.
+Bitcoin doesn't care.
+But the reality is the mainstream population and politics as it is today, they do care
+about image.
+They do care about perception.
+We can say, oh, just ignore it.
+And I agree with what you're saying on that point.
+And I think that's what we should advocate for.
+But slowly we're turning the tide when someone types in Bitcoin or looks at Bitcoin, they're
+seeing a bit more just on Bitcoin or they're seeing a bit more like Jason Meyers, a progressive
+case for Bitcoin, where they see things articulated in a way that they might be able to understand
+from their language.
+We shouldn't have to do those things.
+But for the time being, there's a huge amount of hate and FUD from the left.
+There's a huge amount of political cheerleading from the right, of demagogues, I would personally
+believe from the Republican Party using Bitcoin as a tool to get votes.
+When I don't buy that, I don't think we should buy any politician's word on Bitcoin.
+Don't trust verify.
+And again, like you said, it's completely flipping the model on its head as well in
+terms of Bitcoin.
+It's like, it's not democratic, but it's fair, but we don't have a mental model for it in
+general.
+So yeah, my biggest thing is this perception stuff does matter.
+You might say it shouldn't, but it does.
+And I think you've articulated that really well too in the Maxi article.
+And just understanding the history of all of this is really important and really fascinating.
+It is.
+So what do you do about it?
+So I know I said ignore.
+I think once again, if we look at this from a numbers perspective, what I would advocate
+is yes, we actually, we should ignore the vitriolic people.
+I mute and block vitriolic people.
+I don't want them in my feed.
+I don't even want to be tempted to engage with them because I think that if you engage
+with them, you're feeding them, you know, don't feed the trolls.
+Right.
+So, but you can't be silent either because that is what results in what you were mentioning
+where people search for Bitcoin and they find the people who are perpetually online spewing
+all of this nonsense.
+Instead, what you have to do is you have to realize that the moderates greatly outnumber
+the extremists.
+So what the moderates need to do is they need to keep publishing moderate educational content.
+You know, you have to be the future that you want to see.
+And I think that if that happens, like if the moderate stopped just being silent and
+being afraid of being attacked by the extremists, you know, this is the internet.
+If they attack you, you block them or mute them, right?
+You don't have to worry about getting punched in the face at like a political rally or something.
+So I do encourage people to not be silent because you're afraid that someone will be
+mean to you.
+It does require a bit thicker skin.
+I probably have some of the thickest skin out there because of all of the abuse that
+I have suffered over the years on the internet.
+But at this point, when someone says something extremely hateful to me, I just take pity
+on them.
+You know, I feel sad that this is your life, that you're spewing hate all day long.
+And so that's the mute list for me.
+But it's a type of problem where we do need people to be more active and out there and
+engaging with each other.
+Otherwise, you know, once again, like politics, you know, the people who drum up the votes
+are the ones who are going to win.
+Now I do think the politicization of Bitcoin is absurd.
+It's ridiculous to me that it seems to be all Republicans that are saying positive things
+about this space.
+And I do have a project where I'm actually tracking, you know, don't trust verify, you
+know, all of these politicians, they have to disclose their finances, right?
+So I have a site where I track the politicians and I'm like, all right, publication as well.
+What was that outlet through?
+Was it was that recent in the last year or two where you also said, kind of putting your
+money where your mouth is?
+Let's see what and I don't know if that one was super recent, but I did see that where
+you're tracking that.
+So is that the same project or is this different?
+Yeah, that's my like Bitcoin politicians project.
+I've got a GitHub page with it.
+And the only downside is that it's really, really onerous to go through all of the financial
+filings because most of them are still filing scanned PDFs.
+So you can't even search for you literally have to read through like tens or hundreds
+of pages of stuff.
+And you know, suffice to say, even the majority of politicians who say good things about Bitcoin
+don't actually own any, which makes me doubt whether or not they truly believe what they're
+saying.
+And of course, on the opposite end of the spectrum, it's unfortunate and disconcerting
+that it seems like the liberal platform position on Bitcoin mostly seems to be spurred on by
+ESG arguments.
+And that's, I hold the firm belief, and I guess this was more controversial as well
+for some reason.
+I do hold the firm belief that it's only a matter of time.
+These narratives will shift.
+My argument is I personally believe Bitcoin is going to win regardless.
+It's just, will it be an easier fight?
+Is there ways we can work together on these things and help advance this so that can help
+people and help our system even sooner?
+Yes, I think so.
+So I think in the end, BlackRock's a perfect example.
+Like again, that's a whole other conversation, but which we can even touch on, but completely
+flipping the narrative there, whether that's good or bad.
+For me, that's the Trojan horse theory of like Bitcoin can be used for everyone, by
+everyone, if BlackRock is your enemy, which in large parts, you talk about Occupy, you
+talk about the left, Anarchal, that is a type of enemy or those institutions.
+They're going to get into Bitcoin.
+It's only a matter of time until, same thing with Democrats.
+You'll see some sort of narrative start shifting or they'll kind of like take an L, kind of
+like the SEC might take a loss on some things and then they'll start to ramp up.
+They're talking about it in certain ways.
+Just like I think Apple will integrate at some point, the Lightning Network.
+I firmly believe that people are like, "That's the opposite to Apple's."
+And I'm like, "Okay, but it's going to be the standard for the world in one way or another."
+Whatever that standard looks like, whether it's just international trade or whether it's
+actually our peer to peer money here in the United States in the next five years, I think
+that is all coming.
+So again, I think that shift is already starting and there's a lot of people out here and I'm
+trying to as well to fight for that to happen sooner rather than like, "Oh, you get Bitcoin
+at the price you deserve."
+I'm like, "I hate that rationale.
+I really do."
+For some people, I would like that personally.
+I'd be like, "Yeah, screw you.
+You get Bitcoin at the price you deserve or you're benefiting from this current system."
+But in general, I think it's coming, but I think there's ways we can make this transition
+easier if you will and more inclusive to use that word as well.
+Yeah.
+That actually reminds me of my least favorite Satoshi quote, which is the one where he says,
+"If you don't get it, I don't have time."
+And people use that all the time.
+And it's so, I don't know, I think it's stuck up to say that as if your time is worth Satoshi's
+time.
+Yeah.
+Right.
+It's one thing for Satoshi to say it.
+And yeah, that's really true.
+That's so funny.
+I want to make sure also to get to, we're talking about mainstream stuff.
+You're involved with Casa, which I think is a great company.
+I've also been using Casa as well.
+I would highly recommend in terms of normal people accessing Bitcoin cold storage.
+I think it's a really, really great, great way to use it.
+So what is it like and what are your thoughts on just building a, because also people are
+like, "Oh, for-profit businesses or businesses, we're about open protocols," which you can
+have open protocols with businesses, but just having businesses, having some people from
+the left would be like, "That's just private wealth entering into Bitcoin and messing everything
+up."
+And there's the whole gambit from a private business, creating Bitcoin products all the
+way to BlackRock Bitcoin ETF.
+Some people conflate the two, but for you, where do you strike that balance in terms
+of having a business, a fiat business in some ways, a business in the world of that governance
+engaging with Bitcoin?
+What are your thoughts on that?
+And what some of the Ethereum stuff aside, what do you think are some of the pros and
+cons to that kind of approach versus just an open source, all hands on deck as if they're
+Bitcoin core developers just kind of working on it in their free time?
+Yeah, I mean, they're very different models.
+And it's especially weird to see some pushback in the space from people who, they almost
+seem like anti-capitalists.
+It's really weird to be in a space that hinges on freedom and then seeing people come along
+and say, "Oh, it's immoral for you to be running a business and trying to create profit
+as a result."
+I mean, profit is a motivator.
+It motivates at many different levels.
+And I think the short version is that when you're running a venture capital funded business,
+one of the main differences is that you are motivated to work hard and work quickly because
+you have a timeline and you're burning money.
+You basically take on debt, you sell equity, and venture firms will speculate as to the
+risk involved with that.
+And you basically, you're putting pressure on yourself.
+You're putting yourself on the clock and you're saying, "We have to be able to create
+value in a short period of time here.
+And if we don't, we fail and it all falls apart."
+The flip side of that doing either bootstraps or just free open source organization type
+of stuff is that it's less fragile in the sense that you're not under the gun.
+But also, you don't have the same level of motivation.
+And so people may come and go.
+It's harder to incentivize stable, committed development or people contributing to the
+project if you don't have a pool of funds to actually be paying people salaries.
+This was something that even Bitcoin protocol development struggled with for many years
+because there's no aspect of the Bitcoin protocol that creates funding for development
+of Bitcoin.
+Whereas a number of these other protocols, many of which may arguably be unregistered
+securities, they do have treasuries for that protocol and they can fund themselves.
+So I see it as more of just a funding and incentive model.
+And of course, it's not guaranteed that it's going to succeed.
+But I think that it is required if you want to compete.
+Because if nobody in the Bitcoin ecosystem was doing for-profit businesses, then I can
+pretty much guarantee you that a bunch of people in other crypto protocols and ecosystems
+will be doing that.
+And they will have more capital.
+They will be able to advance and develop the infrastructure and software and really just
+the usability of their systems at a far greater pace.
+So I think it's important just from a competition standpoint.
+And it's also good that we have a variety of aspects to build from.
+So while Casa itself is not an open source project, we use open source projects as the
+foundation of what we're building on top of.
+And this helps us to create a system where even though Casa is a company, we can architect
+it so that Casa is not a single point of failure.
+Speaking of protocols and funding, Nostr.
+So I love Nostr.
+I want to talk about Nostr more on this podcast in general with guests.
+So Nostr is one such protocol where there's a lot of clients, virtually little companies,
+if you will, depending on what the client is.
+And again, technologically, it doesn't exactly work this way.
+But for those listening that don't know about Nostr, one of the easiest ways I relate it
+to people at a 30,000 foot view is you have email and you have many different email services.
+You have Gmail, you have Outlook, you have Yahoo, you have whatever.
+Those are kind of like the clients.
+But again, that's a centralized version.
+So once you pull in that thread, that's not exactly how it works.
+But Nostr is email.
+It's also a way of messaging and email.
+But Nostr has one of those things right now that I see is a problem is funding and increasing
+more long term funding for Nostr.
+For me, I think it could be like Bitcoin in the sense that the Bitcoin protocol you mentioned
+funding was an issue.
+More for profit companies, private companies, public companies, whatever were generated
+and they started investing funding in the protocol because it benefits them and vice
+versa.
+Do you see Nostr heading in that same direction?
+Would you advocate for more actually incorporated businesses being built as clients that utilize
+Nostr and talk about that?
+Because I know you love Nostr as well and have talked about that.
+Yeah, absolutely.
+And I think that will happen.
+And I think there will be a lot of overlap.
+I bet you that what we'll see is a number of the Bitcoin and crypto focused venture
+capital firms will start putting checks into "Nostr businesses" at least in part because
+it is so tightly integrated with Lightning Network.
+I think it's sort of a natural evolution.
+And this actually goes back to what I said about 30 minutes ago of my belief that these
+technologies are enabling new ways of coordinating society.
+That's actually how I see Nostr is that it is a decentralized message bus.
+Now that doesn't mean anything to the non-technical people who are watching this, but essentially
+you can think of it as the cloud, where in reality the cloud is tens of millions of machines
+and very complex configurations.
+But if you just think of it as one logical thing, the cloud is just like a hard drive
+that you can remotely put files on and you don't have to worry about all of the minutia
+of how it's operating.
+Similarly, Nostr is a place where you can just put messages and anyone can then see
+them and reply to them, interact with them.
+And under the hood, there's a lot of different servers and there's a whole protocol.
+But at the end of the day, that allows you to have a new way of coordinating with other
+humans.
+Now, the first application of that was basically Twitter clones.
+But we've even seen stuff of using this decentralized message bus for coordinating playing games
+with people like chess.
+We actually had a team of client, or a team of Casa engineers at a hackathon recently
+that created a project they called Munster, which is a way of coordinating multi-sig wallets.
+And basically, having three or five or however many people you want all using the same wallet.
+And when you're then coordinating, setting up the wallet and creating and signing the
+transactions, all of that data is actually happening through the Nostr network.
+So that's just a couple examples of how now, any time where there is a human coordination
+problem and doing that coordination through a centralized or trusted third party could
+create a choke point or a potential for censorship.
+Now we have this alternative way of coordinating and sharing messages that is far more robust.
+And as a result, this is basically like a new primitive, aka a new low level type of
+technology that you could bolt onto and build on top of many, many different things.
+So it's exciting to see as a technologist.
+You know, Nostr is the protocol even as what, maybe two years old, two and a half technically.
+And then I joined onto a client and I like and advocate Domus, again, Apple stuff, another
+conversation.
+Because also Domus to me has the most mainstream look and feel of a social media Twitter.
+The others are getting better as well.
+And I think Domus has gotten some pretty good funding as well that we'll see long term.
+But do you think Twitter will incorporate Nostr?
+Do you see that as inevitable in the way that Bitcoin might be inevitable to some circumstances?
+Because also when I talk to my friends on the left about using Twitter, using whatever,
+and again, Twitter is where things are still happening.
+So I'm still reluctantly using it.
+The podcast, we're still reluctantly using it, that kind of thing.
+But I'm trying to pull more people over.
+You see Twitter using it.
+Sometimes I talk to people on the left, I'm like, "Listen, we all hate Elon for different
+reasons."
+From the left, billionaire wealth, greed, all of this stuff.
+Censorship in weird ways, working with foreign governments to censor even though he's free
+speech, all of this stuff.
+Do you see Twitter utilizing Nostr?
+And also what is your selling point for Nostr to mainstream folks that don't know anything
+about it?
+Yeah, well, this is almost like the politics and governance argument again, is that when
+you ask, "What will Twitter do?"
+What we're really saying is, "What will Elon do?"
+And Elon can be unpredictable.
+And like you said, even though he talks the whole free speech, maximalism thing, he's
+very hypocritical about it.
+Elon is not Jack.
+Jack has said on numerous occasions that he greatly regrets creating Twitter as a company
+instead of as a protocol.
+And Jack has put his money where his mouth is and is funding not only Nostr, but also
+Blue Sky.
+And he seems to care more about those fundamental issues.
+So it is kind of interesting though, that I think Meta is now dipping their toes into
+Mastodon and using the ActivityPub protocol there.
+And that has created an insane amount of drama in the Mastodon ecosystem about whether or
+not they're going to defederate their instances from the Meta Mastodon instance and so on
+and so forth.
+But yeah, I think Nostr is still way too early to get adoption from any of the big
+tech companies.
+It's going to need a lot more growth and investment before I think it's taken seriously.
+You mentioned Blue Sky.
+Have you utilized Blue Sky much?
+What do you think of that?
+From my understanding, I know they're still a bit centralized at this point.
+They're working to decentralize and incorporate.
+Do you see it as two sides of the same coin as Nostr?
+Do you specifically advocate for one more than another?
+Do you see it as just this is a good enterprise to experiment with?
+I kind of lump Blue Sky and Mastodon into the same bucket because what we're really
+talking about is federated instances.
+And Mastodon is much--
+Because it seems more people on the left.
+Blue Sky, at least in my opinion, and I don't interact with it much.
+I have a Blue Sky account for this podcast to just try to reach different audiences.
+It's a very overwhelmingly left audience in terms of what I'm seeing with that as an opposition
+to Twitter.
+We feel okay on Twitter.
+We feel that it's-- that particular audience feels that it's just more right wing and free
+of speech in that regard.
+Again, their opinion.
+So they turned to Blue Sky as the safe place for the left.
+That's the way I've seen it.
+That's the way it's characterized as well.
+So I've seen that.
+So yeah, I was curious your thoughts on Blue Sky.
+Yeah, I don't think it's going to end well.
+And the reason that I say that is because of the drama that we've already seen happen
+on numerous occasions on Mastodon.
+More recently, it's been ramping up.
+But for example, in the early days of the pandemic, I believe, Rodolfo Novak, head of
+CoinKite, created the BitcoinHackers Mastodon instance.
+And it had thousands of people sign up for it.
+And if I recall correctly, a number of other large Mastodon instances chose to defederate
+from the BitcoinHackers instance because they considered it, quote unquote, "right wing,"
+extremists, yada, yada, yada.
+And so this is fine, I think, from a sort of voluntary coordination standpoint.
+This is the freedom that the protocol allows.
+But we've seen that happening more and more often now.
+And part of the problem with this federation and defederation stuff is that apparently
+with these protocols, at least with the ActivityPub protocol from Mastodon, when you defederate,
+you're basically severing all of the connections and all of the followers between the instances.
+And even if you refederate again an hour later, a day later, it doesn't recreate those connections.
+So it's, I think, a massive point of fragility and politicization that is not going to end
+well.
+And as far as I know, BlueSky basically works the same way in the sense that it's federated
+instances, even though I'm not aware of many other instances of that protocol running.
+But Nostra is different.
+And the reason that it's different is that you don't have an account on an instance.
+Like you do with BlueSky or Mastodon, you are literally having to go to their website
+and create a username and password.
+It is a more traditional web2 experience, even though the protocol does afford you some
+portability in the sense that it is technically possible for you to move from one instance
+to another.
+I did that myself a year or two ago.
+I was on one of the big Mastodon instances and I was like, "You know what?
+I don't want to get rug pulled.
+I'm going to run my own Mastodon node that I don't even let anyone else sign up for because
+it's a terrible administrative thing to run one of these instances.
+It's not very highly performant software.
+But I'll run my own instance and that way no one can defrederate me and I don't have
+to worry about essentially losing my followers because they'll be following my instance directly."
+So on Nostra, you're not creating a login.
+You're not creating an entry in anybody's database.
+You're literally just generating a public-private key pair.
+And then you're connecting to any number of arbitrary servers whenever you want to read
+data or write notes.
+And so while you still have the risk that any instance or any relay that you connect
+to is under no obligation to respond to your queries or to allow you to post notes to them,
+if they decide to do that, they can only affect their own relay.
+They cannot affect your activity on other relays.
+And so the rug pull risk is basically zero as long as you have your clients set up so
+that you are replicating and querying data across many different relays.
+And last thing on Nostra, what do you think?
+So it seems BlueSky took the approach of content moderation and legitimacy in that regard because
+people are used to that.
+They're used to like going social media.
+You can't just say everything you want because that's dangerous or harmful or scary, especially,
+you know, I'll say from folks on the left, you know, the right, there's different things,
+right?
+I think both sides do it in different ways, but I'll talk from a progressive standpoint
+here.
+So they took moderation more seriously, if you will, in that regard.
+Nostra, they seem to be doing the opposite where they're like, let's build up these relays.
+Let's get this infrastructure rolling.
+Let's play around with this.
+Right.
+And I guess like a better word, like cypherpunk way, let's just build, roll out.
+It is still a bit of a Bitcoin chat room.
+You know, it's getting less and less that.
+How do you think Nostra can handle content moderation?
+So obviously you mentioned like you can't be censored, right?
+You can jump to different relays.
+You can have multiple.
+I think I operate on like 14 different relays and it works pretty well.
+But also I'm not necessarily trying to just get canceled or reported.
+There are reporting mechanisms, right?
+And you can flag content.
+But what do you think, how would you start to approach that?
+Because that's when I think you gather more legitimacy for Nostra the protocol and for
+clients or should we even care?
+I guess is the question.
+No, we should care.
+Moderation is a fascinating topic in and of itself.
+This actually goes back to, I get triggered by abuse of power, right?
+And especially during the scaling debates, a number of moderators, especially on Reddit,
+triggered me and a bunch of other people because they just arbitrarily decided you can't talk
+about these things.
+And they were allowed to do that because they control the subreddit that they're moderating.
+I think that the issue of moderation or at least the implementation of moderation needs
+to be flipped on its head.
+So once again, the problem is it's one of humans and fickleness and getting rug pulled.
+If you have humans who are, they're sitting basically as a middleman between the deluge
+of content that is being published and then the content that you are consuming and they're
+trying to act as a quality filter for that, then they're not always going to get it right.
+And in some cases, the difference in beliefs between the human moderators and you may clash.
+So this is not a perfect solution that can really be implemented right now, but my long-term
+vision for things like moderation, and I think this will apply to a number of different aspects
+of our lives and how we manage these coordination mechanisms if we start using less centralized
+coordination mechanisms.
+I think that what we really need is personal AI assistance.
+And what I mean by that is each of us knows what type of content we want to see and what
+type of content we don't want to see.
+And the problem right now is that either you have to do all of this moderation and curation
+manually and I've spent countless hours on Twitter manually curating what I see, what
+words get muted, what people I don't see because I think that they are creating too much noise
+and not enough signal.
+And I do believe that if an AI was trained with enough data of my own personal content
+likes and dislikes, that we could then replace these human moderators with our own personal
+client-side filtering.
+And that is a way that we could still achieve what we want to achieve, which is high signal,
+low noise, but do so in a way that's less prone to arbitrary censorship.
+Do you think there's any potential harm in that from a technology standpoint that can
+be done?
+And I do see that.
+That's a really interesting point.
+And I think that could very easily happen sooner than we think.
+What if someone's content preference is really bad, like not healthy, probably not good for
+them, not good for society as like human beings.
+How do we live cohesively with each other, at least in the US, not to mention globally?
+It's a question I always ask in terms of this because I am from the left of freedom maximalist
+in theory, but then seeing there's a sickness, you can't really heal that through censorship,
+but you also can't heal that through open floodgates or whatever the opposite of that
+would be.
+Do you see downsides to that?
+How would you address that from a technology standpoint?
+Or would we not?
+Yeah, this is sort of the trust and safety argument, right?
+Is that I certainly don't have a solution for this, but this is an interesting sociological
+problem of, I almost think of it as the internet now, it has not fulfilled the utopistic dreams
+of human society.
+We now have the sum of all human knowledge at our fingertips.
+Therefore, all of humanity that has internet access is enlightened and logical and makes
+better decisions as a result of access to this human knowledge.
+Because the flip side of that, of course, is the disinformation, the misinformation,
+the highly skewed and biased narratives that get propagated.
+That is not something that I have a technological answer for.
+But once again, it's sort of a sociological phenomenon.
+You're kind of at least potentially asking, how do we prevent people from getting stuck
+in echo chambers that then lead to extremism?
+That would be very interesting to try to solve from a technical perspective, but I think
+that it is a result of the freedom that we are affording to people to curate their own
+content and really the fact that you're programming yourself.
+I think a lot of people don't recognize that you are what you eat and your brain is
+what the information that you consume is.
+Some people might say, "Oh, we need sort of health and safety labels and warnings on
+potentially dangerous content," but that's a whole other slippery slope.
+It's an unfortunate downside to the communication age is that it's not just the information
+age, it's also the misinformation age.
+Yeah.
+I thought we were going to crack the code on that one, Jameson.
+Yeah, because I think it starts with each individual has to want to live a good life
+and want to live the life that is healthy for them.
+I think it starts there.
+Society's reaction, government's reactions on both sides have been, "We are going to
+take that opportunity away from people and we're going to decide for them."
+That clearly is not working.
+Yeah.
+I mean, a kind of similar concept that I definitely had crossed my mind recently is it would be
+incredibly helpful if you had autonomous AI agents that were looking at the content that
+you consume and if they could tell that you're consuming something that's just flat out false.
+Just pop up with, "Link me to the Snopes article," or whatever, "Link me to the reputable source
+of information that shows that this is a lie and that you should not trust this source."
+There's certainly potential for that, but then ultimately the question is going to be,
+do you force that on people?
+Can people opt out of that?
+There's always this conflict of freedom and safety.
+We're going to have to do a follow-up conversation because I've got a lot more thoughts to pull
+on that.
+That's awesome.
+One quick last question because it's one of my favorite notes, and I think you tweeted
+this as well, that you've ever done because I also love the show.
+But The Last of Us, season one, episode three.
+I looked it up again recently just to make sure.
+I think you said this was one of the most beautiful episodes of television or something
+like that.
+I love Nick Offerman.
+I love Ron Swanson in terms of just like I love Parks and Rec and I make so many jokes
+about Ron Swanson as a Bitcoiner and obviously he's a gold bug.
+But he kind of lived out that character again in The Last of Us.
+And if people haven't seen the show, it has nothing to do with what we're talking about
+really.
+But I love the show.
+I think it's great.
+I didn't play the video game, but that episode was absolutely beautiful and amazing and I
+love all the actors.
+So for you, you seemed to really enjoy that and let the world know that you did.
+You know, I am a kind of a fan of like the apocalypse porn genre, whether it's the zombie
+apocalypse or any number of dystopian futures.
+The problem with a lot of them, of course, is that in many cases there's unrealistic
+aspects of it.
+But I felt like that series and really that episode in particular, it was great because
+it showed some aspects of humanity that came through despite all of the struggles that
+they were going through.
+And I think it's through most people for a loop for what you would generally expect from
+a sort of dystopian future television show.
+So are you optimistic when you look out at our future as humanity?
+You're obviously talking about AI and positive waves, which some people don't.
+So you mentioned you're an optimistic person.
+I think you probably have an optimistic take just when you look out.
+But what's your take when you're looking out at the future of all of this as a technologist,
+as someone who cares about humanity as well and the things you mentioned?
+Are you optimistic with where we're headed?
+It's a weird dichotomy.
+I am extremely optimistic on some things and extremely pessimistic on others.
+And from a sort of cosmological scale, I'm pessimistic that humans will get through the
+Great Filter event and that we won't essentially destroy ourselves due to not having the ability
+to wield the power of the technology that we have developed.
+There is reason to believe that there's a good reason why we're not hearing any signals
+of intelligent life from anywhere else in the universe.
+And it's likely because if there was intelligent life elsewhere, they destroyed themselves
+too quickly.
+Oh, so not in the way of like, "Oh, we want to stay away from them because they seem dangerous,"
+but in the way of they've already destroyed themselves.
+Yeah, yeah.
+I don't know if I've heard that before.
+That's interesting.
+It's a fairly common sort of astrophysics/philosophical question of, "Can your civilization pass
+through this filter event?"
+We have managed not to nuke ourselves to death yet, but of course, the potential is still
+there.
+And as someone who's focused on preventing single points of failures for eight years,
+I see humanity as a single point of failure on the Earth.
+So I do have some similarities with Elon Musk of wanting to get humanity on a multi-planetary
+system just to reduce the potential for catastrophic loss.
+But it's weird because I'm optimistic that technology will continue to improve the quality
+of life for people, or at least the potential is there, and that lots of people will continue
+to improve, for example, medical technology and especially with AI now, continue to reduce
+the amount of manual labor that humans need to do so that humans ought to be more free
+to follow pursuits that are higher level type of work and more creative pursuits and do
+the things that humans are good at.
+On the flip side, I'm very pessimistic because I see that the incentives and human nature
+are such that humans prefer convenience over almost everything else.
+They prefer convenience over privacy, convenience over security.
+This is an incentive issue because we always try to take the path of least resistance.
+And so I guess one of the ways that you could potentially try to engineer around that is
+by understanding that defaults are extremely sticky.
+So there is an entire area of research now when it comes to technology and the sort of
+second order effects of technology that I think were a big miss over the past few decades
+of we were just sort of careening head first into accelerating technological development
+without thinking through all of the edge cases of how this could affect society.
+So we have, I think, the potential and the tools to better shape what is going to happen
+in the future.
+But I'm also pessimistic because the powers that be are not going to just hand over their
+power to these other systems.
+There's definitely going to be a fight in a number of different ways, but the fight
+for freedom is never over.
+It's something that must be constantly guarded against.
+I do my part by trying to make it easier for people to be sovereign, at least within Bitcoin.
+And over the long term, I expect I'll be helping people be sovereign in a number of different
+aspects of their lives as cryptographic protocols and private key ownership and the technologies
+related to that offer more and more empowerment.
+But the question and the constant battle that's always going to be there is the fact that
+the centralized providers are probably always going to be more convenient.
+And at least for the foreseeable future, they're also the defaults.
+And that's what makes it a really uphill battle for us to fight against.
+So in the example of Bitcoin, one of the big problems is people come in and they buy on
+a centralized exchange and usually that's it.
+The very fact that you have to take action to withdraw to self-custody is a showstopper
+for a lot of people.
+So that's why I think one of the best things for actual Bitcoin adoption and self-custody
+is actually pushing forward more circular economies so that people are actually working
+for and getting paid in Bitcoin.
+Awesome.
+Well, let's end things there.
+We'll have to do this again because the number of things you said I want to have another
+conversation on.
+But thank you so much.
+Is there anything else you wanted to mention?
+Or I'll put your website in the footnotes for people to go to because I think that'll
+probably link up to most of the places you would want to send folks.
+But anything else you want to mention or anywhere else to send people to if they're interested?
+Yeah, check out the Bitcoin.page.
+That goes to my educational resources.
+And really, that's what I tell people when they come to me and they're like, "Hey, should
+I invest in Bitcoin?"
+My go-to is, "Well, you should invest in education.
+Go check out all of these educational resources.
+Do your own research.
+Decide for yourself."
+I'm not a financial advisor.
+I can only tell you what the benefits of being in Bitcoin and self-custody are.
+I'm not here for trading advice or to speculate on what's going to happen over any time frame
+with the purchasing power of this asset.
+And if you're someone on the left and you're looking for good information about why Bitcoin
+is good for humanity, why we care about this, why we care about privacy, I would highly
+recommend following Jameson Lopp.
+I think you do a great job of just focusing on signal, focusing on what's important without
+some of the other noise that I think can be distracting, especially for folks on the left.
+So thank you for that.
+Thank you for your contributions.
+And thanks for jumping on.
+This was great.
+Yeah, great to be here and see you soon.
