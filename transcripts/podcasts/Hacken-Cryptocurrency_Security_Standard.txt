@@ -1,0 +1,612 @@
+Welcome everyone to this exciting live Twitter AMA session.
+Today we have two, without a doubt, brilliant minds in the crypto space joining us to shed
+light on some crucial topics regarding the security in crypto.
+So please give a warm welcome to Dima Budorin, CEO of Hacken, and Jameson Lopp, the CTO of Casa.
+Thank you both for being here today.
+And before we dive into the discussion, Dima, Jameson, could you please introduce yourselves
+and give our audience a brief overview of your roles in your companies and your journey
+in the crypto industry overall?
+Sure.
+Thank you.
+Thank you.
+Hello everyone.
+My role at Hacken is the CEO.
+We were six years at the market, launched in 2017.
+Mostly we do cybersecurity services, but also we build some products that automate and make
+some processes, security processes, make less hacks in the industry.
+We also do ratings of security space that boosts awareness of best and bad practices.
+And yeah, we are proud Ukrainians, but live now in Lisbon.
+My previous job was I was a senior manager eight years at Deloitte.
+Awesome.
+Thank you, Dima.
+Right.
+So as for myself, you know, I got interested in Bitcoin about a decade ago and pretty quickly
+jumped in and started doing some of my own just sort of side projects, trying to better
+understand this space.
+And within a couple of years, decided I was interested enough that I would go full time.
+I spent those first three years working at a company called BitGo and I was basically
+helping build infrastructure that would help exchanges and other large custody providers
+improve the security of their hot wallets.
+You know, essentially in the early days of Bitcoin, what we saw happen quite often was
+exchanges running essentially all of the money of their clients off of a single signature
+wallet that was usually on a server somewhere.
+So if a hacker got through their defenses, they would just wipe everybody out.
+And often the exchange would have to close, go into bankruptcy.
+So we were trying to facilitate improved best practices there by letting these exchanges
+have multiple keys and different security footprints so that it would reduce the ability
+for a hacker to just go in and wipe everything out.
+And over the years, I learned a lot more about best practices because we saw people screw
+up in many different ways and eventually decided that what I wanted to do is do a slight pivot.
+And I basically took a lot of that knowledge and best practices and started Casa.
+And really Casa is a similar type of security service where instead we're targeting mostly
+individuals and trying to help people get themselves into a self custody setup that
+is not only foolproof against hackers and against all types of different laws, but also
+is it's flexible enough that the user can be human and that they can make mistakes and
+they can be confident that if something goes wrong, it won't be a catastrophe that will
+cause them to lose all of their money.
+And this is really, I think, a very important thing for us to continue working on in this
+space like if we really want to get to a level of mass adoption where people are actually
+being their own bank, we need for people to be confident that they can be their own bank.
+And that means we need to have better user experiences, better safeguards, if you will,
+so that the average user doesn't need to be highly technical and need to spend a ton of
+their time understanding what all the best practices are and what every possible thing
+is that could go wrong and could make them lose money.
+So really for the past five years now, I've been the CTO at Casa helping to architect
+our solutions, you know, both all the way from the protocol level of what we're using
+at Bitcoin and now Ethereum as well to help facilitate what we believe the best practices
+are and the best security architecture are, you know, all the way up to the user interface
+level of, you know, how do we provide a nice mobile app experience that is giving people
+security but is also guiding them in such a way that they don't have to know all of
+the technical details of what's going on under the hood.
+So it's been a long and arduous process.
+And as I think we're going to get into today, we are really far away from the finish line.
+Like this is still a highly dynamic environment where there's still a lot of lessons to be
+learned and there's still a lot of room for improvement.
+Oh, absolutely.
+And I'm glad you touched this topic because that is something that I actually wanted to
+start with is like the industry itself.
+We are already 15 years from Bitcoin white paper release.
+And the first ICO happened nine years ago.
+And a lot of things have been changing, developing.
+People started from having all their Bitcoins on their hard drives.
+Then there were some exchanges or some wallets.
+And overall, the security has been also maturing.
+Five years ago, six years ago, there was almost no such notion as like a smart contract or
+something.
+It was something very rare to stumble upon.
+But now any respectable project kind of needs this some kind of protection and not only
+for having credibility, but also from the standpoint of securing its users' assets.
+So we have a lot of emerging things that already are established in the industry, such as audits,
+like penetration testings, back-boundary programs.
+But where are we at right now exactly from the Northern Star?
+Is there any obvious areas of security and self-custody that still require standardization
+or improvement?
+What's your idea on the current state of the security and self-custody guys?
+I wanted to make a little step back because that touched base the topic of BitGo.
+So you've been watching the first major exchange collapse.
+And since then, after Mt. Gox collapsed, there were a lot of discussions about proof of reserve
+and how to prove that exchanges were solvent and that they were not playing around with
+user funds.
+And as you said, you saw that a lot of exchanges started to use third-party custody.
+But unfortunately, we see that there was one spike of this trend after Mt. Gox.
+And we have one spike after the Quadriga CX, that people started to care about what are
+the balances of exchanges.
+And recently, we also had the same story that some exchanges started to kind of prove their
+reserves.
+But I see that again, this topic is not hot anymore.
+My question is, how many do you think exchanges, do you have an approximation, are using third-party
+custody?
+And how many of them do not touch user funds and they are basically solvent?
+Yeah, well, I haven't worked at BitGo in many years, but I would suspect that you probably,
+especially if you look at the long tail of exchanges, because there's a lot of really
+tiny exchanges out there.
+Like in terms of just raw numbers of exchanges, I bet the majority of them are using a custody
+solution that, you know, even it may not be fully trusted third-party, but at least involves
+a third party because, you know, it takes a lot of time and resources to implement a
+good custody solution.
+So in many cases, unless you're a huge exchange, that's one of the things where it at least
+makes sense to outsource the technology stack.
+And then of course, there's sometimes regulatory issues and sometimes you want to outsource
+the whole thing and you want to just fully trust a third party to custody it.
+You know, that is something that BitGo realized as I was working there back in like 2017 era
+and they spent several years forming a trust company.
+And so they ended up offering not only a self custody sort of facilitated multi-sig setup,
+but ended up offering a full on qualified custodian offerings as well, because they
+knew that there was a market for that.
+Even though I'm personally not a fan of going down that route, you know, there are use cases
+where it's unfortunately required.
+How many exchanges are solvent?
+That is the sort of perennial question.
+And unfortunately, the really tricky thing is that proof of reserves are not panacea.
+Like it's not even really a baked standard at this point.
+And this is something that came up with the recent issues with stuff around like the last
+wave of collapses with FTX and Celsius and whatnot.
+We had renewed interest from people for the cryptocurrency certification consortium to
+kind of better define the proof of reserve controls within the security standard.
+And once we started getting into the nitty gritty of it, because we rolled out this audit
+capability fairly recently earlier this year, we essentially discovered that it was too
+difficult for us to have a specific way of doing proof of reserves.
+And the short version for the reason behind that is that it's not merely the issue of
+like proving cryptographic control of funds.
+That is better than nothing.
+And it proves that you have some funds, but the whole point of proof of reserves is like
+you said, is to prove that the exchange or custodian has not been rehypothecating or
+dipping into or otherwise abusing their clients' funds.
+And that means there is another aspect of that, which is the proof of liabilities.
+And really there's no standard that I'm aware of that really solves the proof of liabilities
+issue.
+And that's usually at least in part because you have to bring in yet another party, preferably
+some sort of disinterested accountant who will be doing things at arm's length.
+And of course that involves yet another point of trust.
+So it got so gnarly that the point that I'm getting to is that we actually dropped the
+proof of reserves control from the security standard recently.
+And really we've settled on the fact that the cryptocurrency security standard is really
+meant to be about how you create, store, manage, and use the actual private key material.
+And the idea is that if you're doing all of that correctly, then the rest of the stuff
+should generally fall into place.
+Now, as we've seen, fraud on the other hand is kind of a completely different issue.
+And that I think is something that's not going to be solved by cryptographic security standards,
+rather that there's already a whole industry for that.
+And that's why you have reputable third party accountants come in.
+Of course, I think we've seen plenty of examples with FTX, for example, where they just lied
+to their auditors, if I recall correctly.
+So I don't unfortunately have a sort of a trustless solution that I think we can point
+to to really help people be confident that there's no fraud going on.
+And the short version of how do you deal with all of this is like, this is what self custody
+is for.
+You don't need to have complex sets of controls and accounting stuff on third parties if your
+money is not with a third party.
+You take control of your money and do your own accounting.
+And that is the best security architecture that is available in this space.
+Yeah, I was also part of this working group and also was participating on the discussion
+of removal of proof of reserve from the standards.
+I think it was slightly changed the angle like proof of controls so that the part, the
+custody doesn't have the access to client funds.
+But yeah, I agree that if to include accounting points into the standard, that the standard
+will be massive and very difficult for exchanges to follow.
+Hopefully that CIFOR will put a new effort to write the standard for the proof of reserve
+as well.
+Is this planned?
+At the moment, I think we basically decided that it was too difficult of a problem to
+try to address.
+I mean, like you said, we had those groups and a lot of discussions around it and there
+were just so many different points that each one kind of chipped away at the trustworthiness
+of going to the trouble of doing all of this.
+For one aspect, like even if you got a good proof of reserve system and we have seen a
+few exchanges implement their own variations of proof of reserves.
+And I think what we've seen is very few, maybe even none of them are actually doing real
+time proof of reserves.
+It's usually a point in time audit, maybe it's twice a year, once a quarter, whatever.
+And so even then, what is the guarantee that you're getting?
+Even if you have a perfect proof of reserve system, it's showing you that they have the
+money at that time, but there's always going to be ways to game it.
+I think we talked through a number of issues of like, well, what if they just move a bunch
+of money in to their setup and do the proof of reserve and then move it back out again
+and you don't really know what's happening to the money.
+So I keep falling back on this idea that the only way to really be sure of what's going
+on with your money is to hold it yourself.
+That's a brilliant point, honestly.
+As once some smart people said, not your keys, not your crypto.
+Yeah.
+So just overall, we touched the CCSS, the standard for those who may not know what's
+the CCSS.
+What's the cryptocurrency security standard?
+And why is it a standard?
+Is anyone following it?
+Right.
+So, you know, I believe this was originally formed back around like 2016 or so.
+And I know Mike Belshe, the CEO of BitGo, was one of the founding members, along with
+a number of other names that I'm sure people will recognize.
+And the idea was that we kept seeing these catastrophic failures happen in the space.
+And it's kind of a recurring cycle, right?
+Is that some people and companies come along, they get into the space, they kind of create
+their own patchwork solution, and it's often implemented poorly.
+And then if they're successful, and they get to a point where they have a significant amount
+of money in their system, you know, that's a bug bounty.
+And eventually, if there are security vulnerabilities, they'll be exploited and basically cleaned
+out.
+So this cycle seems to repeat every few years, and people don't learn lessons from the past,
+you know, perhaps just due to sheer ignorance.
+And so the idea was, you know, we've learned a lot of lessons, we should write them down,
+and we should make them specific enough that someone can follow them.
+And so I think, and I hope that, you know, most of the custodians in the space are familiar
+with the standard, and they are probably following large parts of the standard.
+The standard itself is about 35 to 40 specific control points.
+And these control points cover a number of different areas, the actual seed generation,
+you know, the creation of the private keys for the setup, the ongoing storage of those
+keys, the specific protocols for how the keys get used to sign transactions, because of
+course, anytime you're handling key material, there's a number of things that can go wrong.
+It involves creating key compromise policies of, you know, exactly what do you do if one
+of the keys in your system is no longer trustworthy?
+Then there's just sort of a lot of internal controls around like, how do you actually
+decide and grant and revoke access to humans who are going to be handling key material?
+How do you do security audits and tests?
+How do you handle just the data of the system itself and make sure that sensitive data gets
+sanitized?
+And how do you ensure that you have strong audit logs so that if something does go wrong,
+you can be sure that you'll be able to do a forensic analysis so that you can figure
+out exactly what compromise occurred so that you can repair your system and continue going
+forward.
+And that is something that any sophisticated attacker is going to do is try to wipe out
+all of the audit trails as they are performing the attack.
+So the idea is that if you're following these controls, you're going to be putting yourself
+in a much better position.
+Each control, we have like three different levels, sort of level one, level two, level
+three of like exactly how extreme and paranoid are you going to be about these controls?
+So as of today, we just rolled out the actual auditor program.
+I think we have one or two audits in flight.
+We may have, I think we've maybe we've had like one company that's actually gotten all
+the way through the audit process.
+But basically last year we rolled out the testing so that anyone who wants to can learn
+all of these controls and then can take a test to get certified to be an auditor.
+Essentially you can have your name on the list of if a custodian wants to have their
+system verified and certified, you can be one of the people who actually performs that
+and charges for that service.
+And when an audit happens, there will be a peer review.
+So it's not just one auditor.
+We don't want to have single points of failure there.
+And this is something that we would like to see more and more companies go through the
+audit process because it does provide, I think, more trustworthiness, stronger reputation
+for these custodians because they're all black boxes.
+If you're using an exchange, if you're using some service that you have to send your money
+into, as soon as you send those funds, you really have no idea what potential vulnerabilities
+those funds are now open to.
+So if we have more entities in this space that are essentially proving themselves to
+be following the highest level of standards that are available, then this should reduce
+the likelihood that more of these catastrophes happen.
+And I think that's good for the entire space in general.
+Anyone who's been around for a few cycles knows that when we have these boom and bust
+cycles and these catastrophes that happen, it can take years for us to recover from that
+sort of global reputation loss.
+And I think we're over a year now from the last wave of failures.
+It could be another few years before we're back to where we were before all of those
+things went wrong.
+Thank you for explaining the CCSS standard.
+I believe my 2023 started with getting the certification.
+I got it on the 1st of January and I challenged our hacking team to do it as well.
+And I think we have around 15, 18 CSS auditors in the team.
+And we've been actively promoting the standards to our clients, to our partners.
+And we see that still we need to invest a lot of time and efforts into market education
+because other custody providers, they see, of course, that the fire blocks was the pioneer
+who received the standard.
+But for some reasons, they don't want to do this extra step to prove people that they
+are secure enough.
+Their motivation is that, "Okay, we've done SOC 2 and we've done ISO 27001 and that should
+be fairly enough."
+Jameson, can you please maybe sell some more information why the CSS standard is given
+more trust and covering more risks rather than the SOC 2 and ISO certifications?
+Right.
+There is some overlap there and CCSS was born out of the idea that, yeah, there are various
+standards that already exist for securing private key material.
+But none of them, to my knowledge, they haven't really been updated for the times.
+They haven't been updated for using private keys to manage bearer assets.
+So there was essentially a gaping hole in the best practices for this specific use case.
+Interestingly enough, the cryptocurrency certification consortium is going to be having a podcast
+in about an hour and a half now and it's specifically entitled, "Why SOC 2 Isn't Enough for Web3."
+Standards are tough.
+They're tough to develop and then even once you develop them, it's even harder to actually
+get them adopted as you, I think, have seen yourself.
+There's an odd kind of incentives problem of like, we know this is the right thing to
+do, but I think a lot of people are looking or at least a lot of organizations, they're
+looking at it and they're like, "All right, so you want us to spend thousands of dollars
+to be a sort of early adopter of this standard."
+I think it's kind of a chicken and egg or a network effect problem of once you get it
+bootstrapped and you get some large reputable names behind it, then you kind of have a sort
+of social pressure, if you will.
+This is the kind of thing where it needs to start popping up on checkboxes for other companies.
+When they're going around and they're looking for custody solutions, they should be asking
+the question, "Are you CCSS certified?"
+In a B2B environment, the salespeople learn very quickly that if they can't check off
+the boxes that are the sort of requirements for potential clients, they're going to lose
+the deal.
+They're not even probably going to get very far in the conversation.
+Very quickly, those requirements get passed down to the engineering aspect of the organization
+to figure out how they can implement them.
+I think that's where we are right now in this phase is trying to figure out how do we get
+it bootstrapped and start getting that level of pressure so that people don't just wave
+their hands and say that SOC 2 is enough.
+I'm not deeply versed in SOC 2 aspects, but it always seemed to me like it was heavier
+on the auditing aspect.
+Just making sure that you understand how your internal systems work and that you have strong
+audit trails for what's happening inside of the system.
+It's about controlling information, but it's not necessarily very well geared towards protecting
+private key material.
+SOC 2 is still good, I just don't think it's good enough if you're going to be managing
+bearer assets that can be stolen in a matter of milliseconds and then are impossible to
+get back.
+Thank you.
+Actually, in 2018 at Hacking we came from traditional cybersecurity, and my question
+was why do we have so many exchange hacks?
+And we started to research the landscape of cryptocurrency exchange security and we identified
+that a lot of exchanges don't do penetration tests, bug balances, and they follow quite
+weak security practices.
+And we created the ranking of security exchanges, and that ranking was integrated into CoinGecko
+Trust Score.
+And then exchanges who didn't follow the best security practices, basically their score
+at CoinGecko has fallen, and then they start to see that they're losing people's trust,
+and then they started to do regular penetration bug balances.
+So from our experience, people are starting to pay attention to cybersecurity in three
+cases - when they got hacked, then it's too late when they are pushed by regulators, and
+right now I don't see how regulators on the global level can make exchanges to do this
+or that things.
+And the third, which is the most important, is when they are losing revenue.
+So basically getting the bad markets, top crypto aggregator that's saying that you are
+not doing the pen tests, it affected them and they in fact started to do the pen tests,
+and as a result we see less exchange hacks.
+So just one last thing on the CCSS.
+I know that there is a first exchange who is completing their certification, and once
+this exchange will have the CCSS, we will update our methodology at Cert.Life and we
+will put CCSS as required standard.
+So hopefully that will create the demands and exchanges will start following this practice.
+Jameson, can you please tell who else is recommended to do CCSS?
+Like exchanges, custodial wallets, who else in your opinion?
+So like I said, there are dozens of controls, and I would say any self-custody setup can
+benefit at least from the first few sections of the CCSS.
+Basically how do you create the private keys and store them and manage them and use them.
+The second half of controls of CCSS are more organization specific and it's more internal
+controls of how you manage the humans and how they access the keys themselves.
+So that's less applicable to say like a sole self-custody setup where it's just one person
+who's taking care of their own keys.
+But in general, I would say it's something that anyone who is managing their own custody
+should look into and if you're custodying money for other people, you should definitely
+look into it because you're taking risks that are putting assets other than just yours on
+the line.
+So at the end of the day, I think everyone should at least look at it and whether or
+not you go through the trouble of getting an audit, that's something I think will mainly
+be relegated to larger businesses because this is something that will have a significant
+cost to go through the whole audit process.
+But you can, for example, take tests on the CCSS website that can show that you have a
+good understanding of what the standard is and then essentially implement as many controls
+as you're comfortable with.
+The one thing that I would really try to impart from all of this is that you don't necessarily
+have to meet level two or level three of all of the controls.
+Even if you don't meet level one of all of the controls, you're probably putting yourself
+in a better position than 99% of the custody setups out there.
+So every additional security measure that you are implementing, of course, is going
+to increase your posture, your resilience.
+And it is kind of arbitrary if you get to a specific level or not.
+It's just a very rough measure of how robust your setup is.
+But anything is better than nothing.
+Sorry, sorry.
+To wrap up the topic about the standards, what other standards do we need in the Web3
+industry, in your opinion?
+Well it gets really complicated.
+Over the past seven or eight years now, CCSS, like we've said, really just focuses on the
+private key management.
+Even when we ran into the proof of reserve stuff, that basically proved to be a bit too
+complicated for us to try to standardize.
+And now you're talking about using much more complex smart contracts.
+The attack surface on those goes up significantly because the complexity goes up significantly.
+So this is something that the Web3 ecosystem has also been working on over the years.
+And I believe if you look at the landscape of theft and loss over the past few years,
+the types of loss that we've seen have changed.
+So we already talked about how in the first decade or so of this industry, the majority
+of losses tended to be one-off exploits at large centralized exchanges, essentially wiping
+out all of the money that they were keeping usually in hot wallets.
+Then over the years, we developed better standards and it seems like the majority of exchanges
+have at least learned not to keep all of their clients' funds in a hot wallet.
+They're only keeping a few percent in a hot wallet and the rest in some sort of cold storage
+setup.
+That has greatly reduced the catastrophic loss and exchange failures, at least of the
+honest exchanges that don't commit fraud and rug pull their users.
+And so now it seems like the biggest hacks and losses that are occurring are on the smart
+contract side.
+So whether that is happening at the token bridges or happening at the decentralized
+exchange smart contracts, really any smart contract that is now interacting with arbitrarily
+complex other users and other smart contracts, we're seeing the sophisticated attackers really
+exploiting vulnerabilities in the smart contracts themselves, finding edge cases that just were
+overlooked by the smart contract developer.
+And in many cases, these edge cases can similarly be exploited to drain most, if not all, of
+the funds that are being secured by that smart contract.
+So we have seen some standards get implemented, or at least get agreed upon by some large
+names.
+There is the, I think the Enterprise Ethereum Alliance has been working on standards for
+how to write smart contracts.
+I think there's also been improvements on tooling around being able to analyze smart
+contracts.
+And of course, an entire industry of smart contract auditors has bloomed.
+Now of course, audits aren't perfect in and of themselves.
+I think we've seen a few exploits happen against contracts that had been audited.
+But once again, having an audit is better than not having an audit.
+Thank you.
+I shared the link to ETH Trust's security standards from EE8.
+And for those developers who are listening right now, I really recommend to look at it.
+And there is valuable information on what can be done on the development phase.
+So it doesn't mean that you shouldn't have an audit, but it means that you will already
+cover some risk by following the standards.
+All right, so let's switch to account abstraction.
+Some people, like a lot of people, hear this word, and they know that this is something
+good for the industry, something good for mass adoption.
+But I think people still don't understand the difference between custody, non-custody
+and account abstraction, how to set up the wallet.
+Can you please explain it in simple words, what it is and how it will affect on the mass
+adoption and how it will affect on the user experience?
+Yeah, it can be tricky to talk about for several reasons.
+But the short version is that in an EVM type of protocol like Ethereum, there are generally
+two different types of accounts or different types of ways of storing your money.
+And the sort of default one is this externally owned account or EOA.
+This is basically a single signature type of account.
+And this is the only type of account that can actually kick off the execution of a smart
+contract.
+And it can be pretty limiting in what you can do with it.
+So generally, what happens is someone comes into the ecosystem, if they're going into
+self custody, then they first have to deposit some money into one of these very simple externally
+owned accounts.
+And then if they want to do more complex smart contracting stuff, they have to send the money
+from there to some other smart contract.
+And it gets additionally complicated because something has to pay the gas fees to execute
+those smart contracts.
+And so as of today, you have to continue to maintain an ETH balance in your EOA account
+to be able to pay for those fees.
+Or you have to be able to delegate a sort of fee relay or mechanism from some other
+externally owned account to pay those fees.
+So what is account abstraction?
+It's basically a way of describing a grab bag of different functionality that a number
+of people would like to see happen to these EVM accounts.
+And some of the things that that would involve is that it would give you more flexibility
+around some of the security rules you could implement.
+It could give you more redundancy around recovering your account if you lose the private key.
+It can improve the sort of gas paying experience and potentially even let you pay the gas with
+things tokens other than ETH itself.
+And also should help improve the ability to do batching of transactions.
+In general, this is something where I think it would help merge the ideas of this single
+external account and smart contracts.
+And so essentially you would have one account and it would do everything.
+And the reason it can get tricky is that it's not really clear how this is going to happen.
+There are a number of different improvement proposals out there.
+And I think the one most people talk about is this EIP-4337, which is basically a way
+of implementing most of the functionality where you don't actually have to change the
+protocol.
+Now right now there are a number of like layer two solutions that have implemented this.
+I know that Gnosis Safe, which is what Casa has built our Ethereum multi-sig solution
+on, they have implemented a lot of the functionality.
+But in general, it seems to be still a kind of like use at your own risk.
+It's not a fully fleshed out standard.
+And then there's, I think, three other EIPs out there for ways that this could be implemented
+at the protocol level.
+So it's hard to say when is account abstraction going to be a fully baked thing.
+It still seems to be in a sort of research and development phase.
+But the idea is just simplicity and more extensibility and flexibility of what you can do without
+having all of the complexity of what we're seeing right now, which this has been tricky
+for us to implement at Casa because we can't just offer one single account for people to
+do everything that they want.
+Yeah, I absolutely agree.
+So please tell us what is the alternative.
+Please tell us how Casa is built and what is the philosophy behind it.
+Yeah, so a number of the pieces of functionality that people generally lump into account abstraction
+are actually things that Casa has offered for a number of years, though this functionality
+is not actually happening at the protocol level necessarily.
+But rather, Casa's core functionality is offering a multi-signature solution, which basically
+means that instead of having one key and one signature required to be able to authorize
+the spending of funds, you create three keys or five keys and then you need either two
+signatures or three signatures to be able to fully authorize the spending of those funds.
+This was fairly straightforward to implement on Bitcoin because OP_CHECK_MULTISIG has been
+a part of the Bitcoin protocol since I think 2013 or 2014.
+However, there is no native multi-signature functionality in the EVM.
+If you want that, you actually have to write and deploy a smart contract in order to enable
+it.
+So I was actually at BitGo when they went through the whole process of writing their
+own multi-signature smart contract, and it took over a year.
+Not the actual writing of the contract, that probably took a day or two.
+Rather, what took so long was getting a sufficient level of review and audits and stepping up
+the "bug bounty" on the contract by depositing more and more funds into it.
+Seeing the audits coming back, I think we had three or four different audits over that
+year-long period, and seeing all of the edge cases that people kept finding, it was a very
+scary experience.
+It was something I didn't want to go through at Casa.
+We didn't want to become smart contract developers in general.
+Casa does not want to implement novel things.
+We want to implement solutions that have been vetted and somewhat standardized, but in many
+cases they're just too complicated for the average person to implement.
+We just want to make it easier for people to follow the best practices.
+Having the ability to do things like have multiple keys in multiple locations, or to
+be able to recover from a loss if you have a key that gets compromised, and you want
+to be able to just replace it and continue moving on without suffering from funds loss.
+These are things that we've baked into our setup for a number of years.
+But at the Bitcoin level, most of those things, the way that they were implemented is really
+because Casa is a coordinator.
+While we are doing "smart contracts" at the Bitcoin and now the Ethereum level, we're
+leveraging the protocol functionality.
+The way that we actually facilitate a lot of this is by the fact that we're offering
+an app that gives us some additional control and gating over exactly how some of the keys
+are being used and authorized.
+An example around that is that Casa holds one key of every setup.
+You can think of us as an emergency recovery cosigner, for example.
+And then we create additional authentication protocols around how you request that.
+These things are not done within the actual cryptographic asset protocol network.
+It's really done out of band between yourself and Casa.
+So it's nice now that we've deployed on the Gnosis safe smart contract for Ethereum, which
+has been in operation for a number of years and is storing, I believe, tens of billions
+of dollars worth of assets.
+So we're quite confident in using that as a sort of foundational aspect of our platform
+on Ethereum, and then we're just building the rest of our interfaces and controls around
+that.
+We have, of course, run into some complexities just due to the lack of account abstraction
+functionality that we've talked about earlier.
+And that has resulted in us having to facilitate, for example, some of the paying of gas for
+transactions, which we would prefer that that would all sort of happen under the hood automatically.
+But that is, for example, some additional complexity that now Casa is managing on behalf
+of our users simply because it's necessary.
+But we would very much like to be able to get rid of that complexity and let the user
+just be using the protocol more directly.
+Yeah, I agree.
+One of the main things of account abstraction is how the user can recover his funds if he
+lost an access.
+And if there is a solution where you don't have extra fees when working with this wallet,
+and you are doing it with the private key recovery as in Casa key architecture, rather
+than through the smart contract, it's more reasonable to do.
+Why to pay more fees?
+I have one question.
+Vitalik Buterin is pushing hard to have social recoveries of the private keys in the case
+of loss.
+What do you think about it?
+And do you like this idea?
+You don't like this idea?
+Yeah, it's interesting.
+We've heard the term social recovery get thrown around for a number of years.
+And it makes me cringe, mainly because of the vagueness of it.
+I'm sure that there will be setups that will be fairly sound.
+So like I already mentioned, one of Casa's functionalities that we offer is it's really
+a key recovery service.
+But when you're implementing key recoveries, you then need to implement authentication
+protocols to make sure that that key recovery itself is not a potential point of failure
+and exploitation.
+So the reason that it makes me cringe, it really comes down to sort of game theory and
+what I have seen from average cryptocurrency users over the past 10 years.
+And mainly, I question whether or not, if you're doing a sort of friends and family
+social recovery setup, I question whether or not the authentication protocols around
+that are going to be sufficiently strict and that the guardians, if you will, of the recovery
+process are going to be well vetted and understanding how to think adversarially and not let themselves
+be compromised.
+And there's also just this incentive issue.
+And this is why it's a lot more hand wavy.
+Basically, I don't believe anyone has strong as an incentive to take care of your custody
+setup as you, even your friends and family.
+I'm sure everybody's situation is different.
+But like when I think of myself and my friends and family, I struggle to think of a setup
+in which I would trust some subset of them to be key recovery custodians for me.
+What I'm actually more bullish on is having key recoveries as probably some sort of multi
+institutional thing where what you would actually do is you would have reputable third parties
+that you could distribute these recovery keys or shards or whatever across.
+And you could do so in such a way that you're not trusting any single one of them not to
+screw you over.
+I think that that could give us a better type of reliable setup where we're having quote
+unquote professionals that are managing this private key material, but we're not fully
+trusting them with all the keys to the kingdom.
+Thank you.
+I agree on that.
+There are a lot of people who don't enter crypto because they don't trust themselves
+as the custodial.
+But for sure, it's even worse idea to trust some of your friends that they will better
+keep your private keys rather than institutional custodial companies that they leave every
+day to make people's keys safe.
+All right, we almost run out of the time.
+Thank you, Jameson, very much.
+It was insightful talk and I hope people learned new today.
+We talked about CCSS standards.
+We talked about why proof of reserve was removed from the standard.
+We explained what is the counter abstraction and the difference between the setups of Ethereum
+based wallets from the smart contract and the private key.
+And we explained why Casa Key solution, how it operates and why it's probably on architecture
+level is most suitable to millions of people and that this approach can get us closer to
+desired mass adoption.
+Thank you.
+Any closing words you want to say, please feel free.
+Yeah, my main thing is I've been doing the same type of engineering for eight years now,
+just trying to help people deal with private keys.
+Meanwhile, the rest of this space, there's an incredible amount of innovation.
+People are doing some really crazy cutting edge stuff.
+But I think it all rests upon this foundation of being able to have people, regular people
+be confident in self custody.
+That is why we are here.
+Trusted third parties are security holes.
+And so I feel like there's still a lot of work to be done to get people into self custody
+setups to help them understand that they're exposing themselves to a lot of risks when
+they're keeping their money at a third party.
+The old world paradigm of keeping all your money in a "bank" with someone else is no
+longer necessary.
+Thank you.
+Thank you for all your work that you've been doing and safeguarding so many people.
+Please leave comments with questions under this post and me and James will try to answer
+them.
+Thank you once again and have a good day everybody.
