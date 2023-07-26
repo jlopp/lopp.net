@@ -1,0 +1,872 @@
+I'm extremely grateful to Foundation Devices for being the inaugural sponsor of this podcast.
+When it comes to beautiful, air-gapped, open source Bitcoin hardware wallets, this is a
+team that I look to because I've really come to realize it's not just about the hardware.
+It's also just as important to look at the ethos of the team that's building it.
+You can have a crypto hardware wallet that does exactly what you need, but if the team
+decides to start developing in a direction that you don't like, for instance, like Trezor
+has by offering privacy tools only to those who are government approved, and Ledger has
+done by adding the ability for hardware wallets to export their private keys, it's not easy
+at all to make a change once you're already entrenched with that hardware wallet.
+The team at Foundation is focused on more than just your Bitcoin.
+They're focused on your sovereignty and your freedom, and that's invaluable when you're
+looking for a hardware wallet.
+You can check out Foundation and their Passport Bitcoin Wallet at foundationdevices.com.
+On this episode, I speak with Jameson Lopp, the co-founder and CTO of Casa, which is an
+app that protects your Bitcoin and Ethereum with multiple keys stored in separate places
+for extra security.
+He's also the creator of Bitcoin.Page, which is probably the best one-stop resource of
+info about Bitcoin that you're going to find on the web.
+That's Bitcoin.Page.
+Most importantly, he's an OG cypherpunk, been involved with Bitcoin for nearly 10 years
+and a vast wealth of information about Bitcoin.
+Let's get right to it with Jameson Lopp.
+First, thanks for doing this.
+I appreciate it.
+We've never spoken before, but I've followed your work for a while, and I greatly appreciate you.
+You bet.
+I'm always interested in having in-depth conversations with people that I've only had kind of fly-by
+passovers on Twitter with.
+Your Bitcoin resource, I know everybody tells you, on your website, is the best one out
+there.
+It's such a great example of what somebody can do just by hosting a resource like that.
+Lopp.net slash Bitcoin, by the way, highly recommended.
+Or Bitcoin.Page, if that's easier to remember.
+Oh, no.
+You got an actual direct URL I didn't know.
+Bitcoin.Page.
+That makes it easier.
+Yeah, it just redirects, but I figured the vanity address might be easier to tell people.
+That's awesome.
+Who do you think your audience is?
+Because I go back and forth between, am I talking to people who already know kind of
+this stuff, or am I trying to talk to people who are completely outside of this world and
+who want to or who need this information, who need this to be drawn in?
+Who do you feel like you're talking to, usually?
+Yeah, I try to mix it up.
+I have my long form, in depth, highly technical writing that has probably gibberish to people
+who haven't been paying attention to the space for several years.
+That's kind of my exploratory research, trying to push the bounds of our understanding of
+what is going on.
+And then I just have my more simplistic, high level, 101 type of content.
+I try to hit the whole range, and I don't optimize for any one thing.
+I'm not trying to growth hack my audience like some people in the space.
+If I really wanted to do that, I probably could have more followers and more normies
+and whatnot.
+In general, I just consider myself a thought spewer, and I'm not trying to do any one thing.
+It's just like whatever comes across my radar is what I decide to spend my time talking about.
+So I guess indirectly, some of what I do is certainly based on feedback and questions.
+If I notice a pattern where I'm getting the same question dozens of times, and then I'll
+do some quick research and try to figure out, is there a good, simple, explainer type of
+resource around this question?
+If not, maybe I should create it.
+But if there is, then I'll put it on my website.
+That was actually the onus for my resources.
+This is not something that I created because I felt like it was going to give me fame and
+glory and whatnot.
+It was very self-serving.
+It was because back in 2016, 2017, the volume of questions kept increasing and there was
+so much repetition between them.
+It was becoming a huge time suck to repeat myself all of the time.
+So I really, I just started off where this was literally just a folder of different bookmarks
+in my browser.
+I'd get a question.
+It would probably match something I'd seen 100 times.
+I would go to my bookmarks and I would copy paste the bookmark to whoever was asking the question.
+Eventually I was like, this is not scaling very well either.
+I need to be able to just tell people to go to one place.
+That's when I took all of my bookmarks and organized them and added them to my website.
+Really today, I usually spend a few minutes almost every day doing some sort of maintenance
+on that website.
+You know, this space is constantly evolving.
+There's link rod issues.
+Some sites go away.
+Some new resources are created by other people that I can categorize and link to.
+So it's very much a living document and it's actually open source.
+So people are free to open a pull request if they come across something that they think
+is worthy of being added.
+That's cool.
+Yeah, I know what you mean with the same questions getting asked a lot.
+I think that at least from my experience with Twitter being kind of the main place that
+people look for this information now, I mean myself, I answer the same questions at least
+like once a month.
+It's like over and over.
+Just when you think that people get it, then you post the same thing again a month later
+and it gets tremendous interaction again from all these people who are like, I didn't know that.
+I didn't know that.
+I didn't know.
+So it's almost like Twitter, it's obviously great for distribution, but it's also erased
+people's memories because I feel like sometimes it's even the same people who forget the stuff
+that you told them.
+So to have it in one place like this for Bitcoin, I guess that's why this has become such an
+important resource for a lot of people.
+And I go back to your site and review a lot of this stuff even though I've already read it.
+It might have been a couple of years ago, but stuff about seed phrase security and how
+to make sure that your OPSEC is as strong as it can be and all this different kind of
+stuff, it's like you can't read that once and just be done.
+You have to almost study it over and over and over.
+Who do you go to to get that reinforcement?
+Do you go out there and do you have people that you look to and then you can in turn
+share it with the rest of us?
+No one in particular.
+It's just a lot of different people.
+The space has become so large and diverse that we see a lot of specialization now.
+So some people are really good at, for example, privacy stuff.
+Some people are good at security.
+Some people are good at economics.
+This is actually one of the first articles I ever wrote about Bitcoin.
+I think back in 2014 was the multifaceted nature of the space where there's easily a
+dozen, if not more, different fields of expertise that kind of overlap and almost nobody is
+an expert in more than one or two fields.
+So you really have to diversify the people that you're listening to as well if you want
+to get as much comprehensive knowledge and as much of a broad understanding of what's
+happening in the space.
+Yeah, so true.
+I came in, I guess, six years ago now into the Bitcoin rabbit hole and somehow evolved
+into a critic of DeFi on Ethereum.
+I never stopped being a Bitcoiner, but most of the stuff that I talk about is related
+to the stuff that's going on on Ethereum.
+And the reason for that, the justification for me to do that is because that's an area
+that I understand and I understand how it can be directly compared to Bitcoin.
+So I feel like it's my way of educating people about Bitcoin to constantly compare all the
+stuff that's happening on Ethereum to the level of trustlessness and self-sovereignty
+you can achieve with Bitcoin and just constantly explain to people like you're not even close
+to that with this application on Ethereum.
+You're complete opposite end of the spectrum.
+So it's like it's my own little way to contribute to Bitcoin now.
+Bitcoin is so big that you can contribute to it by actually specializing in stuff going
+on other blockchains and explaining that stuff in the context of Bitcoin.
+So you're right about the specialties and sort of different ways of contributing that
+I guess we couldn't have even really thought of like five, 10 years ago.
+But do you?
+Yeah, the flip side, of course, is that Bitcoin simply doesn't have the same breadth of functionality.
+So it's sometimes funny to see people complaining about DeFi and then they tend to dismiss most
+of the functionality and they're like, well, we could do it on Bitcoin.
+We're like, yeah, sure.
+Maybe if you spend a few years writing some novel software and coming up with a lot of
+new tradeoffs.
+But DeFi exists for a reason.
+There's demand from certain people for that.
+I don't have to agree with it.
+Most of it to me seems to be like sophisticated forms of gambling.
+And so it doesn't interest me.
+But there's no denying that there's demand for it. Do you?
+Are you happy with the existing state of Bitcoin?
+Like are there things that you would have liked to have seen happen by now that haven't
+happened despite your your pushes and stuff like that?
+Oh, absolutely.
+I do not think that Bitcoin is anywhere near complete.
+So this is another, I think, point of friction between some people in the community and myself
+and really a lot of the developers.
+I started talking about ossification earlier this year because I've seen more of a push
+for it, especially after some of the inscription drama.
+But you know, I'm a engineer.
+I see Bitcoin as programmable money, even though compared to most of the other protocols
+out there, it is much more restrictive in how you can do the scripting and the various
+interactions with it.
+But there's so much left to be done on the scaling side of things on the privacy side,
+even on the security side, there have been some proposals that I think could greatly
+enhance the available security models to self custody and really to any custody.
+So I do want to continue to see changes and improvements at the base layer.
+Of course, this will get this gets controversial with some people, but I especially think we
+should be prioritizing changes at the base layer that can supercharge second layer solutions.
+And a lot of people, especially non technical people tend to hand wave away making changes
+to the base layer and they say, oh, we don't need to ever make any changes to the base
+layer because you can do everything at the second layer.
+And while that may technically be true with enough time, effort and creativity, it can
+also get really hacky.
+One of the real examples of that that I point out to people is actually lightning.
+The original lightning white paper actually proposed several different paths by which
+lightning as a protocol could be developed.
+And the optimal paths required several soft forks to happen to the base layer.
+And thankfully they did because if they had not, then lightning would have been an even
+more complex and kludgy protocol and I think would not be able to offer quite the same
+level of guarantees as it does in its current form.
+So there are protocols, changes out there that if implemented could improve lightning
+even more, could improve other second layers like drive chains.
+I want to see as much innovation, especially with second layers as possible because I do
+believe that innovation will happen much faster at second layers.
+But right now I think we're kind of ham strong with how difficult it is to even create these
+other second layers.
+What do you think second layers are going to are going to do for Bitcoin that it can't
+do now?
+Are you thinking about cheaper transactions, faster transactions, or are you thinking about
+programmability?
+Or like what in your head, what do you see is the promise there?
+Well, yeah.
+So when you're creating a second layer, in a way, it's kind of like creating a whole
+new blockchain, a whole new protocol.
+And whenever someone creates a new protocol, what are you doing?
+I mean, you're creating a new game.
+You're creating a new set of rules by which anyone who agrees with and decides to play
+that game can now interact.
+So the possibilities are really only limited by our imagination and our ability to experiment
+and find what works and what doesn't.
+Obviously, that means there will be failures and setbacks.
+That's the only way that you can really move forward meaningfully.
+So yes, scaling privacy, even DeFi like applications at second layers.
+The missing link, though, is the ability to easily create these second layers in such
+a way that they are actually tied to Bitcoin in a trustless fashion.
+One of the missing kind of holy grails of Bitcoin development is the trustless two-way peg.
+This was first originally envisioned in, I think, the 2014 side chains whitepaper and
+has never materialized.
+And I think the really the best proposal that we have for that right now is drive chains.
+Drive chains themselves are somewhat controversial, but the folks behind them have been developing
+them for quite a few years now.
+So we'll see how that goes.
+But I especially I want to see us be able to actually attain that vision of people being
+able to spool up side chains that are not simply a multi-signature federation for the
+actual funds being pegged in and out.
+Right like RSK is, which is the only one I'm aware of.
+But I'm sure there's others.
+RSK and Liquid and I think there may be a couple of others that are even smaller and less adopted.
+Okay.
+I guess with layer 2s, you know, my experience with the Ethereum ecosystem has been pretty
+negative as far as and this actually goes into a topic I wanted to talk to you about,
+which is what can we what is the most we can really expect from people from normal users
+with regard to the research they're going to do, you know, and with with Ethereum's
+programmability and with the ease of which you can spin up a centralized layer 2 on Ethereum,
+which they all are by the way, like 100% of the layer 2s on Ethereum are centralized to
+the point where a single multi-sig can basically make any kind of upgrade or bring the whole
+thing down.
+And they're primarily funded by like Silicon Valley VCs and they've been created not for
+purposes of enhancing liberty or freedom or self sovereignty, but for the purposes of
+generating a profit and an exit for those VCs and the founders.
+You know, so like why why should we think that it would go differently with Bitcoin
+and just the subtext to this too is that with Ethereum those layer 2s have attracted a huge
+percentage of the transactions that would have occurred on the layer 1.
+Obviously the layer 1 got super expensive, etc, etc.
+But people I found are perfectly willing to trade away the decentralization that brought
+them into the space if they're going to save money and it's going to make their life easier.
+Like they almost revert back to what they were before, you know, and I feel like with
+Bitcoin there's a strong chance that that could happen with Bitcoin layer 2s as well.
+Like what's your experience been with this?
+Well, yeah, I mean that is the permissionless nature of these protocols.
+We should expect that if the sidechain technology continues to improve that there will be excellent
+sidechains from a liberty perspective and there will be equally terrible sidechains
+and probably even some outright scams and Ponzi schemes and who knows what.
+So I think at the really high level from a security liberty perspective, if we get those
+permissionless two-way peg sidechains out there, then that at least means that there
+will be some sort of escape patch where people can get their money out if it looks like something's
+going wrong.
+But this is still pretty theoretical area of exploration since we haven't actually seen
+this type of technology deployed with real money.
+Yeah, now I hear you with like it's still theoretical and it would require a lot of
+layer one work to make it happen.
+Do you have like I guess part of my issue and my struggle is that I go back and forth
+on whether I have faith in the long term that this space won't just suffer the tyranny of
+the majority.
+And I feel like the more people that come into the space, the higher percentage of people
+that don't care as much about all the stuff that we tend to care about, you know, and
+I think that we're seeing it already with the way regulation is forming and the way
+that government is never going to look at crypto from the point of view of freedom.
+Like it's going to look at it from the point of view of what can we control?
+You know, what can we do to protect this guy over here who's never even heard of crypto
+and keep him from losing all of his money in it?
+And it just seems to me that it's almost like a losing battle to try to convince more people
+that this is the path forward, you know, as opposed to like hardening Bitcoin's defenses
+against their inevitable like tyranny against it, you know, when they decide it's evil.
+So do you think that encouraging like I guess I guess what you just said is the way like
+the permissionless peg, you know, and having a trustless way to to move Bitcoin to move
+and in quotes, Bitcoin to and from a layer two is the way to sort of begin that journey.
+But long term, what do you think?
+Yeah, I mean, if we want to step back, take the 10,000 foot view of all of this, I would
+actually draw a kind of parallel between your government and and what you're describing.
+I think we see similar things happen at the sort of civilization level, where it does
+seem like there is due to incentives and human nature over years, decades, generations, societies,
+groups, organizations tend to collapse towards tyranny and ultimately towards a sort of failure
+state and, you know, this same thing with empires, right, as they they grow big enough
+that they end up creating all of these systemic weaknesses where ultimately they can't sustain
+themselves.
+So you know, perhaps this is a terrible metaphor or whatever, but I actually I look at it kind
+of from a like constitutional perspective of like, you know, look at the United States.
+One of the greatest things that the United States ever did was with its founding documents.
+And the reason for that was because the founding documents actually went to great links to
+limit the power of the government.
+And you know, over the period of centuries, many, many generations, of course, that has
+been degraded in a variety of different ways.
+And I think that is somewhat expected.
+But if we hadn't had those original protections, I think the degradation would have happened
+far faster.
+So I kind of see a similar type of game theoretical issue with Bitcoin and these other protocols,
+where you need to start out with the absolute strongest foundation that protects the individual users.
+And you know, we can speculate as to whether or not that will be maintained over the long run.
+But if you don't at least start out from there, you know, you're already in a bad position.
+So you know, this is why I think it's so important to have that fundamental ability for an individual
+user of like a layer two technology to be able to move their funds out of that layer
+without having to ask permission, without having to have gatekeepers scattered all throughout
+the ecosystem of the technologies that are being built around this.
+Now, obviously, a lot of these technologies will have gatekeepers and there's incentives
+for people to build their systems in that fashion.
+And so from that perspective, you know, we will see centralization and various weaknesses
+sort of pervade many corners of the ecosystem.
+You know, this is what I've been doing for almost a decade now is fighting against the
+encroaching convenience of custodians and people leaving all of their money with trusted
+third parties.
+And you know, I figure if nobody is fighting against that, then that will degrade the system
+as a whole faster and faster.
+So you know, I'm not terribly optimistic about it.
+You know, I think it's one of those things both with security and privacy, where the
+vast majority of people don't care about it until it's too late.
+And the only way that we can meaningfully fight against it is for the people like myself
+who do care about it to use our resources to try to make security, privacy, other aspects
+that are incredibly important to liberty, make that as convenient as possible so that
+hopefully at least a larger portion of people who come along will end up choosing something
+that puts them into a better position where they're less likely to get screwed in one
+way or the other.
+But ultimately, a lot of people are going to get burned.
+And that's kind of I think the nature of the game.
+Yeah, we're seeing way too many good examples of what happens when when people are forced
+to choose between liberty and freedom or like a comfortable life of free of persecution.
+You know, I feel like with the whole, you know, the past three years with with COVID
+and everything and that opened my eyes up so much with regard to how quickly principles
+can get compromised when somebody is afraid.
+You know, ultimately, fear is the real more than guns, more than tanks, more than bombs.
+Fear is the real weapon that a government uses against its own people.
+And fear was utilized the past few years to coerce people into going against what they
+believe and what they like their own virtues, you know, the stuff that makes them unique.
+And I think that the last few years really are the ones that convinced me that in the
+long term, Bitcoin personal belief, feel free, I want to hear your thoughts on this.
+In the long term, I don't think that this type of technology is going to take over the
+world, you know, as far as everybody's going to be using it, everybody's going to be valuing
+it, we're going to live in a place in a world where everybody's, you know, understands what
+it what it means to be financially free from fiat, etc, etc.
+I just I don't see it happening, maybe over 1000 or 5000 years, but like, at least in
+the near term, you know, it's going to be a small percentage of the world that actually gets it.
+And it's almost like we have to now put that shell up around us to keep all the other the
+other 95% of the world away from, you know, attacking these virtues and attacking these
+principles.
+And that's, I think I'm more on the pessimistic side and more like almost dystopian side of this.
+But what were you on that?
+Yeah, there's so many examples that we could look at.
+You know, obviously, you look at like, Fang, right, the sort of Facebook, Apple, Google,
+the tech giants that have managed to create such amazing levels of functionality and utility
+and convenience for people that they've really hoovered up huge swaths of people's data.
+And people are more than happy to hand that over.
+There are a few, you know, glimmering points of hope, you know, I think a really good example
+is signal, for example, I think, you know, signal has gotten a mass level of adoption.
+And they've actually been able to put a huge number of people into a really sound set of
+privacy for their communications channels.
+And that I bet that I bet most people who use signal don't even really understand how
+it's protecting them.
+And that's great.
+Like that's how you get mass adoption of privacy and freedom technology is you just offer a
+level of convenience where it's like interacting with any other app.
+It's just so happens that under the hood, it's protecting you.
+So you know, that's what I think we need to be going after, you know, that type of model
+where we're offering really the same type of interface that people are used to for dealing
+with, you know, perhaps their banking applications, their Paypal's and Venmo's or whatever.
+It's just so happens that under the hood, it's doing all this much more complex, you
+know, self sovereign crypto stuff.
+But of course, that means it has to work and it has to be highly reliable.
+And if something does go wrong, they need to be able to reach out and get help from someone.
+You know, that's one of the other big missing aspects, especially in the sort of free open
+source software space is that there often tends to be no support line or it's like a
+community volunteer level of support, which is going to turn a lot of people off.
+So you know, I think that we can see that there are paths there that are available.
+It's just that they are the path less taken and it's the harder, more difficult path.
+Yeah, with the, you know, with the adoption into commercial ventures like PayPal, etc.
+and to see that running on crypto rails goes back to the whole problem that decentralization
+is by its nature, it's less efficient, it's more expensive, it's messier than centralized
+tech, right?
+Which you can run on a server and you don't have to worry about all the open source obligations
+and stuff like that.
+So for a commercial venture, like a PayPal or Facebook or any of these guys to adopt
+a decentralized infrastructure would be like betraying their shareholders almost, right?
+Because it's like you're not choosing the most efficient path forward for the company.
+You're putting principle ahead of profit in that case.
+And that never happens for a reason, right?
+Because of capitalism.
+So you know, and we're seeing that with Ethereum.
+We're seeing that with the layer twos.
+It's like, why should we add these layers of decentralization when we can just keep it centralized?
+People are still going to use it.
+It's going to be better for our bottom line.
+It's going to cost us less to run.
+So we're already seeing that.
+So it's like wherever there is commercial venture capital or other types of investment
+going on, you're almost guaranteed to see mutations of the tech and you're almost guaranteed
+to see like untenable centralization.
+And I just don't, I haven't seen any variations from that.
+And I don't think we ever will because like I said, it would be a betrayal to the company
+itself, like to spend more money than you need to in order to accomplish this goal.
+So yeah, I mean, what do you think about, one area I get concerned about is with the
+way that Bitcoin is influenced by companies who do that kind of stuff.
+You know, and I like, there's plenty of funding coming into Bitcoin development from companies
+that have shown that they're willing to sacrifice on decentralization in order to have a profitable
+company, like exchanges, like custodians, like, et cetera.
+And I know you've, you worked at BitGo, right?
+Yeah.
+So like, do you think that longer term, that type of influence that they have over, over
+development and when I say influence over development, I'm talking about specifically
+funding developers, like paying rent and food for Bitcoin developers.
+Do you think that long term that Bitcoin could start to make sacrifices in order to achieve
+commercial goals for those types of companies?
+No, not really.
+I mean, I couldn't tell you the figures off the top of my head, but I suspect that a far
+greater portion of developer funding is actually being funneled through nonprofits.
+I donate a fair amount myself to several different initiatives, charities that, you know, they
+basically run grant programs.
+If anything, I would say the sort of commercial business side of things, hiring developers
+or paying for grants is pretty miniscule and it's been underwhelming for the past decade even.
+I would suspect there were actually more developers that were being employed back in like 2015
+by some of these companies than there are today, but that's just sort of anecdotally
+off the top of my head.
+As the ecosystem grows, we also, we see more people donating to these charities, these
+grant programs and it kind of fluctuates back and forth with the market cycles, of course,
+but from what I've been hearing from a lot of the developers, one of the bigger problems
+is just curating talent, getting new people interested, getting people to do code review.
+It's the review process that's really more of a pain than the actual writing of code
+because of course we want to be incredibly careful and conservative about any changes
+that go into widely adopted Bitcoin software.
+So I'm really not concerned from a governance perspective in the foreseeable future, but
+my long-term concern has more to do with what we were talking about earlier is just the
+incentives of convenience versus security and sovereignty and whatnot.
+Once again, what I've been fighting against for so long, if we do get real mainstream
+adoption and the vast majority of that adoption just happens through exchanges and custodians,
+they get onboarded through those companies and then they never withdraw their money because
+the default is to just stick with the custodian, that's what worries me in the long term.
+If the custodians end up holding significant or vast majority of the actual coins, that's
+when some of the incentives around governance may start to break down and that's what worries
+me more.
+So we had during the scaling debates, thankfully a very active community of people that run
+their own nodes and voice their opinions and basically a large economic power, which you
+could argue may be more important than the node aspect, but there were some future markets
+that were running before any of the scaling debate forks happened that basically showed
+that 90% of the people who cared about this stuff were going to dump all their coins on
+the big block forks and that's basically what we saw actually happen.
+So it's really an activism thing and kind of like what you were saying, as mainstream
+folks come into the system, they're going to bring all of their mainstream legacy perspectives
+around how things work and that's what could be the bigger danger of basically people coming
+in and believing that democracy is how things should happen because obviously we're not
+building democratic systems here, at least from a governance perspective.
+It's inevitable, right?
+It's like it's going to happen.
+It's just a matter of time, but like I want to go back to something you said because you
+were talking about how with the custodians holding more coins, more Bitcoin, they have
+more power in the debate.
+Why does that happen because this is not a proof of stake system obviously.
+So like what gives them that power?
+You're just talking about like political power or what kind of power is it?
+It's systemic risk that happens as a result of the decisions that the custodians can make.
+So I'm not a lawyer, but if I recall from some of the examples, I think like one example
+if I recall correctly that happened with the grayscale trust is I think that they have
+some clauses in there and I think that a number of other custodians have similar clauses that
+basically say that if there is a fork, we the custodian get to choose what the real
+fork is and we reserve the right to like sell those coins or to not even let you access those fork coins.
+I think this came up again recently with the BlackRock ETF maybe and some phrasing that was in there.
+And so the short version is centralization and putting a lot of power into a small number
+of hands where these companies and often just like a handful of people at these companies
+now get to make decisions on behalf of potentially millions of people.
+I don't know if that just came through, but I'm in a hotel and they just decided because
+it's like we're doing a podcast.
+So of course they're going to get on the fire alarm speaker at the exact moment.
+That's a massive concern and you're right, it did come up with the BlackRock ETF recently
+and it's another one of these things that I almost wonder with everything we've been
+talking about and the fact that we really can't rely on the majority to make rational
+decisions when it comes to financial self sovereignty.
+So like isn't it inevitable that custodians are going to pick up more and more of a share
+of the Bitcoin and that they will have that political sway over development?
+And even if like there's this, it just always seems to come back to this small group of
+pirates at the end of the day defending some fork of Bitcoin that manages to stay true
+to the principles we talk about and we believe in right now.
+But that always in my head is the smaller portion versus the corporate government friendly
+centralized to a certain extent, maybe even proof of stake Bitcoin fork that will please
+all of the BlackRock's and all of the central banks of the world in the long term.
+And one good example of what freaks me out about this entire thing is I feel like we
+might have already seen this kind of influence with regards to privacy on Bitcoin.
+Why don't we have privacy on layer one except for the fact that it would mean that Bitcoin
+wouldn't be useful to custodians?
+Like is that the main reason that you think we don't have privacy today?
+I mean, I think that the main reason we don't have strong cryptographic privacy is that
+the solutions that are out there tend to break the auditability of the supply.
+So the way that I've looked at it is that there are many different priorities and valuable
+attributes of Bitcoin that are generally agreed upon and the ability to easily audit the money
+supply is one of the top few of those.
+And privacy is much, much further down on the sort of value attributes.
+So any type of privacy enhancing technology that breaks that ability I think is a non-starter.
+So you don't think Bitcoin will ever see layer one privacy?
+You're thinking layer two, like optional privacy in the future maybe based on what you said
+earlier, right?
+Not to put words in your mouth, but that's what I'm gathering.
+I don't think that we will see it implement any of the type of cryptographic privacy solutions
+that some other coins have implemented to date, but that doesn't mean that there's no
+way to improve the privacy.
+For example, if I recall correctly, things like the Anyprevout proposal where you can
+essentially have massive shared input transactions.
+One of the cool things about that is that can really supercharge lightning channel construction.
+So you can essentially have L2, by which I mean ELTOO, which I think is a block stream
+project, much more massively scalable lightning nodes.
+But I think that that can also supercharge Bitcoin mixing, if I recall correctly.
+So there are ways to take some of the existing technologies we have, like lightning and coin
+mixing, and make them even better.
+And then you could sort of quibble over whether or not that is strong enough privacy or not.
+But I don't advocate coin mixing in general because I think, A, it doesn't really scale.
+It can get very expensive if you're doing it a lot because of the volatility of on-chain fees.
+And B, it's easy to do a bunch of coin mixing and still shoot yourself in the foot if you're
+not really careful about your UTXO management.
+And I think that UTXO management is not something that is ever going to be a mainstream adoption
+level of thing.
+That needs to be completely abstracted away from the average user.
+That should really be a power user type of functionality.
+So it doesn't mean, though, that it's not possible for us to continue improving coin
+mixing technology and improve some of the underlying functionality that is currently
+limiting what can be done with coin mixing.
+But then what are the other options for staying private on Bitcoin when you are forced, for
+the most part, unless you go to great lengths, you're forced to identify yourself to the
+government to get permission to buy Bitcoin in the first place.
+And then with tools like Chainalysis and TRM Labs and all these other guys out there that
+are highly financially incentivized to keep tabs on us and to track us down when needed,
+what hope does a Bitcoiner have to achieve privacy and get uncucked, I guess, I don't
+know, on-chain from the government in that case?
+Well, I think you touched on it, which is the fact that a large portion, last I checked
+it was around half, it may still be majority, but very large portion of transactions are
+to and from exchanges.
+And of course, these centralized exchanges are the choke points.
+They're the ones that have regulatory pressure and compliance and are often working with
+the Chainalysis companies in various fashions.
+I think the way around that is that we need to break this onboarding offboarding cycle.
+We need actual peer-to-peer circular economy where you're not interacting or we don't have
+everybody interacting with a handful of choke points, but rather we're actually engaging
+in meaningful direct peer-to-peer transactions, which means that buying Bitcoin, I think optimally,
+buying and selling Bitcoin should not even really be a thing.
+We should be earning Bitcoin.
+We should be paying Bitcoin for goods and services.
+That's one of the ways to, I guess, indirectly improve our privacy is just by simply not
+routing all of our transactions through a handful of entities that can surveil us.
+Yeah.
+It seems like it's trending in the other direction though with the talk and the planning with
+CBDC, right?
+It's almost becoming like a buzzword now, CBDC, but for me, it's becoming a general
+catch-all phrase for digital, highly trackable fiat money that is printed directly from a
+central bank into your own cryptographic or otherwise wallet.
+Anybody who knows me knows, I see it as inevitable at this point.
+I see a lot of this stuff as inevitable.
+I'm not sure if that's just because I'm a gloomy-gus type pessimist or if it's based
+on just the way that humans are and the way that humans have always been and the trend
+that we've seen with our own country over the past 250 years, right?
+We're now betraying the very, the majority is happy to betray the rules, the consensus
+mechanism that was set up for us here.
+Even though it's the reason that we're here, the reason that we have this beautiful system
+that we have today, the reason we have the freedom we have today is because of the Constitution
+of the United States, which basically is the Bitcoin layer one of the United States.
+Fast forward to now and we see people that can't even tell you what the First Amendment
+actually is or can't even tell you what Article 1 says.
+It's like they have no idea even where the capitals of their state are.
+So it's-
+Yeah, well, it's been really perverted, right?
+Even though there's a lot of protections from the government, for example, spying on its
+citizens, they managed to find workarounds.
+So now what we have instead is we have corporate surveillance and then the government just
+enters into agreements with the corporations for data sharing so that they're not actually
+surveilling people directly and it's quote unquote legal to do that.
+It's also cryptography is a double edged sword.
+There's two different ways at a really high level to use cryptography.
+One of them is to actually encrypt data and make it private so that only the intended
+recipient can even decipher the data.
+The flip side of it though is actually tracking and basically using public keys as identifiers
+so that you can then tell who is doing what because your activities are cryptographically
+signed and say, okay, public key X was the one that initiated this particular thing.
+And so I think we should expect that governments and authorities will be more than happy to
+leverage that latter half of functionality to their own benefit to basically empower
+themselves and their own surveillance capabilities.
+Yeah.
+Have you been following this WorldCoin story?
+How can you not?
+Yeah, there's so much wrong with that.
+And unfortunately they have a lot of capital so I think they're going to be around for a while.
+Yeah, to me it's another one of those breadcrumbs as far as what the future is going to hold.
+Because I think that somebody put it perfectly that it's not proof of work, not proof of
+it's proof of stupidity of the people who are ultimately walking up to this device letting
+it scan their biometrics in exchange for a few dollars worth of some token that they
+have no idea what it is.
+They'll probably have to dox to an exchange in order to even sell it for five bucks or
+whatever it's worth.
+But the biggest issue with this with COVID with just a lot of stuff we've seen lately
+is that people lack the ability to think rationally.
+They weren't taught how to think.
+They weren't taught how to apply logic to these types of situations and they weren't
+taught to value human rights as much as they think that they do.
+It's like the people who often scream the loudest about human rights are the people
+who least understand what they actually are.
+That they are about being free to make your own decisions, being left alone, being able
+to think independently.
+So WorldCoin, it is what it is.
+I don't think it's going to succeed.
+It's gimmicky.
+It's like a toe in the water almost for these guys to see what they can get away with, I think.
+But it's a test.
+It's a predictor, I think, for what's around the corner, not just for WorldCoin, not just
+for Ethereum, not just for Sam Altman or anything like that, but for Bitcoin too, I think.
+I think that we need to look at stuff like this and we need to apply it to the future
+of Bitcoin and think about the attack vectors and think about how unbelievably ignorant
+it sounds mean.
+It sounds like I'm being a jerk.
+But the more of the stuff I see, the more you have to acknowledge the reality in front
+of your face.
+Most people don't know how to think.
+So it's like when they're confronted with defend Bitcoin or get $3 worth of McDonald's
+vouchers in exchange for your fingerprints, they're going to pick the McDonald's vouchers.
+So am I being too pessimistic, am I being too negative on the majority?
+No.
+So what's novel about WorldCoin?
+They have the hardware that's somewhat novel.
+They have some zero-knowledge functionality that's novel.
+But what's not novel, what has been done many times before, is airdrops.
+And I think it should be quite clear from now that simply giving money away to people
+or giving tokens away, people don't value it.
+Like when you give them something for free, they ascribe basically no value to it.
+So I think it's incredibly overoptimistic to believe that you can bootstrap a monetary
+system by airdropping a bunch of tokens to people, regardless of the other security and
+privacy attributes around how you're doing the airdrop.
+Yeah, that makes sense.
+It's true.
+It's interesting to watch.
+But yeah, most people get it.
+If they can get a few bucks for it, they'll just sell it.
+It's not going to become like a big global phenomenon of any sort.
+Famous last words, watch, we'll replay this in five years and WorldCoin will be the dominant
+financial system of the world.
+What do you think about, I'm taking a right turn a little bit, about the options for Bitcoiners
+to be self-sovereign with their custody right now?
+Do you think that the hardware wallet system scene that we see right now, do you think
+it's adequate?
+Because the more that I watch it and the more that I watch the decisions that are being
+made and the more that I see the corporations making corporate decisions as opposed to user
+based decisions, the more I wonder if we're going the wrong direction with regard to the
+options that we have as normal people.
+And I know you just wrote a blog post or you just shared a blog post recently about burying
+your metal engraved seed words in your back somewhere in the woods.
+That's obviously an option for the most dedicated people, but for the average sort of person
+who's in the space, do you feel like we have adequate options for them right now?
+Well this is a whole can of worms.
+I have an interesting perspective because of what Cossett does.
+We build a distributed key self-custody service and software where we integrate with a number
+of different hardware vendors.
+And we do that because we believe that multi-vendor, multi-sig, aka having multiple keys on multiple
+different types of dedicated hardware is how you eliminate single points of failure that
+could happen at any given company.
+So we have to realize every company is a single point of failure.
+And so that means if you have a piece of dedicated hardware, then there can always be some sort
+of supply chain or insider attack or who knows what, even malicious firmware that bypasses
+internal systems or even that is created as a result of regulatory pressure, who knows?
+The result is that if you want to be protected from any one of these companies, you don't
+want to put all your money, all your eggs into one basket so to speak.
+We should not be trusting companies in this space.
+You should not even be trusting Casa, which is why we architect our solutions so that
+even if Casa were to somehow become malicious or were to disappear from the face of the
+earth, our users would not lose their money because they hold all but one of their keys.
+They hold the spending threshold of keys and Casa doesn't have the ability to unilaterally
+block their transactions or create transaction without their approval.
+So the roundabout thing of what I'm getting around to here is that one of Casa's internal
+engineering big points of friction, and this is by design, is the fact that we do not control
+these hardware devices that our users are making use of to actually manage and store
+and use their private key material.
+And so the result of that is that these various companies, they tend to focus on developing
+their own full stack solution, by which I mean an example with Ledger is Ledger has
+of course Ledger Live and they put a lot of time and effort into improving the experience
+and monetizing functionality within Ledger Live and of course they probably want all
+of the people who buy a Ledger device to just be using Ledger Live rather than other wallet
+software that might integrate with Ledger.
+And so the incentives are a little out of whack here in the sense that sometimes they
+make changes that break stuff because they I think just aren't thinking about the fact
+that they're not just building hardware for themselves and their own ecosystem, they really
+need to be thinking of themselves as platforms that other developers are building on.
+So it can be challenging for sure, but once again this all comes back to the sort of convenience
+and security trade-offs.
+Casa did not choose the easiest path.
+It would have been so much easier from an engineering perspective if Casa didn't integrate
+with hardware devices and we just had all of our users keep their keys basically on
+their phones managed by our software which we could have a lot more control over.
+But we did choose the harder path and I think that it's worth it because I can sleep easier
+at night knowing that even if something got totally screwed up with Casa that our users
+would not lose their money.
+Yeah I tend to look at these things from a lot of unique I guess perspectives or from
+these perspectives that there's more attack vectors than just like making off with the
+money and a lot of them have to do with the whether it's KYC or other forms of requiring
+like checking users against a blacklist or like even Casa requires KYC right?
+No.
+No?
+Oh sorry my bad.
+I thought you had to have identity proven for somebody before you could hold a key for them.
+No some of our competitors require KYC but this is actually one of the big differentiators
+between us and some of the other multi-sig services out there that aren't just free software.
+So once again this is it's trade-offs it would probably be easier from us from some perspectives
+if we required KYC from our users but we don't want to have to protect that information.
+It's almost as toxic and radioactive as trying to hold on to private keys.
+Well yeah yeah I mean it is and you know like Ledger Recover anybody who uses that solution
+is going to have to KYC to Ledger and so Ledger is going to know who they are have all their
+information have their Bitcoin balances at least as far as their Ledger goes.
+So that's the kind of stuff where I mean that in that particular situation I think that
+they admitted that they could even be coerced into taking somebody's Bitcoin right because
+they basically are going to have the keys.
+So it's like stuff like that you know another litmus test for you know it's proof of in
+this case I don't know if it's proof of stupidity or proof of misplaced trust you know because
+you're you're placing your trust in a few guys that run Ledger with your Bitcoin stash.
+Do you understand that do you understand the implications of that maybe not you know so
+it might be a very naive thing.
+Casa sounds like it's taking the more noble path at the expense of profit like you just
+said so you know maybe you're already a company that that's disproving you know the my pessimism
+a little bit at least.
+How do you justify how do you justify that like when you guys are sitting down looking
+at the numbers and you know you know I'm sure you have investors and you have to go back
+and be like explain that you guys made the most prudent decisions for the business.
+How do we know that when Casa or if Casa faces a time where it's crunched for money and you
+might have to lay people off and maybe you've already had these times tell me but like you
+know those are the times that really most companies start to buckle on their principles
+like why won't that happen to Casa.
+Yeah and we have had layoffs before we actually came very close to the brink I think back
+in 2019 or so and that was when we shuttered the node product because it was just hemorrhaging
+money for us and you know we laid off everybody that was working on that product.
+I think part of it is the fact that we have intentionally hamstrung ourselves and what
+we can do is that the temptation might be there but there's we're literally limited
+into what we can do in terms of our customers and you know potentially screwing with them.
+So you know I think a lot of people would say oh we've already compromised on our principles
+by adding support for Ethereum and so on and so forth and you know for there's plenty of
+reasons why I wish that we were able to just stick to Bitcoin but you know we do have that
+profit motivation of wanting to improve our revenues and profit margins and basically
+meet the demands of our customers because we know that if we don't then we could potentially
+lose them to other competitors and we know that we have lost a decent amount of business
+to custodians because we don't have as wide of an offering as a lot of custodians do and
+so there are a number of people out there who if they have very broad range of assets
+they want to keep them all in one place and so you know they are looking for convenience
+and so this I really do consider custodians to be our biggest competitor.
+They have this huge edge this advantage on the convenience that they're able to offer
+and if we can't get at least most of the way there on the convenience then a lot of people
+are going to shoot themselves in the foot and choose the convenience over security.
+So what is Casa going to do over the long run?
+We're going to continue to explore our options of essentially what services we are able to
+provide people while remaining a software service and not a regulated financial institution.
+The vast majority of our competitors are regulated financial institutions.
+That gives them a whole lot more leverage in the things that they can do.
+Of course a lot of risk as well that comes along with that.
+So I guess you could say that we're trying to take a much less risky path for our customers
+and it may be more risky for us as a business because we are essentially hamstrung from
+a number of different decisions that we can make.
+Do you think Casa is the best solution period for a retail just a Bitcoin holder?
+To me I can't get my head out of the mindset that the best way to protect my own freedom,
+to protect my own freedom to move, to transact, to be self-sovereign at least maximally if
+not entirely but as much as I can be in this world is to have complete control and to not
+have identity attached in any way and to be the guy out there burying shit in the dirt.
+To me that's the ultimate freedom.
+As soon as you start involving any other third parties you start to make tradeoffs.
+That's how I feel.
+Do you feel the same way?
+Do you feel like Casa is the optimal tradeoff point?
+That's what I'm going for.
+If someone wants to attain the maximum level of privacy and security in Bitcoin, whatever
+crypto assets they're dealing with, then they basically need to do everything on their own
+and this has always been possible but it's a much higher bar.
+You have to climb a pretty steep mountain of knowledge to understand all of the tradeoffs
+of all of the decisions that you need to make when you are creating and maintaining your
+custody.
+It's not impossible.
+It just takes a lot of time and effort.
+So what we're going for at Casa is we're not trying to capture that segment of the market,
+the people who are willing and able to do that all themselves.
+What we're trying to capture is more of the people who are more mainstream, less technical
+or less, they just have more time constraints and that would probably be choosing a custodial
+solution due to the convenience.
+So our value proposition is we can give you the level of support and actually a much better
+level of support than you're probably going to be able to get with a custodian and we
+can do that in such a way that you maintain control over your funds and you're not actually
+trusting us.
+So it's trying to bridge this gap between doing everything yourself versus having a
+third party do everything for you.
+Yeah, I hear you.
+It seems like there's these multiple camps out there these days about like there's people
+that say seed phrases are too complicated, normal people will never get it.
+It's okay to use a custodian until you've figured things out and then you can go from
+there.
+And I always come back with the mindset that you know what, my point of view on this is
+if you are not willing to put in the research and the time and understand what this asset
+is and what it's capable of and be able to self custody confidently, then you probably
+shouldn't be here at all because how does somebody holding Bitcoin on a custodian benefit
+the decentralized universe here?
+It doesn't.
+It hurts it actually.
+The only thing it does is it helps the price potentially.
+You know, that's arguable too.
+We were doing a lot better before futures markets came in, right?
+But at least as far as pace of growth of the asset, but yeah, so it's a big debate.
+We're running low on time.
+But you know, it's sort of my take on it is always that and it seems kind of brutal and
+seems kind of like not so compassionate.
+But at the same time, I think that people are capable of doing it.
+People are capable of learning and they're capable of sinking their teeth in.
+And the ones that aren't the ones that don't want to the ones that that just aren't doing
+it can't be dragged along.
+We can't force them into it unless there's like a Trojan horse like you said before.
+But it seems like you've got your eye on the right target, which is people who've already
+decided yes, I want this level.
+I want to self custody.
+I just one step away from I mean, you're still self custodying with Casa but you're one step
+away from the you know, the complete the complete version of that I guess it's one way of saying
+like the the version of it where you're the one in complete 100% control your with Casa
+maybe or you're just at 99.
+It's the wrong way of putting it because you're still in control.
+I get it.
+It's a multi SIG.
+You have the keys.
+It's hard to talk about the security model once you get into a sort of hybrid key situation.
+It gets really the lines start to blur and they're actually going to blur a lot more
+in the coming years because I think with some of the advances in Bitcoin scripting that
+we're seeing start to come out, we're going to start to see people creating security models
+where you know, you may have full self custody during normal conditions that but then you
+may also defined other conditions like inheritance, you know, basically timeout conditions in
+the future where a flip a switch will flip and the ability for other people to access
+those funds may start to come into play and and it may not be as simple as saying okay,
+you know, if a few years go by, then just let you know, entity X access it, but we could
+very easily get into situations where we have kind of multi institution custody setup where
+you may say, you know, if my wallet is inactive for many years, then a spending threshold
+of keys between semi semi trusted institutions, X, Y and Z may be able to come together to
+you know, spend the funds from this and you know, those will probably be you know, KYC
+type of institutions that have lists of beneficiaries and other people who should be able to you
+know, lay claim on the funds and whatnot, but it's definitely going to get more complicated
+and difficult to talk about, but I also I look at this whole thing from a technology
+adoption lifecycle perspective of, you know, I remember my family and the like 90s and
+early 2000s being extreme laggards to adopt the internet and email and stuff like that,
+but you know, decades go by, then the technology and the interfaces continue to improve and
+and eventually it becomes a network effect such that they they go from instead of being
+the majority of people who haven't adopted the technology, you become the outsider where
+everybody except you is using the technology and it's and it's basically a sort of peer
+or social pressure incentive of you're missing out if you don't use it.
+True, true, but if the if the internet from you know, the early 90s to today, if that
+same trajectory is followed by Bitcoin, I think we're kind of screwed, right?
+As far as like the centralization of it, as far as the vulnerabilities everywhere, the
+tracking, the surveillance, the regulation, we have to we have to do better than we did
+with the internet, I think, like so but I hear you, but it's kind of also what I fear
+is that people get sucked into the wrong version of it.
+You know, and yeah, yeah, you know, that's one of the things I've been talking about
+for the past year is actually looking at various internet protocols and how they have become
+extremely centralized over time.
+My favorite is email.
+You know, email is mass adopted used by billions of people every day, but it's actually a monster
+of a protocol compared to what it was in the 70s, 80s and 90s.
+And it's not really possible to actually be a sovereign email user anymore.
+The thing that we call email is literally just a handful of gatekeepers that are talking
+to each other on our behalf.
+Yeah, that's a great example.
+I just got I'm a proton mail user and I just got an email from them recently advising like
+why it's you basically can't run your own email server anymore.
+Like you just can't you can't receive email to it.
+You know, you have to be a custodian of email or you have to deal with one in order to even
+use it anymore.
+And it's a great example.
+Email is, you know, a great parallel, a great comparison for Bitcoin as an open protocol
+that got centralized over time.
+We just have to that's that's the thing, man.
+We just have to fight and make sure that people understand why Bitcoin can't go in the same
+direction.
+I did a forked email like 10 20 years ago, right?
+We've done it differently.
+But anyway, now this is great, man.
+I have to have you come back sometime because I like I have a whole list of stuff that I
+wanted to get to with you.
+But I was way too ambitious, especially with like Twitter stuff with Noster and stuff like
+that.
+Oh, yeah, sure.
+That's a whole separate convo.
+But thanks for being here.
+I really appreciate you.
+You bet.
+Thanks for having me.
