@@ -237,7 +237,7 @@
         if (document.getElementById(elementId).value.startsWith("-----BEGIN PGP MESSAGE-----")) {
           return true;
         }
-        var pub_key = await openpgp.key.readArmored(
+        var pub_key = await openpgp.readKey({ armoredKey:
 `-----BEGIN PGP PUBLIC KEY BLOCK-----
 
 mQINBFo/w2cBEACo4bpjcluUTrXUUYReZzT0RY9O309P+0S3kimXWqzjMpVfm/qy
@@ -319,15 +319,13 @@ mFScMIyMmrXdPxPBLAysISxWiK3mGXzFTxC/6bDQnGF9FqVqG6oQcq63/F6Bau/n
 NjT4rMUesCnjTVHVM9KXvMemwAhhYbM=
 =QGZJ
 -----END PGP PUBLIC KEY BLOCK-----`
-          );
+          });
         var options = {
-            message: openpgp.message.fromText(document.getElementById(elementId).value),       // input as Message object
-            publicKeys: pub_key.keys
+            message: await openpgp.createMessage({ text: document.getElementById(elementId).value}), // input as Message object
+            encryptionKeys: pub_key
         }
-        var pgp_message = openpgp.encrypt(options).then(ciphertext => {
-          $('#'+elementId).val(ciphertext.data);
-          return true;
-        });
+        var pgp_message = await openpgp.encrypt(options);
+        $('#'+elementId).val(pgp_message);
       } else {
         $("#freeencryptbutton").val("Error");
         $("#paidencryptbutton").val("Error");
