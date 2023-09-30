@@ -1,0 +1,440 @@
+So, why are we here?
+Really it's because proof of work is a fascinating phenomenon.
+And it has a variety of different applications.
+I think most of us here are familiar with using it, of course, for mining, for securing
+proof of work consensus networks.
+But proof of work is a technology that's existed for, I think, about 30 years.
+And it's only really in the past decade or so, I think, started to get more acceptance
+and understanding.
+And it's the understanding aspect which I, as a researcher, find particularly interesting.
+So when I was asked to come here, talk about proof of work, I wasn't entirely sure what
+I was going to talk about.
+Because over the years, there's a number of different things that I found interesting.
+And when I looked back, this is just from my own blog.
+I found at least 10 different essays and research pieces that I've done over the past decade
+that I've tagged with proof of work or mining.
+Most of them investigating the Bitcoin network, various aspects of block creation and hash
+rate distribution and historical aspects of mining.
+Though you'll see in 2021, actually, I used proof of work on my own website.
+And I use it to stop all of the stupid spam bots that are trying to use my contact form
+to send me advertisements and stuff that I don't want.
+And it works pretty well for that.
+But there are so many aspects of this technology and its application that I think merit further
+exploration.
+And proof of work, I think, was interesting from Satoshi's perspective.
+Satoshi talked about it in a few different ways.
+As proof of work is a solution to synchronizing, essentially, the dissemination of data.
+That's how do we take a piece of data and somehow modify it or alter it or give it this
+characteristic of integrity so that we can then share that data out with the world without
+a care for which intermediaries, which third parties may have handled that data at some
+point.
+As Satoshi said, proof of work has this really nice property that it can be relayed through
+untrusted middlemen.
+And so the proof of work is its own self-contained piece of integrity.
+It's great.
+It is very simple mathematical construct where you take that data, you run very simple algorithmic
+computation on it, and you can be ensured that it has not been tampered with and that
+someone has put a decent amount of energy and expended that effort to put the data out
+there into the world.
+Now personally, one of the things that I've been doing a lot of research into and what
+I'll talk about in this talk is the difficulty in measuring proof of work.
+And this gets into the mechanics of, essentially, the Poisson distribution of your expected
+output from a given proof.
+These things are probabilistic.
+They're not perfect in the sense that you can't look at a proof of work and know exactly
+how much time, money, cost, CPU cycles were put into that proof.
+But you can get a generally good idea.
+And the reason that these proof of work networks work so well is that when you scale that up
+to a global network to tens of thousands, hundreds of thousands, millions of machines
+around the world that are all working in concert, then with the law of averages, these distributions
+work out quite nicely.
+But if you're looking at one particular proof, you can't really know what went into it.
+And so it's this measurement problem that I found very interesting.
+So I think of proof of work as the wind, as a natural phenomenon where it's out there.
+We know that there are a ton of miners out there mining these different proof of work
+networks.
+But we can't truly know.
+We can't precisely measure the amount of electricity and the amount of computational cycles that
+are going into these proofs.
+But I wondered, how close can we get to truly knowing, to accurately being able to measure
+the global network hash rate?
+And so I will specifically talk about delving into trying to understand the Bitcoin hash
+rate.
+And I think much of what I will be talking about is applicable to other proof of work
+networks, though there's some caveats mainly around the data collection.
+So the details here of how you estimate proof of work when you're given a proof and you
+want to know how much work went into it, the specifics aren't really important.
+You don't need to know this.
+But as I said, it's a pretty simple mathematical formula where you can look at the known difficulty
+target for a given block.
+You can know this is like the number of leading zeros in the proof that were required to be
+valid.
+You can kind of work backwards from there to say, OK, if the difficulty was this much,
+then we expect that somewhere around this amount of work would have to be put into it.
+And then the most important thing, I think, to take away from this is that the variable
+that goes into estimating global network hash rate, global level of work being performed,
+is the number of trailing blocks, really how long of a time window are you looking at to
+then figure out this sort of aggregate average of total number of expected hashes being performed
+over a given amount of time.
+And thankfully, we don't have to actually do any of this math by hand.
+If you're running a node, for example, you can just run this get network hash per second,
+give it a few parameters.
+And that does the hard work for you.
+If you're going around looking at different websites that tell you what the global network
+hash rate is for Bitcoin, and then you try to line them up on the same chart, you may
+notice that they don't actually line up.
+And that's because these different websites are not using the same algorithm.
+Or in many cases, they're using a different number of trailing blocks, a different time
+range over which they're doing that calculation from the last slide to try to make this estimate.
+And this can be problematic if you want to know real accurate hash rate.
+Hash rate index is one of the premier sites, I think, out there that has some good research
+and good thought pieces around the particular estimates and why you should use them.
+And from their perspective, they believe that the seven-day trailing estimate is a pretty
+good approximation.
+You can see here, it's pretty smooth.
+It's not too volatile.
+It looks like a pretty nice chart.
+Kraken, a couple of years ago, put out a white paper for something that they called the true
+hash rate.
+Unfortunately, they did not converge upon a specific algorithm that they thought would
+give you the best and most accurate hash rate.
+Rather, what they did is they took the daily 140-block estimate, and they would then use
+a 30-day rolling average of each of those daily estimates, find the standard deviation
+for that.
+And then what you see-- so that's the actual volatile chart is that daily hash rate.
+And then what they would do is they would find that standard deviation, which is the
+blue shaded area, and they would calculate what they considered to be the 95% confidence
+band of what the true global hash rate was.
+Unfortunately, this, as you can see, is nearly like a 40% in either way potential deviation.
+So I would say if you're calling that a confidence range, I would not be very confident about
+picking any particular number in that range.
+So what did I do?
+I basically started trying to understand this myself.
+And so one of the first things I did-- this is from a blog post that I published a few
+months ago-- is I just started writing a bunch of scripts to output many, many different
+hash rate estimates across different time ranges.
+And so for simplicity and the ability to give you some nice charts that are somewhat legible,
+here we have 10-block, 50-block, 100-block, 1,000-block, and 10,000-block estimates.
+We can see that it's highly volatile if you're only using the past 10 blocks, which is about
+two hours worth of data.
+But once you get up to around a three-day, 400, 500-block time frame, that starts to
+smooth out a bit more.
+But the downside is these shorter time frames can have more distortion, more volatility.
+And they can make the hash rate appear a lot higher or a lot lower than it really is.
+So I think it's generally agreed that the seven-day, around the 1,000-block hash rate
+is a pretty good mixture between getting that volatility and getting something that is a
+bit more predictable and accurate.
+The problem, though, as you can see, if you go out to 10,000 blocks, if you go out to
+multiple weeks, while that is smoother, it's always going to be off by more.
+And that's because you start lagging whatever the real hash rate is.
+Because if you think about it, there's lots of miners out there that are constantly adding
+machines to this network.
+So you're going to start to be several weeks behind whatever that real hash rate is.
+Now one of the interesting and, I think, novel things that I stumbled upon is that there
+is a way for us to start to get a better idea of what the actual accuracy of these things
+is.
+Now the goal, I think, if you're doing hash rate estimates, is you need to be only working
+off the data that is available to you in the blockchain that's publicly available to everyone.
+The problem with that is you have no external source that you can really check it against.
+And what I found earlier this year is that Brains mining pool has actually started to
+collect what they call the real-time hash rate.
+And essentially, for the past couple of years, what they've been doing is every few minutes,
+they ping every mining pool's API out there.
+And they get back whatever the self-reported hash rate from that mining pool is.
+So thankfully, the folks at Brains were kind enough to give me a full data dump of the
+data they had collected.
+It was pretty messy.
+I had to write a bunch of scripts to normalize the data and essentially chunk it into blocks.
+And so I got this chart of what I ended up with the aggregate from all of these pools
+being.
+And really, I put that against the three-day hash rate and very quickly discovered that
+for the first year or so of this data set, it's very wrong.
+So my suspicion is that they were not collecting it from all of the mining pools.
+But we can see that after that first year, it actually starts to line up pretty well.
+So it looks like they got to the point where they, in fact, were collecting data from all
+of the public mining pools.
+So this, in particular, the blue line, this is what I have been using as my sort of baseline
+like real hash rate that I can then perform various calculations upon to try to figure
+out how well these purely blockchain data-based hash rate estimates are performing.
+So I started calculating things like error rates.
+And as we can see here, the one block estimate is insanely wrong.
+You can be 60,000% off from whatever the real network hash rate is.
+And this is, of course, essentially when a miner gets lucky and they find a block a few
+seconds after the last one.
+Obviously, that's not because the hash rate just went up by 60,000%.
+It's just luck.
+It has to do with the distribution of winning and finding these lottery numbers, as it were.
+So we know we're going to throw that out.
+In fact, you can't even really see the error rate.
+So we'll zoom in some more.
+So 10 block estimates, they're getting better.
+We're getting down to an error rate range within 300%, 400%.
+That's still pretty bad.
+That's still worse than that Kraken true hash rate that they did back in 2020.
+Let's zoom in some more.
+We get down to 50 blocks, and we're under 100% average error rates.
+But it's really, I think, you can see some nice striations here.
+Once we get into the 500 block range, half a week of data that we're starting to estimate,
+we can actually start to get under 10%.
+We're into single digit error rates.
+So if we just sort of plot that all out, what is the average hash rate estimate error rate
+for this particular year-long data set that I was working on, then it's pretty obvious,
+I think, from this chart.
+The further out you go, the better your error rate gets.
+But thankfully, I did not stop at 1,000 blocks.
+Because as I said, you get to a point where you start lagging behind the real hash rate
+by too much.
+So it gets interesting when you look at the 1,000 to 2,000 block estimates.
+And we can see here, eventually, you get around the 1,200 block, more than a week of data,
+and the error rate starts ticking up again.
+And this is because you are too far behind.
+So what we can see is there's a sweet spot.
+Somewhere in the 1,100 to 1,150 block range of trailing data will give us the best estimate.
+And similar type of thing, if we look at the standard deviation, it pretty much matches
+up in terms of trying to find the optimal amount of data to use.
+So an average error rate of under 4% with a standard deviation of under 3x a hash per
+second if you're using this 1,100 to 1,150 block trailing data, that's not bad.
+But I wondered, could we do better?
+What if we could blend the accuracy of those long range, week-long estimates with the faster
+reaction speed and volatility of the shorter range estimates?
+And so I did some initial test runs where I just wrote a script where all it did was
+blend the 100 block estimate with the 1,100 block estimate.
+And it iterated through a bunch of combinations of three different variables.
+One of those was looking at the different estimates for a number of the trailing blocks,
+the previous blocks before that block, really anywhere from 10 to 100 previous blocks worth
+of estimates.
+And then a variable of weighting the shorter term estimate if it was higher than the long
+term estimate.
+And a variable of weighting the shorter term estimate if it was lower than the long term
+estimate.
+I was basically using this long term estimate as a baseline.
+So that would be the red line being the long term estimate.
+And the 100 block is the yellow line.
+And of course, blue is the quote unquote real hash rate, but that's not even used in any
+of this.
+We can't actually rely upon that or use that as a data set.
+And since this script tries so many different permutations, it took several days to run.
+I actually parallelized it.
+And the output ended up with about 5 million different data points.
+But from each run where I was essentially looking at 10 range trailing block ranges
+here, I found some interesting patterns.
+Basically that weighing the short range estimate at about 20% seemed to give the most accurate
+error rates and standard deviations for that given range.
+But of course, I only did up to about 100 trailing blocks for that first run.
+So we can see here, this was actually a failure.
+We're trying to beat that 1,120 block estimate, which has an average error rate of 3.8% and
+standard deviation of 2.95 exa hash.
+None of these even got close to that.
+So we haven't found a strictly better algorithm yet, but we can see some trends.
+So what did I decide to do next?
+Really I said, OK, we need to do even more blending of more hash rate estimates.
+So for my next run, I blended 10 different estimates, basically 100 block, 200 block,
+300 block, all the way up to 1,000 block estimates.
+And my script was a little bit more complex.
+I basically said, if any of these estimates is more than one standard deviation away from
+the baseline 1,100 block estimate, then I would give that a 10% weight.
+Otherwise, I would give 10% weight to the long-term estimate.
+I also tried setting some cutoff thresholds for these shorter-term estimates, where if
+it was lower than the baseline, I would throw them out.
+I quickly discovered from trying a bunch of different weights that the greatest accuracy
+improvement came from throwing out all of the short-term estimates that were lower than
+the baseline estimate.
+And I think this is because the general trend for the hash rate is up.
+So almost always, if your estimate is going down, it's almost always wrong.
+So from that, I actually ended up settling upon an algorithm that had an average error
+rate of 3.495% with a standard deviation of 2.69.
+So this was a slight improvement.
+So the takeaways here-- most websites are publishing one-day estimates, which have about
+6.7% average rate in their error.
+The savvier sites are using three-day averages, which are a little better.
+The best sites should use that seven-day average, which has less than a 4% error rate.
+And I managed to find a slight optimization here, where I improved upon that seven-day
+average trailing estimate by 13% on the error rate and 14% on the standard deviation.
+And this was just from spending a few days and writing some scripts that took a few days
+to run.
+I think there is still plenty of room for improvement in future work.
+There are, of course, some assumptions here.
+I only had one year of data to work with.
+We're assuming that those pools are honestly reporting whatever their true hash rate is.
+I would say, from looking at the data, it looks like they are fairly honest.
+It's also assuming the pools don't share hash rate basically with each other, which I think
+is probably pretty minimal.
+Now the algorithm that I came up with is technically more computationally complex, but it's only
+about 10 times more complex, and we're still talking milliseconds, really, to calculate
+that.
+This, as I said, it should be applicable to most other proof-of-work networks, but it
+would be problematic if you were trying to run it against a network that is quote-unquote
+ASIC resistant, aka networks that are changing their hashing algorithm on a regular basis,
+because that's, of course, just going to reset everything.
+And I think the main things that we can look for to improve upon this are just waiting
+longer to collect more data.
+That will obviously improve our accuracy and allow us to have algorithms that are better
+able to handle things like, for example, the China ban, when we saw half of the network
+hash rate just disappear over the matter of a few weeks.
+And I think the real potential improvement here, this seems like the type of problem
+that should be great for machine learning, because what we're trying to do is we're trying
+to find the optimal number of different parameters and variables that we can tweak to hone in
+on what the most accurate hash rate estimate would be.
+So this is just sort of me nerding out.
+I do this a lot on all types of different aspects of Bitcoin, and welcome, really, any
+insights or questions if you want to talk about proof of work or really anything else
+related to this ecosystem.
+So my first question is, we have approximately in March of next year our next halvening.
+What do you anticipate seeing in hash rate pre and direct post halvening?
+Yeah, you know, the interesting thing about the halvening is that it's very well known,
+right?
+The miners are hurtling towards this full steam ahead, and we've seen over the past
+year hash rate going crazy.
+So the miners are not stupid.
+They're doing all their profitability calculations.
+They're already calculating what they expect their profitability will be after the halvening.
+So I think we can definitely anticipate it's going to keep zooming upward until the point
+of the halvening.
+At that point, sure, there will definitely be some of the less profitable miners that
+have to drop off the network, but I would be willing to bet it'll be fairly negligible.
+Okay, so definitely we've got some questions from nerds in the room.
+All right, cool.
+We'll run out here.
+It looks like we have about two, three questions.
+Donald.
+Thank you.
+Thank you, Lov.
+Very good presentation.
+What is the use case of knowing the hash rate more accurately for Bitcoin, Ethereum Classic,
+for Litecoin?
+Why are people using it today, for example?
+And why would it be better for it to be more exact?
+Yeah, you know, there's not necessarily, I think, a financial incentive.
+You know, if you're a miner and you're trying to understand what you're competing against,
+then you may be interested in having a little bit better accuracy.
+But one of the reasons why I started looking into this is simply because I just started
+getting annoyed by a lot of the sort of influencer accounts out there publishing stuff like,
+you know, Bitcoin network hash rate hit 500x a hash or whatever.
+Because most of the time, and this happens for many different aspects in the space, but
+you know, people will post a data point and they won't talk about how they actually achieved
+that or what the assumptions were around it.
+So for me, it's really just about converging upon a standard, just to try to reduce the
+noise.
+Like, when we're trying to talk about something, if we're not all operating off of the same
+assumptions, then we're going to start yelling at each other, talking past each other, and
+it's just a waste of time.
+So I primarily see this as just a way of us trying to converge on a consensus for this
+one particular way of viewing these networks.
+Cool.
+Next question is from Kerry Washington.
+Hey, Jameson.
+So you had the data from this company that you said the first year or two, it was noisy.
+Yeah.
+And so I'm really curious about, first of all, was it because of you that you got the
+data?
+And second, did you have a discussion with them about, well, those first two years were
+basically garbage, right?
+I had to look in the third year.
+So I'd love to hear what you thought about that and if you had a conversation.
+Yeah.
+Yeah, a little bit.
+Like, I was lucky, and probably the fact that it was me helped.
+From my understanding, Brains, they started collecting this just out of interest.
+They haven't really been doing much with it.
+If you go to the Brains mining pool dashboard, you can see the current real-time hash rate
+that is the aggregate of what's being reported from all the pools.
+They have not done any historical analysis.
+So basically, they had all this data just sitting in the database, but it's currently
+not exposed in any way for the average person to consume.
+So I did have to politely ask, hey, can you give me this JSON data dump?
+And then I had to write my own tooling to better understand it.
+And so I think it was just because this was just a sort of side interest thing that they
+weren't trying to monetize or do anything with that it was a piecemeal type of function,
+where over time, they were slowly adding more and more mining pools out there.
+And so eventually, they got to the point where they had effectively all of the hash rate.
+But this is a trusted third-party data source, right?
+I have no way of verifying the numbers that they gave me, because no one else, as far
+as I'm aware of, has been collecting those numbers.
+So if this is something that the community or some subset of other entities in the space
+is interested in, it would be great if we had multiple distributed entities that were
+all consuming this data, storing it, and then we could cross-check with each other to converge
+upon an even more reliable measure of the real-time network hash rate.
+Cool.
+Next up is Cypherpunk, the real Nick Laz.
+I love you, Michael.
+Thank you for the work, Jameson.
+That's lovely statistical work.
+My question is more about the distribution of hash rates, because we ever so often see
+pie charts where it's like, this pool has more, this pool has less.
+So could your work give us more clarity about the distribution of hash rate globally?
+And is there a way to potentially distribute this or decentralize this?
+Thank you.
+I think that the hash rate distribution, that would come more into looking at the real-time
+hash rate.
+All of my stuff was looking at aggregates.
+And when you're looking at aggregates, you're really based off of only the blocks that are
+being reported.
+There are different ways, I guess, to look at the blocks and the blockchain to look for
+the tags from the different minoring pools.
+And that's a pretty well-understood, I think, operation.
+There's a number of different entities out there that will consume those tags and give
+you those pie charts.
+So I would say that the pool hash rate distribution is-- you can rely upon that fairly well, though
+it is subject to the same issues that I just talked about, where it's based on how many
+trailing blocks they're looking at.
+But I think usually the three-day and the seven-day are the most common for what we
+see with those pie charts.
+But yeah, I mean, I thought it was interesting when Bob showed the chart about how China
+banning Bitcoin was actually good for the sort of pollution aspect of Bitcoin.
+It was also good for the global geographic distribution of hash rate.
+However, what we've seen is that the center of the world of hash rate has moved from China
+to America.
+So we've just sort of moved the problem over.
+So sure, America is a somewhat less authoritarian state than China.
+You could probably argue that it's better to have more hash rate in America.
+But the optimal hash rate distribution, I believe, is for it to be distributed around
+the world, get as much jurisdictional and regulatory arbitrage as possible.
+And my optimistic view on that is that that is inevitable over the long term.
+And that's because energy is widely distributed.
+So I am hopeful that 10 years from now, we will see a hash rate even more widely distributed
+than it is today.
+And that will be good for Bitcoin.
+So I have one final question that's more for the live stream than it is for this room,
+although it might possibly be relevant.
+You're primarily known as a Bitcoiner.
+And we're here at a proof of work summit, which includes Ethereum and which includes
+Litecoin, one of our earliest proof of work forks.
+Do you think as someone that's prominent in this space that there is room for other proof
+of work coins besides Bitcoin and why?
+Yeah, I mean, I think that what we've seen, especially from the early days, you know,
+the first three, four or five years of like altcoin space, a lot of the innovation back
+then was literally just like changing the proof of work algorithm.
+So on one hand, I believe that like the average cryptocurrency user doesn't care at all what
+the hash rate algorithm is that's securing the network.
+They don't think about it.
+It's not important to them.
+It is important to the network itself, of course.
+But what we've seen is that this is kind of a winner take all type of environment in the
+context of a specific hash rate algorithm.
+There can only be one king of SHA-256.
+There can only be one king of Equihash, whatever, especially if it's the type of algorithm that
+is implemented with ASICs.
+And this is because you end up having all of these other networks that just due to the
+difficulty in bootstrapping networks and network effects, like the number two network is very
+rarely even half the size value and therefore computational difficulty of the number one
+network, which means all of the other networks that aren't number one for whatever their
+hash rate algorithm is are going to be perpetually at risk of 51% attack.
+So good examples of this for SHA-256, of course, Bitcoin Cash, Bitcoin SV, the other 50 Bitcoin
+forks that use SHA-256.
+They're all trivially attackable.
+Really if you got a single Bitcoin mining pool that wanted to, they could just demolish
+those other things.
+Why doesn't that happen?
+That's I think an interesting question of game theory and probably the fact that it's
+just not even worth the time and effort for this to happen.
+But they do remain under perpetual threat.
+And we have seen stuff-- actually, I think BSV has been 51% attacked a few times.
+And most people didn't even notice because nobody uses it.
+But it's an ongoing thing.
+I always see it sort of like old classic car clubs, right?
+There's some guy with a 1954 Turkish Fiat, a Tofas, and he will keep that thing running
+four generations.
+And I sort of think the chains will never die.
+I see that there will always be some hobbyist that's got five computers at home in the basement
+and a friend in another country, and they'll keep the network going sort of thing.
+Jameson Lopp, thank you so much for the subtle branding.
