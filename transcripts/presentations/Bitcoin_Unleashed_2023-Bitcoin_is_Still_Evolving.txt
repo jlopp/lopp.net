@@ -1,0 +1,388 @@
+All right.
+So I actually gave a talk earlier this year
+that was fairly pessimistic, looking
+at the state of the Bitcoin ecosystem.
+And over the past six months or so,
+I think it's been nice to see some improvements coming along.
+So I was talking a lot about ossification earlier
+in the year.
+We're still going to be talking about it.
+I think it's going to be an ongoing thing,
+because ossification is this natural consequence
+of network protocols.
+We've seen a variety of network protocols over the years,
+whether it's TCP at the very low layers of the internet stack
+that we're all using every day to SMTP, the email protocol.
+It seems to be almost a rule of physics.
+Basically, you're creating a protocol.
+It's a way to communicate with other people around the world.
+So we have a common language.
+But if we want to keep changing that language because we
+want to make it better, we want to fix things,
+we run the risk of breaking it.
+And if you break that language so that you're no longer
+able to talk to each other over this common protocol,
+you're running the risk of destroying the network effects
+of that protocol.
+So essentially, what happens is these networks
+continue to grow around this shared language.
+And they eventually get crushed under the weight
+of the size of the network versus the ability
+to change it without breaking that network effect.
+So as of today, these low-level internet protocols
+have not changed in 10, 15, 20 years.
+And by no means is that because the protocols are perfect.
+In fact, you talk to any of the wizards at the Internet
+Engineering Task Force who worked on the early TCP/IP
+stack, they would tell you that one of their greatest
+disappointments is that encryption was not
+developed into the lowest layers of the internet.
+So what ended up happening, it had
+to be bolted on at higher layers.
+And it was not a default. So there
+are many people that are using internet-based protocols.
+And they're not using encryption to protect whatever
+communications are happening.
+This is something that I think we want to avoid as much
+as we can to happen with Bitcoin.
+And in particular, I like to talk about SMTP.
+And that's because I was an email engineer
+for the first decade of my career.
+I got to see the inner workings of this protocol.
+And SMTP, if you actually look at the protocol,
+it's a fairly straightforward back and forth
+between client and server, two different machines that
+want to talk to each other.
+And in the early days, this was how email worked.
+You could start up a server.
+You could follow the rules of this protocol.
+And you could be highly guaranteed
+that whoever you were talking to on the other end
+would receive the message and that it would eventually
+get to its destination.
+But over the decades, we saw the network change.
+We saw mass adoption happen as AOL came in.
+And millions of people started joining the internet.
+And of course, naughty people started using this protocol
+and abusing it and sending large amounts of spam.
+And this was something that my own company
+had to deal with a lot when I was there.
+Because we were trying to send 100 million emails a day
+on behalf of our clients.
+And we had to very carefully navigate
+a lot of the tricky rules of the ecosystem
+around spam and blacklisting.
+And basically, what went wrong with email
+is that one of the original assumptions of the people who
+designed SMTP was that we want to ensure delivery.
+And the assumption was that you would
+want to receive the emails that people were sending to you.
+That was true for many years.
+But that changed.
+And as that changed, the rest of the ecosystem
+had to figure out how to adapt.
+So we went through many different phases.
+One of the early phases was using something
+called Bayesian filters, basically
+like looking for keywords, looking
+for spammy occurrences of words and characters
+that were generally seen in spammy emails.
+This was very crude.
+It ended up with a lot of false positives.
+And it was eventually abandoned after several years.
+What happened?
+We started trying all of these other new things.
+We started creating much more complex systems
+on the back end.
+And it worked a little bit better.
+But still, this was mostly trying to look at content.
+It was trying to classify content as being good or bad.
+And so it was a never-ending battle
+of the spammers always trying to find ways around these filters.
+So what happened?
+We ended up settling on something called reputation.
+Rather than looking and trying to judge
+the content of the messages, we started
+judging the actual entities that were sending the content.
+And this led to a proliferation of dozens
+of different companies that did nothing
+except try to come up with reputation scores.
+You may have heard of things like sender policy framework,
+sender ID, domain keys.
+The list goes on and on.
+My own company is their Bronto software right in the middle.
+And we were trying to navigate this whole complex ecosystem
+to ensure that our customers' emails were
+getting to where they wanted.
+But if you're familiar with how any of these technologies
+work, they are highly centralized.
+They have gatekeepers that assign things
+like domains and IP addresses and actually create blacklists
+that you then have to go beg to get yourself off of if you
+accidentally end up on one of them.
+And the fatal flaw to this particular solution
+is that it was highly centralized.
+And it created this really monstrous meta protocol
+on top of actual SMTP.
+One of the other problems that happened
+is that this imposed a great cost upon people who wanted
+to navigate this system.
+Like I said, I was working for a big company.
+We had a lot of money and engineers and people
+who could help with the reputation stuff.
+But that caused even more centralization.
+So where are we today?
+90% of quote unquote email users are captured by five companies.
+And this centralization, it ended up
+producing non-economic solutions to spam.
+And today's email servers will tell you
+that they're accepting an email at the protocol level.
+But in many cases, they will just black hole it.
+They won't tell you that it actually
+went into a spam folder or it just got silently dropped.
+So the short version is that SMTP as a protocol,
+the ability for any of us to follow this protocol
+and be able to communicate with people using the network
+is pretty much dead.
+You cannot actually be sure that your message is going to get
+to where it's supposed to go.
+So sure, email is mass adopted.
+Billions of people are using it.
+Could you say that email works?
+Yeah.
+But at what cost?
+At a great cost that I think few people even realize
+are being paid on a day by day basis.
+Essentially, you're having to ask permission and hope
+that these companies will allow you to use the protocol.
+And the downside is that one of the prices we pay
+is our information.
+Probably most of us are not paying money
+to use our email provider.
+Rather, we're allowing these email providers
+to harvest all of our data, use it for their own purposes.
+Did it have to be this way?
+I would say no.
+There was actually a proposal back in the '90s
+by this guy called Adam Back.
+And it came up with something called hashcash using
+this concept called proof of work.
+The idea being that instead of having
+a few centralized gatekeepers doing filtering and reputation,
+you just have whoever wants to use the protocol
+spend their CPU for some amount of time
+to prove that they had put some computational effort into it.
+This was a decentralized solution.
+It imposed an economic cost upon sending
+email that was supposed to make sending high volumes of spam
+computationally prohibited.
+But for a variety of reasons, that
+didn't actually get implemented.
+So how does this all relate to Bitcoin?
+Well, we see a movement of some people in the Bitcoin ecosystem
+that say we should actually want to ossify the protocol.
+We need to do that because it ensures that the protocol
+remains as it is today, which we know
+is in a good and working state.
+That's a decent argument.
+There's also people who are worried about changes
+that could happen that might make the protocol weaker.
+This is true of all software development.
+Whenever you make a change to software,
+you might be making it better.
+But there's always a risk that you may be making it worse
+in some way.
+This is sort of law of unintended consequences.
+There will always be unknown unknowns.
+That's true if you make changes.
+But I would also say there are unknown unknowns if you don't
+make changes to the protocols.
+And this, I think, is really exhibited well
+if we look at SMTP or we look at the lack of encryption
+at low layers of the internet.
+Basically, you can ossify a protocol.
+You cannot ossify the rest of the world.
+The rest of the world will continue to change.
+New unforeseen problems will arise.
+People will demand solutions.
+The question becomes, how do the solutions get implemented?
+If you can't implement them at the protocol itself,
+they will be bolted on somehow else.
+And the unfortunate nature of most software design
+and of, I would say, human nature in general
+is to default to the more naive and straightforward
+centralized solutions that end up creating gatekeepers
+in these ecosystems.
+So there are risks.
+If we don't allow some flexibility,
+then we cannot improve the protocol.
+And people have to figure out hackier solutions for how
+to achieve new functionality, how
+to solve problems that are coming in
+from unforeseen vectors.
+So we have to be aware that not changing the protocol can still
+result in the protocol changing, but at higher levels,
+basically, this meta protocol.
+Point being, as I said, you can get onto the internet today.
+You can follow SMTP to the letter, to the spec,
+and your email doesn't get delivered.
+I would pose to you that means that SMTP as a protocol
+is broken.
+People who are actually using email
+would tell you, no, there's just a lot of other rules
+that you have to follow, and they just aren't in the spec.
+And so I think this would be a disaster
+if this happened to Bitcoin.
+We definitely want to avoid that.
+Now, we can somewhat quantify the level of innovation
+happening in this space.
+This is from a report last year.
+I thought it was interesting that nearly 30%
+of all development, according to the way they quantify it,
+was happening in Bitcoin and Ethereum.
+More concerning, though, you can barely
+see Bitcoin at the bottom there in the orange.
+It only seems to be maybe 20% of the sort of size and velocity
+of Ethereum development.
+I think it's not controversial to say
+that Ethereum has a more diverse developer ecosystem.
+This, of course, is due to a number of different reasons.
+More flexibility and functionality
+and programmability, more tool sets that have been built up
+and let people experiment in different ways.
+But I'm optimistic.
+These are just some of the hackathons and accelerators
+that I have come across this year.
+I'm sure there are many more that I'm not even aware of.
+But compared to previous years, it
+seems like we are seeing some acceleration in development
+in the Bitcoin ecosystem.
+So I'm optimistic.
+We are seeing more functionality, more applications,
+and as Munib said, more second layers being developed.
+I think we need to do this for scaling reasons.
+I think that side chains and layer twos, as Munib was saying,
+are one of the most important things
+that we can have happen in this ecosystem
+because this is how we really enable
+permissionless innovation.
+I think it's not controversial to say
+that ossification will happen.
+As I said, it's almost a fundamental rule of networks.
+And so we want people to be able to innovate
+on related but different protocols to Bitcoin
+so that we're not having to constantly fight
+over changing the base protocol.
+We can look at things like side chains,
+whether it's like liquid or root stock.
+These have kind of stalled out from a number
+of different metrics.
+But also, they are not totally permissionless.
+They tend to be based around federations.
+Perhaps that's one of the reasons why they haven't
+gotten a great level of adoption.
+But we do have other side chain proposals out there.
+Drive chains, currently a lot of debate
+happening around that.
+Spider chain, fairly new concept that was just announced
+about a month ago, which actually requires no changes
+to the Bitcoin protocol.
+It's a new way of pegging second layers to Bitcoin.
+There's even something that was just announced last week,
+and they haven't even released all the details,
+but this radiant trustless two-way peg.
+And then we've also seen things like BitVM just announced
+in the past week or two that have potential
+for enabling a massive amount of permissionless innovation
+happening because they don't require changes
+to Bitcoin itself.
+Covenants are another interesting primitive
+that I think Bitcoin could really benefit from.
+What is a covenant?
+It basically means the ability to place restrictions
+on the future flow of money through the system.
+Now this right here looks really complicated, and it is,
+because the only way that you can really do covenants
+right now involves pre-signing a ton of transactions
+to restrict what's happening with the Bitcoin.
+Basically nobody does that.
+It's really onerous, it's very brittle.
+Developers don't wanna have to deal
+with this level of complexity.
+We have actually a minimal covenant proposal called OpVault
+that allows you to do some restrictions
+on the flow of funds, basically giving you the ability
+to take your money back if it's taken from you
+without your permission if you put it
+into one of these vaults.
+I find that very interesting as a security professional
+because this actually enables a completely different
+type of security.
+Instead of only having upfront security,
+and if someone penetrates your security,
+you have a catastrophic loss, now you can actually react
+to security failures.
+So how do we prevent ossification?
+At a network protocol level, there's a number
+of ways to do that.
+Unfortunately, encryption isn't really an option for us
+because Bitcoin is an open, transparent system.
+There's extensions that are used in protocols.
+I would say the closest thing that is
+is basically changing opcodes within Bitcoin.
+As we've seen, that's very difficult to do,
+but it is possible.
+I really think that things like sidechains
+and rollups are the solution.
+Now, the problem is that we most likely need,
+A, to get B and C.
+We need some small changes to the Bitcoin protocol
+to really allow the permissionless innovation
+to bloom within this ecosystem.
+The other thing is just velocity,
+and I think that's also one reason why I'm optimistic.
+As I said, I'm seeing so many more hackathons,
+so many more developers coming in from other ecosystems
+or just from outside of the whole crypto ecosystem
+because they're seeing the ability to build
+more functionality, do new things on top of Bitcoin.
+I don't advocate for any one specific thing.
+I think we need everything.
+Historically, we can look at stuff like,
+okay, what would've happened
+if we had ossified protocol in 2015?
+If we didn't have check-lock-time verify,
+we wouldn't be able to have lightning network channels.
+If we didn't have check-sequence verify,
+lightning network channels would not be able
+to stay open indefinitely.
+Without segregated witness,
+we'd still have a lot of transaction malleability problems
+that would've prevented lightning
+and other second-layer networks.
+Without taproot, we wouldn't have taproot assets,
+which were just officially released, I think, yesterday.
+So we need to keep allowing new functionality to happen
+because it can have a order-of-magnitude multiplier effect
+of what people are able to do on these other layers.
+If we don't enable that,
+then it'll either be people doing really hacky stuff
+or just choosing completely different protocols
+that may be competing networks with Bitcoin.
+So not any one thing I propose.
+I want all of the things.
+I want the experimentation to keep happening.
+I think the only way forward is to continue building,
+failing, learning from the failures, and evolving.
+And so ossification is going to happen,
+but we need to keep racing forward
+and get as far as we can before it actually happens.
+So permissionless innovation, developers,
+developers, developers.
+If we allow the developers to innovate,
+I think they will come.
+So we'll continue building,
+and I'll be here to continue talking
+about all the great things that Bitcoin
+and its ecosystem can do.
+Thank you.
