@@ -387,6 +387,7 @@ NjT4rMUesCnjTVHVM9KXvMemwAhhYbM=
         <h1>Contact</h1>
         <p>Jameson's goal is to spread knowledge of crypto systems and liberating technologies. If you can offer an opportunity to reach a large audience, please use the low priority form. If you're seeking specific answers for your own understanding, please check the <a href="/bitcoin-information">educational resources page.</a> For consulting questions or high priority requests, please use the paid form.</p>
         <br>
+        <p>Do you have a question about Bitcoin? Try <a href="https://www.delphi.ai/jameson-lopp">asking my AI bot</a> first; it has been trained upon a decade of my essays, interviews, and presentations.</p>
       </div>
     </div>
   </div>
