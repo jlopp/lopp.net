@@ -1,0 +1,742 @@
+Hey, hey, welcome to the Weekly HODL with Shibs, where I bring you weekly Bitcoin adoption
+news and interviews from experts in the space.
+This week I have with me a real Bitcoin expert and OG, Jameson Lopp.
+We chat about the overall state of the network, what he's paying specific attention to, and
+we have a detailed dive into Bitcoin self-custody and best demonstrated security practices.
+It's one you're not going to want to miss.
+Before we jump in, many of you know that I have partnered with StampSeed to help fortify
+your Bitcoin stamp with titanium seed stamping kits.
+We're normally running a 15% promotion if you use Weekly HODL at checkout.
+But if you're watching this video before the end of November 27th, the promotion doesn't
+mean anything right now because everything's 21% off of the entire website for their cyber
+sale.
+So check that out and then check out the rest of this video as we jump in right now.
+Jameson Lopp, welcome to the Weekly HODL, man.
+Thank you so much for joining.
+Glad to be here.
+Yeah, I just, I first off just wanted to thank you for all your contributions and all your
+hard work to the Bitcoin protocol.
+And like I just told you before, my Chicago BitDev folks were super excited to hear that
+you were coming on.
+They sent me a thousand different questions to ask you.
+Obviously, we have like an hour here.
+So I don't want to dive into all those, but I'll get into some of them with the hopes
+that we can kind of end on Bitcoin self-custody, best practices and stuff like that.
+So again, thanks for joining.
+All right.
+Let's dive in.
+Yeah, for sure.
+Well, also, before we start, I considered completely shaving my entire beard because
+I didn't want to be on the same screen with the best beard in Bitcoin.
+So compliments to that, by the way.
+Well, I'll never achieve Greg Maxwell level beard.
+I realized that I have a natural length limit on mine because I stroke it too much and pull
+out too many hairs.
+I do the same, but I don't have nearly as much as you got going on there.
+I love it.
+But for those who don't know you, can you give yourself a brief introduction as well
+as kind of like when you got into Bitcoin and how you started interfacing with the protocol?
+Yeah.
+I mean, I first heard about Bitcoin probably in 2010 or 2011 and summarily ignored it.
+It wasn't until 2012 when I started paying attention because I realized that it wasn't
+going away and crashing and burning like I had assumed.
+Played around with it for a year or so, not doing very much.
+I mean, there wasn't really a whole lot going on back then and I wasn't deep into the technical
+weeds.
+It wasn't until late 2013, early 2014, I decided I wanted to dig deeper on the technical side.
+And so I forked Bitcoin Core, created a project I called Statoshi, which was basically leveraging
+what I was already doing at my day job as a DevOps infrastructure guy.
+Really just putting a lot of metrics and statistic reporting into Bitcoin Core so I could better
+understand the internal operations of the node.
+And over the decade since then, I've done a lot of things with Bitcoin nodes.
+I went full time about a year later for BitGo and was responsible for running all of their
+node and transaction sending and transaction indexing infrastructure for three years before
+I pivoted to Casa, which was just a small change really from doing an enterprise focused
+multi-sig self-custody to more of a individual focused multi-sig self-custody, trying to
+take a lot of those best practices and employ them in a better software design to essentially
+guide users down the right path.
+Because we know that people aren't going to put in all the time and effort required to
+understand all the minutiae and potential foot guns of self-custody.
+So this has really been my mission for the past nine years now is trying to make self-custody
+easier because I think it's obvious what the end game is if we don't do that.
+And basically it's the fact that we're faced with an adversary called convenience and human
+nature seems to prefer convenience over all other things, unless you're like a really
+weird edge case person like myself.
+So if we don't continue to make it easier so that people can really be confident that
+they can be their own bank, then they're going to default to just letting a trusted third
+party do it for them because they figure they're the expert and the expert will do a better
+job at it.
+So this is something that I think will continue to be ongoing for the foreseeable future because
+these custodians are able to hide so much of the complexity of custody under the hood
+and just present a shiny web interface that people are really used to if they're using
+traditional banking or other tools.
+Yeah.
+Yeah.
+I'm really subject to that type of not being technical, I'm subject to the shiny thing
+quite a bit.
+But I see that standpoint and particularly here in America where seemingly on the customer
+facing side of things, like banks have worked somewhat properly and people always believe
+that they've got their FDIC insurance and all this stuff that's available to them.
+They don't hesitate to put money in the bank unless they have kind of gone down a journey
+of learning and things like that.
+So I'll be interested to kind of touch base with you on a little bit later about those
+challenges and the challenges of doing multi-sig, what is a multi-sig and all of these, how
+we bring that forward in something that is easy and familiar for people to work with.
+But before we go down the custody route, I would be remiss if I just didn't straight
+up ask you what you're working on on Bitcoin right now, what you're excited about, what
+is taking up kind of like, you know, we know what you do for a job, but what is interesting
+to you right now in the Bitcoin protocol and what's going on?
+Well, I think we've seen an explosion of development this year using Bitcoin as part
+of the tech stack.
+Now this does upset a lot of purists who may not like some of the development that's happening,
+but basically I'm a fan of permissionless innovation.
+So whenever I see people doing new stuff, I figure this at worst is probably a neutral
+thing and at best it, you know, it creates more interest in new use cases.
+So you know, people playing around with these various taproot based protocols, whether that's
+like ordinals, inscriptions, now many scripts starting to become more of a thing, creating
+more complex locking conditions for your Bitcoin.
+That's interesting to me from a self-custody perspective.
+We're still in the early phase of that where we haven't seen many scripts tooling and supports
+get added by a non-negligible number of like wallets and hardware devices and stuff, but
+it's inching forward.
+So I'm interested in really just seeing what people can come up with, which is part of
+the reason why I've been participating in a variety of like accelerators and hackathons
+and stuff, just trying to help get more developers into the ecosystem.
+And you know, it's just one of those things where you just kind of have to throw stuff
+at the wall and see what sticks.
+And this is capitalism.
+This is entrepreneurship.
+Ultimately a lot of these things will fail and they will not achieve product market fits
+for whatever reason, and that's fine.
+But if even a small percent of them succeed, then I think it's good for Bitcoin as a whole.
+Yeah.
+So you talked about the purists maybe not liking some of these things.
+And Miniscript, correct me if I'm wrong, but this allows for like a time locking of Bitcoin
+and stuff like that.
+Can you explain the Miniscript a little bit just so the viewers know what it is?
+Yeah.
+Well, so it's kind of weird because ultimately nothing over the past couple of years has
+fundamentally changed what you can do with Bitcoin script.
+It was always possible to create more complex Bitcoin scripts, but what we've had is a sort
+of multi-phase improvement in the efficiency of how you can code them up.
+So Taproot was a big deal because it allows you with Tapscript to create these essentially
+Merkle trees of scripts so that you only end up having to reveal the part of the script
+that you're executing.
+So you can create arbitrarily complex scripts with a million different logical branches
+and not have to pay exorbitant on-chain fees and have huge transaction sizes because you
+don't have to reveal all of it.
+So it's good from like a scalability and a privacy perspective.
+Miniscript is kind of the next iteration forward in that.
+And it's just like, it's a higher level language that makes it easier for developers to compose
+more complex scripts and be confident that they don't have security holes.
+So that and Miniscript will also ties in to something called wallet descriptors, which
+is another thing that we haven't seen a ton of adoption yet around.
+But I think wallet descriptors are going to be very important to be a standard.
+Basically if you want all wallets to be able to like talk the same language, if you want
+to be able to take your wallet with one wallet software and use it in other wallet software,
+really the only low friction way to do that would be if all of these different wallets
+support descriptors.
+Otherwise you usually end up having to know three or four different variables of like
+the wallet configuration, like the script type and the derivation path and the pubkeys
+and all this stuff.
+And wallet descriptors just put all of that necessary information into one blob, which
+you can even represent as a QR code in some cases.
+So yeah, it's small steps.
+It's like taking the functionality that has been there all along and just making it more
+scalable, more private and more developer friendly.
+Yeah.
+And so where would those purists come in and say like doing things like this or creating
+certain abilities using Bitcoin the way that it currently is, is an issue?
+Yeah.
+So there's a conflict, I think, between people who see Bitcoin just as digital gold, a simple
+store of value versus those of us, you know, more on the technology side who see Bitcoin
+as programmable money or as a distributed database with very interesting properties.
+I've said many times over the years that, you know, one of the reasons the white paper
+blew my mind is because I felt like the solution was both elegant and ass backwards and it
+was ass backwards in the sense that my computer engineering teachings, the way that I was
+trained to approach problems in computer science was to always seek efficiency, both from a
+like data and memory storage and CPU cycles, like all of the resources that you're constrained
+by in the real world at the hardware level.
+You always want to maximize the efficiency of, you know, what computation you can perform
+because your hardware is always going to be limited.
+And Bitcoin sort of flipped that model on its head and said, you know what, we're actually,
+we're going to use a flood fill network.
+We're going to transmit every transaction to every person on there and they're going
+to have to store it forever.
+So that solves one of the fundamental problems.
+And of course it created a major scaling issue.
+And so I do, in a sense, I see Bitcoin as a database and it does, I think you can't
+really can't make a claim with a straight face that Bitcoin isn't programmable.
+I mean, it has a scripting language, albeit it's a very basic and very limited for security
+purposes scripting language.
+So whenever you have a database and a programming language, you should expect that savvy developers
+are going to find creative ways to use it, to do things that you may not have anticipated.
+And some of those may be, you know, non-monetary use cases.
+So, you know, people can whine about that if they want, but obviously this is permissionless
+innovation, developers who figure out ways to leverage the attributes of the network
+don't need to get anybody's buy-in if they're using the functionality that's already there.
+Yeah.
+That's, that's the beauty of it, right?
+The permissionless system.
+And so you're, you're a known like freedom advocate where, where does the where does
+the conflict come in with the idea of, you know, building some of these things, programming
+this programmable money, but also, you know, the topic that we hear some of, of like ossification
+of certain ports, parts of the network.
+What are your thoughts on, on like what portions need to be ossified or if the whole base layer
+does versus, you know, what needs continuous innovation to expand, to allow this type of,
+you know, wherever we're all, you know, 8 billion people can get in on this.
+Right.
+Well, you know, there are different factions, obviously within the developer portion of
+the community, or at least like the people who are closer to the protocol.
+I think it will be very hard pressed to find any who say we need to stop changing the protocol
+right now.
+And the reason for that is they're so close to the protocol.
+They understand all the problems with it, like all the challenges ahead.
+I've stepped back a bit and tried to describe this in several talks that I've given over
+the past year or so.
+Which is essentially that my understanding of people who want to ossify now and never
+change the protocol again, is that basically they are afraid of unintended consequences
+of changing the protocol.
+And they'll probably in many cases point to, you know, Taproot and the people who are finding
+novel uses for Taproot.
+But you know, we're talking about a tool here.
+And so tools, of course, can be used for subjectively good things and subjectively bad things.
+You know, if we didn't have Taproot, then we probably wouldn't have Taproot assets.
+Now some purists will say, well, people are going to start shitcoining and creating tokens
+on Lightning with Taproot assets.
+And sure, I mean, that's the natural result of permissionless innovation.
+The other side of it is that I think we're going to see stable coins on Lightning.
+And I think, you know, Lightning plus stable coins is a much more attractive medium of
+exchange that can not only compete with, but probably surpass the existing networks like
+Visa, MasterCard, American Express, whatever.
+So good and bad, I think that in general, the good is always going to outweigh the bad.
+That's because I'm an optimist and I think that, you know, most people want to do generally
+good things and not harm others.
+And but, you know, whenever you create a tool, it will be used by criminals.
+It will be used by scammers.
+I think it's hard to say, you know, we should not allow the single digit percent of psychopaths
+and sociopaths out there the ability to do these things.
+And we should hamstring what the other 90 something percent of the populace is able
+to do just because of that tiny percent.
+Yeah, absolutely.
+So one of the local guys here wrote an article on ossification and the idea that Lightning,
+you know, allows things to scale to a certain extent, right.
+But it also potentially eliminates the ability to do some of the core things that Bitcoin
+was meant to do, like self-custody as far as like going in and out of channels and things
+like that and the costliness that would be incurred.
+And so, you know, his argument was basically that like, hey, at this point in time, like
+this thing can't scale to everybody in the world without additional work being done on
+the network.
+What are your thoughts on that?
+Yeah.
+Just because the quote unquote scaling wars are over doesn't mean that we solved scaling.
+You know, Lightning has made great advances since 2019, I think, when it went live on
+mainnet and it's getting better and, you know, I'm using it more than ever.
+I don't see like the routing failures that I used to see a few years ago, you know, more
+enterprises are getting into Lightning, helping with the liquidity.
+I gave a talk in Berlin in 2019 where I said, you know, Lightning Network is never going
+to work as well as we want unless we get all of the exchanges and all the businesses on
+there.
+Just due to the way that money flows through an economy, like in an economy, money doesn't
+just flow between individuals and peer to peer transactions.
+It flows from individuals to businesses and businesses to other businesses through supply
+chains and then businesses to employees.
+So like, you know, you have to have all the pieces of that circular economy together on
+there in order for the liquidity flows to actually work.
+But Lightning is only one way of scaling.
+And I mean, even the Lightning white paper said, you know, to facilitate enough volume
+for the whole world, we'd need better, bigger blocks.
+There are other ways of making Lightning more efficient.
+Right.
+And this is where it's kind of ties in full circle of the ossification debate where I
+don't support just like any one change to the Bitcoin protocol.
+But my advice is that if we're trying to prioritize changes to the Bitcoin protocol, then changes
+that improve the scalability of Bitcoin and changes that improve the ability for people
+to do permissionless innovation, I think would be some of my top priorities.
+And so I'm sure you're familiar, like there's been a lot of drive chains debate over the
+past few months.
+There have been a number of other side chains and pegging proposals also this year, which
+I think are interesting, but they're very, very early.
+They're not production ready.
+And so I also think that side chains and the ability to have a trustless two way peg between
+side chains is one of the sort of holy grails of permissionless innovation that we were
+promised in 2014 has yet to materialize.
+So I'm somewhat heartened to see people continuing to work on that problem because you could
+argue that a properly architected side chain, while it'll never have the exact same properties
+of Bitcoin, it may be good enough to onboard larger swaths of people and allow them to
+self-custody their keys to that.
+Okay, interesting.
+So how do you see Bitcoin moving forward?
+And to the people that are new into Bitcoin, just bought Bitcoin on Coinbase, they don't
+even have anything, they haven't withdrawn their funds, they haven't looked into any
+of this.
+And they hear us talk about conversations about changing Bitcoin.
+And the overall thought to most people who are buying it is like this thing set in stone,
+it's decentralized, nobody can attack it, nobody can do any of these certain things.
+What is the recourse for a bad actor and how do the set of nodes and things like that defend
+against somebody going in and just saying like, "Hey, we're going to make more than
+21 Bitcoin or 21 million Bitcoin"?
+Right.
+Well, I mean, there's fundamentally two different types of changes to any sort of protocol,
+any sort of network protocol.
+And this is where ossification also creeps in again.
+So essentially, you think of a protocol as a language.
+It's a way to communicate with other people or machines.
+And these internet protocols, of course, you're building networks.
+So really, every type of language has a network effect, right, is the more people that speak
+that language, the more valuable the language is, because obviously your total addressable
+market of people you can interact with in different ways becomes greater.
+This holds true for internet protocols as well, where if you're speaking the common
+language as a million other people or machines, you have a huge disincentive to change that
+language in a way that breaks it so that you're no longer able to speak to those million people
+unless they choose to come along with you and "learn the new language", aka upgrade
+the software that runs the version of the protocol that you're all speaking.
+So what happens is, you know, I think it's Metcalfe's law is basically that the value
+of a network is correlated to the size of the network.
+And so as these networks become larger and larger and larger, you have a greater and
+greater disincentive to break them in any way, because you lose the network effect,
+the value of the network greatly diminishes.
+So the way that I've described this is that, you know, the result of these mechanics and
+incentives are such that as a network grows, essentially the ability for it to change the
+protocol that is the underpinning of the network, that ability kind of gets crushed under the
+weight and the size of the network itself, because A, the incentives diminish greatly,
+and B, it's a coordination problem.
+Because no one owns the network, there's no one you can go to to say, okay, we're all
+going to update at the same time to this new protocol.
+So the short version of all of this is that there's essentially two ways to change a protocol.
+One of them is non-backwards compatible.
+You're breaking it, and it's a forced update for everyone if they want to be able to still
+talk to each other.
+And the other one is a -- well, you can actually think of it as a forwards compatible change,
+so that, like, all the people who are still speaking the old language, they can still
+speak to the people on the newer form of the protocol.
+They may just not know all of the same words, for example.
+So for most of its history, at least for the past 10 years, probably 12 years, Bitcoin
+protocol changes have always been forwards compatible, and we call these soft forks versus
+a hard fork, which would be an incompatible change.
+And that has basically meant that people can keep running their node software and not have
+to worry about essentially getting kicked off the network or having compatibility problems
+with people.
+There was -- I have a whole article that goes into the technical minutiae of this, but there
+was arguably, like, one hard fork in the first year or so that Satoshi did, but as far as
+we know, it didn't actually trigger a chain fork, because there were so few people running
+the network, it was still possible to coordinate upgrades, because Satoshi basically dictated
+them.
+And then, of course, we had a proliferation of hard forks in 2017 around the scaling debates
+and people creating a bunch of different versions of Bitcoin.
+Of course, all of those have plummeted in value, like, 99 point something percent over
+the past five years.
+But once again, that is permissionless innovation, right?
+That is -- it's really cool from a free markets perspective that people are able to do that.
+I kind of wish that some more people were able to do that, because that was one of the
+best trades that I ever made.
+But anyways, we should really expect going forward that any protocol changes will need
+to be proposed as soft forks.
+I do have a theory that it may be possible to propose a hard fork if you do it in such
+a way that it's baked into the software, like, decades ahead of time, because for a variety
+of different reasons, you can't really run software that's more than ten years old, just
+due to the complexity of all the dependencies of operating systems and other libraries that
+are used to build it.
+But that's a whole other thing that I haven't really -- I haven't really spoken about at
+length.
+That's one of my many sort of to-do essays to kind of talk about the fragility of modern
+software development and how that could potentially be leveraged to do a hard fork that is quite
+unquote non-contentious.
+Interesting.
+So you wrote an article that kind of goes back to this idea of growing networks and
+the incentives behind changing them.
+You wrote an article basically about the internet protocol and the actual -- the email protocol
+and how that -- and how that ended up going from kind of a permissionless system like
+Bitcoin to something that is no longer like that.
+Would you mind kind of discussing that and its correlation to, you know, and its cautionary
+tale to Bitcoin?
+Yeah.
+And I felt like I was particularly suited to talk about this because I was part of the
+problem.
+I was an email engineer for the first decade of my life, worked for a company that went
+from sending a few hundred thousand emails a day to over a hundred million emails a day
+on behalf of our clients.
+We were one of the major email marketing service providers out there.
+And I had to interface both at the technical level and kind of at the human level with
+other participants in the ecosystem.
+And so the short version is that SMTP, the email sending protocol, was developed I think
+in the late '70s or maybe the '80s.
+And it was developed as a very simple protocol, and the goal of it was to as much as possible
+guarantee the delivery of the message that you're sending.
+And it worked quite well.
+And for the first few decades, the network of email servers out there, it was quite niche,
+and it was a volunteer network, and people were generally happy to help each other out
+if they were having problems.
+Things started to change in the '90s when AOL came out, when millions of randos started
+flooding the internet, and when you have millions of people, inevitably a small percentage of
+them will be dicks.
+And so some of them started abusing the email protocol and sending spam, aka unsolicited
+email.
+And this was a problem because the email protocol was not developed or designed to deal with
+unwanted messages.
+The assumption was that you would want any messages that were sent to you.
+So over the next 15, 20 years, this became a sort of cat and mouse battle between the
+email server administrators and the spammers.
+And essentially over the next few decades, a lot of email administrators gave up because
+the cost of fighting the spam was too high.
+We tried things from Bayesian filters, aka looking for trigger keywords.
+That didn't work very well, had a lot of false positives, resulted in a lot of desired emails
+getting sent to spam, created ever and ever more complex systems of trying to score and
+filter spam, which didn't really work, eventually turned to what you could call reputation systems,
+which is basically various providers creating blacklists.
+They would just start monitoring as much email activity as possible, and they would assign
+scores to IP addresses and domains and any sort of identifying information, and then
+you would subscribe to those blacklists, and that would be how you would stop it.
+That was problematic too, but this was something that I dealt with on a regular basis at my
+job, is that sometimes we had a wide variety of clients, and most of them were great, but
+sometimes we would have one client come in and they would import a bunch of email addresses
+that they had bought somewhere and that had not opted in to receive email, and they would
+start spamming.
+And sometimes we would get entire IP ranges blocked, even though 99% of our customers
+were doing the right thing, that 1% could, well, we actually called it peeing in the
+pool because they would basically, they would screw up our entire IP pool, and so we would
+actually have to end up segregating off different ranges of IP addresses for the good and the
+bad senders, and if you got bad enough, we would fire you as a client because you were
+harming us more than the revenue that you were giving us was worth it.
+So, you know, these things kept getting more and more complicated, and they turned less,
+they turned away from more technical ways of blocking spam to more sort of human relations
+type of things.
+Like we ended up having to hire professional deliverability specialists, and they weren't
+technical people, rather they were people who would curate ongoing relationships with
+all of the big internet service providers, so that they basically had a direct line to
+the people who held the keys to the blacklists, so that when something happened, they could
+go beg for forgiveness from these ISPs to say, "Yeah, we have this one client, and they're
+an asshole, and we fired them, and it won't happen again."
+And so the short version of all of that is that eventually where we are today is that
+something like 90% of all email users are captured by 10 companies that run the email
+services, so basically SMTP is no longer a sovereign protocol.
+You can download email server software, you can run email server software, there's plenty
+of free open source email software out there, and you will find that even if you fully obey
+all of the rules of the SMTP protocol, then your emails will in many cases still not get
+delivered, and the reason for that is that over the decades, we created all of these
+new meta layers of protocol rules that are unfortunately governed by centralized gatekeepers,
+and so it is really the boys club of email now, where if you're not in the club, your
+emails get black holed, and so as a result, the only way that you can reliably send email,
+and I do this myself because I have a newsletter that I send out once a month, you have to
+subscribe to someone who's in the club and has all of those relationships, and that's
+how you can ensure your email gets delivered.
+And so is that good or bad?
+Does email work today?
+Millions of people use email and it works for them, but the email that they are using
+is not the same email as 20 or 30 years ago, and I guess you could argue philosophically
+about whether or not that matters.
+I think we would say it does matter, but that is just an example of a way that a fully decentralized
+sovereign protocol can become centralized and captured, and I think it's a fascinating
+history because there was no bad guy, like there was no evil actor that was like trying
+to manipulate things and trying to like capture the protocol.
+It was actually a result of dozens if not hundreds of decisions over decades by many
+different people who were just, they were following their incentives, and the incentive
+was to solve the problems that the users were complaining about and make shit work, you
+know, without regard to, you know, some of these more philosophical quandaries like being
+able to use the protocol directly without having to ask permission.
+Yeah.
+Yeah.
+You, I actually have that portion of your article highlighted because that made me think,
+and I don't, you know, you don't have to comment on this at all, but it made me think of politics
+in general, like how many actors are just acting the way that they're incentivized and
+not really out of malice, right?
+Like not out of, but they end up, you know, again, stripping away freedoms through policy
+changes and doing things like that, and just that, you know, maybe there isn't, you know,
+the one big bad boss, right, and it's just everybody acting to their incentives that
+end up kind of centralizing, you know, centralizing things like the way that they've done.
+Yeah.
+I mean, this is, this also kind of ties into the self-custody stuff I was talking about,
+which is, you know, it's human nature to seek the path of least resistance to find the easiest
+possible solution to the problem, you know, without thinking about all the nuanced potential
+like second order effects.
+Yeah.
+Well, let's, let's get into the self-custody stuff a little bit, and if you wouldn't mind,
+you know, taking the consideration that some people watching this, or perhaps the people
+watching have no experience sending a Bitcoin transaction at this point, they've just bought
+on an exchange, you know, on Coinbase or something like that.
+Can you break it down from the simplest terms of like, what is self-custody?
+What is, what is a Bitcoin wallet, right?
+And what are the steps to simple forms of self-custody versus something like a multi-sig?
+And then what you guys offer at Casa and the point of that.
+Yeah.
+So what is a Bitcoin wallet?
+There's two main components to a wallet.
+And this is where it can get confusing for some people.
+One is key management.
+If you don't have the private keys, then you can't apply the correct cryptographic signatures
+to your transaction to essentially prove to the network that you have the right, you know,
+the ownership to that Bitcoin and the ability to move it.
+There are many other aspects of wallet software that basically, and it's basically accounting.
+It's, you know, looking at the blockchain data, finding the deposits and withdrawals
+that are related to the keys that are held by the wallet.
+And then, you know, managing all of those unspent transaction outputs can get pretty
+gnarly, but the average user shouldn't really need to know about that stuff.
+I see a variety of levels of custody in this space.
+And I actually just added a new one recently.
+So at the worst level of custody is where you buy Bitcoin on some sort of service and
+they don't even have the ability for you to request to withdraw it to self custody.
+That is, it's not even an IOU for Bitcoin.
+It's actually an IOU for fiat.
+Like if that company goes under, then you're probably never going to get Bitcoin.
+You might get some fiat equivalent value back.
+The next level is if you buy Bitcoin from an exchange or service provider that does
+support withdrawals.
+If you do that, you have an IOU for Bitcoin and you, if everything goes well, can request
+to redeem it and to get the actual Bitcoin sent to you into a self custody wallet.
+So then the first level of self custody is you have created a wallet where you have the
+keys AKA, you know, you have a seed phrase that was given to you that you're holding
+onto hopefully very securely and multiple redundant backups and so on and so forth.
+And once you get to this level, you no longer have an IOU.
+When you have the IOU, you're going and you're clicking on a button in an app somewhere that
+is, it's asking the third party who has the actual keys to craft a transaction and send
+it on your behalf.
+And of course they can refuse that request for any number of reasons, including your
+technical problems, insolvency, or in some cases, even like law enforcement, drag net
+sweeps.
+They can take your account for suspicious activity or whatever.
+But if you have the keys in any type of self custody wallet, you're not asking for permission.
+You're just following the Bitcoin protocol.
+So as long as you apply the correct cryptographic signature that matches whatever the conditions
+for your Bitcoin deposit address are, and of course you pay a market rate fee for the
+miners to include it in the block, then you should expect, you know, your Bitcoin is going
+to move to wherever you instruct it to with that transaction.
+Beyond that, what it turns into is more of a question of how resilient and robust is
+your self custody setup?
+So this is where we start talking about things of, are you using a single key wallet?
+If so, where are those keys stored?
+Are they stored on your computer, your laptop, your mobile phone?
+If so, those are considered hot keys.
+Whenever the keys themselves are on an internet connected device, this is arguably still safer
+than having the keys with a third party, but when they're on an internet connected device,
+you have, you're essentially putting them in a position where there's this door that
+billions of people could potentially walk through, right?
+You're connected to a network with billions of people, and we know there are some malicious
+actors out there who will try to get to your keys in a variety of different ways.
+There are hundreds of different ways that you can have your keys stolen from you if
+they're on an internet connected device.
+So what do you do?
+If you have a non negligible amount of Bitcoin, I would say if you have more than $1,000 worth
+of Bitcoin, it really starts to make financial sense to invest 50 or $100 into a hardware
+device to keep those keys safe.
+And people generally think of Trezor, Ledger, Coldcard, Foundation, I mean, there's tons
+of them out there.
+Think of these as your offline vault, and they basically protect you from all of the
+internet based attackers and malware and key loggers and stuff.
+So it's a great way to put you in the sort of top several percent strongest Bitcoin holders
+out there.
+But this is still a single key.
+And if you start to get to the point where you have a lot of value, like enough value
+that it would hurt to lose, you would lose sleep at night, it might materially affect
+your financial future, this is where you need to start thinking about how do I eliminate
+single points of failure?
+The pro of Bitcoin is of course, you can be your own bank, you can store and transfer
+and really manipulate your money on this ledger without asking permission from anyone.
+It's a great power that we've never really had before.
+But the flip side is with great power comes responsibility.
+So Bitcoin is a very unforgiving protocol.
+If you mess up, if it's a single key and it gets either stolen or lost, that's game over,
+there's a catastrophic failure and there is no support technician that can help you get
+your money back.
+You can't call Bitcoin, the Bitcoin helpline?
+Pretty much.
+I mean, you can call the helpline by posting on a forum and people will say, sorry for
+your loss.
+So how do we protect against that?
+Well, you have to be upfront in your protection and how you architect your keys and essentially
+manage them.
+And so if your keys are in a single place, you're vulnerable to any number of types of
+theft or loss.
+If it's one seed phrase, yes, putting it on a hardware device protects you from online
+attackers, but what if that device gets damaged, lost, stolen, or whatever, then you have to
+ask yourself, okay, well, what about my backups?
+I have dozens of pages of essays about backups because that can get really complicated.
+Most people back up their seed phrases in what we call clear text or unencrypted format,
+which means that those backups are still vulnerable to physical attackers.
+Basically anyone who can view that backup can load your keys into some software and
+steal all the money.
+And once again, you have no recourse.
+So how do we get around this?
+Well, you basically need to set up your wallet so that one key is not sufficient to move
+the funds.
+And this is where multi-sig, multi-signature comes into play.
+You can also just think of it as multi-keys.
+And so the protocol, which is programmable, allows us to define arbitrary conditions.
+We can say, hey, we're actually going to create a wallet with three keys and we need signatures
+from two keys to spend from it.
+Or we can create a wallet that is made up of five keys and you have to have three keys
+sign.
+And so you can start to see how this gives you some more robustness and resiliency.
+I think when you combine having multiple keys with storing those keys and their backups
+in multiple geographic locations and using them on multiple different vendors of hardware
+devices, you're really able to leverage this magic of what we call additive security.
+And you can basically think of it as strength through variety by heterogeneous architecture
+instead of homogenous.
+Basically if you had five keys and you put them all on Trezors, you're in a really good
+position there, but there could still theoretically be a supply chain attack of Trezor that somehow
+results in all of those keys being compromised.
+And that's an extreme edge case, but this is where we're getting to extreme levels of
+security here.
+So basically the culmination of all of that, the best practices that I've come to learn
+over the years, this is what Casa does, is that we have architected what we consider
+to be extreme levels of security while still being able to offer a level of usability that
+doesn't require you to be highly technical.
+And we also combine that with a level of support that's very hard to find with other wallet
+providers.
+You want to actually be able to get on a phone call with someone and think through all of
+the different decisions that need to be made in your key management, or if you hit some
+weird error that you don't understand, it's easier to talk to a human who spends all day
+dealing with this stuff instead of trying to crawl through support documentation and
+volunteer forums and stuff.
+So we approach this all from a multi-pronged approach of usability, security, and support.
+And unlike a lot of other wallets out there, we don't monetize you through your data or
+advertising to you, or trying to sell you other services.
+We're actually a very upfront subscription fee.
+You pay the fee, you get the service.
+We're not trying to collect a bunch of people's data and monetize it.
+Is that a flat fee for you guys?
+Okay.
+So for somebody who, like you said, might have only a thousand dollars of Bitcoin, it
+might not make sense to, I don't even know what that fee is, but.
+Yeah.
+Well, we do have a free hot wallet.
+If you only have a few hundred bucks, then as you just want to play around, you can definitely
+test it out.
+But our bread and butter is the multi-sig self-custody.
+And we have tiers all the way, the sort of more do-it-yourself two of three tier is basically
+like 20 bucks a month.
+And then our highest private client tier is actually 5,000 a year.
+And that includes a lot of stuff, including sort of bespoke inheritance planning.
+Okay.
+Yeah.
+I was going to say when you, because when I think about, you know, my stack and, you
+know, as, as stuff grows, right.
+As we get through, you know, next having cycles and things like that, like, what does it make
+sense to do, you know, cause you, you, you want that complete self sovereignty, but also
+it does come with a lot of like, you know, the idea that somebody might have, you know,
+X amount of money, whether it be $10,000, that might be life-changing to them to something
+that grows to a hundred or a million dollars worth of Bitcoin.
+Right.
+And you're, there's almost like a natural progression, right?
+Like you might have started with a SIG single signature wallet, but, you know, as time goes
+on that becomes a larger part of your, your portfolio.
+And so do you see kind of people transitioning from stage to stage?
+Maybe they start at that hot wallet stage and then go, okay, like, you know, I want
+to eliminate these different attack vectors here and kind of continue on that, that route.
+Yeah.
+Thank you very much.
+My general suggestion is that you should not have a level of security that feels appropriate
+for what your current value of your Bitcoin is.
+You should have a level of security that feels appropriate for whatever 10 times the current
+value is, because, you know, as we know that value can change drastically very quickly
+and you don't want to get kind of caught unawares and in a bad security posture.
+Yeah.
+So the geographically distributed multi-signature keys, what are some of the challenges with
+that in general?
+I mean, I've heard people kind of just be like, well, if you need to send something,
+the coordination of efforts behind getting access to those keys to actually, you know,
+sign a transaction can be difficult.
+Yeah, well, this is where, you know, having client advisors, you know, help you make some
+decisions around this because everybody's situation is different.
+We've seen everything from, you know, people just distributing devices amongst their family
+in the sort of same local city or town, which is fairly convenient versus on the extreme
+end people who are worried about nation state attacks, actually distributing their keys
+across different countries that are not particularly friendly with each other.
+And so there are many decisions that have to be made when it comes to your self-custody
+architecture, and at the end of the day, pretty much all of them have to do with finding what
+you believe is your appropriate trade-off between convenience and security.
+And so, you know, placing your keys in geographically distant locations, obviously the further apart
+they are, the more difficult it is to craft that transaction.
+This is both good and bad, obviously it's less convenient if you're in a hurry.
+Though I would say, you know, we offer multiple different architectures, so like if you have
+a three of five, you can also have a two of three and a single SIG and treat it like,
+you know, checking account, savings account, like extreme long-term investment account,
+you know, you don't have to only have one architecture.
+But the flip side is like the further geographically apart your keys are, the safer they are against
+like environmental losses, natural disasters, and one thing that some people worry about,
+it's still an edge case, but wrench attacks.
+So I've had a lot of people ask me over the years, you know, how do I protect myself from
+wrench attacks, and the only conclusion that I can come to is that if you're in a situation
+where you're under duress, the only way that your Bitcoin can be protected is if you literally
+can't access it.
+And so if accessing your Bitcoin requires you to travel to multiple locations, and some
+of those can actually be, you know, high level of physical security, like a safety deposit
+box at a bank or at another private security service, then it becomes very difficult to
+imagine an attacker willing to endanger themselves by having to, you know, hold you hostage and
+move you around, really, you know, a physical attacker wants to get in and out as quickly
+as possible, but the whole issues around like duress situations, and in many cases, it's
+still too early, like we don't have a lot of data around the different ways it can go.
+I mean, this is one of my many projects is keeping track of as many physical attacks
+against Bitcoiners as possible, but it's still relatively rare.
+I think there have been like 130 known attacks in the entire history that have been publicized.
+So, you know, far, far, far more people, of course, lose their Bitcoin to insolvent custodians
+or hackers or whatever.
+But if we're talking about, you know, protecting yourself from every possible form of loss,
+then that extreme case is an interesting one to speculate about.
+Yeah, it's really just an interesting topic in general.
+I mean, and the opinions and thoughts on it change so much from, you know, a couple hundred
+bucks to a million, right?
+Like just the idea of like, oh, I'll just put it in a single signature wallet all the
+way up to like, holy crap, that's a horrible idea.
+Like who wants, you know, a million dollars sitting in, you know, on a plate or something's
+stuck underneath their table or wherever they choose to hide the thing.
+Yeah, I mean, the problem is that I think the average person only thinks about the happy
+path, a.k.a. the case where everything is going well.
+We tend not to be adversarial minded.
+And so that's where my paranoia and thinking about and seeing a lot of the edge case failures
+that have happened over the years have really shaped my thinking.
+Yeah.
+What's just quickly before we wrap things up here, what's a good instance or what's
+your guys' solution to like multi-generational like Bitcoin holdings?
+So like passing down your Bitcoin inheritance planning?
+Yeah.
+So inheritance is tricky because you want to architect a setup where presumably you
+are the only one who has access to the coins right now, but then magically, if you die,
+some sort of switch gets flipped and your beneficiaries can then access those funds.
+And so the cool thing about multisig is that actually allows you to create setups like
+that, because you can have a threshold of keys set up that are only accessible after
+your death.
+You can do that by distributing keys.
+Once again, like in a, you can put one in a safety deposit box that has been beneficiaries
+listed on it.
+So, you know, they have to provide proof of death.
+Casa, we ourselves can facilitate that with the one key that we hold.
+And then you can, you can, this is where it starts to get personalized.
+Like if you have a spouse, you can share a key with, but this is also why our inheritance
+solutions are fairly bespoke is because it does, it depends on your own setup, you know,
+what your family and beneficiaries look like who, who you have who, you know, you would
+be willing to, to be a key holder because once again, these things, they're not set
+it and forget it.
+There is ongoing maintenance required.
+And you know, even if you have someone who is a key holder that is not like actively
+using the key and sign and you still need to do essentially health checks every once
+in a while to make sure that they haven't lost it.
+Yeah.
+Yeah.
+I hear you.
+All right.
+So one of the questions, if you didn't know, I work in the elevator industry.
+So one of the questions I asked every guest before we sign off is give me your 32nd elevator
+pitch for Bitcoin.
+Fair enough.
+Bitcoin is an open project that is aiming to be the optimal form of money.
+And anyone who wants to participate can weigh in and can contribute their time skills and
+resources to trying to make the form of money that is agreed upon to be the best in existence.
+Yeah.
+Awesome.
+All right, Jameson, give everybody a sign off here, let, let them know where they can
+find you, where they can read up on, on all of the great work that you put out there and
+how they can get in touch with Casa.
+Yeah.
+So a lot of people know me for my educational resources page.
+If you just go to Bitcoin.page, you'll find thousands of links and dozens of different
+categories for whatever Bitcoin rabbit hole you want to dive down.
+You can also find me on Twitter.
+It's just L O P P. I'm also on Nostr, but I couldn't tell you my npub off the top
+of my head, but you can find all of my other social media contact info on my site.
+And it's casa.io, C A S A dot IO for the company.
+If you want to learn more about our security offerings.
+All right.
+Awesome.
+Thank you for everything you do.
+I appreciate you joining me here and continue good fortune.
+Thanks for having me.
