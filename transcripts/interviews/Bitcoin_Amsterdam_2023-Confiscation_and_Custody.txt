@@ -1,0 +1,504 @@
+- Hello, and welcome to the Confiscation and Custody panel.
+You guys want to take a second, introduce yourselves?
+- Oh, okay.
+Hello, everyone. I'm John Kerbrad.
+I lead the Robinhood Crypto business.
+- Jameson Lopp. I'm co-founder and CTO of Casa.
+- Joaquin Sasso. I run EMEA and LATAM at BitGo.
+- Hello, everyone. I'm Anim in the Bitcoin ecosystem.
+I go by the name SeedSigner.
+- And I'm David Zell,
+the co-founder of the Bitcoin Policy Institute.
+So we're talking about confiscation and custody,
+but I think a question that we should start with,
+just to make sure that everyone is on the same page,
+what does it actually mean to "own" Bitcoin?
+Like, what does that entail?
+- Well, there's legal ownership,
+and then there is ownership from the perspective of Bitcoin, the system.
+So most of the time, I think, when we talk about owning Bitcoin,
+we mean control.
+Like, can you tell the system with the correct,
+you know, cryptographically signed messages
+that you have the ability to control and move your funds as you wish?
+But, of course, there's also the legal aspect,
+and, you know, when you don't have the physical control,
+you may have a level of legal control or, you know, legal proof of ownership
+where you should be able to tell third parties to move the funds on your behalf.
+- I would throw in as well,
+if you own Bitcoin on a platform like Coinbase or another custodial platform,
+you have a legal claim to Bitcoin.
+Assuming that the organization that you're doing business with
+is fully reserved and has access to the Bitcoin.
+That's a separate discussion, but...
+- Yeah. So when you think of a wallet, you know,
+you normally think of something that you, like, put bills or coins or cards in,
+but that's a bit of a misnomer when it comes to Bitcoin.
+Can you guys explain what a Bitcoin wallet is as well?
+- Maybe I can take that one.
+I like to explain it literally as a mailbox, right?
+In the mailbox, there is an address, which is public.
+It's in front of the mailbox.
+You give it to, unless you don't want to, you can give it to anyone you want.
+There's not huge risk, okay?
+There's a measure of risk, but not huge risk.
+And anyone can actually deposit in that mailbox if they have that public address.
+What you want to keep for yourself is the actual key to open the mailbox
+and to basically be able to move whatever is in the mailbox, right?
+We can get deeper into how those keys are organized, created, stored, etc.
+Different custodial models.
+But that would be, in a nutshell, how a wallet would work for Bitcoin.
+- Yeah. I mean, I see a wallet as a view of the ledger, as it were.
+There are many different components to the software that makes up a wallet.
+But every wallet needs to somehow be looking at the blockchain,
+have an understanding of which addresses belong to you,
+and then whether or not the wallet knows the private keys
+and can help you manipulate and control those addresses directly is kind of a separate thing.
+But there's UTXO management, fee management, understanding what's happening in the mempool.
+It can get very complicated, especially for self-custody wallets.
+The thing that the third-party custody wallets have going for them is
+they're able to abstract away a lot of that complexity under the hood.
+So they can just provide a really slick user interface to you,
+so you're just instructing to them to do all of the hard stuff
+and they deal with most of the infrastructure.
+- I think that's a really natural segue into, I think, the core substance of this panel,
+which is there's not just one way to own Bitcoin.
+There's lots of ways to custody or entrust the custody of your Bitcoin to someone else.
+So maybe you guys could spend a little bit of time talking about the different ways one can own Bitcoin
+and their sort of relative trade-offs.
+- I think the thing that people sometimes forget about a wallet and Bitcoin is
+actually you don't have the Bitcoin physically with you.
+What you have is just this address that we discussed about.
+And so there are many forms that you can have a wallet.
+It could be a piece of paper where you have your key written down.
+It could be a sentence from different words.
+Or it can be a hardware wallet where it's a physical device.
+Or you can trust somebody like Robinhood or Coinbase to store your coins for you.
+So there's a lot of different variations of custody.
+And I think depending on the type of user you are and how confident you are, you have different options.
+- I would structure it at a very, very high level in managed and self-managed custody, right?
+Managed custody would be a custody where those private keys, that key to the mailbox,
+would be stored and secured by a third party.
+Inside that world of third parties, you can have regulated custodians
+that are actually scrutinized on how they do it under certain norms,
+depending on the country and the jurisdiction, etc., etc.
+And there's also a component of that custody model, managed model,
+where your broker, the app where you go in, buy and sell, can also be your custodian.
+Maybe we can speak a little bit more about that later.
+The self-managed world would be a world where with any kind of infrastructure you have,
+maybe a special USB like a dresser, etc., etc.,
+you actually own and have total control of the private key material that is digital,
+but it's of course stored in a device.
+So I think that would be a good way of separating the two worlds.
+Definitely there are more, let's say, different, you can give different uses,
+and there are more features and stuff you can do when you select one or the other,
+but I would say that not all of them are prepared and ideal for all kinds of users, right?
+And I think that is the differentiation I think we should take into account here.
+I think I'd also add it's not necessarily just a dichotomy in that there could be a third party
+who custodies your private keys or you could entirely custody your private keys.
+Multi-SIG enables some really interesting kind of additional configurations,
+which I'm sure Jameson can talk to, where it's what they call collaborative custody,
+where a custodian might manage one or a portion of the private keys,
+and then the user themselves might manage the remaining private keys.
+But I'm happy to let Jameson talk more about that.
+Yeah, well, actually, BitGo does as well.
+I worked as an engineer at BitGo for three years before pivoting to FoundCasa,
+and the multi-SIG distributed key setups were always very interesting to me.
+BitGo operates their multi-SIG wallet on an Oracle model
+where BitGo is co-signing and applying business logic and other security and validation,
+whereas with Casa, we're more focused on individuals and helping individuals
+spread a number of different keys on different hardware devices far and wide
+in order to give themselves a level of robustness and reliability
+and basically allowing for failures to happen and ensuring that a failure won't be catastrophic.
+But additionally, Casa also holding one of those keys so that, similar to the BitGo multi-SIG,
+we don't have the ability to unilaterally steal your funds.
+We don't have the ability to unilaterally freeze your funds.
+And you can go even crazier with this.
+The ecosystem, I believe, is just starting to scratch the surface of doing even more distributed custody
+where you have keys not only shared between two parties, but maybe between three, four, five parties,
+maybe even multiple different somewhat trusted institutions.
+And I think this is a very interesting way to bridge the gap
+between what we have now of full trusted third party and one trusted institution
+versus only trusting yourself and having to bear the full responsibility for managing your keys.
+Now having some hybrid in between, we're able to spread trust
+amongst many different entities and institutions for, hopefully, even more robust security models.
+So when someone is thinking about how to custody Bitcoin, they're presented with a suite of options.
+They could buy Bitcoin on Robinhood and keep it on their smartphone.
+They could keep it on a hot wallet on their phone.
+They could explore collaborative custody models.
+They could also buy a Trezor or a Ledger wallet.
+How do you guys each think about the decision framework that a Bitcoin owner should employ
+when deciding what methods or what combination of methods they ought to use to custody their Bitcoin?
+How does somebody arrive at, "Well, I'll do partly this, partly that,"
+or do you recommend just one form of custody?
+I'd like to get into that from each of you.
+I'd throw out there, you mentioned the word "arrive," and I would say that the security of your Bitcoin,
+the journey is the destination.
+So I wouldn't anticipate that any decision that you make to custody your Bitcoin with a service provider
+or independently, that may not be the same decision in five years.
+A lot of people tend to, as they get more familiar with Bitcoin and more comfortable with the tools,
+a lot of people tend to trend more towards a self-sovereign or independent custody the longer that they're Bitcoiners,
+but some don't.
+But I would just emphasize that it's definitely a journey, and your self-custody plan may change over time,
+and that's perfectly fine.
+I guess that the actual use case for each one of us changes with that journey, right?
+Probably when you start looking into Bitcoin, you only want to be exposed generally to the price.
+You're not very technical.
+You really don't know or don't want to dig into how to safeguard the private keys,
+how to maybe download the Bitcoin code, et cetera, et cetera.
+And that's probably when you go to a Robin Hood of the world, which you trust.
+Hopefully, you look into what are the custody methods that they use.
+Maybe they have their own custody, so your risk is directly with the broker you're using,
+or maybe Robin Hood itself or whatever other broker uses a regulated custodian.
+By the way, this method would be a method that would have avoided most probably what happened with FTX, right,
+because of segregation between custody and trading and fiduciary responsibility of those assets that can't be moved or rehypothecated.
+But maybe throughout your lifetime, right, and your use cases may evolve,
+you want to start doing other things with Bitcoin, like maybe payments with the Lightning Network, for example,
+that's just one of the use cases, and in that case, you need to like enhance the way you interact with that Bitcoin,
+the way you safeguard it, where you have it, et cetera, et cetera.
+So I would say it really depends on the use case and what do you want to do with it, right?
+There's not a perfect answer, I would say.
+I mean, I think longevity is one issue to think of as well.
+We have to remember this space is incredibly new,
+and there are not many companies that have existed in this space for more than five years.
+So, you know, I err on the side of paranoia,
+but I mean, I think that you should generally assume that companies will blow up or go bankrupt or just go away for any number of reasons.
+So Bitco has a pretty good track record compared to a lot of companies in the space.
+But compared to a company, if you are holding keys, then what you're really relying upon is the protocol and the network itself.
+So, you know, there is no Bitcoin company that has existed longer than Bitcoin the protocol.
+I think, you know, Bitcoin itself has the longevity, but even that is, what, 14, 15 years old.
+So it's a difficult thing, I think, to weigh long-term aspirations and robustness
+versus perhaps more short-term things like trading, doing loans, you know,
+more direct financial utilities that are generally going to be offered through trusted third parties.
+In some cases, it is possible to do these things directly, but, you know, that aspect of the ecosystem is still being built.
+Yeah, I think it will really depend on two things.
+One is your level of comfort of using technology, and two is diversification.
+I don't think you should be storing all your Bitcoin in one solution.
+If you want to go buy a coffee with your crypto, you're not going to go back to your house,
+trying to find in your safe your ledger and try to use it, right?
+I also don't think, you know, you should put everything on an MPC or a multisig
+in case there is an issue with the algorithm, like we still see a problem with MPC to this day.
+And at the same time, you should not also fully, completely, like, push everything on a piece of paper
+because you don't want to trust anyone, and that piece of paper may disappear.
+So I think there is multiple options. That's something at Robinhood we've been focusing on.
+So we have our own wallet that you can store on your phone.
+You know, the key is yours. Robinhood cannot do anything with it.
+And with this wallet, you can do anything.
+You can decide, you know, to go on dApps. You can pay with it. You can transfer. This is yours.
+And also, if you have a lot of money and you don't necessarily trust yourself to not lose a key
+or you are worried about it, you can use Robinhood.
+You know, 95% of our crypto is stolen and called.
+We don't come and go funds. We don't do anything crazy like we saw with FTX.
+And I think it's part of the research for people.
+Like, before trusting something like Robinhood or Coinbase, they need to do some due diligence.
+The same way that when you go to a bank, you don't just go to a random store at the corner
+and you're like, "Hey, how are you, bank?"
+So I think, you know, for us, we've been really focusing on giving the choice.
+Not every customer will use crypto the same way, and therefore, we need to have multiple solutions for them.
+I definitely agree with that.
+And I think a lot of people tend to kind of be all eggs in one basket or binary thinkers.
+And they don't realize that in the fiat world, you may have a savings account and you have a checking account
+and you have a wallet where you carry around a certain amount of currency.
+And it's really productive to think about your Bitcoin cold storage use cases as different use cases.
+We're here at a conference. We're buying, you know, beers and water.
+And a custodial lightning wallet may be a great option for you in terms of convenience.
+And if something were to happen with that app or the company that operates it,
+you lose, you know, the equivalent of, you know, 50 or 100 euro in fiat.
+It may not be the end of the world.
+But for the money that you're saving for your later years in life or to hand down to your children,
+we're, of course, going to think about that differently.
+And there are different tradeoffs with different sorts of Bitcoin storage use cases.
+It's just like diversifying your portfolio, literally.
+In a way, yeah.
+And I think, you know, also something that we forget a lot when the Bitcoin is what happened after.
+You know, like some of us are going to die most likely at some point.
+And how do you pass this Bitcoin to the next generation, you know?
+And so that's at some point you will have to either trust a third party to store your key.
+You will have some question on, you know, if you're using something like Robinhood or Coinbase,
+can they pass this money to your generation?
+So there's a lot of questions that sometimes we forget because we're all excited about the tech.
+But, you know, if you're actually putting your saving into it, you need to start thinking about that.
+Right. Now, it's sort of an oft-repeated, you know, and sort of axiomatically true thing about Bitcoin
+is this phrase, "Not your keys, not your coins."
+That's something that, you know, you see from a lot of thought leaders in the Bitcoin space
+who really encourage people to take custody of their own Bitcoin.
+But if we look sort of honestly at the global landscape of Bitcoin usage,
+I think it's pretty clear that most people are not using the network in that way.
+They are sort of taking legal claims to Bitcoin and letting the Robinhoods of the world custody their Bitcoin for them.
+So my next question is this.
+What do you guys think about the sort of trajectory of custody solutions?
+What does the future of Bitcoin custody look like?
+And when we think about how the next million or the next billion users may custody Bitcoin,
+does that trend concern you at all?
+Yes. I mean, this is what I've been doing for nine years, focusing on self-custody wallet software,
+because I think it's obvious that the convenience that custodians can provide is a major market advantage.
+Human nature is that we tend to choose the most convenient option pretty much regardless of everything else.
+So my goal is to continue trying to make self-custody as convenient as possible,
+because it's the only way to stem the tide of ending up with the overwhelming majority of people trusting a handful of third parties.
+And it's hard to say whether or not we're winning. It doesn't feel like we're winning.
+But then as long as the option is there, I think that we at least are giving people the ability to opt out if they put in the time.
+But this is the tricky part, is you have to take a lot of responsibility,
+and that's another thing that's kind of against human nature and really the arc of civilization.
+We're able to continue advancing civilization through outsourcing various aspects of our lives to trusted third parties.
+So it's a really weird thing to be working in the self-custody space,
+because it feels like you're actually fighting against human nature.
+I think that's the key, right?
+If we want to be realistic, in my opinion, right now with the technology we have right now, and of course this will evolve,
+if we think about 1 billion, 2 billion users real adoption,
+if we think about our grandparents interacting with Bitcoin or our parents even,
+I think it's not realistic right now with the technology we have
+that too many people are going to go for the self-managed way, right?
+So I think that's a little bit the balance and the reality we have to see.
+If we really want quick adoption, there is not many chances that in the next 5 to 10 years self-manage is going to be the key.
+Actually, it's going to be, in our opinion, the opposite, right?
+That's why BitGo, for example, sets up regulated fiduciary custodians,
+just in the same way there are custodians in the traditional financial world.
+It gives protection to the client, it's very, very seamless to use and to interact, etc., etc.
+You just get all the nuances and the complications of storing the private keys.
+It is true that you give up a little bit of the decentralization of the chain, etc., etc.
+There are disadvantages, of course, you have to give up something.
+The question is, are those 1 billion, 2 billion people,
+will those people agree to say no to those advantages of the chain
+in order to have a seamless interaction with Bitcoin?
+And are they comfortable with having this third-party custodian or not?
+We think that the real adoption is through the custodianship way, right?
+I'm assuming you disagree.
+I wouldn't say disagree, but I think we're also kind of speaking abstractly
+as though there's one unified Bitcoin user that lives in a unified political environment
+where all the variables are the same.
+And the truth is, there are very different people in different political environments around the world
+that have very different interests in Bitcoin,
+whether it's number go up, trying to escape inflation,
+or if it's that they live in some sort of oppressive political regime
+and Bitcoin is a lifeline for them to be able to organize or oppose a government.
+So it's definitely important that we have all of these different tools out there based on people's needs.
+But I think over time, the tools are going to improve,
+and I think the reason to self-custody Bitcoin is also going to increase over time.
+I think a lot of us in this room have a sense that governments are becoming more invasive
+into different parts of our lives, and technology at large, unfortunately,
+is a force that they can leverage to gain more control over our lives, especially financially.
+That's a caveat to what happened with the Canadian truckers in Canada,
+where you wouldn't expect those kind of behaviors from a government in an evolved first world country.
+But I would just add that the tools are getting there, but it takes time.
+As Jameson noted, Bitcoin itself is 14, 15 years old.
+There have only been tools in the space that are being honed for a few years.
+So the tools are getting better, and I think over time the "why" is going to become strong enough
+that the "how" becomes easier for people.
+If I may offer an optimistic perspective,
+I believe that one of the primary reasons that we see so many people coming into Bitcoin
+with third-party custodians is quite simple.
+They are the on-ramps.
+The reason that a lot of people are coming into Bitcoin is from the financial investment perspective.
+And in order to do that, you have to have something straddling the traditional financial system
+with the new financial system.
+And these are the exchanges.
+These are the brokerages, the places where most people actually acquire their coins.
+What am I getting at?
+I think the solution to that is something that a lot of people are striving for,
+which is this "circular" Bitcoin economy.
+So I think that the way that you start to push away from that major centralizing force
+is you stop telling people to buy Bitcoin.
+You tell people to earn Bitcoin.
+When you're earning Bitcoin, I think it's much more likely that people will be receiving it to a self-custody wallet.
+Cool.
+Well, we want to talk about confiscation as well.
+So I'm going to ask one more question kind of about self-custody
+that I think will be a natural segue into a conversation about confiscation risk.
+So we've talked about the sort of benefits of using a third-party custodian,
+whether that's sort of ease of access, makes it easier for my parents to buy Bitcoin and manage it.
+We've also talked about some of the sharp downsides of those solutions as well.
+So I'd be remiss not to ask, what are the sort of core advantages of self-custodying Bitcoin?
+Like if someone came up to you on the street and said, "I just bought my first Bitcoin.
+Should I keep it with a custodian or should I buy a Trezor or do whatever?"
+Pitch me in 60 seconds on the value of self-custody.
+I think the real innovations of Bitcoin answer that question.
+We have electronic dollars and euros that we can send around the world,
+but the innovation of Bitcoin that I am most focused on is the censorship resistance of Bitcoin,
+the dilution resistance of Bitcoin, the seizure resistance of Bitcoin.
+And all of those use cases typically involve self-custody,
+because if you are not holding the private keys yourself, you're asking permission from someone else.
+So if you should run afoul of, you know, be outside of the Overton window trying to exercise your financial power,
+you could be restricted from doing that.
+So self-custody, in my opinion, is what enables all of these truly transformative use cases that Bitcoin embodies.
+I think I agree with that, but I think it will depend on who that person is.
+And I think my first question to them will be like, "Where are you from? Do you know crypto? Do you know technology?"
+At the end of the day, I'm pretty sure that if I ask the audience,
+there are more people that lost crypto from a self-custody wallet than from a Coinbase or from a Robinhood.
+And the reason for that is because it's very complicated.
+And we have to be honest, as technologists, this technology has been built by engineer for engineer for a very long time.
+If you think about it, when someone wants to use an iPhone or when someone wants to send a text or something,
+they don't want to know how is the thing working behind.
+They don't want to know the code. They don't care about any of that.
+They just want the text to be sent and be received as fast as possible.
+And for a lot of people, that's what they want with the money, right?
+We are lucky in the EU or in the US to have grown in a world where banks exist and everything.
+But in some countries, they skipped that part.
+They didn't have the banking system from the '80s being developed.
+So for them, having a self-custody option is their only way to have a bank, actually, and to have a real savings system.
+So depending on where they are from, I think the answer will change a lot.
+All right. Any other thoughts before we move on?
+Unfortunately, this, once again, is kind of the convenience versus the more theoretical paranoid aspect.
+I think we all know why you would want self-custody and not have to ask permission.
+The big trade-off and the thing that I think most people balk at is the level of responsibility that comes with taking on,
+holding your own keys, and talking directly to the Bitcoin network rather than to a third party who is doing a lot of the heavy lifting for you.
+Right. Well, let's move into the confiscation part of this discussion.
+It's often repeated in Bitcoin circles that the asset is "unconfiscatable."
+So that's my question. Is Bitcoin confiscatable?
+Yes.
+Wait, but Jameson, I thought Bitcoin was unconfiscatable.
+There's a confiscation.
+Have I been lied to? What's happening?
+Bitcoin has always offered the promise of being your own bank.
+And in fact, I argue that it is possible to create security architectures that are far exceeding any security that the greatest bank vault in the world,
+even Fort Knox, could offer to you if you wanted to secure an asset like gold or physical cash.
+However, an exceedingly small portion of Bitcoin users have put themselves into a security architecture that is anywhere near that robust.
+The vast majority of Bitcoin holders don't even hold their own keys.
+Those that do, probably, definitely the vast majority of them have single points of failure in their architecture.
+Most of them, if they have graduated to using a hardware device, they still probably have a single signature wallet with a single key backup somewhere.
+And these are single points of failure that can be confiscated by authorities if they can be found.
+So my point, and kind of shilling my own company, like unless you're using multisig, unless you're distributing keys in multiple places to eliminate those single points of failure,
+most likely there is confiscation risk.
+It just becomes a question of how difficult is it to find those keys.
+Yeah, this is part of my background, a little bit of my back story.
+I was a police officer for 15 years in the United States and worked in a digital forensic lab,
+assisted with writing legal process and search warrants and actually executing search warrants.
+I don't say that to make myself the most popular person here, but I have a unique perspective on the seizure of Bitcoin.
+Bitcoin is absolutely a seizable asset.
+And something like a Trezor Ledger commercially available hardware wallet is immediately recognizable as some sort of private key storage device.
+Now, whether it's involved in a multisig quorum, that's another issue.
+But what has impressed me over time about Bitcoin that Jacobson alludes to is the multisig use of Bitcoin,
+because that is a nightmare for any sort of government or even just private adversary, a thief trying to steal your funds.
+The ability to spread the ownership of the private keys out over a geographic area is just something that most traditional law enforcement entities will struggle to deal with.
+Because, part being, they just don't know where the keys may be.
+They may be in another legal jurisdiction.
+Only the person who is custody of the funds may know where the keys are or how many keys there are.
+Bitcoin is definitely seizable, but if you're willing to put in the work and you're careful,
+it can be custody in ways that are what I would call very seizure resistant.
+Now, the flip side of all of this is, even if you have the perfectly distributed key set,
+where perhaps your keys are in multiple countries that are not friendly with each other on a legal perspective
+and would not send authorities over to each other to extradite the key material,
+you yourself are always a single point of failure.
+There is no way to decentralize the custody of my own body.
+Therefore, your government, of course, can always put you in a small box and just sit on you until you decide to cooperate or not.
+Fair point.
+I think it ends up really being, the question is, can law enforcement authorities put together enough private key material to open your mailbox, right?
+It really ends up being that.
+It doesn't matter how many shards you have, how many pieces of the keys you have, or what technology you use.
+It really ends up being that.
+And as you say, your body can't be decentralized.
+I want to bring in the audience quickly for a little participation.
+We're all friends here, so it's okay.
+Go ahead and raise your hand if you're a criminal.
+Okay, so Jameson is a criminal, you over there are a criminal,
+but it looks like the overwhelming majority of you do not self-identify as one who commits crimes.
+Shocking.
+My question is, why should all of these non-criminals worry about confiscation risk?
+You know, if you're not doing anything wrong, why worry about your Bitcoin being seized?
+Well, I'm sorry, but the audience is ignorant.
+I mean, we are all criminals, you may just not realize it.
+Well, I think also the audience, you know, we are all in Europe here,
+and we remember what happened in 2008, 2009, when Greece's central bank decided to freeze some accounts.
+And I think that's a real problem that can happen when something is centralized.
+But I think to our point earlier, I think it's the question of diversity.
+You cannot put all your coins in a wallet where you have to call 20 people to agree on unlocking these coins
+before you want to buy your coffee.
+And at the same time, you should not put all your savings in a place that can be confiscated.
+So I think we also need to remember Bitcoin is public.
+You can see all the funds moving in and out.
+And so that's a big risk, where you're giving a lot of information every time you're transacting.
+I think financial and political instability is one of the main reasons.
+You don't have to be a criminal to want to be safe from all those things.
+As you said, recently in the last 15, 20 years, we've seen crisis after crisis.
+I think I lived more years in crisis than in a good economic environment.
+So I guess especially, as you were saying earlier, depending on where you are, where you've been born,
+you might be more concerned about that than many people who are sitting here right now.
+I'd like to circle back to that concept of criminality.
+And it makes me think of a quote by Ayn Rand in that honest men cannot necessarily --
+governments are not designed to rule honest men.
+So the government, over time, will create so many rules such that there are no honest men.
+And governments are much more effective at ruling over criminals.
+So we, again, allude back to the Canadian trucker situation because it was so informative for us as Bitcoiners.
+A lot of people who were sending small donations to the truckers,
+who they themselves may not have been involved in the protests or in any of the activity that was going on,
+just sending a few Canadian dollars to help support and buy fuel for the truckers,
+they probably did not consider themselves criminal or did not consider that to be an illegal act.
+But the Canadian government responded very quickly and started freezing people's funds who had donated to the truckers.
+So I just throw that out there as some perspective.
+Maybe we're all a little bit more criminal, or we could be, than we think.
+Therein lies the problem.
+I mean, the criminal codes of any developed country are so complex, even lawyers don't know them all.
+Even lawyers only specialize in small portions of criminal code.
+I don't think anyone can honestly state that they have not committed any infractions against the criminal codes of their country.
+Very true.
+So it sounds like even if you're not a self-identified criminal, you should probably care about confiscation risk.
+So good to know.
+Thanks, everyone.
+Even without just confiscation, like we've seen in recent examples of banks, for example,
+preventing you to use your debit card or credit card the way you want.
+So, for example, Chase has been preventing people to load their Coinbase account, I believe.
+And, you know, that's just something that, you know, it's not you actually being a criminal because you just want to be exposed to crypto.
+But because this entity decided that this was a risk for them, they actually blocked you.
+And I think that's a big problem.
+Yeah.
+So as we're wrapping up here, I don't know if we have time for another question,
+but I think we do have time for each of you to give some closing thoughts about what we've discussed today.
+So maybe we start with you, Seedsigner, and work our way down.
+Sure.
+I probably represent the mountain man self-custody philosophy on the stage here.
+A tiny bit more about what I do.
+I lead an open source software project that allows people to build themselves a Bitcoin cold storage device from off-the-shelf parts.
+You can do it privately without even purchasing something that would knowingly associate you as someone who's saving Bitcoin or as a Bitcoiner.
+It's geared for multi-sig first, and it can put some very powerful tools with what I like to think is an intuitive UI in front of people,
+so that when people are ready to take that step into self-custody, especially multi-sig self-custody,
+when I hear people say that self-custody and multi-sig are too complicated, my response is then we're not doing it right yet.
+So the tools are getting better, and for people who want to get there, the resources are out there.
+So dig in, and I think it's not as easy as you might think.
+But that's my spiel.
+I would say, and this is a good segue, until that technology is not super easy to use by absolutely everyone,
+the good news is that there's still other ways of customing your assets, interacting with them in a secure way,
+without having to be exposed to things like FTX and this type of scandals.
+There are regulations already in place in different jurisdictions in the world that really protect the users and the people who use these custodians from bankruptcies,
+and they have all the checks and balances that you need to have to protect the customer as much as possible.
+Of course, it doesn't have to be binary.
+There are grey areas. You can use a hybrid model or just use one and then change to the other one to the self-managed whenever you feel comfortable,
+and there's real easiness of use.
+In our case, BitGo is one of the largest regulated custodians in the world.
+We also have a very, very big self-managed wallet infrastructure that around 30% of the exchanges out there use.
+We pioneered Multisig for Bitcoin wallets a time ago.
+Jameson knows more about that than me.
+I think technology will have to continue developing until it really covers all the use cases
+and we can really give an absolute hybrid number of options to users that want to hold Bitcoin and interact with it.
+Well, listen, it's actually very easy to take custody of your Bitcoin.
+There's a hundred different apps that you could download, set up in less than five minutes, generate some keys and withdraw funds to.
+However, the difficulty is in setting up self-custody in such a way that you avoid the million different foot guns
+and ways that you can really screw yourself and lose access to your money.
+It's all of these adversarial edge cases that people tend not to think about that end up coming and biting them
+over the long term of self-customing for many years.
+And so the short version of what Kasa does is we have a distributed multisignature self-custody set up,
+several different architectures that we offer to people.
+And what we really add as value is, think of us as a consulting service.
+We help people navigate all of the decision making that is required when you're trying to figure out,
+how do I want to distribute my keys?
+How do I need to figure out how to be able to handle inheritance or certain types of loss situations?
+And how do I do it in such a way that I don't have to trust any single third party,
+even Kasa, even any of the hardware manufacturers, so on and so forth.
+Yeah, and I think for us at Robinhood, we've been really focusing on giving the choice to the customer.
+We have a lot of assets under custody, and we don't make a single cent.
+We don't leverage against it.
+We don't lend.
+So for us, we actually don't really have an opinion.
+If you don't feel like you're ready to self-custody, you can leave it on Robinhood.
+We store all our assets on cold storage up to 95% plus, and the rest is just here to support operation and transfer.
+And if you don't want to do that and you want to have your self-custody option, we give you a wallet,
+or we allow you to transfer if you're eligible to any other wallet.
+I think for us, the main focus has been to remove the barrier to entry to crypto.
+I still think it's too complicated.
+I think we still have a lot more work to do.
+And for us, we've been focusing on giving the best price if you want to purchase crypto
+and let you transfer if you want to.
+Awesome.
+Well, we've heard some diverse perspectives on Bitcoin and custody, so thanks to all of you.
+My thoughts as the moderator, don't trust people, third parties, with more Bitcoin than you can afford to lose.
+But just my two cents.
+I appreciated all of the diverse opinions.
+Thank you guys so much.
