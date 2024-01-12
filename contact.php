@@ -371,6 +371,7 @@ NjT4rMUesCnjTVHVM9KXvMemwAhhYbM=
           <li><a href="articles" title="articles">Articles</a></li>
           <li><a href="presentations" title="presentations">Presentations</a></li>
           <li><a href="interviews" title="interviews">Interviews</a></li>
+          <li><a href="projects" title="projects">Projects</a></li>
           <li><a href="bitcoin-information" title="bitcoin info">Bitcoin Resources</a></li>
           <li><a href="lightning-information" title="lightning info">Lightning Resources</a></li>
           <li class="active"><a href="#" title="contact">Contact<span class="sr-only">(current)</span></a></li>
