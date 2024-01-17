@@ -1,0 +1,634 @@
+Hi, Jameson. How are you? We are live now. We're going to wait a few seconds
+to check that everything is okay. Yeah, we are okay here. We are also live here in LinkedIn.
+LinkedIn, Twitter, and YouTube, and just on time with the Bitcoin ETF approval by the
+SEC. Maybe, finally. Yeah, maybe, maybe. Let's hope this time is for real. So, how's everything?
+Thank you for joining us. So, welcome, everybody. This is the second episode of the Blockchain
+Security Series. Today, we will be interviewing Jameson Lopp, founder and CTO of Casa. So,
+Jameson, welcome. What are you -- what do you think about this ETF approval?
+
+You know, I think it's mostly been interesting to see all of the incompetence over the past
+few days. These people who are supposed to be knowledgeable enough to protect us and
+to regulate these markets that are, you know, doing pretty high-tech stuff, they keep proving
+that they don't know how to operate properly in the high-tech space. Whether that's from
+a cybersecurity standpoint, or now it seems like from a general website management standpoint.
+Right now, it's not entirely clear what's going on, but so many things keep popping
+up and disappearing. It's just ridiculous.
+
+I agree. I agree totally. So, to start,
+I want to talk so many things with you, but I would like to start asking you, how did
+you get into security? How did you get into crypto? What was first, and why do you find
+it so interesting that you are dedicating yourself entirely to this?
+
+Well, I spent the first decade of my career, after getting a computer science degree, working
+to build infrastructure for an online marketing company, and over the years, I went further
+and further into the back-end infrastructure. I started out as like a front-end web developer
+and quickly went to the back-end where I eventually found myself doing big data management, trying
+to be able to ingest petabytes and petabytes of data and help our clients with analytics
+on their online marketing efforts. While I was doing that, I was scouring the nerd websites,
+just trying to stay on top of technology. Most of what I was focused on back then was
+more cloud computing. This was the very early days when a lot of people didn't even know
+what cloud computing was. And, you know, one of the websites that I would check regularly
+was Slashdot, and I started seeing various posts about this cryptocurrency called Bitcoin,
+and of course, like most people, the first few times I dismissed it, I figured, "Oh,
+this thing is not going to last. Everybody is going to lose their money." But third or
+fourth time that came around, I think it was something about the white paper. Perhaps it
+was like an anniversary of the white paper or something. And so I finally went and I
+read the white paper, and I just thought it was an incredibly elegant solution to a problem
+that I'd never really thought about much. And that was just what kicked off my interest
+as a hobbyist. I got some of my first Bitcoin and started playing around with it, started
+tuning into the various places for discussion like Bitcoin Talk and Reddit. And about a
+year later, I actually forked the Bitcoin Core software to create a version I called
+Statoshi, which was basically Bitcoin Core plus a bunch of built-in analytics and statistics.
+And that project went pretty well. It got used and referenced by several developers
+over the years. And about a year after that, I noticed that a lot of venture capital was
+coming into the space, and I figured, "Hey, I'm already spending all of my free time learning
+and playing around with this thing. So if I could just get paid to do it full-time,
+that seems like a dream job." And applied to a few different companies and was fortunate
+enough to get a job working at BitGo on their infrastructure, where we were helping enterprises
+and larger custodians secure their hot wallets with multi-signature technology, making it
+more difficult for those hot wallets to get hacked and drained, because that was one of
+the biggest problems back then. A lot of people, these centralized custodians were just losing
+everything because they were keeping all the funds in hot walls.
+
+In what year was this?
+
+So that was February of 2015.
+
+Perfect.
+
+And I was there for three years, and that's really where I got into security. I didn't
+really know much about security other than kind of your standard best practices for secure
+software development, not trusting user input, preventing malicious inputs. And it was those
+three years building infrastructure and helping out build the wallet aspects at BitGo that
+led me to see a number of mistakes. That's how we learn in security is people make mistakes,
+they allow exploits and vulnerabilities, and then we patch them and we learn from them
+and we move on.
+And so after three years of that, I realized that we had made great progress, at least
+in the enterprise security space for custodying these crypto assets, but I felt like there
+was still a big gap when it came to personal security for self-custody. So it was a pretty
+small pivot for me to take what I had learned and apply that with more of an individual
+self-custody mindset at Casa, where we're basically, we're helping people be their own
+bank and we're helping them navigate just a lot of potential pitfalls and foot guns
+that can happen if you jump into self-custody without really knowing what you're doing.
+
+Yeah, totally. Totally, totally agree. Like we always say, self-custody is why blockchain
+was built, like it was built, but if it's not done right, it's a big risk, right? So
+how did you start with Casa and what's the difference between Casa and other services
+and products available to call this self-custody? And I didn't know, I wasn't so updated that
+now you could also use Casa with Ethereum. I thought that it was also only with Bitcoin.
+
+Right. For the first several years, we focused on Bitcoin. That's where the majority of the
+market value is. And really, what are we trying to do? We're trying to help people not get
+wrecked and that means not get hacked and have funds stolen. But really, I think the
+bigger problem anecdotally from what I've seen over the past decade is that the people
+who take the step of going into self-custody, if they at least are taking the step of using
+a hardware device to keep those keys off the internet, then once you get to that point,
+the biggest potential form of loss and what happens most frequently is not that your funds
+get stolen, it's that you screw up and you basically lock yourself out of your own funds.
+So Casa is taking all of the best practices I've learned over the years, combining them
+with the best hardware and software that's available on the market and rolling that all
+into a really slick mobile app experience where your user interface is a nice mobile
+app, but the keys themselves are secured by a diversity of different hardware in different
+locations and the whole point of all of this is to ensure that you don't have single points
+of failure in your self-custody setup. So we're building for humans, we're building
+redundancy and robustness into the architecture so that really anyone who is able to follow
+the instructions in the mobile app immediately gets themselves put into a highly robust setup
+that is flexible enough to allow you to be a human and make mistakes and have a key get
+lost or stolen or destroyed and then that mistake doesn't turn into a catastrophic loss,
+you can recover from it. This is the fundamental premise of what we're doing and we leverage
+a number of different types of software and human consulting services to get there.
+So for example, there is one kind of way that you can configure your Cast account or there
+are different ways to configure it. It depends on the user, depending on the level of the
+user is what kind of configuration you recommend. How's like a normal onboarding process? How
+does it work? What hardware devices do they use? I would like to understand that process
+and what's the most common, let's say, point of failure that you're used to seeing?
+Sure. So we have a number of different tiers and these are both different service levels
+and different key architectures with different levels of robustness. Our sort of entry level,
+getting your own hardware and generally more self-guided tier that it's basically $20 a
+month, like $250 a year. That gets you into a two of three multi-signature setup. And
+you're currently able to use that same key set and this is one of the really unique things.
+You're able to use that same key set both for Bitcoin and Ethereum and the stable coins
+that we've added support for. And who knows where this will go in the future? Like I said,
+what we're trying to do is help people secure the things that are most valuable and people
+who have the most to lose are the ones that we're trying to service. So the default setup
+in a two of three with Casa is that you'll have one mobile key that's actually generated
+on your phone. It's secured by that secure element. And this is of course a hot key,
+right? It's on an internet connected device. So it is in a sense weaker than other keys
+that are in cold storage. But one of the nice trade-offs and sort of diversity aspects that
+you get from this is that that key gets automatically encrypted and backed up to your cloud storage.
+And it's an encrypted in a kind of two of two fashion so that even your own cloud storage
+provider is unable to read that key. Casa is unable to read that key. But when you get
+the different pieces of key material and reconstitute them on your phone, effectively you're able
+to lose your phone or have it destroyed or whatever. And you just go get a new phone
+and log into your Casa app and your cloud account and it'll automatically reconstitute
+that key. So then your second key is going to be on a hardware device. Generally, we
+recommend Trezor or Ledger, big name brands that have very secure histories and reputations
+behind them. But of course, you only have one key on that. So even if there was some
+issue with Trezor or Ledger, once again, you're not going to have a catastrophic loss. And
+then finally, the third key is held by Casa, completely offline cold storage. It's not
+something that's easily accessible, but it's really there as an emergency recovery mechanism.
+So depending on the tier you're at, the service level you're at, there are different types
+of authentication mechanisms that can be used to protect the access to that key. And at
+the lower tiers, it's generally a series of questions and answers that you set up. And
+if you request a recovery signature from Casa, you have to go through that authentication.
+And then there's some sort of waiting process, time delay, seven days is the standard for
+that tier. And once again, just making it more difficult for even if an attacker got
+into your account, even if they knew those questions, giving people time to be able to
+revoke or repudiate any requests for that key. And so it goes up from there. We also
+have three of five tier plans. And essentially when you add more keys, what you're doing
+is you're adding more cold storage hardware devices. And once again, diversity is strength.
+And so we recommend adding devices of different manufacturers so that you're not creating
+potential single points of failure. And at the higher tiers, you'll get more personalized
+consultation, phone calls with your client advisor. You can basically call us up at any
+time if you have questions, concerns, if you need to talk about any of the decisions at
+play and because really all of the decisions around key management involve trade-offs generally
+between convenience and security and our client advisors are well-versed in being able to
+help you navigate and understand every decision that you need to make. And then at the even
+higher tiers, we have extremely personalized setup of inheritance products, for example.
+
+I wanted to ask you first, what do you think about the famous five pound wrench attack?
+Have you had cases of people being extortioned with that? And what do you think about that?
+How does the product work? Do you think that's something that usually happens or is not something
+that you have been seeing so usually?
+
+So it is rare. I actually have a project where I catalog as many of these physical attacks
+as possible. And I think we're only aware of maybe 150 of them over the past 15 years,
+which compared to all the different types of attacks and thefts and loss, it's minuscule.
+There are patterns around those types of attacks. And the short version is it always comes down
+to engaging in risky behavior. So in many cases, the attacks occur against people who
+are extremely public and flashy. They're going around flaunting their wealth. They're putting
+themselves into risky situations, usually doing things like engaging in high value face-to-face
+trades like with a lot of cash and a lot of crypto. Or what we have seen in other few
+cases is that in some countries, like Colombia, for example, there are actually gangs that
+go around and they look for expats and tourists and basically target them with dating scams
+and then they drug them and they get you to open up your phone. And basically, I think
+it's scopolamine is like one of these compliance drugs that basically it makes you lose all
+of your inhibitions. And so we have seen some cases of people who had that happen to them.
+But in the case of Casa clients that had that happen to them, they did not lose the funds
+that were in their multisig because they were distributed across multiple keys. And really
+what happened there is that the attackers managed to drain all of their exchange accounts
+that they could access directly from the phone. But the other assets that were not directly
+accessible from only the phone were safe.
+
+Yeah, I don't know if you read about a case that was, I think that three or four months
+ago that Chop and Sal from Binance published in Montenegro, I think, but they had taken
+like 10 entrepreneurs for a trip or something like that. And they all got robbed and they
+finally could trace the funds. Yeah, but something like that.
+
+Yeah. So the short version of what do you do about the $5 wrench attack is, and I have
+an article that I wrote a few years ago on our blog about this, that you have to assume
+that in a physical coercion situation, you have to assume that you are going to comply
+and that you are going to do whatever you are told to do. And so the only way to ensure
+that you don't hand over all of your assets is to ensure that you don't have direct immediate
+access to all of your physical assets. So that is yet another case of why you want to
+have your funds distributed across multiple keys that are not easily accessible.
+
+And do you have, for example, the possibility with Casa to say, okay, if I want to move
+more than 20% of my funds, or if I want to move to this new address or to some address
+that is not in this whitelist, there's a time lock of, I don't know, 72 hours, for example,
+that is something that you recommend to protect us from ourselves, right? From ourselves,
+but under being pressured.
+
+So we haven't built those type of features into our app. I mean, I think that the whitelist
+blacklist time delay stuff makes sense if you're trying to protect a single key. But
+when we looked into doing that, you know, ultimately the way that you do that is you
+just make the keys not accessible. And so then you have to decide because you have to
+physically move to some other location, preferably a location that has some level of security
+around it. You know, in some cases, you know, if you have a, like a five key vault, it actually,
+it starts to make sense to put one of those keys in a safety deposit box at a bank or
+some other institution, because you can do that. And then, you know, they can institute
+various access control policies. And it's safe to do that with a multisig, unlike with
+a single sig setup because you no longer have to worry about that company, that bank, whatever,
+basically turning on you and denying you access or even taking the contents of your safety
+deposit box without your permission.
+
+Yeah, totally. And one more question. Imagine, for example, okay, we have a two or three
+set up with a ledger address, a ledger, the phone, and you have the recovery key. But the problem
+that we always have with a hardware wallet is that in the end, you have a seed phrase,
+right in a paper. What do you do with that paper? What's your recommendation for seed
+phrases in order like to like, like, always, right? I don't want to lose it. I don't want
+it to be found. If I have three copies, or I have two copies, and they put half here
+and half there, but they start having so many copies, I don't know where they are, each
+of them. So what's your your recommendation? I mean, we always say that whatever setup
+we have, we don't have to say which one we have. But I mean, there for sure there are
+some some recommendations or some options that we can we can recommend, right?
+
+Yeah, so it depends on the architecture of the wallet. Since the vast majority of people
+are still using single signature wallets, then, you know, if you're in that situation,
+I think it makes sense to go to more extreme links when you're backing up the seed phrase.
+And I do have a very lengthy blog post about my recommendations for backing up seed phrases.
+And the short version is that the I think the optimal thing to do is to buy a couple
+of seed plates, you know, there's, there's a few different brands, but basically, use
+a metal backup plate of stainless steel, and use one that's literally just one solid sheet
+of metal. My stress tests of 70 different backup devices over the years have led me
+to this conclusion. And then, yeah, 70 something different, you know, metal backup devices
+I've destroyed over the years. And you actually need to get I would recommend getting four
+of these, because my recommendation is to use the seedXOR protocol that was developed
+by a coin kite. And what that allows you to do is it allows you to, you know, split up
+your seed phrase into two seed phrases. And the cool thing is that each of those pieces
+is a valid seed phrase in and of itself. So it gives you this interesting level of plausible
+deniability in the sense that if a sophisticated attacker comes across one of these plates,
+where they recognize that it looks like a seed phrase, they can load that seed phrase
+up into any wallet, and there's not going to be anything on it. And so they're just
+going to assume that, oh, you must have created a wallet and never funded it.
+
+But you know, you could put something there too.
+
+Yeah, you could. If you wanted
+to create a mechanism where you could get alerted, you know, if any of your backup pieces
+exact compromise. Yeah. Yeah. And, and so essentially, you create this two of two backup,
+and then you can you split those backups, store them wherever you want. It doesn't really
+matter. It doesn't have to have to be super high security. Because as we've said, a physical
+attacker won't even know that they only have a piece of a seed phrase. And the main important
+thing here and the reason why I said you need to have four different plates is because this
+does create a two of two backup, which is brittle. Because think of like, if you lose
+one of those two pieces, you effectively lose the whole backup. So you basically need to
+have two backups of two pieces each.
+
+Could you repeat the name of the protocol? Or do you have the link so I can
+share it here from your article where you you took about it?
+
+Yeah, it's called seedXOR. And it's very easy
+to do this if you have a coldcard device. I think it's also possible to do it on a piece
+of paper. I have not tried that myself, to basically calculate the seeds or by hand if
+you don't have a cold card.
+
+Very good. Very good.
+
+But it's complicated, right? I mean, it's, I think it's much easier if you get yourself
+into a distributed key setup. You don't have to go to those extreme links with the backups.
+You can literally just back up each seed phrase, you know, in clear text in one piece, because
+you, you also know that if that seed phrase gets found by an attacker, you're not going
+to lose your funds.
+
+Yeah, I agree. I agree. And so you started with with Bitcoin, when did you decide to
+start using all this technology for for Ethereum? And what changed there?
+
+Yeah, it was really, I would say a year ago. We had been monitoring it for a while. And
+of course, our sales and marketing people monitor the feedback that we
+get, especially whenever we lose a deal, because we don't support something. And, you know,
+we keep track of all of these things. And we just noticed that demand for Ethereum and
+Ethereum based assets, especially stable coins continued to go up and up over the past few
+years. And, you know, one of our, our main issues with this is that Ethereum does not
+support multi sig as a native function in the protocol. So there's this additional level
+of complexity and therefore, risk factor of how are you going to implement multi sig.
+And so we were we were, you know, paying attention to the sort of state of multi sig and Ethereum,
+and especially to what was happening with gnosis and their safe product, which I think
+they launched that around 2017 or 2018. And it got to the point where we saw that, you
+know, there were so many 10s of billions of dollars worth of crypto assets being secured
+by gnosis safes, that we felt like, you know, that was a sufficiently high bug bounty, that,
+you know, it's unlikely, there's going to be a catastrophic flaw found in them at this
+point. So what we did when we added support for that, is that we're, we're building on
+top of gnosis safe, smart contract, you know, we don't want to roll our own crypto, we don't
+want to write our own smart contracts. I went through that process at BitGo when we implemented
+Ethereum. And that was like, an 18 month process with three or four different audits, and every
+audit would keep finding problems. It was just a straight up nightmare. And it was so
+much easier for us to implement this product that is already under fairly widespread use.
+
+I got a nice question about that. What do you think is more secure to have assets under
+we're talking about the theory, right assets under one private key, or having a multi-sig
+with two of three, for example, but with the possible risk of having a I mean, I think
+if gnosis safe has a bug in their smart contract or something, and suddenly, that breaks, like
+the whole DeFi and Ethereum and everything explodes, right? But that could that could
+happen, right? That we see things happening every day. So what do you think about that?
+Do you think that's like a real risk? Or is it just like, so a big risk that we don't
+care too much about it?
+
+Well, you know, like I said, the name of the game is trying to
+identify single points of failure. So when when you're working with one private key,
+that's always going to be a potential single point of failure. And of course, there's a
+million variations of how you might be storing, accessing, using backing up recovering from.
+So it's very hard to just compare it like an apples to apples thing. But, you know,
+if you're doing a multi-sig, and you're doing it with a smart contract that is not a native
+part of the protocol, then you know, that smart contract itself is a potential single
+point of failure. So once again, you know, you have to do your due diligence, you have
+to, you have to try the as best as you can to quantify the level of risk. And basically,
+like I said, you know, we got comfortable by seeing that the the changes to Gnosis safe
+were slowing down, you know, they didn't feel like they needed to keep tweaking things to
+improve the security, and the the level of funds that were secured by it kept going up.
+So you know, it's all relative. It is in either case, it is possible to create weak setups.
+So you know, this is another reason why I think that if you're not a highly technical
+person, if you're not a security conscious person, it makes sense to pay for some sort
+of consultation, you know, basically pay for some sort of service that will help you navigate
+this labyrinth of decision making.
+
+Totally. And regarding Ethereum, because I mean, with Bitcoin, basically, you have to
+have to keep your Bitcoin safely. But when we talk about Ethereum, and we start talking
+about interacting with protocols, DeFi approvals, allowances, and all that, we start with lots
+of whole risks. What do you think about what's happening there today? I mean, I see that
+the last year with the research that we have been doing, we have seen that one of the most
+one of the attacks that is growing the most is stealing private keys, right? And we see
+many methods, most of them regarding social engineering, or zero day exploits. So I want
+to know, what do you think about that? And also, how do you think or what do you think
+that the industry should do regarding risks related to DeFi, smart contracts, allowances,
+phishing, and all that? Because you can have the best setup, but if you sign what you don't
+have to sign, you're done.
+
+Exactly. Yeah. You know, blind signing in particular has, I think, caught a lot of people
+off guard. And if I recall correctly, Ledger basically recently announced that they are
+getting rid of blind signing, or at the very least, I think they're switching the defaults
+on it because it's become such a huge problem. You know, this is kind of, like I said, it's
+a potential single point of failure risk, because you can basically click one button
+and accidentally authorize a malicious contract to drain all of the funds out of your wallet.
+So I think that there's some similar best practices that people should use, both with
+Bitcoin and Ethereum and any other more expressive smart contract platforms. And that is, you
+need to treat it like you have different accounts, kind of like people do with bank accounts.
+And by that, I mean, you need to have your long term savings account. And that's something
+that you should very rarely be touching. Every time you touch your keys, that is a potential
+risk where you might do something incorrect that you end up regretting. So I'm not like
+an active trader myself, but I often hear in some of the trader chat rooms, you should
+keep 90% of your assets in super cold storage that you don't touch. You're only really actively
+trading with like single digit percentage of your assets, because whenever you're trading,
+you could screw up. I've lost a decent amount of money over the years, simply because of
+like slippage and not understanding what was going on with the orders that I was trying
+to execute. So there's so many things that can go wrong whenever you're actively using
+crypto assets. And so, you know, that applies for Bitcoin, you know, I think it makes sense
+to have single signature wallets that are more of your day to day use cases if you're
+sending money around. And do the same thing with your Ethereum or Solana or whatever wallets.
+Because you know that you are exposing those actively managed funds to just a whole wide
+array of potential malicious actors. So this is because we have to assume that the average
+person is just simply not going to be skilled enough to be digging into the details of the
+smart contracts that they're interacting with and making sure that this is actually the
+real smart contract and not a fake smart contract that someone slapped the same name on as a
+different smart contract. The short version is, you know, you, whenever you're actively
+using these assets, you should only be doing that with a very small portion of your stack.
+
+And for example, Casa, you as a company, you have, you know, what are the addresses in
+the wallets of your clients? So for example, you could have the possibility, I know it's
+something that I'm thinking now of saying, okay, we are going to monitor the addresses
+of our clients. And if we see that you have, for example, approved some malicious smart
+contract, we can do something about that, right? Because I think that nowadays we are
+seeing more and more tools that are monitoring blockchain and in fact, monitoring the mempool.
+So we are seeing that we can detect attacks before they happen, right? We have seen, for
+example, the Euler attack was detected by Forta like six minutes before it happened.
+But those six minutes were not enough because there was no automation, nothing that post
+the contract or anything like that. So what do you think about this active monitoring
+and things that we can do in real time to stop this kind of threats, right?
+
+Yeah, that makes sense. So to give an example, back when I was at BitGo, we noticed that
+clients were losing funds due to clipboard malware. So, you know, even despite the fact
+that they have these multi-signature setups, they would be copying, pasting address and
+just not checking it closely and approving it and off the money would go to some malicious
+actor. And so what did we do? We went and we scoured the internet for all of the known
+clipboard malware and we grabbed all of the addresses that were in that malware. Because,
+you know, it would just be, you know, millions and millions of addresses that looked similar.
+Like they would have the same prefixes and stuff. And we dumped all of those into our
+database and we added a check, you know, whenever you proposed to make a transaction, if it
+was in our list of clipboard malware databases, we would stop it and we would say, Hey, we
+think something has gone terribly wrong and you should really, you know, check your device
+and make sure that you haven't been compromised. And so, yeah, I mean, I think that that type
+of warning, because this is what I think a lot of the problems here when we're talking
+about, you know, phishing type attacks is that, you know, people are getting tricked
+into rushing through the process and just not checking carefully exactly what they're
+approving and what they're sending their money to. And I don't think we should not assume
+that people are going to change their behavior, right? You know, people tend to do the fastest,
+simplest, most convenient thing, and they tend to rush through stuff. And so, you know,
+having your checks and balances in the software to basically do that for you is certainly
+a good thing. Now, one thing that I'll note, like with regard to Casa and how we've set
+up our Ethereum stuff is like, we don't even offer the ability for you to approve yourself
+of giving approval to like other smart contracts, at least through our interface. We don't even
+support it. You know, maybe we will in the future. And if we do, I think we would start
+looking into, you know, much more of this active management role. But the reason for
+that is that at least the way that we have built our service so far is that we're really
+targeting high net worth individuals and enterprises, you know, small funds and stuff, you know,
+family offices, what have you. And so, what you're talking about to date, at least so
+far, is not really the use case of what we're trying to help provide people for. And so,
+in many cases, and this is true in our Bitcoin product as well, there are a lot of features
+of the Bitcoin protocol that we simply do not support. And the reason we don't do that
+is because we actually think it's more dangerous for us to give these more advanced features
+to people.
+
+Yeah, yeah, I agree. And in fact, related to, I had a question. I forgot what I was
+going to ask you. We just talked about the, oh, don't worry, I'll get the question again
+back. No, but yeah, you're, you're basically focusing in storing value for the long term
+and not in doing DeFi and related stuff. And I remember about the copy-paste malware. When
+you did that research in that moment, the malware had the ability of creating addresses
+that were similar to the one that had just been copied. Because I had seen one some weeks
+ago that when you copy the address, it generates one that ends in the same way. So, I mean,
+the recommendation of check the last four or six digits of the address.
+
+Oh yeah, you need to check the whole address.
+
+You have to check the whole thing, right?
+
+Yeah. And to be clear, the malware is not generating the address on the fly. They are
+pre-generating millions and millions of like every possible prefix and suffix. And that
+whole list is loaded into the malware because otherwise, you know, otherwise it would be
+too much of a delay. Like it would take your machine way too long to grind through all
+of the possible addresses since the, you know, generating an address is completely random.
+So if you reverse engineer one of this malware, you can get that whole list.
+
+Okay, now I understand how it works. Okay, good. Okay, great. And then I have one more question for you. Do
+you remember, for example, the running hack when they stole like $630 million from the
+bridge? There was a social engineering attack of one of the technicians that had four keys,
+right? Right. So when there's a case like a known entity or project or different project
+or DAO, whatever, and you have a multi-sig, right? What do you think about giving transparency
+to say, okay, these are our signers, right? And there are these people or you have, for
+example, you say, okay, these are our signers, but they're anons. You don't know who they
+are, or you just say, okay, we have a, we have a setup of three signers out of five,
+but we won't tell you who they are, if they are different people or whatsoever. Right?
+So what's the equilibrium that we need in order to, to, to know that the setup is secure,
+but you don't want the project perhaps to give so much information out, right? So when
+the attacker can have that information.
+
+Well this may not be what you want to hear, but I don't think you can ever really know.
+So it really, it comes down to reputation, right? Yeah. You can have people attest to
+being signers and then you're based upon their reputation. You know, if they're, if they're
+all anonymous, they, especially if they're newly anonymous, they may have no reputation
+and that's really risky because it could all be the same person. Right? So for example,
+I am a key holder for the rootstock side chain emergency recovery multi-sig. I'll probably
+never have to do anything with that key, but you know, I am, I'm a publicly known person
+and I think, yeah, pretty much all, all of the other key holders are also publicly known
+people. So in that case, you know, our reputations I think are, are fairly strong and you know,
+it's unlikely that we're all lying about being key holders or that, you know, we've distributed
+key material differently than how we've claimed to do it. But you know, ultimately you can
+never actually know where is that key material who has access to it. It's the same problem
+with any third party custody provider. They can tell you anything they want to about what
+their architecture is like, that is securing those keys, but you can never actually validate
+those claims. So there's, there's always going to be a level of trust, even if it's for like
+a multi-sig federation or a DAO or something.
+
+Yeah. Okay, excellent. I didn't know that you were part of Rootstock. Okay,
+great. And now to close, I would like to talk a bit about two things. First, what happened
+yesterday with the SEC, SEC twitter accounts and the thing about knowing, like giving,
+like how do we know that what we are reading online is true? Basically we are seeing like,
+I'm seeing like four or five trier accounts getting compromised every day. So it's, it's
+very complicated. So I would like to start with that. What do you think about that? Do
+you think that we should start like having new mechanisms or saying things like, okay,
+important accounts should sign their messages, or we shouldn't trust platforms like Twitter
+anymore? I mean, Twitter has a great issue. That's why Hayden Adams and Vitalik and some
+of our big accounts were compromised. That is, even if you have 2FA, I don't know if
+they changed this, but if you have 2FA with a, with an application like Authy, Microsoft
+Authenticator or whatever, or you even have a YuiKey, but then when you wanted to, to
+validate your account, you put your phone number, that phone number overwrites everything.
+So if you want to recover your account, you just do a SIM swap for that phone number and
+the 2FA is overrided. So what do you think about all that? About a communication platform?
+Should we forget about Twitter for this kind of announcements?
+
+I think Twitter is a great platform for staying on top of what's happening in the world. Now,
+as you've pointed out, it's not a great platform for verifying the truth or, or the, even the
+authenticity of accounts themselves, because what is it? It's, it's a centralized database.
+I think I saw a great point someone made recently is that, oh yeah, it was Matt Odell. He said
+that, you know, if Elon Musk wanted to, he could put out a post from President Biden's
+Twitter account and no one would know because there is no way to validate that, you know,
+the data is coming from the supposed account holder. So, you know, that is a huge weakness
+and that gets exploited in many different ways. I mean, I think one of the, one of the
+ways that we saw a lot of big accounts were getting exploited a few years ago is that
+there were weaknesses and perhaps even insiders who were giving access to some of the administrative
+tools at Twitter itself. And so malicious actors were getting into Twitter's admin tools
+and able to take over accounts and publish really whatever they wanted and manipulate
+markets and scam people and so on and so forth. And and really, I think what we're talking
+about now with, with the SEC stuff, this is a whole other layer of weakness really with
+our telecom providers. And it seems to me like it's mostly a weakness in United States
+telecom providers. A lot of other countries seem to have better regulations or security
+around their, their telecom providers. And it's not as easy to do SIM swaps.
+
+It's all over the place. Very, very common in Argentina to, to have
+someone an insider in a company to do a SIM swap is just $19, $19. And you get the SIM
+swap for any person. In fact, like one year ago, the security minister of the Buenos Aires
+government got SIM swapped. And it was a disaster because he didn't have to have a telegram
+and WhatsApp and anything. And they found really complicated stuff. And that things
+keep on happening every day, every day here.
+
+It's actually kind of ridiculous. So you know, that's the same problem that we
+just talked about Twitter having, you know, potential insider attacks. This is, this is
+what's happening at the telecom providers. Now, SIM swaps can happen in a variety of
+different ways. In some cases, people are actually creating fake IDs and going into
+a retail store and basically tricking an employee into doing a SIM swap. But as you pointed
+out, there's also plenty of cases where employees are just straight up being bribed. And I've
+actually been a part of I was an expert witness in a case against a major telecom provider
+that was allowing SIM swaps to happen against this one client like a dozen times, despite
+the client going in and telling them to put extra levels of security on there. And and
+eventually what came out was the telecom provider actually like, found out and knew that their
+own employees were being bribed. And, and I think they fired the employees, but it seems
+like they haven't actually changed anything about their own internal security policies
+to to add some checks and balances against that. And so the problem you run into with
+some of these huge telecom providers, especially the ones that have stores on every corner,
+is that they have given basically administrative access to potentially 10s of 1000s of employees.
+This is a huge security hole, a huge attack surface. And and what really amazes me is
+that the governments of the countries that these telecom providers are, are having all
+these problems. And it amazes me that like the government regulators haven't come in
+and you crushed and put the hammer down and said, you need to fix this. This is the one
+thing that really baffles me. And in short, the only way that I know to get around it
+is that I don't, I no longer have a phone number that is connected to my real name.
+So that, you know, even even a bribed employee at a telecom provider can't look up my phone
+number and find me because my name is not on any SIM account. And then beyond that,
+I have extra levels of protection where I actually don't even know my, my phone, my
+phone number on my SIM card. I have a dozen proxy phone numbers that I compartmentalize
+and give out those proxy phone numbers for different things. And those basically forward,
+you know, the text messages and the phone calls to my real phone number. But this way,
+even I can't, you know, screw myself and, and leak my information, because I'm only
+giving out proxy phone numbers that are much easier for me to, to block and to change.
+But yeah, it's, it's a huge problem. And it seems like it's only getting worse. And the
+question is, you know, when, when are any of the authorities that are supposed to be
+protecting us actually going to step in and do something about it?
+
+Well, perhaps they're going to step in when this affects them, right? And the episode
+yesterday, I think it's a, it's a good example. Or perhaps when telecom companies start getting
+like being accountable, I have to pay for the losses that people have, right? I didn't
+know this about the proxy, proxy phone numbers and the ability to forward, like SMS, I think
+that it's something, something interesting. I think that both, well, I think that platforms
+should like, stop giving the, the, the option of doing like SMS for 2FA accounts, that would
+be like the first thing. But the thing is that everybody has a phone. So it's very simple.
+
+Yeah, it's too convenient. And actually, when I was at BitGo in 2016, I believe, we turned
+off the ability to do SMS 2FA. We wrote a whole blog post announcement about
+it. And cause we, we basically said, look, we can see the trend and we cannot rely upon
+the telecom providers to improve their security. So we have to just stop supporting it altogether.
+And so even, you know, even beyond Twitter, like it's amazing to me that, you know, places
+like, like Coinbase or Binance or these other major exchanges that have billions of dollars
+behind them, it amazes me that they still support these quote unquote security features.
+Because you know, while, while the custody practices have gotten a lot better for these,
+you know, institutional exchanges where we're not seeing the exchanges get their hot wallets
+hacked and drained nearly as often as we used to, you know, 5, 10 years ago. But what we
+are seeing, there's plenty of people who are keeping all their money on the exchanges and
+their exchange accounts are getting drained. And it's usually through SIM swaps.
+Yeah. Yeah. What I usually recommend is like, if you have to, to use your phone number in
+any of the services to have, as you say, like a private number that nobody has, and to,
+but to have it like virtually, right. Like you write in Skype, Hashed or some of these
+online services.
+
+Yeah. It's not SIM swappable because there's no SIM.
+
+Exactly. Exactly. Or they have to, to, to hack into the systems. But when you don't
+know that when you start by not knowing the phone number, I mean, when the attacker doesn't
+have any information about you, it's much more difficult. That's why I always recommend,
+for example, okay, you had a Coinbase account, don't use your normal email for that account.
+Create another email, have that private email and use it for that. The same for the phone
+number. And I do that, but listen to what happened to me, like a one month ago, I was
+in a conference in Europe and suddenly I get an email from the Apple store saying that
+I had bought an Apple watch and had to pick it up in Miami. And they said, what, what's
+this? So the first thing that I thought is this is a phishing email, right? So I checked
+it and it wasn't a phishing email. It was a real email from Apple. It had a real order
+number. So I checked the order number, but what, what was very strange for me is that
+they received the email and said, okay, Pablo, my email. And then it said the phone number
+and the last two digits of the, of the phone number that nobody has. I only have that number
+and Apple has it right. And I said, Oh, what the fuck is happening here? So to make the
+story short, there's, there seems to be a bug. I was not able to reproduce this yet.
+But if you go to the Apple store and you buy something, not being logged in, but using
+the same email that someone has with an Apple ID in some part of the process, if you finish
+the buying it, it shows you the net, the phone number that that Apple ID has in Apple. So
+they did all that process just to get my phone number. I said, Oh, there's a lot of work
+here. Like this is really targeted. And after that they tried to, well, they couldn't seem
+swap that phone number because it was from a, from a virtual, a virtual service. But
+I said, okay, I have to be extra careful and I had to check all my security settings again.
+That is something that I really recommend everyone to do once in a while. So my last
+question for you, because we are, we are nearly on time is, do you usually do like a whole
+security check checkups for all your security stack? Like how often do you do it? And if
+you, if you could leave like two or three easy recommendations for, for any crypto user
+to follow, which would you choose? Like easy things that everyone can do, but like that
+they make a huge difference, right. For the average user.
+
+Yeah. I mean, I think I'm in a pretty hardened state at this point where it's, it's fairly
+low maintenance and you know, it's not, unless I receive an alert that usually I'll do anything.
+So what happens from time to time and inevitably is that, you know, of course your passwords
+are going to get leaked from various websites that you've set up authentication on. And
+so, you know, whenever that happens, you need to go in and rotate those passwords. But if
+you're already in a good position, then that should not be catastrophic. And you know,
+how do you get into a good position? Well, the easy thing is realize that if you know
+your passwords in your head, you're doing it wrong. You should only really know one
+password and that should be the password that gets you into your password manager. And then
+of course your password manager should also be secured by a hardware device, you know,
+like a UD key, for example. Some sort of other second factor authentication that requires,
+you know, physically having access to something. And so if you get yourself into that state
+and you're using a password manager to generate completely random, insanely long, complex
+passwords that you don't even know, you're going to get into a really good position there
+because even if one of those passwords get, gets leaked, then you're not going to end
+up with your other accounts being compromised. And so that's one of the most common things
+that we see. You know, some service gets compromised, their usernames and passwords get leaked.
+And then we are really anyone who runs internet based services, what you see happen from time
+to time is you, you will get a sudden spike in traffic to your service. And what, what
+the reason for that is that people will take all of these leaked lists and they will just
+try every username and password combination against every popular service that might have
+something valuable hidden in there because they know that a decent number of people are
+going to be reusing those usernames and passwords. So, you know, I think that's the easiest thing.
+You have to, you basically have to realize that anytime you interact with a third party
+and give them any sort of information, you should assume that that's going to get leaked
+at some point. And so the same thing is true whenever you're giving out your credit card
+to a merchant. This is why I really prefer using like prepaid debit cards or privacy
+cards where once again, you have a different number that you give to each merchant because
+I assume that that merchant over a long enough period of time is going to get compromised
+and those details are going to get leaked. And then, you know, someone's going to try
+and take that number and use it to buy some high value item.
+
+Yeah, totally. Totally. Well, Jameson, it's been a pleasure having you here. Thank you
+for your, for your time or your recommendations. I will then make a summary of all the tools
+and tips you have given us. So, well, many thanks for your time and I'll see you, we'll
+see you around in X. So anything else you'd like to add?
+
+Well mainly that, you know, security, it can be very overwhelming, right? But you don't
+have to become an expert and go really deep into this. Really spending a few hours, you
+know, spending a free day on your weekend to start digging into the basics will already
+put you into a better position than 95% of the people out there. And really this is also
+one of the main games of security is that you're never going to have perfect security.
+And this is true for both like digital security and physical security. What you want to do
+is you want to be a more hardened target than everybody else because the people, the malicious
+people out there who are trying to attack people, they're, they're trying to find the
+best return on their investment of their time and skills. So they're going to be going after
+the people with really weak security practices. So as long as you know, you're in that like
+top 10%, which is not actually hard to get to, then you're going to be pretty good.
+
+Excellent. Well, Jameson, thank you very much for being here and we'll see around. Thank
+you everybody for joining us.
+Thank you.
+Goodbye.
