@@ -1,0 +1,935 @@
+♪ Welcome to Galaxy Brains ♪
+♪ The weekly podcast from Galaxy Research ♪
+♪ You're back here to rip a rap in a black shirt ♪
+♪ Bip and bap, let the snare hit with reverb ♪
+♪ Tip or tat, all you haters hit the reverse ♪
+♪ Ain't nobody say that my game isn't hot ♪
+♪ And you're rapping to be famous ♪
+♪ But you're lame, so just stop ♪
+♪ So dirty when I flow, someone gave me a mop ♪
+♪ You could see me rolling deep with a Jameson Lopp ♪
+♪ And I'm stopping up the track, but nobody flow better ♪
+♪ Throw the kid a bone because he a go-getter ♪
+♪ Yeah, I got some drip, but nobody flow wetter ♪
+♪ Sure you play the game, but your jacket no letter ♪
+♪ I pack it and transact 'cause the game is not ready ♪
+♪ Yo, I only follow blocks if the chain is so heavy ♪
+♪ I only follow clocks if the unit is Satoshi ♪
+♪ I'm never gonna stop 'til the mic's exploding ♪
+♪ As always, I'm your host Alex Thorne ♪
+♪ Head of Firmwide Research at Galaxy ♪
+- Thank you for listening to Galaxy Brains.
+We have a great show for you today.
+As I said, Jameson Lopp, CTO and co-founder of Casa
+is our guest.
+We're gonna talk privacy, Bitcoin, Bitcoin culture,
+technology, a bunch of interesting stuff.
+And we'll check in with our good friend,
+Bitmanetta Bibi from Galaxy Trading,
+as always, to talk markets and macro.
+Before we get to all of that, I need to remind you,
+please refer to the link to the disclaimer
+in the podcast notes and note that none of the information
+in this podcast constitutes investment advice
+or an offer recommendation or solicitation
+by Galaxy Digital or any of its affiliates
+to buy or sell any securities.
+Let's go now to our guest, Jameson Lopp, CTO of Casa.
+Jameson, thank you so much for coming on Galaxy Brains.
+- Great to be here.
+- I think I've been following your work for quite some time.
+I know our audience has as well.
+I've got some interesting topics
+that I wanna talk with Jameson about.
+But before we do that, I would love if Jameson,
+if you could share some of your background
+and I'll just prime this, you're the co-founder
+and CTO of Casa, a Bitcoin, what do we call it?
+Collaborative custody, a self-custody company.
+But you've been working in Bitcoin for a long time.
+Just, I'd love if you could introduce yourself
+and tell our audience a little bit
+about your background in the space.
+- Yeah, so I got interested in Bitcoin in 2012,
+spent my first year just meandering around
+trying to understand it better.
+Launched a fork of Bitcoin Core in 2014.
+And that was not a network fork, just a software fork
+where I was adding a bunch of analytics and instrumentation
+so that we could better understand
+what was going on inside of Bitcoin node.
+And that project was called Statoshi.
+And I consider that a success because it was referred to
+by a number of developers over the years
+when making arguments about potential changes
+to the protocol.
+I was then lucky enough to go full time in 2015
+and I spent the next three years working on infrastructure
+at BitGo where I was basically responsible
+for all of the indexing,
+making sure that our databases were up to date
+with the latest transactions and balances
+for wallets of our clients, managing our send queues
+and in general, just trying to keep a lot
+of the operational backend up and running smoothly.
+It was then a very small pivot for me in 2018
+to go to Casa where we were using similar aspects
+of the protocols, specifically multi-signature functionality
+so that you can have a wallet where you have multiple keys
+that are distributed around to give you much higher levels
+of robustness and security.
+BitGo was really doing that for enterprises,
+helping exchanges and payment processors
+secure their wallets.
+And Casa really focuses on helping individuals
+achieve really high levels of security.
+So really what Casa does is we're like
+a concierge security consultation service
+where we offer a very user-friendly mobile app
+that pairs with various hardware devices
+that keep your keys offline, secure,
+distributed in multiple locations.
+And we also offer a really high level of customer service
+to help people whenever anything goes wrong,
+if they're having problems with the technology
+or just to advise them on making decisions
+of trade-offs between convenience and security
+and their own self-custody setup.
+So Casa has been going strong for, I guess,
+almost six years now and so far so good.
+We've actually expanded and rolled out support for Ethereum
+and some of the top stable coins recently
+as a result of demand from our clients
+who are holding assets in a number of different protocols.
+- Yeah, Casa is a great, great product.
+I've used it for a while, so I can say that.
+Talk to me, Jameson, about Multisig in general.
+This is a, and maybe the Ethereum point
+is an interesting one to segue into as well,
+because Multisig is native on Bitcoin, but not on Ethereum.
+But before we get into that, what is the,
+I don't wanna say the benefit,
+I think that's pretty clear what the benefit of,
+but maybe you could explain what Multisig is
+and why it's so revolutionary
+when it comes to digital assets.
+- I kind of describe a few different tiers
+of ownership of crypto assets.
+Tier zero is you're a no-coiner.
+You don't have any crypto assets.
+That's the vast majority of the world today.
+Tier one is you own IOUs for these assets.
+And what I mean there is you've gone to an exchange
+or a broker and you've hooked it up to your bank account,
+otherwise funded your account,
+and you've purchased these assets.
+However, the actual keys to those assets
+are held by the third-party custodian.
+So at any point in time, a number of things could go wrong
+and you could be unable to access those assets.
+Next tier is taking self-custody.
+And the vast majority of people who take self-custody
+and they withdraw those assets from the exchange,
+they generally put them into a single signature wallet.
+If you put that into what's called a hot wallet
+where the actual key is on your computer
+or your phone or whatever,
+that's better than having the key with a third party,
+but it's not great because the key is still
+potentially exposed to hackers, malicious software, so on.
+The next step beyond that is putting those keys
+on a dedicated hardware device,
+Trezor, Ledger, Coldcard, there's quite a few out there.
+And this gives you a really high level of security,
+prevents pretty much all hacker-based attacks
+of actually just stealing your keys outright.
+And this is good for most people.
+However, there's still single points of failure.
+And specifically, this is because you have one key
+that controls everything.
+So if that key gets lost,
+even if it doesn't get hacked or stolen,
+but that key gets lost,
+you're effectively locked out of your money.
+So the final tier of self-custody
+is one in which you eliminate single points of failure
+and in which you can be human, you can make mistakes,
+you can have things go wrong and then not be catastrophic.
+And this is where MultiSig really shines
+because it allows you to create architectures
+that I would argue can far exceed
+that of the strongest bank vault,
+or even of something like Fort Knox.
+You know, even Fort Knox is a single point of failure.
+It's theoretically could get destroyed somehow.
+So when you are able to diversify your key material
+into different geographic locations,
+into storage by different hardware manufacturers
+with different supply chains and different software
+and different firmware,
+really what this allows you to do
+is you're able to leverage the magic
+of something we call additive security,
+which is basically a strength through diversity.
+So that you know that there can always be
+potential failure or things that can go wrong
+or weaknesses in any particular key storage solution.
+But if your keys are all in different solutions,
+then you know that anything that goes wrong with one of them
+is highly unlikely to go wrong with the other ones.
+And that's how you basically weather a loss situation
+is that if a loss occurs,
+you're only gonna lose one of your three
+or five keys or whatever, and that's fine.
+You just go get a new device
+and generate a new key and carry on.
+And really this is what Casa is trying to make
+much easier for people
+to enter into these types of architectures
+and to reason about them and think about the trade-offs
+because they have export service to go along with it.
+- That's a great explanation, Jameson.
+And I think the diversification even geographically
+or with multiple types of parties, right?
+You have it on your phone or multiple hardware wallets
+is a truly powerful innovation.
+So when you add, but what's so interesting
+is that this is basically composable natively on Bitcoin,
+right?
+This is something that you can,
+you're not reinventing Bitcoin core technology to do this,
+right?
+You're simply using it.
+- Yeah, Bitcoin has been a part of,
+it's had this multi-signature part of the protocol since,
+I wanna say 2013, 2014,
+there was an early version of multi-sig
+that was not very good
+and thankfully almost nobody used it.
+But then when page of script hash came out,
+I think late 2013, early 2014,
+BitGo was one of the first multi-sig wallet providers
+to take advantage of that.
+And since then quite a few wallet providers
+have come out that have supported multi-sig.
+However, the vast majority of wallets out there
+are free, like use at your own risk type of things.
+So it's very easy for someone to get in over their head
+and set up their multi-sig in a way that's not great.
+It can still have single points of failure.
+- Yeah, there was one,
+I remember was it BitPay's wallet Copay
+that had some early multi-sig functionality maybe in 16, 17,
+but it suffered a effectively a supply chain,
+open source software supply chain bug, right?
+There was like a compromised library under there
+that was used to, so, you know,
+there's a history of these things being dangerous.
+That's why I think there's,
+but now I think it's much more mature.
+You guys, Unchained Capital,
+a variety of other providers are making use of it.
+- Yeah, I think that that's, again,
+that's a story of why diversity is important.
+I think the problem there with Copay
+is that all of the keys
+were being stored in the same software.
+And so you have a bug in that software
+and if it's all the same,
+then every key is exposed to that same vulnerability.
+- Yeah, I think with Casa,
+even it's, you guys have designed it such that I can,
+you guys can go away entirely, right?
+And I can still recover using my keys
+and the path and the derivation path information
+and stuff that you guys provide to me.
+- Correct.
+This is actually an often overlooked point.
+When we say at Casa that we are helping people
+eliminate single points of failure,
+that includes Casa itself.
+We want to make sure that even if Casa blows up
+or ceases to exist for any reason,
+or even if Casa turned malicious for some reason,
+you know, be as paranoid as you want,
+you know, nation state actor, whatever,
+that it should not be possible for Casa clients
+to lose money or to get locked out of their funds
+as a result of Casa the company failing.
+And so this is actually one of the first things
+that happens when you finish initializing
+a multi-signature wallet at Casa,
+is that we give you all the information
+and instructions that you need
+to be able to recreate that wallet
+and access those funds
+without using any Casa software or infrastructure.
+- Yeah, very powerful.
+All right, let's move on.
+I have some other stuff I want to ask you about, Jameson.
+I love the multi-sig story.
+I think it's one of the most interesting things
+about Bitcoin in general,
+that frankly is one of the core use cases of it.
+I also think similarly about proof of reserves
+or, you know, cryptographic attestations of ownership,
+I should say even more broadly,
+also being a core use for Bitcoin.
+But I want to get into some of what I first learned
+about your content, you Jameson,
+was all the content that you produce.
+You produce a lot of content, you have for years.
+You know, I've been sending people
+to lop.net/bitcoin.html for a long time.
+You now have bitcoin.page that goes there.
+You know, I don't know how to ask this.
+What was the motivation
+for aggregating all that information?
+It's a great website that has a whole host of information
+on almost everything you can think of about Bitcoin.
+How much work is it?
+What got you started doing that?
+Was it a project for yourself
+that then became useful to others?
+Like, how did you get doing that?
+- Yeah, I mean, pretty much all of my projects
+are self-serving.
+In particular, the educational resources that I maintain
+that I think have, at this point,
+over 2000 different links in them,
+started off just as a list of bookmarks in my browser.
+And really what happened over time
+is I kept realizing I would get the same questions repeated
+over and over again,
+and I would have to go find the answers and the resources.
+And so it was very redundant.
+And it was, I guess, back in 2015 or 2016,
+I was like, I need to just take this list of bookmarks
+and I need to put them on a website,
+and then I can just paste the link to the website
+and say, here, find it for yourself.
+And so, you know, that started off with maybe 100 links.
+And over the years, it has expanded
+into like 40 different pages.
+And like I said, thousands of different links
+as the ecosystem has grown
+and has become much more diversified
+and has resources that are much more specialized
+in what they're trying to do.
+So I maintain that on a almost daily basis.
+You know, whenever I come across a new resource
+that I think is good, I'll add it in.
+I also have to do regular pruning
+as various websites go offline and are no longer supported
+'cause I don't want a ton of dead links on there.
+But it mostly runs itself pretty smoothly these days.
+And I even have been posting metrics about it
+for my annual report recently,
+kind of showing that the interest
+in number of visitors going to my website
+has been pretty flat during the bear market as expected.
+I think based upon previous activities,
+once you see the number of visitors to my website
+really spiking, that usually signals
+that we're near the end of the bull market
+because retail is FOMOing in.
+- I love that.
+And you've also written a lot yourself.
+I'm just browsing your page now on lop.net.
+And I mean, you've written about a whole bunch of,
+I'm gonna say, semi-esoteric Bitcoin topics,
+what economically unspendable UTXOs are,
+I was just looking at some of your recent ones.
+You've written about who or who may not be Satoshi Nakamoto.
+One of my favorite ones you did was a whole series
+on demonstrating and investigating the integrity
+of metal seed backup plates,
+where you were blow torching some of them
+and putting others in acid
+and showing how they held up.
+And I think one of the most important ones
+that you've done for years is the performance tests
+on Bitcoin node software, but also on Ethereum software.
+I think that was one of the most interesting ones you did.
+How do you find the time to do these tests in particular?
+- I mean, this is what I do for fun, right?
+Like these sort of research stuff,
+it's a hobby of mine that I've done for many years.
+It all started off with my Satoshi projects,
+nine, almost, yeah, almost 10 years ago now.
+And Satoshi started because I started running a Bitcoin node
+but I was like, okay, what is it doing?
+I want to understand it better.
+And pretty much all of these other things
+are unanswered questions that I wanted to understand better.
+And as I'm investigating them,
+I just, I write down my process of what I'm doing.
+And my goal here is that even though
+I do have a number of open source projects,
+like I'm not a full-time open source developer,
+but I do consider most of what I spend my time doing
+with research to be in the sort of open source ethos.
+So I want to make all this knowledge open and accessible
+so that hopefully it will save a lot of other people
+a lot of time and effort,
+and perhaps they can even build upon that further.
+- Yeah, it's been very useful to me over the years.
+Let's talk a little bit about privacy, Jameson,
+because you're one of the most articulate
+and consistent advocates for operational security OPSEC,
+as we say, both generally, but also in particular,
+as it relates to Bitcoin.
+There was a story in the New York Times
+about an incident that you suffered.
+I don't know if you're comfortable
+retelling that story briefly to our audience,
+but I think it would provide good color
+for the rest of this conversation.
+- Yeah, I've actually, I've written extensively about it.
+So I have three or four long essays
+where I described everything that happened
+and really what I did as a reaction to it.
+But the short version is that in 2017,
+as a result of my sort of rise in prominence
+on Bitcoin Twitter, I amassed a large enough audience
+that eventually some malicious people decided
+that they would try to extort me.
+And so they called my local law enforcement
+and pretended to be me and claimed I had killed people
+and had hostages and had bombs
+and really used all of the trigger words
+that are necessary to get a lethal level
+of force directed at me.
+And they were able to do this
+because it was very easy to find my house.
+This was public information.
+I owned the house and that address
+was in numerous different databases
+that anybody who spent a little time probably Googling
+or $20 doing a sort of people lookup report
+could find that address.
+So thankfully the incident ended
+without anyone getting hurt
+and a number of swatting incidents do not end peacefully
+and innocent victims end up getting harmed by police.
+But really what I took away from all of that
+was that the only way I could really defend myself
+against those type of attacks was to ensure
+that I wasn't creating a target for someone
+to point this force at in the first place.
+So I spent the next year learning a lot about privacy,
+extreme privacy and I sold off all of the assets
+that I had that were registered in my name
+and I moved and I set up a new house and vehicles
+and all of those publicly registered assets
+under corporations that were anonymously owned
+by other entities and then just went to further links
+to ensure that my name and my physical address
+were never put into any databases, public or private.
+And that basically involved creating other mailbox addresses
+and sort of proxies in a number of different facets
+of my life.
+Once I was confident that that shield was set up,
+I paid private investigators to try to break through it
+and find me.
+That's when I embarked upon my quest
+to go after the person who swatted me,
+put out $100,000 bounty on them
+and the tips started rolling in.
+And then that turned into kind of a multi-year investigation
+in conjunction with the FBI who eventually found him
+and we did manage to get him into court
+and he pled guilty
+and hopefully he's turning his life around,
+but it ended up being a teenage kid.
+So I kind of got a slap on the wrist
+and I kind of felt sorry for him.
+He wasn't in a great situation
+and he fell in with the wrong crowd
+and a number of hacker insecurity types screwed up
+when they were teenagers.
+I made mistakes when I was a teenager too.
+So I hope that it was a learning lesson for him
+and that we'll be able to use his skills for good
+rather than evil in the future.
+- Well, it sounds like it was a learning lesson for you.
+And so one of the things that I've been working on,
+actually, Jameson has a great post
+from February of last year,
+how to protect your home network with a gigabit VPN,
+which I've been working on
+and it's a little bit technical,
+but again, your digital life,
+your digital traffic,
+whether you literally leaking your IP address,
+which can be quite easily tied to your identity
+is also a big part of this.
+I wanted to ask Jameson,
+you had a real on the ground reason
+why privacy is so important.
+But what are the more sort of societal impacts in your mind
+about losing your privacy
+either to the government or to third parties?
+Let me put it simply,
+why does privacy matter to the everyday person?
+- Well, the problem is that you don't know
+what might be used against you in the future.
+And so in the communication age,
+information travels instantly and quickly.
+And once information gets out there,
+you can't take it back.
+So much like how I had many aspects of my life
+that were public back then,
+I wasn't dreaming of the fact that someone
+might send a SWAT team to my house
+because I would become a prominent figure
+in a niche Twitter community.
+You never know what's gonna happen.
+And one of the examples that I like,
+I mean, there's a lot of examples out there,
+but one of the downsides to the nature of the internet
+is that you can go from being a nobody
+to being a somebody instantly,
+just if you do or say the wrong thing.
+We all know what it means to go viral,
+but a lot of people haven't experienced that.
+And I think most people won't experience that.
+But if you are an active internet user,
+especially if you're on social media,
+or if you're creating content,
+if you're speaking your mind,
+then it's always possible that something you do or say
+kind of triggers a hive mind and that you end up
+with the ire of millions of people directed at you
+overnight.
+And that is when you will wish
+that you had strong privacy put in place.
+So, some good examples of that,
+there was, I think her name was Justine Sacco.
+For example, she was a marketing person
+and she got on a flight, I think,
+to go from America to Africa where she had family.
+And she made some sort of off-color joke
+about hoping she didn't get AIDS while she was in Africa.
+And she was someone who had like 100 followers on Twitter,
+but for whatever reason,
+luck was not with her on that day.
+And her tweet went viral,
+had millions of people talking about it.
+And people actually showed up at the airport
+when she landed.
+So, she went to sleep on the plane
+and woke up basically an infamous internet celebrity.
+And I think she lost her job
+and had a whole lot of other negative consequences
+as a result of that.
+But that's just kind of my point
+is that you can go from minding your own business
+and not having a lot of attention on you
+to being a sort of niche celebrity.
+And as we all know,
+celebrities have had to deal with stalkers and other stuff.
+And that's something that people in Hollywood are used to,
+and they have resources
+and they have infrastructure put in place
+to help with that.
+But the average person, not so much.
+- Yeah, and when it comes to digital bearer assets
+like Bitcoin,
+the attack vectors can be even more acute and deliberate.
+One of the other things Jameson tracks
+that I think is the only one
+that actually keeps an archive of this
+is physical attacks on Bitcoiners
+and on people that own digital assets.
+This is often called the $5 wrench attack.
+I think now with inflation,
+it's probably more of like a $10 wrench attack.
+What is that attack, Jameson?
+And I don't know if you have any prominent examples
+in your mind,
+but Jameson tracks this around the world.
+This happens a relatively decent amount.
+- Yeah, I mean, basically we're talking
+about physical coercion for you to hand over your money.
+You know, it's a traditional robbery.
+The difference and really what Bitcoin changed
+is that prior to having digital bearer assets,
+if someone was gonna rob you,
+they were probably only gonna do that
+if it's a targeted, you know,
+planned ahead type of home invasion robbery.
+They're probably only gonna do that
+if they know that you're wealthy
+and you have like expensive jewelry, precious metals,
+other things that are small enough to carry off,
+but really highly dense in value.
+And so, you know, a pretty limited subset of the population
+that has those things.
+And most people who are wealthy,
+they keep most of their assets in illiquid form,
+whether that's in various banks and brokerages
+or, you know, physical real estate.
+I think there was a really good quote
+that always stuck with me
+when someone was talking about why billionaires
+don't get attacked that often.
+Someone said, "Well, it's very hard
+to steal a baseball team."
+You know, it's like, what can you get away with
+from a practical point of view?
+And so now with these digital bearer assets,
+someone can easily run off with millions
+or hundreds of millions of dollars
+just, you know, on a little thumb drive size device.
+And so what's happening is that
+as this ecosystem continues to grow,
+people who are criminally minded,
+which I do think is a fairly small subset of the population,
+but nevertheless, something to worry about.
+They are starting to try to calculate what is my ROI
+if I go target someone who is probably highly wealthy
+in these digital bearer assets.
+And so that's what I've been tracking.
+And there seems to be a pretty strong correlation
+between the exchange rates of Bitcoin and other assets
+to the number of physical attacks that are happening.
+And, you know, I don't wanna be a fear monger.
+These are still relatively small numbers.
+I think maybe 150 attacks that we know about
+that have been cataloged.
+There are definitely far more
+because a lot of people who end up being physically attacked
+don't publicize it
+because they don't want to attract even more attention.
+But some interesting things have come out of this
+of like where these attacks are happening.
+And we actually saw some press recently
+where I think it's Sweden is having a lot of these attacks.
+And it's actually, it's being blamed on a Swedish law
+that requires everyone to publicize their home address.
+So apparently in Sweden,
+it's very easy for people to find where you live
+and you can't really use the same tools
+that I've been able to use in the United States
+to help obfuscate that.
+- Wow, it's strange and dangerous sounding
+putting all your information on the internet like that.
+So yeah, I've seen these too.
+They can be quite frightening.
+The concept of it,
+I think it's another reason to try to maintain a low profile
+and not tell the world
+that maybe there's 12 or 24 seed words
+that if they nearly got from you,
+they could take a bunch of your money.
+Let's transition.
+I want to ask you, Jameson,
+you've been in, you said you got interested
+in Bitcoin in 2012
+and you've certainly been working on it for a long time.
+I see on Twitter, you have a Taproot Wizard icon.
+I know you've been outspoken
+on a variety of Bitcoin issues over the years,
+including during the block size wars in 2016 and '17.
+What is the state in your mind of Bitcoin culture?
+And I don't want to, like for our audience,
+I mean, I think Bitcoin culture is significantly bigger
+and less homogenous than the Twitter
+and x.com sphere would make you think.
+But I guess in terms of the loudest parts,
+it seems like we're entering quite an interesting time
+in Bitcoin culture, maybe with some forks in the road.
+I don't want to, I should say lowercase forks in the road
+about what is the true meaning of Bitcoin,
+its value proposition.
+How has it evolved over your years watching Bitcoin
+and where do you think it's headed?
+- Yeah, I mean, I wrote a long essay
+that I think I entitled it
+"A History of Bitcoin Maximalism."
+In which I talked about what I saw as being the evolution
+of the predominant Bitcoin culture over the past 10 years.
+And it has devolved in a sense,
+but not in an unexpected way.
+I mean, I think as the ecosystem goes more mainstream,
+you're gonna have larger and larger cohorts
+of people coming in with less
+and less deep levels of knowledge.
+So you have more people coming in
+with only a very surface level of knowledge
+and perhaps they're not devoting the same amount of time
+that some of us OGs who are really nerdy devoted to it.
+And so what's happening is that they are looking
+to people in positions of,
+leadership or reputation to kind of tell them
+what's going on, what should I be thinking
+about these things that are happening in the community?
+And so really what I have kind of settled on
+that I think is happening at least in the past year or two
+is that there seems to be a contingent of,
+I guess we could call them influencers
+or outspoken people in the Bitcoin community
+who have taken a much more moral stance
+rather than like technical and economic stance
+of what they perceive to be like the correct use of Bitcoin
+or the correct path forward for Bitcoin.
+And it's really gotten to the point where I felt like
+just calling people maximalists
+doesn't really mean much anymore.
+That term doesn't mean much
+because there's many different types of maximalists.
+I believe I was the first one to coin the term
+Bitcoin monetary maximalist a number of years ago
+when I got canceled for being involved
+in a registered securities token.
+And I explained why I felt like registered securities tokens
+were completely fine to be interested in.
+They're like, they're not trying to be Bitcoin
+or even be like a permissionless DeFi type of thing.
+And so now we have these people
+who I don't even call them toxic maximalists anymore.
+I tend to refer to them as Puritans
+because they tend to take puritanical views
+on like if you do anything outside
+of these specific use cases, you are unclean
+and you are not a good Bitcoiner.
+And so I've clashed with many people over the years
+due to my views on Bitcoin and the greater crypto ecosystem.
+Like, as you noted, I have a taproot wizard
+and it's not because I'm like into inscriptions
+and ordinals and whatnot.
+I mean, I've been paying attention to it.
+I haven't been like buying and trading these things,
+but I got offered a taproot wizard inscription
+and I was like, sure, I'll do it just to piss off
+the Puritans, it's more of like a social signaling
+type of mechanism.
+And it'll be interesting to see where things go from here.
+There have been some talks of like forking,
+but really I think that's actually the Puritans hoping
+that the unclean people will fork off of Bitcoin
+and leave them alone and I don't think that's gonna happen.
+As much as I would like to see a fork in an airdrop,
+I don't think that the actual like economic willpower
+is there to pull it off.
+- Yeah, I don't either.
+It's been, it really has.
+I feel like it really accelerated during COVID
+when everyone was sort of at home
+and all there really was was Clubhouse and podcasts.
+You saw a real sort of escalation in the homogeneity
+of the Bitcoin viewpoint, I think.
+So I tend to think that any of these disputes
+in public sort of debates about Bitcoin
+are ultimately positive.
+They help increase the tent size of Bitcoin.
+And in the end, I mean, I think of Bitcoin
+as a technical and economic thing.
+Yeah, I agree.
+I love your point about that they look at it
+through more of a moral lens.
+That's tricky, right?
+'Cause morality, everybody has a different view on morality
+and it's also so prescriptive as to be narrowing
+rather than expanding the pie.
+- Yeah.
+- Okay, just a few more questions for you, Jameson,
+before we let you go.
+What's something that gets you extremely excited
+about Bitcoin just in the,
+let's say in over the next year or two?
+- Well, I want to continue seeing improvements
+at the protocol level.
+I like the fact that there have been,
+it seems an acceleration in proposals
+for various protocol improvements.
+Of course, it's been several years now
+since our actual last soft fork.
+And I would say we still haven't really taken advantage
+of everything that Taproot and Tapscript
+and Schnorr signatures have given to us.
+There's a lot of tooling
+that still remains to be built around that.
+But there's a need for continued improvement
+to both the security and scalability of the protocol.
+So one proposal that I wrote about is OpVault.
+And I think that's interesting
+and that it kind of goes in conjunction
+with a number of other covenants proposals
+that have been getting more attraction over the past year.
+And the short version is covenants is basically a way
+to impose future restrictions
+on how your Bitcoin can be spent.
+OpVault is a very specific type of covenant,
+which I've found interesting
+because it actually gives you
+what I've been calling a reactive security.
+So right now, the only security you have
+for your coins is proactive.
+You have to build up a really, really high wall of defenses
+because if any attacker busts through all your defenses,
+they wipe you out and your money is gone
+and you can't get it back.
+Cool thing about vaults is that you can actually construct
+your Bitcoin deposit address with additional conditions
+that say, okay, if the money is gonna get spent
+out of this address, it actually has to go
+to a temporary holding area for some period of time.
+And during that period of time, I can yank back the funds.
+So this actually allows you to get your money back
+if your proactive security gets busted through
+and you basically sweep the funds
+to a separate recovery wallet
+that you have set up ahead of time.
+There's also potential scalability improvements
+that would allow us to further enhance Lightning Network.
+So while Lightning Network is kind of like
+a force multiplier in the sense that you can do
+theoretically unlimited number of transactions off-chain
+by only doing two on-chain transactions,
+even that can be improved further
+where we could essentially have shared Lightning channels.
+So imagine if you could have 1,000 people
+sharing a Lightning channel
+and only two on-chain transactions
+and then doing tens of thousands
+or hundreds of thousands of off-chain transactions.
+So especially with all of the ordinals
+and inscriptions stuff, putting a lot more contention
+for the scarce block space,
+I think that that should make it clear
+that we still need further scalability improvements.
+- Yeah, I would love to see,
+CASA seems like a prime venue
+to implement some cool Covenant stuff
+once Vault or CTV or one of these others gets implemented.
+I would love to see that.
+I know at Fidelity, we were quite interested
+in vaulted custody in general, the same types of ideas.
+Spencer Hommel and Sam Abasi, Bob McElrath,
+all did work on that.
+Brian Bishop did work on it as well with them, right?
+I think, so that would be awesome.
+Okay, just a few more, Jameson, what would you say,
+Greg, I wanted to ask you about this.
+Greg Maxwell was once asked on Reddit
+what the biggest threat to Bitcoin was.
+And he replied that, no, it wasn't a 51% attack.
+It wasn't, I'm sure there's risks of a code bug
+or something, there's always those risks,
+but that it was actually sort of ignorance and apathy
+among the populace.
+And you mentioned this a little bit,
+you talked about new people coming in
+and only knowing a little bit, but in your mind,
+I don't know, you can either agree or disagree
+with that specific thing,
+or maybe there's something totally else.
+What's the biggest risk to Bitcoin's continued adoption
+in your mind?
+- Well, to continued adoption, I think requires ignorance,
+just not looking at the state of the world
+and what's happening, all of the financial shenanigans
+that people are able to opt out of
+if they put in the time and effort.
+But no, apathy, I think has been the biggest threat
+and always will be,
+because if you look at any of these systems,
+even as I catalog like the downfall
+of some of the scammier systems,
+it's very, very difficult to kill
+a truly decentralized system.
+Even some of the ones that I would call dead
+for most practical purposes,
+the networks are still running,
+there's still like a handful of people
+running the nose
+and the protocol is technically still operational.
+So I've said for a while that Bitcoin can't die
+unless we all agree that it's dead
+and we stop working on it and stop maintaining it.
+This is also why I'm not really worried
+about a point in time catastrophic attack,
+like say a protocol exploit does get found
+and is actually used on the live network
+or say that there is a 51% nation state attack
+that essentially prevents transactions
+from getting confirmed.
+Those things while they would be critical
+and they would stop the network from being usable
+for that point in time,
+as long as those of us who care are paying attention,
+even if the machine consensus of the protocol
+and the network is broken for some reason,
+we can always fall back to human consensus.
+And this has happened before several times,
+it's been 10 years at this point
+since the last time that happened,
+we hope that it doesn't happen,
+but that's always a disaster recovery option.
+It just requires that the technical people
+are still around and care enough
+to try to analyze the problem,
+propose a solution and move forward.
+- Yeah, I do think that if we ever encountered
+anything dramatic, Bitcoiners would fix it.
+Sometimes people say, well, what if quantum computing
+is one of my favorite funds?
+I don't know, there's a variety of them.
+What if it could break ECDSA and steal funds?
+Or what if one little quantum computer or big,
+I don't know, maybe they're big,
+could replicate the entire hash rate of the network.
+And I've always just said, well, I mean, if that happened,
+I mean, Bitcoiners could just hard fork and fix it.
+Like it's not like a, we don't want a hard fork,
+but I mean, if it were existential,
+certainly they'd fix it.
+We would fix it, right?
+Well, look, my friend Jameson,
+I really appreciate you joining us
+from an undisclosed location,
+co-founder and CTO of Casa,
+a great Bitcoin and crypto custody company.
+Is that what you would say?
+Custody company, that doesn't sound right.
+Self-custody company?
+- Yeah, yeah, that's where it gets a little tricky, right?
+We help people be their own bank.
+We help you achieve a level of self-sovereignty
+where you still have someone that you can come to
+to get advice and you don't have to kind of go out
+on your own, do the lone wolf thing.
+Because really, if you go out
+and you're setting up your own bank, as it were,
+without getting any advice
+and basically having to do all your own research,
+it's a lot more likely
+that you may accidentally introduce some flaws
+because this isn't what you do for a living.
+It's what I've done for a living for nine years now.
+- Yeah, well, Casa is a great resource.
+Check out Jameson's content at lopp.net, L-O-P-P.net.
+I do all the time.
+And again, Jameson Lopp, CTO and co-founder of Casa,
+thank you so much for coming on "Galaxy Brains."
+- Thanks for having me.
+- That's it for this week's episode of "Galaxy Brains."
+Thanks to our guest, Jameson Lopp, CTO,
+co-founder of Casa, a great Bitcoin custody
+and security company, and our good friend,
+Bimineta Bibi from Galaxy Trading, as always.
+Everyone have a safe and warm and happy weekend,
+and we will catch you next week.
+(upbeat music)
+(upbeat music)
+Thanks for listening to "Galaxy Brains,"
+the weekly podcast from Galaxy Research.
+If you enjoy the show, please like, rate, review,
+and subscribe wherever you get your podcasts.
+To follow Galaxy Research,
+sign up for our weekly newsletter at gdr.email,
+read our content at galaxy.com/research,
+and follow us on Twitter @GLXYResearch.
+See you next week.
