@@ -1,0 +1,314 @@
+We're a private key management company.
+Yeah, it's security, but I thought that Casa's next business was going to be launching a meme coin on Solana called Lopp's Beard.
+Just price and hype and whatever is the fact that we're getting old.
+It gives people the ability to defend against crazy-level, even nation-state-level attacks in ways that you can never do with your physical property.
+That's a really good way to put it, because the stupidest version of myself is really stupid.
+The self-custody industry has been constantly evolving since Bitcoin was created.
+One of the leading companies, of course, is Casa, and their founder, Jameson Lopp, and I sit down every few months to talk about the evolution of self-custody,
+what's new, what people should know, and why it's important in the first place.
+Casa has an incredible new inheritance product that we talked about today, but are also constantly innovating and looking for new ways to help people be self-sovereign and secure their assets.
+You don't want to miss this conversation, because self-custody is really important.
+I think we've had frequent talks every six months to a year over the past few years.
+Have there been any major moves in the self-custody space since last we spoke?
+Any huge innovations, anything making it a more obvious play for the mainstream?
+All these people coming in through ETFs, are they going to eventually land in self-custody, or do you think that that's a whole different ballgame now?
+Yeah, I mean, that is, I think, one of the big competitors that we're fighting against.
+It's funny to see some of the infighting within the self-custody ecosystem, because I think that we should all really come to the realization that the enemy is the custodians.
+If we're just fighting over a shrinking portion of pie, then it's not going to end well for us, and in fact, it could lead to systemic risks for the entire ecosystem.
+Obviously, we don't want to get captured by TradFi.
+The convenience that is offered by the ETFs does make it a very tantalizing thing for the average person, so this is something we're just going to have to keep beating the drums about.
+But yeah, I mean, there have been some improvements in the self-custody ecosystem, mainly as a result of some improved Bitcoin scripting and protocol stuff that is slowly, over time, starting to filter through the hardware and software ecosystem.
+But that's still pretty complicated and is not supported by a large amount of the software and hardware that's out there, so it's still a very niche thing.
+And Casa is trying to push forward and make things as available to as many people as possible, as early and as easily as possible.
+So we're innovating as well, and this is, I think, part of the game of continuing to come up with new security models that offer new trade-offs between security and convenience.
+I have to imagine that that evolution takes time, because even if you have a great idea and you think it works, there's got to be an incredible amount of testing before you would allow something like that out into the wild.
+For sure. So we just announced our Inheritance product, and I would say we spent about six months working on that.
+And it's not even our first attempt at Inheritance. We've had an Inheritance product for, I think, about three years, but it was so involved.
+It took a lot of hand-holding and also had personal information, light KYC type of requirements, and it essentially resulted in us having to work with people's trusts and estates and stuff.
+It was only offered at our very highest level, which, of course, is very expensive, and it's really for people that are probably securing tens or hundreds of millions of dollars worth of assets.
+The primary goals of this revamp of Inheritance was to take all of the things that we've learned over the past few years, try to shave away a lot of those rough edges and points of friction,
+and come up with a way of really walking this tightrope, where the way I see it, you've got self-custody issues, where you want to create a security model for self-custody, where you're the only one that is able to spend those funds.
+The flip side of that, and why Inheritance is so tricky to get right, is that you want this sort of magical switch to flip when you pass away,
+so that the security model changes from one where only you have access to it to now some other designated person or set of people have access to it.
+And since none of these blockchains or crypto networks have any concept of you being alive or dead, you could call this the oracle problem.
+You have to figure out, how do we do this in such a way that isn't reliant upon single points of failures?
+Deadman switches is something you probably hear about a fair amount, and I've evaluated every one that I came across.
+Suffice to say, I wouldn't trust my entirety of my assets to any of these deadman switches because they can also fail.
+And how do you know if it's going to fail or not?
+Yeah. So talk about the problem with inheritance in general then.
+Because I think just to give people context, what we're talking about here is that you have obviously a ton of assets in self-custody.
+And you're trapped because either you have to hold all that information yourself and basically create a scavenger hunt for your family when you're gone, right?
+So it's a complex thing.
+Or you have to trust someone and share all of your information while you're alive.
+So how are you actually solving for that now?
+You talked about kind of abstracting away the complexity, shaving off the rough edges.
+But what does that actually look like as a product?
+Yeah. So first of all, I think most people who are doing self-custody are just using a single signature wallet.
+Hopefully, they're at least using a hardware device like a Trezor, Ledger, cold card, whatever, to at least keep those keys offline.
+But most people are only using one single key to access all of those assets.
+So in that case, obviously, that's a single point of failure in and of itself.
+If you lose that tough luck, like there's no one who can help you.
+But going back to what we were talking about of walking this tightrope, okay, well, how do you share that key with someone so that they can't access it until after you're dead?
+And the most common thing that we see is what we generally refer to as like the treasure hunt scenario, where someone, you know, maybe they encrypt their seed phrase.
+Maybe they just put it on a metal plate and then they hide it somewhere where no one will find it.
+And they create this convoluted set of instructions.
+Scavenger hunts.
+And yeah, and, you know, maybe they put the set of instructions in a safety deposit box that has, you know, beneficiaries listed on it so that the beneficiaries can only access the instructions once they pass.
+Some people may actually just put the seed phrase in a safety deposit box with beneficiaries.
+But, you know, that's a single point of failure in and of itself.
+You know, safety deposit boxes can and have been compromised by both bank employees or nation state actors or whatever.
+So this is where I think some of the magic of multi-key setups comes into play, because you have a lot more flexibility when you're constructing your security models.
+And essentially what we do is we start to create sharing of specific keys.
+And to give you a concrete example of like one of the most basic straightforward Casa setups and how the inheritance would work is that one of our entry level plans is a two out of three multi-sig setup.
+There are several different ways you can set it up.
+But the default way you come in, you have a key that gets generated on your mobile app.
+That key has an encrypted backup made that goes to your cloud.
+And of course, because that's encrypted, your cloud provider can't compromise it.
+Casa doesn't have it anywhere on its systems.
+But that key is interesting because while it is a hot key, it is connected to the internet.
+So it's weaker than what you would have on a cold storage device.
+It's almost impossible to lose that key because of the backup functionality.
+You know, your phone gets lost or destroyed or whatever.
+No problem.
+You log into your new phone, your new Casa app, your new cloud account, and it actually gets reconstituted on your device there.
+And then normally you'll have one other hardware device.
+That'll be a cold storage, Trezor, Ledger, cold card, whatever.
+We support a number of different things.
+And during your normal signing flow, you'll be signing with the mobile key and then traveling hopefully somewhere to some secure location where that device is and adding that second signature.
+Well, the third key and another aspect of this that makes it a fairly unique setup is that Casa holds what we call the emergency recovery key.
+And that's, you know, offline cold storage only really meant to be used in emergency situations.
+How does the inheritance work?
+Well, it involves relying upon the Casa key, which, of course, we have multiple redundant offline backups for.
+That key is not going to get lost.
+You basically have to destroy the entire continent in order to have that key get lost.
+Point of failure.
+Yeah.
+Continental destruction.
+Probably have bigger problems in that case.
+Yeah.
+And then the real trick here is that you share one of your keys with whoever you want to be the designated recipient for your inheritance.
+And so the easy way to do that is we've actually made it possible for you to share that encrypted mobile key.
+Basically, a QR code that you pass over to your designated recipient.
+And once again, you're only you're sharing this encrypted key with them.
+So they don't even have that key itself.
+Right.
+And what happens, and we've set up some game theory around this, is that your recipient will have a copy of the Casa app.
+They'll have that encrypted key.
+But during normal operations, you know, while you're alive, they can't see your wallet, your transactions, your balances.
+They can't actually see the seed phrase itself.
+Really, the only thing that they can do is tap a button that says, "I'm going to request to kick off the inheritance process."
+And once they do that, we start sending a lot of alerts and notifications to you, to the primary account owner.
+We're like, "Hey, this person says you're dead.
+If you're not dead, please click this link.
+Give us a call.
+Contact us."
+And, you know, basically, if they're trying to screw you over, you can then immediately revoke and kick them out and make sure that they can't go any further.
+And so that process continues for six months.
+You know, at regular intervals, we'll keep pinging and trying to reach out to you.
+And once that six-month time window passes, then the designated recipient is finally allowed to unlock and sign a transaction with that key and then request that Casa signs a recovery transaction.
+So pretty straightforward.
+There are several variations of this model because Casa has several variations of our different multi-set keysets.
+Asking for a friend who has a three, a five, not naming names, similar process, I would imagine, just slightly more complex.
+Do you share two or do you just share the mobile?
+Yeah.
+Yeah, exactly.
+You would share the mobile and you would want to share, you know, one seed phrase from one of your other, what, three hardware devices.
+Yeah.
+In my recollection, maybe it's changed and it's a good hint that I need to call you guys and do some updating, which is very likely, but you didn't actually have seed phrases on the individual devices when you set up your vault.
+Yeah, so if you did not save any of those seed phrases, then you'll probably want to do a key rotation.
+And that's a fairly straightforward process, completely possible to do that in the app.
+Our recommendation around storing seed phrases is basically comes down to trying to understand the trade-offs between having a quorum of unencrypted, you know, in the clear seed phrases laying around that could be used to spend your funds versus having enough redundancy that you could recover from potential catastrophic losses.
+So for the three of five, these days, our general recommendation is you have one of those devices with a seed phrase backup.
+And the main reason for that is the once it's similar to the like the whole continent getting destroyed scenario, but a scenario where all three of your hardware devices got destroyed simultaneously.
+And, you know, assuming you have all three of your hardware devices geographically dispersed, per our recommendations...
+You don't put them all in your drawer together?
+Yeah, I don't recommend that.
+Really, the only way that I can really see that happening is with maybe like a huge EMP that wipes out...
+Electromagnetic pulse, yeah.
+Yeah, it would have to like wipe out, you know, basically a whole continent once again.
+And, you know, if that happened, probably have bigger problems to deal with.
+But it's like when people talk about how Bitcoin is susceptible to attacks once quantum computing happens, and that's going to be the end of the Bitcoin network.
+And my brain goes, if they can do that, they can probably access the nuclear codes.
+So what am I worried about more here?
+The entire Internet would be broken.
+You know, all e-commerce, as we know it, would be broken if a quantum computer with sufficient level of qubits processing power suddenly appeared out of nowhere.
+And this is the nature of cryptography is that cryptography degrades over time because our ability to break cryptography, both from an understanding of math perspective and from a pure hardware capability perspective, is always increasing year over year.
+And as a result, it's very rare that any form of cryptography just magically gets broken overnight.
+You usually have many years of heads up that, hey, we're probably going to be able to break this specific type of cryptography some years down the line.
+How much does that rationale translate to the systems we have in place for protecting our assets like what you've built?
+Have there been any meaningful evolution of attack vectors that have ever made you think, not specifically to multisig, but hardware wallets won't work at some point in the future because bad actors have become so sophisticated that they've figured out a way to do X or Y?
+Well, every hardware wallet is different, right?
+And a lot of people ask me, what's the best hardware wallet?
+And I don't have an answer for that because they all have pros and cons, tradeoffs.
+And that kind of sums up why our philosophy at Casa is to use multi-vendor multisig, use multiple types of hardware with multiple types of firmware and software.
+Because the name of the game of security is that there will always be vulnerabilities.
+The question is, how do you compartmentalize these vulnerabilities so that if a weakness gets exploited, it's not catastrophic?
+And we basically do that through this thing that's the magic of additive security.
+You can also think of it as diversity, strength through diversity.
+By having diverse setups for your different keys, then you won't have one single weakness that can be used to exploit multiple of your keys simultaneously.
+I assume there's nothing yet that's come about that is a threat to the Bitcoin network itself.
+Not really. I mean, I think most of the stuff that's going on right now, it's less technical in nature.
+And it's really more about what's going to happen with the custodians, especially with the ETF custodians.
+That's one of the things that's top of mind for me is A, watching all the inflows into the ETFs.
+And then B, the fact that I think like 85 or 90% of them are all using Coinbase as the custodian.
+And so that just like scream a single point of failure to me, even though I'm sure, you know, Coinbase is a reputable company.
+They have great security team. They have a pretty good history of not suffering large scale hacks.
+Of course, there's plenty of people who have had their Coinbase accounts.
+Individuals get hacked by the thousands daily, I would imagine.
+Yeah. Yeah. So, you know, you know, Coinbase and their hot wallets definitely get access through various weaknesses.
+But as far as I'm aware, we don't know of any exploits against their cold storage, which should be the vast majority of it.
+But it's still one single organization.
+Not them, but Prime Trust lost keys.
+Fortress, which was the guys from Prime Trust, had some sort of incident.
+So even regulated, trusted custodians, to your point, have failed us.
+And that's probably because this is still really complicated.
+Yeah, there's no shortage of things that can go wrong.
+And one of the primary points that I tried to get across, because one of the common pushbacks to self-custody is, oh, it's hard.
+Why shouldn't I just let a team of sophisticated experts take care of my custody issues for me?
+And the short version is, if you look at it from a threat model perspective, all of the things that could go wrong with your self-custody setup can go wrong with a third party custody setup because they are essentially doing self-custody.
+It's just you're handing that all off to them.
+But additionally, now you have an unknown number of third parties.
+It's not just the organization.
+There are an unknown number of employees within the organization who are participating in your security model.
+And the whole thing is a black box.
+And while we trust that they have good internal security practices, and historically, it seems like they do, there have been cases where there have been internal attacks at companies.
+I think ShapeShift was one of the foremost because ShapeShift was honest enough to actually publish a postmortem about their internal attack on the employee who compromised a bunch of their systems.
+I always come back to the point that all of this is so terrifying, and I think, to some degree, probably alienates new entrants at first.
+When do we get to a point where self-custody -- and maybe you can't because if it's simple, then that defeats the purpose -- but when do we get to a point where there's UX/UI that's so simple that the average person who maybe is considering buying an ETF but hears about self-sovereignty and self-custody does it and isn't terrified the second that they try?
+Because most people don't make their first $100 Bitcoin purchase and immediately put it on a hardware wallet, right?
+It's kind of a chicken and egg problem.
+There's a number of ways that this could go.
+And I guess it depends on whether or not you're bullish or bearish on the hardware device ecosystem.
+Obviously, there are entities that are continuing to iterate on that and try to make the hardware devices better.
+For example, Block and their BitKey came out recently, and I think, arguably, Block was going more towards the convenience side of things because they definitely had some security trade-offs there.
+But I think this is going to be many years of continued experimentation to try to find where the sweet spot is on that.
+Casa, we have our own ideas and paths that we're going to be exploring, kind of related to that.
+Just yesterday, we announced an acquisition of a company called Chamber, and Chamber is pretty heavy on the cryptography side.
+They've been doing some interesting things, playing around with different self-custody models where people are securing their keys using different types of encryption, more sophisticated stuff, and trying to do that in a way that is not reliant upon any of these off-the-shelf plug-and-play hardware devices.
+I think a lot of people, even if they buy a Trezor Ledger, whatever, I've heard from a lot of them that even if they buy it, in a lot of cases, it ends up sitting in their drawer.
+Yeah, because they're afraid to even plug it in and start messing around with it.
+Yeah, and it sits in their drawer, or they send a first transaction of $50, and they start buying a bunch of Bitcoin on Coinbase, and then they have a date, and they forget that they're supposed to move it to self-custody.
+It just never gets used. It gets left on the shelf. I guess that is the big challenge.
+You talked about at the beginning that the shrinking pie for the self-custody industry to some degree.
+You said if the whole pie is getting bigger, but ours is shrinking, why are we fighting? There's not necessarily enough for everybody.
+Do you find that the pie is actually shrinking, or do you think it's just not nearly expanding as much as the other side?
+Because I would have to imagine that there has to be some trickle-down benefit to self-custody as we see new entrants into the space, regardless of how we come.
+Listen, we even know people who bought NFTs and bought Doge, some of them, even if it's 1%, eventually get to Bitcoin, right?
+Yeah. As the price goes up, as more people join in, it's twofold.
+In the very early years of Casa, what we saw was as the price went up significantly, then people saw the value of their holdings do a 10x, and they re-evaluated their security model.
+Then during more of the COVID era, we saw more outsiders and more high-net-worth individuals just suddenly jump into Bitcoin and see it as a new asset class.
+Some percentage of them did enough research that they realized that in order to truly take advantage of all the properties of this asset class, they needed not only financial exposure, but they actually needed the security model that being your own bank offers to you.
+Then finally, another major driving factor that we're seeing beyond just price and hype and whatever is the fact that we're getting old.
+Basically, we're seeing more people who are in the crypto space getting married, having children, and that is a big trigger point, especially when they start thinking about inheritance,
+when they start thinking about their portfolio, not as just a means for them to build wealth, but for them to build generational wealth.
+Once you start thinking from the generational wealth perspective, then you have to ask the question, "Okay, how do I ensure that my next generation is able to take advantage of it and access it once again, if I get hit by a truck?"
+So a glaring reason for you to have focused on inheritance and somewhat taken a major step to fix that problem.
+Are there other glaring problems that are next on the docket for you guys, not specific to Casa, but specific to self-custody and those challenges that you think you would tackle next or just in general that are still huge barriers to adoption?
+So Casa is not just a Bitcoin company or an Ethereum company or a stablecoin company or a self-custody company. We're a private key management company.
+Ultimately, our thesis is that more and more things, more and more valuable things, will be secured and accessed via private keys.
+Cryptography being this amazing asymmetric defense mechanism, it gives people the ability to defend against crazy level, even nation state level attacks in ways that you can never do with your physical property.
+So there's many different avenues that we expect we will go down. It's not quite clear what the priority will be.
+But the short way of how to look at it is, what are the things that are important to people and are either currently digitized or maybe being in the process of being digitized?
+So really any sort of sensitive information that's important to you, I think a lot of the document storage systems that are out there are highly flawed.
+You see that every day. We seem to see those things hacked.
+Yeah, people are losing access to or having their stuff hacked. And this even predates Bitcoin and crypto stuff.
+Before we had bearer crypto assets, that was the primary valuable asset on the internet, was sensitive and private information.
+So hackers were generally trying to get into databases, dump stuff, sell it on darknet markets, do identity theft, so on and so forth.
+And that actually leads to identity itself is something that we've been looking at or keeping an eye on.
+I think that having a cryptographically secured digital form of your identity is actually a missing piece of many of these ecosystems.
+And that's because I think reputation is a big missing piece from many of these ecosystems.
+If you just think about, for example, like all the rug pulls that happen, all of the economic interactions that are happening in DeFi or just crypto in general.
+While obviously there are pros to anonymity and privacy and so on, when you're entering into an economic relationship with someone, you generally need to trust them somewhat.
+Or if you're giving money to someone, preferably there should be some sort of reputation there.
+So I think that having a standard for identities that are cryptographically attested to would be a major piece of functionality that would boost a lot of the other aspects of DeFi.
+And also in conjunction with the fact that AI is getting more and more powerful and deep fakes are getting easier and easier to do.
+This has always theoretically been possible with like PGP and the web of trust, but once again, nobody uses those tools because they're so difficult.
+Yeah, I think you touched on one of the hottest, sort of should be talked about topics in crypto, which is the identity and AI is the, this is the one place of all the stupidity and dumb ideas I've seen for mixing crypto and AI or why they should be.
+That's the one that makes so much sense.
+That's the one that to me, I don't think it's a this cycle thing per se that we actually see it meaningfully developed.
+But that's the one place where you can effectively allow AI to interact with AI on your behalf securely.
+And of course, deep fakes and such, as you said.
+Yeah, I mean, the main thing here is that there's a number of different projects that are working on identity and we're just trying to keep track of them.
+Obviously there are network effects at play and you don't want to have to have, you know, multiple different identities with multiple different standards and protocols.
+I'm not so sure that any of the projects that are specific to like a specific crypto network are going to be great because that kind of network may not even assumes a sort of maximalist position.
+Then there's the distributed ID project that's been ongoing for a number of years and I think is actually tied to through Microsoft or at least Microsoft was pushing it forward for a while.
+It seems promising, but it has been kind of slow going.
+So, you know, Casa is not in the business of rolling our own crypto or writing our own smart contracts or trying to create our own standards to push out to the rest of the world.
+We generally want to be, you know, early adopters of whatever we believe the technologies are that are going to ultimately have the network effects.
+Yeah, it's security, but like, I thought that Casa's next business was going to be launching a meme coin on Solana called Lopsbeard.
+There's so many ways that we could go with it, but...
+It's insane.
+Yeah, you talked about... I giggled actually when you talked about reputation and you think that if you were entering into a financial transaction with someone, there would have to be some level of trust, whether that's knowing them or not.
+Obviously, you need to have some level of trust and we're in an environment right now where somebody who's anonymous on Twitter can post a Solana address and have people send $30 million literally in 30 minutes to that address and then that tweet can be deleted.
+Hard to believe, but is that encouraging for your business or does it give you a big head shake and say most of these people are just never going to get it or they're just not your customers?
+Because those aren't Bitcoiners, those are gamblers.
+We do not really facilitate any of the degen DeFi stuff.
+It's fine if people want to do that on their own.
+Take whatever risks you want to do, but you'll notice that if you look at the actual statistics of loss in the wider crypto ecosystem,
+this is something that I track as part of my annual report at the end of year, for the past four or five years, the amount of Bitcoin that is getting lost and stolen is steadily going down while the amount of Ether, Solana, and other tokens is going up.
+In general, it's mostly not happening anymore because of hacks on custodians.
+It really all has to do with exploiting smart contracts and the fact that people are willing to sign transactions for things that they don't really know what they're authorizing.
+This is what all the wallet drainers and phishing scams are.
+I hear from people on almost a weekly basis of like, "I thought I was safe because I was using a Trezor or a Ledger," and then I got, and this is one of the things that really pisses me off, people that are actually getting the bankruptcy emails through Krull or whatever.
+People got crushed on the Voyager bankruptcy emails.
+They got hacked, right? The bankruptcy provider got hacked, so all of that private information gets leaked and so now all of those creditors get spear phished and they're told, "Hey, you click on this and sign this transaction and we'll actually give you your money 
+It seems like a legitimate thing because they're expecting to get their money back sometime around now, but what they're actually doing is they're authorizing a wallet drainer to take all of their money.
+It's insane and you talked about people will have their lull to sleep somewhat by the fact that it's on a Ledger or Trezor.
+If you sign the transaction to send your coins away, it doesn't matter how you have them secured, but it really is incredible to your point that it's less now about, there were the cycles where it was always a bridge being hacked and we still see those things, but these sort of major exploits, but those were generally from a huge wallet or from a protocol, not from individuals one by one.
+It's really sad actually, when you put it in the context that you did, that we're seeing maybe larger dollar amounts being stolen and that's distributed among thousands of percent more people.
+We were joking almost a few months ago, it's like if you buy a Bored Ape, you might as well consider a 75% chance that it somehow disappears from your wallet.
+It seems that way.
+You could say this is somewhat a limitation of the hardware devices themselves.
+Generally, it just pops up and it's like, "Hey, do you want to sign this message?" and then it's like a bunch of hex code.
+It doesn't tell you in plain English what you're actually signing.
+That's absolutely true.
+People are like, "Well, I guess I have to sign this in order for it to work," and so they do and that's game over.
+Is there a reliable way for those people to secure those types of assets now?
+Generally, I think it's about compartmentalization.
+If you're doing riskier DeFi stuff, then you should only have a small amount of assets in your daily driver wallet.
+Basically, you have to think about it as every time you're touching your private keys, this is a very sensitive and risky act because there are many things that can go wrong.
+As long as you're not touching your private keys and they're securely backed up, then nothing's going to go wrong.
+Especially if you're signing various authorizations to your smart contract wallets, then you should assume that at some point you may slip up.
+Even if you're a highly sophisticated technical person, we make mistakes.
+It's very easy to get a notification or an email late at night or maybe when you're sick, you're just not thinking clearly.
+Maybe you've been partying a little bit too much and you might not have the same level of guard and caution that you normally do.
+I guess one way to look at it is you should consider yourself to be a single point of failure.
+You are not always in top condition, the sharpest mindset, so you need to guard against what the stupidest version of yourself might do.
+That's a really good way to put it because the stupidest version of myself is really stupid.
+It can be that one moment, right?
+I'm yet to knock on something, but I know, to your point, very smart people and we all know, exceptionally OG, respected, tech savvy, security conscious people in this space who have been massively hacked.
+Does that mean they should just only have Bitcoin and a multi-sig and call today or Ethereum, I guess, at this point?
+Are you guys offering things beyond? Can you do all the RC20s? I haven't even asked. Or is it just Ethereum and Bitcoin?
+We have theoretical capability to do any ERC20. Once again, it's a question of risk.
+I can tell you for sure we are never going to just open the floodgates on all of the tokens that you can add because that's a security issue in and of itself.
+People create the fake tokens that they look like they have the same ticker signal, but it's actually a malicious smart contract.
+So we'll be vetting and whitelisting on a case by case basis, depending on what demand we're seeing from people.
+That makes perfect sense. How many times do you get the when Solana question now that it's gone up so much in this cycle?
+I don't think we've really gotten much on the Solana side, but it also seems like the Solana stuff is mostly more in the degen space.
+And I think that those folks tend not to be looking for our type of generational wealth services.
+But it very well could be that another cycle goes by and that changes because you could argue that 2017 era for Ethereum was...
+Same as Solana now.
+Space. And what happens? Well, you know, you throw a bunch of stuff against the wall and then 90% of it fades away.
+But whatever is left, if there is still enough value there, then you may have people that are holding on to generational wealth.
+So I wouldn't be surprised if that cycle repeats from that perspective.
+Are you working on it yet?
+No, no, we've got higher priorities.
+I think that aligns well with the ethos of your company and the Jameson that I've known for all these years.
+So anything else you want to touch on before I let you go that we might have missed?
+Well, you know, security, it's a complicated subject.
+It's also a very personal thing.
+And this is another reason why I think that a lot of the sort of do-it-yourself custody setups can be so overwhelming for people.
+Because what you don't realize until you really start to go down that path and get into it is that there are a lot of decisions that need to be made.
+And these are not decisions that you can just find a self-custody 101 guide for because everybody's situation is different.
+So while you can think of Casa as providing technical solutions and software and security models that are easy to get into,
+one of our big value adds is just the fact that we have really high level of support.
+If you want, especially if you're on our premium plans, we will get on the phone with you, we will do a video call with you,
+we will walk through any questions and issues you have, and we'll help you make these decisions by informing you exactly what the convenience and security trade-offs of each specific decision is.
+Yeah, it's an incredible service. So I can't wait to see it evolve. And I hope, as always, that more people find their way there.
+Maybe the next conversation, we'll talk about all the risks of the ETFs more deeply, but yeah, save that one for another day.
+Where can everybody follow you? And of course, check out Casa and all the products you've discussed.
+It's easy to find me on X, formerly known as Twitter, handle is just L-O-P-P.
+And if you want to check out Casa, it's just C-A-S-A dot I-O.
+Love it, man. Well, thank you so much for your time. As always, I can't wait to dig into the Inheritance Product.
+It's been a huge problem. And as a customer, it's time I give you guys a call and figure that out. So thank you for developing that.
+Absolutely. We'll be standing by. Bye.
