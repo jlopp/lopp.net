@@ -1,0 +1,350 @@
+Welcome back to value stack. It's been a little while. As you can see, we've upgraded our
+set.
+Yes. Yeah. I think last time I recorded it was like February. So we're like 30, 40 K and
+60 now. If you're not familiar, this is Jameson Lopp. He's a bitcoiner. Would you, would
+you describe yourself as a bitcoiner?
+Cypherpunk, bitcoiner, nerd.
+What, uh, what are we going to want to talk about in this episode? You said that there
+were some interesting things going on both on Bitcoin mainnet, but also in Bitcoin test.
+Yeah. I mean, there's a lot of stuff. We could talk about technical developments. We could
+talk about my attack on test net. We could talk about a variety of government attacks
+that are happening just last week.
+Yeah, I love that. So let's start. Let's use this theme as the attacks. There's attacks
+on us from everywhere. And maybe you're participating in some of them. Let's start a test net.
+So you were explaining yesterday to me that the testnet needs to be reset. Can you give
+me an idea, just a short like summary of why that is and how you came to that conclusion
+about it as well?
+Sure. So, you know, what is test network? It is a network that is not Bitcoin. It is
+separate from Bitcoin, but it is almost exactly the same as the Bitcoin protocol. And the
+entire premise of testnet is to have a network that is basically exactly like Bitcoin, but
+it has no value. So, you know, we want developers to be able to experiment and build and innovate
+and do stuff on Bitcoin without having to pay for the privilege of doing so and to be
+able to do so and take risks, you know, without having to potentially lose a lot of money.
+So one of the problems that has compounded as a result of several other things is that
+now testnet is in a state where testnet Bitcoin is scarce. It is very hard to get.
+And as a result, it has accrued value and there are actual markets where people are
+buying and selling these testnet coins. That's not great for developers. You shouldn't have
+developers needing to go out and buy these other tokens.
+So let me ask you, so why, how did we get here where like testnet tokens became so
+scarce to where they eventually started becoming valuable in some people's eyes? Like how did
+that concentration allocation happen?
+So at the moment, testnet is like at block height 2.6 million something, which is equivalent
+to the year 2057, if we were thinking in main net terms, in terms of like assuming 10 minute
+block times or so on. And the reason that we are at that block height is that there
+are some eccentricities to testnet that allow you to create blocks at a very low difficulty.
+And this is basically just to ensure that blocks are continually coming into test net.
+But that combined with what you could call a bug or an assumption in the difficulty adjustment
+logic means that every once in a while, the mining difficulty on testnet gets permanently
+reset to the minimum level of one. And this creates a phenomenon that I termed block storms
+back in 2015 or so, which is basically you end up having 10 to 20,000 blocks get produced
+in a single day.
+When's the last time that's happened?
+Well, it's funny, you should ask. Normally, that happens at a I did some number crunching
+on the testnet blockchain. Normally, that only happens 12% of the difficulty adjustments,
+which is I think twice a year under normal conditions. And the reason for the 12% is
+that the minimum difficulty mining rule on testnet requires that you go 20 minutes without
+mining a block. And if you look at the Poisson distribution of mining a block, then around
+12% of blocks should take longer than 20 minutes. And so that means 12% of blocks on testnet hit
+that rule. And therefore, every once in a while, 12% of the difficulty adjustments
+happen to hit that same rule edge case. And this is where there's the assumption and the difficulty
+adjustment logic where it only looks at the difficulty target of the previous block. And
+it assumes that that was the difficulty target for the entire 2016 testnet only assumption.
+That's on main net too. But that's like that's a correct assumption on main net because main net
+doesn't have this weird rule that allows you to do low difficulty blocks.
+But whenever that, you know, that low difficulty block stuff got coded into the test net,
+you know, it was just overlooked. And this block storm phenomenon resulted. So
+as a result, the rewards for a block I think are like 0.1 or 0.01 testnet coins. So there's
+not a very good distribution of coins happening even to people who are mining on testnet these
+days contributes further to the scarcity. And also it's been 13 years, we're currently on the
+third iteration of test net, but we've been on it for 13 years. And so people have started to
+operate under the assumption I think that testnet is a decently stable platform that you can
+actually do stuff of real economic value on. And so I set out to prove them otherwise.
+And so do you think that this will be reset? And is this an inevitable, I mean,
+I looked at the mem pool of the of the test and a bar training, it looks
+outrageous compared to the historical. So does this is this coordination of resetting test
+net that you're in favor of? Is it succeeding in your view so far? So I've essentially been
+griefing testnet by exploiting some of these edge case rules and flooding the network and
+triggering these conditions, just to make it annoying for some people who are too reliant upon
+testnet being like a stable network. And the whole idea behind that is just to hammer on the
+points of what I set out in my email to the development mailing list, in which I also said
+we should fix this weird edge case that causes block storms. So suffice to say that for the
+past week or so, Bitcoin testnet has been in a perpetual state of block storms, because I'm
+running some some scripts and some demons that are triggering these block storms at every possible
+point. The man who killed test net, you know, I can't I can't kill test net, but I can make it
+very annoying to use. And so several of the projects essentially became unusable because
+they're back in infrastructure couldn't handle the deluge. And so do you feel like there's,
+I mean, like any ethical reasons why you shouldn't do this or better, better,
+I'm sure you considered the ethical reasons why you shouldn't do this. Why did you ultimately
+decide that it was worth it? Given that some people were valuing this at real
+money, some people have gotten very upset and said that I've been like tampering and
+destroying with their property or whatever. But this is crypto anarchy. I am following the rules
+of the network. It's not my fault that they're so ignorant that they didn't understand the rules.
+And it's not like you are using this loophole or vulnerability to your financial gain. In fact,
+you're sounded the alarm about it so that testnet can become usable and better serve its purpose
+for developers, right? That's the whole point of it was to reset it. So it's not 0.01. And so that
+people who need to need it don't have to actually spend real value to pretty much. I suspect that
+if I wanted to put enough time and effort in, I could probably find some weaknesses in some of
+these projects and try to get some sort of financial gain out of it. But I'm not at that point.
+And it's probably not like that much value that's actually occurring on there.
+Do you think that, I mean, what's like a timeline of what we can expect or what you might guess?
+I think the best case scenario is that we can basically get the next version of Bitcoin Core
+and other major client implementations out there to update their definition of test nets. So
+what do you do? Essentially, you have to mint a new Genesis block and that gets hardcoded into
+the client software. And so then when you start up your node and you pass at the testnet flag,
+it just joins this new network with this new Genesis block. And we essentially start over
+from scratch. From every other perspective, it'll work like Bitcoin mainnet does today,
+although the subsidy will be different. I guess it's different now, right? Yeah, well, I mean,
+the subsidy schedule is the same. And of course, that's only based upon block height, how many
+blocks have happened on the network. Are there any implementations in Bitcoin testnet that don't
+exist in Bitcoin Core aside from the reset that you mentioned about the difficulty adjustment?
+Like is it code for code mirror or otherwise? Yeah, as far as I'm aware, everything else is
+exactly the same. You know, transaction construction, all of the different features that have been soft
+forked in over the years. And so, and just to reiterate, did the block storm vulnerability
+that was discovered, the difficulty adjustment, this was an intentional thing that was done,
+initially to make it make sure that developers could get testnet
+coins distributed. Well, the minimum difficulty rule was on purpose. That's what was unintentional,
+I think was this edge case that caused the permanent difficulty reset edge case that is what
+I've been exploiting recently. Okay, but that's easy to fix. That's like a one line code fix.
+And so it was the plan like a path forward here just to essentially reset the testnet
+with software and fix that line of code. I think so. And then start at 50. Why couldn't we start at
+I guess there's probably a reason we couldn't start at the current block height.
+Because it would have to it would. Yeah, I mean, you have to start over from Genesis. And then,
+you know, there have been people suggesting other changes on the developer mailing list thread.
+But ultimately, it turns into a debate between, you know, do we prefer to have testnet be different
+in this way, because it's better for developers, or do we prefer for it to be as close as possible
+to the main network, and then just instill an ethos of resetting the whole testnet more frequently
+to make sure that it doesn't accrue value. I kind of have a thesis at this point that
+if a test network goes on long enough and is used and developed on long enough,
+it's probably inevitable that it will start to accrue value, especially if those tokens start
+to become scarce. Yeah. Yeah. Good point. Good point. Well, let's see, I think we hit that one
+enough. What about some of the other things going on on mainnet right now? I mean, we just had the
+having and with that, the runes protocol is going on. And we saw, you know, speaking of mining
+block storms, it was like the opposite. I mean, it was the only storm was the transaction fees
+that occurred. What, what do you think about the current state of hash rate, mining health,
+and maybe Bitcoin as a result of that, you know, take it in any direction that you want.
+Yeah, I mean, the the hash rate and distribution amongst pools has been too centralized,
+I think for a long time. So the the bright side of what happened recently, I thought it was pretty
+cool that we went for 104 blocks straight, in which we showed that fees were exceeding subsidy. So
+this is just an interesting proof that it is possible for the economics of block space to
+become sustainable. At least for a longer term than we've seen before, it's usually only been
+one or two blocks before and say 104, you know, that's three quarters of a day. Obviously, we
+want to get to a sort of perpetually sustainable state, but that may take another having or it
+may take just, you know, new use cases bringing more and more demand for block space to the network.
+Hash rate centralization is a tricky thing. I think what we've seen from people who have been
+analyzing, for example, the different block templates amongst different mining pools,
+and actually looking at the flows of the coin base outputs, like the newly mined coins,
+and a lot of them seem to be going to the same custodian. There's some kind of fishy stuff
+going on there. You know, I've also heard that a number of these mining pools are basically just
+fronts for bit mains, you know, ant pool. So I think they're operating under a different name.
+But yeah, I think there's some further fishy stuff going on there. And, you know, I was actually at
+MIT Bitcoin Expo just a few days ago, and there was a mining panel. And I asked the,
+I think it was Galaxy and one of the other like Hut 8, you know, leaders on stage. I asked them,
+you know, why don't you run your own mining pool? You know, the common reason that we usually hear
+of why people don't run their own mining pool, or just mine solo is because of variance, right?
+Is if you have a really low percentage of global hash rate, and you would basically never meant to
+block, then it doesn't make sense to do solo mining. But if you're one of these big companies that has
+like a percentage, like 1% or more of the network hash rate, then you should be getting, you know,
+payouts daily, you know, on average, of course, there's still going to be a variance. That seems
+like low enough variance to me for a company and enterprise to be able to handle. But
+that was not the response that I got. And in fact, it was basically posed that
+the cost of outsourcing to a third party mining pool is a rounding error for these big miners.
+And that they see it as, you know, if we were running our own infrastructure, then
+that's going to be a bigger cost center. And we might screw it up like we don't trust ourselves
+type of thing. I think someone brought up separately in a different conversation that I think
+Marathon does run their own mining pool. And I think there have been one or two incidents where
+they screwed up and like mind an invalid block. And, you know, that probably cost them far more
+than it would have if they had outsourced to a third party. So it's an interesting, you know,
+I guess risk analysis and cost analysis for these miners, which is it's not great.
+You know, potentially a way of mitigating that would be if we could get more of these
+mining pools to update to use stratum v2. So for me, the problem is not so much that you're
+just outsourcing to a third party miner. You know, it kind of makes sense that
+these pools are specializing in running the software. So I've been learning more about
+running pool software as a result of my testnet attacks, because I have some potential other
+future plans there. And it's actually, it was not even for like Uber, Bitcoin,
+nerd like me, it has not been easy to get a stratum server up and running. I've tried like
+three different stratum server software options and couldn't even get them to work. And then I've
+started playing around with some of the stratum v2 stuff and been able to get it to work for like
+a minute or two before stuff crashes. So I can understand why it could be a pain to, you know,
+run your own stratum pool if you're not, you know, dedicating resources to this. So coming back
+around to like, what is the actual problem? The real problem is that you're outsourcing
+the block template generation. Is this a new source of revenue for miners? I've no
+mirrors pools been doing some stuff like that. Well, you know, you're, you're hoping that the
+miner is smart enough to optimize what transactions they're selecting from the mem pool. And that's
+usually pretty straightforward. Though some, some people are getting more sophisticated in their
+strategies for, you know, mem pool transaction selection. But there's a couple of risks that
+I'm not sure that these big companies are really thinking about. So first of all, there's a custodial
+risk. Because the coinbase output is not going to be going to your wallet. It's going to be going
+to a wallet owned by the pool. And then, you know, you have to wait 100 blocks for it to mature. And
+then hopefully it gets moved, you know, to an address that you can control. Another thing that
+might be more concerning because it's less obvious and it's probably even harder to prove
+is that if you have a third party that is generating the block template,
+they could be accepting out of band transaction fees and not passing those along to you. So,
+you know, they could be adding a bunch of transactions into a block that are actually
+paying fairly low fees on chain, and then they're getting paid via some other method.
+So the person who's mining to the pool is not getting their share. The pool operator is getting
+all of that, what they're getting paid out of band. Yeah. And you wouldn't be able to know that
+you're getting ripped off because those fees aren't showing up in the block. Wow. Okay. And that,
+is that something fairly new that it didn't exist some time ago? Oh, it has existed for a long time.
+I think it's just become more common practice. Yeah, I know that at least as early as I was
+like working full time in the industry back in 2015, there were pools that had private APIs that
+you could push transactions to. And sometimes there would be out of band fees required. Sometimes
+it was just basically doing a favor. Is this just happening and people caring about it now
+because of ordinals, and there's this application and significantly more value
+in doing like a block template, templating in a certain way. Is that why people are all of a
+sudden concerned about this? Why is it part of the conversation on Twitter and all now?
+I'm sure there's a variety of reasons that one of the more common ones for doing the out of band
+stuff is people who are pushing nonstandard transactions. And people who are increasing.
+It seems to be, it's just like there's more people experimenting with what you might call
+metaprotocols or inscriptions that are too complex to be relayed through the Bitcoin network
+because the default node policies would reject them and not pass them on. What about
+the some of the BIPs that have been recently assigned new numbers like OPCat, TX, Hash Verify?
+How do you see those fitting in? Do you think they, I know at least in the case of OPCat,
+it existed at one point? What's your stance on that? And can you help explain to someone who
+maybe understands Bitcoin but isn't a developer like how these might impact a user if they are or
+are not approved and ushered in? Yeah, these are fairly new developments. It's just nice to see
+more discussion happening about actual like base protocol level improvements.
+Some people are very afraid of any base protocol changes. They're afraid of unknown unknowns.
+But as I've said a number of times, like there's unknown unknowns to making changes to protocol
+then there's unknown unknowns to not making changes to the protocol. So I don't really see that as a
+strong argument. Rather, we just need to be very conservative and thoroughly evaluate all of these
+proposals to understand what risks, what trade-offs there are. And I haven't dove extremely deep into
+all these different proposals, but the ones that are most interesting to me are those that can
+enable side-chain development and second-layer development basically to improve the ability
+for us to finally be able to do permissionless two-way pegs between the base chain and second-layer
+networks. Are you referencing ARC in that example? I know it requires or benefits from... Yeah, I mean,
+it seems like a lot of these second-layer proposals that are out there, whether it's ARC or BitVM.
+I think even lightning, it seems like almost every Layer 2 proposal can benefit from some of these
+different potential soft fork and new op-codes, but it's really complicated as to which ones benefit
+from which ones, what the trade-offs are. But I think we just need to keep talking about it and
+get more people experimenting on test nets or SIG nets to actually figure out what are we able
+to do with these op-codes and are they safe. So, Opcat is an interesting one because it existed
+in the version 0.1 original Bitcoin release. And along with a number of other op-codes, it got
+disabled because it was determined that there was some edge case where it was problematic and
+like some machines did not evaluate it the same as other machines. So, you know, potential consensus
+failure problems. Yeah, okay. But if I recall correctly, I think Opcat got re-enabled on Bitcoin
+cash a few years ago. And as far as I'm aware, like nothing terrible has resulted from that.
+It just existing in itself. It doesn't need anything to hurt it.
+So, I don't know, if someone thinks there's something terrible about Opcat, maybe they should
+go destroy Bitcoin cash to prove to us. Is this your next battle? I don't know, Wilson.
+Well, they're trying to destroy Americans ability to save and earn a living. And I know Canada also
+increased their capital gains tax. And there's some proposals that came out this week from the
+Biden administration about the long-term capital gains basically. And the unrealized capital gains.
+Unrealized and the really crazy one. Yeah. So, I think it was like if you have a million dollars
+and income over the year, your long-term is considered short-term basically or something
+like that. Great. And then the rate and then you go, stay taxed on top of that. And then the
+unrealized gains. And they did say the unrealized gains portion would be assessed towards future
+realized gains deductions. But just remember that, you know, every year the money's worthless. So,
+your, you know, deduction is also worthless. Remember that because they're nominal, right?
+What do you think about like, what's going on with America? Like we had, you know, at one point we had
+in the beginning of the year, a few months ago, we had the Bitcoin ETF and everybody's kind of
+like, oh, we finally made it. We're legit. And then now the, oh, you know, regulate me harder,
+daddy, right? And that's what I think we're starting to see now is the other side of it.
+Like people are sort of like, wait a second, like the government is actually,
+they're not just going to let this go fly by night. What's your take on what's going on?
+We're seeing so many privacy crackdowns. Yeah. Samurai is another thing.
+Yeah. You know, both inside and outside of crypto ecosystem stuff, right? So just a month or so ago,
+I published an essay about the Corporate Transparency Act, which was passed, and I think 2020 or 2021
+with the National Defense Authorization Bill. And basically that's stripping away a lot of the
+privacy that is afforded to us through corporations, which is something that myself and I suspect many
+other people in America use to help protect the privacy of their assets. Basically, you set up
+a corporation such that the true owners of the corporation are not publicly listed. And then
+you use that corporation to purchase real assets, aka real estate vehicles, things that have to be
+publicly registered and create public records of ownership. And so Finsen is basically starting
+to require that all of these corporations file paperwork with Finsen to report all of those
+non-public owners. And as far as I can tell, all this information is just going into Finsen's database
+and it's getting shared with a whole lot of people. And of course, anything that's in a database over a
+long enough period of time usually tends to get hacked and leaked. So I've been talking to a number
+of different attorneys and other people who are in similar situations to try to figure out what we
+can do to try to forestall this, because there was actually already a legal challenge to it in which
+the federal judge, I think in Alabama, stated that this was an unconstitutional law.
+Unfortunately, the result of that judgment only applied to the like 200,000 businesses that were
+part of this trade association that sued Finsen or Department of Treasury or whatever. And so
+that's weird. It's like everybody else. Finsen has said that it's still going to move forward
+with enforcing this unconstitutional law. So I'm trying to figure out how do we
+challenge this in such a way that it actually applies to all businesses in America? Because
+there's, I want to say, millions of corporations that are going to be subject to this.
+This is the BOI beneficial ownership interest document. Yeah. I saw that when we were founding
+the space, that was something that we had to do. It was list the actual end ownership,
+even if it was just a nonprofit entity or for profit didn't matter. So there's an attack on our
+privacy. I think there's some sort of attack on our livelihood. You know, we're getting
+unrealized. Talk about the unrealized inflation, unrealized taxation and how that
+is a form of penalty through government inflation. Like it's like we, it's not even real gains,
+right? It's just penalizing. Yeah, that's tough. Like I'm skeptical that that will become a thing
+because I just don't think it's feasible to require paying taxes on unrealized gains because
+unrealized gains usually are highly illiquid. Right. It's like, if you can't even liquidate the
+asset to pay the tax, I don't see how that's the nihilism is like that's their that's the point.
+They don't care. They just want to put you in a pickle. So you own nothing and you're happy.
+Yeah. So I mean, that would that would result I think in some crazy stuff happening in the
+stock market, for example, if you know, founders and C levels of companies that own massive amounts
+of equity in their companies are forced to sell like 25% of it, that that would have some massive
+ripple effects on Wall Street. So that's like one reason why I don't think it would happen
+is because there's so much money and power there that is going to resist and is going to put up
+legal battles that I seriously doubt is going to happen. And if it did, it would be so terrible,
+like the fallout is going to be crazy. So you don't think it will even if it did get ushered in,
+it's going to be hell if they're going to get help back if. Yeah, but so for once you start
+looking into wealth management, one of the best kind of advice that I've come across from all the
+different books and stuff I've read is that, you know, due to the nature of taxation of capital
+gains of assets, the way that you preserve long term wealth and that you end up being successful
+is by not selling auto. Yeah, it's and this is like not just for Bitcoin likes this for equities,
+real estate, like as many assets as possible, because every time you sell an asset, if you're
+going to trade it for something else haircut, yeah, you're taking that hit. So if you're frequently
+trading, you're constantly taking hits on those capital gains. And so the institution of an
+unrealized capital gain tax would just totally change the game of how people think about anything
+long anymore. Yeah, that's what they're doing with the long term and short term being the same too,
+where if you're over a million dollar income, your your long term is short term, which then
+it's a subject to if it's ordinary income, it's also subject to FICA, Social Security, Medicare,
+state income tax. Yeah, so you know, these type of things, I think it's part of the sovereign
+individual thesis that all you're really going to do, you're trying to squeeze blood from a stone,
+but what's going to happen? I forget the exact same, but you know, the, the, the more strongly
+you try to grip it, like the more the sand will come through their fingers or whatever. So so
+basically, this is only going to hurt the people on the lower end of the wealth spectrum. The people
+for whom it is designed to extract the most value from, they're just going to say,
+screw you, I'm going to a different country. You know, they they're the ones who have so much
+wealth, they have the mobility to change residency. And this is essentially the sovereign individual
+thesis, which is, sure, you know, countries can do that, and they can try to gain more revenue
+through taxation. But this is a free market at the nation state level. So other countries are
+going to take the opposite approach, and they're going to say, you know what, we're going to offer
+you incredibly favorable tax rates in order to get you to bring all of your capital over here.
+And, you know, as a result, they're going to start generating a lot more wealth and more capital
+in that tax favorable jurisdiction. So it'll be interesting to see how it plays out. You know,
+I feel like even this proposal is kind of a last last gasp of a dying empire type of thing.
+It seems desperate. You could probably go back in history and see, you know,
+similar examples in other empires that were kind of at their peak, and then they started
+realizing that they had taken on too much debt, and they were struggling to increase revenue when
+what they really should have been doing was decreased spending. But it seems like from a
+sort of government bureaucracy perspective, decreasing spending is always a less tenable
+proposition. Right. Yeah, and you mentioned the sovereign individual in the fourth turning,
+they talk about how these cycles like repeat themselves. He's got the new book. The fourth
+turning is here. Would you say we're, you know, sort of in that precipice, you're getting close,
+and how do you navigate where, how do you use as like your guide and where we are in that
+hyperinflationary last gasp for air? Like how do you know we're getting there and when we get
+through it? Yeah, it seems like it, but you know, we don't know if it's going to be next year, five
+years, 10 years, 20 years. More based on actions and behaviors and events, things that happen than
+time that's passed necessarily, right? Right. So we can see the general trajectory and the best you
+can do, I think, is to prepare for some of these worst case scenarios. I mean, it's all prepping
+of some sort, right? Whether it's financial prepping or survivalist prepping. Prepping.
+Yeah, it's a having year. I mean, you know, there's been a lot of excitement leading up to the
+first quarter of the year and the price obviously went kind of crazy at the ETF approval. It seems
+like we're in this sort of post high real is it waking back up with a hangover being like, oh, yeah,
+there's some problems going on, you know, from a, from a both a code perspective to a privacy
+perspective with stuff that happened with samurai and FinCen earlier this year from a squeezing our,
+you know, cost of living out from inflationary perspective and interest rates. And so, I mean,
+shoot, it's a, you know, you didn't think this was going to be easy? Did you went on? So,
+yeah, man, I don't really have much else to cover. I just kind of wanted to do an update with you.
+Anything else you want to wrap up?
+It seems like, you know, every government agency is going to define
+Bitcoin, however, it suits the most to have the greatest claim of jurisdiction over it, right?
+So like, you'll, you'll hear one case from the Department of Justice or the FBI or whatever,
+and we'll be talking about Bitcoin money laundering, but then you'll, you'll hear, you know, something
+else from like the CFTC or the SEC, and it'll be like, no, it's not money. It's an asset.
+Therefore, we can tax unrealized gains on it. So it's like, whatever narrative suits them best
+at that moment, and that depending on which government and which agenda they're trying to
+carry out at that time will be how they'll use their political rhetoric to fit their narrative.
+Yeah. And, you know, and like the IRS has started putting more and more questions, it seems,
+into their forms. And I don't know, I would, I would suggest that you be honest when filling out
+your IRS forms, because you don't want it to come back and bite you in the ass, especially if you
+have poor privacy practices, because we've seen that the IRS has no problem doing John Doe summons
+like requests, basically, to get extract as much information from centralized custodians as possible.
+Yeah. Got to stay alert, stay vigilant.
+Jameson Lopp, thank you for sharing your knowledge and hit that subscribe button. We'll see you next time.
+See you soon.
