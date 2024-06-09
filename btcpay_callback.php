@@ -3,7 +3,7 @@
 // set the following values and the rest of the callback script should work
 const BTCPAY_IP_ADDRESS = ""; // external IP of your BTCPay server, used as sanity check / spam prevention
 const YOUR_EMAIL_ADDRESS = "";
-const YOUR_DOMAIN = "";
+const FROM_EMAIL_ADDRESS = "paidform@yourdomain.com";
 
 if ($_SERVER['REQUEST_METHOD'] != 'POST' || $_SERVER['REMOTE_ADDR'] != BTCPAY_IP_ADDRESS) {
   http_response_code(401);
@@ -24,16 +24,16 @@ if ($invoice->status == "expired" || $invoice->status == "paid") {
 if ($invoice->status == "complete" || $invoice->status == "confirmed") {
   if (!$orderData) {
     $message = "Could not find message file for invoice " . $invoice->id . ", order " . $invoice->orderId;
-    $headers = "From: paidform@" . YOUR_DOMAIN . "\r\nReply-to: paidform@" . YOUR_DOMAIN;
+    $headers = "From: " . FROM_EMAIL_ADDRESS . "\r\nReply-to: " . FROM_EMAIL_ADDRESS;
     mail(YOUR_EMAIL_ADDRESS, "Paid Message ERROR", $message, $headers);
   } else {
     $message = json_decode($orderData);
-    $headers = "From: " . $message->email . "\r\nReply-to: " . $message->email;
+    $headers = "From: " . FROM_EMAIL_ADDRESS . "\r\nReply-to: " . $message->email;
     mail(YOUR_EMAIL_ADDRESS, "Paid Message: " . $message->subject, $message->emailBody, $headers);
   }
 } else if (!$orderData) {
   $message = "Could not find message file for invoice " . print_r($invoice, true);
-  $headers = "From: paidform@" . YOUR_DOMAIN . "\r\nReply-to: paidform@" . YOUR_DOMAIN;
+  $headers = "From: " . FROM_EMAIL_ADDRESS . "\r\nReply-to: " . FROM_EMAIL_ADDRESS;
   mail(YOUR_EMAIL_ADDRESS, "Paid Message ERROR. invoice status: " . $invoice->status, $message, $headers);
 }
 http_response_code(200);

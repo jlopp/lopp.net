@@ -1,6 +1,7 @@
 <?php
 
 const YOUR_EMAIL_ADDRESS = "";
+const FROM_EMAIL_ADDRESS = "";
 const BTCPAY_STORE_ID = "";
 const BTCPAY_CALLBACK_URL = "";
 const SUCCESS_URL = "";
@@ -99,7 +100,7 @@ if($formType == "free" && (!empty($_POST["name"])) && (preg_match("/^[a-zA-Z ]*$
     $name = $_POST['name'];
     $subject = $_POST['subject'];
     $emailBody = $name . " from email: " . $email . " wrote the following:" . "\n\n" . $_POST['emailBody'];
-    $headers = "From: $email\r\nReply-to: $email";
+    $headers = "From: ". FROM_EMAIL_ADDRESS . "\r\nReply-to: $email";
     mail(YOUR_EMAIL_ADDRESS, $subject, $emailBody, $headers);
     echo '<META HTTP-EQUIV="Refresh" Content="0; URL=thank_you.html">';
     exit;
