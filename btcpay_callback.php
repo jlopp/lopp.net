@@ -4,6 +4,7 @@
 const BTCPAY_IP_ADDRESS = ""; // external IP of your BTCPay server, used as sanity check / spam prevention
 const YOUR_EMAIL_ADDRESS = "";
 const FROM_EMAIL_ADDRESS = "paidform@yourdomain.com";
+$headers = "From: " . FROM_EMAIL_ADDRESS . "\r\nReply-to: " . FROM_EMAIL_ADDRESS;
 
 if ($_SERVER['REQUEST_METHOD'] != 'POST' || $_SERVER['REMOTE_ADDR'] != BTCPAY_IP_ADDRESS) {
   http_response_code(401);
@@ -24,7 +25,6 @@ if ($invoice->status == "expired" || $invoice->status == "paid") {
 if ($invoice->status == "complete" || $invoice->status == "confirmed") {
   if (!$orderData) {
     $message = "Could not find message file for invoice " . $invoice->id . ", order " . $invoice->orderId;
-    $headers = "From: " . FROM_EMAIL_ADDRESS . "\r\nReply-to: " . FROM_EMAIL_ADDRESS;
     mail(YOUR_EMAIL_ADDRESS, "Paid Message ERROR", $message, $headers);
   } else {
     $message = json_decode($orderData);
@@ -33,8 +33,9 @@ if ($invoice->status == "complete" || $invoice->status == "confirmed") {
   }
 } else if (!$orderData) {
   $message = "Could not find message file for invoice " . print_r($invoice, true);
-  $headers = "From: " . FROM_EMAIL_ADDRESS . "\r\nReply-to: " . FROM_EMAIL_ADDRESS;
   mail(YOUR_EMAIL_ADDRESS, "Paid Message ERROR. invoice status: " . $invoice->status, $message, $headers);
+} else {
+  mail(YOUR_EMAIL_ADDRESS, "Paid Message ERROR status ($invoice->status)", $message, $headers);
 }
 http_response_code(200);
 ?>
