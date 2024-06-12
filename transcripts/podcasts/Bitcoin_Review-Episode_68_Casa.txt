@@ -1,0 +1,1357 @@
+Hello, and welcome to the Bitcoin.review podcast, where we explore developments and
+projects with the people who actually make them happen.
+The show is supported by POD2.0, SAT Streaming, and Coinkite.
+If you're a new listener, I'm NVK.
+I run Coinkite, where we've been helping people secure their bitcoins for over a decade.
+We make the cold card and fun products like the block clock.
+You can find more information about it on CoinKite.com.
+Hello, and welcome back to the Bitcoin.review podcast.
+Today, we have a fun little group here, Mr. Ben the Carman.
+Yo, yo, good to be back.
+We have Mr. Paul, future Paul, not past Paul.
+Hello.
+And we have Rob Hamilton.
+Hello, hello.
+And a new appearance here.
+We have Mr. Jameson Lopp.
+Hello, sir.
+Welcome to the show.
+Glad to be here.
+All right, quick housekeeping here.
+Coinkite is looking for a production manager.
+Just email jobs at Coinkite.com.
+This is hardware production manager, none of that other stuff.
+You know your shit, you know what a bomb is, you know how to handle an Asian supplier.
+Ideally, you can speak Mandarin or something.
+And, you know, you're used to procuring parts, you know, we can say, hey,
+here is a capacitor of this spec, you know, and you find some cool stuff.
+Anyways, you know, if you're a hardware production manager, you know, what else?
+The other thing is barbecue QR reminder is gaining a little bit of traction
+and the people who know that too.
+I mean, it's better.
+It's 30% better.
+Or maybe 50% depending on what you're comparing to.
+And what's the name of that guy?
+He used to, I think, work for you guys, James.
+Rear head, rear heart.
+Are we talking about Reardon code?
+Reardon code, yes.
+Brandon Black.
+Weird.
+He was bitching about QR's the other day and I'm like, you know,
+barbecue QR, he's like, yeah, it's better.
+It's, you know, it's better.
+But how much better can you really get, right?
+Like 50% better.
+But what's the maximum throughput?
+Isn't it still like one kilobyte per second or something?
+No, there is no, there's no time.
+Ignore time.
+Time is kind of irrelevant for this.
+It's more like screen size is a huge deal.
+Yeah.
+Right.
+So, so if you're trying to display a QR on a hardware wallet to scan it with a
+potato computer, like a potato screen computer, which like half the laptops
+are potato cameras, having that QR being, being of a better compression
+matters.
+And especially because you avoid animation if, if it's better compressed
+and barbecue QR does that in spades.
+I saw it's now in Rust as well.
+I think the key is my mic.
+Yeah.
+It's the full Bitcoin team put that together, right?
+Yes.
+So, so there's Rust and there's Dart bindings and there's a JavaScript one and there's
+going to be more.
+There's more coming.
+That's because it's public domain.
+Yes.
+I got, I spent way too much time recently playing around with QR code stuff during my
+multi-sig performance testing.
+And I don't know, you know, maybe part of it is potential improvement on Sparrow's
+side, which I was using for testing because they only offer two different density
+options.
+Maybe we should offer even higher density options, but then it gets tough, I guess,
+because it requires so much testing to figure out what each device's camera is capable
+of really processing and the frame rate and so on and so forth.
+Yeah.
+So, you know, it's very early on this technology for Bitcoin too, right?
+And, and, you know, there was, there was no like a large install base for that.
+So now that there is a bit more like bigger install base happening, I think we're going
+to find a lot of shortcomings, you know, like for the barbecue QR, at least there is the
+Sparrow, Nunchuck, BTC Pay server, Crooks.
+The BoBitcoin thing is coming online.
+And yeah, you know, people need to play.
+The Sparrow displaying for code card to read is pretty fast.
+The Sparrow is using the computer camera and it's a computer camera kind of limitation,
+right?
+Something new to resolve some of that coming in a few updates of this list today.
+There is a new, a new, a new SPAC NFC tap to push.
+We'll talk about it.
+All right, guys, let's get into the vulnerability disclosures.
+Flo and password manager Roboform helps researchers recover 20 character passphrase and locking
+access to Bitcoin wallet containing 43.6 Bitcoin.
+Encryption is fun when you have the key and not fun when you don't have the key.
+So this one, this one was a, it's like great and horrible.
+So if you're using Roboform to encrypt things, don't because they have a flo in their encryption
+implementation that makes it so that you can break it.
+I didn't read the specs of it, but it just looks like it, you know, they just didn't do the either
+the stretching, right?
+Or, or, you know, the random number is bad.
+The thing says they're using like the computer's time to incorporate it.
+So you scan through all the number of the last, you know, five years and you're good.
+There you go.
+Brutal.
+Actually, no, there is a birthday date, right?
+Like there's a birthday date and there is a died age too for that bug.
+So like you can just use the time for that very specific period and you boom, you have
+the keys.
+Wow.
+So yes, don't, don't use computers to generate keys.
+Nothing says random, like the passage of time and just being able to guess all the time stamps.
+The beautiful thing about this is it looks like it's, this was found by somebody trying
+to get his own Bitcoin, like basically hacking a wallet where he lost money.
+Yeah.
+That's the beautiful thing about Bitcoin is that incentivizes finding weaknesses in
+all kinds of systems that you might not have presumed would be, you know, Bitcoin related.
+It's, you know, this is not the first time that this type of thing has happened.
+And of course, mostly it's because people are using systems that weren't designed for
+Bitcoin stuff.
+And so they're creating these weird incentives to break them.
+Yeah.
+But yeah, the moral takeaway for me here is choose an insecure way of storing so that
+when I lose my key, I can hack it later to get my money back.
+Yeah.
+Sounds sounds like a great idea.
+Go to Raspberry Pi and use that.
+The funny one, the, I do have a bunch of electron wallets from the past that, you know, had
+changed in them, like nothing that I know if there would be anything that interesting.
+But I lost the password for like, you know, probably I have like a folder of electron
+wallets that I lost the password for.
+I'm sure there will be some sets in them.
+And like, you know, I know the passwords are strong.
+So it's going to take a couple decades to be able to break those.
+Unless somebody finds a flaw in an electron, an electron's either CGN or on their encryption.
+I don't think the CGN would have been compromised.
+It would be just the encryption of the wallet.
+How are you guys doing the entropy for your PWAs?
+The browser has like a secure random thing.
+So he's called that.
+I know it's you have to trust your browser, but I mean, that's kind of the nature of the
+entire wallet.
+So trust the browser.
+Yeah.
+Yeah.
+I mean, it's hard to trust those things like, you know, move your mouse around or whatever,
+because then you're trusting that, you know, it's taking those inputs.
+You can't prove it.
+Yes.
+It's a little weird.
+All right.
+Japanese exchange DMM hacked for 4,500 Bitcoin while nothing has been confirmed yet on chain
+analysis mononautical has suggested a possible address poisoning attack.
+Yeah.
+The cool weird thing about that is like, if it's the address poisoning thing, that means
+it was like an inside job or like one of like the three signers like tricked one of the
+other ones, which is kind of, and then you know who it is probably.
+So that's a little sus, but yeah.
+I don't know.
+It kind of makes you want to go and dust a bunch of your really high balance addresses
+and then you have another output with a vanity generated similar address just to see what
+could happen.
+It would be interesting to see what the ROI on that is.
+I mean, it's pretty beautiful, right?
+I think it was like, they had like, was the first four and the last four, the first six
+and the last six.
+I think it was only the last two.
+That's it.
+You know, it gets exponentially more difficult to match on both ends.
+Yeah.
+I mean, I was thinking that that would have been a lot for you to get four and four.
+I mean, for like $450 million, I'll wait a week to generate an address or four.
+Yeah, however much that was.
+No, there you go.
+It's four and two because the first one you get for free, right?
+Really the first two you get for free.
+Wow.
+Yeah.
+Well, I mean, it makes sense, right?
+I mean, who checks more than the last two?
+Like visually speaking, right?
+When I'm sending 4,000 Bitcoin, you're darn sure I'm checking the entire thing.
+Yeah.
+No, don't you just scan the screen and, you know, YOLO?
+We had this as a topic at Austin Bitcoin Design Club, the idea of like doing it segmented,
+kind of like how you used it, like serial numbers used to show up.
+Yeah.
+Like so like in chunks instead of one long string.
+Yeah.
+I mean, the chunks of six are pretty common for keys this size.
+That would be helpful, but it's already a long enough thing.
+We need more screen real estate 100 wallets that are really like very limited.
+Part of this attack too was using this poisoned address and dusting their accounts, right?
+To make it look like they had transaction histories with it.
+Yes.
+We have seen a lot of dusting, doxing dusting into our, some of our shopping cart wallets,
+which is kind of interesting.
+Yeah.
+I can confirm the same thing with our BTC pay.
+Yeah.
+It seems that, well, you know, like they, they should know that those are going to be donated
+straight to, straight to a borne address or, or Tor donation or something.
+I take those and I hand them out to our developers for testing.
+I mean, you know, they, they should like, this guy's like, they should at least invest
+a little more and make those, those ETXOs a little bigger, you know, because that would
+make it like me when I spent, it's just too small.
+All right.
+Next one is GitHub warns of SAML off bypass law in enterprise servers.
+I mean, there's a CV for it and all that stuff.
+Like this is interesting to me at least because, you know, a lot of Bitcoin projects depend
+on, on GitHub as the source of their binaries and, you know, they don't host their own binaries.
+They just trust GitHub.
+One time, our little bot, what's the bot name?
+Binary bot.
+The binary watch, right?
+Good bot.
+Good bot.
+Yeah.
+Binary watch found that the distribution of joint markets, the, I think was the zip file,
+whatever, the, the, the SHASM was being met, metaled with by how the GitHub was putting
+it there for download.
+I mean, that's the explanation that we found and have.
+Not the fact that maybe the Spooks were doing something.
+So it is kind of sketchy.
+I'm thinking through the attack model though, because a lot of projects, they'll sign their
+commits, right?
+So you're not going to be able to man in the middle.
+Yes, you can.
+Oh, can you?
+I don't know if you've noticed this, that if you commit from the GitHub UI, you can GitHub
+sign that commit.
+It shows the same thing on the UI.
+This was an exploit when I was on maybe like a month ago, two months ago, where people
+were finding ways to break enterprise repos by uploading files and then it looks like
+a GitHub URL.
+Yeah.
+And they were just kind of like sliding stuff in there.
+Yeah.
+It's a good point.
+And remember, right?
+Like all, most of the package managers just push it off GitHub too.
+So like, you know, it's the, it's the centralized like risk place, right?
+Like it's a, it's a critical problem there.
+Anyways, it's, I don't have a good answer.
+I mean, we essentially host code card binary as ourselves and we have a copy on GitHub.
+Is it like a second source of truth?
+And the cold card itself checks the signing of the binary, right?
+Absolutely.
+Yes.
+I mean, all hardware wallets should check the firmware before they let you have it.
+You need multiple sources, right?
+Because if you only have one source of truth or attestation, then, then you have like, you
+know, betting incentives for people who just go and break that single one.
+Right.
+This also deterministic builds are just important too.
+So you can just pull it yourself and buy, buy, buy, check it all.
+That's right.
+Except for the, the bytes of the signature that we had to explain to people why it wasn't
+just give me a private key.
+You have nothing to hide.
+Just give me the private key.
+It was actually pretty brutal.
+Like, you know, when, when the deterministic builds started to become a little more popular,
+like there were, there were a lot of those, did all those like crazy accounts on Twitter
+that like claim that it, you know, like, oh, you have something to hide or whatever.
+You know, you had to explain that I think even wallet, wallet scrutiny was also the
+same problem.
+Like people couldn't understand that you can't reproduce the signature bytes.
+And I'm like, yes, because you don't have the keys.
+Anyways, that's, that's, that's a problem there for, for GitHub and for people depending
+too much on GitHub.
+Do we have anything interesting sort of for, for binary distribution, like coming around
+that's a little bit more decentralized.
+There's a zap.store.
+They're trying to like do it on Nostar, but like, you're not hosting the actual binaries
+on Nostar.
+It's more the SS stations.
+Right.
+But yeah.
+I mean, decentralized file hosting.
+I mean, you could like torrent them, I guess.
+Yeah.
+I mean, torrent is surprisingly good at that because you can check signatures, right?
+Like right on the magnets, I think.
+Love, how do you guys handle some of this stuff?
+Well, we're, we're not trying to be publicly verifiable, but within our own internal build
+systems, you know, we require, of course, you know, full signatures on all of our code
+commits and the actual build system itself, as far as I know, we haven't gotten to like
+full determinism, but we're, we also, you know, we're not like a public project where
+multiple people are trying to prove what we're doing.
+Right.
+Well, you can't do deterministic builds on iOS store, right?
+Cause the binary.
+It is.
+It is a, it's a crazy rabbit hole where, you know, we've had these arguments before
+where people say, oh, if, if you jump through like 10 various hoops, you can do deterministic
+builds, but it's never been presented to us in a way that we felt like anybody outside
+of the company would even try to do it.
+Well, also like, how are you going to prove to the user?
+Right.
+I mean, like, it's not like you can, you can chop some on your iPhone.
+Yeah.
+I don't know.
+Like I feel like this, this will become bigger problems as, as the, as the honeypot grows.
+Right.
+I mean, Apple could just take care of the impersonations.
+They'll be a really huge one.
+All right.
+What's up?
+Vulnerable to traffic analysis was reported by the intercept.
+Yeah.
+I mean, just assume that they were, what isn't in order to, I guess, in order to not be vulnerable
+to traffic analysis, don't you have to be kind of passively creating traffic in the background
+as a kind of noise?
+Well, you can do traffic shaping, right?
+So you can try to sort of like make it look like it's something else.
+That's some of the stuff that they want to do with the, with the new Bitcoin P2P capabilities.
+But, you know, like, I think if you have like a state actor that has infinite budgets to
+expect your traffic, like it's pretty hopeless.
+All right.
+Surveiling the masses with Wi-Fi based poisoning positioning system, a new attack shows how
+Apple's Wi-Fi based positioning system can be abused, allowing unprivileged attackers
+to look at it.
+Wow.
+Yeah.
+I mean, also assumed this was already happening.
+Your device has like 50 radios and they're all broadcasting.
+They're all saying, hello, I'm here.
+Say hi to me.
+Hello, I'm here.
+Say hi to me.
+You know?
+So, so it's pretty, you know, you have to turn off everything, but you really can't.
+So you have to put in a fair day bag and carry it around that if you want to not show it.
+That's another reason for, you know, like radios and 100 wallets and the trade-offs
+that come with that, I guess.
+All right.
+Lops list of non-physical Bitcoin attacks.
+I don't think I brought this list before on the show as a light item.
+And there's a good list.
+It's a fun list to remind everybody that, you know, you should take your security seriously.
+I came to my attention because you had an addition recently, right?
+Fun is an interesting word for it.
+Yeah.
+Well, I mean, that's the thing is there are always additions happening.
+I would say we're probably averaging around one a month right now, but it's also because
+we're not in a peak bull market FOMO.
+There is a very strong correlation between the sort of retail FOMO realization of crypto
+market hype cycles and actual physical attacks because, you know, this makes sense.
+It's because the criminals who have never really thought about trying to do wrench attacks
+for crypto, they start doing the mental math and they're like, hey, you know, why should
+I take a big risk of trying to actually rob a bank or some other high value physical brick
+and mortar location when I can probably, with a little bit of Googling, find some high net
+worth Bitcoiners who I can also find their residents because almost nobody has decent
+operational security, especially, well, really in most countries, you own any sort of property
+and it's easy to find your address.
+You can't.
+Yeah.
+Many countries, you can't even put a layer, right?
+Like a firewall on it.
+Well, but you know, like most common law countries, you can set up a trust to buy a house, but
+like, you know, it's too easy to get it doxed after the fact too, right?
+I mean, like, you have an Amazon account, the ship's there, boom, it doesn't matter
+that he gets.
+Oh, yeah.
+You have to firewall everything.
+Everything.
+You know, you can't have anything shipped to your address or have any really of your
+accounts anywhere tied to you.
+And, you know, this is all part of some of the privacy stuff that I've been talking about
+for years where the short version is I just lie to a lot of people and organizations, you
+know, they ask for my home address and I give them an address that looks like a home address,
+but is either completely made up or it's an actual like private mailbox.
+But these attacks, I mainly, I keep track of it because I think we just want to see what
+the trajectory is and we want to understand are, you know, we as a trigger warning community
+doing a halfway decent job of protecting ourselves from wrench attacks.
+Because, you know, if 95 or 98% of Bitcoiners have terrible operational security and physical
+security, then the criminals are just going to do the math and realize what an easy pay
+day it is to get life changing money with one simple threat against the right person.
+I mean, you could think about it differently too, right?
+Like the more Bitcoiners out there, they have poor security.
+The better it is for us, we'll have a slightly better security, right?
+Yeah.
+Oh, all you have to do is you don't have to be faster than the bear.
+You just have to be faster than the other guy, right?
+You know, and there is a lot of people that want to be perceived as rich and be famous,
+right? So there is always somebody else out there that want to look like a target,
+fortunately, but it's pretty brutal, you know, like people, the kind of stuff that
+people share publicly, the, you know, like the, especially when it comes to like,
+you know, the size of the piles or things like that, it's really bad.
+People don't understand how easy it is to dox yourself, even with just something like a photo.
+You know, there are autists out there who can find you anywhere in the world from like
+one photo. Yes.
+But the main thing that I would say is, you know, we have, I think,
+over 150 physical attacks that are currently catalogued on here.
+And the main point I would get across is this is way undercounting it.
+That is way underreported.
+Most people don't.
+Yes.
+Most people would not like go to, because, you know, there's nothing to do really.
+It's like they probably wouldn't go out police station and say, hey, I got robbed.
+Yeah. But also, I can tell you from my own experience of like working with people who
+have come to me because they've been attacked privately seeking advice is that they don't want,
+in many cases, to even go to law enforcement because that can create a public record trail
+that could get picked up, you know, and end up in the news as that's how I find out about most
+of the things on this list is, you know, reporters either find it in police logs or in
+court cases or whatever.
+And so they're basically afraid that being public about it happening will make you more of a target.
+And this actually directly relates to my own personal experience getting swatted in 2017.
+I had to do the calculus myself.
+And so I got swatted in 2017.
+I was public about it happening at the time, but I didn't go into many details about what happened
+because I immediately started looking at, okay, how do I actually
+improve my privacy and security?
+And it wasn't until over a year later when I had burned down my entire life and started it over
+again in a more hardened posture that I started releasing all the details of what happened and
+started going after the person who attacked at me.
+You know, so my wife is a litigator for estate law, right?
+And so they often have to find people, right?
+Because people die.
+You have to do estate stuff.
+And, you know, it really takes about two minutes for a PI to find anyone.
+It doesn't matter how good their upsec is.
+Like, it is fascinating how fast they find people.
+You know, they just know how to find them.
+I would love for this to become more of a part of the, I mean,
+obviously people who know about privacy know that this is a big reason why you want privacy,
+but especially as we're like, you know, interacting with governments who don't
+want us to have financial privacy, recognizing that like governments by requiring
+like financial institutions to collect a ton of information about people and link that with
+financial information is creating these honeypots that can potentially lead to these really,
+you know, dire physical consequences.
+I mean, look at exchanges, right?
+I mean, like, you know, they have a, you know, a number of your balance, right?
+Or your past balance and your like pictures of your ID or, or, you know,
+like your address and all this stuff.
+And, you know, it's not an, if it's a when they're going to get hacked, right?
+So what I started like requiring in order to have business relationships with the, you know,
+exchanges or whatever, any financial institution that's like related to this industry is,
+you know, I want to do KYC in paper.
+I know they have to do the KYC, right?
+But like I required that they do in paper where we don't do business with them.
+Because at least on paper, you know, you go to their office, they take a photocopy of everything
+and, you know, like they keep it in there safe.
+And worst case that happens is, you know, place burns, they need to do it again
+or, or they lose it, you know, inside the office and they have to do it again.
+But, you know, the chances of a remote attack or a data dump leaking my personal information
+are much lower.
+It's like a, like a cold offline KYC.
+Yeah, absolutely.
+You know, it's, I don't think there is any other way, like until, you know, we managed to
+end KYC and AML laws that, you know, only affect us.
+Yeah. I mean, the, the one trend that I will note that seems to be just beginning is that
+it looks like there are some savvy groups of criminal actors that are basically starting
+to specialize in this.
+Yes.
+And it's, at least in South America, it's kind of a variation on a scam that criminal groups
+have been running against like tourists and expats for a while, where they, they basically
+get you on the dating apps and then they have a girl take you home and drug you and, you know,
+unlock your phone and, and wipe everything out.
+And so now they've just sort of added wiping out your exchange balances and your hot wallet
+balances as a part of that.
+But we're also starting to see people get extortion and physical threats where they basically get
+doxed and they start having weird things happen to them in their real life.
+They're not having like someone point a gun in their face, but they're, you know, getting
+communications that are very threatening.
+And somehow, you know, these groups are getting boots on the ground of people to, to start
+doing physical things like in their proximity, starting to like physically test their security.
+And it's all remotes too, right?
+Like the master bed guys are not even in, you know, in their countries or whatever, right?
+Like it'll be, you know, they, I don't know, they are like in Afghanistan or like Nigeria
+or, you know, Russia or whatever.
+And then they hire people locally.
+They hire bed guys locally to go do their bidding.
+Exactly.
+And the bed guys locally don't even know the extent of what they're doing.
+They're just hired to like go drop this letter in front of their house, right?
+Like it's like remote hands, which makes it like, you know, extremely,
+essentially impossible for law enforcement to even deal with it.
+That really brings up like, you know, this, this, you know, things that Rob is working on,
+you are working on, some of the stuff that we work on, you know, I still, I still think that,
+you know, well, I mean, really the main reason why I went
+up vault in CTV so that we can have on-chain vaults to have more preemptive security, right?
+More reactive security and, and de-risk ourselves personally, right?
+I mean, I'm not going to act myself, but you know, like the way I have things set up is
+like, go take me a month to reconstitute things like, and it requires a lot of
+international travel too.
+So like, it's like good luck.
+That's, that's the only real practical way of securing yourself against
+wrench attacks. I wrote an essay about this several years ago where I basically said,
+you know, you, if you think about the threat model in a wrench attack scenario is you yourself
+become the threat. You have to assume that you are completely compromised.
+Yes.
+And you are able to authenticate through all of your security system. So the only way to
+really secure against that is to make it such that, you know, you have to physically pass through
+high security barriers.
+Multiple times and they're timed and like, it is like literally a nightmare.
+Jamison, for this list, like what percent of these are just like single SIGs on a phone,
+right? I'm assuming that's like most, if not like almost all of them.
+I'm not aware of a single one that was a multi-SIG setup that was compromised. It was,
+it was pretty much always people who had everything on a like mobile app wallet or
+they just had like a single signature hardware device at their house that was easily accessible.
+Yeah. This is one of the reasons why I hate on SIDQR so much. I love the standard, right?
+Mine is the compressed version, but it's the incentives, right? This idea of having a hidden
+seed unencrypted in your house is very dangerous. Like having private key material around you
+invites violence, right? And if you're doing multi-SIG, but all the keys are in the same
+location, they're in the same conundrum, right? And it is incentivized that way, right? Like
+people talk about this. Yeah, convenient. Exactly, right? I mean, see, like I've been
+trying to push this idea for people to sort of understand that like any savings amount that
+are unrequired for you to function day to day should not be accessible by you. Yeah. Period.
+Like, you know, like it's just simply inaccessible. Like you don't need it. Like you don't need to
+carry around the heart of wallet, right? Like you don't need to have it around you. You don't
+have for your savings, right? Have a second one, right? That you use for like your, you know,
+like a checking style life, right? Or and you're spending money, keep it on a phone wallet, right?
+Like try to segregate the types of spending you have because you're putting yourselves at risk.
+I mean, the collaborative multi-sig stuff, like, you know, there are trade-offs,
+a lot of them related to privacy, and I hope we can overcome that. I actually want to get to that
+since you're here a lot. We do need to remove, like to fix the privacy problem with the
+co-signing parties, right? Like if you have an outsider party to do that, because then we can
+really sort of like get to a place that's better. My biggest fear of using the collaborative multi-sig
+setups, aside from the ones that require KYC, which we're not going to use unless it's a business,
+the like, but you know, like having in a way that the co-signing partner doesn't even have
+access to balance, right? Like they don't, they cannot see the balance. Have you seen Arbdout
+has been working on SIG Bash? No. It's something like this where you actually just buy an XPUB,
+and then you just, whenever you want to like redeem your money, you just like dump it like,
+here's a PSBT. This is my pre-agreed upon conditions. It's no KYC. You just like pay in
+Bitcoin, get an XPUB, and then you can, you know, stash that in your descriptor, and you could use
+it. And then whenever you need them to sign, you just present the PSBT and then it'll blind sign,
+as long as it follows the conditions, which is like a certain amount of Bitcoin or Bitcoin price
+or date in the future. Like you can like upfront, you just agree when you buy the XPUB, here are
+the conditions which you're allowed to sign. There were a lot of services like that way back
+in the day. I think there's still one that actually comes with Electrum. I think it's called
+Trustcoin or something like that. Not the one that God hacked, something else. And what he could do,
+it was similar to that, like essentially it works as like two-factor with some condition.
+Yeah, like, I don't know, like maybe the solution, at least for now, that we don't have on-chain
+primitives that can do this, it's like, it's not an XPUB that you share. You share maybe like a bunch
+of sub-private keys, right, with them. And so that you don't de-anonymize the rest of the stuff.
+And like, and you have like UTXOs that are specific to some things, I don't know. Like I,
+you know, Flaxman had like a crazy setup where, you know, you deterministically generate other
+private keys, but you don't tell the path to the...
+The blinded XPUBs.
+Yes, that was too convoluted. Like, James, like, I'm sure you guys are studying this
+shit all the time because, you know, you can make this into a product. Like,
+where are you guys at with some of this stuff in this thinking?
+Well, there's always pros and cons, right? Is that if you start blindly signing stuff,
+then you can no longer have the security of being able to essentially authenticate with the end
+client. So, you know, for our top tier clients, we're literally getting on calls with people and
+running through various playbooks for authenticating that they are who they say they are and that
+their money is going to the place that they want it to go. And it's always going to be trade-offs.
+This is the really tricky thing about trying to balance privacy versus having a collaboration
+where people are helping you is that there's a lot of times where one of our clients might run
+into an issue and in order for us to help them debug it, we need to know more information about
+the transactions, the UTXO, the, you know, the state of their wallet. So, this is, you know,
+I think it's always going to be the case that if you want the ultimate level of privacy in Bitcoin,
+you have to be the lone mountain man who is doing everything on your own. And this is
+kind of what we're trying to explore at CASA is, you know, what is a path that we can take that
+is kind of navigating these different trade-offs and giving people more usability. But of course,
+some of those trade-offs will be at, you know, the privacy and sovereignty level because
+we are helping them with some of the heavy lifting.
+So, but like, you know, what do you do when you fire an employee? Do you shoot them?
+Like the ones that have any information of a customer? Like, you know, like I'm joking,
+by the way, because who knows who's going to take this clip. But, you know, those are the concerns,
+right? Like it's like oftentimes attacks happen because somebody internally in an organization
+is part of the attack, right? So for example, in Brazil, what they love to do is they'll kidnap
+the kids of the family of the security guard that guards the front gate of a condo building,
+right? And then when the bad guys show up, you know, and these are condo buildings that have
+all kinds of security, right? And then the guys show up, right? Like they just open the door,
+you know, like, and then they go apartment by apartment, like, you know,
+getting everybody naked and locking them in the washroom where they rob everything, right?
+Or, you know, like at, at the big goal, remember that the couple, the lady who, who helped
+Razzle Khan, prolific rapper, there you go. You know, oftentimes it's internal people, right? And,
+and like, yep, we just assume everybody that works for us, including us are spooks, right? So
+that's, that's how we run our arc, right? But it comes with a lot of trade-offs.
+Pretty much. I mean, you have to build not only your software, but also your organizational
+practices so that you don't have single points of failure. So you can't really have a God admin
+within your organization. There have to be checks and balances all over the place. And of course,
+at the end of the day, you're making a certain assumption that some threshold of employees aren't
+going to collude together, usually doing that by making sure that you have really, really strong
+audit logging so that, you know, even if that did happen, it would be obvious who did it and you
+send, you know, law enforcement after them. And this is where it's also important to know who your
+employees are. I mean, there's anyone who's running a company in this space, especially on the
+security side, you've got North Korean people who are trying to get hired into your company. You have
+adversarial state sanctioned actors that are trying to get in. And you have to, well, you have
+to KYC your employees. But that's just one of the trade-offs. Yeah, it is very tricky.
+To that point, we're currently looking to hire someone. So I did a post on Bitcoin or Jobs.
+And I think I got like five of those like North Korean hacker profiles, like the random GitHub
+account that has like no history, but a bunch of emojis. And they experienced in 75 different
+languages because they're just trying to get into the system. It's pretty wild out there, for sure.
+You have to be very diligent on who you're bringing on board. You know, I highly recommend not
+advertising jobs to Bitcoiners. You know, I know it sounds crazy, but there is other people in the
+world that would love to work on this kind of software, or especially in the business side
+of the business. I agree. I agree. I was just kind of, you know, casting a wide net. For sure.
+I think Alex Leishman makes this point about how he would rather hire a good employee engineer
+and make them a Bitcoin or overtime than trying to make sure you hire Bitcoiners out of the gate.
+Yeah, it's especially now, right? Like the space is maturing. So like, you know, we know what we
+need software-wise. Like, so it doesn't have to be somebody specialized from Bitcoin for that.
+Well, some of the times it does. Anyways, sorry, I just realized it's not on the list.
+Did you want to shout out Graphene just now has a duress pin now? And how did they possibly get
+inspired to add a duress pin to their phone? Maybe, yeah, maybe we add to this list now. Yeah. So
+there was a case in Australia where the guy was forced to give the password or whatever.
+And I was shouting on Twitter that every important device in your life should have a duress pin
+or ideally a brick me pin. I don't know for certain if Graphene had followed my shouting,
+but yes, like it's very important. Like, and in my opinion, it shouldn't even be a wipe,
+it should be a brick. You know, wiping on complex computers doesn't really work
+depending on the sophistication of the attacker or how the wiping is done.
+So I think just like completely breaking the memory, breaking everything is safer.
+You know, who cares if your device is is destroyed when the alternative is you're losing all your
+privacy or your Bitcoin. You know, when people say, you know, the brick me pin is going to cost me
+a new cold card. Well, you know, it's better to lose the cold card than all your Bitcoin, right?
+I did see a fun Reddit thread recently where people were suggesting that cold card brick me
+pin is just a sales tactic to sell a lot more cold cards. Yeah. And it's like the kind of
+stuff you hear, man, it's always fascinating. There is this sort of like, I almost want to call
+it a faction of like, I call it commonist Bitcoiners. It's like, you know, like they're like anti
+business. It's weird. It's like anti profit. And, you know, just don't use the feature if you
+don't want the feature, right? Like, you know, we're building here for the people who are in it
+to win it, not for the people who are sort of like, you know, trying to to larp, right? Like,
+and being able to destroy a device in a situation where destroying the device may mean the big
+difference, you know, sounds great. It's similar to like, you know, people who hate that we launch
+new hardware, because they want to buy that he went like, dude, like, I'm trying to improve the
+security. Don't even get me started. There seems to be a decent contingent of people who don't
+understand that, you know, there are many different companies and products in this space, and they're
+not all targeting the exact same users. And that's okay. They're it's good to have a diversity of
+security models, privacy models, usability, and let people, you know, select what works best for them.
+Yeah, I mean, you know, and you can even like create rule of thumbs on this, like if you can't
+afford a code card, you probably don't have enough Bitcoin that warrants needing a hardware wall.
+Like, why are you even bothering with this stuff? Just like, keep it on a phone with a seat, right?
+You know, there is a lot of sort of like, very rational rule of thumbs you can create around
+this stuff. And, you know, just just don't larp, like that you're going to get like, hurt, robbed,
+it's, you know, you're going to screw your own self out of your BTC. It's, it's not a good idea.
+Anyways, it's, it's right. All right. So we're starting 45 minutes in the Bitcoin software
+release and project updates. Casa announces support for a lot of descriptors. Go ahead, Lop.
+Don't have to read exactly as this, but you know. Yeah, I mean, I think it's
+long overdue, but mostly it's surprising how little adoption wallet descriptors have
+received thus far. And my main issue with the lack of adoption is I think that if
+the rest of the ecosystem keeps just treading water and ignoring this, then it's potentially
+going to hinder adoption of the cool stuff that people are starting to want to build, you know,
+like Rob, basically taking advantage of tap route, tap scripts, you know, more complex
+spending conditions, because we're, we're no longer in the world where you may only have
+one single signature wallet or a standard two of three or three or five, and that's the extent
+of your spending conditions. Because, you know, for example, I, I want to be playing around with
+many scripts and creating, you know, crazy, arbitrarily complex spending conditions. And the,
+the standard wallet software that's out there, like even the, the good, highly adopted multi-sig
+wallet software that's out there, it doesn't really give you the flexibility. You know, we have,
+we have the tooling at the protocol layer, but we don't yet have the software layer tooling
+to be able to easily define and, you know, create and back up and recreate these more complex
+wallets. So I think that we just, we need to start with descriptor support.
+You know, it's funny, you know, when I created the website, output descriptors.org, I think,
+was when output descriptors got merged. And we added to cold card because we had a lot of users
+trying to use core with cold card way back where there was no GUI for it. So these are only terminal
+people, right? And the only way to get in and out of core was with output descriptors when they
+were at it. And we, we thought it was going to just be like, boom, like everybody's going to adopt
+this because it makes complete sense. And that's the best way to get in and out of wallets,
+especially for multi-sig. But what we noticed is that like a lot of client software out there,
+right? So the wallets that create the transactions, not the signers, they, they just, a lot of times
+don't have the technical chops to do this stuff. And, and that's why adoption is so mediocre.
+One good thing though is the software and, and the signers out there that seem to have the,
+you know, most of market share do tend to be the ones that are capable.
+Absolutely. Yeah. I, for the descriptor stuff, I think it's also just important to be fair in
+that, and I don't mean this like in a bad way, but like if you have a system that's working,
+working and it's securing people's money today, like if it's not broken, don't fix it. So why touch
+it, right? And so like, like it's a form of tech debt, but it definitely in the conservatism of
+Bitcoin, it's important to, I guess, keep that context in mind that people don't want to actively
+start reworking things. And the output descriptors are great for many scripts, but even if you just
+want to use anything in taproot, if you want to use like any sort of more elaborate tap script,
+like leads, if you want to be able to do anything with MuSig, there's actually a bit that just got
+merged like this morning about MuSig and output descriptor support. So if you want to do anything
+that isn't just sorted multi-sig or single-sig, you're going to want the descriptor because
+you need to be able to reconstruct these like the Merkel trees, like you need to be able to
+defer taproot. Even bread and butter P2SH, like even bread and butter P2SH, that put the
+descriptor is a better way for you to have that script. Oh yeah. I agree with that personally.
+An example that I gave in the blog post, so I think that CASA is probably more incentivized
+than a lot of wallets to have interoperability. This is part of our ethos of not being a single
+point of failure. We don't want our app or our company to be a single point of failure, so we
+take great efforts to make sure that we are compatible and you can recreate your wallets
+in other open-source software and it is a pain for us to tell people how to do that.
+It's like we have these lengthy support articles that basically say, you know,
+click on this, move the slider over here. It's nearly hopeless. Yeah. And so it should be
+a simple either copy paste or QR code operation. And you know, that's the great thing. These
+wallet descriptors are compact enough that you can put them in a QR code. And so import, export
+is as easy as doing anything else with QR. And I know Rudolfo loves QR, so end of story.
+So you know, it's funny. There is actually a conversation with the Cedhammer guys, right?
+And there was even a PR or a bit conversation started. There is no easy way for you to transport
+the output descriptors right now. So they suggested to Andrew Chao to put the output descriptor as
+an optional field on PSBT. So the PSBT is to the transport. That was vetoed. You know,
+it can still go on the vendor, define fields, which don't like really, you know, you can do whatever
+you want there. But you know, so people listening out there, we do need a standard for output descriptors
+to go in and out of things. And, and, and, you know, especially as, you know, manuscript complexity
+and this things get bigger, we do need a solution for this. There is, because barbecue QR,
+the Cedhammer guys wanted to have to be open the conversation there, to create a seed QR,
+QR, sorry, barbecue QR, QR for probably hard types for output descriptors. But, you know,
+like, yeah, sure, it's great. We need it. But there is no, there's no proper spec. And I think
+everybody's sort of like that. There is like that something commons was trying to do stuff like that.
+But people ran away from that because it's like, you know, academic health. So I, I just have one
+related gripe related to output descriptors, the way core handles it right now. And a couple other
+is that you have an internal branch and an external branch, you have to load two separate
+descriptors in to be able to get the entire wallet, which just adds extra friction, like there's like
+the wallet policy notation, where you just declare like, Hey, this is going to be change receive.
+And to me, like, since 99% of the text is identical, why have two separate descriptors
+for interfacing with core? Other wallets have been able to get around this, but it's just
+something I've been interfacing with recently. You know, Rob, you might want to participate in
+the discussion on the barbecue QR repo because it's possible that that discussion ends up becoming
+the spec of like how to go back and forth. So maybe go offer your two cents there.
+Yeah, I'll go start right now. I think it's the next thing that we need to sort out.
+I mean, look, we need to get away from the common belief that all you need is your seed
+phrase. I think that's one of the big issues at play here, like especially as the Bitcoin protocol
+continues to evolve. And as we have just a higher variety of script types and derivation paths and
+spending conditions is that people, I think, still don't understand that the ability to spend
+your Bitcoin is more than just having the private keys, because that seed phrase is
+essentially an infinite number of private keys, which of course, if you have to search through
+them and search through all the possible spending combinations, it's like expecting someone to be
+able to mine a Bitcoin block with a little USB miner. Yeah, the way I view this as a mental
+model when I explain this to people is that your private keys are the keys that unlock the treasure
+chest, but the output descriptor is the treasure map that gets you to the chest,
+because the keys are not enough that you can't even recreate the redemption script on chain.
+Part of this is like, there is almost like a tragedy of the commons that happens in spaces
+that are not that big with the amount of devs in them. Bitcoin is still sort of narrow,
+in that sense, is that everybody in industry embedded with the core work tends to think
+that you need one standard to rule them all, and that is not true. As a industry grows and develops
+and it has more members, sometimes there may be two or three standards in that industry,
+and that's okay. As long as a standard is not just a single player, it is a very viable thing,
+because sometimes you have different players that they're so far apart in their requirements,
+that you'll make a poor standard if they try to compromise. I think that's what happens to
+Lightning, for example. I wish Lightning was more players than maybe the interop.
+Instead of making so much compromise, figure out, okay, these are the five, ten sort of
+entities that do a lot of business together, there's a lot of interop between them. Maybe the
+standard that they use is something that's open, other people can adopt it, other people can suggest
+changes and improve it, whatever, but they don't try to completely water down and destroy that standard,
+because there is another 50 people with opinions and no users. That's what I found about that
+BCQR stuff. It was horrible. It's a terrible standard, and there is not a lot of adoption.
+Is it the first one? It has some adoption, absolutely, but it's a terrible standard with
+not a lot of adoption, so they're for time for a new standard, and it's okay. Some clients may
+support two standards, maybe they come around the fact as a shitty standard, they move on to a new
+standard, but I think it's okay in the market to have more options. All right, BTC Pay Server,
+version 1.13.2, updated, Spectre DIY 1.9.0, add Taproot MiniScript support, and Bip85 app.
+I think that makes the third signing device that supports Taproot MiniScript now,
+that would be Coldcard, Ledger, and Spectre DIY. Perfect. When Edge Firmware for the Q?
+Didn't we release already? I was given an early build to test around like poke around with,
+but if I go to the Coldcard website right now. The download page, let's see. On the download page.
+I don't even know because I don't use it much. The MiniScript branch. No, totally. I just,
+let's see here. There is no Edge. It's in a different tab and it's only for the MK4.
+Okay, no Edge, at least there's no, there's a branch, but there is no. It has rounded corners,
+so no Edge. It's very nicely rounded corners. Yeah, so there is no, okay, I'll get on that.
+We've been busy. Okay. All right, Spectre desktop, macOS, or macOS, Intel architecture
+officially supported. Add support for more languages and things. Electrum version 4.5.5,
+update support for latest version of Slip 39 Memonic SPAC. That's interesting.
+Because I remember Electrum having some issues with Slip. Anyways, Lightning,
+Unify max fee bounds for payments, QML GUI, Android update, and binaries,
+app armor profile for tarball and app image. Nunchuck desktop version 1.9.34 and Android
+1.9.46, update network settings for easily managing Electrum servers,
+ability to subscribe to securely change their email address, update message retention logic
+for Byzantine infinite groups. Has there been any work done on creating some form of interop
+between collaborative multi-sig companies? I can speak a little bit to some of the discussions
+that have happened. And at least most of the discussions that I'm thinking of had to do with
+key sharing. And I'm sure Rob has been on a number of those as well. And a lot of it,
+the problems come down to a few things. One of them is actually related to the sort of privacy
+and blinded ex-pub related stuff you were talking about earlier, which is that cosigners don't
+necessarily want to take on the risk of blindly signing without knowing exactly what they're doing.
+Another one is just incentivization. How do you get paid for providing that service?
+It's a part of the market that hasn't really been specced out.
+Yeah, I mean, I'd love to have, especially if we get to the blinded stuff, that would be amazing.
+But maybe you have, especially for organizations, it would be nice if you have like,
+CASA as a cosigner and Nunchuck as another cosigner. And somehow there is a protocol that,
+you know, talks to whatever client you pick to use.
+Yeah, I've always been a, I've always, one of the first thoughts I had with when I saw Nostar as
+a protocol was that that's a perfect way to start coordinating the stuff where terrible for that.
+Do you think it's terrible for coordinating? Because there is no privacy, right? Once we have
+Ratchet. Ah, got it, got it, got it. Double Ratchet? Yes. But like, I don't want PSPT because PSPT is
+like, it's like zero privacy, right? Like it's like, here's the money. So, so like, you know,
+don't like that. But you know, double Ratchet is coming, right? And then he can use it.
+I was thinking with like private relays, it wouldn't be like on my main Nostar feed where
+everyone could look at it, it would be like a private server, like a private relay. Yeah.
+Yeah. The Nunchuck, I think uses a fork or a version of Matrix for their, their comms.
+Because it's kind of cool. You can, you can talk to the other signers within the app.
+And that's another thing like that I really wish was a standard or more adopted by more
+clients. You know, huge part of co-signing things is talking to the other party co-signing
+and being able to do that, like, you know, privately within that, the confines of that
+key space would be huge. Not only privately, but also securely to make sure that, you know,
+nobody is man in the middle in you. Well, I mean, if you're using the private key of the,
+the co-signing as the key for, for the, the key that generates the key of the, of the chat session,
+right? I mean, you have the assurances that like, you know, if the other part is not compromised,
+I mean, the only people that can see this is the people that can co-sign this.
+I've seen, as in a popular approach, you basically have a difference of keys. You have
+keys that are for like communication and keys that are for actually signing. And this always
+goes back to, I've been talking about this for a while, the idea of using either a sat's chip or
+a tap signer as like your authentication, especially in the world of deep fakes as they're
+proliferating, that you can have a quick, easy form factor for initiating comms as like a quick
+handshake. And it's a key that if you lose it, it doesn't impact anything with the funds. Like,
+you have a different level of security for a tap signer than you would for like actual signing
+keys. Yeah, I mean, when cause a tap signer support, we have love here. No, I know, I only
+ask because we have requests, user requests. Yeah, I mean, I like NFC in general, like I think that
+we should add NFC cold card support while we're at it. Unfortunately, they're two different
+SPACs. Yeah, yeah. Because one is NFC five, the other one is NFC four. But yes, you should have
+both. I, we're going to have a, I'll give you guys a, a preview of something that we're working on
+for NFC that's also going to be very interesting for people. I think NFC is the future. I mean,
+QR suck. Yeah, what's the bandwidth on NFC? Like I haven't done any extreme stress testing.
+Oh, it's super high. Like it's, it's, you know, it's, it's, I can't remember the numbers now,
+but for Bitcoin related things, it's not a big deal. Like it's more sometimes the round trip,
+right? Like, so for you sand something, you have to wait for the other thing to sign and then get
+it back. That's the bottleneck. The bottleneck is not the sanding. Yeah. Anyways, let's make that
+happen up. Let's get NFC on all things, especially because you guys have a good app. Bitcoin Keeper
+version 1.2.7 file based communication enabled for supporting all devices and a few other updates.
+Green QT version 2.0.6, add QR unlock for Jade as an experimental feature, improve QR code scanning.
+Bisk version 2.0.4, Wasabi version 2.0.8. I thought things were dying, but apparently
+there is a lot of action happening on Wasabi because people can bring your own coordinator,
+right? Is that the, do any of you guys know a lot of about this stuff?
+Yeah, they're like doing like you announce, if you want to run your own coordinator, you like
+announce it on Nostra and other people can then like pull in and see like, oh, here's a coordinator
+I'll connect to. It's pretty interesting. Like since it's on Nostra, like all these events are
+time stamped and some of them are like months old. So they've been working on this for a while, I guess.
+And that's, apparently there's like over like, it's like in the teens or something,
+a number of coordinators announced. So a bunch of people are trying to do it. I mean,
+it makes sense. You would make a lot of money if you become the big one.
+I mean, it is pretty cool, right? That, you know, maybe this was kind of coordinated, right?
+Like, it's like, oh, we're closing down. But, you know, all of a sudden a bunch of coordinators show up.
+Yeah, exactly.
+I mean, it is the only way, right? I mean, like the incentives are horrible when the coordinator
+is centralized and has the product, the profit motive, right? That's probably why he held back
+samurai from having a decentralized coordinator for so long. They never really got to have
+a centralized coordinator, right? And joint markets has UX problems.
+Should a joint market switch to Nostra for coordination?
+Once we have double ratchet, I'm very, very against having like, see, you know, these are sign
+notes, right? And if you get the anonymize is a huge problem, right? Because now you have all
+that data there. And it's undeniable that it is yours. So, so anyways, I think, I think it's great.
+You know, it's a good place to start as well. The same way we had to use IRC
+to find Bitcoin nodes back in the day. You know, we start there, and then we figure out how to
+make it better. But like waiting for the right to perfect solution to come is also not a good
+approach. Because then it never happens. There is also the simple X protocol, which is like
+remarkably amazing for all this stuff. But it's very complex. And I think it's the reason why
+none of these coordinators are looking into it. It's like it's heavy. It's like a lot of lift
+to get into it. But but you know, it is probably debas most private protocol out there right now
+for comms. All right. Install Linux, you'd have rules for hardware wallets. Oh, you'd have rules.
+Label Bay's version 2.2.0 derive address feature, efficient address derivation generate Bitcoin
+addresses from bit three to nine expub label with ease direct labeling. It's a cool little project.
+It's it's fun to see that people are trying to to make labeling proper and also make it sync.
+If you ever had to do accounting with like Bitcoin stuff, and you know, you can't find
+the labels, it's a problem. So nice to see that. Do you guys use three to nine in any of your
+wallets, Ben, Rob or James? No, people have asked, but not enough people for us to spend the time on it.
+I guess you guys do low value. Yeah, the the thought too, I was thinking about this was that
+it'd be better. I'm just thinking because I know you guys over at Muni are also using BDK. It'd be
+nice if there was just a bit 329 like extension within BDK. So then it'd be like a feature you
+just turn on as opposed to having to do custom stuff, right? If you just get it in as a part of
+the crate, it'd be just more standardized for everyone. Let's let me go to Steve. Yeah, like we
+rolled our own like labeling system and it's something like how we do like a lot of our
+Nostra contacts and stuff. So even if we did do it, am I confused people because we just be like
+UUIDs everywhere instead of like, oh, I paid Future Paul and stuff. So it'll be a little weird.
+I just went into not when mandatory DMs and said when BIP 329.
+That's how you get things done. You just start just start harassing the devs.
+Absolutely. For a look that's new here, we often get wallets and companies to create features by
+just bitching on the show, either to each other or the person who maintains the project right here
+on the show live. And it seems very effective, very efficient. Especially an hour in. Yes,
+no one's awake anyway. Everyone's already fallen asleep listening to this podcast.
+So this is where we just do all of our future requests.
+Fair enough. It looks like there was an issue open in January.
+Yeah, not mandatory says looks like a good spec to add.
+That's a classic reply by him.
+ESP minor version 2.1.5. All right, project spotlights.
+Satsi's zine. Satsi has this cool little new zine that there was a taproot one.
+There was what else, a BIPs all about the BIPs and a stratum v2. It's free. It's you can download
+it or you can buy it and you can't. Sorry. No, you can't. Can you order copies? Yes.
+You can order it and ship it to you. It's S-A-T-S-I-E dot dev slash zines. And you can donate there
+too. Yeah, I was privileged to get a physical copy when I was at Boston Bit Devs a few months ago.
+And Satsi also a former Casa employee now, full-time mom, but still got some cool Bitcoin
+projects that she's working on to help the educational side. Yeah, she mailed one to me.
+I was not expecting it with a very huggable note, a private note on it. It's cool to see.
+She still likes her bug mug. She's a former receiver of a Kweinkite bug mug. It's a very
+special object. You must have found a code card bug in order to get it. Oh, I should have redeemed
+that. I've found those before. Really? And you didn't get a bug mug? We got to get your bug mug.
+But yeah, get me a bug mug. We'll get your bug one. This might be very subjective, but feels like
+a document for learning taproot. It hits me in like a nostalgic way. Like, oh, I remember back
+when we tried to learn what goes on. We tried to learn new aspects of how Bitcoin works,
+and that was kind of like part of the Bitcoin journey. Like, oh, here's a soft fork I'm going
+to read up on it or something like that. I don't know. It doesn't seem like a thing.
+We kind of argue. Those are things that either really technical Bitcoiners now are responsible
+for having those arguments and those kind of learnings. Or yeah, we just, I don't know.
+Just seems like a cool, old-timey thing that we used to do as Bitcoiners and not part of the
+current culture. Maybe that's just the subjective view. Yeah. I had a recorder with Levera yesterday,
+and I might trigger people who are not technical on that. We were talking about
+stakeholders in Bitcoin and things. It's going to be funny. Very related to that topic.
+All right. NFC Push TX. This is what I wanted to talk to you guys about. This feature allows
+single tap broadcasts of a freshly signed Bitcoin transaction. Okay. So we figured, hey,
+if we can lower the trade-offs, lower the bar of privacy and security a little bit,
+but offer people a very, very, very convenient feature for the hardware wallet experience.
+So what we do here is you take your PSBT however you want, microste, NFC, or QR,
+into the code card or USB, and then use signer transaction. And then oftentimes,
+the painy ass, you have to put the SD card, take the transaction back to the computer,
+load into something that then broadcasts transaction. But you might have an operational
+code card with you that you don't care that the device may be connected to the computer
+or has an FC enabled or whatever. So what this does is it bundles, so it creates a base 58 package
+of your transaction with the settings that you need. Okay. It creates into a URL that then when
+you tap with the phone, it essentially uses a GET API from say mempool or the code or codecard.com
+to just broadcast the transaction. You essentially do nothing. You just tap
+any broadcasts. You know, this is actually like if you use this right, you actually gain privacy,
+right? Because you can use a different network to broadcast the transaction than the one
+you were searching the UTXOs from to create the transaction. You can set it so it's your own
+infrastructure, your own node, or whatever you want. And I think this is going to help people
+sign transactions. We've had a wallets a lot more, especially on multi-sig setups where
+they're not as concerned about that specific code cards or gapness. Still we're gap-ish,
+but you know, you're sending data out of a high security device. So that's the tradeoff.
+Pretty excited about this because it's like, it's so simple. It works so well.
+And it doesn't need apps or computers. What scenarios does this like reduce the number
+of steps? Because like for me, I imagine like typically I'm like, I'm preparing the transaction
+in Sparrow that I'm signing with the codecard and then I'm transmitting it with Sparrow, right?
+So is this like, instead of transmitting it with Sparrow, I do, I go tap it to my phone?
+Is that? So the way I see it is two ways, right? So one is if I need to sign something and this
+hardware wallet is in a secure environment or sorry, not secure environment, but like
+a geographically separated environment that I'm in, right? So I have my desk where I may be
+generating the transaction, right? So I can take the PSBT in an SD card to the location where the
+device is without taking the computer with me, right? Can sign it, broadcast it right there
+and then right without a computer. That's useful. The other scenario is, you know, I say your QR
+preference, right? Because you're using Sparrow on a computer that doesn't have NFC, right? So you
+scan the screen, right? Sign the transaction. And then you just tap your phone that's on your desk
+and you get the transaction. So, you know, like it's one of those things that like,
+once you do it a couple of times, it becomes like second nature. It's like super easy.
+But, you know, it does have some privacy trade-offs depending on how you use it and does have some
+security trade-offs because it is data out, right? But we think people are going to use this a lot,
+especially people using collaborative multi-sig solutions. Because we find that the people who
+come back to us from like Casa or Enchain, they contact us and they're like, can you please make
+this easier? We don't care about those trade-offs as much because we are in a multi-sig.
+On a somewhat related note, because I know Rodolfo loves weird ways of broadcasting transactions,
+and I hadn't seen anybody mention it, someone wrote a mesh-tastic Bitcoin core bridge recently
+for, I guess, basically broadcasting over this mesh-tastic network. It's kind of like a,
+what, Gotenna-based network. But yeah, more ways of broadcasting is always better.
+Yeah, no, absolutely. It's like, we want to make it, see, it's like the reason why I did the whole
+ham radio stuff. It's like, it's not because you're going to do it, it's because you can do it,
+right? You want to have all these avenues of can-do proven publicly because that sort of stays off
+bad actors that may try to co-opt the channels that are more efficient and are more convenient
+to us, right? Yeah, the mesh-tastic stuff is interesting. The Gotenna, not so much because
+it's all closed in their full military company now, but yeah, there is, I think it can be helpful to
+people to have the solutions out there. Yeah, I think this is pretty cool. My one fear would be
+like privacy, if now your phone IP address is attached to your transaction, and if it's going
+to coldcard.com, push TX, then it's like, you guys kind of have a record of every cold card
+or every cold card transaction that uses this. So using mempool space might be better because
+seems like fucking everyone just broadcasts to them. We do that, right? So you choose the
+setting, and I think we're going to make mempool the default. So it goes there, you can use VPN
+on your phone. Also, you can point it to your own local network. It's even better, right? I
+pinged the guys from start nine, hopefully they added soon, and then you just point to your own
+local network box, and it does it, right? It's optionality. Yeah, you should be able to also
+configure it right to your own personal electron server too. Yes. You just pick that IP address,
+drop it in there, yeah. And I have a feeling that once people start using, you're going to get some
+interesting sort of suggestions or improvements to this, and maybe there's clever shit they can do.
+Yeah, I wonder if people want something like, I signed like five transactions,
+and then I want to broadcast them delayed over the next few hours.
+Yep. You can do, remember, there was a website that did, I think was pushed here, no,
+something else. There was a website that could do random delay transaction broadcast. Another
+cool thing too that we want to do it, we're going to do it on the coldcard.com if you push it through
+there, is we're going to use different nodes in different locations to broadcast at the same time.
+So you break some of the timing analysis. So like the rest of the network doesn't know it's a coldcard
+transaction? That's right. There's a lot of stuff you can do. And because we do this chain PSBT
+thing as well. So on coldcard, you can load multiple PSBTs in the same
+session, right? So you put in a micro-c card, and then you can chain sign them.
+And then you can chain, you know, broadcast them too. So that's sort of like more
+usability improvement there.
+Is there like a, like you're playing the raw transaction in the URL. So is there like a URL
+limit where you could like, your transaction is too big too?
+I'm sure there is a limit per spec of W3C. However, by the size of the websites nowadays
+and the things that they do, I imagine, you know, unlikely we will ever bump into that.
+Plus remember, like the majority of the transactions are not like that big.
+The PSBTs may be, but the transactions sometimes are not.
+All right. Ginger wallet, Bitcoin privacy solution with active coin drain service.
+Interesting. And it's from the devs of coordinators maintained by former CTO head of
+Wasabi wallet. There you go.
+Yeah, I was trying to like verify that. And but like for Ginger wallet, it's all like fresh
+GitHub accounts. So you got to trust there, but
+and their website is also blocked for USIPs. So there's some old Wasabi stuff there, but
+Okay. Yeah.
+Wait for this, for the dust to settle, let the technical people experience first hand first.
+Yeah.
+Cargo check CT open source development to counter time attacks by Don John.
+Oh, cool. Privacy. I just talked about simple acts. They have an update.
+And I think the latest update like doesn't even have an identifier anymore or something like that.
+Like they had some crazy new stuff.
+Private message routing to protect IP addresses, protect IP address when receiving files,
+chatting while papers groups. I highly recommend people checking this project out,
+especially if they're looking for a protocol that's private to do things.
+It's it's absolutely insane of how private it is.
+Okay. So there is another project called push the X privacy focus Bitcoin transaction broadcast
+tool. I guess we have a name conflict, but it's okay. We'll survive. There you go.
+So the rest program broadcast Bitcoin transaction directly into PDP network by
+connecting to a set of random Bitcoin notes. Nice.
+It looks like a default to tour as well. So yeah, it's great. Yeah.
+Hello, loft extra local first expense tracker,
+a full ownership of your data securely and privately E2E encrypted updates between devices
+using memonic passphrases, as key to your account, no registration or emails, no password works
+offline. Cool. I don't know if I mentioned, but Steve got back here on DMs. I have discussed
+the focus on getting our 1.0 beta out the SAP will make sure it's on a roadmap for 1.0,
+post 1.0. Excellent. I'm also eagerly waiting for the 1.0 release. They're on alpha 12 right
+now. Every two weeks, they're printing out an alpha with some good meaningful updates,
+like they just added postgres support, like natively within the app, which is great.
+Just for managing applications and databases for all the wallet data.
+That said, I have a t-shirt that Steve gave me in February of last year that says BDK 1.0 2023
+world tour. And I wear it to the park sometimes just to remind him that it is 2024 and we still
+do not have BDK 1.0. All right. Lightning and L2 plus. Let's talk about some software updates
+here. Why don't we start mutiny node and harbor? Go ahead, guys. For me, there's not been much.
+Should we fix some bugs and people out of translations? Yeah, we announced harbor.
+Basically, the idea is like a Fedium and desktop wallet to hopefully help with all the privacy
+apps disappearing. We can have a new competitor with like a different set of trade offs. That's
+not coin join, but Fedium based. It's not ready to download yet, but once people tried and it's
+kind of works, but we got a bunch of good feedback and stuff. So hopefully have it out soon-ish.
+Yeah. When's it download button? Pile only. That's right. That's a milestone. But yeah,
+it's nice that it's cool how many people hopped into the GitHub and started. A lot of Fetima is
+all Rust and harbor is all Rust like front to back. It's like a front-end written in Rust.
+And obviously it's just one single solid desktop binary. It's kind of like the software I would
+like to have more of on my computer, basically. So I think that was pretty attractive to
+existing Fetima devs. So a bunch of them have shown up in the repo, which is exciting.
+So you guys here first, Mutiny is a hipster language shop. If you're looking for a Rust job,
+go talk to them. When Cashew? Because I don't really care much about Fetima at this point.
+I really want Cashew. Cashew Maxi. We want to add Cashew support. That's like one of our plan
+things. Something we were talking to Hong Kim, the Bitwise guy. And he was like kind of incepting
+of us. He gets the idea of BitTorrent succeeded because every user is not just a leacher but
+also a cedar where you're default helping everyone. He wants to try to figure that out for
+Bitcoin privacy. His idea was having every client also be a Cashew mint. So everyone is creating
+their own mints and it's impossible to shut down any mints. I like the idea, but I think
+everyone running a mint might not work, but we're trying to figure out different ways of
+doing stuff like that where we can get like... Well, for Cashew, that's possible. For Fetty,
+that would be complicated. For Cashew, that's... And you need to run a lightning node.
+What that would be, it'd be like a Cashew mint backed by a Fetima mint backed by a lightning node.
+Why not, right? I really like this idea of, and yeah, we definitely haven't quite figured out
+exactly how to do it, but the person who's like, I'm doing my part guy, I bought a Raspberry Pi
+despite NVK's dire warnings to how it would kill my family and... And more. Yeah, add more. I installed
+a bunch of software on there that I didn't quite understand, but it seems to work and I got a
+lightning node and I opened two channels and now I'm helping the lightning network. That's kind
+of like the mindset and it turns out that doesn't actually improve payments for most people in the
+world, but that enthusiasm and that willingness to operate machinery in order to help the network.
+It'd be really cool to capture that and lean on that. The BitTorrent incentive model is even
+better. It's like, I'm going to seed this so that I get better downloads now and in the future.
+Either way, that would be pretty cool to add, to bring stuff like that into payment networks.
+I love Raspberry Pi's for that, for education and that's great. Just don't use it as a harder
+wallet. And I also do think there are a lot of people who would like to run a mint for their
+family. Yes, there's nothing illegal about that. It's totally kosher. The communism of your own
+house, right? A little at-home communism in Cashew. Families is communism. It really is.
+Back that up with some fedamint for some good multi-party rugging. And then back that up with
+the actual lightning network, which is backed by actual Bitcoin. So many cool layers.
+No, I mean, I've been sort of beating at this on thing for a while. Bitcoin doesn't scale to
+everybody. So get over it. And eCash, maybe it's not going to be eCash, but eCash is a
+extremely good contender to be the sort of solution that clears back to Bitcoin,
+either to lightning or directly base. But it is a fantastic sort of solution because of Bitcoin
+to resolve the small payment or global solve between quotes, Bitcoin ownership problem.
+The way I'm going to see it right now is like there's a... I think Safedin is kind of like
+popularized this line of thinking. I don't know how many people adhere to it, but it's basically,
+I don't have to worry about Bitcoin scaling because eventually Visa will figure that they
+should get involved in Bitcoin and they'll scale Bitcoin for me. I just need to ensure the sound
+money part. In some instances, I agree that the sound money part is foundational and cannot be
+fucked with. But we also still have an opportunity to front-run Visa on this scaling
+payments thing and do it in a better, more privacy, more cyberpunk, more self-solving way.
+How far can we get along that path before they wake up?
+I think the key is people need to figure the shit out without needing any changes to Bitcoin
+consensus. Because if you need a Bitcoin change consensus for whatever you want to do next,
+you're going to be sitting and waiting for a while. And it may not never come, and it may come in a
+way that doesn't work for you. You can't depend on that. You can't hold your breath for that.
+That's part of the reason why I love the cashew and Feddy stuff so much. They went there without
+needing a change to Bitcoin to try to do things. It's a lot healthier approach to this.
+I almost kind of see it. We see something like Wall of Satoshi demonstrates here's the UX you
+have to achieve before people will want to use your wallet. And then our goal right now is like,
+okay, well, can we get Wall of Satoshi UX with better self-sovereignty,
+but closer to self-custody with Feddermint? And then in the future, I would hope that there would
+be Bitcoin soft forks. One of the ways we evaluate those is like, okay, we've gotten this UX we like.
+Can we actually improve how self-custodial it is through a soft fork? Can we make Feddermint less
+less trust required? Yep. All right, guys. So we're trying this new approach now where we're not
+going to read every single item on the on the list below. Nothing's happening anyway. Yeah,
+there's like, you know, the people who get the newsletter get all these notes and get all the
+links anyway. So you should subscribe to the newsletter. It's on Substack. So if you guys see
+anything here that you want to talk about or mention, skimmed that Lightning L2 updates there.
+We talked about Harvard. We talked about Mutiny, Node, Nostra Primo version 1.7.21, faster rendering,
+wide feed layout, top zaps and feeds. That was my request. Thank you, Milian. A notification
+facelift, improved app Chrome, improved connectivity. The top zap shit is awesome. I really enjoy it
+because you get to be on somebody else's post. It's like you buy real estate. It's very satisfying.
+You can buy the rights to be on your post with a thumbs down. It's great. What else here?
+Nostra updated. All the clients in Nostra updated their stuff. There's this new thing called SIGIT,
+open source and self hostable solution for secure documents signing and verification using Nostra.
+It's very cool. I think this has some legs. This is one of the projects that came out of the
+Madeira thing that we were a part of. It's cool. It's actually continued to be worked on and stuff.
+That's exciting. It's like docu signed, but Nostra and normal cryptography.
+Also, another thing that once we have double ratchet can be done with privacy on the end.
+All these things can be done in that mode. Once you have double ratchet, if it's done correctly,
+you could even do a health record and stuff because it's proper forward privacy.
+I see Geysers on this list. We launched Harbor on Geyser. Thank you to everybody who's contributed
+so far. They just added this goals feature. We're still trying to figure out how we want to do that.
+Do we want to say, hey, fund us this much. Hold features hostage for milestones versus just like,
+hey, please donate what you can, and we're going to do our best to make this as good as we can make it.
+All right. Get remote Nostra. Get remote helper for Nostra.
+Nostra is a great way to host tax data. You really live on everybody else's computer.
+Just great. Korney chat, open source audio space built on Jam that integrates Nostra and Lightning.
+Is this like ZappStream? Because ZappStream is awesome. By the way, anybody who's looking for
+a Twitch kind of replacement where you need nothing to just start streaming
+your feed of video with people commenting on it, ZappStream is amazing.
+Looks like Korney is more like a Clubhouse Twitter Spaces kind of thing.
+Maybe a Twitter, yeah, Twitter Spaces replacement. That would be nice.
+Something you left out was title added Nostra login.
+That's cool. That's kind of a biggie. I wonder how it got visible to them.
+Yeah, who could have possibly told them?
+Who sent an email down the chain saying, Hey, guys, can we please add Nostra login to title?
+You know, but funny enough, I am a browser hater. So I really think the solution for
+Nostra is not to have private keys and extensions to login into things. I hate that. I stop using that.
+So I'm waiting for a better solution. Miliano was talking about
+using the Nostra Connect thing or the Sike Bunker stuff, right? Sorry, not Sike,
+but the Nostra Insec Bunker where the browser uses calls through
+knows which app you're using and stores. So the keys store on a phone app.
+And then on the desktop, it just talks back and forth, right? So he doesn't have the keys.
+It just has, you know, some, some session policy and it goes from there.
+So you may do something you don't want to, but at least it doesn't have the private key
+to be lost forever. I like that idea.
+Yeah. And I just, we had, we had the extension support for a little bit in Mutiny.
+And I just, I don't like the UX of it. It's just like this
+mysterious, hopeful API that you might get sometimes. It's like my UX as a developer was,
+was shitty. So yeah. So, so let's stop using the extensions.
+Like that's one good way of going about this. It's like stop using extensions for Nostra
+on the browser. And that means the app activity, right? So the web activity on all these apps is
+going to go to zero. And then all these devs are not going to have any users.
+Copy and paste your private key like a real man. Stop being afraid.
+No, the cool thing is if people just stop using it, like the devs are going to have to find
+an alternative solution, right? So stop using the web for Nostra with extensions.
+All right, we're going up to anything here. You guys want to, you guys want to bring up?
+Nope. But I think there was a bit of an overlap, skipping down a bit to the Samurai wallet stuff
+with wallet descriptors actually. Where?
+So perhaps you can confirm, but with Samurai getting shut down, does the wallet itself
+still work? Or is it completely broken because their infrastructure is gone?
+If you were relying on their servers, it does not work. If you were hosting your own node
+like a dojo, then it still works because you're just talking to your own node.
+Gotcha.
+And I believe you still can import it into Sparrow. And then if you import it into Sparrow,
+you can talk to whatever node you want to then move funds.
+Yeah, that's just to recover. You cannot do new mixing, right?
+That's right. That's right.
+Because Samurai was extremely centralized, like extra centralized, and they had the XPUBs.
+Related to this, I've had people reach out to me saying, you know, my Samurai wallet says my
+balance is zero and I don't know how to get my money anymore. And so I actually have to send
+them to walletrecovery.org to give them the really weird derivation pass that Samurai was using.
+Yeah, man, it's too soon. So like, I don't know, that's such a complicated
+topic there and a complicated group of people.
+And they had a bunch of non-standard derivation paths for post-mix, pre-mix, bad bank. So you
+have to have that stuff documented if you're going to try and manually recover stuff.
+The wallet and the password, passphrase is not enough. You have to be able to reconstruct all that.
+All right. News and not worthy. I mean, we don't have to read all this.
+Anything here you guys want to talk about? Talk about, you know, how to block access to land,
+to its platform to the Americans. Americans are going to have to fight back or move or
+something because shit's getting weird in the US with all this stuff.
+You know, no, it's all over. Like, it's not like the US government say you can't do this. It's
+just the US government could put this people in prison if they don't do it exactly the way
+it's supposed to be done, but nobody knows the way the way it's supposed to be done.
+So it's very tricky. I'm not an American. I'm not in America. So I don't know how to relate to some
+of this stuff. It's all a bunch of bullshit, but, you know, you have to work around with the hands
+of your doubts. I think the ARC Labs is pretty exciting. It's probably like, you know, hopefully,
+like, mainnet launch soon. They'll be like the first real competitor is a lightning.
+You know, if it works or not, we'll see, but it's cool. It's actually happening.
+Cool. Funding peer-to-peer rights fund launched. That's that's cool. Our mission is to safeguard
+decentralized spirit. Like, apparently, there's a good people behind it. So, you know, it seems
+to be safe to make donations to this. Unchained University of Austin launched first long-term
+endowment fund held in Bitcoin. That's cool, too. The HRF has awarded partial bounties to a bunch of
+stuff. Spiral supports, newest grantees, Sean Gilligan, Bitcoin Design Foundation grant support
+to more contributors. OpenSat's going to have an announcement soon, too, with like a piles and
+piles and piles of new applications that got approved. There is a lot of money for open source
+development now. Like, people cannot complain about that. Mining concept for Sutterless
+ASIC chip modules. I don't know how the SYNC, the heat SYNC is going to work well with that or not,
+but it's interesting to see. I think that's it for me here. Any topics we may have forgotten or
+things you guys wanted to talk about that we haven't? I didn't want to talk about the ETH ETF
+getting approved. ETF.review. Yes. Listen, there is scamier things as ETFs nowadays than even Ethereum.
+This thing's all part of the same bag of hurt and shit. ETH is dying, though. We're just kind of fun
+to watch. All the ETH people now want to build shitcoins on Bitcoin, and that seems to be the
+biggest take from their shitcoin conference in Austin was the fact that they were all talking
+about how they're going to build shitcoins on Bitcoin because all the shitcoins are dying, so
+winning. First NFT is now just random tokens. When you realize that no one actually really cared
+about the decentralized tech in the obfuscation that ETH had, they just wanted to be able to print
+tokens, and they want to go to where the liquidity is, which is Bitcoin. Well, they also want the
+scam Lindy. They didn't want to be on Bitcoin because the scam Lindy was on Ethereum, so once
+this scam Lindy moves to Bitcoin, all the VCs, all the projects, once you get a little bit of
+Lindy and network effect on the scams on Bitcoin, it's going to be huge. It's horrible. I don't
+like it, but I don't think Bitcoiners are prepared for the amount of scamming and
+shittiness that's going to come to Bitcoin. They used to exist in Bitcoin way back in the day.
+Is this hyper-Bitcoinization? Yes, it is. Hyper-Bitcoinization, is it all coming home?
+It's all going to be Bitcoin's unit of account. Yeah, I mean, can we agree then that it doesn't
+really make sense to be a hyper-Bitcoinization maximalist and also a puritan to say we must
+do whatever we can to prevent scams from happening on Bitcoin? I don't really see how you try to do
+both of those at the same thing. If Bitcoin is going to become the money of the world,
+then obviously scammers are going to adopt it too. Yeah, I don't absolutely, but I think there's
+a difference between preventing and alerting. We can still go shout on Twitter and call people
+scammers. That's not going away while they really have, they don't need our permission to build
+scams on Bitcoin. That's what Bitcoin winning looks like. It's like every scam is going to be
+dominated in Bitcoin. It's not going to be double your gas. It's going to be double your Bitcoin,
+right? With all this crazy stuff going on with ordinals and stuff in the past year,
+it hasn't really invaded my safe space as a Bitcoiner. Again, at that sovereign engineering
+cohort, I met a guy who got into Bitcoin because of ordinals. He's a class of ordinals,
+Bitcoiner, but he wasn't trying to sell me any NFTs. He was just into Bitcoin and Nostra stuff.
+Yeah, there's going to be a bit of everything, right? There's going to be people that come
+like through the shit coin route to Bitcoin and they're going to have a better money and then
+who knows, maybe affects them and they're more interested in building things, they're a bit
+more ethically oriented, but there's going to be like, I mean, some of the biggest scams,
+like we're in Bitcoin, right? I mean, it's, people are okay with Tether, right? I mean,
+Tether is fully captured, fully, they're proud of how many transactions they canceled and blocked
+and their treasury is backed, which means backed by the bombs.
+Yes, but they're Podconf approved and that's all that matters.
+Podconf approved.
+Yeah, in a proper anarchic voluntary environment, real anarcho capitalism,
+you're going to accept that people you don't like use your money and that's what winning looks like.
+I guess related to this. Sorry, Paul, go.
+I was just going to make a joke about how I was still waiting for that guy to send me
+to Bitcoin. I sent him one Bitcoin.
+Oh, it was a Panda? The Bitcoin Panda? Double your Bitcoin?
+There's many such cases.
+I guess related to all this, like the conversation that's been happening. So I knew this a while
+ago, but it seems like it's like breaking news for people who aren't following it closely. But
+with just Opcat, if it was activated, I'm not even saying the likelihood of it being activated,
+but just like it would enable full zero knowledge rollups happening in Bitcoin,
+like using Starks. And all you need is cat and the script would be ugly and horrific,
+but it would open up basically that's where you get all of the random tokens issuing
+everything sovereignly on Bitcoin. Even if Bitcoin itself will never support first class tokens,
+like as a name and like it has with the ERC20s, you're going to be able to do these
+abstractions and it's all going to come home if that gets turned on.
+You heard it here first. Knock that cat.
+Well, so this is me just educating like talking about it because people weren't even aware of it.
+No, I know totally.
+I think this actually becomes an argument for the great script restoration because it's like
+it's cat plus enough op code so that when you do that crazy construction, you don't have to do it
+the ugly, gross, all cat way.
+I would agree. If you're going to do it, like turning on just cat is like just asking for
+really obfuscated, complicated scripts that people can't reasonably discern or understand.
+You have to just trust the developer. Whereas if you enable more functionality, at least you
+can do things in a much cleaner way.
+I think that thing has terrible branding. Anything that sounds like an omnibus bill,
+anything that sounds like the great, the big, it's like it's going to get the Patriot script
+restoration. Exactly, right? The world economic form.
+To save the children, yes. Anything that's named like that is going to probably be
+mapped with even more pushback. People should just make PRs that are small,
+small as possible, debate them on the PR merit and then go from there instead of creating
+these massive things because these massive things really push away economic actors that are not
+technical. These op cat shit is going to be a shit show man if he gets proposed for real.
+We got Ben the cat man here on the call.
+Activate it. Let's do it.
+Okay, listen. What if you guys had to make the case for op cat, a quick case for op cat,
+and then a steel man against it? What would it be?
+Okay, the way I think the best way to ask is if Satoshi instead of disabling op cat had changed
+it to max 520 bytes, would Bitcoin be dead today? Or would you be disinterested in Bitcoin because
+of it? Probably not. Let's just fix the bug and op cat properly enable all these things that we
+could have done initially. Then once it's activated, we'll see, okay, if people are doing this,
+if people are doing that, people are doing tokens or whatever the fuck. We can create
+targeted op codes of things that are actually, oh, this is a huge ugly script. We can activate
+CTV. Now it's a thousand times more efficient, stuff like that.
+My argument, at least from a security standpoint, was op cat has been
+reactivated in Bitcoin Cash since like 2018 or 2019. If you want to prove that it's a terrible
+idea, go destroy Bitcoin Cash, please. I don't think you can destroy Bitcoin Cash more than
+destroy. Nobody uses it. One of the ways that somebody brought up at BitDev recently was
+you could think of it as some of these op codes. It's like, how much C++ are you adding
+to Bitcoin Core to get the functionality you want? There's a real simplicity and beauty
+to these op codes that there's minimal amounts of code required to support them, rather than like,
+hey, let's put a whole bunch of new C++ into Bitcoin Core to support this specific use case.
+It's kind of like the inverse of that. Let's put a very small amount of C++ and let people
+who want that specific use case write the scripts that they want to write.
+Yeah. This goes to Pulsar's mailing list quote, basically saying that 90% of the time,
+if you think of a new use case for Bitcoin script, it could be done with OpCat and that's
+where you get ugly, not maybe elegant or clean scripts, but you get things that are functional.
+And then from there, you see what's taking up chain space, and then you can dedicate
+additional op codes to basically compress that so you're getting more efficiency on chain.
+I think originals, which should not have triggered people, which should have triggered
+people with the BRC20 tokens, which caused the real problem. But the main issue to me is
+I think this, because of the dick butts on chain, the perception that the network has
+and Rindel's new endeavor, company's language might actually push, like might cause more harm.
+You know, like I think it's going to be very hard to get stuff through right now
+when people are so heated and feel like there's high risk of unintended consequences to things,
+even though, you know, OpCat is not as bad with the bug fix.
+Are the people who are really mad? Do they run nodes?
+Yes, there is a lot of people who are like non irrelevant economic actors on Bitcoin that like,
+you know, there is a, let's put it this way, I think there is enough,
+especially a very quiet majority of people that don't want to fuck with Bitcoin anymore,
+because Bitcoin is worth a lot for them. And you know, OpCat is not going to solve
+the eight billion people trying to hold Bitcoin either, right? It might help alleviate a little
+bit of some more complex scripts, but still like it doesn't solve the problem.
+What cat does functionally for other kinds of scaling approaches is that it allows you to
+take an abstraction of a Merkle tree and do that on chain. You just take each route, you
+hash it, you start cash, like you build Merkle trees. So that's where you get these ideas of
+rollups, being able to do state machines, being able to do more advanced spending conditions
+when you're doing that with the transaction, like on this, you basically put the transaction on the
+stack if you have cat. So those are like the, they're very rough, ugly tools. I think from a
+perspective of letting users figure out how they want to use their money is fine. I think
+to your point, Rodolfo, there's a lot of people who have, who are holders of Bitcoin,
+they are economic actors of Bitcoin and they're very invested in a certain narrative of how
+Bitcoin should operate. And this is like a, this is, this is not incremental. This is like
+opening everything because once op cat is activated, there's really not a, there's really
+not a good reason to say some other use case should not be done. We're going to need the dogs.
+Right, right. Op dog. Yeah. But like, if op cat were to be activated, you really lose most space
+on like why something else should not be activated at that point. You'll be able to do it with cat.
+Yeah, it's everything. You get everything. Yeah. And, and that might be a difficult sell, right?
+Like when, you know, we really comes down to it, like, you know, because we have achieved
+like a, a fantastic story behind, we really have, right? Bitcoin does that and can do that for the
+world. So, so like trying to sell more functionality on Bitcoin is not going to be an easy thing.
+You know, if you talk to devs, within devs, yeah, you know, like, of course, engineers,
+you know, love to say anything is possible, right? And, and, you know, nothing's going to break.
+It's always like that. Don't worry. We can build a bridge. It's not going to fall. And then when
+you talk to non economic, like non technical people is the opposite, right? Like they're going to have
+the fear or the hope or whatever. Like, and, and like the groups don't talk to each other.
+Like, so, so like they just shouted each other on Twitter and then anybody who's a little more
+reasonable just removes themselves from the conversation. So I think the contention is way
+further than people want. And, and the, the heavy handedness of the conversation in terms of, yes,
+of course, there is consensus for this or for that is also a turn off for a lot of economic
+actors that just remove themselves from the conversation. And they'll gladly dump the other
+fork because everybody loves an airdrop. The thing is, though, the fork will be the people
+not activating op cat because op cat is a soft fork. So you'd have to, yes, people would actively
+fight that. Yeah. Yeah. People will counter it. Right. So, but yeah, it's either like, if you try
+to counter it, you're either doing a separate soft fork or yes, just rejecting blocks, which is like,
+like, you're the B cash now, you're not the Bitcoin, like, you know, nor Bitcoin. So it'll
+be an interesting fight. The problem is there is a massive economic incentive, right, for you to
+try to fuck with that fork too. So because you get an airdrop, if you are original Bitcoin
+continues as the longer chain. Yeah. And the thing to think about is the miners too, right. So like,
+you have the economic actors, you have the miners, if the majority, like if a lot of the
+hash rate is enforcing op cat, you're then putting the miners in a position where you're splitting
+the hash rate of the network to reject op cat. Yep. Right. So then it becomes a question of where
+the hash power ultimately goes with the economic actors. And that's where your point, Rodolfo,
+like, you can just dump the other fork. So what you need to do is like, you basically need to put
+your money on the line to tank the economic activity. So the miners stay with the fork that
+you want, while you also get an airdrop of the coin you want to keep. Yep. So it's like, skin in
+the game to the max. There's nothing like fork politics. Right. And but the thing is like, you
+know, it was, it was a delight. Like people, people that that dumped B cash fast got like,
+like 20% on that coin. Right. So, so like the incentive is actually quite high. You might even
+like op cat a little bit, but like the idea of, of making that airdrop bump in Bitcoin
+denominated it is actually quite, quite enticing. Yeah, I think we have the B cash wars over again,
+but it'll be flipped of like, yes, the pro mediums exchange people versus pro store value.
+And I think it's going to make it even worse by the fact that it's going to be every unsavory
+character is going to want cat as well. Yeah, yeah. Like Rindal, the most unsavory. Right.
+Rindal is our very regular person here. No, I mean, you know, it's not, it's not even the,
+the, the, you know, what's the name of the thing that type of wizards, the wizards? No, it's,
+it's like, it's, it's like, you know, the people way worse than that. Like, it's, you know,
+yeah, we're going to have the Vitalix laying in being like, I'm pro op cat and then it'll make
+people look bad. No, I mean, as soon as Vitalix says it, that's it. Right. Like, I mean,
+it's like people, oh, no, I don't want it. That's interesting, though. It's like, what he is in
+Vitalix interest for Bitcoin to be a better ETH competitor. No, he wants the opposite, right?
+And he has a ton of Bitcoin. He just wants ETH to become a bridge. ETH is going to become a Bitcoin
+layer too. He'll just bridge to ETH. No, but that's what I've been hearing now all the time. It's
+like, there's all these new projects that want to do EVM with some bridge shit back to Bitcoin.
+It's a lot of projects like that. Yeah. It's just like all the liquidity of all the or,
+the ordinal circle, the liquidity out of ETH NFTs. If you can just print out tokens on Bitcoin
+later too, it's over. I guess it's also coming anyway in the form of RGB and
+tab route assets, right? See, that's the thing. All this shit was on Bitcoin back then,
+right? Like every scam was done on top of Bitcoin in the early days.
+All the fork coins. Yeah. It was just like, hey, I changed four parameters in the Bitcoin code.
+Now it's a new coin. No, but we had like name coin. We had Omni. We had Mastercoin.
+Counterparty. All those things were on top of Bitcoin, right? Zucco built RBG, RGB.
+Just, I guess none of these things went anywhere. I don't know. It's going to be interesting.
+And I have a feeling that the push for fork conversation and activation is going to happen
+when the price starts to pump. And then you're going to have all this new entrance and it's
+going to be extra messy. I can't wait. And the ETS has to decide what fork they support.
+Yeah. I mean, by the point of decision, just turn off the internet. You know, go into your bunker
+and just hope to wake up the correct fork 10 years later.
+All right, guys. This was great. If there is any other topics you guys want to mention now,
+otherwise, any final thoughts, Mr. Lopp?
+Yeah. As we can see, the Bitcoin space is still incredibly boring. And I can only imagine
+it will get even more boring as the market starts to heat up.
+Mr. Banda Karmann.
+Let's activate Offcat. Even Donald Trump wants it.
+I think Trump wants great script restoration if you really thought about it deeply.
+Mr. Rob.
+Yeah. Thanks for having me on. Again, yeah. It's another boring week in Bitcoin.
+I guess, I mentioned it earlier. We are looking to hire, so drop a line at jobs at anchorwatch.com.
+We did a full end-to-end mainnet. We're getting ready to launch hopefully in the next
+month, hoping to be live. So very excited to actually take this to market.
+And nobody's listening anymore. So it's been two hours. So thank you so much for
+no one who is now still listening. And I'll see you on the next episode. Take care.
+Thanks for listening. For more resources, check the show notes. We put a lot of effort into them.
+And remember, we don't have a crystal ball. So let us know about your project.
+Visit bitcoin.review to find out how to get in touch.
