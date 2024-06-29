@@ -13,10 +13,10 @@ RewriteRule ^[l|L][i|I][g|G][h|H][t|T][n|N][i|I][n|N][g|G]$ /lightning-informati
 RewriteRule ^[l|L][i|I][g|G][h|H][t|T][n|N][i|I][n|N][g|G]\.html$ /lightning-information.html [R=301]
 
 # Redirect root domain to https (Cloudflare disabled, for HSTS preload)
-RewriteCond %{HTTPS} off
-RewriteCond %{HTTP_HOST} !^www\. [NC,OR]
-RewriteCond %{HTTP:CF-Visitor} !'"scheme":"http"'
-RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+#RewriteCond %{HTTPS} off
+#RewriteCond %{HTTP_HOST} !^www\. [NC,OR]
+#RewriteCond %{HTTP:CF-Visitor} !'"scheme":"http"'
+#RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 
 # Redirect non-www to www subdomain to enable CDN
 RewriteCond %{HTTP_HOST} !^www\. [NC,OR]
