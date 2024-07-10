@@ -1,0 +1,641 @@
+Coming back, we're going to start up with our next panel, which is on why self-custody
+and privacy are important.
+I'm going to let the panelists and then our moderator, Tomas, introduce themselves.
+Good afternoon, everybody.
+Welcome to our panel here.
+I'm Tomas.
+I will excuse my English in advance.
+I've been tracking this space since 2016 as an enthusiast, self-learner, and also an educator.
+And I'm an MIT Sloan alum and also a member of the MIT Bitcoin Club and the Expo Committee
+for five years now.
+Yeah, so perhaps the first thing is to have a round of introductions from our panelists.
+Hi, I'm Jesse Myers, I go by Croesus on Twitter.
+You might have saw my having talk earlier today.
+I'm with on-ramp Bitcoin.
+We are the leading provider of multi-institution, multi-sig custody for Bitcoin.
+So I know more about the custody side than the privacy side of things, but that's me.
+I'm Jameson Lopp, co-founder and Chief Security Officer at CASA, where we provide self-custody
+solutions as well.
+Hi, everyone.
+I'm Stacy Waleyko.
+I'm an open-source Bitcoin developer and educator.
+Hi, everyone.
+My name is Gustavo Flores.
+I work at Wasabi Wallet.
+I'm a content writer.
+Wasabi is a self-custody open-source Bitcoin wallet that has a coinjoin feature.
+So if you have Bitcoin that you want to reclaim your privacy on, you can use Wasabi.
+Awesome.
+Yeah, so this panel aims to discuss the importance of self-custody and also privacy, and address
+some misconceptions and also some myths, right?
+So perhaps just to engage a little bit the audience, yeah, maybe it's going to be tricky
+to answer this question, but for the reason that we might discuss here, anyways, it's
+in a show of hands.
+I would like to know who here does self-custody or is familiar with self-custody?
+Kind of half, huh?
+Good.
+Yeah, again, and also in a show of hands, so who here has already used any privacy-preserving
+tools while transacting Bitcoin?
+Yeah, a little bit lower.
+Okay, good.
+Yeah, so in the Bitcoin world, there is a mantra coined by Andreas Antonopoulos, which
+is not your kiss, not your Bitcoin.
+Jameson, can you explain this mantra and by that define what is self-custody and why
+it is important?
+Sure.
+So really what we're talking about is ownership, and the thing is Bitcoin is its own self-contained
+system, so normally when we talk about ownership in the world, what we're really talking about
+is legal ownership.
+What does the ultimate authority in your local jurisdiction consider to be the true owner
+of any given asset, and then how can you use various tools and the legal system and justice
+system to have recourse in case your claim to property ownership is somehow violated?
+Bitcoin doesn't care about any of that.
+Bitcoin doesn't care about legal systems, nation-states, whatever.
+Bitcoin only cares about whether or not you can cryptographically prove to the network
+that you have the ability to spend certain entries from the blockchain.
+So if you really want to say that you own Bitcoin, my claim is that having ownership
+claims to Bitcoin at a third party, whether that's through an ETF or through an exchange,
+some other custodian, while you can have legal claims to that Bitcoin, it's not going to
+be very helpful to you if you end up in some sort of rug pull or bankruptcy situation or
+a million other things that can go wrong where you ask to take ownership or you ask to be
+able to use those essentially IOUs, those claims to Bitcoin, and for some reason, for
+whatever reason, the counterparty does not follow along with your request.
+So if you have your private keys to your Bitcoin, as long as you're following the rules to the
+Bitcoin protocol, you can move that money around, spend it, do whatever you want as
+long as you're following the protocol, and you don't have to ask permission from a third
+party.
+You don't have a counterparty that can refuse or deny those claims.
+Yeah, great response.
+Is that anybody else wants to add something?
+They're good.
+So if we compare holding gold, fiscal gold, and Bitcoin, one could naively say that, oh,
+it's much easier to self-cursor the Bitcoin because it's a digital asset, right?
+But I guess the question is for our panelists.
+So what are the risks of doing self-cursor the Bitcoin in any other digital asset?
+Yeah, I'll take that.
+So any form of custody has some risks involved in it.
+So you have your self-custody, which comes with its set of risks.
+You have third-party custody where you're trusting somebody entirely with your assets.
+That comes with its own set of risks.
+On the self-custody side, there's user error.
+There's the chance that you could screw it up.
+It's a whole learning curve when you're dealing with something new like this, where cryptographic
+material has to be created in the right way, maintained, stored, kept safe, all with best
+practices, and if you lapse for a second, your assets are gone.
+So it's a very unforgiving form of custody where user error can be a big problem.
+It also comes with the wrench attack problem of you can keep your Bitcoin as safe as you
+can keep that cryptographic material.
+Those are some of the problems on the self-custody side.
+On the third-party custody side, of course, you have a totally different set of problems
+where we've seen FTX or Mt.
+Gox or Prime Trust, Fortress Trust, Quadriga, any number of failures of third-party custody
+for various reasons over the last 15 years.
+Those are because of hacks or fraud or misappropriation of funds.
+That's counterparty risk.
+So you're either trusting yourself with self-custody or you're trusting a counterparty with third-party
+custody, and those are the major two buckets.
+I would insert here that what we're working on at OnRamp and we're very excited about is
+with Bitcoin, it's possible to use its multi-sig properties to have multi-institution custody
+where you're mitigating that counterparty risk, the third-party counterparty risk, by
+having a multi-sig quorum where different institutions each hold a key and do not have
+a quorum themselves, so they don't have unilateral control of the assets held in that vault.
+In that way, you can mitigate counterparty risk while allowing the end-user to retain
+control without having to hold keys.
+Various risk trade-offs with different forms of custody, self-custody, I think, has some
+of the bigger hidden risks of user error or inheritance error where you don't propagate
+successfully to the next generation, third-party custody comes with its risks, they all have
+some trade-offs.
+Also, there's a million different ways you can slice and dice this, and to make it as
+simple as possible, I'd say when it comes to risks, it's basically we're always talking
+about risk of loss, and usually that's either risk of theft, like the private key material
+getting into the wrong person's hands, or just complete loss and the private key material
+being in no one's hands and therefore being frozen forever.
+Everything else, pretty much every other type of attack and loss scenario falls into that.
+But when people try to weigh or quantify the risks of self-custody versus third-party custody,
+you can get really overwhelming because there's so many different attack vectors, but the simplest
+way that I can put it, as far as I can tell from doing this stuff for a decade, is that
+the entire world of risk, of self-custody risk, is actually a subset of the entire realm of
+risk of third-party custody, because if you think about it, third-party custody, they
+are basically doing self-custody.
+They are undertaking the same actions that you would be undertaking for yourself.
+But what you're doing when you put those keys, that money, into the hands of a third party
+is you're saying, okay, you're going to take care of all of those risks that normally I
+would be having to deal with, but now you're also introducing a bunch of risks that are
+internal to that organization that's handling the keys.
+This is where third-party custody becomes problematic because it's almost always a black box.
+You don't know what sorts of internal controls are going on there.
+But getting into what he was talking about with multi-institution custody and multi-sig
+in general, this is where it gets really complicated, but also interesting because we can create
+new security models in which you could call them semi-custodial, you could call them non-custodial
+but you can basically put your keys and your money into a setup now where no one really
+has full custody.
+You can even do it so that even you yourself don't have full custody.
+It's going to be very interesting to see how this pans out on the regulatory front and
+what the regulators think of this type of thing.
+But for now, we're operating in a great gray area and we don't have to consider ourselves
+like financial institutions.
+And our position is that we're unhosted wallets.
+And I just want to emphasize that that's one of the exciting things about Bitcoin right
+now is that it's never been possible to have multi-sig with any asset before.
+It's only possible with this asset, with this digital asset.
+And that is going to be part of the story of Bitcoin becoming the preferred store value
+asset for the 21st century because it has these inherent properties that are more attractive
+than storing gold in a vault and hoping the IOUs are good.
+Because multi-sig makes it possible to risk mitigate in a way that has never been possible
+with custody before.
+Awesome.
+Now, Jesse, your business is around dealing with this challenge with self-custodial.
+So can you share some circumstances or situations in which custodian approaches are acceptable
+or applicable?
+Yeah, that's an interesting thought.
+So obviously, right now, the ETFs have been the big story this year in Bitcoin, a tremendous
+new demand source for Bitcoin and capital flowing into Bitcoin.
+They're all using a third party custodian of one kind or another, coin-based mostly
+a couple others as well.
+And from a regulatory point of view, that's kind of a requirement at this point in time.
+In the custody space, there's qualified custodians, which is really just kind of a checklist of
+whether or not a custody company is following certain procedures that the traditional finance
+landscape has deemed to be best practices.
+And that is what makes a qualified custodian.
+And from a TRAD-FI point of view, you need that stamp of approval.
+And so, but I would beg the question of, are they qualified custodians because they're
+the best at custodying digital assets or because of a somewhat arbitrary list of what TRAD-FI
+thinks about how custody is best done?
+And for that matter, we have a few examples recently of qualified custodians that have
+dealt with digital assets and have screwed it up, Prime Trust and Fortress Trust being
+recent examples of that.
+And so, there may be a mismatch, in my opinion, there are qualified custodians that are not
+qualified to be dealing with Bitcoin and digital assets.
+There are also Bitcoin-native custody companies like BICO, which is a fantastic custodian that
+is a qualified custodian and deserves it, in my opinion, because they know what they're
+doing, they're digital natives.
+So I think we're going to see over the next decade the regulations with regard to what
+is a qualified custodian and what does that mean with custodying digital assets shifting.
+And I'm afraid that will probably be in response to some sort of blow-ups that may happen over
+the coming years as Wall Street moves into Bitcoin and some of them may make mistakes
+about who to trust as their custodian.
+Good.
+Yeah.
+Switching gears a little bit.
+Privacy in the financial domain sometimes is perceived as illegal behavior or something
+that is bad, right?
+With some people stating that, oh, I have nothing to hide.
+So I think this question goes to everybody here in the panel.
+So what's the importance of privacy and how can we debunk this kind of statement?
+So it's very important to note the difference between privacy and secrecy.
+And if you want to look more into this, you can read The Cypherpunk Manifesto by Eric
+Huges.
+In that paper, he defines privacy as something you don't want everyone to know and secrecy
+as something that you don't want anyone to know.
+So privacy is the act to reveal oneself to the world in the way one chooses to.
+So for example, it doesn't have to just be about what you want the government to know
+or not.
+It can be what you want your employer or your friends or anybody involved in your life.
+And that is basically how to debunk the phrase, I have nothing to hide.
+Well, we all have private manners because it depends from whom we're choosing not to
+disclose that information to.
+I don't want to be the Debbie Downer, but it's also, you have to consider that whatever
+you put out into the world could potentially be used against you.
+You just don't know what someone's going to do with a particular piece of information.
+So while privacy is not a substitution for protection or defense, it's certainly relevant
+in the context of your own personal safety and security.
+Fair enough.
+And I mean, I think that it's clear that everyone has privacy, even if you don't want to admit
+it.
+I mean, everyone uses privacy technologies.
+And I'm not talking about crazy encryption protocols and stuff.
+Everyone has blinds on the windows to wherever they live.
+Everyone likes to have doors on the stalls of the restrooms that they're using.
+These are very basic things, but there are many aspects of our lives to which we have
+privacy components.
+And it's just, it's really weird to me that a lot of people don't seem to see how that
+translates into cyberspace in our digital lives.
+Yeah.
+Perhaps starting with Gustav, what are the implications of a revelation in the privacy
+landscape, right, in the public space?
+Well, well, there are many diverse implications.
+They depend on the nature of the technology or the product.
+So, for example, on one end, you have custodial mixers, which are just custodial products
+where you can send your coins, they are going to mix it, and then they're going to send
+it back to you.
+Well, because of the custodial nature of that product, they have to implement KYC, know
+your customer, and anti-money laundering policies.
+And if they don't, it's considered money laundering.
+And we've seen many cases in the US and in other countries where custodial mixers getting
+dieted and get charged with money laundering.
+That's on one end.
+On the other end, you know, you have things just like coin control, which is the fact
+that you can decide which UTXO, which coin of Bitcoin, which piece of Bitcoin, how you're
+going to spend it.
+So you're just going to, for example, label each different piece of Bitcoin you have and
+you're going to track that they don't, for example, mix between themselves.
+And that is just using Bitcoin by itself, that if you ban Bitcoin, you ban coin control,
+but there's no difference between coin control and Bitcoin.
+And you also have things like Monero, where it's not regulated at the individual level,
+but it's regulated at the exchange level.
+So for example, nine days ago, Kraken removed Monero from their Belgium and Ireland websites
+because of upcoming European Union regulations.
+And then there is the toughest spot, I would say, which is products like Wasabi or protocols
+like tornado cash, where you have a centralized component of it, but it is non-custodial.
+So for example, in tornadoes cash cases, the two main developers got arrested about two
+years ago and basically they are charged with knowingly having facilitated a sanction
+evaded by sanctioned entities.
+And in Wasabi's case, for example, Wasabi is a coin joint coordinator that is non-custodial
+and it's also built in a zero-knowledge manner, so Wasabi cannot collect information on you,
+but it is still a centralized coordinator, a server that belongs to an entity.
+And can that be regulated?
+I'm not part of the management team or the ownership team of Wasabi, but what they decided
+is to implement a blacklisting policy where sanctioned entities, well, at least coins
+that are suspected to be in relationship or in ownership of sanctioned entities, are not
+allowed to be part of a Wasabi coin joint.
+This is based on public information because some of this can be known just looking at
+the blockchain.
+So this is a preemptive measure that the executive team and ownership team at Wasabi took and
+it's a top spot to be in because there's a lot of personal liability and potential risk
+involved with operating and running these privacy protocols.
+My opinion on this is that it's better to have multiple options than just to find yourself
+with none.
+So in short answer, there are many diverse implications and there are different places
+you can be on the regulatory front, and it would be better to have more clarity because
+right now this is still a big gray area.
+Okay, cool.
+So yeah, perhaps this question would be more for lawyers, but so is it legal to use privacy
+preserving tools in Bitcoin specifically?
+Yeah, well, just to continue on that, well, first of all, it's not illegal from a user
+point of view.
+If I'm using a coin joint, I'm just being part of a collaborative transaction.
+So I'm just using Bitcoin.
+Bitcoin is legal in some countries, very few of them.
+So in those countries, it would be illegal to use coin joint.
+As Tor, for example, is legal in some countries and it would be illegal in those countries.
+But in general, coin joint, pay joint, these technologies are just doing regular Bitcoin
+transactions so they're not illegal.
+Unfortunately, unfortunately, if you are a person who uses cutting edge strong privacy
+protection technologies, you will be treated as a second class citizen.
+One example of that, I use like VPNs and Tor 100% of the time.
+I'm really, really good at captures now.
+Just an added bonus that I wasn't expecting.
+Well, that's at least for the sites that allow me to use a capture.
+There's a lot of sites that simply won't load at all, they just completely blacklist
+even trying to connect from any sort of Tor or known VPN address related to that.
+If you're doing Bitcoin privacy, pay joint, you should be okay.
+But if you're doing any of the big coin join pools out there and then you try to send
+those coins to a KYC regulated service, you're probably going to get your account shut down.
+Yeah.
+Cool.
+So since we are talking about regulations, so is there any regulation implication on
+the self-cursive part?
+Yeah, so privacy and security are closely intertwined, like Stacy was saying.
+I think there have been some movements in European legislation that basically are seeking
+for anyone who wants to have the security of self-custody to have to do a lot of additional
+reporting or at least when they're like withdrawing money from any regulated services.
+So essentially destroying any privacy they might have, I'm not sure what any additional
+ramifications they might have if they tried to do coin join stuff.
+Probably same thing as their exchange might shut down their account.
+We've seen exchanges even shut down people's accounts simply because they were like several
+hops away on blockchain transactions.
+So it really starts to be a sort of guilt by association thing.
+And of course, if anyone is familiar with the like seven degrees of Kevin Bacon type
+of thing, it's like if you go more than three or four degrees away, you're going to capture
+like half of the world in whatever drag night you're setting up.
+Yeah, Stacy, you are a Bitcoin Core developer and also have broad experience in developing
+wallets and stuff, right?
+So, according to you from the perspective of a regular user, how hard is to use Bitcoin
+while present privates?
+Yeah, it's really hard to use Bitcoin in a way that's private if you are a regular person.
+And even if you're a really skilled person, it's also really hard.
+We're talking about really regulation.
+I think it's worth mentioning that the majority of people acquire their Bitcoin, at least
+right now through exchanges.
+And here in the US, they are subject to KYC, that's know your customer.
+It was introduced as part of the Bank Secrecy Act of 1970.
+And that means you need to provide your driver's license, your home address, your social security
+number, your phone number and a selfie with all that, just to be able to use that platform.
+And then we're talking about moving coins on and off that.
+So they know who you are.
+But even if you're going to withdraw to your own self custody, they know where you're sending it.
+So they can make assumptions that like you probably own those addresses.
+So that's not great.
+Also, in terms of wallets, most many wallet providers as a courtesy to their users, they
+allow you to use their Bitcoin nodes.
+Why do we need to use Bitcoin nodes?
+Well, in order to use the Bitcoin network, we need to broadcast transactions or we need
+to check our balance and you need access to a node for that.
+Well, guess what?
+If that's not your node, then whoever's node it is sees what you're doing.
+They see what transactions you're broadcasting.
+They see what addresses you're interested in and they can make assumptions like, oh,
+these addresses probably belong to the same wallet.
+So it's hard.
+And I was going to end this on a high note, but it's not.
+Address reuse used to be a thing.
+Like you're not supposed to reuse addresses.
+It's just not good practice.
+And it's really low hanging fruit.
+Like it's very easy for wall developers to just generate a new address.
+Um, and so I thought that problem had mostly gone away until I saw a tweet from
+Jameson in December that address reuse in 2023 has gone up from 48 to 70%,
+uh, which is wild to me.
+So you want to give me a reason?
+Well, some speculation and rumors that I heard were actually, uh, that a lot of
+people came from the Ethereum ecosystem into some of the newer Bitcoin
+metaprotocol stuff, and they were just so used to using the same address for
+everything that, yeah, why not model.
+So yeah, well, lots of room to improve.
+Cool.
+So, uh, Stacy, uh, so which, uh, a new, uh, Bitcoin developments and also new
+projects that you consider that are exciting and, uh, you think that we'll have
+a positive impact either on privacy or self-scaling.
+So one that I really would love to talk about, and I'm glad it got a shout out in
+the previous panel is pay join.
+And I think like right now we're seeing a lot of momentum around off chain
+technologies, which is great, but pay joins really cool because it gives you
+privacy pretty much instantly on chain at the time of payment.
+And it's almost free.
+The sender pays like a little bit, uh, because the way it works is instead of
+a transaction having inputs only from the sender, the receiver contributes
+an input as well.
+So now you've broken that assumption that all those inputs belong to the sender.
+Now you don't know.
+And I presume you can add like more than one too.
+Um, so that, that seems really promising to me.
+We're actually at a point where pay join v two is currently being worked on.
+I think it was last summer.
+There was a draft BIP that went out to the mailing list.
+And in December, it was given a BIP number, BIP 77.
+So that's really promising.
+Um, another technology is Chami and mints.
+That's also really exciting.
+We're basically you, you take your asset to the mint.
+So in this case, it would be Bitcoin and the mint is able to do something
+called a blind signature where they sign it and create an IOU for it without ever
+knowing who it originated from.
+And, and you take that IOU and you pass it around, you trade it for goods
+and services and whatnot within the mint.
+And then when it's time to cash out, you, you, you trade it back for that Bitcoin.
+Um, so I think that like there's some really good stuff being worked on.
+And I think there's a reason to be optimistic.
+Yeah, um, I would just note that, uh, Debbie Downer again, um, uh, is that
+I think this is actually from the cypherpunk manifesto, but you know,
+privacy only extends so far as the cooperation that we have amongst
+each other in society.
+Uh, if I'm the only one who's doing privacy preserving stuff and nobody else is,
+you know, I have an anonymity set of one, which is no anonymity.
+Uh, so to put that in constant context of like pay join, uh, pay join works
+when you have a counterparty that also follows the pay join protocol.
+So like it would be awesome if we got every wallet, every provider, every
+custodian in the Bitcoin ecosystem to support the pay join protocol.
+That would just like supercharged privacy across the entire network.
+And the great thing about pay join is that it can just be built into the software.
+Like people don't need to know that this is happening.
+The software just negotiates it automatically.
+But a similar type of thing, like if you're using Tor VPN or whatever, it's,
+it's because such a small percentage of society is using some of these more
+cutting edge tools that it's a lot easier and convenient for, uh, the rest of the
+internet infrastructure to just put up various walls and say, no, we don't want
+to serve you.
+Uh, it's, you know, it's not at the point where it becomes economically
+infeasible to reject a large portion of your potential customer base.
+Yeah.
+And on the self custody part and marrying that with what James was just
+saying of, um, regulation for self custody, uh, it's free speech, ultimately.
+And it's property rights.
+And, you know, there, there could come a time when governments try to
+encroach on allowing that, um, gladly there happily, there's some precedent
+from the nineties of cryptography being, uh, having this battle, um, where it was
+deemed a weapon and then the, uh, legal battle that ensued allowed cryptography
+to be securely, uh, recognized as speech.
+It's ultimately it's text and it's speech and it's not a weapon.
+Um, and in this country, we have, you know, our first amendment, um, and having
+12 words in your head is speech.
+Um, and so having a wallet where you're self-custing because you happen to
+have a special code that is fundamentally text.
+It's just information that is speech.
+And so we, we may have that, uh, battle ahead of us a bit more, but I think
+we have precedent, uh, and momentum on our side.
+So, you know, on, on the, on the regulation front for self custody, we, that
+should be a fight that, that we can win easily, but, um, it, we may have to
+scrap a little bit more.
+Yeah, that's awesome.
+Yeah.
+So, uh, I want to allow some time for, uh, take questions from the audience.
+And, but they are, so, uh, I would like, uh, uh, each of you or some, uh, to
+share some passing thoughts and, uh, and most importantly, some tips for us
+regular labs to enhance our practices, uh, while, uh, while dealing with, uh,
+privacy and self custody, not only on the Bitcoin cryptocurrency space, but also
+in the, yeah, when do we are, uh, dealing with cyber space in general?
+I mean, the, the lowest hanging fruit that every internet user should be
+doing is installing ad blockers.
+I mean, the, you know, corporate surveillance regime that is just blasted
+all over the internet, you know, every website you're going to, often
+getting tracked by dozens of different aggregators that are then packaging up
+and reselling your data.
+Um, I actually worked in that industry for a decade before, uh, completely
+flipping around, uh, learning about the cypherpunk movement, becoming a
+cypherpunk, um, I was there, like I was on the back end, sucking up your
+data and, and analyzing it and providing it to corporations to, you know, try
+to target stuff to sell at you.
+So I'm, uh, I'm fully cognizant of just how much surveillance is actually
+going on.
+And it's, you know, it's not government surveillance.
+It's, it's, it's for profit surveillance.
+But of course, then the government has found out that, Hey, we don't
+need to worry about your constitutional rights.
+Uh, you know, we don't actually have to infringe upon your rights because
+these corporations will just sell us your data now.
+And that's completely legal.
+Um, I will say this one's not free, but if you're on the fence or I've
+been thinking about it, it makes sense to get a PO box.
+There are so many things out there that want your address that don't need it.
+Uh, and it's given me a lot of peace of mind having it.
+And, and you'll start to see opportunities to use it, um, as it goes on.
+So that's, that's my advice.
+The, the tip I would give on privacy is something that I see a lot of people doing.
+So for example, they coin join, but then they don't protect their network privacy.
+So they're not using tour and they're, you know, putting their IP address
+out there or they're not running a note.
+So they're contacting another server to get their transaction data.
+Uh, so if you want to be private on Bitcoin, you not only have
+to protect your blockchain privacy with things like page on and coin join,
+but you also have to protect your network privacy.
+We're fronting a note and using tour.
+Yeah, this is less on the privacy side, but more on the self sovereign side.
+Take on self custody, um, Bitcoin allows that.
+Uh, and, and that's particularly attractive with multi-sig.
+Um, you know, whether that's through CASA or any other, the provider
+or, or through on ramp, um, with our multi institution version of multi-sig.
+But, um, you know, in the past, holding gold under your mattress, uh, you know,
+wasn't really a winning strategy.
+That's why banks came to be, you know, because you'd store your gold in their
+vault and they'd give you a promissory note.
+Um, and great, but Bitcoin makes it possible for you to take control of your assets
+with a level of security that's not possible with physical assets because of,
+because of multi-sig in particular, um, and geographically distributed multi-sig
+makes it so that you can control your assets.
+And, and, and that's just, that just wasn't possible, uh, in the past.
+And it's a big, I think it's a, you know, the number one thing you can do
+to become more self sovereign.
+That's great.
+So yeah, it looks like that.
+I'll be wet some, some of them to my checklist.
+Well, so let's take some questions from the audience.
+Um, thank you.
+Thank you.
+Right.
+I think it's a great idea.
+If I had to recommend to a family officer, grandparents, how to buy Bitcoin, I think
+I'd say buy a ETF as long as there's, um, there's not a premium that I'd say and
+have it as fidelity because if they lose it, their exposure is so big, they're
+going to make a good queue, even if you screwed up for Morgan Stanley or, you know,
+St. Street.
+I mean, how would you recommend to someone who's not at MIT?
+It's a normal person.
+I simply feel I'd say if you want the 1%, 2% of your money in Bitcoin, yeah.
+Yeah, great question.
+There's a certain, um, tech proficiency that, that comes with it.
+Basically what you're, what you're running there is a calculation about their risk of
+screwing it up versus fidelity's risk of screwing it up and you're deciding that
+you're going to point them towards fidelity.
+Um, and that's, that's fair.
+However, um, as time goes by, these self custody solutions get better and better.
+They're, you know, we're, we're in the early days of the internet in terms of
+usability, um, and they will continue to improve and get easier.
+And collectively we will all learn, um, about how to engage with, with these
+technologies, how to, how to manage, um, a Bitcoin wallet.
+Um, uh, on top of that, there's, you know, that's where multi-institution custody
+comes in of, of you're, you're assessing that fidelity's risk of screwing it up is
+lower than, uh, than an individual.
+Um, but that is one of the frontiers where you may not need to trust fidelity.
+Unilaterally, you can trust a core realm of institutions and mitigate risk further.
+Um, they're actually, uh, as Bitcoin grows as an asset, though, um, you know, will
+they be able to, uh, lower terms?
+Fidelity is a very large, a very large asset manager.
+So that will remain true for a very long time.
+Um, that may not be true for smaller wall street firms for as long.
+So I mean, that's kind of, uh, this is too big to fail mindset.
+Uh, and we've had a number of people suffer catastrophic losses because they
+use that same mindset with other large Bitcoin providers.
+Now, fidelity is a very different beast.
+It's just a different scale.
+Um, I will tell you from experience, we have plenty of boomers and people in
+their seventies and eighties using Casa and it's not just because we've made it
+simple.
+It's because we have a really hands-on support team.
+So, um, you know, with Casa, you're, you're actually getting people who are
+able to help you get past any of the tricky technical hurdles there.
+So it's, it's definitely possible with handholding.
+Now here's one thing we haven't covered, which is there's some weird trade-offs
+and friction, uh, between privacy and self-custody and the sense that if you
+want the ultimate level of privacy, the downside is you can't depend upon anyone.
+You have to do everything yourself.
+And this is probably your, the assumption you're making if I'm doing
+myself custody, I'm doing everything myself.
+Now, if you're able to trade off a little bit of that, so, uh, so Casa, for
+example, uh, we don't do KYC.
+We allow our clients to be pseudonymous.
+You don't have to tell us your name.
+We just need to have ways of authenticating you and communicating with you.
+But if you're willing to trade off that little bit of privacy in return, you know,
+we can give you a lot of help.
+We can get you unstuck.
+We can, uh, you know, be one key holder for you in case you lose a key.
+Something goes wrong.
+Uh, so it's all about trade-offs and, um, it's, it's a complicated space.
+But I think I will say that I certainly don't believe that like a lot or the
+majority of people will do self-custody on their own without any help whatsoever.
+Oh, yeah.
+Bear with me here.
+I'm, I'm really new, but I'm curious.
+So I did transaction on Coinbase.
+So my question was, I think it was mentioned that when you lose it, you just,
+it's just gone.
+And you mentioned also what is that they called a frozen bit, something like that.
+But anyway, what I'm, I'm interesting is what happened with that frozen bits
+behind the scenes and will that be valuable along the line?
+Let's say I imagine if a lot of people tried to, to put money and then they
+lost it.
+So I just tried to imagine, will that be somewhat valuable along the road?
+Let's say the company floor is and then become what is that acquired.
+So is that, is that what happened with that frozen bit?
+Is that, is that makes sense?
+Yeah, a couple of different scenarios there.
+I think you're talking about like, if you send a transaction to an address
+that nobody ends up controlling, right, then it's frozen and stuck there forever.
+It's lost.
+It's a donation to the Bitcoin network.
+It's a donation to other Bitcoin holders.
+It's a donation to society within Coinbase.
+Like if you were to be sending that from a Coinbase account to another Coinbase
+account, they would have the keys to all that.
+So it would end up as a frozen transaction.
+They would have access to it at all times.
+But I think the frozen transaction thing was more of a on chain
+transaction it when a user ends up losing the keys to that particular address.
+Does that make sense?
+Yeah.
+So maybe let me repeat.
+So what happened with that lost transactions that the owners of that
+let's say me losing that money, it's gone.
+So my, my impression that I will never get that back.
+Correct.
+So what happened behind the scenes, that lost money of mine that I put it in
+in the long run, will that be somehow valuable for that company?
+No, I mean, no one, not even the company has access to that.
+So it's estimated that like millions of Bitcoin are permanently lost.
+And you should basically just make that mental calculation of, okay,
+so the actual usable supply of Bitcoin is never going to be 21 million.
+It's going to be well under that.
+Yeah.
+So just to clarify, and I think Jesse was getting to this, if the scenario
+you're talking about happens within Coinbase, yeah, they can recover it at some
+point because they, they are cussing those coins.
+But if that scenario happens in a situation where you are self cussing
+and holding the funds yourself, then yeah, totally lost.
+As Satoshi would say, it's a donation to us all.
+Thank you.
+So I guess we have time for one short question.
+It happened to me.
+I am.
+I'm a poverty team, you know, invested in you go.
+They persuade, you know, I invest like 150,000 into the crypto platform.
+When there's platform there, first I trade, the other money is in mine.
+When we cash out, when I decide to, you know, cash out, and they disable my account,
+how do we handle that?
+And I do, I, I think we have a lot of exchange, I, I'm not fully used right now.
+There can be regulation rules in the future.
+No, so, so this is the common type of saying really where people will set up
+fake exchanges and allow you to deposit money.
+And in some cases, they'll even tweak your account to make it look like you've
+made a lot of money.
+And then if you try to go withdraw, they'll probably ask you to like pay your
+taxes upfront, you know, this is a sort of like affinity fraud scam.
+So, you know, unfortunately, the only way to protect yourself from that is to use
+like the big name exchanges, you know, and how do you know what those are?
+Well, that's, that's where having to do a lot of research, look around on
+different websites and see, you know, what are the biggest and most reputable
+places to do business.
+But, you know, probably the vast majority of places out there that claim to be
+exchanges or websites where you can buy and sell crypto assets, probably
+completely fake and you'll never get your money back.
+But one easy way to try to test the waters, if you're not sure, is only put
+a little bit of money in and then immediately try to take it out.
+You know, like see, like, are they even letting you take anything out in the
+first place, but even that's not a guarantee because they might just be
+trying to trap you to get you to make a really big deposit.
+Oh, yeah, I've regulated, look, FTX was the most highly regulated company in
+the crypto ecosystem.
+So it's like, who do you trust?
+Right.
+And this is why we're here telling people to take self custody because you can
+only really trust yourself.
+You, there might even be government authorities and regulators out there who
+have like rubber stamped.
+Yep.
+This is a real company.
+They exist.
+That doesn't mean that they're a legitimate.
+Okay.
+I, unfortunately, I think that all the time is all we have for this panel.
+Uh, so, yeah, fascinating discussions.
+So thank you very much.
+So yeah, uh, join me in for a round of applause to our speakers.
