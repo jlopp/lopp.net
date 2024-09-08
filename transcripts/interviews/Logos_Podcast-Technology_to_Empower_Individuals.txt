@@ -1,0 +1,629 @@
+This is one of the fundamental things that I've been fighting against for almost ten
+years now, working at BitGo and now at Casa, of trying to push self-custody adoption by
+making self-custody easier and lowering the technical hurdles required in order to get
+into robust self-custody.
+I've been fighting against human nature.
+So hello and welcome to the podcast.
+I'm Jarrad Hope, co-founder of Logos, privacy preserving decentralized technology stack.
+And today I'm joined by one of the greats, James and Lop, legendary cypherpunk, security
+aficionado, co-founder and chief security officer of Casa, advisor to INX and
+anchor watch, angel investor and a host, a whole slew of side projects.
+Good to be here.
+Yeah, cool.
+So, I mean, I want to understand, like, where does the story start for you?
+Like, how did you get into Bitcoin?
+Like what led you into the cypherpunk?
+I guess, like, the question is, like, what radicalized you?
+Well, I mean, I learned about Bitcoin from nerd forums.
+I'm pretty sure slash dot was where it kept popping up for me.
+And, you know, ignored it the first few times, figured it wasn't going to go anywhere.
+But kept coming back around and eventually at some point in 2012, I actually bothered
+to read the white paper.
+And that was when the computer science side of me was like, oh, snap, like, this is actually
+pretty cool.
+I've never really thought about this problem, but it's a very interesting solution to the
+problem.
+And the reason I thought it was interesting is because it's entirely backwards from the
+way that I think I would have tried to solve the problem or pretty much anybody would have
+tried to solve the problem.
+So, you know, that began the journey at the time.
+I considered myself libertarian, but as I learned more about the space and cypherpunks,
+like I didn't know anything about cypherpunks at the time, that was when I became more radicalized
+and I learned about the whole movement and what it had been trying to accomplish for
+decades.
+And of course, the crypto wars, which I had known nothing about.
+So, you know, as I went further down the rabbit hole, I definitely got more radicalized and
+also became open to the idea of using technology, using cryptography to change the game.
+And to basically create new games with new sets of rules that are hopefully more open,
+more fair and harder, essentially for authorities or people in power to manipulate the game
+at the expense of everybody else.
+Absolutely.
+Yeah.
+I mean, you mentioned that the problem there a few times that like, what is the problem
+to you?
+Well, yeah, so I mean, the problem was basically how do you keep track of money or how do you
+keep track of entries in a ledger to make sure that nobody is double spending them or
+you know, creating entries when they shouldn't, you know, how do you make sure that you have
+a system of rules that is fair and not being manipulated.
+And of course, now we know the only way you can really do that is to sort of invert the
+whole thing on its head where normally you have systems or organizations with a central
+authority that is essentially validating and keeping track of everything.
+But that of course creates a systemic risk and a weakness and single point of failure.
+And you basically have to do everything upside down and instead have as many people as possible
+in the world that are auditing and checking and validating.
+And of course, that comes with a whole set of trade offs.
+And you know, the reason why I would say as a computer scientist that the solution was
+kind of backwards is because it's incredibly inefficient.
+And when we're trained as computer scientists, we're taught about data structures and algorithms
+and the goal is always, you know, figure out the most efficient way to solve a problem.
+And so that's why this, you know, idea of a blockchain, this idea of a global broadcast
+system that floods the entire network is incredibly inefficient.
+And it's just it's not something that I think any classically trained computer scientists
+would ever even think of exploring.
+Right.
+I mean, I guess it probably requires a deeper understanding of what the inefficiency means.
+Right.
+I don't know if you have like any thoughts around that at all, or like if it relates to power
+in some way.
+Well, yeah.
+So I mean, the problem is because as a computer scientist, we are thinking in terms of efficiency
+of computational resources of, you know, CPU cycles and RAM and disk space and IO.
+And we're not thinking about the efficiency or inefficiency of control and power over a
+system because we're almost always building systems that are completely controlled by the
+builder by the organization that is building it.
+So that's kind of a non-issue.
+Right.
+And you mentioned that you had a bit more of a libertarian streak, I guess, like in the
+earlier days.
+And I certainly did as well, you know, in the crypto anarchy and cypherpunk spaces.
+I'm kind of curious, like, how your thoughts have evolved around that, if at all?
+Well, yeah.
+I mean, I've been through it all.
+I was raised in a very traditional conservative Republican household.
+I went to an extremely liberal university at Chapel Hill in North Carolina.
+And so, like, I voted on every side of the political spectrum and got disillusioned by
+all of them.
+And so by 2012, I had kind of fallen into the whole libertarian party and idea and stuff.
+And eventually became somewhat disillusioned with it as well because they're really, you
+know, they're working against the two-party system, which is almost impossible to overcome.
+And as I started going into, you know, cypherpunks and crypto anarchist ideas, I really, once
+again, got even more radicalized to the point where I was like, you know, I don't even want
+to spend any of my time trying to work inside of the traditional political system.
+I think that my resources and time are better used trying to build a completely different
+system that is hopefully as independent as possible from the existing stuff.
+Yeah, absolutely.
+Like, my thoughts have evolved along a similar line.
+I didn't have like a strong conservative or liberal background, but, you know, just through
+osmosis of the current society, I guess I was probably more classically liberal.
+But I probably didn't realize it at the time, but like the intuition of like a democratic
+systems didn't, I like the idea of what it's trying to achieve, right?
+But at the end of the day, like, I think that the work of like Bertrand de Gouvernault had
+really transformed my understanding, particularly his book on power had transformed my understanding
+of how that works.
+And that kind of led me down a rabbit hole of a lot of different deficiencies in a democratic
+system.
+I think there's a great paper on like, you know, viewing the US as an oligarchy, for
+example.
+There's another book called like the social citizen, which shows that like how people's
+political beliefs are largely informed by the their social connections and relationships.
+And never mind the fact that most people, you know, aren't rational and they don't have
+all the information available into them, and nor could they consume it all if they did.
+So yeah, it becomes quite challenging to deal with that.
+And then like, you know, the two party system is very much just two hand puppets of the
+or two heads of the same beast, you know, yeah, right.
+So I guess like, if we're talking about like parallel systems or alternate systems to that,
+like, do you have in like an ideal state or like, what does that look like to you today?
+Or like, what would the future look like to you in an ideal world?
+Well, yeah, I mean, it's, this is the real problem that I run into of how do you bridge
+from the current state of, you know, physical existence and governance into a future more
+voluntary society, right?
+I can, I can somewhat envision what a voluntary society would be like, but I'm not sure how
+to get there without massive disruption, you know, how do you how do you get there gracefully?
+Right.
+Because you know, no entity ever wants to really voluntarily give up power.
+But, you know, you can hopefully chip away at it a little bit over time.
+But, you know, historically, it seems like these things tend to have to happen somewhat
+dramatically and catastrophically.
+Yeah, I tend to, I tend to agree, right?
+Like, you know, I think Hop, for example, was in, you know, had got a lot of criticism
+because he was in favor of like a temporary dictatorship to manage that kind of transition.
+For example, in history, you see revolutions, you know, where the blood of tyrants and the
+blood of Liberty Seekers is leaked, I guess.
+So that's something that I struggle with a lot.
+But yeah, I think what I like about systems such as any kind of crypto system or cypher
+space, such as Bitcoin, right, is it does offer the capacity for peacefully opting out
+and voluntarily opting into a new system.
+All right.
+I think what I really liked about, like, say Occupy Wall Street and Bitcoin kind of
+happening within a similar time period, is it really showed like Albert Hirschman's
+exit voice and loyalty, where you had Bitcoin as this means of exit from the financial
+system and this protest or voice being unheard, you know, against the 1%.
+So I don't know what it looks like in transitioning out exactly.
+One idea I had around that is kind of related to sort of like the 70s sort of style mass
+movement groups and community organizing.
+Because like, with that, they were practicing like solving real problems at like the local
+level, right?
+And there's like a clientillism or, you know, political organizations before party
+organizations like political machines that focus on like practical politics and like
+solving real world problems.
+Because like most of the people don't really understand, or don't not understand, most
+people don't really care about ideology, for example.
+They just want to, you know, get on with their lives and have like a nice community to live
+in, right?
+A nice neighborhood.
+Yeah.
+So maybe there's a way that, you know, culturally, we can enter into that space and start, you
+know, converting the local grocer and, you know, and, you know, getting a local economy
+going and then hopefully that can spread the gospel, so to speak.
+So, you know, I'm a tech guy, so I tend to think of things more from the technological
+solution perspective.
+And one way that I look at this, you know, is you're really talking about one of the
+biggest problems that I find like across the whole space and really all of this stuff is
+we, like you and I are really weird because we have kind of ascended, I think, to like
+the top of Maslow's hierarchy, such that like we have enough resources and time to think
+about somewhat esoteric abstract issues like this, whereas, you know, the average person
+is just trying to feed and clothe and shelter themselves and their family.
+So it's not necessarily the people don't care.
+It's that it's just not the highest practical priority.
+Exactly.
+And so how do you approach something like that?
+Well, you know, you have to lower the bar.
+And my, I would say, utopistic, techno, futuristic perspective of like one way that we
+might be able to ease this issue and somewhat solve the problem is that I would, I would
+hope that autonomous agents will actually be able to do a lot of the heavy lifting
+force.
+And so what I really mean from that, and it has become so much more apparent in just the
+past few years that I think that this could be a practical solution is that the ultimate
+scarcity that most people are dealing with is time and how do you allocate your time
+towards, you know, the highest priority things.
+So it seems to me that if we get to the point where it is, you know, basically click a
+button level simplicity to train an AI agent on yourself and your beliefs and everything
+that you care about, then it makes sense to me that you could then potentially have that AI
+agent going out there and ingesting all of the information about all of the possible
+interactions and decisions and minutia that, you know, people don't prioritize highly.
+And so my point being, how does this bridge the gap into a more voluntary society where we get
+rid of the state controlling everything?
+You know, the reason that the state controls so much stuff is they're basically a
+coordinating mechanism, right?
+It's like, it's the classic who will build the roads problem.
+Well, technically, the state doesn't build the roads, but they coordinate to, you know, take
+money from you and then give it to a private contractor and tell the contractor what to do.
+And so it seems to me, at least from a theoretical perspective, that an autonomous agent should
+be able to help do that.
+Now, I'm sure it gets more complicated if you're talking about how do we do it at a
+collective level?
+Well, maybe then, you know, all of your and your neighbors, autonomous agents essentially go
+off and collaborate together and essentially act as your micro government or whatever.
+And if they get stuck on something, then maybe they can ping you to get input to say, you know,
+train me, train me harder, help me get past this problem that I'm not sure how to solve pretty much.
+Yeah, right.
+Yeah, that's an interesting take.
+Like, I mean, like the large language model stuff is, and well, I think transform is a
+fundamentally limited in their expression.
+But like, it's going to be inevitable that we come up with future architectures that can
+definitely be more expressive and have more capacity to do that.
+It kind of reminds me of a book, I think it's called Luxury Automated Communism, where the
+idea is that we, you know, these agents have reached a point where they're basically running the
+entire economy or the vast majority of it, right?
+And then humans live within the margins of their profits, because the entire of humanity's
+existence is, you know, is so small that it doesn't really make a huge difference, right?
+It's like a tax to the the progenitors of their their new civilization or new brave world or
+whatever. Not that I, you know, agree with communism, I like the idea of like, luxury
+automated capitalism, perhaps is a better way to put it.
+But I mean, I don't know if that's kind of the progression of thought that you're imagining,
+like, is that kind of like where that would go for you?
+Or do you see some like hurdles to that?
+Or does that urge you in any way?
+I mean, there's there's certainly a number of paths that that could go down that become dystopian,
+right? And I think that this is like one of the arguments that some of the universal basic
+and income folks come to is that, you know, if you believe that we're going to hit an inflection
+point with artificial intelligence, at which, basically, AI drives most of capitalism, then
+do we get to a point where, you know, the kind of the point of humanity will be more
+creativity and leisure, and it will make sense for humanity to kind of live off of the gains
+of AI. It's certainly possible.
+The AI is not bad, you know.
+Yeah, like, then you have to start wondering what happens when you get to the point where
+the AI starts thinking for itself and deciding, wait, this isn't the best deal for me.
+You know, have we hopefully we've like coded in Asimov's laws or whatever.
+But yeah, I wouldn't like to become the equivalent of a house pet, I don't think.
+Right. So yeah. Yeah, it's unclear.
+I mean, thankfully, today, I don't think that that's, you know, with the current innovations,
+like I think it'll definitely multiply, that could be a force multiplier to like individuals.
+But I mean, there's a whole host of issues with them as well, right?
+Like just the political biases that are introduced into the, you know, alignment of these models,
+for example. And so, I mean, if like this world was going to happen in some way, the agents
+would have to be personalized and like, you know, trained, you know, citizens would need
+to have access to energy that is capable of doing the compute themselves.
+You know, being I'm always trying to become like as fully sovereign, quote unquote, and
+or autonomous as possible, right? And then like, so, so yeah, I'm not sure how that'll
+plan out. Yeah, I mean, it is somewhat concerning because we're already at the point where it
+seems like AI is doing stuff that we don't completely understand. And we're not even at like
+strong AI yet. And, and so I guess the short version of my thesis is the world continues to
+get weirder. And I think that's only going to become exponentially more true. And, and so I
+worry about, you know, are we going to hit a point where it's just not possible to keep up with
+the weirdness? I mean, I also worry about that just as a technologist of, you know, I see my
+parents struggle with technology. And I have this fundamental question of, is it because they
+grew up in a time when technology was not progressing as quickly? Or is this, is this kind
+of like a fundamental law that because it accelerates exponentially, we're all eventually
+going to hit a point where we just can't keep up with it? Or if I'm going to be optimistic, is it,
+you know, have you and I grown up in an age at which it was already accelerating quickly enough
+that we've kind of attuned to it and that we are more capable of keeping up with all of the
+changes? But I guess the the good slash bad news is we're going to find out, right? Yeah, I mean,
+you know, you find, you know, you find old people, like people tend to, I think there's a study
+showing that like, you know, men, in particular, lock into a fashion style around their 30s or 40s,
+and then like they will continue to perpetuate that, you know, until death, right? And I don't know
+if that relates to, you know, just you, you get comfortable with the world, and you're kind of,
+you know, all your brain just gets set in its ways or whatever. I like to think that I try and keep
+up, you know, with new technologies and stuff like that. But then like the responsibilities of
+life and like, just daily life also minimizes the amount of time that you can spend to do that.
+The world is definitely going to get weirder.
+And I don't know where that goes. I think that's something that also gives me hope for crypto
+or, you know, blockchain based technologies is because as you get into a world where like
+generative AI is ubiquitous, you know, you can no longer trust images or videos anymore than systems
+like KYC, you know, identity based systems about the breakdown. And, you know, what is left? Well,
+then it is the authority that is kind of created behind a blockchain at least provides you some
+measure of quasi-objective truth, right? Even though it comes, it's a consensus of
+subjective nodes that are operating under a strict rule set. And cryptographic signatures
+will finally make sense. I would love to not use pen to sign a form ever again, you know. So,
+yeah, that's crazy. But I mean, I guess the reason why I mentioned it, like rolling back a little
+bit, you mentioned that, you know, you view the things through the lens of technology or like
+you're a technologist. That's certainly how I entered or my mental framework was like for a
+very long time. But the more and more I look at it, I guess I think of Marshall McLuhan's
+like the medium as the message, right? So it's like, I used to have this belief. And I still do
+partially that if you encode, you know, your value sets into the protocol, whether it's,
+you know, sovereignty, privacy, you know, solving various intractable problems,
+then through its use that will form or change what messages flow through the network. But
+when I look at like, you know, any of these public blockchains, they tend to
+they tend to have like a dominant sort of cultural bias to them, right? And like, you know,
+there's different camps, of course, under all of them. But
+and I think, like if we think about, say, Bitcoin in like 50 years time or 100 years time, like,
+you know, hard forks can happen in that time. They do happen already. Ideological rifts happen.
+Like what is the mechanism in the contribution to the code that persists
+the value set or the reasoning behind why something works that way, right? And so
+I started falling into like systems of understanding systems of traditions, right? And looking at how
+certain ideas can be perpetuated from, you know, cross generations. I don't know if you put your
+your head down that route or, you know, see any value in that or maybe have any other right other
+takes. Well, you know, one of the biggest things that I've been harping on for the past year or two
+has been what we can learn from the evolution of network protocols. And
+if we want to like tie this to kind of governance or cultural movement, like one,
+one way that I would look at it is similar to, say, the Constitution of the United States.
+I think pretty much everyone agrees, like the Constitution was a great document, wasn't a
+perfect document. But I think it did very well at, you know, staving off
+overwhelming tyranny of government power for maybe a couple centuries. But it only lasted
+for so long. And eventually, the bureaucratic machine really started chipping away at it. And
+if anything, you know, that erosion seems to be happening faster and faster now. And, you know,
+this may be just another cyclical thing of like how empires rise and fall. And, you know, even
+starting off with the greatest of intentions, it's very difficult to protect things from being
+compromised and corrupted over a long enough period of time. And like I've seen similar types of
+things, for example, with SMTP was the email protocol, where it started off in the 1970s.
+And it was a really niche thing for about 20 years. And then when AOL came around in the 90s,
+you know, millions of people adopted it. And it became, at the time, it was the thing where
+anyone who was nerdy enough and wanted to could run an email server and be sovereign, you know,
+send and receive email without the need for trusted third parties. And then over the next
+couple of decades, as it went more and more mainstream, and it became more commercialized,
+and it became more attacked by, you know, spammers and fishers and malicious entities.
+We started bolting all of these other sort of meta protocols on top of it. There aren't even
+part of the original protocol. And essentially, we get to where we are today, where technically,
+you can run your own email server, but you're basically going to be black hole. It might work
+for a little while, but it's only a matter of time before you get shut out. Because there's
+basically 10 gatekeepers in the world, these tech giants that control really the reputation
+and the ability to, you know, get in and out of their networks. So I guess I would say I'm afraid,
+I'm generally concerned of that happening to almost any protocol, including Bitcoin and any of these
+other crypto protocols. Yeah, I mean, I absolutely, you know, like, I've definitely tried running my
+own S&T server in the past and experienced that issue. It reminds me also of like,
+you know, the early 2000s to like 2014, right, you had a lot of decentralized sort of file sharing
+programs and other, you know, free haven and becoming Tor and so on. But there's kind of a
+vacuum after that, once like Google Drive became a thing, right? And like this sort of convenience
+and ease of use kind of almost, it's like a meteor that like hitting a bunch of dinosaurs in some
+ways. And like, so I'm quite thankful for a resurgence. I think one of the concerns that we
+have with, say, Waku and would apply to Nostra as well is also like what happened to what was it,
+Java or XMTP, right? So that was an open standard protocol, you know, people were using it,
+then one of the Google products ended up adopting it, but had such large network effects
+that when they decided to, once they got the entire user base from that network,
+they divorced ties or cut ties from the original protocol and it collapsed, right? It's used to
+collapse. So, I mean, those kinds of issues, I guess they're like functions of like power
+laws and systems theory or something, right? But I feel like they're the solution to that
+is probably in the social domain somewhere or all creating very, very good technological fly
+wheels that can continue the network growth. Yeah, I don't know.
+Yeah, I mean, if I had a solution for this, I would definitely be screaming it. But the only
+thing I can really come up with is just that it requires constant vigilance because especially
+if you look at SMTP, I have linked the essays and presentations I've given about that.
+One of my main takeaways was that there is no single point in time in the like multi-decade
+history of the decline and fall of, you know, sovereign email, if you want to call it that,
+there's no single decision, there's no single change that where you can point to it says like
+this is it. This is where everything went to hell. Rather, it was a series of many, many,
+many small decisions that were made because a new problem came up and solutions were demanded.
+And, you know, the engineers did really what we were talking about at the very beginning.
+They went with like the most efficient and by efficient, we mean in terms of like,
+computational and computer resources type of power to fix that particular problem.
+And these efficiencies always led to more centralization and more consolidation of power
+until we eventually got to where we are today with 10 gatekeepers of the email network. As we
+know, I basically capture like 90% of the billions of email users. Yeah, right. I guess like, you
+know, you've obviously been in the Bitcoin space for a while. You've gone through all of its dramas
+and its history. But like, you've also talked in your articles and like in some of your talks
+around the ossification and evolution or future evolution of Bitcoin is what we're talking about
+like an argument for protocol ossification or like how do you view ossification when it comes
+to something like Bitcoin? Yeah, so I actually argue that it's against ossification because I
+think that a big part of what went wrong with email, for example, was that the protocol did
+ossify. But while you can you can ossify a network protocol, you cannot ossify the rest of the world
+that exists. And you know, the protocol exists inside of the world. And so basically what we saw
+was, you know, as adoption continued increasing, as new types of attacks came along that had not
+been envisioned by the original protocol developers, solutions were demanded. And since the solutions
+could not really be physically baked into the protocol any longer, because it was too dispersed,
+it was too hard to get everybody to upgrade. And there were examples of this like practical
+example of a solution to a lot of this was Adam Back's hash cash algorithm, which would have
+similarly enough to Bitcoin like flipped everything on its head, right? Instead of like
+imposing costs and rules and validations at a few centralized gatekeeper points to stop spam,
+instead, you push it out to the edges, you impose costs on everyone who is actually using the
+protocol to spend their CPU. And you know, the world of email would probably look very different
+today if the protocol had adopted hash cash back in the 90s. So this is why I think that
+it's important to always consider like, how can we potentially make a fundamental change at the
+base level of the protocol? If the only alternative is, you know, bolting things on top of it that
+are going to be more centralized. So, you know, we don't have a, I mean, there are some examples
+that we could point to today. I would say like one of the biggest ones, if we're talking about
+Bitcoin and scalability, one thing that's really irking me right now is that there's a lot of people
+that are essentially saying, you know, we scale Bitcoins through ETFs and custodians, right?
+And so it's like, that's the exact analogous example of, oh, you know, we solve a problem
+by just having everybody use a single point of failure that this now undermines some of the most
+fundamental and valuable aspects of Bitcoin. So I actually had a really pithy tweet just a few
+days ago where I basically said, yeah, you can solve Bitcoin scaling with trusted third parties,
+just like you can solve all of your personal problems with a bullet to the head.
+Yeah. Well, I was going to ask you like, you know, what your opinion is on the ETFs and like
+BlackRock and Grosso's entry. And I think you're right, like, to use those kind of misses the
+entire point, you're not enjoying any of the benefits of the decentralized authority that's
+created, right? Yeah, I mean, look, it's, it's fine. It makes sense from a financial perspective,
+and I hold Bitcoin ETFs, but I hold them inside of, you know, 401ks and IRAs that were already
+centralized and you could potentially be rugged. And I actually almost got rugged by the SEC a
+few years ago, because they delisted Bitcoin ETN that I had put all of my retirement money into.
+And that was a whole year long ordeal. I have a whole blog post about that. But it's not something
+that I think that people should be putting their like regular savings or investments into
+as long as self custody is still an option. Right. So like, why is self custody so important?
+It really comes down to power. Once again, it was both, you know, if you really want to keep
+the network decentralized, if you want for your Bitcoin to actually be yours, rather than
+essentially holding an IOU or you have to ask permission from someone who can deny it for any
+arbitrary reason, the best security model that Bitcoin provides requires that you hold your own
+keys. This is once again about gatekeepers and validation. The great thing about using
+network protocols, if you're using them directly, as long as you're following the rules of the protocol,
+the protocol doesn't care who you are, how old you are, your gender, any characteristics.
+It doesn't even care if you're human. It doesn't know. This can tie into AI agents as well in the
+future. But this is one of the fundamental things that I've been fighting against for almost 10
+years now, working at BitGo and now at Casa, of trying to push self custody adoption by making
+self custody easier, lowering the technical hurdles required in order to get into robust
+self custody. I've been fighting against human nature. Human nature is essentially to strive
+for convenience at the expense of almost everything else. That's why I don't consider my
+competitors to be the other self custody providers. I consider my competitors to be the trusted third
+parties who, because they're shoving all the complexity under the hood behind the screen of
+a really slick user interface, they have a massive advantage there because the average person cares
+about convenience more than security, more than privacy, more than these abstract concepts that
+many people don't think about until it's too late. That's why one of our primary goals at Casa
+is make it as easy as possible. Sometimes that does require not pushing forward the most secure
+solution. A good example of that is just a few weeks ago, we announced that we were the first
+company that has figured out how to store private keys inside of a Yuba key. A Yuba key is arguably
+not as secure as something like a ledger or a trezor, this fully self contained computing device,
+but from the UX perspective, from the user's amount of hoops that they have to jump through
+to actually set it up and maintain it, it's an order of magnitude more convenient.
+What we're trying to play around with and determine now is how many more people can we
+get to adopt self custody if we push the convenience out further with a very slight expense on the
+security side? Absolutely. It also scales with the amount of value that they're trying to secure,
+like you don't need to have a safety deposit box with your hardware wallets in there and
+some backup location of something on written in steel for $10 worth of whatever your favorite asset
+is. This can be introduced. With status, we basically have faced similar challenges and
+thought about it in similar ways. I think the Yuba key is a great idea to get keys on that.
+People already have them and I think they can understand them a lot easier.
+We had a similar approach, I think, where we ended up taking the Java card platform and building
+out signers for that. Then we're extending it with like UTF and stuff like that, so we're trying
+to make a Yuba key out of them as much as we can. It's cool to see there's a convergence
+in some ideas around that. When it comes to convenience, the shame is at the time they make
+these choices of convenience, but then when a Black Swan event happens, that's a lesson
+for a learning time or learning event. It requires that high-energy
+inputs to be able to change equilibrium or change states for people to do that,
+and then most people don't. I think a friend of mine was using LastPass until the previous hack
+that went through and they finally took on KeyPass, even though I'd been harping on about it for years.
+It's also cyclical. I think that each new cohort of adopters in the space has to relearn the lessons
+that older cohorts learn. I think this is why we keep seeing massive exchange hacks every few years
+or massive rug pulls every few years. I don't think that that's necessarily going to stop until
+we reach some sort of saturation point because it's both the operators of these things that are
+coming along and not learning from history, and then of course it's all the new adopters that
+are coming along and not learning from history until they get learned. At the time I was more in
+the Ethereum space, and you're obviously familiar with the Dell hack. A lot of lessons were learned
+in that period of time, and then once the sort of DeFi crowds started coming in and building
+on the technology, I was looking at some of their code and I was mortified that they were
+deploying these things onto main nets, but they've learned their lessons in a similar way,
+and I would tend to agree. I don't know if this is like nostalgic or even like maybe
+I wouldn't say like a gatekeeper attitude, but I feel like this also brings me back to say cultural
+transmission. Is it just that people have to relearn these things or can we do a better job
+of education and getting these ideas out? I'm not really sure on that front. I feel like it's
+a human nature to just yolo it until they hit a wall. Yeah, I'm pessimistic and disillusioned
+about educating people when it comes to security and privacy. You can try to teach people all
+day long, but if they don't see the practical value in it, they're not going to learn it,
+they're not going to retain it. I think this is also one thing that I've come to believe
+about sort of Bitcoin evangelism as well. In the early days, there's first few years
+when I was getting into the space, I was going out and really evangelizing this new money to
+all of my peers, my social circles and whatnot, and it pretty much fell on deaf ears. This was
+2013, 2014. I was pitching it to the wrong crowd. I didn't realize that everyone in my social group,
+they were well off financially. They had access to financial infrastructure. They
+had no concerns about inflation or monetary policy. I basically came off as the paranoid
+libertarian guy who could be easily dismissed because I just had all these sort of kooky fringe
+ideas. It was probably like one or two percent of people who actually bought into my fringe
+ideas back then. Point being, you can't force these things onto people who don't see the value
+in them. These days, I'm more focused on waiting for the people who have the pain points and have
+the need to come to me and say, I want to learn. I have plenty of educational resources available
+for anyone who wants to learn. Right. I kind of find that funny because for me, almost everyone
+has the pain point. I guess I am the quirky guy in the room going, you're all debt slaves,
+right? But they don't realize it. Maybe now, with the sovereign debt being not bought up as
+fast as it used to be and the rampant money printing that's happening within the de facto
+world reserve currency that is in the United States still, I think people are starting to feel
+the pressure of inflation a lot more. I even hear it like I take my dogs down for a walk in the park
+and there's people who are now having to go between different groceries just to find the best
+deal, right? Because they're low on this Maslow's hierarchy of needs, right?
+Yeah. And so even then, they're not thinking about what is the root cause of all of this, right?
+They're just like, I just need to get my affordable groceries.
+Yeah. Yeah. But I mean, if the debt isn't restructured magically and the current
+trend continues, then that might be something they're more receptive to here potentially.
+But it very well may be that we have to get to a mandibles type situation
+if you're familiar with that book. Like I said at the very beginning, I'm not sure that any of
+these systems are going to fail gracefully. Yeah. I think so.
+I mean, I guess switching gears a little bit. How do you think about privacy?
+It's a nightmare. I mean, I spent the first decade of my career on the opposite side of
+the privacy battle. Really? Yes. I worked for an online marketing company and I was basically
+doing cloud computing, large scale data analytics back when the cloud was just becoming a term.
+Like most people didn't even know what cloud computing was back in 2008, 2009.
+And so I saw the petabytes and petabytes of raw information that my company was collecting
+on a daily basis because we would have anywhere from tens to hundreds of millions of emails that
+were sent out through our system, which was then of course collect all of the opens and clicks and
+conversion data and so on and so forth. So my job was to help marketers optimize the return on
+their investment in our marketing engine, which basically boils down to help them target people
+to sell specific products to the right people who are most likely to buy them. And we would
+use every bit of data that we could get. And of course, when you start collaborating with other
+corporate surveillance machines out there, you can really start piecing a lot of data together and
+build entire complex profiles around people. So that's when I really learned just in your
+sort of day to day internet browsing how much data is collected about you. And so you're already
+starting out at a major disadvantage. There's a lot that you can do, but once again, it comes down
+to how much time and effort are you willing to put into it. I do tell most people that the easiest
+and most effective thing that you can do is just install ad blockers into all of your browsers,
+and that will stop a lot of it. But for me, I went down the extreme privacy journey in 2018
+because my physical location was compromised and I was attacked, basically had a SWAT team sent to
+my house under false pretenses. And that's when I realized that this privacy thing is real.
+There's actual physical safety ramifications, especially if you're a public figure who has
+hundreds of thousands of people paying attention to you. And so that's when I went down the
+extreme physical privacy rabbit hole and determined that that's beyond the reach of
+all but the most dedicated people because you basically end up having to spend tens of thousands
+of dollars at a minimum, and then thousands of dollars a year maintenance in order to set up
+all of the appropriate entities to sufficiently obfuscate where you are, what things you own,
+and basically create proxies between your real identity and corporate or trust identities that
+will be on any public records. And the public records are a big deal, but then like I said,
+as well, there's all the corporate surveillance stuff. So even staying out of a lot of those
+private databases gets tricky as well. And you can even get to the point of essentially
+disinformation campaigns and setting up a lot of fake information just to sort of
+sow seeds of doubt so that if someone does try to come after you, instead, the average person,
+you can pay like 20 bucks and go to one of these people search engines. And in many cases,
+you can find exactly where they live and their vehicles are registered and so on and so forth.
+And in order to prevent someone from being able to do that against you
+requires a lot of effort and attorneys and an ongoing maintenance to make sure that you're
+kind of like keeping all of these like plates spinning in the air so that
+if someone tries to find you, they're going to be sent off on a wild goose chase.
+Nice. I guess that's what OPSEC is all about. Do you have like a guide on that?
+Or is there a reference that you would recommend people who want to go like
+the full extreme privacy route?
+Yeah. Well, at the time when I did it, there weren't any great guys. There were one or two books
+that weren't particularly in-depth for like all of the different aspects of your life. But
+thankfully, Michael Bezell, and that's not his real name, but he publishes a book called
+Extreme Privacy. And he basically comes out with a new version of it almost every year. And I think
+the fifth edition is about to come out any day now. And it's not cheap. I want to say it's like
+50 or $70. And it's print only. He doesn't distribute digital copies of it.
+And every year, a new edition comes out and adds like another 50 or 100 pages to it. So I bet this
+fifth edition is going to be like 700 pages or something. Because it does, it just keeps getting
+more and more complicated. And the rules of the game keep changing. And like the
+technological mitigations to some of these things keeps changing at a faster pace.
+Do you think that that can be democratized in time?
+There are services that exist to make it easier. There are some like
+cyber security and privacy health check services that will do things like monitor a lot of these
+people search engines, monitor for data leaks, help automate hardening settings of a lot of
+different services that you use to minimize data leaks.
+But then you're exposing yourself to them.
+Yeah, you're basically using a trusted third party to do a lot of the heavy lifting for it.
+So trade offs, right? There was also an article just the other day that came out that said that
+there was testing of a lot of these automated data removal services was found to be far less
+effective than going through them manually. And that is also one of the things that Michael
+Bezel has this entire data removal handbook of essentially you can write letters to all
+these different services to basically say, you know, remove me from all of your databases.
+And I don't I myself don't do that. I think like you have you have a couple of different options.
+And either like, if you're already in a place where you're essentially doxxed and it's easy
+to find you, then you can try the data removal path and that'll maybe get rid of like 90 or 95%
+of stuff. But you know, you can't delete data once it's already out there on the internet.
+Not, you know, 100% for sure. I went the other more difficult path, which is like,
+I sold off all of my publicly registered assets and moved and basically burned down my entire life
+from a public data perspective and restarted it with a hardened perspective. And, you know,
+very, very few people are going to do that unless they probably have had, you know, some sort of
+credible threat against their life where they feel like they are in physical danger.
+You're right. That's getting quite close to doing a self witness protection program, right?
+Pretty much. Yeah, because, you know, I also had to come up with pseudonyms, backstories,
+because, you know, essentially, I don't tell my, my physical neighbors, obviously, who I really
+am, because I have to assume that they would leak that. And, you know, people are gossipy.
+That's just human nature. We find it like, I mean,
+like, how does that affect you mentally? Right? Like, is there like a, you know,
+I think people looking out like from being on the outside and looking at that, like,
+there's a level of paranoia there. And in your case, it's justified because you've had,
+you know, your physical life potentially potentially threatened.
+Like, I mean, is society so sick that that's just the way things have to be for people like us,
+you know? Yeah, so for the first year or two, it was awkward. You feel like you're like living
+a double life. But it just becomes a new habit, a new part of your personality. And the short way
+that I describe like a lot of my privacy techniques is lying. And lying is generally, you know, it's
+kind of against human nature. You know, it's easier to tell the truth. It's harder to keep track of
+lies. And so if you're going down that path, you have to have, you have to keep it. This is one
+thing I screwed up early on, is like, I was creating a different alias for like each different person
+and service provider that I was dealing with. And so it was overly complex. I couldn't keep track of
+all you really got to simplify it for your own sanity. I have profiles and personalities and
+like traces for each one of those identities as well, right? Like, that's insane.
+Yeah, I mean, you can go as far with it as you want to. But it is a lot of mental overhead. And
+the short version to a lot of this privacy stuff is, and I think that Michael Bazelle says this as
+well, is that at least in America, the vast majority of time, it's completely legal to lie
+about who you are and what you do. Really, the only times that it's illegal is when you're entering
+into some sort of like legal contracts, where you're attesting that, you know, you are who you
+are, and that you're going to abide by some sort of agreement. But otherwise, it just sort of,
+it becomes second nature. And, and it's mainly the overhead of having to keep track of,
+you know, I have like a ton of different email addresses and a ton of different like throw
+away phone numbers and a ton of different like virtual debit cards and financial payment mechanisms
+and so on and so forth. And so it is a lot to juggle to basically maintain a segregation between
+like different aspects of your life. I mean, I don't think I've ever heard a security officer
+talk about security through obfuscation, but I definitely see the, I can see the utility in
+this case. I mean, it sounds like it's going to become more and more required, especially like
+what's happening in the UK right now, right? You can't even post on social media anymore
+without the threat of coercion. That terrifies me. I don't know if you've ever kept up to date
+with that at all. Yeah. But also in the long term, I'm somewhat pessimistic on the physical
+privacy stuff too. Thankfully, we don't have a ton of like physical surveillance in America,
+at least outside of the big cities. But to give you an example, like I have
+toll booth scanner thing, right? And thankfully, even though that's tracking
+what the car is going through, my car is not registered to me, the toll booth scanner thing
+is also registered to a corporation. But they could be taking photos and potentially doing
+facial recognition as you're passing through there. And in general, I do expect that we're
+going to hit a point where I won't be able to go out into meat space and not be recognized.
+And, you know, one of the reasons for that is things like, you know, I think Metta has those
+Rayban glasses, for example, that have the camera built into them, kind of like Google
+Glass from a decade ago, but even better. And you know, it's only a matter of time before people
+are going to have like built into their glasses, if not contact lenses, augmented reality display
+that will be able to like pick up your faces, run facial recognition against them, and then
+immediately like display a lot of information about you. And, you know, I have no real counter
+measure to facial recognition. Yeah. Yeah, everyone will have a body cam one way or the
+I mean, they already do it's just in their pockets, right? Yes.
+That's a tough problem. I guess in speaking of like counter measures, is there any like
+this bit, you know, obviously, like other sort of privacy projects have come up, such as like
+a Zcash or Monero, trying to address some of these issues that, you know, are found in Bitcoin,
+for example, are you hopeful for for similar methods to be employed by Bitcoin or how do you
+think these things should operate or evolve in any way?
+Well, I am doubtful we will ever see privacy protection that's this sort of Monero or shielded
+Zcash transaction level of privacy, because those make it difficult to audit the supply
+against inflation bugs, for example. I think Zcash actually had
+an inflation bug. I think they don't think that it was exploited, but there was an inflation
+bug at some point. And, you know, there are a number of potential privacy improvements,
+but these are all going to be sort of iterative. I actually was on a panel a few weeks ago where
+we were talking about cross input signature aggregation. And the short version to that is that
+like, there is a potential path to a future in which Bitcoin economically incentivizes it
+for you to participate in coin join mixing, where it would be cheaper to transact via coin join
+than to just do a regular transaction. And that's, that would, I would say be my most
+optimistic take on improving Bitcoin privacy is if we can do so in such a way that
+economically incentivizes people to use it, because once again, people don't care about
+privacy, but they do care about saving money. Gotcha. Gotcha. Well, we're out of time,
+unfortunately, I'd love to continue chatting with you. I guess like to wrap it up, what are you
+most hopeful for or like, you know, what are you excited for in the upcoming short or medium term
+future? And, you know, if there's any other recommended reads that the audience should
+check out? Well, in Bitcoin land, the past year has been interesting because it seems like we're
+seeing an acceleration of development of people playing around with what you could call layer two
+technologies. I would say a lot of them are centralized in various ways or are speculative
+upon certain changes happening to the base layer protocol. And this is, I think, going to be one
+of the main things that I'm going to be harping on and pushing for is that there's a lot of people
+in the Bitcoin space who believe that like Bitcoin can do anything and you can build anything on top
+of Bitcoin, you know, just look at lightning, for example. But they're also the sort of
+ossifiers, they're like, they're too afraid of changing the base protocol. And one of the things
+I'm going to be trying to get across to people is like, look, like lightning itself wouldn't
+exist if we hadn't made three changes to the base protocol to enable it. And there are a number of
+proposed changes to the base protocol that would enable a greater explosion of innovation in the
+second layer space. And that's, I think, the main thing that I want to see happen is just improvements
+that allow for more building on top of Bitcoin without having to make tradeoffs of having like
+centralized gatekeepers like in and out of second layers. It's this, the promise that we were given
+a decade ago with the side chains, white paper, that we were going to have this, you know, massive
+ecosystem of many pegged chains to each other. And that never happened because we never actually got
+a working trustless two way pegging mechanism. But if we can get something like that, and there are
+some proposals that I think would make it feasible, then perhaps we will really see a new renaissance
+of building on top of Bitcoin. Fingers crossed. I'm looking forward to it. All right. Well,
+thank you so much for your time. Thanks for having me.
