@@ -1,0 +1,562 @@
+Privacy is not a particularly high priority for many people.
+Most people don't even think about privacy until it's too late and something's gone wrong.
+I'm hopeful that we'll continue to move the state of privacy on bitcoin forward.
+Especially on the base blockchain layer, bitcoin has pretty terrible privacy.
+As a cypherpunk, that's pretty unfortunate. Thankfully, lightning and second layers on bitcoin can create much better privacy attributes.
+You don't create strong privacy for privacy's sake, because that's probably not going to get much adoption.
+But if you can incentivize people to use better privacy solutions, I think that's a very interesting road to go down.
+Welcome to Bitcoin Basics with your hosts, Faris and Gordon.
+Visit bitcoinbasics.help if you need help buying and securing your bitcoin.
+Hey, everyone. Thank you for joining us for another episode of Bitcoin Basics podcast with your hosts, Faris and Gordon.
+Before we introduce our special guest for today, we're going to run through our proof of recording.
+The price of bitcoin is $57,410 per U.S. dollar.
+What's the next thing I'm looking for? The block height. I haven't done this in a while.
+Gordon, where do I find the block height here?
+860,923.
+And the date, depending on where you are, it's the 11th of September, 12th of September at our time of recording, 2024.
+So, Gordon, we had an exciting guest here. Yeah, you were crushing all over this one.
+Hardly. No, Jameson is one of those guys who's, you know, similar to me, into IT and then branches out,
+finds Bitcoin through computer science and then branches out into the philosophical, political nature of it.
+So, yeah, really interesting guy. And I've said several times on the podcast,
+I really appreciate people who put all their information, research, everything online.
+And if you go to his website, lop.net, he's got an amazing resource there.
+I mean, thousands of hours worth.
+So, yeah, I've pointed a lot of noobs to that site, to that resource, because it's brilliant.
+And not only is he sort of involved in that, but his, I guess, pragmatism is probably what I appreciate most about Jameson.
+There might be a perfect way to do something, but doing something maybe not exactly the perfect way is still better than not doing it at all.
+So, I guess, in a nutshell, that's my philosophy as well. But, Faris, what did you think?
+Yeah, I'm very excited to have Jameson on. And Jameson has actually been involved in this space early on for quite some time.
+And I think of him as a seasoned captain because we've had to weather several storms in the world of Bitcoin and crypto.
+And Jameson has been a calm, steady voice, always giving real world advice.
+So, people from IT, there's a lot that you know, and it's translating that into how can the everyday user find benefit of it is really, really difficult to do, especially in the world of Bitcoin.
+And Jameson is just so good at that. He's a steady ship in calm storms.
+I'm not in IT. I'm into computers. But I know what you mean.
+All right. Well, without further ado, here's the interview with Jameson Lopp.
+If you enjoyed this podcast, please subscribe, like and share so we can find others like yourself.
+Jameson, thank you very much for joining us. I think we just mentioned before we got on there that, yeah, we've been following your work since the early days of 2016, 2017.
+That was when I kind of first got involved in this space and right in the middle of the block war.
+So, I was terrified. And you've been a very wise and grounded voice for a long time.
+One thing we'd like to do with anyone who comes on is if you don't mind, just tell us your Bitcoin origin story.
+So, when was your eureka moment? How did you get involved in here?
+Well, I think like a lot of people, I heard about it a number of times and dismissed it without really looking into it.
+And so, it just kept popping up on nerdy news sites like Slashdot and Reddit.
+And it was probably the third or fourth time when it kept coming up when I realized, hey, you know, this thing isn't crashing and burning like I expected.
+So, maybe I should look into it. And so, it was like mid to late 2012 when I finally read the white paper.
+And I have a computer science background.
+And I found this fascinating because, first of all, it described a problem I had never really thought of before.
+But more fascinating was that the solution to the problem was the exact opposite of how I would go about attempting to solve it.
+And I think that really says a lot about the ingenuity of Satoshi and how they took all of these pieces of the puzzle,
+these computer science concepts that had been around for a while.
+They didn't really create anything, any novel primitive constructions, but they put all the pieces of the puzzle together in a way that had never been done before.
+And ended up solving the Byzantine Generals problem, which many people thought was unsolvable.
+So, it was interesting to me because it was extremely inefficient.
+And as computer scientists, we are taught to use the most efficient data structures and algorithms possible to solve a task.
+So, that was just what got me interested.
+I, about a year later, had been following along the news and stuff and realized that I wanted to try to contribute.
+So, I started a fork of the Bitcoin Core repository that I called Satoshi,
+which basically was adding instrumentation, metrics internal to the operation of a full node.
+And really, my whole idea there was I was taking some other technologies that I was using in my day job of running large distributed systems
+and monitoring and understanding what was going on inside of them and applying that to the Bitcoin node.
+Because I felt like Bitcoin is all about transparency and we had a lot of opaqueness when it came to actually running a node and understanding what was going on inside of it.
+So, that got me a little bit of street cred.
+And a year later, I was able to then go full time, land a job, basically building infrastructure at BitGo,
+which was one of the first ever multi-signature wallets out there.
+Definitely the first enterprise multi-signature wallet system.
+And I was there for three years through the whole scaling debates.
+And that's when I became more of a public figure in the space because I was very outspoken.
+And after about three years there, I did a very small pivot and founded Casa.
+And Casa is basically taking a lot of the best practices and the hard lessons that I learned at BitGo
+and applying them to more of an individual retail self-custody setup rather than just focusing on enterprise.
+So, for the past six years now, Casa has been focused on helping anyone who has a non-trivial amount of Bitcoin that they want to secure
+and making it as easy as possible to get into a very robust self-custody setup that understands that we are humans
+and that we make mistakes.
+And it's flexible enough to allow you to make mistakes and not end up with a catastrophic loss.
+We'll definitely get into Casa, for sure.
+And Jameson, by the way, statoshi.info is the page.
+It's absolutely fantastic.
+It has an amazing array of resources, by the way.
+We'll list all those in the show notes.
+But lopp.net is simply amazing.
+I've been using it for years.
+So, thank you very much, Jameson, for that, especially for noobs.
+Bitcoin.page also goes there if that's easier for people to remember.
+And I hope that more people use it because I have to spend over $1,000 a year on that domain name.
+Wow.
+Okay.
+Yeah.
+Okay.
+We've had so many noobs there.
+So, from the Bitcoin community's point of view, thank you very much.
+You're doing an awesome job.
+But you glossed over one of probably your most important projects.
+And I think everyone on this podcast wants to know what's the current price of Bitcoin?
+Yes, that was one of my latest ones.
+But, you know, these are things that I randomly come across.
+And actually, sometimes some of my projects, a couple of them are basically me picking up abandoned projects from other people.
+So, as you mentioned, I have a ton of educational resources on my website.
+And part of the onerous aspect of maintaining that is dealing with link rot and the fact that sometimes people just stop maintaining their website and it goes offline.
+And so, this Bitcoin tracker was one of them where it went offline a month or so ago and I was unable to contact the original creator.
+So, I figured, "Hey, I might as well just recreate it because really it's only a few lines of code, like a single API call."
+So, now it's basically, how would you say, a shot in fraud against the Bitcoin critics who have been wailing for over a decade now and missing out.
+It's fantastic.
+I mean, it started off as a Reddit sort of meme sort of posting, but there is actually Bitcoin, isn't there?
+Someone's created a coin.
+I looked on CoinMarketCap called "ButtCoin."
+I don't know if that's the same thing.
+Probably.
+Yeah, who knows?
+Were you straight into Bitcoin?
+Like back in 2012, you got Litecoin and a few others like Primecoin and the merge mining Bitcoin was something else that I can't remember for domain name systems.
+Were you straight into Bitcoin?
+Was it always Bitcoin?
+And what was that journey like?
+No, I mean, I'm interested in anything and really any tool that I believe will help empower people and disempower authorities.
+So, in particular, I'm always interested in any new privacy technologies, privacy coins, if they're doing something novel.
+And yeah, in the early days, no, I played around with a lot of these things.
+And, you know, back then, most of the altcoins were just simple copy-paste operations of Bitcoin with trivial changes to things that nobody actually cared about, like the block time or the mining algorithm or whatever.
+So, you know, I would say Monero was probably one of the oldest altcoins that I think was particularly interesting and is still relevant and has differentiated itself.
+But, you know, from an investment perspective, none of my privacy coin investments have done very well.
+And this is one of the many reasons why I'm kind of blackpilled on privacy in general.
+I think if you look at the value of privacy coins over the years, the reason why they're stagnant or falling is simply because privacy is not a particularly high priority for many people.
+Most people don't even think about privacy until it's too late and something's gone wrong.
+So, you know, I'm hopeful that we'll continue to move the state of privacy on Bitcoin forward, especially on the base blockchain layer.
+Bitcoin has pretty terrible privacy.
+So as a cypherpunk, that's pretty unfortunate.
+Thankfully, lightning and second layers on Bitcoin can create much better privacy attributes.
+And so I think that's mostly what we've got to hold out hope for.
+I did have a panel a couple of months ago talking about cross input signature aggregation, which if it ever happens, which may not, but if it did, it could bring us into a world in which mixing your coins is actually economically incentivized because it would be cheaper to participate in coin join transactions than it would be in standalone transactions.
+And so that's also the type of thing that I think is really interesting is when you don't create strong privacy for privacy's sake, because that's probably not going to get much adoption.
+But if you can incentivize people to use better privacy solutions, I think that's a very interesting road to go down.
+Privacy and custody, James, is one of the main things we want to talk to you about today.
+But before we do, you just had in your opening remarks, if I just want to grab a few more details, if you don't mind, you said that Bitcoin, it solved the problem.
+You wouldn't have gone about solving that problem the same way, but also that it's inefficient.
+Is that in reference to mining and proof of work?
+Is that what you meant?
+Just a bit more detail for our listeners who, unlike you and Gordon, actually use a mouse.
+Well, it's inefficient in a variety of ways.
+Proof of work is inefficient by design, right?
+This is one thing that confounds a lot of people who come at Bitcoin from the perspective of ecology or resource minimization.
+People who care a lot about energy usage and other resource usage because proof of work is specifically designed to make it hard to attack something by making it very costly to do so.
+People who don't see the value in Bitcoin, of course, are not going to see the value in proof of work and the great computational expenditure required for that because they don't see the value in protecting the Bitcoin blockchain.
+But even beyond that, just the blockchain itself and the way that data is constructed and shared.
+Basically, this idea that the way that you really create a trustless system is by making it completely open and auditable by the entire world, by anyone who has an internet connection.
+In order to do that, though, now you are sharing your information with everyone in the world.
+This is kind of the crux of the scaling debate.
+How do you scale a system that, from a computer science perspective, has very poor scaling properties?
+Because, essentially, every new user who comes online and adopts this system now has to share their data with everyone else in the system.
+This is basically growing linearly the amount of resources that all of the users in the system have to expend, at least if they want to be able to audit the blockchain.
+This global flood-fill system, I sometimes liken it to the internet itself.
+What I mean by that is the internet is actually a seven-layer model of different protocols.
+At the lowest layer, layer zero, the Ethernet layer, it actually functions very similarly to how Bitcoin works.
+What I mean by that is when you take a piece of data and it goes out on the internet at the Ethernet layer, it actually gets broadcast to the entire network.
+Thankfully, we've scaled the internet so that you are not having to send your data to all several billion people on the internet.
+But if we only had the Ethernet layer, that's how it would work.
+Of course, it wouldn't work. If you and I were streaming this video right now and we had to stream it to a billion other people, that would just saturate everybody's bandwidth throughout the entire world.
+Nobody would be able to do video streaming.
+How did we scale the internet?
+We scaled the internet with layers, particularly routing layers, so that we could much more efficiently get our data from point A to point B while going through as few hops as necessary in order to get there.
+Hops being essentially the various routers throughout the internet. For most people, it's going to be your home router and then your ISP router and then maybe a few other big routing hubs run by large corporations.
+That's what I think we hope to scale Bitcoin in a very similar way.
+It's already scaled via Lightning Network, which has similar types of mechanisms and routing that mean that you can send a transaction on the Lightning Network and you don't have to send it to everybody on the Lightning Network.
+It only goes through two, three, four, five hops to get to where it's going.
+Of course, that's much more efficient, but it comes with plenty of trade-offs.
+One thing you mentioned that really frustrates me when I see it in TV shows or movies is people say, "Oh, criminals use Bitcoin because you can't trace it."
+That's obviously just a complete lack of understanding or willful ignorance of the fact that Bitcoin is incredibly transparent. It's the last thing you want to use.
+Why would you want Bitcoin to be private then?
+Privacy is really the first layer of security, in my opinion.
+It's great to have strong security, but the best type of security is security that never actually has to be tested by an attacker because the attacker doesn't target you in the first place.
+Strong privacy is preferable because it gives us this extra shield around whatever our actual security model is.
+It's not great that people can do chain analysis and do things like wallet clustering and be able to figure out the entire balance of your wallet because that's just the way that Bitcoin works.
+The trade-off of having really strong privacy, at least in all of the solutions that I've seen, is that you generally have to give up the ability to audit the total money supply of the system.
+That's why I think we'll probably never see the Monero or Zcash style privacy on Bitcoin itself because, as I already said, privacy is not the top priority.
+Just do a Google search for "inflation bug" with those privacy coins and you'll see what Jameson's talking about.
+If you can't audit the total coins, then that's a problem.
+So, Jameson, do we give up on – not give up, but that's the wrong word – do we not concentrate on securing privacy on the Bitcoin base layer and do we just concentrate on layer 2, layer 3 sidechains, or do we still try and get some privacy in the Bitcoin main chain?
+I think it's worth doing both.
+Like I said, there are proposals out there, but as far as I've seen lately, not very much progress or not much resources have been put into running the gauntlet of Bitcoin consensus changes.
+That's a whole other hairy mess that we could talk about is the difficulty of upgrading Bitcoin and how the rate of upgrades at the base protocol layer seems to be slowing down.
+There's a lot of questions around ossification of the protocol and are we at the point where we can't change Bitcoin anymore or is it just that there's a loud subset of people who are extremely fearful of any change to Bitcoin?
+Often it's the unknown unknowns that I hear pushback about. I've given a few presentations about my thoughts on that. The short version is that there's unknown unknowns regardless of if you make changes or if you don't make changes.
+We can look at other network-based protocols and their history and see how they have evolved or I would say devolved over the decades as the protocol itself, for example, with SMTP hasn't really changed in 20 if not 30 years.
+But because the world has changed and some of the problems that were being faced within the email ecosystem kept changing, since the protocol couldn't change, people bolted on solutions that were highly centralized and based around this idea of identity and reputation
+and created a high cost of entry to running a sovereign email service and the result of that after several decades of inch by inch ratcheting up the difficulty of operating an email node,
+now 90% of all email users in the world are effectively captured by 10 companies. So that's the type of thing that I want to avoid happening in Bitcoin.
+You mentioned one of my trigger words because I've been self-hosting email for a while and I gave up three, four years ago because I got blacklisted. Because I was sending spam? No, because I was doing something nefarious? No, just some email server put me on a list and game over. Now I can't send any emails.
+So I would hate to get to that point, for sure, Jason. And I would love...
+Jameson, Gordon, Jameson.
+Jameson, sorry. Sorry. I was speaking to Jason this morning. I'm sorry. Sorry about that. So yeah, I would hate to get to that point. But we could talk about that. And one of the reasons why you're so prominent in the Bitcoin community for privacy is that you have personal experience with that.
+And I know you've gone on to this with other podcasts, talk about swatting, and you've created the known, what is it? The known physical Bitcoin attack list or something like that.
+Yeah.
+You're on it. You don't have to give us the whole story, some of that, but I think our listeners would actually be interested in what happened and why you're so concerned about privacy, as we all should, but you especially.
+Yeah. And Hal Finney is on it. He might be the first entry, if I recall correctly, because that was like 2014 or something. But essentially what has happened now is that we have these highly liquid bearer assets that are easily transportable and basically teleportable.
+That changes some of the incentives of potential physical attackers. And so one of the reasons why I keep track of these incidents is because this is part of the sort of cat and mouse game of security.
+Is that there is always going to be attackers probing systems, trying to determine the potential return on investment of different attacks and reliability of attacks.
+And if we're in a world where a lot of people who hold Bitcoin are doing so the right way, aka with self custody, then it's just a matter of time before the criminal element starts to come around and say, "Hey, why would I bother trying to come up with a bank heist or try to knock off an armored car?"
+Or some hardened physical target, when the reality is your average individual has very, very little physical security because they feel like they don't need it because they never get physically attacked.
+In my particular case it was basically extortion, but with the added caveat of the physical element being that law enforcement was directed against me as a scare tactic.
+But of course these particular swatting incidents can be deadly, they have been deadly in the past. And so that's the scare tactic is that it is a legitimate physical threat.
+When we look at the entire corpus of physical attacks that have happened, and I think we're closing in on 200 at this point that we're aware of, I can assure you there are a lot more than that that we're not aware of because most victims don't go to law enforcement.
+They don't publish anything because they don't want to make themselves an even bigger target. But there's a number of similarities and things that you can do to avoid being a victim of this.
+And it's basically just not engaging in risky activities like face-to-face trades. It's not posting on social media, luxury type, showing off your wealth. Don't flaunt your wealth on social media because that's going to make you a target.
+Even if you're not a Bitcoiner, just showing off a Rolex or some other high value items that are easily transportable can also get you in trouble there.
+So this is once again why privacy is very important and not just privacy on the Bitcoin network, but in general. If I could have done it all over again, I would not have gone out there with my real name and been talking about Bitcoin for such a long period of time.
+But I had a decision to make at that point, which was, do I delete all of my online presence and stop doing anything associated with my real name and identity?
+Or do I try to harden my privacy so that I could continue using the reputation that I had built up for many years? And so I went down the latter path and it was partially an exercise just to understand the difficulty involved.
+And it's definitely involved. We're talking tens of thousands of dollars in expenses to get set up, at least thousands of dollars a year to maintain various entities.
+And it places this level of real world physical privacy, I would say, outside of the reach of most people.
+Also, a lot of what I did is very jurisdiction specific, in that America allows you to create legal entities with certain amounts of privacy that a lot of other countries don't.
+So privacy is a very tricky problem and it can vary from jurisdiction to jurisdiction of what you're even allowed to do.
+I think that one of the other commonalities that we've seen with the physical attacks is, I think in Sweden, we've been seeing more.
+And I think that the explanation for that is that there's Swedish law that basically requires that all of your tax records are public information.
+So if you've got a lot of capital gains from trading Bitcoin or other stuff, people can find that out and see your address right there on the tax records.
+And thank you for sharing that. And I'll link Peter McCormack's What Bitcoin Did podcast with you because you explained that and I don't want you to go through that again.
+But yeah, if listeners are interested in that, have a listen to your story because I've heard that several times now, but it's a good reminder.
+And that's why, Faris, I say I'm an earth one.
+You laugh at me, but that's why.
+And by the way, Faris, I use a mouse. I use a mouse to sometimes resize my terminal window.
+So that's why I use a mouse.
+Sorry, I just want to jump in real quick.
+So Jameson, just on that for one, thank you for, I know you said you had that fork in the road where it's I just delete who I am online and just go into the shadows, which you can do in this space.
+And, you know, you could have worked quietly for some hedge fund somewhere, just advising them on Bitcoin security and custody.
+But you chose a path of being a public figure and giving people just, which I really hope the people appreciate the advice that you're giving them when it comes to security.
+Why go that path? Like, philosophically to you, why is Bitcoin important?
+And, you know, like the film Fight Club, you know, you don't talk about Fight Club, you don't talk about Fight Club, but Fight Club keeps growing.
+So why is it important for you that Bitcoin grows and that people learn about it and that it led to you taking that decision and putting yourself out there?
+Well, you know, Bitcoin is a network and the fundamental foundation of the entire network is it's not nodes, it's not miners, it's not software developers, it's the people who adopt it and expend time and resources supporting it.
+And maybe that just means you buy some and you sit on it, or maybe it means that, you know, you engage in the community and you go to meetups or you just talk about it with other people.
+And so, you know, I think that's why like one of the greatest strengths and ways to make Bitcoin stronger is just to get more adoption and get more people interested in it.
+But, you know, I don't know, I wasn't really an educator, or at least I didn't consider myself an educator.
+It's sort of happenstance in the fact that I'm really nerdy and I get focused on specific topics and, you know, Bitcoin has captured my attention for many years.
+And I think one of the reasons why it has maintained my attention for so long is because it's such a complicated ecosystem.
+There are many, many different rabbit holes to explore. And that's one of the reasons why I have so many different random side projects.
+It's just like things that came up. A lot of the stuff that I write about, it's almost like journaling, right?
+It's like I'm doing research and the research is fundamentally for me wanting to better understand some aspect of the system.
+But I've just gotten into the habit of saying, you know, this is an open source system and contributing to open source doesn't necessarily mean you have to write code.
+Now, I do write code from time to time, but I think contributing to just knowledge and understanding in any way by communicating what you've been learning with others
+is just another great way that it's available for, I think, anybody to participate in this.
+I mean, even creating a podcast and talking about all types of different topics, especially if you can explore unexplored territory and you get new perspectives.
+That's another thing that I think helps make Bitcoin stronger.
+And it's interesting to see that happen with each cycle, is that whenever you have a new wave of adoption come in,
+ultimately you have just a ton of new people and some of those new people are going to bring perspectives that have never really been brought to Bitcoin before.
+So I think probably the best example of the recent cycle is Michael Saylor, right?
+It was like nobody was ever really thinking of Bitcoin the way that he does as a treasury asset or as an enterprise treasury solution.
+And so now he's going around basically with his particular perspective and narrative talking to peers throughout the sort of corporate industries of,
+"Hey, this is why you should be interested in this thing."
+And it's interesting because me going to a Fortune 500 company and trying to pitch them on sovereign money and cypherpunk ideals is not going to work, right?
+So it's important to have, I think, a diversity of perspectives and opinions.
+That's just another thing that makes Bitcoin even stronger.
+And I want to see that from a variety of perspectives also on the code side.
+But one of the nice things that I have been seeing over the past couple of years as there have been more developer grant programs out there
+is that we do seem to be bringing in more developers from outside of just the first world countries.
+And if Bitcoin is supposed to be money for everyone, then we should not be limited to mostly having people from first world countries that are working on it and contributing in different ways.
+That's excellent. Yeah, I like that you said it is the community and it is the people.
+And I was just reminded of an interview I saw with Stan Druckenmiller, who's considered the greatest trader of all times, and he got into Bitcoin.
+It was when someone presented him a report after the 2018-19 bear market.
+And the guy said, "Here's all the addresses that hold Bitcoin," and 90% of them held through the bear market.
+And to Stan Druckenmiller, who comes from the financial market, when there's a fire sale, everyone runs for the exit.
+He saw, "How? Why are people holding on to an asset that's dropped 90%?"
+So it was people holding on to their coins for a bear market that led him down the rabbit hole of investigating Bitcoin.
+So yeah, it is a fascinating world once you get into it.
+Yeah, you and Gordon got into it from the computer background.
+I got into it from the economic and finance background.
+So there are many rabbit holes that you can fall down, which is, like you say, a fantastic conversation to meet awesome people around the world.
+Yes, indeed. I will jump in and just thank you again, Jameson.
+I don't think people realize how many resources you've contributed to, and I think you make a really good point about open sourcing.
+I think a lot of people, you know, they look at GitHub and they get sort of a little bit, "Well, I'm not a coder, so there's nothing I can contribute."
+But documentation, discussion, research, like you said, and sometimes just feedback.
+Someone comes out with something, might not be code, might be a procedure or process or something.
+You can audit it, give your opinions or whatever, constructively, of course.
+I think that's super important as well.
+So yeah, if you're interested in Bitcoin, start a podcast.
+There's so many things that you could do that don't involve coding.
+Obviously, if you can code, jump into that as well.
+So yeah, once again, thank you for all your resources.
+Yeah, I mean, look, even just using software and when you come across something that's not what you expect, raise an issue.
+Ask the developers, "Is this supposed to be like this?"
+Because maybe it's broken, maybe it's just unintuitive and there's room for improvement for the user experience.
+There are many rabbit holes we could go down, so I'm going to ignore the CoinJoin and cross-signature transactions and all that kind of stuff.
+But we were talking about privacy and why that's important to you.
+Obviously, it should be important to everyone, but especially what you've gone through.
+And I think one of your recent blog posts on your Casa blog is actually a great segue because it talks about duress wallets.
+Or I think other manufacturers call them deniable plausibility or something like that.
+In other words, you've got a wallet that an attacker, you've got your hidden wallet and you've got your sort of normal wallet.
+It's got a little bit of money in it and an attacker comes to you and you only give that little bit.
+But I really liked your blog post because I'm sort of along the same lines.
+I'm more of a pragmatist than, in theory, how would this actually work?
+So maybe this is a good segue towards duress wallets and that sort of thing.
+And then maybe we could then also pivot into, we've mentioned multi-sig quite a lot in this podcast.
+Maybe we could pivot into what is multi-sig and then how does Casa provide multi-sig solutions?
+Yeah, I mean the short version on duress or decoy or hidden wallets or whatever is that they're an interesting idea in theory.
+But we simply don't have much data on the practicality of employing them in the real world in a highly stressful situation.
+And that was the main thing that I covered in my post is that one issue that comes up a lot in self-custody, in security,
+really anything where people are architecting their own security solution is that the default for people is to only really think about the happy path.
+It's like, all right, how do things go down if everything works as expected?
+And that's one of my biggest problems with duress wallets is this idea of like,
+okay, you just have this other wallet with a small amount of coin in it and you open that wallet up instead of your main wallet.
+And you give the funds to the attacker and they walk away happy.
+And yeah, sure, theoretically that could happen.
+If everything goes perfectly, then maybe that will happen.
+But along the way, there's many different sort of branches of the decision tree
+and in ways that either you may not follow that happy path because you're under duress
+and you don't necessarily know how you're going to react.
+Or the attacker may not follow the path that you want because you don't know anything about them.
+You don't know their motivations.
+You don't know how much they know about you and what they're expecting.
+You don't know if this token offering is going to appease them or piss them off.
+And so I think I put – there were only like two examples of attacks I think that I put into that post.
+And one of them was an attack where the guy actually handed his money over immediately
+and the attackers didn't believe that that was everything they had.
+And they tortured him for hours before finally giving up and leaving.
+So I think that's a good example of like even if you give up some amount of money,
+you don't know if it's going to be enough to appease them.
+So that's where I fall more along the lines of just don't give them anything.
+Make it impossible to give them anything.
+And that's where multisig comes into play.
+And just before we get into that, who knows that next week they won't extort you again and again and again.
+It's sort of like that whole ransomware sort of thing as well should you pay it.
+Yeah, I think those sort of – I think you hit the nail on the head in that sometimes we are a little bit too idealistic
+and we're not pragmatic enough in that we have some really good ideas, but in reality, how would that play out?
+And sometimes it's okay to say we don't know.
+Like we just don't know how that's going to work, so let's err on the side of caution.
+And as you said, especially if you've got a considerable amount of Bitcoin,
+make it difficult for someone to extract that from you, you know,
+not having all your Bitcoin on your mobile wallet sort of thing.
+So maybe there's another solution called multisig.
+We've talked about that plenty of times on this show.
+What is multisig and how does Casa solve that problem?
+Actually, let me jump in very quickly, James, if you don't mind.
+Also, just give our listeners the elevator pitch of what Casa actually does practically for your clients, if you don't mind.
+Yeah, so I would say the goal of Casa is to provide a really user-friendly software experience
+that basically guides you down the path of following best practices
+for what we consider to be the ultimate level of self-custody
+with a really high level of robustness and resiliency.
+So that things can go wrong, because we should assume that things will go wrong,
+and we want to ensure that there are no single points of failure.
+So what that basically means is whenever you're taking self-custody,
+you're taking responsibility for managing the keys to your funds,
+there is, of course, going to be risk involved, and we're mitigating every risk that we can think of
+and making it so that if any given risk does come up, then that doesn't result in loss of funds.
+And, of course, there will always be some possibility of a cacophony of risks happening simultaneously
+that could result in a catastrophic loss,
+but it should become infinitesimally small or unlikely that you have multiple things going on simultaneously
+that cause you to lose a sufficient threshold of keys that would lock you out of your funds.
+So, like I said, we have a really user-friendly mobile app,
+and that's kind of your gateway to managing this multi-signature wallet,
+which basically means it's a wallet that requires co-signing from multiple keys,
+either two out of three keys or three out of five keys,
+in order to actually construct a transaction and spend those funds.
+And in addition to the software, we build on top of industry best practices,
+industry best leading hardware solutions for actually securing the keys,
+and none of the hardware is CASA hardware, and that is by design,
+because we don't want CASA to be a single point of failure.
+And then also we just provide really high level of support.
+That's another thing that is generally severely lacking if you're going the do-it-yourself route.
+If you're just using some off-the-shelf free software,
+then you're going to get what you pay for when it comes to the level of support.
+So for us, you're really paying for a bespoke and highly customized and high-touch service,
+so that if you need help with the decisions involved in managing your keys and setting them up,
+we're here for helping you navigate this complex environment.
+So CASA is helping people with self-custody. At no stage is CASA actually holding people's private keys for them?
+Exactly. So to get more specific, whether you have a two-of-three or a three-of-five setup,
+one of those keys is held by CASA, it's held offline, and it is only an emergency recovery key.
+So we have multiple redundant secure backups of that key.
+It is very difficult to access, and depending on which tier of client you are,
+there are different authentication procedures for how to request a signature from that key.
+And regardless of how you request the signature,
+there's always a time delay period of several days at least between authenticating and us signing it.
+And these time delays are also very important when it comes to protecting against physical attacks, for example.
+So generally, one of your keys is going to be on your phone, and that is a hot key.
+So it is slightly less secure than the keys that you would hold on your treasurer, ledger, cold card, whatever.
+However, that provides an interesting additional level of robustness against loss.
+And the reason for that is that we are able to create automatically an encrypted cloud backup of that key.
+So if you lose your phone, something goes wrong with the app, you just get a new phone, authenticate into CASA,
+it can download and decrypt that key.
+And like I said, it's encrypted, so even though it's being put on your cloud storage,
+whether that's Apple or Google, even if Apple or Google got into your account and were able to view that piece of data,
+they wouldn't be able to do anything with it because it requires a decryption key that is held by CASA.
+I have a million questions for us, but I'll only ask one.
+I think we could talk about multi-seq for a long time because I think in the past,
+people were like, "Well, I want to spread my risk."
+Let's say someone has one Bitcoin, for example, and I go, "Let's say 10 Bitcoin."
+I think I already know where you're going with this question.
+I'll ask it really quickly then.
+Instead of having 10 Bitcoin on one hardware wallet, let me buy two hardware wallets, different manufacturers, and split them 5-5.
+But that's not good.
+If I lose one, I'm going to lose five Bitcoins.
+So let's have 10 hardware wallets,
+all different manufacturers, one Bitcoin each. That's the best way to spread my risk.
+But I think as you've previously said, that's a horrible idea because now you have to maintain
+10 separate hardware wallets, also 10 separate seed phrases. So just have a really good
+multi-sig solution with one seed phrase. And the multi-sig solution can be varied. And obviously,
+we're using cars, so that's a great idea with different hardware wallet manufacturers. But
+is that your overall thesis of self-custody? What was that quote? There's some kind of quote,
+don't put all your eggs in one basket. Well, put all your eggs in one basket,
+but just guard that basket really well. Some of that.
+Yes. John Maynard Keynes, he said that.
+I'm probably butchering that. But what's your overall philosophy of self-custody?
+Yeah. So that is accurate. I've used that exact quote before. But we also have a saying at Casa,
+which is don't diversify your coins, diversify your keys. And so what we mean by that is instead
+of spreading your coins around many different single signature wallets, each of those is a
+single point of failure. So this, I think, is a great example. And we see this all the time,
+especially with customers who come to us. It's a very common solution because people do understand
+that by having all your funds and your keys in one place that that is a risk. And so it's a kind
+of funny but semi-paradoxical problem in the sense that when you split up your funds across
+many different wallets like that, assuming they're all single signature wallets, it is correct that
+this decreases the likelihood of you suffering a single catastrophic loss of all of your funds.
+And that's why people do it. But they don't think about the flip side of that,
+which is that it increases the likelihood of you losing some small portion of your stash.
+Just because, like you said, you're adding a lot of complexity. You've got a lot more
+moving parts and things to keep track of. And presumably, you're keeping these keys in many
+different places. And if one of them gets compromised, then that's so long to that
+particular part of your stash. So at Casa, we highly encourage, and the entire point of the
+system, is to have your keys geographically distributed and to use diversity as strength.
+So that's why we have one key on mobile with the encrypted backups, one key with Casa, which has
+its own unique security protections, and then you have either one or three other hardware devices.
+If it's multiple hardware devices, we highly recommend multiple manufacturers because,
+once again, we want to protect against edge case risks, such as supply chain tampering,
+or even just buggy firmware. One of the great things about multi-signature that I think not
+many people understand or appreciate, especially if they've never used it, if you're signing a
+transaction with a variety of different hardware and software, that gives you an insanely high
+level of assurance that whatever you're verifying, like the amounts and the destination address,
+is not being tampered with. Because you're basically auditing it with completely segregated
+technology stacks. So yeah, diversify your keys. Get them spread out as far as you're comfortable
+with. And this is where some of the concierge level consultation comes in handy. Because
+everybody's situation is different, everybody has different threat models, different
+accessibility into different secure places or different friends or family setups that they
+would be willing dispersing keys across. So we're plenty happy to help people work through all of
+the decision making there. And there are many decisions that have to go into a self-custody
+setup. And I would say that most of them tend to be trying to make balances and trade-offs between
+convenience and security. 
+And also, I don't think the whole
+multi-sig setup can be underestimated. Because just for those listening, it's a fantastic idea,
+and I implore people to use multi-sig. But it is difficult to implement. And maybe the process has
+changed in the last two, three years. I set it up three, four years ago. Linux server, full node,
+Electron server, Bitcoin coordinator. So not only do I have to backup my seeds or keep my seeds
+protected, but now I have all this extra infrastructure, but I also have to backup
+that configuration as well. So I have to backup configuration files of the server. And where do
+I back them up? Are they encrypted? And so multi-sig is great. But yeah, unless you know,
+even if you know what you're doing, and I do know what I'm doing, for me, it was just too much to
+manage. It's like, I'm not, no, I'm not doing this myself. So I'm a big proponent of self-custody,
+self-sovereignty, doing everything yourself or whatever. But multi-sig, maybe one of those
+things that you don't try and do yourself. Maybe go to someone like Casa. 
+Yeah, well, that's where a lot of the heavy lifting that Casa does is basically running that coordinator infrastructure
+that you were just talking about. So you don't have to run a node with us, but we are happy to
+provide, and we do provide instructions for if you want to set up your own watch-only wallets
+in non-Casa software that points to your own node or some non-Casa node, we make it pretty easy to
+do that. We did actually roll out wallet descriptor support earlier this year. So I think we're on the
+short list of wallets out there that support descriptors, which makes it very easy to set up
+watch-only wallets and other software. 
+Yeah, the big stress for people in this space,
+and something we've emphasized a lot, is you are your own bank. And it is stressful. I mean,
+just buying Bitcoin is stressful for people. And realizing, "Oh, man, I'm in charge of this
+whole thing. How do I do it?" And then you get hit by a bus scenario, how do you pass it on?
+So the fact that something like Casa is out there, and you've been doing this since, is it 2016,
+you said, sorry, Jameson? With Casa? Since 2018. I've been working on
+multi-sig wallets since 2015. But also, we just rolled out an inheritance solution a couple months
+ago. So that's one of the highly requested things that kept coming back around. And as people were,
+and you yourself were saying, that's a whole other can of worms to deal with, especially because
+generally, you've got one Bitcoiner in the family, and the rest of the family is like, "Oh,
+this Bitcoin thing, I don't know." So it's very difficult when you're wanting to make it so user
+friendly that non-technical, non-Bitcoiner people can deal with it. And so I was pretty happy with
+the solution that we came up with, which actually leverages that encrypted mobile key. And it's
+basically as simple as scanning some QR codes with your phone to onboard people to inheritance
+in Casa. 
+Look, I think it's an invaluable service. And yeah, even that's understating it,
+because there's a saying that it's harder to manage your money than to make it, and especially
+in the world of Bitcoin. So for anyone listening, if you have any small holdings, a small holding
+today could be a fortune down the line, it could be a legacy inheritance, it would be stressful
+doing it on your own. So yeah, we do highly recommend you jump on and have a look at Casa.
+So what you're saying, Faris, is don't do something like me and leave a cookie trail
+of a treasure hunt for my family, and dead man switches and all kinds of stuff that I've tried
+in the past to email stuff. Like if I don't do a certain thing at a certain time, I'll email
+someone. 
+Yeah, don't turn into an enemy. 
+Don't do that, don't do that. And I think that's
+a really good point. In this whole stuff, and again, going back to the self-summary is so
+important, but in a lot of things, really, complexity is the enemy of security and privacy.
+So a lot of times, people like me, and I fully admit it, I do something and I over-engineer it,
+I over-complicate it, and it makes it not only more complicated, but it can actually make it
+more insecure in the end, because I've tried to outsmart myself. So yeah, sometimes the best
+solutions, and there's this tension that we always talk about between convenience and privacy and
+security, but sometimes, and Casa has a mobile phone app, you can have both. You can have that
+security, but you can also have the convenience and the ease of use. So I think you've hit the
+holy grail there. 
+Yeah, the treasure map thing is also something we see very frequently. I mean,
+I had a treasure map myself in the early days. Couldn't think of anything better 10 years ago.
+And I think, once again, it comes down to what I was talking about earlier of people not thinking
+adversarially. It's like, yeah, you can construct a treasure map, and then if whoever receives that
+after you get hit by a truck goes through each step successfully, then yes, they get to the
+end and they get the money. But what could go wrong at every step, and how do you then guard
+against that? And I think at a very high level, the way that I think people should look about
+architecting a self-custody setup is actually with the mantra that we use a lot in Bitcoin,
+virus innumerus. Most people think of this strength and numbers in terms of the cryptography
+or the number of nodes or the hash rate or whatever around Bitcoin. But I would argue that
+it really applies to almost anything. And that includes open source systems. This is why open
+source software is generally considered more secure. It's because you have more eyeballs,
+more diversity of perspectives looking at a problem. Therefore, it's more likely that they're
+going to be finding the flaws in whatever the solutions are. And so my point being that that's
+not only true for software and code projects, but it's also true for just any system.
+So whatever your system of creating and maintaining and storing your keys to be able to access your
+Bitcoin wealth is, if you are the only set of eyeballs that has constructed this system,
+it's almost like 100% likely that you missed something. And this is true even for me as a
+Bitcoin expert. I had constructed a system many years ago, and it was full of flaws too.
+And even though I know a lot about Bitcoin, I'm not omnipotent. I'm not omniscient.
+I can only see things through my own perspective. So having a team of people
+who have been working on this problem for many years, I think you end up with a much more
+resilient solution. And it's actually constantly evolving. As our customers come to us and present
+us with new types of failure modes or problems, then we engineer ways to be proactive and prevent
+those from recurring. Yeah. I mean, estate planning is something that everyone should
+be thinking about, even if you've got a small amount of Bitcoin, because who knows what that
+value is going to be in five, 10 years' time. And it's just hilarious of the stories of these
+treasure maps. And I've created a few. It's like, no one's auditing them. I don't know if they,
+they sort of work in my head, but I haven't actually had someone to actually go through
+that process. And I'm sure that fails. So it's just ridiculous and absurd that we think it's
+going to work fine. Yeah. I think one good example that's rather humorous. Have you ever seen
+the peanut butter jelly sandwich instructions test? Right. So if you know what I'm talking
+about, then you understand that even just devising a recipe, like a 100% technically accurate and
+robust recipe for how to construct a peanut butter and jelly sandwich is incredibly challenging.
+And that's just a peanut butter jelly sandwich. Yeah. Good. I'll link that in the show notes.
+Now it's my privilege to, as my very last question, and because your listeners don't
+need to listen to the past 200 episodes, what I've been banging on about self-custody and multi-dig,
+just listen to what Jameson said. So that's fine. You don't have to worry about the last 200
+episodes. Quick lightning round, and then we're going to sign off. Maybe Farris has got a last
+question for me. So when I have someone fairly technical, I just like to ask these things,
+just get a sort of perspective of what's your favorite and your answer might be whatever works
+for you, but what's your preference. So what's your preference? Hardware wallet?
+Hardware wallet versus software wallet?
+Ah, well, mobile wallet was my next one, but yeah, sure.
+Or you mean, which is my favorite hardware wallet across the ecosystem?
+Sure. Yeah.
+So yeah, I mean, there's, this is a hard question too, but I mean, I like Trezor because it just
+works and it's fast. I've done, especially in the context of multi-sig, I've tested almost
+every wallet out there. And one reason Trezor gets a few extra bonus points in my book is because
+it's pretty fast at signing large complex transactions. And I've literally like stared
+at a ledger nano for several hours trying to sign an incredibly complex transaction.
+So that really turned me off to them. Favorite mobile wallet?
+Well, Casa's a mobile wallet, so I guess that's my favorite. But I will say that one of my daily
+drivers for lightning wallets is Zeus. And the reason for that is because it makes it pretty
+straightforward to set up, to talk to your own lightning node.
+Password manager?
+One password.
+Programming language?
+Oh, this one, it will date me a bit, but actually PHP. So the reason for that being that the first
+decade of my career, I was primarily LAMP stack, PHP programmer. And even today, when I do a number
+of my like simple scripts, when I'm doing research or stuff, I will generally default back to PHP.
+Okay. No comment with that one. Exchange?
+For buying Bitcoin?
+Kraken.
+Kraken. Okay. And I could go on and on, but I will stop there. Thank you very much, Jameson.
+Paris, do you have any final questions?
+No, it's been a real treat, Jameson. And I really appreciate you coming on. And yeah,
+so we've mentioned the Casa website. We've mentioned a few links just at the top of the
+episode here. Do you just want to tell our audience once again, where they can find your work?
+So lopp.net or on X, my handle is just lop, L-O-P-P. I'm also a big Nostr user,
+but I could not tell you my npub off my top of my head.
+Maybe we'll link that.
+Thank you very much for your time. And yeah, our podcast, we try and make it approachable
+for noobs. But yeah, I think we mentioned self-custody every single episode and the
+importance of that. So we will have all your links in the show notes and we really appreciate
+your insights and yeah, and especially your resources. So lopp.net, if you're listening,
+go there now and check out the price of Bitcoin.
+Thanks, Jameson.
+Thanks for having me.
