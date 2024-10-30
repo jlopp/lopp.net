@@ -1,0 +1,512 @@
+Hello, Antwerp.
+As you said, this is my first time in Belgium.
+I have spoken at more Bitcoin conferences than I can count.
+But by far, this is the most beautiful venue
+that I have ever spoken in.
+So congratulations.
+Great architecture.
+My title is a bit clickbait.
+As you will see, this is, in fact,
+an issue that is far more than just about Satoshi.
+But the reason why I'm talking about this today
+is because this is the future of Bitcoin.
+And the main thing that I wanted to convey to you
+is that Bitcoin is not just about you and me.
+It's not just about us, the early adopters,
+who are using it today.
+Bitcoin is a project for our children
+and our children's children.
+If we want this to be the future of money,
+it needs to be something that lasts for many generations.
+And preferably as far in the future as we can imagine.
+And if we want that to be the case,
+we have to safeguard it.
+We have to protect it.
+We have to continue to improve and build upon what we already have.
+We cannot be complacent with the current state of Bitcoin.
+And as we will go into today, that
+means we need to look out not just to tomorrow,
+not just to next year, but to try to foresee
+potential problems that may occur decades in the future.
+So what is Satoshi's stash?
+This is a chart called the Patoshi pattern.
+We won't go into all of the details,
+but essentially, this is believed to be in the blue,
+the blocks that were mined by Satoshi Nakamoto
+in the first two years of Bitcoin.
+And this is basically a result of many unique identifying
+fingerprints.
+There are different aspects of these blocks
+that make them a non-standard miner.
+Someone who was using Bitcoin mining software that
+was different than what was publicly available at the time.
+There are many different reasons why
+it is reasonable to believe that this may be Satoshi Nakamoto.
+And if that is the case, Satoshi Nakamoto
+may have mined somewhere around 1 million Bitcoin,
+a pretty decent stash.
+Once again, we won't go into all of the details,
+but public key cryptography is one
+of the fundamental aspects that helps secure Bitcoin.
+There are two different ways that you
+can use public key cryptography.
+One of them is you take your private key
+and you encrypt data.
+And it makes that data so that no one else
+can read the data without the private key to decrypt it.
+But Bitcoin does not actually encrypt anything.
+Bitcoin is completely out in the open.
+Rather, with Bitcoin, we use an aspect of public key
+cryptography that is for authentication,
+for proving that you own a private key.
+So when you create a Bitcoin address,
+you are creating a public key, and then
+you are making some transformations to it,
+putting it on the blockchain.
+Anyone can send you money, but only you can spend that money.
+And you do that by cryptographically
+signing a message with your private key
+that you then publish to the entire network.
+And the world can verify, yes, you own that money
+and you can spend it.
+Some more details here.
+The specifics aren't particularly interesting,
+except to note that with a pay-to-public key address,
+this is the type of address that was used
+in the very, very beginning of Bitcoin.
+The public part, when you are actually
+depositing money onto the blockchain,
+has the public key, as you see here,
+and then a check signature operation.
+The rest of what goes on under the hood,
+this is basically how Bitcoin's programming language works,
+how it evaluates and validates whether or not
+a transaction should be able to move money
+isn't necessary to fully understand.
+But then to the right, we see a more common address
+that started being used after a couple of years,
+and this is called pay-to-public-key hash.
+The main difference here in the script pub key,
+it has some other operations.
+But basically, instead of putting the public key itself
+onto the blockchain, you put a hash of the public key.
+Then when you want to spend that money,
+you reveal the public key as a part of your spending script.
+Why is this difference important?
+We'll get to that.
+Shor's algorithm.
+We're definitely not going to go into the explanation
+for this.
+Don't ask me for the details
+because I am a terrible mathematician
+and an even worse cryptographer.
+But short version, this is an algorithm
+that allows a quantum computer
+to vastly simplify how difficult it is
+to find a private key.
+And you find a private key by trying to find
+prime numbers that were used to create that private key.
+There's a lot of different logical circuitry and gates
+that go on here, and I don't even fully understand them
+myself, but the mathematicians and the experts
+are quite convinced it has been proven
+that Shor's algorithm would work
+if you had a quantum computer
+with sufficient computational power.
+So where are we going with all of this?
+Well, the National Institute of Standards
+and Technology is predicting
+that somewhere in the next 10 to 20 years,
+quantum computers will be able
+to perform a Shor's algorithm.
+And once we have a quantum computer that is fast enough,
+what do you think people are going to do with it?
+Well, they're going to start cracking cryptography.
+And in particular, you know,
+Bitcoin provides a very large financial bounty
+for anyone who can crack public key cryptography.
+So we would expect to start seeing some Bitcoin moving
+and being spent by people who had these quantum computers.
+So there are some other organizations out there
+who are basically saying, we need to start acting now.
+We need to start upgrading the way
+that we're doing cryptography
+so that we have this problem solved
+before it actually becomes a big problem.
+So there's somewhere around 1.7 million Bitcoin
+that are in those very early addresses,
+those pay to public key addresses.
+And because those public keys are already on the blockchain,
+if you had a quantum computer,
+you could start trying to crack open
+and finding the private keys to Satoshi's stash,
+to really to anyone else who was creating Bitcoin
+way back then and still left the money in those addresses.
+But it's actually worse than that.
+We actually have noted Belgian Bitcoin developer Peter Willa,
+possibly the most prolific Bitcoin developer of all time,
+who has discussed this problem a little bit.
+This was back in 2019.
+And Peter basically said,
+there's probably five to 10 million Bitcoin
+that are at risk here.
+And the reason for that is because people
+are not following Bitcoin best practices.
+You should never reuse a Bitcoin address.
+Satoshi himself talked about not reusing Bitcoin addresses,
+mostly from a privacy perspective.
+I don't think Satoshi ever talked
+about quantum computing threats,
+but reusing addresses actually comes into play
+for quantum computing attacks.
+Because when you reuse the address,
+when you're spending from that address,
+even if it's a newer type of address,
+you're exposing that public key
+as soon as you spend the money.
+So you're essentially turning your quantum safe
+Bitcoin address into one that is no longer safe
+from an attacker.
+So what would we expect actually happen
+if a quantum computer of sufficient power
+came into existence?
+Well, I would expect they would look
+at the most valuable Bitcoin addresses
+that are on the blockchain.
+Most of these are going to be your large exchanges
+and custodians.
+If I was Binance or Bitfinex or Robinhood,
+I would be a little bit worried about this.
+I would start as a quantum attacker trying to go
+for that 248,000 Bitcoin.
+That would be a very good payday,
+even if I had spent millions and millions of dollars
+building that quantum computer.
+It would be 100x payoff.
+But going even further,
+while we've mostly been talking about the risk
+of your addresses on the blockchain,
+there's an additional risk when you are transacting,
+even if you are not reusing your addresses.
+As soon as you spend those funds,
+you're exposing the public key,
+it's going out onto the network.
+And if someone had a really, really fast quantum computer,
+they could potentially even crack that public key
+before your transaction got confirmed
+and thus steal the money in flight.
+This would basically be considered a short range attack.
+So if we're wanting to consider the entire spectrum
+of threats from quantum attackers,
+then you basically have to assume
+all Bitcoin in existence are potentially vulnerable
+to a quantum attacker with enough computational power.
+Now, this poses some challenges.
+And that's primarily due to the nature of Bitcoin itself.
+Unlike many other internet protocols,
+Bitcoin is a consensus mechanism.
+It is a very conservative protocol.
+No one controls it.
+You have to get people to voluntarily upgrade.
+From my own research of looking at Bitcoin node operators
+and how they upgrade their software,
+as of the most recent few years,
+it seems like a lot of Bitcoin node operators
+do not upgrade their software
+where more than every two or three years.
+So we're talking very long time frames
+if you want to make changes to this protocol.
+And of course, most of what we're talking about
+is related to property rights.
+We say, not your keys, not your coins.
+Of course, the flip side of that is,
+if you have the keys, then the coins should only be yours
+and not anyone else's.
+Quantum attacks could change that.
+It could break that rule of Bitcoin
+that we all find so valuable.
+Now, there's also problems with making changes
+to these rules.
+We don't want to lock people out of their own money.
+We don't want to make people's money unspendable.
+But also, we cannot expect people to be paying attention.
+We don't have a way to email everybody
+who uses Bitcoin and say, hey,
+we're gonna make an upgrade to the protocol
+and you need to come along with us,
+otherwise you're in danger.
+And then finally, we don't want the security
+of your existing coins to change.
+If you have Bitcoin in a certain security architecture,
+you should expect that your security should remain the same
+as long as you're not changing anything
+about your security architecture.
+But once again, quantum computers, if they come along,
+they could break that.
+So what are we fighting against here?
+It's the inevitable continued evolution
+of technological progress.
+We can see the charts.
+On the left-hand side here,
+this is, in case you can't see, it's a log scale.
+This is not linear.
+Each of these lines is an order of magnitude,
+10 times more powerful than the one below it.
+So we can see that over the past decade or so,
+decade or two, quantum computers have gone from not existing
+and having basically no computational power
+to becoming close to 10,000 qubits.
+Now, I believe these are physical qubits,
+not logical qubits.
+Quantum computing itself and even measuring the power
+of a quantum computer is complicated.
+It's much more difficult than trying to explain
+a classic computer and the computational power.
+But the trend is clear.
+It's going up.
+We have no reason to believe
+that it's going to stop going up.
+And eventually, it will reach a breaking point.
+There's a project that one technical person
+in the Bitcoin community came up with a few years ago,
+which tried to take a number of these variables into account
+and try to give us some sort of time range estimate
+of how long we have before the quantum computing threat
+is going to be a big worry.
+I would say when you get to the point
+where there's 50% probability
+that a quantum computer could crack Bitcoin addresses,
+you should probably be worried.
+So this takes into account a number of variables
+that have to do with how to measure quantum computing,
+whether that's the number of qubits,
+which as we saw is going up pretty quickly.
+And then there's some related aspects to that
+because a qubit is not always equal to one qubit.
+There's some error correction issues
+that need to be taken care of.
+There's some algorithmic efficiencies
+that can be improved.
+But whether you take a more optimistic
+or pessimistic assumption
+of what is going to happen
+with continuing to improve quantum computing,
+you can see somewhere between 12 to 25 years,
+and this was five years ago.
+So we're probably in the 10 to 20 year range now
+where it would become close to 50% probability
+of a quantum computer with sufficient power
+to be able to crack into Bitcoin.
+So as I said, worst case scenario,
+we might need to migrate everybody
+to a quantum safe part of the protocol.
+And if we only needed to migrate Satoshi's coins,
+this would not be a big problem.
+You know, block space is limited.
+We have a few megabytes of space per block.
+But since there's only about 46,000
+of those pay to public key UTXOs,
+we can do some calculations.
+We can figure out how much block space is required.
+And it would only take about six blocks.
+And this is a best case scenario.
+You know, if everybody's working together
+and we can get the word out.
+And you know, that's not a big deal.
+That's like an hour.
+But as I mentioned, unfortunately,
+it's not only Satoshi's coins.
+If we want to migrate all of Bitcoin,
+all of the UTXOs out there,
+we're talking 185 million UTXOs right now.
+If you look at the very, very bottom,
+there's a little green sliver.
+You know, those are those early Satoshi era coins
+that I was talking about at the beginning.
+Meanwhile, we have all of these other types of Bitcoin
+addresses, Bitcoin locking scripts.
+People are using a variety of different ways
+to secure their Bitcoin today
+because we have continued to upgrade
+the different locking scripts that are available.
+This is gonna take a while.
+We can do the math.
+Breaking down all of these different,
+you know, tens of millions of types of UTXOs,
+it's gonna take several thousand blocks
+for any given type.
+And of course, there's a lot of assumptions
+that I put into these calculations,
+but suffice to say, this is a best case scenario.
+Bitcoin is not controlled by anyone.
+As I said, we cannot reach out
+and coordinate this type of thing.
+So this is only if everybody was suddenly trying
+to upgrade as quickly as possible.
+So at a very high level, best case scenario,
+you know, to migrate all of Bitcoin
+is gonna take at least 20,000 blocks, probably far more.
+So we're talking about half a year, best case scenario,
+if nobody else is trying to use Bitcoin for anything,
+which of course is an unrealistic expectation.
+So it could take years.
+And I think we should conservatively assume
+that it would take many years
+for this type of migration to occur.
+Can we do it?
+Well, there is a Bitcoin improvement proposal.
+A few months ago, a developer published this
+to the mailing list and said,
+hey, we could do this new type of address.
+We'll call it the pay to quantum resistant hash address.
+Basically make some tweaks
+to the current taproot style addresses.
+But as with everything, there are trade-offs.
+For one, you can see there's a variety
+of different quantum resistant algorithms out there.
+And when we're getting into the realm of cryptography,
+using cryptographic algorithms that are only a year
+or a couple of years old is very scary.
+You prefer to use cryptography
+that has been around for 10 or 20 years
+because it's much more likely to be secure.
+No one has been able to break it.
+And the downside is these older,
+more likely to be secure,
+quantum proof cryptographic algorithms
+are very inefficient.
+They require a lot more data.
+So once again, we have these trade-offs
+of how much data, how much block space
+is going to be required in order to do these migrations.
+Do we need more transaction throughput on Bitcoin
+if we want this migration to happen?
+Or do we go a little bit riskier and say,
+okay, we want a more efficient algorithm,
+we'll use one of the newer ones?
+This is going to, I think, require a lot of discussion,
+a lot of people who are smarter than I am.
+As I said, I am not a cryptographer by any means.
+But this is why I think we need to start talking about it
+today rather than 10 years from now.
+So what's the point of all of this?
+We know if we look out into the far future,
+there will be a point at which this becomes a crisis.
+But it doesn't have to be that way.
+We can foresee it coming.
+We can start discussing it today.
+We can understand that there are many trade-offs
+and perhaps we do nothing.
+That is an option.
+I don't think it would be a very good option.
+But due to the nature of Bitcoin,
+even if we undertake all of these actions,
+there is no guarantee that we can save everyone
+because we simply do not have a way to reach out
+and make sure everyone knows about this problem.
+But the one thing that I think that we can be sure of
+is that if we do something or if we do nothing,
+some of these properties of the protocol
+are going to be violated.
+If we try to save as many people as possible,
+if we try to put in some rules that say,
+you need to upgrade by the year 2040,
+we could still be at the point
+where people are going to get locked out of their money
+or have their money stolen from them.
+So this is going to be a controversial subject.
+And we might as well talk about it when it's not a crisis
+and emotions are not running high.
+So sooner is better than later.
+And as with everything in Bitcoin,
+it's all about discussion.
+That's really the best that we can do
+is to try to understand what is the best course of action
+for the future of money.
+So we're very early on
+in the discussion of this particular problem.
+And it is by no means the biggest
+or the most pressing problem within Bitcoin.
+But this is, I think it goes to show
+one of the reasons of why this is such an interesting space.
+I think we'll never run out of interesting problems
+that we have to address.
+And because this is anarchy,
+this is a system of rules without any rulers,
+all we can really do is talk to each other
+and try to form consensus as best we can.
+So I look forward to talking with as many of you
+as possible about this and any other issues
+because this is how we proceed together.
+Thank you.
+If we have any questions, I think we have a few minutes.
+I'm happy to discuss.
+Yeah.
+Yes, so what would happen if a computer came online
+that started suddenly stealing people's money?
+So my suspicion, like I said,
+is that they would go after the highest value wallets.
+What are they gonna do once they crack those wallets?
+It would probably massively move the market.
+What would you do if you suddenly had 200,000 Bitcoin?
+You might wanna go buy a yacht and a villa.
+You might want to start turning that into other assets.
+So I would expect that, yes, there would be
+a market-wide panic.
+And if people started to suspect
+that this was a quantum computer
+and we had not deployed any type
+of quantum-resistant Bitcoin locking script,
+then everyone would rush to the exits.
+Would the market go to zero?
+Probably pretty close, if not zero.
+The most bullish people out there,
+I think Adam Back has said he's got his limit orders
+at one penny.
+Somebody would buy all the Bitcoin for next to nothing,
+but I think the vast majority of people
+would unfortunately lose a lot of the value
+that they had in their savings.
+And perhaps Bitcoin would recover.
+But who knows how long that would take?
+Because like I said, even if that triggered
+a crisis response and we upgraded the protocol forcefully,
+it would, I think, still probably take years
+for the general market sentiment to recover
+and say, okay, we can continue on and go forward.
+So I think that is one of the considerations.
+This is why we should want to fix it in a smooth
+as possible fashion before we get to a crisis.
+Yeah.
+Yeah, so what's a bigger threat?
+51% attack or quantum computers?
+Definitely for the foreseeable future,
+taking over mining pools,
+especially considering that a lot of them are lying to us.
+A number of the mining pools out there
+are actually really run by the same group of people.
+I think mining pool centralization
+is a more today pressing problem.
+And from that perspective,
+that's why we should continue to push forward
+from something like stratum v2.
+The nice thing about stratum v2
+is it really decentralizes the power.
+It pushes the power away from the mining pools
+and towards the actual miners, the hashers themselves,
+because it allows them to decide
+what is the block template look like?
+It makes it harder for a centralized pool
+to start manipulating things or even doing 51% attacks.
+So there's no shortage of problems
+in Bitcoin, and sometimes it can be overwhelming
+to even think about how do we prioritize
+the different problems out there.
+The only nice thing about 51% attack
+is it's probably a temporary attack,
+whereas a quantum attack,
+once we get past that threshold,
+it's pretty much game over
+until the protocol gets upgraded.
+All right, I think we're out of time.
+Thank you.
