@@ -1,0 +1,536 @@
+Luke: Jameson, welcome to the Bitcoin Infinity Show. Thank you for joining us.
+
+Jameson: Great to be here.
+
+Knut: Welcome. we just saw a panel about, Bitcoin security, moderated by Luke with you and two other guys there. I was sitting there listening to it, trying to, my inner Bitcoiner was screaming. It's just information for fuck's sake. Like you can't really own these things.
+
+Knut: they're information.
+
+Misunderstandings About Bitcoin
+Knut: So, what's your take on, what do people misunderstand about Bitcoin the most?
+
+Jameson: Oh dear, this is a tough one because, Bitcoin is kind of like a mirror, right? It's like you gaze upon Bitcoin and it tends to reflect back upon you what your own biases and skills and personal life and perspective are. it varies from person to person, if you're. More on the, Austrian economics side, then you're gonna see more of the economics stuff. If you're a computer scientist like me, you're gonna see a neat protocol and data store and decentralized peer to peer network that you can do all kinds of stuff with. So it really comes down to each person.
+
+Jameson: I would say though, we're at the point now where, Bitcoin is so mainstream that most people only look at it as an investment. So I think that the average person misses out on a lot of the cypherpunk ideals, the history of the struggles that led us to where we are today. And to most people, they probably think that Bitcoin just appeared out of thin air and it's this, magic internet money that will make you rich.
+
+Knut: This is one of the biggest challenges, I think, to bridge these worlds between the computer nerds and the Austrian economics nerds. Because the computer nerds need to tell the Austrian economics nerds how the thing actually works. But the Austrian economics nerds need to tell the computer nerds why money has a very important function and other shit doesn't in the same way.
+
+Knut: And why we should view this thing in a certain way. to understand the, economic incentives that drive people's behavior. And so how do we bridge the two worlds?
+
+Jameson: Well, this is why I think that the most important thing that we can do to help Bitcoin is to talk about Bitcoin. you know, we, if, so I view Bitcoin as an open source project. This is like one of the initial reasons why I got so interested in it so long ago. was not because I knew anything about money, but rather that I thought it was a fascinating idea to take this concept of money, which for many generations now has been, you know, controlled by small elitist groups, and instead open it to the world as a collaborative project.
+
+Jameson: You know, the idea around open source being that The more people that you have looking at a problem and trying to find a solution, the more likely it is that because you're attacking it from so many different perspectives, it's just going to end up being more robust,
+
+Jameson: A strength in numbers, a strength in diversity of perspectives and skill sets to be able to find the flaws that other people may miss. So, talking about Bitcoin is how we continue to improve it, how we find the weaknesses in it, and hopefully continue to progress forward.
+
+ 
+
+Key Storage and Self Sovereignty
+Luke: Yeah, absolutely. This was one of the interesting things you said on stage. It's about like how Casa has, for those of you that don't know, you were the co founder of Casa, a bitcoin company. Oh, yeah, I forgot to
+
+Knut: yeah, we forgot to introduce, everyone knows
+
+Jameson: introduction
+
+Knut: So, Casa, I may or may not have called you a shitcoin apologist in Prague, and you answered that, well, Casa was never a bitcoin company, it's a key storage company.
+
+Knut: And that is something you alluded to on stage here, that, what Casa is doing is not really a financial thing, it's just helping people store this valuable information. So, can you go deeper into that than
+
+Jameson: so I mean, it's, it's about self sovereignty, right? It's like our really long term mission and hope for Casa is that we will help people to be able to secure a variety of different things. Non monetary things. The idea being that fundamentally, cryptography is this incredibly powerful tool for the individual because it gives you this asymmetric defensive capability. It's just, you know, the power of large numbers that makes it, orders of magnitude more costly for someone to attack than for you to defend against. And so you know, we, from from that perspective, I think, uh, the, the crypto, the, the cryptography space has been progressing a bit slower than we would like, but, you know, we, we do hope that things like, you know, even identity, and you could, you can make an argument Nostr is,
+
+Jameson: is one, uh, potential path forward.
+
+Jameson: There's a number of different, you know, decentralized identity projects out there. Um, but we expect that, you know, identity is going to be a key part of that because reputation. It's a key part of just the economy of doing business with people. So, you know, how do you solve the problem of having true peer to peer commerce if you don't have some sort of reputation system, preferably a standard reputation system?
+
+Jameson: And how do you have a reputation system if you don't An identity system that you can attach reputation to. So there's a lot of different moving pieces here, but just many different aspects of our lives that we believe can be vastly improved with the use of applied cryptography.
+
+ 
+
+Nostr and Cryptography
+Knut: absolutely. And, uh, is multisig possible on Nostr? Excuse the ignorance, but,
+
+Jameson: Uh, not, I'm not aware of any true multisig system. There may be someone working on a NIP for that,
+
+Jameson: but I think the closest that I've seen is some sort of account delegation. Nips, where you can, like, you can
+
+Jameson: have a master key, and then you can, you give, uh, a subkey that has, like, an expiration on it, um, but it's, it's not quite perfect.
+
+Jameson: Otherwise, you might be able to do some sort of, you know, Shamir secret sharing, but
+
+Knut: Okay, so that's, that's my, uh, uh, mission for all you 180 IQ, uh, uh, computer geeks that don't, don't understand economics yet because you're too young, like go work on that multi sig Nostr BIP or NIP instead of,
+
+Luke: Yes. Nips. NIPS is so much better than bips.
+
+Knut: Yeah, so go work on a NIP instead of creating shitcoins and all that
+
+Jameson: Yeah, and I think, you know, multisig is important, of course, for security, but Especially in the case of Nostr and identity, I think the ability to have key rotation is very important. So, you
+
+Jameson: know, you don't want there to be a single point of failure in your identity. You also don't want your identity to be permanently attached to just one static set of keys, because things can go wrong.
+
+Knut: No, because, uh, for instance, you might have a company and that company might have, uh, an account. Uh, that you want to, if you sell the company, you want to give this, the access to someone else, and that's, that's always, I know how hard that can be, uh, with legacy accounts, like, uh, it's a tough thing.
+
+Luke: yeah. The, the, the key rotation thing, actually, this definitely is, is a, a major thing that needs to be solved for, I think Nora to work. But I, I also wonder, is this something in the, in the Bitcoin space generally, let's just generalize this whole thing out. Like what if one key gets compromised? How can you actually.
+
+Luke: Say, what is the next key to be the private key? Something like that. And how can you do this in a, in a secure way? Uh, is that, is this something you've, you've thought about or have any, any, uh, thoughts on, on this one?
+
+Jameson: I mean, the only thing that really makes sense to me is you have multiple keys and you have a threshold that is signing off. To say, you know, this key, for whatever reason, we're no longer going to be using, you know, it's been compromised, lost, whatever.
+
+Luke: Yeah, and I mean, the complexity there turns into that if you have any sort of system that's based on public private key cryptography, you really have to secure your private key, basically, because any of the, uh, sort of trade offs, I suppose, that, I mean, that doesn't sound, uh, very good, right? Like, uh, at least not, it's not a system that works in any kind of automated way.
+
+Luke: Uh, you really, it gets back to the root of the conversation we were having before. It's, it's, security is in Your hands.
+
+Individual Bitcoin Security
+Luke: And so what, what do you see as, cause with, with Casa and everything else that you're involved with, what, what do you see as being the big pain points for individuals right now in the Bitcoin space for security?
+
+Jameson: It's, I think, an overwhelming concept for most people. Um, the root of this is actually just in how we have architected our society over the past millennia. Um, we have greatly improved our Efficiency and productivity through specialization of tasks and skills. And so, this is great for the individual in the sense that you can spend many years training to be very good at one thing and then get paid very well to do that one thing. And the result is that you get paid well enough that you can then pay many other people to do whatever their specialized tasks are. So, now We don't have to worry about growing our own food, for example. That was something that took up a lot of people's time for most of human civilization. Um, so, it's great for efficiency and productivity, but the downside is that it introduces a great deal of fragility and systemic risk.
+
+Jameson: And, and, you know, what does that really mean? Well, it means you're now outsourcing wide swaths of your life, things that you're literally dependent upon for survival, you know? Um, to trusted third parties. So, for example, uh, if the supply chains break down, if your grocery store shelves get emptied out, uh, you're gonna have a really tough time, you know, getting past that hurdle. And so, I think, you know, we, we see some of that, uh, mindset happening in the Bitcoin space where people are taking this, you know, idea of self sovereignty and, uh, self sufficiency Back to its roots to say, okay, now Bitcoin has done so well for me and I've imbued a sense of personal responsibility for the financial aspects of my life.
+
+Jameson: Why don't I apply that to other aspects of my life so that I and my family and more resilient against black swans?
+
+Knut: Well, here, here's the devil's advocate argument against, against doomsday prepping, I guess, not, not exactly against what you said, but, like, if you have, Instead of doomsday prepping, instead of stacking water and whatever, well water is kind of essential, it's stacking toilet paper, let's say.
+
+Knut: Uh, if you stack bitcoin instead, you can trade that for all the other shit that other people stack. So, uh, there's an argument to be made for the bitcoin being more important.
+
+KYC vs Non-KYC
+Knut: And that's an argument I made before on a panel that, like, about KYC and why it matters. And someone asked me if there are any good reasons for KYC, and I simply said no, because I don't understand what it's good for. Like, money was invented to enable trade between people who didn't know one another, so that's the whole point of money. And, uh, which is why I think, sure, buy bitcoins on an exchange if you want to, but keep that stack separated bitcoins you earn. And this is something you said on stage two, like, you earn your bitcoin. Like.
+
+Knut: Accept them for your goods and services. And this is what I say to everyone always, that that's the proper way.
+
+Knut: That's how you keep, that's how you get a non KYC stack. So if you need to flee the, people's Republic of Europe in the future and fuck off to El Salvador, you can, they can take your fucking toothpaste and you can keep your 12 words and, and just do that. And part of my French.
+
+Jameson: yeah, I mean, this is true both at the individual and corporate level, um, you know, we, we have our own corporate treasury at Casa, we have accepted Bitcoin from day one, um, and we've also been debanked several times, and thankfully we've always been able to find other bank accounts, but in the sort of worst case scenario, Hopefully we can start paying at least some, of our providers, employees, whatever, uh, in Bitcoin.
+
+Jameson: You know, we have that, that separate, you know, sovereign runway that we can tap into.
+
+Knut: Yeah. I think this, this is the dilemma this generation lives, we're going through this transition right now. Where we need one foot in each world. We need a foot in the old fiat world, because if we don't have any foot there, they'll probably come after you somehow. And we need a foot in the bitcoin world just to be secure. But there's this balancing act all the time, and everyone's situation is different. But you definitely need both. And KYC Bitcoin, or paper Bitcoin if you will, is the legacy world. The new world is doing it for real.
+
+Luke: Yeah, and I mean, I think one of the difficulties here, and we heard about this in the previous discussion, this kind of lever, I suppose, between regulations that force KYC, but it also gets people in to use these services, like people do use KYC. Centralized exchanges vastly more than hold their own UTXOs who, or even, or even just come in through a lightning wallet or something like this.
+
+Luke: And so, I mean, KYC really just seems like this, this necessary evil at this point. But, avoiding it is kind of the, uh, the idea that, uh, really is the, the de risker. It, it's the only thing that, that takes away. All of the possibility of someone coming after you with KYC, and so I mean, what are your thoughts on that point generally, like, what is the, uh, is this really a binary thing,
+
+Jameson: So I think the big problem is that, you know, we're not on the Bitcoin standard yet. Uh, it's true both in my personal life and the business life is that a lot of providers that we pay don't accept Bitcoin. And, uh, we're not going to try to force them to accept Bitcoin, but Hopefully this will change over time.
+
+Jameson: Um, as it, as it stands right now, though, we still, we're using the dollar as our unit of account. And, uh, uh, I mean, we don't spend our Bitcoin. Um, it is, it's really, it's the emergency savings account. It's how we look at it, you know, both at the corporate level and that's how I look at it at the personal level,
+
+Knut: how, um, how is there a KYC process for Casa?
+
+Jameson: For our clients? No.
+ 
+
+Introduction to Casa
+Knut: so, um, what do you do? Explain, give the TLDR on how Casa works,
+
+Jameson: right. Uh, so, you know, because We are a software wallet provider, but that, I would say, is not our most valuable service. Really, uh, I think it makes the most sense to think of us as a security consulting service. That's where our kind of unique value proposition lies. And that's more at our higher tiers.
+
+Jameson: Like, that's why our more expensive plans are more expensive, is because what you're doing is you're paying for a personal advisor that literally, you know, get on a call with and talk about whatever you want to talk about. Um, so, you know, what do we do? well, we do provide, you know, native mobile apps, and these are really designed to guide you in as simple a fashion as possible down the path of building what we believe is a incredibly strong and robust architecture for self custody. The short version is of how we think about architecting it is the goal is to eliminate single points of failure. So that basically means whenever you have a moving part, you know, something that could go wrong, there needs to be some sort of backup mechanism so that when and if that thing fails, you can use something else.
+
+Jameson: So that's why the main aspect of it is multisig. Which basically means multiple keys. So, most of our users are either in a 2 of 3 setup or a 3 of 5 setup. And these keys are going to be distributed in a number of different ways. Um, usually you'll have one that is stored, um, actually on the mobile phone itself.
+
+Jameson: You know, secured with the secure element and whatever. The operating system on that device, uh, supports, um, and the, the nice thing about that key, even though it is weaker, it is a hot key, it's on an internet connected device, uh, that gives you, uh, additional level of resiliency against loss, because that key gets automatically encrypted and backed up. Uh, so it, it's almost impossible to lose your mobile key, uh, in that setup. Not completely impossible, but Uh, very, very difficult unless you start mucking around under the hood, you know, in your cloud, uh, backups. Uh, so then, you know, you're going to have either one or three other keys, and those are going to be on dedicated hardware devices.
+
+Jameson: We support, um, you know, Ledger, Trezor, Coldcard. Um, Passport, several others, really the most popular ones that are well vetted. And the idea being there that you actually use a diversity of different manufacturers. And this is to protect you against edge cases supply chain risk. Which has happened from time to time, and uh, we expect will probably happen More frequently in the future if, you know, the space continues getting bigger and, uh, worth more.
+
+Luke: So, I don't know if we're necessarily going to get exploding hardware wallets anytime soon though.
+
+Knut: Well, keep key sort of exploded.
+
+Luke: I was meaning literally, but, uh, sorry, continue.
+
+Jameson: But so then, uh, the idea is that you physically distribute these keys geographically. And, you know, that gives you an additional level of protection against both physical attackers and against, uh, just extreme Edge cases, house burning down, natural disasters, whatever. Um, and, and this is where things get complicated.
+
+Jameson: And, you know, to be clear, you know, multi signature setup has more moving pieces than a single signature setup. So, uh, going into multi sig doesn't automatically make you safer than single sig. only if you go down the right path of architecting your multi sig and distributing the keys. So, um, that's why I think the consulting aspect of this is fairly important because you can still shoot yourself in the foot and, you know, put all three of your multi sig devices in your house, for example, and you create a single point of failure. So, um, yeah, the, the idea is that you have a great deal of flexibility and decisions that you can make and how you distribute those keys. So you can distribute them amongst semi trusted friends and family. At the extreme end, we have people who are most concerned about nation state resistance. So if you really want to Then you can make, you know, pretty much all of these decisions are trade offs between convenience, uh, and security. And so the extreme end of security, with very, very low convenience, is that we have some clients who literally distribute their keys in different countries, you know, preferably different countries Aren't on very good terms with each other. Uh, so you, you, you essentially have that, uh, jurisdictional arbitrage. But of course the downside is, uh, you know, some of our clients literally have to get on a plane or a boat or, or what have you, uh, in order to reach a sufficient quorum of their keys, uh, to sign with them. And then finally, uh, the last key is, uh, Casa. Emergency recovery key that's held offline, incredibly difficult to get access to.
+
+Jameson: You basically have to request a signature from CASA and then depending upon what your tier is, you have different levels of authentication. At our higher level tiers, we can do some extreme customization of what your authentication parameters are.
+
+Knut: And does this involve calling a very special phone number and asking for a very special vacuum cleaner?
+
+Jameson: you know, we, we, we can in fact set up, uh, For example, instructions of like, you know, if you request a key, then we call or reach out to some other contact. Um, you know, we also have, um, on the higher tiers, uh, emergency lockdown, uh, mechanisms where Um, you can specify ahead of time what actions we should take if you hit the big red button to do an emergency lockdown on your
+
+Luke: Yeah, well, so, and on a practical level, the main thing here is that in a 2 or 3 setup, if I'm counting correctly, this means it's one physical key, one mobile key, and one emergency key, right?
+
+Jameson: Yeah, we also support two physical keys if you want that, because there is a little bit of trust, like, if you don't want to trust that Casa isn't, you know, stealing the mobile key out of the app, then
+
+Jameson: you can use two hardware devices. Like I said, the downside there is that you More responsibility, uh, falls onto your shoulders to make sure you have good backups.
+
+Knut: So to clarify that, that's still a three out of five multisig, but you own two keys. And Cass Owens too.
+
+Jameson: uh, well that was the two of three. The two of three setup.
+
+Knut: Okay, okay, so, alright, I'm already lost here.
+
+Luke: So you can do a 2 or 3 with, uh, would you take out the mobile app, or would you take out the emergency key?
+
+Jameson: the mobile app.
+
+Jameson: Yeah, there's always the emergency key.
+
+Knut: Alright, alright.
+
+Luke: yeah. I didn't know about that, actually. an interesting one. And then I guess the 305 is a whole other level. Yeah, we'll just keep Knut
+
+Knut: But it's, it's, yeah, yeah, you're the organized one and all that. But like, what I'm seeing is like, is this a setup, uh, a three out of five where, where Casa owns two of the keys and, uh, you own two of them. Like, or is that,
+
+Jameson: It depends on what you think of as own. Uh, if you're, if you're
+
+Jameson: being
+
+Knut: yeah, You can't really own a key at all. It's all you can do is memorize it. So,
+
+Jameson: uh, well from, from Casa's perspective, we don't have We don't touch your mobile
+
+Jameson: key, you know, like, it stays on your device, uh, the encrypted, the way the encrypted backup works is that, um, a, an encryption key is generated on your device that encrypts your mobile key seed phrase. The encrypted blob then gets stored onto your cloud storage, so even if your cloud storage gets compromised by Apple or Google, they can't do anything with it because it's encrypted. The decryption key then gets sent to Casa and secured by an HSM that Casa controls, so it's kind of like a two of two setup, so, you know, if you lose your phone, if you get a new phone, What happens is you have to log into your Casa app and have to log into your cloud account and then what it does is it pulls both of those, the encrypted blob and the decryption key together onto your device to be able to reconstitute it.
+
+Luke: So it semi literally is that your phone is another hardware wallet with a fancy screen. Semi
+
+Secure Elements on Phones
+Jameson: Yeah, yeah, yeah, it uses the hardware, the secure element that's built into your smartphone and like, that's another Another one of our major theses, uh, you know, going forward is, um, that secure elements on phones are going to make, you know, application of cryptography more practical. Um, this is something where, you know, when, um, when smartphones came out, And they made, uh, GPS available to the average person.
+
+Jameson: You know, that's when a lot of apps like ride sharing actually became practical and a whole new sort of economy, uh, bloomed from that. And we think that the proliferation of secure elements on smartphones is gonna enable, uh, another sort of blossoming of new applications.
+
+Luke: Okay, let's take a, like, a little dip into this particular rabbit hole. What is a secure element and why are they prolifer
+
+Jameson: Yeah, so, I mean, it's basically, uh, you know, a A chip, a piece of silicon that is in your device that is dedicated to really doing nothing more than keeping small pieces of data secure. Basically, keeping the data in that chip and not allowing it to be extracted. And then, you know, at the sort of application programming layer, you know, the operating system can interface with that chip. It provides APIs to higher level applications that can then request to interact with the chip, but there's no way for them to request to actually extract the data. You can only, you know, send requests to, uh, to actually make use of whatever is in that chip. So, um, I don't know the detailed history of how this came about being, but I suspect it was probably just related to, uh, The fact that, um, phones need to have some ability to do secure operations, whether that's like the biometrics of unlocking the phone itself, or, um, you know, commonly with the, the key rings, uh, password management at the operating system level, they're going to make use of secure elements.
+
+Jameson: So, it's just, um, you know, it's a, you can think of it as a, um, hardware security device that's just built into the phone.
+
+Knut: So does every phone on the market today have a secure element or like almost
+
+Jameson: I think some of the cheaper Android phones do not. Uh, pretty much all of the iPhones should, uh, any of the, uh, Android phones that are like more than a few hundred dollars should have secure
+
+Knut: Yeah, so, so, Samsung, Google, what about something like Xiaomi, isn't that the cheap Chinese version of
+
+Jameson: Yeah,
+
+Jameson: I
+
+Jameson: don't know, off the top of my head, I know that we have, Um
+
+Knut: fun staying poor.
+
+Jameson: We have, you know, specific things that we require to be, you know, enabled at the hardware and operating system level on Android phones in order for the Casa app to actually run.
+
+Luke: Is this, uh, that you can't even install it if your phone doesn't have these capabilities or you just don't get the mobile key option?
+
+Jameson: Uh, I think the app probably refuses to run at all. Uh, it's, but it's not even an issue that I think we've ever had come up because it's only really the cheapest and cheapest of phones. So I think that the people that are using those phones probably wouldn't be able to afford our service in the first place.
+
+Luke: Okay, um, yeah, that's what I was going at, you executed better. Um, the, the,
+
+Backups
+Luke: returning back a little bit to something else you mentioned was backups. And a system like multisig generally, but I think slightly more like CASA specifically, uh, one of the features that I understand about this is that you don't really actually need to backup your seed phrase.
+
+Luke: It's, the idea is you lose a key, well, then you just reconstitute your multisig Is that, is that the solution? Am I, am I getting that right?
+
+Jameson: Yeah, so part of it is due to the nature of the automatic backups, right? So if you're using the mobile key, that's automatically backed up. The CASA key, of course, has multiple redundant backups. And so then the question is, what's the state of your other keys? Now, in a 3 of 5, you do probably want to back up one of the hardware devices so that you have That threshold, uh, setup.
+
+Jameson: So basically because the, uh, the extreme edge case failure scenario in a 3 of 5 is like some Carrington event. Just wipes out all of your electronics and wipes out all of your hardware devices. So if you didn't have some sort of offline backup, then you would be down to two keys, which is problematic when you need three.
+
+Jameson: Um, so, um, you know, it's still, it's It's always preferable, I think, to have backups, but this is what it comes down to, this, you know, convenience trade off of what are people willing to do, because especially creating steel backups can be a pain, uh, especially if you're doing the stamping type of backups, I really hate doing those. But,
+
+Knut: You need a good hammer.
+
+Jameson: the nice thing, though, about having, uh, like, metal backups that are part of a multi sig wallet, So, Is that you don't have to worry about a physical, like an evil maid attack, or a physical attacker getting a hold of one of those backups. As long as they're geographically distributed, because if they get one of your seed phrases, they can't actually do anything.
+
+Knut: This is, those metal plates, uh, I think there's around 70 companies making them.
+
+Jameson: At
+
+Knut: And, and, um, uh, so, so disclaimer, we're we're sponsored by one of them, So anyway, uh, the, the, the whole thing, I, I think that paradigm is, I'm not entirely sure that it will be the same way in a hundred years from now because it's such a while.
+
+Knut: It, it provides you with another level of security. It also, it also provides you with an extra attack vector because once you've. Put the seed on the plate. It's kind of hard to destroy the plate. That's the whole point. Like a piece of,
+
+Jameson: about that recently.
+
+Knut: Oh, Oh, you did. Okay. Can you go into that? Like, that's a reason to prefer a piece of paper with,
+
+Jameson: Um, no, not necessarily. Not if you choose the right backup.
+
+Jameson: Um, so the short version, the takeaway from my presentation, because as you know, one of my many projects was, like, destroying all of these metal
+
+Knut: Oh yeah. Yeah. Remember that?
+
+Jameson: How robust are they? Um, and so, uh, recently, like in the past year, I had a situation where I needed to destroy a metal backup.
+
+Jameson: Um, because, uh, I wanted to split it. I wanted to split it and, you know, seedsore it, basically, into multiple, uh, pieces. Backups, so that there was no single point of failure, um, and what I determined was that, uh, that actually, like, my, my general advice on backups, which is to use, like, a single steel plate with the center punch, the, the divot mechanism, um, it turns out those are actually the best, not only for creating, but also for destroying, because, um, I had, uh, I had both a stamped, you know, letter stamped backup, and I had an etched backup. And when I went to destroy them, I mean, you can't actually destroy the media that it's on. Um, you know, you'd probably have to have like a furnace that does 5, 000 or 10, 000 degrees or something in order to be able to melt it. Uh, and, and, you know, destroy the whole thing. So instead, what you end up doing is, uh, you know, trying to overwrite or erase or you make it illegible. And so on the stamp one, I'd have to like, you know, hit, uh, I had to put 50 different stamps in the same spot so that like each letter was just completely, uh, illegible. Uh, and then, you know, with the etched one, I had to, you know, put on my, uh, my ear protection and get out the Dremel and just sit there for like an hour, back and forth, back and forth, back and forth.
+
+Jameson: It was extremely unpleasant to go through both of these. And then I realized, well, if you have the grid with the straight punches on them, You just punch every other, you know, part of the grid. It takes, like, two or three minutes, and you're done. It's, it's become similarly illegible because you can't tell the difference between, like, what the original divots were and what the new divots are.
+
+Knut: And there's no, like, carbon 14 method of, of, of, like, figuring out the age of each punch, I guess.
+
+Jameson: I doubt it. I mean, maybe a nation state attacker might be able to do something on that level. But, yeah, I'm a Bitcoin
+
+Luke: Yeah, because it's funny that you mentioned, well not funny, but you mentioned nation state attacker, because one of the concepts in cyber security basically is that somebody with unlimited resources and unlimited time will actually defeat you, will actually defeat you, and so it's really about putting up as much, as many barriers as possible, but also not putting up Being a target, not becoming a target.
+
+Physical Security
+Luke: And so this is, yeah, well maybe we'll get back to some of these other, uh, points here. But this is a whole other rabbit hole, basically. The, uh, the whole thing of, of OPSEC in, uh, in the physical security world, basically for, for Bitcoiners these days, I mean, literally everyone who is a public bitcoiners is now a target to some degree, as in they probably have some Bitcoin.
+
+Luke: Uh, now, I mean, who knows? Maybe, maybe, maybe Newton and I, uh, really have zero Satoshis between the two of us, and we're just, I don't know.
+
+Knut: Of course we don't,
+
+Knut: And neither does Jameson, the most famous Bitcoin privacy
+
+Luke: you, you, you only have a Bitcoin test, net Bitcoin, but, uh, right.
+
+Jameson: testnet whale.
+
+Luke: yeah. Yes.
+
+Luke: Very good.
+
+Luke: Very good. There you go. There you go. That's good to, yeah. Uh, but, but, uh, so, so the thing is, what, what are the, what are the concerns about, uh, opsec basically, and what are some of the ways that, that an individual can, can, uh, increase their privacy?
+
+Luke: Um, what is it? Minimize their privacy footprint. I'm trying to footprint something
+
+Knut: Oh yeah, yeah,
+
+Knut: yeah. Decrease their
+
+Luke: decrease your privacy
+
+Knut: Not your privacy, privacy footprint is sort of an oxymoron, isn't
+
+Luke: It's something like that.
+
+Jameson: Yeah, just your footprint in
+
+Jameson: general, whether it's online or meatspace. The right way to approach it is to not make the mistake that we've all made, which is to use our real names and faces, uh,
+
+Jameson: when you're talking about Bitcoin. Uh, so, you know, the best way to do it is really to take the Satoshi method of, like, if you really want to engage in the space, then just use a nym and, you know, don't reveal Uh, personal identifiable information. Uh, but if you do start to reveal aspects of yourself, then you have to understand that they probably can and will be used against you at some point. So now you have to start thinking more adversarially about how might it be used against you, and, uh, what what types of attacks might people use against you, how, How difficult is it to find you on a day to day basis when you might have your guard down and be vulnerable?
+
+Jameson: Um, you know, just a couple of days ago, the CEO of a company in Toronto got kidnapped in broad daylight, probably as he was, like, leaving his company headquarters, um, and was held ransom for a million dollars.
+
+Knut: Oh, yeah, yeah. There's a flip side to that coin, though. They can be used against you, but they can also be used for you. Like, there's a point to being public, too. Like, there's a security, even a security point to it, because you have The more powerful friends you are, the more protected you are by them. Or say if you run into legal trouble, you have a
+
+Jameson: Yeah, reputation, Reputation is a form of currency,
+
+Knut: it is. And I think that's important going into the future too. Like, reputational capital is like the only, that is the second best. Like, there is a second best, and it's your reputational capital, I
+
+Jameson: Fair.
+
+Luke: So, are there any other practical things that people can do other than trying to not use their real identity? Like, what if somebody has made this mistake, like all of us?
+
+Jameson: Uh, yeah, so If you're worried about wrench attacks, then you need to look into how difficult it is to find where you live. Because that's where most people are going to get targeted. People tend to feel safe in their home. And so then, if it's easy to find where you live, and this is going to vary depending on if you own publicly registered property versus renting, it's going to vary from jurisdiction to jurisdiction depending upon the laws there, like, don't live in Sweden, for example.
+
+Knut: I took that security measure. Yeah.
+
+Jameson: because they require you to publish everything, is my understanding. And so Um, you know, if, if you're going to choose to live in a place where you can't have privacy, then hopefully you can have stronger physical security. Um, but I think a lot of people in this space have not properly prepared their physical security commensurate to their risk profile, especially those of us who are higher profile.
+
+Jameson: Like, Look, Michael Saylor, he has a correct level of security. I have seen it with my own eyes, but I think a lot of other of us who aren't quite at that level do not have the right level of security, and that's why I think that we're going to keep seeing these physical attacks happening and actually accelerate along with the exchange rates. Because, this is the nature of security, you know, as, as the, the value of targets continues to increase, then it's going to attract more attention from the criminal element who are going to want to test the waters and figure out what is the return on investment of, uh, trying out these new attacks.
+
+Knut: Yeah. So two things there. First of all, inflation fixes the, the, 5 wrench attack because no one can afford a 5 wrench anymore. Uh, but the other thing that I want to double click on is the Sweden thing. Uh, the whole thing that lead led up to that you having to reveal basically everything in Sweden is something called Offentlighetsprincipen which is like comes from. The fact that the country hasn't been at war for like 300 years, officially at least. And so this has led to an extremely high trust in institution, but also In the institutions trusting the people to a large extent, so the whole point of that law is to make everything transparent, including all the government stuff, which is the good part about it. What they leave out is like, in the internet age, it's super dangerous, because all the data is there, you can see exactly how much people own and where they live. And you can, and now when crime rates are skyrocketing in Sweden, it's, it's extra bad. And there, there are some cases of, of, of people having been attacked and it's been quite nasty. So, uh, it's not a recommended practice.
+
+Jameson: Yeah, so unfortunately, like, you have to get adversarial and, uh, Preferably, you know, find someone like a private investigator, someone who is, uh, used to tracking people down for a living and figure out like how hard is it to track you down because if someone, I would say in the United States, for example, you can track most people down for 50 bucks and that's just due to the level of corporate surveillance that happens in America, uh, with data brokers, uh, Uh, you know, you, you pay 50 bucks to any of these data brokers and you can find almost anybody who is like living a default American lifestyle.
+
+Luke: That was scary.
+
+Bitcoin and Physical Security
+Luke: Is there anything that can be done on the Bitcoin layer to solve this? Anything that would minimize the effects of one of these 5 wrench attacks?
+
+Jameson: Well, yes, uh, though, uh, some people get a little bit confused because I think they conflate two separate problems. There is the problem of securing your Bitcoin. And then there's the problem of securing your Bitcoin. Your physical body. Uh, so, um, you know, this is one of the big pushbacks that I get, uh, when I, I talk to people like about multisig and about Casa and they're like, well, but they can, even if I have my keys geographically distributed, you know, they can torture me or, uh, they can take my child hostage and hold them ransom and, and then I have to go around and I'm like, yes. Like we, we cannot. We can't protect you against the single point of failure that is our physical forms. Maybe in a hundred years we'll be able to have, you know, some sort of Transhumanism stuff,
+
+Jameson: yeah, but as of today, yeah, single point of failure in your body, and so that is a very different type of security that has, you know, different solutions that you should put into place in addition to securing your bitcoin. So, you know, the short version is how do you protect against a five dollar wrench attack? Well, the only way to do that, when you're focused on your Bitcoin security, is to understand that your body is a single point of failure. And so, if you can be coerced, into sending your bitcoin because you're being tortured or whatever, then that's going to happen. Uh, so, that's why it's important, if you want to be protected against this, is to put your keys, like, sufficiently far enough away and in different physical security setups that it's just not feasible for an attacker to coerce you into doing that. Because they would literally have to take you hostage and keep you for a long time.
+
+Jameson: And like attackers want to have to do that. They want to be in and out as
+
+Knut: No, no, taking you hostage and then putting you on a plane and sitting next to you is kind of hard.
+
+Jameson: We're having to get through like security to get into a safety deposit box at a bank or some sort of other high security institution where you might keep one key. Um, but yeah, so the, the flip side of that, of course, is that, um, if it's, if it's a loved one who has been taken hostage, then, uh, you are perfectly capable of going around and doing those things, and so that's why, you know, you need a different set of privacy and security for your family to prevent this from happening in the first place.
+
+Luke: Or, or just don't love anyone. I definitely recommend that option. It's an interesting thing, and I really wonder how this is going to play out into the future. Do you have any thoughts on this as basically number go up towards, I don't know if you have a price target lately or something, but we're at all time high at time of recording, literally, like it happened last night.
+
+Luke: So, I mean, if this thing keeps doing what it's going to do, uh, do you see these risks as only increasing as well when numbers go up?
+
+Jameson: Yes, uh, because, it's almost like a, a herd inoculation mindset, and, and what I mean by that is, As more and more bitcoiners successfully wrench attacked, that teaches the criminal element that this is a good return on investment, and therefore they're going to invest more into those attacks.
+
+Jameson: Um, I do not foresee wrench attacks decelerating. Until more of them start failing.
+
+Knut: Including governments, they, they are the wrench attackers, like, uh, and if they're successful and you're giving up parts of your Bitcoin to them, then that, that tells them that that was a, an attack worth doing.
+
+Jameson: Yeah, so as of today, um, I have 171 physical attacks that are cataloged on my project. There have been a lot more than that, because I suspect actually that the majority of attacks never get publicized, because the victims are too afraid to talk about it, and they're afraid that talking about it will make them And there is a legitimate fear there, because there have been people who have been attacked multiple times, but, um, you know, until we see more failures, and we've only, I think, seen two successful defenses out of that 171, um, and I think both of those, I think both of those were in, no, no, one was in Florida and one was in California, and both of those were because The, um, the victims had guns and they started shooting at the attackers.
+
+Knut: Um, yeah, that's not, maybe not the most preferable scenario to end up in. And so, so, um, okay. So yeah, I've, I've written a lot about like how, how Bitcoin Reduces the profitability motive of, uh, aggressive behavior from a very certain perspective. And that is that, uh, you cannot know how much bitcoins, uh, or how many Satoshis rather another Bitcoin, uh, another person owns.
+
+Knut: And that's true for everyone on earth. You can make an educated guess, but you cannot absolutely know it. So you can have, you can give up parts of your Bitcoin. You can have dummy wallets and stuff like that. But the attacker can't really prove that he got all the bitcoins out of the, the victim or all the SATs outta the victim. So, so, uh, and from those attacks I know of in Sweden, they've, they've attacked, uh, not Bitcoiners, but like crypto people and simply pointed a gun at their heads and, and, and use the password for your. Take the coins off the exchange. So like the first step, like always, like not your keys, not your coins.
+
+Knut: Like that, that's, that's the, that's the easy one
+
+Jameson: Yeah, and we've seen, um, for example, um, there are certain types of organized crime that are getting into this. Um, and so, for example, in South America, uh, this has happened for a while. There are types of organized crime that Basically, employ women to go on dating apps and, you know, date the gringos that are visiting and slip them drugs that make them compliant. And traditionally, they would just, you know, steal all of your valuables that you had on you. But those gangs have started learning, oh, Get him to open up his, uh, app on his phone, open up, look for all of his exchange accounts and, you know, drain all of those exchange accounts and, and possibly any, you know, single SIG hot wallets that are on the phone while you're at it. Um, we've, I think we've also seen some organized activity mostly in the, like, Philippines area where it seems to be Russian. Mafia that is going down there and targeting, uh, like expats. Uh, so,
+
+Knut: using girls,
+
+Jameson: uh, no, in those cases, it seems like they somehow just have information about Russians who have left the country because they're crypto
+
+Jameson: rich
+
+Knut: it's not from Russia with the country. Yeah. Yeah.
+
+Knut: the don't love anyone. It's still a thesis still holds. Yeah.
+
+Luke: Yeah, something like that.
+
+Luke: I don't want this, I don't want that to be the actual takeaway from this episode. So, um, uh, maybe we can turn this around a little bit.
+
+What Jameson is Excited About
+Luke: What, what are you excited about in Bitcoin these days? What's making you optimistic? Hopefully not nothing.
+
+Jameson: Not nothing. Um, I mean, you know, I'm a technologist. I. I do like that we seem to be having more innovation happening, more proposals happening within Bitcoin. You know, there's the whole Layer 2 explosion, which is a whole other rabbit hole. But, um, the past few years, I think, have been pretty good for Bitcoin. Um, but I also see a lot of problems, long term future problems, that I'm starting to talk about. Uh, because I think there's still a ton of room of, for improvement, that, uh, I'm, I'm worried about complacency, um, I'm worried about us resting upon our laurels because we have succeeded so much, um, and there's many different issues here, um, but, the, the ETFs and the institutions and stuff, It's really a double edged sword. Great for Bitcoin price, uh, great for getting, uh, you know, new big names and proponents in, um, I mean, it's There's, you know, no small number of people now who are, like, direct advisors to the next president of the United States that are orange pilled. And so, even though, you know, I don't believe that Trump really understands Bitcoin, it's not, it's not really about him.
+
+Jameson: It's about all the people whispering in his ear, and how that is gonna affect the future trajectory. And so that's, you know, that's good in a sense, but But it's also bad because there's a lot of centralization pressure, I think, that comes with the institutions and the ETFs and that can have long term consequences to like the governance and and the future evolution of Bitcoin as a protocol and as how people use Bitcoin.
+
+Luke: Yeah, like, what I'm going to talk about tomorrow in my talk is, is we can't know that Bitcoin is going to succeed in its current form. Basically, it might. There's people who are all like, if Bitcoin is actually anti fragile, it's just going to work, but that doesn't necessarily play out, especially if you actually know about the technology and the protocols, so yeah, I certainly echo the vigilance side of this, yeah.
+
+Knut: Yeah. And complacency is The main villain here, I think, like my view on this is, uh, like people will have to understand that Bitcoin is not really backed by energy. It's backed by human action and human incentives.
+
+Jameson: It's not a wall of encrypted energy.
+
+Knut: no, it's not a wall of encrypted energy. Uh, there's a wall of encrypted energy somewhere, maybe if you have a wild imagination, but, but that is only there because people acted in a certain way. So, so, and the, I think that these misconceptions are the widespread, like the, everything is in Bitcoin is probabilistic, right? And, and holding a key. It's not owning something or even possessing something, it's just having a, it's access to a string of information. And the reason you trust, you, you, you, you view that as owning a Bitcoin, is that, you know how, how in infinitesimally. Is that the word? Uh, small. The odds are that someone else owns the same string of information, and same with the 21 million finite cap and all the, the rule set and the block size. Even, you know that the, the odds that this is ever going to change are also infinitesimally small. So that's why you believe in this rule set and that's why you believe that this thing, uh, is robust enough to last forever or. Trending towards forever. So, uh, so I think that there's a lot of confusion there, uh, especially when you get these boomer institutions in, into the space, like the ETFs and whatnot.
+
+The Biggest Upcoming Issues
+Luke: What do you think is the biggest upcoming issue that needs to be solved or dealt with? for listening.
+
+Jameson: Uh, well, I'm a technologist, so for me, it's, um, it's seeing people wanting to do more permissionless innovation and it being just really difficult, right?
+
+Knut: Isn't that the point though?
+
+Jameson: yeah, I mean, it's supposed to be difficult to change Bitcoin, um, but For the past 10 years, we've been talking about, oh, you know, we just build other layers on top of Bitcoin. And I think what has been missed by a lot of people is that sometimes in order to build other layers, you, you need the basic building blocks on the base protocol.
+
+Knut: That's what Segwit was.
+
+Jameson: Yeah.
+
+Jameson: yeah, well, you know, we enabled, we did three different soft forks to enable lightning networks. Um, and,
+
+Knut: no hard fork.
+
+Jameson: yeah, yeah, um, and, uh, so, kind of, to get back to your question of, like, things that I really like, um, I'm, I'm pretty bullish on Rusty's great script restoration project, I think there's a lot of potential there, I think that could also boost, uh, permissionless innovation, make it easier for people to actually build second layers, because you, you look at a lot of the second layers that are being built right now, and they're just making, you know, Really weird trade-offs.
+
+Jameson: Either they're like a federation or like fully custodial, um, or they're doing, they're having to do like crazy game theory. I don't know if you saw the paper that came out yesterday for how, how to enable covenants on Bitcoin without a soft fork. And essentially it has to do with hash collisions, and having to expend millions of dollars worth of energy to collide hashes together, like,
+
+Jameson: these But is that really categorized as a layer two though? Like, uh, Bitcoin. Bitcoin being used for other use cases than the monetary use case. I wouldn't, I wouldn't call that a layer 2. I would call that a, an offside project,
+
+Are Layer 2s Spam?
+Jameson: Yeah, no, no, Covenants itself, uh, well, that itself is not a Layer 2, but you could use Covenants, I think, to build Layer 2s, though that specific type of Covenant I think is way too Impractical and expensive to actually make use of, uh, but, uh, so, you know, look at, I think BitVM is a very interesting example of this, of like, how do we enable more generalized computation without changing the Bitcoin protocol, and it, it gets really complicated.
+
+Knut: But why?
+
+Jameson: Because builders want to build. I
+
+Jameson: mean, that's but builders could build on Nostr instead. They've got Nostr to nerd out on now.
+
+Jameson: Uh,
+
+Jameson: it's two different things. Um, or, or, you know, one that I like because, uh, there's actually several former Casa employees working their, uh, botanics, uh, and their spider chain concepts. Uh, basically, they were trying to figure out a, a way to, to do a, um, a permissionless two way peg. Between Bitcoin and sidechains. And it's a very interesting idea that's complicated as hell. I did a whole write up on it like a year ago. Um, and it's gonna take a lot of work to kind of fine tune all of the economic and game theory parameters around it. Because the short version is the spider chain is like It's almost like a blockchain of multisigs.
+
+Jameson: It's like a series of connected multisigs where you have many different people who are signers on different overlapping multisigs and it's like, it's way too complicated to try to explain it. Uh, in, in a short period of time, but, like, that's the type of gymnastics that developers are having to go through in order to try to build better layer
+
+Knut: But what is the real world problem that spiderchain solves?
+
+Jameson: Uh, well, so, the, the problem is that people want to be able to do decentralized finance, whatever you call
+
+Knut: Yeah, no, no, no, yes. But how is that solving a real world problem?
+
+Jameson: I mean, you could argue about whether or not people need it, right? Uh, so, the question is, Is the, like, decentralized finance world and applications that people are doing on other networks, like
+
+Jameson: Ethereum, Solana, whatever, should we be able to do that in a more Bitcoin native fashion?
+
+Knut: Yes.
+
+Jameson: So, should we be able to have pegged sidechains with that functionality, but without changing Bitcoin itself?
+
+Knut: Yeah. And, uh, my answer would be no. But I know that,
+
+Knut: uh, is market demand
+
+Knut: yeah, yeah, there are differences of opinion here and I don't decide and no one else decides either. But, but, and there might be a market demand for it. Uh, I think though, the, the, the danger in going, going down those rabbit holes is that Anything you do that takes away.
+
+Knut: So just like the gold being used for jewelry or being used for industrial use cases, that sort of chips away at gold's functionality as a store value or as money. And I think the same is true for Bitcoin. If you mess with incentives, you might mess with Bitcoin's function as money. And Bitcoin's function as money is so crucial to the whole system. That's what the whole system is built upon, that the satoshi is worth something. And that anything else is, like, the whole system is built around the scarcity of the satoshi. Not, not the function, not the other stuff. So that's why I argue for all of these things being, you know, red herrings at best.
+
+Jameson: I guess, I mean, I think one counterpoint to that would be that if you're doing, like, actual native pegging of satoshis from base chain into other chains, then that scarcity is preserved.
+
+Jameson: Like, the problem that I have right now is that, you know, everybody's using wrapped bitcoin on these other networks. So they're just putting all of the satoshis into a single custodian.
+
+Jameson: Who could be, you know, issuing more IOUs than they actually
+
+Knut: Yeah, so you're saying the incentives are already being messed Oh yeah. yeah.
+
+Luke: Yeah,
+
+Luke: I'll, I'll take, I'll take the devil devil's advocate. Point on, on this one, and, and actually I, I kind of, sort of believe this one is that, is that people are going to do these things if they want to do it, and I would rather that they just fuck off and go to the other chains and, and do that. And so, and, and so, so I don't actually mind the idea of a wrap Bitcoin or, or something else.
+
+Luke: If someone wants to do that and they send their Bitcoin to some other place and then they go shit coin as much as they want. Okay. They're, they're free to do that. And I don't think, and I, I think what the key point that. What I agree with is if it doesn't change Bitcoin, if we're not doing anything to enable this, and it doesn't increase the transaction volume, it doesn't bloat the UTXO set, it doesn't add dickbutts onto everyone's nodes, then I actually don't see a
+
+Knut: problem is where you draw the line. What, what, what do you categorize as changing Bitcoin? Because if the incentive structure around it is changed, it is changed in a very indirect way, but, but it's still changed, which is what I thought. Think we, we've seen with the spam and stuff like
+
+Luke: But if somebody just has, literally, you send A-U-T-X-O to another UTXO and through that you get the ability to do your shit coining somewhere else. I, I don't, I don't think there's anything there. Like, I'm not gonna do it. And I mean, there is an actual, there is an actual thing here. Like for example, if someone's using opera turn for this right?
+
+Luke: To, to, to have some data to, to track what's going on here. Well. That could be filtered out by something like the zero data template that Ocean just has out now, or Datum, or something like that. That's actually, that's actually possible, and I think that's where we can have a debate, but I, I don't actually see a problem.
+
+Luke: Unfortunately, taking the devil's advocate a little hard
+
+Knut: here, I, I, I,
+
+Luke: of just sending one UTXO to another UTXO. That, that's, people, if people are going to do it anyway, right?
+
+Changing Bitcoin
+Jameson: So.
+
+Jameson: the whole issue of changing Bitcoin, I think, is a pretty touchy topic. Like,
+
+Jameson: I, well, so I get triggered, uh, actually, as a part of the ossification debate with, you know, if we ossify the protocol, then Bitcoin doesn't change, it's gonna be safe. Uh, but the problem is the rest of the world does not ossify, and so we've already seen this happening, both in Bitcoin and with other network protocols, that the protocol itself may not change, but the nature of how people interact with the protocol changes, and so my favorite example, of course, is SMTP, the email protocol, where, let's ask ourselves, is email a success?
+
+Knut: I would say no because it, it got super centralized.
+
+Jameson: Yeah. But see. We have a very nuanced, sophisticated view of this.
+
+Jameson: You ask.
+
+Jameson: the man on the street, and
+
+Jameson: they'll say, Oh, I use email every
+
+Jameson: day. It's great. They don't even know that they're not using
+
+Knut: no, no.
+
+Jameson: That can totally happen to
+
+Knut: And TCP IP, TCP IP four that they've been trying to upgrade to the version six. Isn't that a thing also like never happens because people are used to the old shit. Yeah, no, there are arguments to be made. I mean, ossification is an interesting word because. I'm for it when, when we're done and we're done at some point. I don't know when the point is and I don't think anyone else does either. And the whole point of having Bitcoin being hard to change is that sort of nature will tell us when we're done. And if we fucked up, we fucked up.
+
+Jameson: I think it's pretty obvious that Bitcoin is already very hard to change, and it's entirely possible that we have already ossified. We won't really know for sure for a while.
+
+Knut: No, and that may or may not be a good thing. It's, it's definitely going to be a problem in what's the year, like 2094 or something where it's predicted that this.
+
+Jameson: Yeah, the timestamp issue, though, I really think that quantum computing is going to be an issue before that.
+
+Knut: Oh, the quantum computing fund.
+
+Luke: Let's save this for next
+
+Knut: time.
+
+Knut: Yes, exactly. Exactly. That's a let's go into compute, quantum computing next time. Jameson, thank you
+
+Jameson: Yeah, you bet.
+
+Knut: great conversation and, enjoy the rest of the conference.
+
+Luke: Yeah, thanks a lot, Jameson. This has been a great conversation. I'll add slightly more words to the outro than this, but yeah, really great to have your perspectives on the security. I don't think we've had like a security person like quite so hard in a really long
+
+Knut: Well, you are a security person, aren't you? Oh yeah, Well,
+
+Luke: well we haven't,
+
+Luke: not a guest, but no, but this has been awesome, so thanks a lot for this.
+
+Luke: We'd love to do it again and continue having these deep conversations, so thank you again, Jameson.
+
+Knut: Anyway. You want to send our listeners like casa, I guess
+
+Jameson: well yeah, you can check out CASA. It's C A S A dot I O. Uh, check out my resources at bitcoin. page.
+
+Knut: Bitcoin page.
+
+Knut: Alright.
+
+Luke: has been the Show. Thank you
