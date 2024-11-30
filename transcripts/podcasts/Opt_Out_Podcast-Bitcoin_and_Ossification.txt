@@ -1,0 +1,713 @@
+Thank you so much for jumping in, Jameson. I'm really excited to talk through this topic.
+I followed you for a long time. I know we've had a lot of different interactions over the
+past few years, but it seems like you're pushing a little harder on this ossification subject
+and the idea of making calm, rational changes to Bitcoin to make sure that it can continue
+to fulfill the goals that I think at least people like us have for it. I thought it would
+be a great time to just sit down and chat through a lot of this, because this topic
+of ossification, which we'll define when we get into it, this topic of making protocol
+changes to Bitcoin, better privacy, better scalability, all this stuff has been talked
+about relentlessly over the years. A lot of the things that I was promised when I got
+into the space don't seem like they've come to fruition, at least as they were promised.
+There's been a revival around this concept of, can we make changes to Bitcoin specifically
+with covenants? I think it's a really good time to dive into just this topic in general.
+I'm excited to talk about ossification, protocol changes, a lot of different things with you
+today. But before we get too deep into that, why don't you just introduce yourself? I know
+you haven't been on the show before, and in my audience is not a Bitcoin or only audience,
+so they may not know you, so I'd love for you to just introduce yourself, tell people who you are,
+and then we'll dive into the topic. Well, that's okay, because I'm not a Bitcoin owner,
+cypherpunk, a Bitcoin only guy that is. I mean, that's why I get canceled sometimes.
+I'm Jameson Lopp. I've been in the Bitcoin space for a decade now, full-time, focused on
+security, self-custody, and in general, just doing a lot of research side projects.
+I'm always just trying to understand Bitcoin better and try to figure out where we're going.
+I'm a technical guy, computer science background. I'm the chief security officer at CASA, where
+we basically focus on helping high net worth individuals set up extremely robust multi-sig
+self-custody. I guess the short version of a lot of why I do what I do is I feel like Bitcoin is
+fundamentally a collaborative open project. The most important thing that we can do is continue
+talking about it, researching it, discussing it, and proposing ways to improve it. I guess
+you could say that I see ossification as an existential crisis to one of the fundamental
+strengths of the project. Yeah, I definitely understand that. I think something that would
+be helpful here, if you don't mind just defining how you view ossification, and specifically if
+there are natural and unnatural types of ossification, because that was something that
+was really interesting that you brought up in your debate with Jimmy Song in Legato, which I was
+able to go back and watch, was that there's natural ossification that will happen and there's unnatural
+types that we can force into place. Maybe just define ossification and hit on those two different
+ways that ossification can happen. Right. So ossification from a dictionary term since just
+means calcification or turning to bone, making something more brittle and slowing down its
+flexibility and ability to grow and change. From a protocol perspective, I actually see this almost
+as a law of network physics. That basically means that when you have a protocol, which is
+just a fancy technical way of saying a shared communication language in order to accomplish
+some specific task, that protocol, the value of it grows as the network grows, as the number of
+entities using the protocol to speak the same language with each other grows. And as the size
+and the value of the network grows, it also becomes more and more difficult to coordinate
+changing the protocol. So you can almost think of it as like, how difficult would it be to make
+fundamental changes to the English language or any language that has a billion adopters?
+Those type of changes do sometimes happen organically over extremely long periods of time,
+but you can't just make sudden changes. Otherwise, it would be chaos and confusion and people would
+no longer know how to talk to each other, and the value of the network would drop off a cliff.
+So this, we have seen play out with network protocols like TCPIP,
+like SMTP, email protocol, really any of these fundamental protocols that hit mass adoption
+with hundreds of millions or billions of people using them tend to ossify. So this is the natural
+progression, I think, of a network kind of collapsing under its own weight. It becomes unable
+to change because everyone understands that you're trying to do so would be a net negative for the
+value of the network. And what we're talking about these days with Bitcoin ossification
+is almost more of artificial preemptive accelerated ossification of saying that,
+well, Bitcoin ain't broke, don't try to fix it. There are unknown unknowns and any change that
+you make could have negative consequences. Therefore, we should stick with what we know,
+stop changing the Bitcoin protocol, and just kind of declare it ossified, even though there's no one
+who can declare it ossified due to the sort of game theory and governance of Bitcoin as a protocol,
+if enough people are apathetic and going to veto or not participate in upgrades and changes,
+then it's certainly possible for a preemptive ossification to happen.
+Yeah, so the inevitable is ossification at some point. The conversation right now is more around,
+do we want to force ossification faster than the weight of the network itself would cause it to
+happen? Or do we want to understand that we literally cannot stop ossification at some point,
+but take the chance now before that natural ossification happens, that hardening of the
+consensus changes, if we want to take advantage of that right now to continue to improve the
+protocol. And we're in this gap right now where we do have the chance to still do that. It feels
+harder and harder. I feel like that natural ossification, since I got into Bitcoin in 2017,
+I'm a little bit of a late bloomer when it comes to the terms of when we got into the space,
+but it seemed like there was a lot more openness at that point. Obviously, there were the block size
+wars and that was not a consensus change that went through, but there was a lot more kind of
+discussion and ideation over what could happen, seemingly leading up to that and kind of hit a
+wall. And it feels like in the last few years that I've been in this space, there hasn't been much
+progress. And do you feel like that is just the natural ossification? We do have many more people
+in the space now in 2024 than we did in 2017. Or do you think that that's some sort of narrative
+taking hold that's preventing people from having an interest in proposing changes or trying to get
+them to soft forks, et cetera? So the block size wars, I think on their face,
+it was this debate about, do we prioritize the cost of transacting or do we prioritize the cost of
+auditing the system and running a full node? But underneath that, I would say it was actually
+a war about the governance of the protocol. And on one side, it seemed like the quote-unquote
+big blockers were more in favor of giving miners more governance power in determining the future
+and path forward of the protocol, whereas the small blockers were more in favor of the independent
+node operators retaining more power. And I would say the independent node operator idea won out.
+And along with that seemed to come a fair amount of trauma. And the result was that we didn't even
+really have anyone seriously suggesting consensus changes for several years after that. And so then
+we did get the taproot upgrade. But ever since then, even though we've had some proposals,
+a lot of the proposals have not come with proposed activation parameters. So it's like,
+we still have a decent amount of brain power that's thinking about ways to improve Bitcoin,
+but few developers have the interest in becoming a consensus change champion and having to deal
+with all of the negativity that goes along with that.
+Yeah, I think we've seen that with even some of the big covenants proposals,
+like with CTV, Jeremy Rubin tried to start pushing a little bit towards consensus change and
+propose some activation methods. And there was a kind of an all out war against him as a result.
+And there was a lot of mess. And thankfully, he's still in the space and still kind of ideating
+on how we can do covenants in smart and efficient ways. But there's definitely been a lot of
+examples of when people do propose activation methods, they get hit pretty hard for it. I
+know someone was proposing activation methods for Ellen Hans a couple of days ago on Twitter and
+was immediately called out by Bitcoin Core Dev as being an attack on Bitcoin because they were
+proposing activation methods, which is, that feels kind of like where we're at is even just
+the idea of not even having people run the code, but even just saying this is how this could be
+activated is kind of an attack somehow. That's one of the fundamental disagreements that I had
+with the Bitcoin subreddit moderators nine years ago. The early days of the scaling debates was
+that they basically enacted a rule saying that you can't even talk about proposed forks because
+that is detrimental to Bitcoin consensus. And I'm like, well, if we can't discuss
+proposed changes to Bitcoin, what are we even doing here? I considered that a form of censorship
+and at the time I actually went to go become a moderator of the Bitcoin XT Reddit, which is one
+of the many reasons why people like to cancel me every now and then because I dared to go against
+the sort of mainstream consensus at the time, but it was less that I was in favor of that
+particular block size increase BIP and more that I felt like it was a negative way of maintaining
+discussion, healthy discussion in the space. And so I get it. I mean, the Bitcoin moderators have
+the whole thing about if you don't kind of maintain some semblance of order within your
+walled garden, then it can turn into wild weeds and overgrowth and the sort of quality of
+the discussion can go down. But I think that it went down significantly just from that one rule
+and they were a bit heavy-handed about that. But we have so many different platforms now
+that we can discuss things on. And kind of to your point, I think it's almost asking for trouble
+of even talking about proposed consensus changes on social media because I mean, the vast majority
+of people on social media aren't even really relevant or participating
+in technical consensus changes for the network. Yeah, it can be maybe helpful to just find rough
+community consensus. But even then, if you're talking like Bitcoin Twitter, it's a tiny fraction
+of the Bitcoin ecosystem that's going to actively engage in a discussion around activation parameters
+for a covenant or something like that. It's interesting. I think you talked about that
+censorship ultimately prevents finding consensus. If there's not a good way and there's not an
+openness to just having the discussions, like having open, nuanced, calm, rational discussions,
+like obviously I'm not saying anyone should just go crazy on either side and start attacking
+people. But if you can't have that calm, rational discussion, you're never going to find consensus
+and ultimately you will then by default be choosing to leave Bitcoin as it is.
+Yeah, well, I mean, it's also a problem with each platform.
+Every discussion platform has its own set of game theory. So Twitter X, for example,
+with its short form, really prioritizes quick emotional reactions, dunking on people.
+It doesn't really matter if what you say is logical. If it emotes some sort of quick knee-jerk
+response, then it's going to get engagement and do well. And so that's the feedback loop that it
+creates of the type of interactions that you should expect to get on there. Reddit is kind
+of similar with the up-vote, down-vote system in the sense that if you go against the grain of
+what the terminally online Redditors are thinking, then you're just going to get downvoted into
+oblivion. And once again, the quick witty retorts that don't take much effort to read and parse
+and think through logically are going to outperform the longer form nuanced discussions.
+So I am kind of of the mind that for those longer form nuanced discussions, the better
+platforms are mailing lists or potentially just simple, linear discussion forums that
+aren't manipulated with up-votes, down-votes, like so on and so forth.
+Yeah, I know Delving Bitcoin has been a really good resource that I've enjoyed following. I
+haven't actually contributed much to it, but that I've enjoyed following. That's how I think a lot
+better discussion than any other platform I've been on. I haven't followed the mailing list,
+but that's just because I feel like actually following a mailing list is
+very time-consuming just in the format. So I haven't bothered too much with that,
+but Delving Bitcoin has been useful there. I want to kind of pull us back to why this
+discussion today. And it's felt like for a long time that we're kind of at a fork in the road
+in Bitcoin, where if we leave things as they are, there's general agreement, there's a very limited
+ability to support a good portion of the population on Bitcoin as it is today. Even
+when we're talking lightning, I think the number that you gave in Lugano was 100 million. I know
+there's been different estimates, but I think 100 million is probably the most consensus that I've
+seen around roughly how many users we could support, even with using lightning because
+they still require lighting channels for each of those users. And if we leave things as they are,
+we're necessarily choosing that we're going to limit who can access the base layer.
+And the bigger, or not bigger, but equally as important issue in my mind is that
+privacy on Bitcoin is obviously quite poor. I think you said in a podcast that we did while
+we were at the plain before in Lugano as well was essentially like privacy is the antithesis of how
+Bitcoin was designed. It's designed to be transparent, designed to reveal all of this
+information to the world. And to go against that grain is incredibly difficult with the
+way that it's built today. And so we kind of have these two paths right now where
+self-custody is going to get more and more difficult. And privacy has gotten more and more
+difficult even just in this year. We've seen how much harder that has gotten and how app-level
+privacy is very vulnerable to state-level attacks. So those are kind of the two pillars that I view
+as core to freedom of money. And it feels like we're kind of at a fork in the road. If we don't
+choose to improve those two things soon, that natural ossification is going to be too great.
+The weight of the network will be too great to be able to improve on those two things.
+I'm curious, what's the driver for you? I've heard you talk about this very loosely in the past,
+but I've never seen such a concerted effort from you to talk about this topic as I have at the
+Played Before I'm in Logano and your blog post on X recently. So I'm curious, what was kind of the
+breaking point, if you will, or what's the main driver behind you wanting to
+spark these discussions now? I think the short version of it is actually Bitcoin's success and
+related to that, the institution's arriving. And so I think the problem that I'm foreseeing is
+really complacency because number go up. And I think people aren't thinking too critically
+about why number go up. I think the short version that should make it more obvious is
+look at the price charts right now and then look at the activity and the mem pool on the
+blockchain. Anyone who's been around for a cycle or two should find this odd. And why is it odd?
+It's because, in my opinion, all of the activity is going through a few centralized providers. It's
+going through the ETFs, the custodians, and a large portion of the inflows into Bitcoin as a
+monetary system are now happening through a few gatekeepers. And so they're not using many on-chain
+transactions. And this is a way of scaling Bitcoin. And in fact, this was one of the first
+proposed ways to scale Bitcoin and how Fenny talked about, I think, in the first few months
+of the network. He said, oh, we'll just create a bunch of Bitcoin banks and they will offload a
+lot of the on-chain transactions. And so there are many ways that we can scale Bitcoin. But
+if we're not continuing to make improvements at the protocol level, then I expect that the
+scaling of Bitcoin will come with the tradeoffs of more centralization, less sovereignty, less
+privacy. In general, the continued erosion of several of the most valuable attributes of this
+network. And I put out some posts recently where I was basically saying that one of the things that
+should cause people concern is the fact that it's entirely possible for the Bitcoin exchange rate
+to go to the moon while we continue to erode these fundamental properties. And so that's why I think
+Bitcoin is an amazing system and it's gotten 15 years, almost 16 years so far, because the game
+theory and the incentives were all somewhat magically aligned. But I think that this is one
+particular area in the game theory where the incentives are not aligned optimally for the
+sort of the long-term health and longevity of the ecosystem. And so kind of tying that all
+together, I think that that actually can create a negative feedback loop where if we have more and
+more money and quote, unquote, Bitcoin adoption coming in through a few centralized providers,
+that actually further disincentivizes the continued improvement and evolution at the
+protocol level. Why? Because nobody is going to care about the protocol because they're not using
+the protocol. To put this in context of one of my favorite network protocols to talk about, SMTP,
+I think if you ask the average person right now, is email a global mass adoption success in terms
+of network protocols? And they would say, absolutely. I use email every day. Everybody I know uses
+email every day. It has billions and billions of users. But if you're a really technical guy like
+me and you look at the actual architecture of email network and how people are using it,
+nobody is actually using the email protocol. The email protocol is used by
+probably a few hundred or few thousand entities. 90% of people who are using quote, unquote,
+email are actually using one of 10 centralized providers. This is one of the ways that email
+was scaled out. That's a whole 40-year history that I've talked about of how that happened,
+because it wasn't always that way. In the early days, lots of individuals or almost every corporation
+ran their own email servers and they were running a quote, unquote, node on the email network.
+Over the decades, due to a variety of problems that came up mostly around spam,
+the bar to operate as a sovereign email node on the email network got higher and higher and higher
+until we ended up with basically a dozen gatekeepers owning a supermajority of the network.
+The point being, I find the path forward of Bitcoin doing that same thing to be
+fairly likely if we're not out here screaming about it and trying to prevent it. Maybe it's
+all for naught. Maybe I undertake all of this and yell about it. A few decades from now,
+we'll look back on my posts and people will say, well, he was right. We should have listened to him.
+Oh, well.
+Hopefully, that's not the outcome. Hopefully, we can prevent the SMTPization of Bitcoin becoming
+something that's much more centralized. I think you had on a really good point there that many
+people, especially in this bull run, they're not actually using Bitcoin. I run into this all the
+time of, especially when I'm talking with people about using the Lightning Network,
+talk to people, and they're like, Lightning is fantastic. It works perfectly for me.
+I never have any problems. Inevitably, when I get down to it, 99% of those users, I go,
+okay, what wallet are you using? And they go, oh, I'm using wallet of Satoshi and I'm paying
+another wallet of Satoshi user. Okay, yeah, you're not using Lightning. You're sending a
+transaction by just changing a field in a database. This is totally centralized. It's not
+actually using the Lightning Network. It's a growing theme. I've heard the same thing when
+people talk about privacy. They'll say, I'll just use an exchange to make payments and I'll
+pay from Coinbase because then I know that when I pay someone, they'll know that it came from
+Coinbase, but they're not going to know who it came from. They're not going to know the rest
+of my funds. They won't have any visibility into what I do. I see this as a growing, quote, unquote,
+solution that people see is I'll just use centralized providers. And I think even when
+we get into this promise that I was made by many of the loud voices in the space when I first got
+into Bitcoin, was basically there were two things. We'll build everything we need in layers. And
+anything that an altcoin or I'm sure they use the terminology shitcoin implements that's good,
+we'll bring it back into Bitcoin and we'll improve Bitcoin and we won't need that altcoin.
+It'll just test what we need. We'll build it into Bitcoin. Unfortunately,
+neither of those things really happened. None of the stuff from other chains has
+been brought back into Bitcoin. And then scaling in layers has become increasingly difficult.
+All there is really today is Lightning. And Lightning is a fascinating technology and can be
+very powerful, but has also not been the self-custodial success that I think it was also initially
+pitched as where actually scaling Lightning to individual users who actually have their own
+channel and hold their own keys has been minimal. And those promises haven't played out. And if we
+ossify those promises only become harder and harder to happen. So yeah, it's just really
+interesting to see that where even in the last I feel like six to 12 months, we've seen a shift
+in the Lightning space where Lightning supposed to have solved these problems. Again, these are
+promises that were made to me on social media. I'm not saying that it was actually feasible,
+but there were promises that were widely talked about in the space when I got into Bitcoin.
+And yet now we see many Lightning wallet providers shutting down because they're having too many
+issues solving the problems of Lightning for their users. We're seeing a shift in focus to
+custodial solutions, whether they're full custodians like in the traditional sense of
+wallet of Satoshi or they're custodians in the sense of an e-cashment where people want privacy
+and they want a simple UX. So they give up custody to get that. And it all hits on the point that you
+made where people are not actually using Bitcoin. I would argue because it's too hard to do so for
+self-custody in many scenarios and it's too hard to do so privately. So people are looking for
+alternative solutions. And because we don't have good building blocks to build out things that
+help with self-custody and things that help with privacy on Bitcoin, that path seems to be the
+one that's been chosen. I know I kind of got into a lot and fell down a rabbit hole there, but
+any kind of thoughts around that scale in layers idea? I'll bring it back into a concise question.
+So I know in your debate with Jimmy Song, one thing that you brought up that really struck me
+was you talked about if we don't make changes to Bitcoin that give more building blocks to
+developers, the scale in layers scenario becomes increasingly complex or even impossible to be
+able to scale out and build the things that we want. We're already seeing that with the limitations
+that ARC has, with the limitations that Spark has, with the ways that they're essentially
+having to hack around the lack of covenants. And we're already seeing that play out right now,
+which is even earlier than I expected to see that play out. But could you maybe dive into a
+little bit more of that idea of if we don't change Bitcoin, scaling in layers becomes
+increasingly complex or centralizes or introduces custody, et cetera?
+Yeah, I mean, pretty much all of these discussions come down to trade-offs. And a lot of it,
+especially if we're talking about how user adoption progresses, then often it's a trade-off
+between convenience and something else, convenience and privacy, convenience and security.
+Convenience and complexity in navigating a higher bar of knowledge required in order to
+be able to operate sovereignly or to actually use some of these protocols.
+So I would say over the past year, for example, we have seen a lot more quote-unquote
+layer to Bitcoin projects. But I think it's important to look at them and analyze them
+to see what are the trade-offs that are being made. And so you did comment on
+eCash mints, the trade-offs there being you can get really strong privacy, but generally
+with rug pull risk because you have a custodian running the mints. I think fedamint improves
+upon that somewhat. So what I'm seeing, and one of the reasons I keep talking about one of the
+reasons we want better building blocks at the base layer is because if you're building a layer
+2 right now, then most likely you're either doing pegging into a custodian or a federation,
+which is not great. Or if you want to make it more quote-unquote permissionless and
+censorship resistant, you're having to come up with some crazy game theory. And one of my favorite
+examples, I don't know if you're familiar with the spider chain concept by botanics or botanics,
+I'm not sure exactly how they pronounce it. But suffice to say that they've come up with this
+idea of sort of rolling cycles of multi-sig wallets that kind of act as the pegging slash staking
+layer in between the base chain and the second layer that they're building. And it's just,
+it's extremely complicated and it's hard to analyze the game theory. And this is one of the
+reasons why there's a number of kind of economic and technical parameters that are involved in
+all of this. And it's really hard to say what the optimal ones are. And so that's going to probably
+a multi-year process of them going through multiple phases to try to tease out how do we
+make this as secure as possible. Or if you look at BitVM, it's just, it's complicated and you're
+trying to do even fairly simple logic in a more permissionless manner. It has a lot of overhead.
+My favorite, though, was the one that just came out a week or so ago, the Covenants with
+hash collisions. The short version is, yeah, we can do Covenants on Bitcoin. The only caveat is
+you have to burn tens of millions of dollars worth of electricity doing proof of work in order to
+find some hash collisions. And so, look, that's really cool. You totally nerded out on this idea
+and you proved that something is technically possible, but I don't care what's technically
+possible if it's impractical and infeasible to the point that I don't think that it's actually
+going to get much adoption. We have to find the right path forward where the technical
+improvements in whatever we're building can actually be used. Otherwise, we're just sitting
+around mentally masturbating basically saying, oh, look at this really cool idea I came up with
+that nobody is ever going to use. So if we actually want to progress the ecosystem forward,
+we have to find the practical stuff. And so the way that I look at it, and I think it was actually
+Adam Back who used this term a number of years ago, but he said, I look at the Bitcoin-based
+layer as a cryptographic accumulator. And so I think that that makes a lot of sense in the context
+of second layers, especially if we're talking about the low-level functions and operations
+that will be most useful in order to make building permissionless second layers easier for people.
+And basically that is if there is some set of operations that is either
+impossible right now or requires you to do just a ton of gymnastics in order to recreate,
+but you can distill that down into one opcode on the Bitcoin network. That's where you have
+potential orders of magnitude, of improvement, of efficiency and developer friendliness that can
+boost and accelerate the future development of the entire ecosystem. That's how I think
+we should be looking at improvements to Bitcoin is if it can greatly simplify
+the burden that we're currently putting on Layer 2 developers, then it's something that
+we should be interested in. And so I wasn't able to go to the recent conference in Boston,
+opnext, but it looked like there was a lot of good discussions there. And one thing that I saw
+happening from some of the social media discussion was a lot of those Layer 2s,
+they're already building stuff, but they've done the analysis and they can show, in many cases,
+if we had this one opcode, it would greatly improve X, Y and Z aspects of our second Layer.
+And so that's why I'm in favor of things like opcat and re-enabling some of the old opcodes on
+Bitcoin. And I think that it's possible to do that safely. We don't need to be afraid of
+edge cases if we build a proper safety framework around it.
+Yeah, I definitely agree in that part about doing gymnastics, essentially, to build out
+these second layers is wild to see what they could look like, especially like ARC is all
+the rage these days, lots of people talking about it. Looking at the user experience that we could
+have with simple covenants and ARC, which is essentially enabling people to use lightning
+in an easier way. So it is expanding lightning, allowing things like channel factories has a
+lot of interesting use cases. Comparing that to the user experience of what we will have with
+covenantless ARC is wild because instead of being able to just use one or maybe two opcodes to
+commit to transactions only looking a certain way in the future, which is necessary for the ARC
+protocol to function smoothly. You have to do these massive pre-signed Bitcoin transaction
+collaborative things between all of the users and around and the ARC operator. And it gets crazy
+compared to what it could be. Like you said, with relatively simple changes to the base layer,
+something like opcat, something like opctv. And you can't assume that just because you can do
+something means that it will gain adoption. And the harder the user experience hurdle is to get over
+the less likely it is to actually see use. And the best case in these layer twos is generally
+that the user experience will be drastically worse than it could be with simple changes to Bitcoin.
+But in many of these examples, they actually lose the trustless nature that we come to accept
+with the base layer. Normally, our barrier of entry is I want to be able to get funds out no
+matter what. And there are generally unilateral exits and things like ARC and Spark. But a lot of
+the things like anything, basically anything using BitVM for a bridge is not trustless.
+You need one operator to one operator or a threshold of operators to be good or to be apathetic
+for funds to not be lost or stolen. And you lose that trustlessness because you don't have ways
+to build layer twos that have those trustless bridges. And yeah, it gets really weird because
+it looks like we're like trying to scale in layers right now when we don't actually have
+the building blocks to do it in a way that's approachable from a user's perspective or
+trustless or extremely trust minimized. Yeah, I mean, it's also ridiculous because we did
+three different forks to get Lightning Network enabled. I've seen some ossifiers say, well,
+we could have done Lightning Network without those things. And like, yes, you're technically
+correct. And it would have sucked even more. Like the game theory would have been even worse.
+You wouldn't have been able to have like infinitely long lived channels and so on and so
+forth. And so like once again, this is all about trade offs. I did have someone was asking me
+recently, like how we should be thinking about making protocol changes going forward because
+they felt like that something shifted where it used to be. Oh, you know, we have this great idea
+for a future of things that we could build on top of it. And like that's how we ended up saying,
+okay, we should we should add like these lock time op codes, and we should fix transaction
+malleability so that we can do, you know, Lightning Network channels and get all of those
+benefits. And, and it feels like I think a lot of people are pushing back against the idea of
+us just enabling more building blocks without specifically saying, okay, we're only doing
+it for this one use case. They're afraid that like, there's so many use cases out there,
+some of them might be bad, some of them might be immoral, somebody might get scammed because
+somebody, you know, builds Ponzi scheme or, or, you know, builds, you know, some sort of
+pump and dump, call it NFT project token project, whatever, you know, this is this is kind of
+tangential. But, you know, this is, I've seen the what you might call like the Bitcoin puritans
+or moralists overlapping a lot in the Bitcoin ossifier space of basically, you know, we, we,
+we basically want to gatekeep Bitcoin to only be what we consider to be pure monetary transactions.
+And if you're using Bitcoin for anything outside of what we deem to be appropriate,
+then, you know, you're a shit coin, or and we don't want you on our network. And, and that has
+kind of seeped into the whole, how do we improve Bitcoin space to be greatly afraid of, well, if
+you can't prove that this change won't be used in a way that I disagree with, then I'll never agree,
+you know, to run it on my node. I don't, I don't know. I don't even really want to engage with
+those type of people in argument. And I'm hopeful that they're just a tiny vocal minority. But,
+you know, it is, it is a fundamental conflicting perspective. And I think how people see Bitcoin
+and many people see Bitcoin in many different ways. And I've always been quite open about the
+fact that, you know, I'm a technologist and I see Bitcoin as a database. And, you know, there's a
+protocol around how you buy space in that database and make updates to it. And I'm kind of a hard core,
+you know, free market maximalist that if someone finds a use case for block space that fits within
+the constraints of the protocol, and they're willing to pay market rate for it,
+then they're not a spammer. They're just a consumer of block space. And the permissionless nature of
+the protocol is such that, you know, you don't get to gatekeep them. The only gatekeeping that
+happens is from an economic perspective. Yep, they pay a fee. That's the core spam filter.
+Memple policies aren't going to do it. You're not going to work around the game theory of
+privately passing a transaction to a miner. That's a whole other can of worms, I feel like.
+But it is tied in, because like you mentioned, a lot of the pushback that I see as well is
+basically, well, we don't know what this could cause. Yeah, it's the unknown, unknown argument.
+And, you know, that's one of, I don't think it came up specifically in my debate with Jimmy. He
+was smart enough not to go there, because ultimately, and I put this in my article that I published
+later, the unknown unknowns argument actually cancels each other out, because there are always
+unknown unknowns. And so the ossifiers often say, you know, any change that you make has unknown
+unknowns. But what they're unwilling to admit from what I've seen, because it's not convenient,
+is that not making changes also has unknown unknowns. And you're trying to quantify that
+one is more than the other, I think, is it's naive. And it goes, it's actually ahistorical.
+Just look at what happened to email, for example, not changing the email protocol had
+unknown unknowns that were unforeseeable, because what happened was the rest of the world changed
+as the protocol hit mass adoption, a lot of new problems came along, and they had to get solved.
+And, you know, one of the only people who tried to solve the spam problem at the SMTP
+layer was Adam Beck. But guess what? He got ignored. So I wonder if I'm going to, you know,
+end up being the Adam back of the Bitcoin protocol in regard to this particular issue.
+I certainly hope not. But point being, I expect, you know, if Bitcoin ossifies,
+the world will continue changing, there will be more problems, and those solutions are going to get
+haphazardly bolted on generally in a centralized manner. And we're just going to end up with more
+gatekeepers. And I think too, there are there are known problems that need to be solved.
+I would say I think Jimmy used the terminology of imminent and necessary as his barrier.
+I would say the lack of privacy is imminent and necessary. We're seeing people targeted
+based on the on chain activity that they had. Someone is now serving a sentence in jail,
+because one transaction that Chanalysis says was his was used to buy a domain for a centralized
+mixer, which was a whole nother topic that there were centralized mixers because privacy was poor.
+But he is said to have done that because there was no privacy in between that.
+What seems to have happened just as a side note is that he traded Bitcoin peer to peer frequently.
+And it's very, very likely that at a Bitcoin conference, he bought Bitcoin from the operator
+of Bitcoin Fog and then had that link directly to the funds that that Bitcoin Fog operator then
+used or he sold Bitcoin to that Bitcoin Fog operator, Bitcoin Fog operator used those to
+purchase what he needed. And the lack of privacy landed him in jail. I would say that that's
+pretty imminent and necessary that the average person has access to privacy to protect them from
+what at least over the last four years has been a clear attack against Bitcoin and against
+privacy and cryptocurrencies. Just like scaling, yes, maybe the fee market right now is ridiculously
+low, which is potentially a problem on its own. As you mentioned earlier that we're hitting a bull
+run and no one's using the chain, which is an interesting combination that has, as far as I
+know, never happened before in the history of Bitcoin. Yeah. And so actually, I had a presentation
+in Lugano. I don't know if you saw my block space economics presentation.
+Not yet, sadly. Yeah. And so this is another controversial topic that I'm sure will get
+me canceled by some people. But I believe another one of the very long term problems
+that we should be thinking about with Bitcoin is block space or you call it the block size debate.
+But I think that the block size debate of the 2015 to 2017 era was one thing. And I think that the
+block size debate of the future is going to be a very different thing. We've already decided on
+how we're prioritizing low cost of on-chain transaction versus low cost of auditing the
+system. That's already decided. I don't expect that to change. But what I do think will eventually
+become an issue will be fees, sustainable thermodynamic security and cost of sovereignty,
+basically. Some people have said, well, should everyone be able to own their own UTXO? That's
+kind of its own debate. But my point from my presentation that will probably be published in
+the next few months was that I think that we should desire to have an adjustable block size
+that takes into account all the different stakeholders in the ecosystem and prioritizes
+safety, of course. Prioritizes node operators not getting priced out from auditing the system,
+but also prioritizes the economics of block space. And so I would argue that right now,
+the block size should actually probably be smaller than it currently is if we had an
+appropriate adjustable block size algorithm. Yeah, it's a very interesting aside,
+but this is something that I've really liked about the game theory of Monero specifically.
+And it may not be the exact approach that you're mentioning, and I definitely want to see that
+presentation. So I did mention Monero. In my presentation, I went through every Bitcoin
+BIP related to block size, and I explained why they all sucked. And really, the only one that I
+said didn't suck was Peter Willis, one that was based upon network bandwidth growth. I felt like
+that was an appropriate safety-based one, but it still didn't take into account economics.
+And then I went out and I looked at all of the other systems, at least all of the other major
+cryptocurrencies that have adjustable block sizes and tried to understand the game theory around
+them. And the only one that I thought didn't completely suck was actually Monero. And the
+main reason for that, as I'm sure you're well aware, is because although it does give miners
+the ability to increase the block size, they can only do that if they also increase the fees.
+So there's actually that economic component. Yeah, that's one of the beautiful things is
+if they choose to just arbitrarily increase the block size, they sacrifice subsidy, and so they
+have to make up for it in fees, or the game theory of financial incentives will break down for them,
+and they'll be burning money to be able to do so. It's a really fascinating system.
+And one not meant for just permanently increasing the block size, but handling short-term
+amounts of increased on-chain activity and then shrinking blocks back down to a size that's
+reasonable. It's a really interesting one. I don't want to get into the details, but I'm
+glad that you looked into it and covered it a bit too, because it's one that's been working
+very, very well in practice for a decade now. So circling back to this topic of ossification,
+I think maybe the harder thing to actually discuss. I love the theory, but I'm really curious
+on what you think for what are the real steps we take towards helping Bitcoin to continue to evolve.
+I know you talked about block size in that presentation. We've talked a lot about
+covenants and other potential changes like OpCat. You briefly mentioned the great script
+restoration, which we'll move to a little bit more later with the listener question. But
+what are the actual things that we can do? It feels like to me, every day it's getting
+murkier as to how would I go about, hey, I have this perfect privacy Bitcoin improvement proposal.
+How do I get that done? Or is that something that's worth pursuing? So maybe just your thoughts
+on what are the actual steps that we can take as people who want to see changes continue to
+happen in Bitcoin? Part of the problem is that there is no well-defined process and I would say
+there cannot be a well-defined process because ultimately, what does it all come down to?
+Rough consensus and running code. It's very hard to quantify. That's why it is rough consensus.
+But I think one potential problem is that there just hasn't been an improvement proposal that has
+gained significant momentum and collaboration from people. It seems like it's always been
+like a few people over here, a few people over there. And really, if you want to build consensus,
+it's kind of its own bootstrapping and network effect problem. You have to actually
+get boots on the ground and start talking to a lot of people and get them interested and get
+them devoting time into contributing to that idea and voicing support for it and trying to move it
+forward. It seems like Jeremy Rubin was the last person who really tried to do that.
+Unfortunately, he rubbed some people the wrong way. It is kind of a delicate process and it may
+even be the case that you should not champion your own proposal. I think some people may see
+that as a red flag in and of itself. So maybe if there's something that you really want,
+it's better for you to find other reputable people in the space to champion it.
+Yeah, I definitely can see that. I feel like that's been part of the reason why the Covenant's
+discussion has been much more pressing. Jeremy proposed CTV in 2020, maybe 2021, but I think
+2020. Only really now have we circled back to serious discussion around the concept of Covenant.
+It's not necessarily just OP CTV. There's a lot of other proposals in OPCAT now,
+and great script restoration. But it feels like that's happened because a lot more people in
+the space, not just the devs working on the proposals, are actually willing to talk about
+this stuff publicly and have conversations around it. I think that's definitely a key point.
+Rough consensus is very, very rough. It does require almost like a... It's more a social
+aspect. Obviously, the technical proposal has to be sound for there to be any chance. Obviously,
+that's how it should be, but it ends up being more of a social effort than it is a technical one.
+Once you have a good technical proposal and that hurdle is just so high these days, it feels like.
+Yeah. Here's a good example. There was a panel at Lugano about OPCAT, or at least it was about
+Covenant and later twos. There was five or six people on the stage, all very well-known
+Bitcoin folks, and they all said that they liked OPCAT. However, one of them said,
+I'm against it for social reasons rather than technical reasons, simply because they're pissed
+off with taproot wizards and Udi, and him going off and triggering people on social media.
+This is the perfect example of this process going wrong, is you're letting your emotions
+get in the way of the sort of cold, stoic logic of looking at these things and how they're
+going to potentially improve the network. Yeah. Choosing based on if people you like
+support something and if people you don't like don't support something is a very interesting bar
+for what changes should happen to Bitcoin, but I have seen a lot of that. That's not a one-off
+case. There's a lot of people who say, as this person supports it, I won't support it.
+I also think that an appropriate description of Bitcoin consensus is like a non-Newtonian fluid,
+and this is where some of the delicate social nature comes in, is that if there's some
+unquantifiable velocity of force at which if you push too hard, then it turns into a brick wall,
+and so you just need to ease into it slowly and steadily, slowly building consensus and
+getting your champions together to show that your proposal does not have any substantial
+objections. Yeah, it definitely seems like the way, and I think that might be one of the reasons
+why covenants have gotten further than I expect, is that it has been a low and slow
+conversation over the past few years that's just continued and slowly grown and grown.
+I would love to hear if there's any specific proposal or just general change or improvement
+that you're particularly excited for or particularly would want to see happen.
+Obviously, I know maybe there's some things that just can never happen that you would love,
+but maybe on the practical side, something that you think needs to happen in Bitcoin
+that you'd like to see adopted. Yeah, there are many things. I think
+my highest priority at the moment would be basic building blocks that will help improve
+development of Layer 2 networks. Opcat seems to be one of those. There's a few other opcodes
+out there that Layer 2 developers seem to be in favor of, and whether that happens as a one-off
+or perhaps through the great script restoration, then I'm ambivalent. I do like great script
+restoration because I feel like it would be better for us to just do a one-and-done. Just
+get it over with rather than fighting about one-off opcodes here and there. If we can have
+one clean sweep of that, that would be great. Medium term, over the next 10 to 20 years,
+I think the quantum computing issue is going to potentially reach a critical point. I gave
+a presentation about that a month or so ago. It's sufficiently far away that I think people
+aren't concerned about it, but also as we know, it's very difficult to change Bitcoin. This particular
+change, I believe, is going to violate some principles of Bitcoin one way or another. The
+point being that we're basically going to have to decide how to deal with non-quantum-safe
+Bitcoin funds, Bitcoin UTXOs at some point. We can start the process of agreeing upon what the
+best quantum-safe cryptography is that we should implement in Bitcoin. But even once we do that
+and once we kick off the migration process, that will take years and years, I think, for people
+to actually migrate. Eventually, not everyone is going to migrate. At least part of that is due
+to lost funds. Then the real question is going to become, do we either sit on our hands and allow
+lost funds to be stolen by quantum adversaries? Or do we say at some point, okay, this has gone
+far enough and we're going to do a soft fork to essentially make those funds unspendable?
+One way or another, that's going to violate a principle of basically the principle of your
+keys, your coins. Either those coins are going to get stolen even though the adversary didn't
+originally have the keys or the keys will no longer be useful if that owner still has them.
+Yeah. Like you said, that's something that has to happen so far ahead of when quantum computers,
+quantum computers are actually viable. That's an interesting one that does need conversation
+sooner rather than later. Then even looking out further beyond that is more of the block
+space economic stuff of how are we going to deal with the long-term thermodynamic security.
+The main reason why I think that's important and so complicated is that there are too many variables
+and in fact future unknown unknowns of the supply and demand of block space.
+I think people might raise their eyebrows and say, well, what do you mean there's
+unknowns about the supply of block space? Well, that's where layer two has actually
+come into play. Layer two's and centralized providers is effectively, if a lot of adoption
+happens through centralized custodians or if certain layer twos gain sufficient mass adoption,
+those things can actually effectively act like a block size increase from the economic perspective
+as they are offloading a lot of demand from the base blockchain. There's a lot of transactions
+that might have originally happened on the base blockchain that no longer happen. That can cause
+a drop in fees for miners. Simply because we don't know in the long-term future
+what all of these different variables of supply and demand are going to work out to,
+I think that having a static block size limit, whatever it is, there is no magic number,
+I think that is the right number. One of the main reasons that a lot of the block size proposals
+back in the day were dumb is that they were just magic numbers. I think in order to really
+fix this aspect of the game theory of Bitcoin as an ecosystem that, similar to how we have
+difficulty adjustments right now for the miners, I think we need to have block space adjustments
+that take into account all the different variables that can lead to a healthier,
+unhealthy environment for the economics of block space.
+Yeah, that's really fascinating. I'm glad you pointed out things further down the line as well
+because I think I can get caught up in the current things like just looking at
+coveted opcodes or something like that and not thinking long-term about what would this
+actually look like for quantum-resistant crypto for changing block size, something like that.
+I'm glad you pointed out that there's no perfect block size. I think there's this
+weird assumption that either four megabytes is just perfect, what we've chosen is somehow
+perfect and we should never change it, or that we know exactly what the size should be. We should
+have one megabyte block sizes or something. I'm not really sure how people can think that they
+know exactly what the perfect block size is when we're talking hopefully hundreds or maybe even
+thousands of years in the future. There's no way to predict what it's going to look like.
+That requires a great degree of arrogance. Also, I think that
+one of the reasons that we should desire an algorithm to adjust the block size or block space
+is that we want really what I'm calling Goldie blocks. You don't want small blocks or big blocks,
+you want Goldie blocks. What are Goldie blocks? I consider this to be
+block space that is set sufficiently low enough that there is constant fee pressure.
+You're not getting basically free, cheap transactions. The reason why you want this
+constant backlog with a robust fee market is twofold and possibly more. One, of course,
+we need to pay the miners and we need to make this sustainable in perpetuity as the subsidy
+continues having. Two, it actually incentivizes people to use block space efficiently. If your
+blocks are too big, nobody is going to even bother building Layer 2 solutions, at least not for
+cheap transactions, maybe if there's other functionality. If your blocks are too small
+and the fees are too high, then even that can cause problems where I foresee a potential future
+where even the Layer 2s have issues. Layer 2s need to be able to settle back on to the main
+chain and let's envision a future where we do get enough protocol improvements that there is a really
+robust and vibrant thriving Layer 2 ecosystem, but the blocks are still really, really tiny.
+I could easily see game theory start to break down if the Layer 2s are the primary consumers
+of block space and they're all competing with each other over this. Once again, it's a type of
+pure free market capitalism, but that could be problematic and in fact ultimately harm the
+thriving Layer 2 ecosystem. We're thinking really out in the future right now, there's so many
+variables we're probably not even imagining it's very difficult to even talk about, but I'm just
+trying to tease out some of the potential future problems because if we agree that natural ossification
+is a thing, then I think that if we wait so long until these problems actually become problems,
+then we may not actually be able to do anything to adjust course and be able to resolve them at
+the base Layer. Yeah, absolutely. I think quantum computers are a great example of that because if
+they're actually imminent, it's probably too late. It's too late for most people's funds. Maybe you
+can save some, but that process is going to take a long time. I've got one last question for you
+and then I have a bunch of really good listener questions that people dropped on X when I let
+them know that we were going to be talking about this. The last question that I have, we've touched
+on it a little bit throughout, but not in a really concerted way. I just wanted to circle back.
+We touched on self-custody a little bit more or building better Layer 2s,
+but when we talk about privacy, what's your view around how that fits in? Can Bitcoin continue
+to be called freedom money if privacy is not approachable for the average person? Is that
+something that you view as essential as improving self-custody or ensuring that we can build
+proper, trustless Layer 2s? Where do you see that fitting into this conversation?
+I mean, I think it's probably a lost cause to get what you might call strong privacy built into
+Bitcoin base layer and that it's a better path forward for developers to build strong
+privacy onto second layers because you have so much more leeway and flexibility in how you
+build them. That goes back to, well, we need to actually make it easier for people to build
+second layers so that they can do that. It could get pretty interesting right now,
+even if you give up on the idea of sovereign lightning network as a mainstream adoption
+thing for people to be using, I do think lightning network could easily have a place in the future
+of a vibrant Layer 2 ecosystem of essentially acting as bridges between the different Layer
+2s. That could get pretty interesting from a privacy perspective. If you could hop between
+any number of Layer 2s, trustlessly, instantaneously, would that hopefully be able to greatly improve
+privacy? Of course, as we're well aware, the state of privacy on the lightning network continues to be
+explored and weaknesses continue to be found and we'll need to continue hardening it from that
+perspective. Yeah, absolutely. To summarize, basically, we need to enable better building blocks
+so that the scale of layers actually can become true. It's kind of the crux of it and then we
+can do better privacy there. Maybe this is controversial, but one of the reasons why I
+don't really tell people to go use mixers is because I'm not convinced that that's going to be a
+sustainable long-term solution. I expect that, well, if the current course continues, that most
+people are going to get priced out of using mixers on chain unless we get other technical
+improvements that actually economically incentivize people to do mixing. I don't see that being
+sustainable long-term. Yeah, absolutely. I would agree that they're really a short-term bandaid and
+if things happen to the fee market as people expect, it's not going to be a long-term solution.
+There's the double issue of they have traditionally either required very poor user experience or a
+centralized entity to help coordination. That's not necessarily a technical requirement, but that's
+how it's played out so far, and that makes them much more vulnerable than a more decentralized layer
+too. Yeah, man, a lot of different things going on here, but I feel like I got a lot more clarity
+out of our conversations. Thank you for our time diving through my questions, but if you're down,
+I've got a few listener questions that we can walk through and maybe just kind of do a rapid fire
+Q&A. Sure. Okay, awesome. You did touch on the Great Script Restoration already a bit.
+Was there anything you wanted to add? Bob Summerwell said, I would love to hear your thoughts
+on the Great Script Restoration as a potential let's fix it all. I think you already pretty
+much answered that, saying that that's one of the reasons you like it. You could kind of do it on
+one go, but anything else you want to add there? Yeah, so doing it all in one go, also the nice
+thing is that Rusty is really focusing on safety here. And so one of the major aspects and changes
+to the Great Script Restoration is essentially you're coming up with a new way of kind of
+counting the computational resources required to execute a script. We've had a few kind of
+half-assed ways of doing that over the years by like counting signature operations and stuff,
+but that hasn't been able to capture all the potential complexity of validating transactions.
+So Rusty seems to be making good progress on that. And I think he actually just published a draft
+BIPT for it in the past week. So it still could be a year or several years away from happening,
+but I'll be keeping an eye on it. Yeah, absolutely. I'll be seeing if you choose to champion it.
+It'll be interesting. See if we can get a collective together to push through something
+like that. It would be really, really enjoyable to have a lot more building blocks, especially
+now that I'm getting more on the Bitcoin dev side on on-chain and lightning. It's been interesting
+trying to see what it's like to actually build more advanced solutions around it.
+The other main focus of really a couple questions was basically what's your view on getting better
+privacy at the base layer? I know we just touched on this a little bit, but I want to shift the
+focus a little bit. So like Kaobinerv, who's a dev in the Monero community, he asked,
+what's your stance on privacy, BIPTs? If opt-in privacy could be added today magically for the
+computational and bandwidth cost of a Schnur signature, would you add it? Or do you see
+privacy as best done by L2 solutions? I guess getting more to the theoretical, if you could
+have that, would you be behind it versus the pragmatic, which is probably that you wouldn't
+be able to get something like that through consensus? Even if you could, almost every
+privacy solution is once again beholden to the network effect problem. The great quote is,
+privacy only extends so far as the cooperation of one's peers. From that perspective, I think,
+and in a practical perspective, it might be better and more sensible to have
+layer twos, specific protocols that are for privacy so that you get more people over
+there using them. So to give a kind of counter example, I think that one of the best practical
+ways that we could improve Bitcoin privacy today without protocol changes would be to get
+everybody to use PayJoin. It's already a thing. All we have to do is get people to actually
+implement that interactive protocol whenever you're accepting payments. But I don't think
+it's going to happen. Just asking people to do anything seems to be too high of a burden.
+Yeah, the user experience hurdle is definitely the tricky part of gaining adoption there. It's
+best when you can get privacy on accident. Just using something for the user experience,
+I think that was one of the ideas behind how lightning privacy would be helpful,
+is that people would use lightning for cheaper transactions and they would necessarily get
+better privacy because you're not publishing every transaction on chain. And that is one of the
+good benefits there. The hard part is the user experience of lightning hasn't quite lived up
+to expectations, but I think that's definitely an issue there, is the user experience getting
+there. I guess if you could do it in a perfect way where the user experience was just the same
+as making a standard transaction, you could probably get much better adoption. But if we're
+still looking at needing to move coffee transactions to a second layer, base layer changes could help
+that bridge, especially when you're moving funds into a layer too. That's one of the weak points
+right now of lightning is the on chain footprint is quite detrimental unless you do things a very
+specific way. So those on chain changes do help those layers that get built on top have better
+privacy and the bridging in and bridging out or pegging in and pegging out scenario. But yeah,
+thanks for jumping on that one. Another one to get into, I think we already answered quite a
+few of these in just our conversations, but another one that's an interesting kind of thought
+experiment. And I think we'll probably end on this one is if you could rewrite Bitcoin today as a
+brand new protocol, what would the core of it be? What are the core kind of differences that you
+would have in a Bitcoin that you think could solve the problems that we've talked about throughout
+today? It's a pretty general question. So just dive in, maybe if there's one or two specific
+things that you would change if you had the ability to kind of wave a wand and build Bitcoin
+differently. Yeah, that's a tricky one. I mean, there are a number of bugs in Bitcoin, right?
+There's this other project that's basically the great consensus cleanup or something like that,
+which are just a bunch of outstanding edge cases and issues and actually safety issues,
+some of which are kind of related to block size debate and ensuring that people can't do a sort
+of denial of service on nodes by constructing weird transactions and stuff. Bitcoin, the tricky
+thing is, as I said earlier, you really don't want to screw with the game theory.
+And so I think I would go back to really what we've already spent a lot of time talking about,
+which is like the one aspect of the Bitcoin game theory that I think needs improving is this sort
+of idea around block space economics. But that is a long term problem. I'm not really convinced that
+there's anything at the protocol layer that would necessarily be a 10x
+improvement for user experience and adoption. I think most of the friction around that just
+has to do with key management. And I don't have a fundamental solution for a protocol change
+that would fix a lot of the key management issues. Yeah, that's one where it just comes
+down to that initial barrier of, are you willing to take personal responsibility? And that's always
+kind of going to be the barrier of entry here. We can minimize that and abstract it away as much
+as possible. But if you can't keep something secret, you can't use Bitcoin or anything like it.
+That'll always be kind of the lower bar that people have to be willing to jump over to be able to
+use these things. Awesome. Well, I think that's all of the main questions that I had. Like I said,
+I think we hit on the majority of these already in our discussions. So if you listeners asked a
+question and I didn't cover it, let me know. And I'll see if I can get a text response or something
+from a lot. But I think we walked through the vast majority of it. Any last thoughts or kind
+of closing things you want to bring up, Jameson? Well, in closing, basically the same as in
+opening, which is the most important thing that we can do is continue talking about
+these issues. I think the most dangerous thing that we can do is be complacent, rest upon our
+laurels, declare victory. Because if we declare victory today, I can assure you we will not retain
+a victorious position over the long term. Very well said. Well, thank you so much for jumping
+on. Glad you're willing to do this. And glad we got to talk through what I think is one of the
+most pressing topics in the Bitcoin space right now. So hopefully this will help people better
+understand a lot of the thought process behind different views and better understand kind of
+where we're coming from when we say that there are some good ways that we can make changes to
+Bitcoin to keep it a useful tool for freedom, to keep it free to money. So thank you so much for
+your time, Jameson. Thanks for having me.
