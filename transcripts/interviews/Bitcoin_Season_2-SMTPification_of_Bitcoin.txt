@@ -1,0 +1,249 @@
+When you're using a public protocol that nobody owns, there's network effects at play.
+And part of the network effects is that, you know, the more people that are using it, the more valuable the network becomes, and that's good.
+But the flip side and where ossification comes in is that as the network grows larger, it also sort of gets crushed underneath its own weight of the difficulty of coordinating changes.
+You can almost think of it as steering a ship, you know, where there's hardly even a rudder. No one's controlling the rudder, but, you know, it's pretty easy to steer a tiny speedboat.
+But when you get up to like cruise ship or aircraft carrier level size ships, it's much, much more difficult to actually change the course, the direction of that.
+And that's simply its physics, right? It's mass. It's the total amount of energy required in order to effectively change the velocity of a thing.
+And so I think that network protocols, in a sense, have their own sort of velocity and mass and other physics attributes, except, you know, this is in cyberspace rather than meat space.
+Welcome back to Bitcoin season two. I'm Charlie Spears, Bitcoin season two features, new faces and new topics on the oldest and really only blockchain worth paying attention to Bitcoin.
+But today, instead of a new face, we have one of the OGs of Bitcoiners, Bitcoin or Jameson Lobb, Cypherpunk, Casa Co founder, Angel Investor, highly prolific writer.
+So I'm excited to have them on today. We're going to talk about the SMTP of Bitcoin. If you don't know what that is, I'll have them give some context and explain it.
+But before we go any further, welcome to Bitcoin season two, Jameson. Thanks for coming.
+So I don't, you know, we could try to do a little intro, but maybe for my particular audience, it might be helpful just to put this in context.
+You have a custom taproot wizard. This is a pretty fun PFP and pretty notable in the space.
+Can you, what is your custom taproot wizard? And in the context of that, maybe describe your background.
+Right. Well, when the taproot wizards reached out and asked if I'd be interested in having one, I said that my only stipulation was that it not break my 100k laser ray.
+I promised that I made several years ago. And so they, they upheld that and they basically incorporated some imagery that I had been using for many years, which is the spells of Genesis Satoshi card.
+And to be clear, I've never owned a spells of Genesis NFT or anything like that. I right click and saved that card and actually modified it and used it as my Twitter banner for many, many years.
+Just because I thought it was, you know, a cool imagery of basically Satoshi running, you know, blockchain spells and manipulating the ledger into existence.
+So short version of like all of this NFT stuff in my perspective on it is that I'm pretty neutral. I'm not, I'm not like a JPEG trader.
+I'm not much of any type of trader really, but I also am not like morally opposed to using Bitcoin's blockchain for non financial purposes.
+I am first and foremost a computer scientist. And so I've always seen Bitcoin as a new type of database that has some interesting properties that people can leverage for non financial purposes.
+And when it comes to the whole spam debate, the answer to that is of course economics and he who pays for the block space gets to use it as long as they're following the rest of the rules that network.
+So yes, I technically own a few NFTs, most of which have been gifted to me. I think I've only ever purchased one NFT.
+That was probably back in 2018 2019, but I purchased it because it's a OG meme from before NFTs were a thing. And the short version of that is that I own the seven legged smiling spider, which is this meme from like the early 2000s.
+And it's kind of meta, actually, because in that meme, it was this email thread going back and forth between a guy who got an incorrect bill from his utility provider claiming that he owed them a bunch of money and he just screwed around with them and said,
+I don't have any money, but I can pay you in this crudely MS paint drawing of a spider. And so it was essentially he was trying to pay them with a really crappy NFT.
+So you know, multiple layers of kind of humor and and meme history there. And who knows if it'll ever be worth anything, but I just found it sufficiently amusing that I wanted to be able to say that I owned it.
+So, you know, you frame yourselves as like you're pretty neutral about a lot of these topics. I think that even extends into the context of blockchains in general.
+You, I would say are a Bitcoin or Bitcoin or but you are not Bitcoin only. Can you give a I think this may help provide some context for our discussion.
+Casa is Bitcoin and Ethereum you yourself, I think I've said you own Bitcoin and Ethereum. Can you just kind of qualify this and discuss this a little bit?
+Right. I mean, I've known that I've owned a number of different crypto assets over the years and the short version of why that is the case. It's because I am a curious person.
+Why did I get interested in Bitcoin in the first place? I was curious. I wanted to learn more about it. And so over the years when I've wanted to learn more about various assets that I thought were interesting enough to actually play around with, then I buy a little bit of it.
+And so, like I said, I'm not a trader or much of an investor, while I technically own a variety of different crypto assets. In terms of value, they're all negligible.
+You know, compared to my Bitcoin holdings, Bitcoin is my savings, my long term store of value. But I'm not against learning more about other things. And usually you get to a point where in order to learn more about it, you have to actually use it.
+So as a result, you know, I've collected a variety of different tokens over the years. And then, you know, sometimes I get rid of all of them all because I am no longer interested in it, or I think it's silly or for whatever reason is not going to be worth holding on to.
+So it's, it's, I think the nature of permissionless space that you're going to see a plethora and diversity of different things out there, and that yes, a lot of them are going to be crap. That is just sort of the nature of people creating things.
+Only a tiny fraction of these things are going to have longevity and eventually find product market fit and so on and so forth. And I am not against experimentation.
+You know, we can obviously go down a really far rabbit hole of like, you know, at what point does something become sufficient competitor to Bitcoin that it's sketchy for you to be using it or supporting it or whatever.
+And like, I mostly fell into that camp during the scaling wars, you know, when there were multiple other things that were literally claiming to be Bitcoin, you know, I felt like, you know, that was actually an attack on Bitcoin.
+In general, I don't consider most other projects to be an attack on Bitcoin. It's just capitalism, people exploring their own incentives and desires to be able to offer things that are either just not possible to do on Bitcoin or just so difficult to do that it's not worth jumping through all of the hoops when you can start over from scratch or start over on a different protocol or platform.
+Yeah, I have a similar view. I like to say that the same open mindedness and curiosity I had, which led me to Bitcoin many years ago, I still try to maintain, which means an openness to new concepts. And so I think that kind of constant discovery and curiosity is ultimately made me a better
+Bitcoiner. So, let's, let's take this to kind of the meat of what I want to talk about with you, which is this common topic or thread you've, you've had over the, I think increasingly over the past year, which I think you summarize as the SMT SMTP if vacation of Bitcoin, I'm
+sure you kind of intro this topic. What is this? And what's the high level message you have on this topic?
+So it's just, it's a more specific way of saying ossification and the potential negative ramifications of what can happen with ossification. So, you know, there's been a lot of debate around ossification of Bitcoin and whether we should seek to sort of preemptively
+ossify for the safety of the protocol and network, or should we continue trying to make improvements to it, even though we understand that ossification is basically inevitable, it's going to get more and more difficult to make changes to it.
+So what is ossification? It basically means slowing down of development and even the ability to make changes to a network protocol. The reason for this is it's really just around the dynamics of the fact that when you're, you're using a public protocol that nobody owns.
+There's network effects at play. And part of the network effects is that, you know, the more people that are using it, the more valuable the network becomes, and that's good.
+But the flip side and where ossification comes in is that as the network grows larger, it also sort of gets crushed underneath its own weight of the difficulty of coordinating changes across all the people who are operating on the network.
+It becomes more and more difficult. You can almost think of it as, as steering a ship, you know, where there's, there's hardly even a rudder, no one's controlling the rudder, but, you know, it's, it's pretty easy to steer a tiny speedboat.
+But when you get up to like cruise ship or aircraft carrier level size ships, it's much, much more difficult to actually change the course, the direction of that. And that's simply its physics, right? It's mass.
+It's, it's the total amount of energy required in order to effectively change the velocity of a thing. And so I think that network protocols, in a sense, have their own sort of velocity and mass and other physics attributes, except, you know, this is in cyberspace rather than meat space.
+Bitcoin Season 2 is brought to you by Botanix. Botanix Labs is pioneering a new direction for DeFi with the first EVM L2 running on Bitcoin that's built to be forward secure, decentralized and share gas fees generated by the network with users.
+See the future of DeFi at Botanix. BotanixLabs.xyz.
+So you warn against ossification at this time or, and you put it in context of like how email itself has become pretty much condensed to a couple of handfuls of servers.
+I think a lot of people may not understand this today.
+Could you kind of explain this analogy a bit further?
+Yeah. And, you know, we could talk about it for hours and I have, because this is a like 40 to 50 year long history of what happened to SMTP, which is the email protocol, where essentially,
+it was simultaneously a massive success, but also it's a failure. And not many people look at it from the sense of how it's failed because most email users today are so far abstracted away from the actual protocol.
+They don't even realize that they're not using the protocol.
+So, you know, in the early days in the like late 70s, early 80s, when SMTP was a baby, pretty much everybody who was using it was running their own SMTP server.
+So think of it similar to running your own Bitcoin node.
+And it worked really well for a couple of decades until the 90s until AOL came around and that really was the first wave of mainstream adoption of Internet users.
+And it turned out that this created a whole bunch of new stressors and attacks and threats against email as a protocol.
+And the primary problem here was that email as a protocol was designed to be highly resilient and guarantee the delivery of messages.
+The idea behind it was that it was expected that if someone was trying to send you a message, you would want to receive it.
+And of course, as millions of people came on board through AOL and in those early early ISPs, so too also came the more malicious people who discovered that email was a new pipeline to effectively deliver mass amounts of advertisement extremely cheaply compared to traditional methods.
+So spam became a thing and the email protocol had absolutely no spam protection mechanisms because it had simply never been a threat that anyone had worried about.
+So what happened from then on out over the next 10, 15 years is that a variety of anti-spam mechanisms were kind of bolted on top of the protocol rather than trying to solve spam at the protocol level.
+We started creating all of these centralized solutions, which was it was the easy and obvious way to try to mitigate spam because a lot of the early attempts at doing it in a more decentralized fashion where you would run like Bayesian filters and stuff on the client side.
+Those all failed because trying to do spam filtering just based on content and this ties into Bitcoin spam debate as well. It's a whack-a-mole game.
+You're basically signing up for a never ending cat and mouse back and forth type of thing.
+And so ultimately, after about a decade, the spam mechanisms that ended up being put into place were mostly centralized providers, various gatekeepers, blacklisting mechanisms, reputation mechanisms for IP addresses and domain names.
+And so now the cost of essentially onboarding yourself into the system of running your own sovereign SMTP server means that you also have all of these third parties that you need to engage in relationships with.
+And so this is kind of the meta protocol that has morphed out of SMTP and created this monster of a protocol that's not really well defined because it's more of a human meat space relationship protocol.
+And so suffice to say that this kept raising the costs of operating on the email network to the point that unless you're probably like a Fortune 500 company or some really huge organization where you can have a lot of dedicated people that are focused on all of the problems that come along with this,
+then you're probably just going to default to using one of the big 10 providers, Apple, Google, Microsoft, so on, because they are the behemoths, they are the gatekeepers now.
+And this is something that I learned a lot about because I spent the first decade of my career actually as a developer at an email marketing company, and I learned a lot about what really happens under the hood with email.
+And then even today, as the Chief Security Officer at CASA and managing a lot of our infrastructure, we have to do similar stuff with our own email reputation and closely monitor it and make sure that we reach out to ISPs and blacklists and stuff if we ever accidentally get on them.
+So you describe this scenario where a protocol becomes ossified and new ways of responding to a changing world that protocol lives in seem to have to be like solved at the social, they have to be solved exogenously.
+Well, they don't have to be, but it's the easy convenient.
+Yeah, true. And what's interesting to me is, and maybe I'm more aware of this lately, but this seems to be an increasing voice in the Bitcoin camp.
+I hear many people even justify the pursuit of trying to use meat space regulations and like real world like government structures to basically ameliorate or reduce the risk, perceived risk of trust assumptions which are required as far as we know, at the base layer of Bitcoin.
+In order to scale or maybe increase access to the sliding scale of sovereignty on Bitcoin.
+But what, what, let's look at like, how would we improve Bitcoin at a protocol layer instead of like trying to say we're going to try to regulate BlackRock to make sure they don't steal our Bitcoin.
+What does it look like for us to begin solving or addressing some of these issues at the protocol layer?
+I heard you, I've heard you use the term adding building blocks to Bitcoin. Can you describe what this, what this means?
+Right. So, you know, you look out on the landscape of what people are building, especially when it comes to layer twos. And I think you find that there's missing functionality.
+And the result of this is that a lot of the layer twos are not what I would call like fully permissionless. This mostly has to do with how do you peg Bitcoin into some other anchored system.
+And, you know, the easy way to do that is, oh, you just send all your money to a trusted third party, and then they offer that functionality on top of it.
+And maybe that's a centralized exchange or a custodian, or maybe it's even something different like an eCash mint.
+And, you know, this is where things get complicated, you know, and I'm not an eCash hater.
+Obviously, eCash can provide some additional interesting attributes, if you're willing to make those trade-offs.
+I think another, there's several other good examples of the kind of the links of what people are having to go to, to try to work around the limitations of the base protocol.
+One of those good examples we've actually got here at the bottom of the screen.
+Shout out to our sponsor Botanix.
+Yeah, so if anyone has, you know, looked into the spider chain, it's a complicated way of trying to come up with a permissionless pegging system.
+Because they basically said, you know, we looked out on the side chain ecosystem and the biggest side chains out there, like Liquid and RSK, you know, those are federations.
+And while Federation is arguably better than just a single trusted third party, it's still a semi-trusted, you know, loose-knit organization.
+And so if you want to have a better way of doing a peg back and forth in and out of some sort of anchored system, then we need to have some stronger game theory that is not reliant upon third parties cooperating.
+You know, the strongest version of that, of course, is Lightning Network, where you're essentially engaging in these two-of-two multi-sig smart contract arrangements with your counterparties when you're setting up channels.
+And then, of course, there's a bunch of other game theory, essentially, around making sure that your counterparty can't screw you.
+And if they do try to screw you, you can screw them. You know, the whole idea is you make it too risky and too costly to try to screw over the other person in the system.
+But it gets complicated, right? Lightning is a pretty complicated protocol.
+And point being, it would be nice if there was just a more straightforward way where developers could set up locking scripts so that people could encumber their coins into a side chain into some other second-layer solution
+and then be able to also withdraw their coins in a similar fashion, much like when you open and close Lightning channels.
+And, you know, there's probably going to have to be time delays and other stuff.
+But the point being that you should be able to do that without having to ask permission from a third party or even a group of third parties in order to move your own money around.
+So that's kind of the basic building blocks that I'm thinking of where I want more permissionless innovation.
+I want people to be able to build these layer twos without all of the trade-offs that we're seeing currently.
+I think another good example actually is the collider script of White Paper.
+I just wrote a newsletter out this morning, Tuesday, explaining the different covenant emulation schemes.
+Yeah, and so I think I had some sort of pithy tweet about that where it was basically like, you know, Bitcoin developers will literally tell people to burn tens of millions of dollars worth of energy rather than soft forking in a covenant opcode.
+And so that's kind of the way that I look at it is that you can take one extremist view, which is, oh, we can do anything on Bitcoin and we don't need to change Bitcoin.
+And that's kind of true from the sense that, you know, if you sit down, you spend a long enough time and you come up with a convoluted enough scheme.
+Yeah, sure, you can emulate almost any functionality you want on Bitcoin.
+But is it practical?
+If it's not practical, then it's not going to get adopted.
+And, you know, why do we have developers spending so much of their energy, spending their wheels coming up with these highly impractical solutions that I've, I think I've actually called them as basically like mental masturbation.
+Like what are we really doing here other than, you know, making ourselves look smart?
+I'm more interested in, you know, actually making forward progress with being able to build an experiment and try a number of different paths forward to seeing, you know, what are the valuable use cases for block space,
+especially with regard to, you know, anchoring into block space to do stuff on other systems.
+And this, this is a vision that I've had in my mind for a decade now ever since block streams, original side chains, white paper, which portrayed a vision of many different side chains, many different layer twos out there where people would be able to move their
+money around between different Bitcoin anchored systems in order to achieve different functionality, different trade offs.
+So the, you know, so I want building blocks to many of the, I'd say, I don't even know if I would call these Bitcoin progressivist views, they would just be, don't ossify now views.
+But the way we come to consensus over these topics and how we reflect that on chain is a rough consensus, kind of ambiguous process, which begins at the conversation level with Bitcoin participants,
+developers, other stakeholders, miners, economic nodes. Where would you say, how would you describe the current state of Bitcoin development and soft fork discussion?
+I think the best way to describe it is distributed, perhaps, and by distributed, I mean like spread too thin. Part of the problem seems to be that there's a lot of different proposals out there, but none of them seem to have the sufficient
+weight and momentum behind it to kind of gather up enough developer mind share and interest in actually getting a soft fork activated and deployed through Bitcoin Core, which like it or not is 95% adoption of the protocol when it comes to running the network.
+And in this, you know, this turns into a tricky thing to where people can get frustrated with Bitcoin Core and call them gatekeepers or kind of look down on them for not pushing forward certain things.
+You know, Bitcoin Core is a very conservative organization and they're not going to add support for anything that they don't want to have to maintain in perpetuity. So, you know, it is a high bar from their perspective.
+And if anything, I think that they generally don't want to have to go through the whole process of adding code, reviewing it, vetting it, maintaining it, unless they're already close to 100% sure that it's going to get accepted by the whole network.
+So it's kind of an odd chicken and egg thing, right? Because from one perspective, I think it's highly unlikely to get adoption for new functionality and soft fork stuff if Bitcoin Core doesn't support it simply because they have the super majority of adoption and getting people to move to a different project that has no reputation, no track history is a really high
+But on the other hand, you know, how do you actually measure support for any of these things when the functionality doesn't exist. And so that's been another fairly frustrating aspect of some of the recent discussions of people saying, Well, you know, I don't have any technical objections to the to X, but I also don't see any market to demand from X.
+There was no market demand for for the thing that doesn't exist yet. And also, you know, the, there was no market demand for a lot of things that have ended up becoming quite popular and that there was no real market demand for Bitcoin, when Satoshi revealed it to the world.
+A lot of similar functionality within the internet protocol stack also didn't happen because of market demand. It happened because developers said, you know, these are basic building blocks that will be incredibly high potential. And people will be able to create things that we can't even necessarily envision right now.
+And a lot of this, you know, studying Bitcoin history and software history, a lot of softworks post post Bitcoin core have come kind of at Bitcoin cores hegemony, being that there's typically a person or two who kind of at least says we're okay, like all the stuff you guys are doing, but we're going to do this.
+And that has kind of been waterfalled into the rest of the ecosystem. But we, I would say that Bitcoin core no longer has that. And in fact, a lot of the historical village elders have implicitly or explicitly said, we don't want to be that anymore, which leaves Bitcoin in a very interesting state of almost like discovery of how, how do these how do we come to further consensus.
+And one of the, one of the things many people, one of the examples, say, people uses say, well, maybe we have like champions who, who say, I'm going to go out there kind of put myself on the line, and I'm going to advocate for this proposal and I'm going to try to build consensus.
+But at the same time, like I think of Jeremy Rubin, who got such vit, vitrallic pushback at to the, to the point where he even kind of left Bitcoin for a couple years. And now you have the other, I would say the modern champions of a specific proposal, the Tapper Wizards, who, ironically, many people, I would say, a pretty broad cohort supports op cat.
+But you have hit the same time. A lot of people say, I support op cat, I simply just cannot support it because of who is promoting it.
+Right. And that leaves us. It feels very constricted. So I guess the question I'm asking, like, does the, does this champion model make sense to you? What does it look like? Is it almost like the champion also has to be a sacrificial lamb in some capacity?
+Like, what are your thoughts on this line of thought that I'm presenting?
+I mean, there needs to be champions. I think it needs to be more than just one person. I think it also might be detrimental for the original proposer to be the champion.
+I think that, like it or not, people are going to point and say, well, of course you're championing this, you know, you created it, it's your baby.
+And it might even be a yellow flag, you know, to champion your own proposal because, you know, what are we doing here? We're trying to show that there is rough consensus.
+And there's, you know, you can even argue there is the process of actually building consensus. I think a lot of people kind of look at it in a binary fashion of like either there's consensus for something or there's not.
+But, you know, this is a process. It happens over time and it's never actually over unless you either succeed or you decide to give up.
+I mean, you could even look at like, you know, Paul Stork and his drive chains thing that's been going on for so many years and he hasn't given up.
+And so it's still going on and no one can make him stop.
+So, yeah, it's, I think it's, it needs to be a multi-faceted and multi-pronged type of approach where you're literally going around and you're talking to as many different participants and stakeholders in the ecosystem as possible.
+And essentially pitching to them why your proposal is good and it needs to be a two-way street and you'd be taking feedback from them or if they have reasonable objections, then you do everything that you can to try to modify your proposal to mitigate those objections so that they would be willing to support it.
+And it's, you know, it's also it's not a democracy where like people are voting on stuff. So I think that there's one cohort of people who are always going to be like anti-everything and like I'm not going to run it on my note.
+I'm not going to support or whatever. And I think that should be fine, especially if we're talking about soft fork proposals.
+The whole point of that is that if you don't care about it, you don't have to support it. You don't have to use it. The real question in my mind I think should not be, you know, does this thing have overwhelming support from everyone in the ecosystem that they want it?
+Rather, I think it should be the other way around of like, is this thing sufficiently interesting and helpful to some segment of Bitcoin users and can it be activated and enabled without harming the rest of the ecosystem, especially the rest of the users who don't care about that thing?
+So, you know, this, this gets into the topic of activation, which we talks, we had a whole panel debating discussing this at our conference up next.
+And it's, if this was the most, this is the most unresolved topic, it seems to me, because even if we get a broadly supported great consensus cleanup, or I would say a mostly supported check template verify,
+how do we activate it because everybody I talked to talks about the activation process as a fraught endeavor.
+Do you think there is a way we can activate, which is not contentious, or do you think there are, do you think there is a way we can discuss activation more productively?
+Well, I guess part of the question is, at what point in the process are we discussing activation? Is it before or after actually getting code merged into Bitcoin Core, right?
+Because, you know, you can, you can, and this definitely has been part of the process before, you can get the code merged into Bitcoin Core without any activation parameters, so that, you know, people can start playing around with it on reg test or test net or whatever.
+But I think that one of the interesting things that I observed in the taproot process was that it, it got really nitty gritty, just into people arguing about the tiniest little parameters around activation that I personally considered fairly inconsequential.
+It was like, flip a coin, I don't care, like, which of these two ways you decided to do speedy trial, I don't think it's, you know, going to be catastrophic, catastrophic one way or the other.
+But I think that that does kind of point to the fact that people still have a lot of anxiety over this, PTSD, so on and so forth.
+As far as I remember, it ended up being pretty much a non-issue, like taproot got activated without too many problems other than some people arguing on the developer mailing list.
+I also think people seem to forget that the way it actually crossed from the developer mailing list to the mining pools signaling was really just a couple guys who I would say are not well known among developers.
+And in fact, I'll actually ask certain developers, how did this pool decide to signal? Like, why were they aware? And for all of the time they've spent agonizing over, you know, the actual proposal and discussing it, they're actually, almost everyone, even people out there in the weeds of this are pretty ignorant to the actual ways we have historically activated.
+And this kind of surprises me because at BlockSpace, we try to sit in both, we try to kind of cover both domains of Bitcoin mining and developer and just user facing stuff.
+And so I kind of look at this and I wonder how could we ever pull a specific thing out of the developer discussion to communicate to other stakeholders in Bitcoin, which I guess then brings me to another, the topic of like Bitcoin clients and activation clients.
+And the topic maybe of this is a spicy topic, maybe client diversity.
+The way these things you'd activate is people run a client which enforces the consensus rules of a software upgrade. But if core is increasingly unlikely to put that in without, you know, not given a overwhelming consensus, does this happen through alternative
+clients or alternative and maybe an outsider activation client? Like, this is a pretty open question for you to just talk about your thoughts on the state of alternative Bitcoin clients or just how an activation client might look.
+Well, it could. I mean, it really comes down to what you can convince the mining pools to run. I'm actually not familiar enough with the internal operations of pools to know, you know, are they all running Bitcoin core or how many of them have their
+own modified clients like I wouldn't be surprised if a lot of them have their own modified clients.
+And maybe I can confirm that almost all of them have modified clients.
+Yeah. So then I think the real question. In that case, it's it's always what's practical. How difficult will it be for the mining pools to pull in whatever that change set is into their own modified clients and then be, you know,
+sufficiently, I guess, accepting that the risk is is not going to burn them. You know, the biggest problem any of these miners are going to have is if they end up, you know, creating invalid blocks that get rejected and cost them a lot of money.
+So let me throw some assorted questions at you.
+Do you think that so we've developed a kind of a culture or we say we should have a culture of meritocracy in the Bitcoin contributor discussion, maybe to enter into the walled garden.
+We want people who have demonstrated skills and meritocratic like reason to be there.
+Do you think that this is actually the case? Do you think that Bitcoin still is mostly a meritocratic system?
+Well, I think the easiest way to test that is you create a new anonymous GitHub account and you go and you make a pull request to Bitcoin core.
+From that perspective, you know, at least for non consensus changes, I suspect you will find that good code will get reviewed and merged.
+Bitcoin doesn't have, you know, any contentious discussion around it, and that it's not really about the identity of the contributor.
+I think this does get trickier when we're talking about Bitcoin improvement proposals, especially consensus changes, because it should be the exact same way.
+You know, people by their nature tend to scrutinize the human who is making changes, even though I think I would say like true meritocracy is not about scrutinizing the human at all, but about scrutinizing the actual code changes and functionality and how that can affect different aspects of the ecosystem.
+So, you know, I think that that also might tie into what I said earlier. It could be another good reason why the champion of a proposer should not be the same as the original author because it helps ameliorate some of that natural human bias and tendency to look at the human personality behind any given thing.
+I've heard a good argument against even discussing soft forks right now being I would summarize it as we haven't fully explored the capabilities of tap script enabled by the taproot soft fork.
+And while I agree. Yes, we have most definitely not explored and implemented many of these capabilities.
+I personally don't see that as a compelling reason not to discuss soft forks. Do you have a thought on this.
+Yeah, I think that that's too linear thinking that we should we should implement like one major change and then wait for many, many years as the rest of the ecosystem catches up and implements it.
+I mean, I think that's like the nature of software development when you're building upon different layers.
+That's also part of the reason why we do these things as backwards compatible soft forks it's so that people can take their sweet time to implement or even just never implement if if the use case doesn't fit what they're doing.
+So, I think that what we run into here is once again, it's the ossification issue of, I see, you know, some people saying, Okay, you know, we just need to slow down give people more time to catch up.
+And I think that the problem with that is that we're simultaneously running, you know, head first into the brick wall of ossification, we may have already done that.
+And, you know, it may be that all of these discussions will be for naught. And, you know, Bitcoin protocol will never change again.
+Though I think we wouldn't be here talking about it if we both believed that that was guaranteed at this point. But it could be. And none of us knows.
+But all we can really do is keep trying to move forward.
+There was a Noster post from Maddo Dell, who I really, really respect has been kind of a good guiding light for me for many years.
+But he chimed in on the topic of proposals, and he you and he said, I don't support any proposals currently and maybe we should we should probably consider an activation very far in the future, which is maybe five to 10 years.
+In the future, these are numbers he put out. And I look at that. And I wonder if that is effectively the same thing as ossification.
+Do you think what are your thoughts on this?
+Okay, so I had a similar type of conversation, I want to say with Justin Moon, who was making he was describing his perspective where he thinks it's going to be like, we have one soft fork every decade or two or something
+that people are going to spend decades working on software proposals. And once again, I think like that's an interesting idea in theory, but I don't see how from a practical perspective, that actually plays out.
+In the software and technology space, you know, people aren't going to be devoting five, 10 years, whatever, basically building out on something that may or may not ever happen. And, you know, that's because time is an incredibly scarce resource, right?
+And especially if you're doing a startup, you probably don't have five years of runway to be tinkering around on a proof of concept that you may or may not ever be able to launch in production.
+So from that perspective, I don't think it's a great way of moving forward is like we're already moving slowly enough, I think as it is.
+Even in the best case scenarios, it seems like most soft forks take a year or two.
+Even like once they have pretty rough consensus to get activated, right? So that's, that's a pretty long time already as it is, and then, you know, it can take many years after that for the actual protocol functionality to get built on top of by wallets and other applications.
+So, you know, there's, there's a number of things happening here. That's, we could call that those sort of like waterfall development paradigm is just like extremely slowed down in distributed protocol type of environments.
+Another thing that is kind of related to the previous question of like how many changes should we be making? Should we be waiting on the waterfall for the system to catch up?
+I kind of see it as a, think of it as like a path dependency and exploration type of paradigm where if the goal is to continue exploring the design space of Bitcoin, then we should want to be able to explore as much of that space as quickly as possible,
+so that we can find the paths that are stupid and should not be further explored and, you know, focus on the paths that are more promising and will hopefully therefore end up creating more value for Bitcoin on the whole as an ecosystem,
+and ultimately get us to where we want to be, where we have, you know, sustainable thermodynamic security, which is a fancy way of saying that, you know, we are paying the miners in fees that, you know, more than offsets the continued reduction in the block subsidy.
+So as much as I wish I could ask you a bunch more maybe technical in the weeds questions about consensus, I'll pull back and I'll wrap it up with some more non sequiturs.
+You have been for years, one of the more prolific both writers and like project guys, you've got an abundance of writing on Bitcoin and a bunch of cool side projects.
+What's your secret to your prolific to your prolificism? And what's your favorite side project you've done?
+Yeah, well, I mean, I think that it all just comes down to curiosity again, right? Pretty much all of my projects are self serving.
+And what I mean by that is like, I don't, I don't create them just because I want to help people, it's usually I want to help myself.
+So a number of the tools that I've created are things where I've just I've needed to do something.
+And then I'm like, well, okay, I could create a hacky command line tool for this or I could spend a little extra time and wrap it around a nice like web UI so that anybody can do it.
+Or, you know, a lot of it's just research because I want to better understand some aspect of the ecosystem that I don't think has been sufficiently explored.
+And so then, you know, I may leverage my computer science skills to scrape a bunch of data and perform analysis or whatever.
+Or more recently, even like my Bitcoin politicians project.
+It's, it's Bitcoin adjacent. It's not actually looking at anything within the Bitcoin ecosystem.
+It's actually looking at financial disclosures from members of Congress.
+But that became sufficiently interesting from a sort of game theoretical perspective and all the political stuff that's happened over the past year or so that I actually put out a bounty.
+And, and I really my goal once again was self serving.
+It was because there's like 450 or something members of Congress and sifting through their financial disclosures, many of which are poorly handwritten scanned PDFs that are 10s or hundreds of pages that was taking hundreds of hours of manual time to go through.
+And, and now, thanks to bounty I put out, we are able to sift through all of them in like three hours, basically feeding them into large language models and getting them to do the heavy lifting of the essentially the OCR.
+And, you know, looking for all of these keywords.
+So, yeah, so it's the curiosity, you know, I have weird hobbies.
+And then one of the other things is that I use conferences as a forcing function.
+And so one of my goals is to never repeat a talk, never give the same presentation twice at conferences.
+And so I have a constant backlog of things of research projects or ideas or things that I want to talk about.
+And when I accept an invitation to speak at a conference, I basically use that to give them the synopsis of a talk that doesn't exist yet and then, you know, commit basically to finishing it into making myself do more novel research.
+And because of that, you, you've over the years become like in my Bitcoin, you, yeah, I put you in like my Bitcoin pantheon of like writers and researchers.
+But my last question is, who are some of your heroes in the Bitcoin ecosystem or related Bitcoin adjacent fields who you would point people to to read their works, follow can be late or current.
+Where would you point the listener to like learn more and think more about Bitcoin or anything adjacent to Bitcoin?
+Well, I would say, you know, the main guy who influenced me in my early years was Andreas Antonopoulos, and I've strived to be as similar, I think, in his approach to this stuff.
+You know, being neutral, being open minded, trying to distill difficult concepts in ways that can hopefully be rocked by less technical people, I would say that's a big portion of stuff that I do is just, I try to continue exploring the edges of this space,
+and bring back the knowledge that I find and make it, you know, more ingestible by a larger, not necessarily mainstream, but you know, the audience of Bitcoiners who may not be computer science level, but they have enough knowledge of the space that they can rock most of the high level concepts.
+So, you know, it's unfortunate that he's really stepped back a lot, you know, he got tired of a lot of the vitriol, and he's basically operating, I think, from his own platform where he's effectively keeping a lot of the noise out by, you know, requiring people to pay the anti spam fee to get into his platform,
+which I can completely understand, you know, being, spending a lot of time out on open social media can be quite a dream.
+Well, you heard it from Jameson, go talk to Andreas, Andreas is like the, the godfather that brought a lot of our generation in.
+So, Jameson, thank you so much for coming on Bitcoin season two, I really appreciate your thoughts and your time. Where can people find you and where do you point people to read more about what you, what you do and say.
+Well, you can find me on X at L O P P. You can find me on Nostar at an in pub that I do not remember at all. But I actually have all of my different accounts and social media and stuff, all listed in the footer of my website at lop.net, where you can also find thousands and
+thousands of links to various Bitcoin and lightning related resources.
+All right. And with that, thank you so much for coming on. Make sure to follow, subscribe, Bitcoin season two everywhere you listen to podcasts. Otherwise, thank you, Jameson.
