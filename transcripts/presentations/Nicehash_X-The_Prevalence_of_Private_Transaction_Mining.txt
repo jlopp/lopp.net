@@ -1,0 +1,215 @@
+Now we're going to move from Slovenia to Bitcoin block space, Bitcoin miners and private transactions
+as we're going to dive into a rather complex and controversial topic potentially,
+private transaction mining. Does anyone try this in the room to get a private transaction
+mining? It's quite a niche expert thing to do with the Bitcoin protocol. Okay, anyone's tried?
+One person tried? Interesting. So of course these private transactions create new incentives for
+miners and have changed how some transactions are prioritized and processed. To guide us through
+this topic we need someone who really understands the Bitcoin protocol and has been around the
+space for quite some time. That person of course has to be James Lopp, the CTO at Castle. He's
+going to explore research into the rise of private transaction mining and he as you may know is a
+cyberpunk, software engineer, columnist and a gun-toting paranoid crypto anarchist. Those are
+his words as well as mine. So he will discuss how some mining pools are accepting transactions
+out of band and the potential implications for network transparency and health. So please,
+could you put your hands together and welcome James Lopp to the stage for his talk today.
+All right, so this is going to be some fairly in-depth technical research. I actually started
+to undertake over a year ago and I've learned a lot along the way and this has been quite challenging
+and I'm pleased that I'll be able to show you some results. I was actually quite concerned
+that I would end up having to give a different talk due to a lack of quality data. So as you said,
+you know, I'm a co-founder of CASA. We basically help people get into really high security
+self-custody setups for their Bitcoin. So if you're a whole coiner, you should definitely reach out
+to us. We can help you eliminate single points of failure in your self-custody setup. So let's start
+off just by talking about Bitcoin transactions in relation to the network. And when you create a
+Bitcoin transaction and you broadcast it out onto the network, what happens is it propagates
+in a way that we call the gossip model and without getting too technical, you can actually think of
+it in the peer-to-peer terms where imagine that each character here displayed is a Bitcoin node.
+So what happens when you broadcast a transaction? Well, you're connecting to a Bitcoin node and
+you're handing it this transaction hash and you're basically saying, hey, I have this piece of data.
+Do you want it? And the node that you're connected to looks in its own database and says,
+this hash doesn't match anything that I have. Yes, please give it to me. And then you give them
+all of the data related to that transaction. The node runs it through all the validation rules
+that are a part of the node software. And then it does one of two things. If everything is valid
+and checks out, it says, cool, I'm going to save this. And then it turns around to every other
+node that is connected to you on the network. And it repeats the process. It says, hey,
+I have this piece of data with this transaction hash or block hash. Do you want it? And the other
+nodes do the same thing. And if it receives that data and something is invalid, what does it do?
+Nothing. It just throws the data away and it does not tell the rest of the peers that it's
+connected to that it has this data. It doesn't ask them if they want it. And so this college apathy
+is a very strong way of preventing invalid data from propagating across the network. But the cool
+thing is with the valid data, we can actually see how efficient this process is. So here we have an
+animation. This has slowed down tremendously. This is actually over a two second period of watching
+one block propagate across the entire world. This is tens of thousands of nodes around the network.
+And this is the gossip model playing out in action where it just starts off with one. And then it
+very quickly goes exponential to 10, 100, 1,000, 10,000. And all of the nodes on the network will
+receive this data within a few seconds. And it's really a marvelous thing to hold. In fact, I consider
+this to be kind of watching the governance process in action of Bitcoin. This is pure voluntary
+interaction between the various node operators on the network. This is the automation of our
+consensus rules. The machines basically doing our bidding for us and ensuring that we're all staying
+on the same page and then nobody's trying to cheat. Another way of looking at this node network
+is that it's a really dense mesh that is composed of many smaller meshes because any given node
+is generally connected by default to about 10 other nodes. The nodes that have been configured
+to accept incoming connections may be connected to as much as say 130 nodes. So this is why
+we have this mesh with usually around 50,000 nodes total. But because any different node is only
+connected to 10 to 100 other nodes, it's actually this mesh of meshes. And so it's a very robust,
+strong network. And you can see how data can propagate through it very quickly using this
+flooding mechanism. So now that we know how data propagates across the network, getting into the
+meat of what I've been trying to do with this research project, and essentially what I've been
+trying to understand is are there transactions that are showing up in Bitcoin blocks that have not
+been propagated out across the network? Another way of saying this is are there Bitcoin miners
+or Bitcoin mining pools out there that are inserting transactions into their block without
+sharing them over the network with the rest of us? Why do we care about this? Mostly I think it
+comes down to gain theory and economics. And from an economics perspective, if we're talking about
+understanding fees on the Bitcoin network and being able to understand the current
+economics of block space and what fee rate is required to be competitive to get your transactions
+mined, it's incredibly important that these transactions are going across the network as
+unconfirmed transactions showing up in the mem pools of our nodes and allowing us to be able to
+run our fee estimation algorithms while incorporating that data. So there's a number of
+different ways that you can do for the estimation, but the two primary ways, the way that Bitcoin
+Core as a node does it is it tracks every time an unconfirmed transaction shows up in the mem pool
+and then it tracks when that transaction got included into a block. So it's then looking at,
+okay, what was the fee rate paid and how many blocks did you have to wait in order to get
+confirmed? And then we can start creating essentially charts inside of the node's memory
+so that if you ask the node, hey, I want to get my transaction confirmed in three blocks or in
+ten blocks, it just goes and refers to recent historical data and says, well, over the past
+so many blocks, transactions that paid this fee rate got confirmed within the number of blocks
+that you're looking for, that's the fee rate you should probably pay. The other way of doing fee
+estimation is what mem pool space and a few other estimators do, where what we're looking at right
+here is a chart of the current unconfirmed transactions in the mem pool. And this is stratified
+by the number of megabytes worth of transactions and then the fee rates that they're paying.
+So if you're looking at all of the transactions in the mem pool and you can see that there are
+ten megabytes or ten blocks worth of transactions that are paying a certain fee rate,
+you can be sure that if you pay less than that fee rate, then you're going to have to wait at least
+that many blocks, probably more because of course, over time, more and more people keep adding
+unconfirmed transactions to the network. So if you think about it, if you don't have a decent
+number of transactions that are showing up in blocks and they're not in your mem pool, you can't
+run your calculations with them, then you're probably going to be underestimating what the
+actual fee rate is that you need to pay to be competitive. Now, trying to research this and
+understand what's happening is, it turns out, rather complicated. And this is just due to the
+nature of mem pools and nodes. So the biggest problem with this is that there is no the mem
+pool. Each node has its own mem pool, its own view of unconfirmed transactions that have been
+broadcast across the network. So there's no guarantee of consistency in the data across
+these tens of thousands of nodes on the network. Also, it's ephemeral. That basically means, you
+know, it's not stored anywhere. There's the current state of the mem pool and that current state,
+whatever transactions are in it, is constantly changing. There's new transactions coming in all
+the time and then approximately every 10 minutes, a block comes in, wipes out a bunch of transactions
+and it can get even more complicated if there are so many unconfirmed transactions on the network
+that it exceeds the amount of memory that your node has allocated to unconfirmed transactions. So
+you can start dropping unconfirmed transactions in certain other scenarios. So that's a long way of
+saying that the data that I'll be presenting is not guaranteed to be 100% precise and accurate.
+And I have spent a ton of time essentially sifting through a lot of noise to find the signal.
+Now, what was the data that I was using? There are actually three different data sets. And the main
+reason for that is that I have not been running software to dump out the mem pool over a period
+of time. So even though I run a lot of Bitcoin nodes, I cannot go back in time and query my
+nodes to ask what the mem pool looked like. So thankfully there are people who have been doing
+that. So I reached out to a number of people in the space. I found gigabytes and gigabytes of raw
+data where Christian Decker, Felix Weiss, and the pseudonymous researcher OXB10C have been running
+nodes where they've been dumping out their mem pool every few seconds for a number of years.
+I also reached out to, I think it was Joseph Bake who had been dumping out mem pool
+snapshots from bmod.info, which is a standalone node. And then finally, and most recently,
+I discovered that the folks at mem pool.space have been doing this and had set up some APIs
+for you to query for this type of data. So what was the problem? Well, unfortunately the bulk of
+the data that like five year block of data that I was hoping would be really promising has just
+too much noise in it. Maybe if I spent a few weeks or months trying to sift through it, I might be
+able to get a lot of the noise out. But suffice to say, after aggregating all of those snapshots
+together, it was basically telling me that over half of the transactions that were showing up
+in blocks had never showed up in the mem pool. And that's obviously incorrect. So I just could not
+rely upon the quality of that data set. Next up, the 2023 bmod data set was a bit better. However,
+there were periods of time when the results were saying that the vast majority of transactions
+showing up in blocks had not propagated across the network. And that actually turned out to be due to
+consistency issues with the node itself. Basically, the node was crashing and restarting on a
+regular basis. And so what happens when the node crashes? You lose everything in the mem pool
+for whatever period of time it was down and not listening to the network. And so essentially,
+you have a node crash and then it comes back up and it thinks, oh, there's nothing in the
+mem pool. And so the result is you have some period of time where the resulting data set thinks that
+all of the transactions that showed up in a block were not in the mem pool because they were not
+in that node's mem pool. Then finally, the latest data set from the mem pool space has actually
+been pretty good. And I wrote some scripts to start querying their API and dumping all this data out.
+But then I ran the script over and over again multiple times and started to realize I was
+getting different results, which was very weird. I reached out to some of the developers there
+and we realized once again, the mem pool dot space actually has dozens and dozens of nodes
+running in their infrastructure. And each time I made an API call, it might get routed to a
+different node. And thus, I ended up having to change my script to iterate through all the
+different nodes within their infrastructure and try to find the ones that had the highest quality
+data set with the best mem pool data that had the most transactions in their mem pool. So what were
+the results? Essentially, we can see that at least for the 2023 results, there's nothing
+particularly outlandish that's showing this really weird. So on the left hand side,
+out of approximately 200,000 transactions over 45,000 blocks that appear not to have been
+broadcast across the network, the breakdown of that and which mining pool blocks they showed up in
+is actually pretty close to what we would expect based on the hash rate, the relative hash rate of
+each of the mining pools. We can't see that, for example, ant pool had a few percent higher than
+we might expect. Binance pool actually had only about half as much as we might expect, but nothing
+that's really crazy that shows any cause for concern there. So the mem pool space data,
+they only really started collecting this and making it available in August, so we only really
+have three months of this data. So this is about one tenth of the size of that last data set.
+It's a little over 3,000 blocks and we found about 20,000 transactions that appeared not to have
+shown up in a mem pool. Also, pretty similar, nothing big that is outstanding that's showing a
+major difference between what the pools were doing. So at a very high level, just from looking at
+unseen transactions, it doesn't look like pools are this big, but we can start digging in further
+thankfully once again because the mem pool is doing a bunch of categorization of transactions,
+not only that they were not seen, but other characteristics. And so one thing I started
+looking at is okay, what of these transactions were inscription transactions as opposed to just
+like a normal bitcoin value transfer? And that was a little bit more interesting. We start to see
+you know the pools on the right, more than 60 percent of these unseen transactions are inscriptions,
+that does start to raise some eyebrows. And my general theory around this is that
+you know these inscription mints sometimes create their own game theory. They create these huge spikes
+in the mem pool usage, in the fee rates that are being paid, and basically some of these
+are creating races where if you're minting some sort of new token or you're creating something
+that is artificially scarce, like how many of those tokens can be created, then you want to get in
+as fast as possible. So it may be the case that some of these people who are minting inscriptions are
+reaching out to mining pools and trying to get prioritized by them rather than just broadcasting
+out over the network where everybody else who may be a part of that inscription mint would then be
+able to see what they're competing against. So it's quite possible that for a certain inscription
+mints you may have a competitive advantage if you don't broadcast out over the network.
+Now what if we're just looking at each pool and the relative percentage of the blocks mined by
+each pool that have unseen transactions? Most of those seem to be for the bigger pools between
+20 and 40 percent. The ones on the very far right, it's I would say we should ignore those
+because they're really tiny hash rates. I don't think SoLock even has 1 percent,
+carbon negative has less than 1 percent, unknown has less than 1 percent, but of the major mining
+pools that have more than a couple percent of the total hash rate of the network seems to be in the
+20 to 40 percent range. Not entirely sure why, there could be other explanations for example in
+some cases where a transaction might get broadcast out on the network and just a few seconds before
+the next block gets created that could cause some false positives for example just due to the nature
+of how we're trying to capture the mint pool and snapshots. Now I think this is the most important
+chart to look at and these are non-standard transactions and what does non-standard mean?
+It basically means that it's not possible to broadcast this transaction and have it relayed
+across the network because the rules of the node will evaluate this transaction and say well this
+is valid but it's non-standard, it's weird, I'm not going to tell my peer nodes about it. So we know
+100% for sure that these transactions were not broadcast out across the network, they were sent
+directly to the mining pool or the mining pool itself created them and so these are by far the
+most abnormal type of transactions that are showing up in blocks but if you look at total number once
+again this is over 20,000 transactions and 3,000 blocks over about three months worth of data and
+the most egregious pool ant pool has only mined what about 35 transactions so we were talking about
+extremely trivial percentage of total transactions during this time period. So I think at this point
+not cause for concern but I think it is helpful now that I at least have developed the tools and
+min pool dot space has the methodology and infrastructure available so that we can be
+paying attention to this stuff. So what are the takeaways here? We don't see currently any really
+odd or malicious behavior that would be a cause for concern. It's a very difficult thing to actually
+track but very kudos and props to the folks at min pool dot space as long as they keep their
+infrastructure running and we'll make it a lot easier to pay attention to this and inscriptions
+might be messing with some of the game theory here so that's also something to just be aware of
+and continue watching and then the non-standard transaction issue is not at all something that
+I think we need to worry about. So I think we have a few minutes for questions if anybody wants to
+send stuff up. Alright can you tell if the two second block propagation in the animation is just
+the block header or includes the synchronization of the full block? Yep. So I know I have some links
+on my website donlop.net to that particular project and if you reach out to me I can definitely find
+it. This was an academic project from a few years ago where they had been listening to the entire
+network and I think to answer your question the propagation is technically of the whole block
+but if you dig into how block propagation works now it's no longer as naive as it used to be a
+number of years ago. Essentially this is because nodes are listening to all the transactions that
+come in and they generally already have almost all of them and so if I recall correctly this is
+many sketch I think is something that was developed by Peter Willa where essentially
+we're no longer sending all of the transactions with every block as it's propagating but rather
+the node will see you know which transactions it's missing and only ask for those transactions so
+you can actually look at several charts of the time that it takes for blocks to propagate across
+50% of the network over the years and that has gone down significantly over the past decade
+because of improvements like that. It doesn't matter that non-standard transactions are mostly
+four megabyte inscriptions that take up the whole block. Yeah not really I think the four megabyte
+inscriptions are really really tiny I think they're only been a handful of those so yeah it is a low
+number and I think most most of those you know they they're generally being done just to trigger
+people right it's it's not something that I think will make sense or that we should expect to see
+happen as Bitcoin continues to go more mainstream and as like the fee rates of the network
+continue going up so you know basically buying an entire block worth of space for your one
+inscription is very cheap right now because nobody is actually using the Bitcoin network there's not
+a lot of competition for that but if fees go up by a few orders of magnitude I think we're not
+going to be seeing any of that so I guess time is up there were more questions but feel free to
+catch me later or you know reach out contact you on my website always happy to talk more about
+the nerdy technical research thank you
