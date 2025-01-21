@@ -1,0 +1,397 @@
+Hi, everyone. This is the Future Gravy channel. My name is Rod Rojas, and our guest today
+is Jameson Lopp. He is the infrastructure team lead at Bitco. Welcome, Jameson.
+Good to be back.
+Jameson, can you tell us a little bit what Bitco does?
+Yeah, so you may not hear of us too much, and that's probably because we're really an enterprise-level service.
+And what we basically do is offer a high-security, multi-signature wallet for companies mainly who are using APIs to integrate with us.
+We currently offer solutions for Bitcoin, Litecoin, Ripple, Ethereum, really any of the top, most highly valued crypto assets.
+And really, our main focus is on security, and the easiest way to secure any crypto asset is very simple.
+You just take it offline, put it in a paper wallet, a hardware wallet, whatever, and it's now impossible for anyone to hack it.
+But unfortunately, in order for these systems to have value, you need to be able to transact.
+So really, the core offering that we have is a secure hot wallet where you can be able to transact
+without having the same level of security holes that a lot of custodial wallets have.
+And really, the way that we do this is we use multi-signature aspects of the protocol to split the private key data up.
+And so basically, we use a two out of three key solution where the user will have one key, Bitco has one key,
+and then the user will keep a third key offline as a recovery mechanism.
+This provides a really great security model because it means that Bitco is not custodial.
+We don't have the ability to control anyone's money unilaterally.
+If we get hacked, nobody loses their money because the hackers don't have enough data to create transactions.
+Whereas on the other hand, the client themselves, if their server gets hacked,
+the hackers don't have enough data to create transactions and steal the money.
+And really, the icing on the cake is that if Bitco ceases to exist or some regulatory shutdown happens
+and we can no longer offer services to people, then our clients can still completely route around us,
+go get their offline key from their own vault and do a recovery without ever touching Bitco servers.
+So it's an interesting model because it allows us to offer some bank-like security without actually having the custodial aspects of being a bank.
+And the customer controls his or her private keys, which is the true measure of ownership in Bitcoin, right?
+Yes, or they control the majority of the keys.
+And so they have the ability to have the final say on creating transactions.
+Really, what we do is best thought of as acting as a countersigning agent.
+So when a customer half signs a transaction, sends it to us, we then look through a whole list of security policies,
+some of which we create, some of which the customer creates.
+And if any of those policies get violated, then we refuse to co-sign the transaction.
+We alert the customer. We say, hey, something's up. You might want to have a human look into this.
+Great. Thank you for that.
+Now, so today's topic is going to be the SegWit 2X or 2X hard fork, which is coming up probably now in November.
+So can you introduce to our viewers what a hard fork is?
+Yeah. So in Bitcoin, there's two major types of forks or changes to the consensus rules.
+And those are the hard forks and the soft forks.
+And it's easy to kind of visualize this where a hard fork is where you have the existing set of rules.
+And now we're creating and expanding, we're loosening the rules.
+So the new rule set allows some things to be valid that were previously not valid.
+So in the case of a hard fork around a block size limit, you can say our current limit is one megabyte.
+And changing that to two megabytes means that two megabyte is not valid under the existing rules.
+But in the future rules that some people will run, it will be valid.
+Whereas the sort of opposite way to go would be a soft fork, which is where you have the existing rules.
+And then the new rules are a subset. That's a restriction.
+And that means that the new rules are actually valid in both cases.
+So if you don't upgrade your software, you still remain in consensus.
+To take the block size as an example here, if we decrease the block size from one megabyte to half a megabyte,
+then all of the current nodes on the network that have the one megabyte rule would just start to see a bunch of half megabyte blocks come in and say,
+oh, yeah, these are valid, you know, it's still contained within the existing rules.
+So it's really about backwards compatibility and a hard fork is non backwards compatible.
+It's a breaking change that requires everyone on the network to update their software if they want to move to this new consensus rule set.
+Update pretty much at the same time, right?
+Because they would be they would not be in consensus with the rest of the network.
+Yeah. Well, you know, there's a number of different deployment mechanisms that you can use to, you know,
+roll out over a period of time and then have the actual activation occur at either a specific date,
+specific block height or based upon some signaling mechanism,
+which is what a lot of the upgrades in Bitcoin have been using for the previous few years,
+but have started causing some issues of their own due to too much reliance upon miners.
+Right. And more specifically to today's topic, what is the 2X fork?
+So it's basically saying, you know, we've we've activated Segwit and as a result of miners activating Segwit,
+they have agreed that in three months, they're going to do a doubling of the base block size from one megabyte to two megabytes.
+And this is an interesting history that went on behind all of this.
+I think the the first like simple two megabyte hard fork proposal was done by Jeff Garzic a number of years ago with BIP 102.
+And then nothing really came of that, same as about 10 other block size proposals that did not get consensus.
+And then back in spring of 2017, Sergio Lerner sent an email to the list saying, hey, how about we compromise?
+And we figure out a way to try to like bundle together a two megabyte hard fork along with the activation of Segwit.
+And that kind of spurred on what became the New York consensus agreement.
+And had a bunch of companies sign on to that, a bunch of hash power signed on to it.
+And eventually we got segregated witness activated about a month ago.
+And here we are. We've got, I think, about two months left, maybe 45 days before the scheduled hard fork to double the base block size.
+Now, it seems to me like this is purely a political thing, because the whole point of Segwit was not to have a hard fork, not to split the network.
+It's definitely a result of a lot of frustration, I think, of a lot of people who just want to see some sort of major change happen.
+Their perspective is they want to see the network move forward.
+Whereas the perspective of a lot of other people is, well, yeah, we want to move the network forward without requiring everyone to upgrade their software.
+We don't want to break a lot of people's implementations.
+So, you know, both sides have, you know, I think valid perspectives.
+But historically, we've never really tried to do anything like this before.
+And when you have a large swath of the community that is actively opposed to it, it pretty much guarantees that you're going to have a messy result.
+Right. And are you personally a core developer?
+I don't really call myself a core developer.
+I mean, I have a few trivial commits in the Bitcoin core, like documentation updates and whatnot.
+And the majority of my core development experience is really in my Satoshi fork of core.
+And that's not even creating any interesting new features.
+It's just adding various metrics population to put into my own dashboard that I offer to people.
+So I'm I'm not even really a C++ developer.
+I'm I'm terrible at C++ and I spend most of my time in Java land.
+I see. So the reason I'm asking this and this is this is a little bit gossipy, but it's it's important is that a lot of core developers were claiming that they were not really invited to talk about
+the SegWit 2x fork or that they were invited and then uninvited and then asked to sign the document.
+Yeah. Do you have any information about that yourself?
+Well, I was in New York City during consensus and there was definitely a flurry of activity happening.
+And, you know, I was hearing a lot of stuff, you know, through the other folks at BitGo.
+I was never directly involved in any of it.
+You know, I think the the C level folks at BitGo were involved.
+And I think that, you know, some of the core developers who were at consensus may have been invited to talk and some of them probably rejected it outright just because they don't like the idea of these,
+you know, small closed door meetings, especially after what happened with Hong Kong agreement.
+And so it's it's just a messy situation in general.
+I think that the only way to really do these sort of things and in a way that can get consensus from the community is to do them all completely out in the open in the first place and not to have,
+you know, various back channel discussions where you try to form a coalition and then you go public with it.
+Right. I fully agree. And it seems like a lot of people are pulling out of the agreement, a lot of players.
+And to begin with, the people that were involved in Bcash that started mining Bcash,
+because, I mean, even though they could potentially still stop mining Bcash and then, you know, support the 2X coin,
+but it doesn't seem like that's what they're going to do. So we can safely say that they're they have broken the agreement.
+And so have other companies like Bitwalla. And I can't remember the other ones.
+But are there any big players still supporting this?
+Yeah, I mean, I think that most of the folks who have backed out would generally be considered smaller players.
+You know, I think F2Pool was the only like reasonably large miner that has backed out,
+though last I checked, they were still signaling New York agreement in their blocks.
+But, yeah, it seems to me like we're at the point where, you know, people have generally made up their minds.
+I don't foresee any of the large players backing out.
+They seem to be just consigned to the fact that they're going forward with their agreements.
+And it's almost become a matter of honor, I guess, at this point,
+which I would say is unfortunate because it may be a matter of like honor in the face of reality of like the rest of the ecosystem rejecting what they're doing.
+But the final battlefield, I think, for a contentious fork, if people actually go through with it, just has to be the market.
+And people will vote with their feet by selling the fork that they disagree with and buying the fork that they agree with.
+And on the other hand, it's also very difficult to kill a cryptocurrency.
+And so we may just end up with another situation where we have a third fork of Bitcoin and it's got like another 10 or 20 percent of the hash power.
+A lot of the folks around the New York agreement are constantly talking about how they have like 90 percent of the hash power supporting them.
+But I don't think that that really makes sense to be using as an argument because we've already seen that hash power follows the price.
+And we don't know what the price or the exchange rate of the Segwit 2X coin is going to be.
+So you can already look at Bcash to see what happens with hash rate and how it goes after easy money.
+Exactly. And also from a point of view of technology, it seems like the 2X fork is not really being developed and tested.
+Am I wrong?
+Yeah, well, I mean, it's basically got like one or two developers behind it.
+And this is another thing that I've never gotten a good answer on is like, who will actually develop the Segwit 2X BTC1 code base once the fork is live and in production?
+Who is going to maintain it from a security perspective?
+Who is going to continue to write innovative new features?
+And it seems to me that the Segwit 2X folks believe that that Bitcoin Core, which is where pretty much all of the innovation at the protocol level happens,
+will just continue and either switch to BTC1 or continue merrily chugging along with Bitcoin Core.
+And then the BTC1 devs will just, you know, merge down any any good changes that they like.
+So I don't think that you're going to see BTC1 become a new shelling point for protocol development.
+For our viewers, I'm going to put in the show notes that it seems like the latest commit was on July 21st.
+I'm going to post the GitHub repository and the mailing list had only like 13 messages in September, so it's not not very active.
+So Jameson, what is a flag day?
+That's one of the ways that you can roll out the activation of a feature, whether it's a hard fork or soft fork.
+And basically saying, you know, at this specific timestamp or at this specific block height, we will activate this new rule within the protocol.
+And I think that's that's basically what BTC1 is doing with their hard fork.
+And it was basically set to be, you know, 90 days after the activation of SegWit.
+So it's not a number of blocks in this case. It's a it's a date.
+I think it is a number of blocks.
+So we don't have like a precise date. Is that what that means?
+Right. There is actually I think, you know, Bashco, one of the moderators of the Bitcoin subreddit, has a GitHub page where it's doing the countdown.
+But I think it also notes that, you know, the actual date will adjust over time as blocks come in faster or slower.
+Sounds great. Now, can you give our viewers a brief introduction to what hashing power is in the context of Bitcoin?
+Yeah, well, hashing power is basically what is securing the network against computational attack.
+And it's it's generating the proof of work for each block that says that basically I have devoted a computationally provable amount of energy into creating this block.
+Basically, I've burned this much electricity, this devoted so much thermodynamic energy into finding the solution to this brute force cryptographic puzzle.
+So it's basically what makes it extremely expensive for an attacker to try to change the history of the Bitcoin block chain.
+And it also has some interesting results when you have multiple competing forks, because the amount of hash power relative to the difficulty of creating blocks will affect the amount of time that it takes on average to find a new block.
+So then we have some kind of weird things that go on, like between Bitcoin and Bcash, where where sometimes Bcash has just slews of blocks coming in, like every every minute, you know, new blocks coming in because of the changes in their own difficulty algorithm and the changes in the profitability.
+And so one of the results is that when you have people theorizing about how these potential future forks play out, then, for example, the SegWit 2x supporters will say, well, we have 90 percent of the hash power behind us.
+And that means that your one megabyte SegWit chain will only have, you know, 10 percent of the hash power, thus it'll take 10 times as long for you to find a block, which would be like an hour and 40 minutes or so.
+And then you're going to have slow blocks for weeks and weeks, if not months. And, you know, you may have to do an emergency difficulty adjustment hard fork yourself.
+You know, it'll be interesting to see how that all plays out.
+Can you break down a little bit those concepts?
+So basically, if if the difficulty of basically how does Bitcoin adjust its difficulty and how will this hard fork when the hashing power moves away from Bitcoin core?
+How will it affect the the rate at which the blocks get confirmed in Bitcoin?
+Right. So Bitcoin targets 10 minute blocks on average, though it uses this sort of process that gives you some faster blocks and some slower blocks.
+But on average, it targets 10 minutes.
+So the the actual difficulty readjustment to retarget the 10 minute block times happens every 2016 blocks, which was normally every two weeks.
+But if you get into a sort of extreme edge case situation where you only have 10 percent of your hash power at the current difficulty and you're 2000 blocks away from the adjustment,
+then instead of taking two weeks, it would take 20 weeks to get that many blocks.
+I don't think that that's actually going to happen.
+I think that the market is is going to move a lot faster than that.
+And the hash rate is going to end up moving around as well to adjust for the profitability.
+So that would be a very worst case scenario.
+But as you pointed out previously, the hashing power follows the economic incentives.
+Right. So it depends on what the users actually value more.
+Is that correct? Yeah.
+And then the other thing that a lot of the scalability debate is about is, you know, is Bitcoin digital gold or is it digital cash?
+You know, how fast should be transactions be?
+How cheap should the transactions be?
+And if you believe that the vast majority of Bitcoin users are actually holders rather than trans actors,
+then they don't care if there's only one block an hour or one block every two hours.
+I mean, personally, I make maybe one transaction per month.
+So and I never make any transactions that have to be confirmed in the next few hours.
+Now, I'm sure there are a lot of people who are extreme opposite of that and make 10 or 20 transactions a day and need to have them confirmed right now.
+These are just the different use cases of people on the network.
+And I think the one of the major arguments and disagreements is about, like,
+what is the portion of the user base that is doing this one type of use case versus another type of use case?
+Now, a lot of people are accusing the Bitcoin core supporters of not actually wanting Bitcoin to be a transactional currency.
+But that's not really very true, right?
+They they they actually want it to be able to transact quickly and cheaply as well, right?
+Well, yeah, I think everyone on every side of these scaling arguments wants the same thing.
+They want Bitcoin to be everything to everyone and become a global dominating technology that everyone uses in their day to day lives,
+because the more people who use Bitcoin, the more often they use Bitcoin,
+the more free they become because they're they're now using, you know, censorship resistant networks and hopefully the more private networks.
+So we we all want the system to grow into scale and the disagreements are primarily around how we do that,
+like how urgent it is to do that and who bears the cost for doing that.
+And so and you just touched on a very important subject, which is the the censorship resistance of Bitcoin.
+A lot of people say that, you know, if you want cheap transactions, you can just go to PayPal because what are the dangers?
+How can we lose that censorship resistance if we're not careful?
+So, you know, my viewpoint is that if you want like the ultimate security and the ultimate power that the system can provide to you,
+then you need to be fully validating that no one else is doing fraudulent actions within the system.
+And the only way to do that is to run a full node that you use to protect your money when you're receiving money.
+And there are people who are willing to make tradeoffs and throw that out the window and say, no, you know,
+we only need a handful of people or it would be fine if only the large companies were doing that and checking each other's work.
+And then we can just use other aspects of the protocol to like the simplified payment verification to then query for the status of our money from these large enterprises.
+And that's that would still be better than PayPal.
+Don't get me wrong.
+It would be a less centralized version of PayPal getting more to a federated network level.
+But it would still not be censorship resistant because using that type of model, the nodes can still lie to you by omission.
+And could those if we have a very small amount of nodes, perhaps even state actors could collide and actually raid these nodes?
+Yeah, I mean, you can make similar type of argument about like minor centralization.
+Like we're probably way, way past the point of minor centralization that any of us are really comfortable with simply because that starts to make people targets of state actors as well.
+So what is the risk to miners in this whole thing?
+We've spoken of the risks to the network, to the users.
+How about the miners?
+Well, for the miners, they mainly just need to worry about their profitability.
+The nice thing about a miner is that they can easily switch between networks, fairly low effort, low cost to switch between mining different networks.
+But a lot of miners have actually created a whole lot of value, like they're highly invested in these systems, like they're not just short term profitability seekers.
+They also want to maintain and increase the value of their holdings, all the coins that they have mined over the years.
+So I've spoken with a lot of miners, even Jihan, and he seems to be a lot more concerned about the long term value and utility of the networks that he's holding a lot of coins on.
+I see. And how about if could their blocks be orphaned or are we pretty sure that both blockchains will survive?
+Yeah, I mean, I don't think that there will be much of an orphaning risk unless you start to see miners actively attacking the other fork.
+And I think that that would be a pretty terrible mistake.
+I think that that would destroy a lot of value if a miner started basically doing a reorganization attack on the minority fork to suppress it from getting any new transactions confirmed.
+That would be a risk that I guess a miner who was mining a very minority hashrate fork would have to worry about.
+But I mean, the main reason that I don't think that that's a huge problem is just look at Bcash.
+Last I checked, Bcash had like two or three percent of the total hashrate between Bitcoin and itself, and I haven't heard of anybody doing any attacks against it.
+And it would be pretty trivial for a number of Bitcoin miners to perform attacks and double spend and do very large chain reorganizations.
+I don't think it's happening there because I don't think many people care enough to attack it.
+They're not threatened enough by it. And a number of the theories behind it are that it's mainly Bitmain that is even like sustaining Bcash from a mining perspective.
+And since they are one of the strongest miners out there, they would probably be able to repel any attacks that did come against it.
+So it probably just doesn't make sense for people to attack it.
+Right. And as far as the Bitcoin users, the holders or hodlers, as they say, what can they do to help avoid problems?
+Is there anything they can do?
+Well, from a personal perspective, the safest thing that you can do is nothing.
+When when there is a fork like this where there is no native replay protection, then the most dangerous thing that you can do is to create transactions,
+because you then have to worry about accidentally having your transaction get spent on both blockchain forks.
+So basically, you know, when the fork is happening, it will be hard not to know that it's happening because I think everybody is going to be talking about it.
+And all you have to do is not create any transactions, wait for the dust to settle, wait for your own wallets to to hopefully roll out a replay protection built into the wallet.
+This, of course, is assuming that both forks continue operating going forward.
+Otherwise, if one fork does die, which I think is pretty unlikely, then you can adjust appropriately and we'll all continue on.
+And will Bitcoin services have to deal with double spends or is this a risk?
+Well, definitely in terms of replay protection, you know, there's always double spending risk like in normal day to day operation.
+That won't really change unless we start to see actual like hash rate attacks, which I also think is pretty unlikely.
+Really, the bigger problem is the replay problem, which basically means that you're going to have a lot of angry customers who accidentally send money on both forks
+and then demand that you return the money that was accidentally sent on the other fork.
+And that just is going to cause a lot of headaches for people to try to to figure out how to build and use recovery tools to help access the coins on the other fork.
+And so that is something that is actually already happening with not only between Bitcoin and Bcash, but even between like Bitcoin and Litecoin and Bitcoin and Tether.
+Like we have people do this all the time where because the address formats, the address versions are the same,
+then they can have a Bitcoin wallet accidentally send to a Litecoin address or vice versa or Bitcoin, Bitcoin, cash, vice versa.
+And then basically what happens is your wallet, the receiver never sees it show up because the sender sent it on the wrong network.
+And this just causes general confusion and a lot of overhead.
+So I know that like Bitfinex, for example, developed a tool and they said, yeah, we'll help you get it back, but it's going to cost you because it takes time and resources for us to go recover it.
+So we're going to charge you like 20 bucks or something if you actually want your money back.
+And changing the address type, is that a difficult thing to do?
+Why are these forks not doing it?
+No, I don't think it's particularly difficult.
+But, you know, definitely one of the reasons, I think one of the reasons that Bcash didn't do it is it was just an oversight.
+But I know that one of the reasons that Segwit2x isn't going to do it is because they believe that they are going to become Bitcoin.
+And so they don't want to do anything that makes them incompatible with the current wallets.
+So like from their perspective, like SPV, lightweight wallets and whatever,
+we'll just be able to seamlessly move over and start using Segwit2x as the new Bitcoin because everything else is the same except for that,
+you know, two megabyte limit, which the lightweight wallets don't even look at.
+So they don't they don't notice that that changed.
+Some people might say that they want to be disruptive then.
+I mean, I know a lot of the people that are, you know, behind Segwit2x and they would prefer it not to be disruptive at all.
+But I guess what's going to happen, right?
+Yeah, they have adopted the mindset that it's going to happen.
+And, you know, if it's disruptive, then it's everybody else's fault for making it disruptive rather than their own fault.
+And could you explain to our viewers what a replay attack is?
+Yeah, so basically when you have a fork where the actual transaction formats remain the same on both forks of the network,
+it means that it's very trivial for if you broadcast a transaction on fork A for that transaction to get propagated over to the node network that is running on fork B.
+And so essentially you send one transaction, but it becomes two transactions and it gets confirmed on both forks of the block chain, even though that's not what you originally intended.
+So you spend your money twice when you only mean to spend it once.
+I see. And there is something called replay protection, which you mentioned earlier, which Bitcoin Cash does have.
+But Segwit2x doesn't have it yet.
+Yeah, so Bitcoin Cash didn't have it until almost the very last minute either.
+And then finally, you know, so many people were complaining that they realized it'd be a good idea to add it.
+It sounds like Segwit2x might add some sort of like opt-in replay protection, but it's not going to be the same type of strong native two-way replay protection that Bitcoin Cash had.
+So basically what this means is that all of the wallets out there, including BitGo,
+we're going to have to put a lot of time and engineering resources into basically hacking together our own replay protection.
+And there's a couple of different ways that you can do that.
+So it's not necessarily going to happen at the level of Bitcoin Core and the other clients like Nodz or Bitcoin.
+But it's going to be more at the level of the wallet.
+Yeah. OK. And how can people split their coins?
+So, first of all, can you explain to people what the splitting of the coins is?
+Right. So basically, you know, when we talk about the existing bitcoins in a system, there's no such thing as a Bitcoin.
+All there really is is unspent transaction outputs.
+And when you fork a blockchain, then now you've duplicated the entire unspent transaction output set.
+So everybody who owned Bitcoin at block X now owns the same amount on the new fork.
+And so now you have these two mirrors of the UTXO set and people start transacting differently on the two different forks.
+And when someone creates a transaction that spends this one output, if it's not replay protected, it gets mirrored over to the other one.
+And so the same change happens to both UTXO sets.
+But what you want to happen is you want to somehow make the transaction that you do over here not happen over here.
+Or you want to have like two conflicting transactions between the two sets that result in a new unique unspent transaction output idea
+so that then you can continue transacting forward from this sort of tree of unspent outputs that is now completely different.
+And so I can't be copied over to the other chain because it's not valid.
+And so a couple of different ways that you can do this.
+Really, the strongest way is to get on each chain Coinbase outputs from the miners on that chain.
+And by which I mean Coinbase outputs from blocks after the fork, because those are guaranteed to be unique and not exist on the other fork.
+And then essentially what you have to do is you have to taint all of your transactions by spending descendants of that Coinbase output tree,
+which makes it impossible for it to be valid on the other chain.
+So basically, you'll have two chains.
+You'll have some Bitcoins mined on the 2X blockchain, and then you'll be able to get some coins that have only been mined on the 2X chain.
+And then you can taint with those one set of your unspent transactions.
+And then the other blockchain will not recognize those because they're tainted.
+Yeah, you could try to replay those over to the other fork, but they'll say, we don't recognize any of these transaction inputs.
+And so we're just rejecting them.
+I see. And is this something that wallet providers like Bitgo can do or will that be done with a different process?
+Yeah, I mean, it would have to be instituted by every wallet.
+And it's really messy because then there's a human aspect of like, we then have to go ask the miners to send us some fresh Coinbase outputs.
+And it also means that because Coinbase outputs don't mature and they can't be spent for 100 blocks after they're created,
+that means that if you're using that method of replay protection, then you can't spend anything for at least 100 blocks after the fork,
+probably longer, which would normally be about a day or a little under a day.
+But if it's on a fork where the hash rate is like 10 percent, then now you're talking like a week or two weeks where it's not safe to transact.
+But there are other methods of replay protection using other features of the protocol like the lock time functionality.
+And it's less strong. And so I don't know how many people are going to be using that.
+It would probably work OK. The problem there is that you basically have to wait and see like what the hash rate balance is between the two different forks.
+Like using lock time would only work really well if there was a very large disparity between the two chains.
+So basically, the lock time would be both blockchains will be growing, so to speak, at different rates, right?
+Because the hashing power will be different and the difficulty will be different.
+And so you could possibly spend from a block chain that is further along.
+Yeah, yeah, you basically. Yeah, you create a transaction that says this transaction is only valid after block height X.
+I said it to whatever the block height of the faster block chain is.
+Thus, if it got replayed over to the slower block chain, it would be invalid, at least at that time, you know, until sometime in the future.
+So it seems like this is pretty complicated for for a non-technical person to do all these systems.
+And like you like you suggested before, it would be best for people not to do anything and and wait for wallets to support that.
+Now, are there any dedicated wallets for 2X?
+Like I remember with Bcash, there was a website and there were several wallets being developed for for Bcash.
+Do we have anything like that or not that I'm aware of?
+And I'm not even sure that the BTC one repository has made any pre-built binaries available.
+Like if you wanted to run the Segwit 2X as a gooey wallet on Windows, for example, you'd probably have to compile it yourself.
+I have to go check in on that. But pretty sure that that's what I heard just a few days ago,
+that they still didn't have any like pre-built consumer friendly stuff.
+And how about the Bitcoin core client? Will it reject automatically 2X blocks?
+Yeah. So really all all clients other than the BTC one client will will or at least all fully validating clients will reject them.
+The main problem that comes up is all of the lightweight clients that don't validate the full consensus rules.
+They will they will just follow whatever has the greatest cumulative hash rate.
+But if you're spending from Bitcoin core after the fork, you may still be spending on both.
+Right. On both chains.
+Yeah, I would not expect Bitcoin core to add in any sort of replay protection in response to BTC one,
+because if they did that, that would be setting a precedent that like anyone who forks off
+will now be able to create this onerous workload on the Bitcoin core developers that they need to protect against that.
+So really, I think from like a moral standpoint, if you're forking off, you're the one who's making changes.
+So it's already a given that you and anyone who is following you to this new consensus rule set is going to be installing new software.
+So you might as well just write the replay protection into your new software that you're deploying and do a safe fork for everybody involved.
+Now, you've mentioned the term BTC one a couple of times. What is that term?
+So that's just the name of the repository where the SegWit2x development is happening.
+It's a fork of Bitcoin core that is maintained by Jeff Garzik.
+I see. And what did there was a flurry of activity on Twitter blaming Bitpay for mudding the waters.
+Could you explain what happened?
+So Bitpay has their own software, I believe it was the BitCore software, not to be confused with Bitcoin core,
+that they offer to people to run their own nodes and block explorers and probably merchant integrations.
+And they had basically put up a blog post advising everyone to upgrade their BitCore software.
+And then they were saying, and you know, under the hood, don't forget to upgrade your full node.
+And then they linked to the BTC one repository, which a lot of people saw as a sort of underhanded way,
+like trying to trick people into switching over to this new fork without actually informing them of all the ramifications.
+And the name itself, BTC one, it sort of implies that it's the one, you know.
+So and do we know if there will be a big player like we had in Bcash, we had Roger Veer with deep pockets
+and Jihan Wu with deep pockets supporting, allegedly giving it a price floor and giving it also hashing power, sometimes at a loss.
+Do we have a big player like this?
+No, we're not going to know until it happens.
+You know, I'm not aware of any such agreements.
+But if the exchange rate ends up being what I suspect it will be,
+which will be a tiny fraction of the Bitcoin exchange rate,
+then either a lot of hash power is going to economically be forced to go mine Bitcoin again,
+or someone is going to have to pay a hefty amount to incentivize them to stay on BTC one.
+I'm not sure that there are any deep pockets that are willing to make that investment.
+Like you said, we've already had the split of Bcash where deep pockets are putting their investment into supporting that.
+And if anything, I would think the people who support Bcash just want to see the Segwit 2x fork cause chaos and strife on Bitcoin proper
+to hope that that will actually incentivize more people to come back over to Bcash.
+Now, my personal view, and I don't know what you think of it, is that this fork will actually take away from the appeal of Bcash and will sort of...
+I mean, the more of these attacks that we have, the stronger Bitcoin will become and the less important all these little altcoins will be.
+That's my view, but I don't know what you think if you think this is a real threat and a real...
+It's really weird because I would say that Bcash has more developer talent behind it.
+They have a handful of developers, many of the Bitcoin Unlimited developers now working on that are at least collaborating.
+And whereas Segwit 2x only seems to have one or two developers that are not even focused on it full time,
+it really does seem to be more of a political enterprise play of we're going to make this change
+and show the Bitcoin core developers that they don't have power by moving the system in one direction.
+And then the core developers can go back and continue writing more features on our behalf after we've already done this.
+There's so many different conflicting views of people's incentives and how this is all going to play out.
+I think that we're past the point of talking and debating and we're just going to have to do it and let people find out the hard way.
+Wait and see. Now, to wrap up the interview, could you talk briefly to our viewers about side chains?
+Where are side chains?
+Well, it's basically saying we're creating a new blockchain, but we're going to cryptographically peg it to a parent blockchain.
+And there's a number of different ways that you could do that.
+There's side chains and then there's drive chains and different incentives for who is going to basically control that pegging process.
+You could do probably the simplest way is what Blockstream does with their own liquid side chain is you just create this federation.
+It's basically multi-signature type of process where you have a set of semi-trusted entities that are monitoring the transactions and basically assuring the peg from going into the side chain and coming back out of the side chain.
+The drive chain stuff is more of a miner based thing where we're trying to incentivize miners to manage the peg.
+I think that the ultimate pure cypherpunk type of side chain has not really been realized yet of having a fully trustless two way peg that can't be gamed by anyone that's still floating out in the ether somewhere.
+But I don't think that side chains are really like a scalability fix. If anything, they're good for creating smaller test networks or smaller closed networks, I guess, where you just want to be able to have the security and value peg back to Bitcoin.
+But I don't think that they have like the scalability promise that the second layer networks have, for example.
+Because some people were talking about, you know, why not have a side chain with bigger blocks?
+Yeah, that's that was the whole the whole idea. And I didn't know exactly how that worked.
+So basically, what you're saying is you're you're you're taking a series of bitcoins, you're not creating a new chain, you're not creating more coins, you're not doing a hard fork.
+You're taking a number of bitcoins, you're sort of putting them aside and pegging them.
+And then you can do other stuff in a side chain without putting at risk at risk the main chain. Right.
+Yeah. But like from a security or even a scalability perspective, creating a side chain with bigger blocks is essentially the same thing as the extension blocks proposal that purse and Bitcoin put forward, you know, a number of months ago.
+It ends up being essentially the same thing. And all you're doing is putting it on a different blockchain as opposed to creating a new like virtual block extension on the existing block chain.
+So at the end of the day, you're just putting a lot more data onto a very inefficient decentralized database, which I think is the naive way of going about increasing the scale of these systems.
+And the the the slower but more conservative way of building second layer networks is a much better long term solution.
+Sounds great. Well, Jameson, thank you so much for coming on the show. And we hope to have you again at some point.
+Great. Thanks for having me. Thank you. Bye bye.

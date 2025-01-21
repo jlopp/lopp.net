@@ -1,0 +1,206 @@
+Let's get this thing started. So I'm Jameson Lopp. I'm an infrastructure engineer at CASA,
+or I have been for a couple of weeks now. I've spent the past three years as an infrastructure
+engineer at BitGo. One thing that these two services have in common is that they're both
+non-custodial multi-setting solutions. BitGo being a two of three and CASA being a three
+to five. And so I've been in the Bitcoin space for six or seven years. I've been doing it full time
+for three years with various non-custodial solutions. And it's pretty easy for me to
+pick up new Bitcoin hardware and software and start using it. But really what I'm trying to get at
+this talk is that we need to be designing the software for newbies if we really want to grow
+the ecosystem and bring it to a mainstream audience. And it's a lot easier, in my opinion,
+to do that as a custodian. But if we really want to fulfill the promise of Bitcoin so that
+the average person can be their own bank, we've got a lot more challenges ahead of us.
+So I've been in the trenches for a number of years now. I've seen some crazy stuff. I've seen
+users lose money in more ways than I could ever imagine. In fact, I've seen people turn multi-sig
+wallets into what are effectively single-sig wallets. I've seen users get frustrated by
+inconvenient security policies, turn them off, and subsequently lose millions of dollars.
+I've met countless individuals who choose to leave their crypto assets
+with the custodian because they don't trust themselves to use a hardware wallet correctly.
+In fact, I was just talking to someone in the lunch break earlier who told me that they knew
+an engineer who had been in the Bitcoin space for seven or eight years and had lost their money so
+many times that they're actually keeping it with a trusted family member just at their house. And
+now this person does not want to try to go through all of the trouble of securing their own assets
+because they've seen highly technical people losing money so often. So Bitcoin itself has
+a really high learning curve. It can take years of operating in the space to actually pick up on
+some of the best practices. And I've seen newbies come into this space and they just, you know,
+treat it like a new API, a new platform. They don't actually understand all of the restrictions,
+all of the weird low-level rules that are going to prevent you from doing certain things on the
+network. So I've seen API users spam the network with dozens of transactions per second, even though
+it can only really support a few per second. I've seen people come in and just hard code their fees
+on transactions, knowing nothing about fee markets. And thus, of course, you result in fees getting
+low fees and transactions getting stuck for a long period of time.
+And in fact, depending upon a user's transaction patterns, they're going to have completely
+different needs for how they do the UTXO selection and management of the data inside of their wallet.
+So you actually have this Goldilocks zone of UTXOs. You know, the real bitcoins, if it were,
+if you have too few or too many, then bad things start to happen. The wallet stops working in the
+way that you expect it to. And so we have a number of different problems that people run into,
+and even something as simple as the balance, where you might look at your wallet balance
+and it might say you have one bitcoin. But in fact, under the hood, you might have 10,000
+different UTXOs with tiny little amounts of money, and it will cost you enough in fees that your real
+spendable balance is not one bitcoin. And even if you have, for example, a lot of unconfirmed
+deposits into your wallet, you shouldn't really be counting those towards the balance either.
+So wallets that don't pick up on all these differentiators can in fact confuse users
+and make them think that they have a different amount of value than they actually have.
+So it's very easy to achieve a high degree of security on your crypto assets. I advise people
+for the best security to just generate a private key, send your money to it, and then throw the
+private key away. That way, no one will ever be able to get to those bitcoins. On the other hand,
+it's very easy to achieve a high degree of usability in a crypto wallet. All you have to
+do is create a web page. Just put the private key right there in the web page. Let anybody who wants
+to spend from that money, they have direct access to it. Very easy to use. So obviously, you know,
+we're trying to find some sort of sane equilibrium here. And the challenge, I think, that non-custodial
+wallets face is this route of trying to find the balance between security and ease of use.
+Because when we're building non-custodial wallets, we're giving up a lot of control, too,
+of the wallet operation to the user because we want them to have a better and stronger security
+model. And once again, you're trying to fulfill the be your own bank promise. The downside is
+that now the user has a ton of responsibility. And non-custodial wallet services are struggling
+with trying to help the users get over that high learning curve, trying to get them to understand
+all of the best practices because we don't want them to shoot themselves in the foot. In fact,
+in an earlier talk, I think the block side talk, he showed you that graph of all the people over
+the years who have accidentally spent tens of thousands or hundreds of thousands of dollars
+on a transaction fee. A very, very simple misstep like that can be very costly. So looking at
+private key security, there's a lot of different tradeoffs. If we're talking about single SIG of
+non-custodial where the user has it or custodial where some third party has it, there are many
+different types of malware that are out there that are trying to steal your keys off your devices.
+That's become a real big problem for users. Hacks, of course, always a big problem, though I would
+argue that they're a bigger problem for custodians because you're creating a honey pot. You're
+centralizing a lot of money in one location, so the hacker only really has to get into one hot
+wallet to get a much bigger payday. Weak passwords, of course, are a problem because not many people
+have software to handle their passwords for them. They just memorize a few passwords and use them.
+The same password all over the place. End of life problems are really tough because you have to
+figure out both legal and technical implications of how to pass along those private keys. Data loss,
+bigger problem on users because very few people are really IT savvy and, in fact, the conversation
+I had earlier, you can be highly technical. You can understand how these systems work to a T,
+but still be lazy enough not to back up your data and you end up losing it. So I recommend
+setting calendar events to actually check your wallets every now and then. Forgotten passwords,
+once again, a problem mainly for people who don't use password managers. Coercion hasn't been a
+problem until recently. Now we're starting to see more kidnappings, thefts, actual physical real-world
+violence being threatened against more public figures. And, of course, with custodians, any
+number of things that could happen that cause that company to cease operating that could, of course,
+result in you not being able to access their service. So when we try to use multisig, like I
+said, both BitGo, CASA, and other services, use multisig to try to get rid of a lot of these
+problems. And especially when you have one key that's held by a security service that specializes
+in holding offline recovery data, that can help you with a number of these end of life and data
+loss other problems. And really we can get rid of almost all of them except for the problem of the
+humans themselves. The weakest part of these noncustodial systems always ends up being the
+humans. And engineering against physical and social attacks is really an entirely different
+problem set. So when we're doing multisig wallets and we're spreading out keys over many different
+computers or hopefully even many different geographic offline locations, we can't completely get
+rid of coercion, but we can make it really, really hard because you'd have to travel all around the
+world potentially in order to get enough private key data to reconstitute and make a valid
+transaction. And so really I say the biggest problem is, of course, phishing and scams of
+if a human has had their brain hacked to the point that they're like, yeah, I want to send some
+bitcoin to this address because someone promised me something, then there's probably no level of
+technical sophistication that you can have that would prevent against that.
+Without getting too deep into the weeds now, like there's a number of just other things that go on
+under the hood. I kind of talked about how you're looking for a goldilocks zone with UTXOs. When
+you're creating a new transaction, you want to be able to arrange the internal data of that
+transaction in a way that optimizes for certain things. And to my knowledge, the vast majority of
+bitcoin wallets out there don't really offer flexibility around this and don't even ask the
+user what it is that they're trying to optimize for. A lot of them are probably very naive and are
+just selecting the oldest UTXOs or the UTXOs that result in the smallest number of inputs.
+But those can all have a number of different bad tradeoffs that we've learned about more over the
+years as we've ended up having higher volume, larger wallets. I know there were some wallets
+that I saw over the years that actually had hundreds of thousands of UTXOs in them. This
+presents a very interesting selection problem because you, from a computer science perspective,
+can kind of consider this a bag problem of trying to find the knapsack that has the exact specific
+best value match. And I will say that shout out to Mark Erhart and his branch-inbound algorithm,
+which he actually wrote his master's thesis on a few years ago. He implemented it at BitGo
+and then helped Andrew Chao actually get it into Bitcoin Core. That was nearly a year-long process.
+I think it just got merged a week or so ago. Other than UTXO stuff, there's transaction fee
+estimation. This is not a graph of transaction fee estimates. This is a graph of the divergence
+of transaction fee estimates between different estimators that are available. So there's not
+even really a lot of consensus around what the heck is going on with the fee market. So if you
+choose one fee estimator over another, you might end up paying a lot more. And really another thing
+is that users don't really, I think, think about the priority, like how fast you really need
+something confirmed. It seems to me that most wallets are defaulting to like a two-block,
+pretty high, fast confirmation. And that is actually going to result in larger swings,
+more contention for higher prices. And I think the bigger problem than that is that, of course,
+because defaults are a very strong thing in any piece of software, it's the developers that end
+up choosing these defaults. And we're not necessarily asking the user what it is that they
+want to get out of the wallet. As a result, I think we have developers that end up skewing
+the fee market in certain directions because they are making decisions on behalf of the user. And,
+of course, this applies to a number of things other than just fees. Another neat little metric
+here, this kind of shows you some of the heat map of cycles that happen in the fee market on a daily
+and weekly basis. And as far as I'm aware, there are no fee estimation algorithms that take any of
+this data into account. Most of them actually just look at trailing data, though we have a few that
+have started to look at the realtime mempool fee data. So few users are security experts. We need
+to coach them and guide them into the right path for best practices. And you can do that, of course,
+by simple notifications in the UI or by actually enforcing different rules of how your software
+gets used. So the users, they're not going to read any documentation. I spent a lot of time over the
+years writing documentation. No one ever read it. Really, they're going to use the software and just
+kind of fumble their way around through it. So you need to be proactive about what is required to use
+your software. If we're looking at stuff like password requirements, then if you make your
+password requirements insanely complex, that's pretty much going to guarantee that it's going to
+push them towards using some sort of password management solution. And also, we should not make
+any assumptions about the user themselves. Like, we should never have single factor authentication,
+especially nothing around a phone. We've seen a lot of problems over the years, of course, with
+phone porting attacks, where if you're either doing any sort of account reset or 2FA through SMS,
+that is almost inevitably going to get compromised. And we really prefer using hardware 2FA for
+everything that you can. Same thing kind of around data management. One thing that I think
+is really interesting from the recovery seed perspective is that even if you have a hardware
+wallet, which is theoretically very safe, I think the securing of that recovery data itself becomes
+a real problem, mainly if your threat vector is nation state level. So a lot of these hardware
+wallets will just give you a piece of paper, and you write down your recovery seed on it,
+and they'll say, oh, just put this in a safe place. But what is a safe place? I mean,
+you could put it in your house, but your house might burn down. You could put it in a bank,
+but the bank might end up having a rogue employee, or their employees might be coerced by some sort
+of nation state actor due to some sort of investigation in which you may or may not be
+guilty, but it probably doesn't matter at the time. In fact, I think on Reddit we saw a story
+just yesterday about someone who had pretty much all of their assets confiscated. The only asset
+that ended up not being confiscated was their bitcoin. So key recovery services can also help
+out with that data redundancy stuff, and I think that a lot of it, like I said, is just reminding
+the users. So one thing that I'm very happy about that we're doing at CASA is in fact instituting
+this idea of a health check so that you're actually going to get regular reminders that you need to
+prove that you still have these various hardware devices. And if you don't prove every so often
+that you still have the device by signing a message with it, we're going to annoy the heck
+out of you, possibly even disable you from doing anything else with the wallet until you recover
+and replace those keys that you no longer prove you have access to. We also see some very interesting
+thing with the rise of all of these different forks. This actually was something that I saw,
+I think, in the Coin-O-Me wallet, which I thought was actually very user-friendly because it at
+least lets people be aware, whereas in the vast majority of wallets, they might just display
+a bitcoin address to you or a litecoin address or whatever and not warn you that you might
+accidentally be sending some other crypto asset that will get stuck on that chain.
+Now, in a lot of these cases, this is technically not a total funds loss. It's usually just a major
+inconvenience, but of course it is possible to lose money if you do something like send bitcoin
+cash to a segwit address. That's going to be really hard to recover. Also, upgrading. Upgrading is
+great from a protocol standpoint if it's voluntary, but if we're talking about an application,
+it is a real pain. So while segwit, it was great, it was a soft fork. It gave the rest of the
+ecosystem time to roll out. It was actually pretty rough at BitGo because we were trying to convince
+our customers, hey, we put all this time and resources into segwit, and if you just spend a
+few minutes to upgrade your SDK, you're going to be saving a lot of money and helping the network
+scale and all this other stuff, but almost nobody did it. We would send emails. They would go without
+any response, and even with some of our larger customers, what we ended up having to do was run
+our own analysis that basically said, look, run this command, and you'll save $70,000 a month.
+That is what finally got some people's attention because, you know, they were sending so many
+different transactions that they end up saving so much space, they save so much fees, that you talk
+a lot about game theory and rationalization and stuff in this space, but I think that game theory
+is highly overrated because you make assumptions that, like, everybody has all of the information,
+but the reality is, you know, people are busy running their businesses and living their lives.
+They're not paying attention to all of that, and then, of course, we come back to the user.
+The weakest point in any of these systems, there are some things that we can do. I was actually
+really happy at BitGo where we implemented what you could call a black list, but really all we did
+was we went out and we found the various malware, the clipboard malware that was, you know, swapping
+out addresses on people's computers and put all of those addresses into our database, and that has
+saved people, you know, unfortunate, novice users, tens of thousands of dollars by preventing them
+from sending money to a known scammer address. And user friendliness, this is, once again, this is
+the problem of trying to get people to go in the right direction. This is, I think, a larger
+problem that if we think of this as, like, a multi-generational issue, users are experiencing
+culture shock, is that they're used to being able to call up a central administrator for their
+service to unlock their account, to, you know, fix any fraudulent activity, and we need to
+impress upon people that this is a system that rewards self-reliance, and it punishes
+negligence and ignorance. And so I think that we can, you know, get best practices into the
+software by requiring it. Like, as more people are using more of these types of software that
+implement best practices and require them to be more responsible, hopefully that will start to
+result in a paradigm shift at a higher level. So I think I've got, like, 60 seconds left to kind of
+rant through that all, but if anyone wants to know about security in general or the challenges of
+running large enterprise software where the people are the biggest problem, always hit me up
+afterwards, too. Yeah. Just shout it.
+But you said you should prioritize small UTXOs by age of the coins, and I didn't think that age had
+an effect on, but I'm curious. Right, right. It doesn't anymore. It used to. But, like, the
+naive way of implementing UTXO selection is like a first in, first out type of thing. You can also
+naively implement it by looking for the largest value UTXO. Just spend that and create a change
+output. But you end up with really weird side effects from stuff like that that end up in a
+fracturing of your UTXO set into tiny and tinier and tinier little pieces until finally you get to
+an edge case that very few wallets can handle correctly, which is the sweeping edge case.
+Trying to sweep all of the value out of a wallet becomes a really big problem when your UTXO
+selection sucks and has resulted in you creating all of these dust outputs that in many cases cost
+more money to spend than they're worth. Cool.

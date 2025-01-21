@@ -1,0 +1,366 @@
+All right.
+I think this is actually going to be a pretty good follow-up to Lou's presentation.
+But yeah, I'm Jameson Lopp, Chief Technology Officer at CASA, and at CASA, we are primarily
+concerned with enabling users to be self-sovereign, and of course, there's many different aspects
+to that.
+But what I'm going to talk about today is kind of related to self-sovereignty, but much
+higher level type of talk.
+So we have to begin, of course, at the beginning.
+What is a blockchain?
+It's a chain of blocks.
+I'm a technology guy.
+When people say blockchain, I hear database.
+So instead of this overarching theme where people are just saying blockchain this, blockchain
+that, I think that that is glossing over a lot of the details that are very important
+to these systems.
+So when you create a blockchain, all you're doing is creating a linked list of data, a
+new type of data structure, and it's cryptographically linked together.
+So you get tamper evidence from that.
+That's all you really get in addition to ordering.
+You can say this thing happened after this thing.
+But other than that, most of the other stuff that people think of when they say blockchain
+is not actually guaranteed from the blockchain itself.
+What is a blockchain not?
+It's not a consensus protocol.
+It's not a network of nodes.
+It is certainly not an arbiter of arbitrary truth.
+It may be able to tell you certain things, depending on what the consensus protocol actually
+does.
+It's not even a timestamping service.
+You have to have other parts of a protocol in order to ensure that the consensus around
+when these blocks were timestamped is in a certain range.
+It's also certainly not an immutable or finalized record.
+The blockchain itself only gives you tamper evidence.
+You need other things such as a proof of work or proof of stake or some sort of other consensus
+mechanism that makes it very expensive for someone to rewrite the blockchain and make
+it immutable.
+And of course, a blockchain is certainly not this diverse ecosystem of participants that
+come together to build it, use it, and evolve it.
+So my main point is a blockchain is not magic.
+You can't just sprinkle blockchain on a problem and come up with a revolutionary solution.
+You have to carefully consider all of the different aspects of what is making that blockchain
+function and how people are interacting with it.
+So to get to the real meat of this talk about bureaucracy, what is bureaucracy?
+It is basically the creation and enforcement of policies.
+And bureaucracy is how human civilization has gotten to where we are right now.
+We have created these hierarchical command and control systems over the past several
+millennia to help us organize ourselves, to help us specialize so that no longer do any
+of you need to actually worry about growing your food and the entire process of sustaining
+yourself.
+Instead, you can delegate that off to other people who are specialized and probably work
+for companies and other hierarchies to be very, very efficient and productive at doing
+one or two things.
+So the result of this, though, is that you have a system where there is a lot of power
+concentration at the top, and this power is basically being used to coordinate the other
+layers of people and things that are actually getting stuff done throughout the company
+or public sector, private sector, really any organization of people.
+This is very efficient, but of course, it has some tradeoffs.
+And I don't think that as a society, we've really thought about these tradeoffs very
+much until recently.
+So bureaucracy and governance in the real world and most organizations, they're very
+similar.
+Usually, the governance is what initially creates a set of bureaucratic mechanisms,
+and then it's self-reinforcing over a period of time.
+The governance and the bureaucracy are basically a closed loop, and usually policies are used
+to continue to extend and update the policies.
+On a distributed crypto network where we've got a protocol and a bunch of people that
+are running software and nodes around the world, it's basically the same thing.
+And we'll talk about a little of how this actually works at a technical level in a second.
+But because the protocols are essentially enforcing rules that you have agreed to run,
+you are then able to enforce these rules 24-7-365, and only you really get to say how those rules
+might get changed.
+So governance is really more about who can change the rules, right?
+There's many different types of governance.
+I've got a few of the major ones up here, everything from a dictatorship to a democracy
+to federations, republics, and of course, there's various hybrids of these things.
+I would argue to you that a public permissionless crypto network is actually more on the anarchy
+side.
+And one of the reasons that you get into a lot of contentious debates around governance
+of these public permissionless protocols is because people are trying to shoehorn them
+into other governance models that they're used to in the real world.
+So when we're talking about deciding changes, humans like to have what you could call a
+decision function.
+And this is essentially the way that we are voting to make the decision, because we have
+high time preference.
+We don't want to wait around for the rest of our lives trying to come to perfect consensus
+about how to change a system, because you're probably never going to be able to get everybody
+to agree on any one given thing.
+So instead, we come up with these different types of governance, these different decision
+functions that take inputs and give us one clear, decisive output.
+But of course, there's a lot of pros and cons to this, the pros generally being that you
+can make the decisions faster, the cons being that if you start talking about fairness,
+there's probably no system of voting out there that everyone is going to agree is fair.
+Have an example up here with the Ethereum coin voting that happened a couple of years
+ago around a forking situation.
+And we saw a number of things happen in there, one of which you can see only about 10% of
+the total Ether supply was actually used to vote.
+This is an issue of voter apathy that is common in all types of voting.
+And then when you actually dig into the votes that did occur, you see that 25% of them belonged
+to one voter.
+And of course, this is just due to a concentration of wealth in that system at the time.
+So you've got voting, that is how most governance systems work.
+But how do you do it in a system of anarchy, where there are rules, but there are no rulers?
+The closest thing that you can do is signal.
+Put up some kind of flag, some kind of flair that you shoot off that says, hey, I'm going
+to go this way, and if you want to follow me, you can, and if you don't want to, nobody's
+forcing you.
+So there's also kind of a moral issue at play here, where you could make arguments that
+all types of voting are in fact a form of coercion, and whether or not you believe that
+the pros and the cons weigh off against each other, that you would agree with that.
+That's a debate that you can have for quite a long time.
+But I think the main point I'm trying to make is that while you see people say that there
+are types of voting in these systems, even the voting that does happen is actually generally
+just a different type of signaling.
+And when we're talking about different models of governance that people try to apply, I've
+seen various models get applied, especially during Bitcoin scaling debates.
+We see some people point at certain organizations and say, oh, this developer organization is
+clearly the center of power, because they get to make the decisions, and then everyone
+else has to follow along.
+Or other people might say, oh, look at the miners.
+The miners are the ones that create the blocks, and therefore, whatever they decide should
+go into a block is essentially going to force everyone else to have to go along with that.
+And of course, these protocols are extremely complicated.
+There's a lot of game theory involved, and you can go around and around in circles for
+years, as many people have done, arguing about how the balance of power actually works in
+these systems.
+And I think that's generally a fruitless thing to try to talk about.
+Instead, what I think is worth trying to talk about is how self-governance works.
+And hopefully you can read this, but if not, what we've got here is a very low-level model
+of how data propagates around these networks, Bitcoin, Ethereum, what have you, is that
+if you're running a node on this network, you're connected to some other nodes, and
+they come up to you and they say, hey, I've got this piece of data.
+It's a block.
+It's a transaction.
+It's some sort of message as a part of the protocol.
+And they say, hey, do you want this data?
+You look at it.
+You say, oh, yeah, that looks valid.
+It conforms to the rules that I agree with.
+You accept it.
+And then you turn around, and you talk to all the nodes you're connected to, and you
+say, hey, I have this piece of data.
+Would you like to have it?
+And they do the same thing.
+And this is called a gossip protocol.
+It allows you to flood the network very quickly with any message, assuming, of course, that
+the nodes accept it and relay it.
+On the right, we have a situation where someone tries to pass a message that the other node
+deems invalid.
+And the interesting thing here is that they don't really have to take any action if they
+don't want to accept it.
+They just ignore it.
+They drop it.
+In some cases, they may disconnect from that client because they think they're being malicious.
+But it is really the power of apathy or the power of inaction that I believe gives power
+to this form of governance.
+And the result is you have this huge collection of individual actors.
+It's a huge mesh network that is composed of many tiny other mesh networks.
+And they're all working organically in concert with each other to propagate information and
+come to a consensus about what they collectively agree upon.
+This is what I consider to be inverted bureaucracy.
+This is an example of how a block propagates through the Bitcoin network.
+It's actually slowed down 500%.
+This happens in about two seconds.
+And as you can see, these nodes, they're talking to each other.
+They're saying, hey, do you want this block?
+They accept it.
+They validate it.
+They relay it.
+And then about two seconds, we can come to a global consensus about making updates to
+the current state of a ledger.
+When I look at this, it's really a thing of beauty.
+I actually see it in the way that Ralph Merkel referred to Bitcoin as a new form of life.
+This is some sort of new organism that we're still trying to figure out all of its complexities
+and intricacies.
+And so like I said, some people try to talk about balance of power a lot.
+Michael Goldstein famously put this Twitter post up a year or so ago where he's like,
+in Bitcoin, everybody's watching each other and they've got a gun on each other.
+And if anybody tries anything funny, then they're going to take them out.
+They're going to basically kick them off of their network.
+And while that's a graphic way of portraying it, I think that instead you can think of
+it from more of a defensive standpoint of like, we're connected to each other with ropes
+and we've got a scissor and we'll cut you off if something goes wrong.
+But the point being that I'm going to pose to you that in these networks, the power of
+the veto is as strong, if not stronger, than the power of the majority to overrule other
+people and that when we talk about fairness and equity, those are very controversial terms
+in and of themselves.
+I think that the most fair system that you can get is one in which any participant can
+veto anything that they want.
+And essentially, this gives you the ability to create a system where you may not be optimizing
+for that which is the best for the majority.
+I believe that it instead creates a system where you're optimizing for that which is
+least harmful for the general user base.
+So decentralization is a word that gets thrown around a lot.
+And this is one of the things that I try to warn people about when we're looking at a
+blockchain is that there's so many different facets that compose these complex systems
+that if any one of them is particularly centralized or has too much power in one part of it, that
+can actually become a critical flaw.
+So you have to be very vigilant and careful when you're evaluating any of these systems
+to make sure that all of the appropriate aspects of them have distributed the power as much
+as possible.
+A good example is that there's a number of tokens that are built on top of Bitcoin and
+Ethereum and whatever where the tokens themselves have code in their contracts that allow a
+single person or a single entity to censor and to make arbitrary changes to the token
+holders within that system.
+So you have to ask yourself if you're using this awesome robust censorship resistant network
+but then you've created a trap door in the protocol you built on top of it, do you really
+still retain all of the value of that network?
+And so what am I really getting at with all of this?
+You hear a lot of people talking about technical scaling solutions and all of the performance
+problems that we have with blockchains because blockchains are probably the least efficient
+database that has ever been created.
+But I think that a lot of people are overlooking the issue of social scalability.
+So what is social scalability?
+Well Alfred Whitehead said civilization develops by increasing the number of important operations
+that we can perform without thinking about them.
+And if you think back to bureaucracy and how civilization has evolved with these command
+and control hierarchies, that is the great question, the trade off of the efficiency
+versus the resulting systemic risk that we create by centralizing power in the hands
+of a few.
+And so I believe that these blockchain based platforms can enable us to create systems
+that are socially scalable, which means that the cost of participating in the network and
+staying in the network is much lower.
+And I don't mean the cost from a technical standpoint, but rather from a cognitive standpoint.
+If you are aware of the idea of Dunbar's number, he's basically talking about human brain can
+only really keep about 100 to 150 other relationships in play at any given time before we kind of
+get cognitive overload.
+And when you're in a system that the other participants in the system have sufficient
+power that they can pull the rug out from under you, change the rules, and really change
+the game, then you have to be worrying about all of these other participants and the power
+and how they might use it.
+But if we can build robust platforms where the power is so decentralized that you can
+create a much more resilient and trustworthy system, then people can interact with each
+other and use that system with very little cognitive overhead.
+And the main point that I would try to get at here is that with blockchain based platforms,
+we can create truly free markets that are socially scalable, where we can achieve this
+by creating a system where you don't have to worry about all of the power dynamics and
+the games that are being played behind the scenes, but rather you just worry about what
+you yourself agree with.
+And we essentially do that by inverting and automating bureaucracy to create these new
+type of organisms.
+And this is a very complex topic.
+I hope I've been able to distill some of it in the short 20 minutes here, but I'm very
+happy to talk about these issues and many other technical issues just to catch me after.
+Thanks.
+Thank you very much, Jameson.
+Some interesting food for thought here.
+Any questions from the audience?
+Yes, please.
+Yes, hi, can you please explain to us how you're using these incentive structures and
+operational structures for CASA, which you meant self sovereignty, which I'm assuming
+is...
+Yeah, so actually with CASA, we are not trying to change any of the existing structures.
+At CASA, our thesis is that the structures that are in the top public permissionless
+networks are already very well formed and we should not try to screw around with them.
+So instead, what we try to do is understand how those structures work and create software
+and hardware that allows our users to make use of them.
+And by that, I mean from a more technical level, allowing them to create and run and
+maintain fully validating nodes that are essentially running this bureaucracy in their own home
+in a way that doesn't require them to have a lot of technical overhead to understand
+how to run and maintain the software.
+And then from a privacy and security standpoint, to create additional layers of abstraction
+on top of these systems so that it is more of a plug and play or mobile app type of experience
+rather than the current experience that results in a lot of people having to use more command
+line tools or using tools that have been built mainly by developers for other nerds.
+So really, we don't think that the underlying architecture of the systems need to be changed.
+We just are trying to help people better understand how they work so that they can then understand
+the way that they can best operate inside of them.
+Other questions, please?
+Hi.
+I'm Robin.
+I'm in payments.
+What I really struggle with is which parts you can decentralize and which parts you can't
+and where, because it's so integrated, and so how do you determine which parts you can
+take out and implement blockchain smart contracts, decentralize, and then still let it live in
+the traditional ecosystem?
+Yes.
+And one thing I didn't really talk about is that, of course, there are a million different
+applications of blockchain technology, and we're already seeing a number of enterprises
+come together.
+And some of these blockchains will not fit into an anarchistic model.
+They will fit into a federated model.
+A good example of that would be a number of systems, Liquid, Sidechain, for example, which
+is actually pegged out of Bitcoin, but once you're into Liquid, you're operating in this
+new federated model, and you get trade-offs.
+You get faster speed.
+You get new privacy functionality that doesn't exist in Bitcoin.
+But the trade-offs are that you no longer have the same level of trustlessness.
+But from an even more meta standpoint, trying to control these systems may be a fool's errand.
+It seems to be more an issue of how was the system initially born, because once the system
+is initialized and created, it is very difficult to make it more decentralized.
+It's usually very easy to make aspects of it more centralized.
+So I think that this is why you see, at least in Bitcoin, it seems to be a constant battle.
+We're constantly fighting with each other about changes to the system, because some
+people are extremely concerned that if we go even an inch in the wrong direction, we're
+never going to be able to go back the other way.
+So it's very easy to lose your power in any system.
+It's very easy to become frustrated because there's no decision-making function, and things
+can take a lot longer to implement changes.
+So it's very easy for you to cede some of your power to another entity.
+And I would argue that that actually is what happened with Segwit 2X and Bitcoin Cash,
+is that certainly people got frustrated at the lack of change.
+And so they came together and said, oh, we have the power, and we can go make changes.
+And now they're going forward on their own path, and it's very fascinating to see the
+results of that.
+In fact, in a few hours, like with the Bitcoin Cash latest fork, I mean, it's just a fascinating
+social experiment.
+And none of us really know where it's all headed.
+But I think the best that we can really do is participate and do what we can to try to
+build these systems.
+Jamison, Ian, Greg.
+The blockchain presents a very antagonistic model of human behavior, which creates a lot
+of competition, but also a lot of adverse effects.
+I would suggest that if we can improve the level of interaction, dare I say it, introduce
+more trust, we can compete for more benefit.
+So firstly, do you agree with that?
+And secondly, how do we increase the ability to do trusted competitive trade, which where
+everybody benefits?
+Well, so I think one of the fundamental issues, at least within any of the public permissionless
+blockchains, is an issue that's fundamental to almost everything, which is limited resources.
+And so a lot of people are fighting over limited resources that they have to put into supporting
+these public networks.
+But in general, this is a very free market mechanism.
+I don't think that many aspects of it can be controlled, and that more competition in
+general is only going to make it more robust.
+Going back to one of the earlier talks with the cryptographer, he said even within these
+systems, they're not fully trustless.
+Like you're at the very low level having to trust the cryptographers.
+Or most of the people here are probably not looking at any of the source code for the
+actual node implementations, or your wallet implementation, or whatever.
+It really is, I think, creating a hierarchy of trust in some ways.
+And there may not be any way to get around that just due to the layers of complexity
+that is involved in everything.
+But how do we incentivize more competition?
+The best thing that I can do is kind of what I'm doing here today to try to explain to
+people what your options are.
+Why should you be interested in using a system like this that is arguably harder to deal
+with because you have to understand it better in order to fully make use of the security
+and the privacy and the other functionalities?
+I think end game to all of it is just building more layers of abstraction so that people
+don't have to be worrying about this.
+I do believe that, like most protocols, over the period of years and decades, the protocol
+will eventually ossify, and it will be ridiculous for us to even be having discussions about
+making changes to the protocol.
+And I would give you historical pointers around looking at how the internet protocols like
+TCPIP or SMTP or any of...
+Even HTTP.
+No one makes changes to these protocols anymore, and it's not because the protocols are perfect
+and that they can't be improved.
+It's because the trouble that it would take to make changes to them is not worth it trying
+to go out and get consensus.
+Rather, it is much easier to extend the protocols, build on top of them, build more and more
+layers of abstraction.
+So I think that that is gonna be the natural evolution that will eventually get mainstream
+or majority inclusion is when we're able to make it just dead simple for people to use
+these protocols.
+The people that are using Facebook and social media and websites today, almost none of them
+know TCPIP or any of the stuff that's going on under the hood.
+And so I think that is what we should aspire to be like with these blockchain systems,
+that hopefully someday, blockchain, it won't be a buzzword, it'll just be boring, boring
+old technology.
+Yeah, there's a blockchain under that.
+There's a blockchain under everything that's important these days.
+No point talking about it.
+Fantastic.
+Some great thoughts here.
+Please join me in thanking Jameson.

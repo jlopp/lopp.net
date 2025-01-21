@@ -1,0 +1,256 @@
+Thanks everybody, it's great to be here in Amsterdam, it's my first time to the Netherlands
+and you know I just went by the Anne Frank House earlier today and it was really a stark
+reminder of the danger that we can get into when we allow power to be concentrated in
+the hands of a few so-called authorities and I went by the Dutch Tulip Museum and I saw
+the dangers and the power that can be caused by speculative bubbles and you know maybe
+it's just me and maybe I have this bug in my brain that I see bitcoin everywhere but
+Amsterdam has been a wonderful place, I've got to meet some of the bitcoin start-ups
+while I've been out here and it's great to see that you have a thriving start-up scene.
+So when I first became interested in bitcoin I probably spent several months devoting my
+life to it just trying to put all of the pieces of the puzzle together and after years of
+doing that now I devote a fair amount of my time trying to distill all of that and save
+a lot of other people the same rigors that I had to go through so that they can understand
+it and now some people call me a bitcoin expert but from my perspective I'm still a novice,
+I'm still learning things every day and I have yet to find the bottom of the rabbit
+hole that is bitcoin and in fact the esteemed Andreas Antonopoulos once said I wrote a book
+that answers the question of what is bitcoin, it's 300 pages long, it was obsolete the moment
+it was printed and has to be corrected and updated every few months just to keep up with
+the changes, words to live by I suppose.
+So this is a game that's never going to end for us.
+So out of curiosity how many of you believe that you have a decent understanding of what
+bitcoin is?
+Show of hands, we have a few brave people in the back, alright this guy up here thinks
+he knows a thing or two about bitcoin too, we'll get to hear from him.
+So I've maintained a list of educational resources that you can spend months devoting your time
+to trying to ingest all of this information but at the end of the day you'll only be
+chipping away at the tip of the bitcoin iceberg and in fact Milton Demires posted this chart
+a while ago that I thought was perfect and depending on how long you've been in this
+space you're going to fall somewhere along this continuum.
+I'm not really sure what the time units there are, I think at least in my case this is several
+years over here in which you may be deluding yourself about how much you really understand
+bitcoin.
+We'll go into some details about why I believe that is the case and it's not just a phenomenon
+that I ran into.
+So one challenge of understanding this system is that it's multifaceted cross-disciplinary
+system that's constantly evolving and this is a little chart from Ferdinando Amitrano
+in Italy where he really hit a key point that I'll be delving into and that is bitcoin is
+not just a technology, it is in fact a technology that is representing something even less tangible.
+It's a living protocol as he said that emerges from this melting pot of ideas and contributions
+from all of the people in the world who think that this is an interesting project that's
+worth working on.
+Now you might be thinking to yourselves surely somebody understands what bitcoin was, right?
+I mean what about that Satoshi guy?
+I mean he created the system, right, but in my research I found that even Satoshi did
+not fully understand what he built with regard to bitcoin and its security model and all
+of the game theory behind it.
+They actually ended up fixing a multitude of bugs in the first few years of bitcoin's
+existence.
+For example, did you know that in the first year or so of bitcoin's existence anyone could
+spend anyone else's transactions and their coins?
+To my knowledge this didn't actually happen because the bug was caught fairly early on,
+but there was a problem with the opreturn opcode which would allow you just to do an
+optrue and then opreturn which would evaluate to true and allow you to spend any inputs
+that you wanted.
+That's just one example.
+Satoshi also fixed a major consensus flaw when he changed the consensus algorithm from
+looking at the longest chain to the most weighted chain which has the most proof of work around
+it.
+Interestingly enough a lot of people still refer to bitcoin as being the quote unquote
+longest chain as the correct fork, but it really comes down to which chain has the most
+proof of work.
+He also, as I'm sure you're all aware, set the block size limit.
+So originally this was only limited implicitly by the network message size which was like
+32 megabytes and he soft forked it down to 1 megabyte.
+In fact there is a bug currently in the bitcoin protocol that a lot of developers have to
+work around.
+If you've ever gotten to the level of writing your own raw opcheck multisig transactions
+you ran into an issue where you had to actually put in a duplicate meaningless op zero simply
+because there's an off by one bug when executing the script which requires you to have this
+dummy value in there otherwise your multisig script will not work at all.
+And of course who could forget a number of years ago the infamous bitcoin bug which allowed
+someone to create 184 billion bitcoins out of thin air.
+Obviously that didn't last very long before it was fixed.
+But my point here is that bitcoin did not really follow a code is law type of mindset
+at least in the early days.
+It really followed the idea that Satoshi's vision was law and changes were made as necessary
+to correct that when misunderstandings in the current code were discovered.
+Now I think that this distinction is particularly relevant for a couple reasons.
+One Satoshi stopped contributing to bitcoin years ago and two bitcoin has no real formal
+specification like some other cryptocurrencies like Ethereum.
+So I would make an argument that in fact once Satoshi stopped contributing and was essentially
+a benevolent dictator then it really comes down to all of us.
+And as contrived as it may sound I think that we are all Satoshi now.
+So to get a little bit better idea of how little bitcoin is understood you can look
+at some metrics.
+And you can see here that like the academic interest in bitcoin continues to grow.
+That last number is actually probably a lot higher because I pulled it at the very end
+of last year.
+But there's a lot of meat to be discovered still inside of this system.
+And I think that as the years continue going on more and more revelations will be discovered
+about the potential applications of this protocol.
+Satoshi once said that the core design of bitcoin was set in stone and that other implementations
+would be a menace to the network.
+People often take this quote along with many others to fallaciously argue that the bitcoin
+protocol must evolve in one way or another.
+But as we've seen Satoshi actually had to make a lot of changes to bitcoin early on
+as the various developers were exploring the code and discovering edge cases.
+And today there are over half a dozen different bitcoin implementations which as far as I
+can tell are not disrupting the network all that much.
+We've even seen that a single implementation can be a menace to itself and can cause consensus
+failure when low level machine differences happen.
+A good example of this was actually the 2013 Berkeley DB chain fork.
+So recall my earlier description of bitcoin as this melting pot of contributions.
+I think it really took hold once Satoshi left his pet project that he had been working on
+privately and released it out into the world.
+In those first few weeks when bitcoin launched it also gained its first collaborator, Hal
+Finney.
+He was one of the few people who really saw the promise of this technology.
+Finney actually released a number of emails with the Wall Street Journal, private emails
+between himself and Satoshi and they're a very interesting read, you can Google them.
+And you can actually see Satoshi's surprise as Hal manages to find several bugs that Satoshi
+had not anticipated even though he had quote unquote tested it heavily.
+So since bitcoin is definitely this evolving protocol, how do we describe it?
+I think that Charlie Lee actually did a really good job when he basically said that it's
+like the definition of a word.
+No one, even your favorite dictionary does not actually have the power to define a word.
+It is this amorphous thing that slowly gains consensus over time and may in fact change
+over time as the rest of the world changes in response to it.
+So I pose to you that bitcoin's strength comes not from being the embodiment of some
+dogmatic beliefs about immutability or decentralization or some other buzzword, but rather from collaboration
+and from the community.
+And it's this process of taking collaboration and using it to determine the human consensus
+which can be very noisy and messy, but I think it's the governance model within which we
+have to work.
+And from a philosophical standpoint, I believe that this is really the embodiment of voluntarism
+and voluntarism and mutual cooperation are really the only aspects of this system that
+are truly set in stone.
+So an interesting result of this is that while we can describe bitcoin as a trustless system,
+in the sense that if you're operating a fully validating node, you don't need to trust any
+other nodes in the system, at a meta level there's actually several forms of trust involved.
+For example, almost none of bitcoin's users actually read and understand the software
+of the protocol itself.
+They are trusting various developers to be careful not to introduce flaws in the implementations.
+And it appears to me that the fact that only a few people have a deep understanding of
+bitcoin's technical operations results in those with less understanding of the protocol
+to then have to decide which experts they trust.
+And as a result, when experts clash on various opinions, the crowd divides, it takes sides
+behind whichever experts they deem their arguments are most compelling.
+And unfortunately this results in politics sometimes being injected into the decision
+making process.
+As Shaolin Fry, an anonymous developer, recently noted, we should actually strive to avoid
+politicization of proposed protocol improvements.
+And to be clear, I don't mean that that means that no one is motivated by political ideals,
+but rather that the direction of this system should not be driven by politics in which
+one group is forcing their ideas upon another.
+I think that one of the problems that we're seeing a lot recently is this idea of voting.
+And voting generally means that some sort of political process is running where a majority
+vote gets to decide and have their will imposed upon the other people.
+But I think that we should instead be striving for a system of permissionless innovation
+wherein participants can signal to one another that they want to interact in a specific way,
+regardless of what other participants are signaling.
+So we end up having with this clash between different ideologies.
+And it's because of this root fundamental human consensus that we're trying to figure
+out how to code up.
+As a result, significant portions of participants have taken their ideologies and almost developed
+them to the point of dogma or religion.
+And it makes it very difficult for us to engage in civil, political, and intellectual discourse.
+Now one reason that I believe that it's easy for people to do this is due to the lack of
+a specification, lack of clear objectives of what Bitcoin really is and what Bitcoin's
+goal should be.
+For example, Satoshi described Bitcoin as a peer-to-peer electronic cash system.
+But even this simple description can be interpreted in many different ways.
+Peer-to-peer provides no context around how many peers that there should be or how expensive
+it should be to be a peer on the network, while cash provides not very much context
+around what the speed or cost of transactions should be on the network.
+So you can find a variety of perspectives and interpretations of things like the US
+Constitution or the Bible or the Koran.
+And so can the writings of Satoshi Nakamoto be interpreted and debated.
+The projection of individual perspectives on Bitcoin has led to a fracturing that we
+can see easily in a number of different political, philosophical, and religious systems, and
+now in Bitcoin as well.
+And these individuals are fostering tribalism, they're polarizing their perspectives and
+drawing party lines and applying litmus tests to newcomers and perpetuating propaganda.
+Debates continue to break down and people retreat within their echo chambers.
+So as a result, today Bitcoin debates often devolve into fallacious assertions and name
+calling where one party assumes the other to be either ignorant or malicious.
+And it's unfortunate because people often end up talking past each other under the assumption
+that they're right and the other person is simply wrong.
+And it's troubling to me to see the ossification of perspectives into these dogmatic beliefs
+that degrade the quality of discourse.
+Because there is no single correct approach to viewing Bitcoin, there are rather this
+multitude of perspectives of what it is.
+And I'm not saying that we all have to agree with each other or that we even have to participate
+in the rhetoric that's going on, but rather I would say that you seek what I am calling
+the Tao of Bitcoin, and that is that Bitcoin is going to follow its own path, that you
+realize you have no control over its future, though you are certainly welcome to give your
+input and try to find this meat space consensus.
+But at the end of the day, Bitcoin doesn't need you to defend it.
+Rather, on the other hand, you defend your own perspective of Bitcoin by running a fully
+validating node, which is essentially automating and extending your own human beliefs.
+The rules to which you are agreeing will be enforced by your node, and you can then worry
+about what everyone else's rules that they're agreeing to at a separate level.
+But it's that automation, I believe, that really gives power to this system of self-sovereignty.
+So an alternative title to this talk, I suppose, could be how to gain a bit of humility in
+Bitcoin, because I think that we should all be more humble when discussing it, rather
+than confident that our understanding of the system is superior to other people who are
+participating in a discussion.
+And you can achieve the Tao of Bitcoin by accepting that Bitcoin is on its own path.
+There's no need to be frustrated if your vision does not align perfectly with those of others.
+I believe that Bitcoin will naturally converge upon the least common denominator of human
+consensus, and by that I mean that which is beneficial to, or at least not harmful to,
+the greatest subset of participants in the system.
+And I will continue upon my own quest, my own quest to consume as much information as
+possible about this system, but I have long given up the goal of understanding Bitcoin,
+because the faster I run towards this finish line, the further it moves away from me.
+And while some people in this space are more confident than others about the direction
+that it's headed in, the truth is we're all blazing new trails and learning more as we
+move forward.
+So I want you to realize that you don't understand Bitcoin, and that's okay, because neither
+does anybody else.
+Based on the fact that you do not know Bitcoin, but how do you, what do you think will happen
+in August?
+How much trust do you have in this system which doesn't go anywhere which we understand,
+but still I would like to hear your perspective.
+Yeah, it's weird that we have these conflicting incentives both to want to follow our own
+path of what we think the short-term vision for Bitcoin should be versus the possibly
+even greater incentive to all stick together.
+And I gave a talk in Arnhem a few days ago where I was making a case that yes, there
+may be irreconcilable differences like fundamentally that it would be better for us to split, but
+I believe that our long-term vision, our long-term goals for this system are in fact the same.
+So I believe it would be a terrible idea for us to split because that would make it much
+harder for us to reconverge later on once we all achieve the technical hurdles that
+we want.
+I believe that with respect to this August, I think there is a very good chance, I'm very
+confident that we will avert any disaster forks.
+I know there's like six or seven different possible scenarios, all the game theory works
+out a number of different ways, but as a bitter pill it may be to swallow with like SegWit2x.
+I believe that maybe the compromise that everyone loves and hates just the right amount to get
+us a few months further into the future where we can then, once again, begin arguing about
+hard forks and other potential improvements.
+So this August 1st deadline is coming up, but I'm cautiously optimistic.
+Thank you.
+There's one question here in the back before we break.
+I don't really have a question, but I'm mostly having a statement right now.
+Because when you first asked like who here feels like he understands Bitcoin, I was just
+like raising my hand.
+But then the arguments you made make me realize that while I do understand Bitcoin, I understand
+my own perspective of Bitcoin and I'm free to do the perspective as I desire.
+Exactly.
+And so your perspective of Bitcoin, then you can worry about how it overlaps with everyone
+else's perspective.
+And I think that's really what all this argument is about, right?
+About what is Bitcoin or what should it be for the majority of us?
+And that's why I think like finding a least common denominator amongst such a diverse group
+of participants all around the world, it's a very messy process.
+Eventually, maybe we'll find ourselves finding a solution to other things that help us as
+a society go and be better at making decisions together.
+Because one thing the blockchain can help us at least in my perspective is to make decisions
+together.
+Yeah, definitely.
+I mean, it could be really weird where if we actually manage to solve the fundamental
+problems that we have in this community of finding consensus, then perhaps those processes
+could actually be ported over to governments and other systems of governance to improve
+them.
+It would be pretty funny to see Bitcoin software eating the governments in that standpoint.
+Thank you very much.
+Thank you very much, James.
