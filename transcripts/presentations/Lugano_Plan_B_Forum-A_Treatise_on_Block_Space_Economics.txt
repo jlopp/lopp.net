@@ -1,0 +1,327 @@
+Today, he'll be diving into a treatise on block space economics, a vital subject as we consider
+the future sustainability and scalability, of course, of the Bitcoin network. Please join me
+in welcoming to the stage, Jameson Lopp.
+Buongiorno, Lugano. I hope you all have your thinking caps on because this is your trigger
+warning. There will be some interesting and thought-provoking ideas that I talk about today.
+And what is today? It is October 26, 2024. The block height is 867,412, and we are currently
+clearing transactions out of the mempool as low as two Satoshis per virtual byte.
+So, today I'm going to talk about block space and block size. Those of you who have been around
+since the 2017 era scaling wars may have some trauma and PTSD, but I would urge you to not allow your
+emotions to override your logic with the ideas that I'm going to be talking about today. And why do I
+want to talk about block size today? Nobody else is talking about it, as far as I'm aware. That's
+actually exactly why I think it's a good time to talk about it. Lately, I've been going around giving
+presentations about my extremely long-term outlook on Bitcoin and certain problems that I believe will
+arise, not today, not tomorrow, not even several years from now, but decades in the future. So, this is an
+issue that I believe is going to come up again. And I think it makes sense for us to just start talking about it
+while it's not a crisis and while nobody is extremely emotional.
+So, what was the block size debate? Back in 2015 through 2017, we essentially spent several years
+talking about one core issue. And that was, should Bitcoin be optimized for a low cost of full system
+validation, also known as running a full node, or should it be optimized for a low cost of transacting
+on-chain, a low fee rate for creating Bitcoin transactions? Now, anyone who is aware of the outcome of that debate is,
+I think, quite clear that the former won out over the latter. And so we kept the blocks on the smaller size,
+we've kept the cost of running a node fairly low. And over the years, the fees on-chain have been volatile and gone up and down.
+Right now, they're actually quite low. But I believe that the next block size debate is going to be about something slightly different.
+And I think that what this is going to come down to is really the cost of self-sovereignty. And that is,
+how do we maximize the number of people around the world who are able to use Bitcoin without trusted third parties
+in a permissionless manner? And when it comes down to things like block space, how can we attempt to do that
+without disrupting the game theory and economic forces that keep this system sound?
+So, I think what we have in front of us is a Goldilocks problem. That it's not just about small blocks versus big blocks.
+And so I refer you to this 2015 quote from Gregory Maxwell. And what did he say? He said, "If the system is too costly,
+then people will be forced to trust third parties rather than independently enforcing the system's rules.
+If the Bitcoin blockchain's resource usage relative to available technology is too great,
+then Bitcoin loses its competitive advantage compared to traditional systems.
+And that's because the cost of a node would be too high. The average person would be priced out
+of running a node, enforcing the rules, and validating the system. And so that would be bad.
+It would force trust back into the system by basically economically pushing people into using trusted
+third parties. Now, that was, I would say, the main crux of the 2017 era block size debate.
+But what was not given much attention and what I want to bring attention to today is this next sentence.
+If capacity is too low and our methods of transacting too inefficient, then access to the chain for dispute resolution
+is too costly, once again pushing trust back into the system. So what is Greg saying here?
+He's saying that even if the cost of running a full node is really low and low enough that almost anyone can do it,
+if the cost of actually making those on-chain transactions for whatever purpose, perhaps even for things like opening and closing lightning channels,
+if that's too high, once again, we will economically be pushing people back into using trusted third parties.
+I would argue you can see a little bit of that today happening with lightning and the fact that a lot of people are using lightning custodially.
+So here's another trigger warning for you. And I think this is actually the wrong question of what is the right block size,
+or at least the way that we approached it in the previous scaling debates was not sufficiently nuanced.
+And in case you can't read it, lightning white paper says 133 megabyte blocks required to support global lightning adoption.
+And, you know, if people had actually read the entire 60 page lightning white paper, they might be a little bit upset about that.
+Of course, there's a number of assumptions that are baked into that number.
+What does the lightning white paper say?
+It says, you know, if we were doing everything on-chain under certain assumptions with transaction size
+and you're doing two transactions per day per person, then we would require 24 gigabyte blocks.
+And that's like best case scenario.
+Now, obviously this is ridiculous. This is like BSV level block sizes. What would happen?
+Well, obviously that would price out almost everybody except for the largest enterprises from running a node.
+And we would highly centralize the network that would greatly disrupt a lot of the governance and game theory of the network and the protocol.
+It goes on to say, you know, if we were doing all of these transactions for 7 billion people,
+and we assume that they do, you know, two channel opens and closes per year,
+then we would need 133 megabyte blocks in an optimal scenario.
+Now, obviously that's still orders of magnitude larger than we have today.
+So, where do we go from this?
+Well, perhaps we can show a little clip from Michael Saylor here, if we get this going.
+The commonly understood reason for why you don't want to change the block size is we don't want to centralize the network.
+We want to keep nodes that you can run.
+But it's not actually, in my opinion, it's not the best argument, right?
+I mean, the truth is you could probably make an argument that an eight megabyte block space will also be decentralized or not.
+Now we're in this little debate over the cost of storage versus the rate at which the Bitcoin blockchain increments.
+And the better debate is don't change it because it's unethical to change it.
+Don't change it because it's evil.
+It's unethical.
+That's why you don't do it.
+Why?
+Because every time you change the block space, you defraud or you deprive the Bitcoin miners of revenue.
+So if you actually keep doubling the block size, you keep driving transaction fees down.
+And so you're meddling in the economics of someone that in good faith invested in Bitcoin.
+If I invested all of my life savings in Bitcoin mining.
+So what is Michael Saylor saying here?
+Well, you know, he told me this when we had dinner together about a year ago and I initially scoffed at it.
+And that was because he was going on this sort of moral rant.
+But I realized he actually had a good point.
+Even though I disagree with some of his conclusions and he's basically saying we can never change the block size,
+I believe that we should consider the fact that this is an issue of miners and their revenue.
+And it's not just about, of course, the miners making money.
+It's about thermodynamic security.
+It's about protecting the network.
+So what he's really saying is we don't want to disrupt the economic game theory that creates a robust fee market.
+And so what I've tried to do here with this chart is show you how this basically works.
+And so over here, this is like the total demand for block space.
+And here we have, you know, these are assumptions, of course, but in general, the amount of revenue that miners are going to bring into blocks.
+And what is the point?
+Well, if we have a one megabyte block limit over here, then as soon as we have more than one megabyte of demand, we start to have a fee market.
+And essentially the fees go exponential.
+But if you have a 10 megabyte limit, then as long as there is anything less than 10 megabytes of demand, then the fee market, it really bottoms out.
+And you can basically get into these blocks with the minimum one satoshi per virtual byte.
+So it's not until you hit this inflection point where there's at least one byte more demand than there is supply for block space that the fee market starts to take off.
+And so if you extrapolate this out, say we have 100 or 133 megabyte blocks, this is really problematic because we're only getting a linear increase in minor fee revenue at the very minimum relay fee.
+So basically, if we're going to start to talk about increasing the block size to allow for more throughput, you know, to allow for Bitcoin to grow along with technological progress,
+then we have to be very careful not to do what Michael is warning us about, which is we don't want to screw enough with it that we create so much supply that there's not enough demand to meet it because that just causes the fee market to bottom out.
+And this is bad for miners, their revenue, it's bad for the entire network, thermodynamic security.
+So what is my takeaway from this?
+Well, I think this is a well known issue.
+This is one of the other main points during the block size debate, which is that if we want to maintain the thermodynamic security and be able to continue to pay for miners as the halvings continue to decrease the subsidy,
+then we need full blocks because full blocks are the only thing that really creates a robust fee market for block space.
+And there's also some other cyclical issues going on here.
+You know, this has to do somewhat with layer two, somewhat with generally how transactions are constructed by different wallets and providers on the network.
+And that is basically that when you have really high fees, that incentivizes people to use block space more efficiently, perhaps by batching transactions together, perhaps by looking for off-chain solutions.
+In some cases, perhaps by using networks other than Bitcoin.
+But then as people start to use block space less or more efficiently, that creates a low fee environment.
+And what does that low fee environment do?
+It incentivizes people to use block space inefficiently again.
+And we go around and around and around.
+And I think that this cycle is probably going to continue in perpetuity.
+So it's just something that we need to be aware of.
+The fee rates, I believe, are going to continue to be volatile for the foreseeable future.
+Now, we had many different Bitcoin improvement proposals in the 2015 to 2017 era.
+And I think they all had flaws.
+There's very good reasons why none of the block size increase proposals got passed.
+And so quick run through of some of those.
+BIP 100 was this miner voting thing where basically 75% of the hash rate could change the block size up to 5%.
+I think this is problematic mainly because it gives miners way too much power.
+It disrupts some of the balance of power in governance of the protocol.
+Also, if you actually do the math, these 5% biweekly increases could nearly triple the block size on an annual basis.
+And this could sort of be a runaway effect once again.
+This could disenfranchise the node operators.
+BIP 101, it was a really simple double the block size every few years.
+But it became even more outrageous because you end up with a potential max block size of 8 gigabytes.
+Again, this is like a BSV level block size at which there's probably only going to be a few dozen large enterprises that are running full nose.
+102 was safer, more conservative, just a one-time doubling.
+And that would have been okay from a network decentralization standpoint if you don't think about all of the ramifications of doing a hard fork.
+But it's problematic because it's kicking the can down the road.
+I think that one thing that we must absolutely avoid is just pulling numbers out of thin air and saying this should be the block size going forward.
+103, this was actually Peter Woola, I think, one of the better block size improvement proposals.
+Because it actually had baked in some natural laws of technological progress.
+And it was basically like, you know, this is a decent safety limit where if we only increase the block size by this much per year,
+then we're probably not going to disenfranchise many people because the cost of hardware and other resources is deflationary.
+And so it should prevent people from getting priced out from running a node.
+And there was some good rationale there.
+It's sensible.
+But along with all of the other block size proposals,
+it did not actually address any of the economic issues that I just talked about a few slides ago.
+104 is a similar type of thing where we're just looking to keep some headroom.
+And this is based on looking at previous blocks in the past couple of weeks.
+And, you know, this is problematic because this was actually how I originally thought of block size
+because I came from a large distributed systems environment where you always want to have overhead.
+But if you're always having overhead and, you know, extra supply, then as we've seen on that chart,
+you're basically aborting the fee market before it ever has a chance to develop.
+So this is not good from a sustainable thermodynamic security standpoint.
+Also, anything that is based upon what is in the blocks is potentially gameable by miners
+because they can stuff blocks full of transactions at essentially no cost to themselves.
+105 is another type of miner voting.
+Once again, this is problematic because the miners can essentially do whatever they want and not care about the full node operators.
+And also, it's sort of kicking the can down the road because we could run into another hard issue in one year.
+So 107 was kind of a combination of three different things.
+But once again, magic numbers doesn't address economics.
+And it could potentially triple the block size on an annual basis leading to runaway growth.
+So Bitcoin is not the only system that we can look at.
+In fact, there are a number of other systems out there that have dynamic block size adjustments.
+Bitcoin Cash is using this exponentially weighted moving algorithm.
+So once again, it's looking at the previous blocks and saying, how do we have more overhead?
+This is a problem because they're effectively preventing a market for fees from ever forming.
+Dash has this master node governance, which is essentially like a proof of stake.
+So it's basically like, oh, the wealthy people in the system who have master nodes get to vote and decide.
+And they don't care what the node operators think.
+Ethereum has a miner voting thing.
+Once again, don't like giving the miners even more power than they already have.
+I would say Monero has one of the more interesting ones from an economic standpoint.
+And that's that it is kind of miner voting, but the miners can only increase the block size if they're also increasing the transaction fee.
+So that somewhat offsets the issue that I've been talking about so far.
+So we have to ask, should miners get to decide this?
+I think no.
+I think most people would agree, no, we don't want to disrupt the balance of power.
+Should block size be based purely upon attributes of recent blocks and transactions?
+Maybe, but we have to be very careful about this.
+And I have some ideas.
+I think that optimistically, depending on how you set up the rules in the game theory, it should be possible to offset the ability for miners to essentially game the rules that you're creating in their own favor.
+But this will mostly come down to how we allow them to pay and collect the fees that result from having more block space.
+So we have to think about all the different stakeholders, not just the miners.
+What's the best for nodes?
+Well, here is some results of sync performance tests that I've done over the years.
+And essentially, what we have is Bitcoin Core version 0.8, 0.9.
+This is like as you're getting further and further into newer versions of Bitcoin Core, we can see that the amount of time that it takes to sync to a given block is actually decreasing.
+Why is that?
+Technological progress, specifically at the software level.
+The Bitcoin Core as a node is getting faster.
+So this means it's very nice, like here's another way of looking at the chart, that essentially, over time, a node is either staying the same or getting slightly faster than the previous version of the node that came out.
+So that's a good thing.
+We want to see that happening.
+That basically means that we can be generally sure that the cost of operating a node is not going up.
+But that is mainly talking about the overall cost of syncing a node.
+There's a number of different resources that go into syncing a node.
+And this is things like the CPU cycles of doing the actual validation of the signatures.
+This is the disk space for storing and manipulating the blockchain.
+But of all of the different resource requirements, what I found is that the real bottleneck is bandwidth.
+So here, we have some other research I did about two years ago where I wrote a script and I reached out and tried to connect to every node on the network that I could and request a bunch of blocks from it.
+And then I would basically time how long it took to get those blocks and figure out what is the megabits per second of upstream that that node is able to serve to me.
+And what I really found is the vast majority of nodes have 20 megabits per second or less of upstream, which is not great.
+This is, I think, one of the primary bottlenecks that we'll have to worry about going forward for cost of node operation and overall health of the network if we're thinking about block sizes.
+Because, obviously, bigger block sizes means more bandwidth requirements, which would mean, you know, slower time to actually send the blocks back and forth between people.
+So, like I said, there's a number of different hardware resource requirements.
+And all of these things improve over time because technology is naturally deflationary.
+So we have Moore's law that tells us about, you know, CPU improvements.
+Nielsen's law and Edholm's law both talk about bandwidth.
+Kreider's law talks about disk storage.
+And, like I said, I think bandwidth is the biggest issue.
+Now, I'm not sure that these bandwidth laws actually apply to upstream.
+I think they apply to downstream.
+But if you're familiar with how most broadband residential connections work, they're generally asymmetric.
+And what that means is you'll get hundreds of megabits per second downstream, but you may only get tens of megabits per second upstream.
+I don't know why the providers do it this way.
+There must be some technological limitations.
+It's not the case if you have fiber, but it's normally like cable and ADSL and stuff.
+So the average residential consumer doesn't really care about that because they're mostly downloading stuff.
+They're not really uploading stuff, but when you're running a peer-to-peer network, we need to be uploading stuff to the other peers on the network.
+So upstream comes a lot more important.
+I believe that Peter Willow got that 17% or 18% annual limit perhaps from his own observations a few years ago.
+So here's just another chart.
+Once again, I think, yeah, this is download speed.
+So upload speed is some, you know, percentage of this.
+But the nice thing is it's going up and to the right.
+You know, bandwidth is increasing all around the world.
+Year after year.
+Now, another trigger warning because a lot of people I think are vehemently, you know, anti-hard fork.
+We can never ever hard fork.
+I think that on a long enough timeframe there will be reasons why Bitcoin needs to hard fork.
+And then if we're talking about stuff like trying to improve the economics of block space,
+that will probably also require a hard fork.
+There are certain things that you can do of, you know, changing the total block weight limit.
+But regardless, is a hard fork feasible?
+This is something that I have not seen anyone really talk about.
+But this is some more research that I've done over the years, once again, looking at node operators.
+So, you know, we've got all the different versions of Bitcoin Core over the years, and this is basically how long was each version of Bitcoin Core being run by nodes on the network.
+This is how many nodes were running that version, and then how many weeks after the release of the version was it running.
+So, as you're probably aware, you know, software development has natural cycles.
+Bitcoin Core, for example, strives to do releases every six months.
+And I believe they normally support a release for like two to three years for security updates.
+So, another way of looking at this is one of the reasons that people say, you know, we can't do hard forks is because, of course, anyone who's running a node
+and is not paying attention and does not update their software, they effectively get kicked off of the network
+if the entire network decides to upgrade in a non-backwards compatible fashion.
+So, if we wanted to do a hard fork and we wanted to do it safely, then, you know, what is the threshold?
+You know, I was saying, if we look at 95% of all nodes, how long does any given version of Bitcoin Core over the years get run
+until 95% of those node operators decide to upgrade to a newer version?
+And it has increased, you know, there has been a lag time increase over the years.
+I think this is because we've seen more hobbyists using like plug and play nodes and they're not, you know, actively maintaining their node software as much as perhaps the really nerdy folks in the early days over here.
+But essentially, 95% of nodes tend to upgrade within 150 to 150 weeks, so two to three years.
+They'll be running a specific release before upgrading.
+And if we're following the guidelines from Bitcoin Core, it's really not safe to be running a release for more than three years
+because there's almost assuredly going to be some sort of security vulnerabilities.
+So, to recap all of this stuff, you know, this is a very complicated and nuanced issue.
+I think a lot of people are still very traumatized if they went through the original block size debate.
+There was a lot of people who got attacked.
+I mean, I got physically attacked.
+I had police show up to my house as a result of some of the social media battles that were happening at the time.
+And so, you know, you may not want to talk about it because people might get upset and just immediately shut down and say,
+we must never talk about this issue again.
+But I think that this is going to be a long-term existential issue of, you know,
+how does the nature of Bitcoin continue to change as adoption continues to increase over time?
+So, it's something that at the very least is worth talking about.
+Obviously, I don't have the power to force anyone to do anything.
+This is a consensus issue.
+And I think just some of my takeaways are that all of the previous proposals were flawed in one way or another.
+Either they changed the power of governance within the network, which is not something that we want,
+or they just didn't take into account some of the stakeholders who care about the economics of block space
+or the cost of downloading and storing blocks.
+And others were just simply naive and said, oh, we'll just change it from one magic number to another magic number.
+The main thing that I want to get through is that there's absolutely nothing special about the current block size.
+There's nothing special about one megabyte blocks.
+There's nothing special about a four million weight unit block.
+This is just the number that we've been at for a while, and people are generally comfortable with it.
+So, I think that we cannot simply double, triple, or change it to some other number,
+because once again, there will be nothing special about that.
+I would prefer that we come together and talk with all of the stakeholders and say, you know, this is how we come up with a dynamic block size.
+You know, perhaps it is analogous to our current difficulty adjustment algorithm.
+Perhaps instead we have a block size adjustment algorithm.
+And how do we do that in a way that doesn't make blocks too small.
+It doesn't make them too big.
+It keeps the economics of the system going without disenfranchising any of the people who care about this.
+You know, some people laughed at Luke Dasher when he was actually going the other way during the block size debate,
+saying we need to make blocks smaller.
+And I'll be quite clear.
+He had no better or worse point with, you know, his preferred block size than anyone who said double or triple the block size.
+I think Bitcoin itself would have continued on just fine.
+It's the nature of the usage of block space is what would have changed.
+So, we have a number of different issues at play here.
+We want to ensure a healthy fee market.
+I think we also want to incentivize innovation at other layers.
+That's why we do want there to be higher fees.
+Because as we saw, high fees incentivize efficient usage of block space.
+But also, we don't want to just run away and create a ton of supply that causes the economic market for block space to bottom out,
+which was Sailor's main concern.
+So, we need to be constrained within these safety limits of technological progress.
+And if we can do all of that, I believe that it is possible to have what we might call Goldie blocks.
+And essentially, the right size block at the right time based upon the nature and the usage of Bitcoin as it stands at any given point in time.
+And controversially, I think that a hard fork, if it is uncontroversial, if we get all the stakeholders together to agree that we can come up with an algorithm that appeases everyone.
+I think that hard forks that are pushed out sufficiently, you know, four, five, ten years in the future, are actually safe to do just due to the natural rate of people upgrading their software.
+So, why am I even talking about all of this?
+It's because the institutions are coming.
+And what I've seen from the institutional players, the traditional financial people,
+who are mostly looking at Bitcoin from an investment perspective, not from a sovereignty perspective,
+they don't care about improving the protocol.
+They don't care about scaling the network.
+Why?
+They don't care about sovereignty and self-custody.
+And why would they?
+The only reason to even talk about improving the Bitcoin protocol is to do so for those who are using self-custody.
+If you're using a trusted third party, you're not using the Bitcoin protocol.
+You don't care, you know, about all of these different aspects and economics and functionality of using the protocol,
+because someone else is using the protocol on your behalf.
+Or most likely, if it's like an ETF or, you know, some sort of traditional financial asset that's just exposing you to the financial investment of Bitcoin,
+you know, they're probably not hardly even using the Bitcoin protocol at all.
+So, I think that we have to be aware that these people that are coming into the space,
+and obviously they bring along their own pros, I'm talking about the cons here,
+is that they don't necessarily have the same incentives as those of us who got into this for self-sovereignty,
+for creating a currency that is not going to be run at the behest of states or state-aligned institutions.
+So, these particular type of entities are happy to let third parties hold their keys,
+as long as they can get the financial exposure to Bitcoin.
+And that means that they're not going to have the same incentives as the rest of us.
+So, I'm here warning you because I think the next block size debate is happening.
+I think that, as we talked about yesterday with ossification, that the future of the Bitcoin protocol is going to become a more main stage type of battle,
+because we have a lot of people with a lot of money coming into the space that have very different incentives than those of us who have been here for a long time.
+So, this is just something that I think we should be aware of, and all that I can do, all that any of us can do,
+is be cognizant of it and talk about it, because this is how we come to consensus.
+This is how we continue to move Bitcoin forward, by being observant, seeing what's happening with people who are using the network,
+people who may not care about using the network, and continuing to try to improve Bitcoin from as many different perspectives as possible,
+while we still can, because ossification is inevitable, it's going to happen eventually, and the question is,
+you know, how much can we continue to improve Bitcoin before it's no longer possible to coordinate?
+So, thanks for listening, and I'm happy to, you know, talk with all of you offline,
+and, you know, discuss some of these controversial issues in the coming days, weeks, months, years, and decades.
+Thank you.
