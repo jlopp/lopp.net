@@ -1,0 +1,924 @@
+Okay. Welcome. Welcome to Transform with Greg Carson, a podcast where we focus on the transformation of markets, ecosystems, and we're interviewing the people who are driving these transformations to learn more about where they invest their time, their money, and their spirit, and get into their backgrounds and their insights.
+Today's guest is the esteemed Jameson Lopp, a friend who is a famous cypherpunk and co-founder and chief security officer of Casa, active Bitcoin community participant leader, veteran, OG.
+I look forward to hearing his many interesting stories and insights about Bitcoin and the future of finance.
+And just a quick disclaimer, any views expressed in the below or personal views of the podcast participant or myself and not a basis for making investment decisions and shouldn't be construed as a recommendation to engage in investment transactions and are not reflective of Humble Ventures or of his companies.
+So with that, Jameson, welcome.
+Good to be here.
+Great. So I guess a good stop. I think many of my audience might not know you on the financial side and on the Bitcoin side, probably everybody knows you.
+So maybe you want to give us, in your own words, kind of like the Jameson origin story, you know, retold in a Guy Ritchie format or some format like that.
+Like, where do you come from and how did you end up in Bitcoin? What's the original?
+Right. So I'm a computer scientist. I spent the first decade of my career building infrastructure for email marketing, online marketing company that grew to be quite large.
+And I was basically doing cloud computing in the very, very, very early days when people didn't know what the cloud was.
+This was like right around when AWS was first becoming a thing.
+But like we were running our own private cloud, basically.
+And it was during that period, I was doing regular nerdy things, reading nerdy news on Slashdot and other such sites like Y Combinator, Hacker News.
+And this Bitcoin thing kept coming up.
+And like most people, I dismissed it the first few times.
+And then after like the third or fourth time, I was like, OK, this system has not fallen apart and crashed like I expected.
+Maybe I should actually look into it.
+And so I read the white paper, was quite intrigued.
+I had never thought about these problems of money and double spending and whatnot.
+And I was mostly intrigued because the solution that Satoshi came up with was like the exact opposite of what I would have tried to do to solve this problem as a computer scientist.
+And the short explanation for that is that when we are trained in data structures and algorithms, we're basically trained to do things as efficiently as possible.
+To use as little computing resources as possible, whether that's CPU, memory, disk space, bandwidth, whatever.
+And so Satoshi's solution to this problem was extremely inefficient.
+It was like the most inefficient way to create a database and distribute it.
+Because, you know, like I said, I was doing cloud computing.
+I was doing distributed databases at scale, you know, hundreds and hundreds of petabytes of data.
+And so I looked at this Bitcoin thing.
+It was like the exact opposite of what I had been doing for the past five years.
+And so that's why it was so intriguing.
+So, you know, I figured, hey, I need to get some of these Bitcoins.
+I need to play around with them.
+I need to understand how the system works better.
+And that's where I kind of started my journey where within about a year, I had launched my first side project called Statoshi, which was just a fork of Bitcoin core with a few hundred lines of code of instrumentation and basically statistics metrics collection added.
+And I was just trying to bring the ethos of transparency that is a big part of the Bitcoin ecosystem, was trying to bring that ethos to the aspect of running a node and trying to understand what's happening when you're actually running a Bitcoin node.
+And I think that was a successful project.
+It was referenced by a number of developers over the years to argue for certain things.
+Within about a year after that, I ended up going full time in the space.
+And from 2015 to 2018, I was building infrastructure at BitGo.
+We were really one of the first multi-signature wallets out there.
+We were helping enterprises, exchanges, payment processors, so on, help secure their hot wallets because they were constantly getting hacked and drained back in the day, which was not good for them or for the ecosystem as a whole.
+And after doing that for about three years, I made a small pivot and took a lot of the best practices and things that we had learned and co-founded Casa and Casa is basically a multi-sig wallet, but it's more user friendly.
+It's really meant for super-duper cold storage, high security, and the idea is that we make it as easy as possible for you to put yourself in the most robust and secure architecture that is really available in this space.
+And, you know, it's a complicated thing doing self-custody, being your own bank.
+It's very scary to a lot of people.
+And we feel like making it an experience that people can get comfortable with is actually really important just for ecosystem-wide adoption of people actually taking advantage and being able to use the properties that Bitcoin has been promising since inception.
+And really, a lot of that has to do with just helping people avoid a lot of the foot guns and pitfalls where you can shoot yourself in the foot and lose access to all your money.
+And when was that, your story began, when was your first Bitcoin purchase?
+What year was that?
+2012.
+2012, wow.
+It is.
+And Casa, you founded when?
+When was that?
+It was beginning of 2018.
+And Casa is doing great now.
+How many people are storing their stuff on Casa?
+Quite a few.
+Don't give out specific numbers that I'm aware of, but, you know, as you might imagine, it's pretty much directly correlated with the exchange rate.
+So since bull market started kicking off this year, you know, we've been setting records, you know, we're at all-time highs for, like, number of clients and revenue and everything else.
+So we're definitely looking forward to a 2025 bull market.
+Yeah, so Bitcoin is at 106 today.
+I think it hit 107 the day before, just so people can see.
+We'll publish this later so you can see what day we're on.
+But what is the, I guess, since you introduced Casa, I have a lot of things I'd love to chat with you about with your writings and your interest and your knowledge of Bitcoin.
+But with Casa, what is the, you know, just what is the value, like, why would someone use you guys just to give you a shameless promotion of your company?
+But I'm actually quite curious, like, what is it that people avoid and what are the types of people that are signing up to Casa mainly?
+Like, is it someone with, like, 20, like, with half a Bitcoin or is it mostly people with hundreds of Bitcoin or is it all along, you know, what is it?
+Yeah, I mean, we're very much tailored for high net worth individuals.
+I mean, we have a number of different tiers.
+So at our lowest tier, you can get into a kind of do-it-yourself two out of three key multi-sig setup for effectively, it's like $250 a year, $20 a month type of thing.
+And, you know, that just gives you the basic software and email support.
+It's our higher tiers where I think our value really shines.
+And so I say, basically, if you're a whole coiner, you know, if you've got a whole Bitcoin or multiple Bitcoins, then you should really start thinking about how do I eliminate single points of failure?
+And that's the primary value proposition for our architecture is that, you know, we not only protect you against, you know, hacks and thefts and stuff, but we also protect you against being human and making mistakes, which, you know, everybody makes mistakes.
+And so one of the biggest problems in the space, especially in self-custody is that most people are using single signature wallets.
+So, you know, if you've gotten to the point where you're using like a Trezor, Ledger, cold card, you know, any of the major hardware devices out there for storing and managing your keys, you know, you're already ahead of probably 99% of people in this space.
+However, if you're just using that one device, you just have that like one seed phrase, that's still single points of failure, you know, it's still possible for that to get stolen or lost or destroyed or whatever.
+So many things that can go wrong is that if you really want a resilient and robust setup, then you need to be able to recover from a disaster.
+Essentially, you don't want something breaking or something going wrong to result in catastrophic loss.
+And so that's really where having multiple keys on multiple different types of hardware and software, this is it's not just Casa software, you know, you're keeping keys on multiple vendors.
+So that also helps protect you against supply chain risk.
+For example, you're not trusting any specific company in the space, you're not trusting Casa, you're not trusting Trezor, Ledger, whatever, because you have your keys distributed across many different companies and manufacturers.
+And then geographically, physically distributing those keys amongst multiple somewhat secure locations.
+It doesn't have to be Fort Knox, but that gives you a really high level of protection just against things like natural disasters, you know, especially against theft, though, because, you know, an attacker would have to actually know where all of your keys are.
+And they would have to know all the security, physical security mechanisms to be able to bypass them to be able to get a spending threshold.
+So really what this is, this is, this is, this is allowing people to be their own bank, but it's leveraging aspects of the protocol and best practices of what we've learned over the years, so that you can actually have what I would claim is better than bank level security.
+Because if you think about it, you know, even if you have like a safety deposit box in a bank, that bank could get destroyed, you know, it's probably highly physically secure against it.
+I've seen oceans 11, I know it's possible.
+Yeah, I mean, say like a natural gas line got ruptured and exploded that was going into the bank, you know, there are still things that edge case risks that could happen.
+You know, more likely risk that we actually have seen happen is kind of like state level actors going in and cleaning out safety deposit boxes or even, you know, the banks or the companies themselves cleaning out safety deposit boxes without actually like asking for authorization from the owners.
+So, and one of the cool things about having a distributed multi-key setup, you can put a key in a safety deposit box, and it gives you a really, really high level of physical security, and it's fine if one of those edge case risks happens, you know, if that key gets compromised, destroyed, whatever, it's not the end of the world, because you have enough keys elsewhere, where you can basically recover from that loss and move your funds.
+It runs over to a new set of keys.
+So this is what we offer is not just a software wallet.
+It's really the best way to think of Casa is it's like a security consulting service.
+You're essentially hiring me and a bunch of other people that I have trained to understand really a decade's worth of best practices that we have learned from observing a lot of people lose their money in a lot of different ways.
+Understatement. Yeah, that's especially with Bitcoin. It's it's even dramatically more risk. Is that is that mean that with Casa, you are? Well, I also does that means that with Casa, you are you're not necessarily trusting you guys, you're trusting you guys to help me put my security protocols in place. And I think if I remember correctly, even if you buy Casa, that's still even anonymous, right? You guys don't keep track of the people that have bought
+Right. So if I remember something like that. Is that an incorrect memory?
+Right. So Casa is not a financial service.
+So Casa is not a financial service.
+We have some competitors in the space.
+We have some competitors in the space who have similar offerings, but they're more focused on the financial side of like helping you do trading or loans or something like that.
+Right. So Casa is not a financial service.
+We have some competitors in the space who have similar offerings, but they're more focused on the financial side of like helping you do trading or loans or things like that.
+And so, you know, the financial services are going to require KYC, they're going to require KYC, they're going to need to know who you are. And, you know, I would argue that KYC is kind of a risk in and of itself, right?
+Especially when there are data leaks that happen and then you can get targeted in a number of different ways, both digitally and physically.
+The problem with KYC is usually it comes with like your actual physical address information that gets leaked.
+So, yeah, we are a software and security consulting service.
+It is entirely possible to sign up with us anonymously to, you know, use us over VPNs so that you're not leaking data about like your ISP or your, you know, rough geographic location.
+And we, especially at the higher levels, we can really tailor the service to you.
+Okay.
+So you aren't trusting us because like we're not taking custody of your funds, though we do hold one of the N keys in your key set.
+And what is the range of N?
+N can be two or 50.
+Yeah.
+So most people, they're either going to have a two of three at the lower tiers or a three of five at the higher tiers.
+And so we will hold one of those keys.
+And then that's really like a disaster recovery type of key.
+It's not meant to be used regularly.
+And then we build specific authentication protocols around how you request a signature from that key at the lower tiers.
+Like I said, it's more do it yourself.
+And so that it's really just like a series of questions and answers for you to authenticate at the higher tiers.
+It's usually more like we're going to get on a call with you.
+We're going to check certain information.
+We're going to have a discussion and give you the opportunity to use duress words that we may have on file.
+Nice.
+It can basically get as complicated as you want.
+We can even have, you know, other trusted friends or family that we-
+Can you guys call like a police or security for someone if they're calling you with duress words?
+Like you guys do that as well?
+Yep.
+Wow.
+Absolutely.
+If you have told us your physical location so that we like know which jurisdiction to reach out to.
+Right?
+So it can get pretty complicated.
+Do you know our Bitcoin too?
+Do you know what we have for Bitcoin if we're a client of yours?
+Yes.
+So think of CASA as like we are coordinating your multi-sig so we know all of the public keys and that allows us to do the things like look up the UTXOs and the balances and the transaction history and allows us to construct the unsigned transaction to give to you to then take around to your different keys to be able to sign with.
+And I guess this all get designed from, if I remember correctly, you have a personal story where you had security issues, where do you want to tell me some stuff about that personal history of how this kind of came about?
+Well, I mean, it was related to me being in the space, but during the very contentious scaling debates in 2017, we were pissing off a lot of people with our arguments around like what should happen to the future of Bitcoin.
+And at some point, at some point, I pissed off the wrong random people and they decided that they wanted to send a SWAT team to my house and try to extort me.
+And that became a whole story unto itself actually became this multi-year long quest where the first thing that I did was I learned everything that I could about privacy and operational security.
+And then I sold all of my publicly registered property and possessions and moved and set everything up anonymously basically with trusts and corporations and so on.
+And then once I did that, I talked about everything that I did to make it possible for other people to understand really how difficult it is.
+And, you know, this was a very American specific thing.
+That's one of the difficult things about privacy is if you're doing it legally, it tends to be very jurisdiction specific.
+Yeah.
+But then once I did that, I went on that was like my defensive.
+I basically spent a year improving my defense.
+Then I went on the offense and I actually I posted a bounty against the guy who had swatted me and started collecting information and started working with the FBI.
+And after like another three or four years ended up catching him, bringing him to justice.
+It was kind of a better sweet thing though, because it ended up being this young teenage kid who was not in a particularly great situation.
+So I felt kind of sorry for him.
+But, you know, hopefully he got put on the right track after that.
+Yeah.
+I was just a kid prank.
+Basically, it wasn't a.
+Yeah.
+Well, I mean, I felt like I said, I felt sorry for him in some sense, but I was not the only person he swatted by any means.
+Like he had definitely hurt a lot of people from according to the collection of information that I gathered over the years.
+You know, he was known as the guy who would swap people.
+So like he didn't even know who I was.
+It wasn't like a personal thing.
+It was like he was in the wrong crowd of people and they egged him on to hit me.
+What a weird story.
+And ultimately he ended up regretting it.
+He was like, if I had known who you were, I wouldn't have messed with you.
+But like I said, I think he had done this to a lot of people and I was the only one with kind of the resources and the wherewithal to track him down and see justice.
+Well, it's the it's the it's the future of justice in the Bitcoin community.
+And and and I guess the silver lining is it like a lot of.
+A lot of your life is around this, like not to put a silver lining around it, but I mean, like Casa, all this stuff that you're doing, your knowledge base, all kind of like from this horrible event.
+Yeah, I mean, it was a learning opportunity.
+And so, you know, now people who who come into Casa at our private client tier, they're actually going to benefit from a lot of this information.
+The short version of like what private client is in terms of Casa is that it's not just security for your Bitcoin, but it's security for Bitcoiners.
+And so that means like all the different aspects of your life that are related to your security are ultimately going to be related to your Bitcoin security if you're doing self custody.
+And so, you know, that's where things like wrench attacks come into play.
+A wrench attack?
+You know, a physical attack, any sort of physical attack.
+Yeah, generally called the wrench attack.
+It kind of goes back to this XKCD comic a number of years ago.
+Robberies, basically robberies.
+Yeah.
+Yeah.
+But it's like the comic is like in a crypto nerds imagination.
+They're like, oh, I'm using 4000 bit encryption.
+Nobody can can get through, you know, my security.
+And then the attacker comes in.
+He's like, OK, we're going to tie you to the chair and beat you with this $5 wrench until you tell us how to get past the security mechanism.
+I have to say that I know uncomfortably, uncomfortably large number or not vast number, but more than a few of these situations.
+So it's actually a real.
+Yeah, it's very, very real concept, especially.
+Yeah, it's very real, especially if you're if you're a publicly known Bitcoin crypto personality.
+Yeah.
+I have a whole list of these attacks and I'm constantly adding to I added two more just today.
+Oh, Lord.
+But, you know, these are always they're very laggy, like like one of them that I added actually happened 18 months ago.
+But sometimes we don't hear about them until the court cases go through.
+And so also the traumatic people don't want to share these things.
+Yeah.
+Accepted them into their core.
+The I would say the vast majority of these attacks never get reported.
+And that's because, you know, people are afraid it's going to make them a bigger target.
+And they don't want to have to, like, go into hiding like I did, essentially.
+It requires a weird hybrid of hiding and public.
+I am.
+And it's I I've said a number of times that I kind of chose the most difficult path when it came to privacy, because if you want great privacy, then all you have to do is shut up, you know, delete all of your Internet presence.
+Stop going around talking to people, especially about any sort of luxury or high net worth related things.
+And you'll generally be fine because you're not going to be a target.
+But if you're out there, if you're on the Internet, if you're in public, if you're going to conferences, that raises your profile.
+And there is going to be a criminal element that's going around and surveying the landscape and trying to say, OK, you know, what's my potential return on investment if I attack some of these OG Bitcoiners versus trying to, like, attack a physical bank or an armored car, you know, carrying money, so on, so forth.
+And that's kind of where we are right now is the kind of the chart of physical attacks against Bitcoin and crypto people is also roughly correlated with the exchange rates.
+And that should be no surprise.
+It's because as the exchange rate goes up more, you know, public awareness of the space happens and a part of the public is criminally minded people.
+You know, I'm I'm I'm I'm I'm optimistic in the sense that I believe that, you know, the vast majority of people are good and moral people who don't want to hurt others, you know, for their own personal gain.
+But whatever that, you know, criminally oriented segment of the population, which I think is, you know, single digit percentage of the population is you still have to worry about them, especially if you're a more high profile figure.
+This is this is this is kind of related to my own experience is that and this is not unique, but the I would say the main reason that that happened to me was because I got to the point where I had hundreds of thousands of social media followers.
+You know, if if I only had a hundred people following me on social media, I would not have ever become a target for that type of stuff.
+But while while my sort of social media trajectory was a decade long thing, it's also possible for really anybody to go from being a nobody to having millions of people's attention focused on them.
+You know, if you say the right thing or the wrong thing, you know, you can go viral and going viral can happen in a matter of hours and that can drastically change your threat profile and can cause you to realize that you're you're you're vastly unprepared for having that level of attention.
+So, you know, this used to be an issue that was mostly relegated to your traditional like Hollywood celebrities and billionaires and stuff.
+And now, thanks to the Internet, anybody can be a celebrity who has a ton of attention pointed at them and some of that attention is going to be malicious.
+Wow. Yeah. Great. It's great. It's an interesting story. And it's like it's becoming more and more relevant now.
+I mean, now that Bitcoin is over one hundred thousand. What are your thoughts?
+considering your 2012? Like, are we early? Are we late?
+You had no doubts?
+Where are we going to, you know, where are we now?
+What is the state of the universe?
+We could talk about that for hours.
+We're still early in the sense that I think the relative percentage of people who own Bitcoin much less understand the value proposition is still pretty small.
+You know, probably still low double digit percentage, like maybe 10, 20 percent.
+And, you know, we're at the point now where it's it's it's really more of like the institutions and corporations and nation states, I think, that are going to be a major part of the next wave.
+I'm sure that eventually that will get to the point where it also kicks off some retail FOMO again, but we're not seeing anything close to retail FOMO at this moment in time.
+You know, a number of us like more technical people have noted that, like, it's pretty crazy because I don't think I'd have to go back and look, but I don't think that Bitcoin has ever reached all time highs before while being this quiet, like on the network.
+You look at you look at the mempool, you look at the blockchain, you look at the fees and it's dead.
+Like almost nobody is actually using Bitcoin right now.
+And yet we're at all time highs, you know, one hundred five thousand dollars, whatever.
+So point being, you know, there's no retail FOMO.
+There's not a whole lot of demand for block space of people who are doing like self custody stuff at the moment.
+That will probably change in 2025.
+We'll see you're saying retail, retail self custody.
+Now, I would I would I would argue that the ETFs is a ton of retail activity.
+It's just masked by one big five big institutions.
+Yeah. Yeah. So the crazy thing about the ETFs is that it's you know, I think it has a massive effect on the exchange rate and it actually greatly reduces the demand for block space.
+And so once that that's really I think the major explanation of ETFs and really, really large providers that are probably, you know, like like micro strategy, I think as far as we know, they're mostly using Coinbase and Fidelity maybe for their major purchases.
+And so their their blockchain footprint is really, really small because it's like a small number of entities doing a few very large on chain transactions once in a while.
+So it'll be interesting to see how that plays out. But that's that's also I mean, that's directly related to our business and to some of my long term concerns about Bitcoin of, you know, what what happens if too much Bitcoin is centralized into the hands of too few entities that could potentially change some of the game theory around.
+Yeah, around you know, call it the governance of Bitcoin or like the sort of the future of the protocol and how we could improve it.
+Yeah, it's especially if it becomes like a strategic reserve issue in the United States, then if the United States considers Bitcoin to be like a national security issue, you can only imagine how difficult that would make it to like try to make changes to the protocol.
+Oh, yeah. If not already in the back, you know, in the in the in the back.
+So I guess since we're on and let's say that 30% of my audience is not like hardcore Bitcoiners and let's say 70% are and if you had an elevator ride of like, you know, 30 30 seconds to a minute.
+How do you how does the Jamison mob and 30 second pitch on what the value proposition of Bitcoin is to a no corner?
+So, you know, Bitcoin is crudely I like to say fuck you money.
+And what I really mean by that is not that you have to have a lot of it, you know, traditional fuck you money is you you have to have a lot of it to be able to just tell people to go fuck themselves because you don't need them.
+But really, Bitcoin is fuck you money because you can take it into self custody.
+You can hold it yourself. And if you're doing that on your own, all you have to do is follow the rules of the protocol and you can do whatever you want with your money.
+Like nobody can tell you what you can do with your money if you're holding it yourself.
+You're holding it yourself. So that's the key, right? Not your keys, not your coins.
+If you're if you're just if you're just buying Bitcoin through an ETF or on an exchange and leaving it there, then you don't actually own Bitcoin.
+And what I mean by that is you may legally have like some sort of entitlement to the value that is shown on your screen.
+But according to the Bitcoin network, you don't own Bitcoin.
+You don't have the ability to move that money on the Bitcoin network.
+And that means you're losing out on some of the most valuable properties of this protocol.
+Yeah. OK, great. So now, I mean, we had a nice talk about the security stuff and whatnot and a nice view of Bitcoin.
+Bitcoin is at one hundred and seven. What is your I mean, the customary price talk, which is where are we right now in the in the terms of Bitcoin?
+Are we in a and I know this is probably not your usual discussion, but like, are we in a four year cycle?
+Are we in the middle of that cycle? Are we now super cycle? Are we is this an important moment?
+You know, we've gone above one hundred hundred hundred thousand.
+I guess that goes back to my first question to you, which was, you know, is this moment in time, this price, this nation state consideration in your mind,
+thinking back to the Jameson of 2013, are we early?
+Are we you know, like is from a price standpoint and an adoption standpoint, you said it was very early a few moments ago.
+But where is the price going and how how will things play out if you put your futurist hat on for the next kind of 24 months?
+Yeah, I mean, I think we're still we're still early from an individual adoption perspective.
+And I mean, I'm a tech guy, right? So I think Bitcoin is not even technically capable of supporting mainstream adoption right now.
+This is like one of the many reasons of why I still keep pushing for continual improvements at the protocol level so that we can continue to expand the capabilities and scale out the system for people to operate in a permissionless manner.
+Which means they're directly using protocols. They're not using trusted third parties.
+So that's, you know, one of my concerns is that a lot of adoption these days happens through trusted third parties, which is kind of just recreating the old banking system, right?
+Like people are getting deplatformed from their exchanges all the time because they say or do something that makes the exchange consider them to be too risky because to be quite honest exchanges are basically just banks that also do crypto stuff.
+You know, they're fully tied into the traditional financial system.
+They have to follow all the same regulations and they have the same risks that they have to deal with.
+So in my grand vision of like what hyper Bitcoinization would look like, we're still a long ways away from that.
+And what we seem to be headed more towards right now is, you know, financial adoption of Bitcoin.
+This is actually similar to what Hal Finney postulated about in the very, very early days of Bitcoin.
+He was one of the first Bitcoin developers and like received the first Bitcoin transaction.
+he was postulating that one way that Bitcoin would scale would essentially be through Bitcoin banks.
+And so that's essentially what's happening now with the ETFs and exchanges and other large custodians.
+And, you know, that's exactly the opposite of what we're trying to do at Casa.
+We're trying to decentralize the control and ownership of the actual Bitcoins by getting them into the individual's hands so that they're the ones controlling it.
+Because I think that if Bitcoin becomes too centralized along that ownership and like control of the actual Bitcoin's vector, it injects systemic risk into the system.
+And that could be any number of things.
+It could be because of the continued collapse and hacks of exchanges that still happens every few years.
+Or, you know, it could be actual like nation state risk, you know, 6102 seizures and stuff like that.
+Because, you know, this, you know, this is one of the reasons why I think the actual like 6102 orders against gold were not particularly effective is because the actual ownership of gold was very, very spread out.
+You know, what really happened with 6102?
+Well, they went into the centralized providers who were holding major gold reserves on behalf of other people and they said, okay, we're taking these.
+We're not allowing people to access these anymore.
+But like the people who actually had gold, you know, hidden at home in a safe or, you know, hidden under the floorboards, they didn't have agents of the state kicking down their doors, you know, as long as they weren't being idiots and like going out bragging about it.
+And essentially, that's what I want Bitcoin to be like.
+I want Bitcoin to be held in as many different spots as possible because, and this is a common saying, is that like, you know, when it when it really comes down to like enforcement of any sort of law or executive action, what really matters is how many boots have to kick down how many doors in order to effectively enforce a given order.
+Right.
+So if it's, if it's millions of boots and doors, you know, even the, the most authoritarian powerful government only has like a limited number of agents that are physically able to go out and do stuff.
+But if it's like 10 or 20 doors, because it's all in a, you know, a handful of centralized custodians, that's totally doable for the government to go in and essentially do whatever they want.
+And tempting.
+Yeah.
+It's like, it's kind of the boast that they say, like the second.
+They say like the second amendment isn't about fighting, you know, fighting against the government itself.
+It's the, it's the, the resist against tyranny.
+It means that there's so many places and guns that, you know, as a, as a tyrannical leader, you're not going to war the people, but there is that risk of assassination or, you know, picking things off.
+So I think it's kind of the same thing with identifying, you know, like spreading out our Bitcoin banks or our personalized Bitcoin.
+I would say that there is probably, you know, the idea that Bitcoin will be the hyper Bitcoinization money is less likely than some sort of wrapped Bitcoin or some sort of like layered out Bitcoin is, is highly likely.
+highly likely.
+What do you think?
+What do you think?
+Are you, I mean, obviously you want quarter to grow with there.
+We've seen this whole surge of season two.
+You know, is there a room for meta protocols?
+What would be the identity, the ideal medical medical medical medical protocol from your standpoint?
+And, and who are the, like, who are the real players out there for that?
+Is that a real thing?
+Uh, it's not so much that there's like one specific layer to protocol that I think is going to be the silver bullet.
+My main issue right now that is that it's actually just too difficult to build permissionless second layers.
+So unfortunately, when you look out upon the Bitcoin season two, you know, layer two landscape.
+Uh, most of these projects are kind of glorified multi SIGs.
+So, uh, you know, you're basically, you're, you're putting your money into a federation and you're, you're trusting a set of people or organizations not to rug pull you or not to, you know, have, uh, you know, coercion from nation states or, or whatever.
+And so, um, that's, you're, you're making trade-offs.
+I mean, every layer two is going to have trade-offs.
+No layer two is going to be able to offer the exact same security model as on chain, uh, Bitcoin will, but we can do a lot better than what we have done so far.
+And, uh, this is where, you know, some, some of the, um, some of the technical debates around activating op codes, uh, implementing things like covenants and so forth.
+Uh, a lot of that is about, uh, a lot of that is about basically giving developers more primitive functionality, more basic building blocks so that they can just build better, uh, solutions that are, uh, able to give people the ability to, you know, put their Bitcoin into these other systems.
+And to be able to remove the Bitcoin from those systems once again, without having to ask permission from a trusted third party to do so.
+Do you have a perception of how you would like, like, I guess when I say medic protocol doesn't necessarily need be layer two.
+It just means it'd be like some way to, you know, put tether or put tokens on top of Bitcoin that some way to do, um, you know, security or leverage or, you know, or debt on top of Bitcoin.
+Uh, do we need one of those covenants?
+Is there, is there, um, how would you, how would you envision the perfect, the perfect solution?
+The next kind of next generation.
+Yeah.
+I mean, I, I don't think there is any perfect solution.
+I think that what we need is a diverse ecosystem with many different solutions, many different tools that offer many different things.
+And the reason that I advocate for this, uh, and I, this is definitely controversial with some people, cause there's some people who are like, well, look at how we did stuff for lightning.
+Like we had a specific solution in mind of the lightning network.
+And then we did these changes at the protocol layer in order to enable lightning network.
+I'm not entirely sure that that is the optimal way forward.
+And the main reason for that is because of how slow it is to make changes to the Bitcoin protocol.
+Uh, I mean, I, I want, I want development to accelerate.
+I don't necessarily want us to accelerate making changes to the Bitcoin protocol.
+Uh, but I think there are, you want covenants.
+You want, yeah, I think there are a small number of changes to the Bitcoin protocol that if implemented would accelerate development of these other layers and these other systems.
+Um, and, uh, and, and the reason that I want to see acceleration and a larger kind of diverse experimentation is that I don't think any person can honestly stand up and say like this.
+It's one specific solution is going to be the silver bullet, the end all be all for, you know, hyper Bitcoinization.
+So yeah, I think that we need to look at it as a kind of a path finding problem.
+It's also a kind of a product market fit problem.
+And the only way that we're, in my opinion, the best way to try to find product market fit is to experiment with many different things.
+So we need many different teams, many different companies building many different technologies and many different solutions.
+And we have to expect that most of them are going to fail, but you know, the optimistic tech, um, advancement perspective is that at least some of them should succeed.
+And so the, the reason that I don't like doing the, like, have one solution and change Bitcoin to meet that solution thing is that, uh, it's just, it, it limits us greatly, uh, on how quickly we can try to find product market fit.
+If we can only, if we can only make like one change to Bitcoin every few years, and that's in order to do one specific, uh, new solution, then it's going to take forever.
+Uh, and also we're probably going to hit a brick wall with ossification, which is this whole other issue, uh, that I'm worried about where it's getting harder and harder to change Bitcoin.
+And, uh, it will eventually become basically impossible to change Bitcoin.
+This is not a Bitcoin specific thing.
+It is a inherent trait to all network protocols is it's just that, uh, because nobody owns a protocol.
+Uh, nobody can administer or manage, uh, rollouts of updates, um, that on one hand, um, you know, a protocol becomes more valuable as more people use it as network effect.
+Uh, you know, the value of a network grows kind of geometrically or exponentially along with the size of the participants on the network.
+Uh, but the flip side of that is that the network kind of gets crushed under its own weight.
+Um, when it comes to updating the protocol, uh, cause you're, you're essentially, you're updating a language that people are using to communicate with each other.
+It's kind of like trying to force through like updates to the English language.
+language, for example, um, you can't force people to speak, uh, different words.
+Um, right.
+And so if, if some people start speaking different words that other people don't understand, then the network breaks and, and you lose a lot of the value of the network, uh, and the network effects.
+That's a good, it's a good, it's actually a good metaphor because English is modified dramatically every few years.
+It's just modified at a layer above the core, the, you know, the core usable English.
+You know, if you talk to anyone that's, you know, 19, you, you hear 25 words that you've never heard before, which basically every 19 year old has heard.
+So it's being utilized.
+So I guess that's a big argument for some minor, you know, like major, but simple, like the covenants.
+And so I guess that means you're a pro covenant.
+You want to get see covenants approved as soon as possible.
+Yeah.
+I mean, um, the short version of like why I like covenants, um, is I look at it as a security problem.
+Now you can do a lot of things with covenants.
+And this is part of the reason why the debate around covenants is so contentious is there's a lot of people who
+a lot of people who are very worried that there may be kind of like hidden malicious things that could be developed or executed with, with covenants.
+But so, yeah, first we should describe what is a covenant.
+Um, right.
+So, uh, essentially the way that Bitcoin works right now is that you come up with some set of spending conditions, um, that you encode using the programming language of Bitcoin.
+Bitcoin, which is very, very simple and basic.
+And you, you take those spending conditions and they essentially get hashed together and then, uh, manipulate it a little bit.
+And that gets turned into a Bitcoin address.
+Right.
+And so you send your Bitcoin to that address.
+And the only way that the, the Bitcoin network will allow you to then transfer the funds, uh, from, from that, uh, set of spending conditions is if you then present the network with whatever the proof is.
+And usually it's, you know, cryptographic signatures, but it can be other things like time locks and actually can get a lot more complicated, but, um, there, there's a lot of, of aspects of like Bitcoin's programming that are not used.
+Right.
+Now.
+Right.
+But would be used if there's a covenant also.
+More likely.
+Yeah.
+Um, and, and so, so essentially what you're doing from a security perspective is you're defining your security.
+Yeah.
+And then that's it.
+Like if those spending conditions are met, then the funds can be moved by anyone who can, uh, meet those spending conditions.
+Yeah.
+Now the problem here is that essentially you're creating, you're like, you're building, think of it as like building a wall, you know, or you're building some high barrier.
+That's very difficult for an adversary to cross over and be able to, to meet those conditions.
+But if anybody does get over that barrier and they can meet those conditions, it's game over.
+There's nothing you can do.
+Your funds get moved and there's no one who can help you.
+Right.
+So what covenants are, are covenants are ways of, um, defining and enforcing spending conditions on, uh, the future paths, the future spending of those coins.
+So you still, you're still creating some spending conditions that are initial to, to be able to spend from that when, when, when you make that deposit in order to spend.
+Yeah.
+From there.
+But the covenants can then enforce additional conditions that say, well, if you are spending from that address, you can only spend to, you know, this address or you, you, you have to do other things in order to be able to move the money.
+Um, and so like one of the really cool things that you can do with covenants, uh, from a security perspective is, uh, something that's called a vault.
+And that basically means that you can, you can put your money into an address and maybe it's like a multi-sig, uh, setup, like what Casa offers.
+Yep.
+But then if you spend the funds from that address, it can only go to one other specific address.
+And then it has to sit there for some period of time, maybe a week or two before the funds can be moved to an arbitrary address.
+And so what this does is that you can then encode other conditions that you, you might consider to be like an escape patch.
+So, uh, you know, let's say that your funds got moved, say that like those initial keys got compromised and the attacker spent the money, but they can only spend it to this intermediary address.
+You can essentially have watch towers or other services that are listening for that.
+And then alert you if the funds get moved.
+And if, if you're like, Oh, Oh snap.
+I didn't actually move those funds.
+Then, uh, you can have this sort of escape patch where the, you can, uh, publish a transaction that sends the funds to a predetermined, you know, safe address.
+That's somewhere else.
+And, um, the reason why this is interesting is because it's a different type of security.
+The, the, the type of security that we have right now is basically proactive security.
+Like you have to set up all of the security mechanisms beforehand.
+And if anyone compromises it, it's game over.
+It's catastrophic.
+You know, this is why Casa exists is because you need to set up really, really high level of proactive security so that nobody can get through it.
+But with a vault type covenant, you can have reactive security.
+And that's what we don't have right now in Bitcoin, which is like, if something gets compromised, it's too late.
+There's nothing that you can do.
+The money is gone forever.
+But with, with this new functionality, it actually doesn't have to be like that.
+You can actually still recover from certain, uh, scenarios where your keys may have been compromised.
+And it's just, I think it's very interesting, a different side, um, of security that would be amazing for us to be able to offer to people.
+And this is something that Casa and really, I would say almost any major custodian would love to have that functionality.
+Yeah.
+Very interesting.
+It's almost like a, I mean, just like any sort of like physical building where you have the self-infosed like airlocks, you know, it's actually like the exchanges.
+A lot of the exchanges will say, like, if you want to pull your coins off the exchange, you know, it'll say, okay, 24 hour, 72 hour time locks.
+Um, so if someone's trying to do that, even if you're trying to do that from under duress, there's no way for you to change it and then, and then go that that's good.
+Is there, is there a, um, meta protocol that, or like, um, a season two, a couple of those guys.
+Well, just to go back, like the comment about lightning.
+I like that comment a lot because I think it also induces a bit of cognitive dissonance.
+So the whole lightning community, even though there's a season two coming out, a lot of new coding because of the taproot.
+Um, a lot of the season, a lot of the lightning people are kind of like ossified to use your language into their, like it's side chains is the, is the evolution of Bitcoin, but not this new coding on top of a Bitcoin.
+It's like, it's, it seems to be like a, a maximalist kind of like schism, you might say, or you have like, not dramatic, but like three or four different mindsets of like, of how it can be evolving.
+Oh yeah.
+There, there are many different mindsets and like visions that people have for the future of this space.
+Um, but I'll, I'll give you an example of like one thing that we're starting to see happen is, um, different layer two projects actually integrating with the lightning network and using lightning network as a bridge between these different layers.
+And, and this is kind of one of my, this is one of my main things like back in 2016, 2017, when we were starting to talk about lightning.
+And of course, a lot of people like lightning will be the end all be all of, of Bitcoin, hyper Bitcoinization, whatever.
+Um, nobody was even envisioning that lightning might be a bridge between a diverse ecosystem of many different layer two projects.
+And, and that really, I think ties back into my point earlier, where it's like, this is a pathfinding problem.
+Like nobody out there has the ability to foresee all of the potential paths, right?
+It's like, it's almost like a Dr. Strange love, right?
+I saw 40 million futures.
+It's a type of thing.
+Um, nobody can see all these potential paths.
+We need a diverse group of developers, many groups of developers who are all exploring many different paths.
+And, and I think that's the, the best way for us to kind of optimize or improve our odds that we end up finding a better potential futures for this ecosystem.
+Yeah.
+And it is a public network.
+So, and we are libertarians.
+So that imposes a lot of, or invites a lot of like strange paths that we couldn't expect.
+Yeah.
+Is there any, is there any, um, is there any particular project that's kind of like looking at covenants or looking at these layer two that you particularly like, or particularly don't like and thinks that good or bad for Bitcoin?
+Uh, I mean, I'm not really concerned about any of them.
+I mean, some of them, if any of them became too big and once again, it can actually sort of become its own centralization risk.
+If you've got too much, uh, Bitcoin in, in one place, uh, if it's controlled by only a few people, but I don't think we're anywhere near that level.
+I mean, you know, the most popular side chains out there, like liquid and RSK, they only have a few thousand Bitcoin each.
+Uh, so compared to the, the kind of the threat from the centralized custodian providers, I'm not at all worried about this.
+Um, also because if you think about it in terms of adoption, most people are going to come in through a centralized custodian.
+Everyone who comes in through an ETF, that's it.
+Like they're blocked.
+They cannot get out into the greater Bitcoin ecosystem.
+Uh, there's no exits there.
+Um, if they come in through a, uh, you know, crypto exchange, then they at least have the option to withdraw and then to move their funds into some of this more advanced software.
+But if you think of it as like a marketing funnel or whatever, it's only going to be a tiny number of, uh, paranoid crypto anarchist type people who get down to that level right now of, uh, you know, playing around with these, uh, layer two technologies.
+Well, at first, I think you're also talking a lot about the first world, you know, people that with access DDFs is not, it's not as big a number of people as you might think when you start including all the frontier markets and, you know, emerging.
+And, you know, all the very strong Bitcoin players out there, El Salvador, Bhutan, you know, Nigeria.
+Yeah.
+I mean, this is also, this is also why I, I like seeing more diversity of developers, right?
+Is I think that most of the development that has happened historically has been from, you know, first world countries.
+And so first world developer is going to be building for first world problems.
+So, you know, we, we should desire to have more developers in, uh, third world countries, uh, that have a completely different set of problems.
+And they're going to be out there doing the path finding and the exploring of, you know, what is possible with Bitcoin to try to solve these other types of problems that nobody else is even thinking about.
+Yeah. If, if a covenant gets approved, I mean, I think your wish will be granted.
+There'll be an explosion of development on top of Bitcoin.
+Um, of course we probably see blocks fill up much quicker.
+We probably see lots of, you know, interesting stuff, but, and, but, you know, necessity, necessity breeds innovation.
+You know, obviously, you know, I guess, were you pro BIP 301, 302, like the, the drive chain stuff, or was that too much for you?
+I'm not against it.
+Uh, really like the strongest argument against it that I've seen is that it, it puts too much power in the hands of miners.
+Um, that, you know, miners can potentially steal funds or I've, I've heard some people go so far as to say, well, you know, if, if a drive chain ended up having too much value or potentially even like got, got the majority of Bitcoin into the drive chain, that could like totally screw up some of the game theory around mining.
+For example.
+And I'm like, I guess, uh, I don't think that that's highly likely.
+And, you know, we would see it coming from a long ways away.
+Um, but this is like, um, it's, it's hard to quantify some of these things of like, what's the risk of putting, pegging your Bitcoin into liquid, which has, I don't know, a couple dozen.
+Uh, or federated members versus put pegging your Bitcoin into a side chain that's controlled by the majority of Bitcoin hash rates.
+Um, it's, it's, it's all, it's always going to be less influence difficult to get, uh, hash rates to coordinate with each other, but it's also, it's very, it's just hard to quantify.
+And, you know, hash rate also changes over time.
+You don't necessarily know what the hash rate distribution is going to look like 10 years from now.
+Right.
+Right.
+Right.
+And I saw, I saw, um, one of your articles that we wrote about, um, the, the test net was getting filled up.
+And I think it was this, uh, op net guys or something like that that filled it up and you had to reset the test net.
+What was, what was that whole story?
+Yeah.
+I mean, that's ongoing.
+Like you can't, you can't stop, uh, the test net.
+Like it is a decentralized permissionless network.
+Um, but really the, the main problem is that, uh, test net three, this is the third iteration of the Bitcoin test network has been running for over 10 years.
+And there is a, um, an edge case bug in it that allows you to reset the mining difficulty to one and essentially generate thousands and thousands of blocks in a few hours.
+And so the short version of the result of that is that the, the mining reward on test net three is like 0.0001 Bitcoin right now.
+So it's very hard for developers to get, uh, those test net coins.
+You know, I have a bunch because I mined a bunch like 10 years ago on test net, but it's, but it's become so scarce.
+People have actually started trading it.
+Uh, so there's like a few, uh, trading sites where, um, they actually are trading real Bitcoin for test net Bitcoin.
+And that's kind of like, um, the one rule of test net is that it should not have any value.
+Um, like it should, it should not cost developers money to have to test their Bitcoin.
+Like this is the entire point of the Bitcoin test net is that you can play around.
+But why isn't there just multiple test nets?
+Why not have 20 test nets?
+There are.
+So now there are.
+Um, but the point being is that like the point of a test net is you, you use fake Bitcoin, uh, to test out your, your wallets, your software, whatever you're building so that, you know, inevitably when you screw up, uh, you, you learn from it.
+It doesn't cost you, uh, money, but yeah.
+So, um, there are probably at least like half a dozen networks.
+Um, yeah, a number of them are actually signet networks that are, um, they're not proof of work based.
+They're, they're run by sort of signatory federations.
+Um, and now we have test net four, which is proof of work.
+Uh, it's kind of just the next iteration and we'll see how long it takes to actually get folks to migrate from test net three to test net four, but it'll take a while.
+And what do you think of these?
+Like, uh, if I think of there's some season two, I've looked a lot of the season two, I'm involved with the UTXO guys, you know, I'm a disclaimer, I'm an investor in UTXO management, some fund.
+Uh, my fund is, and, and I'm, you know, active in the space to some degree, but like botonics, which has the spider net concept, um, op net, which is using some, you know, is purely on Bitcoin, but it has like some sort of Oracle.
+Um, what do you think of these types of, um, solutions?
+Are they, are they going in the right direction for us?
+Um, have you invested in any companies like this or are you staying out of all VC investing?
+Uh, I'm in a few funds.
+Uh, I did a small angel investment in Citria.
+Um, um, so, um, I did think the spider chain concept was interesting.
+I think I wrote an article about it, uh, over a year ago and my, my general takeaway is, you know, well, and with a lot of these is like, they're doing the best they can with the tools that they have available.
+And that's kind of one of my great objections is that I feel like we're, we're hamstringing our developers by not offering tools.
+Like we know what tools we could make available to them, but, uh, it's just very contentious, uh, to even, um, suggest offering more functionality to developers because they might abuse it to do things that some people don't like.
+And this is, this is one of the most frustrating aspects of the space is the sort of moral moralization, I guess, that some people have started to do.
+Um, yeah, you know, uh, it started off with like, well, it started off with Bitcoin maximalism, but, um, I think that like Bitcoin maximalism is not the problem.
+Uh, I think it's, it's this fringe sect of Bitcoin maximalism that I call puritanism.
+Uh, it's the puritans.
+It's the puritans who are kind of imposing moral values.
+Uh, and, and there's some intersection with kind of the spam debate.
+Uh, and there's also, uh, I would say most puritans are pure in the sense of like, they only want Bitcoin to be used as money in the way that they see it.
+So if you're using Bitcoin for any sort of non money, non financial thing, then they consider that to be spam.
+Uh, and, and so a lot of those people are very worried that any additional functionality that gets added to Bitcoin might be used for non financial purposes that they consider to be, you know, immoral or impure or scams or whatever.
+Um, and of course I'm, I'm much more neutral about it.
+Um, I think the spam debate has been answered long ago.
+And the answer to that is economics.
+Uh, if you pay, if you're willing to pay for the block space, you get to use the block space.
+Um, so, and obviously all of Satoshi's original writings did not in any way, um, advocate that Puritan mindset.
+Yeah.
+I don't even, you know, the way that I see it is, you know, Satoshi made a great contribution, uh, to the world.
+And then after a couple of years they left and that was really their second greatest contribution.
+It was leaving, you know, handing over the project to the rest of us to argue about what it should be doing.
+Um, and, um, and so, you know, kind of to, to wrap up my kind of idea, or this is all related to the path finding issue is that I think that one of the reasons we should want for there to be more and more experimentation of, of just functionality of what can be built on top of Bitcoin.
+Is that, you know, there is the long term thermodynamic, um, security budget issue.
+And that's a fancy way of saying we need to be, uh, increasing the demand for block space so that it offsets the declining subsidy and Bitcoin that is paid out to miners.
+And so from that perspective, I want us to try as many things as possible to see what sticks, like what creates the greatest demand for block space, because over, you know, multi decade long periods, we're going to need to have higher demand for block space.
+Otherwise the network will become weaker from a thermodynamic, uh, security perspective.
+So, so you'd like any project that creates a massive increase in blocks, uh, black block space demand.
+Yeah.
+Uh, regardless of what it might be.
+Yeah, because, uh, I think that, I think that Bitcoin is money as a result of its other properties.
+I don't think that, I don't think that it's like Bitcoin, um, is money and it's other properties are a result of that.
+Uh, you know, you could probably have a long debate about this, but I am a technologist.
+And at the lowest level, I see, you know, Bitcoin as, as I said, at the very beginning, uh, the, the most inefficient database ever created.
+However, it has some very interesting, unique properties that, you know, economic trade offs with.
+Yeah.
+From that, uh, from the efficiency perspective.
+Um, and so these properties are useful for things beyond just updating integer values in a distributed ledger.
+Um, you know, this Bitcoin, the blockchain, uh, is a, a new, um, uh, a record of history.
+Yeah.
+That is trustworthy.
+It's truth.
+So, yes.
+Uh, and in a sense, I hate saying truth because this is where, like.
+This is where like a lot of blockchain startups went wrong many years ago.
+You know, if you put, if you, you can still put false things into the blockchain that are lies and you're just timestamping them.
+But yeah, no, it's more like the, um, the, the stranger in strange land grok type of truth, which is like, what we see is what it is.
+It, it may be garbage, but we, we see the garbage that it is.
+Yeah.
+It's, it's, it's truth in the sense that we're verifying that, you know, the data is following a specific set of rules and that we are reasonable.
+Assured that the data has not been manipulated or corrupted.
+Uh, you know, that the, the data that was there a year ago is the same data that's there today.
+Yeah.
+The garbage was put there at that time.
+Yeah.
+It's garbage and is there.
+That's the truth.
+Yeah.
+Uh, and so I, as a result, I think that, you know, the ability to timestamp things, the ability to anchor other systems into this, uh, history of record provides value far beyond just money.
+Now, some people say, well, money will always be the most valuable thing.
+And all of these other like tech systems are kind of tangential, whatever.
+And that may be true.
+I'm not going to try to, to argue that, but I still think that the more things that are anchored into Bitcoin, it's, it's just a different type of network effect.
+Bitcoin becomes more valuable because there becomes more demand for scarce block space.
+It's not just, it's not just the scarcity of the 21 million Bitcoin, right?
+It's the scarcity of the actual block space itself.
+And, and, and, you know, how rarely it is produced.
+And I guess if we did somehow fill up all the block space with some new concept or product or company that would force the core to create new solutions or to enable, you know, enable more functionality to get that block space freed up again.
+Yeah.
+I, I gave a talk about block space a few months ago.
+It hasn't been published yet, but my, I was kind of like bringing back the block size debate.
+Um, okay.
+My main point, my main point.
+I had Johnny on last time.
+Uh, uh, so in a nutshell, my main points were like all the, all of the proposals around block size from many years ago were all flawed because it was generally just people like picking a number out of a hat.
+There's no real justification that any specific block size is the correct one.
+One rather I, what I think the, the hot, the way that we should approach block space and block size is we need to understand that there are many different variables at play that can both increase the demand for block space and decrease the demand for block space.
+block space.
+So, you know, layer twos, depending on what they do, they might decrease the demand for blocks.
+It's like lightning network decreases the demand for block space because it offloads the, uh, you know, small transactions.
+Um, yeah, miners don't like that.
+An off chain network.
+Right now it's entirely possible for you to create second layers that actually end up creating more demand for block space because more people are trying to get their Bitcoin over into that other system.
+Uh, so basically I think that, you know, this is another problem that is beyond any human's ability to, to point at and say, I know the like specific magic number for, and rather what I think is desirable optimally.
+And the long term is that, uh, just like we have a mining difficulty adjustment algorithm.
+I think that we should have a block space adjustment algorithm.
+It goes both up and down and, and, you know, it needs to take many, many different variables into account because there are many variables that, uh, interesting change the demand for block space.
+And, and like I said previously, we want there to be a fee market for block space.
+So there, there are these economic parameters around that.
+You don't want there to be too much block space because the, the miners won't get any fees.
+Yeah.
+Yeah.
+And I guess if there's smaller blocks, there's more opportunities to get fees.
+And if there's bigger blocks, there's less, and they could be more empty.
+That's a good, that's a good point.
+So how many do you have?
+Uh, how many ordinals do you have?
+Uh, uh, well, I guess I have my, uh, my taproot wizard PFP that was given to me.
+But other than that, like I haven't bought anything.
+Uh, but with the, the block space thing, I basically say what we should desire is Goldie blocks.
+And, and that basically means like, we, we don't want them blocks to be too small, but we don't want them to be too large because.
+That's a great name.
+That's a great name.
+If they're too large, then everybody just does everything on chain.
+And, you know, that makes it way too costly to run a node and validate the entire system.
+Uh, but if they're too, if they're too small, then we don't have enough space for, you know, people necessarily to even use second layer networks.
+We want them to be small enough though, that, that developers are incentivized to use as little block space as possible to do as many things off chain or in other networks as possible.
+So, you know, it's, I think it's a complicated balancing act.
+Have you, have you coded up or done some specs vacation of Goldie blocks?
+Uh, I have some rough ideas.
+I don't, I'm not at the like Bitcoin improvement proposal stage yet.
+Uh, and of course in any such, any such change to the protocol is almost certainly going to be a hard fork, which has never even really been done before.
+And then, and so, you know, it may be an exercise in futility.
+Um, but we'll see.
+It could be minor activated.
+Uh, you know, whenever you're, you're making a hard fork, you know, non backwards compatible change to the protocol, you basically need to get everybody to agree.
+And it seems like right now we can't even really get many people to agree on a backwards compatible change to the protocol.
+I guess the argument against the Puritans was that the, the ordinal's introduction.
+You know, basically created a tremendous amount of, of very well-timed, very useful revenue for the miners at a time when they were.
+Yep.
+It could have gone the wrong way for a lot of miners.
+And I would argue that the ordinal saved them in some, in some regard.
+Yeah.
+I mean, so we have seen, you know, people, people can be, uh, creative and they can actually create demand for block space that did not previously exist.
+Yeah.
+And so that's, like I said, that's one of the things that I'm arguing for is giving more tools to, to, to developers to explore the potential uses of block space.
+How close are you to Bitcoin core?
+Are you like part of that crew?
+Like if they're thinking of a covenant, are you in those discussions?
+you're promoting, I mean, obviously you have a big name and a big voice in the Bitcoin community as a whole.
+And, and, and I would argue the M the most useful voice, especially for onboarding people.
+That's also highly technical.
+Um, I, I think for years I've been sending people to your, your site is the first stock.
+Like, Hey, you're about to buy your first Bitcoin.
+You did it.
+Now go look at these articles, you know, and, and do a transfer.
+So where do you stand on the Bitcoin core and like, are you instrumental in choosing this covenant that we might put out or opcat or CV, CLV or any of those ones?
+Or, or do you have a preference?
+No, no, I am way on the outside.
+Um, most of the discussions that happened around, uh, protocol level stuff happens without me.
+You know, I'm busy running a company.
+Um, yes, I, I try to, you know, keep myself apprised to some of the high level, like, uh, arguments, debates and shifts and sentiment and stuff.
+You know, I'm obviously I'm in like a lot of chat groups and stuff where people are talking about these things.
+Um, but I, I am technically a Bitcoin core contributor.
+I would say I probably contribute like 10 lines of code a year.
+Uh, it's usually like very, very trivial things that I come across usually when I'm doing other projects and like, Hey, this would be a nice, um, improvement to the, the Bitcoin node software.
+But no, other than that, I'm not really deep in the weeds.
+I'm not a protocol developer.
+Okay.
+So, so I guess, uh, to, um, to kind of go back into things and, and welcome back everyone.
+I had to, um, technical issue with the computer systems.
+So we switched to another, um, more portable and dynamic system.
+So, uh, we're technology resilient here.
+What is the, um, if I was to, if we talked about covenants, we talked about, um, um, the, the future of Bitcoin, the need for more things to fill up the, the, the block, the blocks.
+Um, it seems, um, it seems that you'd be pro any, you know, any new technologies, which are kind of like helping the diversification within the programming space and that type of stuff.
+Is there a sense, uh, and you introduced this, uh, Goldilocks idea for a variable block size, which sounds very interesting.
+Um, is there a feeling from your standpoint that, um, that the process is being managed well right now for like BIPs and, um, the introduction of, of, of like, um, a covenant and that type of stuff?
+Or is it, do you think it's going to come through in the next six months or do you think that, that we're kind of like at a weird situation where we might not ever get these kind of important improvements to Bitcoin in place?
+So the process for BIPs has greatly improved over the past year, because I think there was only one or two people managing the, uh, Bitcoin improvement, uh, proposal repository.
+And we have brought on a few more maintainers.
+And so there have been actual progress in, uh, and getting, uh, you know, BIPs added to the repository and, and reviewed and edited and stuff.
+But beyond that, it's a tricky thing to say because there isn't really a process and that's kind of by design.
+Uh, there's, there's no one, uh, there's no one who can really enforce a process.
+And, and so why is this?
+Well, you know, it really, it comes down to the cypherpunk ideal of rough consensus and running code.
+And, um, there've also been a lot of debates around this process or lack thereof, uh, over the past year or two.
+And I saw some really good points made recently around like explaining why Bitcoin core is very hesitant to push forward any soft fork proposals.
+Um, you know, most of the Bitcoin core developers are very focused just on improving Bitcoin core and what it does currently and just making it better at doing that.
+And, uh, you know, making changes to the Bitcoin protocol, which is arguably greater than Bitcoin core, even though Bitcoin core has like 98% adoption rate when it comes to nodes.
+Um, you know, um, you know, the Bitcoin protocol and the entire ecosystem of Bitcoin applications and software is much greater than Bitcoin core.
+Um, and so a lot of these proposals are coming in from, uh, developers who are probably not, uh, really deep into Bitcoin core.
+And so there's, and so there's a bit of clash there, especially when it comes to maintainability.
+Um, so first of all, if someone wants to make an improvement, then, you know, they, they need to not only write up the BIP, but preferably they need to actually code it up.
+And they're probably going to need to code it up and, uh, you know, as a Bitcoin core pull requests.
+And so if they, if they don't have familiarity and experience with the Bitcoin core project, that can be problematic.
+It's very, very painful to be a contributor to Bitcoin core because they have very high standards and it's a constantly moving target.
+Uh, you, you need to respond.
+First of all, you need to try to get reviews.
+It can be difficult to get code reviews in the first place.
+And then when you do get code reviews, you need to respond to all the reasonable issues that are brought up.
+Um, but then you have to remember that, you know, if the Bitcoin core developers are going to approve some change, then they're committing to basically maintaining that for the rest of eternity.
+Uh, you know, they're not going to remove any consensus code, uh, from the repository.
+So it's a big ask if you're making any substantial change to the consensus code.
+So it's tough.
+Uh, it's, it's not clear what's going to happen in the next six months, year, a couple of years.
+There are murmurs that people are going to try to, um, implement soft forks in a Bitcoin core fork.
+So they basically, um, you know, clone the Bitcoin core repository and then they make the changes there.
+Um, I mean, no one can stop you from doing that, but then you have an adoption problem of like, how do you get a sufficient threshold of entities to run your fork of the Bitcoin repository?
+Right.
+So it's, it's a very challenging problem.
+And I don't know what, if anything is going to succeed.
+And it's an entirely possible that like, we never see another consensus change happen to Bitcoin.
+Um, some, some other people have been arguing recently that the reason we haven't seen a consensus change happen is because none of them are just sufficiently interesting.
+Um, I mean, I'm sure that that's a valid perspective from some people, but obviously there's a lot of other people who think that there are a lot of interesting proposals out there.
+So, um, but that's the thing, this is rough consensus, uh, that there's no specific like set of steps or procedures to go through that will then, uh, guarantee that your change will get accepted.
+Uh, you just have to keep trying.
+I guess it is a fascinating element of Bitcoin, which is that there are a number of stakeholders, which all have different stakes depending on what the situation is.
+You know, if the, if all of a sudden we have some application or some protocol or a group, um, like let's say ordinals on steroids, which is all of a sudden is filling up all the blocks.
+The miners are making money, but the, the Puritans are not able to send their money in any sort of affordable way.
+Um, and there's an argument that you need something, maybe, maybe as small as OPCAD, maybe as big as drive chains, I don't know.
+Um, but it, it, it feels that there needs to be, it feels that either the, either the kind of like the OPCAD CLB, um, like challenge has to be, um, interesting enough from a populist standpoint or some sort of technical thing is going to make them fill up.
+And that's just going to drive attention to the core is going to have to do something.
+Yeah.
+Uh, there are many potential futures, uh, and you know, there's even a potential future where, um, if we have multiple layer two projects that get a lot of adoption, then they could end up competing with each other over block space.
+That would be an interesting, you know, successful future.
+So, you know, I, I can't predict, uh, which of these things will happen.
+It could be none of them.
+It could just be that everybody ends up going into ETFs and, and the mempool remains quiet and there's no demand for block space.
+And then our biggest challenge is that we don't have enough, uh, development and, and new features, uh, for people to try out, uh, to continue to pay for that thermodynamic security.
+So it's, uh, continues to be ongoing debate.
+Um, there are, there are also some people who say, well, you, you simply haven't demonstrated demand for application X or feature Y.
+You need to go build it on like liquid or something, and then prove that you can get adoption for.
+And it's like, I feel like these people are basically just like pushing the goalposts further back.
+It's like, we've never, we've never done that before.
+Like, why would we start requiring that now?
+And, uh, I think that some of it is quite a fallacy.
+Some of it is just, I think, ossifiers trying to come up with new roadblocks to make, to slow down development and, you know, make it more challenging.
+Um, but as, as I've said in a number of different presentations, um, you know, you can ossify a protocol, but you cannot ossify the rest of the world.
+So, you know, one way or another things are going to change about Bitcoin.
+If the Bitcoin protocol itself doesn't change, I can guarantee you that the way that Bitcoin is used is going to change.
+And, and that could be because, uh, people are using block space for just other things.
+And similar to what you said was like ordinals taking over for some period of like weeks or months, something else could come along that could create so much demand for block space.
+So much demand for block space that it prices out a lot of other uses.
+And, um, that will, that will create friction that will create, uh, you know, more argument and debate about what we should do about it.
+And, and I don't know, maybe that's what we need.
+Maybe we need more people to feel the pain and feel like, uh, we need to start offering more functionality and, uh, solutions, alternatives.
+But as it stands right now, there's just, um, I think there's not enough pain.
+There's not enough pain.
+There's not enough friction.
+Uh, so it might just be a wait and see type of thing.
+Well, you have this whole crypto, you know, shit coin, crypto, alternative coin world of things that are being done because you can't do it.
+Not because, but, and you can't do it on Bitcoin anyways.
+So the argument that there's no sufficient interest, it means, you know, I can think, I think just the ability to like mint tether on Bitcoin natively or the ability to, you know, have some basic programmability.
+So you could put debt functionally on Bitcoin or put, um, uh, proven decent, you know, defy concept on Bitcoin.
+Those things, those three things are missing.
+And, um, you know, one could easily argue either side, but I would, I would possibly that I would say that the, there's a huge demand out there.
+But, um, the, the Bitcoin cord, um, not the core themselves, but Bitcoin itself, um, isn't offering enough solution for them.
+Although I think that there are some new solutions.
+I am, I am, I am skeptical of 90% of the season two stuff, but there's a couple of them that seem to be a bit more focused on, you know, like actually on Bitcoin spider chains, one op nets, one, um, two or three other ones where they're not really, they're not going out and using EVMs or, or, or, you know, like another chain also, they're trying to do it on Bitcoin.
+I think that, that to me is quite exciting.
+More experimentation is good.
+And like I said, I don't think any of us can predict which ones will succeed.
+Most of them will fail, but if we don't try, we're definitely not going to succeed.
+That's true.
+You got to shoot for the moon and not end up with mud.
+What is your, um, uh, and I know that we're running, we, we spent some time, so I'm not going to, I think we should, uh, uh, finish up fairly soon.
+Um, you know, what is your, um, feeling of price target where this thing not to be a trader or too much, but where do you think Bitcoin will end up considering, you know, nation state adoption and all this stuff is, are we going to have a four year cycle here?
+Or do you think that Bitcoin is transcending into a new generation?
+Yeah.
+Yeah.
+I mean, there were people perpetuating super cycle narratives last time around.
+That was not what happened.
+Uh, I have no reason to believe that the cycles are going to change.
+Um, you know, I I've always been skeptical that they kept repeating because, you know, it was like, if you look at a chart and things keep repeating, then the people doing technical analysis are going to start trying to front run that.
+And it, in theory, uh, patterns ought to kind of collapse upon themselves as people see the patterns and then try to front run them.
+But for whatever reason, the four year cycle has continued, uh, for what, three, four, four cycles now.
+And, um, yeah, I expect that they were continued to be bull and bear cycles and just like any sort of business cycle.
+So, uh, how high do we go?
+How low do we go?
+Uh, that's, that's an open question.
+Like, I think we were all surprised when in the last cycle, we broke below the all time high of the cycle before that, like that was different.
+That had never happened before.
+So, you know, I think all bets are off.
+Um, if you try to look at like some of the cycle repeat charts, you can see, you know, each cycle has a diminishing return.
+Right.
+So I think it's highly unlikely that Bitcoin hits a million dollars in this cycle.
+And I'm sure eventually if it keeps going on, we'll eventually get there just because, you know, fiat becomes worth less and less.
+But, um, you know, if you try to do, if you try to extrapolate from the sort of diminishing returns of previous cycles, you know, I think it could easily get into several hundred thousand dollars.
+Now the sort of the big looming question that is in everyone's minds as well, you know, what's different about this cycle and how much of this institution and nation state money is going to flow in and how is that going to potentially break some of these patterns that we've seen before.
+So yeah, all bets are off, um, you know, but I am confident that $100,000 where we are right now is very early.
+Is it going to double, triple, quintuple?
+No idea.
+Uh, but I, you know, I do think it's going to go up a lot and then it's good going to go down a lot again.
+Then it's going to go up a lot again.
+I do think that that level of volatility is going to continue and that it's going to take a number of more cycles before we really start to even out.
+And before Bitcoin may get to the point where it could actually be used as a unit of account.
+Yeah.
+I intend to be on your side to the vehemently agree.
+Um, I, I think it's kind of funny when you're, when I'm talking, I'm in various funds and, and, and projects.
+And when Bitcoin is pumping, everyone's all super cycle, super cycle.
+Super cycle, super cycle.
+And then like one day later, it's like just drops 10% and then like everybody's shocked.
+And like, uh, they don't realize, you know, it's, it's, it's just inevitable in my opinion.
+So I guess in, is there any other, like, um, I know we have, uh, there's so many more parts of your research.
+So I wanted to kind of go into and touch.
+Is there any particular research that you've been on recently that you can highlight that you've, you've found is the most interest of your last kind of three or four papers or five papers.
+And that, um, that I missed out on asking, uh, one of the other things that I brought up recently, cause a lot of my talks have been about sort of long-term concerns and that's all related to the ossification issue, which is like, if you agree that it's getting harder to change Bitcoin, maybe we should start solving some of the problems that aren't going to be problems for a very long time.
+Cause we don't want to, uh, start bumping up against a problem and be like, oh, snap, uh, we actually can't solve it because we've ossified.
+So one of those is quantum computing.
+That's a whole other, uh, contentious issue where, um, a lot of people are denying that quantum computing will ever be a problem or at least like in the next hundred years type of thing.
+Um, and, and you think it will.
+Um, yeah, well, so, and it's not just me, right?
+Quantum computing affects everything in, uh, in cybersecurity.
+Um, uh, really in anyone that uses, uh, public key cryptography has to worry about this.
+And so you, you can look at any number of governments or, um, standards organizations, and there seems to be a pretty clear consensus that in the next five to 10 years, we should all get our systems upgraded to, uh, you know, quantum resistant or post quantum.
+Uh, type of cryptography.
+And, and that's not to say that we expect a quantum computer to be able to break, you know, elliptic curve, digital signature algorithms in the next five or 10 years.
+It could be 20 years from now, but you want to be ahead of the curve.
+You want to, um, have solved the problem before it becomes a crisis.
+And so I gave a talk about that a few months ago, which was basically like the reason we need to solve this ahead of time is because we can't just magically make a change to Bitcoin that secures everybody's current Bitcoins.
+Whatever change we make is going to require them to move their Bitcoin to a new, you know, quantum secure type of signature scheme.
+And, and, and so I did the math.
+Oh yeah.
+There, I did the math around that.
+And I think the very best case scenario would take six months worth of block space.
+And of course that's assuming that nobody else is using Bitcoin for anything other than migrating to a, a, a quantum resistant scheme.
+Uh, yeah.
+So, you know, in reality, it's going to take many years, uh, for people to migrate over.
+Cause you have to get the whole rest of the ecosystem and the software to upgrade.
+They're, they're all downstream of the protocol and downstream of Bitcoin core and so on and so forth.
+Um, and, and ultimately we will not be able to get everyone to upgrade because a lot of coins are just lost and they're sitting there.
+And so this, this is true, even for like Satoshi Nakamoto's, uh, likely stash of a million Bitcoin.
+Um, we can't, we can't save that.
+Like we can't force that to be migrated.
+My, and I, my suspicion is that Satoshi is gone and is like, isn't has no plans of ever touching those keys again.
+Uh, if the keys even still exist.
+And so then we'll be faced with this question where one way or another, we're going to be breaking one of the fundamental, like inviolable rules of Bitcoin.
+And that is, you know, not your keys, not your coins, the, the, the flip side of that is your key is your coins.
+And, and so, um, we're going to have to either allow for quantum attackers to steal the, this money, or we're going to have to freeze the money that is in quantum vulnerable, uh, UTXOs.
+So one way or another, we're going to violate, you know, this sort of fundamental ownership property of Bitcoin.
+And preferably.
+I guess if you hard fork it.
+Well, whatever you do, uh, you can't force people to migrate.
+Uh, so preferably we give people as much time as possible to migrate before it turns into a crisis.
+And we have to decide, you know, either your coins are getting stolen or they're getting frozen.
+Uh, wow.
+That's actually quite a dilemma.
+I mean, that's a huge, that whole six month thing just blows me away.
+I figured that there, cause like when I spoke to, I spoke to a couple of them, you know, Adam and a few others about quantum and, and my, the, what I was told, and I'm not technical enough to, to dive in that.
+I was a programmer way too long ago, um, was that the core has quantum resistance and code available.
+They just haven't loaded it up because it will take, it'll be more intensive code.
+Like it'll, it'll take more for the miners to run it and more for people to run it.
+Am I off based on that?
+Uh, there are quantum resistant signature schemes out there.
+There's quite a few of them.
+Uh, and I, I go into this in depth in my, my talk, but basically one of the trade offs is that like the older, more well vetted quantum resistance schemes are much larger in terms of data size.
+The, the newer ones that are more efficient in terms of data size.
+Well, they're newer and you generally don't want to use new cryptography.
+Uh, but that, that's one of the main trade offs.
+And so, um, it's like, you know, how much block space do we want people to have to, to use in order to, uh, move to a post quantum environment?
+And whatever it is, it's going to be a lot more like probably an order of magnitude more in terms of, uh, block space for a, like a simple transaction than, than what we're using today.
+Interesting.
+And I'm guessing if nation states do do the strategic reserve thing, this question will be brought up quicker and faster and be more visible than anyone can imagine.
+Well, yeah, and because a lot of the, uh, organizations that are pushing for quantum safe computing are government agencies or government funded, uh, standards institutes.
+So that's entirely possible.
+Yeah.
+Wow.
+Yeah.
+That's a interesting.
+That's an interesting one.
+And your talk is not up yet or it's, it's up on the internet for people to see.
+Yeah.
+You can find my, uh, quantum talk on lop.net.
+Uh, it's, uh, entitled safeguarding Satoshi stash, but that was just a clickbait title.
+Nice clickbait title.
+Cool.
+Well, I mean, I've had you for, for so long.
+I hope, uh, I hope you've enjoyed it as much as I have.
+We've had a couple of technical issues, but we did.
+Happy to talk about.
+We did get through.
+Yeah.
+Yeah.
+Yeah.
+It's good.
+And, uh, hopefully see you at one of the conferences.
+Are you going to El Salvador?
+So I might see you down there.
+Yeah.
+I'll be there in January.
+Okay.
+Fantastic.
+And then, um, maybe in a, in a year or so we'll revisit this and, and see, see where all this stuff is.
+And, and, um, but it's been a pleasure to have you on the, on the, the podcast, Jameson.
+I'm very grateful.
+Yep.
+Yep, thanks for having me.
+
