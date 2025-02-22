@@ -1,0 +1,456 @@
+today we've got an excellent guest here
+jameson lopp jameson i've known for i'd say five years six years and that's great to have you on
+the show today jameson welcome thanks hopefully i don't have to call myself an old man even though
+i've got the gray and the beard i don't feel old yet don't worry your beard game is pretty strong
+there jameson so jameson could you just give a quick bio for for our audience yeah so computer science
+background spent the first decade of my career building sort of web scale infrastructure for
+online marketing company and just past the decade mark of working full-time on bitcoin self-custody
+and security products so i've seen a lot of terrible things over the years but the nature of security is
+you learn from preferably other people's mistakes you learn from your own mistakes and we keep putting
+one foot in front of the other now you call yourself a cypher punk can you tell me what that is
+yep it's basically the movement that was the origin of many different aspects of internet security and
+privacy that we take for granted today i'm sure everyone who's watching this for example
+is using ssl like https in your browser when you're going to websites that technology was developed by
+cypherpunks a lot of the cryptography encryption things that are used at very low layers of the internet
+to secure our daily activities were invented by cypherpunks because they realized that back in the 80s
+and in early 90s the internet had no privacy or secure everything was out completely in the open could be
+intercepted could be manipulated and so because of their paranoia and because of their understanding of how
+you know the system had great potential for empowerment but also for abuse they wanted to make
+it harder for authority figures or just malicious actors on the internet to abuse one of the many
+cypherpunk projects that was tried over the years was this idea of cryptographically secured money there
+were many different attempts at it and the cypherpunks had basically given up on it until some rando going
+by satoshi came along and dropped a white paper and some code and here we are 16 years later spawned an
+entire industry so what led you to bitcoin it was my nerdy background combined with my libertarian leanings
+so bitcoin kept coming up on some of the nerdy new sites like slash dot that i was visiting back in the
+day and of course i dismissed it the first few times as a project where everybody was going to get wrecked
+and lose their money but it was persistent it kept coming back around and so eventually i read the white
+paper and that really blew my mind from a computer science perspective because satoshi solved the double
+spending problem in a way that was the exact opposite of how i or i think really any classically trained
+computer scientists would try to do because it was untenably computationally expensive the the solution
+that they came up with and so as computer scientists we are trained to use the most efficient data
+structures and algorithms to get a particular problem solved and rather satoshi kind of turned this problem on
+its head and said hey instead of having one database that we try to secure and create a lot of integrity
+protections around we're just going to make everybody in the world have to run this database and then we're
+going to make it really expensive to actually add or change any entries into the database i like to say
+that the bitcoin blockchain is the least performant database i've ever come across in my entire career but
+the result is that it has some very unique properties that are interesting to leverage in a variety of
+ways and the most would you agree that it's the most secure that you've worked with
+oh for sure because it gives you this we could say thermodynamically expensive level of assurance
+that once you have paid the fee to get your update to that database in that it's it's not technically
+impossible to undo but it's just impractical from any like economic standpoint yeah it neuters the economics
+for you yeah and really there's many different things that make bitcoin fascinating and make it work so well but i think one of the biggest
+the biggest pleasant surprises over the years is that satoshi somehow got all the game theory right
+you know regardless of the code and the math and the cryptography and stuff it's like the game theory
+around all of the different entities that are operating in the space and they're sufficiently mutually aligned
+incentives that has allowed it to continue to prosper for 16 years and mutually assured self-destruction too
+whenever anybody talks about a 50.1 attack i'm like yeah but what's the point you'd be the one that would take the
+greatest percentage of the hit if you have 50.1 and nobody has trust in the network anymore you're the one that's the
+largest largest percentage hit so it doesn't really like you said from a game theory standpoint it's actually genius
+well a lot of guys talking right now about these uh supercomputers
+how quantum computing is going to break into it now ali's view certainly is that
+why would you break into bitcoin we could break into the fed
+or bank of america or whatever uh what are your thoughts on this
+uh yeah if someone had a sufficiently powerful quantum computer there's a lot of things that
+could be done with it now i think that bitcoin is a tantalizing target because it's a bearer asset
+the game theory here is tricky too right like ali was saying if you're going to 51 attack bitcoin
+technically that's possible if you get enough pools to collude or whatever or if you have enough nation
+states put and kick enough doors down it's always the question of what is the incentive
+to do so are we talking about a nation state attacker that has more money than they know
+what to do with because they can basically print as much as they want that could cause some of the
+sort of game theory or financial assumptions to get thrown out the window but thankfully it seems like
+even to this day have bigger problems to deal with they're not like worried about an existential threat
+from bitcoin um the quantum threat i gave a talk on this last year and you know if i
+had a sufficiently powerful quantum computer then i would just look at the rich list and basically
+like binance and bitfenix really the biggest exchanges that are keeping 100 000 plus bitcoin
+in one address that has already had the public keys exposed which means that it's not quantum safe and
+hit that take take that money but then you have to ask yourself what would happen obviously
+the market would react i think it would be very difficult to be able to liquidate a substantial
+portion of those proceeds without the market just completely tanking and a lot of people would lose
+confidence in bitcoin at least for the short or medium term if we didn't already have some sort of
+quantum resistant proposal in place there's a lot of variables at play here really the closest like
+crisis situation that we can even refer to would be like the 2013 unintentional blockchain fork where
+there was a it was like a database locking issue between two different versions of the bitcoin node
+software that that caused a consensus failure and i think that was maybe like six hours of consensus
+failure before we managed to get it fixed and got everybody back on the right track and there was a bit of market
+freak out during that time i feel like some of the exchanges may have actually frozen
+all trading activity because they didn't know exactly how it was all going to play out it would be
+trickier if we had basically massive amounts of coins that were changing ownership because then you're
+going to have these massive companies be like we need our money back can we roll back to blockchain what
+are we going to do about this and there would be this overhanging existential threat for all bitcoin holders of like how do i make sure
+that uh this doesn't happen to me it'll be like i mean classic like when they rolled it back with that when they get when their dow got hacked
+yeah it's just it's tougher with the quantum stuff because the only way to really fix it requires everybody to migrate their bitcoin into a new quantum
+resistant scheme and this is one of the things i talked about uh last year in my presentation was like doing some rough calculations you know based upon how much block space we have
+and how many utxos are out there like it's going to take several years to get everybody to migrate
+to a new scheme whatever scheme that may be and right now we don't even have a proposal that's anywhere near
+the activation or implementation stage thankfully i think we have many years to work on it but we should not be dragging our feet
+early folks in bitcoin like yourself have very much taken a security route there's lots of things you
+can take with bitcoin lots of routes you can take but security and i think that you're certainly a
+proponent of personal security and also obviously your bitcoin security what made you focus on these areas
+basically because it's fundamental to everything else so i'll give you an example of like how casa came to be
+before casa was a multi-sig bitcoin vault cold storage service it was actually called bedkin and it was a
+decentralized airbnb app running on the original block stack protocol and this was before i joined
+when i joined we pivoted but basically after six months of working on that the team very quickly
+realized nobody is going to use this decentralized airbnb app if they're losing their keys we need to
+solve key management and so that's how bedkin got thrown out and it trans transformed into casa which
+is an homage to that original idea but also to the fact that we're trying to build a safe home for
+people's bitcoin for their keys for their assets and ultimately probably for many other things can you
+explain multi-key yeah the best way to think of it is that it's the digital version of a bank safety deposit
+box if you go in your safety deposit box there's not just one key on it there's multiple keys that
+need to be turned most likely one owned by you one owned or controlled by an authorized employee at that
+vault and so the reason for that is that it gives you a better security model right theoretically the bank
+employee can't just go in there and open your stuff up because they don't have your key also you can't just go in and open stuff
+up or someone can't just steal your key and go in and open up your box because they need to get an
+authorized employee to sign off on it and of course they're gonna vet you and validate whoever has that
+key that they're an authorized user the reason why we like multi-key setups is because this is how you architect
+a security model that eliminates single points of failure and this is one of the biggest problems with
+custody in general whether it's third-party custody or self-custody a lot of the terrible catastrophes
+that have happened in this space whether to organizations or to individuals have been because
+they basically had all of the keys to the kingdom were basically one key and so you had to protect that
+key at all costs and if anything happens to it then it's game over and there's nobody who can get your money
+back and so that's that's true both of if a malicious adversary gets that key and steals the money or if
+you just screw up you make a mistake and you lose your key then it's effectively the same thing we understood
+that bitcoin self-custody has to be built with the understanding that it's going to be operated by humans and
+humans make mistakes uh humans tend not to be security experts so you can't have really any assumptions
+about uh how they're going to manage things you know exactly what they're going to do and so the idea
+is that when you onboard into a casa setup whether that's two out of three keys or three out of five
+keys you are you're distributing your risk around you're distributing risk think of it as strength
+as a key as a key and as a key as a key as a key as a key as a key as a key and so it also allows you to
+have a diversity of software and hardware which protects you against things like supply chain attacks
+basically you have to consider like all of the million different things that could go wrong with a key
+and then have all of your keys set up differently so that whenever x goes wrong it only affects one key
+it doesn't wipe out all of your keys it doesn't wipe out a threshold that will prevent you from being
+able to spend your money or allow someone else to spend it it's yeah it's generally security through of
+risk so if i have three keys you have two keys of mine and i lose one of my keys i can still have
+access because i just so casa casa always has one key as a sort of offline recovery mechanism and then
+depending on which setup you're in there are different types of authentication protocols that you can
+build around how a signature will get requested from that for our entry level plans it's basically you
+set up a series of questions and answers and then there's a seven-day waiting period between you
+authenticating and us actually signing it uh once again because time is a great security like yeah it's
+generally if you're able to slow down attackers then it's a great demotivator and disincentive for
+attackers and then for our higher level plans you're getting more bespoke service like with dedicated advisors
+who will do video calls with you and you can set up things like duress words or emergency contacts
+people that we reach out to and and in in those cases you can have a lower waiting period but it's
+always multiple days that's why you've got tiered pricing plan based on how much bitcoin you have
+you may be looking for other services it's almost like having a family office that starts to add up
+different services for you for personal protection or whatever yeah and we even have products specifically
+for family offices are really good for sort of team-based management of assets whether that's a
+a corporate treasury or a family office or a small investment fund or whatever you're doing it's i think
+it's important for organizations to eliminate single points of failure obviously you don't want your chief
+financial officer to be able to take 10 million dollars with a few clicks of a button and basically
+go off to some non-extradition country right you want there to be good governance good checks and balances
+in your treasury management so on that note i do want to talk about the enterprise side but the first thing that
+jumps into my mind are scenarios of inheritance right when someone passes what are the solutions that you've brought to
+market around inheritance because obviously that's a a big problem i think the first time i ever heard
+of it i was at bitcoin miami and a gentleman was damn near in tears and he just came to the conference
+just to look for solutions because his father had passed and he knew he had a whole bunch of
+bitcoin and ethereum and had had no idea how to get to it yeah you need to set up the solution before
+you pass that's the the most important thing yeah we've actually done a couple of different inheritance
+protocols and the first one that i think we rolled out in 2021 or so it was very hands-on to say the
+least it basically involved onboarding lawyers estate and trust attorneys and making sure that you had
+everything spelled out in your instructions of exactly like who the beneficiaries and key holders and so
+on and so forth were and in that case there was more of a kyc element of using legal identity and using the
+legal system to enforce these things and it took so much man hours to get someone onboarded into that and we
+always had questions around will the attorney actually be a good key holder a lot of them
+didn't even want to be key holders for obvious reasons you know liability and such um and then
+also on the legal side it meant that we could only really offer this to like i think united states and
+mexican citizens it was very limiting and then whenever we had a client somewhere else who wanted to do
+it it was always this really high legal cost of trying to navigate through whatever the particular
+jurisdictions inheritance laws were what we rolled out basically a year ago is a much more streamlined
+version of this that is purely technical it doesn't require any sort of legal system setup or kyc
+or you know identity or anything like that we still do offer the other version to our private client
+level if that's what you want but with the technological solution it's actually incredibly easy for example the
+two of three setup you can onboard a beneficiary to your inheritance in a few minutes and the way
+that we do that is basically you just put in their email address into your app they get an invite to
+set up their a beneficiary wallet and then what you're doing is basically you're doing a
+encrypted key share with them of your mobile key from your setup and so they're receiving this
+encrypted version of one of the keys they can't actually decrypt it they can't use it they can't do
+anything with it and the only thing they can actually do in their app as an inheritance beneficiary is they
+can hit a button that says i want to kick off the inheritance claims process i want to claim that
+the account owner has passed and what happens if they do that is that we start emailing notifying reaching
+out to the account owner basically saying hey your beneficiary has said that you passed if this is not true
+you need to go into the app and kick them out because they're trying to defraud you or they've been compromised
+or something has gone wrong and we just we keep doing that regularly for six months and if that six
+month period goes by uncontested by the account holder then the inheritance recipient can decrypt the key
+and can initiate a transaction to partially sign the that's the time security component you were talking
+about six months they don't have to show you a death certificate nope so if you have this service
+you got to make sure you keep your email up and you answer your phone that and he's giving you a
+valid shard so basically you're telling the estate or the account holder hey one of your beneficiaries
+is showing up with a valid shard saying that you passed and then jameson saying that extra six months
+of time frame is what allows you to really verify all that i'm guessing at some point in there you would
+never need you would never need a death certificate jameson correct this is a purely technical solution
+it exists outside of the whole probate process and all of that if that period passes this is in the
+terms and conditions of casa as a company and the service that you're opting into if you decide to set up
+inheritance you don't have to if you don't want to you can do your own thing but yeah if that period passes
+then they can also then a signature from the casa recovery key and once we then sign that then it's
+fully signed and the funds can move six months isn't that long because probate can last for years
+yeah this is a positive thing when you're when your parents pass away you get money today as opposed to
+in two years time and to your point though it is of course important to maintain these systems and one
+of the unique things casa was the first to ever do this we were the first to ever introduce this idea of
+health checks and we have health checks for a variety of different things in your setup but it's
+generally the keys is what we're worried about and if you well if you have a casa setup then any given
+key if you haven't used it in six months we're gonna send you a notification that says hey you need to
+do a health check just make sure the key is still working it hasn't been compromised it's still where you
+you think it is and then that same thing happens actually with the inheritance uh recipients keys so
+they're getting you know health checks on a regular basis and so if they are not being a good custodian
+of your encrypted inheritance key you'll find out or maybe change right if someone if maybe your uh
+person that's going to act as your maybe they passed or maybe you've got divorced and they were your
+person is it pretty easy to change who that person would be yeah you can remove and add new people
+at a whim well what happens if someone stops paying for the service yeah this is self-custody right so we
+don't have the ability to move anybody's money it basically just stays frozen where it is what happens in
+the app if you have not paid your annual service fee is that the app transitions to a
+withdraw only sweep full wallet balance mode we're not going to stop you from being able to exit we just
+don't want you to have like all of the cool conveniences that come along with operating our
+multi-sig service when you said casa earlier you said always has an offline key and the recovery douglas
+said so i could have three out of five six and you said casa will always have an offline key
+does that mean in the event of failure of everything else casa would always be able to retrieve the account
+not as it stands today because we only ever have one out of three or one out of the five and for the
+three key setup you have to have two signatures for the five key setup you have to have three so it is
+possible with self-custody if you throw all of your keys away and there's not much we can do about it
+now this does open up an interesting other conversation for there are future potential
+improvements around this with more complex bitcoin scripting where you can have other conditional
+spins where you can have basically this um other time lock spending condition that says if a year has
+passed then allow you know some other key or set of keys to be able to spend these coins and that's
+something that uh we're talking about regularly of like how we would implement that and whether we
+would want that to be some fully regulated custodian that would have unilateral spending power whether
+it would be some sort of multi institution key sharing thing you're only really limited by your creativity here
+so on that note you brought up a enterprise solution and some government solutions how do those solutions
+for from maybe the personal use type basis that's really more team-based management and accounting and
+permissions granularity stuff because with organizations of course you have to worry more about onboarding
+and uh general communication on an ongoing management of that key set so it's think of it as like fancier
+dashboards and more granular management of the individual key holders and what actions they can take you can
+onboard a view only auditor for example who isn't even a key holder but can get all of the details of the
+transactions and balances there there's a lot of talk right now about obviously states getting involved
+and countries getting involved in this is this something that you're seeing are you seeing a lot more
+corporate states governments coming to you saying what can we do here or is that something that's out of your
+purview right now that's really mostly corporations but that makes sense they can move faster there's
+obviously many companies already in the crypto space that have bitcoin treasuries that they are managing
+and some of it's all over the place some of them go full self-custody some of them go like a split
+between self-custody and you know regulated custodian trying to diversify risk profiles even more in terms of number
+of companies adding the treasury strategy to their balance sheets like are you able to disclose that
+with us have you seen like a growth of 50 percent 100 5 percent it's hard to say in general i would
+expect that almost all of the companies in the industry have some level of treasury management but for people
+outside of working in the crypto industry it's pretty minuscule uh some interesting patterns that we are
+seeing though are more white collar professional groups so think of various physicians that like
+doctors who have their own practice essentially doctors who are also entrepreneurs they are running
+their own corporations we do see a fair amount of like white collar professionals more just the the
+entrepreneurs that have their own company with its own balance sheet and they want to diversify into
+bitcoin so how would you say your customer base has developed i'm guessing first it was true bitcoiners
+maximalists so then it moved on to a little bit more retail and then family offices is it developing and
+now you're talking about small corporates
+yeah to be clear we've always been focused on call it the whales the individuals or organizations that have the
+have the most to lose and this is supposedly the the time of institutional adoption and this is i think
+it's crunch time for us to be able to make the case to the larger institutions that they shouldn't simply
+trust regulated providers with all of their money and basically throw out some of the most fundamental
+aspects of this asset by letting someone else hold their keys for them now is this only for bitcoin
+or can folks do this with ethereum or what all is included or what all can you service
+yeah we added ethereum support a couple years ago mainly really for stable coins that was the big ask
+but of course we support erc20 we don't add every erc20 you know token automatically into that but if
+there's sufficient demand for it and it seems legit then we're open to considering it so my trump coin
+i can't really stick in there just yet and that's on solana isn't it yeah we're definitely not
+supporting solana stuff and have not really had much demand for it it's a different ecosystem
+our bread and butter is like super high security cold storage and i would venture to say that most
+people in the solana ecosystem are more looking for move fast do quick things not just buy and hold for
+many years good now founding a company isn't for the faint of heart right so when you joined did
+you originally join as you're going to come on as the ceo or because you talked about how the company
+had pivoted well how did you come about joining and it was it as the leader or did that did you evolve
+into the ceo there had been a few different evolutions over the years when i joined there were only
+four or five of us and that time it was a different ceo his name was jeremy and um he got us through the
+first few years which were pretty tough and we had a few missteps and came close to losing everything but
+we pulled through that first bear market and he decided to step back and that was when nick newman stepped up
+into a ceo role and i stepped into a chief security officer role but these well for me it was mostly
+just a title change i've been pretty much doing the same thing uh the entire time now with the leadership
+change with trump coming in that has to be an exciting thing for our crypto industry because it's more
+welcomed what has been the difference have you seen more interest has that brought in more clients has it
+brought in more initial meetings of discovery meetings to be educated it basically follows the uh exchange
+rate right when more people become wealthier we have more people who have a lot to lose and end up coming
+to us and trying to understand our offering um i don't know i feel like the main difference from trump
+becoming more accepting of the space is that my highly skeptical southern conservative
+family members now all of a sudden are a lot less skeptical they're like oh if trump says it's okay
+then i guess it is okay hey got it are there any other trends in the security sector that you're
+you're seeing that you're tracking or maybe things that you're thinking about even pivoting into as well
+and additional services
+yeah so there's a few trends one of them is that because we have continued to improve the the best
+practices for custody in general that we're seeing at least in bitcoin we're seeing fewer large-scale hacks
+generally the trend of amount of hacked bitcoin go has been going down for many years now for almost
+a decade most of the hacks seem to be occurring in more like solana ethereum more complex smart contract
+protocols basically where people are writing new smart contracts and there's often bugs in them and that's
+what's getting exploited um and so the result of that is that we're seeing a new class of attackers uh come
+out and and that's the social engineers and so basically you know because the actual mechanisms around key
+storage have gotten so much better it's generally not worth the average attacker's time to try to actually
+steal your keys to try to get through whatever your layers of security are because if you've got them
+on an offline dedicated device the hacker is not getting to that they would they have to like compromise
+so many other things it's not even worth the trouble so instead what they're realizing is the weak point is
+the humans who are operating these keys and so this is essentially where we are today is that you're much more likely
+essentially to get your brain hacked than you are to get your actual wallet hacked and and what that really
+means is people emailing callings using some method some communication channel to try to trigger you with the right
+combination of words fear urgency so on and so forth trying to trigger you into making a mistake and into
+you voluntarily jumping through all of your authentication and security protocols to then
+voluntarily send your assets to the attacker because you think that you're currently in danger and this
+is how you know you uh get yourself out of danger that's a lot like the fake celsius emails that everyone
+was getting or everyone gets every couple of months let's say hey look give us your wallet address give
+give us all your information so we can transfer you the bitcoin that you're still owed by celsius
+or the yeah there's so many different methods like we've seen there's a lot of fake airdrops that's still a thing
+trying to play on people's greed and getting them to hook up their wallet and click on some malicious smart contract
+there to basically grant it permission to drain all of their money out of their wallet um then there's yeah using any of the data leaks from any of the
+the bankruptcies to basically once again prey upon people who have already lost so much and they're
+like okay i can finally get my money back nope we're actually taking everything else that you had and
+a lot of it uh these days is targeting coinbase and other major exchange users and they're just taking
+all of the data leak list of any crypto service that's ever had a data leak and then assuming that there's
+probably a good chance that you have a coinbase or a kraken or binance account or whatever and then they say oh your
+account is compromised or you've had unauthorized activity on it we need you to click here to reset your
+password and of course that's where they get you i i have a few of those phone calls today already but
+yeah and that's the other thing is that now give me the password douglas there's they're literally
+calling people on the phone and walking them through step by step of basically having the person send all
+of their money and it's it's pretty outrageous when you actually hear uh some of these calls that have been
+recorded and talking to the attackers but really the profile of those attackers they're mostly teenagers
+right they're mostly kids and so i think they don't like fully understand the damage that they're doing
+it's just a game to them and also i know personally from my own incident a number of years ago that a lot
+of these kids effectively operate with impunity because at the federal level there's almost no
+like juvenile justice system if you get caught and you're under 18 you're often going to get off
+with a slap on the wrist or with anything at all that's something that happened when i i caught the guy
+who swatted me many years ago is that the federal district attorney actually declined to even prosecute
+because apparently it wasn't worth their time to go after a minor and the only saving grace was that
+the state level district attorney was willing to prosecute what was getting swatted like what was
+that experience like it was pretty surreal but it was fortunate in my circumstance because i wasn't
+actually home when it happened i was actually at the gym and i was driving back into my neighborhood
+when i ran into the police blockade and then it took us like 20 or 30 minutes to figure out that i was
+the the armed hostage guy uh who they were looking for and i was like yeah you can see i am neither
+armed nor have any hostages uh thankfully it ended without any incident but it could have ended much worse
+what caused it jameson was it that the person ordering the swatting is it because they disagreed with
+you on a bitcoin improvement protocol on a bip or something like that it was related um so it happened
+at the height of the fork wars and the scaling debates in uh it was like october 2017 i think and um yeah
+and but the thing is according to the guy because i ended up meeting him when i went to court he said
+he actually didn't even know who i was rather it was some of his friends his accomplices in the you know
+cyber crime space who they were the ones who got pissed off by something that i said and they egged him
+on and said hey you should swat him and extort him and so on and so forth because this guy has bitcoin and
+and you can probably get a bunch of money and my investigation into that attacker led me to believe
+that like he this was not the first time that he did this like he was known as being the guy who could swap
+people and get away with it i was somewhat pleased that i was able to actually get a resolution on that and
+get him on the radar of the justice system because i think all the other victims failed to get any justice
+so it was only because he was 15. wow i'm i'm actually gonna save this quote from you and we're
+gonna attribute it to you james thing it's one of the best ones i've ever heard you're much more likely
+to get your brain hacked than your wallet hacked i love that yeah i remember when remember mount gox and
+mark karpelis and everything i'm looking at this guy and i remember hearing about it i'm thinking
+what the hell does mount gox what does that even stand for and magic the gathering online
+online exchange and so i went to go look at it and i'm looking at this french guy that likes japanese
+whiskey and japanese prostitutes and these kids just handed him 700 million dollars and he has access
+to it all i'm thinking that's not the code getting hacked that's this guy embezzling and that's i love
+that you're much more likely to get your brain hacked mark got in way over
+his head he also thought that he was smarter than he was like he one of the big problems
+was that he refused to delegate he was doing everything himself and also i think that like
+when he took over that service like when he bought it from jed mccaleb i think it had already been hacked
+at least once at that point and i think that he didn't even know it i think the accounting was so bad
+that they didn't even know they already had a huge hole in their balance sheet at that time and then it
+just took a number of years before it got so bad that they finally realized they ran out of money
+yeah
+so what advice would you give jameson to a bitcoiner is there a certain amount of money that they should
+start getting worried about and that's when they should start thinking about security or should they
+just start as soon as they buy yeah i usually i would say i have three or four different thresholds of
+like how to think about security so first there's pocket money if it's like the amount of money that
+you would carry around in your wallet then losing it's probably not a big deal not going to be a life
+altering catastrophe for pocket money you don't really need a whole lot of security it's fine for
+it to be like a hot wallet or just sitting on an exchange or whatever because why invest a lot of
+time and resources into protecting something that's not worth very much then beyond that
+it's like when you start getting into investment territory i don't know everybody's going to be
+different thousands of dollars tens of thousands of dollars whenever it becomes a non-trivial amount
+of your net worth your investment portfolio at that point i think you should at least invest a hundred
+dollars into a hardware wallet get those funds off the exchange get them into cold storage so that it's
+essentially hack proof but realize that there are still potential single points of failure there and you
+want to have decent multiple redundant backups and and even then you're still securing all your funds with
+only one key so if that key falls into the wrong hands it could be game over then beyond that it's more
+of the life-changing or generational wealth whatever you want to call it where the vast majority of your
+net worth may be in bitcoin uh this is where it starts to make sense to invest into security
+so that you eliminate single points of failure because at this point if you lose your money it's
+probably going to have life altering catastrophic consequences and you're going to regret it forever
+why not essentially buy some insurance on that up front by improving your security and improving your
+resilience and your robustness and that's when i think casa starts to make sense lately i've basically
+been saying if you're a whole coiner you should definitely be thinking about casa will casa always
+stick to custody or do you see do you guys envision uh a time in the future where casa might actually
+lend again bitcoin that it's storing for its as a third-party custodian or multi-sit custodian is
+it do you guys yeah i mean there's a there's a number of ways it could go i would say like in general we
+do our best to avoid being a regulated financial institution we want to be a consulting service
+and a software service provider but lending is definitely one of the biggest asks that we've
+had from our clients and we are exploring a few different options of doing that and without going
+into too many details we're looking into options that don't require us actually taking full custody and
+maybe some sort of hybrid multi-institution uh custody setup it's it's still early there are
+things like discrete log contracts lava is one example of a lending service that is using that
+fairly niche bitcoin technology to be able to do more trustless lending but there's a variety of
+ways that it could go and i i do think especially as more banks and financial institutions start to
+get into this space we are going to see a plethora of lending options now we've got buddies that say
+that they're bitcoiners and then when you press them they say my own ibit um what's your argument to
+that if someone owns ibit are they a bitcoiner do they own bitcoin
+they have financial exposure to bitcoin the asset i think that unless you're actually using the bitcoin
+protocol it's harder to say that you're a bitcoiner you can go down the hallway moral and philosophical
+ethos of i promote eating steak and lifting weights and sunning my balls and all these other things
+but that does not have bitcoin or make right i think one interesting analogy i like to bring this up a lot
+a lot of people to be able to do that because i spent my first decade working on email related software
+is would any of you say that you're an email user
+absolutely unfortunately you're all wrong
+so here's the thing like none of you are actually using the email protocol
+the email protocol smtp has been so horribly centralized and become such a monstrosity
+of these layers of meta protocols of reputation based protocols basically all the anti-spam stuff
+that have been built up over the decades is that none of us are actually using the email protocol none
+of us are actually interacting with an smtp server think of it as a an email node rather we're all
+using these lightweight clients that connect to one of a handful of you know highly centralized monolith
+email services something like 90 percent of all email users are captured by 10 companies at this point
+ali and i did use smtp at carnegie mellon if you're at a university those organizations are large enough
+that they might still be operating their own email servers though i know a lot of them have off off
+loaded to microsoft or google workspace or whatever but that's basically the problem is like the cost of
+operating as a sovereign email user over the past 20 years has gone up so high that you essentially have
+to have a whole team of it managers to be able to run that infrastructure and basically this is all to
+ensure the deliverability of your emails which is like one of the things that i was working on for many
+years back in the day and all of that to say this is one of my greatest worries about the sort of long-term
+future of bitcoin especially in relation to things like the etfs is that it's not difficult for me to
+imagine simply because of human nature of preferring to choose convenience at the expense of almost all
+else a lot of people are going to go into those etfs and they're not even going to have the option for
+self-custody to withdraw so i i do worry about too much adoption happening that centralizes too much of
+essentially the economic power and ultimately that could have a negative effect on the governance
+of the bitcoin protocol if all of the money is in the hands of a few institutions and if you actually
+read the etf prospectus for pretty much any of the etfs they reserve the right to decide in the event of a
+protocol change which is the real bitcoin yeah i guess folks watching this they're interested in
+bitcoin they're interesting just crypto in general but bitcoin specifically everyone's sitting there
+saying look all this demand everyone's getting excited in fact we talked about this before this call
+there's so much demand seems to be building but the price is coming off and the question is this whale
+is this whale selling or are we just looking at a lot of noise what's your view why is price not doing
+as samson says where's the omega candle yeah that has been surprising i think there was some rumbling
+about binance potentially selling a lot of their treasury and then they were trying to hand wave it away
+but their explanation didn't make any sense to me i don't know go do it clearly somebody's been selling
+a lot to sailor right if you go do an overlay in december of 2017 right around january of 2018
+the derivatives the options futures contracts came out and i have uh i have friends that are in uh the
+energy trading space on this and as soon as it came out he made a directional price bet with me and he said
+they're going to slam it and i said okay i'll bet you we made a bet that it would be above ten thousand
+dollars and if you recall i think at the time it had gotten up to 19 19 and change and if you just
+overlay from the time that the option they introduced the futures contracts they slammed it all the way
+back down to 3600 and it's actually it'll be interesting i would suspect for you because for me there's
+21 million underlying of which 4 million are irrecoverably lost 20 million are currently issued in that
+standing and you have 1 million left to go but as far as the derivatives contracts there's
+an unlimited number of them i mean at what point is there going to be a hey
+i want to see the physical delivery and i who is everybody what are all these things
+that you're writing these options driven who's selling yeah it's so it's problematic especially
+when you have the cash settled uh futures there i think i had a whole article about this a few years
+ago this is actually one of the many other risks of these trad fi bitcoin products is that they have the
+potential to essentially create paper bitcoin there's a number of different ways that you can create the
+paper bitcoin whether it's basically through time delays of when like the actual settlement has to
+occur or if it's because you're literally just creating paper contracts that aren't even backed
+by spot bitcoin and i think that people should be more worried about that because what is the point
+of 21 million if we're allowing trad fi folks to basically print paper bitcoin absolutely it's no
+different than when we got off the gold standard with the dollar now it's just a piece of paper and
+you've got a printer back here and you're just putting it up and it has no ties to any type of
+logic and value jameson this has been a fantastic interview we really appreciate you coming on are there
+any closing thoughts that you'd like to share with the audience any recommendations or just what are the
+calls to action to come to learn more about casa and where can they find you online
+yes i generally tell people that the most important thing you can do is to educate yourself if you're
+asking the question should i buy bitcoin then the answer is no because it means you have not sufficiently
+investigated this thing to convince yourself that actually you have to have bitcoin like once you go far
+enough down the rabbit hole it's not even a question it's just something that you have to do to hedge
+against a number of different risks in this world and to empower yourself against shenanigans manipulations
+by a lot of these trusted third parties you can check out bitcoin.page that's my resource website got
+thousands of educational links on there and you can go down any number of rabbit holes because there are
+a variety of different perspectives and aspects of this system that you can learn more deeply about
+if you want to learn more about casa if you decide to make a sizable investment that you want to protect
+you can check us out at casa.io wonderful and they can find you on social is x your preferred social
+platform i prefer nostr but i recognize that's very niche so you can find me on x my handle is just
+l-o-p-p awesome awesome again thank you so much for being on the show i'm phil larman
+i'm ali i'm douglas borthwick and you've been listening to old men new money
+if you've liked this episode then please follow us on socials we've got 16 000 subscribers so far across
+platforms we're two months into this and we really appreciate any comments thank you subscribe below
