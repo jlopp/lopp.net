@@ -1,0 +1,805 @@
+yo bitcoin has seen one of its most volatile weeks in history after we saw a record-breaking
+1.4 billion dollar heist that occurred last week this massive bybit hack from an infamous nation
+nation state hacker group has forced many people to reconsider how they hold their bitcoin today
+we reached out to a bitcoin og with a over a what is happening
+there we go sorry about that guys i have i have my echo in the background today we reached out to
+a bitcoin og with a decade decade of experience in cyber security to break down everything that
+happened with this hack and also this morning it was uh opti and i had to put a fire out which was
+absolutely crazy uh we had some trouble getting the live stream up and going which we managed to fix
+10 minutes before the show went live and of course what bitcoin og am i talking about we have the one
+the only legendary jameson lop in the house thank you so much for joining us lop i know we've had you
+on simply bitcoin irl but we've never had you on simply bitcoin live so welcome to the show
+always glad to talk about bitcoin it's so crazy because every time we have a big guest coming and
+joining us uh those are the days that something goes wrong so we're rolling with the punches anyways
+let's jump straight into today's article let me pull it up fbi accuses north korean backed hackers
+of stealing 1.5 billion dollars in crypto from dubai based firm it goes on to say the fbi has accused
+north korean linked hackers of conducting one of the largest thefts of cryptocurrency publicly known
+seizing some 1.5 billion dollars worth of ethereum from a dubai based firm the theft earlier this month
+targeting by bit one of the world's largest crypto exchanges represents yet another uh another involving
+a team of hackers identified by the u.s government by the names of trader trader and the lazarus group
+the hackers steal cryptocurrency through the disseminate the dissemination of cryptocurrency
+trading applications that were modified to include malware that facilitates theft of cryptocurrency
+it goes on to say in an online public service announcement late wednesday the fbi said it
+believed the north korean backed hackers were quote responsible for the theft quote trader trader
+actors are proceeding rapidly and have converted some of that stolen assets to bitcoin i think that's
+the signal there right they're getting rid you know of of whatever and they're they're buying bitcoin
+other virtual asset uh uh dispersed across thousands of addresses on multiple black uh blockchains the fbi
+said in this announcement quote it is expected these assets will be further laundered and eventually
+converted to fiat currency it goes on to say north korean state media has not acknowledged either the
+theft or the fbi accusation pyongyang's mission to the united nations in geneva did not respond to a request for
+comment from the associated press now here is a post from i believe the bybit ceo uh ben zoo and he said
+bybic hack uh forensic reports as promised here are the preliminary reports of the hack conducted by uh
+singa labs and vera chains screenshotted the conclusion here is the link to the full report
+and lop we were talking about it earlier before we went on air about uh this uh report that came
+out so uh lop what happened how did this happen how can an exchange of this size with this many
+customers uh how our exchange happen how are exchange hacks still happening in 2025 you know after the
+industry has been around for you know almost 16 years now we all remember mount gox you know i think
+bitfinex got hacked a couple times binance got hacked how is this stuff still happening
+well these are complex systems and you know complexity can be the enemy of security i think
+that's the short version of how this happened there's complexity of many different layers
+and it really starts at the very lowest layer there's a lot of complexity on these evm turing complete
+uh protocols and that level of complexity means that you can't have the same trustless verification that
+we do on bitcoin if you're using one of these tiny uh low powered hardware key management devices
+so you know if you've ever used trezor ledger cold card really any of those hardware devices then you know
+that when you're making a bitcoin transaction it explicitly tells you on the screen hey you're
+ascending this many sats and you're sending it to this address and you can confirm it all on what is
+essentially a totally self-contained computer and that's possible to do because bitcoin is simple
+and you the partially or fully signed transaction that you are sending to that device is usually only
+a few hundred bytes maybe a few kilobytes and it's capable of parsing it and telling you exactly what
+the resulting change into the blockchain is going to be but with these more complex evm type of protocols
+you're not signing a transaction that has all of that context inside of it uh you may be signing a
+more complex transaction that's basically sending a command you know to the evm and the only way to know
+what the result of executing that command is is to actually execute the command so you have to have
+your own full node basically where you do a test and you then check the state's change of what actually
+happened from executing the transaction so in the short version is that you can't sign these complex
+transactions on secure air-gapped hardware because the hardware itself simply does not have all of the
+the contextual information necessary to know what the final outcome is of that transaction and then beyond
+that there's just multiple other layers of of problems that happened in this one particular case
+particularly that they were using a web app you know a javascript front end to actually drive the creation
+and the coordination of this multi-sig setup and anyone who is familiar with javascript and web apps know
+that they are just incredibly difficult to secure because you can't have integrity checks for the code
+itself uh you know if you're running a mobile app or in in many cases a desktop app those applications
+can be cryptographically signed like the final build of the app can be cryptographically signed
+by the developers of that app and that provides a strong uh attestation and integrity check that
+the code that you're running is the code that was actually written by those developers but with javascript
+that's just not a thing and so what happened in this case is it appears that lazarus group which is
+these you know north korean uh state-backed actors somehow compromised the aws like s3 bucket or cloud flare
+bucket like wherever this javascript was actually hosted they managed to insert a few lines of
+malicious code that basically said hey if this is the bybit wallet that is being used to construct and
+sign this transaction then do this malicious contract call that completely changes the ownership of the
+contract and they were able to do that because you know whatever code they put up there just immediately
+actually gets uh sucked down into the browser and run and there's no integrity checks to make sure that
+the code was actually written by the gnosis safe developers so they basically they were able to
+completely bypass any of the security mechanisms that's the safe team may have had around you know code
+review peer review the build and deploy process and it appears that this happened because a developer had some sort of production access api key on their machine and that machine
+got compromised that we don't know all of the details at this time so and and it's it's a couple things
+so many things to unpack there right so the first the first question that i have for you lop and you know of
+course we recommend you know bitcoin only hardware wallets but i'm sure that a lot of our listeners still use ledger
+it was the ledger device itself it's not compromise it's the fact that it can't lay out all the data
+effectively on on the constraints of the hardware itself and on the screen size so you can't really
+actually confirm what it is you're signing and if you compare and contrast that with bitcoin it's pretty
+straightforward it's like look here's your bitcoin address here's the change address a lot of good
+hardware wallets actually lay that out for you bitcoin only hardware wallets so it's not the
+actual ledger device itself that was compromised it was something that was compromised on the software
+level how how were they able to do that was is it so essentially did did a developer download like
+a malicious software is that what happened probably uh it's too early to say because i think the only
+forensic report that has been released was performed by bybit or at bybit's request i don't know that they
+actually had access to this uh supposed developer's machine um over the long term we you would expect
+that if that's what happened then a full forensic analysis of any compromised endpoints you know employee
+laptops and other machines should occur and they should then be able to figure out what is the actual root
+cause of how it got compromised but generally what happens in these cases especially with lazarus group
+uh you know they are considered uh very advanced persistent threat actors and they will spend weeks
+if not months uh poking and prodding and trying to social engineer and compromise various employees at
+a company in order to eventually get production infrastructure access so that usually does involve some sort of social
+engineering to trick an employee into installing some sort of software that has a malicious payload
+what we've seen pretty often is that they will go after developers and in some cases they will
+they will try to get the developers to download and run you know some sort of code from github
+usually under the auspice of helping them debug something or helping them do some sort of you know academic
+project and that code and that github project will have a malicious uh zero day like exploit that
+basically allows them to get your full access to the machine gotcha gotcha no it's it's it's very
+interesting by the way we're about to break 1 000 live viewers on the live show if you guys are enjoying
+simply bitcoin live so far make sure to smash that like button help us break 100 likes within the first 15
+minutes of the show on youtube we're already at 80 likes if you guys are enjoying the show smash the like button
+consider subscribing opti crazy morning man the day that jameson lop is joining us on the show we had to put out
+some fires in a very short amount of time but i'm happy that we got the show uh up and running for you guys
+uh what are your thoughts on this man it was a pretty big deal it tanked the price as well man like i think it
+it severely affected the price we were at like 99.5 i totally bought the top i always do no shame don't
+care uh but uh but it like it it affected the price right it dumped the price i think a lot of people
+had a lot of questions a lot of people are like wait a second hold on this dude is using a ledger
+to sign a transaction for a 1.4 billion dollar transaction like what is going on here uh what
+were your thoughts uh opti yeah well obviously when i saw that video of the ledger it was like wait
+it's almost like the joke you've been saying for a long time that brian armstrong just has a ledger
+in his sock drawer and that's how he secures the coinbase transaction it like literally happened with
+bybit so that that was just hilarious uh and then just kind of in context you know this is a 1.4 that
+article said about 1.5 i think it's like 1.45 billion dollar hack uh obviously it's an ethereum
+but in context this is what about three times the size of the mt uh you know mt gox going down so
+this is a huge huge hack here the lazarus group obviously came up huge on this hack whether it was
+social engineering or what have you it's a huge hack and then before i actually have a question for a lot
+before but uh it's kind of what you pointed out nico like it's funny and i was joking about this
+earlier while we're kind of setting up the show it's funny that even the real scammers out there
+don't even want ethereum or any coin and they just flip it into bitcoin instantly and try to get it into
+bitcoin you know a signal for everyone out there that might be bitcoin adjacent it's like even the
+real scammers don't want the the the coin scams they're like let's put it into bitcoin but uh a lot
+for you know for the not so advanced people in the audience um with this hack just to be completely
+clear is this uh an ethereum issue or ledger issue can this happen on bitcoin for someone watching the
+show right now you know maybe they're getting a little a little scared if their bitcoin is secured
+correctly what would be your advice to them i mean it's a combination of the complexity of some of
+these protocols um and just the way that these hardware devices operate so um you know i think the
+takeaway here is you know multi-sig is not a panacea uh you know having your keys offline obviously is a good
+start but the real question is you know when you're actually cryptographically signing a transaction to
+move funds how strongly are you verifying exactly what you're signing and so the problem here is that
+uh in most cases when people are doing multi-sig transactions on these evm networks they're blind signing
+because as i said the the hardware simply doesn't have enough information to know exactly what the
+result of the command that you are signing is is going to do to you know that network to that blockchain
+so you have to have more safeguards in place you have to have more levels of verification if you are
+using a um we could call it a non-native multi-sig contract like the nice thing about bitcoin is that
+multi-sig is baked into the protocol it is it's very simple um the the downside to these you know more
+generic smart contracting networks is they don't have multi-sig baked into the protocol it ends up being a
+you know much more complicated you know app if you will that is written and deployed onto these networks
+and as a result those hardware devices simply just don't know what to do with it the one thing that
+we're seeing your ledger is talking about well no one should be doing blind signing they should be doing
+clear signing and what does that actually mean well it basically means ledger wants you to be using their
+enterprise product where they have you know a very specific set of smart contracts that their servers
+are aware of and then they have additional sets of interactions between your uh ledger live app
+software that you're running and then the servers on their back end where it's doing just additional
+levels of verification back and forth and sending data to your ledger device so that the ledger
+can display exactly what it expects the result to be so you know this is still additional complexity
+but i think it's really is the best that we have to offer at this point in time and you know we've
+done similar things at casa where it's it's you know a client and server uh validation basically checking
+each other's work the problem that occurred here with this gnosis safe front end is that everything
+was happening in the browser like there was no other machine uh you know no other full node that was
+running somewhere that was basically being checked against to see exactly what the result of the
+transaction was going to be got it interesting so essentially and and that's that's actually so
+multi-sig is built natively into bitcoin but with the alternative with the altcoins it's not built natively
+into them so they have to do it via smart contract and essentially that's where it it uh opens the attack
+vector so to speak right um and someone in the chat i think the complexity and i just want to share this
+um i just want to share this screen from uh from the by bit fitter uh by bit ceo um and it exactly says
+what what lop was saying so the benign uh javascript file of app.safe.global appears to have been replaced
+with malicious code on february 19 2025 specifically targeting ethereum multi-sig cold wallet of by bit
+the attack was designed to activate during the next by bit transaction which occurred on february 21st 2025.
+so this is extremely sophisticated lop like these guys this is not child's play like they knew
+exactly what they were doing well they did because if they had wanted to they could have been sweeping
+basically everybody's wallets who were using the uh gnosis safe web app but you know they were smart and
+they put in that conditional that basically only listed a couple of contract addresses because they
+didn't want to tip their hand like this is sort of a classic game theory of a zero day exploit when you
+have some sort of massive vulnerability that you're trying to monetize do you immediately start you're
+trying to sweep up money from everybody or do you have a little bit of patience and you basically lie in
+wait until the big whale comes along and so that's what happened here is like they knew that like that
+was the biggest possible wallet uh that was going to be interacting with this code and so they only had
+to wait a couple of days to basically get the the fish on the hook so to speak if they had deployed it
+without those conditionals then you know you probably would have had people losing a a few eth here and
+there and they would have raised the alarm because they wouldn't have understood what happened and then you
+know that would have resulted in the gnosis team looking into it and finding the problem before
+they were able to get the 1.4 billion yeah wow it's so wow wow wow very sophisticated is a the the lazarus
+group uh very sophisticated target uh you know just lying in wait until they get the big pot now my question
+to you lop and i think a lot of people are watching this um how do people protect themselves from this
+like i mean from my stance uh vantage point it's like okay obviously take self-custody bitcoin you know uh
+the simpler the better right in my opinion so uh what would your professional advice you've been around for a
+very long time in this space um you're obviously you know this is up your alley right you're a security i
+would consider you a security expert uh how could people protect themselves um from this type of attack
+well yeah i mean if you stick to bitcoin and you uh are using these air-gapped hardware devices to
+verify the transaction details on the device then you're going to be good to go it's not until you
+start dealing with these more complex protocols where you're basically doing you know smart contract
+commands where you need to have a more sophisticated setup so um you know if you are going to go down the
+route where you're using evm stuff um you can you can simply avoid using these uh smart contracts and
+you can just use the native you know single signature on chain uh functionality and in those cases your
+hardware devices will be able to display exactly you know what the amounts and destination addresses of
+your transactions will be but you know if you have millions or tens of millions or hundreds of millions
+of dollars uh you basically need to have a much more sophisticated setup that's managed by a team
+and you know you really need to be paying a number of different security professionals to try
+to break your setup and find the weaknesses in it um it needs to be a lot more sophisticated than just
+using a web app yeah i 100 agree and i think that's where you know it perhaps it gives it gave them
+a false sense of security right they're like oh we're using multi-sig this is fine
+you know oh i i'm i'm looking at like this is something that i've done over and over and over
+again but that's exactly what the social engineering attack like this is what they they rely they they
+hope that you kind of uh fall into this convenience trap this oh i'm safe my my setup is safe and uh you
+know they they pounce on the the opportunity not to mention it was a massive honeypot because you know if
+if the if the reward wasn't so great you know i don't think they would have gone through the amount
+of effort like i'm just reading this report and in my mind i'm telling i'm thinking to myself i'm like
+this must have taken months and months and months of planning and just checking and seeing until you
+know they found a vulnerability this was not something simple it wasn't like the the bitfinex hack which was
+a total social social engineering hack uh attack this was like a sophisticated like black hat hacker type
+of you know uh operation though we still really don't know the details of the bitfinex hack and that's
+always been disconcerting like they never really revealed uh you know how the machines got compromised
+like how how did ilia get uh production infrastructure access to the bitfinex there's still so many open
+questions and i'm afraid at this point we're never going to get all of the answers to that but yeah so
+you know some of the people that have been concerned about this have basically been saying well you know
+if a if a multi-billion dollar exchange can't do self-custody correctly then how do i know that i can
+well you know first of all you probably don't have a billion dollars that you're trying to custody like
+you're not at the same level of uh of threats that you have against you so you know north korea isn't
+going to be sending their hacker squad after you for your you know few thousand dollars or even probably
+for a million dollars they are going after those uh multi hundred million and billion dollar targets
+you know their time and resources are precious so they're going to go after the big boys
+um beyond that you know part of part of the just mile high aspect of uh security in this ecosystem is
+we need to stop creating such huge targets and the way that you do that is you get as many people as
+possible to take their bitcoin into self-custody if you're if the you know the culture is not pushing
+people to educate themselves and to learn and take the responsibility of self-custody then and the
+inevitable outcome is the vast majority of people have all of their money in just a handful of trusted
+third parties and those are going to be the targets for these state level actors who as you said are
+very advanced and persistent and they will spend months and huge amounts of resources because they
+are backed by a nation state and they only have to find you know one weakness they only have to win
+they only have to like succeed one time in order to have massive catastrophic consequences for many
+people and and as as we've seen you know the consequences here actually affect everyone uh in
+a way even the self-custody folks because whenever a attacker manages to get their hands on millions or
+billions of dollars worth of crypto assets what are they going to do they're going to try to dump it as
+quickly as possible you know first they're going to uh try to you know move it around to make it harder
+for anyone to try to confiscate uh you know i think one of the reasons that they started hopping
+to other chains was because there was a little bit of rumbling about well maybe we could you know
+roll back ethereum or you know make a state change to ethereum but of course once they start
+moving to other chains that becomes uh practically impossible and feasible to get consensus to do
+but the ultimate medium term goal of course is for them to get out of the entire crypto ecosystem and
+and basically convert it into fiat so that they can fund you know whatever their nation state programs
+are you know some some people speculate that this is going to uh funding like north korean military
+programs i don't know how much evidence we have of exactly where the money is going but you know it's
+probably nothing good yeah absolutely and and uh one of the thing did uh i found it interesting that
+they converted the eth to bitcoin right uh i found that interesting and then um you know it's it's uh
+let's see what happens because a lot of i saw i saw a lot of people were talking about it how like
+they weren't because all these addresses were being followed they weren't going to be able to
+do anything with that stuff but apparently that's not the case it doesn't look like
+the lazarus group or any of these you know any of these hackers have any intention of giving that money
+back um so yeah that's that's the way it is anyhow anyways guys before we move on to the next segment
+of the show we're going to talk we're going to be talking about the rise of five dollar wrench attacks
+all over the world and what you can do to protect yourself also lop wrote an article that uh jack dorsey
+is not satoshi nakamoto uh apparently that has been making the rounds on x uh that jack dorsey is satoshi
+nakamoto i mean i could have told you that i could have said you know like that you know i have my
+suspicions i'll never say them publicly but jack dorsey is not and it wasn't is not on that list um but uh
+yeah so we're going to be talking about that of course and then during the culture segment we're
+going to be talking about casa casa makes self-custody easy it lets you uh take all the advantages of
+multi-sig uh but the ui makes it incredibly easy for anyone who doesn't have experience with bitcoin
+multi-sig uh it allows it allows it for anyone to just pick it up and get all the benefits of security
+without the complexity of very sophisticated uh you know uh apps and ui and all that stuff casa
+makes it incredibly easy to to do all that so we're going to be talking about that during the culture
+segment it's going to be an incredible show guys if you guys are enjoying it so far we already broke 100
+likes on youtube help us break 200 likes we're almost on four we're almost at 400 live viewers on youtube
+alone and 1500 live viewers across all platforms and of course shout out to the rumble audience which has
+by far the most savage chat of everyone the rubble audience i feel like hits us with the metaphoric
+two by four every single day non-stop so guys it's going to be a great show before we jump into it i do
+want to give a very special shout out of course to simply bitcoin's lead sponsor simply bitcoin would
+not be possible without our partners and we're very very we're very picky on who we choose to partner with
+bitcoin well enable your independence with the fastest and safest way to buy bitcoin on chain
+or via the lightning network in canada and the usa to get started you put in your email address
+it takes two to five minutes to get signed up and what makes bitcoin well different is that it's a
+completely non-custodial platform what does that mean that means that when you buy bitcoin on bitcoin well
+as soon as the funds clear they go straight to your self-custody bitcoin wallet address they don't even
+allow you the ability to leave your bitcoin on the exchange which of course perfectly aligns with the
+simply bitcoin ethos the separation of money and state because self-custody is the revolution also
+if you're a higher net worth individual looking to buy fifty thousand dollars worth of bitcoin or more
+check out bitcoin well infinite it's a white glove experience you get a dedicated rep which you can
+call or you can text you can do email and every time you want to buy or sell bitcoin you have a real
+human being that you can interact with so check out bitcoin well infinite today go to bitcoinwell.com
+to get started and now if you're an american you can get paid in bitcoin sent directly to your personal
+bitcoin wallet share your bitcoin well direct deposit details with your employer set your bitcoin slash
+dollar split and receive stats instead of fiat with every paycheck what are you waiting for head
+over to bitcoinwell.com today scan the qr code use promo code simply btc get three tosses into the bitcoin
+wishing well guys we're gonna hit the numbers we'll be right back
+i want to tell you guys about our sponsor stamp seed is your bitcoin and cold storage really secure
+are your seed words really secure stamp seeds do it yourself kit has everything you'll need to hammer
+your seed words into commercial grade titanium plates instead of writing them down on paper don't do that
+paper sucks you want to literally stamp your seed into this plate of titanium your words are actually
+stamped into the metal plate with this hammer so once your words are in they aren't going anywhere
+no risk of the plate breaking apart and your pieces falling everywhere titanium stamp seeds will survive
+nearly triple the heat produced by a house fire they are also crush proof waterproof non-corrosive and most
+importantly because this is generational wealth time proof all things that paper is not allowing you
+to hodl your bitcoin for the long haul i mean here is the plate that they crushed they put in water they put a
+blowtorch to it and as you can see the words have survived stamp your seed on stamp seed and you can use promo
+code simply to get 15 off anything on their store head over to stamp seed.com today
+all right everybody could you imagine that conversation many generations i mean like 50 years from now and
+your grandchildren are looking at you and they're saying grandpapa are you gonna are you gonna give me
+your bitcoin and you look at them in their eyes and you say no because i wrote down my seed phrase on paper
+don't do that stamp your seed phrase onto titanium go to stamp seed.com today use promo code simply 15 off
+at the time of recording the bitcoin price is 84 750 block height that's at a discount 22
+discount specifically block height 885 590 sats per dollar 1180 market cap 1.68 trillion bitcoin
+versus gold market cap 8.3 percentage issued 94.42 decline from all-time high negative 22.4
+realized monetary inflation 0.97 percent in the grand scheme of things we're just getting started
+i love this number when me and opti started covering this i believe it was at like the two percent level
+it's now below one percent bitcoin's realized monetary inflation continuing to take fiat currencies to
+absolute school and if you buy bitcoin right now you're getting it at a 22.4 discount big of a bit of a
+dip anyways i do want to focus on this uh because i think uh our friends over at casa do such a great
+job um making multi-sig easy making your bitcoin self-custody set up extremely secure uh and a lot
+of people think that uh you know maybe the wrong episode to say this but i'm going to say this anyways
+um but a lot of people think that the the biggest vulnerability is their bitcoin being hacked right
+and there's a bitcoin being hacked like that's their biggest vulnerability that's what they think
+um but in reality the biggest vulnerabilities to your bitcoin are two things uh you either losing
+the ability to access your bitcoin because you made your setup way too sophisticated and you just don't
+have the technical know-how so you lose your bitcoin yourself and then the other which is the more
+physical type of attack which is the infamous five dollar wrench attack and it seems like those types of
+attacks have been escalating uh over time and perfect we have the the what i consider the master of
+bitcoin security on the show today jameson lop to talk about all of this so first starting off with
+this article article a chinese man has been i can't say that on youtube uh a chinese man has been uh taken
+out on the southern south korean island of jiju and what appears to be a cryptocurrency robbery
+uh here's another one an in-depth news report on one of the attackers evolved in the dan barry
+kidnapping attempt last year that was linked to a several hundred million dollar bitcoin heist
+uh here is the next one six men are accused of kidnapping three family members and a nanny from a
+chicago townhouse in october and forcing them to transfer 15 million dollars in cryptocurrency before
+releasing them five days later and last but not least a specific type of worker named zapri outlaw is
+charged with kidnapping a man she met at a las vegas nightclub taking nearly 300 000 in cryptocurrency from
+him the victim might have been uh under the influence of something so anyways uh lop this seems to be
+happening seems to be escalating i think a lot of things uh there's trade-offs obviously with self-custody
+self-custody comes with personal responsibility comes with responsible complete responsibility there is
+no 1-800 number to call uh if you've lost your keys right um and it also i think potentially opens you up
+to a uh you know the infamous five dollar wrench attack right uh you know like everyone's thinking
+like oh it's going to be this sophisticated lazarus group but in reality you buy a five dollar wrench and
+you show up at someone's house and you say i'm not going to leave until you give me your bitcoin uh and if
+not i'm going to use this five dollar wrench in ways that you don't like right so lop like obviously
+you know you've been doing a great job covering all these events that have been happening worldwide but
+first thing that sticks out to me is one happened in chicago so one happened actually in the united states
+uh which you would think in the united states that these types of things weren't happening
+um you that you've been covering this for so long is this surprising at all um i think what we're seeing
+is that um just because you live in a safe area doesn't mean that you're safe from being targeted
+like these are highly specific highly targeted attacks well some of them are right so i guess we
+we need to break down the different types of attacks right so first of all there's the like
+the crime of opportunity um and so i think the the one with the uh as you said specific type of worker
+um you know that that sounded more like a crime of opportunity this guy was probably going out putting
+himself in a risky situation he was probably flaunting his wealth or talking about how he was doing a lot of
+crypto trading stuff and so that got him targeted just in the moment uh now i think the things that
+people should be more worried about uh because they're harder to protect against are the ones where
+it's a home invasion type thing where you're getting targeted ahead of time and you know these people
+uh these attackers are putting a lot of effort into you know surveilling you figuring out what your
+sort of day-to-day activities are and then essentially taking you hostage and maybe they do that at your
+house if they feel like your house is not a hard target or in other cases like last year we saw a ceo
+of wonderfully in toronto they just waited for him to exit his office at the end of the day and they
+threw him into a van uh when he came out into the parking garage uh going home from work so they were
+likely surveilling him and figured hey that's the the most vulnerable time for us to pick him up so um you
+know i would say in general these are still rare like in in the greater context of how many million people
+obviously uh are owners of bitcoin but we also see the trend and the trend is that there seems to be a
+rough correlation between the exchange rates you know the general adoption and understanding or awareness
+of bitcoin and the number of criminals who are then trying to apply their own skill sets in extracting
+these valuable assets from targets that are probably uh not nearly as hard as you know trying to hit
+like uh an armored car or a bank or you know traditional uh high value target
+oh sorry about that and let me ask you something else slop right so you broke it down on the specific
+types of attacks there's the opportunistic attack right with that specific type of worker that i said
+youtube um and then there's the uh there's the planned attack it seems like that chicago attack
+that that seems like a pretty big heist 15 million that seems like a planned attack that seems like
+they they scouted that person out now my question to you lop and you've written amazing articles on this
+by the way um how do you protect yourself against this like you know how do you how do you go about your life
+you know rethinking your your safety and your family's safety right because us bitcoiners we have this
+joke of like look i love the second amendment and i'm gonna make my house into an effing castle
+um so you know like what what would be the the uh the what would be the advice to someone that potentially
+is you know they've been in bitcoin for a while they have they take self custody but they they haven't
+really thought about this potential attack vector what would your advice be to them
+i mean the first thing is don't be an idiot don't put yourself into risky situations you know don't go
+conducting high value face-to-face trades with large amounts of of cash um involved um because you know
+that's where a lot of these crimes of semi-opportunity happen uh is people targeting the sort of face-to-face
+otc traders getting them to meet up in a sort of secluded hotel room or something like that and then
+uh basically taking them hostage tying them up and uh only performing one half of the trade as it were
+uh but for the the more like long-term targeted stuff with the home invasions and robberies and whatnot
+the the main thing that you want to focus on is not becoming a target and how do you not become a
+target uh well you shut up uh you don't go around you know flaunting wealth you don't broadcast to the
+entire internet that you're doing stuff uh with these assets and uh preferably if if it's too late for you
+if you've already basically doxed yourself uh as being you know bitcoin evangelist and holder
+then you should take precautions so that it's hard to actually find your address where you sleep at night
+that's what i did a number of years ago it's it's not easy but it's feasible at least in the united states
+it can be more difficult in other countries that don't have you know some of the same legal options
+for you know protecting your address and your ownership of property and stuff but privacy i would
+say is the thing that people should be investing in the most um you think of you know any security system
+should be this multi-layered system so you've got your valuable thing that you're protecting at the center
+and then you're sort of rain fencing it with multiple layers of security you never want to
+only have one layer of security you should assume that various security mechanisms are going to get
+broken through but at the outermost layer beyond the actual security is your privacy and that privacy
+layer is very important because if you have strong privacy you're not going to get targeted in the first
+place and you're not going to have to worry about whether or not your various layers of
+security are going to fail so you know i do hear people of course
+basically saying oh i don't have to worry about this because i have guns and so on and so forth
+and look i'm a big firearm owner myself there's plenty of photos and videos of me with guns uh on the
+internet and um you know if it gets to that point then you uh are in trouble like it means that all of your
+other uh privacy and security mechanisms have failed and now you're in a sort of last ditch effort to
+really fight for your life and of course there are plenty of things that can go wrong and simply having
+a gun uh is not a guarantee that it will be successfully used to defend yourself i think across the over 200
+different um different incidents that i've measured only only two of them were successfully defended
+with the firearm by the victim and why why do you think that is like is it just because you're again
+they have a jump on you you don't have a jump on them yeah you can't be hyper vigilant all the time
+like unless you're gonna go spend like a quarter million dollars a year for 24 7 you know around
+the clock bodyguard security like nobody has eyes in the back of their heads and everybody has to sleep
+at some point gotcha gotcha yeah it's a it's a it's a very interesting it's very interesting topic and
+you know it's one of the trade-offs of of self-custody right um it's one something that i think bitcoiners
+all have to really put some thought into but i agree with i agree with you lop 100 i think privacy
+is just that's the easiest one right because if no one knows who you are there's nowhere to look
+right um and then the also the go on podcast with your real name and face that would be a terrible
+a terrible idea um and also uh opti did that for a while no i didn't you're lying you put uh you put
+you put on a mask for a while oh yeah oh yeah yeah i wasn't on forever and then nico
+wrote me into not being a non so now i'm wrecked thank you nico
+but uh but hey someone has someone has to talk about bitcoin someone someone you have to do it
+right uh but yeah this is uh this is a very very fascinating topic very interesting topic lop if people
+want to go down the rabbit hole and read some of your articles where could they find them
+yeah check out blog.lop.net i've got a lot of privacy articles there and uh in general if you
+want to go down the privacy rabbit hole you should spend the uh like 40 or 50 bucks to buy extreme
+privacy by michael bezell on amazon awesome awesome so you go we have it in the ticker down below blog.lop.net
+and uh check out some of lops articles they're some of my favorite i've been reading them for years
+um there's one there's one with an image of of just like a moat around a house uh which it was
+one of my favorite articles so yeah just go check out all this stuff this is all stuff guys that you
+have to think about if you're taking bitcoin into self-custody especially you've been in bitcoin for
+a while these are all things that you have to think about um think about multi-sig think about geographically
+separating your seed phrases think about decoy wallets those are all things that could work to your
+advantages uh to your advantage but you have to you have to put in the thought you know uh
+the the spider-man quote is ringing in my head right with great power comes great responsibility
+and that's what self-custody is all about anyways guys we're going to jump into the news segment uh
+where we're going to be talking about whether jack dorsey is satoshi nakamoto or not so we will be right
+back i want to give a shout out to our sponsor casa bitcoin security matters but managing private
+keys can sometimes be complicated especially multi-sig what if you can secure your bitcoin
+without worrying about losing a seed phrase or giving up custody with casa you can completely control your
+bitcoin with multi-key security so even if one key is lost or stolen your funds stay safe no single point
+of failure no stress that's what i absolutely love about these guys they make taking bitcoin into
+self-custody incredibly easy with their best in industry user experience through their app i've
+been personally recommending casa for years now to my friends and family because they will get all the
+benefits of multi-key self-custody security without the hassle of having to learn complicated ui and if
+you're thinking of one day passing on your bitcoin to the next generation their inheritance plan has
+you covered also if you're a business looking to add bitcoin to your treasury do it the secure way with
+casa for business to get started go to casa.io today and get five percent off casa standard or casa premium
+with promo code simply
+i want to give a shout out to our sponsor foundation it's self cussy done right they built a premium grade
+hardware wallet called passport right here in the us and it integrates seamlessly with their free app
+called envoy passport is fully open source and verifiable it's the most intuitive bitcoin wallet
+designed with the ux reminiscent of a classic feature phone so you'll know how to navigate it
+and use it the moment you pick it up it's also air gaps meaning bitcoin stays offline never touching an
+internet connection it's bitcoin only open source verifiable air gap security model gorgeous design craft
+premium grade materials get your bitcoin off exchanges and into your own hands in just a few minutes with
+passport at foundation dot xyz slash simply get peace of mind for your piece of bitcoin
+all right everybody this is opti and opti is not holding a note he's holding a passport by foundation
+devices and if you use promo code simply you will get a discount not on opti but on the passport by foundation
+device remember guys not your keys not your cheese this device is completely open source it's completely
+air-gapped and it doesn't sacrifice security for convenience get yourself a passport by foundation
+devices today take self-custody not your keys not your cheese all right everybody let us let's talk
+about this gentleman right here jack dorsey which lot believes is satoshi nakamoto no just kidding that's
+a joke uh blop you dropped this article on your blog blog.lop.net uh the title of
+the audio the title the title of the article for the audio listeners is jack dorsey is not satoshi nakamoto
+uh a compilation of evidence that jack dorsey could not be the creator of bitcoin so let's go through
+some of that lately some folks have been pushing a half-baked narrative that jack is satoshi and you can
+find the arguments here first one from sean murray why jack dorsey is satoshi nakamoto jack dorsey was
+one out of the 1 300 confirmed cyber puns in 1996 in his umr email wore an adam back t-shirt in the umr
+yearbook umr students were called miners was a computer science and math major with an interest
+in crypto it continues to go um anyways you guys get the point back to lops blog uh and here this is
+matthew seagull he says in the spirit of full disclosure in intellectual honesty prosperity's judgment and
+rigorous debate i would like to share my strong belief i have become personally convinced that jack dorsey ceo of
+the square and the square and founder of x is bitcoin's founder satoshi nakamoto and he posted
+this was april this is february 18th this was february 15th wow okay this is all coming
+all all around the same time but you know um and lop says here we go again 2014 we found satoshi
+turns out he was hiding in plain sight and we listed in the phone book 2025 we found satoshi turns
+out he was hiding in plain sight and appearing on national television wearing a satoshi shirt i have
+to play the meme here we go anyway it continues to say it's true that jack was a cyberpunk and a
+programmer but that's the strongest evidence available to support the this theory everything
+else is circumstantial if not outright mental gymnastics via numerology i will once again point
+out that satoshi hunting is a dick move and thus i once again find myself interested in discrediting
+said dicks if you're going to post a satoshi claim you should put as much effort into trying to disprove
+your own thesis as you do trying to improve it otherwise you risk looking like a fool accusing
+someone of being satoshi without providing bulletproof evidence makes you a massive because you're painting a
+target on them it continues to say the funny thing about jack is that unlike most cyberpunks he was
+an extremely public individual who posted who who posted what he was up to on nearly an hourly basis during
+2009 and 2010 jack posted over 6 200 tweets this gives us a much larger data set to work with
+uh compared to satoshi who created fewer than 1 000 timestamp events during the same period
+a little common sense during that time period of 2009 and 2010 jack dorsey was not only chairman
+of the board of twitter but also the ceo of the fledgling startup square it's quite clear that he
+was an extremely busy person not only oversight overseeing multiple companies but traveling around
+the world meeting important people doing press conferences speaking at conferences and promoting
+philanthropic causes and more his activities do not fit the profile of someone who had the time and mental
+bandwidth to also be did we lose nico it seems like it okay okay oh wait he's back oh did did i drop out
+yeah for a second you're back you're back what what part what part did i drop uh the persona part oh okay
+all right perfect i mean so everything the little common sense all that okay anyways and so the my point here
+about windows is that we know satoshi was uh building on windows the first version was windows only
+so i shouldn't clarify that yeah so uh lop first of all excellent article uh kind of debunking all of
+this uh what you know what motivated you to do this i mean it's kind of a self-explanatory you feel like
+these people are dicks why are they dicks for trying to expose satoshi nakamoto uh yeah i guess i leave that to the very end the the conclusion in which i basically say that look
+uh satoshi should be an idea and a myth you know uh i think we are all satoshi you know satoshi left the project to us
+uh the problem comes in when you try to paint satoshi as a singular figure of a human being you know a human being
+is fragile as a single point of failure is going to be human they're going to have said or done probably
+controversial things that people are going to dig into and try to use to basically cast aspersions upon the
+entire bitcoin project so as a result i think bitcoin is stronger when there is no you know single human
+point that people can basically try to uh denigrate 100 and i think that's something that bitcoiners
+fundamentally understand i think if you've been in bitcoin long enough um you understand that it's
+actually better that satoshi's identity is never discovered because if it is discovered it essentially
+connects his identity to a mortal to a human being human beings have flaws right uh human beings you
+know they have to sleep they have to do other things right they have to eat um but if if he remains this
+mythological figure there's really no flaws there right you only have like you know uh certain interactions
+that he's had i know in the uh csw lawsuit it was very interesting to to see some of uh some extra
+communications that satoshi had that wasn't exposed to the public right so i i fundamentally agree i think
+the less we know know about satoshi the better i think that if you've been in bitcoin long enough um
+you've come to realize that no knowing the identity of satoshi is not important it's what satoshi did
+is that is important um and i think it would be actually a negative to the industry and to the
+movement because this is really what bitcoin is if we discovered his identity i don't think that's ever
+going to happen by the way and i don't think those coins are ever going to move by the way also um i think
+that he under he fundamentally understood that he created something bigger than himself and that's
+why he walked away and left it to its own devices and here we are 16 years later and we're talking
+about nation-state adoption and all that stuff so it's been a tremendous success so if you're look if
+you're still trying to discover satoshi's identity uh you don't get bitcoin that's my take my maybe i'm
+wrong but that that's my opinion uh opti what's your take on this brother yeah well i'm with lop on
+this one i don't think jack dorsey is satoshi uh and i don't really need any any uh evidence for this it's
+maybe it's just a vibe check here it just i does makes no sense to me and i i find it interesting though
+part of this idea like you were saying nico if you are trying to find out who satoshi is you don't
+understand bitcoin i find it interesting that usually for a lot of new people in bitcoin this
+is like their one caveat this is the one thing that they always say that you know makes them not
+trust bitcoin and us bitcoiners are completely opposite it's like this is a good thing that
+we don't know who satoshi is whereas most people come in it's like how could you trust this internet
+money thing with an anonymous creator like don't you want to know who it is and i'm like no it doesn't
+matter this is the beauty of it this is this is the whole point that the creator came anonymous gave
+us a gift and disappeared like batman and this is why no one controls the network but an interesting
+kind of take on this is that the those bitcoiners on twitter that are saying this they're not like
+newbie bitcoiners and so i i find it kind of interesting that they are pushing this narrative
+and i wonder what the incentive is and you know that's that's kind of my take on this it's like
+it's not like they're new people into the space that are saying this they've been around for a
+couple of years and now they're pushing this so that's what that's like the things that gets me
+kind of wondering like what what is the incentive to push that jack dorsey is satoshi but yeah like i said
+it's it's usually newer people in the space that come in and they wonder who satoshi is and all of us
+here that been around for a while we're like dude it doesn't matter i don't care i literally don't
+care i don't ever want to know i hope he never comes out but it's funny that when new people come in
+they always ask the same questions like how could you trust this money you don't even know what
+created i'm like this is a good thing what are you talking about do you even understand what's going
+on here i think that uh some people just want to have a hero or a leader figure and that you know it
+would be cool if satoshi happened to also be this guy who's a billionaire and one of the richest people
+outside of the bitcoin uh the satoshi mind i think that's a similar reason why some people have floated the
+elon musk theory which is you know similarly ridiculous but um you know people come in and i
+think they want to know who satoshi is because they think that there might be a backdoor in the code
+you know satoshi could be the nsa or the cia and it doesn't matter because we know what the code does
+we can look at it it's open source it's been reviewed by countless individuals who have tried
+to find weaknesses in it for 15 years now and then i think some other people are slightly worried about
+the economics aspect of you know one person controlling such a large portion of the supply
+and i tend to agree with nico that the coins are never going to move i have a blog post a few years
+ago entitled satoshi was not a greedy miner in which i go into the really deep technical details of
+satoshi's mining operation and i show that they actually mined a lot slower than they could have
+and so my thesis or satoshi's mining operation is that it was never meant to accumulate coins it was really
+meant to act as a heartbeat for the network and you can actually see that satoshi would stop mining for
+five minutes after finding a block to basically give the rest of the world a chance to try to find a
+block and then over the the years satoshi actually decreased their hash rate as the hash rate of the
+rest of that network increased and so that that was because they no longer needed to be that stabilizing
+force to ensure that blocks were still being produced at a consistent rate in those very early days
+100 no and and he was uh and i remember some of the earlier uh earlier communications lob to add to your
+point he was like basically saying like guys like calm you know like let's make sure that this hash is
+distributed right like let's calm down because in the beginning it was it was it was very delicate you
+you could you can even make an argument that it was it was centralized lap isn't there a story that
+essentially satoshi ran bitcoin and stealth in the for like kind of like in the very very early days
+on purpose uh i'm not sure what you mean by stealth i mean he was running he was running the software by
+uh no like there were other early miners uh even in the first you know day or so of blocks if i recall
+correctly there was actually some logic in the bitcoin client at the time uh where it would not start
+mining blocks until there was at least some other peer connected to the node interesting so he so someone
+else had to is is that i don't want to ask what that person is but i mean like like some of these
+people are fake are public are they not yes we do know some of the very early miners and then there are
+plenty of those early blocks that as far as we know have not been attributed to any specific identity
+yeah those guys they're doing it right they're doing it right they're watching all this content they're
+going to the conferences they they're not going to the conferences no they might you have no idea you
+would have no idea right anyways all right hey wait nico before we go on since we got lop here uh
+spongebob squarepants in the chat has a question here and i think lops perfect perfect person to add
+why hasn't satoshi's wallet's been hacked well the keys might have been destroyed i think there's
+there's plenty of reason to believe why the keys are no longer laying around uh like i said
+you know my takeaway from looking into satoshi's mining activities was that it was actually a very
+specialized machine with it was running um specialized multi-threaded mining software that was not like
+public open source mining software was not the software that was built into the bitcoin client at
+the time and so that's you know another reason why i believe that satoshi basically just had that
+infrastructure running to keep the network going for those first 18 months to 24 months and then once
+the network seemed like it had bootstrapped itself uh they turned it off so you know what happened to
+those keys um maybe they destroyed them um maybe they still exist but i think it's basically there
+that money is like too hot like i don't know how you would actually spend any of that money without
+putting yourself at extreme risk of of being doxed 100 i 100 agree with that i do i do before we move on to
+next segment i do want to uh end or you know finish off some of the reasons as to why jack dorsey is
+not satoshi and lop uh lined it up there lined it up here because i'm sure jack used windows at some
+point in his life but he has been a die-hard apple fan ever since the original iphone came out
+and it says can't use my computer because both my magic track pack and keyboard are out of batteries and
+it says most of the evidence in this report is based upon time stamps meets based activities jack
+was bi-coastal in 2009 and 2010 frequently alternating between san francisco and new york
+because those are the locations of twitter hq um and then i think this is the most interesting one right
+here i think out of out of the things that you've posted lop this to me is i mean like unless satoshi
+could be two places at the same time like i feel like jack dorsey just planning all of this um you
+know but anyways so satoshi's public activity hour of the day and then here is jack dorsey's uh
+uh public jack dorsey's tweets hour of the day obviously he needs to be awake to tweet i mean
+i mean i don't know lop he could be this sophisticated shadow coder and be planning his tweets
+yeah technically like any activity can be automated right uh but you know you kind of have to go with
+the occam's razor on yes like is the more complicated question or answer to it really the more likely one
+i think i have a question for you lop like it seems like uh satoshi based on this what seems like he was on
+the eat and u.s time zone uh yeah uh it really lines up well with what you would consider to be a
+typical waking and sleeping schedule of someone on the pacific time zone interesting oh very very okay
+all right everybody we're going to move on to the culture segment we have uh tons we have tons to cover
+and tons to talk about we're going to be talking about casa it makes multi-sig easy it makes self-custody
+easy there's an app that i've been recommending to friends and family because i want them to have all
+the benefits of taking self-custody but also uh not losing their keys yeah i don't know how many times
+i've found myself in this situation where either you know just family members of mine they're like nico
+i lost my seed phrase i'm like don't worry we can just replace it right um so the casa app enables
+that makes it easy so we're going to talk about all of that we're going to hit the culture segment we
+will be right back i want to give a shout out to our sponsor hive digital technologies as the first
+ever public miner hive's been battle tested through every possible market and as the first with an ai
+strategy hive continues to redefine the future of sustainable energy also gotta casually drop this in
+here hive consistently tops the industry in bitcoin mine per exahash they're lean and mean they're green
+and clean and they're changing the game learn more by following them at hive digital tech or check out
+their website hive digital tech dot com i want to give a very special shout out to our sponsor compass
+mining they make bitcoin mining accessible to everyone from beginners to experienced investors their turnkey
+miners gets you online and hashing within 48 hours making it easier than ever to start your mining
+journey plus with their active marketplace you can resell your miner at any time adding flexibility and
+value to your investment visit their website to access a wealth of resources learning everything
+you need to know about bitcoin mining take your first step into the world of bitcoin mining with confidence
+discover more at compass mining dot io again compass mining dot io and see how compass mining can power
+your success all right everybody we are back guys so we're going to talk about casa and of course we
+have jameson lopp here in the house joining us today on simply bitcoin live jameson is the cto of casa jameson
+quick elevator pitch if you had one minute in an elevator with someone and they're like jameson
+what is this casa thing how would you describe it uh so basically we help you be your own bank and
+we make it easy to do so because you know when you are setting up essentially your own bank security
+there's many many different decisions to be made many best practices to be followed and if you're
+not deep into the weeds of all of that then it's very helpful to have software that basically guides
+you down following best practices and to have actual humans that you can talk to who can help you understand
+the trade-offs of the different decisions that need to be made great and i love i love that phrase we
+help you be your own bank that that's a very very powerful statement and and i agree i think you know
+taking bitcoin into self custody especially with multi-sig and all the capabilities that that gives
+you you feel like your own bank it's it's it's badass af uh opti do you have any questions before i move on
+yeah definitely so when we were starting the show i asked lob what's the main message you want to get
+across to our audience and lob said it very simply that we are fighting an uphill battle of convenience
+when it comes to self-custody so can we elaborate on that for the audience i know our audience is pretty
+much most of them are self-custody maximalists but we still see some people that are on the fence about
+taking their bitcoin into personal custody yeah i mean beyond just you know our operations as a
+company and this is a systemic issue for the entire ecosystem and my sort of black pill view of privacy and
+security is that you know unfortunately human nature is to prioritize convenience at the expense of
+almost everything else and we know that using a trusted third party to hold your money for you
+is always going to be the most convenient thing basically pushing off all of the responsibility to
+someone else is easy and we do that in many different aspects of our lives so it's basically
+second nature to us so what we're trying to do is we're trying to make it as easy as possible reduce
+as much friction as possible so that people can be more confident uh to take that responsibility
+and uh we want people to be able to sleep at night with the understanding that you know they can do
+self-custody without screwing it up and without having to worry that you know there's a weakness somewhere
+or that you know one thing might go wrong and be catastrophic so that's everything that we're doing
+is to put people into an architecture that eliminates single points of failure because
+we understand things go wrong humans make mistakes and you don't want to be in a really brittle setup
+where one thing going wrong results in you losing all of your assets
+totally uh lot you've been in bitcoin for a long time you're a cyber security expert from your vantage
+point from where we are today do you think self-custody or rather the idea of people self-custody do you
+think that's going to improve or is this will this always be a niche idea for that at the like average
+mainstream layman uh i i suspect that in relative terms uh you know as we go more mainstream that the
+vast majority of adoption will happen through trusted third parties uh i think that's just the the reality
+of the situation uh at least in our lifetimes um the problem here it really is i think cultural
+and it and it's also it's a result of how human civilization has developed over millennia is that
+uh we have created these economic powerhouses that have been able to leverage extreme uh efficiency
+and performance gains through specialization of tasks and and so we've created these systems
+where you're outsourcing the vast majority of the you know important aspects of your lives to third
+party specialists because they're going to be better at doing something than you are if you had to do
+everything yourself like this is why it's so much easier and efficient for us to go to the grocery store
+than it is to grow our own food and slaughter our own animals um however while that's convenient and it's
+efficient it is also um fragile it's it's creating all of these potential points of failure such that you know
+if the supply chains for uh food and and delivery of important you know medicines and and other physical
+items broke down you know we'd be in pretty dire straits within a week or two uh with the way that
+modern society is architected so that similar thing basically trickles down to you know where we are with
+self-custody uh you know people who have bank accounts are used to the idea of having all of their money in a trusted
+third party who's managing for them and so this is as a result is kind of a cultural issue where
+i suspect that it could take generations for us to kind of reverse course on that and uh really teach
+our children and our grandchildren uh to take responsibility for some of these extremely important
+aspects of their lives totally yeah i i very much agree that it's a culture issue now you did kind of
+mention about businesses and bitcoin treasuries so as someone that is working on a bitcoin treasury
+product how big of a product or a problem do you think that these honey pots are like coinbase and etc
+in the in the space right now we know a lot of the bitcoin etfs are all custody essentially at the same
+companies and obviously it's your kind of life motto here your life purpose is to obviously distribute that
+security away from these honey pots so how big of an issue do you think this is and is this something
+that you think you know that keeps you up at night do you think we might see another i don't know exchange
+blow up like what what's your thoughts on that on that perspective well i mean look at what happened last
+last week right like this is it's not stopping i mean we are we are improving security best practices but
+security is a cat and mouse game it's a never-ending battle and so as this ecosystem continues to grow and
+the total value of the ecosystem grows and then the total value of the single points of failure honeypot
+custodians continues to grow then that means that the uh attackers are incentivized to spend even more
+resources trying to find the weaknesses in them because the payoff of of a successful attack is also
+growing so you know i think that in terms of risk it's just it's better to distribute risk across
+millions of different points such that you know if if the average individual um has a failure and and
+their self-custody gets successfully attacked yes it could be very bad for that individual but there's no
+ripple effects across the rest of the ecosystem uh where you you don't have like one failure causing
+hundreds of thousands or millions of people to lose their money instantaneously and then you don't
+have the uh the economic pressure as we talked about earlier of you know a billion dollars worth of
+liquidity uh trying to be extracted from the system as quickly as possible by the attackers so la we have
+a we have a a it seems like we have a casa user in the chat uh so i don't know how to pronounce
+that op do you want to give it a go psycho psycho psycho 05 says lop can we have foundation and cold
+cards for signing devices i haven't used casa because we get sent treasures oh yeah uh we support both of
+those devices and you know you can either buy them for yourself off the shelf or it really depends on
+like which tier you're at i think we only really offer the customization uh of hardware at the private
+clients tier if i recall correctly but uh you can you can definitely buy any of our supported devices
+uh we support the cold card mark 4 and the q uh both seem to work pretty well as well as foundation
+passport it just uh it depends on if you prefer doing the like a qr code based signing or not and that
+can be a bit tricky i have you know several articles about um multi-sig performance testing of like
+signing really large data size transactions yeah and and let me ask you something else lob so uh
+maybe in in the chat this applies right and the reason that i love the casa product is again it makes
+the whole self-custody aspect easy without sacrificing convenience and i think you guys have mastered the
+ui your ui is incredible uh even has a little haptic tick to make you feel good when you sign something right
+um so um and i think that makes it very easy for someone that perhaps is transitioning from the fiat
+standard the fiat matrix to a bitcoin standard where they're taking self-custody and it kind of gives
+them the same vibe of oh this is like a bank but it's not a bank because it's self-custody um so you guys
+cover a lot of the complexities there what would your pitch be to someone like you know like hey look i
+i already have a single sig and then i'm using you know i'm using a passport i'm using a cold card and
+you know i'm on i have sparrow like you know why should i use casa
+now look if you are comfortable with using the totally free tools that are out there then go for it um you
+know nothing nothing that we do can't be replicated by someone if you put in enough time and effort to
+do so and in fact like if you want to try to replicate uh everything that we've done i highly recommend
+that you look up our wealth security protocol and that is uh several dozen pages explaining all of the
+threats that we're trying to mitigate and exactly what steps that and decisions that we made in our
+architecture to mitigate those threats um but really i think a lot of it comes down as i said earlier to
+convenience uh to really providing a very simple user experience like we on purpose we do not offer a
+lot of the more advanced functionality that you can do with bitcoin and that's because we think that
+it's actually kind of dangerous you know it could be a foot gun uh in the hands of an unsophisticated
+user so what we're trying to do is we're trying to build a super high security you know cold storage
+setup that eliminates single points of failure and is accessible to a non-technical user that you may not
+know all of the ins and outs of the protocol and security best practices and such so what you're
+really doing is you're saving yourself a lot of effort of having to learn all of those best practices
+and uh put them into place but it's certainly possible to do it yourself and you know i think
+that's one of the great things about bitcoin like you don't need us uh to self-custody uh we're really
+here to help you get into the best possible position as quickly and as easily as possible
+100 and someone who uh it learning learn i learned self-cust it learned multi-sig specifically using
+electrum and sparrow there's different standards people don't realize this right um if you don't
+update your devices all of a sudden it's like wait a second oh my god i can't spend right there there's
+there's a lot it's a very deep rabbit hole ladies and gentlemen um electrum crashes when you like
+there's so many like you know um and that's what i love about casa is that you guys make this easy um
+you guys make something that is highly complex uh easy to use for the everyday user um and of course
+you guys offer support and all that stuff now uh my question to you lop is so you guys offer two of three
+and a three of five uh what happened for anyone doesn't know so the two of three um you hold
+uh the user holds two two of the three keys uh casa owns one or not owns but holds one key and then for
+the three of five casa holds one key the user holds four one of the keys is on your phone which is backed up
+to icloud or the google equivalent and then the the the rest of the three keys um
+the the user uh the user holds now what's really interesting about the three of five is that it
+actually feels like you're signing a two of three because the uh the phone key it's like a basically
+it's like as soon as it's you know you you put in your phone password with your face or fingerprint
+it like it signs automatically right uh so the experience is is very pleasant um in in my
+experience uh and let me let me ask you something lob so what what happens if casa disappears you know
+could could people still access their bitcoin like for whatever reason the app is pulled from the from
+the app store you know uh something funky happens uh you know could people still sovereign recover their
+bitcoin absolutely uh and because we're not doing anything proprietary here we're not doing
+any sort of like proprietary multi-party computation or shamir secret sharing or anything like that we're
+doing the you know native on-chain multi-sig which means that there are many other wallet software out
+there that supports the same thing uh so you know we added wallet descriptor support last year that makes it
+really easy to you know export and import the sort of uh skeleton you know descriptor of your wallet and
+uh you know you can import that into like electrum or sparrow uh you know any any other wallet that
+supports sort of arbitrary uh complex multi-sig setups and uh the first thing that actually happens when
+you finish initializing your multi-sig vault with casa is that we send you instructions for what we call
+sovereign recovery and that's basically you know if casa ceases to function or exist or or for whatever
+is not working then uh you have the your step-by-step instructions for how to recreate your wallet and
+spend your funds without ever relying upon our software or our infrastructure so i say this a lot but
+what the primary point of casa is to eliminate single points of failure and that includes casa itself as
+an organization yeah and you guys do a very good job at that because i've been in situations where and
+i mentioned this earlier where um you know someone loses one of their keys on their multi-sig setup it's
+incredibly easy to replace uh you just you press a button a little haptic makes you feel good about losing your
+key sends you an email you plug in your new device and boom bomb bing you know you're you're you know
+you're you know your wallet is is good to go um without that ui you don't know uh you the only way
+you know is by trial and error um and it took me a while and you know sparrow wasn't around uh but so i
+had to learn a lot of this stuff on electrum and i'm still an electrum junkie and i love electrum
+um despite what people say okay it's a great wallet um but uh yeah it it you guys essentially
+make a very sophisticated thing incredibly easy to use without sacrificing security um and it's
+convenient for people that want to benefit from multi-sig but again don't have the technical capability
+technical know-how to to to go down that now my question to you lop as well is um okay so
+let's talk about geographically multi-sig geographically separated uh keys right because
+i think that is incredibly important especially if you're using multi-sig uh could you talk a
+little bit about that right keeping your keys in different locations and that obviously helps
+protect you from uh you know five dollar wrench attack which we were talking earlier and there's
+something that you've said in the past that really resonated with me and i've never forgotten um it it
+will take an attacker just as much time to spend your bitcoin than it takes you to spend your bitcoin
+and that's the way that you should be looking at it right so if it's if it takes you 10 minutes to
+you know sign your bitcoin sign a transaction send your bitcoin out of cold storage in your mind the
+back of your mind you'll be like it will take an attacker 10 minutes to send bitcoin whatever but if
+you know that your multi-sig setup and your keys are geographically separated so it takes some couple
+hours to go you know uh from place a to place b and etc etc then it becomes a little bit more complex
+right and then it's not just uh you know let me just jump in here stay a couple hours now it's like oh
+my god this might take a couple days obviously that raises the risk for the attacker himself
+um so it's just a some some things to talk about so could you talk a little bit about that lop
+geographically separated keys for multi-sig well yeah so the name of the game uh when it comes to
+building the best possible multi-sig setup because multi-sig in and of itself is not panacea uh you know if
+you keep all your keys at home then congratulations you've introduced a single point of failure to your
+multi-sig setup um distributing the keys in as many different ways as possible is what gives you a great
+strength and it actually it lets you leverage the benefit of what we call additive security it's it's
+basically uh you know strength through diversity and this is diversity in a number of different things
+you know you mentioned geographic diversity but also you want diversity of like what devices they're
+stored on what are the physical security protocols around where each device is and basically you want
+all of these things to be different because when something goes wrong you want that particular attack
+or failure scenario to only affect one of your keys and not affect all of your keys and when you're in a
+more of a um you know homogeneous setup then it's more likely that you have one weakness that could
+potentially affect enough of your keys that either your money gets lost or stolen so you know having
+geographic uh separation yes i mean it's it's obviously that's the way to protect against wrench attacks
+but even more commonly it's just how you protect against natural disasters and you know things going
+wrong like your house burning down we've had clients whose houses burned down we've had clients who
+have been in flood zones and you know had various types of um catastrophic destruction to their primary
+residents and so having you know keys in different geographic areas that are you know prone to different
+types of um weather and natural disaster events gives you some improved robustness there if you want to
+take it to the extreme um not just upon like wrench attacks but upon like nation state 6102 seizure style
+attacks our most paranoid clients actually go to the extreme of distributing their keys uh in different
+countries different jurisdictions uh that you do not play nicely with each other so that you know it's unlikely
+for a 6102 attack to be able to reach across borders um and be able to uh you know force the turning over
+of those keys that are you know outside of the reach of any given justice system yeah love the way guys
+this is all things that you got to think about these are all things again with great power comes great
+responsibility that's what self custody is all about casa makes it incredibly easy uh if you feel intimidated by
+the the the tech stuff and i'm telling you someone who loves computers uh the trial and error that i had to end
+the mini heart attacks no one tells you that right um the the trial and error of having to learn this stuff
+uh was not a was not a a a walk in the park um so this is a great way uh to especially if if you hold a decent
+amount of bitcoin you should definitely have it on multi-sig like i can't recommend that enough i think a single sig is
+just like so it's a terrible idea in so many different is a single point of failure yeah right
+there in the name yeah exactly so if you if you know you've been in bitcoin for a while i highly highly
+recommend multi-sig and casa makes it incredibly incredibly easy without sacrificing security i want
+to give a very special shout out to our guest today jameson lopp go check out his blog blog.lopp.net and of
+course go check out casa go to casa.io slash simply of course today's show was february 27
+2025 i'm your host nico our guest today lopp and of course my legendary co-host optimus fields we'll see
+you guys tomorrow for a brand new episode of simply bitcoin live today's episode was brought to you by
+bitcoinwell.com a bitcoin only platform on a mission to enable financial independence
+Thank you.
+
