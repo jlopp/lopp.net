@@ -1,0 +1,420 @@
+There are a number of transactions that we can see on the Bitcoin blockchain that are
+address poisoning transactions, where it's someone who is basically looking at the blockchain,
+finding target addresses with lots of Bitcoin in them, and then generating a vanity address
+that has the same starting and ending characters, and then they're sending tiny amounts of Bitcoin
+from their address to the target address.
+They're hoping that these people are going to make a naive mistake and go back in their
+own transaction history and copy and paste the wrong address.
+Hey, everyone. Joining me today is Jameson Lopp, Chief Security Officer at CASA, which is
+my solution for multi-sig custody. Go to casa.io/natalie. Jameson, it's been a while since we've had
+an interview, so thank you so much for joining me. How are you?
+Not bad, though. I just got recognized on the street, so that's always a negative data
+point for me and my privacy. 37TJsDcQqMfkeY5Tv4RgDaugRePVKPvZFk
+Well, yeah. I mean, the first time we talked, it was a couple of years ago. You went through
+your whole backstory, your swatting and all that you went through to kind of make your identity
+as private as possible, but it seems like that's totally... Now you're out there. Everyone knows
+who you are and you KYC'd at the hotel. So what happened?
+Yeah. I mean, I'm still highly private. The most sensitive aspect, of course, of my privacy
+is my actual address where I sleep at night, right? That's where you're really vulnerable. That's where
+you could potentially get wrench attacked, kidnapped. People could be surveilling you,
+trying to understand what your day-to-day activities are. So I'm still very highly secretive
+about where I lay my head to rest. But on the flip side of that, I'm still out here with my real name.
+Yes, it is my real name and my real face. And that does come with some exposure and security and privacy
+ramifications. Well, I'm curious. I mean, isn't it so hard to have your home be
+completely private and offline? Because I feel like I can Google anyone's address today.
+Oh, yes. It requires just a level of commitment, resources, money, legal entities set up. And then
+really, even after all of that initial setup to actually protect the publicly registered property,
+to keep it out of the hands of essentially governments and data brokers, the hard part and
+the final step is the never ending lifestyle change, where you have to make sure that you just never
+associate your name with your address on anything, anywhere, because you have to assume it's going to
+get leaked and then sucked up by data brokers and sold.
+Yeah. Right. Even if you have an LLC and buy the home in the LLC, someone can track
+who owns the LLC and there's a footprint everywhere, it seems.
+Depending on how you set up the LLC, there's a lot of sophistication and options of how you do that.
+Though even today, there's a fairly controversial federal law that has gone into effect where it's the
+Corporate Transparency Act. And that's actually requiring you to go to FinCEN and essentially
+reveal the true beneficial owners of your LLCs, even if they are anonymous. So it's getting worse.
+It's definitely not getting any better. Yeah. I would love to get your thoughts
+on digital ID. But first, let's just talk about, it seems like there's been a wave of security threats
+in the space. I'm hearing about more $5 wrench attacks, people getting hacked. The other day in
+Chicago, I think there was a family that got kidnapped and they had to send a million dollars
+worth of crypto. So just zooming out, I mean, what's going on?
+This is one of the many curses of success. And I talked about a number of them recently,
+actually in El Salvador, both from a technical level and from just a physical real world security
+level. So those of us who've been in the space for a very long time and have been holding Bitcoin,
+of course, we're very happy to see the appreciation and the value of Bitcoin. And a number of things that
+come along with that, now we have many people in media industry or Bitcoin specific media.
+And that's because the entire ecosystem has grown. So we can have more opportunities,
+more employment. The downsides though, are that there will always be some criminally minded element
+of the population. I'm pretty optimistic about this. I think the overwhelming majority of people are
+good, upstanding, moral people who don't want to hurt others for their own personal gain.
+But there's always going to be some small single digit percentage of sociopaths, psychopaths,
+amoral people who are willing to hurt others. And so what we're seeing is that as the total
+population of people who are aware of Bitcoin, who are thinking about it, as that expands,
+as the price goes up, these are two like complimentary things. As that total pool expands,
+the price tends to go up. But the price going up also attracts more people. And so on a relative
+percent basis, I think that like the number of criminally minded people remain the same,
+but on an absolute basis, because the total size of the population that's aware of this industry is
+growing, then so are the total number of criminally minded people. And so the absolute number of attacks is
+going up. You could probably make a case that like the relative number of attacks against all crypto
+owners is probably lower, but it's hard to measure in the first place.
+Coin Stories is brought to you by Genius Group, a Bitcoin treasury company listed on NYSE American,
+ticker GNS. Genius is on its way to hodling 1000 Bitcoin in its treasury while educating the world on
+a Bitcoin first future. Genius is also launching the Bitcoin Academy with courses from the likes of
+Safedina Moose, author of the Bitcoin standard. Join the launch waitlist via the QR code on the screen or the
+link in my show notes and receive the weekly Bitcoin treasury newsletter, plus a chance to win a whale pass to
+Bitcoin 2025 in Vegas this May. Genius Group. Genius isn't measured in IQ, it's measured in Bitcoin.
+Bitcoin. It seems like there's more social engineering scams happening. The CEO of Kasa,
+Nick Newman, shared that video of himself kind of catching the hacker and asking him all those
+questions. I highly recommend people watch that video recently. Larry Lepard's account on X was hacked.
+Luckily, no one stole any Bitcoin or, you know, anything that he owns, but they were able to socially
+engineer him through like a Calendly link. And so they're, they're posing as journalists. What should
+people watch out for and be aware of? Well, you know, basically you should never trust any incoming
+unsolicited message on any medium, you know, whether we're talking email or Twitter DMS or Slack or
+telegram, you know, whatever communication channels. And of course, a lot of these social engineers lately are
+just doing phone calls because, um, I think that in the back of people's heads, they feel like,
+like when they're talking to another human, that that person's more trustworthy than just, you know,
+maybe a random Nigerian email scammer. Um, but you can't trust any of it. Uh, and, and these days,
+especially with the rise of AI and deep fakes, you don't even really know if you're interacting with a
+human anymore, or if the human that you think you're interacting with is the one, uh, who is actually on the
+other side of that call. So, you know, any incoming message that you receive,
+if it is trying to elicit fear, if it is trying to get you to take some sort of action, especially
+related to any of your financial or communications accounts, you should be red flags. You should slow
+down. Um, because really what they're trying to do is they're, they're trying to get you to speed up.
+They're trying to get you to jump through authentication processes to basically bypass your
+own security and, uh, and essentially give them access to something. So you, you think of it as what
+has happened is once again, this is another curse of success. We have successfully improved a number of the
+the best practices and standards and security mechanisms in the, the whole Bitcoin ecosystem.
+Uh, you know, good example is taking your keys offline, you know, using hardware devices.
+And so while back, you know, 10 plus years ago, the biggest thing would be for hackers to go and,
+you know, hack into the centralized exchanges and basically run away with the hot wallets,
+because everything was online. Uh, these days, so much stuff is in cold storage that the weak point
+is the human it's your brain. So you have to think of it as, um, the, the, a lot of the adversaries out
+there are, are not trying to hack your computer anymore. They're trying to hack your brain to make
+you successfully jump through all the security protocols that you have on your computers and
+other devices. And then once they get in, they can take over your accounts and steal everything that's
+of value. Right. Well, speaking of hacked centralized exchanges, we saw a big one recently with Bybit.
+I think I was introduced to the term warm wallet. I still don't know what that is. Um, can you break down
+what happened? Cause we recently got more information on it, right?
+Yeah. I mean, it was a highly sophisticated attack, but that makes sense because this was the Lazarus
+group, which is generally considered to be the, uh, North Korea backed hacking group. Now,
+what appears to have happened in this particular case is that the hackers compromised a machine of,
+with, of one of the developers, uh, that worked at, uh, Gnosis safe, which was the, uh, multi-sig
+software provider that Bybit was using for their multi-signature Ethereum wallet.
+Like physically compromised. Like someone had to be at the office.
+I don't know that we know exactly how they compromised. It's probably malware. You know,
+they probably did some sort of either social engineering or phishing, and then they got some
+sort of malware on that developer's machine. And so then the attacker was able to essentially get
+onto the machine, start looking around. And what they found was that developer had a sensitive key
+material that was a Amazon web service, like production API keys. And so what they did from
+there is they used those production API keys to deploy their own version of the Gnosis safe front end
+web application by basically overriding the Amazon S3 bucket where.
+I don't know what that means.
+Yeah. Yeah. So, um, you know, uh, this is a culmination of many technical weaknesses,
+like stacked on top of each other. It's kind of like when a plane crashes,
+it's not, it's like a million things that went wrong in secession.
+Right. So, you know, I don't know so much about like what they're calling this warm wallet or
+whatever, but even if we, we assume that like they had all of the keys offline, um, there are
+complexities and as a result, security issues with doing complex smart contract transactions.
+And so in this particular case, what was compromised was not actually the keys. Even if the keys were
+on offline air gap machines, which I'm not entirely sure of, um, this particular attack would still affect
+those because what they did is they compromised the front end. And so one of the weaknesses is that
+web applications are very difficult to secure. Uh, it's just a bunch of jobs, JavaScript code that
+basically gets downloaded from somewhere on the internet and shows up in your web browser and your
+web browser just runs it. Uh, the thing about. JavaScript is there's really, there's no integrity
+checks to it. So, you know, compare a like JavaScript web app to something like a desktop application or a
+mobile application. Uh, mobile applications in particular are better secured from an integrity
+standpoint, because when that code is built into one piece of software is then cryptographically signed
+with a key that's owned by the organization and the software developers that wrote it. There's nothing like
+that for web apps. So whatever code is on whatever server it just downloads it and runs it. And so this
+is why the attacker was able to just, uh, take the Gnosis safe JavaScript app, modify a few lines of that
+code, which specifically targeted the by bit wallet. It didn't target anybody else's wallets. And that's
+what was particularly devious about this. Like if they had wanted to, they could have targeted everybody's
+wallets, uh, that was using the Gnosis safe front end. But I, I suspect the reason that they didn't
+was that they probably would have got caught faster and got, you know, less money as a result. So they
+were waiting for, you know, the big whale, uh, to come in and use Gnosis safe. And, um, and so essentially,
+you know, what it did is it, it just, it said, Oh, you're trying to interact with the, the by bit wallet.
+Oh, well you might be wanting to do a simple withdrawal transaction, but what we're actually
+going to do is we're going to swap out the, the message that is getting created for this transaction
+and, and turn it into a smart contract execution message that changes the fundamental like underlying
+properties of the smart contract. So that it's no longer owned by this set of keys and a multi-sig,
+but rather it's owned by these keys that the attacker, uh, actually controls.
+So it just like diverted the funds to another wallet, essentially to the hackers.
+It think of it as it changed the, the permissions and the authorization control
+of the wallet itself. And then immediately after that happened, they use their keys to withdraw all
+of the money. Why didn't they take Bitcoin? Uh, well, because, and this is where the
+complexities of like EVM and, and Turing complete smart contracts come into play.
+Bitcoin is an incredibly simple and straightforward protocol so that when you create a Bitcoin transaction,
+everything that that transaction is doing fits usually within a few hundred bytes, if not a few kilobytes
+of data. So all of that data gets sent to your hardware device, treasure, ledger, cold card, whatever.
+And these devices, even though they're incredibly low powered, like low computational power devices,
+they're able to parse all of that data and then display to you on the screen that says, you know,
+you're sending exactly this many Satoshis to this specific address. And so you can verify that all
+on this highly trustworthy, you know, air gapped, uh, environment. When you're doing that with a more
+complex protocol, your, your transaction doesn't have all of that data. Your transaction is a much smaller
+amount of data and it has to get interpreted. It's basically sending a command that has to get interpreted
+by the virtual machine of that network. And then the virtual machine has to figure out what are the
+state changes that are going to happen as a result of this. So basically it's not possible to trustlessly,
+like fully for yourself to know exactly what the result of an EVM style, a smart contract message is going to be,
+unless you're running that like full node yourself and you're sending the message to it. And you're
+basically checking to see what the state change is before and after. And so of course, a tiny little
+air gapped device that only really holds keys and does a few cryptographic operations,
+it simply does not have all of the contextual information necessary to know what the actual
+state change results is going to be. So with Bitcoin, because you can verify the address,
+um, it almost prevents something like this from happening, but it does almost raise the concern
+that I think a lot of people might have who take self custody. You know, how much do I actually need
+to check every single part of that address? Because I'm sure there are people out there who kind of,
+you know, they check the first few letters and numbers, the last few, and then boom, they send it.
+Speaker 1: But how important is it to really verify that address? And is there a point of vulnerability
+with the hardware wallets themselves that someone might not be aware of?
+Speaker 2: Well, you know, if you go deep enough, everything has weaknesses, everything has trade-offs.
+Speaker 1: Um, but I would say you should check the whole address, you know, all 30, 40, 50 characters,
+whatever, especially if you're sending a meaningful amount. And I'm actually in the midst of doing some
+research right now around something called address poisoning attacks. And this is something that we
+just started to see popping up on Bitcoin. I want to say in the past four or five, six months,
+this is partially because it's so cheap to create Bitcoin transactions right now.
+Speaker 1: Mm-hmm . But there are a number of transactions that we can see on the blockchain,
+on the Bitcoin blockchain that are clearly address poisoning transactions, where it's someone who is
+basically looking at the blockchain, finding target addresses with lots of Bitcoin in them.
+No way.
+And then generating a vanity address that has the same starting and ending characters.
+Wow.
+And then they're sending tiny amounts of Bitcoin from their address to the target address.
+And what are they doing? Why are they doing this? Because they're basically burning their own money.
+They're hoping that these people are going to make a naive mistake and go back in their own
+transaction history and copy and paste the wrong address. So this is why you should check the entire
+address. Speaker 1: Oh my gosh, that's huge.
+And you should not copy and paste addresses from your transaction history because of that.
+Really? Well, so you should create a new address, right? Every time you make a transaction.
+But doesn't that just open you up to having a million UTXOs that you're going to have to consolidate?
+Well, the UTXO problem is somewhat tangential to the address creation problem,
+because you could reuse the same address over and over, but every time you're depositing to it,
+it's creating more. So I wouldn't worry about that. It's also kind of related to the quantum computing
+issues that some people are starting to talk about recently where, you know, if won't go into all of
+the details of like the different Bitcoin address types and script formats, but essentially when you
+spend money from a Bitcoin address, most of the time, most address types are safe from quantum computers,
+cracking them until you spend from them. Because once you spend from them, you are putting the raw
+public key on the blockchain. And so if a sufficiently powerful quantum computer comes along,
+then it would theoretically be able to run something called Shor's algorithm that would be able to take
+the public key and reverse engineer the private key from the public key.
+Speaker 1: No way. Well, so that's interesting because I've heard even Andreas Antonopoulos
+in some of his early talks saying that Satoshi's wallet will eventually be compromised by AI. And that's
+when we'll sort of know is when those coins move. Can you share your take on that?
+Nate Hagens: Yeah, I actually gave a presentation last year at length about this. And unfortunately,
+I think it's worse than what Andreas said. And the reason for that is, you know, this was a really long
+time ago when Andreas said that. So things have probably changed. But if I was a quantum attacker,
+I would go to the Bitcoin rich list, like, you know, top 10 addresses with the most in them. And what you
+find is that there's a number of exchanges out there, Binance, Bitfinex, Kraken, and more. And they're
+keeping all of their cold storage coins in one address. And they're reusing the address. So they're
+spending from the address. So they've revealed the public key to the address. So if I was a quantum attacker,
+I could go and try to scoop up Satoshi's coins or really any of those old pay to public key
+Coinbase outputs from the very early days where the raw public keys were put on the blockchain and they
+weren't obscured behind other hashes. Or I could go and take 250,000 Bitcoin, you know, from the Binance
+cold storage because they've already exposed their public keys. So like, you know, which which payoff,
+you know, makes more sense. I think Satoshi's coins are actually safer.
+Oh my gosh, that's crazy. This episode is brought to you by Kasa, the leader in Bitcoin self custody
+solutions, helping people like me secure their wealth with simple, powerful multi key vaults. And
+now Kasa is here to help businesses and governments do the same. Introducing Kasa Business, a secure,
+easy to use three key vault designed specifically for small businesses with team signing capabilities and a
+web dashboard. Regardless of the size of your business, start your Bitcoin treasury the secure
+way, take control and protect your assets. Get 10% off your Kasa plan at Kasa.io/Natalie.
+Next up speed, the fastest growing lightning wallet in the world and my preferred way to send and receive
+sats. You can use speed to buy Bitcoin swap with stable coins like tether and snag gift cards to earn
+rewards all in seconds. Download speed via the QR code or the link in my show notes. Use code COINSTORIES10
+for 5000 free sats. Are you ready to take control of your wealth, your Bitcoin and your online privacy?
+The Bitcoin way is here to empower you. Learn to take full self custody and eliminate all counterparty risk.
+Learn how to set up and run your own node and upgrade your cybersecurity and build a fortress of
+privacy around your online activities and your Bitcoin. The Bitcoin way specializes in
+personalized one on one training. Schedule your free consultation at TheBitcoinWay.com/Natalie.
+And finally, CoinKite, the one stop shop for all your Bitcoin self custody needs. Their
+flagship cold card wallet is the go to for cold storage. Protect your Bitcoin like a pro. Visit
+their site and grab 5% off with promo code COINSTORIES. All right, back to the show. Okay, so for the
+average person watching this that might be getting a little bit nervous and they do take self custody, whether
+that's on their own or through a multi-sit custodian like CASA. I mean, how do you best protect yourself?
+What do they really need to know about sending and receiving Bitcoin and holding it for the long term?
+Yeah, well, you don't have to worry about quantum computing yet. That's probably at least 10 or more
+years away. And some people think it may never happen. This is a highly contentious debate, but it's
+good that we're at least talking about it right now. And so, yeah, don't reuse addresses for a multitude
+of reasons, really. You shouldn't be reusing addresses. But if you're using hardware devices
+and you're actually checking what is on those screens, then you'll be fine.
+But if you reveal one public address, aren't you revealing almost all of them because they can all be
+traced back? Well, from a blockchain analysis perspective, there's the whole issue of like
+tracing UTXOs via shared inputs and then stuff like that. But that's a privacy issue. It's not so much
+the security issue of some of these attacks that we've been talking about.
+Okay. Is there anything you think people should really know when they're seeing kind of just
+an increase in hacks and attacks? Do you think that for those especially that might be watching this and
+they're nervous about taking self custody because it seems like maybe a custodian might be safer,
+more convenient? Some of them I hear are going to have insurance. I mean, what do you say to those people?
+Regardless of whether or not you're doing self custody or third party custody, as long as there's a way to
+move the money, then there's going to be potential weaknesses and points of attacks. So I would say
+the majority of the social engineering that's happening right now, they're stealing from custodial
+accounts. You know, they're basically getting people to authenticate into and reset access to
+their exchange accounts. So, you know, the whole idea that, oh, the exchange is better at keeping
+my coin safe than I am. I think that's kind of farcical because the exchange has to allow its
+users to be able to access their money. And this is why we're seeing some pushback from a lot of people.
+A lot of Coinbase users are actually complaining that they're getting locked out of their own accounts.
+And this is completely understandable because Coinbase is probably freaking out behind the scenes.
+They're like, we got to stop these social engineering exams. But how do you stop a valid
+authentication request from someone who looks like it's your real user because it is your real user,
+right? This actually gets into like the traditional financial and banking fraud territory,
+where people's traditional bank accounts and credit cards are falling into the wrong hands. And so
+the banking system basically has to come up with all these heuristics to try to fingerprint people and
+try to say, oh, this doesn't look like normal activity. So we're going to lock down the account.
+This is kind of funny how that's come full circle now. So you have to ask yourself, you know, who do I
+trust more? Do I trust myself more or do I trust some third party whose security practices I actually cannot
+verify? And so one way that I like to really distill it down and make it simple is that third party custody
+is somebody else's self custody. So if you look at like a Venn diagram, like you have all of the risks within
+self custody. Well, all of that is contained within a larger circle of third party custody because third party
+custody has all of the self custody risks. It also has all of the trusted third party risks where
+any of the, you know, employees or infrastructure at that third party organization can be compromised.
+Whereas, you know, if you're holding it yourself, you don't have to worry about some other third party
+being compromised. I still can't believe that a massive exchange that services millions of people
+holds all of the Bitcoin in like one cold storage wallet. Well, I mean, it makes sense from a simplicity
+perspective. In one sense, you know, complexity is the enemy of security. Yeah. But there's so much
+complexity, as we already said, just within the protocols of using, you know, Turing machine,
+complete programming languages and those types of networks. So, you know, we do some things at Casa
+that I would say arguably make us better than that particular situation because it's actually similar to
+what Ledger Enterprise does with some of their improved signing mechanisms. But basically, you know,
+the problem with Gnosis safe web front end, like I said, is all that code just comes into your browser
+and it's all just running right there. And it's not, there's no integrity checks or real verifications.
+Uh, with, with Casa, a, we're not doing the web browser stuff. It's going, uh, through our mobile app
+and that has its own, uh, rigorous set of, uh, code integrity and, uh, deployment and app integrity
+processes to make sure that like no single, even no single employee at Casa can make changes to the code.
+Like there's a lot of peer review and, you know, two man rules throughout our deployment process.
+Um, and, and also the fact that it's not just running on one machine. It's not like, it's not just
+running on your phone. There's actually, uh, both the client on your mobile app and back on our server
+side or they're all checking each other's work, so to say. So there's a lot, many, many, many other
+pieces that would have to get compromised, uh, in our own setup, uh, for that, a similar type of outcome
+to happen.
+That's interesting. Cause before I became a customer of Casa, I actually assumed that a mobile app
+and anything on your phone is less secure.
+Um, your phone can be stolen. I assume if it's an app, it's had to go through, you know, Apple
+is the gatekeeper. So Apple has all the information, but yeah, I was, I guess I was wrong about that.
+It's complicated, right? Like in, in some ways, uh, sure you're, you're on a device that can easily be
+picked up and stolen, but from like, from a code integrity perspective, it's actually far better.
+And actually mobile operating systems in general have much better security than desktop operating systems.
+Uh, because they have this like containerization aspects. So it's, you can't like compromise one
+mobile app on a, uh, phone and then like be able to compromise the rest of the mobile apps on that
+phone. For example, I've spoken to some people who are scared of self custody for a very
+conspiratorial reason. If you will, they believe that our devices, all of our computers have a backdoor
+and that when you download a software, let's say it's, you know, the treasure software or something
+that you, when you input the information and you're putting in your passcode, that everything,
+all the keystrokes are getting recorded. The screen is actually somehow getting recorded. And then
+essentially someone has your seed phrase, um, and the information presented to you by, by the devices is,
+what do you think about that? What would you tell people that are worried about that?
+Jeff Lerner: Well, that is theoretically possible. I mean, it's actually, we know it's possible. Like
+there are, um, companies out there that do nothing but specialize in using what's called zero day exploits,
+basically finding vulnerabilities that nobody else knows about in order to compromise, uh, you know,
+Apple and Android devices. And, and that's why, you know, you may see on a regular basis, Apple put,
+pushes out something that's like, this is a very important, like required security update. That
+generally means we found this vulnerability, Oh yeah, absolutely. Um, but you know, I would say
+this is one of the reasons why we keep the vast majority of our keys, uh, you know, in a CASA multi
+SIG on these air gapped hardware devices, it's because of that edge case risk is there. As far
+as we know, like the number of people who actually have their, their phones completely compromised,
+you know, it's probably in the like hundreds, like we're talking, you have to be so important
+that nation state actors are willing to spend millions and millions of dollars getting these zero
+day exploits and the software associated with them to specifically target you. So like, you know, if
+you're a, if you're a high profile dissident that is being targeted by nation states, then you should
+absolutely be worried about that. And you should not be running a normal iPhone or, or Android phone. You
+should be running something hardened like graphene OS, uh, that is much more locked down, much more difficult
+to use, uh, but much more secure. Well, when you plug in a hardware device, you get prompted with these
+updates to download. So how do you know that it's safe and not one that's going to compromise anything?
+Yeah. So that is also going to vary, you know, from developer to developer, you know, from software to
+software as to like how they do those integrity checks. Like I said, if it's a mobile app and you're
+getting mobile app updates, uh, every mobile app has to be cryptographically signed with the keys
+that, uh, you know, Apple or Google know belong to that organization. And so the assumption is as long
+as those, those keys themselves have not been compromised, you can be sure that it's actually, uh, being
+deployed by the organization you expect. Desktop software is trickier. Um, desktop software.
+Sometimes, uh, you know, if it's sensitive software, sometimes the developers will do code
+signing on it. Um, you know, if, if it's like an iOS, um, uh, or, you know, Mac OS software, I think
+they have the ability to do code signing and that's built into the desktop. But if it's like
+windows or Linux or whatever, um, you would have to do some manual checks. Like you would have to look
+on the website and see like, can I find the GPG signature to against this specific software version?
+And then, and this is where, you know, nobody's gonna do this. Yeah. It's like, you have to run some
+command line stuff to say like, does this signature match this hash of the software binary files?
+Well, I've been prompted for those updates. And sometimes I'm like, I don't, I'm like too scared
+to almost because of things that I've heard or read or previously compromised software versions of
+companies. I get, I get nervous. Yeah. I mean, any, any change to software can potentially introduce
+vulnerabilities. So there's no way to know whenever you're, you're downloading and updating to new
+software, there's no way for you to know whether or not there are new vulnerabilities in the code.
+But what I can tell you just from a general software developer and security perspective,
+there's always vulnerabilities. Like all software has bugs. Um, you know, even Bitcoin had bugs in
+the early days and, and you know, the only reason that we've gone so far, you know, over 10 years now
+without any major issues is because there's so many eyes on the code. And even then there have been bugs
+in Bitcoin since then, but thankfully they have been caught by people and fixed before they were exploited.
+So the short version is there's no such thing as perfect software. All software has bugs. If you
+don't update your software, then I can assure you, you have vulnerabilities and really it's this cat
+and mouse game with this moving window, right? Where people are trying, the bad people are trying to
+find those vulnerabilities and the good people are also trying to find them and trying to fix them. And
+so you want to keep getting the fixes, even though it's highly likely that you're going to be getting
+some new vulnerabilities because at the very least, those will hopefully be vulnerabilities that the bad guys
+haven't found yet. Right. Um, what do you think is the biggest mistake that people make with their
+Bitcoin keys? Oh, um, I mean, it, it, it's generally the backups. Um, it's either, you know, not having
+backups or, um, putting the backups in such an obfuscated, uh, setup and not checking it that they
+actually just lose them. And so we, we see something that we call treasure maps, uh, very
+often. Uh, and usually people do this for inheritance, but sometimes they just do it for their normal
+backup process. And, and so they basically create security through obscurity, you know, create these
+multiple layers of either like splitting data up and putting it in different places or, you know, throwing
+different passwords, uh, onto things that, uh, they may have just made up and, uh, don't do a good job
+remembering or, or keeping, you know, backups of those passwords somewhere. Yeah. And so I would say
+that's really the most common thing is, is really just, uh, you know, people locking themselves out of
+their Bitcoin because they don't have a great backup scheme. I have to be honest with you because I'm not
+super technical. I don't understand how there are so many password hacks. I thought that passwords are
+supposed to be encrypted and that they're supposed to be secure. And every day I get a notification.
+There is a data leak. You got to change this password. And it's like every website. I mean,
+it's hard to keep up with creating new passwords and sometimes you end up forgetting. And so what's
+your, I mean, what's your takeaway for, for that? Yeah. So this is because I think most developers
+don't know how to actually do password authentication properly. And so, um, you don't know whenever you're
+creating an account somewhere with the username and password, you don't actually know what they're
+doing with that password. Like if they're doing it correctly, they shouldn't be saving your password.
+They should be salting it and hashing it and basically saving this obfuscated form of it because
+it's harder, slightly harder. It's, you know, like if, if, if for example, you have some new developer
+who's never built an app before, or just doesn't have, you know, the security training around the
+best practices for doing it, then they're probably just going to be like, okay, I'll just store the
+password. And then I'll check against it when they send me the password. That's the obvious,
+naive thing to do. Um, so really you have to assume that every website that you create an account
+on does that, or that they could have any number of other, just sort of weak password storage schemes
+that can still be brute force and reverse engineer. And so you also have to assume that any information
+you give to a third party that goes into some database will eventually be leaked. And so what are
+you going to do? Because you have to create a username and password. Um, you use your password
+management software to generate long, random, unique passwords, because if you reuse the same password
+in multiple places, then eventually when one service gets hacked and those passwords get leaked,
+yeah, I can tell you what's going to happen because I've seen this for over a decade, just operating,
+web applications is that we see what we call, uh, drive by attacks where basically someone will
+come in with a list of millions of username and password or email and password combinations
+and just try them all. And they're doing this on every service that has anything of value behind it
+because they know that people reuse passwords and that they're going to get into some small percentage
+of accounts. I know, but if you do those complicated passwords, they prompt you because you can't
+remember it, right? Unless you, I guess, write it down and you're very analog about it. It goes,
+do you want the password manager to save this? But then the password manager could be compromised.
+And it's like, it feels like there's no easy way to do this. Um, okay, we're running out of time.
+We're actually going to be doing a webinar on some of these topics with CASA, which I'm so excited
+about and dive a little deeper. So before, uh, we finish up just final thoughts,
+any takeaways you want people to have? Well, you know, whenever I start talking about security stuff
+like this, I can understand that. I think a normal person who's listening to it just feels very
+overwhelmed. Yeah. I'm feeling anxious. It's very scary. And I mean, the internet is a scary place.
+Uh, like I said, the vast majority of people are good, but especially on the internet where essentially
+once you are connected to the internet, you know, there's suddenly millions of naughty people, uh,
+who are going to start knocking on your door. And, and so that poses a very interesting, uh, and
+challenging security landscape for those of us who run internet based services, but it's, um, you know,
+just think of it as, you know, a journey starts with one step, right?
+You don't have to have perfect privacy or perfect security. I think most people,
+if they would just install some ad blockers, they would already get into like the top 99%
+of privacy of most people on the internet. And if you just install any halfway decent password manager,
+don't use your browser's password manager, like use something like one password or, um, uh, Bitwarden or,
+or what a key pass. I mean, there's a lot of them out there. Um, open source, look for open source.
+Yeah. Now, um, if you're using a password manager, cause really you should only know one password
+and that is the password to your password manager, your password manager should be generating and
+storing all of these other passwords for you. And you can secure your password manager with a hardware
+device like a YubiKey. Yeah, that's right. So, you know, nothing like, like you said,
+nothing is perfectly secure. Even the password manager could get compromised. Somehow there have
+been password. I think one pass last pass was, was compromised kind of, uh, it was, it was a
+cryptographic weakness. Like it didn't compromise everybody who was using last pass. It was only,
+yeah, it was actually only compromised people who had weak master passwords. So that, that one password to log
+you into your password manager should be, you know, probably 20 plus characters, you know,
+something memorable and you only have to memorize that one. Yeah, no, that's interesting. This is such
+good advice. I can't wait to do our webinar. If people are interested in Casa, I highly recommend it.
+Happy customer. Casa.io/Natalie. You'll get a discounted plan. I also recommend if you want hand
+holding through it. Casa can do that. Bitcoin way can do that. There's a lot of great resources. I
+have tutorials online too. So I think these episodes are so important. So Jameson, thank you so much for
+joining me and I'll see you soon. My pleasure. Thanks for having me.
