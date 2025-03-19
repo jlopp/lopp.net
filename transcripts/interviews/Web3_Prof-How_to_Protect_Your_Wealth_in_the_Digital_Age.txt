@@ -1,0 +1,498 @@
+Good morning and good afternoon, everyone. I'm here with Jameson Lopp, who is the co-founder
+and chief security officer at Casa. Jameson, thanks so much for being with me here today.
+My pleasure.
+Jameson, I'd love to just start things off and just hearing a little bit about your kind of early background. How did you originally
+get into Bitcoin? Can you tell us a little bit about that early journey?
+It was a culmination of both my computer science background and my libertarian
+interests. And so I learned about Bitcoin because it kept popping up on these nerdy news sites like
+Slashdot and dismissed it the first few times and eventually it kept coming up. And so I was like,
+I guess I should look into this thing. And then when I finally got around to reading the white paper,
+it really intrigued me from a computer science standpoint because Satoshi solved this particular
+problem of double spending and pretty much the exact opposite way that I would have. And I think that was
+completely unintuitive to any classically trained computer scientist because we are trained to
+use the least amount of computational resources to solve a problem. And in several different ways,
+Satoshi went the exact opposite of that and said, you know what, we're actually going to use a ton of
+resources for this and make things extremely expensive and redundant and so on and so forth. And so
+as a result, you end up with this database that is what I like to call the least performant database of
+all time. But as a trade off, you get a lot of interesting properties for it.
+Wait, what year was this?
+That was 2012.
+That's pretty remarkable. And did you go all in right away? Were you like bought in or was there
+like kind of a slow, progressive journey for you to really be committed to this, this idea of Bitcoin?
+No, of course it took some time. And, you know, I think you have to be kind of crazy to
+just immediately go all in on any completely new foreign thing that has never existed before. So,
+you know, I dipped my toes in because I said, you know, I need to learn more about this. I need to actually
+use it, see how it works. See if I believe that the actual production system holds up to the promise of
+the white paper. Because I mean, you know, white paper is like nine pages. It's a really high level
+technical document, but building actual cryptographic protocols is much, much more involved. And the devil
+is always in the details with any sort of complex system. So I had to figure out how to send my first
+wire transfer. The bank did not make it easy. I spent like an hour at my bank, filling out all types of
+paperwork and having them tell me, Hey, once we send this money, you can never get it back. And it was kind
+of sketchy because I was sending money to some little bank in Japan. It happened to be the bank
+that was used by this company called MT Gox. And, you know, thankfully it all worked out. The money got
+there. I was able to exchange it. I was able to withdraw the Bitcoin, start playing around with it, get some
+further. I think bolstering of the belief that this was an actual system of value. You know,
+once I was able to exchange the Bitcoin for other things, you know, just purchase little, little retail
+items. Um, and I would say it was about a year, year and a half after I had just been playing around with
+it and starting to pay attention to the forums that I decided that I wanted to go even deeper. And that's
+when I forked the Bitcoin core repository and created a fork. I called statoshi. It's basically
+Bitcoin core plus a few hundred lines of code for instrumentation and metrics collection. And this was
+because, you know, after spending a year and a half in the space and kind of imbuing a number of the
+foundational principles, I realized that one of those is transparency. And I felt like when I was running a
+node, I didn't actually know what that node was doing. So I felt like there was a gap and some room
+for improvement to bring more transparency to the actual act of operating a Bitcoin node. And so that's
+what statoshi did. It basically surfaced a lot of the internal operations of Bitcoin node. You can hook up
+pretty charts and visualizations to it. And so for the past 10 years, I've been running a website front end to my
+statoshi node at statoshi.info, where anyone can go and kind of see what's happening in what should be like your
+average typical default node.
+node. Um, it was about a year after that, that I went full time. I started applying to companies and
+accepted a position as a, an infrastructure engineer, essentially running nodes, uh, managing, um, blockchain,
+indexing, managing, uh, transaction, broadcasting and injection, ingestion, um, across first Bitcoin and then a number of
+different other networks for the three years that I was at BitGo. And then after that, it was just a
+pretty small pivot for me to take a lot of what I had learned over that period and, uh, co-found Casa,
+where we're basically taking a lot of the security best practices, many of which we have built up over the
+of the years as, you know, a learning from various catastrophes and failures that have happened.
+And just trying to put that all into a nice user-friendly package so that people can really be their own bank and
+have the peace of mind and the confidence that they can do it themselves and, you know, not have any reliance upon
+trusted third parties that might, uh, screw them over in any number of ways.
+That's great. Thank you. Um, I mean, you're widely known, um, at least from my perspective is one of
+the most security conscious figures, uh, in Bitcoin. Uh, and this seems to be a really important topic to
+you. Um, what is, what are some of the common mistakes that you see Bitcoiners make when it comes to security?
+Well, I mean, I think the most common one is the people who only really look at Bitcoin as a, you know,
+financial play. And so they're, maybe they're just buying the ETF or maybe they're just, uh,
+setting up a brokerage account and buying on an exchange and leaving it there. And of course,
+this is a fundamental, I would say a mistake because it's really, it's against the ethos of the entire
+reason that this ecosystem exists, which is a counterparty risk. You know, it's, it's right
+there in the white paper where, uh, Satoshi says, you know, these, uh, systems primarily fail, uh, because
+of the reliance upon trusted third parties. And so the people who are just getting into Bitcoin and using
+trusted third parties, sure. You might financially benefit from it. If nothing goes wrong during the
+period that you're, uh, exposed to this, uh, asset. But I think that understanding the fundamentals of
+really what sovereignty means, what, um, you know, operating in a permissionless manner in order to
+truly have censorship resistance, you know, to be able to use, hold, and move your assets however you want,
+without having to ask permission to do so. That's the real power of the system. That's one of the fundamental
+things that got me interested in the first place. It wasn't that there was any sort of promise of getting
+rich or getting wealthy. And, you know, that the financial promise to me from the beginning was always
+as a very, very long-term hedge against inflation. And this is something that I've said many times that,
+you know, there's absolutely no promise that the value of Bitcoin will increase in the future,
+but you can be quite sure that the value of fiat will decrease in the future. So,
+you know, do your own math, uh, make your own predictions. But, um, you know, if you're,
+if you're not taking care of your own security, then you can very easily run into a catastrophic loss. And
+while the, you know, the rate of large-scale catastrophic losses seems to be decreasing,
+it's not over by any means. Um, I mean, you know, we just saw the largest hack of all time a few weeks
+ago at Bybit. And, uh, then just a couple of years before that, you know, FTX and a number of other big
+entities collapsed. And I have no reason to believe that, uh, we're going to stop seeing large entities
+screw up and collapse anytime soon. Uh, I just want to touch on a couple of things. So you,
+you comment that one of the biggest mistakes that people make when it comes to Bitcoin security is
+using centralized exchanges or maybe ETFs. Um, do you think it's a reasonable first step or, um,
+a simple way to onboard people, or are you kind of of the perspective that that whole process really
+should be skipped in some meaningful way or at a minimum, maybe you buy there and then move it onto
+cold storage? Yeah. I mean, completely bypassing centralized entities for onboarding and offboarding
+is possible, but there's a lot more friction. And so I think it's, it's not really
+logical to expect many people to bypass them. Um, you know, the convenience factor of just being able
+to hook up your bank account is far too high for that. But, you know, if you want the ultimate level
+of privacy, then that is probably what you want to do, uh, you know, find some way to avoid the KYC
+regime. Um, you know, ultimately any of these centralized entities are going to completely shoot
+your privacy because they're legally required to, you know, they are straddling the traditional
+banking system and this new financial system. So they have to abide by all of the rules of both systems.
+But, um, I think it's, um, it's difficult to convince people to take on that responsibility.
+You know, it's, it's a very overwhelming feeling. I think when people realize that they could
+potentially make one mistake and have a catastrophic loss. And so that's what Casa exists for as well is,
+you know, we put you in a position where you can have failures, you can make mistakes and they won't
+result in catastrophic loss. But, um, you know, the vast majority of self custody solutions in this space
+don't really have those guardrails around them. And there are often any number of single points of
+failure where if something goes wrong, it could result in catastrophic loss. Now that could be a
+theft, but really once you get into self custody, it's more likely that the catastrophic loss is just
+that you lock yourself out of your own money. Uh, you said, um, that when you got into Bitcoin,
+it wasn't because you were hoping that there'd be a value increase, but rather you can definitely count on
+a decreasing of value in fiat. Um, I mean, can you explain the difference between those things?
+Because if your life is priced in Bitcoin, I guess the value of Bitcoin stays the same and everything
+gets cheaper because everything else is priced in fiat. Um, and I've heard other Bitcoin Bitcoiners kind
+of talk like that, where it's like, well, I don't really care what the price of Bitcoin is in US dollars.
+What I care about is like my house is cheaper in Bitcoin than it was, you know, or to buy a house,
+it's less expensive now than it was a couple of years ago.
+Right. Uh, you know, I think we're basically talking about purchasing power. And I think that the problem
+whenever you're talking about value is that, you know, everybody has a unit of account and generally
+that's going to be the dollar or whatever your, your nation state's currency of choice is. And that
+generally makes sense to talk about because those large nation state currencies are fairly stable. Um,
+but you know, once you've been in the space long enough, uh, you realize that it's all relative,
+um, you know, especially stability is relative and there can certainly be times of high instability
+in fiat currencies as well. So, you know, whenever you're talking about the price of something,
+I think it helps to ask of like, well, okay, what are we actually pricing this in and is the thing that
+we're pricing it in actually stable. So it's entirely possible for the, you know, the price of Bitcoin to
+go up, but the purchasing power to not go up very much. And that's really the case where, you know,
+the fiat currency is being inflated. And so it's purchasing power is going down. So that's why I feel
+like, you know, the, the real promise, and this is never a promise really in the white paper or
+anywhere else, but the prevailing narrative, at least in the early days is that at the very least,
+Bitcoin should be a good, uh, store of value or a hedge against inflation. So, you know, the purchasing
+power of Bitcoin of course goes up as more people realize or buy into that narrative. But if even if,
+if everything was stable and like nobody was buying or selling or trading Bitcoin anymore, then you're
+relative to fiat, the, the purchasing power should remain stable, even if the fiat price goes up due to
+inflation. Great. Um, when you look at security threats, like state actors or hackers or personal
+intelligence, or, um, I mean, even, you know, like kidnappings, um, where, what do you see the biggest
+security threat or what are your, what are your thoughts on even some of these things as security
+threats? Uh, well, the biggest security threat in terms of what I think the most prevalent, um, at this
+point in time is probably going to be social engineering. And this is the case, regardless of
+whether or not you have a third party custody or self custody, they're, they're, they're hitting
+everybody. Basically the, uh, the only way that you can really be a hundred percent, um, secure against
+social engineering would be, I guess, if you have the ETF, like if, if you have, uh, you know,
+a financial exposure to Bitcoin, but don't have any way of actually accessing or moving the Bitcoin
+itself. Um, sorry. Can you explain social engineering? Yes. So, um, the short version is that like the
+security best practices have improved so much over the past decade, it's been
+11 and a half years now, uh, since the first hardware wallets came on the scene. And so what
+that really means is that we really have the ability to have air gapped keys, you know, for the
+past 11 years or so, and that has greatly reduced the ability for various threat actors to, you know,
+hack your Bitcoin, uh, cause you're not keeping your Bitcoin hopefully, you know, on an internet connected
+device. The number of people who are keeping their Bitcoin on internet connected devices these days is far
+lower at least, uh, I think from a like relative, uh, portion, uh, of people who are doing self custody
+and, and also the, uh, exchanges themselves and how they're doing stuff is similarly evolved where the
+exchanges tend to only keep a small portion of their funds on, you know, hot wallets and internet connected
+devices. So where are we going with all this? Uh, it, it means, you know, there's always going to be
+attackers. They're just changing their tactics in response because they're always going to be
+trying to find the weak and vulnerable, uh, systems and, you know, whatever potential point of failure
+that they can expend the least amount of resources to get the most amount of return for. And that means
+they can't really go after the keys directly anymore. So what's the weak point? Well, the weak point is the fact
+that all of these systems, you know, regardless of what type of custody system you have set up,
+regardless of whether or not, you know, you have the keys directly or you're authenticating into some
+third party system, the weak point now is generally the humans themselves. So the humans have the various
+authentication, um, tools available to them. You know, they have their usernames, their passwords, their various two-factor
+authentication. And since it's very difficult for the attackers to bypass those, what they've determined
+is it's easier to trick the humans into voluntarily, uh, authenticating into those systems. So you can
+think of it as the, the game has changed away from like hacking your computer so much to get your private keys.
+the new game is hacking your brain to trick you into voluntarily, you know, sending your Bitcoin, uh, to an attacker.
+And usually that, that is basically the case of them posing as some trusted figure, uh,
+often an exchange, or sometimes they will pose as like Google, you know, some other big tech company, uh, claiming that your funds are at risk
+and imposing a sense of urgency that you need to take action quickly. And they'll basically walk you
+through the process of accessing your Bitcoin, whether that's self-custody or on an exchange or whatever,
+and then getting you to send it to a new address that is safe, but it's actually an address that belongs to the attacker.
+Yeah. That's remarkable. I mean, uh, you know, we hear these stories and, um, and I think when we hear
+these stories, we often think, well, that's dumb. Like why would never do that? That seems like an
+unintelligent thing to do. But I, I think what you're saying is that like, it's, it's become sophisticated
+enough that, you know, smart people can get tricked. Right.
+Yeah. And, you know, a number of these, uh, social engineering folks have actually been interviewed,
+uh, like the people who have received the, uh, phone calls from them where they were trying to
+trick them have realized what's going on and started recording the audio. Um, our CEO at Casa has recorded
+a couple. Um, I know, uh, Josh on Seth has also recorded a couple and published them and, you know,
+they've opened up in some cases and talked about, you know, how they're doing it and why they're doing it.
+And, um, you know, from what some of these guys have said, you know, they're able to trick all types of
+smart people, you know, white collar professionals, even like software engineers, developers. Um, it's,
+I think it's really just a case of, they have honed their craft and understand the sort of trigger
+phrases that get people to become really scared and want to, you know, trust whoever is on the other
+end of that phone line and basically follow the directions to in their mind, improve their security.
+Yeah. That's remarkable. I mean, that's scary. That, that makes me worry, you know, cause I think,
+well, it's like really smart people are doing this. Like, how am I, how am I going to avoid being a
+victim of this? Well, the short version is you don't answer your phone, um, especially, especially
+from unknown numbers. Um, you know, Coinbase is never going to call you on the phone. Google is never going
+to call you on the phone. These big tech giants, they simply don't do that. And so, um, you know,
+the, these attackers can spoof the phone number that it looks like it's coming from. Uh, so you
+shouldn't ever trust that, uh, you know, phone number or email address or really any incoming message
+that is not like strongly cryptographically authenticated, which basically means if you,
+if it's not like on signal or key base, uh, or WhatsApp, um, it, it could very easily be spoofed.
+And it, you might be conversing with someone who's not who you think. Um,
+and other than that, I mean, it's just, you should be very careful whenever someone reaches out to you
+and says that, you know, this is an emergency and you need to take action. Like the, these are all red
+flags. And, uh, and oftentimes a lot of these situations can be resolved if people just slow down
+and, you know, think about exactly what's going on. Um, because really often in the like
+Bitcoin and crypto space, if there is a security failure, um, on your account or your setup or
+whatever, like it's already too late, the funds are gone. Uh, you're not going to be getting someone
+calling you and saying, Hey, there's a security issue, but your funds are still currently safe,
+but you just have to move them really quickly. Yeah. I mean, that makes sense. Right. Um,
+so do you think with the evolution of self custody solutions, um, are we moving to something that's
+more user-friendly, uh, from a security models perspective or will, will there always be kind
+of this requirement of like fairly reasonable level of technical expertise in order to keep your
+Bitcoin secure? I mean, we continue to improve year over year. Um, for example, um, you know, with,
+with CASA's setup, it's very strong, it's robust and resilient because there's multiple keys and those are
+distributed, uh, amongst a variety of different vectors. And we've actually been able to build upon
+that to create other sorts of game theory that make it very simple for people to improve their setup.
+So for example, um, we rolled out this inheritance solution like four years ago, and it was really
+onerous, it was using like the legal system where you'd have to set up a trust and onboard your estate
+attorney and all this other stuff. And, um, it had a lot of friction. So we learned a lot about that.
+We learned that, uh, you know, having to do anything that is using the legal system as jurisdiction
+specific, just doesn't really scale. And it's always going to have a high level of, um, of onboarding
+and setup costs. So after doing that for several years, we said, okay, how can we improve upon this?
+And so what we did was we designed just a 100% technical solution that uses, uh, game theory
+and distribute the, uh, distribution of keys in a specific way so that you can onboard your beneficiary
+in a matter of minutes and, you know, completely bypass, uh, wills and estates and trusts and,
+uh, you know, probate and all of this other stuff. Uh, basically it involves doing an encrypted key
+share with your recipient. It's as simple as sending a QR code back and forth to each other, um, to onboard
+your beneficiary. And once you have onboarded them, all they can really do, like, they can't access
+your wallet. They can't even use the key because it's encrypted. All they can do is push a button
+that says, I would like to claim that the account owner has passed away. And that kicks off this six
+month period of where we're reaching out to the account owner and saying, Hey, this person is saying
+you passed away. If that's not the case, you need to log in and basically boot them out of your setup
+because they're trying to take your money. And after six months goes by, then their encrypted key
+gets, uh, decrypted in our app. And they can also request, uh, a signature from Casa. And basically just with
+that, uh, they can then access those funds and, and move them. And, you know, for at least for the two
+of three, uh, wallet setup, that means like your, your recipient doesn't even have to have a, uh, a hardware
+wallet. They can just do it all with their mobile phone. Okay. Interesting. Um, can you explain, um, coin
+joins and tools, uh, like Samurai for those who are kind of newer to the space and trying to get their
+minds wrapped around privacy? So the upside of Bitcoin is that it's an incredibly transparent system.
+That's easy for anyone to audit. If you just run the Bitcoin node software, the downside is that anyone who
+is running that node software can also download the entire history of every transaction that's ever
+happened on the blockchain. So if you want to foil various adversaries that are trying to, you know,
+de-anonymize the owners of addresses and the movements of funds across the blockchain,
+then all you can really do, because you can't, you can't actually like encrypt and hide
+the, uh, flows of funds on the blockchain. So your only real option for privacy is to
+do what we call, you know, hiding in the crowd. And so this is what, uh, mixing software does.
+It basically allows many different people to come together and essentially pool their funds together
+and mix them or that some people say coin join, because what this is really doing is it's taking
+your, your Bitcoin and by your Bitcoin, we mean your UTXOs, your unspent transaction outputs. Um,
+this is how the flows of all Bitcoin through all time happen through transaction inputs and outputs.
+And so then if you want to obfuscate the, um, either the, you know, origin or the destination
+of, of funds and your wallet, then what you want to do is you want to collaborate with as many other
+people as possible to kind of mix your funds together. You know, they go, they all go in,
+uh, in one big transaction and then they all come back out and one big transaction and this it's, uh,
+it's not perfect privacy, but it's basically, it makes it numerically and statistically different
+for, um, anti-privacy adversaries to be able to match up to say like the money that came into this
+transaction came back out at this point because there's just so many ins and outs, um, and preferably
+of the same value to make it even harder to track. So this has upsides and downsides, right? It's, it's not
+something that I recommend to your, your average newbie. Um, because one thing that you're risking
+is that you actually could get banned from exchanges if they detect that you're doing this because it
+just, it triggers their anti-money laundering rules. Like if they're not sufficiently happy that they know
+the source of the funds, or, you know, if you're doing coin joins, it's quite likely that you'll be
+mixing in with funds that are like tied to thefts and hacks and stuff. Um, it's also, it can be somewhat
+expensive. You know, every time you're mixing, you're having to pay on chain fees. And then finally, it's,
+it's tricky to do this securely where you're not exposing your keys to a hot wallet. Uh, pretty much all of
+the, um, coin join wallets out there. Uh, this is a highly interactive process. It's somewhat similar to
+like running a lightning network wallet where, uh, your, your funds basically have to be online all
+the time because you need to be interacting with the other people that are also performing that protocol.
+So there's a lot of downsides. Then the only real upside is slightly improved privacy, which as I said,
+can get you in trouble depending on who you're interacting with. Okay. That's great. So you're
+not really a proponent of, of, of coin joins, eh? I think that it requires a fairly advanced knowledge,
+uh, to get away with using and not shooting yourself in the foot. I think if you want better privacy on
+Bitcoin, um, using lightning network is going to be more user friendly, but then of course it depends
+on exactly like what type of a wallet setup you're using as well. Yeah. Okay. Great. Um,
+I'm interested in kind of how you live sovereignly. Obviously Bitcoin is a big part of this. Are there
+other ways in which you kind of have removed yourself from the system? Um, you know, I mean,
+in food production and how you view relationships, educating children. I mean, there's so many different
+ideas around this. How, how seriously do you take sovereign living? I mean, I'm not at a hundred percent.
+I do hope, you know, someday, uh, when I'm not spending all of my time, um, working on building a company
+that I'll be able to branch out into other things like, you know, I want to, um, get better at,
+you know, energy production, food production, um, you know, sort of long-term self-sustainability.
+Um, as it stands right now, most of what I have spent my time on is more privacy related. And so that's
+just how do I live in such a way that I'm not associating my identity with where I sleep at night.
+So that involves a lot of obfuscation, a lot of, um, proxies, and this is proxies in a number of
+different ways. This is, uh, you know, internet proxies, legal proxies, physical mail proxies,
+basically setting up, you know, other points where, um, people can interact with me, or I may,
+from a like legal perspective, be interacting with, uh, you know, property and, you know,
+acquiring and disposing of publicly registered property through other legal entities that cannot
+be directly tied to me. This is pretty onerous thing. Very, very few people do it because there's,
+there's a cost. Uh, there's obviously financial costs, uh, for setting up and maintaining all of
+this. And then there's just ongoing maintenance costs and lifestyle change costs. So, you know,
+if, if I want to, uh, get my mail, for example, I have, I have a system of mailboxes scattered all
+over the country and, you know, they'll, they'll receive my mail. They'll even tell me what it is
+and scan it for me if I want. And, uh, you know, in most cases, I don't need to actually physically
+open it. Um, I can just see it digitally and tell them to dispose of it. But in some cases I may need to
+physically receive it and have them kind of forward on my mail from there. And, um,
+you know, this is not a hundred percent foolproof. I've had plenty of failures over the years where
+mail has gone missing, or I even had one time, um, in the early days where I accidentally set up a
+forwarding loop between two of my mailboxes. And I, it took me nine months to figure out that one mailbox
+was sending mail to the other and which was then sending it directly back. And so by the time that I
+got that loop broken, I have this like huge stack of mostly junk mail stuff that I didn't really need.
+But of course there were a few important things in there. So it's a, it's a learning process.
+I mean, that's fascinating. Um, I had read or heard at some point that you had paid some in
+private investigators to see if they could find you. Um, is that true? And can you tell us that story?
+Yeah. Uh, and I've done that in a few different ways. Um, I've done like one off private investigators,
+and just pay them a few thousand dollars to, Hey, you know, spend a thousand dollars of your time
+trying to figure out where I am. Um, I've also done it through some of my own attorneys, uh, basically
+because there's a few different ways that you can try to track somebody down. There's the, there's OSINT,
+which is sort of, it's called open source intelligence systems, which is basically like any public data that
+pretty much anybody can get their hands on often through data brokers or just various online searches.
+And then there's more privileged and private, uh, intelligence and access that often only, um,
+attorneys, um, or people who work in the, um, skip tracing business or the, uh, like the tracking down
+of people who owe money business. Um, you know, people who have access to more private databases. And so
+that's why I, I ended up going often with the legal attorney or private investigator route because they
+have access to more privileged systems. And I figure, you know, if I can't be found through that, then
+I'm fairly safe. And they haven't found you yet. That's right. Uh, actually even had a number of years
+ago when I was, uh, I was working with the FBI as a victim, uh, after I got swatted and I was speaking to
+one of the FBI investigators on my case and I said, Hey, I'd just be interested to know where you think
+I live. And, uh, actually had, you know, they, they looked it up and gave me the address that I was
+hoping for. So, uh, I'm not saying that like, I, I, none of the, what I set up is really meant to be
+nation state, um, proof, uh, because it's all done legally and through the legal system. So like if,
+if, um, government agencies, if law enforcement was after me, they would be able to peel away these
+various layers of privacy and eventually find me more likely they would just pick me up when I went to
+an airport. Right. And so like, how far do you go with this? Do you like, when you go to the grocery store,
+are you wearing a hat and sunglasses so people don't recognize you? Like, do they always think
+you're just Jack Dorsey? Cause you guys look similar. Um, you know, like how far do you go with this?
+Yeah. I, I haven't been too worried about the, uh, physical privacy stuff. I mean, you know,
+there's cameras pretty much everywhere these days. Um, over the longterm, I do expect, you know,
+facial recognition technology is going to be a problem, especially when it's in the hands of the
+average person, but I don't get recognized. Um, you know, I don't go on mainstream media. Um,
+I, I, I try to avoid going to anything that I think will get like national level of coverage.
+And that's because I don't want to get recognized and I've only ever been recognized a handful of times
+over the past decade, you know, outside of conference venues. So it's, it's something that I track,
+you know, I did have somebody recognize me last month in New York, but that was only like the
+third time that ever happened. You know, as it happens, if it starts happening more and more
+frequently, then I'll probably adjust to compensate. I mean, shaving the beard would be the first obvious
+step. It would, it would change the way you look significantly. Um, so if someone is looking to
+kind of going through the early steps of, uh, sovereignty, uh, trying to engage in full
+financial sovereignty, controlling their Bitcoin, securing their digital life, um, what are some of
+the things that you recommend for those who are starting the journey?
+Well, go to my website. Um, yeah, I have like 1500 links and resources. Uh, just go to bitcoin.page to,
+to check out all of those. But, um, I think the, the main thing is that it's a journey, you know, you, you
+don't have to get to a hundred percent and really nobody ever gets to a hundred percent, but just by
+dedicating a little bit of time to it, you can slowly build upon a foundation. And, you know, after several
+years, you'll probably be, uh, you know, better off than 99% of people out there. I mean, I think, you know,
+a lot of people you'll get in the top, like 5% of privacy. If you just install a few ad blockers
+in your browser, you know, that'll prevent a lot of the corporate surveillance that just happens on a
+daily basis. But, you know, getting to the sort of extreme level of privacy of what I've done, like I said,
+requires setting up a number of different things. You know, I have tons of email addresses and phone
+numbers and physical mailboxes and legal entities and all this other stuff that I have to maintain.
+And then I have to not screw up. Right. Uh, it's, it's really more of the, the mindset change. Um,
+first of setting all of that up and then getting into the, the mindset where you don't accidentally leak
+or divulge information. So it all comes down to, I think, what your threat model is, um,
+you know, who, who you think might be coming after you, but at least for people in the Bitcoin space,
+I think the best thing that you can do is just don't talk about your Bitcoin. You don't,
+don't, uh, share your, your great, uh, success story. You know, if the price has gone up a lot,
+don't tell anyone how much you have. If you're going to be talking about it online publicly,
+preferably don't do it with your real name. Uh, it's much better to take the Satoshi route and,
+you know, use a pseudonym because that's just one more layer of obfuscation that will prevent people from
+trying to track you down. You have a pin tweet, or at least you did a little while ago. I feel like
+it was like an only fans girl who was talking about how much money she made. And, um, you know,
+why are you so interested in these stories? Um, I don't remember the exact details of what happened to
+her, but, um, this seems to be like really interesting to you. Yeah. Uh, this is one of my many projects
+projects is basically tracking the physical attacks against, uh, Bitcoiners. And I mean,
+I am one of those victims. Like I said, in 2017, I got swatted and extorted and they didn't get
+anything from me, but the situation could have ended very badly if not for a few sort of lucky
+circumstances and factors. And then I ended up spending several years and a lot of my own money,
+basically tracking down my own attacker in order to get some sense of justice. And I have several blog
+posts where I talk about, you know, all of what transpired over the years there. And, um,
+I just, I think it's an interesting space to follow
+on the, on the digital attack side of things. Um, it seems like a lot of people who are doing the,
+the fishing and the SIM swapping, the social engineering are actually mostly teenagers.
+And so my own attacker was actually 15 years old, uh, when they swatted me. Yeah.
+So, sorry, can you explain swatting? I don't think it's commonly known like what that actually is.
+Uh, basically it's when someone finds your home address, calls up your local law enforcement,
+and then uses the appropriate trigger phrases to get them to deploy, you know, lethal force against you,
+basically sending the SWAT team to your house. And so that usually involves saying, you know,
+you've killed people and maybe you have hostages, you have weapons. Uh, in my case, they said,
+I had hostages and I had bombs and I was, you know, demanding ransom and all this other stuff.
+And so, you know, it's pretty easy actually to get law enforcement to deploy a large amount of lethal
+force. If you just say the right words and there's a big disconnect, there's a big, um, sort of asymmetry
+between the cost of someone, uh, pulling that attack off versus like the cost of the law enforcement
+resources and all of the public resources that get tied up. And then potentially the, um, end result,
+there have been several people who have been killed, um, who were targeted because they had SWAT
+teams show up and, you know, maybe they, they were a law abiding gun owner and they got kind of freaked out.
+And, you know, they had a gun or they had an erratic movement and, you know, law enforcement
+sometimes has itchy trigger fingers. So, um, that's just one example. Uh, then like that's the,
+that's the low risk example, like to, to commit some sort of digital attack like that, you know, the,
+that adversary, they're not actually putting themselves at very much risk. They're basically
+having other people go put themselves in physical danger. Um, but the next level with these wrench
+attacks where the attacker is actually physically going somewhere, uh, taking someone hostage,
+you know, possibly torturing them, you know, essentially trying to extract the, the assets
+from them directly. That's, you know, that's the extreme end of, I think, any type of attack that
+can happen in this space. And so I like to track them to understand, you know, where is the criminal
+elements at the moment with regards to their understanding of the space and also where,
+where is our kind of overall security posture as an entire ecosystem? Because every time that a
+Bitcoiner gets successfully wrench attacked, that's sending a signal. It's sending information out into the
+world that says it is a high return on investment activity to physically attack known Bitcoin holders.
+And that's bad for every Bitcoin holder. We, we want attacks against us to fail. And we want that
+information to percolate throughout the world so that, uh, we don't look like the easy soft targets.
+And so how successful with kind of your history of tracking this, how successful are these attacks?
+Uh, very, I would say they only fail like one to 2% of the time that we're aware of. Um, yeah,
+so I've, I've cataloged over 200, um, publicly known attacks. There's actually many more out there because
+most of them don't ever get reported. Um, and as far as we're aware, yeah, there's only been two or three
+where they had, the victim has like successfully defended themselves. And, and actually this, this,
+this, this, the recent one that I'm a Amaranth, uh, attack in, uh, Texas was one of those few, uh,
+because, um, I think her husband actually realized that something was going wrong and, um, started
+shooting at the attackers and they fled pretty quickly. Oh, so it wasn't that he had sophisticated
+security set up. It's that he had a gun and he just protected himself.
+Pretty much. Uh, yeah, there was, I think the first ever successful defense, um, occurred
+around 10 years ago. And it was a guy in Florida who was conducting a face-to-face trade with someone,
+which is by the way about the riskiest activity you can do. That's where most of these physical
+attacks happen with, uh, face-to-face trades, you know, people bringing high amounts of Bitcoin
+or cash or whatever, uh, meeting somewhere private, uh, don't do that. And, uh, and, but thankfully
+that guy who was going to be a victim had, uh, a gun on him and was able to defend himself.
+So your thoughts on gun ownership?
+I mean, it's pretty much, uh, I think necessity if, if you want to believe that you're truly sovereign.
+Um, that's a whole other, you know, can of worms to go down. Of course, in America, uh, you know,
+we have the second amendment, which I argue is really more to be a check and a balance against
+the power of the government itself. Um, sure. It's, it's also related to self-defense,
+but I think the, the problem, regardless of where you are, you have to ask yourself like,
+what is the actual threat that I'm worried about that I need to guard against? And in, in many cases,
+even if you live somewhere where you're not legally allowed to have weapons and defend yourself, um,
+the criminals probably don't care about that. And they probably are going to have weapons and arm
+themselves. So you have to ask yourself, how am I going to defend against that?
+I mean, that's always the challenge, right? It's like, well, if the criminals are going to have
+access to these, uh, weapons, um, yeah, it can be, it can be a difficult situation, uh, you know,
+especially in European countries where there just isn't the existence of these weapons. I mean,
+here in Canada, we don't have the same, um, the same freedom around, uh, firearms as in the United
+States, but we do have, you know, fairly reasonable gun ownership laws where we can have hunting rifles
+and shotguns and things like that. Um, and so when you look at these situations and you think to
+yourself, okay, the average Bitcoin or, you know, or the average person wants to hold Bitcoin and then
+they think about the security threat and then they think, well, if I just hold the ETF, you know,
+I don't have to worry about all this kind of stuff. Is this a, is this a big detractor from, uh,
+self-sovereignty, um, Bitcoin holders?
+I think it's, it's the convenience of the ETF. That is, uh, one of the greatest threats, uh,
+that we have in this space. It's, um, you know, it's very easy for people, uh, to access it through
+their traditional brokerage accounts. As you said, they then don't have to, or they think they don't
+have to worry about the security aspects of it because it's so easy to just hand wave away counterparty
+risk. And, and of course everybody's going to be like, oh, you know, these ETFs are
+highly reputable institutions and they're not going to screw anything up. And maybe that's the case.
+Of course, I don't like the fact that 90% of these ETF funds are all held by one custodian at Coinbase.
+That is a highly centralizing factor that invites, um, attacks because there's so much money in one place.
+Um, I think it also, it creates systemic risk in a number of different ways. You know, even if you
+think, uh, Coinbase will never screw up, there's always the 6102 attack, you know, the government
+confiscation attack, which actually might be more likely now that the U S federal government
+is getting more interested in Bitcoin as an asset. Um, and so this is why I think you have to ask yourself,
+like, do you just care about the financial exposure and aspects of it, or do you actually care about,
+you know, being able to operate in this parallel financial system without having to ask permission?
+Do you think that the, uh, American government's, um, now kind of commitment to at least hold the
+Bitcoin that they currently have, which they've confiscated? Do you mean that, uh, in a meaningful
+way? Like now they have interest, so maybe they'll start confiscating Bitcoin. Is that a legitimate threat?
+Uh, it does potentially create somewhat of a perverse incentive. I think, uh, if, if so, all they've
+really said is, um, we're going to do this in a budget neutral fashion, right? If we're going to acquire
+more Bitcoin, we need to do so without taking more taxpayer money. What does that really mean? Uh, I don't
+think we're going to know for a little while. Um, but you know, seizing and confiscating funds is
+definitely one option. So we, I think have to hope that, uh, they don't come up with like new types of
+crimes to try to pin on people in order to confiscate those funds.
+Right. Yeah. I mean, that's an interesting perspective for sure. Um, one last thing,
+Jameson, I want to ask you before you go, I've heard people say that they're not proponents of
+governments, um, or central authorities holding Bitcoin because it fundamentally strengthens their
+position. And many libertarians, we want to see governments less strong. And, um, and if we believe
+that Bitcoin is such a powerful asset, um, this fundamentally strengthens the government's
+position rather than weakens it. And there's this thought that we want to see governments collapse.
+And I'd love to hear your thoughts on that. Well, I mean, from a game theory perspective,
+I think over the long run, everyone is incentivized to hold Bitcoin and that includes nation states,
+though. I think it actually makes less sense for the U S federal government, you know, being, uh,
+the government behind the current global reserve currency. Uh, they're kind of like working against
+themselves a bit by doing that. It makes sense for pretty much any other nation state to do that.
+I mean, I think it made sense for El Salvador to do that because they didn't even have their own
+currency. They were, they were really operating under the thumb of the, um, federal reserve and the,
+the U S banking system from, from that perspective. So, you know, smaller countries that don't have
+much financial or monetary autonomy. I think it makes sense. It also makes sense for, um, U S states,
+I think, because they're in a similar position where they don't really have any control over the banking
+system. It's really more, uh, at the federal level. So I think it's something that we should expect.
+Um, and this is just kind of the nature of the game. I, I personally, I would have liked more time
+before institutions and nation states got into the space because I would like to see Bitcoin to be more
+distributed amongst individuals. But, uh, for a variety of reasons, we seem to have skipped past the
+mass adoption at the retail and individual level phase. And that surprised me. And I think what I failed
+to account for was how quickly the viral nature of the kind of the game theory of, uh, selling, you know,
+selling the idea of Bitcoin up the ladder was. Um, and, and so I think, you know, that's really taken off
+around the, like the 2020 era, you know, when Michael Saylor started getting in, when, when several other
+billionaires started getting interested, um, you know, they, they talk to each other. Right. So that's,
+that's how, that's how adoption has gone, uh, with each cycle, there's like a new cohort and each
+cohort has its own attributes. And so since the 2020 cycle was, had a lot of billionaires and, uh, you know,
+traditional financial wealth management players starting to get into it. Now we're, we're starting
+into like the next cycle after that. And what we're seeing is the effects of those people who have been
+going out and essentially pitching Bitcoin to their peer groups and to, you know, the larger institutions
+and governments that they work with. Is it a problem that we have kind of these, these kind of heroes in
+Bitcoin, like you mentioned, Michael Saylor, um, you know, I think, I guess, Donald Trump, um, and, and
+others and, and are, is there a big risk that they make a mistake that they cause issues that they're
+heroes and then they fall from grace because of, you know, things that people do, people make mistakes.
+Uh, yeah. Uh, and that has already happened plenty of times over our history. Um, um, you know,
+there, there's the, the saying, you know, either you die here or live long enough to become the villain.
+And I think that's just as applicable in this situation as anything else. Um, there've already
+been a few points of friction, I think between Saylor and much of the community. Saylor has a big, uh,
+following for a number of reasons, but he's also, you know, got a whole like micro strategy, um,
+owners following behind him, you know, people who want to, you know, kind of pump that asset in
+addition to Bitcoin. And, um, you know, he, he's the business guy. Uh, he's got his own narratives
+and things that he works on and he's not the cypher punk guy. He's not the crypto anarchist guy.
+So, uh, you know, there's already been some friction there between his like acceptance of
+states and governments, uh, versus some of, I would say the more OG, uh, folks who have been around
+longer. And I think that that friction is probably going to increase. Um, you know, he's also seems to be
+very pro ossify the protocol. And so I'm on the opposite side of that. I think there's going to
+be more friction there in the future as well. That's, that's great. Um, Jameson, I really
+appreciate your time. It's been super insightful conversation. I mean, I've learned a lot, uh,
+just chatting with you. This is, this is a really great, I appreciate your time. Um, and, uh, it's been
+super educational to learn, uh, more about some of your very public journey, uh, in privacy and also
+some of the, your, uh, in-depth knowledge, uh, on Bitcoin. Thanks so much. Thanks for having me.
