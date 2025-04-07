@@ -1,0 +1,237 @@
+All right, you may know me from previous dramatic episodes such as the dismantling of the software
+thesis, or the griefing of the Bitcoin testnet, or more recently the burning of quantum vulnerable
+Bitcoin. But today I'm not here to provide controversy. I'll do that next week at Opnext.
+So why are we here? It actually all started with a post from our favorite space monkey, Mononaut.
+And Mononaut pointed out this interesting transaction that happened back in January.
+Said, hey, you know, this looks like address poisoning. And, you know, I had heard of this term before,
+but it's not really something that had come up much in the context of Bitcoin.
+And you might ask yourself, well, what is address poisoning? And of course, there's a clue there
+with the highlighting that Mononaut provided in the screenshot. So what is it? Essentially,
+this is an attack where someone goes out and they find a bunch of target Bitcoin addresses that look
+like juicy targets. They probably have a decent amount of Bitcoin in them. And then they'll use a
+a script to generate a vanity address that looks very similar to the target address. And in particular,
+it'll have similar starting characters and similar ending characters. And this, of course, is just a
+simple brute forcing type of algorithm. You just keep generating private keys until you get one that
+produces a script with an address that has those similar characteristics. Then they put a little bit of
+money into their newly generated address. And then they send that money to the target address.
+And we're usually talking like 500 to 1000 Satoshi. So not a ton of money, just enough to get that
+transaction on the blockchain. And then they wait. And they hope that what happens is that this victim
+eventually makes a mistake. The victim has to be naive, they have to go back, look at their wallet transaction
+history and be using a wallet that makes this easy and possible to do. And they hope that that victim
+basically copies and pastes the wrong address from their transaction history and end up sending it to the attacker.
+So some example transactions here, just to show you that this hits pretty much every different type of address
+that you'll see out there. And on the left will be the poison address of the attacker. And you can see them
+sending a few hundred sats over to the target victim address, which has those similar starting and ending characters.
+So why does it work? Like I said, people are not checking all of the address necessarily when they're sending it.
+There are a number of especially mobile apps out there that may truncate a lot of the address.
+So it's actually very difficult to check the entire thing. Or, you know, there's lazy. This is long.
+We're talking like 30 to 50 characters. Nobody wants to check all of that. And the UX may not make it easy
+to do so. And then, of course, if their wallet makes it easy to copy it and paste from the transaction history,
+then that could make it easier for someone to make this mistake. So what did I do? Well, I wanted to
+understand what is the practicality of this attack? It clearly seems to be happening. But how often is it
+happening? And is the attack actually economically feasible? So I wrote a script, I scanned the entire
+blockchain, and I tried to find every transaction that I thought was meeting these characteristics of
+address poisoning. And what in particular was I looking for? I was looking for transactions with one input and
+one output. Those in and of themselves are fairly rare. You know, you almost always have a second change output
+when you're sending money on bitcoin. And then, of course, looking for having at least four characters
+at the beginning and the end of the exact same and, of course, not being the exact same address sending to
+itself. And, you know, it's possible that there may be a few false positives in here, but I don't think
+that that's really the case because I scanned the entire bitcoin blockchain and did not see any hits until just
+about a year ago. In particular, block 797570, which was July of 2023, is when we start seeing this happen.
+And it's not just one. It's usually dozens of them happening in any given block. This is happening in
+bursts, not in a consistent pattern. Definitely seems to be a human-driven type of activity where they're probably
+doing some research finding a new batch of target victim addresses and then just sending all at once.
+all at once. You know, first they're doing a big fan out transaction that'll have hundreds and hundreds of
+outputs to fund all of these poison addresses. And then each of those will have the one-to-one
+actual deposit address into the victim's account. So it was pretty quiet for several months and then we saw
+another batch of them happening and it was quiet again. Saw some more batches and then there was a two-month
+break and then they actually just started doing this again this week. So what were the stats? What did
+we find from this? Found about 48,000 different transactions and and unique bitcoin addresses that
+seem to have been targeted. And you could easily sum up, you know, how much block space did they buy? They bought
+about four blocks worth of block space over that year and a half, two-year period and they ended up spending
+about 0.3 bitcoin. So this attacker, they didn't spend a ton. I mean, $24,000 isn't nothing, but considering
+that they were able to hit nearly 50,000 different targets, you know, that's pretty decent. That's what,
+you know, 50 cents per target. So looking at some of the breakdowns, I was trying to understand, you know,
+how is this attacker trying to target the different addresses? And this is sort of a breakdown of the
+wallet balances or the address balances that they were attacking. I don't know if there's too much to learn
+from this because this is also fairly consistent with the overall distribution of balances on the
+blockchain, other than the fact that, of course, they're ignoring dust addresses. So they're generally
+ignoring any addresses that have less than one bitcoin. If you if you throw out all of the, like, less
+than one bitcoin addresses, this is generally what the distribution looks like. Anyway,
+one thing that I found really interesting, because I put myself in the shoes of the attacker,
+and I think for an attack like this, you're going to want to go after addresses that are pretty
+consistently and regularly spending, because each time they're making a spin, that's a potential
+mistake that they might make. They might choose the wrong address. And this is where I think the attacker,
+from my perspective, they did not optimize this very well. Maybe they had some other reason for doing
+this, but the biggest surprise to me is that of the 48,000 addresses they targeted, 12,000 of those
+addresses had never spent funds. So, you know, maybe this is really just a spray and pray, and they're
+hoping, you know, maybe eventually someday, of course, that person's going to spend the coin. But, you know,
+about a quarter of these addresses, to this day, have never spent those funds. So maybe they're just
+playing the really long game, but I think that that is a suboptimal attribute that they probably should
+have filtered out. And other than that, most of these addresses are very sparingly actually spending
+funds. So I was kind of surprised. I thought that they would have gone after more addresses that have a
+higher velocity, a higher rate of spending. And, you know, similar to that, you know, what is the amount of
+Bitcoin? Like I said, a quarter of them, zero spending, and then most of them are spending
+less than one Bitcoin per transaction. So what about script types? This was also kind of interesting,
+because they're targeting the pay-to-public key hash addresses, which are not the most commonly used
+addresses these days. But, you know, perhaps that's just because they are older and, you know,
+they have a lot of funds sitting in them from a long time ago. And I didn't try to break down, like,
+SegWit wrapped P2SH. I was just looking at the high-level scripts. I did not see any Taproot
+addresses that have been targeted. Maybe that's just because Taproot addresses tend not to have a lot
+of funds in them. That could be another potential interesting thing to try to understand. But for
+whatever reason, Taproot is not being targeted by address poisoning, at least not yet. So is it successful?
+Is this a positive ROI? Well, that took some more research, because then I had to look at all of
+these addresses, and then I had to look to see if any of the victim addresses had sent funds back to a
+poison address. And that was tricky because you basically need to have an indexer where you've indexed the whole
+blockchain by address. Not a lot of local indexing solutions make it easy for that. You can't just
+call the Bitcoin Core RBC to do that. But I did find one. And the reason why I'm quite sure that this is
+actually a successful attack is because we can actually look and see what happened. And so this first
+transaction is the attacker sending from the poison address to the target address. And you can see the
+timestamps in the upper right there. And let's see, that was on January 18th. And then a month and a half
+later, the target address sent money to the poison address. And within about 12 hours, the attacker, the owner of
+that poison address moved the funds to some other wallet. So why do I think that this was an attack and
+not just something else going on? Well, we can then see that same victim address wallet realize they made
+a mistake. And about 12 hours after they sent that first 0.1 bitcoin to the attacker, you can see they sent
+0.1 bitcoin to some other address. So it looks like that second transaction was the one that they had
+actually intended to do, but they screwed up the first time. So if we look at the ROI,
+it's not great. They're down about 0.2 bitcoin right now. But I think that this still is not great. The fact
+that it's a, you know, one out of 48,000 success rate is good in and of itself. But just due to the nature of
+bitcoin, this very easily could have been a highly profitable attack. The attacker was unlucky that the one person who has been
+tricked so far only sent 0.1 bitcoin because they had eight bitcoin in that address. They very easily could
+have sent that entire balance, which would have, you know, made this overall a highly, highly profitable
+attack. And of course, like I said, this is an ongoing thing. We should expect that, you know, given enough
+transactions and enough target victims, someone else will probably make the same mistake and possibly for
+a lot more. So from a practical perspective, how do you ensure that you don't shoot yourself in the foot
+here? Well, really the easiest thing and the most important thing, you just follow the best practice
+of not reusing addresses. Like you shouldn't be copying and pasting addresses from your own transaction
+history. If you don't do that, then there's really no way for you to get hit by this particular attack.
+And, you know, when you are sending bitcoin, you should check the entire address. I think that's something
+that, you know, we've said as a community for a really long time. But, you know, humans are extremely lazy
+individuals. And this is the type of thing that I think you've just got to keep beating people over the
+head about. And this, now that we are aware of it, we can continue to monitor for it. And I will say props to
+mempool because they, just in the past few weeks, have started adding alerting within their own block
+explorer where transactions that appear to be poison attempts are actually getting flagged. So that, you
+know, hopefully this will save some people from making this mistake. But, of course, this is the nature of
+trustless and permissionless networks. So it's, I think, going to be an ongoing issue. And just a
+question of, if it gets worse, do we, as like a software and wallet development ecosystem,
+need to be more proactive and take more measures to help prevent people from falling victim?
+George. Thanks for your talk. Two questions. One is, do you think it's a single entity that did this,
+based on, I guess, the clustering? And the second is, you only looked at transactions going from the real
+address to the fake address. But I would imagine if I'm copying an address, the wrong one,
+um, I might be putting that in an exchange, or I might be putting it in my wallet, but it's faking a
+different coin. So have you also looked at how much money actually went to the fake addresses in total,
+rather than just from, from the real to the fake?
+George. No, these are, these are both potential avenues for further research.
+I, so I didn't do clustering analysis. Uh, that, it's not my forte, but, uh, I would be interested in
+looking into that further. I mean, you can just make a wallet that includes all those fake addresses and see
+what the balance is. True. Fair enough. Just one, one wallet with 48,000
+keys. I'm sure that'll scale just fine. Just, just open a pull request if it's too slow. Yeah.
+A GitHub issue, I mean. But yeah, we'll fix it. Yeah, so there's definitely, there's definitely room for
+further research on this, uh, and really, uh, I, as far as I'm aware, I haven't heard of anyone, like,
+publicly broadcasting and saying that they have been a victim of these attacks. So.
+How far is the exact attack, but on another chain. Yeah. Yeah, yeah. Yeah, so, yeah, so these type of
+attacks, uh, seem to happen a lot on Ethereum, um, and, uh, I think it's just interesting to start to
+try to gauge, you know, is this same technique starting to be applied more to Bitcoin?
+And, you know, how aware of it do we need to be? Another thing that I think is worth pointing out
+is that I think that this is also, this is a result of the fact that we are in a very low fee environment.
+You know, if, if we had 100 Satoshi per virtual byte fees going on, I think that would greatly
+disincentivize people from doing a lot of these dusting attacks, uh, unless they figured out
+other ways to increase the attack success rate. Uh, yeah, at last year's Bitcoin Expo,
+we had a nice little presentation on wallet fingerprinting. Do you know, uh, what wallet
+that victim was using so I know what wallet not to use?
+No, but I'm, you know, uh, anyone who wants to kind of build upon this research,
+I've got all the raw data available and I'm more than happy to share all of the data that I've collected so far.
+So, so that was, that was one of my questions as well. Um, and then the, the, the follow-up to that
+was going to be, you know, you, you said like thinking like an attacker, how, how, how you would
+do it. So, so clearly if, if the target wallet happens to be vulnerable in that it only shows,
+you know, the, the first few beginning characters of your address, then thinking like an attacker,
+those are like, I would, I would look for wallets with that fingerprint and only attack that particular wallet.
+Um, but I wanted to ask also if you're, to, to kind of show one of the things that I work on,
+um, are you familiar with the, the, um, the Bitcoin kernel project? Because you said dealing with, like,
+calling Bitcoin core RPCs over and over, like, becomes untenable. So, so one of, one of the exact
+purposes of, of the Bitcoin kernel project is to make it so that you can write little tools to do exactly these types of indexes very quickly.
+and easily. So if it's not something that you've looked at before, I'd be happy to talk to you about it.
+No, cool. No, I've, I've heard of the kernel project, but I have not actually tested it out. So
+worth looking into. Great. Thank you.
+So when I was looking at your slides, uh, something, um, probably like obvious occurred to me, um, that,
+uh, the address type, um, in the front of an address, uh, means that, like, you don't have to grind that part.
+Um, like, like, like BC one. And so did you notice, like, based on the address type, they were doing,
+like, more or less grinding? And do you have any idea on how to, like, represent an address type
+that doesn't, from, like, a human vision perspective, make it cheaper to grind?
+I, let's see, I did not like it. For example, when looking at the back 32 style addresses,
+I was still only seeing, like, another one or two. I didn't see, like, you know, the, the first three,
+and then another three or four. I don't know why that's the case, but I also, I haven't played around
+with the vanity gen for those addresses. Um, I think, you know, the, the main interesting thing here is that,
+um, you know, we've, I think we, we've seen people, um, at least traditionally vanity gen, you're only
+doing the, the first X number of characters. And this is, I think, the first time we've seen people
+who are also doing the end characters. And I think the main reason for that is that, um, we may have
+unintentionally gotten people complacent with only checking the first few characters of, of the
+address under the, the idea that, oh, those are the only ones that could get brute force because you have
+to brute force, like, in that direction starting from the beginning. So, I think this is just another
+good, um, practice for people to be cognizant of is that, you know, just checking the first few is not
+good. Just checking the first few and the last few is not good. You really need to check the entire
+address. So, I have a tweet here from our favorite menpool monkey. Um, the DMM Japanese exchange attack
+was an address poisoning because, but your script, I don't think picked it up because it was going from
+their internal cold storage, which was a pay to script hash to a pay to public key hash for their hot
+address. And that was 4,500 Bitcoin. That was a two of three and they did an address
+poisoning on their hot wallet address. So, they managed to trick the exchange into co-signing
+and then doing the 4,500 Bitcoin. So, I think that's operationally, internally, thinking if you're
+managing large sums, too, managing that stuff. But I think I just wanted to call that out.
+Yeah, I mean, I think that there's, well, there's definitely more research to be done to understand
+how some of the different wallets display like multi-output receive transactions, for example.
+I think I saw you tweeted something recently where mempool was showing the poison, a potential poison
+output where it was, it had probably like five or ten outputs that had similar looking addresses.
+And the main question there is just, how do those get displayed in the wallets?
+And it's going to vary from wallet to wallet. And that's why I think doing wallet fingerprinting and
+then looking at each wallet's own displays to understand which ones are going to be more susceptible
+to that would be an important avenue of research here. But that's why I think that there's a lot of them
+that are just one input, one output because it's so simple and it's more likely that any given wallet
+is going to show both of those addresses. Thank you for your talk. I've had this experience
+on the Solana blockchain. I opened a wallet one day and saw 1.4 million dollars worth of Solana that had
+exited my wallet. And I just thought of the movie Fargo. If you've seen it, there's a bag of money that
+gets passed around and bad things happen to everybody that gets the bag. So, I was happy that that didn't
+happen to me. But what I did learn in my investigation of dusting was that for people
+in that kind of case, they're being targeted for doxing and blackmail and things like that as well.
+So, I really do appreciate the talk because I don't think it's talked about enough. I'm a trader. I teach
+trading. And when I brought it up to people in my group, one of the guys was like, "Oh yeah, you should
+turn your wallet off to certain types of dusting." And I said, "Yes, but you have 10 years of experience in
+crypto and five years of trading." And regular people are not aware of this at all. So, thank you.
+Dr. Yeah, no. I mean, there's room, I think, for pretty much any wallet out there to try to safeguard
+against this attack. Though, this is where it gets tricky. Like, as a wallet software developer,
+it would not be difficult at all to just add in a filter rule that says, "Do not display any incoming
+transactions below a value of X." But that can get tricky too, especially if we're talking about people who
+are using meta protocols on top of Bitcoin where they may be sending dust, but it's representing
+something else. So, it's very hard, I think, to just tell everyone across the board, you know,
+never display any transactions that are depositing like less than a thousand satoshis or whatever. But
+at the very least, I think that it could be helpful to show some sort of warning, especially if
+you see these addresses look the same. Like, I think it would be easy for wallets to say, "Oh, this came from a
+similar-looking address." Just throw up a big red flag. Do not interact.
+So, do we have anything else to offer in terms of inspecting addresses that isn't just checking the
+full, like, long string that doesn't fit in, like, portrait mode on mobile? Like, there's SSH, like,
+ashy key art and, like, other things, but do you think there's any other, like, alternative that it would
+increase safety besides just... If I recall correctly, the blockchain commons
+had a standard. I don't, was that what you were referencing? I'm not referencing something specific.
+I'm just asking. Yeah, so, but I think blockchain commons had a standard for addresses that basically
+turns it into a, like, 16 by 16 or 32 by 32 pixel, you know, colorized pixel map that would just make it,
+I think, easier for you to differentiate. Like, is it the same address or different address?
+Uh, but as far as I'm aware, there aren't any wallets, or at least any, uh, you know, mainstream
+level-adopted big wallets that have adopted that standard. But it's, it's certainly possible, and
+really what we're talking about is, like, a data visualization representation problem, and I, I think that,
+that, um, as nerds, we might be used to seeing really long hashes and stuff, but we have to
+understand that, you know, the average person who sees, uh, a long hash, or really any long random
+string, their eyes are just going to glaze over, and they're just going to start clicking.
+Hi, Jameson. At the end of all of this, are you going to tell us that you're actually the attacker the whole time?
+Well, no, that would be incredibly embarrassing, because I lost so much money.
+No, uh, you know, if, if this had turned out to be a highly profitable attack, then,
+uh, you know, I would be more worried about people, uh, looking into, to doing it more often. But,
+uh, you know, I'm a, I'm a, generally a security researcher. I've been building multi-sig security
+products for 10 years, so, uh, for me, this is just, you know, raise the alarm, and, you know,
+if people wish to continue the research, uh, to figure out, you know, what is the severity, uh,
+so that, you know, this is a sort of community, uh, security problem. We have to be aware of this
+dynamic security environment, and new types of attacks that seem to be popping up.
+So, yeah, I had, uh, I had someone pull me aside earlier and say, I, I hate it whenever
+you give a talk, because I always, uh, get really scared. And, um, unfortunately, that's, that's the
+nature of the game. But the nice thing about this, like, you really don't have to be scared about this,
+as long as you're not reusing addresses, or not just copying addresses willy-nilly out of your
+transaction history. So, everyone, you know, practice good blockchain hygiene, and you'll be just fine.
+you'll be just fine. Thank you.
