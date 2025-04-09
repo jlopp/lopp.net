@@ -1,0 +1,373 @@
+We noted that there were multiple discussions about quantum computing, both theft and then how to resist such theft.
+The first one titled, Should Vulnerable Bitcoins Be Destroyed?
+Jameson, this item was based on your Bitcoin dev mailing list post, which was titled Against Allowing Quantum Recovery of Bitcoin.
+Your email and thought process all seemed well organized, so I won't try to frame this up.
+I'll let you frame it up, this discussion for the audience as you see fit.
+Yeah, so I thought this was an interesting thought experiment.
+I did not want to wade into the quantum debate because I feel like it's very similar to trying to debate climate change.
+It's one of those hopefully far off problems, but also very difficult to pin down and quantify exactly what the level of threat is.
+But on the flip side, even though it's hopefully a very far off problem, we know that making changes to Bitcoin is a very, very slow process.
+So this is the type of potential existential threat that we want to get as far ahead of the curve on as possible.
+It's also unprecedented in the sense that we've never had an issue before where we basically wanted everyone to migrate their UTXOs.
+And so there comes this question of how do we want to handle that?
+Do we want to further incentivize that?
+Are we going to be worried about the potential fallout of not incentivizing it?
+And so there's sort of a complex, multi-layered set of overlapping issues here.
+There's both the philosophical issues.
+There's the economic issues.
+There's the game theory issues.
+And so I wanted to try to create as comprehensive, multifaceted look at this, because I know and what I've seen already from, you know, just mentioning it to people is that there's a very common knee jerk reaction of, oh, we must never break the inviolable property of preventing someone from spending their coins.
+But as I go into with my posts, one way or another, like, regardless of what the ultimate decision is here, I believe there are going to be violations of so-called inviolable properties.
+And so people are going to get hurt one way or another.
+And what we're going to have to decide is which path in the decision tree will hopefully result in the least overall harm to all of Bitcoin users.
+Do you, did you come to a conclusion?
+Well, as I said, there, there are multiple potential outcomes and my post is really about what I consider to be the happiest path outcome, which is one where a, we have come to a decision about a quantum safe signature scheme.
+And, you know, we're, we're, we're currently even nowhere near that.
+Uh, so this is somewhat speculative about us getting to that point.
+Um, and then the issue is, uh, do we do something with these quantum vulnerable coins to prevent them from falling into the hands of attackers.
+And my, my high level conclusion is that, you know, if we get into a position where we have that migration path open, that it would be best to have some date at some point in the future, whereby we say, you know, you need to have your migration done.
+And I mainly look at this from a security and incentives perspective, because you know, you, you, you think that people are generally going to follow the incentives and that it's an obvious thing that you're going to move your coins to make them safe.
+If there's a threat, but from my own experience, uh, uh, uh, very concrete example of when I was working at BitGo and we implemented Segwit, we rolled out the new SDKs and the new APIs.
+And then we watched for adoption of our clients to migrate over to Segwit, which was an obvious win, right?
+Because it fixed transaction malleability, it, um, enabled for a cheaper spending of UTX.
+So it was like, there were real, uh, tangible benefits to it.
+But what we found is that even large enterprises that were our customers and we're supposed to be sophisticated and have, you know, teams of experts behind them were laggards.
+When it came to adopting this new technology and for many of them, what we actually ended up having to do was to write our own scripts that were calculating how much money it was costing them to not upgrade.
+And then, you know, have to manually reach out to people and say, Hey, you know, you're losing $10,000 a day by not upgrading.
+And of course we can't do that at the protocol level.
+Like there's no way for us to reach out to all Bitcoin users and inform them of these things.
+So from that perspective, if we believe that most humans are, you know, lazy laggards, uh, not going, they're going to procrastinate if they don't feel like they're in immediate danger.
+Then I think that having some very specific drop dead date will help incentivize that migration and then of course there's many other issues such as the fact that of course, many of these coins will never migrate because they're lost.
+Um, and you know, for whatever reason can't be accessed, um, and you know, what do we want to do about the potential economic ramifications of suddenly having tens, if not hundreds of thousands, maybe even a million or, or more Bitcoin flooding into the market and going into the hands concentrated, most likely into a very few hands of, you know, tech giants or nation states or what have you.
+So we, we, we wrote that you provided arguments for, and against the destruction of these coins that wouldn't move by potentially some deadline, but you, you concluded in favor of destroying slash making unspendable those unmigrated coins.
+Um, maybe talk a little bit about a few of the arguments towards that.
+Um, we, we, we outlined them in the newsletter, but maybe it would be good to hear from you.
+Yeah.
+I mean, there were quite a few.
+Um, so I already covered the sort of incentivization issue.
+Um, let's see.
+Um, let's see.
+So, uh, the, the most common thing, like I said, that people have the, the knee jerk reaction is kind of the moral and philosophical aspect of not, not, uh, essentially confiscating or stealing people's funds.
+And the conclusion that I came to on that was that it's basically a wash because.
+You know, either you have the protocol, the, the, the, the entire network agree to, uh, freeze, burn these coins, or you basically know that they're going to fall into someone else's hands.
+So it's, you know, theft, arguably it's theft one way or another.
+So I don't really see that as being a strong argument either for, or against there's the economic district, uh, disruption argument of, you know, what happens to the actual overall value of the network?
+How does that have ripple effects upon the entire industry?
+I would never go so far as to claim that allowing these thefts to happen would destroy Bitcoin or, you know, prevent the network from operating.
+But I do think that if a large number of coins fall into a small number of hands, they are going to liquidate a decent portion of them.
+And the main reason that I believe that to be the case is just look at what happens with any other large scale theft, uh, uh, especially like North Korea.
+Um, really when, when one entity all of a sudden comes into possession of millions or billions of dollars, they, they tend to do what they can to do.
+To diversify it and, uh, preferably get it out of Bitcoin as a system to use it for other things.
+Um, there's, there's somewhat of a, uh, a precedent issue here.
+You know, we've, we've also seen pushback that, you know, it's not, it's not really in the purview of Bitcoin as a system to decide how people should be securing their coins.
+And I don't think that that's necessarily the case.
+If you, you look at the entire history of protocol changes, a number of op codes have been both added and removed over the years.
+Um, and, and, and those are, you know, specifically saying, you know, we will allow or disallow you to lock your coins based upon, you know, this given set of functionality.
+It has been a long time since op codes had been removed.
+That was more Satoshi era stuff.
+But, uh, back in the day, you know, many were removed because Satoshi decided it, it simply, uh, was not, they, there was not enough confidence that, you know, certain pieces of functionality were in fact safe to use.
+You mentioned that there's technical considerations and economic considerations as well.
+And it, it seems to me that this is maybe already becoming a little bit of a polarizing thing where people are sort of, obviously, this is the way we go or obviously this is the way we go.
+So there's, there's, there's two I'll call out really quickly here.
+Um, in one of the threads, not, not your thread, Jameson, but another quantum thread, we have, uh, Peter Woola saying, of course they have to be confiscated.
+Okay.
+So there's Peter's stance.
+And then in response to a tweet I had provoking this, um, discussion on Twitter, you have Parker Lewis, who's maybe, maybe more on the,
+economic side saying quantum theft, a thousand X, not even a question.
+And then he goes into some economic, uh, rationale of, of why you should allow that.
+So you sort of have, and I saw even Jameson, you were promoting that you were going to be on this discussion.
+And, and somebody says, you know, basically why, of course, this is a terrible idea.
+Why, you know, so it seems quite, quite polarizing.
+Um, merch, it sounds like you're itching to say something.
+Or no, I, I think, um, Jameson wrote this in his, uh, writeup, but, uh, I don't understand the point why we would be incentivizing development of quantum computers.
+Um, sure.
+They might be useful for some stuff, but why would we give them a big portion of the Bitcoin UTXOs just because they ended up being the first ones to develop a completely unrelated technology.
+that just doesn't compute from the incentive structure of Bitcoin, uh, especially if it's coins that arguably can be thought to have been lost.
+Because, um, if we do enact the soft fork of, um, up to this date, you have to spend all, uh, pay to pub key UTXOs or whatever.
+And after that, they're lost if you don't, uh, there will be a lot of coverage, you'll basically have to live under a rock to not hear about it.
+So if you then, over the course of several years, don't move your coins.
+um, the only conclusion can be that either you still didn't hear about it, and I don't know how you would do that, or you lost your coins.
+And if your coins are lost already, we're actually not changing the status quo by confiscating them.
+And we would, in fact, reapply them to the UTXO set by giving them to quantum miners.
+So I, I just, I haven't seen Parker Lewis argument.
+Maybe, maybe he has some convincing points, but from what I've seen, I just, I don't see a point for, for that stance at all.
+Yeah.
+I mean, so I pulled it up.
+Uh, so Parker said, you know, it's not for the network to decide how people secure their Bitcoin.
+I obviously disagree with that.
+It is absolutely our, uh, collective, um, incentive for people to keep their Bitcoin as secure as possible.
+Um, and there have been precedents for that previously.
+Uh, let's see.
+He said, you can't know for sure that they're otherwise lost.
+That is correct.
+There's, there is no way to know for sure.
+There's only, uh, the issue of us trying to incentivize people to, uh, migrate their coins.
+Uh, let's see.
+It would set a terrible censorship precedent for the network and break previous valid, valid contract.
+Uh, yes.
+And my argument is that that was a wash because people, this contract is going to get violated one way or another.
+Uh, let's see.
+Then there was theft is still theft in any jurisdiction.
+Uh, yes, that is true.
+But Bitcoin doesn't care about laws or jurisdictions or anything.
+So once again, I also think that the moral argument is a wash there.
+Um, and then he makes the point that, you know, the attackers would only be able to spend it once.
+And, and that is true.
+And so, you know, there's no way for us to quantify whether this would be a very long-term or a short-term
+volatility because we don't know how quickly the attackers would be able to scoop up all of these coins.
+We don't know what they're going to do with all of those coins.
+Um, then he was suggesting that anyone who steals Bitcoin would have a priority in maximizing value.
+Well, I would think they would, they would have a priority in, in maximizing the total like liquidity that they could extract.
+But I don't know that they would necessarily, you know, become like Michael Saylor hodlers.
+Uh, this is all speculation, of course.
+Um, so this is a very complex issue to talk about.
+And so that's why I focused not only on the philosophical and moral aspects of it, but also on the game theory.
+And if we look at the actual game theory around what would be required to, you know, quote unquote, burn these coins, it's a soft fork.
+So you don't have to get consensus from all node operators.
+You just have to get, you know, sufficient, uh, mining pool hash power consensus.
+So then, you know, I haven't gone out and talked to the various mining pool operators and major miners about this, but I suspect.
+They would probably prefer to have the value of their Bitcoin, uh, not.
+Be even more volatile by giving a bunch to quantum attackers.
+Uh, you know, this is, this is an open question and I'm sure eventually we'll get around to having those discussions.
+Jonas.
+Oh, sorry.
+Go ahead and merge.
+Yeah, I wanted to also bring up another point that came up in your thread.
+Um, um, so as you said, uh, humans tend to procrastinate if we do set a clear deadline, uh, let's say four years out or something even longer.
+Uh, every UTXO that is vulnerable would have to be moved before that date.
+Of course, other people still want to use, uh, block space for their transactions, their day to day needs.
+Uh, so it might help to incentivize, uh, or increase the transaction fees on the network.
+Uh, but, um, if people procrastinate, it might end up in a run on the block space toward the end of the deadline because people miscalculate, think they have more time than they have.
+Uh, because we might actually use a very significant portion of, uh, uh, at least a year's worth, if not multiple years worth of block space to move all these UTXOs.
+So sure, the people that are on top of it, they would move early, get it cheap, but then maybe the last few months we would have a huge, uh, fee rate spike and only the people that can afford it.
+Uh, so game theoretically, probably the most valuable UTXOs would be saved and the other ones would remain vulnerable past the date and thus be, uh, burned.
+But, um, so there, there's a very clear advantage to the deadline, uh, being a single day because everybody has that date and they know it.
+And it's easy to remember what did perhaps be better to time out UTXOs based on age so that it spreads out a bit for, let's say, I don't know, five years after.
+Um, so let's say 15 years after the UTXO was created or 20 years after the UTXO was created would be at least five years away for, for all these vulnerable UTXOs.
+And then they would spread out and be, uh, come burnt at separate times.
+And maybe that would help, uh, spread out the block space demand.
+Have you thought about this?
+Yeah.
+I mean, there have also been, uh, obviously when we're talking about changing the rules, you could change them to almost anything that you can imagine.
+And, uh, there were some people who responded on the mailing list about, um, alternative methods of like trying to
+to basically gate the spending of quantum vulnerable coins.
+And.
+I mean, you can do that from a, you know, counting UTXOs perspective, but I don't think that you could actually
+gate it from a value perspective.
+And, and really what I mean there is that, you know, the value of the Bitcoin is not distributed evenly across
+all UTXOs.
+And I think I had in my article, you know, even if we go through the happy path
+and all of the active, uh, folks migrate before Q day.
+Um, there are a number of addresses with over 10,000 Bitcoin in them that haven't been touched
+in like 14 years that are most likely not going to move.
+Um, very specifically, I called out, you know, James Howells, the guy whose hard drive is in
+a landfill in Wales.
+He has 8,000 Bitcoin and a vulnerable address.
+We know that's not going anywhere and that would get scooped up.
+So, uh, my point is, I don't think that we can programmatically, um, clamp down very much on
+what the economic disruption would be.
+Uh, there have also been other people who have.
+Very hand wavily said, well, what if instead of burning them, we try to actually reuse them
+for thermodynamic security and basically change, uh, the subsidy, you know, add it to the, the
+subsidy in the far future.
+And of course that's totally possible, but I suspect that that's going to be even more contentious.
+Um, I haven't seen any concrete proposals on how to do that.
+I'm, of course, more than open to, to reading anyone's ideas about that.
+I just suspect that, you know, keep it simple, stupid, uh, having a flag day is probably the
+most straightforward way to go about it.
+Jonas, have you given any thoughts at this angle of the quantum discussion?
+Yeah.
+I wanted, I wanted to ask, uh, Jameson on his, uh, opinion on an, uh, on an alternative to a
+flag day proposal.
+I mean, Merch mentioned, uh, the five years out or whatever, which seems a bit early to me, but
+there's this problem of when is this flag day, which seems to be difficult to coordinate, um,
+for it or way before it happens.
+So, uh, there's this alternative where you essentially put a discrete logarithm challenge
+on the blockchain, which has, uh, um, a lower, um, hardness than sec P to 56 K one.
+So it's easier to break, um, than, uh, the usual public keys that we use in, in Bitcoin.
+You put it in the chain and then, um, you add a rule that whenever this is broken,
+the suspend or whatever, then these rules apply.
+For example, making the quantum vulnerable public keys unspendable.
+What, what do you think about that?
+Well, I guess that is then going to be under the assumption that someone who has quantum
+supremacy would actually trigger the rule, right?
+Yes.
+You need some white knight to do that.
+Yeah.
+Yeah.
+I mean, it's theoretically possible.
+I just don't know, you know, if I had quantum supremacy, I probably would, uh, avoid triggering
+that rule, uh, and, you know, try to enrich myself as much as possible before, uh, any burning or,
+or freezing or whatever actually got triggered.
+So yeah, it's, uh, it's a tough problem, but, you know, thankfully I think we have a long time
+time to discuss it and, and like I said, it's, it's not even the most pressing issue.
+First, we actually have to come to agreement on a migration path before we can even talk about,
+you know, incentivizing people to use the migration path.
+I dropped in the chat, this BTC puzzle.info, which I think came up in a stack exchange
+question at some point where there actually is a bunch of Bitcoins, thousand Bitcoins locked in,
+in different levels of, uh, hardness of the private key, but there's actually a range specified for each
+of these Bitcoins that are locked. Is that something that would be a canary in the coal mine
+to quantum or is that just a different kind of puzzle?
+I guess it depends on if their public keys are exposed. Um, I last, they are a long time since
+I looked at that. Um, so yeah, it really comes down to how much, uh, you know, what's the bounty.
+So if there's one with a thousand, uh, that would probably get triggered. You know, that would get
+triggered, uh, before probably people started going after the Satoshi era, uh, 50 Bitcoin Coinbase
+outputs. But, uh, I don't think it would get triggered before some of these other addresses
+with tens of thousands of coins in them got scooped up. That's fair. Yeah. There's, there's the Binance
+cold wallet, which I think, what is it over a hundred thousand? Oh yeah. Well, pretty much
+all the major exchanges seem to have, uh, over a hundred thousand coins and one address that already
+has the, uh, pub key exposed. Yeah. So, um, I, I wonder what the puzzle as well. Um, if it's just a
+puzzle without a reward, the cost might be very significant, but if you had hatched a huge bounty,
+such as the 1000 bitcoins or even more, then perhaps the white knight would not only, um,
+do it for the good of the network, but say, okay, I can either try to, to spend my quantum supremacy
+on going after one of those really big addresses and steal. And, uh, that might work once or twice,
+but then if there's more than one entity, especially one that can do it at like a thousandth of the power,
+they very much would perhaps think that, uh, collecting the bounty on, on this trigger, uh, you
+think so with the lower difficulty would be worth it. If they like the second runner up might, might have
+more incentive to collect the, the reward on, on the trigger. Right. So the question is how, how big is
+the gap between actual sec P curve security and the puzzle? Because if the gap is wide enough, then maybe
+you have some quantum attackers, which are not white knights, which are waiting until they actually can
+break sec P or do you have this one good guy who triggers this puzzle, but it's probably difficult
+to find a suitable puzzle for that. So yeah. I imagine a lot of discussions on that.
+Yeah. I mean, I kind of mentioned it, uh, before, but, um, you know, in order to actually accomplish this,
+you don't actually have to make any code changes. Uh, there doesn't have to be anything implemented
+in the nodes. It could actually be done just as an agreement upon amongst the different Bitcoin mining
+pools to stop including transactions that spend from quantum vulnerable addresses. And, and I could
+certainly see that situation playing out if, um, we start to see, you know, massive movement of quantum
+vulnerable coins earlier than we're hoping for. Well, in that case, I very much would prefer a flag date where
+people know in advance that this is to be expected to not the mining pools unilaterally starting to
+in this case, maybe call it censoring.
+We have two more quantum related items this week. The second one is securely proving UTX ownership by
+revealing a SHA-256 pre-image. This is a post from Martin Hbovstiak. He posted to the Bitcoin dev mailing list,
+referencing Jameson's post saying, quote, "This is somewhat related to Jameson's recent post,
+but different enough to warrant a separate topic," unquote. Martin goes on to outline an idea,
+which we noted in the newsletter is similar to an idea from Tim Ruffing from 2018. And Martin's idea,
+as I understand it, and I'll defer to smarter people on, on this to help translate, but a user essentially can
+commit to a quantum resistant signature in an initial Bitcoin transaction, which can prove ownership over a
+quantum resistant private key without exposing any vulnerable data. So that all happens in this first
+Bitcoin transaction. Then later, the user can spend both that old output as well as a quantum resistant
+output together, revealing the quantum resistant signature, and then the rules would ensure that
+that old output can't be spent independently of this quantum resistant output. They must be spent with
+the quantum resistant output as well. This would force an attacker to either forge a quantum resistant
+signature or rewind Bitcoin's blockchain past that original first transaction confirmation. One assumption
+that's baked in here is that we have some sort of a quantum resistant signing deployed, but if, if there
+were something like that out there, is this a good idea? Merge, Jonas, Jameson, anybody wants to chime in?
+Yeah, so I think the main idea is that you add this additional step. So now in order to spend from the quantum
+vulnerable, well, I shouldn't say quantum vulnerable. This only works for outputs that have some, that are the
+hash of some pre-image where the pre-image is unknown, right? So this doesn't work for pay to public key or something like that.
+And what you add is you add an additional transaction where you essentially commit to some data and then
+you make an additional transaction, which actually allows you to spend these coins. So it's this two step
+process. And yeah, so this is also known as a Guy Fawkes signature and yeah, it works.
+The downside is that you have suddenly these two transactions. Maybe that's fine.
+The alternative. So, so I think Martin, he brought this up to argue that these, um, pay to public key hash
+outputs, for example, they don't need to be, uh, burned, uh, or confiscated, uh, because you can,
+you could devise ways in how to spend them. And the Guy Fawkes signature would be one of them,
+but there are other also others, um, alternatives. Um, for example, you could in a single transaction
+provide a, um, zero knowledge, proof of knowledge that, you know, the pre-image without revealing it.
+And only you can do that. Um, if only you actually know the pre-image that sort of depends on how
+your wallet is set up, et cetera. Uh, so this would be an alternative, of course. Uh, I, I would think
+at least the ZK, uh, approach would be quite a bit more complex, uh, but at least it doesn't need, uh, two
+transactions. Um, so yeah, I, I think these are the two, two things you could, you could do their both
+work and have their, um, uh, trade-offs. The zero knowledge proof that replaces the reveal of the
+pre-image of the, in this case, public key hash, um, that would be a hard fork though, because of course,
+old nodes would not know how to interpret the zero knowledge proof, right? Or I guess
+do you have an idea? Could it be done? Sounds like it would be a, would be a hard fork. Yes.
+Maybe there are creative ways for, for how to solve this, but right. The way you phrase this,
+this would be hard for, and of course, uh, the zero knowledge proof might, might be succinct,
+at least in a theoretic way, but concretely it might be, uh, quite large and, uh, take rather long to,
+to verify, like, it could be really, really large. So, uh, I, perhaps the Guy Fawkes signature approach
+is, is the better one there. Yeah, I think, sorry, go ahead. Uh, just like one, yet another wrinkle to
+this whole debate, uh, that hasn't really been brought up too much yet, uh, because we don't have
+consensus on what the quantum resistance signature scheme is going to be, but it's looking like they're
+probably going to be much larger from a data size perspective. And it's not outside the realm of
+possibility that if, if it comes down to it and we end up, uh, having to use, you know, an order of
+magnitude, more data on chain per transaction, this very easily could reignite the block size debate.
+And so we might be headed for some sort of hard fork anyways.
+Yeah. Although, um, at least in BIP 360, the idea is to introduce another, um, section to the
+transactions that could have different rules, sort of like with the SegWit, uh, approach of discounting,
+uh, separate section of the data that is only visible to upgraded nodes, which would be possible,
+of course. Uh, but yeah, the, there is some extra special care that you need to take. So you can't use
+that as a data dump and then you need to start transferring all that extra data, at least among upgraded nodes.
+I think it might very well be more than one magnitude more, maybe even two magnitudes, more data.
+And then, uh, I think what struck me around the conversation with, uh, the Sky Fox scheme there,
+uh, I think some respondents pointed out that, uh, the way the scheme was described,
+it would turn the transaction into, or depending on how it's designed exactly, it could easily turn
+the new transaction also in a quantum vulnerable transaction, but only for short-term attacks.
+So, um, once you reveal the public key, the attacker might be able to, to RBF your transaction
+by recovering the private key from the reveal public key. Um, maybe these respondents misunderstood how
+exactly the construction worked with the commitment. If you do spend a quantum resistant input 2 that is
+required for the quantum vulnerable UTXO to be spent, then of course it would be safe. Uh, because the
+attacker wouldn't be able to make the quantum resistant, uh, input, uh, commit to the vulnerable input.
+But if it's just, um, a hash that you hash into your signature, they could just produce another signature that
+uses the same, um, offset and then they would also validly spend a pre-commitment, right? So all of this
+is pretty complicated. So I'm not sure if that is a misunderstanding, but because that should actually
+not be possible. That is the promise of this guy, Fox signature that, that doesn't work as long as the
+commitment transaction is deeply enough confirmed in the, in the book chain. So, but that brings, brings us,
+this. I mean, probably. So there are variants of these guy, Fox signatures, and none of them have
+been really written down in a very precise way, but the things I've seen also in the optic newsletter,
+they don't work with just the UTXO model that we have. So the way you've wrote this down is that
+notes, they need to search for the first transaction or whatever, which referred to that old output.
+that would be a global state. So that would be something you, I believe that you could probably,
+uh, get this somewhere into better into the UTXO model. But, uh, if, if that doesn't work,
+then this would definitely be a downside that you would suddenly have to have this new data, global data
+structure. Yeah. There were some other mentions where people were like, oh, we, we only burn, um, public key
+hash type addresses if they've been used before. But again, if you want to know what addresses have
+been used before, you have to keep track of every single address that was used before in the whole
+blockchain, which is quite a big database. Right.
+We have one more quantum related discussion this week. It is draft BIP for destroying quantum insecure
+bitcoins. And so this is sort of ongoing theme here, sort of piggybacking on Jameson's discussion. So if the,
+if the Bitcoin community decided as Jameson somewhat recommends that, uh, quantum vulnerable coins should
+be eventually destroyed, if quantum risk to Bitcoin was imminent, there would need to be some process.
+And we've touched on this a bit in our discussion, but there need to be some process to achieve that end.
+So Augustine Cruz posted to the Bitcoin dev mailing list, a draft BIP that describes potential processes
+that could happen if quantum computing comes and there's a need to disable bitcoins that are vulnerable
+to quantum theft. The BIP is titled quantum resistant at address migration protocol queue ramp. And the idea
+is to enforce some sort of mandatory migration period for funds that are held in legacy Bitcoin addresses
+to migrate to some future version of quantum resistant addresses. The BIP is high level, but it does
+outline how such an enforced migration might go including specifying terminology like migration
+period of time, a migration deadline, a grace period, the rationale for this approach and potential
+criticisms of this approach. Most of the mailing list discussion was not around this idea of the process
+of enforcement, which, which is what the BIP was discussing, but on similar to what we discussed earlier,
+whether there should be any enforcement of a forced migration to quantum safe addresses to begin with.
+Murch, Jonas, Jameson, did any of you get a chance to look at this BIP in any detail?
+Uh, I think I only skimmed it, but, you know, one other thing that came to mind is that, like we said,
+you know, there's no way to definitively reach out and inform all users though, uh, existential crisis
+like this is going to be all over the news and, you know, hopefully all wallet software will implement
+some sort of alerting so that anyone who even opens a wallet will end up learning about it. But, you know,
+one, one other way, uh, purely from like a protocol perspective of trying to get people to realize something is happening
+is, uh, you know, having a graduated process where you, uh, basically restrict the creation of outputs.
+Like even today, I think you're still allowed to actually create pay to public key outputs, right? There's still,
+there's still a handful of people out there who are doing that. And then we have no idea why,
+but if all of a sudden you were doing that and you noticed your transactions were getting rejected,
+you would probably look into the reason behind it.
+Well, like, like I mentioned, most of the discussion, at least so far at the time of the newsletter being
+authored was around whether there should be enforcement of the forced migration or not. Maybe there'll be
+more discussion on this in the future. Merch, do you have something to say?
+I was just skimming the, um, uh, the BIP draft briefly and I, I saw that, uh, example difficult,
+uh, sorry, the example period for, for forced migration was 20,000 blocks and that seemed quite short. And that,
+that was what made me shake my head here. Perhaps just an example. Um,
+Merch, one thing on the UTXO set, uh, we had discussed in maybe, I think it was the previous
+item that, Hey, watch out if you have, you know, a lot of Bitcoins in a single address, right? Um,
+does this discussion ramping up on Quantum incentivize Bitcoin holders to bloat the UTXO
+set with smaller value UTXOs to it, you know, it's sort of like the, you just don't need to be, just don't
+be the, the slowest antelope, right? Like if you just split up your, your coins enough and bloat the UTXO
+said enough, you won't be targeted, uh, you leave. I mean, from where we're standing right
+now, what I think it incentivizes is people to not reuse addresses. That's like one of the biggest
+problems. Uh, you know, Bitcoin address reuse, uh, is bad for privacy, but now, you know, it should be
+clear that it's also bad for security. Yeah. I think that's a nice, um, side effect. One that we should
+definitely promote more and, uh, like the knowledge about it. I mean, um, I think that, uh, the BIP 360
+draft definitely recommends having smaller UTXOs. They talk about basically the old coins, um,
+mined by presumably Satoshi acting as a form of shield for any UTXOs that are smaller than 50 Bitcoin.
+Um, again, in the context of multiple exchanges, having several hundred thousand Bitcoin and across
+three, four addresses. Um, I think once these get collected and dumped on the market to diversify,
+it doesn't really matter whether your Bitcoins are in a few UTXOs or many UTXOs you're in for a wild ride
+of volatility. And, um, so I, I would push back a little bit on the argument that it makes a lot of
+sense to, to fan out your UTXOs more in order to, to be less of a target. Um, I think it still makes sense
+to, to have some sort of distribution of values. So you have some small coins, some bigger coins,
+some big chunks, uh, to, um, have some of the right sizes around what you're trying to spend and not to
+have too much future, uh, block space debt. Jonas Jameson. I think that wraps up the items that we
+explicitly wanted to have you both on for your, you're welcome to stay on as we go through the draft
+biff for consensus cleanup and then releases and notable code segments. But we understand that your
+time is valuable and if you need to drop, feel free. Thanks. Yeah. I got to go work on my presentation
+for up next this week. All right. Well, we'll see you in a few days then. Bye.
+
