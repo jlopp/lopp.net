@@ -1,0 +1,295 @@
+all right goldiblocks so why am i talking about something nobody wants to talk about
+mainly because i think right now nobody cares there's no urgency you know there's no wringing
+of hands and gnashing of teeth over the block size why right now there's actually not that much
+demand uh in fact i would argue perhaps the blocks are too large right now this is something i started
+getting a bit worried about a year or so ago um you know i've i've been watching the blockchain for
+many many years i watched the fee estimates this is something i've opined upon many times and
+wrote fee estimation algorithms in my early days working on bitcoin and it seems to me that from
+all the metrics i've looked at we've never really gotten another level of like retail fomo adoption
+since 2017 we've had a few bumps here and there but mostly it seems like it really is the institutions
+and if there is retail adoption happening a lot of it's going through the etfs so point being there's
+not been a lot of demand for block space we've seen you know a few fads uh come and go um there was like
+ordinals and runes we we did have a historically longest period of time ever around the last halving
+where the fees were exceeding the subsidy for something like a hundred or so blocks and that was good you know
+that was uh proof that it's theoretically possible to have uh sustainable uh fees at least for some
+period of time but we're still a long ways away from what i think is a long-term sustainable uh fee
+market so those of you who are around back in 2017 or so you should be well aware that the primary thing
+we were really debating back then was do we optimize for low cost of validating the system aka running a
+full node or do we optimize for low cost of transacting and i think it's quite clear which
+of those two won out and i think that it was a sensible uh move forward but that that is not
+the last question that needs to be answered here and looking at this over a very long-term perspective
+i think there's going to be a question of how do we maximize the number of people who are able to use
+bitcoin in a permissionless manner and doing so of course requires block space but how do we do that
+without screwing up the potentially fairly delicate balance of powers that we have between the
+different stakeholders and the ecosystem you know this is why the block size debate was so contentious
+is because it was also kind of a governance debate it was a question of who holds the power in the
+system so i think um from reading reams and reams and reams of block size debate text this is a quote
+that really struck me from greg maxwell 10 years ago if the system is too costly people would be forced to
+trust third parties rather than independently enforcing the system's rules aka being able to run your own
+node if the blockchain resource usage and this is important relative to the available technology is too
+great then bitcoin loses its competitive advantage compared to legacy systems because validation is too
+costly forcing trust back into the system this is not what we want and if capacity is too low and our
+methods of transacting too inefficient then access to the chain for dispute resolution you know potentially
+from second layers and and other types of ecosystems that are anchored into bitcoin that will be too costly
+once again pushing trust back into the system so this is why i've entitled this talk goldie blocks is
+because i really think that what greg maxwell pointed out is that this isn't just a one-way problem
+it is kind of a balancing act you don't want cost to be too low you don't want cost to be too high
+and that is why i think all of the previous block size debates were flawed i think block size is the wrong
+question we've all been going around or at least a number of years ago saying what should the block size be
+but i think that you know just trying to pull some static number out of a hat is always going to be wrong
+i think we have to ask more nuanced questions which is how do we incentivize the efficient usage of block space
+which means of course that it can't be too cheap but how do we incentivize development of other layers
+this is also where fee pressure comes in and is incentivizing people to be more efficient
+but how do we avoid the tragedy of the commons which is you know block space is a common resource
+it is something that we all have to share
+so if it's too cheap you can expect people are going to be putting all their jpegs into the blockchain
+on the other hand how do we take advantage of technological growth and what that really means is
+we understand that technology is deflationary a given type of computational resource is basically
+guaranteed to become cheaper over the long run over many years and then finally how do we sustain
+in particular the thermodynamic security of the system and i think the answer to all of this is
+and of course fees are a consequence of block space supply and demand and so since we've mostly only been
+talking about supply at least in the block size debate i think that the demand component is something
+that was generally overlooked and also if you've been around for long enough then you shouldn't be too
+surprised by this you know this meme comes up in many different areas of society but it's true
+for block space as well so we've had times where there were very high fees and that incentivized people
+to use less block space or to look for alternative solutions maybe those were layer twos maybe those
+were completely other networks maybe they were going back to using fiat and tradfi networks
+but then if we successfully increase the efficiency of block space
+then there will be more block space available which then creates low fees those low fees result in
+people putting their jpegs into the blockchain and and then these inefficient uses of block space once
+again create high fees and i think that this is some a cycle that we should pretty much expect to
+continue in perpetuity if nothing changes so what's best for miners and you know i'll say like this is not
+by any means a like highly accurate model i'm just trying to portray the way that fees work and so on
+the left this orange we have this is like kind of a one megabyte block limit and then red is 10 megabyte
+blocks and then green is 100 megabyte blocks and the the only point that i'm really trying to convey here
+is that as long as the demand which is on the x-axis here is less than the available supply
+then you can expect that the fees that people are paying the fees that are collected by miners are only
+going to grow linearly because people are only going to pay the minimum relay fee which for a very very long
+time has been like one satoshi per virtual byte but as soon as the the demand exceeds the supply of block
+space all of a sudden you have a fee market you have an auction for a limited amount of block space and fees
+essentially go exponential so if we want to be acting and operating in that higher
+level a robust fee market space if we want to maximize the thermodynamic security by getting miners more fees
+that means blocks have to be full there has to be an ongoing auction for block space so that the block
+space is only used with the most valuable economic uses whatever that may be if people are willing to
+pay for it that means that they find it economically valuable so stated differently i think that for long
+term of thermodynamic security it is desirable that the supply of block space be strictly less than the
+demand for block space of course predicting the future is very difficult what will the demand
+be as i mentioned earlier it's cyclical you cannot possibly predict all the different variables that will affect
+demand so when i look back upon a lot of the bitcoin improvement proposals for block space
+and block size i think they were flawed they tended only to look at increasing the block size a lot of them were just
+pulling numbers out of a hat these people were mostly considering sort of short-term fixes just kick the
+can down the road and then we'll argue about the block size later when it becomes an issue again
+and none of these bips really took economics into account the way that they increased block size it
+was generally just like let some period of time go by and then double triple quadruple just do something to
+increase to increase the block size more because we expect that it'll be cheaper from a resource
+standpoint and we should be able to handle it and so the result of that is that you're you're basically
+going to be aborting any fee market that may develop at any point in time because you're going to just
+flood so much supply into the market of block space and also some of these bips were concerning because
+they actually gave the miners the power to potentially game the block size itself which i think is not
+something that we want to do we don't really want to disrupt any of the current balance of power in the
+system and then finally bip 103 i think was the only one that actually concerned itself with safety
+parameters from a node operator point of view and bip 103 was peter woola's bandwidth increase base i think it was
+something like 17 per year increase on the block size so then we look out upon the rest of the ecosystem
+there's not a ton of networks out there that automatically adjust their block size or even have
+ways to easily adjust it when i was looking out i saw that dash essentially has a sort of master node voting
+mechanism um ethereum in the proof of work phase was mainly based upon miners voting on the gas limits and
+they were able to increase it if they agreed to do so then we have eip 1559 which is a little bit
+dynamic in the sense that it has a target and then it uh it kind of adjusts the base fee requirements for
+transactions up and down depending upon if the previous block was above or below the target and then uh that is
+allowed to go up to basically double of the uh the target of gas i think that the validators can still
+vote on increasing that max but uh don't hold me to it um finally monero monero was particularly
+interesting because it is highly dynamic and it's basically it allows miners to increase the block size
+uh essentially if they take a penalty on the subsidy which means that they have to increase the minimum
+transaction fee how does that work more specifically uh with monero it looks at the median block size of
+the previous 100 blocks and um if that's more than 60 kilobytes then it allows you to create a new block
+that's larger than that medium block size and then there's basically a quadratic penalty formula that
+allows you to go up to as much as double the block size but the higher you go the more penalty the
+miners have to take on the subsidy which means they have to require higher transaction fees to make up
+to offset that cost so small increase is a small penalty large increase is a much larger penalty and
+then if you try to do more than double the block is invalid and we can look at some charts so uh here is
+in the red the block size and in the orange the total fees of course uh you know 2017 2018 is a bit
+off the charts so we probably need to zoom in a bit more to see what is some of the more recent periods
+looks like and you can see it it's it tends to adjust pretty well block size goes up fees go up block
+size goes down fees go down but then you zoom in even more and like one of one of the issues that i have
+with this is because it's this sliding window of just the past um 100 blocks then if you
+essentially level out if the block size gets to be nearly flat then the the the fee uh or the penalty
+goes down therefore the fees go down again so it doesn't really do a great job at sustaining fees
+it does a good job at buffering itself against the volatility and requiring people to pay more if we're
+doing a sudden increase in the block size so i think a little bit could be learned from this so
+the the question that i have is can we adjust the supply of block space in response to demand
+and this is a really hard problem um you know preferably we would be able to just look at the mempool
+and say like how much mempool backlog is there and what are the fees in the mempool and so on and so
+forth but obviously you can't have consensus rules based upon the mempool uh it's just not going to
+work because there is no the mempool it's not a guaranteed thing then as i said earlier um we we
+have to be really careful to not change the game theory of the system to not let miners potentially
+screw with it even more as we've already had several talks earlier um that we're talking about some of the
+terrible things that adversarial adversarial miners could already do today if they really wanted to
+and i think we should avoid getting into that situation
+and then finally you know we don't want sort of one-off edge cases to potentially create more volatility or be
+able to affect any sort of algorithm that we have here so if we're going to implement a dynamic algorithm
+i think we should learn from our own mistakes from other people's mistakes uh especially you know
+look at difficulty adjustment algorithms i think there's a number of parallels here we also had
+yesterday some talks about how there were bugs in bitcoin's uh difficulty adjustment algorithm
+so we need to understand any of these dynamic adjustment algorithms need to be extremely well vetted
+even having you know off by one bugs uh having edge case bugs can actually create potentially uh
+catastrophic circumstances if someone decides to game them adversarially um we can also look at the
+history of bitcoin cash and their uh dynamic adjustment algorithms uh for difficulty and i think they've
+they're on like the third iteration and i think the really high level issue of the first two is
+basically they were trying to be too um quick to adjust and they discovered that the the miners
+the miners discovered that you know that created uh an advantage for them to basically go in and mine
+bitcoin cash for a little while come back out mine bitcoin and go back and forth and really ping pong it around
+so you you do have to realize that uh miners are going to do whatever they find is is best for them
+not necessarily what you think is best for the network so if we're looking at the bitcoin block size this is
+when i i started asking myself you know is it even possible like is there data in the blockchain that
+that we can use to try to figure out what the demand for block space is so if we look at the block weight
+versus the fees one thing i think should be pretty clear is that you know as long as the actual block
+weight used is less than the maximum like i said earlier then fees are going to be pretty low there's
+not going to be much contention for block space there's not really going to be an auction market
+so if we zoom in a bit more and this is also looking uh let's see the first one is transaction fees per
+byte this is transaction fees per block weight as you can see there's not really much difference between the
+two but once again we we see if we zoom in even more um when the blocks are not full fees are practically
+zero you know that one satoshi per virtual byte but then something changed in 2023 and i think um
+this is you know around when like ordinals and um you know people starting to put
+their jpegs their nfts uh their other tokens and stuff into the blockchain this is this is when we
+really started using up all of the available block space even when um sometimes the fees would stay
+really low so maybe this is going to change you can see it starts to drop off again very recently you
+know maybe that was a fad that is over i don't think that we can continue uh expecting or assuming that uh
+blocks will not be full um and and even if blocks are full there will be times where the fees are
+really low just because there are now other use cases out there where people are willing to essentially
+bid the minimum relay amount and hope that they can use block space for you know some non-financial good
+what if we look at block size versus mempool which is basically you know the sort of queued up
+demand for block space and this is kind of what i was getting at is these days we can't really expect
+that there's going to be a correlation between the two as a result i don't really see how looking at the
+block side at the previous blocks and their size is going to really allow us to have any sort of dynamic
+change that would allow us to create a sustainable fee market but if we look at here is the mempool
+basically the bitcoin and mempool versus the bitcoin blocks transaction fees we can see there's a pretty
+good correlation between the two which should be somewhat obvious right because mempool is basically
+just what's waiting to get into blocks so i think if we're looking at trying to create some sort of
+algorithm algorithm it really needs to be focused on what are the fees that are being collected by the
+miners not what is the actual size of the blocks that are being created by the miners so if we're doing
+that how how can we do it uh you know without changing the game theory i think most people would agree that
+we don't want to just let the miners vote on the block size um then we have to ask ourselves can we
+somehow do it based upon attributes of recent blocks and transactions and the problem with that of course
+is that miners can stuff their blocks with whatever they want and they're just paying themselves their
+own fees so that's not very good game theory can we fix it i think possibly uh and uh i'll be interested
+in speaking with you know miners after this to see what they think because you know i'm not a miner i
+don't know what other uh you know side effects this may have to your own business model or whatever but you
+know if we don't want miners to be able to stuff their own blocks and potentially manipulate any sort
+of dynamic block size algorithm then i think we essentially need to have them pay forward the coinbase
+outputs you know whether this is the subsidy and the fees or just the fees um i don't know that it really
+matters but i think that this should be possible if we basically require those uh fees to be sent to you
+know some future miner with sort of an anyone can spend uh check lock time verify some point in the
+future so that you're essentially paying a random miner and um you know this would ensure that any fees that are
+going into the block are getting collected in the future and you're going to be collecting uh the the
+fees from you know some miner at some point in the past so you know this this is kind of hand wavy uh but
+i've just been doing a little bit of modeling and was trying to figure out you know what are the different
+variables that you might want to put into a dynamic block size algorithm and i think that the first thing you look at
+is well are the blocks sufficiently empty if so that means there's really no demand whatsoever like we
+don't even have people putting the jpegs in the blockchain and if so um i would say look at how much
+weight was left over and just decrease the maximum size by that amount and you know keep ratcheting it
+down until we see that there's some sort of market happening if the blocks are full then i think you want to
+to similar to the difficulty adjustment algorithm basically create uh epochs of maybe 1 000 2 000
+blocks or so i wouldn't go less than 1 000 blocks and that's just due to the inherent volatility the
+nature of the demand for block space you know there are both daily and weekly uh cycles of demand for block
+space on a regular basis and this also gets rid of some of the other volatility issues if you're trying to
+adjust things too quickly and basically look at you know the trend between the previous period and the
+current period and uh and these numbers might not make much sense yet but you know if the current
+period is less than 10 sats per weight unit then maybe bring down the block size by just a little bit
+if it's larger than that then i would recommend using some sort of quadratic formula to adjust the actual
+block size uh basically between like half and 2x and the reason that i think a quadratic formula makes
+sense is because of that one of the first charts that i showed where the fees don't go up linearly like
+once you have an actual auction market for block space the fees don't go up linearly to demand they
+really go up exponentially so a little bit more demand actually causes the fees to get jacked up
+significantly and so we should understand that and uh you know adjust with that understanding and then
+finally you know you want to have some floor and ceiling safety limits and sanity checks and you know
+what are what are those you know that's up for debate i'll i'll have recommendations um so this
+is why this is how i came to the conclusion that the uh 10 sats per weight unit is a pretty good indicator
+this is essentially i chunked up into 1000 block segments over the past several years
+and saw that uh once we were well above the 10 satoshi per weight unit in fees those were the times when
+there was actual decent mempool backlog there were people actually having to bid for block space so this
+is the closest thing that i've been able to come to so far for an approximation of figuring out when there
+is real demand for block space that we might then be able to use uh to input into some sort of adjustment
+now what about the node operators you know we don't want to disenfranchise them either and so you know
+this is one of the other projects i've been doing for many years is checking you know how quickly does a node
+sync and uh basically the right side is the older node versions and the as you go to the left it gets newer and newer
+and we see that uh the node software is getting more and more performance and that is good we don't
+want to disrupt that uh this is another way to kind of visualize that is you know over time over each
+release is it getting faster slower in general or like we're kind of treading water um but as you know the
+blockchain only gets larger and larger so we want to keep uh being able to improve the performance of node
+syncing and validation and we don't want this chart to um you know go up and to the right because that
+means it's getting too expensive for people to operate their full nodes i've also done some research into
+peer bandwidth and this is one of the more disconcerting things about the the network i think
+this is mostly a result of the fact that you know people are running their nodes at home on residential
+broadband connections which are almost always um asymmetric you know your upstream is almost
+always incredibly tiny compared to your downstream and so it seems like most of the nodes out there
+have you know less than like 30 or so megabits per second upstream
+so we know that there are a number of different laws when it comes to technological advancement and
+progression uh everyone's familiar with moore's law but most other computing resources have their own
+type of law whether that's around bandwidth disk space so on and so forth and you know i'm just
+putting this here because these are potential ideas things to keep in mind if we're looking
+at you know what should various sanity checks be and i think james o'burn is going to have some
+discussion into some of these edge cases and hopefully that will be able to then
+uh be integrated into my thoughts process as well so here is an example of uh download and you know
+downstream bandwidth over the years as we can see that's increasing a lot um but like i said upstream
+is really what i'm more concerned about there's not a lot of good um data out there this is from ukla
+and what you'll notice is um from 2021 to 2022 i think they somehow significantly changed how they
+were actually measuring upstream bandwidth and they seem to have wanted to hide this like i had to go
+back on the web archive in order to find some of these old charts but suffice to say if you look at the
+columns which are showing the delta year over year it looks like 10 15 20 percent per year increase
+in overall global upstream bandwidth i'm sure that's not evenly distributed but that's the nature of
+technology so like i said we want sanity checks on the floor and the ceiling if we were going to
+implement some sort of hard ceiling sanity check within the context of a dynamic block size algorithm
+currently my suggestion would be upstream bandwidth and so it would be you know something as simple as
+saying um you know take 50 50 000 block epic which is about a year and every 50 000 blocks increase the
+max cap by 10 15 20 depending on what people think is safe what is safe uh you know this is what it would
+look like if we started implementing that algorithm as the hard cap and like i said this is the super
+hard cap we would there would be another dynamic lower cap that would be based upon the economics and
+the demand for block space but if we did 20 per year then by 2040 we would have like i don't know 15x the
+total block weight and if we went with the more conservative 10 per year then by 2040 it would be
+probably around 15 16 million weight units so like 4x of the current max block weight and then of course
+of course there's a question of do we hard fork or we soft fork it seems like with sufficient creativity
+almost anything can be soft forked uh hat to to jeremy rubin for letting me know that you could do a block
+size increase if you just changed uh the merkle route so that we have a new merkle route in the coinbase
+output that you would commit all the transactions to um the downside to that is that it would essentially
+it would be even more of a blinding soft fork than the segwit soft fork was the segwit soft fork only
+blinded nodes to segwit transactions they were still able to see non-segwit transactions a block size
+soft fork would blind legacy nodes to all transactions other than uh the coinbase transactions they would only
+see the coinbase transaction in the block would they would still see other transactions in the mempool they
+just wouldn't see them getting confirmed um you know this this is of course always going to be one of
+the most contentious things to talk about uh whether hard fork or soft fork is worth it you know from a
+design space and sort of cleanliness and technical debt uh perspective a hard fork is cleaner
+um but that i'm sure will be up for a debate personally i do think hard forks are feasible
+on a long enough time frame and i've done some research into this into uh node operators and how
+long they tend to run their node versions for so here you can see you know uh because a new version
+of bitcoin core comes out about every six months so you know every 25 weeks on this chart and you can see
+after about three years pretty much everybody has upgraded their node a different way of visualizing
+that how many weeks does it take for 95 of bitcoin core nodes to stop running their current release
+version and we can see usually that's less than two years but sometimes it's uh getting up to the three
+year mark so i would say like a hard fork if it's scheduled more than three or four years in the future
+and of course non-contentious or not too contentious that it should be feasible to actually pull that
+off without uh creating a chain split but uh to recap you know this is a complex multi-faceted topic and
+there's a lot of stakeholders who have their own interests and my main thing is that i don't think
+anyone can choose the right block size because i think this is a very dynamic market and no one can
+predict what the demand for block space will be and as we continue building out more things on top of
+bitcoin the demand itself on the main chain will fluctuate so we have to ask ourselves what are we
+really trying to do here what are we trying to optimize for what are the things that we're trying to
+keep from breaking what do we consider to be like a healthy state of the network how do we support
+thermodynamic security but how do we also continue to incentivize innovation on other layers like there
+needs to be some cost that drives people to find efficiencies by developing on other layers but how
+do we also do this while remaining constrained within safety limits so that we don't disenfranchise node
+operators and how do we still allow ourselves to take advantage of technological advancement i think
+not doing so is a real foot gun um this is this is basically you know free throughput that is given to us
+by an extremely diverse ecosystem of uh of engineers and hardware developers and so on and so forth and
+to just kind of throw that out the window i think is pretty ridiculous and then finally and possibly
+controversially i think that hard forks on a long enough time scale are probably safe
+so you know there's a few major things that are debatable and i think we should have conversations
+about but i think in order to do something like this you have to fix the block uh stuffing problem
+by changing how the coinbase outputs are locked um some sort of dynamic weekly or possibly longer
+adjustment algorithm that isn't too volatile could be implemented and then of course uh hard floor and
+ceiling based upon various safety limits and if you're going to do a hard fork then i think it needs to be done
+fairly far in the future so that everyone is on the same page with their software so looking forward to
+discussing this with all of the stakeholders involved and like i said this is not me uh
+playing chicken little and saying the sky is falling and we need to do something right now this
+is me looking out really really far in the future and saying uh there's a number of long-term problems
+that we need solutions for and i think that the solutions are out there we just need to figure out
+how to get on the same page about them thank you
