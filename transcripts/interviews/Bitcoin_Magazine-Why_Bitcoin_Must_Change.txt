@@ -1,0 +1,184 @@
+Hey everybody, I'm Shinobi from Bitcoin Magazine, sitting down with Jameson Lopp from Casa.
+Did you guys drop the HODL officially?
+We're still trying to get the Casa X handle without the HODL. Maybe someday.
+Yeah, so to start, I guess, just wanted to pick Jameson's brain about a new
+type of address poisoning attack to get their hands on your Bitcoin. Even though you won't
+see it until after he presents officially at the conference shortly, he talked about
+it here first. So I guess you want to just kind of break down the high level of that?
+Yeah, sure. So in January, I actually saw a post from Mononaut who pointed out a transaction
+on mempool space block explorer that basically looked like an address poisoning attack.
+And what does that actually mean? Well, it means that someone is sending a small amount
+of dust, you know, 500 to 1,000 Satoshis from an address that they generated, you know, vanity
+generated, that has the same starting and ending characters as the target address that they're
+sending it to. And why are they doing this? Well, effectively, they're hoping to trick the
+target recipient to send money to their address rather than to the actual, you know, target
+recipient's address. And how would this happen? It would basically require them to be using
+wallet software that made it really easy for them to go back in their transaction history
+and accidentally copy and paste the wrong address. And as you can imagine, this is a speculative kind
+of kind of social engineering attack. So you have to expect the vast majority of these attacks
+will fail. But, you know, if you're only spending 1000 sats per try, then you could probably get away
+with a pretty low success rate if, for example, you trick someone into sending you several Bitcoin.
+Yeah, it's kind of just like pepper it around and, you know, see what comes back like it's not like generating the address or dusting it's costing anything really practical.
+Yeah, so pay very close attention to the address that you enter in the send to field when you make a transaction.
+Yeah, I mean, there's several very easy ways you can prevent this from ever happening. First, don't reuse Bitcoin addresses.
+That's a very easy one. Second, don't copy paste addresses from your transaction history. So, you know, some services and tools and stuff offer address white listing.
+That would be another way to get around doing this to make sure that you're not shooting yourself in the foot.
+Mm hmm. Let's dive into the sticky fun topic. So no surprise in this space, but the topic of conversations and what the next soft work is going to be is highly contentious.
+So, you know, what do you think in terms of just the general conversational dynamic is a practical way to try at least to move forward with things?
+Because it seems to me like everybody is just in a Mexican standoff with completely different priorities, completely different analysis of like tradeoffs between different proposals.
+Like nobody can really agree on anything. So like where where do we go from here?
+Yeah, I think part of the problem right now is that there's too many proposals.
+They're spread too thin and there's a lot of overlap between some of the proposals.
+So I think it would behoove some of the soft fork proponents who are interested in getting a proposal implemented that has overlap with functionality of other proposals to try to consolidate.
+And of course, this is going to require, I think, some people to give up on what they're doing and kind of put their support behind another thing.
+But that's mainly, I think, why we don't really have enough velocity for any one given thing right now.
+I myself, I would be fine with seeing multiple proposals go through.
+It's actually kind of funny to me because I remember sitting in the room in Hong Kong in 2017, I think when Peter Willa was announcing how we were actually improving the soft forking process so that we could have dozens of soft fork proposals in flight at any given time.
+And of course, here we are, eight years later, and it's hard enough just to have a single proposal in flight.
+Yeah, kind of like how Tapscript had all of these nice unassigned opcodes to fill with things that aren't getting told.
+So part of the kind of contention that I see, at least, is kind of completely contradictory motivations from different parties.
+Like some people putting forward proposals are trying to think very conservative and incremental.
+Like here are a few basic primitives to work with that are very constrained.
+They only do like the single thing they're designed to do and are kind of trying to push forward with that incremental attitude.
+Whereas a lot of the response to that that I'm seeing, the core of the criticism is that like these incremental improvements aren't really doing enough.
+And so why should we spend the time and the coordination effort and all the development resources to actually push a fork through for something that's just a tiny incremental change?
+And so like these are just two completely different philosophies of how to approach this.
+Like we should wait until we actually have something that massively improves functionality versus the step-by-step incrementalism.
+And I'm not really sure how those two philosophies can kind of reconcile.
+They're completely like polar opposed.
+Yeah, I mean, the idea of having an incredibly small change is that theoretically it should be in a better position to make it through the Bitcoin improvement proposal gauntlet because it should be easier to review.
+It should be easier to understand from an adversarial perspective of how it might be abused, how it might cause harm in some way if it's used for unanticipated things.
+Whereas the more generic stuff just has a much broader potential attack surface and is just much more complicated to think through what could potentially go wrong.
+But the flip side of that is that, as should be very obvious now, it's an incredibly long and arduous process to get anything through.
+So maybe it is better to have a broader proposal where, you know, you could add like 10 different major pieces of functionality in one fell swoop rather than adding one every few years.
+And us being here, you know, decades later, still trying to get some other basic functionality added.
+Mm hmm.
+And, you know, I think, you know, part of the broader kind of issue, I kind of think of this in layers, like if we're discussing the development scope of things, like people actually working on the protocol, contributing, like that has its own problems here in terms of different attitudes, like different philosophies to approach things from in the first place.
+But then we also have the wider problem of the ecosystem beyond, like eventually, if we can address all these issues and get developers on the same page, whatever that is, to move forward, there's still the necessity to approach and kind of sell the entire rest of the ecosystem or something.
+But right now you have this very ill-educated, I would say, attitude that Bitcoin doesn't need to be improved, that our victory is guaranteed no matter what we do.
+And so why even bother kind of having these conversations or moving towards this in the first place?
+So, like, how do we address that problem if we can get past the first level of conflict between developers?
+You know, I think a lot of this complexity and difficulty to understand, you know, who are the stakeholders, who need to be in the room, you know, having these conversations can also be difficult because I suspect, you know, the vast majority of Bitcoin holders, first of all, don't actually participate in anything, not even social media stuff.
+You know, most people that are into Bitcoin, they've just got their Bitcoin and they're living their life.
+Then there's the broad set of people who are into Bitcoin and they're into it deep enough that it's like it's a part of their personality, it's a part of their social network, and so they talk about it all the time.
+And, you know, these people may buy into any number of different narratives.
+I would say, unfortunately, some of the more broadly adopted narratives tend to be the simpler and more naive ones, the things that are really catchy, you know, the like, you know, Bitcoin is inevitable type of stuff, which I wrote about a bit in my breakdown of, you know, Bitcoin maximalism a few years ago, like how we've gotten to that point of essentially, you know, each new cohort that comes into the space.
+The space generally is brought in by a new set of narratives from the previous cohort.
+So, you know, you could argue that, you know, Michael Saylor and the sort of corporate adoption of Bitcoin is one of the strongest narratives that's happening right now.
+And these people are, by all accounts, the newbies in the Bitcoin space.
+And so they've come at it from a different perspective and they bring their own ideas and their own catchphrases.
+And then those things kind of matriculate throughout the ecosystem and the world and then eventually bring in the next cohort.
+And I think that this is true of really any mainstream adoption of anything, is that the early adopters are the really sophisticated, nerdy, or more ideological folks.
+And then as they improve the technology or good or service or whatever, that brings in another cohort that's less sophisticated.
+And they come in because it's more user friendly and they can understand it.
+And that cycle continues to repeat.
+So then you eventually have to ask yourself, like, are we going to get to a sort of idiocracy level mainstream adoption?
+And it very well may be inevitable.
+And do the later cohorts of people who aren't as nuanced in their opinions or may not have the same set of ideals or interests, how much does their opinion matter?
+Right. And so I think a lot of that then can explain why, you know, there was this really long report that came out, I think, a few months ago that was trying to explain the governance of Bitcoin and who all the stakeholders are.
+Oh, the 1A, 1Z development funding report?
+I think so.
+And so that was interesting.
+You know, I think that you can mostly dumb it down to, if you look at what happened in the fork wars, it's the, you know, the economic power is really what matters if you're talking about consensus changes.
+And so then you have to ask yourself, well, if the vast majority of economic power is actually shifting into the hands of a few, like, large corporations and institutions, how is that going to change the governance and the future evolution of the protocol?
+It very well may be that those institutions don't want to see any changes because they don't really care about any of the cypherpunk aspects and the individual sovereignty of Bitcoin holders and trying to scale that sovereignty out to the entire world.
+Yeah, I mean, this is something I think is kind of at the heart of this dynamic.
+And it really kind of frustrates and scares me a little bit to see how many developers either seem to not care about this dynamic or seem to even just dismiss that this is an empirically observable dynamic occurring right now.
+Because that transition to larger corporate powers and, you know, service providers as the economically dominant actor on the network, I see that as a massive existential risk to Bitcoin because it is their natural incentive to simply monetize shortcomings of things into services.
+And when you're talking about an open protocol like Bitcoin, whose whole purpose was to be this open access, decentralized, censorship-resistant network, there, if you want the economic benefits of the asset and that use of Bitcoin in that way doesn't scale, like this naturally creates an incentive for rent-seeking and just capture.
+Because if they become the economic dominant actor, they spin up all these services to monetize the shortcomings and the failings of the protocol, what incentive would they ever have in the world to adopt any type of change that would alter that?
+Like that disrupts their ability to just sit back comfortably and rent-seek on these shortcomings.
+And really what you've described to a T is what happened with SMTP, with the email protocol.
+And that can be difficult to talk about as well because I think if you ask the average person, are you an email user?
+They'll say, oh, yeah, you know, I use email all the time.
+Well, actually, you don't.
+You're using a trusted third party who then uses SMTP on your behalf, and they are a gatekeeper of really a number of layers of meta protocols that are enforced at more of a social layer between the dozen or so gatekeepers that control like 95% of all email traffic.
+Yeah, it's impossible to essentially spin up your own SMTP server right now.
+It'll be blacklisted and ignored by any major domain.
+So, like, that network effect, like, is moated off.
+Like, anybody who wants to do that, 95% of the people using email are behind these few service providers that refuse to accept messages from lesser-known services just as a denial of service protection.
+And then you can't even join this network effect anymore.
+Yeah, and I think that people don't realize how easily that could happen to Bitcoin.
+You know, if you have a handful of corporations that are the custodians and a handful of corporations that are the miners,
+and if most of them are in America, and the American government, which is actually getting really interested in Bitcoin right now,
+decides that it's in their best interest to sort of push the finger on the scale, it's not hard.
+I mean, corporations have to comply with the governments that are in charge of whatever jurisdiction that they operate out of.
+Yep. I mean, especially a public company, there is just absolutely no legal recourse.
+Like, I mean, at least with a private company, like, they are capable of internally making decisions that entail taking on risks of the government,
+penalizing them or punishing them.
+But that's just not possible in the structure of a public company.
+And every company in this space that isn't already public is eyeballing their path to going public.
+Yeah. And I mean, this is something that I thought about when I was starting CASA.
+You know, we are a legal entity.
+You know, we have attorneys.
+And even though we are not a regulated financial entity, we pay attorneys a lot of money to try to navigate through a very gray area of the legal code.
+And it's always, you know, certainly before the most recent administration, it was always possible that the hammer was going to come down.
+And, you know, the government can force us to do pretty much whatever they want.
+And so from CASA's perspective, our main safeguard is that even if the government, you know, put a gun to our heads, you know,
+we can't take our clients' money because we simply don't have the keys.
+Mm-hmm.
+Yeah.
+And it's, you know, I feel like we've kind of, actually, I feel like the trajectory we just took in this conversation
+is actually the perfect trajectory for unfamiliar people to really think through these issues and how they relate,
+like the internal development process, the wider ecosystem, and the risk of capture there.
+But it's, like, this to me kind of lays out an environment where we have a gun to our head and a ticking clock.
+Like, this is not a situation where we can just sit back and calmly observe and analyze things to act whenever we feel like getting around to it.
+Like, there is a deadline, even if it is ambiguous and not clearly defined.
+We are asymptotically approaching a point where this dynamic of corporate capture will come.
+And if we do not improve things at the protocol level to the point where we can keep building structures that tend more to a decentralized form
+versus just falling into these pressures of centralization, like, there is no way to fix that.
+Like, we need the building blocks to accomplish that before we get to that point, or there is no way to wind it back.
+Yeah, and this is why I started a self-custody company, even though it's not the best business model.
+You know, running a custody company is the best way to make money in this space generally.
+But I felt like we're fighting against human nature, and if we didn't put a lot of resources into trying to make self-custody more user-friendly,
+then the inevitable outcome is that almost everybody goes to a third-party custodian.
+And, you know, that creates systemic risk within the system and weaknesses that we've been talking about here.
+And really, the open question right now is, are we doing enough?
+It doesn't seem to be going in the right direction.
+And another thing that I have a big problem with is that a lot of people on social media keep posting these charts
+about how the amount of Bitcoin held at exchanges is going down, and that metric is terribly flawed by design.
+The way the metric works, it always looks like it's going down.
+But then the metric gets updated in hindsight, and if you go back and look at it from, like, a year or two in the past,
+after it's been updated, you see, actually, no, the number didn't go down.
+It might have actually gone up just due to the nature of how chain analysis and trying to understand ownership of addresses works.
+Yeah, I mean, you know, especially, like, you have, like, so much institutional buying pressure these days.
+There's no way to kind of really know, like, something left a custodian's control.
+Like, if you have a lot of these institutions who are moving their funds into segregated accounts at these custodians,
+like, coming out of the general pool of the hot wallet and what's actually in their order books,
+like, that looks like it's leaving the exchange, but it's really just going to a different address of the custodian.
+We kind of have a lot of work ahead of us this year if we actually want the things that make Bitcoin important and valuable to us to remain.
+Well, you know, the most that we can do is continue to propose improvements.
+And then the real question is whether or not ultimately the game theory of Bitcoin plays out in our favor.
+Or, you know, it may be a problem of just human coordination.
+You know, and I've been talking about ossification for a long time.
+Like, we all understand that as networks grow, the coordination problem eventually becomes intractable to the point that no one can agree on anything.
+And so, you know, a lot of us who have been around for a while now are basically asking, are we already past that point?
+You know, we won't really know for sure until we have sufficient hindsight.
+But I think actually Jeremy Rubin just posted a few minutes ago how between the past several major soft forks,
+there was like 1,390 days between forks and we just passed 1,390 days, I think, since the taproot fork and we don't even have a real proposal on the table for activation.
+Yep.
+You know, despite the Saylor driven mantra on Twitter, like this is not guaranteed and it's definitely not going to be easy.
+But if anybody out there actually cares about this staying a censorship resistant network that anybody can access, like we need to do something to move forward.
+Yes.
+I think caring is actually the main point.
+I think I've said for a long time when people have asked me what is the greatest long term risk to Bitcoin, I say apathy.
+If we do nothing, yeah, Bitcoin keeps moving on and, you know, blocks keep coming through, but the rest of the world doesn't ossify.
+The rest of the world is going to continue changing and other entities throughout the world, like nation states, are going to start exerting pressure and poking and seeing, you know,
+what control can they have over this network to their own advantage?
+That's, I think, the perfect way to say it, you know, the internal game theory of the network is in a way a result of its technical architecture and how that interacts with the real world.
+And so as the real world evolves and changes, if we want to maintain that same game theoretic equilibrium point, like Bitcoin itself also has to change in step with the world around it.
+Or like that equilibrium is just going to shift because the other part of the equation changed, even though Bitcoin stayed the same.
+Bitcoin is far from perfect.
+There are there's a ton of room of improvement for security, privacy, scalability.
+And I don't think that we should rest upon our laurels and say, oh, we've done so well to this point and success is guaranteed.
+Yeah.
+If anything, success is going to be harder to achieve the bigger this gets.
+Well, I guess this has been a fun conversation.
+You have any fun and depressing conversation?
+They aren't necessarily mutually exclusive.
+But do you have any parting words of wisdom for the viewers?
+Well, like I said, care, participate, interact with people, continue educating yourself.
+Don't just blindly repeat mantras and expect that that is going to somehow be helpful for Bitcoin's long term health.
+I don't think there's a better word you could have left us with.
+Thanks for sitting down, Jameson.
+You bet.
