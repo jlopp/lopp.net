@@ -386,9 +386,9 @@ NjT4rMUesCnjTVHVM9KXvMemwAhhYbM=
     <div class="row">
       <div class="col-xs-12 text-left col-lg-offset-1 col-lg-8 col-md-offset-1 col-md-10 col-sm-offset-1 col-sm-10">
         <h1>Contact</h1>
-        <p>Jameson's goal is to spread knowledge of crypto systems and liberating technologies. If you can offer an opportunity to reach a large audience, please use the low priority form. If you're seeking specific answers for your own understanding, please check the <a href="/bitcoin-information">educational resources page.</a> For consulting questions or high priority requests, please use the paid form.</p>
+        <p>Jameson's goal is to spread knowledge of crypto systems and liberating technologies.</p>
         <br>
-        <p>Do you have a question about Bitcoin? Try <a href="https://www.delphi.ai/jameson-lopp">asking my AI bot</a> first; it has been trained upon a decade of my essays, interviews, and presentations.</p>
+        <p>Do you have a question about Bitcoin? Please check my <a href="/bitcoin-information">educational resources</a> or try <a href="https://www.delphi.ai/jameson-lopp">asking my AI bot</a> first; it has been trained upon a decade of my essays, interviews, and presentations.</p>
       </div>
     </div>
   </div>
@@ -396,10 +396,8 @@ NjT4rMUesCnjTVHVM9KXvMemwAhhYbM=
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10 col-sm-10 col-sm-offset-1">
-      <div style="margin: 20px;text-align:center"><button style="margin-left: 20px; margin-top: 20px" type="button" class="btn btn-success" onclick="showFreeForm()">Send Low Priority Message (Free)</button><button style="margin-left: 20px; margin-top: 20px" type="button" class="btn btn-success" onclick="showPaidForm()">Send High Priority Message ($100)</button></div>
-
-      <form id="freeform" action="contact.php" method="POST" <? if(!isset($_POST["formType"]) || $_POST["formType"] == "paid") echo 'style="display:none"';?>>
-        <p><span class="error">Do not contact me regarding paid promotions / press releases / reviews / social media marketing. My reputation is not for sale. Messages sent via this form are heavily filtered and may not be read, much less responded to - use the paid form if you want a guaranteed response.</span></p>
+      <form id="freeform" action="contact.php" method="POST">
+        <p><span class="error">Do not contact me regarding paid promotions / press releases / reviews / social media marketing. My reputation is not for sale. Messages sent via this form are heavily filtered and may not be read, much less responded to.</span></p>
         <label for="freeName">Name </label><span class="error"> <?= $nameErr; ?></span>
         <input type="text" id="freeName" name="name" placeholder="Your name..." value="<?=$_POST["name"]?>">
         <label for="freeEmail">Email</label><span class="error"> <?= $emailErr; ?></span>
@@ -413,28 +411,12 @@ NjT4rMUesCnjTVHVM9KXvMemwAhhYbM=
         <button type="button" class="btn btn-success" id="freeencryptbutton" onClick="encrypt('freeEmailBody')">Encrypt Message</button>
         <input type="submit" value="Submit" id="freesubmitbutton" onClick="hc_findHash();return false;"><span id="countdown" class="error"> <?= $captchaErr; ?></span>
       </form>
-
-      <form id="paidform" method="POST" action="contact.php" <? if(!isset($_POST["formType"]) || $_POST["formType"] == "free") echo 'style="display:none"';?>>
-        <p><span class="error">Upon submitting this form you will be directed to pay an invoice for $100 USD in BTC. <b>I will not receive your message until after the payment has been confirmed</b>. After receiving your message I will strive to respond to it within 24 hours.</span></p>
-        <label for="paidName">Name </label><span class="error"> <?= $nameErr; ?></span>
-        <input type="text" id="paidName" name="name" placeholder="Your name..." value="<?=$_POST["name"]?>">
-        <label for="paidEmail">Email</label><span class="error"> <?= $emailErr; ?></span>
-        <input type="text" id="paidEmail" name="email" placeholder="Your email address..." value="<?=$_POST["email"]?>">
-        <label for="paidSubject">Subject</label><span class="error"> <?= $subjectErr; ?></span>
-        <input type="text" id="paidSubject" name="subject" placeholder="Subject..." value="<?=$_POST["subject"]?>">
-        <label for="paidEmailBody">Message</label><span class="error"> <?= $messageErr; ?></span>
-        <textarea id="paidEmailBody" name="emailBody" placeholder="Write your message here. If it contains sensitive information, click the Encrypt Message button before submitting." style="height:200px"><?=$_POST["emailBody"]?></textarea>
-        <input type="hidden" name="formType" value="paid">
-        <button type="button" class="btn btn-success" id="paidencryptbutton" onClick="encrypt('paidEmailBody')">Encrypt Message</button>
-        <input type="submit" value="Submit">
-      </form>
       <br>
       <br>
       </div>
       </div>
       <div class="row">
         <div class="col-lg-offset-0 col-lg-4">
-
         </div>
         <div class="col-lg-4">&nbsp;</div>
       </div>
