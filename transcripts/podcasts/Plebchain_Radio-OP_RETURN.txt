@@ -1,0 +1,604 @@
+today i'm speaking with jameson lopp co-founder of casa investor in citrea self-described
+cypherpunk groundskeeper and a man who can run a bitcoin node blindfolded while brewing a pour over
+we'll dig into may's op return dust up ask why removing an 80 byte ceiling ignited a thousand
+tweet war and find out where lopp plants this flag on the bitcoin only versus everything layered on top
+battleground if we have the time we'll also talk about casa's ethereum moment citrea's roll-up dreams
+and whether purity tests keep us honest or are just endlessly radioactive buckle up time to descend into
+layer two jameson welcome to pleb chain radio glad to finally have an opportunity to speak with one of my
+favorite shitcoiners
+which seems like the dust is settling just a little bit but it was late april early may
+it was all the talk of the nostiverse and indeed uh the twitter verse so for our non-technical
+listeners uh and actually for anyone what is your perspective on what exactly went down
+with the op_return controversy oh boy uh it's it's really complicated because the op_return debate
+goes back a decade so there's a lot of minutiae and technical nuance as to like how we got to where
+we are today but uh i think if we if we skip over the like decade of uh debate over like how to
+try to disincentivize people from putting stupid data into the bitcoin blockchain um we can fast
+forward to where we are today where essentially you know we have i would say luke dashier being kind of
+uh a head or center of this uh whole concept of trying to fight against spam or fight fight against uses of bitcoin that are
+considered you know non-financial non-monetary and and therefore not appropriate for bitcoin as a protocol as a network as a data structure you know the blockchain itself
+and um and um and i think that really it just it all came to a head where this one pull request was essentially resurrected
+after a two-year hibernation because it's pretty much the exact same pull request that was made by peter a couple of years ago
+and it came back for a few different reasons but uh mainly because the bitcoin core developer
+antoine poinset, hopefully i pronounced that correctly, was at mit bitcoin expo
+with me actually a couple of months ago and he was speaking to some developers from citrea and they were telling him about
+essentially the hacky stuff that they had to do to work around some of the limitations
+of the bitcoin protocols policy
+or at least bitcoin core's policy with regard to relaying transactions and
+how you're allowed to use op return to store little chunks of data
+and essentially this has to do with citrea's groth 16 proof
+which is uh used by their zero knowledge roll-up system
+it's the second layer uh system that they are developing
+and there's this one particular fraud challenge edge case where if you think a validator is trying to defraud
+people and lying to them about the actual state of the the roll-up the second layer
+then you can challenge that and essentially steal the money from them
+you know this is a disincentive and and so this is an extreme edge case but
+antoine basically realized oh this is a pretty hacky solution that they came up with
+because they essentially are creating these other outputs that are tiny little dust outputs
+and are going to arguably pollute the utxo set for all eternity
+and they're doing this because they can't simply put all of the data into the op return itself
+so they had to put split up the data put it in a few different places
+and so this made him concerned and he basically went and said hey peter
+i think that we should talk about raising the limit on the relay policy again so that it incentivizes people not to do this hacky workaround
+and so peter said sure whatever he you know recreated the pr
+and that then got onto the radar of people who are vehemently against any sort of non-financial data in bitcoin
+well i suspect you know they got pretty frustrated but as a result of several different things that happened right so the the thing that i think really kicked it all off
+and put it into hyperdrive and spilled over into social media is when one of the people commenting on the pull request then started commenting that oh you know jameson has commented on this pull request and he should disclose that he has a conflict of interest because he's an investor in satria and so on
+and that was actually by commenting on that that was actually a violation of one of the rules of participating in rational discourse on the bitcoin core repository which is that to stay on topic you have to talk about the actual proposal the idea and not about the people who are discussing the proposal of the idea
+and so i think that got the person's comment removed they may have been banned for a day or two
+then bitcoin mechanic came in right after that and was like hey this person got banned it was wrong and i think he got banned as a result of doing that
+and these bans of course are only for a day or two it's not a permanent thing
+but you know that's when things i think really got spilled over into social media and it turned into a whole oh bitcoin core is censoring people so on and so forth
+when it was in fact enforcement of the moderation policy um it then of course got worse when a lot of people from social media come in
+on the pull request generally i think under the mistaken assumption that pull requests operate via democracy and voting
+uh people who don't understand uh people who don't understand how the actual system of acts and nacks work
+and that you know just simply saying act or nack doesn't really do anything you're not adding signal you're just adding noise
+you have to you know present you know novel new arguments or perspectives and you know add to the conversation constructively
+so uh you know that got out of control and it got eventually to the point where the whole pr conversation
+got shut down and uh you know i think that ended up pissing some more people off even more than that
+yeah then it continued for several weeks and we can go more into details and stuff there but i think one interesting
+thing that i would want to note is that the original claim that i have a conflict of interest
+as a result of my investment in citrea is actually incorrect now it's true that i have a financial
+interest in citrea an extremely tiny one you know compared to my bitcoin holdings so you know it would be
+illogical for me to do anything that is bad for bitcoin just because it's good for citrea uh you know
+from my own financial perspective but even beyond that
+the reason why it's not a conflict of interest is because this proposal does not actually benefit citrea
+citrea doesn't need the change citrea never asked for the change and even if the change is made
+it will have no impact upon citrea's operation because as i said this is only used in one
+really specific edge case where where a validator is lying and trying to defraud people
+so the way that the game theory and the incentives are set up for citrea and and their validators is that
+this is probably never actually going to happen, if it did happen very bad things would would result right so this is kind of analogous to
+if you have a lightning channel open and you try to close that with uh an an old stale state and defraud someone by settling the channel
+in a way that the balances uh are not actually up to date to try to get your money back and so you know there are
+penalties in ways that that essentially that can be challenged by the person that you're trying to defraud and that's why we don't see that actually happening very much
+it's incredibly rare for that to happen and there's you know tens of thousands of lightning channels open
+whereas with citrea there is going to be one zero knowledge roll up and i think maybe a dozen validators who are all like well-known and vetted enterprise entities so on and so forth
+but that's my high level rant and we can get into any more details if you want yeah i certainly want to avoid the twitter drama that happened uh i don't think that's particularly constructive i although it's directionally indicative
+of perhaps the issue at hand right uh so yeah let's not get into personalities or the drama itself
+but you did say it sounds like james and what you said was uh a conversation between a bitcoin core developer and
+and someone at citrea triggered the pull request because it was determined based on that conversation between those two individuals
+that uh it would just be easier if if citrea
+uh you know did did its roll ups or the way it showed its proofs or whatever it is right with a larger uh operaturn size
+but yeah well yeah so that's where the real question and this is why i think a lot of people
+got confused is that this proposal was never about making anything easier or cheaper or faster or better
+in any way for citrea it's about what's better for bitcoin as a network and how do we incentivize
+or disincentivize people to do certain things with the bitcoin protocol
+so then let's just get into it there then do you think the operaturn limit of 80 bytes which
+bitcoin core has had for almost 10 years at this point right since the operaturn was
+uh is that correct or should it should it be removed
+i don't think there's any reason why 80 bytes is more or less optimal than anything else
+um i i think this would be a different conversation if we were happening if it was happening pre-segwit
+right uh because essentially the witness discount that was uh enabled in 2017
+is effectively what is being used by people who are inscribing data
+into the bitcoin blockchain because it's far cheaper for them to do it in that fashion
+and so that's why the the landscape of you know how are people going to put arbitrary data into the
+blockchain today is different than it was 10 years ago when this operaturn debate started
+and so from from an incentivization perspective i think it doesn't make much sense to expect people
+to start putting like a megabyte of data into an operaturn because it's going to be
+at least like four times more expensive than having them put it into a witness and there are some charts
+that are out there where people have actually you know gamed out exactly what the cost is and i think
+it's basically if you if you're trying to put more than like 140 bytes so it's like 130 to 140 bytes
+um that's where the the the kind of incentive crossover threshold is of if it's more than 140 bytes
+you're probably actually going to save money by putting the data into a witness as opposed to putting
+it into operaturn so why increase the limit now on operaturn yeah so the the there's a few arguments um
+one of them is to not to did to not have this disincentive that results in people doing what
+citrea has done which is um architecting a protocol that ends up creating these tiny little dust outputs
+if that situation happens like i said this situation is never expected to happen and even if it did it
+it might be like once a year you know this is an incredibly negligible edge case but this issue is
+not about citrea it's about the fact that this is a permissionless protocol and anybody could come along
+and run into a similar sort of a set of incentives where we would prefer that they not do that and they
+might build something that ends up creating um you know tiny little dust outputs at a far more
+high volume than this one edge case with citrea so that's i think the way that the
+more dispassionate you know technically minded protocol developers are looking at it
+and then there's also a few other edge performance issues just with regard to like network centralization
+and performance of block propagation where when you have a large gap between the consensus rules and the
+transaction relay policies on the network then what you're doing is you are incentivizing people who want to
+build in that design space that's outside of transaction standard policies but still
+inside of bitcoin consensus you're incentivizing them to go and essentially send their transactions
+to a handful of centralized minor apis so that's just not great in general from a like minor
+health of the network that you know we're incentivizing people to only go to a few miners
+we preferably want for all miners to be competing across all valid transactions that are being proposed
+in order to have a healthier market i mean mining is already way too centralized in my opinion we don't
+need to make it even more centralized um and then there's this issue of compact block reconstruction
+which is basically that a number of years ago um i believe it was peter will uh developed uh a system
+i think this is where he was using mini sketch uh but essentially he created a way so that you could
+very quickly reconstruct a block without having to get all of the transactions from your peers like this is
+the way that blocks quote unquote propagate over the network so quickly these days i think that
+on average they propagate through 50 of nodes on the network in under one second and the only way that's
+possible is because the vast overwhelming majority of transactions have already been propagated across the
+the entire network first and are sitting in the mem pools of nodes and so when a block comes along we
+don't have to rebroadcast all of those transactions because most nodes already have them instead we can
+just send the block header and you know the merkle tree that says like these are all the transactions
+inside of them and so as a result the majority of nodes will already have all the transactions they need
+you know other than the coinbase transaction for the block itself and uh can then validate that all and
+then you know relay uh the block header once it's validated to all of its peers and you know that's how
+the the gossip protocol works on the network is you know each peer has to validate any transaction or block
+it receives before it then offers it to the rest of the peers so you know every millisecond that it takes
+longer for a node to fully reconstruct and validate a block then has this sort of ripple effect across the entire
+network of slowing down at the propagation of blocks and you don't want blocks to propagate slowly because
+that can also affect things like minor centralization once again giving some miners an unfair advantage
+so let's uh let's go back to the pr the contentious pr uh and before we before i ask this question
+there's we need to establish uh some ground knowledge here so again in simple terms can you explain the datacarrier size flag
+well i mean this flag is basically a policy right so um if you are using the op return functionality within
+bitcoin scripting language uh you you can then put some arbitrary data
+after that op code and as it stands right now i believe originally the policy
+for data carrier size was 40 bytes and then it got raised to 80 bytes i think this is all part of
+that like decade of lore and history of going back and forth on this issue and so essentially that
+means if you put more than 80 bytes after your op return op code and then you broadcast that
+to nodes on the network a node that is running the defaults in bitcoin core configuration
+will reject it and it'll say you know this is valid but it's non-standard so i'm not going to
+turn around and offer it to all of my peers and so that is how your attempt to broadcast a consensus
+valid transaction falls flat on its face and you know that means if you don't know what you're doing you just
+give up at that point right but if you know what you're doing and you're incentivized to try to get
+this transaction into a block then you start looking for other ways around the standard policy rules
+one of those as i already said is just going directly to miners there's a number of large pools that have
+private apis where you can just send these transactions to another option is to use a libra relay nodes
+and so there are essentially a number of nodes out there that will relay pretty much anything
+that is consensus valid and so by you know connecting to them you know that it's not going to get dropped
+on the floor they are going to relay it to all of their peer nodes was but isn't there a binary flag
+that you could set to zero or one that allows no as as a node runner right that allows you so what my
+understanding of this pr is it removes that option as well not not only does it increase the limit
+uh from from 80 bytes on the operator and length but it also removes that ability for the nodes to set the
+flag to zero or one yeah that's what peter todd's uh pr did is it completely got rid of
+uh both the policy and the configurability of the policy the um kind of the idea around that is
+you know if the reason for removing this is that it's not actually stopping motivated users because there's
+a number of ways that you can get around it then why should we offer this option to node operators
+that might make them feel good but doesn't actually accomplish anything and so that was one of the big
+uh contentious points with that pr and and as of today you know that pr was actually closed i think a week or
+two ago and there is an alternate uh open pr from gregory sanders that maintains that configure uh option
+is that the only material difference between the two prs that's my understanding yeah got it so i as
+a node runner if i set the flag to the value that prevents me from storing that operator on data i can
+i have the choice well to be clear nothing you do prevents you from storing the upper turn data
+and that's kind of why this is a somewhat amusing issue to talk about because you have so many people
+out there now who are heavily entrenched in this idea that um and and this isn't wrong like as a node
+operator you are sovereign you get to decide what the rules are on your node nobody can tell you what
+software to run you can run whatever you want you can run your own software you don't have to run core
+you don't have to run knots there's a ton of different implementations out there you can write your own
+from scratch if you are hardcore enough um but somehow part of this narrative has has somehow gotten into this
+uh idea space that by keeping the quote unquote spammy transactions out of your mempool that that's
+better for bitcoin um and and i've definitely seen a lot of people who have said that you know my node is
+not your google cloud drive whatever and and i get that sentiment as well but you have to understand
+that filtering them out from your mempool doesn't stop them from arriving in a block at some point in
+time in the future and then getting stored on your hard drive in perpetuity assuming that you know you're
+not pruning the node and so on and so forth yeah so looking at the philosophical argument here there
+is a seductive argument to be made uh to say look you yes of course bitcoin is a monetary network and if
+it if it is the greatest monetary network then what's what what are you worried about if you if you lose to
+people wanting to put jpegs and you know they win on so the only filter that matters is is the fees right
+economics so that's that's my take on it this you know this this the whole spam debate has been
+raging for just as long right then that's really one of the crux of the opportune debate is the the use
+of bitcoin for call it non-bitcoin things but then there's this huge gray area as well right it's like
+okay there are certainly some people out there now who are saying oh uh you know 80 bytes is enough for
+anyone and so oh 160 byte groth 16 zero knowledge proof shouldn't be allowed uh you know who are you to
+say that a zero knowledge proof that is essentially uh encapsulating an an untold arbitrary amount of
+financial volume on a second layer network is not quote-unquote financial data or is not bitcoiny enough you
+know it's like where is the line and um we can certainly we can spend the rest of our lives debating
+where that line is but i think this is part of the reason why a large portion of the technical
+contingent of protocol developers just finds the idea of doing that exhausting and they they they feel like
+they have more important things to spend their time on but there is a line though right james if if
+someone truly believes that bitcoin is money then you using it as a medium of exchange i'm sure store
+of value which seems to be all the rage these days but we'll get to that in a second but really using
+it as a medium of exchange that's it right you you use it as money you use it it's it's money that
+no one can confiscate from you assuming you're doing the right thing keeping it in self-custody that's the
+line if you believe it's a monetary network uh yeah sure um let's we could go down the whole rabbit hole of
+like how does lightning network work and the fact that we just started using ephemeral anchors which
+are creating these tiny little dust outputs uh you know it's uh it's from my perspective
+the the filter is the only objective filter is economics now there's certainly um a valid argument
+when it comes to spam you can say what is spam well it's like porn i know it when i see it and and i
+agree with that uh you know you you can still of course have uh consensus problems between the humans
+of trying to say well this is porn and that's not porn or this is spam and that's not spam uh it becomes
+very difficult when you then want to codify that into machine consensus and and this is where you
+you keep hearing this idea of essentially the um cat and mouse game or the whack-a-mole game
+of that that's certainly one path that bitcoin client implementation authors could go down
+and that's somewhat the path that the knots implementation uh developers go down is well
+we'll just you know keep watching the blockchain and when we start seeing some new fingerprint of
+something that we consider to be spammy then we'll you know create a new rule to uh try to you know
+block those types of transactions and and that's doable it's just a never-ending thing and i think one of
+the the the arguments about that is that well
+what especially we've seen over the past couple of years of all of these new meta protocols being slapped
+on top of bitcoin um these you call them app developers or or meta protocol developers can move very quickly
+whereas you know node client implementations i mean bitcoin core i believe is the most consistent and
+frequently updated one and and that's one release every six months and so it would be very difficult
+to have you know some sort of uh filter updates that could keep pace with the what the meta protocol developers
+can do yeah so let's go back to the earlier point i was making right about the the seductive argument by
+the people who who call themselves monetary maximalists but let's again take one step back though i see it as
+three broad camps uh now you you don't have to pick nets here but i'm you know i'm just making a
+simple illustration here on the one on the one camp it's literal shit kind of saying i want to put monkey
+jpegs on bitcoin right so let's just set those folks aside then then there's there's a camp of
+there's two camps who say no bitcoin is a monetary network it that's all it is camp number one says yeah the
+fees the fees are the filter right it's that's it don't worry about it and then cap number two is this
+is this is for our children this is for our future this is worth dying for if it means we spend the
+rest of our lives playing whack-a-mole uh then that's what we'll do now i want to focus on on the
+middle camp which says fees are the filter that to me on the face of it is a seductive argument right
+which is if if bitcoin loses to monkey jpegs then it was never going to win in the first place it says a
+lot more about bitcoin than it does about quote unquote shit coiners true fair but but but but
+but the point i'm trying to make is why we at again seductive at surface level but why do we need to
+make it easy for shit coiners right why are we removing limits uh we've learned from our uh now granted i'm
+comparing segwit to this but one is a consensus change the other is a standard is change but let's but even then
+it's it's an it's an both perhaps well intentioned but clearly the unintended consequences could not
+have been reasoned at the time of making that decision so if you've learned a lesson from segwit
+it's that yes of course we wanted to fix transaction malleability lighting would have likely wouldn't
+have been possible uh so and let's create this witness discount so that you know we incentivize
+people uh to put their signatures in there and oh all all of that good stuff right what what happens
+next monkey jpegs because you've created a discount uh that was a clear unintended consequence i mean we
+need there was the step of taproot that led us there right so yeah yeah though you know i think that uh
+peter willa and and the other developers who were around at the time would still agree that even to this day
+the discount still makes sense sure i mean look you you can make a strong case in both scenarios right
+but but all i'm saying is is worth reasoning through the unintended consequences right and it's just
+it's not entirely clear what removing the op return limit does i mean one thing's for sure
+they'll they they they use up the witness discount and then they'd start filling up if there's anything
+left they start filling up the op returns right so what what is the theoretical limit now it's 512 bytes
+and you can have up to basically a hundred thousand uh in in a or twenty thousand of 512 bytes in a
+a single transaction right to fill it up completely if the 80 byte limit is uh limit is removed uh i i
+believe the the limit becomes a hundred thousand um but of twenty thousand times five hundred and twelve
+correct twenty thousand opera turns times five hundred twelve each
+um maybe i'm actually i i don't know if it's per what the per operator turn limit is i know that you
+know they were also suggesting you know removing the limit of uh the number of opera turns but um
+but essentially it's uh it's whatever the maximum transaction size itself is right which is hundred thousand
+right um for a given policy yeah policy is 100 kilobytes uh of or you know uh 400 000 weight units uh
+but like we said because opportune data doesn't get a discount it's effectively 100 kilobytes total
+right so again so going back to the first camp of of people who call themselves monetary maximus
+and say but the the fees are the only filter that matters it's purely economic play okay that's great
+but why are we making it easier for shit carders to do this thing yeah i mean i don't i don't think it
+really does make it that much easier and that's also part of the the issue right is that like um
+yes policy rules stop people who are not incentivized or are extremely naive but this is what we've seen
+is it's not going to stop anyone who has even the slightest motivation to like go to a web page and
+paste in their transaction data so is it making it easier to spam i don't think so uh from an incentive
+perspective i don't think that it makes sense or that we should expect people to start putting
+many many kilobytes of data in opera turn other than to troll people who are uh upset about you know
+opera turn in general which is what's been happening for the past month just to prove the point right
+um and and this is kind of the one of the other funny things that i found about this debate is you
+know people basically getting upset uh you know call them like the blockchain police if you will like
+they want to police what is going into the blockchain and um they're getting upset because they thought that
+raising this limit would result in more spam data going into the blockchain but if anything it would
+decrease the amount of spam because you can only put as quarter as much data into opera turn as you can
+into witness and and in general like we should not expect people to do that because they're not incentivized
+to do that yes so let's uh so let's get back to the bitcoin is is money issue right do you so actually let me
+just ask ask you this what is your view is bitcoin purely a monetary network
+nope and i've been talking about that for a decade uh i i would recommend reading my article from
+10 years ago about bitcoin being a trust anchor so well let me rephrase the question i said i use the word
+which is uh which can be confusing uh including including to myself uh
+should bitcoin ought to be a monetary net uh
+i think that that would be an unnecessary limitation um you know i think it obviously it could do quite well and you know money is
+the primary use case but from a really high level perspective of trying to maximize the value of
+bitcoin as a system i think that it should remain open for people to experiment with and using it in
+different ways to figure out are there other valuable use cases for block space other than just you know the
+transfer of these units of satoshis back and forth between people and i mean peter todd came up with
+one of the first really good ones open time stamps you know i don't don't hear too many people complaining
+about the block space that is being used for that but i mean one argument to that point james it is
+we we have all these other blockchains out there right there's ethereum there's like solana there i mean
+there's millions at this point why not experiment on those and when you can prove
+that hey i found a use case other than money for which a blockchain makes sense and i want to bring and
+really make sense right not make sense like you know my vcs can pump their bags or whatever it is but
+there's an actual benefit to humanity here that's other than money maybe then we can have the
+conversation uh about if it makes sense to put it on bitcoin why i mean that always that that has always
+been one um i would almost call it uh it's so hard to use the word maximalist these days but like one of
+you know as you're probably aware the the term bitcoin maximalist has somewhat evolved over 15 years one of
+the earliest versions of bitcoin maximalism was that eventually like everything would happen on bitcoin
+because bitcoin is the only network that's worth a damn um you could call that i guess platform
+maximalism uh you know and this was also probably i'm talking like pre ethereum days before ethereum even
+existed uh that was a a sentiment that was somewhat common but yeah i mean we can we can talk about
+what we want for bitcoin all day long and that's kind of half of the point and half of the fun of bitcoin is
+talking about what we want it to be from a technical perspective though this gets really deep into the
+weeds of kind of information theory and the fact that ultimately what we're talking about is
+implementing further censorship on a network that is censorship resistant um and it's just it's a very hard
+square to you can't really like circle the square however the um the saying goes because you're you're
+kind of working against yourself um yeah and this is once again that like whack-a-mole game that a lot of
+developers just aren't very interested in now that's understood there james about this the censorship point
+um and i don't know if were you on nostra in february of 2023 when this inscription stuff went down for the
+for the first time ordinals and and so on oh yeah so at that point i i would consider myself a monetary
+maximalist um and and so actually let me just tell you why i believe that i i believe i i'm a father i
+have a young son i and i want him to have children and i i want them to live in a world where they're
+where they're thriving where there's no theft uh where they where they they're the fruits of their
+labor are theirs alone uh and and they can't be confiscated and certainly a better world than
+the one i live in and to me bitcoin is the only way we can get there we have to fix the money we have to
+separate money from state so in that sense that it's it's almost i i would say a type of fundamental
+zeal right fundamentalist zeal that i have in protecting that now having said that right your
+point is taken that this is a censorship resistant network so when the ordinals thing went down february
+of 2023 it became very apparent to me that look we i know uh people were making it to to some extent
+seductive arguments about about uh putting these shit corners uh in their place but uh the approach i
+took and a few of a few others on nostra took was the only way we can make this happen is to is is
+rejecting this at the social level right is through ridicule so we started a meme war now you can argue
+how effective a meme war is and uh and you know a shit corner is going to be a shit corner and they're
+going to try and make their profits however ridicule doesn't matter to them they have thick skin but to
+me the way to push back at this is through social pressure for the most part and and not through an
+active uh creating a new form of censorship on the network right with that said my i think my the
+head scratcher for me is when we start making things easier for these people right the system is the way it
+is today why are we making it easier let's just ridicule them uh let's let's apply pressure at the
+social level tell them that you know what they're doing to take this money use case away from us
+let's just say or or make it harder to uh to for the money use case to propagate let's tell them that's
+just not acceptable right that that's sort of the toxic honey badger at iq honey badger um kind of
+mentality um so yeah i think that's that's where i i struggle uh jameson is when it appears that not that we
+introducing new censorship onto bitcoin but we're removing things and making it at least not making it hard for these folks
+well yeah i mean what is easy and what is hard like i said you can literally load a web page and post your
+non-standard transactions to it so that's a pretty low bar like these these services didn't even exist i
+think two years ago when all the ordinal stuff started happening so like it's been getting easier
+for them and and on no fault of core developers at all but rather due to private companies uh that have
+their own financial incentives i i really think that a lot of the social media um perspective is pretty
+skewed there's probably a number of people who were around during the scaling debates who came
+away from the small blocker victory with the idea that toxicity was ultimately what won the block size
+wars and that many of them are kind of stuck in that mindset even to this day but one thing that i would
+caution about is even fooling yourself into believing that that any given social network is representative of
+bitcoin i mean i think a really good example here is that there's just a massive divide between east and
+west uh to this day that it played a big role during the scaling debates but you know there aren't many
+people um in china and asia so on and so forth the people who don't speak english uh who are you know on
+twitter or or there may be you know there's some on nostr but there's just there's not a whole lot of
+of uh of cross contamination between some of these different communities and then like you said i mean
+you can have completely other separate communities of people come together who they may not care
+anything at all about bitcoin they just have their own prerogative their own objective maybe they just
+want to do dgen stuff and they don't care if there's a bunch of angry bitcoin maximalists that are yelling
+on twitter or nostr or whatever they're just gonna do uh whatever they're gonna play whatever games they
+find entertaining and possibly profitable
+yeah so and you know the other thing that's happening in this again for folks who want bitcoin to be money is on the
+on the one hand we're dealing with people who are putting monkey jpegs on bitcoin annoying degen
+behavior on the other we have so-called upstanding influencers and and beacons of the community who
+are now saying that bitcoin is cyber manhattan and no one should use bitcoin other than as a pet rock uh so it
+it it i was let me ask you james what is your view on this almost mainstream the this mainstreaming of
+bitcoin now on you know practically have daily uh segments on cnbc with someone saying they're
+launching a treasury strategy and how bitcoin is is you know never sell your bitcoin right it's it's a pet
+rock how do you view that that uh this new movement that's happening i think that's a much bigger threat
+to bitcoin than jpegs on the blockchain uh we got to where we are today because people are not actually
+using bitcoin as money uh at least in a sovereign fashion right um these jpegs on the blockchain could
+easily be a hundred or a thousand times more expensive if people were actually using bitcoin and creating
+demand for block space this is the economic filter that i keep railing about of like if you actually
+want to filter out the stupid uses of block space then you need to make it more expensive for people
+i think tweaking and protocol policy stuff isn't actually going to impose the cost that some people
+are envisioning they're just going to see it as a minor inconvenience and work around it and that
+that's why this is like a fundamental information theory problem
+yeah it is i i do believe well i don't know if it's a bigger threat or not but i i certainly
+think this petrock narrative is is beginning to harm uh bitcoin more than it's helping it uh let's talk a
+little bit sorry were you going to say something james yeah well i mean look it's
+uh there are many things that have changed about bitcoin from a social perspective over the 15 years
+right the meaning of bitcoin maximalist has changed significantly the primary narrative of what bitcoin
+itself is has changed significantly and where we are today is that uh you know number go up uh digital gold
+is the prevailing sentiment it is no longer you know cypherpunk private money um you know most
+people i think have generally thrown out the idea of bitcoin ever having strong privacy uh even though
+like we do have some decent l2s like lightning and uh e-cash uh but you know in the grand scheme of
+things those have received relatively small adoption uh compared to the digital gold pet rock especially
+etf narrative um and so i worry about that from a perspective of systemic risk is that you know we have
+created a great convenience and on-ramp for people to preserve their wealth at least uh from a
+financial exposure sense but now it seems that most of the people who are becoming new bitcoin adopters are
+not doing so in a sovereign fashion this is creating systemic risk by essentially pooling a huge amount of the bitcoin
+huge amount of the bitcoin supply into the hands of a few regulated parties
+yeah that it's it's certainly a risk there uh so jameson let's uh i wanted to talk briefly about uh
+casa so i like several others um over the years have learned a lot about bitcoin through your writings and
+listening to your podcast and folks like you and andreas antonopoulos so when obviously this is your
+prerogative your your chief technology officer at casa uh i think when was it about three years ago or so
+you uh you chose to include ethereum um as uh or support for ethereum in in the casa custody
+uh sweet and and and i think a lot of us were disappointed because we we sort of viewed you as
+as a as a thought leader and and someone very knowledgeable on bitcoin and to an extent it felt
+like a betrayal of the community so what what was the thinking there with with uh casa support for ethereum
+well first of all i suspect that most of the people who were surprised did not read my
+articles or see my presentations nine years ago when i was helping bitgo transition from a bitcoin only
+company to a multi-asset custody company so like this is not my first time on the merry-go-round
+um i mean i i was actually responsible for infrastructure at bitgo that powered not only
+bitcoin but litecoin bitcoin cash bitcoin gold ripple ethereum probably some other stupid things that i
+don't even remember and you know it it um it wasn't
+particularly fun or like interesting to me from a perspective of like oh i really want to use
+these networks we did it because the demand is there for it um you know whether or not some
+people want to admit it or not uh there is a lot of economic activity that happens on the ethereum
+network and it's not just about ethereum actually i would say that stable coins are a much bigger driver
+at least in demand from our customers and what we've seen uh you know maybe someday we'll get
+to the point where we see significant stable coin transaction volume on bitcoin um but you know we've been
+hearing about things like tapper assets and rgb for many years now and there's we're still not quite at
+the you know production ready um aspect of those other protocols so you know more than happy to
+support stable coin stuff on bitcoin and bitcoin related l2 protocols when the technology is mature enough
+so was a would you say it was a purely financially or economically rational decision and what wasn't in any
+way tinged or held back by any ideological uh beliefs about bitcoin yeah i mean this is because
+we are a for-profit capitalistic company and we talk to current clients we talk to prospective clients
+and we're always trying to and we're always trying to figure out what is it that our addressable market
+would find most useful and also what would help differentiate us from competition and so i think
+even to this day three years later kasa is the only platform that is supporting like native um cold
+storage multi-sig where like we're not creating some weird npc uh or other protocol where you can
+actually use the same set of hardware devices your treasures and ledgers and so on to uh concurrently
+store both bitcoin and ethereum related assets in the same uh set of keys yeah well i suppose if i
+could try and you you know you probably don't you could say you don't care about it and about the the
+blowback you received or the just or maybe even even the disappointment uh some may have felt when that
+happened but if i could try and explain it uh there are ideologically driven folks and i i would
+include myself in that bucket who who've been in the space for long enough and uh i know how easy it is
+to quote unquote make money right uh make make fiat gains uh by by by uh going into shikonry right for
+instance i i i'm i'm still in a fiat job uh because it pays i have a family that i need to support and
+bitcoin jobs don't frankly they just don't pay that much i've got multiple offers from shikon
+companies that are way more than my fiat salary which i've which i've declined and there's several
+other stories not just me right of other bitcoiners who sort of hold themselves to
+a certain level of i guess ideological purity and we'll talk about purity in a second
+um and and i and i i suspect the disappointment stems from that in like we've done this and you're
+you're someone who we've learned a lot from over the years and you're not doing it you're you're
+doing the economically rational thing some would say right because you know capitalistic for profit
+what have you uh but yeah that's that's sort of how i would characterize the disappointment
+yeah uh but you also have to remember that i've been canceled for being a quote unquote
+coiner more times than i can count going back way before this and and ultimately i mean
+part of it it's a conflict between uh the the people who have you know the the ideological
+purity that they want to impose upon uh the people that they look up to um versus my natural
+inclination to be interested in new things so like you know i've gotten canceled many times for
+talking about um let's see grin zcash monero i'm sure i've talked about litecoin um because litecoin
+has implemented uh memble wimble which is why i was interested in grin and like uh you know i was
+interested in uh grin and zcash for years before they ever even became production networks with actual
+assets because i'm a fucking nerd and a cypherpunk and i care about privacy and for those multi-year
+periods where i was talking about them and they were only a like theoretical future thing nobody gave
+me any shit about it but as soon as it became an actual tangible asset all of a sudden there was this
+blowback and i think fear because now there's this other asset and it's we could say that in some ways
+it's competing with bitcoin right um and i mean i'm the first one to be up front and say that one of my
+biggest disappointments in bitcoin is the terrible privacy so if you want to cancel me for caring about
+a stronger privacy then i couldn't care less do you believe that though that uh bitcoin uh
+i guess to the extent that you can attribute a uh a consciousness to bitcoin well i suppose it's
+the people who who build it right but but but let's just use the term anyway that bitcoin made the right
+choice uh in focusing on on the integrity of the base layer and and the decentralization uh with the
+understanding that uh scalability privacy and these other features would come in higher layers
+yeah i mean i think that in general uh we have optimized for for maximum value accrual right uh
+we've we've somehow threaded the needle and got to the point where we kind of speed ran adoption this is
+another thing that i'm disappointed about with bitcoin by the way is that i actually think institutional
+adoption has come too quickly and what i'm uh a bit unnerved about is the fact that
+you know we there are still masses of people out there who would benefit from bitcoin and they have
+had the opportunity to front-run the institutions in the nation states but for various reasons now
+the institutions and nation states seem to be getting in earlier
+yeah do you consider yourself a maximalist though having said all this bitcoin maximalist well you know it's
+funny that you keep saying monetary maxless because i'm pretty sure that i am one of the first people
+to ever use that term and um i believe that i first used it in 2019 uh when i got canceled over
+the uh security token offering by inx and and that's when i wrote a really really long article entitled on
+shit coins and stos in which i outlined my view of why a like highly regulated and registered security
+offering is no more a shit coin than any other publicly traded equity on the stock market and uh
+you know we can certainly argue that equities traded on the stock markets are shit coins and
+as you know everything except for bitcoin is a shit coin so what's the point even talking about
+shit coins anymore it's just bitcoin and everything else um and and so i think you know that's when i
+basically said that you know i think that bitcoin is the best money but i'm also a technologist and
+i'm interested in using technology to improve other systems and if we can improve equity by having
+regulated and registered tokens that are on peer-to-peer networks that can remove some of the friction and
+improve the auditability and the transparency of these systems you know the new york stock exchange and and
+the ways that like all the brokers connect to it and do their settlements it's it's even to this day
+it's incredibly slow and opaque and so you know why not put that stuff onto uh a network where you can
+get some improved attributes even if you never ultimately have the full level of sovereignty that bitcoin
+allows you because of course there's going to be some central registrar for like who really owns
+uh the assets at the end of the day so you and you wrote a piece i think two years ago jameson on the
+evolution of bitcoin maximalism or the history rather bitcoin maximalism so since the between then and now
+do you feel like maximalism has evolved uh i mean uh a little bit in the sense that you know there's been
+there's been more friction and contention because the maximalists did not have to contend so much
+with the shit coiners being on the same network right it used to be so much more clear cut where
+you know a shit coiner is someone who uses some network other than bitcoin but now the shit coiners
+are in bitcoin so i guess you could say shit got real this is this is more evidence that bitcoin truly is for
+enemies it's a it's a real pvp network out there uh so jameson you you know there is an article of mine
+from a couple years back which you seem to be fond of and uh oh yeah it's called it's called everyone's
+a shit corner and and no so i appreciate you sending traffic to my website by sharing it broadly on social
+media uh however i feel like there is a there is a conclusion in the article that well first of all i
+think i to be clear it's a satirical article right it's poking fun at the culture it's not i mean the
+it doesn't hold up to if you don't treat it as satire the logic is incredibly reductive it does not hold up
+to even the the most basic scrutiny right so the only scenario in which it makes sense is the humorous satirical
+one uh but there is one important piece that you uh that you don't highlight when you do talk about
+my article which is which is the ending right which which is uh you know uh the last section is bitcoin
+maximalists are shit coiners and i talk about why and then i but but then i conclude but but that's okay
+right every section has a but that's okay uh uh in that article and and and what i what i do say is look
+some of these things might be over the top but at some point you realize that bitcoin is bigger than
+you is bigger than your feelings it's not about the person who quote unquote triumphed over you in
+the purity stakes uh this this is a bigger movement and at some level these purity tests can act as
+wake-up calls over the top as they might be absurd as they might be in some cases um so that that's sort
+of how i concluded the article saying well look it's it's it's it's kind of good to to remember that
+this is a revolution yeah uh and you know if i can kind of tie that back into earlier part of the
+conversation that realization i would argue is one of the reasons of why casa did not go bankrupt after
+after we added ethereum support like we obviously we we surveyed our clients beforehand uh to to get you
+know a feeler for how bad the blowback would be and i i believe that you know there's a very very
+distinct difference between like x and nostr echo chambers of uh perpetually online toxic maximalists
+and the broader you know bitcoin uh adopters and and basically the the people who are like broadly
+into bitcoin but it's not like their life they're not you know spending all day every day on social media
+talking about bitcoin they realize that they're shitcoiners like they own things other than bitcoin
+and i'm not talking about just like other crypto assets but like you know equities real estate you know
+all of these other assets that do not give you the same level of sovereignty as bitcoin and that to them
+that's just normal it's okay you know there's a diversity of different assets out there and there's a
+number of different reasons why you may be interested in and having some assets and not others and
+uh you know they're they're certainly i mean i think i'm an edge case myself um as much as
+people might not want to believe it the overwhelming vast majority of my wealth is bitcoin and anything
+that i do with these other networks is a rounding error and i'm doing it for my technological curiosity
+and not so much as an investment like i said even my investment in citrea which is an equity investment
+it's more about just uh trying to to get more experimentation to find more valuable uses for
+block space like even that like all of my equity investments are rounding errors that i actually expect
+to go to zero it's kind of the nature of like angel investment um the the funds that i have put into
+my you know venture capital stuff i guarantee you would have been far better invested if i had just
+left them in bitcoin but i knew that that was going to happen up front and and in a way this is kind of
+a donation that i'm making to further the experimentation of the network so this actually all comes around i think to
+one of the more amusing narratives that i see being propagated on social media which is
+oh jameson lopp is invested in a bunch of shit coiner related ventures and so he's incentivized to push
+these narratives this is quite amusing to me because it's the other way around i put money into these
+things at a loss at an expected loss because i wanted to push the balance of what people were
+doing with bitcoin
+so jameson we'll end with one question which i actually forgot to ask you while we were talking
+about the 80 byte of return cap uh so some argue that we should drop the cap the 80 byte uh cap on
+op returns because filters don't work people can always route around them right we talked about that
+uh yet bitcoin's very security relies on what is in effect another filter and it's not the economic
+one it's a cryptographic filter it's the public private so the public key cryptography which prevents
+me from spending your bitcoin suppose a future quantum breakthrough threatens that filter which is a
+hypothetical question obviously uh we'd almost if that were to be the case though we'd almost certainly
+consider a hard fork at that point right we're not even talking about standard exchanges it'll be
+like a almost immediate consensus change to add quantum resistant signatures now that would be
+a deliberate change to block an unwanted behavior which in this case would be stealing coins so like
+clearly there is a scenario in which a filter matters and you have to make a radical change right so
+where do you draw the line
+well that's interesting to call that a filter right well essentially what we're talking about is
+deprecating the use of ecdsa because it's known to be compromised um and you know this is actually
+going to become a whole other contentious issue in and of itself uh you know i might get cancelled again
+in the coming weeks uh there's there's going to be a whole lot of uh stuff going on in vegas around
+quantum computing and this is a whole contentious issue as well because we can't precisely say
+what the timeline looks like or how big of a risk it really is but um i think that one of my more contentious
+perspectives on this um that i published to the mailing list several months ago was that um
+i don't think that we should just let it slide and you know let a known quantum attacker scoop up all
+these bitcoins because it is it's theft not only from the original owners uh but
+we should expect that a quantum attacker is then going to dump those coins on the market in one way
+or another greatly increasing the circulating supply of bitcoin and thus indirectly steal value from all
+bitcoin holders so an unwanted behavior that you want to prevent right so that would obviously not be
+censorship because there is the the consensus rules allow uh quantum decryption today right there's
+nothing in the so i guess what is the is there a functional difference between saying look the rules
+allow it so who am i to stop you know there's a censorship resistant network why should i stop them
+well i think the fundamental difference between these two different debates is that one of them we're
+talking about consensus and the other one we're not talking about consensus and that that latter one gets
+a lot more confusing with people because i think there's a lot of conflation going on between what policy
+does and what consensus does um i would say like i would i would greatly respect the uh fix the filters
+crowd a lot more if they were actually proposing consensus changes to actually stop people from
+being able to do the things that they don't want them to do but but but those are dead on arrival you know
+that right like there is not i mean it needs an existential thing like quantum decryption to even start a
+heck even start a soft fork discussion let alone a hard fork discussion
+yeah no consensus changes are pretty tough right and and that's why i it's also somewhat amusing to me
+that there seems to be a decent amount of overlap between the uh you know pro filters side and the
+pro ossification side because it's kind of hard to have both and it's entirely possible that uh you know if
+quantum becomes a real threat that bitcoin may not be able to save itself simply due to how difficult it is to change
+consensus mm-hmm well so the pro filters and the pro ossification filters are we're talking about standardness and
+policy right but versus uh the consensus changes are are not that oh sorry ossification is around consensus
+yeah yeah uh i i i will just say that observationally you know anecdotally from my own feed of a lot of the
+feedback that i received over the past month is that there was a very common sentiment of stop working on
+bitcoin just stop touching it leave it as it is it's doing great don't you know don't fix what ain't broken
+type of thing and you know it's and we didn't really get into that uh whole issue of you know the the
+the quote-unquote ivory tower bitcoin core uh contributors versus the rest of the plebs and uh
+how um each each of those sides is fairly frustrated with the other for um
+for reasons that i think make complete sense um i i i tried to touch on it in a few of my posts uh
+one of those essentially being there's there's a big overhang of the the covet era uh don't trust the
+experts uh i think that's still going around um but then there also is this real issue of the fact that um
+bitcoin is 16 years old now and a number of the you know wizard level protocol developers who have
+been doing this for a decade if not longer uh there's a reason that people refer to them as wizards like
+they have all of this arcane knowledge that you can't just google you can't just read a manual to find
+and um and and and so i see it as there is this ever increasing knowledge gap
+between those og technical contributors and the newer cohorts of of possibly technical but mostly
+non-technical uh plebs coming in and you know i do worry you know where does this all go um
+you know we we say don't trust verify a lot within this space but there are times when
+you have to choose to either trust some source of information maybe it's not the root source maybe it
+you know maybe it's a podcaster who is trying to distill information from the root source for you
+um if you if you refuse to trust anyone you know to help um improve your efficiency of your knowledge
+gathering then the only logical other decision that you can make is to then spend a lot of time to
+actually educate yourself from the source material uh and so what i think seems to be happening uh is that
+there are some people who are refusing to do either and from my perspective they're basically
+saying okay i'm choosing to remain ignorant and you know just believe my narrative of what bitcoin
+is and how it works and uh you know stay out of all the the nuanced discussion that requires a lot more
+uh time to wrap your head around mm-hmm
+and jameson i know you have a hard stop coming up uh we could probably talk for another hour at least uh
+certainly that ivory tower point and uh the gelman amnesia reversing uh in the post-covid era
+probably an element of dunning kruger effect in some of the new folks coming uh an element of elitism in the
+the folks who've been established um for a while um yeah those are perhaps good topics to save
+for our next conversation uh and i hope you do come back but i i do appreciate you taking the time uh
+i know this conversation was uncomfortable at times uh but uh but i well i don't know if he
+we resolved anything here uh but hopefully people got here your perspective and they better understand it
+yeah i mean uh look i embrace discomfort uh i think that discomfort is one of the signals that
+you are are trying to grow and you know you're actually trying to do something outside of your comfort zone
+and uh you know for me if that means you know defending my own actions and sayings and thoughts
+and so on then i'm more than happy to do that because obviously i think that i'm not being hypocritical
+but i can certainly understand how from other people's perspectives the um you know the image
+or the mental model that that some people may have built up uh based upon their limited set of
+interactions of you know what they see or hear from me can then from time to time be completely broken
+when i do or say something that does not fit within that mental model and so i'm more than happy to try to
+uh improve the accuracy of everyone's mental model of who i am and how i operate
+well i do appreciate you coming here to do that uh jameson and to everyone listening
+if you've got this far it means you are a subscriber thank you so much for supporting our layer two
+shows thank you jameson lop and thank you to our listeners
