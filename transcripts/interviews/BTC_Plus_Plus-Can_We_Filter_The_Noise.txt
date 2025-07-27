@@ -1,0 +1,549 @@
+Okay, so many of you are on Twitter and other social media and are aware of there have been some contentious topics recently on Mempool and on stage.
+I'm joined by many of the people that have been in these fights.
+But I first want to start on some common ground.
+And maybe we can talk about where in Bitcoin are there currently filters and to what extent do they do they work?
+And if we get we'll start start with Shinobi maybe.
+Jameson, why don't you define a filter for us maybe?
+Define work.
+Yeah.
+All right, so am I going or no?
+What are we doing here?
+Alright, so there is a differential between transactions that are valid at the consensus layer, what can be put into a block and at the relay policy layer, like what will actually be propagated across the network by nodes.
+So, there are a few different reasons for different kinds of filters.
+Some of them are just to disincentivize behavior that we would prefer not to have on chain, such as op return limits.
+So, there are filters to prevent kind of creating a mess where during upgrades we define semantics for an undefined opcode to try to make sure that people haven't used that to lock money, which would effectively be burned when that was redefined to actually instantiate a new opcode.
+And then there are filters to prevent legitimate denial of service attacks against nodes.
+So, things that cause massive spike in CPU use, memory, bandwidth, things that actually do have a possibility of degrading the node's performance, crashing it, etc.
+And I think it's really important for us to kind of disentangle these different types of filters and be clear we're focusing on the first, like trying to disincentivize things we don't want.
+Very succinct, thank you.
+Any response?
+Does anyone have any issues with how Shinobi has defined filters?
+Yes.
+The first and third categories are the same thing.
+I love a bit of stat theory.
+Anyone else?
+I would actually point out that with regard to standardness, it's not that we care about people losing money.
+It's that I want to be able to go run a node that continues to work after soft fork.
+And if I allow transactions that I don't know what they do, potentially I would get screwed over by that, especially if I happen to continue mining.
+And it's nice that people can continue mining on old nodes past soft forks.
+And there are actually people who go do this on very old ancient versions of P2 pool.
+And importantly, we've been bitten by the opposite of that.
+So we've had soft forks where, okay, we did the soft fork, and then it turns out some miners were mining on some old nodes.
+They weren't enforcing the soft fork, and they caused a fork because of this.
+They mined some transactions that were now invalid, a bunch of nodes rejected, a bunch of nodes didn't reject it.
+And this caused, you know, somewhat moderate fireworks, not chaos, but certainly the network was much smaller at the time.
+And this is why all more recent soft forks have the property that old nodes continuing to mine naively will not mine invalid transactions just based on standardness rules.
+That's actually a bad property to have because miners should be expected to actually be enforcing all the rules of the network, not be doing light validation.
+It would be nice, but it's better to know if there's a problem sooner rather than later after the activation.
+It would be nice, but at the same time, it has caused actual problems.
+So, you know, better to...
+The same problems would be caused even if those transactions didn't occur.
+Well, no, if, if you have standardness rules, then you can avoid what's the last several soft forks, it's been the case that miners mining on old versions don't cause forks.
+And so, yes, I know you've proposed various alternate soft fork creation mechanisms that enforce those forks.
+So right after the soft fork happens, you're guaranteed to have some, some moderate fireworks, some reorgs, and old nodes might be tempted to lose, you know, if you haven't upgraded, not just if you're a miner, but if you're like an exchange, you're processing deposits, you know, 5% of hash rate hasn't upgraded.
+You have a soft fork, now 5% of hash rate is in fact mining forks, then you might process a double spend.
+You know, you might have, you're going to have reorgs, and so you might process a deposit, get a double spend, lose some money if you just forgot to update your node.
+So I think that's the reason why most or maybe all other folks working on soft forks have avoided these kinds of properties.
+That's not true at all.
+I'll point out that in the, in the P2 pool example, it goes and shows that no matter how much we go and ask miners to go do certain things, there will be people who just through complacency wind up on very old nodes actually mining blocks.
+I mean, in the P2 pool example, like you're going to earn a lot less money because these types of P2 pool nodes don't mine anywhere near to all transactions.
+But they still keep on chugging along and producing a couple blocks a year.
+This is all very boring, we should get to the meat of the debate.
+Please, Jameson, where, where is the meat of this debate?
+Well, I mean, you know, we, we can argue about the sort of really edge case issues of forking and miner and stuff, but obviously the meat of the debate is about what, what is Bitcoin.
+I mean, that's, that's the amazing thing.
+Don't we all decide?
+Well, that's the, I think the coolest part about being really far down the Bitcoin rabbit hole is spending all of your time arguing with people about what is Bitcoin.
+And so, you know, at this particular point in time, we're talking about, you know, arbitrary non-monetary data and if it's a good thing, if it's a bad thing, what can we do about it?
+What should we do about it?
+There's a famous meme of yellow that says there are three rules of the bear market, but I think they apply to all markets for Bitcoin.
+The first rule is that you must, you must buy Bitcoin.
+The second rule is that you must either build or talk about building.
+And the third is that you must fight and it, it, it holds strong.
+Um, I, I think a more, more core or important issue to, to get into is how does a node consent?
+Like what, what, what, what does that process actually look like?
+Can I throw it?
+It gets a lot harder when you remove the options for them to choose what's in their mempool.
+I mean, that's probably what got glossed over in the topic of what the purpose of a filter is.
+And it's, there's this, how they're implemented from the perspective of how do we want the overall network to look and what might the blockchain ideally contain, but that is, it's very different from just more standard understandings of how and why protocols are used.
+And when you use any protocol in any context, you get to decide how you use it.
+So it doesn't that, it's also not nodes that consent, but people that consent.
+Yes.
+Are there trade-offs to kind of personalization and interoperability?
+I think I'll just, to round off my point, what I'm saying really is, um, I think it's, if we can take it as a given, some people will refute this, of course,
+that arbitrary data being stored in Bitcoin, you know, whether it's pictures of cats or whether it's Bible verses or, you know, WikiLeaks content hashed or whatever, no matter how noble you think it is, it's not money.
+And Bitcoin is definitely money and it's definitely the network on which that money moves around, but here's the extent, I think I can safely say that it's a bad thing.
+The extent to which Bitcoin can be used as not money is the extent to which it sucks as being money because you're competing over the same resources.
+And that being the case, what I think is a reasonable conclusion is the fact that bad things are happening and bad things happen every day.
+And I don't want to participate in them, no matter how minimal my input might be, but I have no, can I finish my point?
+I have no interest in relaying trash around the Bitcoin network.
+And I do see a kind of contrived effort on the part of the people that obviously oppose my position to say, if you filter out stuff, which, by the way, you've been doing since Satoshi was around, you're going to have some adverse effects.
+So it's actually in your interest to filter around, you know, monkey JPEGs and pictures of dicks and stuff like that.
+But there is no satisfying rationale for that.
+I'm filtering out aggressively stuff that goes on in the network and it doesn't affect me negatively.
+It just means I don't participate in something I think is an abuse of a protocol rather than the use of a protocol.
+Really quick, Matt, they wind up in blocks anyway, so you are not stopping this from arriving in your node, being stored in its database, and you cannot stop that without addressing this at the consensus layer.
+Like, you cannot just use policy when there is real economic demand for non-standard transactions as a way to prevent them getting into blocks.
+So this is a consensus issue if you see this as an issue.
+You are correct.
+Let's take from Matt and then back to Mechanic.
+To be clear, like, you know, it's obviously you can run any software you want.
+That's totally fine.
+That's your prerogative.
+And yes, there are people who have yelled about, you know, you must do this or that, and I don't think that's fair either.
+Nodes can totally filter.
+That's totally fine.
+I think the question is also, you know, the question on the other side of that is, is it a requirement for, like, software institutions?
+It's a requirement for engineers to maintain a feature that is strictly harmful to your local node.
+Like, it doesn't, to Shinobi's point, it does not prevent you from storing the same data.
+It's going to end up in your, on your disk.
+It's going to end up in your peer-to-peer connection one way or another, whether it's because it's in a block or whether it's before then.
+So, it only harms the local node.
+And so, you know, people don't necessarily want to provide...
+Is harm objective?
+What?
+Is harm objective?
+It strictly increases your bandwidth usage, and that's about it.
+It's not a major change to your node.
+It's, like, it's not a huge deal.
+Like, okay, you're going to use a little more bandwidth later.
+Your block propagation is going to be a little slower in your local neighborhood.
+You're going to impact...
+You're going to marginally increase block propagation across the entire network.
+It's all marginal.
+It's all on the edges.
+It's, like, not all that critical.
+But then there's a question of, should Bitcoin Core or any other node software, should developers be adding options that are marginally worse for your node, don't accomplish anything for your node, don't change anything on the network, and maintain the code for that, and maintain the logic around these, or should software, you know, obviously default should be something that helps Bitcoin, right?
+So it is actually very, you know, unlike, it doesn't really matter if there's an option or if people run other code, but it does very much matter that the default is to relay the types of transactions people make.
+Because otherwise, you get into effects with mining centralization, you can't have nodes, you can't just run a node and mine on it, or you lose out on money, you have to actually invest and hire engineers to build things like Slipstream, and, you know, all of these technologies to get people to send you transactions out of band.
+In the long term, this isn't necessarily as big a deal in the short term, but this, you have to have that as the default.
+So then, okay, do, is it that important to have an option that, like, hurts the local node, but doesn't accomplish anything?
+Yeah, I mean, you know, some people might want that option, but also, what's the point?
+I've got to point out, Bitcoin Notts exists, if you want the option, run Notts.
+Well, my concern is that people are increasingly doing that, and I'm...
+Why is that a concern?
+Well, for a very good reason, because the way Bitcoin works is not traditional FOSS.
+It's not Linux, where you can say, I don't like the latest Debian, I'm just going to run my own fork of it and make Ubuntu or something like that.
+Bitcoin is not the kind of system that can operate with that kind of divergence and different teams doing different things.
+No, that's not true at all.
+And if I could just...
+Like, I trust you to get consensus.
+Let him finish, let him finish, please.
+Bitcoin is not fundamentally the kind of system we can approach with the old school FOSS mentality, where we can just have loads of different implementations out there running stuff.
+We've seen disasters before where half the lightning went down because people were running something that wasn't Bitcoin Core or as close cousin of it, like Bitcoin Notts.
+Bitcoin, if there's a consensus failure, Bitcoin needs four nines.
+It needs to be 99.9999 uptime.
+Anything less than that, and we're just dead.
+We're not going to be taken seriously with the project we're trying to come up with here.
+Our uptime is a testament to the quality of the people involved in the project.
+But just flippantly saying, it's open source.
+Go and run something else if you don't like it is unrealistic, which means, if we're being honest with ourself, Core can't afford to just...
+To just ignore populist, not, admit with a minority, admit with a minority, but having 5% of the entire Bitcoin network switch from Core to Notts in a week in what looks like an authentic, I would say, no one has accused me of astroturfing.
+In the UASF days, I saw 500 UASF nodes turn on at once.
+Okay, come at me and tell me that's probably just an Amazon web server and someone trying to make things look a certain way.
+I haven't seen that with Notts adoption over the last week.
+I've just seen it creep up and up and up and up, and I've seen Core go down in step with it.
+So people are switching over, and I just want to finish off the point.
+I'm sorry to hog the stage.
+You've got 19 seconds.
+I don't think that just telling people to run Notts is a good thing.
+I want people to trust Core, and I don't want that trust to be violated because there's a very good chance Bitcoin gets in an incredibly disassociated, like a mess, where we can't continue as we have with the reliability we've offered.
+There's two points to make.
+So you raised one point, and I think it really has two important subpoints, right?
+So there's this, like, well, people are just going to run other nodes.
+And I think, first of all, like, people can run other nodes, right?
+So, yes, you're right that, like, consensus failure, if you have lots of different implementations of the consensus code, which, luckily, to my knowledge, Notts doesn't patch the consensus code, so it doesn't impact that there.
+But, yes, if you have lots of different implementations of the consensus code, there is a problem there.
+If you have a number of nodes that aren't active transactors, which I think the vast, let's be honest, the vast majority of nodes on the network are not active transactors, it doesn't matter all that much.
+They just will fall off the network if there's disagreement, and it doesn't really affect anyone.
+What matters is that the nodes actively transacting and validating transactions for their own economic purposes are run consistent consensus implementation, which I don't think has changed materially and is unlikely to change very much.
+But I think the other point that I think is important to make is that Bitcoin Core has invested a very, very non-trivial amount of their resources developing software so that it is, in fact, easier for people to create other random implementations around the consensus code if they want, right?
+There's this whole project called LibBitcoin Kernel.
+That's completely nonsense.
+That's absurd.
+I'm sorry.
+It's a massive amount of investment.
+He's got 40 seconds.
+Mechanic.
+Mechanic.
+Same rules for everyone.
+Yeah, let him finish.
+It's a massive investment on various people in Bitcoin Core, which just takes the consensus code and says, hey, look, here's the consensus code.
+It's a library, you can consume it, you can build your own peer-to-peer implementation on top, you can fetch blocks however you want, you can fetch transactions however you want, and relay whatever you want in your own way and build an entire node around the consensus code without having to worry as much about this, right?
+So you can take the consensus logic, be safe, know that it's the same implementation as everyone, it's not going to fall out of consensus, and then build whatever you want around it.
+Bitcoin Core's development model is very hostile to forks.
+LibBit consensus was removed in the last release of Bitcoin Core.
+That's not even a thing anymore.
+To make place for LibBitcoin Kernel.
+Right, which forces Bitcoin Core's mempool policy stuff on everyone.
+To my knowledge, it does not currently contain a mempool, but...
+You're in crit.
+We'll find out.
+Okay.
+Don't trust verify.
+They took over the TransEffects repository that I had for translating Bitcoin Core and KNOTS and other projects, specifically just to prevent KNOTS from being translated.
+I know every other contributor to that TransEffects project disagrees with your interpretation of what happened.
+It wasn't the repository.
+Okay, if I can just, a brief question, and I'm going to introduce it with a statistic from mempool.space recent research that says, the whole UTXO set currently, 49% of UTXOs are of a sub-1000 SAT value.
+A lot of people out there running nodes that aren't developers are concerned about UTXO set bloat, right?
+Maybe they're not going to be able to run a node, and this isn't a good thing, right?
+Should they be concerned about these things?
+Is there something that is currently being done about it, or is it not a problem?
+Yeah, there is.
+Go ahead.
+Well, I need to point out that sub-1000 SATs would still be standard transactions.
+So, KNOTS is allowing this, too.
+I mean, there's no reasonable way to go stop that.
+Now, sub, depends on the exact type of TransEffects, but roughly speaking, sub-300 SATs, that would be dust in non-standard transactions.
+But, like I say, I mean, people have financial incentives for this stuff, so, obviously, they're making tons of dust stuff for their own reasons.
+And, ultimately, your only good solution there is go fix the software and slash cryptography in such a way that this is no longer a concern.
+Things like UTXO are the only options we've figured out.
+I mean, that's your answer.
+Can we expand on this, maybe, and talk about how...
+And, Bitcoin, KNOTS does actually, as the fees on the network go up, it adjusts the dust software as well.
+So, it has been over 1,000 SATs minimum.
+Well, currently, though, it would still be like 1,000 SATs because fees are like 1 SAT per V-byte, roughly.
+Currently.
+But, when the spam attacks are ongoing, KNOTS is able to react to that.
+It's kind of interesting that we talk about what's below 1,000 SATs.
+What's the lower threshold on all this dust?
+Because...
+Go speak to Orange Surf, I don't know.
+Well, this is the point, right, is that when you have an inscription mint or something like that with, you know, a transaction with thousands of outputs in it, they're not 1 SAT.
+They're usually 546 SATs.
+If you're doing 1,000 times 546 SATs that you have to spend instead of 1, that adds up.
+And it's only because filters are preventing them from doing just 1 SAT outputs because they're non-standard transactions.
+And they're respecting that fact.
+And miners and the spammers are just having to respect that there is this jurisdiction inside Bitcoin.
+They are the nodes.
+And we talk about incentives all the time when we just, like, don't fight incentives.
+Bitcoin adheres to them.
+I understand that spammers want to get stuff inside Bitcoin's blockchain.
+And I understand that miners want to earn money doing it.
+But I have yet to have a sufficient explanation for why I, as a node runner, would ever want to facilitate that, have more competition for block space, make my own transactions more expensive,
+when it's completely a non-issue and a continuation of precedent for the last 15 years to say, no, I'm not going to do that.
+Well, really quick, like, those transactions are not using dust limits because filters work.
+It's because of the structure of the economic incentive.
+It's cheaper to just add up to the dust limit and the output rather than pay, like, the 3x fee or whatever that you're going to get charged by a private mempool.
+And that in no way disproves any of the arguments we are making, which is when there is an economic incentive to do non-standard transactions, people will do it.
+So is Segwit a mistake?
+I mean, it does prove that's not quite fair, right?
+It does show that they raise the cost above zero, right?
+So, like, it is absolutely the case that, like, okay, if you have some filter that is enforced broadly on the network, you're right, that it means it does not work.
+It raises the cost to route around it to something.
+That's what it's called working is done.
+You guys get to vote on it in a little bit, yeah.
+But there's a limit.
+And Shinobi's point is also true that, okay, you've raised the cost very marginally, a few hundred sats, but at not very much more cost than that, there exist solutions to route around it and people will use it, right?
+All it takes is one miner, like, for example, Luke, who wanted to include Bible verses in the blockchain.
+All it takes is one miner who wants to include Bible verses and they will do it, right?
+So all it takes is one miner to provide a private relay API, which historically has been F2 pool often, it's now also available via Mara, and there will always be some, you know, as long as there's demand, there will be miners who do this, that, yes, okay, the cost is not zero, but the cost can't go very high before it immediately fails.
+Before these filters stop working.
+Bible verses were not spammed, first of all, but also if...
+So is spam subjective?
+Is spam subjective?
+Yes.
+Yes.
+Can we evoke, is spam subjective or is it objective?
+I say subjective.
+There is an objective difference.
+I'd love to hear this, Luke.
+Tell us more.
+Bitcoin's design allows miners to put up to 95 bytes per block of arbitrary data in the Coinbase.
+That is completely different from spam, which is encoding this arbitrary data to look like something it is not, to deceive nodes into accepting it.
+Completely different.
+It's very different.
+We've never had a problem with people writing Antpool in a Coinbase.
+It's fine.
+No one has a problem with...
+You said deceiving someone into them thinking it's what it's not, but surely then it's just a perception issue.
+It's not, and it's not really, that's not really a technical judgment, is it?
+It's a technical...
+If you submit JPEG as a transaction, it will be rejected by every single node.
+You have to upfuscate it and make it look like something it's not to make it accepted.
+Sure, sure.
+Is there an objective way to tell if someone's lying?
+Jason's been waiting for a minute, Walton.
+Come on.
+Okay.
+Jameson.
+Look, this debate is fascinating because we have one side that is being the autistic technical people and the other side that is being more ideological.
+And each side will refuse to admit that, you know, the technicals will say...
+Which side is which?
+The ideologicals will refuse to admit this is a technical debate.
+I think it's fascinating, though, that there is overlap.
+Can we get a quick show of hands?
+Who on stage wants to see JPEGs in the blockchain?
+Are the JPEGs actually in the blockchain?
+I think, like, there is consensus that we all agree that there is some absolutely ridiculous stuff being put in the blockchain.
+I couldn't care less to let them pay the fees.
+I think this is...
+I think Shinobi was right earlier.
+He said this is about economic incentives.
+You're the moderator.
+Let them pay the fees.
+And you have to...
+If you want to...
+If you want to see certain kind of transactions in the...
+You know, in the...
+The mempool are in the blockchain, then you need to have economic incentives that drive those kinds of transactions to outprice other kinds of transactions.
+Am I wrong?
+I'd say, actually, kind of yes, because this idea of outpricing things doesn't actually go work in ways that necessarily we would want.
+Agreed.
+And...
+But we just have to accept that, you know, this is how Bitcoin works.
+And you might not like the fact that people can make a ton of money off ordinals with a bunch of bullshit hype.
+And all you can realistically do is design, for instance, better L2s so that fee spikes no matter.
+I mean, I was affected with, you know, speeds going up because, of course, I run open timestamps calendars, which, incidentally, put data in the chain.
+Arbitrary data.
+Arbitrary data.
+And it cost me a lot of money in fees.
+It meant that my timestamping was slower.
+Filter this man.
+Maybe you should fix it so that it doesn't add data.
+It doesn't need to add data.
+We've got taproot.
+We've got paid to contract stuff.
+And I have designed choices in open timestamps to go and use additional data in the chain precisely because of various technical things that, you know, don't make sense in my trade-offs.
+Also, the fact I have a transaction that I need to make is adding data to the chain, even if it may not be obvious.
+I mean, I need to make these transactions.
+Like that, it doesn't matter how the hell I encoded it.
+That is adding, quote-unquote, spam.
+It's non-financial transactions.
+It also needs to be pointed out that even if 1% of bad actor miners are putting data in the chain that the nodes are rejecting, that's only one out of every 100 blocks.
+You still have 99 blocks of legitimate transactions that are not being impacted.
+So that is true, and that's how the market works today.
+The problem is it's the same blocks-based market, right?
+So that one block of JPEG trash, or whatever it is, is going to displace other transactions.
+And so if you have only one block's worth of JPEG trash every 100 blocks that people want to transact with, then, of course, it doesn't actually make a difference to the total transactions that get through.
+It doesn't make a difference to the fee market.
+It's all the same.
+If you have materially more JPEG trash that wants to pay fees, then, of course, this situation is not sustainable because more miners will, of course, then start mining the JPEG trash.
+In fact, we, well, if they want money, they will do it because they probably want money.
+Do they want money that will be worthless because they destroy Bitcoin?
+Most miners don't see it that way.
+We need to get miners up on stage to get their opinion on that.
+We're not really qualified.
+We know miners are willing to go change relay policy to make more money because they turned on full RBF in space about a year after not that much money was made available to go mine those transactions.
+Like, it's probably, what, one to ten percent?
+Full RBF does not harm the network.
+Yeah, not very much.
+Well, a lot of people disagree with you on that.
+Well, they're wrong.
+We've seen much more severe cases, right?
+So we've seen, for example, F2Pool was exploiting smart contracts while mining Ethereum before it was a proof-of-stake chain,
+long before MEV was even a term, and this wreaked havoc on a lot of smart contracts in Ethereum, and yet they happily did it.
+They didn't lose hash power from it, and, you know, we've seen time and time again that pools just don't really care.
+Well, coins are not comparable to Bitcoin.
+We'll come to questions from the audience in a couple of minutes, but...
+If miners were that concerned about not ruining Bitcoin, Antpool and Foundry wouldn't be so big.
+Yes.
+Until recently, they didn't really have much of a choice.
+Not sure that that's quite true, but there are, in fact, many pools.
+The way Bitcoin shakes out, there are so many incentives for pools to coagulate and just get bigger and bigger.
+There's not really, like, Stratum v2 for 10 years is going to fix this.
+It didn't, and Stratum exists, but it hasn't been around for long.
+So we need to wait and see.
+It's possible that Foundry or Antpool go, all right, we'll allow templates to be created on the miner side.
+But this is...
+I do think we've veered off topic a bit here.
+I really want to just come back to something you said, like, 10 minutes ago.
+The assertion keeps being made that if people are running filters, it's completely pointless,
+because that thing you filtered might end up in a block anyway, so just stop.
+And this is a fallacy, and it needs to stop being uttered by you guys, because it's disingenuous.
+Bad things happen.
+You can't prevent all of those bad things from happening.
+That doesn't mean you give up all countermeasures.
+That's not how it works.
+Isn't that a bit like voting in elections?
+I feel like there's a similar argument.
+Vote harder.
+There's a similar argument for why you should vote in elections, right?
+Because your vote counts, and if you don't vote, then the decisions get made by everyone else, right?
+Yeah, but it's not quite the same, right?
+Because in this case, it's not a, oh, well, if a majority of people vote, then these things stop getting confirmed.
+It's if nearly everyone, actually really everyone votes, then these things stop getting confirmed.
+That was my understanding.
+That's not, really.
+99.9% of nodes, that's probably approximately the right figure, do not relay oversized op returns.
+And meanwhile, OpReturnBot seems to go publish everything said about how terrible OpReturn is.
+It's gotten a little behind lately because there's too many op returns being submitted last I heard.
+I don't know what that is.
+Well, it has bad wallet management because it's a serial chain.
+At the end of the day, you're not going to escape the fact that Citria and the people that want to store arbitrary data in Bitcoin are trying to leverage what they have to make, to gain the benefit of the P2P network because it's useful to them.
+If it was that trivial to say, I can fill up the chain with what I want and your filters, I can just get around them.
+Then why is there any controversy?
+Just leave them.
+Citria did get around the filters.
+That's the thing.
+Their design goes and makes unspendable outputs.
+Yep.
+Citria doesn't need any changes.
+It fits within what the filters allow.
+No, actually, Citria has some, Citria did.
+So you're right.
+To be clear, it is absolutely the case that the filters by default, the default filters that are in true across the network have non-zero impact.
+They do raise the cost above absolutely zero to get a non-standard transaction confirmed.
+The cost is about 3x the normal fee rate.
+That's what Mara charges.
+It's about 3x.
+With more competition, it might go down a little more.
+I see you.
+You know, with F2Pool, I know with certain types of...
+True Leaper Relay, I believe it's some...
+True Leaper Relay, it's a little lower.
+I believe it's approximately...
+It's approximately easier.
+It's approximately equal, but there's still some technical costs.
+You have to know Leaper Relay exists.
+You have to go download that, run that, and then submit your transactions via that.
+So, you know, there's non-zero cost, but the cost is still very low.
+And so I think you're right to point that people who say there's, you know, zero cost for people to just get around it are wrong.
+But that doesn't make it such a large cost that the statement becomes kind of true in its intended form, right?
+Because it's still so low cost.
+You know, 3x, one sats is still, what now, three sats per vbyte to use a proprietary API?
+I don't have that much Bitcoin just laying around.
+Come on.
+If it's just one time, it doesn't matter.
+Or you just run slightly different software, or, you know, it's still such a low cost that it's not particularly relevant.
+It's one cost per byte.
+If it's one byte or two bytes, it doesn't matter.
+It's only when it's a lot of it that it's actually worth filtering in the first place.
+The reason we're having this discussion is because the slightly higher cost of using Opperturn and Libre Relay ended up causing Citria and, you know, in projects like it to redirect that money into essentially attacking Bitcoin through UTXO bloat.
+All right, that's the whole reason we're having this discussion.
+And the way to deal with that is the filter that...
+Hang on.
+We're not having this discussion because, you know, we're making a proposal to say, like, standardized annex, which would be a different discussion.
+We're having this discussion because of Opperturn and no other reason.
+Okay, I want to hear from Luke, and then I want to take a few questions from the audience because we only have a little bit more time.
+Luke.
+The response to someone bypassing the filters is to add new filters that filter their garbage.
+And also, I want to point out that you admitted that it was already throttling the Opperturn bot because of the filters.
+No, that's not why.
+That's poor wallet management on the part.
+Yeah, it's poor wallet.
+They were lazy because they didn't used to have any demand, and now they have demand, so they have to, like...
+But there are only so many miners that will mine their spam.
+No, it's because they're relaying large transactions.
+Sorry, guys, I'm going to have to filter you just here because I do want to have some questions from the audience.
+What if I pay extra to say something?
+Ha, ha, ha, ha!
+The question is, is that can other people pay more to, like, ask something in front of you, right?
+Can one of our lovely volunteers get a microphone to rub at the back?
+Is that possible?
+Do we need this one?
+All right, okay, I'm on a mission.
+Let me just jump in here and mention that, you know, mining is highly institutionalized, and these are companies with shareholders, and the companies have fiduciary duties to maximize shareholder value.
+Yep.
+They're not doing a very good job at it.
+Have you seen what FPPS does?
+Hey, so I guess my question is, thinking, like, second, third-order effects of this, if the inscription stuff has been around for, like, two years, there hasn't been a meaningful impact in the network on making that stuff go away.
+If op return ends up being merged and increasing the limit, like, what's the second, third-order recourse if you don't want this to happen for the network?
+Is it firing the miners?
+Is it doing what?
+Right, because I think a lot of this is, like, a debate between mental policy and consensus, and at some point, you have, like, if the miners are acting malicious and including all of this stuff, at some point, don't you try and, like, push them out of the network?
+Because they're, from your point of view, they're attacking the network at that point?
+Isn't there, like, a certain point where you say, you're hurting Bitcoin, you're attacking Bitcoin, you're all complicit in this, it's time to kick you out?
+I think the inscriptions filters have worked.
+There's very few people running it, but the number of blocks that do not include them has adjusted accordingly.
+If anything, the problem with filtering inscriptions is we've seen, like, the four meggers, like, the big inscriptions that take a whole block that are non-standard transactions are worth more because they're non-standard.
+And they had to spend a little bit more money to create them, they had to, like, integrate with this proprietary API, they had to do this more work,
+so they're more rare, and as a result, the price went up.
+It just creates more incentive to build these things.
+Sure, but it never creates an incentive for me to relay it.
+So why is Core removing those kinds of features?
+It's not a question of incentive-free, like, you don't have to relay it.
+You can not run Bitcoin Core, you can run Nots, you can do whatever you want.
+You don't have to relay anything you don't want.
+But Bitcoin Core, the software, should, and I do not contribute to Bitcoin Core anymore, lest anyone, I haven't in many years, lest anyone's confused,
+but Bitcoin Core should, in my view, do the thing that is optimal for both the user and the Bitcoin network.
+And the optimal thing for the user is to use a little less bandwidth to get the stuff that it's going to have to get anyway, and the optimal thing for the network is to make sure miners have access to the transactions that want to pay them.
+I want to try answering, though, this thing about, like, firing the miners, though.
+And I think the bigger challenge there is we just don't have a principled way of stopping these things from ending up in blocks.
+Like, if you want to fire miners, somehow you have to, at the consensus level, filter out things so you don't create these incentives.
+And I think Andrew Polster had a wonderful, you know, email to the Bitcoin DevList or something explaining in detail this.
+And so far, the only mechanism we know of that could, in a principled way, stop this is extremely heavyweight changes to Bitcoin consensus,
+where you would actually have to go prove that every single byte of data in a transaction wasn't quote-unquote data.
+And even those things don't actually stop things people consider spam, because people can use outputs for things like RGB and other tokens that are still non-Bitcoin financial, yet they still wind up competing for transactions.
+Yeah, and to highlight the point you made earlier is, like, we've lost a lot to people working around filters by creating garbage and embedding extra data in outputs, in public keys, in the UTXO set that floats the UTXO set and makes it much harder to run a Bitcoin.
+note, and that's just worse for everyone.
+Okay, all of these ideas are terrible.
+Sorry, Bob?
+All of these ideas are terrible.
+Bigger operaturns, terrible.
+You know, filtering, A, doesn't work.
+B, invites regulators to use the same mechanism.
+All of these ideas are terrible.
+In wartime, you want to create dilemmas for your opponent, not problems that have solutions.
+This is not a problem that has a good solution that we're going to find.
+These are dilemmas.
+All of these options are terrible.
+In wartime, what you want to do is you want to create a dilemma such that your opponent has to make a move, and you don't care which move he makes.
+You're going to take advantage of any move he makes, right?
+So in such a situation, sometimes the best thing to do is nothing because anything we do here, a regulator is going to take advantage of the fact that we said we can filter transactions, right?
+The monkey J-Pig people are going to take advantage of bigger operaturns, right?
+All of these solutions are terrible.
+I'm not sure that they will.
+I would push back a little bit on the concept that removing existing standardness rules that are setting us up in the case of Citria to cause damage to the UTX OSET is problematic.
+You make a good point that if we start running around saying filters work and we're going to add these filters, then regulators are going to say, great, here's the OFAC list.
+Please make sure you filter the OFAC list, but highlighting that filters don't work in an economic sense, in a large scale sense, and removing filters that are actually setting us up for a problem, I'm a little skeptical that that's a shorter term problem.
+But you made the statement that filters don't work and you made the statement that they create a tiny little hurdle that we get around.
+Guys, 99% of what's in the blockchain fits within not just consensus, but what is restricted by nodes at the mempool level.
+Why are we flipping this on its head and acting like that's a no big deal thing that has no impact on anything?
+That's the point about the types of transactions people want to make, not a point about how well the filters work.
+But the only valid point you can make about filters is that they're not 100% effective.
+Everything else is...
+I'm being told to ask my question. I want to cut you off.
+All right.
+Mike, he gave me permission.
+So Matt asserted earlier that miners have economic incentive to my non-standard transactions, to which Luke, I'm paraphrasing here.
+Don't kill me.
+Luke paraphrased it, paraphrase responded, well, then Bitcoin would be worthless, essentially alluding to the underlying economic incentive that miners would purposely not mine non-standard transactions for the sake of Bitcoin and the project itself.
+So avoiding the short-term profitability for the long-term health of the network, essentially.
+I mean, to me, this sort of seems like this sort of relies on good actors.
+So that and then...
+Bitcoin relies on good actors.
+And then the mini follow-up is, I feel like Shinobi got unfair pushback when he sort...
+If relay policy is this important, I feel like Shinobi saying that, well, then consensus needs to match relay on these points, or especially the contentious points.
+I don't understand why he got so much pushback on that.
+So I need to point out that how we design Taproot, and even P2SH before that, relay policy very closely matches consensus.
+What you are allowed to go put in a Taproot witness, or indeed witnesses in general, is basically everything that's allowed by consensus.
+We don't actually have filtering on JPEGs.
+Like, we just decided not to do that.
+So it's not like liners are like bypassing filters here.
+The filters just don't exist in that case.
+That was an unintentional vulnerability.
+But we did it, and that's just how it works.
+No, it was snuck in, if anything.
+You rewrote documentation and pretended there was no bug.
+This is sketchy, baby.
+It was an unrelated pull request.
+This is one of the first things that made people start looking at Corey and going, yeah, there's something funny going on here.
+And I hate having to invoke that kind of crap.
+All right, mechanic, thank you.
+But you are going to have a bit more time in the debate that's going to be on in a little bit.
+So we're going to cut you off here.
+This has been an honor to host this panel.
+And you are all going to have a debate where you can vote on these important issues.
+But voting is irrelevant.
+Can I make one last point?
+Well, yeah, maybe you can vote on that as well, you know, or not.
+Can I make one last point that I didn't see addressed?
+Please, Luke.
+Someone mentioned that governments are going to see filters and decide to use it for censorship or whatever.
+But the ability to filter spam, because it is only, it is not 100%, means that it can't be used for censorship.
+It would have to be perfectly reliable to censor someone.
+The only reason it works for spam is because it doesn't need to be perfectly reliable.
+It's good enough to rate limit it and make it more expensive.
+Censorship in general is not perfectly reliable.
+All of the OFAC sanction stuff is not perfectly reliable.
+It only takes one minor.
+It mostly works because it isn't targeting a broad enough swath of people where it needs to impact the world, right?
+So, like, if censorship of financial censorship targeted, you know, half of Americans, people would riot and complain that they're not able to do their, go about their daily lives.
+But the fact that it only targets a very, very small minority of people in the kind of direct black and white censorship sense means that you don't have this problem and you can't necessarily get away with it by just saying, like, oh, it's not perfectly reliable.
+It's like, yeah, okay, but it doesn't need to be.
+It's just targeting these few people and it's just preventing them from acting very direct.
+It only takes one minor, one block.
+So I think one thing we can all agree on is that block space is scarce, which is perhaps unfortunate for some people.
+Not scarce enough.
+But if I could just quick thank you to all of my panelists, Peter Todd, Matt Corralo, Mechanic, Luke, Jameson Lopp, and of course, Shinobi.
