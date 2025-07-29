@@ -1,0 +1,168 @@
+All right, all right. So today we have an important discussion to have. It's a discussion that might
+become a little technical, but that is going to become critical for the future of Bitcoin.
+And today I have two of the most knowledgeable persons that can talk about this subject. So
+maybe we can start with you, Jameson, if you can give a brief introduction and then we'll go to
+Hunter. Sure. I'm Jameson Lopp. I've spent the past decade building self-custody software wallets,
+and I mainly focus on security for Bitcoin holders, and that's both cyber security and physical
+security. And while I am not a cryptographer or a quantum expert by any means, I find that the
+issue that we're going to be talking about here today is incredibly complicated, not just from
+the technical aspect, but also sociological and philosophical.
+Hi, I'm Hunter Beast. I am a developer and senior protocol engineer for the Andro sidechain.
+And one of the things I work on is Bit360, a proposal to add post-quartography to Bitcoin.
+All right. So let's start with the basics. I think the goal today is to explain what is the nature of the problem,
+how we can fix it, and if those solutions come with, you know, drawbacks. So the first thing, Jameson, maybe if you can explain the nature of the problem,
+why does, you know, quantum pose a problem to Bitcoin specifically?
+Right. So we won't try to explain cryptography for you because your eyes would glaze over, but essentially the way that Bitcoin works, you have public keys, you have private keys, and as you probably know, not your keys, not your coins.
+It's incredibly important to keep those private keys safe so that you are the only one who has access to them.
+Now, the problem that we are expecting to happen at some point in the medium-term future is that advancements in quantum computing, both hardware and software,
+are going to allow an attacker with a sufficiently powerful quantum computer to be able to reverse engineer your private key if they see the public key on the blockchain.
+And so, obviously, this is major security ramifications and the solutions to it, none of them are perfect, they all have trade-offs, and because of the nasty web of complexities,
+both on the technical and social sides, I expect this is going to be a very contentious debate that will probably take many years.
+And that's a problem in and of itself because we don't know how many years we have to solve the problem.
+Okay, Hunter, so basically, people in the future might be able to steal your Bitcoin.
+Is there a way to avoid this to date?
+Well, I would say the important thing to understand about the problem is that whenever you have a public key exposed,
+there's a potential for someone to, at some point in the future, with a powerful enough quantum computer, they could come to drive the private key to that public key.
+And that's probably not possible yet, but we also don't know that.
+We can't prove that.
+And in that, the government has been trying to warn us for a little while now.
+And so we don't know what they know.
+But the best way an ordinary Bitcoiner can just prevent any kind of funds from being exposed in that way is to never reuse addresses.
+So always use what's called an HD wallet or a hierarchical deterministic wallet.
+These are just the modern Bitcoin wallets that whenever you use a receive address, you get a new one.
+And so that you're not reusing addresses that you've spent from.
+Because whenever you spend from an address, you have to reveal your public key.
+And also, I would highly recommend avoiding taproot, especially for a long-term hodl, like a cold storage,
+because taproot addresses are public keys themselves.
+So whenever you send coins to a taproot address, you're sending coins to a public key and revealing that.
+The best way is to make sure that you're keeping your coins in what are called native SegWit addresses.
+Those start with BC1Q, whereas taproot starts with BC1P.
+An easy way to remember that is that taproot has a P in it, whereas BC1Q seems kind of like SegWit, right?
+With the G and Q kind of look kind of similar.
+So that's one little mnemonic for me to remember.
+Or, you know, like, what is BC1Q, what is BC1P, what is a native SegWit, what is a taproot?
+And so you want to go with native SegWit.
+You need to, this is, like, if you're really paranoid, go with what they call a pay-to-witness script hash, multi-sig.
+The more keys you add, the more difficult it is for quantum computers to attack those funds.
+So those are some strategies that we've kind of looked at in the course of development at Enduro.
+Jameson, you've wrote extensively about this problem, and one of the main challenges that is going to present itself is that even if in the future we have quantum resistant addresses, right?
+So we have a way to mitigate this problem, there are still going to be abandoned coins, right?
+The Satoshi coins, the coins that have been lost by people before.
+These coins will not be able to migrate to this new type of quantum resistant addresses.
+And so the question becomes, what do we do about those coins?
+Do we purposefully let quantum hackers take those coins?
+Or is there a solution to act and prevent this?
+And so, Jameson, you've wrote extensively about this, and I'll let you explain kind of your position on it.
+Yeah, this is going to be one of the more contentious social and philosophical aspects.
+So we have upgraded Bitcoin numerous times over the past 15 years, but never before has there been an upgrade that was, you know, an existential crisis that required people to move their money.
+It was always optional if you want to move your money to some new script type to get some new functionality.
+You could do that, or you could just keep using your current level of security.
+Now, one of the problems here, and one of the reasons why it's going to take a really long time to address, is that, you know, block space is limited, throughput is limited.
+Depending upon your assumptions, it could take anywhere from six months to several years for us to get the vast majority of coins migrated over.
+And, of course, we can't force anybody to do anything, right?
+This is a voluntary, permissionless system.
+Now, some people immediately are going to have knee-jerk reactions and get upset to the idea that we should freeze or burn quantum vulnerable coins to prevent them from being stolen.
+There's a number of different ways of looking at it.
+I'm mostly looking at it from an incentivization perspective.
+One of the big problems here is that we don't have any specific deadlines, and if you don't give somebody a specific deadline to do something, you know, most people are going to procrastinate and wait until the last minute.
+So, one reason why I think it could be helpful to set specific deadlines that you need to move your coins by is just to incentivize people to do that.
+I would also caution against thinking of it as being a paternalistic thing of, like, saving people from themselves.
+You can definitely look at this from a pure self-incentive issue.
+And that basically is if you are holding Bitcoin and you are being responsible and you migrate your coins to a quantum safe scheme, do you want to have to suffer the economic volatility of there being a massive increase in circulating supply?
+Because we can expect millions of Bitcoin to re-enter circulation as they are recovered or stolen or whatever you want to call it, basically scooped up and joined back into the usable supply by some quantum supremacy attacker who will most likely then use them for And so you should expect that that will have a massive impact upon the value of your Bitcoin.
+So some people, of course, will say one BTC equals one BTC, and that's always a valid perspective.
+But I suspect that the landscape of the environment of Bitcoin investors has dramatically changed over the past few years.
+And a lot of people, for example, who own ETFs don't even know how much BTC they have.
+They only know, you know, what is the fiat value and they're going to be pretty upset if that goes down significantly.
+So basically, we have a technical problem, which is quantum computers and the ability to steal people's Bitcoins.
+But at the end of the day, this is going to be a moral and ethical problem for Bitcoin, for the Bitcoin community to decide what to do about those Bitcoins.
+So like you said, GemsUp, one of the solutions is to freeze those coins, to burn them so that no hacker can ever, you know, put them back on the market.
+Obviously, this would come with some, you know, ethical trade-offs because, you know, if we decide to burn those coins,
+maybe someday in the future, there'll be another reason to burn other coins for a less noble cause, right?
+But like you explained as well, the potential risk to Bitcoin itself to have, I think, the number of Satoshi coins is like 1.7 million something.
+Imagine this number of Bitcoin flooding the market, it would absolutely shatter the confidence in the protocol itself.
+And I would mention it's not just the Satoshi coins, but it also, it depends on when Q-Day happens.
+But at the moment, I think there's more than 6 million Bitcoin that are currently vulnerable.
+And that's mostly because of the address reuse that Hunter mentioned.
+All right, so let's say, you know, we don't agree with the solution to burn the coins.
+Hunter, you have written extensively about a proposal called Hourglass that would kind of basically mitigate the ethical dilemma of burning the coins
+while also trying to increase the incentives that Jameson was talking about to kind of make this situation
+economical for the people involved.
+Can you explain this?
+Yeah, so on the Bitcoin devs mailing list, a couple of weeks back, I posted a draft of a BIP for what we call Hourglass.
+Hourglass is a proposal to essentially limit the spend of those original pay-to-public key coins.
+to just one input per block.
+And so, or one spend per block.
+And so, you can spend one of those original block awards and spread that out.
+And the reason why we thought those would make a lot of sense is because of those 1.7 million Bitcoin
+that spread out over 34,000 different unique keys and, or addresses, they're the same thing in this case.
+And they, if there's no throttling mechanism to limit the rate at which they are spent,
+then it's very possible that they can be entirely liquidated within the span of two to three hours worth of blocks.
+And if we, if we instead limit the rate at which they are spent, then it spreads that over across more like something like eight months of blocks.
+So, because like 34,000, a thousand blocks a week, that's 34 weeks.
+And so that's about two thirds of the year.
+And so, yeah, the Hourglass proposal essentially just tries to limit the amount of Bitcoin that becomes liquid,
+the actual rate of it, the rate of increase of supply, and to something that maybe doesn't impact markets as much.
+And that's crucial for Bitcoin because much of its security is crypto economic security.
+It comes from the miners actually, you know, being economically incentivized to mine something valuable.
+And so if the, if the value of, of the, of the Bitcoin token were, or the Bitcoin native unit, right, is, is affected,
+then that could be almost an existential problem for the network akin to the fact that the ECDLP is also broken,
+which is the problem that keeps elliptic curve cartography hard for classical computers to solve.
+So it's pretty important that we have at least a plan for this,
+and that's why we put the time into writing a BIP for Hourglass.
+I think the best way I would describe Hourglass is like it's an imperfect solution to an impossible problem, right?
+Might be a good way to think about it.
+Yeah, it's a good way to say it, yeah.
+Thank you.
+When we think about it, I think, you know, the proposal has some of the more acceptable ethical dilemmas that we can make when we have to address this kind of problem.
+And obviously, that's something that the Bitcoin community will have to wrestle with in the future.
+And so just to explain a little bit more again on Hourglass, the basic idea is that instead of letting hackers potentially steal all those Bitcoin at the same time and potentially crushing the market,
+the idea would be that they would have to basically wait for each new block every 10 minutes before they can spend all those new UTXOs, all those new Bitcoins, right?
+And so the idea would be that not only would you limit the supply shock for the market,
+but also one of the most interesting part of the proposal is that because those hackers would have to compete to get into those blocks,
+some of those hacked Bitcoins, instead of ending up in the hands of hackers, they would end up in the hands of miners.
+Could you expand on this a little bit?
+Yeah, so that's definitely a positive externality of Hourglass, like yet another one other than just limiting the rate at which they could hit the market.
+Miners might also be able to benefit further on if there are multiple actors competing with each other for some of these for getting a cut of that action, right?
+Well, it's also another interesting thing that comes out of that is that you actually kind of learn what the cost is of the actual effort they put into whatever's needed to get the private keys to these public keys,
+because they'll never, well, an assumption is that they might not try to outbid each other so much that they are losing money.
+But that also assumes that they're a economically rational actor.
+I just I find it to be a really weird half measure, you could stop all theft.
+But instead, we say, Oh, we'll allow theft, we'll just spread it out a little bit.
+Also, if it's only really talking about the Satoshi era, pay to pub key, and that's a I mean, that's almost 2 million Bitcoin.
+But like I said, it's possible there's still another 4 million Bitcoin out there.
+And, you know, the Hourglass proposal doesn't currently do anything about that, maybe that will be modified.
+And also, there's going to be economic volatility, right, the distribution of Bitcoin amongst the addresses is a bit skewed.
+So while it'll definitely smooth it out over the long term, you can certainly expect that like those first addresses that get hit are going to have 10s of 1000s of Bitcoin in them.
+And, you know, ultimately, like I said, this is a very tricky ethical dilemma.
+But the entire community and especially the major economic actors are going to have to come together and decide what are our incentives.
+Are we willing to weather massive economic volatility that will come, you know, if we don't burn, freeze, confiscate these coins, whatever, because this is a massive ecosystem now.
+It's not it's not just about, you know, the value that you see when you're opening up your wallet.
+I can tell you, you're running a business for nearly a decade in this space.
+Everyone who runs a Bitcoin business, whether it's a minor or a custodian or an exchange or whatever, we are massively affected by the price of Bitcoin.
+And so if if a major economic event causes a significant crash in the price of Bitcoin, you know, there will be ripple effects that take quite a while to recover from.
+Jameson, you've been a technical commentator in the Bitcoin space for many, many years, you've seen all the dramas, you've been through all the wars.
+Would you say today that the quantum problem is an existential threat for Bitcoin more than the potential ossification of the protocol?
+Well, ossification definitely plays a role here. You know, it's getting harder and harder to come to consensus on any proposed improvement for Bitcoin.
+And we've known that this is going to happen as almost a law of nature, a law of network physics that as the size of a network grows, the amount of effort required to coordinate amongst the distributed actors grows higher and higher and higher until eventually, you tem kind of crushes you under an inability to coordinate.
+So the reason why you could say this is an existential crisis is because we don't actually know how long we have, but we do know that it's getting harder and harder to make any change.
+So it's far preferable that we act too soon and are well prepared for a quantum adversary than if we wait too long and we have to scramble to try to come up with a solution after a quantum adversary has already appeared.
+I think the economic damage will be orders of magnitude greater if we wait too long, whereas if we do it too early, there will be some trade-offs around like scalability and, you know, size of the blocks and all of this other stuff.
+Hunter, obviously, yeah, we have to remain optimist about the chances of Bitcoin to change and to prevent this potential problem.
+But Hunter, obviously you've already written the hourglass proposal.
+You've also presented B360, which is quantum resistant Bitcoin addresses.
+I guess, you know, next year at the next Bitcoin conference in the United States, do you think we'll be any closer to a solution?
+Oh, without a doubt, we'll have test nets, we'll have Bit360, like an implementation and all the things needed for it.
+In fact, we're hoping to have that by the end of the year.
+And if we allow a generous six months for activation, then yeah, it might be a possibility that we have some mechanism underway.
+That said, it's really important to make sure that we have a good amount of consensus within the community and good confidence also in our approach.
+And both of those things are not nearly there yet.
+And I also have to say that that's a good thing in that like nothing should be a given or an assumption, right?
+We can't assume that like this approach is going to be the ideal.
+We need to make sure that's validated and proven and we do all the work to make sure that we have the best solution for Bitcoin.
+Thank you, Hunter.
+Looks like we're coming to the end of this discussion.
+Thank you guys so much for, you know, hopefully helping people to understand the massive problem that Bitcoin is facing.
+And hopefully the next time you guys hear about this topic, you can have, you know, a more educated opinion on it.
+And I would highly encourage you guys to follow both Jameson and Hunter on different social medias to kind of follow what is happening there.
+Thank you very much.
