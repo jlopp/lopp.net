@@ -1,0 +1,260 @@
+Hey guys, what's going on? Aaron here. Welcome to the video. In today's video, I'm talking with
+Jameson Lopp. So he is the CTO of Casa, which allows you to have a multi-sig protocol for
+protecting your Bitcoin. He's been in the Bitcoin security space for over 10 years. So he has a ton
+of information regarding how to protect yourself. He's seen it all. He's been here for a very,
+very long time. We go over Casa. That is going to be the company he works for. And just
+the pros and cons of the different ways to store your Bitcoin, from hot wallets to exchanges to ETFs
+to having a hardware wallet or using something like Casa. So please enjoy the video. I hope you
+learned something. And ultimately, I hope that you take your privacy and security of the Bitcoin and
+crypto that you hold to the next level. Because that's really what I want to emphasize here,
+especially because we're getting bombarded with scams and phishing attempts and all sorts of things
+have recently been duped into. I may cover that in a future video. But we cover it all in this video.
+So I hope you enjoy. And let me know your thoughts below in the comments.
+Just wanted to chat just to kind of learn more about what you're doing with Casa. Security is
+something that's big on my mind as well. And also just get your take on what's going on with the
+Bitcoin space currently and just how you're seeing it. So maybe just jump in. How did you get into the
+space and like what made you so concerned about security and privacy? Just personally, if you
+can go back to that? Yeah, I mean, I kind of fell into Bitcoin security, just because it happened to be
+the first job that I got. So I started off in around 2012, just being interested in Bitcoin,
+starting to dip my toes and trying to understand it better. In 2014 is when I started my first project,
+where I forked Bitcoin core and added in a bunch of instrumentation and metrics. I was basically taking
+a lot of the skills I was using in my day job at the time and applying it to Bitcoin, trying to bring
+more transparency to node operators and understanding what was happening inside of Bitcoin nodes.
+And that's when I really started talking more about Bitcoin from a technical perspective.
+And then 2015, I decided, you know, I'm spending all my time thinking about Bitcoin stuff. I might as
+well try to get paid to do it. And that's when I started applying to jobs. And I got a job at BitGo,
+basically building infrastructure for their backend enterprise, multi-sig wallets, doing things like
+indexing blockchain data, managing transactions, send queues, fee estimation, so on and so forth.
+And it was over the next three year period of me just sitting there building and absorbing as much
+as possible that I started understanding more about the security sides, all of the best practices
+around key management and custody. And, you know, after doing that for three years, I felt
+like we had done a pretty good job of improving enterprise grade security and helping reduce the
+risk for exchanges and other payment processors with large value wallets. But there was a big
+disconnect in the sense that that same level of best practices and infrastructure was not really
+available for the individual. And so I looked at what I was doing with my own setup. And I was looking at
+like this convoluted inheritance plan that I had created and realizing if it's this difficult for me, I'm
+supposedly one of the experts in the space. And I can only imagine how insane it must be for the average,
+especially non-technical person. So that's what led me to just do a small pivot and co-found CASA, which is essentially the idea of taking all of the best security practices,
+building a software product that makes it user-friendly for people to get themselves into a high security position, and also wrapping that with a level of service and consultation.
+that you don't really see. I mean, I think we were probably the first if not one of the first personal self-custody products that had a really, really high level of service. And over the years since then, a number of other service oriented businesses have popped up kind of along a similar model. But really what it came down to was self-custody has always been one of the first
+fundamental premises and values of fundamental premises and values of this space, right? Be your own bank. And it's always been technically possible to do that. But so many people,
+people, they just get daunted by the level of responsibility and the level of knowledge that is required to be your own bank. You know, there's a reason why banks exist, you know, banks are specialists in what they do. And, you know, asking someone to become a deep and knowledgeable specialist at a completely new thing is asking a lot. But when you're putting a substantial amount of your network, you know,
+worth your investments into something and you really want to attain the greatest security model that Bitcoin makes available to people, then you need to do self-custody and you need to do it right. And you need to be confident that you can do it right.
+If people can't sleep well at night, then they might end up using weaker solutions or basically just trusting a third party to do it for them, which I would say kind of undermines the very fundamental reason this entire space exists.
+Yeah. I mean, I'm curious your thoughts. There's a lot of directions we could take this, but I mean, just the ETFs, institutions buying, I mean, there's a lot of things we could talk about, which you may have strong opinions on regarding the state of the Bitcoin space since you've been here for so long.
+Oh, yeah.
+But maybe first, maybe just dive a little bit deeper into like, what solutions does HODL provide for the safest level of self-custody? And what are the biggest, I guess you said, trusting a third party, but what are the biggest issues that people, individuals run into? And maybe they're not even aware that it's a problem, right? I'm just kind of like, yeah, kind of dive a little more into CASA in that sense.
+Yeah, there's a number of different kind of tiers, I would say that you can be as a Bitcoiner. And okay, so tier zero is you're a no-coiner, you think Bitcoin is dumb, you don't want to have anything to do with it, and you're just generally a skeptic. And so you're just going to be on the sidelines. Tier one is you've started learning about Bitcoin, you think it's interesting, you maybe invest a bit.
+But you just go on to an exchange, or you go to an ETF and you buy some units of Bitcoin tokens, and that's it.
+So essentially, you have financial exposure to Bitcoin, but you don't actually, from a Bitcoin network perspective, own/control any Bitcoin. You have some legal claim, maybe, to some Bitcoin.
+Level two is you actually take your coins into self-custody. Maybe that's into a single signature, hot wallet, you know, on your phone, desktop, whatever.
+And so that allows you to remove a lot of the risks of trusted third parties, which, as I said, is one of the impetus for the creation of the entire ecosystem.
+And so that is like the first level of sovereignty. But from a security perspective, your keys are still connected to the internet, you still essentially have this door that billions of people could be knocking on and trying to essentially get at your stash, take it away from you.
+So not great from a security perspective. Tier three would be you move into cold storage. So you invest a hundred or a few hundred dollars into one of the popular devices out there, and you move your coins into a setup where the private keys have never touched the internet.
+And you have to be manipulated using this special device that gives you additional layers of verification. And that protects you from like 95% of the potential hack and theft vectors in this space.
+So that level of sovereignty, you know, you're probably already in like the top five or 10% of Bitcoiners.
+So, uh, beyond that, and really the, the tier that Casa strives to get our clients into is a deep, cold storage setup that eliminates single points of failure.
+And so this is where things get a little bit more complicated because in order to eliminate single points of failure, you need to make sure that any given piece of your architecture
+can blow up, it can blow up, be stolen, disappear, um, you know, suffer some sort of calamity.
+And it does not result in catastrophic loss of your funds because once you go from leaving your money and a trusted third party or a hot wallet into a cold storage, any sort of cold storage setup, I would say.
+The risk of theft decreases dramatically, but what you're doing is you're taking on a lot more responsibility yourself and the risk of loss due to you screwing up due to you just having an edge case failure scenario.
+If you haven't thought about occurring and causing you to just lock yourself out of your own money, that's what becomes the much, uh, higher risk.
+And that's where things like inheritance and such, uh, especially come into play.
+because a lot of people haven't fully vetted and thought through their inheritance plan if they have one at all.
+Uh, so suffice to say that CASA helps you get into a position of eliminating single points of failure by guiding you down a path where you have, uh, multiple keys that are geographically distributed to multiple different physical locations.
+And these keys are stored on a variety of different hardware and, and software.
+It's essentially, uh, strength through diversity.
+And so the idea is that each key really has its own security profile because there is no perfect way of storing a key.
+There is no perfect hardware key management device.
+They all have pros and cons strengths and weaknesses.
+And by combining a bunch of different setups altogether into one multi-sig like logical vault where the, the Bitcoin protocol won't allow you to spend the funds unless multiple signatures from different keys have been applied.
+Essentially, this is the magic of what we call additive security.
+It just makes it such that any one, uh, calamity or any one type of attack, exploit, whatever that happens can only really affect one of your keys.
+It won't affect a signing threshold of your keys.
+It won't affect enough of your keys that, um, you can no longer spend the funds.
+And that's kind of like a really short way of summing up a really, really, uh, long thought out and, uh, complex security model.
+We have all of this outlined and documentation on our website and stuff about like all of the different loss vectors and attack vectors and stuff.
+And, and the decision-making process that we went down for architecting how a CASA works.
+But essentially the idea is we do all the heavy lifting of thinking about everything that can go wrong.
+And then we provide it to you in a user-friendly package where you just follow the instructions in the app.
+Got it. Right. So you've thought of everything that could possibly go wrong, including maybe even something going wrong with CASA, right?
+I mean, like everything has been considered and that's something that I've, I've been following you for quite a while on X slash Twitter.
+I don't know what we're calling it anymore. And, um, yeah, you're pretty much obsessed with, um, you know, protecting protection and, and, and how can you be attacked and all the different ways that you can, that things could go wrong.
+And then reverse engineering. Okay. What do we do if each of these things happen?
+Yeah. And, you know, it's not to say that I am omniscient and that I have thought about every possible thing.
+It's just that I've been working in Bitcoin security for a decade now.
+And so I've, I've seen and heard about pretty much everything that has happened.
+Now, undoubtedly some new types of attacks will happen in the future.
+And this is part of the reason of why it also makes sense for you to outsource the security consultation, uh, for your self custody setup, where even though you're controlling the keys, you have specialists that are basically staying apprised of any novel, uh, new attacks or weaknesses and hardware software, whatever.
+So that we can then continually incorporate those things into our product and service.
+And, you know, we've been doing this since 2018.
+So, uh, over the past seven years, you know, we've had our own clients run into new situations that we hadn't thought of.
+And these are all learning experiences.
+And once again, we incorporate them into our, uh, best practices and, uh, sometimes into the software itself.
+If it's something that we feel like can be codified.
+Got it.
+So yeah, you're like collecting everyone's perspectives and their experiences.
+And you were just kind of like a one-stop shot for the most up-to-date knowledge of what's going on, which reminds me, I think I just saw that like an old version of the lead, like the old ledgers.
+They're going to stop being deprecating it.
+Yeah.
+So, so once again, you know, that's the type of thing where we, you know, obviously we're, uh, in contact with ledger.
+I mean, we're, we're an author, authorized reseller for a lot of the big brand, uh, hardware devices because we provide them to our clients.
+And so, um, it's helpful, uh, for our clients because we, we can say, okay, you know, we know that we likely shipped you one of these deprecated ledgers.
+And we can reach out to the subset of our clients that we believe are likely affected by that and say, Hey, it's time for you to do a device upgrade.
+And we can, uh, we can walk you through that.
+Uh, and if, if you still have, if you have the seed phrase backup, we can tell you, you know, how do you just initialize it on a new device?
+If not, we have key rotation mechanisms built into our, our app, uh, that can basically allow you to swap out the key, rotate the funds over.
+But, um, you know, one really high level way of thinking about this as well is, is actually one of the, the Bitcoin mottos is a virus in numerous, uh, you know, strength or safety and numbers.
+And most people who are aware of this motto, uh, they think of it from the cryptography perspective of, you know, Bitcoin is secured by math and, and sort of laws of large numbers.
+And that's true.
+But I argue that, uh, virus in numerous actually applies to a number of different aspects of this system.
+And that includes security models.
+And so, like I said, it's always been technically possible to be your own bank.
+But if you're, if you're doing it all yourself, and if, if you don't have any sort of peer review, uh, nobody is like double checking the architecture for how you're doing your key management.
+Especially if you're going down the rabbit hole of doing, uh, inheritance setups, then it's quite likely that you are in some sort of unique setup.
+that is not a standard thing.
+And, and as a result, you may have a blind spot.
+Uh, this is the same reason why we say that, you know, open source software is generally stronger because you have more eyes on it.
+And so I like to think that that kind of applies to Casa as well, where, you know, we, we basically offer, uh, two different architecture setups.
+There's a few variations within that, but it's, it's a highly standardized thing.
+And so, you know, each of these permutations of setups has been vetted by many, many different, uh, Casa clients.
+And, you know, we've been working with them, like I said, for many years.
+And, you know, if we do find a weakness and the setups, then we can basically update the standard and ensure that other clients don't fall into any edge cases or foot guns.
+Yeah.
+I think, I mean, I know you talk about this a lot, but the whole idea of like, okay, I have my hardware wallet, but the whole wrench attack meme.
+It's not even a meme.
+It's a real thing.
+I mean, I just want to share, and maybe you can just clarify that Casa literally prevents something like that from happening.
+Like that is something that you've thought about probably more than anyone, you know, like, yeah, no, this is a whole other rabbit hole.
+And the one thing that I should start off by saying, because I've seen a few services claim that they protect you from wrench attacks.
+And to be clear, like Casa can't do anything for your physical body.
+Sure.
+We can certainly, and in our higher levels, we certainly provide like physical security consultation advice.
+That's a whole other rabbit hole.
+And like I said, that's only really at our really high tier services, because this is basically going to require a lot of human hours from our client services, you know, on calls with you and walking through your own personal situation.
+But, uh, we are set up and architected such that if you're following our advice for how you're actually distributing your keys, because obviously we have no control over that.
+We don't want to know where your keys are, but if you are distributing them correctly, then you should be safe from a wrench attack in the sense that.
+The way that you should think about the security model of your Bitcoin in a wrench attack situation is that you yourself are compromised.
+And so any, uh, authentication protocols that you may have for accessing your keys should also be considered compromised.
+So the short version of that is if it is possible for you in a matter of a few minutes, like moving within the confines of your own residence to be able to spend your funds.
+Or at least to spend your like cold storage, large investment funds, then you're not doing a very good job of being your own bank.
+And the w the way that you get around that is you literally have to make it impossible for you to spend your own funds very quickly and, um, and conveniently.
+And the part of the way that you do that is by distributing the keys physically.
+And in general, a wrench attacker is not going to want to have to hold you hostage and move you around from location to location in order to access funds, because, um, the longer that they're doing that, you know, they're exposing themselves to more risk of essentially being caught.
+So nothing is foolproof, but to give you an extreme example, um, you know, some of our, uh, most extreme level of security, uh, clients will actually distribute their keys, um, across different jurisdictions and different borders.
+And so if you think about, well, I actually have to go through border control to get to one of my other keys.
+What's the likelihood that a wrench attacker is going to be, you know, holding you under duress and be able to go through a highly armed border control checkpoint, uh, while doing that.
+So, you know, obviously this is very edge case, super paranoia thing, but it's not impossible.
+It's not outside all, uh, possibility.
+Yeah.
+Wow.
+And just to clarify, just for people, when you're saying keys that usually refers to a hardware device.
+Yep.
+I just wanted to make sure people understood that.
+Yeah.
+I mean, when you, when you really start thinking about everything that could go wrong and all the things to do, I mean, it's, it's, it's a, I know you've, you're deep in the rabbit hole, but it is a rabbit hole of everything.
+Um, so yeah, I appreciate you guys doing a lot of the grunt work and just kind of collecting all the info to help people out.
+Cause I think, um, a lot of people now, you know, so a lot of my audience, um, was, got stuck in the Celsius saga.
+And so I've covered a lot of that.
+And then, but now we're moving into the, the, you know, ETF and I don't know if you want to dive in this a little bit to finish off the video, but yeah, just your thoughts.
+I don't even know the question just.
+Oh yeah.
+I already have the answer.
+Yeah.
+Go for it.
+Uh, it's a double-edged sword, right?
+So, um, this was always inevitable.
+Um, Bitcoin is for everyone.
+Bitcoin is for corporations and their treasuries and balance sheets.
+Uh, Bitcoin is for trad fi institutions that want to sell ETFs.
+Um, and of course, getting that massive faucet of liquidity from the traditional finance players is ultimately good for Bitcoin, uh, in the sense that it grows the network and the value and so on and so forth.
+Now it's a double-edged sword because this is really what I've been fighting against for my entire 10 year career in this space.
+It is the, um, the allure of convenience and the, uh, human tendency to prefer convenience at the expense of almost everything else.
+And, and so really what I mean from that is the vast majority of people I expect, you know, in the later adoption cohorts will choose convenience and, uh, basically be happy with only having financial exposure to Bitcoin, the asset.
+And not really caring about all of the other fundamental properties and the better security models that are available.
+Um, it is far preferable for someone to be able to click a few buttons in their Schwab or fidelity interface and say, Oh, I've got Bitcoin now.
+Uh, then it is to jump through all the hoops to get onto, uh, a real exchange that offers withdrawal and then figure out all of the.
+The onerous stuff around doing self custody correctly, you know, even, even with companies like Casa that are, you know, lowering the bar and making it easier.
+It's always going to be higher friction and there's always going to be more responsibility, which is a turnoff for a lot of people.
+Um, this, this is the way that human civilization has evolved over the millennia.
+Uh, it is through specialization of tasks.
+So this is not a foreign concept to us.
+In fact, this is the way that we operate our lives is we outsource.
+Many, many different aspects, you know, critical aspects of our lives to trusted third parties.
+And, and so it's, it's very difficult to get people, uh, to change their mindset about this.
+So I, I really look at self custody and the sort of veneration of the ideals of responsibility and better security as something that could very well be a multi-generational problem.
+I think this is something that, you know, we will need to teach our children and have them teach their children and so on and so forth.
+Because I, I don't think it's something where you're just going to be able to flip a switch and get a large majority of the population to suddenly change just how they think about interacting with money and, and services in general.
+So the, the question that really keeps boiling around in my mind is, you know, how successful can companies like Casa and, and really any, any service, whether it's software or hardware or consulting or whatever.
+That is trying to make self custody easier.
+How successful can we be, uh, fighting against this allure of convenience.
+And I do believe that in some ways it's, it's a, it's a systemic risk that we're fighting against.
+Because if too much Bitcoin falls into the hands of too few entities, this is creating a lot of centralization.
+Uh, that creates weak points, uh, could be weak points for collusion against, uh, amongst a small cabal of, of entities.
+It could just be weaknesses in the sense that nation states now only have, you know, half a dozen doors to kick down in order to essentially take control of massive amounts of Bitcoin.
+You know, the decentralization is not just a meme.
+Like we want Bitcoin to be as decentralized as possible along as many different vectors as possible.
+And as a result, there are many different, uh, things to be concerned about in Bitcoin, you know, whether that's the, uh, the custody centralization, the mining centralization, uh, how many people are running nodes and enforcing the rules of the network and so on and so forth.
+You know, you, you can essentially spend, uh, all day, every day worrying about these things, but, uh, you know, we only have so much time and skills.
+And so I've been focused on the custody aspect of course, while trying to remain apprised, uh, about, you know, many of the other vectors of centralization that are occurring in the space.
+Yeah.
+And like you said, it was inevitable.
+I mean, it was just sort of like society moves towards lowest friction, easiest access, caring less maybe about the core of what Bitcoin represents and more about just getting access to make, you know, 30% gains a year, you know, whatever the, where everything's just some, yeah.
+I mean, okay, I'll, I'll wrap it up, but, uh, do you care about the price or is price secondary to what Bitcoin stands for and what it really means?
+Like at its core, no pun intended.
+Yeah.
+It's, um, it's weird for me.
+I've said for a long time that price is the least interesting aspects of the entire space.
+Um, you know, people who talk about the price or like look at charts or whatever, I just find that incredibly boring.
+Um, it's, I mean, obviously it's interesting to me from a personal investment perspective.
+Um, but it, it, it's not meaningful for me anymore.
+Um, you know, I, I got in so long ago and, um, I think part of the reason of why I've been holding for so long is because I didn't care about the price.
+If I had cared about the price, I probably would have been trying to, you know, time the tops and sell.
+Um, and I probably would have ended up essentially with, with less than I'm holding now.
+Um, since pretty, almost everybody is a bad trader.
+The, um, the best trade that I ever made was dollars to Bitcoin.
+Uh, the second best trade was probably, uh, uh, selling my Bitcoin cash for Bitcoin, but I've, I've made many other steps.
+I've made many other smaller trades over the years and they've pretty much all been losers.
+So I tried to trade as little as possible.
+Um, I just find, you know, buy, hold, forget about it.
+And I, I spend all of my time, resources and energy, you know, worrying about, you know, technical aspects and, and some sociological and cultural aspects of the ecosystem.
+Um, but, um, and price is to me a lagging indicator of adoption.
+And it's actually one of my bigger worries.
+Um, in the sense that I think that the, the fact that like number go up as a narrative seems to be the major narrative of this cycle.
+Uh, and it makes sense, you know, everybody wants to get rich.
+I, I'm worried that that brings in the wrong type of person.
+Um, we want to be venerating the ideals of sovereignty, of security, of not trusting third parties of, you know, the various aspects that give strength to this network.
+Because if we're just bringing in people who only care about number go up and none of those other ideals, they're going to throw all of the most valuable aspects of Bitcoin out the window and say, I don't care.
+I don't care.
+I'm getting rich.
+And I've also said this as well, that I fully believe that is entirely feasible for Bitcoin as a network and as a protocol to get weaker, more brittle and more captured while becoming worth more in fiat terms.
+And I believe that's one of the biggest issues that we're going to be fighting against just from a psychology perspective.
+Um, this, this also ties into the ossification debate and issues, uh, that we don't have nearly enough time to get into.
+But that, um, I, I, I'm, I'm basically saying that I think that the incentives are not well aligned in this particular case.
+You know, Bitcoin works very, very well as a system because of the game theory and the incentives are so well aligned.
+It's hard to believe that Satoshi got so many aspects because there were many decisions that Satoshi had to make when designing Bitcoin.
+Many, many reasons why many of the prior attempts at digital currencies failed is because they made bad decisions architecturally.
+And so the fact that we've gone this far is really, um, it's basically a monument to the successful decisions made at the fundamental architecture level.
+But I'm not certain that, uh, the, you know, number go up, everyone get rich by leaving their Bitcoin with trusted third parties is something that, uh, Bitcoin is well suited and designed to, uh, to fight against in the long term.
+I see.
+All right.
+Maybe next time you can come on, we can go more into that.
+Cause that's an interesting topic.
+And I'd love to hear your thoughts on all of that.
+Cause that's fascinating.
+Um, well, Hey, thank you so much for jumping on, sharing your ideas and thoughts about Casa.
+Uh, I'll leave links below if you guys watching want to check it out for sure.
+And, uh, yeah, I appreciate you jumping on Jameson.
+Thank you.
+You bet.
+Thanks for having me.
+So guys, that was it for the video.
+Thanks for checking it out.
+Checking it out.
+If you want to inquire about becoming a customer of Casa, you can do so just by going directly to their website, or you can use my link below, which is an affiliate link.
+I do get a small kickback if you use it, but whatever you want to do, totally fine.
+I don't care.
+Just here to help you and just educate you on the importance of keeping your Bitcoin safe.
+Hope you guys are doing well till next time.
+Talk to you soon.
+And bye for now.
