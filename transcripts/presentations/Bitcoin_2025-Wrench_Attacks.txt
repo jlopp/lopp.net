@@ -1,0 +1,171 @@
+All right, time is short, so we'll jump right in. I'm Jameson Lopp, co-founder and chief security officer at Casa.
+I have been the paranoid security expert in this space, worried about all types of attacks for the past decade.
+And I think the topic is kind of timely. And in fact, you know, I submitted this talk many months ago,
+and the number of wrench attacks that have been happening have really been accelerating, getting a lot more mainstream media coverage.
+So what is a wrench attack? It all goes back to this XKCD from about 10 years ago. What's the point?
+Well, you can have all the fancy cryptography you want, but if your architecture of your wallet, your security setup is creating a single point of failure of you and your body,
+and you can be coerced into bypassing your various security measures and authentication protocols, it doesn't matter how fancy the technical security is.
+So what we're seeing today is that people are getting coerced into bypassing all of their security measures, and we're kind of in a discovery phase.
+So I want to make sure that we understand that I'm not up here to FUD. This is an extreme edge case.
+There are many, many, many other security issues that you should be worried about before you start worrying about a wrench attack, and, of course, the biggest one being trusted third parties.
+Not your keys, not your coins. If your keys are with somebody else, you've got much bigger problems to worry about than a wrench attack.
+We're also seeing a major acceleration in social engineering these days, and that's mainly because the security measures that we have implemented, the best practices that we have come up with over the past 15 years,
+have greatly improved overall security, such that, in general, the weakest link for the people who are taking self-custody is actually their brain.
+And so what is a social engineer doing? They're hacking your brain. They're giving you a sense of urgency and trying to get you to make a mistake, to essentially give up control, give your money to them voluntarily.
+And, of course, once you do that, there's no take-backs. But another issue that makes this a very problematic thing to talk about is that the data that we have is not great.
+I've been cataloging these wrench attacks for five or six years now, and I will say that it's massively underreported.
+There was actually a Cambridge study a few years ago where they crawled all of the Bitcoin talk forums and found 672 posts about physical attacks.
+That right there is more than three times the total number of verified physical attacks that I have in my repository.
+These are attacks that have media coverage, that have, you know, legal justice system cases behind them so that we know it's not someone who's just making up a lie for people to feel pitiful and sorry for them.
+And another interesting aspect that kind of bolsters this is that, you know, they reached out to everybody.
+They tried to interview all of the people claiming to have been wrenched to that attack.
+And of the people that responded, they found that, you know, only about 20 to 25 percent of these people reported the attack to law enforcement.
+And the reason for that is, A, they thought law enforcement wouldn't take it seriously.
+Or, B, they were afraid that it would actually create more publicity and would result in them being targeted again.
+And that's not a completely illogical thing.
+In fact, there are people who have been wrench attacked multiple times, likely because they ended up in the news after the first attack.
+So if we look at the number of physical attacks broken down by year and if you you probably have the Bitcoin price chart in the back of your head here, you may notice that there is a rough correlation.
+So when there's a bear market, when there's massive FOMO, there's massive media narratives around Bitcoin.
+Well, that attracts a lot of attention.
+And of course, criminals are one sub element of the overall populace who will also get more attention.
+And so they're coming in, they're trying to figure out, you know, what is the ROI?
+What is my return on my investment of wrench attacking a known Bitcoin holder as opposed to, you know, robbing a bank or an armored car or what have you?
+So then, of course, bear market comes, everybody gets disinterested because Bitcoin is dead, criminals get disinterested.
+But then the cycle repeats. And so if you see 2025 here, it may not look like much.
+But remember, we're not even halfway through the year yet.
+And so over the past six months, we've seen a massive acceleration in the number of wrench attacks.
+And we're definitely going to have an all time high this year.
+Now, what if we break it down geographically?
+This is just absolute number of wrench attacks.
+United States is in the lead with, I think, 44 or so wrench attacks.
+But remember, all of these numbers are likely biased.
+This is not a highly scientific study.
+These numbers could be biased because all of my alerts that I have set up, of course, are English language.
+So if attacks occur in other countries and they don't get translated to English, I might not learn about them.
+As awareness is growing, I do have more people who are coming in and contributing to my repository.
+So hopefully that will even out over time.
+But like I said, we should probably care more about not the absolute number of attacks, but the actual relative risk for us as Bitcoin holders.
+So what happens if we flip this around and we do it per capita?
+That vastly changes the risk profile.
+And it's probably hard to tell because these are tiny countries.
+The ones that pop out are Iceland, Estonia, Madagascar and UAE.
+And once again, this is a problem because the data set is so small.
+There has only been one attack in Estonia, Madagascar and Iceland.
+And of course, they have tiny populations.
+So you end up with this high per capita rate.
+Now, Dubai is an interesting outlier because there have been nine attacks there.
+And Dubai, of course, has a tiny population.
+But does that mean it's riskier?
+Almost all of the attacks in Dubai are high value OTC trades.
+So if you don't do high value OTC trades, you're probably not going to be at too much risk.
+Also, to Dubai's credit, they have a 100% success rate in catching the attackers.
+No attacker in Dubai has been able to get away with it for more than a few days before they ended up in prison.
+Now, what if we try to do a breakdown some of the other characteristics of these attacks?
+Of course, the vast majority of them involve violence or threat of violence.
+But there's other characteristics where we can see patterns.
+And nearly 25% of these attacks are home invasions.
+And this is particularly problematic because of data leaks, because of KYC, that's kill your customer.
+This is an issue where the government and regulators are requiring all of these companies that are bridging the traditional financial system
+and the new financial system to collect your personal identifiable information and store it.
+And, of course, inevitably, it gets leaked.
+And so that, I believe, is one of the many reasons why we're seeing home invasions happen.
+It's not hard to find where the vast majority of people live due to public records and due to the leaks of private records.
+Also, about 23% of these are kidnappings.
+So if they're not targeting you at home, they probably know where you work.
+They may know the general area and they are surveilling you.
+And they figure out what your patterns are and then grab you when you're out on the street.
+Like I said, OTC trades are another big deal.
+This is very enticing for an attacker because they literally find the people on forums and on these OTC websites who are advertising,
+"Hey, I do high-value cash and crypto trades."
+So they can literally email their victim and say, "Meet me at this hotel and let's do a million-dollar or a few hundred-thousand-dollar deal."
+And, of course, that's when they jump you and take everything that you have.
+More concerning, we're seeing more of these issues where they're actually torturing people.
+You know, if you don't hand over the money immediately, they will start beating on you with whatever they have.
+A number of you have probably heard about the attack that happened a few weeks ago.
+Probably the most egregious and drawn-out torture case.
+They were torturing this guy for, I think, two or three weeks.
+And to his credit, he gave them nothing and he eventually escaped.
+We're also seeing a lot of non-violent attacks that are sort of burglary or theft.
+Some of those are just breaking into your house.
+Others are kind of tricksters where they will take your phone, pretend to do something, but actually just move all of the money,
+out of your wallet, if you have a mobile wallet.
+And then there's a concerning number of drugging cases.
+And I think there was actually one in Europe just a few weeks ago where the guy thinks that he got drugged.
+He was given a cigarette and then he, you know, suddenly felt really weird after that.
+There is a drug out there called scopolamine.
+It's mostly used in South America, but certain organized crime rings are making use of it in other places and makes you highly compliant.
+And it makes it so that they don't have to use violence against you because you'll basically do whatever you're told.
+So what is the return on investment?
+This is what the criminals are trying to figure out right now.
+And I'll say once again, this data set is incredibly underreported because a, we're only know about 25% of the total attacks in the first place.
+And then this is an even smaller subset of that because probably less than half of the reported attacks mention the value.
+They're like the total amount that the attacker got away with.
+So it's not outside the realm of possibility that the real numbers are 10 times higher than what is being reported right now.
+So, you know, for example, you know, in a few of those years, it looks like basically zero.
+That's not because there was no attacks.
+It's just because none of the media or justice system reports actually included the value.
+But, you know, it's concerning here, especially after 2020, over $30 million a year for three different years here have been taken.
+And that's because even though the total number of attacks is quite low per attack, many of these attackers are getting away with millions of dollars with basically a few hours worth of effort.
+Another point that's worth noting, and this is actually true of that New York attack a few weeks ago, is that about 10% of these attacks are between people who know each other.
+It's not total strangers.
+Sometimes it is business associates and there's some sort of business disagreement.
+Other times it's actually family and friends.
+And so my main point here is that you should be very, very careful who you trust with your financial information.
+Even if it's friends or family, you don't necessarily know what their personal situation is.
+You may not know what their incentives are.
+Maybe they got into some bad drug or gambling debt and they owe somebody a lot of money and they fear for their life and therefore they would be willing to attack you.
+So how about the success rate?
+This is not good for us.
+This is us sending a signal out to the world.
+We are telling the world right now that Bitcoiners are easy prey.
+66% of these attacks are successful, which means we're telling the criminals if you come after a known Bitcoin holder, more likely than not, you're going to get a decent amount of money off of them.
+So, you know, we want to bring these numbers down because every time there's a successful attack, this is a collective problem for all of us.
+But also, the rate of justice is not great.
+And I will caveat this once again, this is hopefully underreported.
+Hopefully, the rate of justice is actually higher and it's just hard to find because the media doesn't always come back and say, hey, these attackers eventually got caught.
+Amongst the 225 or so attacks that I've cataloged, I've only been able to find about 60% of those criminals were brought to justice, at least that the media talked about.
+So a few other not so fun facts.
+Once again, we are not sending a strong message when it comes to self-defense.
+I see a lot of people in my mentions on social media saying, oh, I have guns, I don't have to worry about this stuff, but I hate to break it to you, a gun is not magic.
+You probably don't have eyes in the back of your head.
+You probably have to sleep somewhere at night.
+You do have vulnerabilities unless you have like a full time bodyguard protection team.
+A gun is only going to save you in certain happy cases where you have other layers of defenses that have alerted you ahead of time that you're being attacked and you can actually get to your gun and use it.
+But there have been a few cases, you know, Amaranth in Houston, Texas, a few months ago was a successful self-defense case, but she was lucky.
+She was lucky when the attackers came into her house that she was on the phone with her husband, who was in a different part of the property.
+And so he was able to determine because of that, that there were attackers and he was able to get his gun and once they got led to him, he started shooting at them and they ran away.
+So there's a bit of luck involved in a lot of these cases as well.
+On the bright side, very few of these cases result in murder.
+The, you know, the psychology of the criminal who is going to commit a robbery is generally that they don't want a homicide case hanging over them.
+You know, when it comes to law enforcement, like resource allocation and effectiveness, of course, law enforcement prioritizes homicides much, much higher than a simple robbery.
+So as a result, I think most of the murder cases here were probably because there was some sort of other interpersonal issue going on and that they were planning on doing that anyways.
+There's also a lot of impersonation going on, and this is mostly with regard to the kidnapping and the home invasion attempts.
+There are people who are posing as law enforcement or posing as some sort of service worker to get you to open the door to your home.
+And of course, once you do that, they barge in, it's game over.
+In a few circumstances, it's actual law enforcement.
+Now, as far as I'm aware, this is not the case in the United States, but in like India, Pakistan, some of the Southeast Asian countries,
+there have been corrupt law enforcement officers going around wrench attacking people.
+So what do we do about this?
+Well, don't make yourself a target.
+Don't be one of those jackasses on social media who is flaunting your $500,000 watch or your Prada or Gucci wear or any of these other exotic luxury items.
+I can guarantee you, you may feel good about, you know, getting the likes and the retweaks and stuff from flaunting your wealth, but there are criminals watching these networks too.
+And that's one of the ways that they come up with their target list.
+And of course, as I said, don't do face-to-face trades.
+If you absolutely have to, then you better have a high level of physical security, you better have other bodyguards with you.
+You should do it in public places, not in like hotel rooms and parking garages, and don't talk about your holdings.
+There's very little good that can come from talking about, you know, how well off you have done because you're a Bitcoin investor.
+And with the drugging stuff, I mean, this is standard operating procedure should be for anyone, but just don't accept anything that you're ingesting from someone that you don't trust with your life.
+Finally, just from like a security perspective, as I started off with, if you have immediate access to move large portions of your net worth, you're not doing a good job being your own bank.
+It should be intentionally difficult for you to move large amounts of your net worth.
+That's just a basic security practice.
+This is where CASA and other multi-signature set up organizations come into play.
+We help you distribute keys to make it difficult for attackers to be able to move your money.
+So, remember, self-custody is one of the most important things in this space.
+It gives you great power, great financial sovereignty, but with that comes a lot of responsibility.
+And then finally, this is just a lot of standard stuff around home security.
+There's a lot of things that you can do to create multi-layered defense mechanisms that make it more difficult for someone to physically get into your house and attack it.
+But there is no perfect security.
+It's all about having a diverse array of different security mechanisms.
+And the most important thing is we all stay vigilant, stay frosty, and just keep remaining aware of what's happening in this space.
+Because as I said, this is a collective problem that we all have to work together to solve.
+Thank you.
