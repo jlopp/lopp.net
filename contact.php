@@ -173,9 +173,9 @@
       return bit_string;
     }
 
-    function hc_CheckContract(difficulty, stamp, nonce)
+    function hc_CheckContract(difficulty, stamp, nonce, extranonce)
     {
-      var col_hash = hc_HashFunc(stamp + nonce);
+      var col_hash = hc_HashFunc(stamp + extranonce + nonce);
       var check_bits = hc_ExtractBits(col_hash, difficulty);
       return (check_bits == 0);
     }
@@ -193,25 +193,38 @@
 
       // check to see if we already found a solution
       var form_nonce = hc_GetFormData('hc_nonce');
-      if (form_nonce && hc_CheckContract(hc_difficulty, hc_stamp, form_nonce)) {
+      var form_extranonce = hc_GetFormData('hc_extranonce');
+      if (form_nonce && hc_CheckContract(hc_difficulty, hc_stamp, form_nonce, form_extranonce)) {
         document.getElementById('freeform').submit();
         return true;
       }
 
       var nonce = 1;
+      var extranonce = 0;
 
-      while(!hc_CheckContract(hc_difficulty, hc_stamp, nonce))
+      while(!hc_CheckContract(hc_difficulty, hc_stamp, nonce, extranonce))
       {
         nonce++;
         if (nonce % 10000 == 0)
         {
-            let remaining = Math.round((Math.pow(2, hc_difficulty) - nonce) / 10000) * 3;
-            document.getElementById('countdown').innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;Please wait... form submits after ~" + remaining + " work units.";
-            await sleep(100); // don't peg the CPU and prevent the browser from rendering these updates
+            let remaining = Math.round((Math.pow(2, hc_difficulty) * 3 - nonce) / 10000);
+            if (remaining > 0 && extranonce == 0) {
+                document.getElementById('countdown').innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;Please wait... form submits within about " + remaining + " more attempts.";
+            } else {
+                document.getElementById('countdown').innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;You're really unlucky! " + extranonce + "*2^53 + " + nonce + " hashes guessed so far; you might want to leave this browser open for a while and go do something else.";
+            }
+
+            // handle int overflow in nonce
+            if (nonce >= 9000000000000000) {
+                nonce = 1;
+                extranonce++;
+            }
+            await sleep(10); // don't peg the CPU and prevent the browser from rendering these updates
         }
       }
 
       hc_SetFormData('hc_nonce', nonce);
+      hc_SetFormData('hc_extranonce', extranonce);
       document.getElementById('countdown').innerHTML = "";
       document.getElementById('freeform').submit();
 
@@ -397,7 +410,7 @@ NjT4rMUesCnjTVHVM9KXvMemwAhhYbM=
   <div class="row">
     <div class="col-xs-12 col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10 col-sm-10 col-sm-offset-1">
       <form id="freeform" action="contact.php" method="POST">
-        <p><span class="error">Do not contact me regarding paid promotions / press releases / reviews / social media marketing. My reputation is not for sale. Messages sent via this form are heavily filtered and may not be read, much less responded to.</span></p>
+        <p><span class="error">Do not contact me regarding paid promotions / press releases / reviews / social media marketing. My reputation is not for sale.</span></p>
         <label for="freeName">Name </label><span class="error"> <?= $nameErr; ?></span>
         <input type="text" id="freeName" name="name" placeholder="Your name..." value="<?=$_POST["name"]?>">
         <label for="freeEmail">Email</label><span class="error"> <?= $emailErr; ?></span>
