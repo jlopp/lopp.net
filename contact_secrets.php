@@ -13,11 +13,16 @@ const STAMP_LOG = "";
 $hc_salt = "";
 
 // number of bits to collide
-$hc_difficulty = 21;
+$hc_difficulty = 25;
+
+// jack up difficulty for RU, HK, IONOS data center IPs, and sample@email.tst from address
+if ($_SERVER["HTTP_CF_IPCOUNTRY"] == "RU" || $_SERVER["HTTP_CF_IPCOUNTRY"] == "HK" || substr($_SERVER["HTTP_CF_CONNECTING_IP"], 0, 6) == "74.208" || $_POST["email"] == "sample@email.tst") {
+  $hc_difficulty = 27;
+}
 
 // tolerance, in minutes, between stamp generation and expiration
 // allows time for clock drift and for filling out form
-$hc_tolerance = 10;
+$hc_tolerance = 30;
 
 $nameErr = $emailErr = $subjectErr = $messageErr = "";
 $name = $email = $subject = $emailBody = "";
@@ -99,7 +104,7 @@ if($formType == "free" && (!empty($_POST["name"])) && (preg_match("/^[a-zA-Z ]*$
     // All good
     $name = $_POST['name'];
     $subject = $_POST['subject'];
-    $emailBody = $name . " from email: " . $email . " wrote the following:" . "\n\n" . $_POST['emailBody'];
+    $emailBody = $name . " from email: " . $email . " solved difficulty $hc_difficulty and wrote the following:" . "\n\n" . $_POST['emailBody'];// . "\n\n" . print_r($_SERVER, true);
     $headers = "From: ". FROM_EMAIL_ADDRESS . "\r\nReply-to: $email";
     mail(YOUR_EMAIL_ADDRESS, $subject, $emailBody, $headers);
     echo '<META HTTP-EQUIV="Refresh" Content="0; URL=thank_you.html">';
@@ -247,11 +252,13 @@ function hc_CreateStamp()
   // stamp = hash of time (in minutes) . user ip . salt value
   $stamp = hc_HashFunc($now . $ip . $hc_salt);
   $nonce = $_POST['hc_nonce'];
+  $extranonce = $_POST['hc_extranonce'];
 
   //embed stamp in page
   echo "<input type=\"hidden\" name=\"hc_stamp\" id=\"hc_stamp\" value=\"" . $stamp . "\" />\n";
   echo "<input type=\"hidden\" name=\"hc_difficulty\" id=\"hc_difficulty\" value=\"" . $hc_difficulty . "\" />\n";
-  echo "<input type=\"hidden\" name=\"hc_nonce\" id=\"hc_nonce\" value=\"" . $hc_nonce . "\" />\n";
+  echo "<input type=\"hidden\" name=\"hc_nonce\" id=\"hc_nonce\" value=\"" . $nonce . "\" />\n";
+  echo "<input type=\"hidden\" name=\"hc_extranonce\" id=\"hc_extranonce\" value=\"" . $extranonce . "\" />\n";
 }
 
   //////////////////////////////
@@ -283,12 +290,12 @@ function hc_CheckExpiration($a_stamp)
 }
 
 // check for nonce of $stamp_contract bits for $stamp and $nonce
-function hc_CheckProofOfWork($hc_difficulty, $stamp, $nonce)
+function hc_CheckProofOfWork($hc_difficulty, $stamp, $nonce, $extranonce)
 {
 
   // get hash of $stamp & $nonce
   DEBUG_OUT("checking difficulty bits of work");
-  $work = hc_HashFunc($stamp . $nonce);
+  $work = hc_HashFunc($stamp . $extranonce . $nonce);
 
   $leadingBits = hc_ExtractBits($work, $hc_difficulty);
 
@@ -308,11 +315,13 @@ function hc_CheckStamp()
   $stamp = $_POST['hc_stamp'];
   $client_difficulty = $_POST['hc_difficulty'];
   $nonce = $_POST['hc_nonce'];
+  $extranonce = $_POST['hc_extranonce'];
 
   DEBUG_OUT("got variables!");
   DEBUG_OUT("stamp: $stamp");
   DEBUG_OUT("hc_difficulty: $client_difficulty");
   DEBUG_OUT("nonce: $nonce");
+  DEBUG_OUT("extranonce: $extranonce");
 
   // optimized, fastest-test-first order
 
@@ -327,7 +336,7 @@ function hc_CheckStamp()
   DEBUG_OUT("PoW puzzle has not expired");
 
   // check the actual PoW
-  if(!hc_CheckProofOfWork($hc_difficulty, $stamp, $nonce)) return false;
+  if(!hc_CheckProofOfWork($hc_difficulty, $stamp, $nonce, $extranonce)) return false;
   DEBUG_OUT("Difficulty threshold met.");
 
   // check if this puzzle has already been used to submit a message
