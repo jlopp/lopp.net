@@ -1,0 +1,271 @@
+All right. So, you know, I am or at least was a software engineer primarily focused on building high security Bitcoin wallets for the past decade.
+So this talk will be directed really at people who are building stuff in the ecosystem, really discussing what I've seen over the years,
+what I've learned, and mostly where I think a lot of our deficiencies lie in how we are approaching the development of wallets and other infrastructure that is generally being managed or helping people to manage private keys.
+So after a decade of building within this space, I guess you could say I've seen some shit.
+I have seen users lose money in ways that I never imagined.
+I have seen people effectively turn distributed multi-signature wallets into effectively single signature wallets.
+I've seen users get frustrated by inconvenient security features, turn them off, and subsequently get hacked.
+I've met countless individuals, even to this day, who choose to leave their Bitcoin with a custodian because they don't trust themselves to use a hardware wallet correctly.
+And these fears are somewhat legitimate.
+So I speak to you today as a builder, and I'd say that over the past decade, we've done a great job protecting our users from hackers and from external threats and other attackers.
+But I believe that we are severely lacking when it comes to protecting our users from themselves.
+These are outdated stats from a number of years ago, so the stats are likely worse.
+And I think pretty much all of us should be aware that there are inherent risks to trusting third parties with your money.
+And this will be a mission that we, I think, have to fight against for pretty much all of eternity.
+But once you actually get people convinced that trusted third parties are a security hole and that they should look into taking self-custody, then they have to start going down the whole rabbit hole of all of the responsibility and the headaches that come with being your own bank.
+And let's be honest, very few people out there are security experts, much less Bitcoin security experts.
+So there is another problem happening, and that is essentially that you could argue that the users that are coming into this space are getting less technically savvy.
+And that is a problem, once again, when we're talking about an extremely complex issue of, you know, all of the security considerations when you're trying to manage private keys.
+So I think this is a natural thing. It's not just that, like, newbies are stupid. It's like this is how adoption of any technology really happens.
+And so each new cohort that comes in generally comes in because of some new narrative that was come up with by the last cohort.
+And usually that new narrative is some new, like, dumbed down distillation of ideas that make it easier for people to comprehend, and that's what, like, makes the light bulb go off and gets them interested.
+But also it means that newer cohorts are more likely to be casual users, you know, they're not gonna be the nerdy OGs who were interested in, like, reading code and documentation 10 or 15 years ago.
+And so this is, of course, highly general. There will always be outliers. But in general, users are not gonna read any manuals.
+And for a long time, I thought, okay, this is just an education issue. And so that's why I've put so much time into my educational resources site.
+And I figure, okay, we just, we just tell people how to do the right things, right?
+Mmm, that might get, like, another few percent that we're gonna pay attention to you.
+But really, the conclusion that I'm coming to these days is that, especially for, like, self-custody, for helping people be their own banks,
+the users are only really gonna do what you force them to.
+And, you know, this is unfortunate, but this is what I'll be talking about. There's a lot of trade-offs between security and convenience and trade-offs between security and freedom, right?
+So this is why, at Casa, we very specifically have just, like, a very dumbed-down, simple Bitcoin wallet where we do not have much advanced functionality because we think it's, frankly, too dangerous for the cohort of clients that we're trying to onboard.
+So, nonetheless, I still think that, from a software and user design perspective, there's a lot of room for improvement for how we're building these services because we're still really focused on, oh, how do I prevent someone from getting hacked?
+And we're not so focused on what are all the really insane and idiotic things that the user might do to shoot themselves in the foot?
+And if we don't continue to improve the user experience, the quality of our wallets and our software that we're building, then I think the natural result is that, you know, users will not feel like that they can trust the software to guide them along and to keep them safe.
+And so they're just going to go to trusted third parties because it's so much easier and it feels safer because the risks are more on the edge.
+It's more of a tail risk for, you know, getting rugged by a highly reputable, longstanding, trusted custody provider in this space.
+So this is only a few things that have, you know, come across my radar.
+Bitcoin has a really high learning curve, especially once you get into self-custody.
+And it can take many years of operating in the space to pick up on a lot of the best practices because generally there's no, like, one singular guide.
+This is just like random knowledge that's scattered all throughout the ecosystem.
+And like we said, nobody's going to be investing the time to go around and collect all of that knowledge and read all of it.
+You know, even if they go and read the hundred or so links on my Bitcoin security resources, they're probably going to miss out on a fair amount of it.
+So, for example, address reuse is one of the most basic things in Bitcoin.
+I think even Satoshi probably talked about it.
+And yet, to this day, last I checked, something like half of all Bitcoin addresses are getting reused.
+And this is bad from a privacy perspective.
+It's bad from a security perspective, especially from quantum.
+And then I'll talk about later, it's also bad from a social engineering perspective of some new attacks that we've been seeing.
+Then there's stuff like address gap limits.
+A lot of people probably don't even know what that is.
+So, basically, you generate too many addresses and then you go try to reconstitute your wallet in other software, your funds might be missing.
+And the vast majority of people would just freak out and not understand why that happens or, you know, how wallets discover your money in the first place.
+A lot of UTXO management issues.
+And then more meta things like inheritance planning, which I think doesn't happen a lot in our space,
+it's probably because it's younger cohort that is generally not thinking about inheritance planning.
+And, of course, the actual keys themselves, how do those get managed?
+A lot of issues around transaction fees, which right now is not an issue, of course,
+but from time to time when there are actual contention for block space, then that can become problematic.
+And then weird edge cases like this total balance versus spendable balance.
+Generally, something you'll not come across unless you hit it with a combination of a high fee rate environment
+and you're trying to sweep all of the funds in your wallet.
+You may discover that the actual funds you can send are not the same amount that, you know, are the aggregate of all of your UTXOs.
+And then, finally, we'll get into some of the social engineering stuff,
+which I think is one of the bigger threats emerging in the environment lately.
+So anyone who is in the security space may be familiar with this chart.
+In general, when you're trying to think of threat models and think of what should we be guarding against,
+then you kind of have an X and Y axis where you have on the X axis, like, how likely is this particular threat going to happen?
+You know, how frequently is it going to happen?
+And then on the other axis, you have, you know, how bad is it?
+And so, obviously, you want to focus mostly on the ones which are the most likely and the most severe
+and then kind of work your way backwards until you're trying to address the things that are both unlikely and minimal in their impact.
+So, one example, just with the, like, generation of keys.
+Thankfully, this doesn't happen very often these days because I think a lot of people are using hardware wallets to generate keys.
+But people, like, you give people a tool and they will just use it in stupid ways.
+So, you know, I think my favorite one, for example, is that, you know, someone back in the day created a brain wallet with empty string, put 50 coins into it.
+And, of course, it was instantly gone because the tech nerd guys were already scanning for anyone that was using simple phrases out there.
+But this is just a really easy example.
+There's still plenty of other examples where people are manually creating keys, perhaps by rolling dice or something, and they're just not getting enough entropy in there.
+So, I think this is a good example where this is just not functionality you should be offering to normies.
+There's really no good reason to let people generate their own keys.
+Humans are very, very bad sources of entropy.
+Why even give people this knob to play with in the first place?
+And, of course, data loss is a big issue.
+On the left, we have a well-known guy in the space who has, like, 7,000 Bitcoin that are stuck on, I think, an iron key device or something because he just, like, forgot the password to decrypt it.
+And if he does it a few more times, then it will self-destruct.
+Or, on the other side, this was actually an editor of some major newspaper or magazine, I think.
+And, you know, he screwed up and basically forgot the pen to his Trezor.
+And I think he also either threw away or, like, his maid threw away his seed backup that was just, like, scribbled on a piece of paper.
+And so, you know, these are really easy things to do because I think this is one of the, one of my biggest gripes and beefs with pretty much every hardware manufacturer out there is that you buy the hardware device and then they generally give you a piece of paper and it says, you know, write down your seed phrase and keep it safe.
+And, you know, the keep it safe part, it seems so innocuous, right?
+But there's this, like, iceberg of information security practices underneath what, like, keep it safe actually means for a highly critical piece of data like that.
+And so, I think it's very easy for someone to just say, okay, I'll keep it safe.
+Like, I'll literally put it in my safe at my house and that's safe, right?
+Well, I mean, it's safe against some things but not against everything.
+And if a large portion of your net worth is in that thing, then you might want to keep it safer.
+But I digress.
+Data backups, once again, problematic.
+I actually just learned about the fishing rod guy this past week when I was researching stuff for this talk where, you know, guy bought, once again, several thousand Bitcoin.
+I think it was like 6,000 Bitcoin.
+And he wrote down his seed phrase and he put it in a fishing rod box.
+And that was fine until he got arrested.
+And went to jail for five years.
+And then all of the possessions in his apartment got cleaned out and thrown in the garbage.
+So, you know, I think most people probably don't put get arrested and sent to jail for five years in their security model when they're thinking about how do I back up my private key material.
+And I think everyone is familiar with Mr. James Howells.
+Unfortunate Mr. Howells who has several thousand Bitcoin.
+And he knows where it is.
+That's probably the worst thing.
+And he's been trying to get to it for a long time.
+And I think he has officially failed at this point.
+Another insecure backup example was a number of years ago where it was a service that basically had multiple backups.
+And unfortunately, even though they had a cold wallet, they had a backup that was mistakenly stored on one of those servers.
+So it was actually a hot wallet because they didn't think about the fact that backups are also important.
+And some people may be familiar with, I think this has happened multiple times, it's basically YouTubers who were screwing around with their wallets and then they would screen share something and it accidentally showed the seed phrase and gone.
+So don't do that.
+So don't do that.
+Password reuse, you know, this depends on what type of service you're running.
+But if you are running a hosted service where there's some sort of login authentication password stuff, this actually happens all the time.
+I've seen this when I was working, well, at every company I've ever worked at because I've always worked at software as a service companies.
+But like both BitGo and Casa regularly see drive-by attacks, whereas basically someone got a data dump from a leak and they're just trying every username password combination because they know that a lot of people reuse their passwords.
+The interesting thing is if you run one of these services and you don't mind doing a little digging around the dark web,
+then the best way that you can actually help your users with this is to go and get these password dumps and run them against your own users.
+And if you get any matches, you basically lock the user's account and force a password reset.
+So there is stuff that you can do in certain situations.
+UTXO management, a big issue.
+I think most people don't even know that there's no such thing as a Bitcoin.
+You know, there's only UTXOs that happen to have value associated with them.
+I won't go into the nuances of UTXOs, but basically it's a Goldilocks problem.
+Because of my decade of watching all types of different users and their transaction patterns,
+I've noticed that a lot of transaction patterns are very bad when it comes to UTXOs.
+I see, you know, some users who just get a ton of deposits and almost never withdraw,
+and so they build up hundreds, if not thousands, of UTXOs,
+which are actually impossible to spend all at once due to consensus limitations of size of transactions.
+I've seen other users that have way too many withdrawals and not enough deposits,
+and so they end up essentially having to re-spin the same change outputs from their own transactions.
+And we actually developed an algorithm at BitGo to detect that and essentially automate the fanning out
+and the creation of additional change outputs for users that were in that situation where they're essentially UTXO starved.
+And, you know, if you have just the right number of UTXOs, you know, that's really what you're aiming for,
+because you don't want to be creating large data sizes, at least in high-fee environments.
+You know, go for it right now, nobody cares, nobody's actually using Bitcoin.
+You can bloat the hell out of the blockchain and the UTXO set right now.
+Once again, this doesn't really apply right now, but there are times when fee estimation can get pretty gnarly.
+And this is a chart not of fee estimates during a certain time,
+but rather of the spread between the different fee estimates from different service providers.
+And the main point being here, there's no consensus about the best way to do fee estimation.
+And so the green, I believe, is for the, like, next block, you know, next one or two blocks,
+and that's where, of course, the most volatility was.
+And I suspect that the reason for that is that some services were actually looking at the mempool
+and incorporating that data into their fee estimation,
+whereas others were only using trailing blockchain data.
+I would say it's preferable to just make RBF very easy for your users.
+And the nice thing is that, as of today, you don't even need to do RBF.
+You can just make it possible for users to essentially double-spend themselves,
+as long as they are, you know, bumping up those fees.
+You no longer have to, like, specifically flag it on the transaction.
+So if your service is, like, more of a hot wallet or single signature type of setup,
+then it actually makes sense to undercut whatever the fee estimation for a certain target is
+and then just automatically bump up the fees every so many minutes or blocks or what have you
+and sort of work your way up until you get included in a block.
+But, you know, not all use cases have that option.
+Multi-sig, in particular, not so much, especially distributed key multi-sig.
+And another thing that I've noticed around fee estimation, there are cycles.
+There are daily cycles and there are weekly cycles for demand for block space.
+This should not be a surprise because, generally, people are transacting while they're awake.
+So if you just look at, like, where is the sun over the earth and how many humans are currently awake,
+that generally corresponds to, like, what the demand for block space is at any given time.
+So, you know, if you're a savvy user of block space, you may lower your time preference
+and decide, for example, to transact on the weekends when people are off having a real life and not doing Bitcoin stuff.
+So there's a lot of variables here, and you can't really expect people to know much about fee estimation.
+So the main takeaway that I've had, especially from the high fee environments,
+is that we should not automate fee estimation.
+So this is another weird trade-off.
+Like, in a lot of these cases, we actually want to hide as much of the complexity from the user as possible.
+But what I found is that when there's a lot of contention for block space and everyone's automating,
+they're basically just, like, listen to your local programmer and have them select a fee,
+that creates weird feedback loops in the ecosystem.
+And that's one of the reasons why we get these crazy spikes up and down,
+other than, of course, people doing token mints these days, which is a whole other issue.
+So there's also, related to this, once again, if you give users too much input, they will screw it up.
+So this is only a few examples, but there's many examples of people, like,
+inverting the send amount and the fee amount.
+This is probably because of a poor UI where it was literally just two boxes for you to type into.
+I think fees should never let someone type in a number.
+That is just way too scary.
+Too many things can go wrong.
+I would prefer something like a dropdown or a slider where you're limiting the options to various sane limits.
+Also related to this is the fact that sometimes a valid and even a standard transaction may not be relayable across the network,
+and that's because the fee floor for a default mempool size can actually go up and down.
+This is just, like, yet another aspect of fee estimation that very few people are going to take into account.
+With regards to addresses, my main issue here is the address gap limit, once again,
+is that the UX of pretty much every wallet I've ever come across just lets you click Generate Address, Generate Address, Generate Address.
+You do that more than, like, 10 or 20 times, you're going to have problems if there's a gap that's more than,
+forget if the standard is 10 or 20, because you take your seed phrase and relevant information to some new software wallet,
+and the way that it finds your money is by iterating through the derivation pass,
+and, like, once it hits some limit, and I think the standard is 10 or 20, it stops looking.
+So if you put your funds in some far future derivation, then it's actually not going to show up in the wallet
+unless you can tell the wallet and basically force it to keep looking.
+And so I mentioned address poisoning, gave a whole talk on this at MIT a month or two ago.
+Basically, this is a combination of issues, but I would say it's address reuse is the biggest driver
+of why this is a problem in the first place.
+If people didn't reuse addresses, then address poisoning attacks would be completely irrelevant.
+And what is a poisoning attack?
+It's basically an attacker scans the blockchain for addresses that have large amounts of funds in them,
+and then they use a vanity generator to generate an address with the same starting and ending characters.
+I've seen, like, four starting and four ending, sometimes one or more.
+Of course, it gets exponentially more difficult to generate more of them.
+Why does it work?
+A, because people are lazy.
+I think we've pretty much covered that.
+Also, poor UX, especially on mobile apps that actually tend to shorten and cut out the middle parts of the addresses
+will only show the starting and ending characters, which make it even harder, if not impossible, to do a full verification and comparison.
+And then also probably issues with making it easy for people to copy and paste addresses from their history.
+And I think that we should be disincentivizing that, making it as hard as possible.
+This is kind of related to address gap limit stuff, but in general, wallet recovery is a nightmare.
+It is better now that we have wallet descriptors, but still, I think a lot of wallets out there do not support descriptors.
+And so, the result of this is that we have this website called walletsrecovery.org to document the, like, hundred different combinations of derivation paths and script types for all the different wallets across the ecosystem.
+And it's just so much easier to copy and paste a little blob of a descriptor these days.
+I think everyone should be doing that.
+You can even encode it into a QR code.
+That's one thing that we started doing at Kasa.
+From a user best practice perspective, I think it's good that a number of the wallets out there, like, after you generate a seed phrase, they generally make you, like, put it back in or verify that you wrote it down.
+And that's, like, that's good, but that should not be the only time.
+I think this needs to be a recurring issue.
+Think of it as basically a regular health check.
+Make sure that whatever you did with that seed phrase, that it's actually still there, that it's not been corrupted or destroyed, and that it will actually work when you need it to.
+I think that, you know, if you're not, at least on, like, an annual basis or something, going and recreating your wallets from scratch using whatever your recovery data is, you can't really be that sure that your recovery setup is still going to save you when you really need it.
+And then, like I said, social engineering stuff is really what's scaring me these days, because just in the past year, we've seen multiple social engineering scams for hundreds of millions of dollars against users in this space.
+And, you know, I don't know these people.
+My understanding is they're generally elderly.
+And, you know, that we know that there are people out there that are holding hundreds of millions of dollars in self-custody in a single signature setup.
+And that, you know, one mistake, one call from the wrong tech support, and it's all over.
+And so that's why I thought, you know, talking about vaults, for example, this is a potential improvement to the protocol where we could make it easier, you know, for elderly or less sophisticated people who have a ton of money to essentially have, you know, a friend or family member be a check and make sure that, like, if something goes wrong, if they fall victim to something, it's not going to be, you know, a catastrophic game over type of event.
+And, you know, from a practical standpoint, anything that you give to a user, you should pretty much assume they're going to lose it.
+So that's why I think that coming back around and having them, you know, repeat and prove that their data is in a good spot is important.
+And there are various things that you can do here.
+For example, like requiring really high password complexity, I think, will help nudge people into using a password manager, for example.
+And preferably, if they're using a password manager, they're going to be not reusing the same passwords everywhere.
+There's a really gnarly issue around, like, how do we get people to follow best practices in meat space?
+And so when we're talking about, like, offline data backups, there's not really any software that you can write to enforce that.
+All you can really do is continually remind the user over and over again.
+And, of course, there is the inheritance issue.
+This is something where, you know, I think it's just, it's something that needs to be built in, or at least a sort of reminder.
+Like, a lot of these best practices need to be shoved in people's faces.
+Basically, okay, you know, we got you to create your wallet.
+We got you to back up your wallet.
+And then, really, the final thing, after you know that it's backed up and recoverable, is can it be recovered by your errors?
+And that tends to be, actually, a different problem, where you're trying to create new game theory and new security models.
+I do really like some of the new stuff that we can do with Miniscript.
+You know, Liana and Anchor Watch are doing cool stuff here.
+I call these escape hatches of, like, basically coming up with other spending conditions that are time-locked far in the future.
+So that, you know, if some catastrophe happens, it doesn't have to be the game-ending catastrophe.
+Basically, you can have another set of keys, perhaps that are held by custodians, perhaps that are held by semi-trusted third parties that can then aid you in recovering from certain situations.
+And so, really, you know, a lot of what I've been talking about is, like, this is all related to how we're designing the products.
+For most of our history, the software we've been writing is, like, for nerds, by nerds.
+But we're past the nerd adoption phase at this point.
+Like, the mainstream is getting here.
+And I think we need to start doing a better job of actually designing stuff for the mainstream and understanding that they're not going to read the manual
+and that you basically need to guide them and force them to follow the best practices because, if you don't, they're going to, they're eventually most likely going to run into some sort of foot gun situation.
+So, this is not necessarily saying that people are stupid, but they are not deep into the minutia of all of this stuff that I've been talking about.
+And that's why it is really the onus, even though the responsibility is technically on anyone who's doing self-custody,
+I think you have to admit that there is some level of responsibility on the rest of us to help them, you know, get up, climb the ladder.
+So, know the limits of your security.
+I've also, I will say, I've never seen a wallet that thinks about what its security model is and then tells someone that they put too much money in it.
+That's also something that we do, like, with our single-sig wallets.
+If you have more than $1,000 in it, we tell you, you need to put this somewhere better.
+So, the point being, your software should be opinionated.
+There is this balance between freedom and security, but I think that if we want to help normies be more secure
+and be able to navigate this very scary and complex environment, we do need to restrict their freedom a bit because freedom is dangerous.
+So, out of time, but happy to talk to any of you after about any of these issues.
+You know, this is what I've been living and breathing for a decade.
+And I think that the problem is going to only get harder and harder as the cohorts that come in are less and less sophisticated.
+Thanks.
