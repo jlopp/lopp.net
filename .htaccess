@@ -34,6 +34,11 @@ RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1\.html [R=301,L]
 #Redirect index.html to / to prevent duplicate pages being indexed
 RewriteRule ^index\.html$ / [R=301]
 
+# anti-hotlinking
+RewriteCond %{HTTP_REFERER} !^$
+RewriteCond %{HTTP_REFERER} !^https?://www\.lopp\.net [NC]
+RewriteRule \.(jpg|jpeg|png|gif)$ /images/2girls.gif [L]
+
 AddType x-mapp-php5 .php
 AddType image/x-icon .ico
 AddType 'text/html; charset=UTF-8' html
