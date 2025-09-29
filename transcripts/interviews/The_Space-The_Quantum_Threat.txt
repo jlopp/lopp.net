@@ -1,0 +1,777 @@
+Hello everyone, welcome to CASA Community Night at The Space.
+Who hasn't been to The Space?
+Put your head up if it's the first time at The Space, wow, okay.
+That's a lot of new hands.
+So The Space is a Bitcoiner hub built for Bitcoiners by Bitcoiners.
+We are a non-profit community and we have an art gallery.
+We have a lounge room.
+We have everything you need, a co-working space, a media studio.
+We've got hashrate heated floors.
+The list goes on and on the longer we're open.
+It's a pleasure to have you here in our home.
+We have 83 full-time members here today.
+If you want to be a member, you can be.
+Go to denver.space and apply and if you're a good fit, we'll let you in.
+So it's a cool kids club for Bitcoiners, built for Bitcoiners by Bitcoiners.
+It wouldn't have happened without all of our members and our founding sponsors.
+One of those sponsors is CASA, who I also happen to have worked for for the last four and a half
+years.
+And tonight, CASA is hosting a panel on Quantum.
+How many people have heard about Quantum lately, right?
+It's all over the news and to be honest, I have no idea.
+I don't understand it at all.
+So if you're like me and maybe some of the rest of the audience here, maybe we'll learn
+a little bit more.
+Nick and Jameson or Jameson and Hunter have both been working on BIPs here in the Bitcoin space.
+And Nick's our CEO of CASA is going to be hosting the panel tonight to talk about how is this affecting
+self custody in Bitcoin and what do we do about it?
+So we'll run about 45 minutes or so till close to seven.
+If you haven't checked in yet, we're doing a raffle at seven o'clock.
+We've got some cool giveaways that CASA is going to be giving out passports, some privacy
+bags, some Faraday bags to protect your hardware.
+So make sure you stick around right after the panel ends.
+We're going to do that immediately at seven o'clock.
+Without further ado, I'd like to introduce our panelists.
+So we have Nick Newman, CEO of CASA, Jameson Lott, Chief Security Officer of CASA, and Hunter
+Beast, who's the author of BIP 360 through Mara.
+Thank you guys all for coming tonight.
+And I hope this is informative.
+Thanks, Zach.
+Okay.
+So the goal here today is to have a discussion about quantum Bitcoin security and ideally to
+talk about it in a way that's understandable for everybody.
+And so I'm going to try to keep it at my level, which is somewhere like stupider than these guys
+levels, and then hopefully that'll be helpful for everybody.
+So the quick intro on CASA, I'm the CEO, my name's Nick.
+And CASA is a safe, simple way to secure your Bitcoin, particularly large amounts of Bitcoin,
+and not have to worry about all the problems that come with self custody.
+So what happens if you die?
+What happens if you lose your keys?
+What happens if somebody steals your keys?
+All of those things are things that we protect against.
+All right.
+The commercial's over.
+So let's do a quick intro for both of you guys and just give...
+Hold on.
+I got to get this tweet out.
+Oh, we'll start with Hunter.
+Jameson's our chief Twitter officer.
+And so Hunter, maybe just give a quick intro on you and the name of your BIP and we'll go
+into the details of it.
+if you don't need to tell us what it is yet.
+Hi, I'm Hunter Beast.
+I have been working in Bitcoin full time since 2021 and originally I was working more in like
+layered protocols like lightning and RGB and RGB if you haven't heard of it as a tokens protocol.
+Lightning if you haven't heard of it.
+I hope people have heard of lightning in the very least.
+It's very good.
+But in the starting about June of last year I started going down a rabbit hole of probably
+in my opinion the most salient piece of FUD against Bitcoin there is.
+which is that quantum computers could someday break it and the government's been warning
+us for a little bit now that Bitcoin could be broken by quantum computers that they seem
+to have made or at least been funding a lot the government the NSA in particular.
+And so the more I dove into it the more I started realizing this could be a serious problem
+we and we need to get ahead of it and the best way to get ahead of it is to introduce post-quantum
+cartography to Bitcoin which is quantum resistant cartography and in order to do that we need
+to fix another problem that Bitcoin has which is the vulnerability of taproot addresses.
+And so we needed to create a new address output type.
+It's called p2tapscript hash.
+Okay, I'm going to pause you right there.
+That's the name of the BIP.
+What?
+Okay.
+Cool.
+And the BIP is also known as BIP316.
+If you want to learn more deep dive, BIP360.org.
+Thank you.
+Jameson.
+What's the question?
+Okay.
+So, I mean, I also started looking into quantum issues about a year or so ago.
+I think I gave a presentation in Antwerp, Belgium.
+And I got fascinated by it not so much because I'm a cryptographer or know anything about quantum
+computing, but rather because this is a type of improvement or change to Bitcoin that would
+be unprecedented in a variety of different ways.
+But mainly unprecedented in the sense that we've never before had an upgrade to Bitcoin
+that actually really required people to move their money.
+And we've never really had an upgrade that was required in order to save yourself from some
+sort of security issue.
+So, I got really sucked into it more from a sort of game theory and incentives perspective.
+And so, I have a Bitcoin improvement proposal, not yet with a number, but a draft out there
+which does not really try to address the stuff that Hunters does.
+Rather, it's meant to be a sort of follow-up of like, okay, if we somehow manage to actually
+come to a consensus that we should do something, what do we then do after we implement the post-quantum
+cryptography to improve the incentives and the game theory to get people to migrate?
+Because this is a system where you can't force anybody to do anything.
+So, to summarize the two BIPs and areas of focus that you guys have, Hunter, you're focused
+on basically, how do we make sure that Bitcoin wallets are quantum resistant?
+And then a little bit about how we would maybe get to that state, but more from a technical
+side of things than like the game theory side of things.
+And then, Jameson, you're and the other authors of the BIP were focused on.
+Once we have that solution, how do we get there?
+And what do we do with all the coins that are potentially not moving and therefore become
+vulnerable?
+Is that a good summary?
+Yeah.
+All right.
+So, can you guys explain, like we're five, why quantum computing is a problem for Bitcoin?
+So, quantum computing right now is actually not very good.
+But as we know, technology has a way of catching us by surprise.
+In 2013, Edward Snowden actually leaked a document that explained that the government has been
+investing in quantum computing technology for the explicit purpose of breaking cryptography.
+And in 2013, the budget for that program was 80 million dollars.
+And it was called Penetrating Hard Targets.
+And so they're on top of this in a way that is very concerning.
+How quantum computers break Bitcoin?
+I mean, to explain it simply is just that the signatures that your transactions use, which
+are like, you go from, so in public, private key cryptography, also known as elliptic curve
+cryptography, you have public keys, you have private keys.
+And a public key is derived from a private key, and then the address is derived from that.
+And so when you send Bitcoin to an address, it then needs to be, when you go to spend the
+Bitcoin that you received, it, you need to sign your transaction with your private key and
+then present your public key.
+Now, the problem is, whenever you present your public key, either when you assign the
+transaction to the mempool, or if you're using, like, say, a taproot address, or if you're
+reusing addresses, like, addresses you've already spent from, you've revealed a public key, at
+which point a quantum computer that's sufficiently powerful, that's an asterisk on this, right,
+is a sufficiently powerful quantum computer could potentially derive your private key from
+that public key, and at which point they could forge the signature needed to, to spend those
+coins.
+Now, it's a, it's a brute force approach, uh, it, it, we're pretty sure it can work, so long
+as the computers get good enough, they are not there yet, um, but there, and there might also
+be other mathematics based attacks, like, uh, tropical geometry and things of the other, that's
+getting the weeds, but yeah.
+Cool.
+Thank you.
+So, basically, what this means is that today, in order, if you were to try and guess, uh,
+or derive a private key from a public key, like, to go in reverse, it's very easy to make a
+public key from a private key, but to go in reverse, it would take all the computing power
+of a million suns, or whatever, with the computers that we have today.
+That's, that's a currently what secures Bitcoin, but in this cryptography is the, uh, what they
+call the elliptic curve, discrete log problem.
+Yep.
+And then, but a quantum computer works differently in a kind of magic way.
+Yep.
+weirdly, actually legitimate, same magic.
+Well, there's, there's an algorithm called Shor's algorithm, which I think has been around
+for decades, um, and you know, it is theoretically able to reduce the complexity for a quantum computer
+to be able to reverse engineer it.
+Like, you, you wouldn't be able to do this with a classical computer.
+Right.
+And that's because, uh, with quantum computers, you can entangle qubits together to create
+this, like, big state, it's called Hilbert space, and, uh, because you can entangle the
+qubits together, every additional qubit you add, if you get 256 together, you can model an
+entire public key, all the mathematical space in, which, to be clear, a 256-bit key is, is about
+as, as big as the number of atoms in the universe.
+It's an enormously big number, and so, uh, uh, in, and, and, and quantum computers are able
+to use, um, uh, techniques like quantum Fourier transform to, uh, define patterns, essentially,
+in that data set, in, in the Hilbert space, to the point where they can isolate prime numbers
+and then factor them.
+But to be clear, we're several orders of magnitude away with computational power of quantum computers
+to be able to hit that, uh, but we don't know how long, we don't know how quickly the technology
+is going to advance, so we don't know how long we have before what we would call a cryptographically
+relevant quantum computer, aka a sufficiently powerful one, would be able to actually run
+this in a meaningful amount of time.
+And the main, the main threat, there's more governments, right?
+Like we've got, I guess we've got Google and Microsoft, and those guys working on this
+too, but I assume that, uh, we think that, you know, the NSA or somebody is ahead of them?
+That's hard to say.
+Well, there were, the NSA did hire two defense contractors for a good couple decades, uh, Honeywell
+and Raytheon to work on that problem.
+Okay.
+So, this is a problem for Bitcoin wallets, but it's not a problem for Bitcoin mining as much,
+right?
+Yeah, it's not so bad because, uh, there's a different algorithm you need to attack Bitcoin
+mining, the hashing, uh, SHA-2, right?
+Um, it's, it's called Grover's, it doesn't scale as well as Shor's, so, uh, Shor's algorithm
+was discovered in 1995 by Peter Shor, or published like maybe '93, and, uh, he, uh, uh, that was
+the first instance of, uh, a quantum computer, uh, being theorized of how, demonstrating advantage
+over a classical problem.
+So the other thing, as I was reading through some of your guys' stuff, that was an interesting
+general concept around quantum computing to me, was this idea of long range versus short
+range attacks?
+So I've since revised the terminology to be, uh, long exposure and short exposure, because
+I think it's a bit more descriptive, but also the long range terminology seemed to have stuck,
+but, uh, uh, regardless, uh, there's essentially, um, a big difference in the type of quantum
+computer you'd need to, uh, attack, uh, initiate certain attacks.
+So, uh, a short, short exposure attack is, uh, anything in the mempool.
+So, you just signed a transaction, you submitted it, you click submit on your wallet, and it
+goes up into mempool.space, you know, the block explorer, and you get to see, uh, where your
+transaction is, uh, and when you, when you do that, you have to publish your, your public
+key no matter what.
+And so, uh, long, uh, short exposure attacks are, are difficult to, to defend against because,
+uh, you need an entirely new type of cryptography, like post-quantic cryptography to defend against
+those.
+Sure.
+A long exposure attack, you can defend against quite easily on Bitcoin just by using a, um,
+a native SegWit or BC1Q address.
+Um, it's, uh, but that said, uh, a long exposure attack essentially is just the key is exposed
+on chain for a long time.
+Uh, Satoshi's coins have been exposed for 16 years now.
+So we know that, you know, like that's, that's, it's, uh, and they're only about 50 Bitcoin per
+key.
+So, um, we, we kind of have like, there's not like a huge monetary incentive to run a billion
+dollar quantum computer, uh, against like one of Satoshi's coins.
+But, um, there's definitely some game theory behind that too.
+But, uh, also Bitfinex, uh, Binance, a number of the really large exchanges have long, uh,
+exposure keys of basically their primary cold storage.
+So, you know, an attacker could spend months whittling away, uh, trying to crack those.
+And that would be pretty catastrophic, I think.
+Because their primary cold storage, they're reusing the same address, right?
+Yeah.
+I mean, this is, it's kind of ridiculous that a lot of the problem here, I think there's
+like close to 5 million Bitcoin that are currently vulnerable for one reason or another.
+Yes.
+It's quite a bit.
+Um, and, and, uh, a significant amount of it, I want to say only one and a half to two
+million is because it's in the really old pay to pub key stuff.
+A significant amount of that is because people are not following one of the fundamental basic
+practices, which Satoshi told us, never reuse a Bitcoin address.
+But here we are.
+So the, the long exposure versus short exposure, the thing, the reason I thought this was interesting
+was because long exposure is like, these are the ones that you, or the, these are the Bitcoin
+that you can work on for a long time without anybody really knowing that you're working on
+it from a quantum hacking perspective because it's been exposed for a long time.
+They aren't moving.
+And so you can just kind of sit there and like work to brute force those private keys.
+But for short exposure, these are much harder to grab in general, potentially even after
+we have quantum computers that can break this encryption because, uh, you need some amount
+of time to do the brute forcing as a quantum computer.
+And when you go to actually spend the Bitcoin and they go into the mem pool, there's only so
+much time before they get picked up by a miner.
+And so the short exposure coins are just from an incentive perspective, much less likely for
+people to go after them because it's just harder to do in general.
+And then all the long exposure coins hanging out there for the taking, basically.
+So let's say quantum computers were already invented and somebody was doing this.
+What types of wallet setups are currently, like, safe against quantum?
+And then what types are not safe?
+And I feel this is a little bit, you know, unexpected maybe.
+For me, the answer is a little bit unexpected, but either one.
+Well, I mean, Lop has done a ton of research in a wallet, so I'd like to hear your answer
+first.
+Well, like you said, the unsafe wallets are the Taproot wallets, which have actually not been
+that widely adopted, which is about 100,000 coins in Taproot addresses.
+Yeah, it's compared to some of the other issues, it's more minor.
+You know, I think Taproot has mostly been adopted by the DGEN JPEG lovers, so they can worry
+about that.
+But pretty much all of the other types of addresses out there, other than Pay2PubKey, which you're
+going to have a hard time even finding a Pay2PubKey wallet software that was deprecated over a decade
+ago, all of these other addresses are protected by hashes.
+So, you know, they're not actually exposing the public keys on chain until you go to spend
+the funds.
+And so let's let's say you're not reusing addresses at all.
+And when you go to spend funds from one of your addresses, you get change in the transaction,
+right?
+Can that change be that change address be broken by from the first address spend or no?
+Only if you're reusing the same address, which once again, I think some of those like DGEN JPEG
+wallets were mostly built by non Bitcoiners that were coming from like Ethereum and other
+account based ecosystems.
+And they do use the same address for everything.
+Yeah.
+They're like, this is your Bitcoin address.
+And then this is your Bitcoin ordinals address.
+And you just keep reusing them.
+Yeah.
+Okay.
+Don't do that.
+So the reason that Taproot addresses are vulnerable to this is that they actually put the public
+key in the address.
+And I was surprised by that because it seemed short sighted if we were worried about quantum.
+Why did we do that?
+Yeah.
+People were worried about quantum at the time and concerns were raised and they were ignored.
+And I think the best answer I can come up with that and I've wondered this a lot myself.
+The best answer I can give is that it saves maybe eight sats per transaction, which like doesn't
+seem like a lot for the game.
+But like one of the selling points of Taproot at the time was that it would save you money
+because it would like there's a couple of different ways it does that and optimizations.
+But it's not a huge amount.
+It's it's like it's literally eight V bytes.
+And so there's that that's the best explanation it can come up with.
+It's kind of baffling to me.
+And actually the major thing BIP 360 does is it just removes elliptical photography from
+address generation of Taproot addresses.
+And so it's a 20 page BIP and it's all just to justify removing code.
+And it's so you're basically in your BIP, you're suggesting that we edit Taproot addresses
+and spending conditions to remove that vulnerable public key from the Taproot address and to make
+sure that nobody ever accidentally spends through that.
+Well, it's not just that.
+It's not just like that you can actually accidentally spend through it.
+It's that a quantum computer could take your address and then come up with a key you've never
+even really even your wallet never even thought of it was it's not really like a part of it,
+but it could spend it.
+And so we have in order for it to be secure against quantum computers, we have to disable
+the key path spend is what it's called.
+So you're suggesting that we remove that and then add in basically as potential ways to to
+use TapScript and spend from a Taproot address.
+You're suggesting that we add in post-quantum or quantum secure out signature algorithms basically.
+Yeah, what's neat about Taproot is that once you receive coins to it, your wallet will of course
+need to know in advance what type of addresses to generate, but it can essentially give you
+an option once you receive coins to it, whether you want to spend with elliptic curve photography or if
+you want to spend with post-quantum cartography.
+And the reason why you might want to spend with elliptic curve photography even after say Q day is because
+post-quantum cartography is actually quite expensive.
+It's first of all, it takes key generation is time consuming and on the device, but that's
+getting better.
+We're working on optimizations, but also just the transactions are much bigger, which isn't
+really a big problem in today's fee rate environment.
+Like you can get a transaction mined in the next block with it with one SAP review byte, but uh, which is actually even less now
+um, but uh
+with yeah, but nonetheless the
+Transaction throughput on chain is going to decrease by like 90% if if not more
+Uh, because uh, all of this cryptography
+It's all good and well for protecting against uh quantum attackers, but it sucks for bitcoin and bitcoin being a highly resource constrained system
+with very limited block space and so
+Uh, you know this very well
+Could also reignite a sort of block size debate once again. Uh, I mean i'm not so sure about that
+It depends how much time we have because like the thing is
+We're finding optimizations already in slhdsa like in like we went from eight kilobytes to four kilobytes due to uh, roast beef's work
+on the um, uh, the security parameters, but
+uh, if we
+Have enough time we might even be able to come up with a stark based solution
+That uh, aggregates quantum signatures. We call it bit zip
+Uh, this is a been proposed to the bitcoin mailing list, uh, just under the name of like, uh, quantum signature aggregation
+and
+uh,
+What what's what's neat about it is that that could actually take our uh, uh, the throughput of bitcoin and like 10 exit
+So even with quantum yeah algorithms. Yeah
+And that's because you're basically
+Taking a quantum signature and like wrapping it in a zero knowledge proof
+Which the zero knowledge proof encrypts it in a way that makes it much smaller again. It allows you to uh compre
+It's it's it's a cross it's a block wide cross transaction compression algorithm that's uh, coordinated by miners
+Okay, so um
+You were saying that you might want to still use the normal kind of non-quantum proof
+signature
+uh
+Capability in a when you're spending from a new quantum secure taproot address
+Uh, because it might save you space, but would you actually still take up that space because you've got the quantum
+Uh, cryptography built into the address too. That's that's a great question
+So, uh, taproot's really unique in that you can commit to multiple separate scripts
+And then what you do when you go to spend is you you uh, provide the hash of the alternate script
+And then you provide the script that you want to spend so
+Um, it's actually not so bad. Yeah, so basically instead of taking up all the space with the quantum stuff
+You are just giving the hash of the quantum stuff
+And then you're spending you're actually doing the signature with the normal stuff. Yeah, and
+So you could potentially even use that as a way to start putting
+Quantum secure signature algorithms into addresses
+But then we haven't even hit q day, which is when quantum becomes relevant
+And everybody just uses the normal stuff to save space. Yep the whole time
+Yeah, which I mean that's nice because you're building in optionality for you know potential future proofing
+Though then eventually you run into the coordination problem of okay. What if shit hits the fan?
+Uh, do we then?
+Try to come to consensus to you know disable whatever we consider to be a vulnerable
+Signature scheme. Yeah, great segue. What are both of your opinions on what we should do with all the coins that are vulnerable to
+Quantum once q day or actually just
+In planning for q day
+So in the past year i've actually written about four bips
+Exploring the problem space and trying to figure out
+The best solution
+And one of those, uh, is
+Uh, we call it hourglass and
+Basically the idea is just it the first version hourglass v run
+All it does is it res it's a throughput restriction on the older public key
+Uh, coins, so if you want to spend, you know, any of those coins
+Miners can only include one of those transactions per block
+And the reasoning behind this is because
+Uh, there's about 34 000 paid to public key coins. Uh, no, no 32 34 000
+paid to public key addresses or keys out there
+They hold about 50 bitcoin each and if you do the math, it's about 1.7 million bitcoin and so
+Uh, imagine, uh, um
+34 so 34 000 different
+Uh, uh, keys could be spent
+In just a couple hours at, uh, bitcoins throughput
+Uh, so imagine like 1.7 million bitcoin hitting markets within the span of hours
+hourglass
+v1 essentially wants to
+Um, uh, split that spread that out over, uh, uh, the course of so 34 000 blocks
+Which is about eight months worth of bitcoin blocks
+And so, uh, there's also an evolution of that, uh, which I was inspired by, uh,
+Actually jimson's criticism of the of the original proposal that it just doesn't it's not comprehensive enough
+Uh, and also, uh, it was is for feedback from
+Uh, also some large economic node operators
+And the thing is about rlsv1 is it's technically not necessarily incentive compatible with
+economic nodes because of, uh, the
+the
+larger problem of reused addresses
+And so, uh, we tried to solve come up with a good solution for that in v2
+It was a solution. It was not my favorite solution
+It's certainly very complicated to, uh, essentially prevent address reuse, uh, in bitcoin core itself in the protocol level
+but, um, what
+You, you, one thing I kind of realized as I was doing this work, you know, exploring the problem space is, uh,
+Reused addresses may not be as big a problem as we think because
+About 90% of them of the coins at least have moved within the last six months
+And so, uh,
+That's it like it basically means that like those are active addresses
+Uh, if there was a problem people could jump exactly their coins, yeah
+Yeah, that's I didn't know that that 90% of coins on reuse addresses that moved in the last six months
+Yeah, that's pretty crazy. Okay, jameson. What what was your opinion on what we should do with these?
+Burn it
+Um, right, so
+Any of these other, you know, throughput restriction, whatever things that
+They're gonna create new game theory and that's always fun to think about
+Uh, and try to figure out what the edge cases are and how it could go wrong
+Um
+But I I like the KISS principle keep it simple stupid
+Um, and
+On one hand we have a
+A problem where humans tend to be
+Procrastinators and not do things until they really really really have to
+And so I think that we need some stronger incentives in place
+So there are some people who argue well, we can just do this opt-in quantum stuff
+And then people who really care can can opt into it and basically save themselves
+But I think that this is a different type of problem because
+If we get to q day and
+10 20, you know, even 50 of people have opted into this
+They're still going to get massively economically burned
+By the fact that there are a bunch of laggers out there who haven't opted into it and those funds are going to get liquidated and most likely
+Hit the market. Um, and I think that the people who are quantum safe won't be particularly happy that they're quantum safe
+If the value of their quantum safe coins, uh, plummets
+So one bitcoin equals one bitcoin. Yeah, no, I mean look there are always going to be some one btc equals one btc hard liners out there
+But the the truth of the matter is we are a long way away from bitcoin being a unit of account
+The entire ecosystem does not run on bitcoin as a unit of account whether you're talking about mining or really any other company in this space
+So even casa would be I think massively
+Harmed if the value of all of our clients holdings went really really low and they didn't want to pay for security solutions anymore
+Well, we also have to remember that like the bitcoin network is secured by real people
+Spending real money on real hardware keeping it running and secure
+They're securing a two trillion dollar asset class with an exit hash and that's incredibly expensive to maintain
+That we know the price of that by the way. It's three and a quarter bitcoin and
+per every 10 minutes and so
+um
+The if if if the value of
+The security token that the token the base layer token is compromised
+Then you're compromising the amount of value it can secure
+And so there is definitely reasoning behind like logic behind like yeah, no, we need to secure this at all costs
+Yeah, so why not add the why burn them versus adding them back into the mineable supply?
+Yeah, well some people say that we should just view it as a
+A new type of mining
+Um, I don't really I actually wasn't saying this from that perspective not like the qu like quantum mining where you're
+Stealing okay, so just reallocating it. Yeah, instead of just freezing them completely like freeze
+Everybody migrates stuff that didn't migrate just gets put back into the supply of bitcoin. So it's like a new kind of tail emission. Yeah
+Anything is possible. I think that the the more complicated you make any proposal the more likely there there will be sufficient objections to it
+um, I felt like
+doing a multi-phase approach
+where basically, uh
+My bit is like phase one. Uh, we've we've implemented the post-quantum
+cryptography
+And then we give people a few years to actually migrate and we incentivize them to migrate by
+Rejecting transactions that are sending money to quantum vulnerable scripts
+Uh, and I think that we need something like that
+Mainly because there is no way for us to
+Communicate with every bitcoin user. We can't email everybody. We can't message everybody
+But if we somehow
+Change an aspect of the network so that they realize that whatever they were doing their transactions are not going through
+That's going to force them to look into the issue and determine. Hey, I need to upgrade the security of my wallet
+So that's is that all phase a
+um, did you guys consider separating that second part? So maybe phase a is you just add hunter's new post-quantum secure
+Algorithms and then phase b a couple years later maybe is like start
+uh, forcing people to send to a secure address. Yeah, I mean all of these time frames are
+totally
+Arguable because we don't know how long we have
+um, I think the main reason why this issue is
+So important to be talking about now even though
+It might not actually be a critical issue for over a decade
+Is because
+It takes many years to get changes through so first of all I expect it to take several years
+For people to come to a consensus
+around the need
+for new uh, cryptographic scheme
+Next it's going to take
+Probably another year or several years to actually get
+Such a improvement proposal activated like even once the code exists. It often takes several years to get it rolled out
+Then it takes several more years for a protocol change to matriculate throughout the rest of the ecosystem for all of the other
+Wallet software and and hardware providers to upgrade their capabilities to actually
+Make use of the protocol change and then finally with this stuff now we have the additional
+Issue where people need to migrate their funds and there is no
+There is no set time window for that. You can't force anybody to do it
+So I think the best thing that you can do is to tell them if if you don't do it by this point
+You're going to have problems where basically
+We we don't allow you those funds to be spent the way that they normally were because we have no way of distinguishing
+Between whether it's actually you spending the funds or a quantum attacker spending the funds
+Uh, and then what I haven't mentioned yet is you know the potential phase c
+Uh, which needs a lot of research and development is
+Is there a way for us to
+develop an alternative way that people could still spend their funds from those vulnerable
+Locking scripts, but with additional evidence that a quantum attacker would not have so that we would be able to differentiate
+And yeah, I I was remember reading that and wondering what that additional evidence would be
+Uh, essentially it would have to so
+A quantum attacker will only have the private key
+They'll be able to look at the blockchain get the public key and then reverse engineer the private key
+They won't have any other information about that wallet
+If you're using a hierarchical deterministic wallet, which pretty much every wallet created after like 20
+13 2014
+Almost all of them should be hierarchical deterministic except for some edge cases like casatious coins and stuff
+If you have an hd wallet you have additional information where you have this extended public key you have derivation paths
+And it as far as we can tell theoretically you should be able to construct a zero knowledge proof
+That basically proves that you have that additional information
+And that you don't only have the private key
+But you actually derived the private key from this other root information
+And for that you would need uh, starks and so
+Uh, that's uh, that's actually uh, something that the uh, that vitalik proposed
+For ethereum was uh, for their way to result, uh deal with this issue
+Uh, that was the hd wallet bit 32 derivation path secrets that are inside the wallet
+Um, there's like a bunch of cryptography between your 12 or 24 word mnemonic
+And uh, uh seed and your address there's like a whole bunch of cryptography between that and that's to find a bit 32 and bit 39
+And you can create proofs that go into those secrets and and uh, you don't reveal those
+um, and
+Uh, uh, the the only problem with that is it basically breaks anybody using, uh, uh, uh,
+Big bitcoin or ethereum, um, with keys that they generated, uh, with outside of a bit 32 wallet
+And so, um, that would be something like like when ethereum first was released, uh, I remember creating a json file for my key
+And, um, that that if anybody's still using json files for their keys, like not like, uh, you know, a seed phrase for their for their coins
+Then they'll essentially be locked out and that also has, uh, upstream consequences for people who are using, uh, hsms, uh, hardware security modules, or, um, uh, like in a more, uh, corporate environment
+Or also, um, smart contracts would certainly be affected and then, uh, on the bitcoin side, uh, definitely like node layers bridges
+Um, lightning channels, uh, there's there's it could be a number of things that like
+Could be broken by that and so, uh, it's it it definitely
+You don't want to hold that off till they face you for sure. Yeah
+Okay, I mean
+Preferably, it would still basically it still offers a path for people who might have had their coins frozen to potentially still provide some info to unfreeze them
+Yeah, yeah, but preferably if you get the incentives in place many years ahead of time then
+Everybody will migrate and they don't have to go down some other convoluted recovery path
+So what what do you guys think about the argument that if we freeze these?
+Coins that are vulnerable after we go through all these phases and stuff that
+um
+We're kind of breaking a promise of bitcoin a core promise that we don't freeze
+UTXOs or that we don't freeze coins and that it's a slippery slope from there to like doing it for other reasons, too
+Well, uh, what i've been saying for a while is that one way or another regardless of if we take action or don't take action or
+What whatever proposal we end up following or no proposal?
+Uh, some inviolable property of bitcoin is going to be violated. Uh, so
+You know, I had this really lengthy essay at the beginning of the year where I published a lot of the arguments for and against
+doing things
+Um
+And and ultimately, you know, yeah, you can make any of these
+Moral and principled arguments about like what the fundamental properties and principles of bitcoin are
+But I think at the end of the day
+What's going to be the most important and an effective thing is actually the game theory around the participants in the ecosystem
+And what they want to see
+I think
+You know, this is controversial
+But that a lot of people in the ecosystem would rather for vulnerable funds that are most likely lost
+To not be scooped up by an attacker and dumped on the market
+But that's one of the more controversial points that we're going to have to yell at each other for many years
+Uh, to hopefully come to a consensus about
+Uh, like a devil's advocate like just like the other side of it
+Um, I mean, it does kind of break the 21 million supply cap
+In some ways
+Well, it makes this supply cap even lower
+Hooray deflation
+Well, the cap is still there. It's just like the circulating supply is is lower
+Yeah, well, it's it's everything over 21 million not everything over 20 million minus some subset of coins that are
+Been frozen by the protocol
+Yeah, like lost coins only make everyone else's coins worth more satoshi nakamoto
+And you had a reverse one. Oh, yeah, uh, well, it was basically like the the corollary of that principle is like
+Quantum recovered coins make everyone's coins worth less because they increase the circulating supply
+Okay, so in a sec i'll take crowd questions. I've got another question for you jameson
+What chance do you give your bip of actually being adopted?
+Or were generally of us doing something about this? Ah, yes, uh
+I think i'm more pessimistic than hunter. I I would give us a less than 50 chance of being able to successfully coordinate
+something of this complexity in time
+Because I see a lot of parallels between
+Something like the climate change debate
+Uh, it's like, you know, we we see that like things are generally trending in a direction. That's probably not good
+But nobody really knows when we're all gonna die. It just seems like it's going in a bad direction
+Um, and so it's it's this hand waviness of the issue that the inability to precisely
+Identify when the literal deadline is like when we all die or like when bitcoin dies
+That makes it so controversial
+Uh, and then you you roll in all of the other issues around like the principles of bitcoin and trying to make changes that may be
+uh, non-backwards compatible and so on
+I would definitely agree with the 50% sentiment. I'll take the over on that coin flip
+So I think it's a higher likelihood that hunter's bip gets passed
+Uh lower likelihood that jameson's gets passed because I think providing this optional preparedness
+For quantum resistance like people it's gonna be easier to get people on board with that. Yeah, I would agree
+Um, do we have any crowd questions caitlin?
+Can you zoom out and explain where is the issue?
+Is it just in the signatures or is it in the consensus mechanism of bitcoin?
+Yeah, wait, I'm gonna repeat the question for the stream. So, um
+The question was is the quantum problem only in the signatures or is it also in the consensus mechanism for bitcoin?
+Well, I guess technically it's in the redeem script, right? It's
+When you are redeeming, uh, when you are spending your utxos
+As hunter said you have to provide the signature, but you also have to provide the public key
+That then you can cryptographically match and it's the public key that is the problem less so than the signature
+The signature is a problem in the sense that it corresponds to a public key which is vulnerable and and could potentially be reverse engineered
+But yeah, it is definitely a protocol change. It will be a soft fork
+the
+The a lot of a lot of the the business logic actually happens in what they call the application layer or the wallet
+But it there is also a consensus layer change for all nodes to be able to validate
+post-quantum cartography public keys
+But I I but the the I don't see um, oh actually well, there is another bib actually out there for implementing post-quantum cartography for
+communication between nodes
+um, it's uh, uh, that that's like more consensus and gossip
+type stuff
+uh, that uses a different kind of pqc
+uh, key capsulation mechanisms and but there's a bit out there for inter-node communications and making that quantum secure as well
+I guess if we assume that over time quantum
+uh, cryptography algorithms continue to get better
+Then eventually at all parts of the bitcoin encryption layers and everything bitcoin does we're going to need to upgrade it
+Very likely. Yeah, that's another kind of issue with this hand waviness of the timelines
+Is that on one hand?
+We we would love to have as much time as possible because we know that the uh, post-quantum cryptography will continue to improve
+But there's this weird aspect of cryptography and that
+Nobody wants to implement
+new cryptography at at a production level for a two trillion dollar asset
+And and so even if something comes out tomorrow that is like a hundred times more performant and you know better for a resource constrained system
+Like like bitcoin just the fact that it hasn't been out there long enough to for people to try to to break it
+Is problematic and I think that also it plays into uh hunter's bip because you have
+You originally had like four or yes, we really had to whittle that down
+So we did have four signature algorithms, uh, at some at one point
+um, and we
+Erred on conservatism
+Uh in a lot of ways, uh
+The most conservative post-quantum cryptography algorithm signature algorithm is nist approved. It has uh, it's hash based
+So it's not introducing any new cryptographic primitives like lattices or isogenies and
+it's been around for
+uh, over 10 years
+So it's it's it's definitely gotten a lot a lot more vetting and in peer review
+Uh, for by comparison when satoshi used
+sec p256k1
+in
+2008
+That had only been around since 2000. So it only been eight years old since uh, it was and so so
+SLHDSA is actually going on like more like 12
+And so basically
+We don't even have like
+100 uh assurance that any of these post-quantum algorithms are
+Perfectly secure and so you know having optionality in there was was one way to kind of work around that so that even
+So that you know, you don't want to migrate the whole system to a new algorithm that then gets cracked
+Unless you have some sort of fallback plan. Yeah, I mean we're pretty confident
+In in this HDSA, but the the the one thing
+Uh, the one one argument for including only just one new algorithm
+Is that if there are substantial improvements that come out in the future, uh, that we get more confidence in
+then
+It'll be nice to have not added like a whole bunch of other algorithms that will then like sunset, but still need to support because of uh, bitcoin's uh, um
+Like, uh, nature of you know, just like yeah, we love backwards backwards compatibility
+Yeah, which interestingly enough like all of the stuff both in his bip and my bip are all soft forks
+So technically you could keep running your nodes and not upgrade them. You just won't be able to, uh, you know, see the new things that are happening
+Technically you can do almost anything by a software though. I'll start to prove that so it doesn't mean as much as it as you think it does
+There's a little bit of a question um, obviously this would be a immediate sort of thing like the expense of quantum that the quantum talks about that is anybody looking at mining itself like at the impact of quantum calculation on like the mining difficulty
+Yeah, yeah, is anyone looking at the impact of quantum on mining? Yes, uh, was there a paper about that?
+I don't know. There's been a little bit of chatter. Um, I think
+On on one hand what I was reading about
+Grover's algorithm is uh, it's maybe a quadratic
+Speed up so from that perspective you would you would expect that the difficulty adjustment algorithm would generally be able to to offset any
+Significant performance improvements. However,
+I've heard a few other rumblings about people saying that it could be problematic in different ways in the sense that a quantum
+Mining computer could essentially be mining like many many different parallel chains at the same time
+And things could get kind of uh
+Nasty from a like chain reorganization perspective
+Yeah, like theoretically all grover's does is it takes a 256-bit number and makes it
+128 bits hard and so
+um
+It would be like going from the number of atoms in the universe to the number of atoms in
+the planet earth
+uh, which is still a lot of atoms and
+So, it would require still an enormous amount of computation
+Some people have theorized a computer the size of the moon
+Um, and it would be a quantum computer and so, uh
+It's it's it's probably not going to be realistic for us to see
+Uh, that kind of thing happen in our lifetimes. However, um
+uh, there might be ways to
+Like kind of simplify and finagle that's that that algorithm to be more applicable to bitcoin mining, which is a
+Subset of 256 bits. And so there might be ways to optimize it
+but
+On on paper like a napkin math at least
+uh, theoretically, it shouldn't be nearly as affected as
+uh, uh
+Signature algorithms are but you also have to think about you know, what can you as an attacker do
+If you're if you're a 51 percent attacker if you can basically rewrite the chain
+Um, you you still can't create coins out of thin air you can double spend your own bitcoin
+Uh, so there's I think you're much more limited on the economic impact and the roi of an attack like that
+Whereas if you're running shores algorithm, you have literally millions of bitcoin that you can just take total control of
+And ultimately if they do come with quantum mining and it's viable then everybody just upgrades to quantum computers
+One more question
+Yeah, yeah, uh, so what signs will we see coming and you know, one of the things about cryptography in general is that it it tends to
+Degrade over decades like cryptographic cryptographic algorithms get attacked
+By cryptographers using all types of fancy math. That's way over my head
+Um, and and we we start seeing, uh, you know
+Weaker versions of them get cracked and and scientific papers getting published and so on and so forth
+And so I think that's the the sort of optimistic happy path is that we continue the way that we've been continuing right now
+Where we see, you know, all these big tech companies and startups with their billions of dollars
+Loudly proclaiming, you know, we have reached this milestone. We have reached that milestone
+Um, the the black pill unhappy path is that there are like an nsa
+level governments out there that are doing all this stuff and not talking about it
+but, um, I
+Think that you know, one way or another we are going to to see
+Signs, um, and that the only question is do we see
+Do we get this information and do we see signs of it happening outside of bitcoin?
+Or do we have to wait until something happens inside of bitcoin?
+I think one of them I think the most unequivocal sign we could probably get is
+um, so
+the the nsa
+basically
+has
+uh
+political officers in
+Companies
+where they're working on technology of strategic importance
+and
+What we're probably going to see
+Is a federal directive maybe an executive order that says
+Don't do that
+Which we kind of have our like right now. It's just a few standards institutes, right? There's a few
+Institutes out there that are basically saying hey if you're doing stuff on the internet
+You should probably upgrade in the early 2030s or so, right? Yeah
+Yeah, yeah, I think there's may is it just standards or are they even do they even have legislation going through congress?
+That's going to start requiring that of government
+I think they call it the cnsa 2.0 timeline
+It's a
+federal guidelines
+I think they call it the federal information processing standards. They've updated and they have roadmaps and timelines and
+They're also briefing top administration officials. Howard Lutnick went on a podcast recently and just
+Spouted on about post-clonic photography at random
+And it was somebody's in his ear. It was very clear that he had been briefed and
+And so yeah, I mean the government is worried and and what's what's problematic for bitcoiners is like we're like sovereign computing
+You know like like this is not the kind of thing where you can just like go and don't trust verify
+it's it
+Unfortunately, uh quantum computing is not sovereign computing and it
+Probably won't be for a very long time. Yeah, this is nation state level computing even if it's not technically the government
+We were at this post-quantum summit in san francisco a month or so ago
+And we we had people there from startups that are building quantum computers. We had actual
+cryptographers there
+Who know a lot more about this stuff than we do and the general consensus seem to be that it's going to be a space race between the united states and china
+And the problem with china is that there is very little distinction between
+Companies in china and the ccp, right? It's like
+Basically the same thing. Um, you know, we're I think we're a little better off in america
+But you know, we have startups in america. Well, let's not even talk about the recent stuff
+But uh, so the the real question is are we going to see somewhat predictable?
+You know linear or geometric progress so that we can then extrapolate
+You know, hopefully hopefully that it happens at a curve where we can reach a point where we all say, okay
+We know
+We probably don't have more than five years or we know we probably don't have more than 10 years and therefore
+We can start putting timelines together and have a better idea of what to come to consensus about
+But I think one of the the one of the worst case possible scenarios is that one of these companies actually does make orders of magnitude breakthrough
+Uh, whether it's on the hardware side the software side or a combination of the two
+Um and like for example, there's this one company that's putting together these new photonic chips and they've got billions of dollars invested in there
+Expecting to go online. I think in uh, 28 and um
+If they're correct and their technology can be scaled vertically where all they have to do is throw more hardware at it
+Uh, and they have like the error correction levels at a manageable rate then they could
+Uh, you know vastly jump forward in uh getting closer to a cryptographically relevant computer
+Uh, I actually cornered the ceo of that, uh, uh
+Company and asked him like, uh, what's what what what keeps you from doing this if you have the capability to do so
+And his answer was just that well, it might compromise our government contracts
+And then like after that conversation I was just thinking well, what if the government paid you to do that?
+Then what stops you then? Uh, there's also, um, uh, yeah, it just yeah
+It gets even more interesting though when you talk about
+The fact that you know, supposedly the united states is gonna build this strategic bitcoin reserve
+Uh historically we know that china
+Generally hates bitcoin like they've tried to ban it many different times over the years and
+It's not that hard to imagine a potential
+Medium-term future where the united states has a million bitcoin china doesn't really have any bitcoin, but they do have a quantum computer
+What are you gonna do with that? So, okay, we're at our time. So I gotta stop. Um, I have a final question
+Looking for a one-word answer up or down?
+Let's say we get, um, we get a post-quantum
+cryptographically secure stuff signatures put into bitcoin and people have the ability to move to quantum secure
+private public key pairs and addresses and all that
+And then satoshi's coins move to a secure address price up or down?
+Uh, well definitely down in the short term because I know there are a ton of
+uh, algorithmic trading bots out there that are watching all of those addresses and they will immediately dump everything that they can
+but, um, but ultimately I think long term us implementing, uh, you know, cryptographic
+Scheme that protects from quantum computer will kind of it goes back to the very beginning where hunter said the reason he got into this
+Is because he felt like this was like the last big piece of fud and if we can if we can knock down the last big piece of fud
+We we know
+There are a ton of institutions out there that uh, this is one of the main reasons why they're staying out of bitcoin is because it seems too risky
+uh, you know, so many other
+risk
+Variables of bitcoin have been destroyed over the past 10 years
+uh, with where we are now that this seems to be the the kind of the the final
+uh thing that is standing between us and uh, really being taken seriously
+Well, what I would say to that is, uh, if satoshi were to do that that would save us a ton of work
+All right, well neither of you did one word answers, but i'll allow it
+Thank you all don't reuse addresses. Thanks for coming
