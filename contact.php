@@ -399,7 +399,7 @@ NjT4rMUesCnjTVHVM9KXvMemwAhhYbM=
     <div class="row">
       <div class="col-xs-12 text-left col-lg-offset-1 col-lg-8 col-md-offset-1 col-md-10 col-sm-offset-1 col-sm-10">
         <h1>Contact</h1>
-        <p>Jameson's goal is to spread knowledge of crypto systems and liberating technologies.</p>
+        <p>My goal is to spread knowledge of cryptographic systems and liberating technologies.</p>
         <br>
         <p>Do you have a question about Bitcoin? Please check my <a href="/bitcoin-information">educational resources</a> or try <a href="https://www.delphi.ai/jameson-lopp">asking my AI bot</a> first; it has been trained upon a decade of my essays, interviews, and presentations.</p>
       </div>
