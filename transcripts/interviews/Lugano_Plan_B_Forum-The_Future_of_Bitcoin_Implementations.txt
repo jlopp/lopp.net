@@ -1,0 +1,579 @@
+Okay, well, it is often said that people say things to each other online that they would
+never say to each other in person. Well, we're about to see if that's true.
+You know, at the end of the day, I think it is very important for us to remember that we
+all want Bitcoin to succeed. We are quite literally all invested in Bitcoin's continued success.
+And if we share the same consensus rules, we are all still Bitcoiners.
+Up next, we have the future of Bitcoin implementations.
+Moderated by my fellow Bitcoin podcaster, Stephan Livera. Please give Stephan a warm welcome
+to the stage.
+Thank you very much. All right. So I'm Stephan Livera. I host a Bitcoin podcast. Now, this is going
+to be an interesting panel. I promise I'm going to do my best to stay neutral as a moderator.
+Let's bring out our guests. So first off, we have Jameson Lopp. He is the Chief Security Officer
+from Casa and also a long-time Bitcoiner and security expert.
+Next, we have Peter Todd. Peter Todd is known for lots of things. The creator of Open Time
+Stamps, Libre Relay and various things. Welcome, Peter Todd.
+Next, we have Bitcoin Mechanic. He's the Chief Boiling Officer of Ocean Mining. Welcome, Bitcoin Mechanic.
+And finally, we have Luke Dashjr. He is the CTO of Ocean Mining. Everyone, please welcome
+Luke to the stage.
+All right, gents. So obviously, we're going to be talking about the future of Bitcoin implementations,
+but we're not obviously going to ignore the elephant in the room, which I'm sure many of
+you are aware of. Let's just start with the question of why would people use different Bitcoin
+implementations?
+diversity is strength. I mean, this is one of the great strengths of Bitcoin being
+permissionless and censorship resistant. We can all do whatever we want. And that's what's great about it.
+We can argue about it all day long, and we should argue about it all day long. So, despite all of the
+vitriol and such that can happen, I think this is part of the consensus-building process.
+For the majority of Bitcoin's history at this point, 99% of the network ran a specific single
+implementation. And over the past year, we've seen how they've completely betrayed the community. Then
+that's much less likely to be a risk. There wouldn't be a single group to bribe or threaten or whatever's
+going on if there was more diversity in client usage on the network rather than one single implementation.
+Yeah, I think that's the main discussion here. It's something to do with centralization, really.
+Everyone, as he says, has run core. 99% of the network has run core, which is fine as long as
+that doesn't get co-opted. If it does, the network needs to show some sort of ability to route around
+a problem like that, which, objectively speaking, a lot of people seem to feel like that's going on at
+the moment with something like 22% of the network running not core anymore.
+So that's Bitcoin doing what it does. It's rooting around an issue that came from centralization.
+So I maintain a fork of Bitcoin core and notably, to be very clear, fork Bitcoin core that's meant
+to have the exact same consensus, but then has different relay policy. And I think the bit of an irony here
+is when Mechanic here talks about routing around. My fork Libre Relay does exactly that. It is
+a fork Bitcoin core that intentionally connects to other Libre Relay nodes, specifically to route around
+nodes that call it filtering, call it censorship, whatever, do not relay transactions that Libre Relay does.
+So the purpose of Libre Relay is very literally to go right around other nodes and relay transactions that other
+implementations won't, hence the Libre in the name. And of course, I'm not expecting many people to actually
+run this. I mean, long story short, Greg Maxwell called it a bit of a performance art project, but
+it's just a good example of how if you want to go and relay information, you certainly can.
+Any kind of response to that on the Luke or Mechanic? I think it's important that the audience realize that
+Peter Todd is a bad actor and his Libre Relay is an attack on the Bitcoin network.
+I'm a bad person and capable of love.
+He's intentionally trying to bypass the peer-to-peer network to flood the network with spam.
+Yeah, it's very effectively routes around people who do not choose to reload those transactions.
+I mean, let's say that Peter and I are bad actors.
+Sure.
+Let's say that we are. What are you going to do about it? That's why we are here. How are you going to stop us?
+Do I need to mention...
+Let's talk about the future of Bitcoin and how are you going to stop us?
+I mean, the network is having an immune reaction. We are watching it happen.
+Yep.
+So there's your answer.
+And like many immune reactions, immune reaction is accomplishing essentially nothing.
+Labor Relay works just great. And biners who choose to run compatible nodes with it, and a bunch of
+them do, depending on what policy you're talking about, essentially 100% of them do.
+I mean, the immune reaction isn't really doing anything, so all right, fine. What are we going to do next?
+You may be trying to dissuade people or discourage them, but it's not doing nothing.
+Yeah, I mean, you do demonstrate survivorship bias a lot, and our back and forths on Twitter
+demonstrate that you don't understand what that is as a concept. It's basically the insistence of
+a problem. I cannot see the solution. I cannot see the result of the solution to a problem I am implementing.
+Therefore, the problem does not exist. So any hostility that is displayed by the Bitcoin network
+at any scale does cause some potential scammer or someone that wants to build some scam coin on
+Bitcoin protocol to have himself and his investors ask the question, should we just do this on another
+network? And the more you have a network demonstrate hostility to what it is they're trying to do,
+the more they disappear and do other things. And that's unfortunately invisible. We do not know
+the amount of people that want to attack Bitcoin that didn't because of the kinds of things Luke does
+because they didn't do what they... I think we all agree that it's invisible and therefore this is an
+unfalifiable claim on your part. So I don't really see the point arguing about it.
+I mean, to be clear, I have a rock in my pocket that keeps bears away.
+I mean, we have 15 years of Bitcoin using filters and it working successfully and there's no evidence
+to suggest that it would not continue to.
+Yet, when I noticed that some miners were mining transactions at less than one sat per vbyte,
+and I just did the experiment of using a node I happen to have with a heck of a lot of incoming
+connections, changing the relay policy on that and then changing one of my open timestamps calendars to
+regularly create sub one sat per vbyte transactions. Noticed they were in fact getting mined and then
+advertised that fact on Twitter. It took what, a month and a half, two months for essentially 100% of the
+hash power to adopt sub one sat per vbyte policy just based on the fact, oh you know what, it can work,
+people are doing it, let's do it. You're not allowed to do that.
+And they rolled it back because people were filtering.
+Well, I mean, 0.1 sat per vbyte is not much money, so people upped it a little bit because, you know,
+the extremes of this were a little ridiculous. But I think that's a great example of that,
+even for something that gave them so little money, miners were still willing to just take a little
+bit more edge. Because ultimately, you know, they're driven by money.
+So when it comes to, I guess, these different disagreements now, of course, there's a lot,
+there's been a lot of parallels with block size wars, you know, 2017 days, obviously that was about
+consensus. This is more of a debate around policy. So can we, I guess, I guess coming back to why
+people run different implementations, how much, I guess, power do you think it makes or how much
+difference do you think it makes if you, you know, if individual nodes change their relay policy
+compared to what happens on the network? It's incredibly asymmetrical. It really depends
+on what the relay policy is. And again, Libre Relay is such a great example. Oh, I mean,
+in fact, I should say even sub one sat per vbyte is maybe even a better example. It was all it took
+was a couple people changing the relay policy on well-connected to nodes, which is nodes running on
+fast servers with a lot of incoming connections. And suddenly something's propagating that like 99.9% of
+the nodes reject. Yet, if you do the opposite, you try to go say, well, that thing people are
+relaying is no longer allowed. It's just utterly ineffective.
+A few people changing their policy does not make things relay across the network. The only reason
+those got mined was because there were bad actors intentionally bypassing the relay network entirely
+and going directly to the minors who are also, in this case, bad actors that were cooperating with
+them. And there will always be some degree of minors that may be bad actors. But as long as they're
+the minority, the net effect overall on the network is that the good actors will prevail.
+Yeah. Are you making the claim that nearly 100% of hash power is bad actors?
+It's not nearly 100% via BTC don't. And they're a huge pool. And Mara have pretty much stopped,
+though sometimes they have sub one sat per vbyte. I'm not entirely sure.
+Mara said they set it to like 0.5 because that's what they figured the profit margin was worth it.
+Right. So what percentage of the hash rate are we talking about then?
+Minors bypassing the peer-to-peer network to mine spam are bad actors, yes.
+All right. But let's be clear. Talking in terms of percentages is a classic
+bullshit technique here because mining is centralized. And this entire celebration of
+rooting around the policy, yeah, they can also 51% attack at this point. And that's not a celebration
+I'm going to take part in. Basically, Foundry and Bitmain decided we are going to start putting
+this stuff in blocks. And when we talk about this stuff in terms of percentages or in the abstract,
+we're obfuscating the reality here, which is the fact that that was unilaterally possible. And you
+have other actors like VIA, BTC and SPI crypto that are relatively independent who didn't take part in
+this whole sub one sat per vbyte summer thing. I mean, that's just not how the order of events
+happens. It was smaller pools that turned this on first. I mean, Spiderpool seemed to be the first
+person who did it. And they are just all of the smaller pools that did it are for the most part
+just Bitmain. Well, I mean, that's clearly not true. And Mari isn't just Bitmain.
+But getting back to your original question, your point was this is not a consensus, this is a policy
+issue. And I think that is something that is worth digging into more because I'm having deja vu right now,
+because we were all sitting on the same stage five or six months ago having the same debate.
+And nothing has really changed other than the fact that one portion of the people in this debate have
+been getting more and more desperate and more and more concerned. And so I think that's why it's more
+important to look forward. As we said, this is the future of Bitcoin implementations. We want to know
+what the future is going to be, which means something has to change.
+This is just to be clear, this is not a debate. This is bad actors like Peter Todd and Lopp attacking
+the network. And the network at this point either defends itself or it doesn't.
+Yes. Are you going to do something or are you going to keep crying about it?
+We have been doing things, things that are effective, even if you want to pretend they're not.
+Like, are you going to do a consensus change? I think is the big question.
+That is the question, yes. Bitcoin is more than consensus. Yeah, Bitcoin is a lot more than
+consensus. And I believe you were asked at the conference that Lopp just alluded to,
+if there was something that can be changed at the consensus level that mitigated spam that
+you're not in principle against it. Is that still the case? Well, in fact, actually,
+I may be misturing exactly what conference you're talking about, but I believe since then,
+BitMEX, if I remember correctly, they put out the paper showing how you can go and hide arbitrary
+data pretty efficiently in just signatures. And at that point, I mean, really, what are you going to
+do about it? It's just hopeless. Disproving a straw man is irrelevant.
+That BitMEX research might be a bad actor, too. Yeah, figuring out new things is very bad.
+Okay, so look, let's keep it on the Bitcoin implementations topic. How viable is it that
+there are, you know, competing implementations that are still consensus compatible? I think that's
+maybe another topic that people want to understand. I will give a prediction actually for my own
+Libre Relay project, which is I suspect in the future, Bitcoin Core will be identical to it,
+and it will be pointless to continue. And, you know, there just won't be new releases of it.
+Bitcoin Core is irrelevant at this point. Yeah, just saying, because Bitcoin Core is getting
+so close to having its relay policy be the consensus, other than a couple little things that are,
+like, good examples, upgrade hooks we have, just the ability to go and run a node
+after a soft fork has happened and still have it work. And that requires you to go and not mine things
+that you don't understand what they are. And, you know, that's kind of a technical point. I don't
+think anyone's going to take away that bit of filtering. But, you know, everything else Libre Relay
+does in the long run, it's going to end up being identical. Okay, Luke?
+I think Bitcoin Core is irrelevant at this point. The only way that, if Bitcoin Core is continued to be used
+by the community, it's then to Bitcoin and Bitcoin Core is not going to be relevant anyway. The only way
+Bitcoin can survive this attack from Peter and others is by rejecting Bitcoin Core 30 and,
+unless they make a big about face and come back to reality.
+I feel like this could be a fun prediction market thing, although annoyingly we can't really price
+it in Bitcoin, because the claim here is that Bitcoin is going to die. But maybe we can use USDT for it.
+Is Bitcoin dead yet? Last I checked, it was still alive.
+I believe so. Have we gotten any falsifiable predictions on Bitcoin's death?
+I mean, I was just using ARK yesterday for the first time and, I don't know,
+seemed to work pretty well. But clearly that can't be Bitcoin Core's because Bitcoin Core's dead.
+If you want to draw focus to that, why don't you tell everyone why you want to force
+every Bitcoin user to store and distribute child porn?
+Wait, wait. Was that 20 minutes?
+Yeah, 25.
+20 minutes. Okay.
+Yeah, we had a bet about this before that would come up.
+All right. So, moving on.
+No, answer the question. Why do you want to force everyone in this room to store child porn and distribute it?
+I mean, as BitMEX went and showed, this just isn't a question we can go stop one way or the other.
+I mean, this is a legal question. And unfortunately, the answer here is political.
+It's not just a legal question. It's a moral question.
+I mean, why do I go run nodes that go and transmit transactions that go pay for the stuff?
+I mean, we've had this question since the beginning of Bitcoin.
+Yeah, we have.
+Don't transmit transactions.
+Let me address this.
+They record it.
+We have a very long precedent that was set by Satoshi initially. Hold on.
+Let me address this because it's relevant.
+When WikiLeaks started transacting on Bitcoin, it made Satoshi pretty uncomfortable.
+And he said famously, it would have been nice to have gotten this attention in any other capacity.
+We have kicked the hornet's nest and now the swarm is headed towards us.
+It was scary.
+Let's be honest. Bitcoin is strong and it's anti-fragile, but there is a degree of discomfort
+that people that want to engage with the network will tolerate before they walk away from it.
+And Satoshi set a pretty strong precedent then that money needs to be neutral to work.
+One Bitcoin needs to be one Bitcoin.
+And ultimately maintaining a ledger that reflects financial history, no matter how egregious that
+financial history is, I don't care. I've said this many times before. I don't care if you're buying,
+you know, if you're buying a glass of milk or if you're financing Al-Qaeda or something.
+I don't care. It's all money and it's all, it's defensible having a neutral monetary network.
+But humans fundamentally do not consider file storage the same thing.
+So if someone gets caught, let's move away. The CSAM argument has been brought up.
+I don't like talking about it because people, it's such an emotionally charged topic that people
+think immediately I'm trying to be manipulative. But there are files, there is file storage
+protocols out there that people will not use to the degree where they expect the world to
+view them as doing something admirable. You're not going to run a file storage server in your house
+and give people the ability to anonymously upload any data to it for some ethical, you know, greater design.
+Because people just don't work like that. If someone's getting dragged off to jail because they have
+illicit government, you know, files, you know,
+illegal pornography, malware, all that stuff, which by the way, the Bitcoin network is a gift to anyone
+that wants to engage in that kind of stuff because it has anonymous upload and it has
+enthusiastic peers that will relay this to anyone on request. That stuff is just not something that
+most people I know are prepared to say, yeah, I'm willing to do that, to have Bitcoin be what it needs
+to be. I'm willing to run a neutral file server in my house. And that is why I think, yeah, okay,
+Bitcoin, oh my God, it didn't die the day they released core 30. And if you want to make straw man
+positions like that, fine. But you just make yourself look like a clown. No one is saying it's going to die
+today. But I'm saying you're putting pressure on nodes to become arbitrary file storage systems.
+And most people don't really want the headache that comes with that because it has nothing to do with
+money. Look, we had this discussion.
+We had this discussion about 10 years ago, the first time around. And that is when a lot of us
+realized, you know, we can't figure out how to go and make a Bitcoin where people can't put arbitrary
+data in it. Information theory? Yeah. I mean, that's unfortunate reality. Now, in terms of kicking
+the hornet's nest, I mean, this is what exactly what these knots guys are doing. They're constantly
+bringing up this issue, giving more press on it, getting it into the wider sphere and trying to go
+bring up an issue. The issue is not bringing it up. The issue is that you're trying to do it.
+Let Peter finish because we let mechanic finish. Let Peter finish and then Luke, you go next, okay?
+They're keeping on bringing up an issue that thankfully 10 years ago didn't turn into a
+political thing that would have killed Bitcoin. Now, I'm not going to say this, like,
+there's certainly possible for this to go kill Bitcoin in the same way it's certainly possible
+for payments to bad actors go kill Bitcoin politically. But our role here as Bitcoiners is
+we have to be smart and we have to make sure that we play the political game because the underlying tech,
+we cannot control who pays who on Bitcoin and we cannot control what data people put in Bitcoin.
+The only lever we have is to make it expensive. And fortunately, we have things like Lightning,
+which allow transaction fees on chain to get a lot higher. But of course, this is tricky because
+people actually got to use it. And if you really care about data on Bitcoin, we'll go do Bitcoin
+transactions and push fees higher. I mean, that's ultimately the solution you go have. I mean,
+this is why we fought so hard in the block size wars to go keep the block size low, to go have a system
+that was designed for finance, that was designed where everyone could have a copy of it. But there's
+nothing we can do about the fact that if people are willing to pay money, they put arbitrary data
+on Bitcoin. That's just how the system works. Almost like WikiLeaks files. Yeah. I mean,
+the first really public thing of people putting data on Bitcoin was actually people uploading,
+putting the WikiLeaks files in blocks, followed by putting Bitcoin PDF in blocks. And frankly,
+although I've never bothered looking to try to verify this for obvious legal reasons,
+allegedly child porn. I mean, this has allegedly been already in Bitcoin for years. And somehow it's
+still alive. Yeah. And you know, the way you deal with this is politics. You make sure that the
+politics are that you are allowed to go run a node because this is not something that we can win
+technically. So Luke, can you respond on a few points there? So the information theory point
+and the fee pricing out point. So can you respond to Peter there? There is no information
+theory point in the first place. Bitcoin has never supported data storage. Core 30 is trying to change
+that right now. And if we resist that, then Bitcoin will continue to not support data storage.
+Hiding stuff by encoding it as financial transactions is not the same thing at all. There's a correct way
+to interpret the blockchain data as financial transactions, and that needs to remain the only
+correct way to interpret it. Otherwise, if we start adding data storage as an actual supported use
+case, then these problems become real. There is no images on the blockchain until this month.
+There is financial transactions that are just spam that other people can take those transactions and
+transform them into an image. Yes. But the image itself is not on the blockchain. It's not something
+that Bitcoin supports. And that is what Core 30 is trying to change. I mean, I know that's fundamentally
+wrong because about 10 years ago for a friend's birthday, I found a cute image and created a transaction
+mined by Elygeus, your predecessor to Ocean, that did in fact put a large continuous image in Bitcoin.
+You know, this has been allowed for a very, very long time. Not just like in the sense that consensus
+policy allows it, but that some miners will go mine it. This is just not something we can go stop.
+And of course, the idea that there's no images in the blockchain, I mean, just look at the whole NFT thing.
+That is real. I would note that like even this sort of legal issue of putting illegal content into the blockchain,
+there there's no consensus about that as well. Like, or at least the the people who are saying that
+this becomes a legal issue for node operators, I would say they're on the outside of the rough consensus.
+There was actually an article, I want to say a month ago, where there was like seven legal experts,
+and I think five of them said this is not an issue. Two of them said it is.
+No, five of them said it is an issue.
+Yeah, I think the other way around.
+And they weren't even criminal lawyers. You ask any criminal lawyer, they're going to say it's an issue.
+I mean, all I can say to that is if you're so concerned and aren't willing to fight this politically,
+you probably should stop using Bitcoin. But I am wants to Bitcoin to exist. So I think this ends up
+being a political fight. And part of it being a political fight is don't go fucking bring it up
+over and over and over again, trying to tell our enemies, hey, here's this way you can go kill
+Bitcoin. All right, let me address that, because it's a good point. So if I can summarize it correctly,
+you're talking about the Streisand effect. Essentially, we are making something worse by discussing it.
+Now, when this topic initially came up, I didn't bring it up,
+because it is naturally something I don't want to draw attention to and make it obvious as a method
+of attacking Bitcoin. But in the interest of good faith, both of you have said two of my favorite
+quotes in the space since Bitcoin arrived. I'll address both of them. Correct me if I'm wrong, Lop,
+but you said Bitcoin is a tool for freeing humanity from tyrants dressed up as a get-rich-quick scheme
+that's slowly flipping on its head. I don't know if that was- I think that was actually a Naval Ravikant
+quote that I probably reposted, but sure. Well, the other one that's more helpful now,
+which is one of my favorite things said in the space, was something Peter Todd had pinned for years,
+which was stop assuming your enemies are idiots. And I think that's particularly applicable here.
+Me bringing up what happened to BSV when they made the change from 80 bytes to 100,000 bytes and getting flooded
+with child porn seems like Craig Wright can go from being the most annoying part of Bitcoin's history
+ever to someone who took a bullet for us and showed us what happens when you do this stupid crap
+that Core have just done. And I'm very- the fact that we can have that
+and demonstrate it to us that we made- that we are making a mistake by Craig using a system that is
+a derivative of Bitcoin with the same architecture for the most part. I'm not going to assume-
+not only am I going to take your advice and not assuming my enemies are idiots,
+they don't even- they could be idiots and they can literally just look at another chain that did the
+same thing and say I'm going to attack Bitcoin this way and I'll defend what I've been doing as being
+prophylactic in approach. I don't think me having said what I've said is going to herald the kind of
+attack I'm talking about and we have a chance to get in front of it and demonstrate the fact that if it
+happens it's not reflective of Bitcoin culturally, we are not generic file storage, we do not solicit this
+kind of stuff, we are a neutral monetary network, we are not trying to shoehorn in other use cases.
+It is factual reality that what is it now, something like a million monkey jpegs, you
+want to call them that, have been put on the Bitcoin chain. I mean this is just- this is like- it's just
+bizarre having this discussion now when we're talking about op return when so- I mean literally what is
+it half a, you know, half a billion dollars worth of fees got spent, you know, 250 million dollars
+worth of fees got spent putting NFT images on the Bitcoin chain. But they're not on the Bitcoin chain.
+It's just the discussion around op return- they're a scam coin that is exploiting Bitcoin and abusing
+the chain. The Bitcoin chain itself does not have any images or any NFTs of that sort. Luke, it is factual
+reality that you can go to a zillion different explorers and go see images that came from the
+Bitcoin chain. You can go to random websites and see images that has nothing to do with Bitcoin.
+The exact mechanism of how they get in is not relevant.
+But no, the format of them is though. No, I do not, I do not agree. I really do not.
+I don't- Because you're a bad actor.
+From Bitcoin- It is willful ignorance, let's be honest. Op return and inscriptions are not the
+same thing. Inscriptions just look like junk data from the perspective of the network.
+All of this stuff is just junk data. Yeah, it depends on how you interpret the chain.
+Op return is not junk data. It's file storage.
+Witness space is file storage too, just as much. I mean, the fact is you can't see the Bitcoin chain.
+You always have to use tools to interpret it. Build tools to do it, yeah.
+And these tools can interpret the data however they want.
+And whether the data is in one format or another, it just doesn't change things.
+And what's much more meaningful in the wider world is the fact that you can go to,
+honestly, I forget the name of the explorers, I'll just say monkeyjpegs.com,
+and see all the stuff people put in the Bitcoin chain. I mean, I remember when inscription
+stuff came out, seeing just this endless list of all these kind of shoddy artworks.
+Like, that's just a reality we already live in.
+I never saw any of that. All I saw was junk data. I wasn't on whatever website you were on.
+But I mean, it's completely different to have some scam coin program.
+Like, you haven't seen anything, because it's just bytes.
+It's completely different to have some scam coin program that interprets the data incorrectly
+than to have Bitcoin itself interpret the data as intended, and you get this stuff.
+Again, I challenge you. Can you see the Bitcoin chain? I mean,
+I know there's a copy around here, because my laptop's sitting in the room here,
+and probably copy over there. But you can't see it. You've got to use programs to interpret it.
+It doesn't matter exactly which format the bytes are in. You need a program to interpret it.
+That's ultimately the conclusion that a lot of the lawyers for huge corporations like Fidelity
+have come to the conclusion that you can't control what's happening on a permissionless network.
+So as a node operator, you are not liable for the data that is being sent across that network.
+It only becomes a problem when you start to build the tools to extract the data,
+to decode it, to interpret it in a human readable format that then could be considered illegal content.
+Like Core30 does. Exactly. What? No.
+Run whatever you want.
+And keep in mind, I mean...
+I support that. Run whatever you want, of course.
+Something Bitcoin Core has done recently, well,
+there's two versions of this. One is we change the way Bitcoin Core works to encrypt the UTXO state,
+and the other one is we change Bitcoin Core to encrypt the actual blocks themselves,
+just to go make it very clear that, like, you're not putting data on a drive directly.
+Of course, in reality, I mean, this has already been litigated in courts before,
+because courts have had to realize that, yeah, when you run web browsers,
+they just take arbitrary data and just stick it right on your hard drive.
+And a lot of them do it in a way where it's just the exact thing coming in,
+and courts have come to the same conclusion.
+Very good point. This is an excellent point.
+What's going on? You clearly can't criminalize it just because you happen to visit a website,
+which happened to load some content in the background that you personally never intended.
+I mean, sane courts have agreed that.
+Yeah, and you're careful about what websites you go on.
+That's expected, whereas I download everything in the blockchain and store it, and I can't delete it.
+You can't be careful.
+Like, if you go to a website that happens to, you know, have some content that is loaded in the background,
+you can't realistically be careful about it.
+I think you're just distributing a website that you go to.
+Yeah, and you're also not relaying the content on it to other people.
+I mean, it just gets worse and worse from the perspective of what Bitcoin knows.
+As I'm understanding, part of this debate is more just sort of,
+okay, what is the format, or like the fact that you're trying to draw a distinction
+between opportune data and inscription data.
+I think that seems to be, like, at least that seems to be the argument.
+If R30 standardized inscription storage as a supported way of storing data,
+that would be just as problematic.
+So, hang on.
+So let's just be very clear about this discussion here, which is,
+last I checked, Bitcoin Nots does not merely stop contiguous data.
+It also tries hard to go and, and I'll use your terminology,
+filter out inscriptions in many other types of data that is not continuous.
+So I think, I mean, you're already agreeing.
+You don't actually go believe that this distinction is all that matters.
+You really want to go and stop this type of activity in general on Bitcoin.
+You're conflating spam and data storage.
+Both are problematic, but data storage is a magnitude worse
+because it creates liability, moral, and legal.
+All right, so let's, okay, let's bring it back to our topic,
+which is around, obviously, Bitcoin node implementations, the future of them.
+What does it look like?
+Are we going to see more effort around different implementations,
+whether that's not or others?
+And can you maybe spell out what are some of the trade-offs around this?
+Is it, is it a matter of funding?
+Is it a matter of developer talent and review?
+What does it take to actually make competing different implementations viable?
+Well, so let's be very clear here.
+I think we're talking about differences in policy, not differences in consensus.
+Differences in consensus are a much harder discussion because it's just so difficult to make
+another implementation that actually matches the first one.
+And unless you match in every single way, you're going to eventually get forked off
+and you'll lose a lot of money.
+Differences in policy, though, so a point I wanted to go make is that
+the software around Bitcoin, we already have many different implementations in a sense.
+You know, your Electrum using wallet will connect to an Electrum indexer.
+And from your point of view, the Electrum indexer is part of your Bitcoin core implementation.
+You know, that's the thing that makes it useful to you.
+And there's, I don't know, last I checked, like half a dozen different
+semi-compatible Electrum indexers at all different trade-offs.
+So there's a lot of activity happening around this periphery.
+Mempool policy seems to be a very, very specific thing.
+And like I said before, my guess is we get better and better at getting
+to the consensus and really efficient economics.
+You know, things like having a really good RBF policy with the cluster mempool that's coming
+in Bitcoin core.
+And at that point, they're all going to end up being on that level, essentially the same.
+Any thoughts on the, I believe it's called the Libitcoin kernel project.
+Now, to be clear, this is distinct from the Libitcoin implementation.
+I believe this is a project inside of Bitcoin core that's attempting to separate the consensus
+aspects of Bitcoin from some of the other components of it.
+And then potentially in the future, that could be leveraged by other implementations
+who want to do something different, but still maintain consensus.
+Any thoughts on that?
+Last I checked, that had kind of stalled out, right?
+Is because like it would be amazing if we could have one tiny little software library
+that codified all of the consensus rules of Bitcoin.
+But it seems like the deeper you go into the implementation rabbit hole,
+there's a lot of things in there that actually end up being consensus that are hard to extract.
+I would say it has stalled out at all.
+It's just an ongoing project.
+It's been ongoing for many years now, but I think it'll get there eventually.
+As long as we don't lose Bitcoin in the meantime.
+Years before the Bitcoin kernel, there was also the Bitcoin consensus.
+And that more or less does what it's supposed to do correctly.
+Bitcoin core dropped it, but Bitcoin not still continues to support it for implementations
+that do use it.
+I'd say because mempool policy just isn't very interesting.
+What's happened with the Bitcoin kernel project is effectively Bitcoin core is that.
+If you want to, again, my example of like an Electrum indexer, if you want to do something
+interesting with Bitcoin, you just use a good high-speed RPC interface to talk to a Bitcoin core node,
+and that's your kernel, and Bitcoin core has flags to go do things like, say, disable mempool entirely if
+you don't need it, you know, little things like that.
+But yeah, Bitcoin core is your Bitcoin kernel.
+I want to piggyback on something you said.
+It's not super relevant, but it's been a bee in my bonnet the entire time in this debate.
+Electrum indexes, you just said it, I didn't make Bitcoin nodes actually usable for the most part
+for anyone that wants to run a wallet.
+So I get really frustrated when I get in debates about op return and the fact that they're prunable,
+not just from the UTXO set, because this is an overloaded term, but also you can run a prune node,
+just run a prune node, and then you delete all the op return data.
+Who's heard that as a rationale for don't worry about core 30?
+Running a prune node means you can't run an Electrum indexer, which makes
+your node useless for the purposes of running a wallet in most cases.
+You can obviously just run, you know, you can run a wallet anyway.
+But Electrum servers make wallets actually good.
+Like Sparrow wants to work that way, and other wallets do.
+So just run a prune node as a sort of coping mechanism for op return doesn't matter.
+If you really don't want to store it, it is not.
+But we should bring it back to the node implementation aspect, yeah?
+Sure, but I mean, you can implement things like Electrum servers inside node implementations,
+which is kind of cool, and there was another interesting idea.
+Maybe there would be an implementation that actually includes an address index with it.
+If I can return back to what you're actually trying to get us to address,
+I think everyone is just terrified of re-implementing consensus,
+which is why Notts is what Satoshi was afraid of.
+Sorry for the appeal to Satoshi fallacies I'm committing here.
+But Satoshi was scared of maintaining parallel implementations,
+because even Core has gone out of sync with itself over different versions before this was the cause of a massive unplanned fork and reconciliation that happened in 2013, I think it was.
+And Luke single-handedly sorted it out.
+And Gavin famously said, just let the free market sort it out, which is misapplied ideology.
+But I think all of us are kind of scared of going too far away from what everyone else is doing.
+And that's kind of why Notts is so safe, because it is just Core with some modifications made to things that either--
+I don't think it re-implements anything consensus-wise, or it just touches it minimally.
+Perhaps you can advise on that.
+Jameson, do you want to address--
+You sound like you--
+I am obviously not going to agree with any claim that Notts is safe from a security and software integrity assurance perspective.
+And I've spoken about that at length, and we can argue about it, but yeah.
+Showing that you're a bad actor again.
+As far as putting Electrum capabilities in there on itself, it's probably a good idea.
+I think it would be worth doing a shout out to the UTRIXO project, which is doing similar things.
+Not exactly the same, but--
+Oh, like the Floresta, I think.
+Is that the one you're referring to?
+That's one implementation, yeah.
+Yeah.
+But there's an old concept behind that that's worth going into, but I don't know that we have time to go into in detail.
+Okay.
+I guess another question that might be interesting for listeners as well is, how opinionated should Bitcoin implementations be?
+Like, should Bitcoin Core just try to be a neutral base and then other people can build their own opinionated versions on top of it?
+Is that one way to imagine this or understand this?
+At this point, Bitcoin Core is gone, so it would be Bitcoin nuts and variants.
+But at the end of the day, the decisions on policies and things like that need to be left to the users.
+It can't be something that you have implementations trying to force on people.
+I think we all agree that on a practical level, almost everyone running a Bitcoin node has not personally reviewed the code in it.
+It's based on social heuristics.
+Who else runs this?
+Who else vouches for it?
+Do I trust them on other topics?
+I mean, I'm pretty sure we all agree with that.
+I don't know C++.
+I have not reviewed Core or Nots.
+I do not have the qualifications to do it.
+I'm relying on other things to do it.
+And while that might be improper and we should not be doing that, that's the reality of it.
+And then it goes further.
+If you're just running things like Umbrella and StartOS, you're clicking on a button and then you're trusting that black box to implement it all for you as well.
+So your question, how biased or how much should these projects inject their own opinions about what Bitcoin should be?
+Well, that's the main heuristic you're looking for when analyzing whether it's software you want to run.
+If the software is written by, let's be honest, shitcoiners, if they're the people writing it, it makes you very disinclined to trust it, especially if you can't review it.
+And of course shitcoiners can write great code and maybe they're writing the best implementation out there, but it's going to be very hard for you to get past the smell.
+So Bitcoin Core, a couple of months ago, basically put out a policy saying that their expectations for what Bitcoin Core's relay policy will be is to try to as closely match what miners are actually mining as technically practical.
+And I would say that as Bitcoin Core saying that they are trying to be neutral, they are trying to go match what actually gets mined.
+And if miners go mine something, then that's really ultimately their choice.
+And if there's economic demand for it, that's what's going to happen.
+And the general trajectory of Bitcoin Core has been getting closer and closer to relaying what's possible in consensus.
+Now, like I said before, there's certain exceptions, such things like upgrade hooks and whatnot.
+But in general, and I've noticed this in Libra Relay, it's hard to come up with examples of things that I could make more Libra in Libra Relay compared to Core, because there just aren't that many left.
+Now, I presume...
+I've got plenty of arbitrary filters in Libra Relay still.
+I think it's worth pointing out that saying Core is just following what's being mined is kind of recursive, because Bitcoin Core is, by making these modifications, forcing miners using Bitcoin Core to mine these things that miners may not want to mine.
+They no longer have this choice as Bitcoin Core takes away the options.
+And also, by trying to match consensus, consensus is intentionally broad, it's intentionally permissive, specifically because we have policy as our first defense.
+If we no longer have policy as a first defense, we'd have to lock down consensus, we'd have to implement all these precautions in consensus code, and that would make every future upgrade a hard fork effectively.
+I mean, Luke, you're just so out of date in the knowledge we have about how you can build on Bitcoin.
+I mean, maybe 10 years ago, we might have had the, at the time, wrongful conception that we could go stop people from using Bitcoin in certain ways.
+But, you know, just as an example, we now have ARK, a brand new L2 system that does some pretty remarkable things.
+It's the first time I've seen something really challenging lightning, and ARK uses completely standard transactions.
+They're just multi-sig transactions.
+There isn't even clever scripting or anything.
+You can build so much on so little.
+Similarly, if you want to go put data in the chain, you've always been able to go do this with things that look like just completely normal financial transactions.
+It's very hard to write code to say, oh, actually, that's something clever.
+And at the extreme, as, you know, BitMEX's research shown, it is mathematically impossible.
+And when you're up against that, you just have to accept people are going to use Bitcoin the way they want to.
+And getting closer and closer consensus means you're never going to be in a position where you're saying, where you're trying to impose on someone else.
+Now, when it gets to miners, well, the reality is they do go change Bitcoin core.
+It's not like we're forcing them.
+They routinely change code all the time.
+I mean, Mara did, I don't know, half a million dollars worth of development work going and rewriting huge chunks of the code just to do all kinds of crazy stuff.
+Okay, guys, we're getting to our last, you know, two or three minutes.
+Let's just, everyone, take, you know, 45 seconds or so.
+Give us your kind of closing thought.
+What's your main key takeaway here on the future of Bitcoin implementations?
+Luke, do you want to start?
+And let's go down the line.
+Future of Bitcoin implementations is going to have to be more diverse so that we don't put all our eggs in one basket again.
+And hopefully, as core dies off, we end up with more than just knots.
+Hopefully, there's going to be two or three, at least, alternatives.
+I think it just represents a horrible centralization risk.
+And centralization is amazing in some ways.
+It's super efficient.
+So, like with the inscriptions bug, practically speaking, we could have killed inscriptions in five minutes if we hadn't closed the pull request due to controversy being selectively a problem in the GitHub.
+So, I think we've lost that now.
+We no longer, like you couldn't have, you know, we needed, what is it, 95% version bit flipping for SegWit to become active and Taproot to become active.
+The fact that 99% of nodes were running the same code definitely helps with that.
+And that's just never going to be a thing again, as far as I can tell.
+Core is below 80% now.
+So, for the ossifiers, I think they're pretty happy because I don't, I think it's going to be very difficult to start making,
+sweeping changes to Bitcoin going forward.
+And for better or for worse, that's probably a good thing for hard money, even if we can't get some of the new toys that devs want to add.
+I'll stop there.
+Peter?
+I mean, unfortunately, you're conflating consensus and relay policy there.
+And ultimately, I think Notts is just selling a mirage.
+It's selling this idea that you can go and do things like, say, stop inscriptions with flip a bit.
+And that's just not true.
+And that's what sub-1 set per vbyte showed.
+Even with 99.9% of nodes not relaying something, 0.1 relaying is more than enough to make that work.
+Now, if I'm looking forward, I'll say, and frankly, this is kind of a hope,
+I would hope that the implementation just becomes more and more boring because it's just a protocol that works.
+And Bitcoin Core is ultimately a protocol specification.
+It's a specification that we all agree on.
+And I would like to see a lot more innovation in what we build on top.
+Let's go to Jameson quickly.
+So I'd just say there is diversity.
+Look, it's not just Core and Notts.
+There's BTCD, LibBitcoin, Floresta.
+And this debate is sucking all the air out of the room when there is a number of other options out there.
+Now, if I'm understanding Luke and Mechanic correctly, it sounds like they are not interested in actually going to restrict consensus rules.
+So my prediction is that nothing effectively is going to change.
+And the people who are upset about this are going to keep spinning their wheels.
+And I, myself, will be moving on to other things.
+Do you mind if I respond real quick?
+We're going to have to leave it there.
+We're out of time.
+But everyone, please put your hands together for a great discussion.
+My name is Stefan Levera.
+We have Luke, Mechanic, Peter Todd, and Jameson Lov.
+Everyone, thank you.
+Thank you.
