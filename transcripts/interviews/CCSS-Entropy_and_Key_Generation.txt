@@ -1,0 +1,674 @@
+stream today we're talking about entropy and how it impacts key generation so welcome we're gonna
+get into the core of key generation and randomness all things that can happen when the randomness
+isn't so random things this is one of those random things yes let's start with intros i'm jessica
+the executive director and i'm having technical difficulties um dirk do you want to start i'm
+dirk anderson and uh member of the the committee here and um the i've got about 25 years in
+information security 30 years in information security and uh um applied cryptography and i'm
+the least technically smart person on this call today so uh i'm looking forward to this as much
+as anyone else watching it i think we're all equally genius level especially me since i just did the
+thing where i had youtube on loud so i could hear myself which is always scary um okay let's keep
+going thank you dirk um we appreciate you being here and for being our committee chair all right
+let's do the committee round tree and then we'll get into our special guest sure i'll jump in next josh
+mcdougall i'm one of the founding members of c4 and sit proudly on this ccss committee and i get to
+uh sprinkle random and entropy into game design as well
+you know all right thank you so much thank you all right thank you all right ron yeah i'm ron stoner
+i've been in the cryptocurrency industry for over a decade now uh worked at shapeshift casa botanix
+labs most recently category labs helping to launch layer one chains and sit on the committee as well
+wrote the first iteration of the auditor exam for the cc ssa thank god because updating it i don't know how
+you started it from scratch ron so very impressive um jameson uh jameson lopp i'm the chief security
+officer at casa uh and have been sitting on the advisory committee for several years now
+and today we've got a very special guest ethan would you like to introduce yourself
+sure yeah ethan johnson i have a consulting company next encrypt uh and i've been involved
+in the crypto space for seven eight years or so um and broader infosecond finance for a lot longer than
+that awesome thank you so much for being here we appreciate that so what i was saying when i cut myself
+off with my own audio that i was hearing on the side was that we're going to be talking about randomness
+entropy we're going to go through some real failures that have happened and how dangerous this can be and
+why it is so important to be really careful with the randomness in key generation to make sure that
+you're not sharing information that you shouldn't so let's get started why don't we talk first a little
+bit about why entropy fails because i think this is something that maybe is considered to be kind
+of an obvious thing yet it continues to happen where we have these issues where keys are generated and
+then they're not generated securely because they're not random enough so why don't we talk about why
+computers are bad at being random and humans are bad at being random as well josh you did a really cool
+presentation on this at our conference in 2019 which was six years ago which is wild um do you want to
+get us started a little bit with talking about why randomness is hard it's hard to be random
+sure it is hard to be random the the main problem is is that we design computers to actually be
+very very literal and and very precise and everything they do we work very hard at that
+so it seems counterintuitive but when you ask a computer to give you something random
+it's actually incapable that in maybe you would assume it can't reach into the void
+of of the universe and pull out something that is unique and unguessable just by asking for it it
+actually has to work very hard at creating something that is seems to be random we call it pseudorandom
+and how it does that is by pulling in all sorts of different sources of entropy which are different
+things um either across the system that it's looking at or different state of things all sorts of
+different metrics so it can't actually just pull out a random number just for the sake of pulling out a
+random number it has to take all sorts of different calculations from all over the system that it has
+access to and use that to present you something random um that's about as high level as i can i think with
+this i don't know if someone else wants to have been yeah i i have a good example here where if
+you know if we wanted to do an operation that was random right i could ask jessica give me a number
+between one and ten and i could take that number and then yeah i could use it to generate a bitcoin uh
+key pair right a public and private address as a result of that now we're already starting to see some
+issues with this right uh we're limited between the numbers one and ten so very easily guessable but you
+know if i asked jessica give me another number we're now uh using the human we're using her brain and her
+thoughts as the entropy and the randomness process here to generate the number right and as we know
+humans are uh repetitive pattern generating machines uh you know we also have implicit bias so if jessica
+says seven she may purposely not want to say seven again the next time i ask her for a number the other
+thing is if an attacker looks at this they can say well one to ten is not very big i could just iterate
+and generate all of the bitcoin keys for the numbers one to ten and now it doesn't matter how random jessica
+is or what she gives me somebody else is going to have that same private key which means my funds are
+at risk so it's a very simplified example and if you're sitting there going through this in your head
+where you're going well i can make it one to a hundred or one to a million right and you're increasing
+your security a little bit but there's still faults within that system and in order to get truly random
+numbers and entropy uh you know a lot of smart people have looked at this and worked on this over
+the years and i think that's what we're going to dive into uh because when you see the word random
+there's very much the thought in your head that oh this is totally random i'm good to use this
+but when it comes to digital value and keys that's not good enough and i think that's really the core
+what we're going to be getting into yeah and like one of the things that i think josh mentioned was
+that um you generally you you want some sort of external source something external from the computer
+or the system itself um because there there is an amazing amount of entropy in the universe and so if
+we can only reach out into the universe and just scrape off a smidgen of entropy uh then
+that's usually good enough and some uh good examples are i think one of the most famous ones
+is uh was it cloud flare they used like a wall of lava lamps they don't do this anymore but for a
+number of years uh they had basically settled on like the best true source of randomness is something
+like a lava lamp or even better a whole bunch of lava lamps that are you know fairly randomly uh you know
+moving these color values around um and that if you you know snapshot uh those colors from a whole wall
+of them and you know turn that into a really really large number then it's going to be effectively
+random or if we're we're talking about you know key generation in this space generally the best practice
+is you you take a pair of casino grade dice and you just throw them a lot of times because that's getting
+some real world entropy in where uh you know you're not going to have that human bias to it as long as
+you're throwing the dice enough times um you're you're going to be coming up with a number that is
+hopefully not biased at all but that's where i think uh a lot of the complexity comes into play is that
+it's very hard to have a entirely encapsulated system that is also random and entropy is really the first
+step right oh sorry ethan um entropy is really the the first step in this in that when users are
+generating keys and using hardware wallets you know uh the saying is entropy is invisible uh until it
+fails and then it's catastrophic so this is really kind of a transparent process that's happening i would
+say step zero as you're booting up the hardware wallet and going through a key generation process
+or using a piece of software this is all very much precursors to that right making sure you have
+uh sufficient entry pools and a lot of people aren't necessarily thinking about that or auditing it
+and uh may take that for granted sorry even one of the other fun dimensions of this i always like to
+stare at is that there's lots of different uses for entropy and randomness and some of them are not for
+cryptography and so some of those uses like if you're trying to run simulations you might not be as
+concerned with that true level of randomness you just might be more concerned with how quickly it can
+compute more and more results and so that's you know we'll probably go into that a little bit later but
+there's lots of things available that might not actually be what you're expecting you know when
+you're using it for cryptographic uses and that that's one of those like pitfall areas that tends to go wrong
+that's true there are times when you actually want to be able to replay the exact same random sequence
+if i go to video games oh i want to replay this exact same dungeon again well i'll start with the exact
+same seed what is that seed ultimately that seed is the entropy that goes into the random algorithm part of me
+but we don't usually want to replay cryptographic keys
+only if you're trying to recover your wallet yeah that's true
+dark we're going to jump in no i think that's pretty well covered there yeah well okay so we know
+that the idea of being something being just random enough is really problematic when we're talking about
+cryptographic keys and ethan i like that you pointed out that sometimes random enough is good enough
+depending on the context but in cryptographic keys that's not the case jerk do you want to real
+quickly we're not going to focus on the ccss during this entirely like this is just about entropy and
+key generation as a whole but i think that since we are c4 and we've got our cryptocurrency security
+standard committee um it would be helpful to just go into briefly the first aspect which is 1.01 key
+generation you want to just touch on that real quick dirk except i don't have it up in front of me right
+now oh well i love when i throw things at you so i know you don't i guess i just always have it on my
+screen so i assume so 1.01 i've got in front so i can i can read what it is um it's actor generated key
+material validation of generation methodology deterministic random bit generator compliance
+and entropy pool so built into the standard we do have something about complying with a deterministic
+random bit generator and then also making sure that the entropy pool is wide enough is that correct
+did you say wide enough yeah or large enough or yeah and yeah and i think that's one of the thing
+right with the ccss um it's really pushing us to evaluate how much entropy is actually present right
+going into that like we um uh was already mentioned right you can have a really good random number
+generator but if you seed it with a small amount of entropy it doesn't matter you're going to wind up
+you know with uh what are called collisions or the same the same potential numbers coming up over and
+over um and so uh so yeah so what the ccss is really pushing for especially uh version 9 um you know where
+it requires documentation around the entire process so not just hey tell me what random number generator or
+should a random number generator you're using but how are you doing the entire thing how are you building
+your entropy pool how are you uh validating your entropy pool and uh and making sure that you have that that
+you're not just using one through ten like uh like ron said right as your uh as your entropy pool so um and
+i think that traditionally um in a lot of development right there was there kind of this notion of
+random enough right things are random enough if you if it appears to be random then that's good if
+you're writing a online craps game or you know some other game uh like josh was talking about where you
+just need like the appearance of randomness that might be fine but when you're talking about the
+keys that are actually going to be storing a whole bunch of money then that's wholly inadequate and
+that's really we're trying to go with the ccss uh and the current version to to put it in context
+i think part of the problem is that we're dealing with such large numbers that the human brain can't
+really comprehend it right so if you're if you're generating a key that's like 128 or 256 bits uh just
+saying that doesn't sound like much um if if you're if you're like taking a source of entropy and say
+that it has like a billion potential combinations like a billion sounds like a really big number to a
+human but compared to um 128 or 256 bit number it's it's infinitesimally small and uh you know for an
+attacker with any decent hardware you know they can they can generate billions uh if not you know
+trillions or quadrillions like you you can generate so many uh keys so quickly even just with something
+like a modern graphics card that you really have to be thinking in in exponential terms rather than more
+like human readable terms um i'm putting a link into the video chat for everyone our cryptocurrency
+essentials committee chair has a really good video on um entropy like from a very basic point of view so
+if anyone wants to kind of see that in from another perspective you can check that out um but why don't
+we talk about why this is such a problem i feel like um this is so important in this ecosystem and
+creeping cryptocurrency and cryptographic security in general and obviously we're all on this call
+because we really care about it um i totally agree jameson like when you talk about this number it's so big
+it's hard to even fathom what that looks like and i think also it's hard to fathom how this number can be
+so vital and it really is so important to cryptocurrency and you know securing our our assets i guess if we
+compare to the traditional way that we would do finance you know we would go to a local bank and sign up and
+and get a username and password with them um and if we ever forget our password or if something happens
+we call them and and you know they fix it and we verify our account in other ways like i talk about
+my first dog's name or something like that and that means that you know they can they can authorize who
+i am really simple stuff where you know we're dealing with a centralized organization um in crypto terms
+so you know you can create as many accounts in these systems as you want and those accounts
+ultimately are secured by this secret number that we make up for each of them
+now if that secret number if if ron and i share that secret number we are ultimately the same account
+there's nothing differentiating our account if all six of us use the exact same what was your what was
+your random number earlier us jessica seven if all of us use seven as the as the only entropy to our to
+our random our randomness then we all have the exact same account regardless of our dog's name at birth we
+are all the the same we are all the same user so fundamentally in this industry your user account
+needs to be something secret and big and it has to be different so how do we do that well we can try
+and you know be humans and write out the the 128 bits of of of uh of randomness that our mind comes up with
+or we use these systems to try and find some sort of number that we're comfortable with
+and kind of as ron was alluded to it's hard to know that you're comfortable with something
+if it only ever works until it doesn't so getting this right is is critical uh in this process and
+computers are less helped than we would assume they are well into like your point when in ron you
+mentioned this earlier when i said seven and then you said if i was to ask her for another number i
+didn't jump in and shout out another number um you're welcome for that but in my head i was thinking
+four and i absolutely guarantee that i was filtering out seven kind of automatically because i had already
+said it so basically yeah your point was proven on that so we okay what else do we want to talk about
+in this like what is i guess true randomness how do we figure it out i know jameson you mentioned cloud
+flare we talked a little bit about dice i didn't realize cloud flare wasn't doing that i put a link
+to it in there because it's one of my favorite examples um but what else we want to talk about
+with kind of the specifics of like the difference between types of randomness
+do you want to get into true randomness now and how that differs from deterministic randomness
+yeah so there's a lot of different ways you can do this and we're speaking specifically about rngs
+random number generators there's a lot of ways to uh implement those or to use those and that can be
+in software it can be based off of a random number generator built into your computer
+um in uh you know linux and unix operating systems there's two file paths dev random and dev u random
+which you'll see a lot of software and programs use um big differences between the two but they're
+both essentially just spitting out random numbers there's other ways to do it as well with physical
+quantum and tangible things where if you're familiar rolling dice with a cold card hardware wallet for
+example that's a diceware solution right you're the one generating the random numbers and because you're
+rolling physical dice you're not a computer that's prone to different types of um you know attacks
+or things that could reduce your entropy pool when a computer boots up you know when you turn it on
+for the first time it has not been running there has not been a lot of things generated so at that
+point the random number generator starts and it's a very simplified example but if you had two of the
+exact same computer next to each other and turned them on at the same time and said give me a random
+number there is a chance you're going to get the same number back from both of them so now you're
+starting to kind of walk down the path of well what's true randomness versus pseudo randomness and
+how can i verify that you know what goes into all these random number generators and that's where it
+starts to get really really deep and technical nuance between them and that's why we talk a lot
+about entropy and uh you know kind of where things can go wrong like ron said right you turn on two
+computers at the same time it takes a while for most systems to actually build up a pool of entropy that
+can be used to generate randomness and similarly in this world where everything exists in the cloud now
+everything's virtual right if you clone a computer a virtual machine that you've got out in the cloud and
+then just clone it copy it over and start a new one if you don't actually take care to um recede the the
+randomness on that new vm it will have exactly the same pool of entropy as the one that it did in when
+you cloned it and so if somebody else has access to that clone um you know again you can be putting
+your entropy at risk so there's lots of lots of little things uh that you have to be uh you know
+aware of and be paying attention to and and again that's why with the ccss we're really pushing now
+for uh you know comprehensive understanding and documentation around the the randomness process for
+key generation josh to be to be like really specific about some of these problems some entropy on a
+system could be the amount of cpu being used the amount of ram being used the amount of network traffic
+so if you take a you know cold laptop let's say you've got a notebook set up to be your cold storage
+device and you boot that on it's probably using roughly the exact same amount of cpu that another
+cold storage system is using it's probably not using a lot of ram and it's using absolutely no network
+so if we take and maybe heat is the other element that it's looking it was the temperature of the
+machine so now if you've got the same person you know in the same place in the in the world uh
+with you know these exact same metrics on a machine that that you know you think like okay cpu is
+between zero and a hundred great that's a big metric no it's it's between like you know like four percent
+and five percent on a regular basis or something like that so we we think like optimistically like
+oh these entropy sources are big and and vast when in reality the actual metric they come back with ends up
+being very small so that's when we say like oh the the entropy sources on this machine might be the exact same
+this is why because they're very like real world actual things that are measured which could end up being
+the exact same across these different devices
+yeah um okay thank you any dirk jump in yeah i was just going to say maybe we want to like jump in
+um uh jameson or ethan maybe um talk a little bit about so what are the solutions to that right how do we
+actually what what tools are there you know um uh noise generators and stuff like that that that are
+actually used to create a solid pool of entropy even if you've just booted up your system to to go
+generate some keys uh um ethan you want to maybe talk to that sure one of the basic things is actually
+doing the opposite of doing nothing it's the make sure there is actual activity make sure it's not just
+you know doing the bare minimum and doing things as quickly as possible and it's it's actually aiming
+for the opposite um and yeah there are lots of techniques that are out there that you can find
+um there's no particular one that i'm going to pick and just say like just do this but yeah it's
+something where if you're not thinking about that you're not approaching it that way you're
+definitely setting yourself up for problems yeah absolutely ron did you want to add to that
+yeah when you're you're looking at your rngs knowing you know the technical differences between
+them and what is kind of your use case right so true rng trng is one you'll see and in my mind that's
+one of the cooler ones because they can be as simple as rolling dice but you know there's usb stick
+solutions for this where it's actually arcing across uh two metal bars to see when does a spark arc and
+when does it not and that's what's writing the ones and zeros and i challenge you know any hacker to
+go in there and try to influence that uh spark arc essentially to manipulate the data stream so that's
+true randomness right when you think about that you can't influence it it's based off of the environment
+it's a physical component um you'll see prng which are pseudo rngs and they're they're essentially
+deterministic algorithms right we'll talk about one big one here i think uh shortly but it's fast it's
+reproducible it may be great for statistics like monte carlo simulations may not be so good for
+generating private key pairs um you also see csprng drbg um some people turn these a little bit
+differently but essentially with the drbg you're looking at a deterministic random bit generator and
+these are random number generators that have been statistically tested and reviewed by institutions
+like nist right and part of our recommendations is to conform with some of these nist recommendations on
+statistical uh you know data randomness and entropy pools overall and that's what's really driving this
+and that's what's going to happen to you know what's going to happen to you know what's going to happen
+and what's going to happen to you know what's going to happen and what's going to happen to you know
+whether it's an rng a trng a prng a combination of the above we've seen a lot of people try to do some
+very novel things in this industry to generate randomness sometimes it's pretty novel sometimes it can hurt you
+the foot as well yeah like if you don't fully understand something and you're trying to reinvent
+the wheel you're trying to come up with something that's probably not not the way to go um okay so
+i put in the chat what the prng trng what um those stand for dirk did you want to talk more about that
+i was just going to say um uh ethan's comment about making sure the computer isn't doing things i totally
+was remembering it's been a long time since i did this but in the the old days generating pgp keys
+and bang just like randomly banging on your keyboard or just wiggling your mouse around uh and it wasn't
+actually like again yeah it wasn't actually measuring your mouse movement it was getting your computer to
+like actually be doing stuff so that the the um uh entropy generation and it was actually filling up and
+i hadn't thought about that in a long time okay let's get into well so did we touch on
+environmental failures i think you brought that up a little bit dark is that correct did we
+talk much about it sorry i'm trying to do the chat at the same time yeah yeah i think we talked about
+the low entropy at boot and the um vm cloning um uh issue um uh i don't know if uh um ron do you wanted
+to touch on uh containerization issues or if that was another uh but separate from um stuff or i think
+the biggest ones you want to worry about with environmental failures the the boot time starvation
+that we kind of talked about and you know you can see this on physical systems but especially inside of
+virtual machines where they have not been running long enough to generate uh efficiently random enough
+entropy um especially with virtual machines you know they're not talking to the base hardware
+they're talking through an abstraction layer to be able to do those functions and run the operating
+system so it may not have the same speed and bandwidth and connectivity to use some of the hardware
+hooks uh as a native operating system would um you know vm cloning we talked a little bit about
+you're essentially just doing a one-to-one copy of an operating system that's set up that includes all
+the configuration that includes all the memory everything that's stored in there and as dirk said
+if you keep cloning and deploying vms you can potentially run into entropy issues and they have
+built functionality to be able to reseed all that um containers use shared entropy pools in some
+instances right if you're in a kubernetes style world uh you may not be using uh you know you may be
+using a shared entropy or single entropy source for all of your workloads in your containers so that's
+a caveat you want to keep in mind and then the other one is you know embedded devices in iot
+and i think hardware wallets would be more of an exception to this but if you're playing around
+with microcontrollers esp32s building your own wallets you want to ensure that you know those small
+devices are great but they need to have sufficient entropy and random enough entropy because while they're
+small devices and they're great they're small devices right they don't have uh tons of horsepower for
+computing and uh you know in some instances they may need to offload that random number generation uh
+task to a specific chip on the hardware or some other process external process because it's not good
+enough for what we're trying to do essentially so i think those are the environment variables people want
+to keep in mind and can really get into weird situations depending on the amount of entropy they're
+generating um ethan did you want to add to that uh yeah one interesting one related to those vms to
+always think about too or containerization um whether you've got something centralized related to entropy or
+you've just got vms that are sort of point in time how does that drift and leak over time this is that
+thing you know you've got your your registry of containers and maybe you're spinning these things
+up and generating keys in them you know you know in large numbers somebody you know somebody exfiltrates
+it they make a copy of it they squirreled away because they they had a good intention with their
+backup that's where something can go catastrophically wrong also because somebody on the outside you're not
+expecting then has the ability to get the same entropy at least for that first few moments and so it's
+those kind of dependencies where that that little bit of drift really can go catastrophically wrong also
+it's a good point yeah so maybe we want to talk about a couple of examples where it's gone wrong
+yep yep i'm sure we can come up with a couple um all right who wants to do the first example
+what are some examples of um bad entropy causing leaked private keys there was um one with the libbitcoin
+explorer where they had a tool using a c command and it was using a mercen twister um seated with a
+timestamp uh and you know not necessarily advisable to be using things like timestamps and uh sequential
+nonces or anything sequential that i can guess you know number one to 100 um better to combine multiple
+factors uh and ensure that you've got true randomness in each part of those factors but what happened was
+they were using this tool and um part of the seed for their entropy for the random number generator was
+timestamps so when an attacker sees that or can discern that uh either by doing their own testing or
+looking at code or decrypting an application or software and trying to reverse engineer it
+once you can figure out the method if it's not truly random you can replay the method uh and as a result
+you know attackers were able to generate all of the keys through brute force method um and it was
+close to i think a million dollars stolen just by enumerating possible timestamps and feeding it through
+the same process that the bitcoin was using at the time i think you you did touch on one thing that
+could be worth going into where you mentioned you know it's best to combine multiple sources of entropy
+and uh correct me if i'm wrong and i'm sure there's a lot of caveats and it really depends on how you
+do it but i think it of it um almost in terms of like a you know set theory or venn diagrams right like
+i said earlier you know you want to reach out into the universe and scrape off a little bit of entropy but
+say you have like three sources of entropy and two of them are great they're huge massive potential
+variation and then you add in a third and it actually like ron said it's just like a time
+stamp and it's a very tiny amount of entropy you can basically shoot yourself in the foot and
+sort of nullify the fact that two of your sources are really really good
+you know in our ccss training course one of the examples that we cover for this is for this aspect
+is about trust wallet when they had um a issue with the amount of entropy because they used um a
+timestamp for seeding and it they then pushed into production using this and then of course all of the
+keys were able to be discovered years later um because people weren't aware of it but it seems
+like this is something that does happen like this isn't just a hypothetical this is something that is
+and does happen and i'll tell you when i was creating our course and finding examples it wasn't oh i can't
+find an example it was oh there are so many examples which one should we pick which i think says a lot
+um there there's an older example of um i want to say it was a blockchain.info wallet um and and no you
+know no shade towards them but i just remember uh the community was smaller at the time we're talking
+about you know 10 years ago um but people will be like oh i just loaded up this this wallet for the
+first time and i've got five bitcoin this is amazing but i don't get it and then another person would be
+like hey i just opened up my wallet and my five bitcoin is missing like what is going on this is
+terrible so there's just this like weird situation where different users were setting up a wallet for
+the first time and it was someone else's wallet but for them especially bitcoin was so new they're like
+oh you know do you just start with a couple like is that how it works like like this is a normal thing
+to like oh like get a new wallet and just like get a random amount of bitcoin in it this is cool okay i
+don't understand this but sure um so it was a really weird situation earlier and honestly people had to
+dig it into it because the it wasn't it wasn't everyone it was only some users of the wallet and
+they eventually you know figured out that okay it was only people using this specific version of android
+because it actually ended up being an operating system problem that the wallet was using the
+operating system call and in that particular version of android there was a problem with random that it
+wasn't using enough entropy sources or was using them incorrectly so it was you know you can't it all
+the other implementations of this wallet on different operating systems were working fine but because they
+didn't necessarily verify their entropy sources they just said okay we'll just use the operating system
+it'll probably be good enough that led to a situation down the road so there uh assumptions can be a very
+bad thing in this industry when you think like oh this will be fine but i that was that one will always
+stick out on me just because people are literally opening up their their bitcoin app for the first
+time and going oh i've got a bunch of bitcoin this is awesome i remember um i think that was one of the
+first early examples of white hat hacking though if i recall correctly it was uh joho it was the this
+developer who actually ran one of the first mempool uh explorer pages and i think that he had stumbled
+across this and actually ended up sweeping a bunch of wallets that he came across by doing just blockchain
+analysis and finding uh weak wallets and uh i think he managed to get most of that bitcoin back to
+the rightful owners but um basically put on the white hat and and took the funds for safekeeping until he
+could verify who they really belong to we've got thank you i've got one thing quick blockchain.info i
+believe is now blockchain.com correct and they they're this they have a certified system now so if you're
+looking for certified systems one of theirs is i don't know i can't vouch for all of them but i know
+one of them is you can check it out but somebody just put into the chat um about the winter mute
+exploit where the vanity address generator they used relied on weak entropy and this allowed the
+attacker to brute force the seed and recover the private key um yes so there's another one as well
+i actually don't recommend vanity addresses for for those that aren't familiar like i i've had a few
+where my bitcoin address had my last name stoner in it right and i thought that was really neat that i could
+give somebody a bitcoin address with that very much it's a brute force process it's crunching numbers
+it's using random number generators to try to get you addresses that match that string that you want
+in there and you know they're pretty cool they're neat to share with your friends but part of the issue
+is you're locking into a static string for part of your address right so you're removing a lot of
+entropy and randomness from the process to begin with and then if you're using a vanity generator that
+has not implemented rng correctly it's it's just problems on top of problems at that point so for
+anybody using vanity addresses i think they're neat super cool but i would suggest not keeping a large
+amount of digital funds in there if you're not comfortable losing that and also if you don't
+have an amazing last name like stoner then maybe you have less incentive to do so i don't know
+okay um so yeah a lot of different examples dirk were you gonna jump in did i see one mute or were
+you already unmuted no i'm sorry i just was unmuted but uh but i was gonna say maybe you know talking
+kind of about doing this and everything um in in a in a way of talking about you know what good randomness
+is what it looks like maybe we can kind of show like uh i know ron has a a tool for kind of demonstrating
+what it doesn't look like right and uh and the issues with it and um and maybe now would be a good
+time to kind of uh to do that yeah let's walk down the bad path first so hopefully everybody can see my
+screen and the text is large enough but i've created a couple python simple scripts here which it
+simplifies the problem but it's great for demonstration purposes so we're going to run
+through a bad entropy example right and this is going to relate to bitcoin private keys kind
+of the example we talked about at the top of the call um and this is applicable to the live bitcoin
+scenario we were just talking about why they were using a mercen twister you know plus the
+timestamp to seed it this is just using timestamps but uh very relevant to that case itself
+so in this script we're just going to generate some new bitcoin keys using our current timestamp
+and we're going to do 10 of them for 10 seconds so as we run through it bam it's done and we can now
+see that we've got timestamps listed for 10 seconds we are generating addresses here valid addresses with
+the private key in the wif and because we've only used timestamps to generate the randomness on this
+i can replay the function again and say let's recreate a key from a specific timestamp right
+we're going to use number 10 as an example so we're going to take and copy this timestamp and paste
+it in there and theoretically you know this is going to give us the same address so when we do that we see
+one eight ba w ending in dgsf one eight ba w ending in dgsf so we've created this same exact key pair here
+by only using timestamps to influence our random number generator um but the other thing really
+important there ron is that it's not the random number generator's fault right it's not the algorithm
+that's being used right it's not the and this is where i think a lot of people kind of like miss the
+two parts of this whole situation right they they just think oh i've got you know this strong random
+number generator algorithm here it's going to do great things for me but that's why uh why there's
+so much focus now on understanding the entropy and how you're seeding that yeah 100 um if we want to
+take it a step further i'm a hacker i'm an attacker i now know what you're using for random number
+generators i know it's not secure and i want to start stealing money so i'm going to write a script
+now that starts brute forcing and generating through all of the timestamps to see what key pairs i get
+back right so we can enter any start date here we can iterate through as long as we want i'm going
+to go ahead and just press enter to use today as a starting point how many days do we want to generate
+we'll say two days we're going to use 14 threads so i'm using a cpu to brute force this but a well-motivated
+and resource attacker is going to use something like a gpu farm right so for two days for every time
+stamp we would be generating 172 000 keys and if we let this thing really start and go
+we are already done right so we've just combed through two days of keys using only time stamp
+uh with 14 threads on a cpu so that took 3.43 seconds so if i wanted to do a week or a month or a year
+on a CPU, very practical and doable.
+If I expand this out and distribute this on the cloud
+across multiple instances in GPU workers,
+I'm going to find your private key, right?
+And in secure implementations.
+So this is just really a demonstration
+of what this looks like, why it can fail on the bad path,
+and what attackers are gonna be doing
+to check these addresses and these key pairs
+and the RNG and the entropy
+to try to get your money, essentially.
+- That's such a helpful example to be able to see.
+I like how the little warning pops up as well.
+If only that always happened for people
+when they're using the wrong source of entropy
+or not enough entropy.
+Okay, what else, do we want to mention anything else
+about how that worked with like timestamp seeds or?
+- The only thing I would say there is having
+a good understanding of what is being used for entropy.
+And when developers are setting up systems,
+they call a random function, they call a library,
+they call dev you random or random,
+and they think that's quote unquote good enough.
+And it's essentially a false sense of security
+because it says it's random, it may not be random.
+You also want to make sure you're not using anything sequential
+as we've called out timestamps, right?
+The numbers that iterate by one, days of the week,
+that type of stuff, device identifiers.
+Those things can all be brute forced or iterated through.
+And the more sources of good entropy you're including,
+you know, you're diminishing or you're lowering that risk
+over time.
+So when it comes to the bad path,
+we know that one source of entropy, you know,
+not using it correctly, not seeding it correctly,
+not using the right R&D mechanism is gonna get you into trouble.
+On the good side, what we're looking at is we're looking
+at combining multiple sources of good entropy together
+to get the final result.
+And in my mind, you know,
+I've been in this industry for a while,
+when I've been at companies and we've generated keys,
+you know, we weren't using the random function
+on the hardware wallet to do it
+because we didn't necessarily trust that fully.
+And there's nothing necessarily wrong with that,
+but if there's ever a backdoor
+in the random number generator,
+if there's ever an exploit or an issue in the future,
+if anybody can ever lean on that as an attack,
+that could potentially be a problem.
+And that's why you'll see the recommendation
+in multi-signature key sets sometimes
+to use disparate hardware vendors, right?
+You're not putting all of your eggs in one basket.
+Trezor generates its keys with its RNG
+a little bit differently than ledger may.
+And cold card, if you're rolling dice,
+you're totally sidestepping that process
+and doing it yourself.
+So having a mix of those really stops
+the single point of failure,
+but entropy is that foundational level
+that kind of starts that whole thing from the beginning.
+So when I've done this with other companies,
+the best way I've seen to do it is, you know,
+we would flip cards in random orders a bunch of times.
+We would roll dice.
+We would have a couple of people involved in the process.
+So it wasn't just one person.
+And then we would also take the electrical arc
+off a true random number generator, like I was saying,
+to add in some environmental factors.
+So there's no influence.
+There's nothing where, you know,
+I spin the same dice number 15 times
+as unlikely as that could be.
+It can happen statistically.
+So we're removing all of those risks from that process
+by doing the happy path of multiple sources of entropy,
+entropy that has been verified,
+statistically tested and vetted,
+and then really conforming to the recommendations
+we've put in the CCSS from all of our collective experience.
+As you were talking, I was just looking up, Ron.
+We've got an example in our agenda for today
+about Android Bitcoin wallet and the RNG bug.
+And so I just was looking up what it is.
+And right away, I started talking about reusing nonces or K value.
+And I remember when I first started learning about the CCSS
+and you, Ron, explaining to me what the heck a K value was
+and how reusing nonsense or K value can be problematic.
+And that's exactly what happened in this example
+for the Android Bitcoin wallet.
+So it's just funny.
+I saw it in there and then I looked it up and I was like, oh,
+so like, and that is in our standard.
+You can look at it.
+It's, I don't know what asked or what requirement it is.
+Let's see, 105.1 rant or no.10 deterministic random bit generator compliance.
+And yeah, making sure that the K value is generated securely and not reused.
+So anyways, your point about these examples
+becoming part of the standard is, you know, spot on.
+We like to thank the industry for helping make the CCSS as strong as it is.
+Absolutely.
+No shortness of examples.
+Okay.
+And then also, I think, Ron, you mentioned NIST before as well.
+But so we pull from NIST as well and put that into the standard too,
+because there are, it's open.
+Anyone can look at that framework.
+And we quote it in there talking about NIST SP 890A,
+which talks about the different types of DRGBs,
+DRBGs, DRBGs that, those acronyms, I tell you,
+that actually are secure.
+So there's a few you can read about in the standard.
+I don't know if we want to go into those exactly.
+Does anyone want to talk more about that part?
+That's fine.
+If you don't, I won't make you.
+It gets pretty technical with the nuance and the difference.
+I would say start looking at the standard because we make recommendations as to what people should be doing.
+We know the happy path.
+And then branch out and look at some of the NIST standards that are wrapped around these to understand what testing was done.
+What's, you know, what are the caveats?
+Is this truly random and truly secure?
+Don't just roll your own or install a third-party library and say you're good to go with your randomness.
+You know, verify, don't trust, is the saying, and that applies to entropy as well.
+Unless you're literally rolling your own, like with dice.
+Unless you don't trust yourself to roll the dice.
+I've got to be careful what I say.
+Thank you, Darren.
+I mean, there is, though, an interesting human element to that, too.
+And, Ron, you mentioned it, but I feel like it deserves pointing out multiple people in a process like that can be important.
+If one person is saying, oh, yeah, queen, ace, blah, blah, blah, blah, going through those cards and rhyming out a sentence, that doesn't mean that those are the actual cards they're looking at.
+And you might have some psychotic person on your team who's actually, like, rhyming off a sequence of numbers that they've been practicing for a long amount of time.
+So there's all sorts of fun stuff with entropy that can be a problem.
+But the important thing is a documented process and careful not to make assumptions.
+And, again, coming back to the multiple sources of entropy, right?
+Like blending multiple sources of entropy so that any one of them, even if it's compromised in some fashion, doesn't just totally give away the whole key.
+Yeah.
+Ethan, did you want to jump in?
+One of the ways I like to actually go about this sort of thing, it's not unique to just this area, but it's making that assumption that it's probably done wrong unless I have a reason of, like, the how do I know it was done right?
+And so anytime someone says they took care of it, it's handled, it's the, okay, but how do you know?
+Like, what did you actually do?
+And it's the heart of that and doing that follow-up to really figure it out.
+Because it's when you start pushing and pulling the threads, you find the things like the vanity addresses come out of it.
+And it turns out that something cryptographically strong was actually, you know, fundamentally weakened.
+It turns out that something that was designed for, you know, not for cryptographic uses, but for other uses of randomization was utilized.
+Like, part of it is, you know, general purpose systems are, you know, getting used to build these things.
+And unless folks have a reason to gravitate towards the best solution, like, whatever they're unconsciously doing might be the thing they grab and use at first.
+One of the problems I've actually been finding is more, like, or one of the things I get scared of the most is the fundamental one person does, like, makes that arbitrary decision at some point.
+And then foundationally, things are built on top of that.
+So it's the library gets reused a hundred different ways.
+And that's where you get the really catastrophic, like, holy crap, what happened?
+Like, how many places were affected by this even?
+And I think you bring up a great point there, like, or a great segue actually kind of to, okay, so we've been talking a lot about, like, how to do these things.
+Like, how, what's the best process?
+How do you verify, especially, like, on an ongoing basis, that what you're doing is being effective, right?
+So how do you check?
+Because it can get fairly complicated and fairly technical here, as we've said.
+So what are some ways that, you know, you can actually verify that what you're doing is, in fact, good and maybe even build a process to ensure that it's always good, right?
+That, like, that something isn't happening along the way to reduce the entropy or reduce the randomness.
+Yeah, I really like that you pointed out that, like, we reuse things, or we make these assumptions that something has happened, or that because we've been using this, it must be securely generated, and we don't need to go back and look at it again.
+And then there's, there's that, I think that goes back to what Ron said about trust, but verify before you actually do trust, right?
+Okay, so...
+Outside of, outside of looking at my balance to make sure that my Bitcoin is still there, is there other ideas you have to check on the effectiveness of my entropy?
+Yeah, what do we do?
+How do we know if our entropy is weak?
+How do we know if the wallet that we're using is, you know, has securely generated keys that we can trust?
+Someone make me feel better.
+Ethan?
+You got an idea?
+Oh, sure.
+So, this is one of those tricky areas where, for a lot of folks and a lot of uses, you don't actually expect to be the person verifying or understanding this.
+And so, this is where, even if it is open source or verifiable, you're actually trusting that some other expert or some other ecosystem has actually protected you.
+So, that's part of that trade-off folks really should be thinking about carefully, because that's where that can go wrong.
+And unless you actually understand how to do this or check this, or if you're going and getting a hardware wallet and trusting it, or if you're, you know, a lot of these different systems, you may not even be able to see or yourself actually do that verification.
+And so, it's partially thinking really carefully about, like, what organizations, what people you're trusting, how likely they were to be that diligent about what they were doing and setting up.
+That goes down an entire, like, supply chain and supply chain of supply chain kind of topic, but it makes a huge difference for, you know, who and what you're depending on.
+Yeah, well, I mean, this kind of ends up at, like, the fundamental of almost all computer security is that, unfortunately, don't trust verify is not realistic for most things in the space.
+Because, ultimately, you can almost go down to, like, the microscopic level of what is the silicon wafer that is in your device actually doing.
+And, like, you can't, almost nobody can verify that stuff, right?
+And so, I keep coming back to, you know, tooting my own horn at Kasa and what we do and what Ron mentioned a while ago is that, since you can't really perfectly verify any of these things,
+the best thing is to use a variety of different sources, a variety of different hardware, software, supply chains, and then what you're really doing is you're greatly reducing the likelihood that they're all compromised.
+Yeah, Jameson, to your point, if you super cool a computer, right, it's going to have slow operations or different randomness than running at current operating temperatures.
+And to his point about disparate hardware, it's really mitigating your risk.
+Having an understanding that randomness and entropy can fail.
+And I always like to say security is an onion.
+It's got multiple layers.
+So, if layer one or two fails, you know, three, four, and five are the one that's really protecting you.
+So, if one of your entropy sources fails or isn't doing its job correctly, you know, source two and three should be stepping in to help mitigate the risk a little bit more, depending on how you're generating and using that.
+We talked about NIST, you know, they've got the resources and the scientific equipment and the PhDs on staff to go do all of the statistical testing and publish the reporting and stats on that.
+So, end users can look at that, but I always operate in security under assumption that something is going to be compromised, it's a matter of time.
+What can I do or what can I wrap around that to mitigate the risk?
+So, I don't necessarily care about the white paper that goes into, you know, I do personally, but an average end user wouldn't be diving into RFCs and white papers and trying to understand necessarily how an RNG works.
+What they should be doing is using that in complement to other secure RNGs, verifying those through these institutions, and then also, you know, we built this into the CCSS because this is very important to us.
+So, if we're on an audit and we're auditing a company for these types of things, we're checking to see, do you have a documented process?
+Do you know what random actually means?
+Or are you just saying it's a random function or we implemented randomness, right?
+Well, prove it.
+Let's see the documentation.
+Let's see the implementation.
+Can you walk through it a few times, right?
+Show me that you're getting different information at the end of each of your process and demo the process for me.
+So, as an auditor, I can sit there and I can pick it apart and go, are they actually doing all of this correctly and conforming to the controls and the aspects that we've implemented?
+Because if they are, then, you know, I've got a higher degree of certainty that that data is being randomly generated with correct entry people securely as opposed to somebody that's just kind of doing it fly by night.
+Yeah, 100%, Ron.
+And one of my own little rants in this space is that a lot of crypto companies started building solutions and tools without going back to kind of traditional information security practices.
+And one of the areas that really comes up a lot is there's this notion in the crypto and blockchain space of like, well, I'm not going to tell anyone how I'm doing it because that's just, you know, gives them an attack vector, right?
+Like, it falls back to like fundamentals of cryptography, right?
+Like cryptography that is the secret algorithms that aren't being exposed are the ones you never want to use, right?
+It's only the ones that are exposed, that have been tested by lots of different people in lots of different ways and have been attacked, you know, from all different angles.
+Those are the only ones you want to use.
+And so when people are like, well, we don't document that.
+I'm like, there are some things that you don't want to publish, right?
+Maybe you don't publish the names and addresses of your key holders.
+That's a good security practice not to publish.
+But to not have documentation about exactly how you are gathering your entropy, you're relying on the entropy, not the way you're gathering the entropy, right?
+And so to not have documentation around that is one of those things that I think one of the reasons we put that into the new version of the CSS, right, is because it's just a real challenge sometimes to validate that.
+One other interesting dimension to what we were talking about a little bit earlier with the, you know, use multiple sources of entropy that also can go hand in hand with multiple signature or, you know, multi-signer systems.
+You may actually have a source of entropy going into one, a completely different and independent, also a strong source of entropy going into another.
+Whether you're pushing for MPC or multisig, you know, whatever you're actually looking at, you're just getting another layer of strength that even if one of those fails, it doesn't catastrophically make the whole thing go down.
+And that's an interesting point.
+Doing that in a compartmented way where, you know, Jameson was mentioning earlier how you can have this, you know, really two or three, two out of three really strong entropy sources.
+And then a third one, like a date that just like messes up the entire thing.
+Where using that method that Ethan just mentioned, you know, you kind of like silo this entropy system with this entropy system with this entropy system.
+And if, let's say, one out of the three fails in a two of three multisig, that's not so bad, at least.
+And, you know, you might at least see signs of that being broken that you can work around.
+Again, those layers of controls that Ron mentioned earlier, right?
+Exactly.
+Okay, well, we actually are over time.
+We could probably talk about this, like Josh, you said, for like eight hours.
+So we won't do that today.
+But maybe we should do another stream in the future on entropy and how to check for this and what questions you should be asking.
+We are doing a different live stream next week with a number of CCSS auditors who are going to be talking about what kind of questions you should be asking.
+If you're using a custody system or a wallet, like where do you even go for that?
+And then, Josh, you pointed out ceremony.guide.
+Did you want to mention that?
+Yeah, I made a back for that 2019 blockchain training conference talk I gave on key generation and entropy.
+I created a little website, ceremony.guide.
+It's just a really fun, please don't use it for making keys.
+Oh, my God, absolutely not.
+But use it for understanding how or for seeing literally how different entropy will affect your key.
+And if you want to do it with some friends, you'll start to see how you end up creating similar keys at the same time and in similar environments.
+So it's just a fun, fun little interactive tool for exploring how entropy actually affects keys.
+I forgot we were going to show that.
+And I know we don't have time.
+So maybe we'll do a follow up where we get into that a little bit.
+I mean, they've got the old the old BTC content still up as well.
+So, OK, I actually put a link to that in the chat.
+So, yeah, you won't go to that as well.
+OK, well, this hour just flew right by.
+It's been an hour, right?
+Yes.
+OK, it went by very quick.
+Doesn't feel like it.
+So thank you guys for joining.
+Thanks for everyone watching.
+We will probably do follow ups on this because it is such an important topic and there's a lot to say about it that I don't think we even got to yet.
+So any parting words from anyone on our panel?
+Just want to offer a big thanks to Ethan for joining us today.
+I appreciate that very much.
+Thank you.
+Yes, thank you.
+And the rest of you guys as well.
+But whatever.
+Yes.
+Thank you, Ethan.
+And check out Ethan's company, Next Encrypt.
+He's the founder and he has a lot of experience.
+So he's a good person to go to if you've got questions about any of the practices for generating keys.
+And how to keep your crypto safe.
+Appreciate it.
+Keep it random.
+Keep it random, man.
+All right.
+Bye, guys.
+Thank you so much for joining.
+Bye.
