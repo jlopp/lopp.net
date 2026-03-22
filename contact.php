@@ -401,7 +401,7 @@ NjT4rMUesCnjTVHVM9KXvMemwAhhYbM=
         <h1>Contact</h1>
         <p>My goal is to spread knowledge of cryptographic systems and liberating technologies.</p>
         <br>
-        <p>Do you have a question about Bitcoin? Please check my <a href="/bitcoin-information">educational resources</a> or try <a href="https://www.delphi.ai/jameson-lopp">asking my AI bot</a> first; it has been trained upon a decade of my essays, interviews, and presentations.</p>
+        <p>Do you have a question about Bitcoin? Please check my <a href="/bitcoin-information">educational resources</a> first.</p>
       </div>
     </div>
   </div>
