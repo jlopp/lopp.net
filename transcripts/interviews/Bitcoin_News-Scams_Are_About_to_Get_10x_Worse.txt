@@ -1,0 +1,559 @@
+Hello, hello, hello. Welcome back to Bitcoin News Live. Very grateful to have you here
+because we have a special show. It is a serious topic. Bitcoiners are under attack and the attacks
+are getting more and more sophisticated. And we got two experts here today to help us walk
+through it all. Let's get right into it. When it comes to Bitcoin paranoia, the conversation
+can veer into obscure places. You put your hardware wallet in a Faraday bag to protect
+it from an EMP attack. You read research papers that assure you quantum is nowhere close to
+cracking elliptic curve cryptography. But in the real world, no one is losing coins that
+way. They're losing them to a polite guy on the phone who says he's from Google, who already
+knows your name, your address, and that you own a hardware wallet because a shipping vendor
+leaked all of that information three weeks ago. Or to an AI replica of your voice convincing
+your mother that you're in trouble and she needs to go to a Bitcoin ATM right now. Today,
+two people building the future of Bitcoin custody on the assumption in the age of AI that sooner
+or later, you will be fooled. Jameson Lopp, CTO of Casa and Becca Rubenfeld, co-founder
+of Anchor Watch. In Becca's words, the most common way to lose your Bitcoin is to hand it
+to a thief yourself. All right, let's get our guests up on stage. We got Jameson and we got
+Becca. Thank you so much for joining us. Thanks for having us. Good to be here. Absolutely. So
+yes, this topic really erupted last week, but we've been dealing with it in Bitcoin for a very long
+time. Uh, Becca, let's start with you because you mentioned that a friend, someone you knew
+fell victim to one of these attacks. Please walk us through what happened.
+Yeah. The, my personal friend who most recently fell victim to one of these attacks,
+uh, it started with a Gmail infiltration. So he lost access to his, uh, Google account,
+uh, without his being aware. So they had access to his entire world effectively, everything that is
+connected to Google. So various 2FA access to other accounts. Uh, they were able to change settings on
+his email, uh, turn on auto forwarding. So, uh, he didn't see certain things coming through his email,
+but they did. Um, so it started that way. It, uh, was then combined with, uh, data, uh, breach, uh, with
+Trezor. They used that information combined with access to his Google to prevent, uh, to provide a
+very convincing story to him. Uh, smart guy yet, uh, on, in the situation under pressure, uh, fearful,
+very cognizant of the recent cold card vulnerability, uh, and needing to move quickly, um, transparently,
+and he will admit this made all sorts of mistakes, um, mistakes that with self custody, you, you, uh,
+simply cannot make. And, uh, over the course of, uh, a couple of conversations, he answered the phone
+from whom he thought was Google, uh, customer support, as well as Trezor customer support,
+uh, which he should not have done. That led to a conversation where they were able to, uh, both
+prey on his being a nice person, uh, as well as, uh, fearful. And he ultimately was convinced to
+enter, uh, a spoofed website, a spoofed Trezor website, uh, and enter his seed phrase as an extension
+on this spoofed website. So Trezor dot something dot IO backslash seed phrase, uh, and they had
+convinced them that, uh, by doing it this way, um, that he was convinced that they would not be able
+to see it and that this was a private way to, uh, kind of recover his assets. Um, and so that was the
+situation. He made many mistakes, but I think, uh, that ultimately, you know, you quoted me saying
+the number one most common way is giving your Bitcoin away and whether it's giving your password
+away, being convinced to click on a link in a fit in a simple, uh, phishing scheme, or whether it's
+a very advanced social engineering attack one way or the other, ultimately, uh, you actually give your
+Bitcoin, whether it's seed phrase or password, uh, or you in fact send your Bitcoin yourself, uh, to an
+address thinking that, uh, it's going somewhere in your control when actually it's not. So it was,
+it was very, very unfortunate and sad, but it's very common.
+Jeff Lerner: Yeah, it is common. And that's why we're talking about it today. And we have another
+expert on this subject here, Jameson Lopp, uh, Jameson, please tell us what red flags did you hear
+in that story and what should people look out for when they're encountering something like this?
+Jameson Lopp: I mean, the first thing is no tech company is going to call you on the phone.
+Jameson Lopp: Um, there should be a common sense thing. Uh, if you understand anything
+about how tech companies scale to have, you know, millions of clients, they simply do not have the
+human, uh, customer support resources to be calling people on the phone about stuff like this. They're
+always going to send digital notifications and mass. Um, and even beyond that, I think one thing that
+people need to really hammer into their subconscious is that you can pretty much never trust any incoming
+message, uh, especially if it's via email, phone, uh, pretty much any unencrypted like non, uh, strong
+cryptographic authenticated platform, which is almost every communication channel out there other than
+something like a signal or WhatsApp or, uh, a handful of encrypted messengers. Um, and the reason for
+that is that pretty much all of those platforms, it's trivial to spoof the quote unquote from address,
+whether that's the telephone number. Um, I've noted that these, uh, Google, uh, Fisher social engineer
+folks will spoof Google's official phone number to make it that convincing. Uh, they'll also spoof just
+other phone numbers with the same area code as your number, because I think that's more likely that
+you'll pick up. Um, and same thing with emails, trivial to spoof from addresses. Uh, the, the really
+gnarly thing about this, um, which Becca mentioned is that once they get into your email account,
+however, that may be, maybe it's because there's a password leak and you reused your password and
+they just got in, or because they've tricked you and, and phished you into entering, uh, authentication
+information. Um, once, once they get in, they are very good at, uh, taking control of the account to
+basically control the narrative going forward. So, um, that's where, uh, you know, like she said,
+setting up these filters and other rules to prevent you from getting the real notifications.
+So like one thing that we've seen, uh, with some of our clients who have been targeted with these type of
+setups is that if, if by the time they've already contacted us, their, their account has already,
+their email account has already been compromised. We've discovered it's actually very difficult for
+us to communicate with them because the attackers will automatically delete any emails that we sent
+to them. And they'll actually respond to emails that we send, you know, pretending to be the client
+and saying, no, okay, everything is fine. Uh, and so they're, they're essentially doing a man in the middle
+attack at that point and making things much more difficult to recover from. So it's a, it's a tricky
+situation, but in general, um, you know, just think of it in terms of, um, uh, fear. If, if someone is
+calling you and there's a sense of urgency and they're, they're saying that like something terrible
+is going to happen, those are the real trigger points that they're, they're trying to short circuit
+the defensive mechanisms in your brain to trick you into doing things that will, uh, ironically
+actually take you from being secure to being insecure. And they're usually telling you that
+you're already compromised and they're trying to help you re-secure your setup.
+And Becca, you work in Bitcoin custody, of course. And so I'm sure this wasn't the first case that
+you've heard of, of one of these attacks. Um, what are some of the commonalities that you see amongst
+the victims? Well, uh, I mean, the commonalities in general are that they were fearful and, uh,
+ultimately took action they shouldn't have. So people who should know better, uh, and that is
+kind of a common reaction is like, you typed in your seed phrase, you sent your Bitcoin,
+uh, but it just goes to, uh, the point of how psychological these events are and how, uh, panicked
+people become. So, uh, you know, the, the only commonality is, is that, is that, you know, people
+ultimately missed a red flag or missed multiple red flags and ultimately because of fear took action.
+So, uh, we have customers, for example, who, uh, were targeted with social engineering after, uh,
+I believe it was, uh, the Coinbase data breach, uh, lost Bitcoin, uh, as a result, literally sent it
+away. Um, you know, I, I told this story of my friend, uh, others, um, who, uh, you know, shared that
+they have been victims of romance scams, uh, you know, invest all of, uh, uh, a very big commonality
+is investment scam. So a, a portion of social engineering is not only what we've been talking
+about where it's like fear your Bitcoin has already been stolen. Uh, actually above that,
+statistically, the number one way people lose crypto, uh, and Bitcoin in particular is general
+investment scam. So this is where it's a different form of social engineering, right? So this is where
+somebody comes in, uh, you know, uh, often it's not always women, but it's often women who are targeted,
+where a man will come in, start a internet romance, um, for reasons they can never met meet in person.
+So this is a long distance relationship and over often months, uh, they are, uh, trust is built,
+actual emotions are formed. Uh, now they're using AI to maintain these conversations. They can be
+very realistic where just a year ago, syntax and just grammar and these types of things would
+have been enough for a human to be able to suss out. Whereas now AI can, you know, they can, um,
+refer to things in the earliest points of conversation, or they can, uh, you know, use this
+information to gradually get more and more access. And, uh, often this terminates, uh, in one of two
+ways. Uh, one is literally giving this person your Bitcoin, uh, having enough trust in this person,
+feeling that you're, uh, in a real relationship, uh, need to help them out with something, uh, need to,
+uh, or want to invest with them. And you literally send this person your Bitcoin at which point they
+disappear. Uh, the other way, uh, and, and this doesn't have to be romance. That's just a common way.
+And it can be just a general investment opportunity starting with a compromised telegram or Twitter
+DM, right. It can, it can start anyway. Uh, but another common outcome is an entirely spoofed
+platform. Uh, which again, with AI can be created like this, you know, in a day we could create a very
+realistic looking investment platform. We could create a very realistic looking prospectus that
+somebody else could run through AI. And it sounds very realistic, right? So you can, you can put a
+very convincing opportunity together. And I could tell Jameson, Jameson, you don't, don't send it to me.
+I use this platform, uh, you know, becca investment.com. Uh, I think it's great. You too, just,
+I really recommend it. I've used it for years. I've made a lot of money this way. Jameson,
+you should set up account on becca invest.com as well. And then once Jameson does that and eventually
+makes his investment, what he thinks is his own personal investment that I have no access to.
+In fact, the platform was fake. Um, so honestly, like the only, the only commonality is, uh, ultimately
+that people made mistakes, um, and we're holding their Bitcoin in a manner that those mistakes could
+actually be made. Yeah. It's rough. Cause they, they prey on your emotions, right? Whether it's urgency
+or love, they, they go to the roots of the human being and, and get your Bitcoin from you that way.
+And so Jameson, you have actually talked to some of these people who are orchestrating these scams.
+And when you look at it, I think you can divide them into two big pools, right? There's the pig
+butchering, which we just saw the Prince group get caught over in Cambodia. They're actually running
+camps where they're forcing people to, to do these scams. And then you have these, uh, the Google phishing
+stuff that's happening over here in America that tend to be done by kids, teenagers who organize over
+Roblox to get recruited into these online gangs. And I mean, I've gone down the rabbit hole last
+couple of days preparing for this. It's insane that they, they start on Roblox, explain what's going
+on here and how parents should protect their kids from getting involved in something like this.
+Uh, uh, uh, so this is, uh, I mean, there's a long backstory here of kind of how this section of the
+criminal underworld evolved. Uh, you've probably heard references to something called the calm.
+Um, there is basically the community and this underground community, uh, which does have ties to like
+Roblox and other online gaming forums, uh, which I don't really fully understand how those became the
+sort of nexus, uh, point, uh, for a lot of these folks to meet each other. But, um, for a few reasons,
+I think one of them being that, uh, basically, uh, older guys will tend to recruit, uh, minors and young
+folks to actually do the, the riskier crimes, because of course, if they end up getting caught,
+it's just, it's going to be a slap on the wrist, most likely. Um, you know, so there's basically some,
+um, uh, mitigation going on there. Uh, and, and there's also separation of duties within, uh, the
+different people, uh, who they're kind of operating in somewhat loose knit, uh, organizations, uh, you know,
+think of them as kind of like contractors hopping around. Um, and, and so, you know, you'll have,
+you'll have like some guys who are specializing and doing the actual social engineering and getting
+into the email accounts. Uh, and, and then like, once they have achieved that and they've cracked a
+target, they then pass that information onto another set of guys who are going to be more, uh, specialized
+and have tools to try to dig in and determine like where the potential value and ROI is like,
+what other accounts should we be targeting? And then, you know, how do we branch out our attack?
+Uh, cause kind of like you, you heard from Becca, um, you know, the, it may start off with a Google
+support engineering. Uh, and then if they determine, oh, you're a Trezor user, they'll actually just call
+you back later and pretend to be Trezor or some other company, uh, to just continue the scam and try to
+dig deeper and find more value. Um, and then, I mean, there's also, um,
+I just started getting deeper into this recently, but I have come across some guys who actually the,
+uh, specialize in the wrench attack aspects of this space. And that is rare because it is much higher
+risk, but, uh, you know, those guys are, you know, they're going for a higher risk, but even higher
+reward and, and, and these particular masterminds are then having to reach out to other, uh, call it
+like on the ground networks of thugs, uh, and, and, you know, actual, um, you know, physical attacker
+contractors who, you know, they'll, they'll basically put, uh, you know, 50, a hundred thousand dollars or so
+into escrow and give an actual physical target and say, you know, I need you to go get, uh, any private
+key material from this person. And if you're successful, we'll basically, uh, give you a
+cut of whatever the take is. So these organizations are becoming more sophisticated, which is not
+surprising because, uh, it's basically the, the criminal underworld catching up and getting a better
+understanding of what the return on investment for these types of attacks are compared to more
+traditional, um, you know, physical robberies or even more traditional, uh, digital, you know,
+theft of personally identifiable information and such.
+It's a sordid world. And yeah, it's the tentacles seem to be growing on a daily basis. Uh, but Becca,
+I want to shift this over to you and the way that they convince a lot of people to,
+to open up is by having information on them already. And so talk to us about that, about the
+data leaks that have happened within the Bitcoin community and what should people do to protect
+themselves. Well, think about having prior information as just little seeds of legitimacy that they can
+plant from the start. If you think about how ineffective the Nigerian investment, uh, emails
+were back in the day, why were they ineffective? They came out of the middle of nowhere and they didn't
+make logical sense. It doesn't make logical sense that a Nigerian has located your email and is going
+to send you money. And, and, and so your logic very quickly can identify from the first, I mean,
+from the subject line, even you can identify the, uh, incongruities that, uh, tell you that something
+is wrong and to just market a span and move on. Uh, in terms of all these social engineering,
+whichever their entry path in was, whether it was, um, a Google account where they got into your
+everything. And, and remember they do mean everything. One of the most important things
+they get into are your photos. Uh, in your photos, people do the things that they're not supposed to
+do. They take pictures of seed phrases. They take pictures of passphrases. Uh, they take pictures of
+passwords. They take screenshots of all of these things. All you have to do is type seed phrase into
+the search of Google photos and you can find it immediately. So just calling that out. Google photos
+is, is a real, is a real issue, uh, for a lot of people, but they're using any information to create
+legitimacy. So I think we've talked a lot about examples within Google, but what about just a
+infiltrated X account, right? Or an infiltrated telegram account. They're going to take AI and go
+back through your entire chat history with somebody, right? So let's say, uh, uh, I get infiltrated.
+Uh, they reach out, uh, through my account to Jameson. They look back through my and Jameson's
+entire conversation history. They strike up a conversation, referring to something that happened
+way back then bringing up an old topic using syntax that talks like I talk. Do I write in
+all lower caps and use poor grammar? So do they, right? So they, uh, they create these seeds of
+legitimacy and they just build from there. Right? So again, humans in general are, uh, designed actually
+to trust each other. So it's, it's evolutionary. We have to keep our tribe together. So we bond quickly.
+And once we bond, it's actually very hard to break, break a bond. And so, you know, once, uh,
+Jameson and I have that relationship, we trust each other. We've had successful communications through
+this channel in the past, it just becomes easy to push aside the small red flags to lean on the trust
+that we are evolutionarily designed to have in one another. And so you just, you have to, in this new
+world with AI that can mimic people spectacularly well, right? You just have to understand that there
+are bad actors trying to infiltrate everything. My opinion is that, uh, cryptography and, and, uh,
+having a physical, uh, device and way to verify identity is going to become the standard, not just
+for everything Bitcoin related, but everything, everything related. You want to get on a zoom call
+with me, let's all tap our UV key or, or whatever it may be in terms of brand or device, but cryptographic
+proof that the person here is the person that was previously identified, uh, you know, as me. Um,
+and, uh, so that, you know, can prevent a lot of these social engineering. And then, uh, we require
+it for all our transactions, either with Bitcoin private key or with YubiKey, um, because other
+things beyond that video calls, uh, they are helpful for mitigation, but they don't totally remove it.
+Well, yeah. I mean, on a personal note, uh, my dad had a social engineering attempt against him.
+He got a phone call saying they were from the power company and that they were going to shut off his
+power within a couple of hours. If you didn't go down to local convenience store, go to the Bitcoin
+ATM and send them Bitcoin. Right. So, I mean, these things are happening all the time. And now that we
+do have AI, as Becca was just saying, uh, Jameson, I'd love for you to go into these deep fakes that we're
+seeing, whether it's voice or video, uh, how bad is it getting out there of people generating AI video
+and images of actual people? I'd say audio is more common. It is easier if you're just doing something
+over the phone. Um, you know, video is still improving. Uh, there are still, uh, you know,
+it's still difficult to really do like real time, realistic video that has no artifacts and, and no,
+uh, really red flags though. You know, you, you could, uh, you could fool a, you know, more naive
+person who is even not really looking for that. But the real problem is that it takes so little training
+training data. Uh, I think, you know, 30 seconds of audio or video from someone is generally good enough
+to, to deep fake them at a fairly high level. Um, and pretty much everybody has leaked that much
+information about themselves just on social media and such. So, uh, you know, no one is really safe
+from being impersonated and, um, really the most important thing that you can do is, you know,
+just talk to your friends, family, loved ones who would be at risk of this. And I mean, I just start
+off by saying, first of all, I will never ask you for money or anything, but beyond that, uh, it would
+be helpful to, you know, uh, set up some sort of, of shared secret between you. Um, or, I mean,
+you preferably, you want it to be something easy that the other person doesn't have to like memorize,
+but be, be like, you know, uh, ask me about this particular event that we did a long time ago that
+there's no record public records about, you know, something that we already have in common that an
+attacker would not know. Uh, and once again, uh, like, like Becca said, this needs to be
+something that they're not going to be able to scoop up out of your email or other communications
+channels. Um, you know, from that historical perspective as well, this is another reason.
+I think we lost him for a second. Come back here.
+Uh, well, yeah, while he comes back, I'll, uh, I want to ask you about YubiKey. It sounds like you
+guys have integrated that into anchor watch and, um, in terms of Jamison, you're back. Uh, sorry,
+I lost you for a sec. Uh, I was going to ask, uh, Becca about YubiKeys, but quickly, if you just
+want to end that thought that you had, Oh, I was just saying that this is a reason you might prefer
+to use chat apps where you can set, uh, exploding timers to automatically delete messages after a
+period of time so that they can't go back and harvest it and use that for training.
+Um, I would, I would just add on or reiterate what Jamison said. I actually, I think everybody,
+um, you know, kind of in our age range, we have aging parents. If you have a good relationship with
+your parents, you really need to be having regular conversations with them, not once,
+but repeatedly every month or two, letting them know what types of things are happening.
+Because remember that where we started our conversation of, of, you know, relatively young,
+intelligent people making really serious mistakes, um, because of fear. And so if you look at an aging
+population, right there, especially if they're, uh, contacted maybe about their children, right? So
+if a lot of your viewers are involved in Bitcoin or, or are the Bitcoin owners, you know, your parents
+receiving a phone call literally about you, you know, discussing you by name and your Bitcoin and
+things that sound like they're logical, you need to be educating your parents and you're reminding your
+parents regularly what they should and shouldn't do. And I w I would just reiterate that because,
+um, you know, the damages of identity theft, um, you know, will hit your parents very, very, uh,
+hard at a time of life that they really can't afford, uh, for that to happen. So I just want to add
+that on, uh, uh, kind of as a PSA. Yeah. And then just getting back to the YubiKey, I think that
+that word is going to become more and more popular over the coming years. Uh, but for people who don't
+know what the device is, how it works and also talk about the, the hygiene of a YubiKey, like,
+where do you keep it? What do you do with it when you're not using it?
+Yeah. Well, so YubiKey is a little device like this. YubiKey is a, is a brand name. So, uh, you know,
+it's kind of like Kleenex that people, this is the biggest brand and the one most are familiar with.
+So everybody just calls these devices YubiKeys. Effectively what it is, is the public private, uh,
+key pair, kind of similar to it, what a Bitcoin private key is. Uh, and it's something that can be
+physically, uh, either plugged into your computer or into the USB drive of your phone. Uh, you know,
+this one is the one that we use, uh, by USB. There are other ones that I think, uh, are NFC and other
+technologies, but effectively what they're doing is they're taking, uh, something that you must have
+in your physical possession that can be registered. So in our case, uh, since I know our procedures the
+best, you know, we would send one of these to our customers, uh, and this is for our multi-institutional
+product where they're not already holding a, uh, Bitcoin private key, uh, which would serve this
+purpose. So when they're not, instead we send them a YubiKey. When they want to make a Bitcoin
+transaction, we have a number of procedures that we go through. We do video calls, we do other things,
+but part of the, uh, procedures they need to plug this in and physically tap it. It has a biometric
+reader. Um, and so, you know, only they themselves use it. It's registered. So, uh, in the same way that
+you can know that, uh, your private key is the private key that's associated with our bolt. We know
+that this device is the one that we sent to them. Uh, the difference though, and the reason why, uh,
+some customers are more comfortable holding one of these versus a Bitcoin private key, uh, is because
+this can be replaced ultimately a Bitcoin private key. Once it's gone, it's gone forever. And we would
+have to rotate a bolt. Whereas this, uh, if, if something happens to this, we would certainly go,
+have, uh, due diligence procedures to go through, make sure, uh, we confirmed identity, understood the
+circumstances that led to the loss. And once we have that comfort level, we can issue a new one, uh,
+updated in our systems and continue on without, uh, a big disaster. Um, and so again, ultimately what it
+is, it's PR it's putting something physical in their hand, that means a transaction cannot proceed or an
+action cannot proceed unless they prove that is them. So what that, the risk that that leaves, uh, is
+only one where you are being physically coerced. So if one of these is, is in play, then really the only
+leftover risk that we're discussing here is one where somebody comes into your business or into your home
+gun to the head and says, plug in that UV key, put your thumb against it. Right. And that's a,
+that's a very different risk. The teenagers who are working together on roadblocks, uh, are not,
+there are not reports of them going to physical homes. So it's actually a very, very effective defense.
+I actually really like, uh, these, I've got a whole stack of them because I love to give these out as
+gifts because it's like 30 bucks and it's one of the most, uh, I would say effective ways to improve
+your security. Um, because, uh, even though not every website supports the, what is the native YubiKey
+setup, there's other ways where you can use YubiCo authenticator to replace Google authenticator.
+And, uh, that's actually important within the context of all of this, because one of the other
+mistakes that people make is they set up Google authenticator as their 2FA and it automatically
+enables cloud backups. And, and then if your email gets taken over, they can actually go in
+and they can reset your password by having control of your email and they have the 2FA because it's
+backed up in your cloud. Jameson, uh, that reminds me another of another PSA that I think is really
+important. Uh, maybe six months ago around kind of Bitcoin, Twitter, there went out the messaging about
+Google authenticator and cloud backup. And I remember a lot of screenshots showed like you need to untap
+the cloud backup. And that is very important, but especially if you use multiple devices,
+the other thing you need to do is you need to actually go into the settings and tell it to not
+be associated with your Google account. If you do not select that and you're using multiple devices
+on the same authenticator, it will turn cloud back on. Okay. So it's very important. You can tap the
+cloud. It will look like it turns off. And if you do not change the other setting, it will turn it back
+on and it will do that again and again. So it's very, very important to change that in your settings.
+I mean, really what I think people should recognize is that you need to have two completely set different
+sets of authentication managers. Um, and, and you really shouldn't use Google for any of their
+authentication stuff. You should use separate companies. So you should have a separate password
+manager. That's not Google related, uh, whether that's like, uh, you know, one password or key
+pass or what, what have you. Uh, but then beyond that, and the thing that I really am annoyed by is
+a lot of these password managers have started offering to save your two FA, like your pass keys and
+stuff. And you should disable that. You should not be storing any two FA in the password manager.
+You should be using a completely separate two FA that is a completely different company,
+different infrastructure, so on. And when it comes to keeping and storing the YubiKey,
+do you carry it around with you to sign into things like, where do you store it? Um, I would love to
+hear from Jameson on this in terms of anchor watch policies and procedures. Uh, uh, we instruct our
+clients to leave it in, uh, a safe location out of site. Um, but it is not something that we require
+be stored in a bank vault, for example. So it's a little more accessible, uh, because again,
+what it is preventing is social engineering. Um, it's not really there to prevent a wrench attack,
+right? So the purpose of it is to have it when you need it. So you can go about your life,
+uh, do the business you need to do, sign into the accounts you need to sign into.
+If you need to start a, uh, transaction, start transactions, uh, but be able to, um, mitigate
+this risk of social engineering, but, uh, very interested to hear Jameson's point of view on storage.
+Yeah. I mean, it depends on what you're using it for. If you're using, uh, a YubiKey as your daily
+driver, um, as your, your 2FA for all of your daily usage, uh, my favorite thing to do, and there's
+many different form factors. This is a larger form factor. Like this is the type of form factor where
+I would suggest that you literally just put this on your key ring with all of your other keys and you
+carry it around with you. But, uh, I prefer, um, to get the, the micro form factor that it sits flush
+inside of your computer's USB port. And so you can literally buy it, plug it into your, your laptop and
+leave it there forever. And, and it's because it's so much smaller. There is a small risk where if you're
+picking up your laptop and you have one of these larger ones, I we've seen a few people break them
+off if you like drop it and that's, you want to avoid that. But if you have a small form factor,
+it'll, it'll stay good. Um, also you can, uh, and should set a pin on the YubiKey itself. So that
+basically every time the computer boots up or the first time that you're using the YubiKey, you have
+to input a pin code. And that does give you some additional, uh, protection against, uh, you know,
+physical access attacker. Nice. Well, on the second half of the show, I want to dive into what each
+one of your companies is doing specifically to help your clients, uh, when it comes to mitigating
+these risks. Uh, but first there's a problem in the Bitcoin crypto industry is that you have people
+applying to jobs from a country like North Korea. Um, and I mean, you've seen these videos before, uh, Defcon
+has a lot of, uh, talk about this. Have you guys experienced anything when it comes to people
+applying for jobs at your companies that might be trying to socially engineer? Oh yeah. Yes.
+Okay. Let's hear it. What's going on. Why don't you take it first? But yes.
+Uh, so we especially had a big uptick because we posted a, a security, uh, developer engineer position,
+a month or so ago, uh, which is like one of the, I would say most attractive positions for these attackers
+as someone who would have, uh, you know, high escalation access to many sensitive internal
+infrastructure within a company. Um, and we, we've been able to filter out a lot of them, uh, you know, just
+from the, the resume perspective, but several of them got, uh, actually multiple rounds into our hiring
+process. And, and the, the way that they were, they've been able to do that is that, um, the more
+sophisticated operations, they actually will send an American or American, uh, seeming person to do the
+first round and then they'll swap them out for the actual North Korean attacker on the second round.
+And they're kind of betting on your organization, you know, left hand, not talking to the right hand,
+uh, type of, of situation. So, um, you know, one of the things that we've added as a part of our
+process is basically, you know, taking a screenshot of the people who show up at each round so that we can
+compare them against each other. Um, there's also a lot of other techniques that we've implemented to
+suss these people out. And you basically have to understand that, you know, they are, they're
+impersonating someone who has a background that they simply don't have enough time to create a fully
+detailed background profile. And so, uh, you can start quizzing them on things that your average, uh,
+recruiter would not about their sort of personal background history. Um, and so like, for example,
+I've, I caught one guy by basically, uh, asking him to tell me, uh, uh, like what building on campus
+he spent four years, uh, doing his computer science, uh, degree in, and the fact that it,
+he froze up and he obviously had to like Google it was, it was a big tell. Another thing is just a lot
+of cultural questions is, uh, these people are not American. They weren't born and grew up in America.
+And so if you ask them American cultural questions, they'll, uh, they'll flop pretty hard.
+Makes sense. And Becca, on our side, I don't have as many details because I don't do technical hires.
+Uh, I just know that we've received them. So, uh, things about their application or that, uh, we start,
+uh, technical prospects with a coding challenge. And over the course of exchanging information to prepare,
+to do the coding challenge or in the course of doing it enough, um, red flags were raised, uh,
+that they didn't make it too far, too far down the process. Um, I have not received job applicants
+on the sales and operations side of the company or on the, on the insurance side of the company.
+However, just maybe two weeks ago, um, I, I was on my first zoom call with the North Koreans, uh, where,
+um, I did not, uh, set up the call a team member, set up the call and it started as a, uh, X chat
+infiltration. So somebody actually about four or five months ago, uh, in the Bitcoin community had their
+account, uh, infiltrated. And, uh, I think there were some tweets about it back then, but nothing that,
+uh, my teammate had seen. And so they had a conversation referred to things that they had
+talked about years, you know, earlier and trying to pick up the old conversation.
+And so it was legitimate enough seeming that they, uh, set me up to go on a podcast.
+And, uh, the reason it was suspicious from the very first sec, like from the first moment,
+but part of the reason it was suspicious is because I was very familiar with the scam in part because
+some of my industry friends have fallen for it, right. Multiple in a line, like, I mean,
+like a core dev has fallen for it. And when a core dev fall falls for it again, speeds of legitimacy,
+right? When a core dev reaches out to you, you assume he hasn't been hacked. And so they start a
+conversation that that ends up with them clicking on a thing and they got pwned. Right. And so I've heard
+of this, uh, I had already heard of this multiple times, including, uh, you know, from industry friends,
+uh, who again are smart people and fell for it. So when I got on the call, um, uh, the, it was supposed
+to be a call to like prep for a, I think a coin desk podcast. And, uh, the guy I got on the phone with
+was supposedly this person in Bitcoin that we know, but he wouldn't turn on his camera. The other guy,
+um, I thought it was a Chinese accent. I wasn't knowledgeable on the North Korean, but heavily
+accented, uh, North Korean ended up, um, being the producer and, uh, you know, I, we were very
+suspicious, but engaged in conversation for several more minutes maybe, uh, during which they, uh, tried
+to like, they couldn't get the camera to turn on. My camera wasn't working. It was a site I wasn't
+familiar with. And of course I knew what was coming next. They wanted me to download their, uh,
+their own software, which wouldn't have these IT problems. Um, and I was familiar with that.
+So we ended the call and that was that's, and it went no further, but again, this is a known, uh,
+North Korean tactic, uh, and they're in particular targeting crypto companies. It's important to,
+it's important to think about in this age of AI, uh, social engineering, hacks, vulnerabilities,
+any, any bad actors that have these incredibly powerful tools or tactics. They're always going
+to go for Bitcoin first, right? Because if they're successful, it's done, right? It's done.
+There are no chargebacks, you know, Bitcoin and crypto didn't invent fraud. It removed chargebacks,
+right? It removed the ability to be made whole without insurance because a company, uh, will take care of it.
+Uh, and so ultimately, um, you know, I, I lost my exact train of thought there. Apologies, but,
+um, it is, it's, they are going to use everything in their power to come at you from every direction.
+So yeah, I guess the first interview question has got to be, will you insult the Supreme leader?
+That's a one way to read them out in the very beginning. Yeah. All right. First. Okay. So we're
+going to dive into what you guys companies each are doing to protect your customers. But first,
+I mean, if you're going to protect your Bitcoin, you first, you got to have Bitcoin, right? So we
+highly advise you go over to Rhino Bitcoin to go and purchase it because getting access to Bitcoin
+financial services historically was slow, clunky, and scattered across all these different platforms.
+But Rhino is changing that Rhino is a next generation Bitcoin banking app designed to handle all of your
+Bitcoin needs in one place. Buy Bitcoin with zero fees, get more sats for every dollar that you spend,
+make payments instantly over the lightning network, send cash globally fast and easy over Bitcoin rails.
+And of course you can DCA set up automatic savings. So you stack sats on your schedule and build wealth
+over time. Soon you'll be able to pay bills, direct deposit and save for retirement all within one app.
+And as we were talking about today, security is of the utmost importance. Rhino uses biometric
+verification, 24/7 fraud protection, and the confidence of knowing your Bitcoin is never ever rehypothecated.
+They're also a partner with Casa. You can use them as a key in your multi-sig setup.
+So go download Rhino today at rhinobitcoin.com. Tap the link below in the description. Use the code
+BITCOINNEWS, one word BITCOINNEWS, and Rhino will drop you $21 in free Bitcoin when you deposit your
+first 100. So go check them out. Great friends of the program. Very thankful to have them on board
+when it comes to Bitcoin news live. All right. So now let's bring it back to what you guys are doing
+individually to help you and your customers defend against this. Jameson, you're about to publish a
+report soon about all these attacks. What did you find and how is Casa defending your customers?
+Yeah. I mean, we'll basically be using close to an hour of phone calls that I have with these social
+engineers where I got some of them to open up and talk about their process and the way that they think
+about pulling these attacks off. So that'll just be an informational deep dive into understanding some of
+the tactics of what they're doing and their incentives, some of the organizational structure of how this
+works. From a protection standpoint, earlier this year, we implemented a number of new security features.
+One of those is an active call detection so that, you know, if you're on the phone with someone and then
+you're opening your Casa app, we'll actually throw up a real big alert that basically says, "Hey,
+you know, Casa is not going to be calling you out of the blue. You know, we schedule phone calls far
+in advance with our premium customers if you need something in particular, but if you're on the phone
+with someone, then you should be using this other security feature that we set up, which is basically
+a two-way cryptographic attestation." You know, it's kind of like a TOTP, the time-based, you know,
+six-digit rolling codes that you've used like with Google Authenticator, except that that's just between
+yourself and Casa. You can basically request whoever you're on the phone with to give their code and
+input it into the app, and then vice versa, you know, Casa will ask for your code so that we can both
+verify that the person that we're talking to, you know, is someone who is authenticated and has that
+private key material. We've also done some other things like if you want to even restrict your account
+further, you can actually set what we call guardian mode, which basically means that, you know, Casa will
+not allow you to send funds unless the Casa key has been used to sign a transaction. And the reason
+that that's additionally helpful is because the Casa key has an additional layer of authentication
+mechanisms on top of it, depending upon what your client tier is. And then it always also comes with
+a multi-day waiting period between authenticating and actually having a transaction that can be broadcast.
+And really one of the most important things that you can do in all of these processes from a defender's
+perspective is to slow down the attack. You know, if you can frustrate an attacker to a significant
+degree, then eventually they will give up and they will just go try to find a softer target.
+Yeah, it's not letting the emotions take over and make you act in a moment of urgency is so important
+in this whole entire defense process. And Becca, what are you guys doing? And how does insurance play into
+it all? Sure. What we're most known for publicly is a custody platform in which we share custody with
+our customers. So we have two custody models. One is one where it's similar to collaborative custody,
+one is one where they are. But instead of anchor watch being kind of a backup key, we are always a required
+signer alongside our customers. So we use many script a little bit different tech. But the customer has to
+sign, we have to sign together. And then we use time locks to provide additional resiliency. We take a lot of
+our procedures. And our other product, by the way, it's multi institutional where customers don't hold
+keys at all and custody is shared between ourselves and two other institutions. So the risks of a single
+counterparty are actuarially statistically speaking, significantly reduced from a single institution where
+internal crime is a much bigger deal. In terms of our procedures and some of the things that we have
+either implemented into the tech built in natively via Bitcoin or with our own app level technology or just
+procedures, operational procedures, some of which we learned from TradFi and personal banking and high
+net worth private banking. So for example, one of the most common ways that in fiat, people have their
+assets stolen is by their own loved ones. So it's a child or a son in law, or it's their caretaker,
+right, a medical assistant, things like that. And they're influencing people in a different form of
+a social engineering scam to actually, you know, give away give away their fiat. And one of the main ways,
+uh, despite all the technology out there that private banking and high net worth banking, uh, mitigates this
+is by having a personal relationship with their clients. So if, uh, you get in a situation and say,
+uh, elderly, uh, customer wants to move a lot of money. Uh, one of their very first tactics is to,
+you know, uh, if it, if the person on the phone is not the person that set up the account, they get
+that person on the phone. So, uh, they, they literally will go, even if it was a year earlier,
+two years earlier, they get the same person who has provided and interacted with this person,
+which can help because humans, again, like we are, we are very good at sussing things out when we're
+looking for it. So they put a professional on it who is not scared, right. Who is not being,
+uh, you know, influenced, but they're coming at it very critically and they're able to ask questions.
+Why are you doing this, et cetera? So we have personal relationships. We're a required signer
+on every call and we are on every transaction and we get on a call for every transaction.
+Those are not options. We give our clients. Those are requirements. Uh, and people that use us in
+parts are doing so because they want that level of guaranteed security. Uh, and so, you know, we are
+doing those things. However, the video call while video calls can be, uh, you know, deep faked in general,
+we are required signer and generally a social engineering attack. Uh, most commonly is that
+something is wrong with your account. You must move your Bitcoin to protect your Bitcoin. If you
+don't move your Bitcoin, it will be lost. And we have this video call to get on the call. You know,
+maybe we get together with our clients annually, by the way, and do key health check and restart our
+time locks if they're on our flagship vault. And we have the opportunity without trying, uh, and,
+and like acting for asking for too much personal information, but we can say like, do you have any
+major per, uh, purchases planned for this year? If they're like, absolutely not. We're hodling.
+We will not spend the SAP this year. We can even turn off the send button. So that's an app level, uh,
+setting, but we will disable the send button. And if they have a medical or emergency, or if they're
+a dream home comes on the market and something changes, it's going to be extra due diligence of
+them talking to us, explaining the situation for us to feel confident. Okay. This is real. You're not
+being socially engineered. Uh, we feel comfortable signing this transaction. And again, this is something
+that customers want from us. They expect from us to help them provide that level of, um, care, uh,
+and critical eye and just make sure that everything seems above board. If they're telling us,
+Hey, you know, thank you for getting on the call. We got to get this Bitcoin moved. You know,
+thank you about, I heard about your vulnerability, you know, let's get this done. Oh, we, we didn't
+have a vulnerability that, that did not come from us. You know, we got this, the first we heard of this
+transaction was from you. So tell us more about why you think that, okay. That was a social engineering
+call. That's not something, uh, that we're going to sign a transaction for, you know, and, and again,
+it's not that, uh, anchor watch can't prevent you from say, sending Bitcoin to somewhere that you
+really want to. So let's say, uh, you got involved in an investment scam, right. And you want to make
+an investment. We can do our best to, uh, through conversations, suss that out. Like, Hey, you didn't tell
+us that you were intending to make a major investment change and move away, uh, you know,
+from Bitcoin or try to go, you know, are you sure? Like, is the, you know, can you tell us a little
+bit more about why you came to that decision? Right. You know, so we can do our best. Um, but again,
+that is a level of human connection, uh, that we learned from high net worth private banking, uh, that
+is really significant. All transactions with customers require either a key or a UV key.
+So that combined with this human relationship is actually incredibly resilient. We have additional
+things as well. We have our white list. Uh, so any new addresses, you know, have either a three-day or
+a seven-day cool down. And then, yes, of course we have our insurance as well. The insurance, uh,
+transparently and clearly does not cover social engineering, our insurance and our technology
+works together in tandem. So what we do is we build the absolute best Bitcoin vault we can
+to keep your Bitcoin safe via Bitcoin native technologies with a few extra app level technologies.
+On top of that, we, we create all that technical safety and that brings down the insurance cost.
+And then we try to ensure what's left. What's left are a few main things. One is government seizure.
+We can't help with that. We can't promise to help with that. We've done our best to, uh, uh, create
+paths of sovereignty. Um, but we do, do not promise to be able to solve that. And insurance does not cover
+that the other two main risks. We have filled those gaps with insurance. One of the gaps is that anchor
+watch is a bad actor. We built a backdoor in our system. We fraudulently use our time locks or our
+recovery, uh, uh, layer in partnership with one of the other institutions to steal Bitcoin. We, uh, tell
+you that the vault construction and the time locks work a certain way. We tell you that we can't send
+Bitcoin alone unilaterally, but really we can, and we do so all of that is covered by insurance and,
+and that's a plus rated Lloyd's of London insurance. So we're not the ones determining if we committed a
+crime or not law enforcement and Lloyd's, uh, are determining that. And if we did that, that gets
+paid out. And the other main risk is wrench attacks. All these things, uh, that we put into place,
+both anchor watch and Casa and other companies like cool downs and video calls, all these things, they,
+they all help to mitigate wrench attacks help. So it is distributing keys into multi-sigs, all of these
+things help, but especially if you're, uh, say in a corporate environment, right? You've got a company's,
+uh, Bitcoin's, uh, Bitcoin, the risk of a gun to the head is a real risk and you don't actually have to be
+the key holder to have that risk, right? The, the risk is that you are dragged in front of a zoom call
+and said, Hey, anchor watch, you're going to watch your customer die in front of you, unless you send
+their Bitcoin to this address right now. Right. Uh, and that would be a covered loss or a situation
+where a customer lies to us, right? Like they tell us they have a medical emergency. There's somebody
+off camera with a gun to their child's head, uh, or their secretary's head or whomever it may be.
+And they fearful for their lives convincingly tell us what is going on. Uh, and then after the fact,
+so we sign off on the transaction, maybe they're held for a couple of days, right? We're not aware
+of it. Uh, we sign off on the transaction. They come back to us and tell us, Hey, I lied to you.
+Like this was the situation. There was a gun to my, you know, person's head. And, uh, this is what
+really happened. Of course, we're going to do an insurance and a law enforcement investigation. This
+is kidnapping. The FBI will be involved, but that is a covered loss. So again, our technology and all
+these things, the YubiKey and the transactions and the white lists and all of that is mostly keeping
+you safe. And then we have insurance to plug those holes where the tail risks still exist. And so again,
+with that, with the exception of government seizure, we feel extremely confident, extremely confident
+that through our procedures, technology, and the insurance that we are the safest way to hold
+Bitcoin. Man, the amount of things you guys need to think out, uh, is really pretty crazy. You know,
+uh, all of these different scenarios and well, I'm sure your customers are very thankful that you've done
+so. And then in terms of last question over to you, Jameson, we live in this society where it seems
+like the scams continue to proliferate. What's, what kind of mindset do you need in order to stay safe,
+yet also function in, uh, in society without losing your mind?
+Um, all you have to do is be antisocial. Uh, just don't answer any incoming messages and that'll take
+care of pretty much all of these, uh, scams. They all rely upon you, um, you know, believing
+in a given communication channel. So, um, you know, understand that, you know, whenever you receive
+a message online, whether it's, uh, email or some chat platform or whatever, um, even if it's someone
+that you've been communicating with for years, it's not necessarily going to be them. So, um, you know,
+whenever you're going to be engaged in any sort of sensitive operation, you should not be solely relying
+upon one communication channel. Uh, you should always verify out of band, contact that person,
+through some other means, uh, you know, preferably in meat space, but that's not always an option.
+Um, you know, we're, we're not at the point yet where people are able to, um, do a, you know,
+mission impossible level, um, impersonation of someone's physical body. Um, but, but beyond that,
+if you're at least using completely separate communications platforms, just becomes a lot
+less likely that that given attacker has compromised all of them.
+All right. Well, that was quite the hour. I think we gave people a lot to chew on.
+And this conversation is important, not just for Bitcoiners, but for everybody in this day and age,
+right? So if you're watching this, you enjoyed it, share it with somebody who you think would
+benefit from it. Thank you guys so much for coming on quickly. Shout out where people should go if they
+want to find out more about you guys' companies. Uh, Jamison first.
+You can check us out. It's a casa.io, C-A-S-A.io.
+And, uh, we are anchorwatch.com and, uh, I'm Becca, B-E-C-C-A at anchorwatch.com.
+All right. Thank you so much for your time. Really appreciate it. And, uh, hopefully we gave people
+some extra steps to take to protect themselves moving forward. Cheers, everyone. Thank you for
+tuning in. This is Rob of Bitcoin news. We'll be back next Wednesday, 11:00 AM. Bye-bye.
