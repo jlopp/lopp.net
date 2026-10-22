@@ -385,4 +385,65 @@ input[type=checkbox] + label:hover {
     color: #ffffff !important;
 }
 /* Google Custom Search Widget */
-#___gcse_0 { margin-top:-20px; }
+#___gcse_0:before { display:none; }
+#cse {
+  /* Let the Google Custom Search widget render at its natural height (~60px).
+     The old fixed 300px x 25px box clipped the form, chopping the search input
+     and hiding the search button. Width stays capped at 300px on wide screens
+     and shrinks to fit narrow/column-below-sm layouts. height:auto avoids
+     collapsed-height surprises without hard-coding Google's current metrics. */
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  overflow: visible;
+}
+/* Neutralize Google's default outer chrome around the embedded search box */
+#cse .gsc-control-cse,
+#cse .gsc-control-wrapper-cse {
+  padding: 0;
+  background: transparent;
+  border: none;
+  width: 100%;
+}
+/* Search form: table-layout:fixed so the text input gets ALL leftover width
+   at every viewport size and never pushes the layout sideways. */
+#cse table.gsc-search-box {
+  width: 100% !important;
+  max-width: 300px;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+#cse td.gsc-input {
+  width: 100%;
+}
+#cse td.gsc-search-button {
+  width: auto;
+}
+/* Search input: 100% of its cell so it tracks the container at any width. */
+#cse input.gsc-input {
+  width: 100% !important;
+}
+/* Keep Google's hidden button from affecting layout (its td is display:none
+   upstream, but force it robustly so no phantom gap appears). */
+#cse td.gsc-search-button,
+#cse button.gsc-search-button {
+  display: none !important;
+}
+/* Compact metrics: shrink the widget to half its natural height (~58px -> ~29px)
+   by tightening Google's cell padding and input line metrics. Height flows
+   naturally from these, so no brittle hard-coded height is needed. */
+#cse .gsib_a {
+  padding: 1px 10px 1px 56px !important;
+  line-height: 20px !important;
+}
+#cse input.gsc-input {
+  font-size: 14px !important;
+  line-height: 20px !important;
+  height: auto !important;
+}
+/* The 20px social icons in the sibling column render with their center ~10px
+   below the column top; lift the 29px-tall search box by half its height minus
+   10px so its vertical center lines up with the icon row's center. */
+#cse {
+  margin-top: -4.5px;
+}
