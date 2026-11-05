@@ -140,7 +140,7 @@ additions; do not add resources here.
 
 **[recommended-wallets.html](bitcoin-information/recommended-wallets.html)** —
 Sections: Wallet Basics; Wallet Comparisons; Recommended Wallets; Wallet
-Backups; Key Storage Hardware; Wallet Recovery Services; Wallet Recovery Tools.
+Backups; Key Storage Hardware; Wallet Recovery Tools; Wallet Recovery Services.
 Guidance: Recommended Wallets is the core list — hardware/software wallets with
 a strong track record only (new wallets face the reputation rule hard). Wallet
 Comparisons takes sites that compare many wallets. Key Storage Hardware takes
@@ -150,8 +150,8 @@ overlap: "Wallet Backups" also appears on `security.html`; backups guidance
 tends to live here, security-focused backup checklists there.
 
 **[full-node.html](bitcoin-information/full-node.html)** — Sections: Running a
-Node; DIY Guides; Full Node Dashboards; Full Node Software; Alpha / Unmaintained
-Full Node Software; Plug & Play Node Hardware.
+Node; Full Node Software; Full Node Dashboards; DIY Guides; Plug & Play Node
+Hardware; Alpha / Unmaintained Full Node Software.
 Guidance: Running a Node = why/how-to educational links (incl. node stats like
 listening nodes count). DIY Guides = build-your-own guides. Full Node Software
 = maintained packages (Core, Knots, etc.); anything unmaintained/alpha goes to
@@ -159,8 +159,8 @@ Alpha / Unmaintained instead of being added to the main list. Plug & Play =
 commercial appliances.
 
 **[security.html](bitcoin-information/security.html)** — Sections: General
-Security; Bitcoin Security Guides; Security Checks; Wallet Backups; Cold Storage
-Guides; Bitcoin Security Disclosures; Known Scams.
+Security; Bitcoin Security Guides; Security Checks; Cold Storage Guides; Wallet
+Backups; Bitcoin Security Disclosures; Known Scams.
 Guidance: General Security = non-bitcoin-specific opsec. Bitcoin Security
 Guides = bitcoin-specific. Security Checks = tools to verify downloads
 (signatures, checksums). Cold Storage Guides = step-by-step storage setups.
@@ -169,9 +169,9 @@ recommended-wallets.html — new backup resources usually belong there; only
 security-angle backup content goes here.
 
 **[buying-earning.html](bitcoin-information/buying-earning.html)** — Sections:
-Buying Bitcoins; Privacy Preserving Exchanges; Lending Bitcoins; Earning
-Bitcoins; Escrow Services; Automatic Cost Averaging; "Sats Back" Programs;
-Buying & Selling Strategies; Retirement Accounts.
+Buying Bitcoins; Privacy Preserving Exchanges; Earning Bitcoins; Automatic Cost
+Averaging; "Sats Back" Programs; Lending Bitcoins; Escrow Services; Buying &
+Selling Strategies; Retirement Accounts.
 Guidance: Buying = exchanges/on-ramps (reputation rule critical). Privacy
 Preserving Exchanges = KYC-free/low-KYC venues specifically. Lending = BTC
 collateralized lending platforms. Earning = get-paid-in-BTC platforms & job
@@ -193,16 +193,16 @@ infrastructure (messaging, networks, anonymous numbers). A new resource about
 bitcoin coinjoin → Privacy Software; about opsec in general → General Privacy.
 
 **[history.html](bitcoin-information/history.html)** — Sections: The History of
-Bitcoin; Logs & Transcripts; Satoshi Nakamoto; Security Incidents; Books;
-Scaling Debate; Spam Debate.
+Bitcoin; Logs & Transcripts; Satoshi Nakamoto; Books; Scaling Debate; Spam
+Debate; Security Incidents.
 Guidance: The History of Bitcoin = narrative histories & timelines. Logs &
 Transcripts = chat logs, forum posts, mailing list archives. Satoshi Nakamoto =
 Satoshi's writings & investigations. Security Incidents = post-mortems of
 hacks/thefts. Books = history-focused books (general books → books.html).
 Scaling Debate & Spam Debate = archives of those specific controversies.
 
-**[books.html](bitcoin-information/books.html)** — Sections: Technical Books;
-Non-technical Books; Bitcoin History; Economics & Money; Freedom.
+**[books.html](bitcoin-information/books.html)** — Sections: Non-technical
+Books; Bitcoin History; Economics & Money; Freedom; Technical Books.
 Guidance: Route by the book's primary lens: protocol/engineering → Technical
 Books; general-audience explainers & investing → Non-technical Books;
 chronicles/histories → Bitcoin History; monetary economics → Economics & Money
@@ -212,7 +212,7 @@ books, economics.html "Free Books" for freely-available works);
 censorship/freedom themes → Freedom.
 
 **[economics.html](bitcoin-information/economics.html)** — Sections: Economics;
-Books; Free Books; Statistics.
+Free Books; Books; Statistics.
 Guidance: Economics = essays/articles on bitcoin economics & Austrian
 economics. Books/Free Books = money & economics titles (see books.html
 guidance). Statistics = historical/monetary data sources (live network stats →
@@ -225,8 +225,8 @@ Guidance: Investment Theses = long-form "why BTC" pieces. Corporate Treasuries
 or stock-to-flow style valuation models. On Altcoins = skeptical analyses of
 altcoins (not general crypto resources).
 
-**[trading.html](bitcoin-information/trading.html)** — Sections: Advanced
-Trading; Charts & Metrics; Trading Bots; Trading Terminals; Trading Simulators.
+**[trading.html](bitcoin-information/trading.html)** — Sections: Charts &
+Metrics; Advanced Trading; Trading Bots; Trading Terminals; Trading Simulators.
 Guidance: Advanced Trading = exchanges & trading education (the hub page warns
 amateurs off). Charts & Metrics = charting/analytics platforms (network-wide
 metrics → statistics-metrics.html; exchange rate feeds → exchange-data.html).
@@ -256,8 +256,8 @@ or critical mining takes.
 
 **[developer-tools.html](bitcoin-information/developer-tools.html)** —
 Sections: Blockchain Querying; Electrum Servers; Developer Tools; Bitcoin
-Scripting; Programming Libraries; Signed Message Verifiers; Testnet Network
-Info & Faucets.
+Scripting; Programming Libraries; Testnet Network Info & Faucets; Signed
+Message Verifiers.
 Guidance: Blockchain Querying = RPC/explorer APIs & query services. Electrum
 Servers = electrum server implementations & public lists. Developer Tools =
 general dev utilities (parsers, PSBT tools, testing frameworks). Bitcoin
@@ -266,9 +266,9 @@ on technical-resources.html). Programming Libraries = language SDKs. Signed
 Message Verifiers = verification UIs. Testnet/faucets = self-explanatory.
 
 **[technical-resources.html](bitcoin-information/technical-resources.html)** —
-Sections: Technical Resources; Covenants; Miniscript Resources; Technical
-Classes; Technical Books; Academic Research; Design; Contributing to Bitcoin
-Core; Quantum Computing.
+Sections: Technical Resources; Technical
+Classes; Technical Books; Miniscript Resources; Covenants; Design; Contributing
+to Bitcoin Core; Academic Research; Quantum Computing.
 Guidance: Technical Resources = the general protocol documentation hub (BIPs,
 Bitcoin Wiki, bitcoinops, etc.). Covenants = covenant proposal write-ups &
 discussions. Miniscript Resources overlaps developer-tools.html "Bitcoin
@@ -281,7 +281,7 @@ Bitcoin Core = contribution guides, PR review clubs, bcore resources. Quantum
 Computing = quantum-threat analyses.
 
 **[block-explorers.html](bitcoin-information/block-explorers.html)** —
-Sections: Block Explorers; Blockchain Analysis; Open Source Block Explorers;
+Sections: Block Explorers; Open Source Block Explorers; Blockchain Analysis;
 Other Tools.
 Guidance: Block Explorers = mainstream explorers. Open Source Block Explorers =
 self-hostable explorers. Blockchain Analysis = chain-analysis firms &
@@ -312,9 +312,8 @@ Podcasts; Video Podcasts.
 Guidance: Split purely by format. Active shows only; dead shows get removed
 over time, so prefer currently-publishing podcasts.
 
-**[blogs.html](bitcoin-information/blogs.html)** — Sections: Technical; Less
-Technical.
-Guidance: Two-column split by technical depth. Personal/company blogs with
+**[blogs.html](bitcoin-information/blogs.html)** — Sections: Less Technical; Technical.
+Guidance: Split by technical depth. Personal/company blogs with
 consistent bitcoin technical output → Technical; commentary/analysis blogs →
 Less Technical. Dead blogs are periodically pruned; require recent-ish
 activity or historical importance.
@@ -353,14 +352,15 @@ Spaces = physical bitcoin co-working spaces. Venture Capital = VC firms
 investing in bitcoin.
 
 **[charity.html](bitcoin-information/charity.html)** — Sections: Lists of
-Charities & Platforms; Bitcoin Developer Grants; Bitcoin Accepting Charities.
+Charities & Platforms; Bitcoin Accepting Charities; Bitcoin Developer Grants.
 Guidance: Lists of Charities = directories/aggregators. Bitcoin Accepting
 Charities = individual charities that accept BTC directly (reputation rule
 applies). Developer Grants — see careers.html overlap note.
 
 **[merchant-adoption.html](bitcoin-information/merchant-adoption.html)** —
-Sections: Where to Spend Bitcoins; Gift Cards; Bitcoin Debit Cards; Merchant
-Payment Processing; BTCPay Integrations; Online markets.
+Sections: Where to Spend Bitcoins; Merchant
+Payment Processing; BTCPay Integrations; Gift Cards; Online markets; Bitcoin
+Debit Cards.
 Guidance: Where to Spend = merchant directories. Gift Cards = gift-card
 platforms. Debit Cards = BTC-backed cards. Payment Processing = processors
 (non-lightning-specific; lightning processors → lightning page Merchant
@@ -392,8 +392,8 @@ Forks = fork listings/trackers.
 
 **[other-layers.html](bitcoin-information/other-layers.html)** — Sections:
 Lightning Network; Sidechains; Sidechain Platforms; Drivechains; Statechains;
-Softchains; Spacechains; Spiderchains; BitVM; Discreet Log Contracts; Ecash;
-Rollups; Other Anchored Chains; Identity Protocols; Other Protocols;
+Softchains; Spacechains; Spiderchains; BitVM; Discreet Log Contracts; Rollups;
+Ecash; Other Anchored Chains; Identity Protocols; Other Protocols;
 Cross-Chain Bridges.
 Guidance: One section per protocol family. Lightning Network here is just a
 pointer to the lightning page — do not add lightning resources on this page.
