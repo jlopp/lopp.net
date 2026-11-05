@@ -50,17 +50,19 @@ All resource pages share the same template. Follow it exactly.
 
 ### Anatomy of a resource page
 
-- Two-column Bootstrap grid: `<div class="row">` containing two
-  `<div class="text-left col-xs-12 col-sm-6 col-lg-6 col-md-6">` columns.
-  The second column is preceded by the comment `<!-- RIGHT COLUMN -->`.
+- Single-column layout: `<div class="row" style="font-weight:bold">` containing
+  one or more `<div class="text-left col-xs-12">` sections stacked in reading
+  order. **Do not reintroduce side-by-side columns** for content: Bootstrap lays
+  columns out column-major, which silently reorders the authored sequence on
+  screen (a 2026 audit found 26% of section pairs rendered out of order across
+  the site). Keep the full-width wrapper and let sections stack.
 - Sections are `<h2>` headings with an anchor link:
   `<h2 id="snake_case_id"><a href="#snake_case_id">Section Name:</a></h2>`
   Note the trailing colon on most section names (exceptions exist, e.g.
   lightning's `research` heading "Research" has no colon).
 - Section IDs are `snake_case` (e.g. `getting_started`, `technical_resources`).
 - Resources live in `<ul>` lists immediately under their `<h2>`. On
-  `lightning-information.html`, sections are separated by `<br>` rather than
-  living in separate columns.
+  `lightning-information.html`, sections are separated by `<br>`.
 - Entries are ordered roughly alphabetically by display name. Insert new
   entries in alphabetical position unless the section is clearly ordered
   another way.
@@ -99,8 +101,8 @@ All resource pages share the same template. Follow it exactly.
   resource fits nowhere, leave it out and note it in the PR description.
 - Do not reorder or "clean up" existing entries; keep diffs minimal.
 - Do not remove web.archive.org wrappers — they are intentional.
-- Column balance is cosmetic; Jameson occasionally rebalances columns when a
-  section grows. Don't move sections between columns as part of link additions.
+- Do not move sections between columns or reintroduce multi-column content
+  layouts; sections stack full width in reading order (see §2).
 
 ---
 
@@ -420,8 +422,7 @@ Resources = the only place general crypto resources are listed.
 
 ## 4. Full catalog — `/lightning-information.html`
 
-Single-column-ish page (sections flow across two columns), sections separated
-by `<br>`. Sections in page order, with guidance:
+Single-column page (sections stack, separated by `<br>`), sections in page order, with guidance:
 
 1. **Getting Started** — beginner explainers of Lightning. Route newbie LN
    content here.
