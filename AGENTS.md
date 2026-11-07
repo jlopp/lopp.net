@@ -89,10 +89,8 @@ All resource pages share the same template. Follow it exactly.
 2. Verify the resource is not already listed anywhere in the repo.
 3. Insert an `<li>` in alphabetical position within the section's `<ul>`.
 4. Match the exact markup above (`target="_blank" rel="noopener"`).
-5. No `sitemap.xml` change is needed — it lists pages, not individual links.
-6. Validate: run `python3 check_links.py -ff` (fast mode; add `-f` for
-   thoroughness) to confirm no broken links were introduced. Requests must be
-   installed: `pip install bs4 fake_headers requests tqdm`.
+5. The description text after the link must be no more than 40 characters long.
+6. No `sitemap.xml` change is needed — it lists pages, not individual links.
 7. Commit with a message naming the resource and the page/section it went into.
 
 ### Common pitfalls
@@ -244,6 +242,8 @@ Sections: Blockchain Statistics; Node Statistics; Miscellaneous Metrics.
 Guidance: Blockchain Statistics = on-chain data platforms. Node Statistics =
 node counts/geography (also reachable from full-node.html). Miscellaneous
 Metrics = everything else (lightning stats live on the lightning page).
+Price and trading related charts and metrics should not go here, they belong 
+in bitcoin-information/trading.html
 
 **[mining.html](bitcoin-information/mining.html)** — Sections: Mining Info;
 Mining Guides; Cloud Mining / Hosting Services; Energy Consumption; Other
