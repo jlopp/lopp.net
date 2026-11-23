@@ -1,0 +1,521 @@
+If it appears out of nowhere, like right now, when something like half of all the Bitcoin, if not more, is vulnerable, pretty much game over.
+Spoken with several of these companies and asked them, you know, are you going to steal the vulnerable coins?
+Obviously, they're not going to come out and say we're going to steal the coins, but they haven't said, no, we would never do that.
+They're like, well, we'll just have to decide, have like a board meeting.
+Like, I know what board that has fiduciary duty to their investors is going to decide to do with the ability to scoop up hundreds of billions of dollars.
+I mean, they estimated to take about six blocks worth of block space to suite like 95%, the top most valuable pay to pub key addresses.
+I want to say like 30% of all Bitcoin right now is exposed as a result of address reads.
+Basically, if you get to the point where a quantum attacker can crack a key in under 10 minutes, then it's super duper game over.
+It's the Quantum Bitcoin Countdown.
+Today's episode, what would actually happen to Bitcoin?
+We're going to go over some scenarios of Q Day.
+Quantum arrives.
+Quantum computers are here.
+What happens?
+What are the scenarios for Bitcoin?
+We've seen the bips.
+We know the theory.
+We're going to hear from a great guest today who's been at the vanguard of publishing research around thinking about this topic.
+I'm talking about Jameson Lopp, a Bitcoin researcher and OG in his own right of story.
+Technical contributor to Bitcoin who recently introduced a proposal, BIP361, that takes a novel look at the quantum threat.
+My co-host today, of course, Nathan Jaffe, head of media at Starkware.
+Let's dive in.
+It's going to be an interesting and maybe uncomfortable conversation, Nathan.
+Rizzo, great to be with you.
+I think that everybody carries around a quantum fantasy.
+What I mean is that I think we've all been through the learning curve where we learn about Bitcoin, learn about quantum and hear about potential solutions and hope for a few moments that each of them is a magic bullet.
+But when we try to dig down, we actually see how there's a bit of a domino rally of consequences.
+So a simple example, one might think for a moment, OK, if there's a way of securing certain wallets, people who want to secure their wallet.
+Great.
+That's fantastic.
+That works great.
+Until you actually carry on the logical thought and say, hold on, what's happening to the rest of the network?
+If the rest of the network is falling apart, what's happening to the value of Bitcoin?
+Have you basically protected something that could potentially have no value anymore?
+So once you start to work through the scenarios, they all become so much more complicated.
+And that is why I'm very excited for the interview today, because I think our guest actually knows really well how to unpack all of this.
+But Rizzo, you were saying to me before that you think some of the things you'll be talking about will be uncomfortable.
+Tell me about that.
+Yeah, I think this is where the conversation is going to get real.
+We talked about, you know, what is quantum computing theoretically, if you listen to episode one.
+Episode two, of course, is about the timeline of quantum computers.
+Jameson, I think, is going to bring a really fascinating perspective of this is someone who not only has his own Bitcoin quantum proposal, he's really documented the scenarios.
+He spent time thinking Jameson really is one of the great Bitcoin security thinkers.
+There's a famous New York Times article about how Jameson deleted himself from the Internet, spent several years removing all identifying information.
+Jameson is someone who thinks deeply about problems facing he's been at the vanguard of companies like Bitco and Casa that protect millions and even billions of dollars worth of Bitcoin at institutional scale and individual scale.
+And look, I think he's mentioned to me in our conversations, he doesn't like my fantasy.
+My fantasy is that, you know, we'll have a solution to quantum, we'll create quantum safe wallets, people will upgrade, there'll be enough time.
+Jameson's pushed back on that and I think he's going to do that in this interview.
+I think he's going to draw some uncomfortable scenarios.
+We'll have to think, as you said, about the trade-offs, right?
+Transactions cost money, blocks are finite.
+We're running up against the constraints of the distributed Bitcoin protocol when it comes to safeguarding the private keys of everyone who's using the system.
+And that has interesting ethical implications.
+And Jameson in his position papers has thought through this.
+And so I think he's going to give us a really great overview of some of that thinking and why some of us, as you said, may be a bit naive in our thinking about quantum and why we may have to accept that the reality of a quantum upgrade may not be what we all want.
+Yeah, I mean, solving any problem facing any society is really difficult.
+When it's Bitcoin, you have the added level of complication, which is that this is specifically a community that is excited by and propelled by sovereignty.
+The idea of sovereignty, the idea of personal sovereignty, economic sovereignty.
+So when you need as a collective to act against an impending threat as that kind of collective, that's going to be all the more complex, right?
+Well, and that's a really, I think you hit on the word for Bitcoiners.
+Bitcoiners do not like to think about collective action.
+And I think within the Bitcoin psychology, this remains perhaps, you know, one of our biggest bugaboos, right?
+Bitcoiners are libertarians, individualists.
+But, you know, there is sometimes a need for collective action.
+I think Jameson is going to walk us through some scenarios, attempt to convince me, attempt to convince Nathan, and hopefully attempting to convince all of you out there that your mental models for quantum need to upgrade or get more sophisticated in that.
+We might have to, you know, start coming to terms with the fact that the migration from Bitcoin today to a quantum safe Bitcoin might not be a very easy evacuation.
+It might look more like a disaster movie, but we'll be getting into it on this episode.
+First, like and subscribe if you're out there on YouTube, Apple Podcasts, or Spotify.
+We appreciate the likes and comments.
+Nathan and I will be going through and reading them all.
+We'll be back after this.
+Jameson, lop the question.
+What would really happen to Bitcoin?
+This video is made possible by Starkware.
+While others debate, Starkware is putting its top researchers on the quantum problem.
+You can learn more at Starkware.co.
+Hey, person.
+Welcome to the episode.
+The title today, What Would Actually Happen to Bitcoin When Quantum Computers Arrive?
+You've written about this on your blog, bop.net, extensively spending your time assessing, obsessing over the details.
+You know my perception of this.
+My ideal is that we'll have a soft fork upgrade.
+People will upgrade to quantum safe Bitcoin wallets, whereby they can choose to upgrade nicely to safe wallets.
+So they'll protect them from quantum.
+And we'll preserve the option for all users to do this on their own volition, right?
+I think getting to the idea of sovereignty, I think it would be nice to think that we can all make this migration safely and easily.
+And users can all choose whether to upgrade and take safety precautions.
+You disagree with this framework?
+Not entirely.
+However, there's additional caveats that I think are required that people will find controversial, but I think still fully fit within your optimal scenario.
+So, really, the problem with quantum is that it's half a dozen problems that are all occurring simultaneously, and several of these problems are very vague and hand-wavy and difficult to quantify.
+So, A, since I'm not a cryptographer, I'm not really weighing in on the actual post-quantum cryptography stuff, but in short, almost all of the post-quantum cryptography really sucks from a Bitcoin constraints perspective, meaning basically the data size and computational requirements are not great for a lot of these algorithms.
+There's a lot of trade-offs, but what I'm doing is I'm focusing more on a potential fusion scenario where we have already decided upon the post-quantum cryptography that we want to implement, and it has been deployed, and people are able to voluntarily move their funds into quantum-safe schemes.
+And so, then the question becomes, you know, over some period of time, how quickly is that migration going?
+How does the window of opportunity look like it's closing for people to migrate before it becomes a critical issue and we hit Q&A?
+And then within that period of time, do we get to a point where we say, okay, there's still enough outstanding vulnerable coin that we should do something about that?
+And so, this is where the whole freezing, burning, seizing censorship debate of migration.
+I mean, it's a fun debate because it's both economic and philosophical, and there's a lot of game theory rolled up in here.
+And this is why I've penned tens of thousands of words about it, and why I set out to actually author the first BIP that I've ever done in my 14 years of Bitcoin.
+And that's because there's just so much to unpack and unravel within the game theory here.
+Well, let's kind of ease people in, right?
+This is the third episode of the series.
+We've talked a little bit about quantum computers, why quantum computing is novel, and what problems it solves.
+We've talked about timelines, like what it could look like in terms of how far away we are and how to judge.
+Let's agree on what would actually happen, right?
+So, it does seem like there is pretty large consensus agreement that the attack vector here is centered on actually the signatures within Bitcoin, the signature schemes.
+But essentially, there would be a way for quantum computers because they are so good at analyzing large fields, at relating public and private keys.
+And when we say Q-Day or use it colloquially in these settings, really what we're talking about is an attacker or someone would be able to unlock someone else's Bitcoin and start moving them on the blockchain because they have exploited weaknesses in Bitcoin's signature schemes.
+We agree on that.
+Yeah, or at least almost everyone agrees on it.
+Theoretically, Shor's algorithm should be able to take this incredibly difficult problem that is with classical computers computationally infeasible to go from a public key to a private key and basically turn it into a problem that can be solved in human level amount of time.
+Rather than age of the infinite universe amount of time, so that, of course, has many assumptions around a quantum computer being sufficiently powerful enough and having error correction and so on and so forth.
+But I think almost everybody agrees that with the sufficient quantum computer hardware, we have the software and the algorithm that would be able to run on that hardware and do this reverse engineering process.
+Okay, let's stick with Shor's algorithm for a second.
+A lot of people on this show so far have introduced different algorithms, talked about Grover's algorithm, Shor's algorithm.
+Can you talk a little bit like what is Shor's algorithm?
+Why does it relate to solving this problem?
+And why are quantum computers very good at operating it?
+So the actual understanding of how the algorithm works is a bit beyond me, it's some really advanced math, but basically it makes use of the fact that with qubits, with this new type of processor,
+you can simultaneously search through a huge problem space, and that's really what cryptography is.
+It's using the laws of large numbers to make it computationally infeasible to find someone's random private number that they picked.
+Got it. So algorithm, super efficient at this, the qubits are operating the algorithm, the lasers that are shooting at the qubits, they're running the algorithm under the cold storage, this is what they're doing.
+Okay, so the signature schemes, we know we have to upgrade to a new signature scheme, maybe let's discard the idea you're saying, there's lots of debate about which schemes and the different trade-offs.
+Let's then talk about, you're assuming, I think at this point, that in your scenarios, that there is a BIP that Bitcoin can upgrade to or has even implemented in the scenarios.
+And so maybe you could talk a little bit about that and what that process entails.
+Because again, I'm trying to paint the picture for people, you know, what is it going to look like when this happens?
+I know it's still an if scenario, but when a quantum computer breaks Bitcoin, what would you see and how would that look on the blockchain?
+Yeah, well, there are many different tactics that an attacker could take.
+And this is what my last post was about, which was trying to comprehensively think through all of the different types of attacks, and what I would do if I was a quantum attacker.
+But in short, I think you, regardless of whether or not you are profit motivated or you're just malicious and you want to destroy Bitcoin, what I would expect a quantum adversary to do is as soon as their quantum computer became powerful enough that it could crack a private key in a reasonable period of time, meaning, you know, hours or days.
+Then what they would be doing is they would immediately just start running through a sort of reverse order from top to bottom of every exposed pub key ordered by how much Bitcoin is in it.
+So, you know, find the addresses with the most Bitcoin that have exposed pub keys and start cracking them.
+But they would be doing this privately, and so they would not be, you know, stealing, necessarily chunks at a time where everybody would see what was going on, but rather you would want to be doing this in private until you got enough keys that you were happy that you didn't want to keep going because you're also, you know, potentially competing against other quantum adversaries that haven't revealed themselves.
+There's some interesting game theory in there that's similar to zero day vulnerability game theory where if you're sitting on a vulnerability, you don't want to sit on it too long because it's probably either going to get exploited by someone else or found by a white hat and patched.
+And so you want to wait long enough that you are able to kind of survey the landscape and be able to use your vulnerability to the maximum advantage, but not too long that you don't get to use it at all because someone else uses it or fixes it.
+And so basically what I then expect would happen is that nobody would know this is happening until all of a sudden we see several blocks, probably, I think I estimated it would take about six blocks worth of block space to sweep.
+Like 95% of the top most valuable pay to pub key addresses, which many believe are like Satoshi's coins, but also there's really old coins, I think from a lot of early users that lost their keys.
+And so you would expect for some period of, you know, several hours to a day that you just see these massive volumes of on-chain transactions that are sweeping funds out of vulnerable addresses and, you know, sending them to non-vulnerable addresses.
+And that would just be phase one, what happens after that, you know, the potential things that could happen really branch off into a number of different scenarios, depending upon whether or not the entity wants to maximize their profit or, you know, cause the most grief or, you know, even attack the system and try to kill Bitcoin.
+Why is it that the Bitcoin development community expects there to be no announcement and why is it that they foresee a reason that Bitcoin may be, in the canary and coal mine analogy, sort of the first incidents that, I mean, the general public would get, I mean, this seems to be the claim here, right?
+Is that this is the first inclination the general public would get that there was a powerful quantum computer is that Bitcoin would be attacked.
+And I don't think it's always obvious for people why that assumption immediately gets jumped to.
+Well, there's, there's a number of reasons and it's not guaranteed, right?
+It's there's, I think at least a dozen different organizations out there.
+They're trying to build quantum computers and some may be more Bitcoin friendly than others.
+And some may be more, you know, white hat and, you know, come to the Bitcoin protocol developer security team and basically disclose it privately and say, Hey, you need to like quietly.
+And as quietly as possible, as quietly as possible, start doing something about this, but really a lot of it, I think comes down to incentives.
+We're talking about, I think, several hundred billion dollars.
+And, and, and to be clear, this is several hundred billion dollars.
+If everyone who we believe is still able to access their keys, migrates their funds.
+If it, if it appears out of nowhere, like right now, when something like half of all the Bitcoin, if not more is vulnerable, then it's pretty much game over.
+I mean, there's not, it's just too late for us to deploy any mechanism to try to stop that.
+And, and the scenarios there would just be a lot worse for the attacker as well, because even the attacker would have no, like nowhere safe to go necessarily.
+And so they would, in that case, be even more motivated to try to either exit, get as much liquidity out of the system as possible, or, or even kill off the system.
+And once again, it depends on the motivations of the attacker.
+If it's a, if it's a private company, I think they're going to be more profit motivated.
+And we've in fact spoken with several of these companies and, and asked them, you know, are you going to steal the vulnerable coins?
+And they've been very, obviously they're not going to come out and say, we're going to steal the coins, but they haven't said, no, we would never do that.
+They're like, well, we'll just have to decide, have like a board meeting.
+Like, yeah, I think I know what a, a, a board that has fiduciary duty to their investors is going to decide to do with the ability to, to scoop up hundreds of billions of dollars.
+I mean, this is a massive return on investment for most of these companies that have only raised a few hundred or a few billion dollars.
+And then, you know, some of the worst case scenarios are, well, what if this is a nation state that is adversarial to Bitcoin?
+Um, you know, maybe the U S government does it and they're, they're friendly towards Bitcoin because they have a big strategic reserve.
+Maybe a company that is kind of under the heel of the Chinese communist party ends up, uh, acquiring quantum supremacy and, uh, China doesn't have a very favorable viewpoint on Bitcoin.
+And they might even want to destroy Bitcoin even more to screw with the U S and, uh, and the U S strategic reserve and the U S based Bitcoin industry.
+Got it. So it sounds like the developers have sort of a priority accepted that the attacker will be hostile because the other scenarios may be less interesting of altruism, right?
+There is a scenario where someone reaches out to the core development team.
+Maybe they're able to marshal people to the cause.
+It sounds like there's scenarios where maybe this just gets released in public and there isn't, but it sounds like you're saying like the quantum community is also aware of this and they seem interested in this idea that Bitcoin is this bounty.
+Where they could claim a big prize. And so it's almost, we've sort of advertised Bitcoin now as a big, I wouldn't say like honeypot, but it's, uh, you know, in the same way that, uh, you know, a big prize, there's a big prize for cracking Bitcoin.
+Generally. Now there's an additional prize for cracking Bitcoin with quantum.
+Yeah. And you know, also, uh, you know, let's, we, we won't leave out the fact that there are many adversarial things that you could do with a quantum computer.
+If you're a nation state, you're probably going to be deploying it militarily and trying to, you know, crack your, your enemies, uh, computer systems.
+But once again, you're going to want to do that as quietly as possible.
+So as to not reveal that you even have the capability. If you're familiar with, um, you know, what happened with like, uh, was it Bletchley park and Enigma and all the cryptography stuff in world war II.
+Uh, some arguably some of the more complicated and challenging aspects of that was not actually the cracking of the cryptography itself, but rather the game theory around how to make use of that exploit without revealing the advantage to the enemy.
+Um, and, and so, and also if you were to try it, if you were like a company, um, and you could theoretically then go and break into maybe banking infrastructure or something, but you know, that's probably going to be highly illegal.
+And, and, and even if it does technically work, you know, a lot of those systems can basically reverse, uh, most of the transactions.
+So it would be harder to get away with. Um, whereas with Bitcoin, like we said, um, it is more of a bounty.
+Um, yes, you might end up stealing money from people who are still alive and had access to it and maybe they'll sue you, but I suspect quite a bit of this Bitcoin is completely lost and, and its owners may not even be alive.
+Um, and so there, you know, there, it's a much, I think, better legal position to be in of, um, actually what Nick Carter has made some analogies to like salvage law.
+Um, and once again, I'm not a lawyer, but these are the types of things that I think these companies are going to be getting legal opinions on if they find themselves in the position where they have a whole landscape of things that they could do to profit from their quantum computer.
+Quantum computer, but they don't want to put themselves in legal peril, uh, as a result.
+Well, maybe we could just spend a beat before we get into the scenarios, cause obviously these are fascinating and complex, but why is it the developers want to assume that the attacker is hostile for the process of thinking through, right?
+So it's also, it's helpful for the ideation process to assume that the attacker is hostile, even though there are some conditions where that's, you know, maybe not as likely, uh, you know, there's a certain, uh,
+benefit to assuming this because this gets us into the scenario planning that you've been doing.
+Yeah.
+I mean, it's, uh, adversarial thinking, um, you know, the saying hope for the best, but, uh, prepare for the worst.
+Um, because of the long timeframes and all of the uncertainty involved around this particular problem space, we really need to prepare for the worst, because if we don't prepare for the worst, then the worst happens.
+Because just Bitcoin as a system is incredibly slow to be able to react to issues like this.
+So this is the main reason why I got concerned and interested in this particular problem.
+It's not because I believe that a quantum computer is going to pop up any day.
+Now it is certainly possible that within the next few years, some major breakthroughs happen, but, um, you know, I still believe we can very easily have five, 10, even, you know, several decades, uh, before a cryptographically relevant computer comes along.
+I don't know how long that's going to take, but what I do know is how long it takes to change Bitcoin to, uh, kind of herd the cats together and, and come to consensus on a problem.
+And just coming to consensus on one solution to one problem can take years, but because quantum is like half a dozen problems all rolled into one is really unprecedented.
+And I, I can only expect that we're talking maybe a decade timeframe to unravel all of this and come to a consensus on what to do about it.
+So that's why I started getting the ball rolling on it, uh, over a year ago.
+So we are assuming now for this conversation that the quantum computer has arrived, it's in the hands of the attacker.
+You're saying in a scenario where Bitcoin hasn't deployed a new quantum safe signature scheme, you view that as a, as a game over scenario.
+Uh, yes.
+I mean, the caveat is that it depends on how long it takes for the attacker to crack a key because you have long range attacks where you have an exposed public key on the blockchain.
+And the attacker can take as long as they want.
+They could take days, weeks, months, if they want to, to try to crack it and then steal the funds.
+But then you have short range attacks.
+And that basically means, um, a fundamental flaw, if you will, with regard to Bitcoin's current level of quantum resistance, by which I mean, most Bitcoin addresses, which is just a fancy way of saying the redeem script or the unlocking conditions.
+Most of those are protected by a hash.
+Most of those are protected by a hash.
+And that hash actually is a one way function that doesn't have any public key as a part of it.
+And so it's actually quantum resistant.
+So if you're using the vast majority of popular Bitcoin address types, you're already safe.
+Uh, your funds are not exposed until you go to spend the funds.
+And when you go to spend the funds, you have to reveal the public key and all of the other spending conditions.
+And during that period of time, when your transaction is unconfirmed, you know, it's in flight, it's in the mempool, uh, a quantum attacker, if they're fast enough, they could actually crack your key and then steal the funds right out of the mempool and redirect them to themselves.
+So that's assuming they can do that in the approximately 10 minute period or longer, depending on, you know, how much of a queue is in the mempool.
+But basically if you get to the point where quantum attacker can crack a key in under 10 minutes, then it's super duper game over without any post-quantum cryptography.
+Okay.
+And so in this scenario, I think this is a scenario, a lot of Bitcoiners, when I speak to people who haven't really taken the time to engage with this, they sort of assume that the status quo, they'll be protected.
+But you're saying it is because of the fact that they will have to reveal their public keys, even though some of the wallet structures are technically quantum safe.
+Basically the economy at that point would be infeasible.
+Yes.
+And also, uh, this issue was compounded by address reuse, and that is a function of several bad practices that a variety of services, especially exchanges, uh, have developed over the years of basically almost any service that you are depositing funds into reuses the same address over and over again.
+And in many cases for security, uh, exchanges may tell you to whitelist a single address, and then you keep sending to the same address over and over again from there.
+And so the problem that happens there is, and we won't get into, I guess, explaining how UTXOs work, but basically one time, the first time you spend any funds from that address, if you don't spend all of the funds from that address and move them to a new address, then you've exposed all of the remaining funds.
+And that's where I want to say like 30% of all Bitcoin right now is exposed as a result of address reuse.
+Okay.
+So let's assume we just walked through the scenario.
+Attacker comes, they're motivated, no upgrade, right?
+We're just dealing with existing signature schemes, existing wallet types.
+I think the hope from the technical community is that there will be a quantum resistant signature scheme deployed, and that will be an option for people in a future upgrade, maybe near term.
+So, okay, let's get into the likelihood of the scenario.
+Under those conditions, let's put aside like the actual mechanics of how these, this scripting would work.
+I think maybe for another episode, since that sounds complicated, but let's assume that we've done that.
+We've solved that problem.
+That's where folks have upgraded to say, maybe it's a bit 360 or something.
+They have a wallet.
+It's quantum resistant.
+The signature scheme is quantum resistance.
+And there's an attacker that arrives in the network.
+Well, it really just depends on what level of migration has occurred.
+You know, you can assume the best case scenario where I believe the best case scenario is we could expect around 17.5 million Bitcoin to migrate.
+But based upon looking at on-chain activity and the on-chain exposed funds, several of us who have looked at it have come to the conclusion that roughly 2.5, 2.6 million Bitcoin looks like it is unlikely to be migrated from exposed addresses to quantum safe addresses because it's just likely lost.
+But that migration also doesn't take place instantaneously as soon as the signature scheme is deployed, right?
+The funds would actually have to move from an existing wallet to the upgraded wallet.
+Do we have like any sense of how long, like the length of time that it was, let's say these 17 million coins migrate to wallets?
+I mean, you're, you're talking about a massive impact on the blockchain and the fee market and the block space, correct?
+Yes.
+Though, once again, there's so many variables at play.
+So, for one, it depends on which post-quantum scheme we, we migrate to.
+Um, now there's a good paper, uh, I believe from chain code a year or so ago that goes into some of this stuff.
+And I think they were saying that under an extremely optimistic scenario, um, just in terms of block space.
+I think, uh, you know, you could get like 95 plus percent of vulnerable coins migrated probably in, on the order of like weeks to a month.
+Um, but you know, that's not going to happen because of the way that, uh, software protocol changes and, and thus software and infrastructure changes.
+Have to, um, um, spread throughout the entire ecosystem.
+Um, you know, it's step one is getting, uh, a BIP through the BIP process.
+Uh, that took me about a year.
+I think it took BIP 360 close to two years.
+Uh, step two is actually writing up the code and getting the code then, um, into the different Bitcoin client implementation.
+Uh, step three is then actually getting like miners and others to signal that they're going to run the code and activate the change.
+And that the protocol will actually, uh, implement that, uh, post quantum cryptography.
+And then after that, if it actually activates, then you have to have the whole rest of the ecosystem.
+Um, you know, hardware wallet manufacturers, software wallet manufacturers, really anyone who runs any sort of Bitcoin service to then upgrade their software.
+And that can take years.
+Uh, and, and it's, it's really hard to put a timeframe on that because you're talking about just a hugely diverse, uh, and, and decentralized group of people all with their own motivations and, uh, resource constraints.
+Uh, some people are interested in this idea that there could be a collective action, right.
+Something where some group of people say the developers or some body implements some sort of system.
+Where by this migration could be handled or metered.
+I guess the analogy here would be on a sinking ship, somebody hands out life jackets or life boats.
+And there's some process by which during an emergency, there's authority established temporary authority granted.
+And obviously I think this is where it gets really uncomfortable, right?
+It gets into the part of the game theory that we don't like, because I think myself and you perhaps would like a scenario where, you know, the user, the individual is sovereign.
+Like we enact with this interact with the software and there is nobody larger than ourselves that we really have to trust and rely on.
+So maybe we can talk a little bit about this idea of collective action.
+What you think the community's perception is of it and why you think that there's an argument that has utility in this instance, even though as Bitcoiners, we, uh, we shirk from the concept.
+Yeah.
+Um, you know, the collective action of framing was certainly something there was a big pushback on, uh, you know, ever since I started talking about this and I actually don't like the collective action framing.
+Um, ultimately I believe that, you know, everything that happens in Bitcoin should be as a result of your own personal incentives.
+And the aggregate results of that, whatever the consensus for Bitcoin is, is just sort of like a bottom up, uh, result of everybody's different opinions and, and, you know, where they kind of coalesce into a sufficiently large, uh, subset and overlap that we can say, okay, there's rough consensus here.
+You know, rough consensus is a very interesting concept.
+You can't really quantify.
+Um, but I think, you know, it mostly comes down to the incentives of if you are a Bitcoin holder and you believe that quantum is an issue.
+It is a security threat to your Bitcoin, then yes, you have that individual incentive where you are probably going to be proactive and go and upgrade your wallet and migrate your funds over.
+Um, of course we all know that even if you are in that camp or if you believe in that stuff, humans tend to be procrastinators.
+Uh, we tend to be very bad about being proactive when it comes to security and privacy.
+And we usually wait until it's too late.
+Uh, and we regret doing that because these are very, um, hand wavy type of things, right?
+It's like a lot of people, when you talk, start talking about security and privacy stuff, they're like, ah, that won't happen to me.
+Right.
+It's going to happen to somebody else.
+Um, now from a, a higher level incentive problem.
+Um, one of the reasons why this is so interesting is that I believe it is a systemic threat.
+It's not just a threat to each individual Bitcoin holder, though.
+It certainly is if you have vulnerable coins, but rather what we're talking about is an unprecedented scenario where an entity is able to acquire a massive amount of Bitcoin.
+Probably in the realm of like 13 to 15% of all existing Bitcoin.
+And they're able to acquire that relatively quickly and with relatively low costs.
+And of course, relatively is, is doing a lot of work here.
+It could still be billions of dollars that they've invested, but they get hundreds of billions of dollars as a result, which is, I would say a pretty good return on investment.
+And the real problem here is a problem of incentives is that, you know, I'm, although I'm not a huge fan of, of entities like BlackRock or, or Michael Saylor or whatever.
+It's holding large tranches of Bitcoin.
+I'm not extremely worried about them because they've had to put in a lot of work and a lot of effort to actually acquire that.
+Um, they, they couldn't just snap their fingers and kind of get it out of thin air.
+But in a scenario where you have an attacker that can effectively do that, they're not necessarily as incentivized, uh, to preserve the value of that, which they have acquired.
+And I'm not just like theorizing and postulating here.
+You know, I'm, I've been working in the Bitcoin security space for a decade and a very common thing that we see when there is an attack in the ecosystem is that an attacker, you know, uh, whether it be a hacker or social engineer, whatever.
+All of a sudden comes, uh, into possession of millions or tens or hundreds of millions of dollars worth of Bitcoin at very little expense to their, their own efforts.
+And what do they do?
+They almost never hodl it.
+They almost always try to, uh, you know, uh, liquidate it or turn it into other things.
+Uh, you know, basically to, to, to, to make use of that value as quickly as possible.
+And so, you know, I would expect a similar type of mindset from whoever acquired this is that.
+Even regardless of whether or not they're profit motivated, they're probably not going to be the type of Bitcoin or that we want that has the incentives to be, you know, long-term, uh, good steward of their Bitcoin.
+And of their desires for the, the, the wider ecosystem to be successful.
+Right.
+Okay.
+So we've got, uh, in this point, uh, of the conversation, I think I'm starting to understand.
+You see collective action as a security threat and you're saying currently within the Bitcoin economy, private market actors employ this type of counter engineering against these threats, which affect Bitcoiners.
+But then that really hasn't ever happened at the software level before.
+Is that a fair statement?
+Yeah.
+I mean, we've, uh, we've never had, I would say this level of systemic threat before.
+Um, there, you know, there, there, there are some vulnerabilities, um, won't go too, too far down the rabbit hole, but like BIP 54, which, um, tries to address several potentially critical vulnerabilities with regard to constructing blocks of Bitcoin.
+That would be very bad for the network.
+Um, and you know, in that case, those blocks could potentially cripple the network, but I'm less concerned about even that level of critical problem.
+Yeah.
+Yeah.
+Yeah.
+Um, in order to make use of it, you're probably going to be a miner.
+Like you have to be able to mine blocks and then you have to be able to keep mining blocks in order to, uh, take full advantage of the, um, the ability to basically slow down the rest of the miners.
+And so in general, I believe that miners are fairly well incentive aligned, not to shoot themselves in the foot.
+Okay.
+So what then are the types of collective actions that people are considering?
+And can you walk through, you know, again, the scenario where just to walk people through, you know, we're assuming now that there's an adversary.
+We're assuming now that, uh, we've upgraded, uh, potentially to quantum resistant wallets, but not everybody has.
+Uh, so what are the, the scenarios where people then, even in that instance, even when we've done sort of the upgrading, uh, collective action becomes in your view, or I know you don't like the term, uh, some sort of, uh, some sort of counter response from the, from the Bitcoin firefighters union that, you know, lives in town.
+Uh, well, so, I mean, the, the technical way that we would go about this and the, the way that we would describe it technically, uh, there's many different ways that you could ret, you know, rhetorically describe it.
+But, uh, we would say what is desirable is to deprecate elliptic curve cryptography because elliptic curve cryptography is deemed to no longer be secure and no longer.
+be able to, uh, afford Bitcoiners the level of security that they have been guaranteed for the past 17 years.
+Right.
+Right.
+And so, but at that point, some wallets would still rely on a clip to, uh, uh, clip, uh, elliptic curve cryptography.
+Okay.
+I got that one.
+Okay.
+So, but some wallets, some people would be reliant on that at that point.
+And, but, and then some other people would remove that option for them.
+Right.
+So, uh, you know, getting to BIP 361 and really, uh, what I was trying to put out there as, um, game theory as basically putting incentives in place to incentivize people to do what logically should be the best for themselves.
+Migrate to a quantum safe scheme.
+Uh, but really the, the whole idea is instead of leaving this wide open and being like, well, you can migrate if you want to, but you don't have to, you can.
+And we don't know when quantum is going to become a thing.
+So, you know, you could worry about it or not do whatever you want.
+Uh, instead it's saying, you know, we believe eminent critical threat is X number of years away.
+We want everyone to migrate by a specific date.
+And so giving a level of specificity, I think helps incentivize a lot of people who would otherwise procrastinate indefinitely.
+Uh, also help with, you know, organizations and their planning, uh, you know, project management, resource management, so on and so forth.
+Um, and I think the really controversial thing that's also misunderstood here is that, you know, if you deprecate elliptic curve, cryptography basically means if you have an old quantum vulnerable wallet, you can no longer spend your coin the same way.
+Now there's a very important caveat here, which is where there is a lot of ongoing research and development in that, you know, we, we don't want to rug pill people.
+Uh, we want people to still be able to access their funds.
+However, we would need to implement other spending paths that are quantum safe, uh, to preserve as, as much people's sovereignty and funds as possible.
+And, uh, that's tricky because there's many different kinds of old wallets that some can potentially generate some types of proofs.
+Others can generate other types of proofs.
+Some may not be able to do any proofs.
+This is where, uh, there's, you know, like I said, ongoing research to try to figure out what are the different like rescue paths that we could offer to people.
+If for whatever reason, they weren't able to migrate before that deadline.
+Right.
+Right. And so I think what we're talking about here is that, again, this is in the realm of theoretics here, that there may be the developers.
+And again, I'm interested to hear like what you think, like the historical like precedents and things that can, that can are shaping the thinking here, uh, would essentially, uh, would have to rely on some sort of structure to award coins to rightful holders.
+This is where I think it gets really like uncomfortable to think about, because even if you just think about what I said, right.
+Even if that's some sort of decentralized scheme.
+Um, but now we're putting like another layer between, you know, you're, you're sort of arbitrarily inserting a layer between the person and their coins.
+And now we have to sort of construct.
+We have to trust the construction.
+Uh, to use the lifeboat analogy.
+It's like, okay, well now you're leaping out of the boat, but now we have to trust the lifeboat builders.
+Uh, maybe you can talk a little bit about the different things that are theorized there.
+And I'm, cause I'm sure there are people who are arguing for more centralized versions of that, or think that that's acceptable.
+And that there are some people who would like to see as distributed a solution to that as possible and what the variations are there.
+Yeah.
+So, I mean, right off the bat, like a lot of the very bad naive takes that I've heard over the past year, uh, tend to.
+Make assumptions that protocol developers are going to create like blacklists or whitelists or whatever.
+Like this, the, one of the common tropes, uh, that a lot of the media took away from BIP 361 was we're going to freeze Satoshi's coins.
+But nowhere in the BIP does it try to say anything.
+It doesn't say anything about Satoshi.
+It doesn't say like, these are the addresses that we think are Satoshi's yada, yada, yada.
+Uh, any, any changes at the protocol level that are going to happen must be purely objective and neutral and only are looking at the actual, uh, you know, cryptic or cryptographic proofs, uh, that are required to, uh, secure and then spend funds.
+So in the case of funds that are still quantum vulnerable, what I expect would need to be required is you would still construct the transaction the same way, because this is necessary for this to be a soft fork.
+You would still construct your transaction the same way with the same vulnerable signatures on it.
+However, you would have to add extra data, probably in an opera turn, something like that.
+And that would then create, uh, that opera turn that additional data, wherever it's put in the transaction would, um, it would have to have a proof that has already been like widely agreed upon that.
+Like this is a proof that shows that this person, uh, is the true owner of the private key that corresponds to this public key and they're proving additional things that a quantum attacker would not be able to prove.
+And, uh, in particular, this is going to be stuff around, uh, like key derivation.
+It's going to show like, not only do you have that one private key, which a quantum attacker would also be able to get, but you're proving that you have, um, other like higher level extended keys that you used to derive that particular private key.
+And that is the specific thing that a quantum attacker would not be able to do.
+Right.
+And I understand there's some promising ideas here in terms of like the seed that sits between the address and the, and the public key, correct?
+That there's some sort of information where, and there's some way that the public key is created by which you can still prove that the private key is the holder.
+Then there's some optimism that there are lookable schemes here.
+Is that a, yeah, there've already been a three or four different schemes, uh, put out there.
+Uh, there's also been some discussion of commit reveal schemes where even if you have like an old, um, non-deterministic wallet, which pretty much all of those like pay to pub key addresses would have been created with non-deterministic wallets.
+Cause they were created before 2013 or so.
+Um, in, in those cases, if you had a non-deterministic wallet and for some reason you didn't want to, or couldn't, uh, move those funds.
+Today to migrate them to a quantum safe scheme.
+You could instead publish some other proof to the blockchain today, which you then refer back to sometime in the future after elliptic curve cryptography has been deprecated.
+And, and the system could objectively say, okay, we see that you're spending this transaction with the vulnerable deprecated cryptography.
+However, we also see that long before quantum computers ever existed, you, you proved and put this piece of data in the blockchain.
+So we know that you're not the quantum attacker.
+Let's zoom out.
+We're winding down here.
+It's been a heady episode, lots of scenarios.
+Uh, I want to introduce just one more context, larger, conceptual Bitcoin is one of a number of cryptocurrencies.
+They all, or most of them have some type of quantum weakness.
+Uh, we are assuming here then also that Bitcoin would be uniquely affected, but there is a potential wider impact to the crypto economy.
+And so when we're thinking about what would actually happen, um, how are Bitcoin developers thinking through like what the implications are for the wider ecosystem?
+I know that there's security vulnerability sharing amongst the developers who work on these different chains.
+Uh, is there a coordination on the issue or is there a larger awareness?
+Uh, maybe you can speak a little bit about that.
+Uh, not really, not that I'm aware of.
+I mean, uh, you know, you, you will see other large ecosystems starting to talk about this.
+Um, but you know, it's a long tail distribution of, uh, networks and tokens across the entire ecosystem.
+But the interesting thing is, you know, the stuff that I am talking about, um, it's not necessarily Bitcoin specific, like all of this game theory and high level issue with vulnerable, um, vulnerable coins, vulnerable tokens, pretty much applies to, I think 99% of the networks out there.
+And they will have the same type of issue where first they'll have to decide.
+Do we think quantum is an issue?
+Then they have to decide what cryptography we're going to do.
+And then finally, they're all going to have to go through this same process of deciding what do we do with all of the vulnerable funds that don't migrate.
+Well, some of them seem pretty confident.
+I was just catching up recently with Jed and Caleb, obviously one of the people who originally did the stellar network, you know, he's, his response was, you know, we'll just upgrade it.
+You know, the developers of the chain and some of them are more comfortable with, you know, those type of arrangements.
+Um, and so I guess maybe as we're coming to culmination as like, do we think Bitcoin will be uniquely affected, uh, simply because, you know, we've taken all these constraints to make Bitcoin maximally decentralized.
+Um, I mean, if anything, you know, I think, you know, Bitcoin is the hardest to change and that's, that's because it's the largest, uh, and thus the most decentralized though.
+I, I'm not really a fan of using that term because it's very difficult to quantify, but I think we can all agree that it is the largest, uh, network within the ecosystem.
+And as a result, it has the most diverse, uh, and distributed set of, um, individuals and organizations that are users of it.
+And, and thus as a result, it's just more difficult to coordinate amongst all of them.
+Uh, you know, this is, this is related to something that I've been talking about even longer than quantum, which is ossification.
+And I believe that ossification is basically like a law of network physics, if you will, that, um, much like with Metcalfe's law is the, you know, the value of a network grows, uh, you know, geometrically or exponentially with the size of the network.
+So too does the ability to coordinate amongst actors of a network as it grows.
+Final question.
+This is going to be a longer series.
+We're going to have a lot more about quantum.
+There's lots to dig into.
+I think we did a nice broad strokes of some of the many plausible or probable scenarios.
+Title of this episode, what would happen to Bitcoin when a quantum, if, and when a quantum computer appears?
+Uh, I guess the, I'll invert that question or I'll, I'll tweak it.
+Jameson, what would you like to see happen when a quantum computer appears?
+Uh, I mean the optimal scenario when a quantum computer appears is that they're not able to steal anyone's Bitcoin.
+All right.
+We'll end it with that.
+Appreciate you being on the pod, Jameson.
+And, uh, we'll invite folks who are still watching, uh, smash that like and subscribe, but we'll be back with more episodes and stay tuned.
+I'll be unpacking my thoughts on Jameson's positions laid out in this podcast.
+Appreciate the time sir.
+Thanks for having me.
+Thanks for having me.
+You just heard what would actually happen to Bitcoin when a quantum computer arrives.
+This is the quantum Bitcoin countdown.
+Pete Rizzo, the Bitcoin historian, of course, cohost, Nathan Jaffe, head of media over at Starfware.
+A dense podcast, lots of attack scenarios, lots of theoretics about the bad things that could potentially happen to our Bitcoin and our private keys.
+Uh, if, and when a quantum computer arrives, Nathan, your thoughts on this episode, uh, scare tactics.
+Uh, what did you think of the, uh, some of the scarier elements of this conversation?
+Yeah.
+I mean, it's fascinating thinking through the scenarios, obviously, as we've said in past episodes, there's a lot of good you could do with a quantum computer.
+If I give you a quantum computer for your birthday now, uh, Rizzo, you know, you could decide to use it to do a load of drug research to, um, cure diseases.
+What are you going to do with it?
+Are you going to use it for that?
+Or are you going to use it to get your hands on some Bitcoin?
+Yeah.
+I thought Jameson was really able to eloquently, uh, pose a question that I hadn't really thought of before, which is, and I think this will clarify to a lot of folks who are coming to the quantum conversation, which is why is it that the research community assumes that the person who owns a quantum computer will attack Bitcoin?
+And I think that he gave a really interesting answer, which was essentially, yes, there are scenarios where that might not happen.
+Like there could be a benevolent Nathan Jaffe who wants to, you know, cure cancer and does the right thing with a quantum computer.
+Uh, but he also gave really specific arguments of, okay, we know this is how nation states behave with new technologies.
+We know they use it to destabilize their enemies on the global stage.
+Ergo, you know, uh, we can assume from that, that the attacker on the quantum, uh, stage might be hostile.
+And then he also talked about the utility of that for the research community because the timelines of consensus are so long.
+And, and of course I think that you could see in his conversation that that was what was driving a lot of his discomfort.
+Uh, because, you know, we've talked about why it's important to hear from the researchers, right?
+To hear that he, you know, struggles with that, right?
+Obviously nobody wants anything bad to happen to Bitcoin, but these are real scenarios that based on the science might occur.
+Yeah. And I mean, Bitcoin at its basis, what a lot of us love about Bitcoin is the incentivization structure, how it incentivizes honest behavior.
+It incentivizes the whole world to run a financial system that works without anyone as CEO.
+And that incentivization structure is amazing.
+Unfortunately, a bug of the system is that it's also created this kind of, you know, huge bounty, this incentivization for bad behavior.
+If you get your hands on a quantum computer as well.
+And that's real food for thought that it's actually the same kind of design and system that leads Bitcoin to be so smart that is actually leaving us facing this big problem.
+I think he got across the Bitcoin isn't uniquely exposed.
+That's not the unique part here.
+It's that it's just uniquely hard to coordinate an entire distributed network against this threat.
+And, you know, I've also thought he was able to outline, you know, because we asked like, okay, if there were scenarios where, you know, a quantum computer arrived and Bitcoin wasn't ready, you know, what would happen?
+And, you know, he basically suggested that, you know, you'd be in a situation where anyone could steal your transactions if you were just transacting.
+And so it was easier, I think, now to understand how the research community has gotten to some of these more theoretical proposals, because look, when BIP 361 came out, which is, you know, Jameson's proposal, a lot of people didn't like that.
+You know, it was talking about three year timelines, five year timelines, migrations, you know, certain ways where we might turn over our private keys to some sort of guidance or authority.
+And, you know, obviously, you know, he really said in the interview that he hates that word, right, that he doesn't like, you know, thinking of, you know, these mechanisms as, you know, because I think we talked about collective action, right?
+That being like a real sort of hot stove word for the Bitcoin community, right?
+Like they don't want there to need collective action.
+And I think like Jameson made a really good argument that, you know, even in distributed meritocratic systems, you know, you end up with hierarchies and hierarchies can be really useful, right?
+So we talked about, you know, when the tsunami comes, you know, okay, if you're relying on like a civilian, you know, brigade to help you out, it's like, are you really relying on a government, you know, you're in some ways relying on your peers to help you.
+And so I think he really, I know he didn't like the term collective action there.
+I think his framing on it helped challenge my perceptions, because I think I had also sort of made that maybe knee jerk reaction to say, oh, okay, like, let's avoid collective action.
+And I think Jameson really said, no, we actually have to acknowledge that in these specific situations, collective action is going to be highly useful simply because of the stakes.
+And so he articulated both the stakes and the responses that he's come to.
+So there's something very deeply interesting about that reaction of, you know, we must avoid collective action.
+It's a discussion I had many times with Oren Katz, who used to work here at Stockware and who's a psychologist by training about the identity of crypto and the identity of Bitcoin.
+And the notion, you know, is it a rebellion against everything that came before or is it a continuation of it?
+And in some sense, you know, actually rejecting collective action as, you know, that's the course that they over in TradFi take in some ways that's being defined by by the other as well.
+And, you know, in some sense, you actually need the confidence to say, okay, you know, let's put the ideology aside and let's think about as Bitcoin, what is right for Bitcoin now?
+That's very challenging because all of this is bound up with identity, I think.
+Yeah, there's a fine line between socialism and enlightened libertarianism, right?
+That's, I think, one of the, you know, takeaways from that.
+But, yeah, certainly people's preferences matter, right? It's a consensus system.
+We know that everyone, in a sense, you know, will participate if and when this upgrade happens.
+But, yeah, just really fascinating to see.
+I really think that Jameson is just, you know, he's really far out there, right?
+He's sort of made the choice to walk into the woods to consider, you know, these different alternatives.
+And the fact that he's published so much work detailing some of these scenarios, I think, has been really a gift to the community because he's advancing the conversation.
+And I thought you got a sense of that in this podcast.
+Absolutely. And to our listeners, if you've not yet listened to the previous episode with Ethan Heilman, a lot of what we heard there actually helps us to understand this episode and vice versa.
+And I think one of the things that Rizzo and I have talked about is that, in a sense, everybody understands and processes topics in different ways.
+So what we've done in building this podcast is really to come up with what feels like us as the best logical progression for learning about and understanding this stuff.
+But this is a learning lab. We're doing it together.
+And, you know, try things out. Try going back to previous episodes, listening in different orders, put the information together in the ways that it makes sense for you.
+And we'd be really happy to hear your feedback on whether we're getting the order right, whether we need to be explaining various concepts more, what you need as you're going through, because we love going through this learning process together with you, our listeners.
+We appreciate you being here for the journey. Check out the show notes. If you want to see links to any of Jameson Lopp's great research, you can go over to Lopp.net, check out the show notes, get those links to the articles, read BIP 360.
+And as Nathan said, give us questions and comments. We're here to serve.
+This has been what would actually happen to Bitcoin when a quantum computer arrives. We'll be back next time.
