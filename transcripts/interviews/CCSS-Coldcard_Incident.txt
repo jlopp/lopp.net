@@ -1,0 +1,612 @@
+Thank you for joining today and for discussing today's important topic.
+We're going to be talking about the cold card incident, the situation that some people are aware of, but if not, don't worry, we're going to go through it and explain what's going on.
+But before we get started, I want to quickly just share that we are aware at C4 and everyone on this call that incidents like this have real consequences.
+And behind every security issue, we've got real people, real teams, and in this case, real financial loss, uncertainty, fear.
+So our goal today isn't to criticize or to be assigning blame.
+This isn't something anyone is excited about, but we definitely understand that it's really important to talk about this and what the community needs to know.
+And we're going to share our knowledge on the situation and what you as a user or someone that's holding someone else's funds using this system needs to know.
+So let's do some introductions.
+I'm Jessica Lebeck, I'm C4's Executive Director, and I'm joined by three members of our Cryptocurrency Security Standard or CCSS Steering Committee today.
+So let's do intros for everyone on the call and then we'll get into the content.
+All right, Ron, would you like to get us started?
+Sure.
+I'm Ron Stoner.
+I'm a hacker.
+I'm a security researcher.
+I've been a part of the steering committee for a long time now, currently head up security over at Category Labs, and I've been in this industry way too long.
+Having said that, very excited to be talking about the incident and educating some people today on entropy.
+Awesome.
+And yeah, you've been part of the committee for seven years, all of you have, which is wild.
+It's actually seven years in like a week or something.
+So yeah, it's a considerable amount of time, and you were working on it well before then, Ron, as well.
+Okay, Jameson, would you like to do an intro, please?
+Jameson Lopp, Chief Security Officer, Co-Founder at Casa.
+I have been building multi-signature Bitcoin wallets for over a decade.
+All right, awesome.
+And last but not least, Michael.
+Hi, I'm Michael Parkland.
+I'm the chairman of C4, one of its founders.
+I had the privilege of pulling together a lot of experts and people much brighter than me
+to build the first draft of the cryptocurrency security standard that continues to keep people
+safe today.
+And like Jameson and Ron, I feel like I've been in this industry way too long, but I'm happy
+to be here to provide or to contribute to providing one of the best defenses ever known, and that
+is education.
+Knowledge is power.
+Yes, absolutely.
+Let's dive in.
+Yes, absolutely.
+Well said.
+Okay.
+So I started this off by just addressing that there are real people, real teams, real funds
+affected.
+And our goal for this stream is to explain what we know about the situation.
+So what happened and then how we can strengthen security of the broader crypto ecosystem.
+So these stories like this are important because we need to know how to mitigate some of the things
+that have happened.
+And then also we need to learn together as a community about what we can do better.
+So let's get into the nuts and bolts of it.
+So who wants to give us a start with the overview of what happened with this coin card entropy situation?
+Well, I can start off with what happened to me before this became kind of a public incident.
+Okay, so in the very early hours of the morning yesterday, I got an email from a random person
+who had never contacted me before.
+This happens fairly regularly through my website.
+And they said, I've got a partial loss of funds from my wallet that I can't explain.
+And he went on to say that he had a cold card and that two of the UTXOs from the Bitcoin wallet
+and the cold card had been, the funds had been moved, but the rest of the funds had not been
+moved.
+And that, you know, he explained to me all of his practices, you know, he was keeping the
+air gap.
+He didn't have digital backups of the seed phrase.
+And basically he was completely bewildered as to how this could have happened.
+You know, he wanted to know what have I done wrong.
+And, and I was baffled as well, because generally, if, if something is compromised in your wallet,
+it's usually the seed phrase and then the attacker sweeps all of the funds out of the wallet.
+So partial wallet, yeah, partial wallet loss is actually fairly rare in this space.
+And so I was struggling to understand what he had done wrong and basically started going back
+and forth trying to get more information.
+And basically a few hours later, I started seeing similar types of incidents being reported
+in public on social media.
+And that's when, you know, the entire security space kind of woke up and said, hey, something
+is going on.
+We don't know what it is.
+We see some patterns, but we need a lot more information.
+We need to dig into it.
+Okay.
+Interesting context.
+Thank you for sharing that.
+Okay.
+Who wants to jump in next with what, what kind of happened after that?
+Well, before we go forward, I think it might make sense to step back a little bit and understand
+the context, um, before the, the hack, um, whenever we create a Bitcoin wallet, no matter what
+software we use, uh, that software is really just picking an, an unguessable number.
+Now, if I tell you to pick a random number between one and a hundred, you'll come up with
+one number and I can have a hundred tries at getting it.
+Uh, I don't know what it is.
+And as long as you are choosing it truly randomly, it'll be difficult for me to guess it unless
+I, I guess, is it one, is it two, is it three, is it four, but maybe you're not creating a
+random number randomly.
+Maybe you're, you're doing it based on some kind of a system that may seem random to others,
+but it's actually determined by you.
+For example, you can look at the clock, look at the last digit.
+And I can see right now, uh, in Eastern time, it's two 10 PM while 10, we'll just take the
+last two digits there.
+My random number is 10.
+It may seem random.
+It's between one and a hundred, but if you know that I'm just looking at the last two
+digits of a clock, you can start to guess it pretty quickly.
+Um, with Bitcoin keys, a 256 bit number ends up being like, I think it's 78 decimal places,
+uh, like 78 digits.
+Um, uh, I can't even pronounce a number that is that high.
+And if it's a 512 bit key, it's even, uh, higher than that, um, coming up with a random
+number, uh, or sorry, an unguessable number is important because anybody who has that same
+number as you can spend the funds as you private keys are just large random numbers.
+So large that we can't even pronounce them.
+Um, and ultimately what happened, um, with cold card is we learned or someone learned that the
+way that they're, they're choosing the number is more deterministic.
+Like looking at the last few digits of a clock than truly choosing a random number.
+Yeah.
+What I will say is those random numbers and randomness that Michael's talking about is
+really what drives all parts of keys and wallets and transactions, right?
+Those numbers eventually translate through mathematical processes, either into a seed phrase
+or a private key, uh, that's deriving your addresses.
+So it's kind of the foundational layer, right?
+And what I can add to this is I think randomness as a concept is pretty simple to understand.
+But when it comes to implementing that and really understanding what does true randomness mean,
+that becomes a very complex process.
+And that's why we're here today.
+Yeah.
+And it's important to distinguish between randomness and unguessability.
+You want your number to be completely unguessable.
+Nobody else can come up with the exact same trillion digit number or whatever it is, um, then you, um, we use random processes to find an unguessable number.
+But if it is guessable, then your key is popped.
+Um, run, you did a little bit of legwork with, uh, understanding the cold called cold card vulnerability.
+Um, do you want to dive a little bit deeper?
+Yeah.
+So it appears based off the information that's been disclosed.
+And I think it might've, uh, uh, originally been block or, or an associated security team that started also noticing these transfers, uh, and did some disclosure.
+So kudos to them.
+Um, so the way it works is when you're generating these numbers and these keys, you want to hit a certain amount of bits of entropy.
+Uh, one 28, you want to think about that, like a 12 word seed phrase, two 56, we're thinking about 24, right?
+Anything under 90 bits of entropy, uh, is crackable by machines today with the amount of resources available.
+And in a world where AI is coming up with new scripts and attack methods and algorithms, uh, I think that kind of scales over time, right?
+As computational and GPU power increases, AI knowledge increases, hybrid programming practices increase, uh, you're going to see it, you know, anything below a certain amount of bits is going to be crackable or guessable.
+As Michael said, so that's where the issue really occurs on the cold card MK three, uh, it was, uh, it was aiming for that 128 bits of entropy to be secure and to protect funds.
+Unfortunately, it looks like it was only doing around 40 bits of entropy.
+Um, there's some question today, whether the MK four or five and Q devices, uh, are susceptible this as well, because while they're advanced versions of hardware and introduce some, uh, additional security controls with, uh, other sources of secure randomness.
+Uh, they were only getting about 72 bits of entropy and the issue, you know, from what people have been doing, crawling through the code and looking at this, it appears at some point there may have been some library changes and some code path changes.
+Uh, and unfortunately, as a result of that, it was falling back to a less secure, less random, uh, method of doing this.
+Right.
+And that was relying on a micro play on fallback pseudo random number generator.
+So instead of using, you know, verified sources of entropy, uh, the bits that would be, were to be expected on the device, it was using this fallback PRNG, uh, and it was being seeded from very predictable things.
+And that's the other part of this issue is how do you seed your entropy?
+I think we've talked about that on prior calls.
+You can implement these systems.
+They can look right in code.
+If you're not seeding them correctly, you're shooting yourself in the foot, essentially.
+So it appears that it was, um, predictable through some timing state and some identifiers on the device.
+And as a result, the attacker was able to compute those very easily and start to generate seed phrases, which resulted in loss of clouds.
+And from a, I would say from a code level, uh, it should be pretty clear that like people, I think a lot of people are going to say stuff.
+Like, how could you not look at the code and tell that it was using the wrong function.
+And, uh, and actually what it sounds like is part of the problem.
+And part of the confusion is that there is this get RNG function that existed both for the unsafe micro Python code and for the safe, like hardware random number generator code.
+And so like the actual function name was the same, but the bug had to do with like the build system of which library it was using, uh, when it was calling the code.
+And so it's not necessarily an obvious bug just from a quick glance at the code that was being called.
+Um, it's, it's, it's crazy how, um, even after so many years, I mean, cold, cold cards have been used for quite a while.
+Nobody noticed this, uh, this mistake.
+Uh, the intent was to use as many, um, unguessable sources as possible to scramble up and create a private key.
+That was truly unguessable, but the, the technical way that they implemented it, unfortunately ignored a bunch of those ways.
+Um, this, um, this reminds me of a fantastic, uh, class that was taught by Joshua McDougal, who was one of the co-founders of C4 back at BTC 2019, the blockchain training conference.
+Um, those in attendance, um, got to play with Josh's, uh, ceremony.
+Um, I just tweeted a, a link to it.
+It's, um, it's a very small webpage that has a classic NES.
+Kind of a feel, and it lets you click some buttons and include a bunch of different types of entropy.
+Um, along with it, you can shuffle a deck of cards and type in the values of cards that you've got.
+You can, um, roll a couple of dice and type in the dice values you've got, or you can plug in your own true random number generator and see a bunch of numbers that come out of that.
+So if you put them all in, you can see how it gets all scrambled and pops out a truly unguessable key.
+Um, if, if a lot of this stuff that we're talking about seems kind of esoteric to you and you, and like, you know, random numbers, you know, uh, unguessable things.
+I encourage you to, uh, follow the link, um, to ceremony.guide, uh, and just, just click around and play with it to get a feel for what we're doing.
+At the end of the day, cold card wanted to scramble as much of these, uh, sources as possible, um, when creating your key.
+But unfortunately they didn't include them, uh, uh, properly and nobody noticed until today.
+Well, yesterday.
+Yeah, I put the link to the key ceremony guide in the YouTube chat and retweeted it on C4's site.
+So it's a helpful, very useful resource for those interested in learning more.
+And I think one of the things that, um, I'm not sure which one of you said, but I think it's really important to note that when we're talking about what happened.
+I actually, it was Jameson, it's not some easy, obvious thing that people just knew about.
+This is really, really, um, difficult to know about ahead of time.
+So like, if you, like you were saying, there's not necessarily this like clear breadcrumb to be like, oh, this is what happens.
+And this is what we can expect.
+There's a lot of different things that go into this, a lot of math as well.
+And so it makes sense that it took a while to figure this out.
+Jameson, did you want to talk about that?
+Uh, well, I was also just going to point out that one of the kind of ironic aspects of all of this is that cold card is one of the few manufacturers that actually has the ability for you to roll dice, to provide your own entropy during the C generation process, which is like a recommended way of doing things.
+But, uh, as you might imagine, practically, nobody does that.
+It's not the default path that, you know, you have to go out of your way, uh, in order to, to do that.
+And I, I have guides from a few years ago where I talked about this and recommended it.
+And if, if people actually did that, then they're not vulnerable to this issue, uh, this issue only applies to people that use the default, uh, and generate seed phrase without providing any additional entropy, such as through the dice, uh, method or through creating, uh, their own passphrase.
+Now, um, it's, like I said, it's, it's, it's a bit ironic because they, they had the right intentions in place.
+But, um, I think some people are quickly jumping to the conclusion or the saying that, oh, so now we have to tell everybody they have to throw dice, uh, you know, if they want to do their seed generation the right way.
+And, um, you know, I would just say that, you know, as the, the paranoid security guy, like even, even, uh, you know, using, uh, firmware with dice throwing capability is not a 100% guarantee either because there could be a bug in the, the algorithm that is taking in those dice throws and then, and using it to seed.
+Um, so this is like the, the unfortunate black pill aspect of security is like, there, there is no such thing as perfect security.
+Uh, all we can do is keep, uh, layering best practices on top of each other to make it less and less likely that you have a catastrophic flaw somewhere in your architecture.
+Well, you said there is really important, Jameson.
+Um, some people may walk away from this incident and think that, oh, cold cards are just broken.
+Let me just take mine and throw it out.
+Uh, that's absolutely not at all what happened and it's not at all what you should do.
+That won't keep you safe at all.
+Um, there, there are two parts to a, uh, cryptocurrency wallet.
+There's the part that creates your key.
+Then there's the part that uses your key.
+Um, and actually if, if you go by the cryptocurrency security standard, um, uh, uh, these are, these have their own chapters within the standard that govern it.
+The key creation part is what had a flaw in cold card.
+If you created your key on a cold card without using dice, then you are likely vulnerable.
+But if you had a key created somewhere else, like through dice and you just, uh, restored it onto your cold card and you use your cold card every day with this key that was created outside of cold card.
+That is perfectly safe and remains safe today, uh, as far as we know.
+Um, so let's not, uh, cast shade at cold card for making a great product.
+Uh, these problems do occur and they, they occur with them, uh, with everyone.
+Um, if, uh, if you're curious to have a step-by-step guide on how to keep yourself safe while dealing with keys.
+Uh, the CCSS is a free open source guide that can, that can bring you there.
+Um, there are a whole bunch of different sections that cover everything about your key from cradle to grave.
+The key creation part is section 1.03, which governs, uh, uh, uh, what happened here with cold card.
+Um, ultimately cold card was not using a valid random number generator.
+Um, so that's what led to this, this issue, but after the key is created, it needs to be stored safely.
+Once it's stored safely, it needs to be used safely.
+Once it's done being used at the end of life, it needs to be discarded safely.
+That whole life cycle of the key is governed by the CCSS.
+And if you, uh, are looking for a place to start to maximize the safety of your funds, I encourage you to go read through the CCSS.
+It's step-by-step, um, control-by-control.
+It's a great checklist to give you that peace of mind that, you know, you're, you're doing the right things.
+I would also note that, you know, cold card is not the first and it won't be the last to have random number generator problems.
+Um, I couldn't tell you how many there have been over the years, but I do remember two big ones.
+Uh, I think about 12 years ago, there was some issue in, uh, like the Android operating system, random number generator.
+And that resulted in a number of mobile app Bitcoin wallets, uh, having weak, uh, seed phrases generated.
+Uh, I think there was also a, a weak random number generator in the blockchain.com wallet like a decade ago.
+And I'm sure that there's many others that just, you know, weren't quite as impactful that, you know, don't come to mind.
+Yeah, absolutely.
+When I was designing our CCSS trainings, I do examples of how they're, what issue kind of led to us adding this to our standard.
+And when I was going through for this topic, there are many, many, and there's actually examples where we'll find a vulnerability or there was a vulnerability exposed patch.
+And then the same company over and over, this is not an example from cold card, but so yeah, there are a plethora of examples, which is scary.
+And also really important to be aware of, especially because what you were saying in terms of the seed generation, like cold card has an option to be able to use dice.
+And so we often talk about how important knowing how to self custody is, but then at what point does it become, um, dangerous or difficult because you need to have additional, uh, skills to be able to make your.
+Key that you've generated have the best entropy possible or the most unguessable number.
+And so I think that there's a challenge there for sure.
+In terms of people who are starting to become a little more technical and able to start to generate their own keys using a hardware wallet.
+And then can they go the extra step or is it going to make it more dangerous for them?
+Um, and I wanted to also point out, Michael, you brought up the standard and I want to share that it's free for anyone to look at.
+So this is something that if you are either at a company or you're custodying your old funds, there are resources out there and it's, you know, best practices listed for you to try to get an idea of what you should be aware of.
+Um, maybe now's a good time to switch to impact.
+So if you use a cold card, you may be fearful that you're impacted by this.
+If you know that you've used your cold card to create your key and you didn't, you didn't throw dice when you were doing it, chances are you are impacted.
+And what this means is it's a race on the clock between you and any attacker out there who now knows about this vulnerability.
+They're crunching all those 40 bits, uh, looking for your key.
+And the moment they find it, they are going to start transferring funds out of your wallet.
+Here's what you can do to protect yourself.
+First thing you need to do is create a new key that you trust.
+Again, there's a, uh, a great set of resources at the CCSS for, uh, how to use it.
+Um, a cold card even released a new firmware update that they allege fixes the vulnerability.
+If that is true, installing the newest version of the firmware, uh, and using cold card to create
+a new key would be of a viable path, but we don't, um, know for certain that the firmware update that
+they provided truly does fix the problem that it alleges to, um, sidebar aside, uh, create a key that
+you are, uh, comfortable with that, you know, is created properly, whether it's by dice, whether
+it's by using a different hardware wallet, um, once you've created that key, back it up, um, use something
+like a steel plate to etch it on, um, uh, so that it is fireproof, uh, flood proof, uh, ink will not
+run if it gets wet.
+You want to make sure that your lifeboat that you're creating here is going to be kept safe.
+Um, create a new key, send a little bit to the new key, uh, from, from your cold card,
+send it to the new one, just a small amount.
+Uh, once it lands, see if you can send it, uh, send it out again, make sure that you have control
+on the new key.
+Once you're sure you've backed it up and you're sure you can spend from it, fire everything off
+to this new wallet and you're the, the race is now done.
+You've safeguarded your assets, uh, Ron and Jameson, um, did I miss anything that, uh, you'd like to add?
+Yeah, I would say that the generating the new key and moving funds, the migration is imperative
+just cause you do the firmware update.
+Doesn't mean you're safe just because you don't remember if you were on the firmware version
+or the hardware revision that might be affected, uh, which, you know, sounds like it might be a bigger
+blast radius than we think, um, doesn't mean your funds aren't going to be stolen that you,
+you got through the net, right?
+Um, these seeds are being cranked on and calculated and we're still seeing movement, you know?
+So keep that in mind that if you're in this affected pool, if you're listening to this talk
+and you're going, I have a cold card, I'm going to go, you know, check out my bitcoins on there.
+Do that now, right?
+Don't wait.
+Don't hesitate.
+The second thing I would say is I've seen a lot of discussion about bit 39 task phrases.
+And for those that aren't familiar, there's a, an additional word you can put at the end of
+your seed phrase.
+It's essentially a password that's only known to you or wherever you store it.
+That's not part of the actual cryptographic mathematical generation process.
+But what it does is it can protect your funds, right?
+Because it's an additional, you could consider it, I guess, a source of entropy, essentially.
+It's another piece, right?
+That you're putting in there.
+Some of those people are saying they're safe.
+And I just want to challenge them to say, I don't think you are necessarily if you were
+on this revision and use that process because there was still keys being generated on the
+device.
+And as a hacker, the next thing I'm going to do for the next layer of attack is I'm going
+to start to do a dictionary attack on top of all the seed generation suites that I'm already
+doing.
+Right?
+So if you think like an attacker, they're not going to stop.
+They're going to continue to iterate.
+So I think a Fit39 passphrase is a good security advice for some people in certain situations,
+not necessarily everybody.
+But I don't think that it protects you just because you were using that and may have been
+on this device and hardware and firmware revision.
+I think, you know, there's a lot of different situations here.
+If you have multiple hardware devices available, then that's great because you have more optionality
+to generate a phrase and migrate over.
+If you only have this one cold card and you're trying to figure out how to do a migration,
+that could be a bit trickier.
+If you want to send your funds to an exchange or something while you then wipe your cold card,
+upgrade it, go through the whole wallet generation process, and then move your funds back to self-custody.
+Trusted third party custody isn't great, but it's better to temporarily have it in a trusted third
+party than to lose it forever to some sort of attack.
+There's also other options available with like multi-sig setups and stuff.
+We actually just published a video of how you could do it with Kasa,
+basically adding more keys to your setup and moving into a multi-key setup.
+And then you could rotate out the compromise key.
+But there's a number of different paths here that you can take.
+And that's why it's kind of tricky to talk about.
+But the most important thing is, even though this is an emergency situation and you're rushing against
+an unknown clock of attackers, you don't want to rush too quickly because rushing too quickly
+is going to result in you making a mistake that could itself be catastrophic.
+So I think that's a little bit too quickly.
+Yeah, I think that's a little bit too quickly.
+Yeah.
+And follow up to do.
+Oh, I apologize, Jessica.
+Just one last note.
+If you are one of these people who are rushing to create a new key, and now you've safeguarded your
+funds and you feel safe.
+There is one additional step you should take after your funds are on your new key.
+If you've ever shared a Bitcoin address from your old key, maybe someone gives you a recurring payment.
+Maybe you've added these old Bitcoin addresses to your exchange account as white listed withdrawals.
+Try to go through every one and every service that you have given your Bitcoin addresses to, and you're
+going to need to replace them all because you wouldn't want, you know, a month from now.
+You do a withdrawal from your exchange and it goes to your old key, which at that point has become
+compromised and now the attacker sweeps a payment, a future payment that was meant for you.
+So reviewing any address you've given out is an important follow-up step after you've moved all
+the funds that you have.
+I will also add to that anything you've white listed through different exchanges and services with
+addresses for approved spends and things out of your accounts.
+You know, those addresses can still provide digital signatures and a test for you.
+So if you're not changing that stuff to Michael's point, that can be an issue.
+Did we talk about how there's kind of two different things going on in terms of what you need to
+do depending on what, like MK3 or MK4 and 5, did we touch on that?
+Because I think there's two different things that we need to be aware of.
+And I actually just put in the YouTube chat a post from CASA that I think explains pretty well what
+the differences are.
+And Jameson, I don't know if you've had a chance to look at that, but I think you know the difference
+between these and what we need to be aware of.
+I have seen a chart floating around, but I think basically the short version is that it looks like
+basically all of the versions of cold card after 2020 had issues of some type.
+It's just that the severity of the issue and the essentially the size of the total key space that
+an attacker would have to search through is far smaller on the MK3 and therefore the kind of
+time frame window that people have to move before they should expect their phones to be stolen is a
+lot shorter.
+You know, MK4 and Q and later stuff, they still they have a higher total number of bits of
+entropy so the search space is still larger, but it's still far under what we would consider best
+practice and so you would still want to eventually migrate.
+It's just less of a you need to do it right now.
+It's more like you probably have days or weeks before it gets cracked, but best to put it near
+the top of your to do list.
+Yeah, I would think of it less.
+Anytime you're spending trying to figure out which version of cold card you had,
+which version of firmware you had and which bucket you end up in all that time you're spending to
+figure out that minutiae is time that you could be spending uh recreating a brand new safe key.
+Uh the difference is whether you're going to be drowning in six feet of water or drowning in four
+feet of water. You're still going to drown eventually doesn't really matter. You're going to have to do
+it to just start creating your key now. Don't worry about the minutiae.
+And we've addressed like the that panic and urgency can lead to mistakes.
+So take your time. I mean, not so much time they're not doing anything, but take a little
+bit of time to make sure that you're doing things safely and that you're not trying to mitigate a
+problem by creating a bigger problem. So, or an equal, equal problem. So, um, why don't we talk about
+what we can do a little bit more? How, what are the steps that we can take in a conscious deliberate
+way to make these fixes to protect Bitcoin? And we are just talking about Bitcoin here in this case.
+That's why we keep referencing BTC rather than, um, other currencies. But so what, what should we do,
+Ron? I've got a couple of points. I think that people should be considering. Um, the first one,
+and I think Jameson and Casa have said it beautifully over the years, you know, eliminate single points
+of failure. Uh, that comes down to manufacturers and hardware vendors as well. So if you're somebody
+that was using multi-signature in this instance, but all your multi-signature keys were
+generated on the cold card, you're in a lot worse situation than somebody where one of the three was
+a cold card and then maybe a ledger, Trezor, mobile device, paper key. However you structured that,
+you've reduced the amount of risk. And that's really the name of the gaming security is risk
+mitigation, right? It can never be 100% secure, but you can take steps to identify the attack vectors
+and threats and risk and reduce that, right? And get ahead of that. Um, I think you can follow open
+standard like the CCSS. We've talked a little bit about it, but there's very specific applicable
+controls here, you know, with compliance of randomness and how is it being generated. There's
+one very specific to entropy pools, right? What is the size of your entropy pool and how is that being
+seeded and used in generation? Um, we have one that calls out the creation methodology. So if somebody is
+going and doing an audit, if there's a CCSSA, one of our certified auditors going out and doing an audit
+on an information system, these questions are going to be asked. And while I don't think CoinKite itself
+could have been, you know, audited to this, the seed generation and the randomness code could have
+been something that potentially could have been audited against the CCSS. And these things would
+have come up as a result of that, right? So trying to get ahead of the game, um, audits of any open
+source tooling and code, right? I call this out because we're in a world in advent of AI and LLMs.
+And there's some rumors that this attack was AI assisted, that the code was reviewed by an AI and
+it found this, or at least assisted the attacker in walking through those steps. So it's getting
+easier for people to identify these things. We said very, very much at the top of the call. This is
+hard. This is cryptography. This is very hard concepts to implement correctly to ensure you're
+doing the testing. Um, the more audits that you can do on your product or your service, if you're a
+hardware wallet vendor, if you're a software solution, if you're an information system, you know, uh,
+certify against the CCSS, um, do your own self assessments, do your own audit. Uh, I can tell you
+I spent a good portion of the morning, um, working with the solutions I work with doing statistical
+testing and making sure the unit testing and regression testing and CICD pipelines were implementing all of
+the good things that NIST recommends. And I think that's, you know, a whole another topic that we
+could get into technically, but there are a ton of statistical testing frameworks and test code
+and things you can implement into your pipeline to one, not only verify that you're not vulnerable
+to these types of things, but two ensuring that you're not introducing it later on as a regression
+or as a code change. Fantastic advice. Oh, Michael, do you want to jump in? No, I'm just saying that's,
+that's all fantastic advice. Yes, it absolutely is. I also want to point out, we mentioned that
+auditors can help catch things. There's also CCSS implementers. If you need assistance with doing this,
+if this was easy, we wouldn't have all of these hacks and vulnerabilities and lost Bitcoin. Um,
+it's not easy. We've got a lot of companies working on this and a lot are unfortunately failing because
+of this entropy portion. And if you have weak entropy and your numbers are guessable, then your crypto is
+available for the taking basically. So, um, if you need help with that, find someone who can help you.
+It's okay to not know everything and to be able to do it all, but there are people out there that can
+help. And I think that's where the problem occurs. If you don't know how to do this, no judgment,
+but if you have a company or a system that should know how to do this properly, that's where the
+issue is going out and asking for help. And of course, sometimes things happen that are unknowable.
+Um, but they're that's lessened by having the numbers unknowable for your, um, number generators.
+Yeah, for sure. Um, I think, um, so cold cards,
+cold cards are primarily a, uh, a consumer device. It's mostly used by end users from, um,
+either in single-sig setups or multi-sig setups with other trusted humans in their lives.
+Um, cold cards aren't usually used for enterprise setups. Now the, the CCSS, although it is,
+um, I mean, the CCSS was built on the shoulder of the giants that came before it. Um, uh, as you said,
+Jessica, if, if, if you don't know everything, you don't have to know everything as long as you
+are building on top of the giants that walk before you. Um, the, uh, I think one of the reasons why
+this may not have come up sooner and it is only coming up now and at the end of July in 2026 is
+because the cold card is a consumer device and is not an enterprise device. Uh, there have been, uh,
+dozens, um, uh, probably, uh, hundreds at this point of CCSS reviews that have been performed all around
+the world by many different people. Uh, and on top of that, there are CCSS certifications where a third
+party walks into your company and, uh, and, and, uh, gives you the check mark that you've done it right.
+But because cold cards are consumer devices, all of those, uh, enterprise systems that have been audited
+and have been looked at and reviewed by CCSS auditors that have been helped being built by CCSS
+implementers, they didn't get an opportunity to catch this. Now, in hindsight, it's easy to look at
+that and say, oh, well, that is not compliant with CCSS 1.01. 1.01 is all the stuff that covers creating
+a new, a new key. And if a company was using a cold card as one of their signers for their enterprise
+setup, an auditor would have gone in and, and taken a closer look at a cold card. And I'd like to believe
+that, you know, following the CCSS, they would have found that the, the keys were not being created
+properly. Um, but because it was, because cold card was a consumer device, uh, it hadn't been audited
+the same way that a lot of other pieces of software, a lot of other tools are used in, in other enterprise
+setups. Um, even though the CCSS is designed more for enterprises for, to make sure that they're, uh,
+they're doing everything right. There's nothing stopping any individual, any consumer from following
+the exact same standard because keeping a key safe is important both to the big guys and to me for my own
+funds. Uh, one retort I would have to that, you know, I'm not sure of this, but I, I do know the
+Ledger Donjon team is, uh, quite good at doing pen testing of their competitors. I'm sure that they
+have looked at cold card over the years. I'm not sure to what extent, but like they, you know, they love
+publishing vulnerabilities and, uh, competing hardware devices. So, uh, I would suspect that
+they have looked at cold card over the years. And, uh, if anything that might lend more credence to the
+fact that like this particular bug was not obvious. Well, I think that brings up a good point that if this
+wasn't obvious, then how can other people feel like they're protected, whether they are using cold card
+or other systems. So there was a question in the chat, which I think is worth discussing. Um, this
+person said, it's been a while since I got my 24 words established with a Ledger hardware wallet.
+So are they, how do they know if they're at risk for a similar vulnerability or not? What can somebody do
+to determine if they should be making a move or yeah, I don't know, Ron, what would you suggest?
+I, as a consumer would be looking at a couple of different things. And this really depends on your
+technical level and then kind of how you assess risk. So I think the first thing, you know, I work in
+security. I've been on both sides of the fence as the hacker and the defender, uh, audits are really the
+name of the game. Is the product you're using audited? Did they publish audit results? Is it continuously
+audited? Right. At least at a minimum of an annual cadence. Um, and that can go for the source and the
+hardware, because when we get into randomness, I'm looking at things like the, uh, NIST and other
+country equivalent, uh, statistical testing results. Is that information published or has the entity
+undergone that? Um, I, as I said before, you know, it's very easy now for people to do their own AI
+review. I'm going to download the GitHub repository or clone it to my computer. Uh, and I'm going to have my
+favorite AI tool just take a pass, right? Is this secure? Is this doing what it actually attests to?
+And I wouldn't rely on that 100%, but it's a data point amongst the many other data points of review
+that you can do. Uh, and I think the de facto rule for anybody that's extremely paranoid about this is,
+you know, your source of entropy and where your, your, your, your seeds and your keys are coming from
+needs to be unpredictable. And it has to be independent from any single devices, internal random
+generator. And what that prevents is the single point of failure. So me, you know, as a security
+professional, I would love to see people doing, um, systems where they're generating that entropy
+manually, but then inputting that computed value into something like a cold card or a hardware wallet
+that they're comfortable with. Right. Because it wasn't generated on device. Uh, at the same time,
+I will caution people. They say, don't roll your own crypto. Don't roll your own entropy systems at the
+same times. Um, stand on the shoulder of giants. As we said, there's a lot of verified solutions and
+code and things out there you can use rather than having to write your own Python script that's
+calculating your dice rolls. If you're a person that has high level of technical ability and
+cryptography knowledge, and you can get the independent audits and people to review your stuff. Okay. I've got a
+little bit higher degree of confidence with that. Right. But if you're just vibe coding your own
+entropy script, you're going to be in for a bad time. So keep all those things in mind as you're
+reviewing solutions. Um, and as I said, you know, this is a wake up call, even to a lot of creators
+and coders and engineers. We're now implementing more statistical testing into the pipelines. It may
+have been done already. It may have come up on other audits. It's another layer that it's like, why not?
+What does it really cost you if it's going to prevent this from happening again in the future?
+I think there are some interesting points around, uh, AI driven security audits, uh, because, uh, cold
+card in their, uh, last security notice mentioned that they had actually done an AI audit of their code
+base a few weeks earlier that turned up nothing. Um, speaking with some of the other security
+researchers in the space, I've been seeing a pattern where they said, basically the American AI services,
+uh, are not finding this problem, but the Chinese models are finding or, uh, potentially if you have
+access to, uh, the, uh, restricted, like GPT cyber model or some, or mythos or what have you, like you,
+you might be able to find it with that. But I think that's just another interesting development, you know,
+within the context of, of AI, which AI is incredibly, unfortunately, incredibly important aspect of
+security right now, because it's just changing the balance of power. Um, you know, it, it's empowering
+both attackers and defenders, but I think that so far, uh, it seems like attackers have been making better
+use of AI to find vulnerabilities than defenders have been of patching them. Um, before we move on to, uh,
+another, uh, topic, I want to go back to the question that the YouTuber, um, asked about that, you know,
+they, they created their 24 word using a ledger wallet and they don't really know now if they are at risk
+to a similar vulnerability. I'm going to tell you something that you're not going to like to hear. Um, you're never going to be a hundred percent
+certain that you are not at risk for a similar vulnerability. Um, two days ago, if you would have
+described your setup, um, uh, or if the cold card user would have described their setup, people would
+have said, yeah, that's good. You used the entropy generation on the cold card device, which is using a
+whole bunch of different pieces. So you are secure. Now today, we know that there was a problem in that,
+that was unknown two days ago. Um, small side story. There was a, there was a moment in shapeshift history.
+Um, I used to be the chief information security officer at shapeshift, uh, which is where I met
+Ron stoner, who, uh, who was, uh, one of the experts on, on our team. Um, and, um, I remember
+we were getting ready to go into a key ceremony. Now, whenever we were creating keys at shapeshift,
+we, we called it a ceremony for a reason. There was a lot of prep that needed to go in, in advance.
+There's a lot of things you had to do in the room without any cameras or that any microphones or that
+anything, um, available. And things that came out were all sealed with tamper evident bags, uh, etched
+in steel, um, and lock down, um, uh, the, the, the, the products of this. And when I was talking about
+the process we were about to be undertaking with shapeshift CEO, um, Eric Voorhees, he said, well,
+couldn't you just create it on a ledger? Like you can just create a seat on a ledger. Um, he wasn't a
+security professional. Um, and I explained to him, we don't know that there is, it is not a vulnerability
+on a ledger for creating the key rather than creating it on a key on, on a ledger, uh, today.
+And then five years from now, we learned that it's been compromised this whole time. We're using a
+process that, you know, as Ron pointed out is pulling from a lot of different things and munging it all
+together so that if any one of these pieces may be compromised, there's enough extra bits from all
+these other pieces that, uh, a compromise of one component is not going to hurt us. And he, his eyes
+sort of glazed over and said, okay, well carry on. Um, and, um, you've created a YouTuber. You've created
+your, uh, 24 word seed with a ledger as of today. I know of no vulnerabilities in the way that ledger
+creates its keys, but I would have said the same thing two days ago about cold card. Um, and this
+uncomfortable feeling of I'm not a hundred percent certain you are never going to get away from that.
+The good news is nobody knows of a vulnerability of a today. Now, if you want to get that extra,
+you know, half a percent of comfort, um, you can use dice rolls. There are tools available that allow you
+to roll a bunch of dice, type in the numbers, um, uh, uh, uh, shuffle cards and, and draw them and, um,
+munge all these together to produce a 24 word phrase. And this 24 word phrase is not created only on a
+ledger. It's not created only on a cold card. It's created with all these pieces that you pull in. If
+you are that paranoid type and you want to go that extra mile now is a good opportunity to use one of
+these tools to regenerate your keys and slowly move things over. Uh, lucky for you, unlike the cold
+card, uh, users, you're not on a race against time. You're doing it because you want to improve your
+security, but, uh, being careful and measured and double checking everything along the way is important
+that you don't make any mistakes. Uh, I would just point out that a more potentially more user friendly,
+uh, option is to spread your risk or, or to use the, the magic of additive security. So if, for example,
+you create a two of three multi-sig with one ledger, one treasure, one cold card, uh, you know,
+you can use their on-device RAM number generators and, and really the, the trust assumption is that,
+you know, any one of those devices may have vulnerabilities, but the likelihood that,
+you know, multiple devices have the exact same vulnerability just becomes infinitesimally small.
+Yeah. The key is, uh, stitching together multiple pieces rather than relying on one piece.
+Right. Um, and I think that kind of brings us to the last thing we wanted to talk about,
+which is randomness tools and props. Michael kind of waved around earlier, some dice and whatnot. Um,
+but why don't we just talk quickly about what this looks like and why a team of really technical
+people who love emerging technology and computers are holding up dice? Like, why are we still at this
+point in time talking about cards and dice and other props rather than saying everything should be generated
+on a computer? Jameson, you want to get us started? Well, basically because you can actually see what's
+happening. Uh, the, the unfortunate aspect of technology today is that we've developed these
+amazing magical black box devices that they can do amazing things. And AI is just like the latest
+incarnation of that, which is also what makes it even scarier to me is that, you know, nobody really
+understands what's going on inside of that black box. You put inputs in, you get outputs out. You
+don't necessarily understand, you know, exactly, uh, how the computations and transformations of the
+information are happening. Yeah. You can find a vulnerability in software. You can find a vulnerability
+in hardware. You can't really find a vulnerability in cards or dice, as long as they are good quality cards
+and good quality dice. Sure. Dice can be weighted card decks could have, you know, 40 copies of the ace of
+spades. So they're not actually all, um, unique, but if, if you are using known good cards and you're using
+known good dice, there's no vulnerability that can, uh, that, that can stop that.
+Yeah. I remember in 2019 at our conference, when I first saw Josh McDougall, one of our co-founders,
+bring out the dice and start to do all of this. It's very interesting and it's accessible, but I do
+think that it's, um, scary if you're not sure how to do it and haven't had a lesson on it. So I think we might
+do a stream coming up. I've had a couple of people send me messages individually about how they'd like to
+know how to do this, but Ron, what were you going to jump in about?
+I like it because it's a offline analog tactile process. You're doing it with your hands. You're
+generating the entropy. There's, there's something about owning that process and it's cool to do
+analog things in digital worlds. Um, I will take it one layer deeper if, you know, you really want to get
+nerdy about security and mathematics and statistics. Uh, Michael described, uh, you know, some of the details we
+would do with our key generation ceremonies. Um, and if you're doing these processes, you also
+want to think about the other security risks around you. As he said, we would sweep, you know, rooms,
+uh, TVs, smartwatches, cell phones, nothing's allowed in that room. Nobody can go in or out
+while the process is being undertaken. You know, eventually it does need to go to a script to be
+computed. And we, we had air-gapped computers that we ripped apart, you know, and pulled out all of the
+pieces of hardware that gave us security concerns so that we could attest that we did these processes
+in the most secure way. That's, you know, the very paranoid way to do this, but it shows you
+if you follow all these controls and you think about each step and you double check the process
+and you review it with other security professionals, you know, this is a different
+game for an exchange that needs to protect a bunch of hot wallets and funds versus, uh, somebody just
+getting into Bitcoin versus the whale that's been in it for 10 years. They are all going to have
+different security concerns and needs. And I think, you know, that's the whole point of this call is
+giving some guidance and process and an example to say, here's how you can do it right, or at least
+as close to right as is possible today. Yes, absolutely. And there are many different ways to, um, create,
+you know, systems that have strong entropy. And there are different companies and products out there that you can
+use, but there is value, I think, in knowing how to do some of this on your own. I'm also going to put
+in the YouTube chat kind of a fun example that shows the variety of ways, um, we can do this. We've got
+dice, we've got coins, we've got cards. There's also, um, a really neat example of using lava lamps that
+I don't think they're using anymore, but there's just all kinds of different interesting ways to do this.
+What matters is to do it securely, to do it with when you're seeding to actually use random numbers.
+And I think that's the difficult piece. So why don't we go around and do a few final thoughts
+on it? Um, things to be aware of educational commentary, whatever it is that you think is
+really important as a takeaway from this stream. Michael, do you want to start?
+Sure. Um, I think I'll end the same way that I began. The best tool for defense in anything is
+education. If you know, then you're not fearful because you understand. Um, there are fantastic
+open source resources that have been reviewed widely reviewed by many people and, uh, given hundreds of
+thumbs up by security researchers, uh, all three of us on this call, uh, actually all four of us on this
+call, um, serve on the CCSS steering committee. The, uh, uh, using open standards, open checklists
+are a great way to give yourself the confidence that you're doing the right thing. If you don't know where
+to start having, um, a guide of, okay, well, I need 35 check marks here. How do I get check mark number
+one? How do I get check mark number two before you're done? Now, you know that you're doing it
+the right way. So educate yourselves and, um, use open standards, um, that are widely peer reviewed.
+Yep. And just because, you know, some doesn't mean, you know, all, so be aware of, I guess,
+your educational limits as well, and keep looking for more information and go to the experts when you
+recognize that your skills are limited in some way. Uh, Jameson, anything else you'd like to add?
+Just building on top of that, you know, with great power comes great responsibility. And when you're
+taking custody of these digital bearer assets, you are empowering yourself, but you are also putting a
+lot of responsibility on yourself to make sure that only the right people can get access to the material
+that is used to authorize, uh, transactions on these networks. And so you should expect that the amount
+of time and resources you dedicate to understanding and improving the security of your custody setup should
+be commensurate with the amount of value that you are storing. So, you know, if you've only got a few
+hundred bucks, then fine, just wing it and go with, uh, you know, the defaults that a lot of other people
+are using. But if, if your life savings are in this thing, you should be putting a decent amount of
+time into understanding, uh, what could go wrong so that you can protect against it.
+Yep. Absolutely agree. Ron?
+I have two. The first one is my heart is really breaking and goes out to those affected by this.
+We said that at the top of the call. Um, you know, I like working in Bitcoin security and part of the
+reason is early in my career. I tried all the scams. I tried the doublers, the high yield investment
+programs, because it was cool to use your Bitcoin and see what you could do with it. And that feeling
+of, of, uh, waking up and losing your funds is horrible. So my heart goes out to you. I will tell
+you as somebody that's been there also, you will come back bigger and better and stronger and more
+educated. These are always learning experiences. Uh, and unfortunately, sometimes they can be very
+expensive ones. Uh, and then lastly, I, I said it, uh, elsewhere in the call, randomness and entropy are
+easy concepts to understand, but extremely hard concepts to implement correctly.
+Awesome. Well said everyone. Thank you all for watching. Thank you to our CCSS committee members,
+Jameson, Michael, and Ron for joining us today, and we will see you on the next stream. Stay safe out there.
+Take care.
