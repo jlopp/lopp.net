@@ -1,0 +1,684 @@
+The malicious threat actors aren't going to just sit on their hands and say, okay, well,
+that was good. No, they're going to move on to the next industry, to the next set of valuable
+internet-connected infrastructure that they can try to siphon as much value out of as possible.
+So the rest of the world, of course, should always have been paying attention to Bitcoin,
+but they should be paying attention to it for a very different set of reasons now, because
+they're next. You know, if you're not racing along with everyone else, then it's pretty much
+guaranteed that you're going to get compromised at some point because there's a lot of other people
+out there that are actively using these tools against you. All right, James and Lott back on the
+show. And wow, we have a lot to talk about. When I was going through the list of things for this show,
+it's basically a never-ending list. I think probably the best place to start is just to get
+a kind of 10,000-foot view of the security apparatus around Bitcoin right now and how you're looking at
+things. Because since the cold card hack, we had Rob Hamilton spin up the red team as him and Callie
+and a load of others doing really great work there. Then we had the liquid hack more recently. And it
+just feels like the game of security when it comes to Bitcoin has changed entirely. Or maybe it's the game
+the game of security more broadly. What's your overarching view of everything that's happened?
+Oh, the best way I can describe the past month and a half is that my beard used to come down to here.
+And now it's right here. And it's because I've literally been pulling so much of my beard out
+over the past month and a half. So the fundamental nature of security and cybersecurity,
+whatnot, has not changed. It is a never-ending cat and mouse game, attackers versus defenders.
+What has changed is the velocity. And that's basically the result of the accelerating LLM
+iterations. Like every few weeks, a new model is coming out that is pushing the frontier forward.
+And the open-weight models that are orders of magnitude cheaper are caching up.
+And so basically the tooling that is available to both attackers and defenders in this space is surging
+forward. And the attackers, as is the case with most advancements, the attackers tend to be earlier
+adopters. They are more motivated to be early adopters of this tooling because the bounties,
+the return on investment is so high. And so the problem is that a lot of the defenders have basically
+gotten caught off guard. And we've seen an acceleration in vulnerability discovery
+in the Bitcoin space. And what I've been trying to tell people is that this is the canary in the coal
+mine. Once all of the easy money has been picked out of the Bitcoin space, the malicious threat actors
+aren't going to just sit on their hands and say, okay, well, that was good. No, they're going to move on to the
+the next industry to the next set of valuable internet connected infrastructure that they
+can try to siphon as much value out of as possible. So, you know, the rest of the world,
+of course, should always have been paying attention to Bitcoin, but they should be paying attention to it
+for a very different set of reasons now because they're next.
+And the reason it's the canary in the coal mine is because if you get someone's Bitcoin keys,
+then they're yours. The Bitcoin is yours. There's very little recourse. It's very hard to actually
+do anything about that. But what would the next industry be, do you think? I know we've seen in
+the last few days that Revolut has got attacked and a load of KYC information has been stolen from them,
+but does it remain within financial systems, do you think? Or do you think that you'll see these go after
+like the grid and power supply and things like that? Yeah, I mean, I think generally financial systems
+will be next. Further down the line, basically any sort of system that contains personal identifiable
+information, things that can then be used to perform identity theft and more roundabout ways of financial
+theft. And then, of course, infrastructure attacks that that's that's going to be more of either a nation
+state thing or a, you know, voluntary anarchist type of I want to screw with with other groups type of fun
+hacking adventure. But yeah, I mean, anything of value. And of course, over the past few decades,
+more and more of the global infrastructure has been connected to the internet. So, you know, if you're
+connected to the internet, you basically have a door there that billions of people can start knocking
+on. And now they can really automate that knocking and and increase the sophistication of the discovery
+that they're doing by essentially leveraging these highly compressed knowledge bases into doing a lot of
+the technical heavy lifting for them. So when it comes to the cold card hack, I've covered that a
+little bit on the show. I've done at least two or three shows on that, but I've not spoken about the
+liquid hack more recently at all. Can can we get into that? Can you give us some information about what
+exactly happened? I know these so-called white hat, not really white hat hackers initially stole 4,000
+Bitcoin, I think, and then gave a large portion of that back. But where are we at right now?
+Yeah, at the moment, I think they're still holding on to about 600 Bitcoin, about 15% of the take there.
+And it's unfortunate from a, call it a white hat or gray hat perspective, because how many tens of
+millions of dollars is that it's an absurd amount to claim that you have a right to simply because you
+were able to use one of these tools. Like I seriously doubt that the attacker spent more than a few hours
+actually finding this vulnerability. So like from a amount of effort that they put into it versus the
+payoff, it's absurd that they think they should get tens of millions of dollars. Meanwhile, we have
+a Bitcoin red team that has submitted hundreds and hundreds of vulnerability reports, and they're not
+asking for anything. They're just doing it because they care about the security of the overall broad ecosystem.
+I think that this is another thing that's also going to happen more frequently because now you're
+going to have less sophisticated people getting their hands on these tools and basically getting in over
+their heads and not being familiar with the proper way to do responsible disclosure. And so they're sort of
+stumbling into massive vulnerabilities and potentially massive jackpot payoffs. And they just don't have the
+maturity or the understanding of the ecosystem to be able to do this in a way that we would consider
+responsible. Now, I don't think we've yet gotten a full postmortem of the series of events that led to
+this, but it does sound like it was actually a result of a vulnerability report that led to a fix for that
+vulnerability that actually created a worse vulnerability that then was exploited by this
+attacker, which is extremely unfortunate. And I think really goes to show that you have to be extremely careful
+on both sides of the equation here. These are very powerful tools, but they can lead you down paths that
+actually make you worse off if you're not really careful about what you're doing. And so that's why
+the stuff that we're doing at CASA, you know, we are using a variety of LLM assisted methodologies,
+but we're never just taking any one model for granted. We're always using multiple models to cross check each
+other's work. And we always do have a human in the loop for final code review and sanity checks. But basically,
+you can't trust any of these things. I think I wrote an article a few months ago, it was basically entitled
+Don't Trust the Clankers. And it spoke of several security incidents that we actually had internally at CASA
+with what I would call overly eager or too helpful models where an employee would ask a model to help do some task. And the model, you know,
+you know, not being given really any guardrails or specific restraints around how it was supposed to
+accomplish that task would essentially end up hacking the employee themselves in order to be able to,
+you know, get authentication or credentials or access whatever materials were needed to accomplish the task.
+So yeah, you have to be really careful. It's like these things aren't necessarily malicious, you know,
+they're not intelligent per se, but they they can do, you might call it malicious compliance in order to
+achieve the goal that you give to them. Yeah, they'll find the shortcut. And it's interesting though,
+because like, obviously, before any of this started happening, I think it was probably, you know,
+everyone thought that open source code is the most safe, because it has the most eyes in it,
+like you'd imagine that would be the most vetted, the most the most tested. Does this kind of call
+that into question where you may be better relying on closed source code, because then at least it's not
+completely viewable by these AI systems that are trying to attack your whatever the infrastructure is.
+If you hold Bitcoin long enough, there's gonna come a time when you need some dollars,
+it might be a tax bill, a business expense, life getting in the way, but whatever it is,
+it might come at a time when you don't want to sell your Bitcoin. That's where Ledin comes in.
+Ledin lets you borrow against your Bitcoin instead with tiered rates that go as low as 9.25%.
+So you don't have to sell your stack if you don't want to.
+Ledin have operated through every market cycle since 2018 and have originated over $11 billion in loans.
+But the important part for me is the way Ledin handles these loans. Your collateral is held
+in custody and never let out to generate interest. And Ledin is more than just loans. Tether Gold is
+now live alongside your Bitcoin with instant trading across 10 pairs. And later this year,
+you'll be able to borrow against gold in the same way that you do with Bitcoin.
+Ledin really is an awesome company. I've used them multiple times. The applications have taken
+me less than 15 minutes and you have the dollars in your account within hours.
+If you want to check out Ledin, go to ledn.io and use the code WBD for 0.25% off your first loan.
+That's ledn.io and use the code WBD. Every Bitcoiner eventually has to answer one
+question. If something happened to me, would my family know what to do? Could my wife or parents
+recover my Bitcoin? And would my children inherit the Bitcoin that I spent years stacking?
+That's where AnchorWatch builds Bitcoin custody models to protect you and your family
+against real life. Accidents, errors, kidnappings, and even your own death.
+Every AnchorWatch custody solution includes their inheritance protocol. Designed so when the
+unthinkable happens, your Bitcoin reaches the people you intended it for. Whether you're a self-custody
+expert or want multi-institutional support, your Bitcoin estate plan shouldn't be an afterthought.
+Bitcoin is only generational wealth if it can actually be passed down through the generations.
+So make sure they can access in the future what you've built today. AnchorWatch is your custody,
+your way. Visit anchorwatch.com to get started. That's anchorwatch.com.
+If you own a Bitcoin ETF, especially if it's GBTC, you need to listen up. Spot Bitcoin ETFs provide
+price exposure to Bitcoin, not direct ownership. You can't withdraw it, you can't self-custody it,
+and they charge you a management fee every year to hold it. Well, Swan recently announced Swan
+Real Bitcoin Exchange and it's ready to use right now. RBX is a structured in-kind exchange that converts
+your Spot Bitcoin ETF shares into real on-chain Bitcoin. It does that without selling on the open
+market and is designed to support a tax-efficient outcome. So for example, if you hold GBTC, you're
+paying 1.5% a year in management fees for Bitcoin price exposure. But by swapping GBTC for real Bitcoin
+with RBX, you can drop that figure as low as 0% by just holding it in self-custody. This is designed in
+a way that maintains your cost basis and in a manner that supports the deferral of capital gains tax.
+So if you own a Bitcoin ETF, especially if it's GBTC, you need to talk to Swan Private about RBX today.
+Head over to swan.com/wbd and booking a call with one of their team. That's swan.com/wbd.
+I think the problem right now is that we're in this volatile phase where the AI, they're just
+so much more powerful and methodical and they don't need to eat or sleep and you can basically have them
+churning away 24/7/365. I've also made some references to basically this new technology has made
+becoming a slave driver moral and cool again because you're basically orchestrating massive swarms. Once
+you get to the high level of using these tools, you're orchestrating massive swarms of different models
+systems to coordinate with each other. So I think that at the moment, closed source may be a bit safer,
+but that's only really true if you're talking about a code base that hasn't been put through the rigorous
+level of LLM review. One way that I've been looking at it from CASA's own code base where
+we thankfully had already been writing these pin test harnesses to basically red team our own code.
+And we've really accelerated that over the past few months and it's actually become a sort of
+a recursive loop thing where we're using the AI to make the AI pin test harness even better and faster
+and more efficient and even starting to like close the loops of vulnerability discovery to vulnerability
+resolution and patching and stuff. But one of the ways that I've been looking at it is that, you know,
+CASA has been around for nearly nine years and we've had really good security practices, but
+they're not perfect. And so over nine years, you know, there's this idea of technical debt in software
+engineering where you're constructing these really large complex systems and, you know, oftentimes you
+have deadlines and so you might take a few shortcuts and not do the best practices for one thing and
+you'll say, oh, we'll get back to it later. And then after doing that for many, many years, you just have
+massive amounts of crufts and lack of best practices. Along that similar vein, I've been starting to think
+of this as actually security debt where after nine years of building software, even though, you know,
+we did a really good job following a lot of the best practices and even, you know, we do what is the
+industry standard for software engineering, at least for like SOC 2 compliance stuff is you get at least
+one annual external security audit. You go find a security auditing firm, you give them all of your code,
+you give them credentials to your production or your staging systems, and you say, you know, go for it.
+Like you basically red team, our stuff and come back to us. And, you know, that usually costs us
+anywhere from 50 to $100,000 per engagement. Usually they'll, they'll bring on like half a dozen security
+researchers and spend a month just poking around and then they'll deliver a report to us. And that report
+will usually have anywhere from 10 to 20 findings, different levels of severity, and then we go fix them.
+And then we come back and say, please retest them. And they'll say, okay, it looks like you fixed everything.
+But like I said, these LLMs are just relentless. And so, you know, annually, we would get, you know, 10 to 20 of those
+security disclosures, security disclosures in the report. And now just the sheer volume of what I'm
+dealing with. I was just crunching some numbers a few hours ago. Our pin test harness, last month,
+we filed about 120 issues. You know, most of these are like low, medium severity. There's very,
+I don't think there's really any critical issues. Like, you know, Casa already has a really solid
+foundational infrastructure, just from the fact that we don't keep any keys online. And for our customers,
+we never have a threshold of keys that could actually be used to steal money. But nonetheless,
+it is a fairly complex, you know, software as a service infrastructure. So you've got like all of
+your standard internet facing best practices and software engineering, like OWASP related things that
+you need to follow. And so, yeah, last month, we had about 120 findings. And then, like I said,
+I was using the AI to continue improving, improving, improving. And then we did another run that was using
+the newer models. And that has resulted in several hundred more findings. And so we're just, you know,
+playing the catch up game now. And, and the reason why at the moment, I'm not seeing the end in sight,
+I mean, I'm sure it'll happen eventually, and hopefully it'll happen by the end of the year.
+But it's because everything keeps improving, the models keep improving, our own internal harness
+keeps improving, we keep finding other things. Now, thankfully, these are becoming like, you know,
+less and less lower severity findings. But still, each of these things then has to go through our entire
+software development lifecycle. And that becomes the primary bottleneck. So I think I had also done some
+other stats where I said, basically, before August, I had only contributed like 300 lines of code
+to our Kasa code bases this year. I have not been primarily a software engineer in probably four or five
+years. That has changed. And in, in August, I contributed about 50,000 lines of code to our code base. And this is pretty much
+almost entirely, almost entirely, you know, test code, additional verification and integrity checks,
+it's all like security related stuff. This is not me writing new features. We've got a whole other team of
+people that are doing that. And now, you know, my job is, is basically, to get us to the point where,
+like I said, we historically had one annual security audit of our entire code base. My goal, hopefully,
+by the end of the year, is to get us to us doing a full code base audit every single day. And that becomes
+part of the software development lifecycle. And basically means that there's no longer a gap where
+we're writing a lot of code, and then somebody else is coming along and looking at it. I mean, we do
+already have peer reviews, like we you can't get code into our production environment or into our mobile apps
+or whatever, without having another human review it. But, you know, humans make mistakes, they can miss
+things. And having, you know, another human review your code is good. Having 10 other, you know, large
+language model agents review your code is even better, because they're far more likely to find other things.
+And so, yeah, it's just, like I said, it's a race making everything faster. And, you know, if you're not
+racing along with everyone else, then it's pretty much guaranteed that you're going to get compromised
+at some point, because there's a lot of other people out there that are actively using these tools
+against you. So, yeah, we just continue to harden everything. You know, I'm not losing sleep at night
+level of concern, because I feel like we are probably in the top 1%, if not point, top 0.1%, mainly because we
+already had the head start where we had started developing our pen test harness back in like February or March.
+And then, you know, as these new models came out, we just continued clanking harder and harder.
+If anything, you know, you probably saw just a few days ago, a bunch of these companies coming out
+and saying, we need to slow down, right? We need to pace. And I don't know what really happened behind
+the scenes there. I don't know if there was an incident that they're not disclosing or if they're
+just worried that they see the writing on the wall that they're going to hit a wall and slow down and they
+want to have an explanation for it. I actually hope it's that. I hope it's that they can see that
+they're already getting to like marginal returns on investment for training and that the rest of these
+like free open weight models are catching up and they're going to have problems with their IPOs and
+stuff. That's what I'm hoping for, because I'm hoping that means we'll eventually get to a plateau where
+I don't have to be writing several dozen pull requests for code hardening every day around the clock.
+I mean, I'm sure it's going to slow down at some point, but right now we're just in the thick of it.
+I mean, if you're trying to weigh up the probabilities of why they want to slow down the frontier development,
+I think that would probably be the most likely is that they see that the marginal returns,
+they're getting smaller and they know they're going to IPO and they need an explanation.
+But if it is something else, it gets quite scary. Like I still don't think slowing down and giving
+control over to, I saw the Anthropic CEO saying he would give over control to sort of multiple government
+agencies. Like that seems like a terrible outcome to me. That's just giving power to more power to
+government. But I mean, it is still kind of scary. It's like, it's the wild west. And the thing that I
+don't know, like obviously very specifically to sort of Bitcoin software and security is like, when is
+code just secure? And so even like a two times gain in the abilities of AI still doesn't break anything
+because it's just secure code or does that not exist?
+No, that's not really a thing. And it's because there's always more to it than just the code, right?
+So these software systems that we are building now are so incredibly complicated that it's not just the
+code that you have written. The best way that I like, I like to describe it as, you know, we all stand upon
+the shoulders of giants in many different ways. Humanity in general, civilization has gotten to
+where we are by standing upon the shoulders of those that came before us. Now, within the context of
+software, that means, you know, in the very early days, like 70 something years ago, software engineers
+were writing in assembly language, which is only one step abstracted away from the pure machine, you know,
+binary zeros and ones language. And then, you know, over the decades, we started building more complex
+abstract languages on top of that, like C and C++. And then we started having web languages, your
+JavaScript. And now we've got other projects like Rust and stuff out there. So these languages are all
+building on top of each other, but they're becoming more complex. And also along with that is that
+for a long time now, for a couple of decades, especially once we got into the web and like
+JavaScript and Node.js, is that these, you know, massive libraries of, for every language started to be
+put together and published. And so now it's not just about the code that you've written, but also all the
+dependencies. And so that's how you get around writing a lot of code is you reuse other people's code that
+they have published. And, and so, you know, I'm, I'm, I'm busy with many different aspects of security
+that have all been accelerated by AI lately. And, and another one of them is dependency management. And so
+if you've been paying attention, you know, a number of the really bad compromises that have happened over
+the past few years were actually malicious actors that managed to gain control of highly popular,
+tiny little code snippet libraries that were used in thousands, if not hundreds of thousands of other
+software projects. And, and then you just inject some malicious code into there that like installs a root
+kit on somebody's machine and looks for, you know, any Bitcoin seed phrases or whatever. Um, and, and so
+point that I'm getting at is, you know, all of those, um, those libraries are also being subjected to the
+same level of scrutiny for vulnerabilities. And so I'm also getting just through the roof, uh, increased
+level of, um, alerts from our various dependency management, uh, software that's basically saying, Hey,
+uh, you need to update this dependency because these vulnerabilities were found in it. And, and sometimes that
+can become a nightmare in and of itself because you can get into these weird dependency conflicts that
+turn into like spaghetti related, uh, dependency taught using other dependency, using other dependency,
+and sometimes like circular references that are really hard to untangle. Um, and so, yeah, so it's,
+it's, it's software all the way down and, and none of this stuff is ever static. You're never going to
+like ossify any given software project unless it is like completely self-contained and has no external
+dependencies, which interestingly enough is kind of one of Bitcoin cores long-term goals. And that's one of the
+things they've been doing over the years is getting rid of many external dependencies and including stuff
+like open SSL a number of years ago, which turned out to be a really good idea because open SSL had a
+number of like critical vulnerabilities in it, but that's really hard to do because you end up having
+to write, rewrite a lot of that code yourself and then do all of your own, uh, security testing and,
+uh, quality assurance.
+And just quickly on the languages, the, the, like all the different, um, development languages, I've never
+written a line of code in my life before AI, but now with voice to text, I've got it to write some code.
+It's like built my website, all that kind of thing. But I have no idea in terms of like,
+if it gives me the output, I have no idea if it's good code, if it's bad code, whatever.
+Does it need to use the languages that we have built or can like, are they still the most efficient
+ways that it can build software or because now like it's English language in code out, like, can it just
+have its own new code that's much more efficient?
+Yeah. Uh, I actually, I think that there has been at least one project. I remember reading a little,
+uh, news blurb about it, that someone had basically, uh, tasks, um, AI to write its own language just,
+you know, for, for itself. That doesn't need to be human, uh, legible. Um, and if you think about it,
+like I said, all of these languages that we've been building, they're just abstraction layers away from
+what ultimately gets compiled down into machine code. Now, the main reason why you would not want
+to do that at least right now is, as I said before, don't trust the clinkers. Um, at least if you're doing
+serious software engineering, there needs to be a human in the loop at some point that is reviewing
+the code that is being written and is, is making sure that it's not at least obviously overtly
+malicious. Um, that can be a problem in and of itself because it is, there is a whole field of,
+of, of study and, and in fact, there are, um, there are like prize based projects around relight,
+writing what, what is called underhanded malicious code, where you can look directly at it and you can
+be a, you know, computer science background and, and potentially not see that, uh, a given snippet of
+code is actually doing something highly malicious. And, and, and, you know, that actually kind of brings
+us around to like the, the cold card issue itself, which is, um, that, you know, it was,
+it was such a, uh, like complex and nuanced piece of code that was malfunctioning that a number of human
+security researchers had directly looked at that code over the years. And, and some of them even felt like
+there might be an issue there, but none of them could actually see that, uh, you know, the, um,
+the true random number generator library was getting swapped out with a pseudo random number generator
+library. And, you know, code is, is difficult. Um, and like I said, if, if anything now, you know,
+having, having these agents be able to look at it and, and basically be much more methodical, uh, than a
+human would be, uh, it cuts both ways. Um, both for attack and defense.
+You wouldn't reuse a Bitcoin address. So why does your phone broadcast the same identifier for life?
+Every SIM has a static ID and carriers, ad networks, and bad actors all use it to track you. The big
+carriers have been caught selling that data over and over again. Cape is America's privacy first mobile
+carrier. Their identifier rotation feature changes your ID every 24 hours. So you look like a different
+subscriber every single day. And SIM swaps are off the table. Your number can't move without a 24 word
+phrase that only you hold. There's also no name at signup, no social security number, and there's
+no profile to build on you. If you're a Bitcoiner in America, I honestly don't know why you'd use any
+other network. You can head over to cape.co/wbd and use the code WBD for 33% off your first six months.
+That's C-A-P-E dot co forward slash WBD. If you're already self-custody Bitcoin, you know,
+the deal with hardware wallets, complex setups, clumsy interfaces, and a seed phrase that can be lost,
+stolen, or forgotten. BitKey fixes that. BitKey is self-custody built for real life. It gives you an
+intuitive, easy to use wallet with no seed phrase to sweat over. And it has a strong recovery system and
+built inheritance for long-term peace of mind. And BitKey's just had a massive upgrade. The new device now has a
+screen. So before you approve something, you can check it on the BitKey itself. The transaction,
+the address, or any account changes. It's a big difference. You're not just trusting what's on
+your phone. You're seeing it for yourself on the device. It's simple. Secure self-custody without
+the stress. Go to bitkey.world today and use the code WBD to get 10% off the new BitKey. That's
+bitkey.world and use the code WBD. When it comes to like, obviously Bitcoiners always say,
+don't trust verify. And with the cold card vulnerability, I can't verify. I mean, I could
+send an AI agent to go and look at it and tell me what it saw, but I can't read that code myself.
+And so the trust for me wasn't even necessarily just in cold card. It was in, I guess, every open
+source developer that's looking at an auditing code across the Bitcoin ecosystem. But do you think
+someone outside of just the actual cold card team or I guess what I'm trying to say is did we let people
+down? Should someone have seen that earlier? Yeah. I mean, I think there's plenty of blame
+to go around. Obviously from like the, the original cold card developers that wrote the code and then
+whoever reviewed it originally, uh, you know, I think, you know, large part of the blame goes there.
+Um, for sure. 99.9% of the blame goes there.
+Yeah. Like, I mean, I have plenty of other questions that, uh, I don't know the answers to. Like,
+I don't know if cold card hired external security reviewers to look at that code, you know, like
+doing the annual audits that we do at Casa. I don't know if, if cold card was doing that. Um,
+in general though, um, part of the problem, it does come down to, you know, how many eyes are on it.
+And, and I think that part of the discrepancy and part of the reason why, uh, so many people were
+shocked when this happened is that I felt like there was a big discrepancy between cold cards posture
+within the industry versus their actual size and, and resources in reality. Um, you know, if you talk
+to Bitcoiners and this is going to be massive generalization, but you know, if you talk to like
+hardcore Bitcoiners, um, you know, a lot of them will poo poo on ledger, uh, because they support
+a lot of non Bitcoin things and they've had, uh, you know, personal information leaks and stuff over
+the years. Uh, and they would say, you know, cold card is the best because it's like the hardcore
+cypherpunk ethos project. And that is all true. But if you look at, if, if you compare the companies,
+um, and I don't know the numbers off the top of my head, but you know, let's, let's say rough order
+of magnitude cold card as a company is probably making millions of dollars a year in revenue
+and ledger, I think is making hundreds of millions of dollars a year in revenue and cold card had maybe
+two or three engineers. And I think ledger has like a hundred engineers. And so, you know, just size and
+scope of amount of resources that are put into, uh, you know, looking at the code and ensuring it.
+It's when you look at it that way, it's a lot less, uh, surprising that, uh, something like this
+could fly under the radar. Yeah. And even to add to that, like ledger have their dedicated team in
+a dungeon that are constantly trying to break Bitcoin hardware wallets. Um, and I, I feel like
+everyone just drank the MVK Kool-Aid a little bit and he was quite arrogant and he would, you know,
+I, we did a show a few years ago after one of the, after ledger added the, um, feature that allowed you
+to basically do a shamir secret of your Bitcoin keys. Um, and MVK just lambasted the ledger CEO Pascal
+for an hour and a half, pure arrogance. And then the whole time that I think even when we recorded
+that show, that bug was still in the cold card at that point. Um, like it, it was, I do think
+everyone just fell for his shtick and, and it worked for a while and it's quite embarrassing as Bitcoiners, I think.
+Yeah. Um, though also, um, I know that ledger Donjon looked at cold cards several times over the years
+and I'm, I suspect they also looked at it at some point in that four or five year period where that
+vulnerability was there and they didn't see that vulnerability either. So like if anything, that's
+also another, uh, you know, bit of credit towards how obscure and nuanced of a vulnerability it was.
+So like, after this was discovered, obviously terrible for anyone that lost money. Um, I think
+everyone has at least rethought the way they do this Bitcoin security setup. Maybe you've, people have
+had a look at it and decided that what they do is absolutely fine. I'm sure there's a lot of people
+in a boat, in the boat of Bitcoin self custody is too scary. I'd rather hold it on an exchange or with
+an ETF. I, I would, I think it would be good, a good exercise to go through and talk about what you
+think the best practices for people, self custody, maybe on a few different scales, like from maybe
+we start with the person that has somewhere between a thousand and $10,000 in Bitcoin. Like what do you
+think their Bitcoin security set up should look like? Yeah. I mean, I think if you have at least
+a few thousand dollars worth of Bitcoin, then the very least that you can do is take your keys off the
+internet, you know, um, invest a hundred or $200 into one of these air gaps devices that protects you from
+hackers, uh, and protects you from like 99% of the threat vectors in the space. Um, now that means,
+yes, you're, you're, you are going to end up trusting that, that company, you know, whether it's
+treasure, ledger, bit box, cold card. And, and by the way, I'm not going to tell people not to use cold
+card because somewhat ironically now cold card is like the most secure that it has ever been, uh,
+because it has received so much attention. Like I still have and use cold cards. Uh, many, uh,
+CASA clients have and use cold cards and, and we had, you know, no loss of funds as a result of the
+incident. Um, you know, as far as I'm aware, there was no evidence that any multi-sig user, uh, of cold
+cards lost funds, uh, during this incident, even if you had a, a signing threshold of cold cards. Um,
+and I think that was simply because the like amount of permutations that the attackers would have to try,
+uh, just exponentially blew up and give, gave people enough time that they were able to move their funds,
+uh, before, uh, the attacker started grinding through all the multi-sig permutations. But yeah,
+I mean, at least get yourself on a dedicated hardware device because that protects you from
+any number of things of like malicious software. Like it's, it's almost impossible to fully lock down
+like a laptop or a desktop. Uh, these like full fledged operating systems and especially browsers
+these days just have massive attack surfaces. And so by taking your keys and putting them on a dedicated
+hardware device, that's extremely simple. Um, that means, you know, the, the code that that's running
+on and even the, the hardware, uh, that it's running are simple enough that, uh, it's actually possible for
+security teams to audit them and, uh, have a, a better level of assurance that, uh, it's acting as intended.
+Though, as we saw, you know, none of this is a guarantee. Um, it is still a single point of failure.
+And so if, if you're, if you're getting above that level of value, if you're getting into like life-changing
+sums of money, that's when you have to start thinking even more paranoid of what is every possible thing
+that could go wrong. And how do I ensure that, you know, if, and when something goes wrong,
+it does not result in catastrophic loss of funds. And that's basically what we've been doing for nine
+years at Casa is, um, I guess another way of thinking of it is like you said, don't trust,
+verify. Um, it's a great mantra, but very few people have the resources to verify.
+So at Casa, you could say, we just go by don't trust, like, uh, don't, we don't assume that anyone
+can verify anything, but rather we say, you know, don't trust any given hardware device.
+Don't trust any given piece of software. Don't even trust Casa. Like you should assume that Casa
+could blow up or could become malicious. You know, you should think about what would happen in a
+situation like that. And, uh, you know, how does my security model protect me in that situation?
+I'm kind of surprised that you said you still use cold card. Um,
+when you, like, if someone was setting up a cold card today, do you think you can trust the
+random number generator now, or do you think everyone needs to be creating their own entropy
+when using a cold card? Uh, let me just add to that. Because the reason I ask is like,
+when you were saying before about the, the liquid hack, you were like, this was a disclosure. Then
+they rushed in a fix and that fix ended up being worse than the original issue. And, and you could
+probably, I don't, I like, I've no idea, but you could maybe make the same argument about cold card in
+terms of being like a rushed update after the fact. Yeah. I mean, they've made several updates.
+Now I haven't set up a fresh cold card on the latest firmware yet, but from what I've heard,
+or at least from like reason reading the release notes and stuff is, uh, the, the, they have actually
+changed it. So you have to add your own entropy now, uh, during the cold card setup. Um, I haven't,
+I haven't like looked at the code myself to see like what the, uh, verification, um, checks are
+on the entropy that is input to make sure someone doesn't just like hit one a million times. Um,
+but yeah, I mean, like I said, I, I think that they have received more scrutiny against their code base
+over the past couple months than they probably have over their entire lifetime of their company. So
+it's about as trustworthy as you could get, I think at this point, but still there are no guarantees.
+There is no insurance. Um, if something goes wrong, uh, then it could be catastrophic.
+So that's why rather if you're putting life changing sums of money into Bitcoin, I think instead of trusting
+any one company, any one project, any one piece of hardware or software, you're way better off
+distributing your trust across many different ones and, and, and having an architecture that assumes
+that any given one of them will have vulnerabilities and, and can fail. And that if that happens,
+you're okay. Uh, you're robust enough that that's not a problem. And, you know, that's really where
+CASA's security model is, is shining this past month, because like I said, we had plenty of
+clients that were using cold cards and, and rather than this resulting in a catastrophic loss of their
+funds, they just had a minor annoyance where they needed to either, you know, update their firmware
+and regenerate the key or, you know, go buy a different hardware device and, and plug it in and
+set it up and then use our key rotation functionality within the app, um, to,
+to basically heal their, uh, slightly partially compromised setup.
+Preston Pysh : I'm interested to know what you think about the idea of creating your own
+entropy, because obviously for people like you who have been in Bitcoin security for, I don't know,
+a decade more, however long forever. Um, it makes sense. And like, you know how to do it,
+you know, the trade-offs, you know what you're doing, but for people who are new to Bitcoin,
+do you still see it as like a foot gun where they can potentially end up giving themselves way worse
+entropy than trusting a random number generator? Because from the people I've spoke to, random number
+generators should be really good. It's just the in cold card, it just wasn't being used. Um, and I know
+there's like, I've, I've got the, the bull Bitcoin entropy cards and there's like these things from the
+seed signer guys that make it easy. Yeah, those are great. Yeah.
+Preston Pysh : But like, do you think we should be like,
+that doesn't scale to millions and millions and millions of people. Like, do you think we should be
+leaning further into this or do you think we need to kind of put the trust back in,
+in certain signing devices that they can actually produce you good at entropy?
+Uh, entropy is such a tough thing. Uh, the, so the, the funny thing about entropy is that it ultimately
+comes down to physicality and that when you're, when you're trying to generate entropy on a digital
+device, you're actually still sourcing that entropy from the physical real world. Um, and, and, you know,
+different pieces of hardware do it in different ways, but, um, you know, they, they could, for example,
+uh, you know, sample current timestamp. They could be sampling things like, uh, ambient temperature or
+like temperature that the chip is running at. Um, some of them use the camera. Yeah. Yeah. Uh, and,
+and so that's why it's hard. It's hard for me to ever say that, you know, you should just
+prefer device entropy because ultimately any device entropy is using physical real world entropy.
+It's just that when you are rolling dice or you're, you're pulling playing cards or you're pulling those
+seed word sticks, you are verifying the physical entropy with your own eyes while you're doing that.
+When, when you're, when you're trusting a, uh, digital device to be doing that in the background,
+it's completely opaque to you. So I think from the verification aspect, it's far better to do it
+yourself. And I don't think it's that difficult to get your hands on either some playing cards or some
+dice. It really is just more of a question of, can someone be bothered to do it because it takes,
+you know, 10 or 20 minutes, uh, to set it up. And, but I think that is the question. Cause if you,
+if we're looking at like devices that are going to scale to everyone, there's most people aren't going
+to be, won't, won't understand the importance of it and therefore won't spend the time on it.
+And we'll end up like, I've got friends who did the dice rolls quote unquote on the cold card,
+but really we're just hitting random numbers. And like, that's gonna be like, I, I, I don't know.
+I, I assume that's far worse than you just trusting the random number generator on a device.
+Uh, well, the human brain is very, very bad at entropy. So yeah, if, if you're doing something where
+you're just mashing buttons and whatever, then yes, that is arguably worse. And, and, and this is the
+problem is that it's more convenient. And so, uh, I think that's a good rule of thumb in general is that
+whenever you're doing something in this space, that it is the more convenient option, it's almost
+guaranteed to be the less secure options. So you should be aware that you are, you're literally
+sacrificing, um, time for security, you know, convenience and security tend to be in, uh,
+opposing force. Yeah. And don't get me wrong. It's not like, I think these options should ever
+be taken away. Like I think they should always be there. I just, I just struggle to see how they
+scale, scale to sort of mass market. Um, okay. So if that's when, let's say when you get into life,
+changing money and you want to store your Bitcoin, um, obviously a cast of the, your two main products
+is sort of the two or three multi-sig and the three or five multi-sig. What is the, like, what's the
+threshold when you need to move from a two of three to a three or five?
+Uh, well, I mean, this is also tough to have a real rule of thumb around because, um, you know,
+you would say, well, it's when you have a lot of money, but a lot of money is very different to,
+to different people. Um, uh, another way of looking at it is like within our system,
+the three of five level, uh, is accompanied by higher level support tier where like you actually
+have a personal relationship with your client advisor and, and you know, you get on video and
+phone calls with them and, uh, talk through any and everything that is on your mind. Um,
+and, and so that's also an order of magnitude increase in cost where our, our two of three
+tier is really designed to be more self-service. It's the, it's the Netflix subscription of self-custody,
+you know, $20 a month, uh, type of tier. Uh, whereas, uh, going up to our premium and private
+client levels, that's getting into thousands of dollars a year. So I think very few people are
+going to want to spend more than a fraction of a percent of their holdings per year on, uh, you know,
+whatever their security architecture is. So you can kind of do the math from that. Like if you're at a
+premium tier and you're paying $2,000 a year, you probably want to have at least a few Bitcoin,
+uh, that you're holding onto there so that it sort of starts to make financial sense. If, if you're
+viewing this as kind of an insurance product, like security and insurance, uh, they're kind of two
+sides of the same coin. Uh, you know, security is like upfront insurance and traditional insurance
+is like after the fact, uh, something went wrong, your security failed. How do I, uh, try to recover
+from that? But, um, you know, in, in Bitcoin, because this is a, a highly liquid bearer asset,
+um, compared to a lot of other things in life, you want to have the, the super, uh, high level of
+security upfront so that you don't have to deal with a loss in the first place. Whereas, you know,
+if you had that type of model for. Like for your car, uh, then you would only want to be driving a
+tank around. Uh, but that doesn't really make a whole lot of sense, you know, for many other reasons as
+well, but, uh, you definitely want a Bitcoin tank as someone who is like, has some public profile in
+Bitcoin. How worried should I be in terms of avoiding wrench attacks? Yeah. I mean, I think that
+anyone who is publicly known to be a Bitcoiner, uh, especially if you've been in it for more than a few
+years, uh, you should care a lot about privacy. Like even if you have the ultimate, uh, distributed
+self custody setup where you're, you're basically wrench attack proof, you don't want to find out
+the hard way, uh, what would happen, you know, if you are in a duress situation. Um, because for example,
+even, even if you have, uh, what I would call a wrench attack proof setup where, um, you don't
+have direct access to your funds at your home, like that's the biggest problem for pretty much everybody.
+Uh, if you have the ability to access your phone funds without leaving your house, you are vulnerable
+to being put under duress and made to move them. But even if that's not the case, um, and, and this is
+something that really no security architecture can do anything about, you're still vulnerable to like
+your friends, your family, your loved ones being taken hostage and you are still under duress, but you
+are free to move and authenticate and go around and get to all of your keys. So, you know, I, I don't think
+that anyone should really be advertising or, uh, leaking information about, you know, where, where you
+are, where you live, uh, to make it easier for someone to try to put you under duress in any way.
+But the problem, especially with the way you live is we've seen a ton of, um, leaks from hardware
+wallet companies where full addresses, full names have been, have been leaked. And that cat is out the
+bag for a lot of people. Like I was on the original ledger leak in, I think it was 2018 or whatever.
+I mean, I've moved house every, all my information has changed in sense. So I don't mind saying it,
+but like I was in that leak and I, for, I mean, the number of phone calls I got was insane. Luckily,
+I've moved house, I think before the leak even happened. So I never had anything physically happen,
+but like that, that isn't just the reality that people live with now is that people might know their
+address. They might know their phone number, their email that like everything. How are you meant to deal with
+that? Well, I can certainly opine upon it. Um, you know, I am, I'm in a, a rare situation
+because I was physically attacked before really any of those leaks happened. You know, I was swatted
+in 2017 and that's what really made me wake up to the severity of this problem of, of having your
+home address available to malicious people. So, you know, the short version is that, uh, I never put my
+real home address and my real name together in any database and any service. Um, you know, I have
+mailboxes and even, um, um, like condos that I use for different purposes where depending upon the nature
+of what merchant or service or government agency or whatever that I'm interacting with and what their
+requirements are, then I give different levels of, uh, false information. Really? Um, that's like one of the,
+the hardest things for the first few years that I was doing this, um, was basically becoming comfortable
+with lying, um, and understanding that it's, it's not immoral to lie to people. If you're not trying to
+like deceive or defraud them, I am lying to people on a daily basis to protect myself.
+And, uh, uh, and it's not just paranoia. Like I've actually been attacked before and I am not going
+to allow myself to be attacked again, but unfortunately it requires a massive, massive
+change in lifestyle. And I, I think that's beyond what most people are going to be willing to do.
+I, I mean, for sure, even though like, I, I, I don't think there's anything wrong with lying in that
+case. Um, I'll put a link in the show notes for anyone who wants to listen to the show we did a few
+years ago, where you tell the whole story about getting swatted, but essentially the SWAT team turned
+up guns drawn at your house while you were just, were you cleaning guns at the time as well, which
+made it even more sketchy. Um, insane story, but it's, um, it, it just, it gets, it feels like
+this is only going to get harder in terms of everything to do with Bitcoin security over the
+next few years. Yeah. Um, and you know, with regards to like some of the personal identifiable
+information leaks and stuff, some people are like, well, this is why you should never order a hardware
+wallet or other people like the, uh, the seed signer, uh, proponents will be like, this is why
+you should build your own hardware device with off the shelf parts. Um, because nobody's going to be
+like trying to get leaks of, uh, like raspberry pies or whatever. Um, but it's a, it's a nearly
+intractable problem because almost every merchant that you deal with asks for your personally identifiable
+information. Um, and, and, and, and almost every exchange out there where people are acquiring their
+Bitcoin asks for egregious amounts of personally identifiable information. And this is a really fun
+one for me to deal with, like I said, because I, I, I try to, uh, use, um, you know, obscuring
+address information wherever possible, but the KYC stuff is very difficult. And, and the only way that
+I'm really able to get around that in, in some cases is to actually have a, uh, you know, driver's
+license that is connected to a decoy residence where like, it's a real place. I just don't actually hang
+out there. Um, and, uh, but I mean, there's a lot of other tricks too, of like, uh, when, when,
+whenever a service tries to KYC me, I always try to use my passport first because there's no address
+information on there. Usually that works. Sometimes it doesn't. Uh, it's like when it comes down to
+places that will only accept a driver's license that, that has an address on it, it becomes really
+problematic. That's interesting. I always think of the passport as the more precious of the identifier.
+So I, I would always, but that makes total sense. Um, do you think that with like these rise of AI
+enabled attacks that KYC is going to come under a lot of scrutiny and we might actually get a chance
+of pushing back against it because I'm not sure the data is clear that it actually protects anyone,
+but it is creating these huge honeypots. And we've just seen that Revolut's been got,
+which is a massive, massive fintech, like tons and tons of information. And these are just honest
+people who are trying to use a service who now have their information all over the internet.
+Uh, I don't know. I mean, um, I don't think anything is going to change unless someone in
+power gets hurt. That's like, that's the short version. Like until there's like, uh, you know,
+a politician or a really rich and powerful person who, who gets burned really badly from this,
+that they're willing to then go spend a lot of resources to try to get, you know,
+political change or regulatory change. No, like, I, you know, the, the amount of leaks
+has been increasing at an insane pace and it just, it just seems to be business as usual. It's like,
+oh, there was another massive leak this week. Uh, we'll give everybody, you know, free credit reporting
+and identity theft protection for a few years and then move on. And, um, you know, it's,
+it's very profitable. Like the companies that are collecting this information tend to be highly
+profitable. Um, I think, you know, the regulators don't want to give up any of their power and any of
+the sort of surveillance apparatus, even though there's many different levels of independent reports
+that show that, um, you know, the money laundering has the people that do money laundering professionally
+laugh at all of these KYC, um, safeguards because they just go out and buy real identities on the dark
+net for pennies on the dollar and just burn through, uh, you know, stolen identities that, that can, uh,
+get through all of these, uh, regulatory compliant systems. And, and if they do get caught, then they
+just throw it away and pick up another one. So, yeah, I mean, the, the whole thing is just a clown show,
+but it seems that the people who are behind it are so entrenched, uh, the, you know, the incentives
+aren't there to fix it. Uh, well, one day they'll get hacked too. And, and we might get a change. Um,
+all right. Last thing I wanted to talk to you about, because obviously with, and Trezor's had a ton of
+email, um, scams go out recently. They've got, they, one of their service providers was hacked, I believe.
+Um, there'll be a load of people getting a ton of phone calls now with people trying to convince
+them to give them their seed words or go to dodgy websites. I saw on your Twitter that you had one
+of these phone calls recently with a scammer. Um, tell everyone what happened there. Cause I, I listened
+to the sort of three minute clip or whatever you put on Twitter, but it sounds very interesting.
+Yeah. Uh, well, we'll have several lengthy clips coming out soon. Uh, I think, you know,
+close to like 45 minutes, uh, worth of conversation. Um, so basically, you know, like you and like pretty
+much everyone else in this space who has, um, you know, been the subject of data leaks, um,
+I get these calls and it's never been a problem for me because I just, I never answer the phone.
+If it's a phone number, that's not someone I know personally and talk to regularly,
+but, and we started seeing more of our clients getting these calls. Um, and it just started becoming
+more of a security concern for us because we started having some clients that, uh, you know,
+they're, they're, they're Google accounts were getting compromised and that was becoming really
+problem problematic for us because, uh, cause then like, um, sometimes we'd be trying to, um,
+to actually converse with the client and the, the bad guy would be inside their email and just like
+deleting the emails from us. And then sometimes responding to us as if it was the client and saying,
+Oh, you know, everything's fine. So on and so forth. Um, so the, the short version is just don't answer the
+phone, uh, from any number that you don't know. Uh, but also just never trust any incoming message,
+whether that's email phone, uh, you know, direct message on any platform, um, unless it's in a
+strongly authenticated, like end to end encrypted system, like signal or WhatsApp, where it'll actually
+tell you, you know, if your cryptographic, uh, exchange has changed, uh, you cannot rely upon the
+person that the message is from actually being that person. Like all of these things can be spoofed.
+Emails can be spoofed. Phone numbers can be spoofed. Um, and what I actually ended up doing was, uh,
+I actually, I, I took coin coin base and Google's like official business numbers and added them as
+contacts in my phone so that I knew that whenever I got a call from them, that it was one of these social
+engineers. Uh, and I started picking up the phone and, and, you know, they have a very sophisticated
+system where they won't have humans call you. They actually have a, uh, an auto dialer and it'll call
+you and it'll say, Hey, you know, something happened, uh, like someone logged in here. Uh, if it wasn't you,
+you know, press one and, uh, we'll, we'll get a human on the phone with you. And, and so I started
+pressing one and eventually the humans actually started calling me and, um, I would, I would play
+around with them for like, you know, 20 minutes or so to, to get a better understanding of their
+scripts and, and really like what they were trying to do, uh, how they're trying to get access.
+And then eventually I'd be like, Hey, uh, you know, like, you know, I'm a cyber security expert,
+right? It was like, uh, you're not going to trick me. And, and in that case, they'd either hang up
+immediately or they'd be like, Oh, shucks. Uh, I was really hoping to, to get you this time.
+And, and it was interesting because like, they knew that I am the chief security officer of a security
+company and they'd still try to pull one over on me because you never know, like even, even the
+smartest, like most intelligent people might have a bad day and might be preoccupied with thinking
+about other things. And really what they're trying to do is social engineers are hacking your brain
+and they're doing this via psychological methods. They're usually using like fear, uncertainty,
+doubt, uh, they're, they're using a sense of urgency to be like, there's a security issue and you need
+to fix it right now. And I am a trustworthy employee of this billion dollar company. And I will tell you
+how to fix your security issue. But meanwhile, what they're actually doing is they're tricking you into
+compromising your security so that they can get into your email. And from there, you know, most people
+have like one or two email addresses and that's like the primary nexus of all of your other accounts.
+And once they get into that, they can start getting into all of your other financial accounts and
+they'll be looking for what exchanges you're using. They'll be looking for seed phrase backups
+and photos of like your seed phrase. Um, they, they're, they're highly sophisticated, um,
+organizations now where they have different people that specialize in doing different things. And so
+I was talking to the guy who specializes in tricking people into getting into their email accounts and he
+gets paid for every email, email account he gets into, regardless of whether or not there's anything
+valuable in there. And then he'll also get a cut of whatever the take is, if something else is found.
+But then they have other people that specialize and then doing, you know, the crypto related stuff.
+And then they also have other people that specialize in doing the wrench attacks.
+Um, and, and those people then, you know, coordinate other people on the ground, you know,
+sort of the henchmen, the two bit thugs to actually go and, and do the attacks. And, you know, these,
+like I said, they're, they're complicated and sophisticated, um, international crime rings at this
+point. And they, they do this all day long and they, the thing about security and about all this stuff
+is that, um, if you're the defender, you have to be successful a hundred percent of the time.
+But if you're the attacker, you only have to succeed one time. And that's just another
+one of the asymmetries in the space.
+It was crazy. Like listening to it. The thing that shocked me is how much money
+they're making as well. I, I can't remember it. Was it, did he say he's making about $800
+per email he gets into? He was saying he can make up to about five grand a day or something.
+Like it's real good money. Um, how did you actually get him talking?
+Um, well, you know, we just eased into it, uh, of, of me playing dumb for a while. Um, and, and then,
+you know, the, the trick is to not be an asshole, which is really hard because these, these guys,
+you know, they're doing terrible stuff, but once you get them talking, like they're just normal human
+beings, like everyone else, they tend to be young guys, you know, um, generally in their like twenties.
+And, um, and, and the reason that they're doing this is because it's just insanely profitable
+and they tend to have a, a mercenary mindset of, um, you know, I am almost like a Robin hood mindset
+of like, I'm going after guys who are so rich that it's not gonna be the end of their life.
+If, if I take millions of dollars from them because they're so well off. And that's like,
+he, he literally said something kind of like, like that to me of like, uh, you've been in Bitcoin so
+long, you know, you would be fine. And it's like, um, I guess we can just completely gloss over the
+fact that, you know, you're stealing from people who have, you know, spent a lot of time and effort,
+building up their wealth and you're just going to take them, uh, take it from them in a matter of an
+hour or so and, you know, not have any sort of regret regrets about that. But that's, uh, that's how
+it goes when you, you get into the criminal world is that, you know, people will justify that whatever
+they're doing isn't so bad. And I don't know if you can talk about this, but before we started
+recording, you said there might be something coming from someone from North Korea.
+Yeah. Uh, well, you know, we've, we've already said a few times, uh,
+security in this space, it's, it's coming from a million different directions. Uh, and, you know,
+we've only talked about a few of the different things that I'm dealing with, but another is that,
+especially if you are running a company in this industry,
+there are nation state backed threat actors that want to get inside of your infrastructure.
+And they're, they're going to do that in any number of ways. Um, you know, I think we, we,
+a lot of the people out there will be familiar, uh, you know, Lazarus group, which is the, um, you know,
+democratic people's Republic of Korea. Um, they, they, they do a lot of defy hacking.
+They love hacking smart contracts and other types of projects. And I think they've taken billions and
+billions of dollars through that. Um, but what they also love to do is to pose as technical, you know,
+security and, um, software engineer to get jobs at companies, because, you know, if you can get employed
+by one of the companies in this industry, you're going to start to get access to privileged systems,
+uh, maybe not production systems, um, but at least development environments. Um, we posted a job
+posting for security engineer position, which of course is a highly privileged position that would
+eventually get production level access. You know, if, uh, if you, uh, you build up a level of reputation
+and trust, uh, with us and we just got an insane number of North Korean actors that were, um, applying
+for this position. And a lot of them, it's very easy to weed out, uh, just from like looking at the
+resume, LinkedIn profile, so on and so forth. But, you know, some of them get a little further along in
+the funnel and what was particularly surprising this time around, um, I've never had them get to me
+before. And I'm usually the, the second or third person, uh, after, you know, initial call screening.
+And what, what we realized was happening is that they were using an actual American for the first initial,
+um, video interview, and then they would swap out with the North Korean on the second interview.
+And, and, um, you know, they're good at answering the technical questions related to the job description,
+the job that they're trying to, to actually interview for. And they probably even have
+some of the skills where they would be able to, to do that job. But, um, as it, as it is with
+everything in this space, uh, if you know the right techniques, if you know how to catch them off guard,
+if you know how to ask them the questions that they're not prepared for, that a, uh, a real American
+would be able to answer, then it's actually pretty easy to, to trip them up. And, um, the difference
+between those guys and the social engineering guys is that you can't really get them to open up about what
+they're doing, uh, probably because they're being monitored by, uh, you know, their, uh, military or
+whatever state organization is, um, is actually sponsoring them. So they, they tend to hang up pretty
+quickly after you, uh, you ask them a few questions that they're not prepared to respond to.
+What kind of, uh, is that, what do you think of your Supreme leader? Like what, what question are
+you asking? Yeah, that's an, that's an easy one is to try to get them to, you know, defame King
+Jong-un. Uh, but other, uh, less obvious ones tend to be cultural related questions. Like I said,
+they, they build up, uh, you know, a persona profile of who they're supposed to be that
+they're trying to impersonate. And so, you know, they'll know some of the background of the resume
+that they've given to you. But, um, a few things that I've done is, uh, dig into like more personal
+questions based upon the resume that would normally not be asked in an interview, but which any like
+normal person would be able to answer, uh, you know, things about their, their college life,
+you know, experience and stuff like that. Um, there, there's also any number of other American
+cultural questions that, that you can ask that they're just not prepared for. They just don't
+really know anything about American culture. Super interesting. You gotta be careful out there.
+There's North Korean sleeper cells. Um, damn, there's so much to be conscious of right now,
+but Jameson, this has been awesome. I think there's hopefully been some good actionable advice for
+people who are rethinking a security setup. Um, tell everyone when they go to follow you and find out
+more about Casa. Well, you can find me on X. My handle is just L O P P. Check out Casa. It's a C A S A dot I O.
+Perfect. Appreciate the time, man. Thank you for this. You bet.
