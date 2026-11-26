@@ -1,0 +1,216 @@
+On Thursday, the maintainers of Bitcoin Core, the software that most of the Bitcoin network runs on,
+changed their security policy, according to Coindesk.
+Until now, serious bugs could stay under wraps for about a year,
+while the fix is rolled out quietly behind the scenes.
+Under the new policy, any bug that can be found with a simple prompt to an AI model
+gets fixed and disclosed as soon as possible.
+The developer behind the change is Antoine Poinceau of Chaincode Labs.
+He says AI is drastically reducing the bar to find these flaws.
+He also acknowledges the trade-off.
+The fixes won't have as much bake time in testing.
+So, why the urgency?
+An AI-assisted review of 390 Bitcoin projects logged nearly 5,000 possible flaws.
+85 of them were critical, according to Coindesk, which raises the question,
+who does this help more, the defenders or the attackers?
+Here to help us answer that, we welcome in our next guest of the day,
+Jameson Lopp, co-founder of Casa, the Bitcoin self-custody company.
+Jameson, welcome in and good morning.
+Good morning.
+So, let's start here.
+Google estimated in March that breaking Bitcoin's encryption could take fewer than 500,000 cubits,
+about 20 times fewer than earlier estimates.
+Where is quantum computing actually at today?
+And how far is it from being able to steal someone's Bitcoin?
+Yeah, it's always fun to see people throw around these numbers because, first of all,
+one cubit is not equal to one cubit.
+There's different types of cubits.
+There's physical cubits.
+There's logical cubits.
+And then there's the complexity of all the algorithms that these cubits are actually running.
+And that's like one of the many different things that is a constantly moving variable in the quantum research space.
+But to sum it up, we are orders of magnitude away from a real usable quantum computer that can crack the elliptic curve algorithm that is used to secure your Bitcoin.
+And do you, I mean, could you even put it on a timeline for when it becomes a real threat?
+This is the trillion dollar question.
+Because we're orders of magnitude away, it means we have to have multiple massive breakthroughs.
+But as anyone who's been paying attention to the technology space, now AI is having multiple breakthroughs.
+And the crazy thing about AI breakthroughs is that they tend to percolate throughout the entire technology ecosystem and result in breakthroughs in other industries.
+So this is one thing people are keeping their eyes on.
+I still don't think it's going to happen any time in the next few years.
+I'm still hopeful that we have at least a decade or more.
+Because if we have less than a decade, we're behind.
+And that's basically why I've been talking about quantum for several years.
+Not because I think that it's about to break everything, but because, as we all know, Bitcoin is very, very difficult to change.
+And you talk about the differences in kind and quality of various types of cubits.
+What are the relevant differences between the cubits that would be concerned in the Bitcoin conversation and what some of these researchers are putting out, like, say, the recent findings with Google?
+Well, a lot of what the problem really boils down to is trying to get the physical cubits to communicate with each other reliably and not just sort of fall apart while they're doing their computations.
+And so one of the big questions is, like, how many physical cubits do we need along with whatever type of hardware we're using for them, plus the various noise mitigation algorithms to say, like, do we need 1,000 physical cubits to get a logical cubit?
+Or can we get that down to 100 or even 10,000?
+And, you know, each of those, these are order of magnitude improvements.
+But where we stand today, it really depends on how you measure it.
+But we don't really have a quantum computer that has more than a few hundred usable cubits.
+So as you can see, having a few hundred to go into several hundred thousand that are required to work together reliably.
+And the fact that as you scale up, that increases the noise and makes it less and less reliable means that, you know, we've got a lot of work for these quantum computer researchers to do to actually get to the point where we should be particularly worried.
+And, you know, pivoting it back to Bitcoin and when this threat does become more material, given advancements we're seeing, could be a more expedited timeline than we think.
+You know, estimates are showing that 30% of all Bitcoin addresses already have their public keys exposed.
+So is that something that average Bitcoiners should actually be worried about beyond simple hygiene and with an actual surface area for an attack like this?
+Or is this mainly a problem for older coins like, you know, the Satoshi wallets, for example?
+Yeah, so, I mean, there's the there's sort of the individual security issue and then there's the collective security issue.
+And I've spent a lot of time talking about the collective security issue of basically the game theory of what could happen to Bitcoin if two or three million Bitcoin are suddenly scooped up and fall into the hands of a malicious actor.
+Very, very, very bad things can happen, especially if the malicious actor is not incentivized to to try to profit as much as possible from that action.
+But from the individual perspective, unless you have at least like more than 50 Bitcoin, you're at the very bottom of the totem pole.
+Like like like you were alluding to, a lot of these are the what are called the Satoshi era addresses of 50 Bitcoin chunks that were mined in blocks and then just never spent.
+And they were probably the keys are probably lost.
+We don't really know.
+All we know is they haven't moved in, what, 15 or so years.
+So if you have less than 50 Bitcoin, it's unlikely that an attacker is going to go after your holdings, even if they are quantum vulnerable.
+They're going to go after the bigger stacks and particularly the exchanges.
+There are exchanges out there that have over 100,000 Bitcoin in one address that has the public key exposed.
+And so if I was an attacker, I'd be, you know, just going down the rich list from top to bottom.
+If you look at previous Bitcoin upgrades like Taproot and Segwit, those took three to four years to activate.
+So when we're looking at a quantum migration now, I think we can at least say it'll be it'll be slow.
+It'll be complicated.
+But when can people realistically expect Bitcoin to become quantum resistant?
+It'll be years for sure.
+I mean, we're currently I believe it's been, what, five years since Taproot activated.
+So we have never gone this long without making some sort of software consensus change.
+And quantum is just a really nasty problem because we're talking about really implementing new cryptography potentially.
+And that just scares a lot of people.
+You never want to be an early adopter of cryptography.
+You want to use tried and shrewd cryptography.
+And, you know, along with the AI advancements and people looking at supposed post-quantum algorithms, some of those have been found to be weaker than expected.
+So, you know, you don't want to move too quickly.
+You don't want to implement post-quantum cryptography that is like really slow and bloated or especially one that ends up having a weakness.
+So you expect that the number of researchers who are already looking into this are going to continue really evaluating the entire ecosystem of cryptography and trying to make more efficient versions of quantum resistant cryptography.
+Switching gears to cybersecurity here, I want to ask you about those two PHP vulnerabilities disclosed last week.
+A lot of people nervous about it.
+A lot of people who aren't in this industry or field who just really don't, they have no understanding of how it impacts them and what's fear mongering and what's not.
+So can you kind of explain for our audience what happened here and why it's so serious?
+Yeah, so, I mean, PHP is a fairly old web programming language.
+I think dates back to the late 90s even.
+It was one of the first languages I used 20 years ago when I was a web developer.
+And the point being that it's just used by a ton of different websites.
+WordPress is one of the biggest ones.
+So a lot of people's blogs run on it.
+Wikipedia is another big one, for example.
+And so the fact that a critical vulnerability, which we call this class of vulnerability remote code execution,
+it basically means that there's a flaw that if someone exploits it,
+they can push their own malicious code onto your server and have your server start executing that malicious code.
+So that means basically an attacker can do whatever they want with someone else's server,
+including stealing all of the data off of it or loading other malicious software on there that then gets distributed to anyone who connects to that server,
+uses that web app, so on and so forth.
+And, you know, it's been a week now.
+And I would say the fallout has been a lot less than I expected.
+So I think a lot of the big providers out there got patched pretty quickly.
+I'm sure some people have gotten exploited, but we haven't seen any terrible exploits yet,
+at least that have, you know, affected millions or billions of people.
+But it's not this one thing that is the problem.
+It's the trend.
+And the trend is that for the past two and a half, three months,
+just cybersecurity and vulnerability discovery in general has been on this exponential accelerating path.
+And so for those of us who are working in the security space,
+we have not been able to get a lot of rest because it seems like every new day is a whole new slew of vulnerabilities that are coming out.
+And right now I'm just holding my breath and I'm waiting for us to hopefully eventually get to a new plateau steady state
+where we can rest a little bit because the defenders have caught up with the attackers.
+And that's part of the problem is that as these new AI models come out,
+the attackers now are highly incentivized to be extremely early adopters,
+especially of the uncensored models that are good at doing cybersecurity research
+and basically pointing them at every code base they can to find the exploits,
+to get to the money, the data, really anything of value.
+And that basically just means that we cybersecurity defenders have to pick up the pace
+and try to stay ahead of the curve as much as possible.
+And I'd love to zoom out for a minute and just talk about this macro trend you're talking about
+of increased hacks across the whole internet, really.
+The cybersecurity pandemic, as a lot of folks are calling it.
+You know, we see a lot of different takes from cybersecurity experts and researchers,
+even some from these frontier labs,
+indicating that various degrees of panic or fear are warranted at this time.
+Some saying that this is going to be very temporary and eventually developers will have the tools
+in short order here to make sure none of this even gets to production.
+Others are saying this is like the early innings of COVID-19 and we're going to shut down the internet.
+What is actually warranted?
+And in the medium term and also the long term, does this change the value proposition of Bitcoin, right?
+Is this going to change the way that people, maybe traditional cybersecurity workers or bankers
+who are seeing their software being hacked,
+is it going to change the way that they're viewing an asset in a technology like Bitcoin?
+Mostly, I think that what this is going to change is that before security was often an afterthought,
+like even in a lot of big businesses, you would do like one big security audit per year
+and that would keep you in compliance with various frameworks.
+And now if you want to be secure, it needs to be real time.
+It needs to be a part of your software development lifecycle.
+So that basically means that as you are writing the code,
+you need to have these latest competent security researcher LLMs looking at the code
+and trying to break it before you even release it out the front door.
+Because you know, and you should expect that the bad actors are going to be out there using those same tools
+to knock on your front door and try to find the holes in it.
+So really, you know, it's the same story as ever, right?
+Security is always a cat and mouse game.
+It's just now the time frames are much more compressed
+and you need to be secure as you are deploying your software,
+not some point later because you're hoping that you have some lag time
+before a researcher is going to come along and discover whatever vulnerabilities
+you accidentally let through the gate.
+And what about the hardware side of things?
+One of the more interesting developments is that AI is also finding, you know,
+vulnerabilities and attack surface area in hardware,
+which obviously you can't just simply push an update, you know,
+maybe a recall and issue new products in a worst case scenario.
+Seems like an absolute nightmare.
+What does this change about the technology landscape?
+Is there anything that could even be done to address it in the interim?
+Yeah, I mean, I think it's a similar dynamic, but just on longer time frames
+where the hardware manufacturers need to be doing the same thing
+and basically implementing, you know, security review process as a part of their pipeline.
+But as you said, you can't just push out an update for hardware in many cases.
+Sometimes you can, though usually those updates result in performance degradation
+that can upset a lot of people.
+So, you know, I suppose like a worst case scenario
+would be some sort of remotely exploitable vulnerability
+that's found like in a really common processor type.
+I've heard rumors that, you know, such things may be floating around
+and we just have to hope that if those type of vulnerabilities are found,
+they can be patched.
+Otherwise, you're going to end up with a really rough period of time
+where a lot of hardware just has to be thrown in the trash
+and the hardware manufacturers are going to have a hard time,
+I think pumping out enough new volume to really make up for the loss
+of all of the vulnerable hardware that's out there.
+And it's not just digital and cyber attacks.
+Physical attacks on Bitcoin holders are increasing too.
+It just tops 700 on the public list,
+including a forced 820,000 forced transfer in Thailand.
+Why are these wrench attacks rising and who is the most at risk?
+It tends to go with adoption, right?
+So as more people are familiar with Bitcoin,
+with the value proposition, with the unique properties of this asset,
+then criminally minded people are also going to become more aware of it.
+And this is something that I think I've been warning people about
+for at least four or five years,
+which is basically the criminals are in the discovery phase
+of trying to understand what is the return on investment
+for performing a physical robbery of a Bitcoin holder
+versus any other type of physical attack,
+you know, like an actual bank or armored car robbery
+or just a robbery of a random house
+as they're walking through a neighborhood.
+And unfortunately, we as an ecosystem have not done a great job dissuading attackers
+because it seems like the majority of attacks are succeeding
+and in many cases are paying off extremely well for the attackers
+if they can get away with it.
+So this is just something that I continue to keep track of
+to understand, you know, what is the acceleration of these type of attacks?
+What are the attributes of them?
+Are the criminals implementing new tactics
+that we need to put in, you know, countermeasures in place
+for come up with new best practices to try to safeguard against?
+But, you know, ultimately, the problem is that people are not used
+to having to physically secure huge values that are easy to transport.
+You know, not many people out there have a brick of gold in their safe.
+And now, you know, the people who might have a tiny little piece of hardware
+that has hundreds of thousands or millions of dollars,
+they aren't quite giving it the level of care and respect
+that I think should go along with the responsibility
+that comes with that self-custody.
+Well, Jameson, it was great talking to you
+and we appreciate all the insights.
+Thanks so much for joining us today.
+Thanks for having me.
